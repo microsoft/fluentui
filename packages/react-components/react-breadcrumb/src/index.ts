@@ -22,7 +22,12 @@ export {
   useBreadcrumbItem_unstable,
 } from './BreadcrumbItem';
 export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem';
-export { partitionBreadcrumbItems, truncateBreadcrumbLongName, truncateBreadcrumLongTooltip } from './utils/index';
+export {
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
+} from './utils/index';
 export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from './utils/index';
 export {
   BreadcrumbButton,
@@ -32,11 +37,5 @@ export {
   useBreadcrumbButton_unstable,
 } from './BreadcrumbButton';
 export type { BreadcrumbButtonProps, BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton';
-export {
-  BreadcrumbLink,
-  breadcrumbLinkClassNames,
-  renderBreadcrumbLink_unstable,
-  useBreadcrumbLinkStyles_unstable,
-  useBreadcrumbLink_unstable,
-} from './BreadcrumbLink';
-export type { BreadcrumbLinkProps, BreadcrumbLinkSlots, BreadcrumbLinkState } from './BreadcrumbLink';
+export { BreadcrumbProvider, useBreadcrumbContext_unstable } from './Breadcrumb';
+export type { BreadcrumbContextValues } from './Breadcrumb';

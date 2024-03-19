@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { useStyles } from './useTimerStyles.styles';
+import { useBaseAnimationStyles } from './useTimerStyles.styles';
 
 export type TimerProps = {
   running: boolean;
   timeout: number;
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onTimeout: () => void;
   as?: 'span';
 };
 
 export const Timer = React.forwardRef<HTMLDivElement, TimerProps>((props, ref) => {
-  const styles = useStyles();
+  const baseAnimationStyles = useBaseAnimationStyles();
   const { running, timeout, onTimeout } = props;
 
   const style: React.CSSProperties = {
@@ -27,7 +28,7 @@ export const Timer = React.forwardRef<HTMLDivElement, TimerProps>((props, ref) =
       data-timer-status={style.animationPlayState}
       ref={ref}
       style={style}
-      className={styles.progress}
+      className={baseAnimationStyles}
     />
   );
 });

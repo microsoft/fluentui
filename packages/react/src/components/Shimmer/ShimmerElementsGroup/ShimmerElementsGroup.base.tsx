@@ -37,7 +37,7 @@ export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsG
   });
 
   return (
-    <div style={{ width: width }} className={classNames.root}>
+    <div style={{ width }} className={classNames.root}>
       {getRenderedElements(shimmerElements, backgroundColor, rowHeight)}
     </div>
   );
@@ -112,7 +112,7 @@ const getElementStyles = memoizeFunction(
           };
         case ShimmerElementType.gap:
           return {
-            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor },
+            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor },
           };
         case ShimmerElementType.line:
           return {

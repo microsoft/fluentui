@@ -1,8 +1,81 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Mon, 05 Jun 2023 07:37:25 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.19.0)
+
+Tue, 20 Feb 2024 14:22:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.18.3..@fluentui/react-conformance_v0.19.0)
+
+### Minor changes
+
+- Deprecate consistent-callback-args test ([PR #30301](https://github.com/microsoft/fluentui/pull/30301) by yuanboxue@microsoft.com)
+- BREAKING CHANGE: change `consistent-callback-args` test option to test selected props instead of ignoring props ([PR #30376](https://github.com/microsoft/fluentui/pull/30376) by yuanboxue@microsoft.com)
+
+## [0.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.3)
+
+Thu, 09 Nov 2023 17:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.18.2..@fluentui/react-conformance_v0.18.3)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [0.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.2)
+
+Tue, 26 Sep 2023 17:49:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.18.1..@fluentui/react-conformance_v0.18.2)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+
+## [0.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.1)
+
+Tue, 26 Sep 2023 15:32:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.18.0..@fluentui/react-conformance_v0.18.1)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.0)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.17.2..@fluentui/react-conformance_v0.18.0)
+
+### Minor changes
+
+- feat: add option `disableTypeTests` to disable tests that require TypeScript information ([PR #28988](https://github.com/microsoft/fluentui/pull/28988) by yuanboxue@microsoft.com)
+
+## [0.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.2)
+
+Tue, 05 Sep 2023 13:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.17.1..@fluentui/react-conformance_v0.17.2)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.1)
+
+Thu, 20 Jul 2023 18:27:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.17.0..@fluentui/react-conformance_v0.17.1)
+
+### Patches
+
+- fix: add @swc/helpers to deps instead of tslib as we use swc for transpilation ([PR #28599](https://github.com/microsoft/fluentui/pull/28599) by martinhochel@microsoft.com)
+
+## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.0)
+
+Tue, 20 Jun 2023 12:38:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.16.3..@fluentui/react-conformance_v0.17.0)
+
+### Minor changes
+
+- BREAKING CHANGE: migrate package to v9 setup in order to be able to run generate-api task without build ([PR #28215](https://github.com/microsoft/fluentui/pull/28215) by martinhochel@microsoft.com)
 
 ## [0.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.16.3)
 

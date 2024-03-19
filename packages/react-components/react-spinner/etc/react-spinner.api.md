@@ -21,18 +21,25 @@ export const Spinner: ForwardRefComponent<SpinnerProps>;
 // @public (undocumented)
 export const spinnerClassNames: SlotClassNames<SpinnerSlots>;
 
+// @internal (undocumented)
+export const SpinnerContextProvider: React_2.Provider<SpinnerContextValue | undefined>;
+
+// @internal (undocumented)
+export type SpinnerContextValue = Pick<SpinnerProps, 'size'>;
+
 // @public
 export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
     appearance?: 'primary' | 'inverted';
     delay?: number;
     labelPosition?: 'above' | 'below' | 'before' | 'after';
-    size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+    size?: 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 };
 
 // @public (undocumented)
 export type SpinnerSlots = {
     root: NonNullable<Slot<'div'>>;
     spinner?: Slot<'span'>;
+    spinnerTail?: NonNullable<Slot<'span'>>;
     label?: Slot<typeof Label>;
 };
 
@@ -43,6 +50,9 @@ export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerP
 
 // @public
 export const useSpinner_unstable: (props: SpinnerProps, ref: React_2.Ref<HTMLElement>) => SpinnerState;
+
+// @internal (undocumented)
+export const useSpinnerContext: () => SpinnerContextValue;
 
 // @public
 export const useSpinnerStyles_unstable: (state: SpinnerState) => SpinnerState;

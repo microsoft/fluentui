@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  InlineDrawer,
+  makeStyles,
+  shorthands,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +31,7 @@ export const AlwaysOpen = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline separator open>
+      <InlineDrawer separator open>
         <DrawerHeader>
           <DrawerHeaderTitle>Always open</DrawerHeaderTitle>
         </DrawerHeader>
@@ -33,11 +39,22 @@ export const AlwaysOpen = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerInline>
+      </InlineDrawer>
 
       <div className={styles.content}>
         <p>This is the page content</p>
       </div>
     </div>
   );
+};
+
+AlwaysOpen.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A drawer can be always open, in which case it will not be able to be closed by the user.',
+        'This is useful for drawers that are used for navigation, and should always be visible.',
+      ].join('\n'),
+    },
+  },
 };

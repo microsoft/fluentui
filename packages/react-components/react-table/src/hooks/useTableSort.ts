@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableState } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type {
   TableColumnId,
   TableRowData,
@@ -31,7 +31,7 @@ export function useTableSortState<TItem>(
   options: UseTableSortOptions,
 ): TableFeaturesState<TItem> {
   const { columns } = tableState;
-  const { sortState, defaultSortState, onSortChange } = options;
+  const { sortState, defaultSortState, onSortChange: onSortChangeProp = noop } = options;
 
   const [sorted, setSorted] = useControllableState<SortState>({
     initialState: {
@@ -44,19 +44,24 @@ export function useTableSortState<TItem>(
 
   const { sortColumn, sortDirection } = sorted;
 
-  const toggleColumnSort = (e: React.SyntheticEvent, columnId: TableColumnId | undefined) => {
-    setSorted(s => {
-      const newState = { ...s, sortColumn: columnId };
-      if (s.sortColumn === columnId) {
-        newState.sortDirection = s.sortDirection === 'ascending' ? 'descending' : 'ascending';
-      } else {
-        newState.sortDirection = 'ascending';
-      }
+  const onSortChange = useEventCallback(onSortChangeProp);
 
-      onSortChange?.(e, newState);
-      return newState;
-    });
-  };
+  const toggleColumnSort = React.useCallback(
+    (e: React.SyntheticEvent, columnId: TableColumnId | undefined) => {
+      setSorted(s => {
+        const newState = { ...s, sortColumn: columnId };
+        if (s.sortColumn === columnId) {
+          newState.sortDirection = s.sortDirection === 'ascending' ? 'descending' : 'ascending';
+        } else {
+          newState.sortDirection = 'ascending';
+        }
+
+        onSortChange?.(e, newState);
+        return newState;
+      });
+    },
+    [onSortChange, setSorted],
+  );
 
   const setColumnSort: TableSortState<TItem>['setColumnSort'] = (e, nextSortColumn, nextSortDirection) => {
     const newState = { sortColumn: nextSortColumn, sortDirection: nextSortDirection };
@@ -64,17 +69,20 @@ export function useTableSortState<TItem>(
     setSorted(newState);
   };
 
-  const sort = <TRowState extends TableRowData<TItem>>(rows: TRowState[]) => {
-    return rows.slice().sort((a, b) => {
-      const sortColumnDef = columns.find(column => column.columnId === sortColumn);
-      if (!sortColumnDef?.compare) {
-        return 0;
-      }
+  const sort = React.useCallback(
+    <TRowState extends TableRowData<TItem>>(rows: TRowState[]) => {
+      return rows.slice().sort((a, b) => {
+        const sortColumnDef = columns.find(column => column.columnId === sortColumn);
+        if (!sortColumnDef?.compare) {
+          return 0;
+        }
 
-      const mod = sortDirection === 'ascending' ? 1 : -1;
-      return sortColumnDef.compare(a.item, b.item) * mod;
-    });
-  };
+        const mod = sortDirection === 'ascending' ? 1 : -1;
+        return sortColumnDef.compare(a.item, b.item) * mod;
+      });
+    },
+    [columns, sortColumn, sortDirection],
+  );
 
   const getSortDirection: TableSortState<TItem>['getSortDirection'] = (columnId: TableColumnId) => {
     return sortColumn === columnId ? sortDirection : undefined;

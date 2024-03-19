@@ -1,8 +1,44 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Wed, 31 May 2023 07:38:40 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 07:28:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.16)
+
+Wed, 10 Jan 2024 07:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.15..@fluentui/date-time-utilities_v8.5.16)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [8.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.15)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.14..@fluentui/date-time-utilities_v8.5.15)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [8.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.14)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.13..@fluentui/date-time-utilities_v8.5.14)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.13)
+
+Mon, 19 Jun 2023 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.12..@fluentui/date-time-utilities_v8.5.13)
+
+### Patches
+
+- chore: migrate to ts 4.7 which wont emit undefined anymore for optional arguments ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
 
 ## [8.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.12)
 

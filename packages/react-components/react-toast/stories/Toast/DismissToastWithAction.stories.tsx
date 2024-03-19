@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, ToastTrigger, Toast } from '@fluentui/react-toast';
-import { useId, Link, Button } from '@fluentui/react-components';
+import {
+  useId,
+  Link,
+  Button,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  ToastTrigger,
+  Toast,
+} from '@fluentui/react-components';
 
 export const DismissToastWithAction = () => {
   const toasterId = useId('toaster');
@@ -18,7 +26,7 @@ export const DismissToastWithAction = () => {
           Dismiss me
         </ToastTitle>
       </Toast>,
-      { timeout: -1, intent: 'success' },
+      { intent: 'success' },
     );
 
   return (

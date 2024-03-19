@@ -10,21 +10,26 @@ import type {
   TargetElement,
   UsePositioningReturn,
 } from './types';
-import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent } from './utils';
+import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent, normalizeAutoSize } from './utils';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
+  resetMaxSize as resetMaxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
+  matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
+import { devtools } from '@floating-ui/devtools';
+import { devtoolsCallback } from './utils/devtools';
+import { POSITIONING_END_EVENT } from './constants';
 
 /**
  * @internal
  */
-export function usePositioning(options: UsePositioningOptions): UsePositioningReturn {
+export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
@@ -60,7 +65,7 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
     options.positioningRef,
     () => ({
       updatePosition: () => managerRef.current?.updatePosition(),
-      setTarget: (target: TargetElement) => {
+      setTarget: (target: TargetElement | null) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -121,7 +126,6 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
       }
       // We run this check once, no need to add deps here
       // TODO: Should be rework to handle options.enabled and contentRef updates
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   }
 
@@ -132,8 +136,11 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
     }
   });
 
+  const onPositioningEnd = useEventCallback(() => options.onPositioningEnd?.());
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
     if (containerRef.current !== container) {
+      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd);
+      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd);
       containerRef.current = container;
       updatePositionManager();
     }
@@ -150,18 +157,11 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallbackPositions' | 'pinned'> {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
-}
-
 function usePositioningOptions(options: PositioningOptions) {
   const {
     align,
     arrowPadding,
-    autoSize,
+    autoSize: rawAutoSize,
     coverTarget,
     flipBoundary,
     offset,
@@ -169,21 +169,28 @@ function usePositioningOptions(options: PositioningOptions) {
     pinned,
     position,
     unstable_disableTether: disableTether,
+    // eslint-disable-next-line deprecation/deprecation
     positionFixed,
+    strategy,
     overflowBoundaryPadding,
     fallbackPositions,
     useTransform,
+    matchTargetSize,
+    disableUpdateOnResize = false,
   } = options;
 
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
   const isRtl = dir === 'rtl';
-  const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
+  const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
+  const autoSize = normalizeAutoSize(rawAutoSize);
 
   return React.useCallback(
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
+        autoSize && resetMaxSizeMiddleware(autoSize),
+        matchTargetSize && matchTargetSizeMiddleware(),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
@@ -200,6 +207,7 @@ function usePositioningOptions(options: PositioningOptions) {
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
+        process.env.NODE_ENV !== 'production' && targetDocument && devtools(targetDocument, devtoolsCallback(options)),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -207,10 +215,13 @@ function usePositioningOptions(options: PositioningOptions) {
       return {
         placement,
         middleware,
-        strategy,
+        strategy: positionStrategy,
         useTransform,
+        disableUpdateOnResize,
       };
     },
+    // Options is missing here, but it's not required
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       align,
       arrowPadding,
@@ -223,10 +234,13 @@ function usePositioningOptions(options: PositioningOptions) {
       overflowBoundary,
       pinned,
       position,
-      strategy,
+      positionStrategy,
       overflowBoundaryPadding,
       fallbackPositions,
       useTransform,
+      matchTargetSize,
+      targetDocument,
+      disableUpdateOnResize,
     ],
   );
 }

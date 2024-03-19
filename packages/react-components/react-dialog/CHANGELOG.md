@@ -1,8 +1,805 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Wed, 31 May 2023 06:46:12 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.15)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.14..@fluentui/react-dialog_v9.9.15)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.34 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.56 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-aria to v9.10.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-tabster to v9.19.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-portal to v9.4.18 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.9.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.14)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.13..@fluentui/react-dialog_v9.9.14)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.33 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.55 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-aria to v9.10.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-tabster to v9.19.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-portal to v9.4.17 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.9.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.13)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.12..@fluentui/react-dialog_v9.9.13)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.32 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.54 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-aria to v9.10.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-tabster to v9.19.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-portal to v9.4.16 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.9.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.12)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.11..@fluentui/react-dialog_v9.9.12)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.53 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-aria to v9.9.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-tabster to v9.19.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-portal to v9.4.15 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [9.9.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.11)
+
+Tue, 20 Feb 2024 14:22:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.10..@fluentui/react-dialog_v9.9.11)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.52 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-aria to v9.9.0 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-tabster to v9.19.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-portal to v9.4.14 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+## [9.9.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.10)
+
+Tue, 06 Feb 2024 17:55:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.9..@fluentui/react-dialog_v9.9.10)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.8.2 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-tabster to v9.19.0 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-portal to v9.4.13 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+
+## [9.9.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.9)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.8..@fluentui/react-dialog_v9.9.9)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.29 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.51 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-aria to v9.8.1 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-tabster to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-portal to v9.4.12 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+
+## [9.9.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.8)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.7..@fluentui/react-dialog_v9.9.8)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.50 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-aria to v9.8.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-tabster to v9.17.4 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-portal to v9.4.11 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.7)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.6..@fluentui/react-dialog_v9.9.7)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.49 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-aria to v9.7.3 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-tabster to v9.17.3 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-portal to v9.4.10 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+
+## [9.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.6)
+
+Wed, 17 Jan 2024 16:18:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.5..@fluentui/react-dialog_v9.9.6)
+
+### Patches
+
+- fix: only apply transition css properties when animating ([PR #30327](https://github.com/microsoft/fluentui/pull/30327) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.26 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.48 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-aria to v9.7.2 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-tabster to v9.17.2 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-portal to v9.4.9 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+
+## [9.9.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.5)
+
+Tue, 16 Jan 2024 13:14:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.4..@fluentui/react-dialog_v9.9.5)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.47 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-aria to v9.7.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-portal to v9.4.8 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.4)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.3..@fluentui/react-dialog_v9.9.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.7.0 ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by beachball)
+
+## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.3)
+
+Mon, 08 Jan 2024 16:24:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.2..@fluentui/react-dialog_v9.9.3)
+
+### Patches
+
+- Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.24 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.46 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-aria to v9.6.2 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-tabster to v9.17.0 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-portal to v9.4.7 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+
+## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.2)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.1..@fluentui/react-dialog_v9.9.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.23 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.45 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-aria to v9.6.1 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-tabster to v9.16.1 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-portal to v9.4.6 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.1)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.0..@fluentui/react-dialog_v9.9.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.44 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-aria to v9.6.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-tabster to v9.16.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-portal to v9.4.5 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.0)
+
+Thu, 14 Dec 2023 09:58:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.7..@fluentui/react-dialog_v9.9.0)
+
+### Minor changes
+
+- fix: Dialog now transitions in on first render ([PR #30044](https://github.com/microsoft/fluentui/pull/30044) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.21 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.43 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-aria to v9.5.0 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-tabster to v9.15.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-portal to v9.4.4 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.7)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.6..@fluentui/react-dialog_v9.8.7)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-aria to v9.4.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-tabster to v9.15.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-portal to v9.4.3 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.6)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.5..@fluentui/react-dialog_v9.8.6)
+
+### Patches
+
+- Remove CSS containment from DialogSurface ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by jurokapsiar@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-tabster to v9.14.6 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-portal to v9.4.2 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.5)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.4..@fluentui/react-dialog_v9.8.5)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.14.5 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+- Bump @fluentui/react-portal to v9.4.1 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+
+## [9.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.4)
+
+Thu, 09 Nov 2023 17:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.3..@fluentui/react-dialog_v9.8.4)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/keyboard-keys to v9.0.7 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.42 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-aria to v9.3.44 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-tabster to v9.14.4 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-portal to v9.4.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.3)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.2..@fluentui/react-dialog_v9.8.3)
+
+### Patches
+
+- chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment. ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by yuanboxue@microsoft.com)
+
+## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.2)
+
+Wed, 01 Nov 2023 12:55:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.1..@fluentui/react-dialog_v9.8.2)
+
+### Patches
+
+- chore: remove animation from test environments ([PR #29692](https://github.com/microsoft/fluentui/pull/29692) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-portal to v9.3.27 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.1)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.0..@fluentui/react-dialog_v9.8.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-tabster to v9.14.2 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-portal to v9.3.26 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.0)
+
+Mon, 23 Oct 2023 09:51:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.10..@fluentui/react-dialog_v9.8.0)
+
+### Minor changes
+
+- feat: adds motion to DialogSurface ([PR #29391](https://github.com/microsoft/fluentui/pull/29391) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-tabster to v9.14.1 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-portal to v9.3.25 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+
+## [9.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.10)
+
+Wed, 18 Oct 2023 17:54:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.9..@fluentui/react-dialog_v9.7.10)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.41 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-aria to v9.3.43 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-tabster to v9.14.0 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-portal to v9.3.24 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+
+## [9.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.9)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.8..@fluentui/react-dialog_v9.7.9)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.8)
+
+Wed, 11 Oct 2023 13:54:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.7..@fluentui/react-dialog_v9.7.8)
+
+### Patches
+
+- chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.40 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-aria to v9.3.42 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-tabster to v9.13.6 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-portal to v9.3.23 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.7)
+
+Mon, 09 Oct 2023 20:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.6..@fluentui/react-dialog_v9.7.7)
+
+### Patches
+
+- react-dialog/chore: replace harcoded transparent to token ([PR #29406](https://github.com/microsoft/fluentui/pull/29406) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.39 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-aria to v9.3.41 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-tabster to v9.13.5 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-portal to v9.3.22 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+
+## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.6)
+
+Thu, 05 Oct 2023 15:25:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.5..@fluentui/react-dialog_v9.7.6)
+
+### Patches
+
+- chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29387](https://github.com/microsoft/fluentui/pull/29387) by bernardo.sunderhus@gmail.com)
+- bugfix: removes context hooks invocations from styles hook ([PR #29396](https://github.com/microsoft/fluentui/pull/29396) by bernardo.sunderhus@gmail.com)
+- chore: exports DialogSurface context types and hooks ([PR #29397](https://github.com/microsoft/fluentui/pull/29397) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.14.1 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.14 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.38 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-aria to v9.3.40 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-tabster to v9.13.4 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-portal to v9.3.21 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+
+## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.5)
+
+Wed, 04 Oct 2023 08:45:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.4..@fluentui/react-dialog_v9.7.5)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.14.0 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.13 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.37 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-aria to v9.3.39 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-tabster to v9.13.3 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-portal to v9.3.20 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.4)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.3..@fluentui/react-dialog_v9.7.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-tabster to v9.13.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-portal to v9.3.19 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.3)
+
+Tue, 26 Sep 2023 17:49:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.2..@fluentui/react-dialog_v9.7.3)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-utilities to v9.13.5 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.12 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/keyboard-keys to v9.0.6 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.36 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.1 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-aria to v9.3.38 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-tabster to v9.13.1 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-theme to v9.1.14 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-portal to v9.3.18 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.2)
+
+Tue, 26 Sep 2023 15:32:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.1..@fluentui/react-dialog_v9.7.2)
+
+### Patches
+
+- fix: use makeResetStyles for base dialog components styles ([PR #29280](https://github.com/microsoft/fluentui/pull/29280) by marcosvmmoura@gmail.com)
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- chore: adds CSS containment to DialogSurface ([PR #29213](https://github.com/microsoft/fluentui/pull/29213) by bernardo.sunderhus@gmail.com)
+- doc: updates documentation on alert dialog escape dismiss ([PR #29211](https://github.com/microsoft/fluentui/pull/29211) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/keyboard-keys to v9.0.5 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.35 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-aria to v9.3.37 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-tabster to v9.13.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-portal to v9.3.17 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.1)
+
+Wed, 20 Sep 2023 17:47:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.0..@fluentui/react-dialog_v9.7.1)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.10 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.1 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-tabster to v9.12.11 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-portal to v9.3.16 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.0)
+
+Wed, 20 Sep 2023 14:59:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.5..@fluentui/react-dialog_v9.7.0)
+
+### Minor changes
+
+- feat: exports contexts ([PR #29160](https://github.com/microsoft/fluentui/pull/29160) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-tabster to v9.12.10 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-portal to v9.3.15 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+
+### Patches
+
+- chore: useFocusFirstElement warns only in development ([PR #29190](https://github.com/microsoft/fluentui/pull/29190) by bernardo.sunderhus@gmail.com)
+
+## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.5)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.4..@fluentui/react-dialog_v9.6.5)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.8 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+
+## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.4)
+
+Tue, 12 Sep 2023 08:51:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.3..@fluentui/react-dialog_v9.6.4)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.7 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-tabster to v9.12.9 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-portal to v9.3.14 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.3)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.2..@fluentui/react-dialog_v9.6.3)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.13.3 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.6 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.34 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-aria to v9.3.36 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-tabster to v9.12.8 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-portal to v9.3.13 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.2)
+
+Tue, 05 Sep 2023 15:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.1..@fluentui/react-dialog_v9.6.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.13.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.5 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.33 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-aria to v9.3.35 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-tabster to v9.12.7 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-portal to v9.3.12 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.1)
+
+Tue, 05 Sep 2023 13:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.0..@fluentui/react-dialog_v9.6.1)
+
+### Patches
+
+- chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles ([PR #29040](https://github.com/microsoft/fluentui/pull/29040) by bernardo.sunderhus@gmail.com)
+- bugfix: fixes DialogActions position on breakpoint ([PR #29021](https://github.com/microsoft/fluentui/pull/29021) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.13.1 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/keyboard-keys to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.32 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.3 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-aria to v9.3.34 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-tabster to v9.12.6 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-theme to v9.1.12 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-portal to v9.3.11 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.0)
+
+Tue, 29 Aug 2023 12:57:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.26..@fluentui/react-dialog_v9.6.0)
+
+### Minor changes
+
+- feat: adds mountNode to DialogSurface API ([PR #29003](https://github.com/microsoft/fluentui/pull/29003) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.13.0 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.3 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.31 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-aria to v9.3.33 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-tabster to v9.12.5 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-portal to v9.3.10 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+
+## [9.5.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.26)
+
+Thu, 24 Aug 2023 10:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.25..@fluentui/react-dialog_v9.5.26)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.30 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-aria to v9.3.32 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-tabster to v9.12.4 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-portal to v9.3.9 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+## [9.5.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.25)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.24..@fluentui/react-dialog_v9.5.25)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.29 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-aria to v9.3.31 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-tabster to v9.12.3 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-portal to v9.3.8 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [9.5.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.24)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.23..@fluentui/react-dialog_v9.5.24)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.5.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.23)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.22..@fluentui/react-dialog_v9.5.23)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+## [9.5.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.22)
+
+Fri, 11 Aug 2023 12:14:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.21..@fluentui/react-dialog_v9.5.22)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.28 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-aria to v9.3.30 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-tabster to v9.12.2 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-portal to v9.3.7 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+
+## [9.5.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.21)
+
+Wed, 09 Aug 2023 13:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.20..@fluentui/react-dialog_v9.5.21)
+
+### Patches
+
+- chore(teams-prg): migrate to new slot API ([PR #28751](https://github.com/microsoft/fluentui/pull/28751) by bernardo.sunderhus@gmail.com)
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.2 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-aria to v9.3.29 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-tabster to v9.12.1 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-portal to v9.3.6 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [9.5.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.20)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.19..@fluentui/react-dialog_v9.5.20)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.27 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.1 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-aria to v9.3.28 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-tabster to v9.12.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-theme to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-portal to v9.3.5 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+
+## [9.5.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.19)
+
+Tue, 01 Aug 2023 10:17:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.18..@fluentui/react-dialog_v9.5.19)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-tabster to v9.11.1 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-portal to v9.3.4 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+
+## [9.5.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.18)
+
+Tue, 25 Jul 2023 13:29:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.17..@fluentui/react-dialog_v9.5.18)
+
+### Patches
+
+- chore: Update react-icons version to pick up fowardref change. ([PR #28590](https://github.com/microsoft/fluentui/pull/28590) by ololubek@microsoft.com)
+- fix: Focus should restore to a DialogTrigger outside of a Dialog ([PR #28530](https://github.com/microsoft/fluentui/pull/28530) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-tabster to v9.11.0 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+- Bump @fluentui/react-portal to v9.3.3 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+
+## [9.5.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.17)
+
+Thu, 20 Jul 2023 18:27:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.16..@fluentui/react-dialog_v9.5.17)
+
+### Patches
+
+- bugfix: moves handleBackdropClick from defaultProps to an override  ([PR #28579](https://github.com/microsoft/fluentui/pull/28579) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-aria to v9.3.27 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-portal to v9.3.2 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+
+## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.16)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.15..@fluentui/react-dialog_v9.5.16)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+
+## [9.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.15)
+
+Mon, 03 Jul 2023 13:34:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.14..@fluentui/react-dialog_v9.5.15)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.10.0 ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by beachball)
+- Bump @fluentui/react-portal to v9.3.1 ([PR #28394](https://github.com/microsoft/fluentui/pull/28394) by beachball)
+
+## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.14)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.13..@fluentui/react-dialog_v9.5.14)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.26 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.6.0 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-aria to v9.3.26 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-tabster to v9.9.2 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+- Bump @fluentui/react-portal to v9.3.0 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+
+## [9.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.13)
+
+Wed, 28 Jun 2023 11:12:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.12..@fluentui/react-dialog_v9.5.13)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.10.0 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.9 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.25 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-aria to v9.3.25 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-tabster to v9.9.1 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+- Bump @fluentui/react-portal to v9.2.16 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+
+## [9.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.12)
+
+Tue, 27 Jun 2023 11:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.11..@fluentui/react-dialog_v9.5.12)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.9.0 ([PR #28291](https://github.com/microsoft/fluentui/pull/28291) by beachball)
+- Bump @fluentui/react-portal to v9.2.15 ([PR #28291](https://github.com/microsoft/fluentui/pull/28291) by beachball)
+
+## [9.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.11)
+
+Mon, 26 Jun 2023 09:53:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.10..@fluentui/react-dialog_v9.5.11)
+
+### Patches
+
+- bugfix: adds grid-template-columns to DialogBody styles to ensure grid template layout ([PR #28272](https://github.com/microsoft/fluentui/pull/28272) by bernardo.sunderhus@gmail.com)
+- bugfix: enables Escape to dismiss alert Dialog ([PR #28276](https://github.com/microsoft/fluentui/pull/28276) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.9.4 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.24 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-aria to v9.3.24 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-tabster to v9.8.1 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+- Bump @fluentui/react-portal to v9.2.14 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+
+## [9.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.10)
+
+Tue, 20 Jun 2023 12:38:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.9..@fluentui/react-dialog_v9.5.10)
+
+### Patches
+
+- bugfix: Ensures dialog actions stretches on breakpoints ([PR #28258](https://github.com/microsoft/fluentui/pull/28258) by bernardo.sunderhus@gmail.com)
+- chore: update @fluentui/react-icons to 2.0.203 ([PR #28203](https://github.com/microsoft/fluentui/pull/28203) by ololubek@microsoft.com)
+- fix: dialog title now takes whole row when there are no actions. This fixes an earlier regresssion. ([PR #28035](https://github.com/microsoft/fluentui/pull/28035) by derdem@microsoft.com)
+- Bump @fluentui/react-utilities to v9.9.3 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.23 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.5.1 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-aria to v9.3.23 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-tabster to v9.8.0 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-theme to v9.1.9 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-portal to v9.2.13 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
 
 ## [9.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.9)
 

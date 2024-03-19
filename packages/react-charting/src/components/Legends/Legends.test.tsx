@@ -119,6 +119,8 @@ const focusZonePropsInHoverCard = {
 };
 
 describe('Legends snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders Legends correctly', () => {
     const component = renderer.create(<Legends legends={legends} />);
     const tree = component.toJSON();
@@ -189,6 +191,8 @@ describe('Legends - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(LegendsBase.prototype, 'render');
     const props = {
@@ -212,5 +216,21 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('Legends - multi Legends', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  it('Should render defaultSelectedLegends', () => {
+    wrapper = mount(
+      <Legends
+        legends={legends}
+        canSelectMultipleLegends={true}
+        defaultSelectedLegends={[legends[0].title, legends[2].title]}
+      />,
+    );
+    const renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
+    expect(renderedLegends?.length).toBe(2);
   });
 });

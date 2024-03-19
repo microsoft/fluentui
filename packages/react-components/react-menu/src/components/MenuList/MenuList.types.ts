@@ -43,6 +43,7 @@ export type MenuListProps = ComponentProps<MenuListSlots> & {
    * @param event - React's original SyntheticEvent
    * @param data - A data object with relevant information
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
 
@@ -63,6 +64,11 @@ export type MenuListState = ComponentState<MenuListSlots> &
      * Toggles the state of a checkbox item
      */
     toggleCheckbox: SelectableHandler;
+
+    /**
+     * States if the MenuList is inside MenuContext
+     */
+    hasMenuContext?: boolean;
   };
 
 export type MenuListContextValues = {

@@ -114,6 +114,45 @@ const columns = [
   }),
 ];
 
+const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
+  const { item, selected, appearance, onClick, onKeyDown } = data[index];
+  return (
+    <TableRow
+      aria-rowindex={index + 2}
+      style={style}
+      key={item.file.label}
+      onKeyDown={onKeyDown}
+      onClick={onClick}
+      appearance={appearance}
+    >
+      <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
+      <TableCell>
+        <TableCellLayout media={item.file.icon}>
+          <strong>[{index}] </strong>
+          {item.file.label}
+        </TableCellLayout>
+      </TableCell>
+      <TableCell>
+        <TableCellLayout
+          media={
+            <Avatar
+              aria-label={item.author.label}
+              name={item.author.label}
+              badge={{ status: item.author.status as PresenceBadgeStatus }}
+            />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      </TableCell>
+      <TableCell>{item.lastUpdated.label}</TableCell>
+      <TableCell>
+        <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+      </TableCell>
+    </TableRow>
+  );
+};
+
 export const Virtualization = () => {
   const { targetDocument } = useFluent();
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
@@ -180,44 +219,7 @@ export const Virtualization = () => {
       </TableHeader>
       <TableBody>
         <List height={400} itemCount={items.length} itemSize={45} width="100%" itemData={rows}>
-          {({ index, style, data }: ReactWindowRenderFnProps) => {
-            const { item, selected, appearance, onClick, onKeyDown } = data[index];
-            return (
-              <TableRow
-                aria-rowindex={index + 2}
-                style={style}
-                key={item.file.label}
-                onKeyDown={onKeyDown}
-                onClick={onClick}
-                appearance={appearance}
-              >
-                <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
-                <TableCell>
-                  <TableCellLayout media={item.file.icon}>
-                    <strong>[{index}] </strong>
-                    {item.file.label}
-                  </TableCellLayout>
-                </TableCell>
-                <TableCell>
-                  <TableCellLayout
-                    media={
-                      <Avatar
-                        aria-label={item.author.label}
-                        name={item.author.label}
-                        badge={{ status: item.author.status as PresenceBadgeStatus }}
-                      />
-                    }
-                  >
-                    {item.author.label}
-                  </TableCellLayout>
-                </TableCell>
-                <TableCell>{item.lastUpdated.label}</TableCell>
-                <TableCell>
-                  <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-                </TableCell>
-              </TableRow>
-            );
-          }}
+          {RenderRow}
         </List>
       </TableBody>
     </Table>

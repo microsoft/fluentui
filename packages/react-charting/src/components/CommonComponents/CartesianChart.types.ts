@@ -7,8 +7,12 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
-import * as d3TimeFormat from 'd3-time-format';
+import { TimeLocaleDefinition } from 'd3-time-format';
 
+/**
+ * Cartesian Chart style properties
+ * {@docCategory CartesianChart}
+ */
 export interface ICartesianChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -61,6 +65,10 @@ export interface ICartesianChartStyleProps {
   toDrawShape?: boolean;
 }
 
+/**
+ * Cartesian Chart styles
+ * {@docCategory CartesianChart}
+ */
 export interface ICartesianChartStyles {
   /**
    *  Style for the root element.
@@ -133,6 +141,11 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
+   * styles for tooltip
+   */
+  axisTitle?: IStyle;
+
+  /**
    * Style for the chart Title.
    */
   chartTitle?: IStyle;
@@ -146,8 +159,17 @@ export interface ICartesianChartStyles {
    * styles for the shape object in the callout
    */
   shapeStyles?: IStyle;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: IStyle;
 }
 
+/**
+ * Cartesian Chart properties
+ * {@docCategory CartesianChart}
+ */
 export interface ICartesianChartProps {
   /**
    * Below height used for resizing of the chart
@@ -348,7 +370,7 @@ export interface ICartesianChartProps {
   /**
    * The prop used to define a custom locale for the date time format.
    */
-  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
+  timeFormatLocale?: TimeLocaleDefinition;
 
   /**
    * The prop used to define a custom datetime formatter for date axis.
@@ -369,6 +391,35 @@ export interface ICartesianChartProps {
    * props for the svg; use this to include aria-* or other attributes on the tag
    */
   svgProps?: React.SVGProps<SVGSVGElement>;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default True for LineChart but False for other charts
+   */
+  enableReflow?: boolean;
+
+  /**
+   * Prop to set the x axis title
+   * @default undefined
+   * Minimum bottom margin required for x axis title is 55px
+   */
+
+  xAxisTitle?: string;
+
+  /**
+   * Prop to set the y axis title
+   * @default undefined
+   * Minimum left margin required for y axis title is 60px and for RTL is 40px
+   * Minimum right margin required for y axis title is 40px and for RTL is 60px
+   */
+  yAxisTitle?: string;
+
+  /**
+   * Prop to set the secondary y axis title
+   * @default undefined
+   * If RTL is enabled, minimum left and right margins required for secondary y axis title is 60px
+   */
+  secondaryYAxistitle?: string;
 }
 
 export interface IYValueHover {
@@ -426,7 +477,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element;
+  legendBars: JSX.Element | null;
 
   /**
    * Callout props
@@ -490,7 +541,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * To enable callout for individualbar or complete stack. Using for only Vertical stacked bar chart.
    * @default false
-   * @type {boolean}
+   * @type \{boolean \}
    */
   isCalloutForStack?: boolean;
 
@@ -557,4 +608,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * @default false
+   * Used to control the first render cycle Performance optimization code.
+   */
+  enableFirstRenderOptimization?: boolean;
 }

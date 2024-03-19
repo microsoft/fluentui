@@ -1,11 +1,21 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastPosition, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button, Field, RadioGroup, Radio } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  RadioGroup,
+  Radio,
+  Toaster,
+  useToastController,
+  ToastPosition,
+  ToastTitle,
+  Toast,
+} from '@fluentui/react-components';
 
 export const ToastPositions = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const [position, setPosition] = React.useState<ToastPosition>('bottom-end');
+  const [position, setPosition] = React.useState<ToastPosition>('top');
   const notify = () =>
     dispatchToast(
       <Toast>
@@ -18,8 +28,10 @@ export const ToastPositions = () => {
     <>
       <Field label="Select a position">
         <RadioGroup value={position} onChange={(e, data) => setPosition(data.value as ToastPosition)}>
+          <Radio label="bottom" value="bottom" />
           <Radio label="bottom-start" value="bottom-start" />
           <Radio label="bottom-end" value="bottom-end" />
+          <Radio label="top" value="top" />
           <Radio label="top-start" value="top-start" />
           <Radio label="top-end" value="top-end" />
         </RadioGroup>

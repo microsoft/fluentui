@@ -1,8 +1,112 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Wed, 31 May 2023 06:46:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.9)
+
+Tue, 20 Feb 2024 14:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.8..@fluentui/react-conformance-griffel_v9.0.9)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.19.0 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.8)
+
+Tue, 16 Jan 2024 13:14:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.7..@fluentui/react-conformance-griffel_v9.0.8)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.7)
+
+Thu, 09 Nov 2023 17:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.6..@fluentui/react-conformance-griffel_v9.0.7)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.18.3 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.6)
+
+Tue, 26 Sep 2023 17:49:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.5..@fluentui/react-conformance-griffel_v9.0.6)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-conformance to v0.18.2 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.5)
+
+Tue, 26 Sep 2023 15:32:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.4..@fluentui/react-conformance-griffel_v9.0.5)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/react-conformance to v0.18.1 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.4)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.3..@fluentui/react-conformance-griffel_v9.0.4)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.18.0 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.3)
+
+Tue, 05 Sep 2023 13:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.2..@fluentui/react-conformance-griffel_v9.0.3)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-conformance to v0.17.2 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.2)
+
+Wed, 09 Aug 2023 13:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.1..@fluentui/react-conformance-griffel_v9.0.2)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.1)
+
+Thu, 20 Jul 2023 18:27:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0..@fluentui/react-conformance-griffel_v9.0.1)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.17.1 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0)
+
+Tue, 11 Jul 2023 18:46:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.23..@fluentui/react-conformance-griffel_v9.0.0)
+
+### Minor changes
+
+- feat: release stable ([PR #28460](https://github.com/microsoft/fluentui/pull/28460) by martinhochel@microsoft.com)
+
+## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.23)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.22..@fluentui/react-conformance-griffel_v9.0.0-beta.23)
+
+### Changes
+
+- Bump @fluentui/react-conformance to v0.17.0 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
 
 ## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.22)
 

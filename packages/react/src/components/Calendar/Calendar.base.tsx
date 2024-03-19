@@ -59,7 +59,16 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
   allFocusable: false,
 };
 
-function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProps) {
+function useDateState(props: ICalendarProps) {
+  const { value, today: todayProp, onSelectDate } = props;
+
+  const today = React.useMemo(() => {
+    if (todayProp === undefined) {
+      return new Date();
+    }
+    return todayProp;
+  }, [todayProp]);
+
   /** The currently selected date in the calendar */
   const [selectedDate = today, setSelectedDate] = useControllableValue(value, today);
 
@@ -301,14 +310,14 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
     const classes = getClassNames(styles, {
       theme: theme!,
       className,
-      isMonthPickerVisible: isMonthPickerVisible,
-      isDayPickerVisible: isDayPickerVisible,
-      monthPickerOnly: monthPickerOnly,
-      showMonthPickerAsOverlay: showMonthPickerAsOverlay,
-      overlaidWithButton: overlaidWithButton,
+      isMonthPickerVisible,
+      isDayPickerVisible,
+      monthPickerOnly,
+      showMonthPickerAsOverlay,
+      overlaidWithButton,
       overlayedWithButton: overlaidWithButton,
-      showGoToToday: showGoToToday,
-      showWeekNumbers: showWeekNumbers,
+      showGoToToday,
+      showWeekNumbers,
     });
 
     let todayDateString: string = '';
@@ -317,10 +326,10 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       todayDateString = format(strings!.todayDateFormatString, dateTimeFormatter.formatMonthDayYear(today, strings!));
     }
     if (dateTimeFormatter && strings!.selectedDateFormatString) {
-      selectedDateString = format(
-        strings!.selectedDateFormatString,
-        dateTimeFormatter.formatMonthDayYear(selectedDate, strings!),
-      );
+      const dateStringFormatter = monthPickerOnly
+        ? dateTimeFormatter.formatMonthYear
+        : dateTimeFormatter.formatMonthDayYear;
+      selectedDateString = format(strings!.selectedDateFormatString, dateStringFormatter(selectedDate, strings!));
     }
     const selectionAndTodayString = selectedDateString + ', ' + todayDateString;
 

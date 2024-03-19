@@ -1,15 +1,12 @@
 export {
   Accordion,
-  AccordionProvider,
   accordionClassNames,
   renderAccordion_unstable,
-  useAccordionContext_unstable,
   useAccordionContextValues_unstable,
   useAccordionStyles_unstable,
   useAccordion_unstable,
 } from './Accordion';
 export type {
-  AccordionContextValue,
   AccordionContextValues,
   AccordionIndex,
   AccordionProps,
@@ -21,16 +18,13 @@ export type {
 } from './Accordion';
 export {
   AccordionItem,
-  AccordionItemProvider,
   accordionItemClassNames,
   renderAccordionItem_unstable,
   useAccordionItemContextValues_unstable,
-  useAccordionItemContext_unstable,
   useAccordionItemStyles_unstable,
   useAccordionItem_unstable,
 } from './AccordionItem';
 export type {
-  AccordionItemContextValue,
   AccordionItemContextValues,
   AccordionItemProps,
   AccordionItemSlots,
@@ -46,7 +40,6 @@ export {
   useAccordionHeader_unstable,
 } from './AccordionHeader';
 export type {
-  AccordionHeaderContextValue,
   AccordionHeaderContextValues,
   AccordionHeaderExpandIconPosition,
   AccordionHeaderProps,
@@ -62,3 +55,15 @@ export {
   useAccordionPanel_unstable,
 } from './AccordionPanel';
 export type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel';
+
+export { AccordionProvider, useAccordionContext_unstable } from './contexts/accordion';
+
+export type { AccordionContextValue } from './contexts/accordion';
+
+export { AccordionItemProvider, useAccordionItemContext_unstable } from './contexts/accordionItem';
+
+export type { AccordionItemContextValue } from './contexts/accordionItem';
+
+export { AccordionHeaderProvider, useAccordionHeaderContext_unstable } from './contexts/accordionHeader';
+
+export type { AccordionHeaderContextValue } from './contexts/accordionHeader';

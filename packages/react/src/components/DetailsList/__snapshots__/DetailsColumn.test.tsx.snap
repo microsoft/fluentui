@@ -78,7 +78,8 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                 display: block;
               }
           data-automationid="DetailsHeader"
-          data-focuszone-id="FocusZone44"
+          data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -86,7 +87,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
           role="row"
         >
           <div
-            aria-labelledby="header43-checkTooltip"
+            aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
@@ -192,7 +193,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
-                id="header43-check"
+                id="header1-check"
                 role="checkbox"
                 tabIndex={-1}
               >
@@ -388,6 +389,8 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
             data-is-draggable={false}
             data-item-key="1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -408,8 +411,8 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   }
             >
               <span
-                aria-describedby="header43-1-tooltip"
-                aria-labelledby="header43-1-name"
+                aria-describedby="header1-1-tooltip"
+                aria-labelledby="header1-1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -441,7 +444,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       z-index: 1;
                     }
                 data-is-focusable="true"
-                id="header43-1"
+                id="header1-1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 role="button"
@@ -456,7 +459,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
-                  id="header43-1-name"
+                  id="header1-1-name"
                 >
                   Foo
                 </span>
@@ -514,7 +517,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   width: 1px;
                 }
             hidden={true}
-            id="header43-1-tooltip"
+            id="header1-1-tooltip"
           >
             Foo
           </label>
@@ -548,7 +551,8 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   min-height: 1px;
                   min-width: 100%;
                 }
-            data-focuszone-id="FocusZone45"
+            data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}

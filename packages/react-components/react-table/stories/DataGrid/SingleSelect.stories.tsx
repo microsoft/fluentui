@@ -160,7 +160,7 @@ export const SingleSelect = () => {
       </DataGridHeader>
       <DataGridBody<Item>>
         {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+          <DataGridRow<Item> key={rowId} selectionCell={{ radioIndicator: { 'aria-label': 'Select row' } }}>
             {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}

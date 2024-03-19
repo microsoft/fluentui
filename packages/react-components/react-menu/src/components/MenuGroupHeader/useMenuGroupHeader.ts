@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuGroupContext_unstable } from '../../contexts/menuGroupContext';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 /**
@@ -16,10 +16,16 @@ export function useMenuGroupHeader_unstable(
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      id,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        id,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }

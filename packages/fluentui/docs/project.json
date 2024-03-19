@@ -1,0 +1,17 @@
+{
+  "name": "@fluentui/docs",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "tags": ["react-northstar"],
+  "targets": {
+    "build": {
+      "dependsOn": [
+        {
+          "projects": ["@fluentui/react-northstar"],
+          "target": "build:info"
+        }
+      ]
+    }
+  }
+}

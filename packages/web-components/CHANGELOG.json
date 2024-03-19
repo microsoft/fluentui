@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 01 Mar 2024 07:26:28 GMT",
+      "tag": "@fluentui/web-components_v2.5.17",
+      "version": "2.5.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "abed95791b8e1c45530db1f39772c7b4b301e118",
+            "comment": "updates fast-foundation to fix a memory leak within form associated disconnected callback"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 07:35:18 GMT",
+      "tag": "@fluentui/web-components_v2.5.16",
+      "version": "2.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "vnbaaij@outlook.com",
+            "package": "@fluentui/web-components",
+            "commit": "9e52c0283219050674955e656d2934163a52a767",
+            "comment": "fix(web-components): ensures that text area size responds to rows and cols attributes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:30 GMT",
+      "tag": "@fluentui/web-components_v2.5.15",
+      "version": "2.5.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Jun 2023 07:38:37 GMT",
       "tag": "@fluentui/web-components_v2.5.15",
       "version": "2.5.15",

@@ -41,6 +41,8 @@ import type {
 import type { IButtonStyles } from '../../Button';
 import type { ICalloutProps } from '../../Callout';
 import { getChildren } from '@fluentui/utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 export interface IComboBoxState {
   /** The open state */
@@ -243,6 +245,8 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
 
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
+  public static contextType = WindowContext;
+
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
 
@@ -292,6 +296,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   private _async: Async;
   private _events: EventGroup;
+
+  // props to prevent dismiss on scroll/resize immediately after opening
+  private _overrideScrollDismiss = false;
+  private _overrideScrollDimissTimeout: number;
 
   constructor(props: IComboBoxInternalProps) {
     super(props);
@@ -364,6 +372,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
+    const doc = getDocumentEx(this.context);
     // if an action is taken that put focus in the ComboBox
     // and If we are open or we are just closed, shouldFocusAfterClose is set,
     // but we are not the activeElement set focus on the input
@@ -374,7 +383,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           !isOpen &&
           this._focusInputAfterClose &&
           this._autofill.current &&
-          document.activeElement !== this._autofill.current.inputElement))
+          doc?.activeElement !== this._autofill.current.inputElement))
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -403,8 +412,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     this._notifyPendingValueChanged(prevState);
 
-    if (isOpen && !prevState.isOpen && onMenuOpen) {
-      onMenuOpen();
+    if (isOpen && !prevState.isOpen) {
+      // handle dismiss buffer after suggestions are opened
+      this._overrideScrollDismiss = true;
+      this._async.clearTimeout(this._overrideScrollDimissTimeout);
+      this._overrideScrollDimissTimeout = this._async.setTimeout(() => {
+        this._overrideScrollDismiss = false;
+      }, 100);
+
+      onMenuOpen?.();
     }
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
@@ -836,6 +852,26 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   /**
+   * Do not dismiss if the window resizes or scrolls within 100ms of opening
+   * This prevents the Android issue where pickers immediately dismiss on open, because the keyboard appears
+   * @param ev - the event triggering the dismiss check
+   * @returns a boolean indicating whether the callout dismissal should be prevented
+   */
+  private _preventDismissOnScrollOrResize(ev: Event) {
+    // default to passed-in preventDismiss
+    const { calloutProps } = this.props;
+    if (calloutProps?.preventDismissOnEvent) {
+      return calloutProps.preventDismissOnEvent(ev);
+    }
+
+    if (this._overrideScrollDismiss && (ev.type === 'scroll' || ev.type === 'resize')) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
    * Process the new input's new value when the combo box allows freeform entry
    * @param updatedValue - the input's newly changed value
    * @returns the index of the matched option, -1 if no match was found
@@ -1190,6 +1226,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   // eslint-disable-next-line deprecation/deprecation
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
+    const doc = getDocumentEx(this.context);
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
     // it we are not really blurring from the whole comboBox
@@ -1200,7 +1237,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = document.activeElement as Element;
+      relatedTarget = doc?.activeElement as Element;
     }
 
     if (relatedTarget) {
@@ -1208,7 +1245,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const isBlurFromComboBoxMenu = this._comboBoxMenu.current?.contains(relatedTarget as HTMLElement);
       const isBlurFromComboBoxMenuAncestor =
         this._comboBoxMenu.current &&
-        findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget);
+        findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget, doc);
 
       if (isBlurFromComboBoxTitle || isBlurFromComboBoxMenu || isBlurFromComboBoxMenuAncestor) {
         if (
@@ -1371,6 +1408,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
         shouldRestoreFocus={shouldRestoreFocus}
+        // eslint-disable-next-line react/jsx-no-bind
+        preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
       >
         {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
@@ -1521,7 +1560,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { index, key } = item;
 
     if (index && index > 0) {
-      return <div role="separator" key={key} className={this._classNames.divider} />;
+      return <div role="presentation" key={key} className={this._classNames.divider} />;
     }
     return null;
   }

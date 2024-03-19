@@ -34,7 +34,7 @@ const CardSample = (props: CardProps) => (
 
     <Card id="card" {...props}>
       <CardHeader
-        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        image={<img src={resolveAsset('pptx.png')} alt="Microsoft PowerPoint logo" />}
         header={<b>App Name</b>}
         description={<span>Developer</span>}
       />
@@ -52,6 +52,29 @@ const CardSample = (props: CardProps) => (
           Close
         </Button>
       </CardFooter>
+    </Card>
+
+    <p tabIndex={0} id="after">
+      After
+    </p>
+  </>
+);
+
+const CardWithCustomHeader = ({
+  customHeaderId = 'custom-header-id',
+  ...props
+}: CardProps & { customHeaderId: string }) => (
+  <>
+    <p tabIndex={0} id="before">
+      Before
+    </p>
+
+    <Card id="card" {...props}>
+      <CardHeader
+        image={<img src={resolveAsset('pptx.png')} alt="Microsoft PowerPoint logo" />}
+        header={<b id={customHeaderId}>App Name</b>}
+        description={<span>Developer</span>}
+      />
     </Card>
 
     <p tabIndex={0} id="after">
@@ -300,6 +323,19 @@ describe('Card', () => {
   });
 
   describe('selectable', () => {
+    it('should not be focusable', () => {
+      mountFluent(<CardSample />);
+
+      cy.get('#before').focus();
+
+      cy.get('#card').should('not.be.focused');
+
+      cy.realPress('Tab');
+
+      cy.get('#card').should('not.be.focused');
+      cy.get('#open-button').should('be.focused');
+    });
+
     it('should not be selectable by default', () => {
       mountFluent(<CardSample />);
 
@@ -420,6 +456,17 @@ describe('Card', () => {
         cy.get(`.${cardClassNames.checkbox}`).then(slot => {
           expect(header.attr('id')).equals(slot.attr('aria-labelledby'));
         });
+      });
+    });
+
+    it('should sync selectable aria-labelledby with card header immediate child', () => {
+      const customHeaderId = 'custom-header';
+
+      mountFluent(<CardWithCustomHeader customHeaderId={customHeaderId} selected />);
+
+      cy.get(`.${cardHeaderClassNames.header}`).should('not.have.attr', 'id');
+      cy.get(`.${cardClassNames.checkbox}`).then(slot => {
+        cy.get(`#${customHeaderId}`).then(() => expect(customHeaderId).equals(slot.attr('aria-labelledby')));
       });
     });
 

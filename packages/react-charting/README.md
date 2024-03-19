@@ -1,5 +1,7 @@
 # @fluentui/react-charting
 
+[![npm version](https://badge.fury.io/js/@fluentui%2Freact-charting.svg)](https://badge.fury.io/js/@fluentui%2Freact-charting) [![Build Status](https://img.shields.io/azure-devops/build/uifabric/fabricpublic/164/master?style=flat-square)](https://dev.azure.com/uifabric/fabricpublic/_build?definitionId=164)
+
 **Overview**
 
 [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
@@ -11,7 +13,7 @@ These charts are used across different products in Microsoft. They are ready to 
 
 This library is also supported for fluent UI [v7](https://github.com/microsoft/fluentui/tree/7.0).
 
-**Using the library**
+## Using the library
 
 Examples and code snippets for the charting library are available on the [demo site](https://aka.ms/fluentcharting).
 The code snippets can be used as usage guide for all the props and chart variations. Click on 'Show code' on the demo site to access demo for each variant.
@@ -28,115 +30,123 @@ To import charting components:
 import { ComponentName } from '@fluentui/react-charting/lib/ComponentName';
 ```
 
-**Contributing**
+## Contact
+
+The charting project is actively funded by a small feature team. The team responds within 1-2 business days for any queries or doubts.
+You can reach out to the charting team by tagging `@microsoft/charting-team` in [discussion](https://github.com/microsoft/fluentui/discussions) items.
+
+You could also create issues under the [charting](https://github.com/microsoft/fluentui/labels/Package:%20charting) tag.
+
+## Resources
+
+Several resources are available to know more details about the charting project.
+
+Published roadmap [here](https://aka.ms/fluentChartingRoadmap)
+
+Detailed [wiki](https://aka.ms/fluentChartingWiki) (Internal to Microsoft Employees currently)
+
+Join our [discord server](https://aka.ms/FluentCharting/discord) for realtime conversation and schedule to our regular office hours.
+
+Official codepen account - Coming soon
+
+Figma design guidance - Coming soon
+
+## Contributing
+
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-1EAEDB)]()
 
 Refer the main fluentui [wiki](https://github.com/microsoft/fluentui/wiki) for detailed instructions on setup and contributing to the package.
 
-**Testing**
+A comprehensive contributor guide is available in our internal [wiki](https://aka.ms/fluentChartingWiki). Available to share publically on request.
 
-The library has sufficient number of snapshot tests to test for visual regressions.
+## Testing
+
+![Test Coverage Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2Ffluentui-charting-contrib%2Ftest-coverage-artifacts%2FubuntuCoverage.json&query=%24.statementCoverage&suffix=%25&label=coverage&color=brightgreen)
+
+The library has a wide variety of tests to ensure quality of the library.
+The tests range from component tests, unit tests, visual regression tests, accessibility tests, integration tests and manual tests.
+The test automations aim to ensure over 90% code coverage across the library.
+
+Further details available in the [wiki](https://aka.ms/fluentChartingWiki)
+
 Run `yarn test` from within the package to run all the tests.
 
-**Versioning and changelog**
+## Accessibility
+
+Our charts have elaborate accessibility support. The charts are WCAG 2.1 MAS C compliant for accessibility.
+
+More details are covered in the [wiki](https://aka.ms/fluentChartingWiki).
+
+## Performance
+
+Performance is a key success criteria for the charting library.
+Performance is measured and has been improved for the following scenarios.
+
+<table>
+  <tr>
+    <th>S No</th>
+    <th>Scenario</th>
+    <th>Lighthouse Score</th>
+  </tr>
+<tr>
+    <td>1.</td>
+    <td>1 LineChart of 1 series with 30,000 datapoints</td>
+    <td>79.2</td>
+</tr>
+<tr>
+    <td>2.</td>
+    <td>6 LineCharts of 1 series with 100 datapoints each</td>
+    <td>98.8</td>
+</tr>
+<tr>
+    <td>3.</td>
+    <td>18 LineCharts of 1 series with 5 datapoints</td>
+    <td>98</td>
+</tr>
+<tr>
+    <td>4.</td>
+    <td>50 Linecharts of 1 Series with 10 datapoints each</td>
+    <td>89.6</td>
+</tr>
+<tr>
+    <td>5.</td>
+    <td>1 Linechart of 2 series with 500 datapoints each</td>
+    <td>98.6</td>
+</tr>
+<tr>
+    <td>6.</td>
+    <td>10 Linecharts of 1 series with 1000 datapoints each</td>
+    <td>94.4</td>
+</tr>
+<tr>
+    <td>7.</td>
+    <td>1 Areachart with 30,000 datapoints</td>
+    <td>70</td>
+</tr>
+<tr>
+    <td>8.</td>
+    <td>6 Areacharts of 1 series with 100 datapoints each</td>
+    <td>95.4</td>
+</tr>
+<tr>
+    <td>9.</td>
+    <td>18 Areacharts of 1 series with 5 data points each</td>
+    <td>96.8</td>
+</tr>
+<table>
+
+More details are covered in the [wiki](https://aka.ms/fluentChartingWiki).
+
+## Versioning and changelog
 
 We use SemVer for versioning. For the versions available, see the [tags](https://github.com/microsoft/fluentui/tags) on this repository.
 
 Refer to the [changelog](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/CHANGELOG.md) for details about changes made in each version.
 
-**Contact**
-
-You can reach out to the charting team by tagging `@microsoft/charting-team` in [discussion](https://github.com/microsoft/fluentui/discussions) items.
-
-You could also create issues under the [charting](https://github.com/microsoft/fluentui/labels/Package:%20charting) tag.
-
-**Coding Guidelines**
+## Coding Guidelines
 
 Refer fluent [Coding guidelines](https://github.com/microsoft/fluentui/wiki/Coding-Style)
 
-# Technical details
+## Technical details
 
-**Overview**
-
-This document describes different chart components in detail.
-
-This can be used as a guide to use the charts and contribute new functionalities or improvements to the library.
-
-**Components**
-
-The charting components are built using following building blocks.
-
-- Cartesian Charts.
-
-  - Charts built using cartesian coordinate system (two axes - x axis perpendicular to y axis) are called cartesian charts. Majority of the chart in the library are cartesian charts. Some charts like horizontal chart, donut chart, sankey and tree charts are non cartesian charts.
-
-- Legends.
-
-  - A legend contains a list of the variables appearing in the chart and an example of their appearance. This information allows the data from each variable to be identified in the chart.
-
-- Hover Callouts.
-
-  - Whenever the mouse is hovered over a datapoint, a callout is shown representing the details of data for that point. For a stacked chart, the hover callout can represent the data for all the points for the same X coordinate.
-
-- Axes.
-
-  - Our charts currently support cartesian axes. Different charts support different type of axes - numerical axis, date or time series axis, string or categorical axis. Detals about supported axes can be found in readme for each chart.
-
-  - Axes support for different charts
-
-    | Chart                      | Numeric Axis | Date Axis | String Axis |
-    | -------------------------- | ------------ | --------- | ----------- |
-    | Line Chart                 | Yes          | Yes       | No          |
-    | Area Chart                 | Yes          | Yes       | No          |
-    | Vertical Bar Chart         | Yes          | No        | Yes         |
-    | Vertical Stacked Bar Chart | Yes          | No        | Yes         |
-    | Grouped Vertical Bar Chart | No           | No        | Yes         |
-    | Heatmap Chart              | Yes          | Yes       | Yes         |
-    | Horizontal Bar Chart       | --           | --        | --          |
-    | Donut Chart                | --           | --        | --          |
-    | Sankey Chart               | --           | --        | --          |
-    | Tree Chart                 | --           | --        | --          |
-    | Sparkline Chart            | --           | --        | --          |
-
-  - Axis localization
-    The axes support 2 ways of localization.
-
-    1. Javascript provided inbuilt localization for numeric and date axis. Specify the culture and dateLocalizeOptions for date axis to define target localization. Refer the [javascript localization guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for usage.
-    2. Custom locale definition: The consumer of the library can specify a custom locale definition as supported by d3 (like [this](https://github.com/d3/d3-time-format/blob/main/locale/en-US.json)). The date axis will use the date range and the multiformat specified in the definition to determine the correct format to show in the ticks. For example - If the date range is in days then the axis will show hourly ticks. If the date range spans across months then the axis will show months in tick labels and so on.
-       Specify the custom locale definition in the timeFormatLocale prop.
-       Refer to the Custom Locale Date Axis example in line chart for sample usage.
-
-  - Date axis formatting
-    The date axis can be custom formatted using the customDateTimeFormatter prop.
-
-- Event annotations (Available in line charts).
-
-  - Data can be annotated using vertical lines representing the events of interest. See [line chart with events](https://fluentuipr.z22.web.core.windows.net/heads/master/react-charting/demo/index.html#/examples/linechart#Variants) for example.
-
-- Typography.
-
-  - Our font classes represent the type ramp for the fluent design language. Each base class sets a default size, weight, and color.
-
-- Colors
-
-  - The charts are designed using the accessible color palette defined for the fluent design system.
-
-- Themes
-
-  - The library supports light and dark mode out of box. In addition, consumers can define their own themese as detailed [here](https://github.com/microsoft/fluentui/wiki/Theming)
-
-- Accessibility.
-
-  - Our charts have elaborate accessibility support. The charts are WCAG 2.1 MAS C compliant for accessibility.
-    Consumers can define their own aria labels for each point by setting the `xAxisCalloutAccessibilityData` and `callOutAccessibilityData` properties.
-
-- RTL Support
-
-  - The charts support RTL languages wherever applicable.
-
-- Component Styling
-
-  - [This article](https://github.com/microsoft/fluentui/wiki/Component-Styling) talks about the styling approach followed within charting library.
-
-- Details about ticks.
-  - Tick values are applicable only for date axis. Doesn't work for string or numeric axis.
-    Tickcount works for numeric and date axis. Doesn't work for string (scaleBand) axis.
+Refer [this](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/docs/TechnicalDetails.md) document for details on color palette, theming, types of axis supported and more.

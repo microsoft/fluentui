@@ -76,6 +76,16 @@ describe('Link', () => {
 
       expect(link.getAttribute('tabIndex')).toBe('-1');
     });
+
+    it('allows overriding "role"', () => {
+      const result = render(
+        <Link href="https://www.bing.com" role="button">
+          This is a link
+        </Link>,
+      );
+      expect(result.queryAllByRole('link')).toHaveLength(0);
+      expect(result.queryAllByRole('button')).toHaveLength(1);
+    });
   });
 
   describe('when rendered as a button', () => {
@@ -119,6 +129,16 @@ describe('Link', () => {
       const button = result.getByRole('button');
 
       expect(button.getAttribute('tabIndex')).toBe('-1');
+    });
+
+    it('allows overriding "role"', () => {
+      const result = render(
+        <Link href="https://www.bing.com" role="presentation">
+          This is a link
+        </Link>,
+      );
+      expect(result.queryAllByRole('link')).toHaveLength(0);
+      expect(result.queryAllByRole('presentation')).toHaveLength(1);
     });
   });
 });

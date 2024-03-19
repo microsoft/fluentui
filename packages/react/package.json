@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.110.3",
+  "version": "8.115.7",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,6 +17,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "bundle-size": "monosize measure",
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -33,13 +34,13 @@
     "mf": "just-scripts mf"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.30",
+    "@fluentui/common-styles": "*",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/example-data": "^8.4.11",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.29",
+    "@fluentui/example-data": "*",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "^8.3.6",
-    "@fluentui/webpack-utilities": "^8.1.17",
+    "@fluentui/test-utilities": "*",
+    "@fluentui/webpack-utilities": "*",
     "office-ui-fabric-core": "^11.0.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
@@ -47,18 +48,18 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.5.12",
-    "@fluentui/foundation-legacy": "^8.2.41",
-    "@fluentui/font-icons-mdl2": "^8.5.21",
-    "@fluentui/merge-styles": "^8.5.12",
-    "@fluentui/react-focus": "^8.8.28",
-    "@fluentui/react-hooks": "^8.6.27",
-    "@fluentui/react-portal-compat-context": "^9.0.6",
-    "@fluentui/react-window-provider": "^2.2.15",
-    "@fluentui/set-version": "^8.2.11",
-    "@fluentui/style-utilities": "^8.9.14",
-    "@fluentui/theme": "^2.6.32",
-    "@fluentui/utilities": "^8.13.16",
+    "@fluentui/date-time-utilities": "^8.5.16",
+    "@fluentui/foundation-legacy": "^8.3.0",
+    "@fluentui/font-icons-mdl2": "^8.5.33",
+    "@fluentui/merge-styles": "^8.6.0",
+    "@fluentui/react-focus": "^8.8.41",
+    "@fluentui/react-hooks": "^8.6.37",
+    "@fluentui/react-portal-compat-context": "^9.0.11",
+    "@fluentui/react-window-provider": "^2.2.18",
+    "@fluentui/set-version": "^8.2.14",
+    "@fluentui/style-utilities": "^8.10.4",
+    "@fluentui/theme": "^2.6.42",
+    "@fluentui/utilities": "^8.14.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
@@ -69,6 +70,7 @@
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
+    "./dist/css/*": "./dist/css/*",
     "./dist/sass/*": "./dist/sass/*",
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",

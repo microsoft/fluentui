@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbItemProps, BreadcrumbItemState } from './BreadcrumbItem.types';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
@@ -14,19 +14,19 @@ import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
  */
 export const useBreadcrumbItem_unstable = (
   props: BreadcrumbItemProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbItemState => {
   const { size } = useBreadcrumbContext_unstable();
-  const { current = false } = props;
+
   return {
-    components: {
-      root: 'li',
-    },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    components: { root: 'li' },
+    root: slot.always(
+      getIntrinsicElementProps('li', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'li' },
+    ),
     size,
-    current,
   };
 };

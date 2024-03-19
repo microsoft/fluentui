@@ -1,10 +1,10 @@
+import type { PartialTheme } from '@fluentui/react-theme';
+import type { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { FluentProvider } from './FluentProvider';
 import { useFluentProvider_unstable } from './useFluentProvider';
-import type { PartialTheme } from '@fluentui/react-theme';
-import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import { FluentProviderCustomStyleHooks } from './FluentProvider.types';
 
 describe('useFluentProvider_unstable', () => {
@@ -24,8 +24,11 @@ describe('useFluentProvider_unstable', () => {
     });
 
     expect(result.current.theme).toBe(undefined);
+
     expect(logWarnSpy).toHaveBeenCalledTimes(2);
-    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('FluentProvider: your "theme" is not defined !'));
+    expect(logWarnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('@fluentui/react-provider: FluentProvider does not have your "theme" defined.'),
+    );
   });
 
   it('should merge themes', () => {

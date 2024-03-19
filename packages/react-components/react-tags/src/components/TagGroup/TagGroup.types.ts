@@ -1,7 +1,6 @@
-import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagSize } from '../Tag/Tag.types';
-import { TagGroupContextValue } from '../../contexts/TagGroupContext';
+import { TagSize, TagValue, TagDismissHandler, TagAppearance } from '../../utils/types';
+import { TagGroupContextValue } from '../../contexts/tagGroupContext';
 
 export type TagGroupContextValues = {
   tagGroup: TagGroupContextValue;
@@ -11,27 +10,25 @@ export type TagGroupSlots = {
   root: Slot<'div'>;
 };
 
-export type TagGroupDismissData = {
-  dismissedTagValue: string;
-};
-
 /**
  * TagGroup Props
  */
-export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   /**
    * Callback for when a tag is dismissed
    */
-  onDismiss?: (e: React.MouseEvent | React.KeyboardEvent, data: TagGroupDismissData) => void;
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
+  onDismiss?: TagDismissHandler<Value>;
 
   size?: TagSize;
+  appearance?: TagAppearance;
+  dismissible?: boolean;
 };
 
 /**
  * State used in rendering TagGroup
  */
-export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> &
-  Required<Pick<TagGroupProps, 'size'>> & {
-    dismissible: boolean;
-    handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
+export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
+  Required<Pick<TagGroupProps, 'size' | 'appearance' | 'dismissible'>> & {
+    handleTagDismiss: TagDismissHandler<Value>;
   };

@@ -29,7 +29,7 @@ jobs:
         displayName: build packages & create reports
 
       - script: |
-          yarn bundle-size compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
+          npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
         displayName: compare bundle size with base (PR only)
         condition: eq(variables.isPR, true)
 
@@ -39,70 +39,17 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: 'packages/bundle-size/dist/bundle-size.md'
+          blobFilePath: 'monosize-report.md'
           status: 'success'
           uniqueId: 'bundleSizeComment9423'
 
       - script: |
-          yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+          yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
           # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
           BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
+          BUNDLESIZE_ACCOUNT_NAME: fluentbundlesize
 
       - template: .devops/templates/cleanup.yml
-
-  - job: bundle_size_auditor
-    workspace:
-      clean: all
-    timeoutInMinutes: 75
-    pool: '1ES-Host-Ubuntu'
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: yarn build --to @fluentui/react @fluentui/keyboard-key @fluentui/react-northstar
-        displayName: build @fluentui/react, @fluentui/react-northstar
-
-      - script: yarn workspace @fluentui/test-bundles bundle-size-auditor
-        displayName: create @fluentui/react bundle-size entries
-        env:
-          PACKAGE: '@fluentui/react'
-
-      - script: yarn workspace @fluentui/test-bundles bundle-size-auditor
-        displayName: create @fluentui/react-northstar bundle-size entries
-        env:
-          PACKAGE: '@fluentui/react-northstar'
-
-      - script: yarn workspace @fluentui/test-bundles just-scripts bundle-size-merge
-        displayName: 'Merge @fluentui/react, @fluentui/react-northstar to bundlesizes.json'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Merged Bundle Size information'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist'
-          ArtifactName: distdrop
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: lightrail
-    pool: server
-    dependsOn:
-      - bundle_size_auditor
-    steps:
-      - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
-        displayName: 'Size Auditor Check on LightRail'
-        inputs:
-          connectedServiceName: lowimpact
-          sourceVersionMessage: '$(Build.SourceVersionMessage)'
-          sourceRepositoryUrl: 'https://github.com/microsoft/fluentui'

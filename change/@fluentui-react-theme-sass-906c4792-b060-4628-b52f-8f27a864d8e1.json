@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add theme tokens",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

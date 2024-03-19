@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/font-icons-mdl2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/font-icons-mdl2/src",
+  "tags": ["v8"]
+}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update table styles to reflect token changes",
-  "packageName": "@fluentui/react-table",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

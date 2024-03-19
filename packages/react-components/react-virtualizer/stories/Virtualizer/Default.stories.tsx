@@ -6,7 +6,6 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    overflowAnchor: 'none',
     overflowY: 'auto',
     width: '100%',
     height: '100%',

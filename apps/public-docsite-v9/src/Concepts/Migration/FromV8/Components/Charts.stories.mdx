@@ -1,0 +1,156 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Charts Migration" />
+
+# Charts Migration Guide
+
+`Fluent Charting` controls are built on fluent v8 stack.
+But they work across v8 and v9 themes by using the v8ThemeShim.
+
+Currently charts are brand invariant and don't require a BrandVariant palette to render correctly.
+This would evolve as we onboard new products and their unique theme requirements.
+
+Richer integration with v9 components is WIP and coming soon.
+
+Complete [this](https://aka.ms/chartingv9survey) short survey to share your data viz scenarios for v9.
+
+See below examples for different v9 use cases with charts.
+
+Refer to [Fluent v8 charts](https://aka.ms/fluentCharting) for detailed examples and code snippets of available charts.
+
+You can reach out to the charting team by tagging `@microsoft/charting-team` in [discussion](https://github.com/microsoft/fluentui/discussions) items.
+
+## Examples
+
+### Basic Donut Chart
+
+```tsx
+import { createV8Theme } from '@fluentui/react-migration-v8-v9';
+import { ThemeProvider } from '@fluentui/react';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import React from 'react';
+import { Theme, BrandVariants, webLightTheme } from '@fluentui/react-components';
+import { DonutChart, IChartProps } from '@fluentui/react-charting';
+import * as d3Color from 'd3-color';
+
+const brandInvariant: BrandVariants = {
+  10: '',
+  20: '',
+  30: '',
+  40: '',
+  50: '',
+  60: '',
+  70: '',
+  80: '',
+  90: '',
+  100: '',
+  110: '',
+  120: '',
+  130: '',
+  140: '',
+  150: '',
+  160: '',
+};
+
+const data: IChartProps = {
+  chartTitle: 'Donut chart fluent v9 example',
+  chartData: [
+    { legend: 'first', data: 40, color: '#0099BC' },
+    { legend: 'second', data: 20, color: '#77004D' },
+    { legend: 'third', data: 30, color: '#4f67ed' },
+    { legend: 'fourth', data: 10, color: '#ae8c00' },
+  ],
+};
+
+export function ChartWrapperDocsite() {
+  let parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+  let v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+  let backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
+  let foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+  const myV8Theme = createV8Theme(brandInvariant, v9Theme, backgroundColor.l < foregroundColor.l); // For dark theme background color is darker than foreground color
+  return (
+    <ThemeProvider theme={myV8Theme}>
+      <DonutChart
+        data={data}
+        innerRadius={35}
+        legendProps={{
+          allowFocusOnLegends: true,
+        }}
+        hideLabels={false}
+        showLabelsInPercent={true}
+        valueInsideDonut={'100'}
+      />
+    </ThemeProvider>
+  );
+}
+```
+
+### Custom styling with color tokens
+
+```tsx
+const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
+  return {
+    xAxis: {
+      selectors: {
+        text: { fill: tokens.colorPaletteGreenForeground1, fontSize: tokens.fontSizeBase200 },
+      },
+    },
+    yAxis: {
+      selectors: {
+        text: { fill: tokens.colorPaletteRedForeground2, fontSize: tokens.fontSizeBase300 },
+      },
+    },
+    chartLabel: {
+      color: DefaultPalette.blueMid,
+      ...DefaultFontStyles.large,
+    },
+    xAxisText: {
+      ...textStyle,
+    },
+  };
+};
+```
+
+### Custom jsx control
+
+Wrap any custom jsx element like `HoverCard`, or `Callout` in an explicit `FluentProvider` context.
+
+```tsx
+import { useBarChartHoverCardClasses } from './BarChartHoverCard.styles';
+import { BarChartHoverCardProps } from './BarChartHoverCard.types';
+import { getDayName, getHourlyTimeframe } from './BarChartHoverCard.utils';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+export default function BarChartHoverCard(props: BarChartHoverCardProps) {
+  const classes = useBarChartHoverCardClasses();
+  const { calloutData } = props;
+  const usageValue = calloutData.chartData.reduce((sum, item) => sum + item.data, 0);
+  const usageStatus = calloutData.xAxisCalloutData;
+
+  return (
+    <FluentProvider theme={webLightTheme}>
+      <div className={classes.root}>
+        <div className={classes.datetime}>
+          <div>{getDayName(calloutData.xAxisPoint)}</div>
+          <div>{getHourlyTimeframe(calloutData.xAxisPoint)}</div>
+        </div>
+        {usageStatus && (
+          <div className={classes.usageStatus}>
+            <div className={classes.usageStatusIcon}>Icon</div>
+            <div className={classes.usageStatusText}>Status</div>
+          </div>
+        )}
+        <div className={classes.usageBox}>
+          <div className={classes.usageBar} />
+          <div className={classes.usageValueBox}>
+            <div>Usage</div>
+            <div className={classes.usageValue}>{usageValue.toFixed(1)}</div>
+          </div>
+        </div>
+      </div>
+    </FluentProvider>
+  );
+}
+```
+
+Refer to the [sample application](https://github.com/microsoft/fluentui-charting-contrib/tree/main/tools/v9-migration) for complete source code to use charts in v9 context.

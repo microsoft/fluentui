@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   FolderRegular,
   EditRegular,
+  OpenRegular,
   DocumentRegular,
   DocumentPdfRegular,
   VideoRegular,
@@ -20,6 +21,8 @@ import {
   TableColumnDefinition,
   createTableColumn,
   Button,
+  TableColumnId,
+  DataGridCellFocusMode,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -100,16 +103,12 @@ const columns: TableColumnDefinition<Item>[] = [
     },
   }),
   createTableColumn<Item>({
-    columnId: 'lastUpdated',
-    compare: (a, b) => {
-      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-    },
+    columnId: 'singleAction',
     renderHeaderCell: () => {
-      return 'Last updated';
+      return 'Single action';
     },
-
-    renderCell: item => {
-      return item.lastUpdated.label;
+    renderCell: () => {
+      return <Button icon={<OpenRegular />}>Open</Button>;
     },
   }),
   createTableColumn<Item>({
@@ -128,6 +127,17 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const getCellFocusMode = (columnId: TableColumnId): DataGridCellFocusMode => {
+  switch (columnId) {
+    case 'singleAction':
+      return 'none';
+    case 'actions':
+      return 'group';
+    default:
+      return 'cell';
+  }
+};
+
 export const FocusableElementsInCells = () => {
   return (
     <DataGrid
@@ -139,14 +149,16 @@ export const FocusableElementsInCells = () => {
       onSelectionChange={(e, data) => console.log(data)}
     >
       <DataGridHeader>
-        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+        <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
         {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }) => <DataGridCell focusMode="group">{renderCell(item)}</DataGridCell>}
+          <DataGridRow<Item> key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
+            {({ renderCell, columnId }) => (
+              <DataGridCell focusMode={getCellFocusMode(columnId)}>{renderCell(item)}</DataGridCell>
+            )}
           </DataGridRow>
         )}
       </DataGridBody>
@@ -159,10 +171,15 @@ FocusableElementsInCells.parameters = {
     description: {
       story: [
         'When cells contain focusable elements, set the `focusMode` prop on the `DataGridCell` component.',
-        'This prop will enable the following behaviour:',
+        '',
+        'Use `group` when there are multiple focusable elements in cell,',
+        '`group` will enable the following behaviour:',
         '- Enter will move focus into the cell',
         '- Focus is trapped in the cell',
         '- Escape will move focus back to the cell',
+        '',
+        'Use `none` when there is one single focusable element in cell,',
+        '`none` will make the cell non-focusable',
       ].join('\n'),
     },
   },

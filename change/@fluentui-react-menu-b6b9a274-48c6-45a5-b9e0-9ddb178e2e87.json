@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add slide and fade in animation on open",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

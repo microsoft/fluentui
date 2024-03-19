@@ -1,7 +1,7 @@
 export { useToastController } from './state';
 export type { ToastPosition, ToastId, ToastOffset, ToastPoliteness, ToastStatus, ToastIntent } from './state';
 
-export { ToastTrigger } from './ToastTrigger';
+export { ToastTrigger, useToastTrigger_unstable, renderToastTrigger_unstable } from './ToastTrigger';
 export type { ToastTriggerChildProps, ToastTriggerProps, ToastTriggerState } from './ToastTrigger';
 export {
   Toaster,

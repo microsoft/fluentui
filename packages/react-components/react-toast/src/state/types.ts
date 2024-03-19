@@ -1,10 +1,11 @@
 import type { Slot } from '@fluentui/react-utilities';
 import { EVENTS } from './constants';
+import * as React from 'react';
 
 export type ToastId = string;
 export type ToasterId = string;
 
-export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'top' | 'bottom';
 export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
 export type ToastIntent = 'info' | 'success' | 'error' | 'warning';
@@ -80,11 +81,16 @@ export interface ToastOffsetObject {
 
 export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | ToastOffsetObject;
 
+export interface ToasterShortcuts {
+  focus: (e: KeyboardEvent) => boolean;
+}
+
 export interface ToasterOptions
   extends Pick<ToastOptions, 'position' | 'timeout' | 'pauseOnWindowBlur' | 'pauseOnHover' | 'priority'> {
   offset?: ToastOffset;
   toasterId?: ToasterId;
   limit?: number;
+  shortcuts?: ToasterShortcuts;
 }
 
 export interface Toast<TData = object> extends ToastOptions<TData> {
@@ -102,8 +108,11 @@ export interface Toast<TData = object> extends ToastOptions<TData> {
   updateId: number;
   /**
    * Used to determine default priority when the user does not set one
+   * Simple counter of toasts dispatched.
    */
-  dispatchedAt: number;
+  order: number;
+
+  imperativeRef: React.RefObject<ToastImperativeRef>;
 }
 
 export interface CommonToastDetail {
@@ -122,6 +131,14 @@ export interface DismissToastEventDetail extends CommonToastDetail {
   toastId: ToastId;
 }
 
+export interface PauseToastEventDetail extends CommonToastDetail {
+  toastId: ToastId;
+}
+
+export interface PlayToastEventDetail extends CommonToastDetail {
+  toastId: ToastId;
+}
+
 export interface DismissAllToastsEventDetail extends CommonToastDetail {}
 
 type EventListener<TDetail> = (e: CustomEvent<TDetail>) => void;
@@ -131,6 +148,8 @@ export type ToastListenerMap = {
   [EVENTS.dismiss]: EventListener<DismissToastEventDetail>;
   [EVENTS.dismissAll]: EventListener<DismissAllToastsEventDetail>;
   [EVENTS.update]: EventListener<UpdateToastEventDetail>;
+  [EVENTS.play]: EventListener<PlayToastEventDetail>;
+  [EVENTS.pause]: EventListener<PauseToastEventDetail>;
 };
 
 type RootSlot = Slot<'div'>;
@@ -142,3 +161,21 @@ export interface DispatchToastOptions extends Partial<Omit<ToastOptions, 'toaste
 export interface UpdateToastOptions extends UpdateToastEventDetail {
   root?: RootSlot;
 }
+
+export type ToastImperativeRef = {
+  /**
+   * Focuses the Toast.
+   * If there are no focusable elements in the Toast, the Toast itself is focused.
+   */
+  focus: () => void;
+
+  /**
+   * Resumes the timeout of a paused toast
+   */
+  play: () => void;
+
+  /**
+   * Pauses the timeout of a toast
+   */
+  pause: () => void;
+};

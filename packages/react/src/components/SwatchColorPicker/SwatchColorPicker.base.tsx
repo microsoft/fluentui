@@ -10,6 +10,7 @@ import type {
 } from './SwatchColorPicker.types';
 import type { IColorCellProps } from './ColorPickerGridCell.types';
 import type { IButtonGridProps } from '../../utilities/ButtonGrid/ButtonGrid.types';
+import { useDocumentEx } from '../../utilities/dom';
 
 interface ISwatchColorPickerInternalState {
   isNavigationIdle: boolean;
@@ -40,6 +41,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
 >((props, ref) => {
   const defaultId = useId('swatchColorPicker');
   const id = props.id || defaultId;
+  const doc = useDocumentEx();
 
   const internalState = useConst<ISwatchColorPickerInternalState>({
     isNavigationIdle: true,
@@ -82,7 +84,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    */
   const itemsWithIndex = React.useMemo(() => {
     return colorCells.map((item, index) => {
-      return { ...item, index: index };
+      return { ...item, index };
     });
   }, [colorCells]);
 
@@ -161,13 +163,13 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       const targetElement = ev.currentTarget as HTMLElement;
 
       // If navigation is idle and the targetElement is the focused element bail out
-      if (internalState.isNavigationIdle && !(document && targetElement === (document.activeElement as HTMLElement))) {
+      if (internalState.isNavigationIdle && !(doc && targetElement === (doc.activeElement as HTMLElement))) {
         targetElement.focus();
       }
 
       return true;
     },
-    [focusOnHover, internalState, disabled],
+    [focusOnHover, internalState, disabled, doc],
   );
 
   /**
@@ -182,7 +184,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       }
 
       // Get the elements that math the given selector
-      const elements = document.querySelectorAll(parentSelector);
+      const elements = doc?.querySelectorAll(parentSelector) ?? [];
 
       // iterate over the elements return to make sure it is a parent of the target and focus it
       for (let index = 0; index < elements.length; index += 1) {
@@ -206,7 +208,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         }
       }
     },
-    [disabled, focusOnHover, internalState, mouseLeaveParentSelector],
+    [disabled, focusOnHover, internalState, mouseLeaveParentSelector, doc],
   );
 
   /**

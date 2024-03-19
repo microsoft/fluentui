@@ -6,8 +6,7 @@ export interface IAzureSemanticColors {
       hover: string;
     };
     background: {
-      default: string;
-      okay: string;
+      success: string;
       error: string;
       warning: string;
       information: string;
@@ -22,12 +21,12 @@ export interface IAzureSemanticColors {
       upsell: string;
     };
     icon: {
-      default: string;
-      okay: string;
+      success: string;
       error: string;
       warning: string;
       information: string;
       upsell: string;
+      disabled: string;
     };
   };
   text: {
@@ -211,6 +210,20 @@ export interface IAzureSemanticColors {
         background: string;
       };
     };
+  };
+  dataColor: {
+    dataColor1: string;
+    dataColor2: string;
+    dataColor3: string;
+    dataColor4: string;
+    dataColor5: string;
+    dataColor6: string;
+    dataColor7: string;
+    dataColor8: string;
+    dataColor9: string;
+    dataColor10: string;
+    noData1: string;
+    noData2: string;
   };
   datePicker: {
     rest: {

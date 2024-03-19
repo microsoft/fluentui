@@ -3,10 +3,9 @@ import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
 import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useState } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { resolveShorthand } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
-import { renderVirtualizerChildPlaceholder } from './renderVirtualizer';
+import { slot } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
   const {
@@ -28,6 +27,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
   const _virtualizerContext = useVirtualizerContextState_unstable(virtualizerContext);
 
+  // We use this ref as a constant source to access the virtualizer's state imperatively
+  const actualIndexRef = useRef<number>(_virtualizerContext.contextIndex);
+  if (actualIndexRef.current !== _virtualizerContext.contextIndex) {
+    actualIndexRef.current = _virtualizerContext.contextIndex;
+  }
   const flaggedIndex = useRef<number | null>(null);
 
   const actualIndex = _virtualizerContext.contextIndex;
@@ -113,6 +117,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // Local updates
     updateChildRows(index);
     updateCurrentItemSizes(index);
+
+    // Set before 'setActualIndex' call
+    // If it changes before render, or injected via context, re-render will update ref.
+    actualIndexRef.current = index;
 
     // State setters
     setActualIndex(index);
@@ -277,7 +285,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [getItemSize, itemSize, numItems]);
 
   const calculateBefore = useCallback(() => {
-    const currentIndex = Math.min(actualIndex, numItems);
+    const currentIndex = Math.min(actualIndex, numItems - 1);
 
     if (!getItemSize) {
       // The missing items from before virtualization starts height
@@ -293,19 +301,19 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [actualIndex, getItemSize, itemSize, numItems]);
 
   const calculateAfter = useCallback(() => {
-    if (numItems === 0) {
+    if (numItems === 0 || actualIndex + virtualizerLength >= numItems) {
       return 0;
     }
 
-    const lastItemIndex = Math.min(actualIndex + virtualizerLength, numItems - 1);
+    const lastItemIndex = Math.min(actualIndex + virtualizerLength, numItems);
     if (!getItemSize) {
       // The missing items from after virtualization ends height
-      const remainingItems = numItems - lastItemIndex - 1;
+      const remainingItems = numItems - lastItemIndex;
       return remainingItems * itemSize;
     }
 
     // Time for custom size calcs
-    return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex];
+    return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
   }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
 
   const updateChildRows = useCallback(
@@ -323,7 +331,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       const _actualIndex = Math.max(newIndex, 0);
       const end = Math.min(_actualIndex + virtualizerLength, numItems);
       for (let i = _actualIndex; i < end; i++) {
-        childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(renderChild(i, isScrolling), i);
+        childArray.current[i - _actualIndex] = renderChild(i, isScrolling);
       }
     },
     [isScrolling, numItems, renderChild, virtualizerLength],
@@ -413,6 +421,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         progressiveSizes: childProgressiveSizes,
         nodeSizes: childSizes,
         setFlaggedIndex: (index: number | null) => (flaggedIndex.current = index),
+        currentIndex: actualIndexRef,
       };
     },
     [childProgressiveSizes, childSizes],
@@ -478,31 +487,31 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       afterContainer: 'div',
     },
     virtualizedChildren: childArray.current,
-    before: resolveShorthand(props.before, {
-      required: true,
+    before: slot.always(props.before, {
       defaultProps: {
         ref: setBeforeRef,
         role: 'none',
       },
+      elementType: 'div',
     }),
-    after: resolveShorthand(props.after, {
-      required: true,
+    after: slot.always(props.after, {
       defaultProps: {
         ref: setAfterRef,
         role: 'none',
       },
+      elementType: 'div',
     }),
-    beforeContainer: resolveShorthand(props.beforeContainer, {
-      required: true,
+    beforeContainer: slot.always(props.beforeContainer, {
       defaultProps: {
         role: 'none',
       },
+      elementType: 'div',
     }),
-    afterContainer: resolveShorthand(props.afterContainer, {
-      required: true,
+    afterContainer: slot.always(props.afterContainer, {
       defaultProps: {
         role: 'none',
       },
+      elementType: 'div',
     }),
     beforeBufferHeight: isFullyInitialized ? calculateBefore() : 0,
     afterBufferHeight: isFullyInitialized ? calculateAfter() : 0,
@@ -511,5 +520,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     axis,
     bufferSize,
     reversed,
+    childSizes,
+    childProgressiveSizes,
   };
 }

@@ -1,5 +1,12 @@
 import * as React from 'react';
 import {
+  useId,
+  Link,
+  Button,
+  Text,
+  makeStyles,
+  shorthands,
+  tokens,
   Toaster,
   useToastController,
   Toast,
@@ -7,8 +14,7 @@ import {
   ToastBody,
   ToastFooter,
   ToastStatus,
-} from '@fluentui/react-toast';
-import { useId, Link, Button, Text, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -88,10 +94,10 @@ export const ToastLifecycle = () => {
             Status log
           </div>
           <div role="log" aria-labelledby={labelId} className={styles.log}>
-            {statusLog.map(([time, toastStatus]) => {
+            {statusLog.map(([time, toastStatus], i) => {
               const date = new Date(time);
               return (
-                <div key={time}>
+                <div key={i}>
                   {date.toLocaleTimeString()} <Text weight="bold">{toastStatus}</Text>
                 </div>
               );

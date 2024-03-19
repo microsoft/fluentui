@@ -1,4 +1,5 @@
-#  Northstar files that doesn't belong to actual project to make nx workspace-lint pass
+# Northstar files that doesn't belong to actual project to make nx workspace-lint pass
+
 packages/fluentui/add-a-feature.md
 packages/fluentui/document-a-feature.md
 packages/fluentui/test-a-feature.md
@@ -6,5 +7,6 @@ packages/fluentui/setup-local-development.md
 packages/fluentui/CHANGELOG.md
 packages/fluentui/CONTRIBUTING.md
 packages/fluentui/README.md
-packages/fluentui/lerna.json
-packages/fluentui/package.json
+packages/fluentui/.browserslistrc
+
+**/dist/**

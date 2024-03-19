@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: re-generate api.md - api extractor regression",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -293,6 +293,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         display: block;
                       }
                   data-focuszone-id="FocusZone1"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   id="Dropdown0-list"
                   role="listbox"
                 >
@@ -630,7 +631,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <div
@@ -1541,6 +1542,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         display: block;
                       }
                   data-focuszone-id="FocusZone1"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   id="Dropdown0-list"
                   role="listbox"
                 >
@@ -1783,7 +1785,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <button

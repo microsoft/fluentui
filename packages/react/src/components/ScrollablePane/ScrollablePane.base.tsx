@@ -17,6 +17,8 @@ import type {
   IScrollablePaneStyleProps,
   IScrollablePaneStyles,
 } from './ScrollablePane.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getWindowEx } from '../../utilities/dom';
 
 export interface IScrollablePaneState {
   stickyTopHeight: number;
@@ -31,6 +33,8 @@ export class ScrollablePaneBase
   extends React.Component<IScrollablePaneProps, IScrollablePaneState>
   implements IScrollablePane
 {
+  public static contextType = WindowContext;
+
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -78,9 +82,10 @@ export class ScrollablePaneBase
   }
 
   public componentDidMount() {
+    const win = getWindowEx(this.context);
     const { initialScrollPosition } = this.props;
     this._events.on(this.contentContainer, 'scroll', this._onScroll);
-    this._events.on(window, 'resize', this._onWindowResize);
+    this._events.on(win, 'resize', this._onWindowResize);
     if (this.contentContainer && initialScrollPosition) {
       this.contentContainer.scrollTop = initialScrollPosition;
     }
@@ -92,7 +97,7 @@ export class ScrollablePaneBase
     });
     this.notifySubscribers();
 
-    if ('MutationObserver' in window) {
+    if (win && 'MutationObserver' in win) {
       this._mutationObserver = new MutationObserver(mutation => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
         function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
@@ -107,7 +112,7 @@ export class ScrollablePaneBase
         // If the scrollbar height changed, update state so it's postioned correctly below sticky footer
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
-            scrollbarHeight: scrollbarHeight,
+            scrollbarHeight,
           });
         }
 
@@ -314,8 +319,8 @@ export class ScrollablePaneBase
     });
 
     this.setState({
-      stickyTopHeight: stickyTopHeight,
-      stickyBottomHeight: stickyBottomHeight,
+      stickyTopHeight,
+      stickyBottomHeight,
     });
   };
 
@@ -354,6 +359,7 @@ export class ScrollablePaneBase
         notifySubscribers: this.notifySubscribers,
         syncScrollSticky: this.syncScrollSticky,
       },
+      window: getWindowEx(this.context),
     };
   };
 
@@ -466,7 +472,7 @@ export class ScrollablePaneBase
 
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
-      height: height,
+      height,
       ...(getRTL(this.props.theme)
         ? {
             right: '0',

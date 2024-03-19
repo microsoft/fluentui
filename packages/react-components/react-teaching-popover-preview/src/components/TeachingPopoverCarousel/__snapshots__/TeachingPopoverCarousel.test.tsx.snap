@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarousel renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarousel"
+  >
+    Default TeachingPopoverCarousel
+    <div
+      class="fui-TeachingPopoverCarousel__footer"
+    >
+      <button
+        class="fui-Button fui-TeachingPopoverCarousel__previous"
+        type="button"
+      >
+        Close
+      </button>
+      <div
+        class="fui-TeachingPopoverCarouselNav fui-TeachingPopoverCarousel__nav"
+        data-tabster="{\\"groupper\\":{\\"tabbability\\":1},\\"focusable\\":{}}"
+        role="tablist"
+        tabindex="0"
+      >
+        <button
+          aria-label="0 of 1"
+          class="fui-TeachingPopoverCarouselNavButton"
+          role="tab"
+          type="button"
+        />
+      </div>
+      <button
+        class="fui-Button fui-TeachingPopoverCarousel__next"
+        type="button"
+      >
+        Finish
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -7,7 +7,7 @@ export interface UseArrowNavigationGroupOptions {
    * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
    * @defaultValue vertical
    */
-  axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+  axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
   /**
    * Focus will cycle to the first/last elements of the group without stopping
    */
@@ -15,6 +15,7 @@ export interface UseArrowNavigationGroupOptions {
   /**
    * Last focused element in the group will be remembered and focused (if still
    * available) when tabbing from outside of the group
+   * @default true
    */
   memorizeCurrent?: boolean;
   /**
@@ -42,7 +43,7 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
   const {
     circular,
     axis,
-    memorizeCurrent,
+    memorizeCurrent = true,
     tabbable,
     ignoreDefaultKeydown,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -76,6 +77,8 @@ function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Typ
       return Types.MoverDirections.Horizontal;
     case 'grid':
       return Types.MoverDirections.Grid;
+    case 'grid-linear':
+      return Types.MoverDirections.GridLinear;
     case 'both':
       return Types.MoverDirections.Both;
 

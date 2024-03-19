@@ -1,11 +1,10 @@
 import { spawnSync } from 'child_process';
 import * as path from 'path';
 
-import { PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
-import { ProjectsConfigurations } from '@nrwl/devkit';
+import { PackageJson, findGitRoot, flushTreeChanges, getProjectMetadata, tree } from '@fluentui/scripts-monorepo';
+import { addProjectConfiguration } from '@nx/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
-import * as jju from 'jju';
 import _ from 'lodash';
 import { Actions } from 'node-plop';
 import { AddManyActionConfig, NodePlopAPI } from 'plop';
@@ -24,10 +23,9 @@ const convergedReferencePackages = {
 interface Answers {
   /** Package name without scope */
   packageName: string;
-  target: 'react' | 'node';
+  target: 'node';
   description: string;
   codeowner: string;
-  hasTests?: boolean;
   isConverged?: boolean;
 }
 
@@ -44,7 +42,7 @@ module.exports = (plop: NodePlopAPI) => {
       {
         type: 'list',
         name: 'target',
-        choices: ['react', 'node'],
+        choices: ['node'],
         default: 'react',
         message: 'Package target:',
       },
@@ -53,8 +51,7 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'description',
         message: 'Package description:',
         // no reasonable default for node packages
-        default: (answers: Partial<Answers>) =>
-          answers.target === 'react' ? 'React components for building web experiences' : undefined,
+        default: (answers: Partial<Answers>) => undefined,
         validate: (input: string) => !!input || 'Must enter a description',
       },
       {
@@ -64,17 +61,9 @@ module.exports = (plop: NodePlopAPI) => {
         choices: [
           '@microsoft/fluentui-react-build',
           '@microsoft/teams-prg',
-          '@microsoft/cxe-coastal',
           '@microsoft/cxe-red',
           '@microsoft/cxe-prg',
         ],
-      },
-      {
-        type: 'confirm',
-        name: 'hasTests',
-        message: 'Will this package have tests?',
-        default: true,
-        when: answers => answers.target === 'node', // react always has tests
       },
       {
         type: 'confirm',
@@ -84,18 +73,17 @@ module.exports = (plop: NodePlopAPI) => {
       },
     ],
     actions: (answers: Answers): Actions => {
-      if (answers.target === 'react') {
-        answers = { hasTests: true, ...answers };
-      }
-      const { packageName, target, hasTests } = answers;
+      const { packageName, target } = answers;
 
-      const destination = answers.isConverged ? `packages/react-components/${packageName}` : `packages/${packageName}`;
+      const destination = answers.isConverged
+        ? `packages/react-components/${packageName}-preview`
+        : `packages/${packageName}`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters
       const data = {
-        packageNpmName: '@fluentui/' + packageName,
-        packageVersion: answers.isConverged ? '9.0.0-alpha.0' : '0.1.0',
+        packageNpmName: '@fluentui/' + packageName + '-preview',
+        packageVersion: '0.0.0',
         friendlyPackageName: packageName.replace(
           /^.|-./g, // first char or char after -
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
@@ -118,9 +106,7 @@ module.exports = (plop: NodePlopAPI) => {
           destination,
           globOptions,
           data,
-          templateFiles: hasTests
-            ? [`plop-templates-${target}/**/*`]
-            : [`plop-templates-${target}/**/*`, `!(plop-templates-${target}/jest.config.js)`],
+          templateFiles: [`plop-templates-${target}/**/*`],
         },
         // update package.json
         {
@@ -128,15 +114,9 @@ module.exports = (plop: NodePlopAPI) => {
           path: `${destination}/package.json`,
           transform: packageJsonContents => updatePackageJson(packageJsonContents, answers),
         },
-        // update tsconfig.json
-        {
-          type: 'modify',
-          path: `${destination}/tsconfig.json`,
-          transform: tsconfigContents => updateTsconfig(tsconfigContents, hasTests),
-        },
         // update nx workspace
         () => {
-          updateNxWorkspace(answers, { root, projectName: data.packageNpmName, projectRoot: destination });
+          updateNxProject(answers, { projectName: data.packageNpmName, projectRoot: destination });
           return chalk.blue(`nx workspace updated`);
         },
         // run migrations if it's a converged package
@@ -211,7 +191,7 @@ function replaceVersionsFromReference(
   // Read the package.json files of the given reference packages and combine into one object.
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
   const packageJsons = referencePackages.map(pkgName => {
-    const metadata = getProjectMetadata({ root, name: pkgName });
+    const metadata = getProjectMetadata(pkgName);
 
     return fs.readJSONSync(path.join(metadata.root, 'package.json'));
   });
@@ -229,9 +209,7 @@ function replaceVersionsFromReference(
       continue;
     }
     for (const depPkg of Object.keys(packageDependencies)) {
-      if (!answers.hasTests && /\b(jest|enzyme|test(ing)?|react-conformance)\b/.test(depPkg)) {
-        delete packageDependencies[depPkg];
-      } else if (referenceDeps[depType]?.[depPkg]) {
+      if (referenceDeps[depType]?.[depPkg]) {
         packageDependencies[depPkg] = referenceDeps[depType]?.[depPkg] as string;
       } else {
         // Record the error and wait to throw until later for better logs
@@ -260,7 +238,7 @@ function replaceVersionsFromReference(
  * Returns the updated stringified JSON.
  */
 function updatePackageJson(packageJsonContents: string, answers: Answers) {
-  const { target, hasTests, isConverged } = answers;
+  const { target, isConverged } = answers;
 
   // Copy dep versions in package.json from actual current version specs.
   // This is preferable over hardcoding dependency versions to keep things in sync.
@@ -269,55 +247,16 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
   const referencePackages = (isConverged ? convergedReferencePackages : v8ReferencePackages)[target];
   replaceVersionsFromReference(referencePackages, newPackageJson, answers);
 
-  if (!hasTests) {
-    delete newPackageJson.scripts['start-test'];
-    delete newPackageJson.scripts.test;
-    delete newPackageJson.scripts['update-snapshots'];
-  }
-
   return JSON.stringify(newPackageJson, null, 2);
 }
 
-function updateTsconfig(tsconfigContents: string, hasTests: boolean | undefined): string {
-  if (hasTests) {
-    return tsconfigContents;
-  }
-  // Remove jest types if there aren't tests (use jju since tsconfig might have comments)
-  const tsconfig = jju.parse(tsconfigContents);
-  const types: string[] = tsconfig.compilerOptions.types;
-  tsconfig.compilerOptions.types = types.filter(t => t !== 'jest');
-  return jju.update(tsconfigContents, tsconfig, { mode: 'cjson', indent: 2 });
-}
+function updateNxProject(_answers: Answers, config: { projectName: string; projectRoot: string }) {
+  addProjectConfiguration(tree, config.projectName, {
+    root: config.projectRoot,
+    projectType: 'library',
+    implicitDependencies: [],
+    tags: ['vNext'],
+  });
 
-function updateNxWorkspace(_answers: Answers, config: { root: string; projectName: string; projectRoot: string }) {
-  const paths = {
-    workspace: `${config.root}/workspace.json`,
-    config: `${config.root}/nx.json`,
-  };
-
-  const templates = {
-    workspace: {
-      [config.projectName]: {
-        root: config.projectRoot,
-        projectType: 'library',
-        implicitDependencies: [],
-      },
-    },
-  };
-
-  const nxWorkspaceContent = fs.readFileSync(paths.workspace, 'utf-8');
-  const nxWorkspace: ProjectsConfigurations = jju.parse(nxWorkspaceContent);
-  Object.assign(nxWorkspace.projects, templates.workspace);
-
-  const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
-
-  fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
-}
-
-function getProjectMetadata(options: { root: string; name: string }) {
-  const nxWorkspace: ProjectsConfigurations = JSON.parse(
-    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
-  );
-
-  return nxWorkspace.projects[options.name];
+  flushTreeChanges();
 }

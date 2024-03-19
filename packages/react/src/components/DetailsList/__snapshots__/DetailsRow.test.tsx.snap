@@ -79,6 +79,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -390,6 +391,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -522,6 +525,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -654,6 +659,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -756,6 +763,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -914,6 +922,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone14"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1225,6 +1234,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1357,6 +1368,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1489,6 +1502,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1591,6 +1606,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone15"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1750,6 +1766,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   data-item-index={0}
   data-selection-index={0}
   data-selection-touch-invoke={true}
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -2246,6 +2263,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone6"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -2557,6 +2575,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2689,6 +2709,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2821,6 +2843,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2923,6 +2947,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone7"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3081,6 +3106,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3392,6 +3418,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3524,6 +3552,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3656,6 +3686,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3758,6 +3790,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone11"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}

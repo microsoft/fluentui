@@ -1,11 +1,5 @@
-import {
-  IAccessibilityProps,
-  CartesianChart,
-  IChildProps,
-  IModifiedCartesianChartProps,
-  IHeatMapChartData,
-  IHeatMapChartDataPoint,
-} from '../../index';
+import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
+import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -14,17 +8,11 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import {
-  ChartTypes,
-  convertToLocaleString,
-  getAccessibleDataObject,
-  XAxisTypes,
-  YAxisType,
-  getTypeOfAxis,
-} from '../../utilities/utilities';
+import { convertToLocaleString } from '../../utilities/locale-util';
+import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
+import { timeFormat as d3TimeFormat } from 'd3-time-format';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -86,11 +74,6 @@ export interface IHeatMapChartState {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Check for empty chart accessibility
-   */
-  emptyChart?: boolean;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -119,11 +102,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
+  private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
-    const { x, y } = this._getXandY();
-    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
-    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -151,18 +132,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: null,
       descriptionMessage: '',
       calloutId: '',
-      emptyChart: false,
     };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_HeatMap_empty');
   }
 
   public render(): React.ReactNode {
+    const { x, y } = this._getXandY();
+    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
+    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
       this.props;
     this._colorScale = this._getColorScale();
@@ -199,7 +176,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -230,7 +207,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     ) : (
       <div
-        id={getId('_HeatMap_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -323,7 +300,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
        * data point such as x, y , value, rectText property of the rectangle
        */
       this._dataSet[yAxisDataPoint].forEach((dataPointObject: FlattenData, index2: number) => {
-        const id = `${index1}${index2}`;
+        const id = `x${index1}y${index2}`;
         const rectElement: JSX.Element = (
           <g
             key={id}
@@ -367,28 +344,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * and un-highlight the rest of them
    * @param legendTitle
    */
-  private _onLegendHover = (legendTitle: string): void => {
+  private _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
     });
-  };
+  }
 
   /**
    * when the mouse is out from the legend , we need
    * to show the graph in initial mode.
    */
-  private _onLegendLeave = (): void => {
+  private _onLegendLeave(): void {
     this.setState({
       activeLegend: '',
     });
-  };
+  }
   /**
    * @param legendTitle
    * when the legend is clicked we need to highlight
    * all the rectangles which fall under that category
    * and un highlight the rest of them
    */
-  private _onLegendClick = (legendTitle: string): void => {
+  private _onLegendClick(legendTitle: string): void {
     /**
      * check if the legend is already selceted,
      * if yes, un-select the legend, else
@@ -403,7 +380,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         selectedLegend: legendTitle,
       });
     }
-  };
+  }
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];
@@ -651,7 +628,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getStringFormattedDate = (point: string, formatString?: string): string => {
     const date = new Date();
     date.setTime(+point);
-    return d3TimeFormat.timeFormat(formatString || '%b/%d')(date);
+    return d3TimeFormat(formatString || '%b/%d')(date);
   };
 
   private _getStringFormattedNumber = (point: string, formatString?: string): string => {
@@ -705,4 +682,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
     );
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

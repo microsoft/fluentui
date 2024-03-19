@@ -1,26 +1,26 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { SpinnerState, SpinnerSlots } from './Spinner.types';
 
 /**
  * Render the final JSX of Spinner
  */
 export const renderSpinner_unstable = (state: SpinnerState) => {
-  const { slots, slotProps } = getSlotsNext<SpinnerSlots>(state);
+  assertSlots<SpinnerSlots>(state);
   const { labelPosition, shouldRenderSpinner } = state;
   return (
-    <slots.root {...slotProps.root}>
-      {slots.label && shouldRenderSpinner && (labelPosition === 'above' || labelPosition === 'before') && (
-        <slots.label {...slotProps.label} />
+    <state.root>
+      {state.label && shouldRenderSpinner && (labelPosition === 'above' || labelPosition === 'before') && (
+        <state.label />
       )}
-      {slots.spinner && shouldRenderSpinner && <slots.spinner {...slotProps.spinner} />}
-      {slots.label && shouldRenderSpinner && (labelPosition === 'below' || labelPosition === 'after') && (
-        <slots.label {...slotProps.label} />
+      {state.spinner && shouldRenderSpinner && (
+        <state.spinner>{state.spinnerTail && <state.spinnerTail />}</state.spinner>
       )}
-    </slots.root>
+      {state.label && shouldRenderSpinner && (labelPosition === 'below' || labelPosition === 'after') && (
+        <state.label />
+      )}
+    </state.root>
   );
 };

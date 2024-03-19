@@ -1,8 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
 import { TableHeaderContextProvider } from '../../contexts/tableHeaderContext';
 import type { TableHeaderState, TableHeaderSlots } from './TableHeader.types';
 
@@ -10,11 +8,11 @@ import type { TableHeaderState, TableHeaderSlots } from './TableHeader.types';
  * Render the final JSX of TableHeader
  */
 export const renderTableHeader_unstable = (state: TableHeaderState) => {
-  const { slots, slotProps } = getSlotsNext<TableHeaderSlots>(state);
+  assertSlots<TableHeaderSlots>(state);
 
   return (
     <TableHeaderContextProvider value="">
-      <slots.root {...slotProps.root} />
+      <state.root />
     </TableHeaderContextProvider>
   );
 };

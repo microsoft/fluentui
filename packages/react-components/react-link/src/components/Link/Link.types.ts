@@ -1,10 +1,11 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 
 export type LinkSlots = {
   /**
    * Root of the component that renders as either an <a> or a <button> tag.
    */
-  root: Slot<'a', 'button'>;
+  root: Slot<'a', 'button' | 'span'>;
 };
 
 export type LinkProps = ComponentProps<LinkSlots> & {
@@ -36,4 +37,6 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 };
 
 export type LinkState = ComponentState<LinkSlots> &
-  Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>>;
+  Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
+    backgroundAppearance?: BackgroundAppearanceContextValue;
+  };

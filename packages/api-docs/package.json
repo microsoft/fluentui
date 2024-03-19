@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "8.2.10",
+  "version": "8.2.14",
   "description": "Transforms API Extractor .api.json files into .page.json files",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@microsoft/api-extractor-model": "7.17.1",
+    "@microsoft/api-extractor-model": "7.24.2",
     "@microsoft/tsdoc": "0.14.1",
     "fs-extra": "^8.1.0"
   }

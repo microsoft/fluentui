@@ -17,6 +17,8 @@ stats/
 # northstar README lives in packages/fluentui and is automatically copied to react-northstar during build
 packages/fluentui/react-northstar/README.md
 
+monosize-report.md
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -59,6 +61,7 @@ dist.stats.json
 bower_components
 node_modules
 temp
+tmp
 lib
 lib-amd
 lib-commonjs
@@ -67,7 +70,6 @@ coverage
 dist
 dist-storybook
 screenshots
-.cache
 !tools/**/lib
 
 *.tar.gz
@@ -123,9 +125,6 @@ package-deps.json
 
 common/temp
 
-# Gulp cache
-gulp-cache
-
 # NPM debug logs
 npm-debug.log.*
 shrinkwrap.yaml
@@ -153,10 +152,13 @@ rush.json
 # Copied monaco-editor files
 /packages/monaco-editor/esm
 
-.eslintcache
-
-# Rollup cache
-.rollupcache
-
 # tsdoc
 tsdoc-metadata.json
+
+# tools cache
+gulp-cache
+.cache
+.eslintcache
+.rollupcache
+.swc
+.nx/cache

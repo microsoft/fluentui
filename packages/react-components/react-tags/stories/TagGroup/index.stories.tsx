@@ -1,4 +1,4 @@
-import { TagGroup } from '@fluentui/react-tags';
+import { TagGroup } from '@fluentui/react-components';
 
 import descriptionMd from './TagGroupDescription.md';
 import bestPracticesMd from './TagGroupBestPractices.md';
@@ -6,9 +6,10 @@ import bestPracticesMd from './TagGroupBestPractices.md';
 export { Default } from './TagGroupDefault.stories';
 export { Dismiss } from './TagGroupDismiss.stories';
 export { Sizes } from './TagGroupSizes.stories';
+export { WithOverflow } from './TagGroupOverflow.stories';
 
 export default {
-  title: 'Preview Components/Tag/TagGroup',
+  title: 'Components/Tag/TagGroup',
   component: TagGroup,
   parameters: {
     docs: {

@@ -59,6 +59,11 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
 
   return {
     ...shorthands.borderColor('transparent'),
+    '@media (forced-colors: active)': {
+      '::after': {
+        ...shorthands.borderColor('Highlight'),
+      },
+    },
     '::after': {
       content: '""',
       position: 'absolute',
@@ -88,6 +93,7 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
 export const createFocusOutlineStyle = ({
   enableOutline = false,
   selector = defaultOptions.selector,
+  customizeSelector,
   style = defaultOptions.style,
 }: CreateFocusOutlineStyleOptions = defaultOptions): GriffelStyle => ({
   ':focus': {
@@ -105,6 +111,6 @@ export const createFocusOutlineStyle = ({
       outlineWidth: '2px',
       ...style,
     }),
-    { selector },
+    { selector, customizeSelector },
   ),
 });

@@ -1,1 +1,0 @@
-`TreeItemPersonaLayout` is a layout component used to display a `TreeItem` with a media (such as an avatar) and a description. Its purpose is to provide a more visually appealing representation of a `TreeItem`, often used to display a list of people or related topics.

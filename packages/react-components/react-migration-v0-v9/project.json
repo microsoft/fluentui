@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-migration-v0-v9",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/react-migration-v0-v9/src",
+  "tags": ["vNext", "react-northstar", "platform:web"]
+}

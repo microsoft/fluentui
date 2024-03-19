@@ -1,22 +1,20 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
-
-import { AccordionContext } from './AccordionContext';
 import type { AccordionState, AccordionSlots, AccordionContextValues } from './Accordion.types';
+import { AccordionProvider } from '../../contexts/accordion';
 
 /**
  * Function that renders the final JSX of the component
  */
 export const renderAccordion_unstable = (state: AccordionState, contextValues: AccordionContextValues) => {
-  const { slots, slotProps } = getSlotsNext<AccordionSlots>(state);
+  assertSlots<AccordionSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      <AccordionContext.Provider value={contextValues.accordion}>{slotProps.root.children}</AccordionContext.Provider>
-    </slots.root>
+    <state.root>
+      <AccordionProvider value={contextValues.accordion}>{state.root.children}</AccordionProvider>
+    </state.root>
   );
 };

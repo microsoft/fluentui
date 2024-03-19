@@ -1,0 +1,59 @@
+pr: none
+
+trigger: none
+
+variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
+  - group: fabric-variables
+
+  - template: .devops/templates/variables.yml
+
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
+
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    customBuildTags: null # send empty tags since it is not supported on GH repo's for PR's
+    customLogIssues: null # send empty tags since it is not supported on GH repo's for PR's
+    stages:
+      - stage: main
+        jobs:
+          - job: BuildTestLint
+            timeoutInMinutes: 90
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            steps:
+              - template: .devops/templates/build-test-lint.yml@self
+
+          - job: DeployE2E
+            displayName: Deploy and E2E
+            timeoutInMinutes: 90
+            workspace:
+              clean: all
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)/apps/pr-deploy-site/dist
+                  artifactName: web
+            steps:
+              - template: .devops/templates/deployE2E.yml@self

@@ -3,6 +3,7 @@
 exports[`MenuTrigger renders a default state 1`] = `
 <button
   aria-haspopup="menu"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
   id="id"
   onClick={[Function]}
   onContextMenu={[Function]}

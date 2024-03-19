@@ -76,9 +76,9 @@ export const useVirtualizerStyles_unstable = (state: VirtualizerState): Virtuali
     // Column-Reverse
     ...(reversed && !horizontal && { marginTop: `-${bufferPx}` }),
     // Row
-    ...(!reversed && horizontal && { marginLeft: `-${bufferPx}` }),
+    ...(!reversed && horizontal && { marginRight: `-${bufferPx}` }),
     // Row-Reverse
-    ...(reversed && horizontal && { marginRight: `-${bufferPx}` }),
+    ...(reversed && horizontal && { marginLeft: `-${bufferPx}` }),
   };
 
   const afterBuffer = {

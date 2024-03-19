@@ -59,7 +59,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * `alert`: is a special type of modal dialogs that interrupts the user's workflow
    * to communicate an important message or ask for a decision.
    * Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog,
-   * and it cannot be dismissed through the dimmed background or escape key.
+   * and it cannot be dismissed through the dimmed background.
    *
    * @default modal
    */
@@ -81,6 +81,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @param data - A data object with relevant information,
    * such as open value and type of interaction that created the event
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onOpenChange?: DialogOpenChangeEventHandler;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.

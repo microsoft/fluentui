@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { SortDirection } from '../components/Table/Table.types';
+import { SortDirection, TableProps } from '../components/Table/Table.types';
 import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
+import { SelectionMode } from '@fluentui/react-utilities';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;
-export type SelectionMode = 'single' | 'multiselect';
 
 export interface SortState {
   sortColumn: TableColumnId | undefined;
@@ -22,7 +22,7 @@ export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefi
 export interface TableColumnDefinition<TItem> {
   columnId: TableColumnId;
   compare: (a: TItem, b: TItem) => number;
-  renderHeaderCell: () => React.ReactNode;
+  renderHeaderCell: (data?: unknown) => React.ReactNode;
   renderCell: (item: TItem) => React.ReactNode;
 }
 
@@ -120,6 +120,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
+
   /**
    * State and actions to manage row selection
    */
@@ -159,25 +160,6 @@ export interface UseTableSortOptions {
   onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
-export interface UseTableSelectionOptions {
-  /**
-   * Can be multi or single select
-   */
-  selectionMode: SelectionMode;
-  /**
-   * Used in uncontrolled mode to set initial selected rows on mount
-   */
-  defaultSelectedItems?: Iterable<TableRowId>;
-  /**
-   * Used to control row selection
-   */
-  selectedItems?: Iterable<TableRowId>;
-  /**
-   * Called when selection changes
-   */
-  onSelectionChange?(e: React.SyntheticEvent, data: OnSelectionChangeData): void;
-}
-
 export interface UseTableFeaturesOptions<TItem> {
   columns: TableColumnDefinition<TItem>[];
   items: TItem[];
@@ -194,6 +176,7 @@ export interface ColumnWidthState {
   padding: number;
 }
 
+export type ColumnSizingTableProps = Partial<TableProps>;
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
@@ -203,6 +186,7 @@ export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
+  getTableProps: (props?: Partial<TableProps>) => ColumnSizingTableProps;
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
   enableKeyboardMode: (

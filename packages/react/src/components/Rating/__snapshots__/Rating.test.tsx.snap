@@ -56,6 +56,7 @@ exports[`Rating renders correctly 1`] = `
           height: 32px;
         }
     data-focuszone-id="FocusZone2"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -128,7 +129,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-0"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -285,7 +286,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-1"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -442,7 +443,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-2"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -599,7 +600,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-3"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -756,7 +757,7 @@ exports[`Rating renders correctly 1`] = `
       disabled={false}
       id="Rating0-star-4"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -906,6 +907,7 @@ exports[`Rating renders correctly with half star 1`] = `
           height: 32px;
         }
     data-focuszone-id="FocusZone5"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -977,7 +979,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-0"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1134,7 +1136,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-1"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1292,7 +1294,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-2"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1449,7 +1451,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-3"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >
@@ -1606,7 +1608,7 @@ exports[`Rating renders correctly with half star 1`] = `
       disabled={false}
       id="Rating3-star-4"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       role="radio"
       type="button"
     >

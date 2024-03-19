@@ -20,6 +20,11 @@ import {
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -157,46 +162,65 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
+const columnSizingOptions = {
+  file: {
+    minWidth: 80,
+    defaultWidth: 120,
+  },
+  author: {
+    defaultWidth: 180,
+    minWidth: 120,
+    idealWidth: 180,
+  },
+};
+
 export const ResizableColumns = () => {
+  const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
   return (
-    <DataGrid
-      items={items}
-      columns={columns}
-      sortable
-      getRowId={item => item.file.label}
-      selectionMode="multiselect"
-      onSelectionChange={(_, data) => console.log(data)}
-      resizableColumns
-      columnSizingOptions={{
-        file: {
-          minWidth: 80,
-          defaultWidth: 120,
-        },
-        author: {
-          defaultWidth: 180,
-          minWidth: 120,
-          idealWidth: 180,
-        },
-      }}
-      onColumnResize={(event, { columnId, width }) => {
-        if (event instanceof MouseEvent) {
-          console.log(event.offsetX, event.offsetY, columnId, width);
-        }
-      }}
-    >
-      <DataGridHeader>
-        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
-        </DataGridRow>
-      </DataGridHeader>
-      <DataGridBody<Item>>
-        {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+    <div style={{ overflowX: 'auto' }}>
+      <DataGrid
+        items={items}
+        columns={columns}
+        sortable
+        getRowId={item => item.file.label}
+        selectionMode="multiselect"
+        resizableColumns
+        columnSizingOptions={columnSizingOptions}
+      >
+        <DataGridHeader>
+          <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
+            {({ renderHeaderCell, columnId }, dataGrid) =>
+              dataGrid.resizableColumns ? (
+                <Menu openOnContext>
+                  <MenuTrigger>
+                    <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                      {renderHeaderCell()}
+                    </DataGridHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              ) : (
+                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+              )
+            }
           </DataGridRow>
-        )}
-      </DataGridBody>
-    </DataGrid>
+        </DataGridHeader>
+        <DataGridBody<Item>>
+          {({ item, rowId }) => (
+            <DataGridRow<Item> key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
+              {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    </div>
   );
 };
 
@@ -211,6 +235,13 @@ ResizableColumns.parameters = {
         '',
         'The control over the state of resizing can be achieved with the combination of `onColumnResize` callback ',
         'and setting the `idealWidth` for a column in `columnSizingOptions`.',
+        '',
+        'For accessibility, the `DataGrid` component supports keyboard navigation and screen reader navigation',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access other DataGrid features.',
+        '',
+        'Once an option is selected, the arrows keys can be used to interact with the `DataGrid` (e.g. resize columns).',
+        '`ESC`, `ENTER`, or `SPACE` can be used to return to the original navigation mode.',
       ].join('\n'),
     },
   },

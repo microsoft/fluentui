@@ -4,16 +4,20 @@ import {
   ComponentPage,
   ExampleCard,
   IComponentDemoPageProps,
+  Markdown,
   PropertiesTableSet,
 } from '@fluentui/react-docsite-components';
 
 import { SankeyChartBasicExample } from './SankeyChart.Basic.Example';
 import { SankeyChartInboxExample } from './SankeyChart.Inbox.Example';
+import { SankeyChartRebalanceExample } from './SankeyChart.Rebalance.Example';
 
 const SankeyChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx') as string;
 const SankeyChartInboxExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Inbox.Example.tsx') as string;
+const SankeyChartRebalanceExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Rebalance.Example.tsx') as string;
 
 export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -29,6 +33,9 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title="SankeyChart Inbox" code={SankeyChartInboxExampleCode}>
               <SankeyChartInboxExample />
             </ExampleCard>
+            <ExampleCard title="SankeyChart Rebalance" code={SankeyChartRebalanceExampleCode}>
+              <SankeyChartRebalanceExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -40,14 +47,24 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
         }
         isHeaderVisible={this.props.isHeaderVisible}
         overview={
-          <div>
-            <p>
-              A sankey diagram is a visualization used to depict a flow from one set of values to another. The things
-              being connected are called nodes and the connections are called links. Sankeys are best used when you want
-              to show a many-to-many mapping between two domains (e.g., universities and majors) or multiple paths
-              through a set of stages
-            </p>
-          </div>
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartBestPractices.md')}
+          </Markdown>
+        }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartDonts.md')}
+          </Markdown>
         }
       />
     );

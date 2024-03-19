@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { TagGroup, Tag, TagButton } from '@fluentui/react-tags';
-import { Avatar, makeStyles } from '@fluentui/react-components';
-import { TagSize } from '../../src/Tag';
+import {
+  TagGroup,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  TagSize,
+  Avatar,
+  makeStyles,
+} from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -13,20 +20,25 @@ const useContainerStyles = makeStyles({
 
 export const Sizes = () => {
   const containerStyles = useContainerStyles();
-  // TODO add one more size
-  const sizes: TagSize[] = ['small', 'medium'];
+  const sizes: TagSize[] = ['medium', 'small', 'extra-small'];
   return (
     <div className={containerStyles.root}>
       {sizes.map(size => (
         <div key={size}>
           {`${size}: `}
-          <TagGroup size={size}>
-            <Tag media={<Avatar name="Katri Athokas" />} shape="circular">
-              Tag 1
-            </Tag>
-            <TagButton media={<Avatar name="Katri Athokas" />} shape="circular">
-              Tag 2
-            </TagButton>
+          <TagGroup size={size} aria-label={`${size} tag group example`}>
+            <InteractionTag>
+              <InteractionTagPrimary media={<Avatar name="Katri Athokas" />}>{size}</InteractionTagPrimary>
+            </InteractionTag>
+            <InteractionTag shape="circular">
+              <InteractionTagPrimary icon={<CalendarMonthRegular />}>{size}</InteractionTagPrimary>
+            </InteractionTag>
+            <InteractionTag>
+              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
+                {size}
+              </InteractionTagPrimary>
+              <InteractionTagSecondary aria-label="remove" />
+            </InteractionTag>
           </TagGroup>
         </div>
       ))}
@@ -38,7 +50,8 @@ Sizes.storyName = 'Sizes';
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'A TagGroup supports different sizes',
+      story:
+        'A TagGroup can set default size for all its tags. It supports `medium`, `small` and `extra-small` size. Default value is `medium`.',
     },
   },
 };

@@ -28,6 +28,12 @@ export type TooltipChildProps = {
  */
 export type OnVisibleChangeData = {
   visible: boolean;
+
+  /**
+   * The event object, if this visibility change was triggered by a keyboard event on the document element
+   * (such as Escape to hide the visible tooltip). Otherwise undefined.
+   */
+  documentKeyboardEvent?: KeyboardEvent;
 };
 
 /**
@@ -52,8 +58,12 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
     hideDelay?: number;
 
     /**
-     * Notification when the visibility of the tooltip is changing
+     * Notification when the visibility of the tooltip is changing.
+     *
+     * **Note**: for backwards compatibility, `event` will be undefined if this was triggered by a keyboard event on
+     * the document element. Use `data.documentKeyboardEvent` if the keyboard event object is needed.
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onVisibleChange?: (
       event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
       data: OnVisibleChangeData,

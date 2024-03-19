@@ -54,7 +54,12 @@ export const CardHorizontalExample: React.FunctionComponent = () => {
 
       <Card aria-label="Clickable horizontal card " horizontal onClick={alertClicked} tokens={cardTokens}>
         <Card.Item fill>
-          <Image src="//via.placeholder.com/180x135" alt="Placeholder image." />
+          <Image
+            src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+            alt="Placeholder image."
+            height={135}
+            width={180}
+          />
         </Card.Item>
         <Card.Section>
           <Text variant="small" styles={siteTextStyles}>

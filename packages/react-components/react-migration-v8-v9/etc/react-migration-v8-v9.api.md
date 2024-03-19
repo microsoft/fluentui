@@ -10,6 +10,7 @@ import { BrandVariants } from '@fluentui/react-components';
 import type { ButtonProps } from '@fluentui/react-components';
 import type { IBaseButtonProps } from '@fluentui/react';
 import type { IButtonProps } from '@fluentui/react';
+import { ICheckboxProps } from '@fluentui/react';
 import type { IContextualMenuItem } from '@fluentui/react';
 import type { IContextualMenuProps } from '@fluentui/react';
 import type { IPalette } from '@fluentui/react';
@@ -40,6 +41,9 @@ export const brandWeb: BrandVariants;
 // @public (undocumented)
 export const ButtonShim: React_2.ForwardRefExoticComponent<IBaseButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
+// @public (undocumented)
+export const CheckboxShim: React_2.ForwardRefExoticComponent<Pick<ICheckboxProps, "label" | "title" | "className" | "key" | "disabled" | "name" | "defaultChecked" | "id" | "onChange" | "componentRef" | "styles" | "theme" | "checked" | "ariaLabel" | "required" | "ariaDescribedBy" | "ariaLabelledBy" | "ariaPositionInSet" | "ariaSetSize" | "boxSide" | "checkmarkIconProps" | "defaultIndeterminate" | "indeterminate" | "inputProps" | "onRenderLabel"> & React_2.RefAttributes<HTMLInputElement>>;
+
 // @public
 export type ColorVariants = {
     shade50: string;
@@ -63,10 +67,10 @@ export const CompoundButtonShim: React_2.ForwardRefExoticComponent<IButtonProps 
 export const createBrandVariants: (palette: IPalette, interpolation?: Interpolation) => BrandVariants;
 
 // @public
-export const createV8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2 | undefined) => Theme_2;
+export const createV8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2) => Theme_2;
 
 // @public
-export const createV9Theme: (themeV8: Theme_2, baseThemeV9?: Theme | undefined) => Theme;
+export const createV9Theme: (themeV8: Theme_2, baseThemeV9?: Theme) => Theme;
 
 // @public
 export const DefaultButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;

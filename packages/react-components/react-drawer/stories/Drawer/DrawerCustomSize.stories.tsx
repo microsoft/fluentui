@@ -1,6 +1,16 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
-import { Button, Label, useId, tokens, makeStyles, Input } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  OverlayDrawer,
+  Button,
+  Label,
+  useId,
+  tokens,
+  makeStyles,
+  Input,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -26,9 +36,9 @@ export const CustomSize = () => {
 
   return (
     <div>
-      <DrawerOverlay
+      <OverlayDrawer
         open={open}
-        position="right"
+        position="end"
         onOpenChange={(_, state) => setOpen(state.open)}
         style={{ width: `${customSize}px` }}
       >
@@ -50,11 +60,11 @@ export const CustomSize = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>
-          Toggle Drawer
+          Open Drawer
         </Button>
 
         <div className={styles.field}>
@@ -69,4 +79,12 @@ export const CustomSize = () => {
       </div>
     </div>
   );
+};
+
+CustomSize.parameters = {
+  docs: {
+    description: {
+      story: 'The Drawer can be sized to any custom width, by overriding the `width` style property.',
+    },
+  },
 };

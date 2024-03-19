@@ -1,33 +1,26 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { AvatarContextValue, AvatarSize } from '@fluentui/react-avatar';
+import { ButtonContextValue } from '@fluentui/react-button';
+import { TreeItemLayoutSlots } from '../TreeItemLayout/TreeItemLayout.types';
 
 export type TreeItemPersonaLayoutContextValues = {
   avatar: AvatarContextValue;
 };
 
-export type TreeItemPersonaLayoutSlots = {
+export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
   root: NonNullable<Slot<'div'>>;
-  /**
-   * Expand icon slot,
-   * by default renders a chevron icon to indicate opening and closing
-   */
-  expandIcon?: Slot<'div'>;
   /**
    * Avatar to display.
    */
   media: NonNullable<Slot<'div'>>;
   /**
-   * Main text. Children of the root slot are automatically rendered here
+   * Content. Children of the root slot are automatically rendered here
    */
   main: NonNullable<Slot<'div'>>;
   /**
-   * Secondary text that describes or complements the main text
+   * Secondary text that describes or complements the content
    */
   description?: Slot<'div'>;
-  /**
-   * A layout wrapper for the main and description slots
-   */
-  content: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -40,4 +33,5 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
  */
 export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
   avatarSize: AvatarSize;
+  buttonContextValue: ButtonContextValue;
 };

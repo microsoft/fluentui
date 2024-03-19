@@ -1,6 +1,18 @@
 import * as React from 'react';
-import { DrawerOverlay, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerProps } from '@fluentui/react-drawer';
-import { Button, Label, RadioGroup, Radio, useId, tokens, makeStyles } from '@fluentui/react-components';
+import {
+  OverlayDrawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  DrawerProps,
+  Button,
+  Label,
+  RadioGroup,
+  Radio,
+  useId,
+  tokens,
+  makeStyles,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -34,7 +46,7 @@ export const Size = () => {
 
   return (
     <div>
-      <DrawerOverlay size={size} position="right" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
+      <OverlayDrawer size={size} position="end" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -53,11 +65,11 @@ export const Size = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>
-          Toggle Drawer
+          Open Drawer
         </Button>
 
         <div className={styles.field}>
@@ -75,4 +87,12 @@ export const Size = () => {
       </div>
     </div>
   );
+};
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: 'The `size` prop controls the width of the drawer. The default is `small`.',
+    },
+  },
 };

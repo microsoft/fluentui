@@ -28,7 +28,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints: IChartProps[] = [
+export const chartPoints: IChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [
@@ -57,6 +57,7 @@ const chartPoints: IChartProps[] = [
 
 describe('HorizontalBarChart snapShot testing', () => {
   beforeEach(() => {
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -121,6 +122,8 @@ describe('HorizontalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HorizontalBarChartBase.prototype, 'render');
     const props = {
@@ -186,6 +189,8 @@ describe('HorizontalBarChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<HorizontalBarChart data={chartPoints} />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');

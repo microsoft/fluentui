@@ -33,4 +33,10 @@ describe('DatePicker', () => {
 
     cy.get('body').find('[aria-owns]').should('exist');
   });
+
+  it('should move focus back to the input when the popup is closed', () => {
+    mount(<DatePicker inlinePopup />);
+    cy.get(inputSelector).focus().realPress('Enter').realPress('Escape');
+    cy.focused().should('have.attr', 'role', 'combobox');
+  });
 });

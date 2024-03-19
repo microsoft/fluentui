@@ -1,4 +1,3 @@
-import { canUseDOM } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -10,7 +9,9 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  */
 export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() {
   const [width, setWidth] = React.useState(0);
+
   const container = React.useRef<HTMLElement | undefined>(undefined);
+  const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
 
   const { targetDocument } = useFluent();
 
@@ -20,33 +21,59 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
     setWidth(containerWidth || 0);
   }, []);
 
-  // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
   const measureElementRef = React.useCallback(
     (el: TElement | null) => {
-      if (!targetDocument || !resizeObserver) {
+      if (!targetDocument) {
         return;
       }
 
-      // cleanup previous container
-      if (container.current) {
-        resizeObserver.unobserve(container.current);
-        container.current.remove();
+      // if the element is removed, stop observing it
+      if (!el && resizeObserverRef.current && container.current) {
+        resizeObserverRef.current.unobserve(container.current);
       }
 
-      if (el) {
-        container.current = targetDocument.createElement('div');
-        el.insertAdjacentElement('beforebegin', container.current);
-        resizeObserver.observe(container.current);
+      container.current = undefined;
+
+      if (el?.parentElement) {
+        container.current = el.parentElement;
         handleResize();
+        resizeObserverRef.current?.observe(container.current);
       }
     },
-    [targetDocument, resizeObserver, handleResize],
+    [targetDocument, handleResize],
   );
 
   React.useEffect(() => {
-    return () => resizeObserver?.disconnect();
-  }, [resizeObserver]);
+    resizeObserverRef.current = createResizeObserverFromDocument(targetDocument, handleResize);
+
+    if (!container.current || !resizeObserverRef.current) {
+      return;
+    }
+
+    resizeObserverRef.current.observe(container.current);
+
+    return () => {
+      resizeObserverRef.current?.disconnect();
+    };
+  }, [handleResize, targetDocument]);
 
   return { width, measureElementRef };
+}
+
+/**
+ * FIXME - TS 3.8/3.9 don't have ResizeObserver types by default, move this to a shared utility once we bump the minbar
+ * A utility method that creates a ResizeObserver from a target document
+ * @param targetDocument - document to use to create the ResizeObserver
+ * @param callback  - https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver#callback
+ * @returns a ResizeObserver instance or null if the global does not exist on the document
+ */
+export function createResizeObserverFromDocument(
+  targetDocument: Document | null | undefined,
+  callback: ResizeObserverCallback,
+) {
+  if (!targetDocument?.defaultView?.ResizeObserver) {
+    return null;
+  }
+
+  return new targetDocument.defaultView.ResizeObserver(callback);
 }

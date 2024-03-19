@@ -28,3 +28,23 @@ export {
   useCustomStyleHook as useCustomStyleHook_unstable,
 } from './CustomStyleHooksContext';
 export type { CustomStyleHooksContextValue as CustomStyleHooksContextValue_unstable } from './CustomStyleHooksContext';
+
+export { BackgroundAppearanceProvider, useBackgroundAppearance } from './BackgroundAppearanceContext';
+export type { BackgroundAppearanceContextValue } from './BackgroundAppearanceContext';
+
+export { PortalMountNodeProvider, usePortalMountNode } from './PortalMountNodeContext';
+
+export {
+  AnnounceProvider,
+  /** @deprecated Use AnnounceProvider instead. */
+  AnnounceProvider as AnnounceProvider_unstable,
+  useAnnounce,
+  /** @deprecated Use useAnnounce instead. */
+  useAnnounce as useAnnounce_unstable,
+} from './AnnounceContext';
+export type {
+  AnnounceContextValue,
+  /** @deprecated Use AnnounceContextValue instead. */
+  AnnounceContextValue as AnnounceContextValue_unstable,
+  AnnounceOptions,
+} from './AnnounceContext';

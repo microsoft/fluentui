@@ -6,67 +6,102 @@
 
 /// <reference types="react" />
 
-import { ArrowDown } from '@fluentui/keyboard-keys';
-import { ArrowLeft } from '@fluentui/keyboard-keys';
-import { ArrowRight } from '@fluentui/keyboard-keys';
-import { ArrowUp } from '@fluentui/keyboard-keys';
+import type { ArrowDown } from '@fluentui/keyboard-keys';
+import type { ArrowLeft } from '@fluentui/keyboard-keys';
+import type { ArrowRight } from '@fluentui/keyboard-keys';
+import type { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import { ButtonContextValue } from '@fluentui/react-button';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { End } from '@fluentui/keyboard-keys';
-import { Enter } from '@fluentui/keyboard-keys';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
+import type { End } from '@fluentui/keyboard-keys';
+import type { Enter } from '@fluentui/keyboard-keys';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
-import { FC } from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Home } from '@fluentui/keyboard-keys';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Home } from '@fluentui/keyboard-keys';
+import { Radio } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public
-export const flattenTree_unstable: <Props extends TreeItemProps<unknown>>(items: NestedTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
+export const flattenTree_unstable: <Props extends TreeItemProps>(items: FlattenTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
 
-// @public
-export type FlatTree<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
-    getTreeProps(): FlatTreeProps<Props['value']>;
-    navigate(data: TreeNavigationData_unstable<Props['value']>): void;
-    getNextNavigableItem(visibleItems: FlatTreeItem<Props>[], data: TreeNavigationData_unstable<Props['value']>): FlatTreeItem<Props> | undefined;
-    items(): IterableIterator<FlatTreeItem<Props>>;
+// @public (undocumented)
+export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
+    value: TreeItemValue;
+    subtree?: FlattenTreeItem<Props>[];
 };
 
 // @public
-export type FlatTreeItem<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps> = {
-    index: number;
-    level: number;
-    childrenSize: number;
-    value: Props['value'];
-    parentValue: Props['parentValue'];
-    ref: React_2.RefObject<HTMLDivElement>;
-    getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> & Omit<Props, 'parentValue'>;
+export const FlatTree: ForwardRefComponent<FlatTreeProps>;
+
+// @public (undocumented)
+export const flatTreeClassNames: SlotClassNames<FlatTreeSlots>;
+
+// @public
+export const FlatTreeItem: ForwardRefComponent<FlatTreeItemProps>;
+
+// @public
+export type FlatTreeItemProps = TreeItemProps & {
+    value: TreeItemValue;
+    'aria-level': number;
+    'aria-setsize': number;
+    'aria-posinset': number;
 };
 
 // @public (undocumented)
-export type FlatTreeItemProps<Value = string> = Omit<TreeItemProps<Value>, 'itemType'> & Partial<Pick<TreeItemProps<Value>, 'itemType'>> & {
-    value: Value;
-    parentValue?: Value;
+export type FlatTreeProps = ComponentProps<TreeSlots> & {
+    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+    size?: 'small' | 'medium';
+    openItems?: Iterable<TreeItemValue>;
+    onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
+    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    selectionMode?: SelectionMode_2;
+    checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
+    onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
 // @public (undocumented)
-export type FlatTreeProps<Value = string> = Required<Pick<TreeProps<Value>, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'>> & {
-    ref: React_2.Ref<HTMLDivElement>;
-    openItems: ImmutableSet<Value>;
+export type FlatTreeSlots = TreeSlots;
+
+// @public (undocumented)
+export type FlatTreeState = ComponentState<FlatTreeSlots> & TreeContextValue & {
+    open: boolean;
+};
+
+// @public
+export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
+    getTreeProps(): Required<Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation' | 'checkedItems' | 'onCheckedChange'>> & {
+        ref: React_2.Ref<HTMLDivElement>;
+        openItems: ImmutableSet<TreeItemValue>;
+    };
+    navigate(data: TreeNavigationData_unstable): void;
+    getNextNavigableItem(visibleItems: HeadlessTreeItem<Props>[], data: TreeNavigationData_unstable): HeadlessTreeItem<Props> | undefined;
+    getElementFromItem(item: HeadlessTreeItem<Props>): HTMLElement | null;
+    items(): IterableIterator<HeadlessTreeItem<Props>>;
 };
 
 // @public (undocumented)
-export type NestedTreeItem<Props extends TreeItemProps<unknown>> = Omit<Props, 'subtree' | 'itemType'> & {
-    subtree?: NestedTreeItem<Props>[];
+export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = HeadlessTreeItem<Props>;
+
+// @public (undocumented)
+export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
+
+// @public (undocumented)
+export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
+    defaultCheckedItems?: TreeProps['checkedItems'];
 };
+
+// @public (undocumented)
+export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
@@ -75,86 +110,80 @@ export const renderTree_unstable: (state: TreeState, contextValues: TreeContextV
 export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
 
 // @public
-export const renderTreeItemAside_unstable: (state: TreeItemAsideState) => JSX.Element | null;
-
-// @public
 export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
 
 // @public
 export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
 
+// @public (undocumented)
+export type SubtreeContextValue = {
+    contextType: 'subtree';
+    level: number;
+};
+
 // @public
-export const Tree: React_2.ForwardRefExoticComponent<Omit<TreeSlots, "root"> & Omit<{
-    as?: "div" | undefined;
-} & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-} & {
-    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }>;
-}, "ref"> & {
-    appearance?: "transparent" | "subtle" | "subtle-alpha" | undefined;
-    size?: "small" | "medium" | undefined;
-    openItems?: Iterable<string> | undefined;
-    defaultOpenItems?: Iterable<string> | undefined;
-    onOpenChange?(event: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement, MouseEvent>, data: TreeOpenChangeData<string>): void;
-    onNavigation_unstable?(event: React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement, MouseEvent>, data: TreeNavigationData_unstable<string>): void;
-} & React_2.RefAttributes<HTMLDivElement>> & (<Value = string>(props: TreeProps<Value>) => JSX.Element);
+export const Tree: ForwardRefComponent<TreeProps>;
+
+// @public (undocumented)
+export type TreeCheckedChangeData = {
+    value: TreeItemValue;
+    checkedItems: Map<TreeItemValue, TreeSelectionValue>;
+    target: HTMLElement;
+    event: React_2.ChangeEvent<HTMLElement>;
+    type: 'Change';
+} & ({
+    selectionMode: 'multiselect';
+    checked: MultiSelectValue;
+} | {
+    selectionMode: 'single';
+    checked: SingleSelectValue;
+});
+
+// @public (undocumented)
+export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 // @public (undocumented)
 export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
 export type TreeContextValue = {
+    contextType?: 'root';
     level: number;
+    treeType: 'nested' | 'flat';
+    selectionMode: 'none' | SelectionMode_2;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
-    openItems: ImmutableSet<unknown>;
-    requestTreeResponse(request: TreeItemRequest<unknown>): void;
-};
-
-// @public
-export const TreeItem: React_2.ForwardRefExoticComponent<Omit<Partial<TreeItemSlots>, "root"> & Omit<{
-    as?: "div" | undefined;
-} & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-} & {
-    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }>;
-} & {
-    style?: TreeItemCSSProperties | undefined;
-}, "ref"> & {
-    value?: string | undefined;
-    itemType: TreeItemType;
-} & React_2.RefAttributes<HTMLDivElement>> & (<Value = string>(props: TreeItemProps<Value>) => JSX.Element);
-
-// @public
-export const TreeItemAside: ForwardRefComponent<TreeItemAsideProps>;
-
-// @public (undocumented)
-export const treeItemAsideClassNames: SlotClassNames<TreeItemAsideSlots>;
-
-// @public
-export type TreeItemAsideProps = ComponentProps<TreeItemAsideSlots> & {
-    actions?: boolean;
-    visible?: true;
+    openItems: ImmutableSet<TreeItemValue>;
+    checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
+    requestTreeResponse(request: TreeItemRequest): void;
 };
 
 // @public (undocumented)
-export type TreeItemAsideSlots = {
-    root: Slot<'div'>;
+export type TreeContextValues = {
+    tree: TreeContextValue | SubtreeContextValue;
 };
 
 // @public
-export type TreeItemAsideState = ComponentState<TreeItemAsideSlots> & {
-    actions: boolean;
-    visible: boolean;
-    buttonContextValue: ButtonContextValue;
-};
+export const TreeItem: ForwardRefComponent<TreeItemProps>;
 
 // @public (undocumented)
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
+
+// @public (undocumented)
+export type TreeItemContextValue = {
+    isActionsVisible: boolean;
+    isAsideVisible: boolean;
+    selectionRef: React_2.Ref<HTMLInputElement>;
+    actionsRef: React_2.Ref<HTMLDivElement>;
+    expandIconRef: React_2.Ref<HTMLDivElement>;
+    layoutRef: React_2.Ref<HTMLDivElement>;
+    subtreeRef: React_2.Ref<HTMLDivElement>;
+    treeItemRef?: React_2.RefObject<HTMLDivElement>;
+    itemType: TreeItemType;
+    value: TreeItemValue;
+    open: boolean;
+    checked: TreeSelectionValue;
+};
 
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
@@ -168,16 +197,49 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
     root: Slot<'div'>;
-    expandIcon?: Slot<'div'>;
+    main: NonNullable<Slot<'div'>>;
     iconBefore?: Slot<'div'>;
     iconAfter?: Slot<'div'>;
+    expandIcon?: Slot<'div'>;
+    aside?: Slot<'div'>;
+    actions?: Slot<ExtractSlotProps<Slot<'div'> & {
+        visible?: boolean;
+    }>>;
+    selector?: Slot<typeof Checkbox> | Slot<typeof Radio>;
 };
 
 // @public
-export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots>;
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
+    buttonContextValue: ButtonContextValue;
+};
 
 // @public (undocumented)
 export const treeItemLevelToken: "--fluent-TreeItem--level";
+
+// @public (undocumented)
+export type TreeItemOpenChangeData = {
+    open: boolean;
+    value: TreeItemValue;
+    target: HTMLElement;
+} & ({
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'ExpandIconClick';
+} | {
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'Click';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof Enter;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowRight;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowLeft;
+});
+
+// @public (undocumented)
+export type TreeItemOpenChangeEvent = TreeItemOpenChangeData['event'];
 
 // @public
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
@@ -189,24 +251,26 @@ export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayo
 export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;
 
 // @public (undocumented)
-export type TreeItemPersonaLayoutSlots = {
+export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
     root: NonNullable<Slot<'div'>>;
-    expandIcon?: Slot<'div'>;
     media: NonNullable<Slot<'div'>>;
     main: NonNullable<Slot<'div'>>;
     description?: Slot<'div'>;
-    content: NonNullable<Slot<'div'>>;
 };
 
 // @public
 export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & {
     avatarSize: AvatarSize;
+    buttonContextValue: ButtonContextValue;
 };
 
 // @public
-export type TreeItemProps<Value = string> = ComponentProps<Partial<TreeItemSlots>> & {
-    value?: Value;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
     itemType: TreeItemType;
+    value?: TreeItemValue;
+    open?: boolean;
+    onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
+    parentValue?: TreeItemValue;
 };
 
 // @public (undocumented)
@@ -226,9 +290,16 @@ export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue
 };
 
 // @public (undocumented)
-export type TreeNavigationData_unstable<Value = string> = {
-    value: Value;
+export type TreeItemType = 'leaf' | 'branch';
+
+// @public (undocumented)
+export type TreeItemValue = string | number;
+
+// @public (undocumented)
+export type TreeNavigationData_unstable = {
     target: HTMLElement;
+    value: TreeItemValue;
+    parentValue: TreeItemValue | undefined;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
     type: 'Click';
@@ -259,28 +330,32 @@ export type TreeNavigationData_unstable<Value = string> = {
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
 // @public (undocumented)
-export type TreeOpenChangeData<Value = string> = {
+export type TreeOpenChangeData = {
     open: boolean;
-    value: Value;
+    openItems: Set<TreeItemValue>;
+    value: TreeItemValue;
+    target: HTMLElement;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
-    target: HTMLElement;
     type: 'ExpandIconClick';
 } | {
     event: React_2.MouseEvent<HTMLElement>;
-    target: HTMLElement;
     type: 'Click';
-} | {
+}
+/**
+* @deprecated
+* Use `type: 'Click'` instead of Enter,
+* an enter press will trigger a click event, which will trigger an open change,
+* so there is no need to have a separate type for it.
+*/
+| {
     event: React_2.KeyboardEvent<HTMLElement>;
-    target: HTMLElement;
     type: typeof Enter;
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    target: HTMLElement;
     type: typeof ArrowRight;
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    target: HTMLElement;
     type: typeof ArrowLeft;
 });
 
@@ -288,17 +363,26 @@ export type TreeOpenChangeData<Value = string> = {
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 // @public (undocumented)
-export type TreeProps<Value = string> = ComponentProps<TreeSlots> & {
+export type TreeProps = ComponentProps<TreeSlots> & {
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
-    openItems?: Iterable<Value>;
-    defaultOpenItems?: Iterable<Value>;
-    onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData<Value>): void;
-    onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable<Value>): void;
+    openItems?: Iterable<TreeItemValue>;
+    defaultOpenItems?: Iterable<TreeItemValue>;
+    onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
+    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    selectionMode?: SelectionMode_2;
+    checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
+    onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
 // @public (undocumented)
-export const TreeProvider: Provider<TreeContextValue | undefined> & FC<ProviderProps<TreeContextValue | undefined>>;
+export const TreeProvider: {
+    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element;
+    displayName: string;
+};
+
+// @public (undocumented)
+export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 // @public (undocumented)
 export type TreeSlots = {
@@ -306,14 +390,26 @@ export type TreeSlots = {
 };
 
 // @public
-export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
+export type TreeState = ComponentState<TreeSlots> & {
     open: boolean;
-};
+} & (TreeContextValue | SubtreeContextValue);
+
+// @public (undocumented)
+export const useFlatTree_unstable: (props: FlatTreeProps, ref: React_2.Ref<HTMLElement>) => FlatTreeState;
+
+// @public (undocumented)
+export const useFlatTreeContextValues_unstable: (state: FlatTreeState) => FlatTreeContextValues;
+
+// @public (undocumented)
+export const useFlatTreeStyles_unstable: (state: FlatTreeState) => FlatTreeState;
 
 // @public
-export function useFlatTree_unstable<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(flatTreeItemProps: Props[], options?: FlatTreeOptions<Props>): FlatTree<Props>;
+export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
 
-// @public
+// @public (undocumented)
+export const useSubtreeContext_unstable: () => SubtreeContextValue;
+
+// @public (undocumented)
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
 
 // @public (undocumented)
@@ -323,16 +419,13 @@ export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextV
 export function useTreeContextValues_unstable(state: TreeState): TreeContextValues;
 
 // @public
-export function useTreeItem_unstable<Value = string>(props: TreeItemProps<Value>, ref: React_2.Ref<HTMLDivElement>): TreeItemState;
-
-// @public
-export const useTreeItemAside_unstable: (props: TreeItemAsideProps, ref: React_2.Ref<HTMLElement>) => TreeItemAsideState;
-
-// @public
-export const useTreeItemAsideStyles_unstable: (state: TreeItemAsideState) => TreeItemAsideState;
+export function useTreeItem_unstable(props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>): TreeItemState;
 
 // @public (undocumented)
 export const useTreeItemContext_unstable: <T>(selector: ContextSelector<TreeItemContextValue, T>) => T;
+
+// @public (undocumented)
+export function useTreeItemContextValues_unstable(state: TreeItemState): TreeItemContextValues;
 
 // @public
 export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;

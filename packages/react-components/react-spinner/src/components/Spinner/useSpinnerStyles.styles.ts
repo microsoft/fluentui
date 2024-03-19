@@ -1,265 +1,192 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SpinnerState, SpinnerSlots } from './Spinner.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 
 export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   root: 'fui-Spinner',
   spinner: 'fui-Spinner__spinner',
+  spinnerTail: 'fui-Spinner__spinnerTail',
   label: 'fui-Spinner__label',
 };
 
-/*
- * TODO: Update with proper tokens when added
- * Radii for the Spinner circles
- */
-const rValues = {
-  tiny: '9px',
-  extraSmall: '11px',
-  small: '13px',
-  medium: '14.5px',
-  large: '16.5px',
-  extraLarge: '18.5px',
-  huge: '20px',
-};
-
-/*
- * TODO: Update with proper tokens when added
- * Sizes for the Spinner
- */
-const spinnnerSizes = {
-  tiny: '20px',
-  extraSmall: '24px',
-  small: '28px',
-  medium: '32px',
-  large: '36px',
-  extraLarge: '40px',
-  huge: '44px',
-};
-
-/*
- * TODO: Update with proper tokens when added
- * Animation for Spinner
- */
-const spinnerAnimation = {
-  container: {
-    animationDuration: '3s',
-    animationIterationCount: 'infinite',
-    animationTimingFunction: 'linear',
-    backgroundColor: 'transparent',
-  },
-};
-
 /**
- * Styles for the root slot
+ * CSS variables used internally by Spinner
  */
+const vars = {
+  strokeWidth: '--fui-Spinner--strokeWidth',
+};
+
+const useRootBaseClassName = makeResetStyles({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  lineHeight: '0',
+  gap: '8px',
+});
+
 const useRootStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    lineHeight: '0',
-    ...shorthands.gap('8px'),
-  },
-
-  horizontal: {
-    flexDirection: 'row',
-  },
-
   vertical: {
     flexDirection: 'column',
   },
 });
 
-const useLoaderStyles = makeStyles({
-  // global SVG class
-  spinnerSVG: {
-    ':focus': {
-      ...shorthands.outline('3px', 'solid', 'transparent'),
-    },
-    ['& > svg']: {
-      animationName: {
-        '0%': { transform: 'rotate(0deg)' },
-        '100%': { transform: 'rotate(360deg)' },
-      },
-      ...spinnerAnimation.container,
+const useSpinnerBaseClassName = makeResetStyles({
+  position: 'relative',
+  flexShrink: 0,
 
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
-      },
-    },
-    ['& > svg > circle']: {
-      cx: '50%',
-      cy: '50%',
-      fill: 'none',
-    },
+  // Use a mask to create the ring shape of the spinner.
+  maskImage:
+    `radial-gradient(closest-side, ` +
+    `transparent calc(100% - var(${vars.strokeWidth}) - 1px), ` +
+    `white calc(100% - var(${vars.strokeWidth})) calc(100% - 1px), ` +
+    `transparent 100%)`,
+
+  backgroundColor: tokens.colorBrandStroke2Contrast,
+  color: tokens.colorBrandStroke1,
+  '@media screen and (forced-colors: active)': {
+    backgroundColor: 'HighlightText',
+    color: 'Highlight',
+    forcedColorAdjust: 'none',
   },
 
-  tiny: {
-    ['& > svg']: {
-      height: spinnnerSizes.tiny,
-      width: spinnnerSizes.tiny,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.tiny,
-    },
+  animationDuration: '1.5s',
+  animationIterationCount: 'infinite',
+  animationTimingFunction: 'linear',
+  animationName: {
+    '0%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(360deg)' },
   },
 
-  'extra-small': {
-    ['& > svg']: {
-      height: spinnnerSizes.extraSmall,
-      width: spinnnerSizes.extraSmall,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.extraSmall,
-    },
+  '@media screen and (prefers-reduced-motion: reduce)': {
+    animationDuration: '1.8s',
+  },
+});
+
+// The spinner tail is rendered using two 135deg arc segments, behind a 105deg arc mask.
+// The segments are rotated out from behind the mask to expand the visible arc from
+// 30deg (min) to 255deg (max), and then back behind the mask again to shrink the arc.
+// The tail and spinner itself also have 360deg rotation animations for the spin.
+const useSpinnerTailBaseClassName = makeResetStyles({
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  maskImage: 'conic-gradient(transparent 105deg, white 105deg)',
+
+  '&::before, &::after': {
+    content: '""',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    animation: 'inherit',
+    backgroundImage: 'conic-gradient(currentcolor 135deg, transparent 135deg)',
   },
 
-  small: {
-    ['& > svg']: {
-      height: spinnnerSizes.small,
-      width: spinnnerSizes.small,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.small,
+  animationDuration: '1.5s',
+  animationIterationCount: 'infinite',
+  animationTimingFunction: tokens.curveEasyEase,
+  animationName: {
+    '0%': { transform: 'rotate(-135deg)' },
+    '50%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(225deg)' },
+  },
+  '&::before': {
+    animationName: {
+      '0%': { transform: 'rotate(0deg)' },
+      '50%': { transform: 'rotate(105deg)' },
+      '100%': { transform: 'rotate(0deg)' },
     },
   },
-
-  medium: {
-    ['& > svg']: {
-      height: spinnnerSizes.medium,
-      width: spinnnerSizes.medium,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThicker,
-      r: rValues.medium,
+  '&::after': {
+    animationName: {
+      '0%': { transform: 'rotate(0deg)' },
+      '50%': { transform: 'rotate(225deg)' },
+      '100%': { transform: 'rotate(0deg)' },
     },
   },
-
-  large: {
-    ['& > svg']: {
-      height: spinnnerSizes.large,
-      width: spinnnerSizes.large,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThicker,
-      r: rValues.large,
-    },
-  },
-
-  'extra-large': {
-    ['& > svg']: {
-      height: spinnnerSizes.extraLarge,
-      width: spinnnerSizes.extraLarge,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThicker,
-      r: rValues.extraLarge,
-    },
-  },
-
-  huge: {
-    ['& > svg']: {
-      height: spinnnerSizes.huge,
-      width: spinnnerSizes.huge,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThickest,
-      r: rValues.huge,
+  '@media screen and (prefers-reduced-motion: reduce)': {
+    animationIterationCount: '0',
+    backgroundImage: 'conic-gradient(transparent 120deg, currentcolor 360deg)',
+    '&::before, &::after': {
+      content: 'none',
     },
   },
 });
 
-const useTrackStyles = makeStyles({
+const useSpinnerStyles = makeStyles({
   inverted: {
-    ['& > svg > circle.fui-Spinner__Tail']: {
-      stroke: tokens.colorNeutralStrokeOnBrand2,
-      animationName: {
-        '0%': {
-          strokeDasharray: '1,150',
-          strokeDashoffset: '0',
-        },
+    backgroundColor: tokens.colorNeutralStrokeAlpha2,
+    color: tokens.colorNeutralStrokeOnBrand2,
+  },
 
-        '50%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-35',
-        },
-
-        '100%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-124',
-        },
-      },
-      animationDuration: '1.5s',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: tokens.curveEasyEase,
-      strokeLinecap: 'round',
-      transform: 'rotate(-90deg)',
-      transformOrigin: '50% 50%',
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
-      },
+  rtlTail: {
+    maskImage: 'conic-gradient(white 255deg, transparent 255deg)',
+    '&::before, &::after': {
+      backgroundImage: 'conic-gradient(transparent 225deg, currentcolor 225deg)',
     },
-
-    ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: 'rgba(255, 255, 255, 0.2)', // this is whiteAlpha[20] but that token is not exported
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      backgroundImage: 'conic-gradient(currentcolor 0deg, transparent 240deg)',
     },
   },
-  primary: {
-    ['& > svg > circle.fui-Spinner__Tail']: {
-      stroke: tokens.colorBrandStroke1,
-      '@media screen and (forced-colors: active)': {
-        stroke: tokens.colorNeutralStrokeOnBrand2,
-      },
-      animationName: {
-        '0%': {
-          strokeDasharray: '1,150',
-          strokeDashoffset: '0',
-        },
 
-        '50%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-35',
-        },
+  'extra-tiny': {
+    height: '16px',
+    width: '16px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
 
-        '100%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-124',
-        },
-      },
-      animationDuration: '1.5s',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: tokens.curveEasyEase,
-      strokeLinecap: 'round',
-      transform: 'rotate(-90deg)',
-      transformOrigin: '50% 50%',
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
-      },
-    },
-    ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorBrandStroke2,
-      '@media screen and (forced-colors: active)': {
-        stroke: tokens.colorNeutralBackgroundInverted,
-      },
-    },
+  tiny: {
+    height: '20px',
+    width: '20px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
+
+  'extra-small': {
+    height: '24px',
+    width: '24px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
+
+  small: {
+    height: '28px',
+    width: '28px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
+
+  medium: {
+    height: '32px',
+    width: '32px',
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
+  },
+
+  large: {
+    height: '36px',
+    width: '36px',
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
+  },
+
+  'extra-large': {
+    height: '40px',
+    width: '40px',
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
+  },
+
+  huge: {
+    height: '44px',
+    width: '44px',
+    [vars.strokeWidth]: tokens.strokeWidthThickest,
   },
 });
 
 const useLabelStyles = makeStyles({
-  // style for label
   inverted: {
-    color: 'rgba(255, 255, 255, 1)', // This is white alpha but the token is not exported
+    color: tokens.colorNeutralForegroundStaticInverted,
   },
 
-  primary: {}, // no change
+  'extra-tiny': {
+    ...typographyStyles.body1,
+  },
 
   tiny: {
     ...typographyStyles.body1,
@@ -294,33 +221,44 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  const { labelPosition, size, appearance = 'primary' } = state;
+  const { labelPosition, size, appearance } = state;
+  const { dir } = useFluent();
+
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
-  const spinnerStyles = useLoaderStyles();
+  const spinnerBaseClassName = useSpinnerBaseClassName();
+  const spinnerStyles = useSpinnerStyles();
+  const spinnerTailBaseClassName = useSpinnerTailBaseClassName();
   const labelStyles = useLabelStyles();
-  const trackStyles = useTrackStyles();
 
   state.root.className = mergeClasses(
     spinnerClassNames.root,
-    rootStyles.root,
+    rootBaseClassName,
     (labelPosition === 'above' || labelPosition === 'below') && rootStyles.vertical,
-    (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
   if (state.spinner) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
-      spinnerStyles.spinnerSVG,
+      spinnerBaseClassName,
       spinnerStyles[size],
-      trackStyles[appearance],
+      appearance === 'inverted' && spinnerStyles.inverted,
       state.spinner.className,
+    );
+  }
+  if (state.spinnerTail) {
+    state.spinnerTail.className = mergeClasses(
+      spinnerClassNames.spinnerTail,
+      spinnerTailBaseClassName,
+      dir === 'rtl' && spinnerStyles.rtlTail,
+      state.spinnerTail.className,
     );
   }
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
       labelStyles[size],
-      labelStyles[appearance],
+      appearance === 'inverted' && labelStyles.inverted,
       state.label.className,
     );
   }

@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { AccordionProps, AccordionState, AccordionToggleData, AccordionToggleEvent } from './Accordion.types';
+import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
+import type { AccordionProps, AccordionState } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { AccordionRequestToggleData } from '../../contexts/accordion';
 
 /**
  * Returns the props and state required to render the component
  * @param props - Accordion properties
  * @param ref - reference to root HTMLElement of Accordion
  */
-export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTMLElement>): AccordionState => {
+export const useAccordion_unstable = <Value = AccordionItemValue>(
+  props: AccordionProps<Value>,
+  ref: React.Ref<HTMLElement>,
+): AccordionState<Value> => {
   const {
     openItems: controlledOpenItems,
     defaultOpenItems,
@@ -29,34 +33,42 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
     tabbable: true,
   });
 
-  const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
-    onToggle?.(event, data);
-    setOpenItems(previousOpenItems => updateOpenItems(data.value, previousOpenItems, multiple, collapsible));
+  const requestToggle = useEventCallback((data: AccordionRequestToggleData<Value>) => {
+    const nextOpenItems = updateOpenItems(data.value, openItems, multiple, collapsible);
+    onToggle?.(data.event, { value: data.value, openItems: nextOpenItems });
+    setOpenItems(nextOpenItems);
   });
 
   return {
     collapsible,
+    multiple,
     navigation,
     openItems,
     requestToggle,
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ...props,
-      ...(navigation ? arrowNavigationProps : {}),
-      ref,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ...props,
+        ...(navigation ? arrowNavigationProps : undefined),
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };
 
 /**
  * Initial value for the uncontrolled case of the list of open indexes
  */
-function initializeUncontrolledOpenItems({
+function initializeUncontrolledOpenItems<Value = AccordionItemValue>({
   defaultOpenItems,
   multiple,
-}: Pick<AccordionProps, 'defaultOpenItems' | 'multiple'>): AccordionItemValue[] {
+}: Pick<AccordionProps<Value>, 'defaultOpenItems' | 'multiple'>): Value[] {
   if (defaultOpenItems !== undefined) {
     if (Array.isArray(defaultOpenItems)) {
       return multiple ? defaultOpenItems : [defaultOpenItems[0]];
@@ -73,9 +85,9 @@ function initializeUncontrolledOpenItems({
  * @param multiple - if Accordion support multiple Panels opened at the same time
  * @param collapsible - if Accordion support multiple Panels closed at the same time
  */
-function updateOpenItems(
-  value: AccordionItemValue,
-  previousOpenItems: AccordionItemValue[],
+function updateOpenItems<Value = AccordionItemValue>(
+  value: Value,
+  previousOpenItems: Value[],
   multiple: boolean,
   collapsible: boolean,
 ) {
@@ -96,7 +108,7 @@ function updateOpenItems(
 /**
  * Normalizes Accordion index into an array of indexes
  */
-function normalizeValues(index?: AccordionItemValue | AccordionItemValue[]): AccordionItemValue[] | undefined {
+function normalizeValues<Value = AccordionItemValue>(index?: Value | Value[]): Value[] | undefined {
   if (index === undefined) {
     return undefined;
   }

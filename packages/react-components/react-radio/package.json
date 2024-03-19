@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-radio",
-  "version": "9.1.17",
+  "version": "9.2.12",
   "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -28,28 +28,26 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.22",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.6",
-    "@fluentui/react-icons": "^2.0.203",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.6",
-    "@fluentui/react-label": "^9.1.15",
-    "@fluentui/react-shared-contexts": "^9.5.0",
-    "@fluentui/react-tabster": "^9.7.5",
-    "@fluentui/react-theme": "^9.1.8",
-    "@fluentui/react-utilities": "^9.9.2",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-field": "^9.1.58",
+    "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/react-label": "^9.1.66",
+    "@fluentui/react-shared-contexts": "^9.15.2",
+    "@fluentui/react-tabster": "^9.19.5",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.5",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
-    "scheduler": "^0.19.0 || ^0.20.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -65,5 +63,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

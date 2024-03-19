@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { useEventCallback, useControllableState, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { ToggableHandler, ToolbarProps, ToolbarState, UninitializedToolbarState } from './Toolbar.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
@@ -31,13 +30,19 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      role: 'toolbar',
-      ref,
-      ...(vertical && { 'aria-orientation': 'vertical' }),
-      ...arrowNavigationProps,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        role: 'toolbar',
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...(vertical && ({ 'aria-orientation': 'vertical' } as const)),
+        ...arrowNavigationProps,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 
   const [checkedValues, onCheckedValueChange] = useToolbarSelectableState({

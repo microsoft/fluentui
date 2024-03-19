@@ -1,16 +1,3 @@
-<!-- Don't allow prettier to collapse code block into single line -->
-<!-- prettier-ignore -->
-> **⚠️ Preview components are considered unstable:**
->
-> ```jsx
->
-> import { Toast } from '@fluentui/react-components/unstable';
->
-> ```
->
-> - Features and APIs may change before final release
-> - Please contact us if you intend to use this in your product
-
 A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by
 user action or a application timeout. Toasts are typically used in the following situations:
 
@@ -23,6 +10,10 @@ user action or a application timeout. Toasts are typically used in the following
 The Fluent UI Toast component uses an **imperative** API. Once a Toaster has been rendered, you can use the
 `useToastController` hook to get access to imperative methods to dispatch a Toast. The Toast component itself
 is simply a layout component.
+
+> ⚠️ In order for notifications that use toast to be fully accessible, developers should include make the notifications
+> available on a permanent surface too. One of the ways to do this in an application is to implement a notification
+> centre.
 
 ## Best practices
 

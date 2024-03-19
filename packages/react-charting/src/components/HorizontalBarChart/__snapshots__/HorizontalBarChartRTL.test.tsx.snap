@@ -1,0 +1,2127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 300px;
+        }
+  >
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                one
+              </span>
+              <div
+                hidden=""
+                id="tooltip3"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                one
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              1,543
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone4"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="one"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_0"
+            >
+              <rect
+                aria-label="2020/04/30, 10%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#004b50"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="10.286666666666665%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="13457/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="89.71333333333334%"
+                x="10.286666666666665%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                two
+              </span>
+              <div
+                hidden=""
+                id="tooltip6"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                two
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              800
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="two"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_1"
+            >
+              <rect
+                aria-label="2020/04/30, 5%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#5c2d91"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="5.333333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="14200/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="94.66666666666667%"
+                x="5.333333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                three
+              </span>
+              <div
+                hidden=""
+                id="tooltip9"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                three
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              8,888
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="three"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_2"
+            >
+              <rect
+                aria-label="2020/04/30, 59%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#a4262c"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="59.25333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="6112/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="40.74666666666666%"
+                x="59.25333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 300px;
+        }
+  >
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                one
+              </span>
+              <div
+                hidden=""
+                id="tooltip3"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                one
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              1,543
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone4"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="one"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_0"
+            >
+              <rect
+                aria-label="2020/04/30, 10%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#004b50"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="10.286666666666665%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="13457/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="89.71333333333334%"
+                x="10.286666666666665%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                two
+              </span>
+              <div
+                hidden=""
+                id="tooltip6"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                two
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              800
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="two"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_1"
+            >
+              <rect
+                aria-label="2020/04/30, 5%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#5c2d91"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="5.333333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="14200/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="94.66666666666667%"
+                x="5.333333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                three
+              </span>
+              <div
+                hidden=""
+                id="tooltip9"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                three
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              8,888
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="three"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_2"
+            >
+              <rect
+                aria-label="2020/04/30, 59%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#a4262c"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="59.25333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="6112/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="40.74666666666666%"
+                x="59.25333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: #1b1a19;
+          color: #f3f2f1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
+  >
+    <div
+      class=
+
+          {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          class=
+
+              {
+                margin-bottom: 10px;
+              }
+        >
+          <div
+            class=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+            data-focuszone-id="FocusZone5"
+            data-tabster="{\\"uncontrolled\\": {}}"
+          >
+            <div
+              class=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: flex;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 400;
+                    justify-content: space-between;
+                  }
+            >
+              <div
+                class=
+                    ms-TooltipHost
+                    {
+                      color: #f3f2f1;
+                      display: block;
+                      margin-bottom: 5px;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    }
+                role="none"
+              >
+                <span
+                  data-is-focusable="false"
+                  role="text"
+                  tabindex="-1"
+                >
+                  one
+                </span>
+                <div
+                  hidden=""
+                  id="tooltip6"
+                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                >
+                  one
+                </div>
+              </div>
+              <div
+                class=
+
+                    {
+                      color: #f3f2f1;
+                      font-size: 14px;
+                      font-weight: 600;
+                    }
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                1,543
+              </div>
+            </div>
+          </div>
+          <div
+            class=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  padding-right: 0px;
+                }
+            data-focuszone-id="FocusZone7"
+            data-tabster="{\\"uncontrolled\\": {}}"
+          >
+            <svg
+              aria-label="one"
+              class=
+
+                  {
+                    display: block;
+                    height: 12px;
+                    overflow: visible;
+                    width: 100%;
+                  }
+              focusable="false"
+            >
+              <g
+                id="_HorizontalLine_lllllm_0"
+              >
+                <rect
+                  aria-label="2020/04/30, 10%."
+                  class=
+
+
+                  data-is-focusable="true"
+                  fill="#004b50"
+                  height="12"
+                  role="img"
+                  tabindex="0"
+                  width="10.286666666666665%"
+                  x="0%"
+                  y="0"
+                />
+                <rect
+                  aria-label="13457/15000."
+                  class=
+
+
+                  data-is-focusable="false"
+                  fill="#292827"
+                  height="12"
+                  role="img"
+                  tabindex="-1"
+                  width="89.71333333333334%"
+                  x="10.286666666666665%"
+                  y="0"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class=
+
+              {
+                margin-bottom: 10px;
+              }
+        >
+          <div
+            class=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+            data-focuszone-id="FocusZone8"
+            data-tabster="{\\"uncontrolled\\": {}}"
+          >
+            <div
+              class=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: flex;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 400;
+                    justify-content: space-between;
+                  }
+            >
+              <div
+                class=
+                    ms-TooltipHost
+                    {
+                      color: #f3f2f1;
+                      display: block;
+                      margin-bottom: 5px;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    }
+                role="none"
+              >
+                <span
+                  data-is-focusable="false"
+                  role="text"
+                  tabindex="-1"
+                >
+                  two
+                </span>
+                <div
+                  hidden=""
+                  id="tooltip9"
+                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                >
+                  two
+                </div>
+              </div>
+              <div
+                class=
+
+                    {
+                      color: #f3f2f1;
+                      font-size: 14px;
+                      font-weight: 600;
+                    }
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                800
+              </div>
+            </div>
+          </div>
+          <div
+            class=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  padding-right: 0px;
+                }
+            data-focuszone-id="FocusZone10"
+            data-tabster="{\\"uncontrolled\\": {}}"
+          >
+            <svg
+              aria-label="two"
+              class=
+
+                  {
+                    display: block;
+                    height: 12px;
+                    overflow: visible;
+                    width: 100%;
+                  }
+              focusable="false"
+            >
+              <g
+                id="_HorizontalLine_lllllm_1"
+              >
+                <rect
+                  aria-label="2020/04/30, 5%."
+                  class=
+
+
+                  data-is-focusable="true"
+                  fill="#5c2d91"
+                  height="12"
+                  role="img"
+                  tabindex="0"
+                  width="5.333333333333334%"
+                  x="0%"
+                  y="0"
+                />
+                <rect
+                  aria-label="14200/15000."
+                  class=
+
+
+                  data-is-focusable="false"
+                  fill="#292827"
+                  height="12"
+                  role="img"
+                  tabindex="-1"
+                  width="94.66666666666667%"
+                  x="5.333333333333334%"
+                  y="0"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class=
+
+              {
+                margin-bottom: 10px;
+              }
+        >
+          <div
+            class=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+            data-focuszone-id="FocusZone11"
+            data-tabster="{\\"uncontrolled\\": {}}"
+          >
+            <div
+              class=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: flex;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 400;
+                    justify-content: space-between;
+                  }
+            >
+              <div
+                class=
+                    ms-TooltipHost
+                    {
+                      color: #f3f2f1;
+                      display: block;
+                      margin-bottom: 5px;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    }
+                role="none"
+              >
+                <span
+                  data-is-focusable="false"
+                  role="text"
+                  tabindex="-1"
+                >
+                  three
+                </span>
+                <div
+                  hidden=""
+                  id="tooltip12"
+                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                >
+                  three
+                </div>
+              </div>
+              <div
+                class=
+
+                    {
+                      color: #f3f2f1;
+                      font-size: 14px;
+                      font-weight: 600;
+                    }
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                8,888
+              </div>
+            </div>
+          </div>
+          <div
+            class=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
+                {
+                  padding-right: 0px;
+                }
+            data-focuszone-id="FocusZone13"
+            data-tabster="{\\"uncontrolled\\": {}}"
+          >
+            <svg
+              aria-label="three"
+              class=
+
+                  {
+                    display: block;
+                    height: 12px;
+                    overflow: visible;
+                    width: 100%;
+                  }
+              focusable="false"
+            >
+              <g
+                id="_HorizontalLine_lllllm_2"
+              >
+                <rect
+                  aria-label="2020/04/30, 59%."
+                  class=
+
+
+                  data-is-focusable="true"
+                  fill="#a4262c"
+                  height="12"
+                  role="img"
+                  tabindex="0"
+                  width="59.25333333333334%"
+                  x="0%"
+                  y="0"
+                />
+                <rect
+                  aria-label="6112/15000."
+                  class=
+
+
+                  data-is-focusable="false"
+                  fill="#292827"
+                  height="12"
+                  role="img"
+                  tabindex="-1"
+                  width="40.74666666666666%"
+                  x="59.25333333333334%"
+                  y="0"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <span
+        class="ms-layer"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_HBC_empty1"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 2`] = `
+<div>
+  <div
+    class=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+    style=""
+  >
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                one
+              </span>
+              <div
+                hidden=""
+                id="tooltip3"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                one
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              1,543
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone4"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="one"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_0"
+            >
+              <rect
+                aria-label="2020/04/30, 10%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#004b50"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="10.286666666666665%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="13457/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="89.71333333333334%"
+                x="10.286666666666665%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                two
+              </span>
+              <div
+                hidden=""
+                id="tooltip6"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                two
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              800
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="two"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_1"
+            >
+              <rect
+                aria-label="2020/04/30, 5%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#5c2d91"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="5.333333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="14200/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="94.66666666666667%"
+                x="5.333333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                three
+              </span>
+              <div
+                hidden=""
+                id="tooltip9"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                three
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              8,888
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="three"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_2"
+            >
+              <rect
+                aria-label="2020/04/30, 59%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#a4262c"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="59.25333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="6112/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="40.74666666666666%"
+                x="59.25333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Horizontal bar chart rendering Should render the Horizontal bar chart legend with string data 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+  >
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                one
+              </span>
+              <div
+                hidden=""
+                id="tooltip3"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                one
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              1,543
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone4"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="one"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_0"
+            >
+              <rect
+                aria-label="2020/04/30, 10%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#004b50"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="10.286666666666665%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="13457/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="89.71333333333334%"
+                x="10.286666666666665%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                two
+              </span>
+              <div
+                hidden=""
+                id="tooltip6"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                two
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              800
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="two"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_1"
+            >
+              <rect
+                aria-label="2020/04/30, 5%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#5c2d91"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="5.333333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="14200/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="94.66666666666667%"
+                x="5.333333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class=
+
+            {
+              margin-bottom: 10px;
+            }
+      >
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+          data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <div
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  justify-content: space-between;
+                }
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    color: #323130;
+                    display: block;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+              role="none"
+            >
+              <span
+                data-is-focusable="false"
+                role="text"
+                tabindex="-1"
+              >
+                three
+              </span>
+              <div
+                hidden=""
+                id="tooltip9"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              >
+                three
+              </div>
+            </div>
+            <div
+              class=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              8,888
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
+              {
+                padding-right: 0px;
+              }
+          data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
+        >
+          <svg
+            aria-label="three"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g
+              id="_HorizontalLine_lllllm_2"
+            >
+              <rect
+                aria-label="2020/04/30, 59%."
+                class=
+
+
+                data-is-focusable="true"
+                fill="#a4262c"
+                height="12"
+                role="img"
+                tabindex="0"
+                width="59.25333333333334%"
+                x="0%"
+                y="0"
+              />
+              <rect
+                aria-label="6112/15000."
+                class=
+
+
+                data-is-focusable="false"
+                fill="#edebe9"
+                height="12"
+                role="img"
+                tabindex="-1"
+                width="40.74666666666666%"
+                x="59.25333333333334%"
+                y="0"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <span
+      class="ms-layer"
+    />
+  </div>
+</div>
+`;

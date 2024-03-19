@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import { useRestoreFocusSource } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render MenuPopover.
@@ -21,9 +22,11 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
+  const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
 
   const { dir } = useFluent();
   const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
@@ -57,47 +60,42 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
   const mountNode = useMenuContext_unstable(context => context.mountNode);
 
-  const rootProps = getNativeElementProps('div', {
-    role: 'presentation',
-    ...props,
-    ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
-  });
-
+  const rootProps = slot.always(
+    getIntrinsicElementProps('div', {
+      role: 'presentation',
+      ...restoreFocusSourceAttributes,
+      ...props,
+      // FIXME:
+      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef) as React.Ref<HTMLDivElement>,
+    }),
+    { elementType: 'div' },
+  );
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
-
-  rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
-    if (openOnHover) {
+  rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (openOnHover || isSubmenu) {
       setOpen(event, { open: true, keyboard: false, type: 'menuPopoverMouseEnter', event });
     }
-
     onMouseEnterOriginal?.(event);
   });
-
-  rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
+  rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     const key = event.key;
-
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
-      if (open && popoverRef.current?.contains(event.target as HTMLElement)) {
+      if (open && popoverRef.current?.contains(event.target as HTMLElement) && !event.isDefaultPrevented()) {
         setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
         // stop propagation to avoid conflicting with other elements that listen for `Escape`
-        // e,g: Dialog, Popover and Tooltip
-        event.stopPropagation();
+        // e,g: Dialog, Popover, Menu and Tooltip
+        event.preventDefault();
       }
     }
-
     if (key === Tab) {
       setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
+      if (!isSubmenu) {
+        triggerRef.current?.focus();
+      }
     }
-
     onKeyDownOriginal?.(event);
   });
-
-  return {
-    inline,
-    mountNode,
-    components: {
-      root: 'div',
-    },
-    root: rootProps,
-  };
+  return { inline, mountNode, components: { root: 'div' }, root: rootProps };
 };

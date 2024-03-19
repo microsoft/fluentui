@@ -8,17 +8,17 @@ import {
   TableFeaturesState,
   UseTableColumnSizingParams,
 } from './types';
+
 import { useMeasureElement } from './useMeasureElement';
 import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useTableColumnResizeState } from './useTableColumnResizeState';
 import { useKeyboardResizing } from './useKeyboardResizing';
 
-export const KeyboardResizingCurrentColumnDataAttribute = 'data-keyboard-resizing';
-
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
   getOnMouseDown: () => () => null,
   setColumnWidth: () => null,
+  getTableProps: () => ({}),
   getTableHeaderCellProps: () => ({ style: {}, columnId: '' }),
   getTableCellProps: () => ({ style: {}, columnId: '' }),
   enableKeyboardMode: () => () => null,
@@ -30,7 +30,7 @@ export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizi
   return (tableState: TableFeaturesState<TItem>) => useTableColumnSizingState(tableState, params);
 }
 
-function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
+function getColumnStyles(column: ColumnWidthState, dragging?: boolean): React.CSSProperties {
   const width = column.width;
 
   return {
@@ -39,6 +39,8 @@ function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
     // non-native element styles (flex layout)
     minWidth: width,
     maxWidth: width,
+    // Fixed the unwanted sort: https://github.com/microsoft/fluentui/issues/27803
+    ...(dragging ? { pointerEvents: 'none' } : {}),
   };
 }
 
@@ -55,7 +57,7 @@ function useTableColumnSizingState<TItem>(
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
   // Creates the keyboard handler for resizing columns
-  const { toggleInteractiveMode, columnId: keyboardResizingColumnId } = useKeyboardResizing(columnResizeState);
+  const { toggleInteractiveMode, getKeyboardResizingProps } = useKeyboardResizing(columnResizeState);
 
   const enableKeyboardMode = React.useCallback(
     (columnId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) =>
@@ -67,36 +69,54 @@ function useTableColumnSizingState<TItem>(
     [toggleInteractiveMode],
   );
 
+  const { getColumnById, setColumnWidth, getColumns } = columnResizeState;
+  const { getOnMouseDown, dragging } = mouseHandler;
   return {
     ...tableState,
     tableRef: measureElementRef,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: {
-      getOnMouseDown: mouseHandler.getOnMouseDown,
-      setColumnWidth: (columnId: TableColumnId, w: number) =>
-        columnResizeState.setColumnWidth(undefined, { columnId, width: w }),
-      getColumnWidths: columnResizeState.getColumns,
-      getTableHeaderCellProps: (columnId: TableColumnId) => {
-        const col = columnResizeState.getColumnById(columnId);
+      getOnMouseDown,
+      setColumnWidth: (columnId: TableColumnId, w: number) => setColumnWidth(undefined, { columnId, width: w }),
+      getColumnWidths: getColumns,
+      getTableProps: (props = {}) => {
+        return {
+          ...props,
+          style: {
+            minWidth: 'fit-content',
+            ...(props.style || {}),
+          },
+        };
+      },
+      getTableHeaderCellProps: React.useCallback(
+        (columnId: TableColumnId) => {
+          const col = getColumnById(columnId);
+          const isLastColumn = columns[columns.length - 1]?.columnId === columnId;
 
-        const aside = (
-          <TableResizeHandle
-            onMouseDown={mouseHandler.getOnMouseDown(columnId)}
-            onTouchStart={mouseHandler.getOnMouseDown(columnId)}
-          />
-        );
-        return col
-          ? {
-              style: getColumnStyles(col),
-              aside,
-              ...(keyboardResizingColumnId === columnId ? { [KeyboardResizingCurrentColumnDataAttribute]: '' } : {}),
-            }
-          : {};
-      },
-      getTableCellProps: (columnId: TableColumnId) => {
-        const col = columnResizeState.getColumnById(columnId);
-        return col ? { style: getColumnStyles(col) } : {};
-      },
+          const aside = isLastColumn ? null : (
+            <TableResizeHandle
+              onMouseDown={getOnMouseDown(columnId)}
+              onTouchStart={getOnMouseDown(columnId)}
+              {...getKeyboardResizingProps(columnId, col?.width || 0)}
+            />
+          );
+
+          return col
+            ? {
+                style: getColumnStyles(col, dragging),
+                aside,
+              }
+            : {};
+        },
+        [getColumnById, columns, dragging, getKeyboardResizingProps, getOnMouseDown],
+      ),
+      getTableCellProps: React.useCallback(
+        (columnId: TableColumnId) => {
+          const col = getColumnById(columnId);
+          return col ? { style: getColumnStyles(col) } : {};
+        },
+        [getColumnById],
+      ),
       enableKeyboardMode,
     },
   };

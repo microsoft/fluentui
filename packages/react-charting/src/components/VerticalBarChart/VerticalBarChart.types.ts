@@ -8,6 +8,10 @@ import {
 } from '../../index';
 import { ILineChartLineOptions } from '../../types/index';
 
+/**
+ * Vertical Bar Chart properties
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -20,9 +24,11 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
 
   /**
-   * Width of each bar in the chart.
+   * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px.
+   * When set to `auto` (which is only applicable to string x-axis), the bar width is calculated from padding values.
+   * @default 16
    */
-  barWidth?: number;
+  barWidth?: number | 'default' | 'auto';
 
   /**
    * Colors from which to select the color of each bar.
@@ -79,8 +85,31 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * Maximum width of a bar, in pixels.
+   */
+  maxBarWidth?: number;
+
+  /**
+   * Padding between bars as a fraction of the [step](https://d3js.org/d3-scale/band#band_step).
+   * Takes a number in the range [0, 1]. Only applicable to string x-axis.
+   * @default 2/3
+   */
+  xAxisInnerPadding?: number;
+
+  /**
+   * Padding before the first bar and after the last bar as a fraction of
+   * the [step](https://d3js.org/d3-scale/band#band_step). Takes a number in the range [0, 1].
+   * Only applicable to string x-axis.
+   */
+  xAxisOuterPadding?: number;
 }
 
+/**
+ * Vertical Bar Chart style properties
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
   /**
    * color of the datapoint legend
@@ -88,46 +117,50 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
   legendColor?: string;
 }
 
+/**
+ * Vertical Bar Chart styles
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   chartLabel?: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisText?: IStyle;
 
   /**
    * Style for the line representing the domain of the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisText?: IStyle;
 

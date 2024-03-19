@@ -20,7 +20,7 @@ jobs:
         name: Checkout [master]
 
       - name: Verify react-compoenents has changed
-        uses: tj-actions/changed-files@v34
+        uses: tj-actions/changed-files@v41
         id: verify-react-components-changed
         with:
           files: |
@@ -37,7 +37,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.18.1
+          node-version: 18.x
           cache: 'yarn'
 
       - name: Install packages
@@ -51,6 +51,8 @@ jobs:
 
       - name: Build storybook
         run: yarn workspace @fluentui/public-docsite-v9 build-storybook
+        env:
+          STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1

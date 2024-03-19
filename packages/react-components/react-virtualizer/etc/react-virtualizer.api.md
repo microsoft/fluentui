@@ -33,6 +33,8 @@ export interface ResizeCallbackWithRef {
 // @public (undocumented)
 export type ScrollToInterface = {
     scrollTo: (index: number, behavior?: ScrollBehavior, callback?: (index: number) => void) => void;
+    virtualizerLength: RefObject<number>;
+    currentIndex: RefObject<number> | undefined;
 };
 
 // @public (undocumented)
@@ -72,9 +74,9 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
 };
 
 // @public
-export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined) => {
+export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit) => {
     setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
-    setObserverInit: Dispatch<SetStateAction<IntersectionObserverInit | undefined>>;
+    setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
     observer: MutableRefObject<IntersectionObserver | undefined>;
 };
 
@@ -133,6 +135,7 @@ export type VirtualizerDataRef = {
     progressiveSizes: RefObject<number[]>;
     nodeSizes: RefObject<number[]>;
     setFlaggedIndex: (index: number | null) => void;
+    currentIndex: RefObject<number>;
 };
 
 // @public (undocumented)
@@ -168,10 +171,11 @@ export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerS
 // @public (undocumented)
 export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
     itemSize: number;
-    getItemSize: (index: number) => number;
+    getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
+    enablePagination?: boolean;
 };
 
 // @public (undocumented)
@@ -186,6 +190,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
+    enablePagination?: boolean;
 };
 
 // @public (undocumented)

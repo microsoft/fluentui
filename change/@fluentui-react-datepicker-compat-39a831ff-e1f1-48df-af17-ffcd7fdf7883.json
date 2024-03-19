@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Do not move focus to the input on first render.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

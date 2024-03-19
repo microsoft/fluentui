@@ -4,14 +4,34 @@ const fs = require('fs-extra');
 const path = require('path');
 const jju = require('jju');
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { FsTree } = require('nx/src/generators/tree');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { readProjectConfiguration } = require('@nx/devkit');
+
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nrwl/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
+ *  @typedef {import("@nx/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
+// FIXME: this is not ok (to depend on nx packages within this plugin - redo)
+/**
+ * Gets project metadata from monorepo source of truth which is `project.json` per project
+ * @param {Options} options
+ * @returns {import('@nx/devkit').ProjectConfiguration}
+ */
+function getProjectMetadata(options) {
+  /**
+   * @type {import('@nx/devkit').Tree}
+   */
+  const tree = new FsTree(options.root, false);
+
+  return readProjectConfiguration(tree, options.name);
+}
+
 const testFiles = [
-  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e,cy}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
@@ -232,10 +252,9 @@ module.exports = {
    * @returns {PackageJson} package.json file of the provided package name.
    */
   getPackageJson: (/** @type {Options} */ options) => {
-    /** @type {WorkspaceJsonConfiguration} */
-    const nxWorkspace = JSON.parse(fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'));
-    const projectMetaData = nxWorkspace.projects[options.name];
+    const projectMetaData = getProjectMetadata(options);
     const packagePath = path.join(options.root, projectMetaData.root);
+
     /** @type {PackageJson} */
     const packageJson = fs.readJSONSync(path.join(packagePath, 'package.json'));
 
@@ -248,9 +267,8 @@ module.exports = {
    * @returns {Set<string>} Returns a set of v9 packages that are currently unstable.
    */
   getV9UnstablePackages: (/** @type {string} */ root) => {
-    const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
-    const v9ProjectMetaData = nxWorkspace.projects['@fluentui/react-components'];
-    const v9PackagePath = path.join(root, v9ProjectMetaData.sourceRoot, 'unstable', 'index.ts');
+    const v9ProjectMetaData = getProjectMetadata({ root, name: '@fluentui/react-components' });
+    const v9PackagePath = path.join(root, v9ProjectMetaData.sourceRoot ?? '', 'unstable', 'index.ts');
     const unstableV9Packages = new Set();
     fs.readFileSync(v9PackagePath)
       .toString()

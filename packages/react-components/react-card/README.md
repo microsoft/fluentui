@@ -41,7 +41,7 @@ const App = () => (
       <CardPreview
         logo={
           <img
-            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/word_logo.svg"
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/docx.png"
             alt="Microsoft Word logo"
           />
         }

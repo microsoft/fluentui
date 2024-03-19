@@ -11,6 +11,7 @@
 .gitignore
 .vscode
 coverage
+bundle-size/
 dist/storybook
 dist/*.stats.html
 dist/*.stats.json
@@ -30,6 +31,9 @@ tsd.json
 tslint.json
 typings
 visualtests
+project.json
+
+# exclude gitignore patterns explicitly
 !lib
 !lib-commonjs
 !lib-amd

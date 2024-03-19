@@ -99,6 +99,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -364,6 +365,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -645,6 +647,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1012,6 +1015,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1379,6 +1383,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1660,6 +1665,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1921,6 +1927,7 @@ exports[`DetailsList renders List correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -2232,6 +2239,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2420,6 +2429,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2608,6 +2619,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2766,6 +2779,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -2904,6 +2918,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3215,6 +3230,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3347,6 +3364,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3479,6 +3498,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3611,6 +3632,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3743,6 +3766,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3845,6 +3870,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3984,6 +4010,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -4295,6 +4322,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4483,6 +4512,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4671,6 +4702,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4829,6 +4862,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -4968,6 +5002,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -5279,6 +5314,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5467,6 +5504,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5655,6 +5694,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5813,6 +5854,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -5951,6 +5993,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -6262,6 +6305,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6397,6 +6442,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6532,6 +6579,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6667,6 +6716,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6802,6 +6853,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6907,6 +6960,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -7045,6 +7099,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -7217,6 +7272,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7405,6 +7462,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7593,6 +7652,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7765,6 +7826,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone3"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -8119,11 +8181,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={0}
                                 data-selection-index={0}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-0"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
+                                tabIndex={0}
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8401,6 +8465,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={1}
                                 data-selection-index={1}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-1"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -8941,6 +9006,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={2}
                                 data-selection-index={2}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-2"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -9223,6 +9289,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={3}
                                 data-selection-index={3}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-3"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -9505,6 +9572,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={4}
                                 data-selection-index={4}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-4"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}

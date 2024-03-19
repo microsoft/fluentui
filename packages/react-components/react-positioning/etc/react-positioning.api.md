@@ -71,11 +71,11 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
-    setTarget: (target: TargetElement) => void;
+    setTarget: (target: TargetElement | null) => void;
 };
 
-// @public (undocumented)
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'pinned' | 'useTransform'> {
+// @public
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }
@@ -108,10 +108,10 @@ export function resolvePositioningShorthand(shorthand: PositioningShorthand | un
 export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
 
 // @internal (undocumented)
-export function usePositioning(options: UsePositioningOptions): UsePositioningReturn;
+export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn;
 
 // @internal
-export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // (No @packageDocumentation comment for this package)
 

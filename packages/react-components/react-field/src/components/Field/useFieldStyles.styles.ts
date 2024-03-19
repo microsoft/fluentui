@@ -107,7 +107,7 @@ const useValidationMessageIconStyles = makeStyles({
 /**
  * Apply styling to the Field slots based on the state
  */
-export const useFieldStyles_unstable = (state: FieldState) => {
+export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   const { validationState } = state;
   const horizontal = state.orientation === 'horizontal';
 
@@ -159,4 +159,6 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.hint) {
     state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextBaseClassName, state.hint.className);
   }
+
+  return state;
 };

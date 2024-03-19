@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add/update theme tokens",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

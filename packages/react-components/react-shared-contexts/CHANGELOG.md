@@ -1,8 +1,234 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 24 May 2023 20:45:32 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.2)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.15.1..@fluentui/react-shared-contexts_v9.15.2)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.1)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.15.0..@fluentui/react-shared-contexts_v9.15.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.0)
+
+Thu, 07 Mar 2024 19:33:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.14.1..@fluentui/react-shared-contexts_v9.15.0)
+
+### Minor changes
+
+- feat: Deprecate legacy TeachingPopoverCarousel style hooks ([PR #30423](https://github.com/microsoft/fluentui/pull/30423) by mifraser@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.1)
+
+Wed, 28 Feb 2024 02:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.14.0..@fluentui/react-shared-contexts_v9.14.1)
+
+### Patches
+
+- feat(swatch-picker): Added plain ColorSwatch sub component. ([PR #30544](https://github.com/microsoft/fluentui/pull/30544) by vkozlova@microsoft.com)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.0)
+
+Thu, 18 Jan 2024 14:25:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.2..@fluentui/react-shared-contexts_v9.14.0)
+
+### Minor changes
+
+- feat: export AnnounceProvider & useAnnounce() ([PR #30328](https://github.com/microsoft/fluentui/pull/30328) by olfedias@microsoft.com)
+
+## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.2)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.1..@fluentui/react-shared-contexts_v9.13.2)
+
+### Patches
+
+- fix: add custom style hook for TimePicker compat. ([PR #30058](https://github.com/microsoft/fluentui/pull/30058) by yuanboxue@microsoft.com)
+
+## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.1)
+
+Thu, 14 Dec 2023 09:58:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.0..@fluentui/react-shared-contexts_v9.13.1)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.0)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.12.0..@fluentui/react-shared-contexts_v9.13.0)
+
+### Minor changes
+
+- feat: TeachingPopover style hooks added ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.12.0)
+
+Thu, 09 Nov 2023 17:29:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.11.1..@fluentui/react-shared-contexts_v9.12.0)
+
+### Minor changes
+
+- feat: Add custom style hook types for List ([PR #29771](https://github.com/microsoft/fluentui/pull/29771) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.11.1)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.11.0..@fluentui/react-shared-contexts_v9.11.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.11.0)
+
+Sat, 28 Oct 2023 23:35:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.10.0..@fluentui/react-shared-contexts_v9.11.0)
+
+### Minor changes
+
+- refactor: rename main DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.10.0)
+
+Mon, 09 Oct 2023 20:45:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.9.2..@fluentui/react-shared-contexts_v9.10.0)
+
+### Minor changes
+
+- feat: Add MessageBar types to custom style hook context ([PR #29431](https://github.com/microsoft/fluentui/pull/29431) by lingfangao@hotmail.com)
+
+## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.9.2)
+
+Mon, 02 Oct 2023 08:56:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.9.1..@fluentui/react-shared-contexts_v9.9.2)
+
+### Patches
+
+- feat: add custom styling hooks for Breadcrumb component and its sub-components ([PR #29318](https://github.com/microsoft/fluentui/pull/29318) by vkozlova@microsoft.com)
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.9.1)
+
+Tue, 26 Sep 2023 17:49:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.9.0..@fluentui/react-shared-contexts_v9.9.1)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.14 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.9.0)
+
+Tue, 26 Sep 2023 15:31:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.8.1..@fluentui/react-shared-contexts_v9.9.0)
+
+### Minor changes
+
+- feat: add custom style hooks for tag components ([PR #29237](https://github.com/microsoft/fluentui/pull/29237) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.8.1)
+
+Wed, 20 Sep 2023 17:47:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.8.0..@fluentui/react-shared-contexts_v9.8.1)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.8.0)
+
+Wed, 20 Sep 2023 14:59:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.7.3..@fluentui/react-shared-contexts_v9.8.0)
+
+### Minor changes
+
+- feat: add custom styling hooks for Drawer subcomponents ([PR #29041](https://github.com/microsoft/fluentui/pull/29041) by marcosvmmoura@gmail.com)
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.7.3)
+
+Tue, 05 Sep 2023 13:29:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.7.2..@fluentui/react-shared-contexts_v9.7.3)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-theme to v9.1.12 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.7.2)
+
+Wed, 09 Aug 2023 13:17:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.7.1..@fluentui/react-shared-contexts_v9.7.2)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.7.1)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.7.0..@fluentui/react-shared-contexts_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.7.0)
+
+Tue, 01 Aug 2023 10:17:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.6.0..@fluentui/react-shared-contexts_v9.7.0)
+
+### Minor changes
+
+- adds Announce context ([PR #28654](https://github.com/microsoft/fluentui/pull/28654) by eysjiang@gmail.com)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.6.0)
+
+Mon, 03 Jul 2023 11:57:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.5.1..@fluentui/react-shared-contexts_v9.6.0)
+
+### Minor changes
+
+- feat: Background appearance context ([PR #28341](https://github.com/microsoft/fluentui/pull/28341) by lingfan.gao@microsoft.com)
+- feat: export PortalMountNodeProvider & usePortalMountNode ([PR #28395](https://github.com/microsoft/fluentui/pull/28395) by olfedias@microsoft.com)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.5.1)
+
+Tue, 20 Jun 2023 12:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.5.0..@fluentui/react-shared-contexts_v9.5.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.9 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.5.0)
 

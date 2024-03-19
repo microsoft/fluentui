@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/global-context",
-  "version": "9.0.0-beta.29",
+  "version": "9.0.0-beta.63",
   "description": "Extension of React createContext to be a true singleton on the global scope",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "e2e": "cypress run --component",
@@ -32,16 +32,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.22",
-    "@fluentui/react-utilities": "^9.9.2",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-context-selector": "^9.1.56",
+    "@fluentui/react-utilities": "^9.18.5",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
-    "scheduler": "^0.19.0 || ^0.20.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -58,5 +57,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

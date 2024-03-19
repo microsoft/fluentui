@@ -3,7 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
-import { KeyboardResizingCurrentColumnDataAttribute } from '../../hooks/useTableColumnSizing';
 
 export const tableHeaderCellClassName = 'fui-TableHeaderCell';
 export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
@@ -33,6 +32,7 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
+    fontWeight: tokens.fontWeightRegular,
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
     ...createCustomFocusIndicatorStyle(
       {
@@ -42,10 +42,6 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
     position: 'relative',
-    [`[${KeyboardResizingCurrentColumnDataAttribute}]`]: {
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-    },
   },
 
   rootInteractive: {
@@ -68,7 +64,6 @@ const useStyles = makeStyles({
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     ...shorthands.borderStyle('none'),
-    WebkitAppearance: 'button',
     textAlign: 'unset',
   },
 
@@ -114,6 +109,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
+
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,

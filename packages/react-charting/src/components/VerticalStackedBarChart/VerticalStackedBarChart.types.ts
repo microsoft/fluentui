@@ -11,6 +11,10 @@ import {
   IVSChartDataPoint,
 } from '../../index';
 
+/**
+ * Vertical Stacked Bar Chart properties
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -18,9 +22,10 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   data: IVerticalStackedChartProps[];
 
   /**
-   * Width of each bar in the chart.
+   * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px.
+   * When set to `auto` (which is only applicable to string x-axis), the bar width is calculated from padding values.
    */
-  barWidth?: number;
+  barWidth?: number | 'default' | 'auto';
 
   /**
    * Gap (max) between bars in a stack. When non-zero, the bars in a stack will
@@ -118,10 +123,37 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * Maximum width of a bar, in pixels.
+   */
+  maxBarWidth?: number;
+
+  /**
+   * Padding between bars as a fraction of the [step](https://d3js.org/d3-scale/band#band_step).
+   * Takes a number in the range [0, 1]. Only applicable to string x-axis.
+   * @default 2/3
+   */
+  xAxisInnerPadding?: number;
+
+  /**
+   * Padding before the first bar and after the last bar as a fraction of
+   * the [step](https://d3js.org/d3-scale/band#band_step). Takes a number in the range [0, 1].
+   * Only applicable to string x-axis.
+   */
+  xAxisOuterPadding?: number;
 }
 
+/**
+ * Vertical Stacked Bar Chart style properties
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Vertical Stacked Bar Chart styles
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

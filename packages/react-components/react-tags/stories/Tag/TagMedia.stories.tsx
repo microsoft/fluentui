@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-components';
-
-import { Tag } from '@fluentui/react-tags';
+import { Tag, Avatar } from '@fluentui/react-components';
 
 export const Media = () => <Tag media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Primary text</Tag>;
 

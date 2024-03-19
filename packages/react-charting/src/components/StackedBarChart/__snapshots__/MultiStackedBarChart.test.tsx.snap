@@ -17,6 +17,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
   onMouseLeave={[Function]}
 >
   <div
+    id="_MSBC_bar-0"
     key="0"
   >
     <div
@@ -35,7 +36,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -79,7 +81,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -130,7 +132,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -160,8 +163,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -179,6 +180,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -192,8 +194,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -211,6 +211,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -223,6 +224,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
     </div>
   </div>
   <div
+    id="_MSBC_bar-1"
     key="1"
   >
     <div
@@ -241,7 +243,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -285,7 +288,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -336,7 +339,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -366,8 +370,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -385,6 +387,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -398,8 +401,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -417,6 +418,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -476,7 +478,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -681,6 +684,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
   onMouseLeave={[Function]}
 >
   <div
+    id="_MSBC_bar-0"
     key="0"
   >
     <div
@@ -699,7 +703,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -743,7 +748,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -794,7 +799,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -824,8 +830,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -843,6 +847,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -856,8 +861,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -875,6 +878,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -887,6 +891,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
     </div>
   </div>
   <div
+    id="_MSBC_bar-1"
     key="1"
   >
     <div
@@ -905,7 +910,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -949,7 +955,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -1000,7 +1006,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1030,8 +1037,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1049,6 +1054,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -1062,8 +1068,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1081,6 +1085,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -1140,7 +1145,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1263,7 +1269,9 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -1280,7 +1288,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone48"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1324,7 +1333,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             </span>
             <div
               hidden={true}
-              id="tooltip49"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -1349,7 +1358,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone50"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1379,8 +1389,6 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1397,6 +1405,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1409,8 +1418,6 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1427,6 +1434,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1437,7 +1445,9 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -1454,7 +1464,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone51"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1498,7 +1509,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             </span>
             <div
               hidden={true}
-              id="tooltip52"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -1523,7 +1534,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone53"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1553,8 +1565,6 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1571,6 +1581,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1583,8 +1594,6 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1601,6 +1610,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1659,7 +1669,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1704,7 +1715,9 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -1721,7 +1734,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone40"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1765,7 +1779,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             </span>
             <div
               hidden={true}
-              id="tooltip41"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -1790,7 +1804,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone42"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1820,8 +1835,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1838,6 +1851,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1850,8 +1864,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1868,6 +1880,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1884,6 +1897,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   }
               dominantBaseline="central"
               role="img"
+              textAnchor="start"
               transform="translate(4)"
               x="100%"
               y={6}
@@ -1895,7 +1909,9 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -1912,7 +1928,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone43"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1956,7 +1973,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             </span>
             <div
               hidden={true}
-              id="tooltip44"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -1981,7 +1998,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone45"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2011,8 +2029,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2029,6 +2045,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2041,8 +2058,6 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2059,6 +2074,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2075,6 +2091,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   }
               dominantBaseline="central"
               role="img"
+              textAnchor="start"
               transform="translate(4)"
               x="100%"
               y={6}
@@ -2134,7 +2151,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone46"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2179,7 +2197,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -2196,7 +2216,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2240,7 +2261,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -2291,7 +2312,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2321,8 +2343,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2339,6 +2359,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2351,8 +2372,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2369,6 +2388,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2379,7 +2399,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -2396,7 +2418,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2440,7 +2463,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -2491,7 +2514,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2521,8 +2545,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2539,6 +2561,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2551,8 +2574,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2569,6 +2590,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2627,7 +2649,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2672,7 +2695,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -2689,7 +2714,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone32"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2733,7 +2759,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </span>
             <div
               hidden={true}
-              id="tooltip33"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -2774,7 +2800,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone34"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2804,8 +2831,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2822,6 +2847,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2834,8 +2860,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2852,6 +2876,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2862,7 +2887,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -2879,7 +2906,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone35"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2923,7 +2951,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </span>
             <div
               hidden={true}
-              id="tooltip36"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -2964,7 +2992,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone37"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2994,8 +3023,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3012,6 +3039,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3024,8 +3052,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3042,6 +3068,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3100,7 +3127,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone38"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3145,7 +3173,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -3162,7 +3192,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3206,7 +3237,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </span>
             <div
               hidden={true}
-              id="tooltip10"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -3257,7 +3288,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3287,8 +3319,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3305,6 +3335,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3317,8 +3348,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3335,6 +3364,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3345,7 +3375,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -3362,7 +3394,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3406,7 +3439,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </span>
             <div
               hidden={true}
-              id="tooltip13"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -3457,7 +3490,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3487,8 +3521,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3505,6 +3537,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3517,8 +3550,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3535,6 +3566,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3567,7 +3599,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -3584,7 +3618,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone24"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3628,7 +3663,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </span>
             <div
               hidden={true}
-              id="tooltip25"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -3653,7 +3688,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3683,8 +3719,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3701,6 +3735,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3713,8 +3748,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3731,6 +3764,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3741,7 +3775,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -3758,7 +3794,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone27"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3802,7 +3839,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </span>
             <div
               hidden={true}
-              id="tooltip28"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -3853,7 +3890,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone29"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3883,8 +3921,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3901,6 +3937,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3913,8 +3950,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -3931,6 +3966,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3989,7 +4025,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone30"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4215,7 +4252,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
       }
   onMouseLeave={[Function]}
 >
-  <div>
+  <div
+    id="_MSBC_bar-0"
+  >
     <div
       className=
 
@@ -4232,7 +4271,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone16"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -4276,7 +4316,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </span>
             <div
               hidden={true}
-              id="tooltip17"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -4327,7 +4367,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -4357,8 +4398,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -4375,6 +4414,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#e81123"
                 height={12}
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -4387,8 +4427,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -4405,6 +4443,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -4415,7 +4454,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
       </div>
     </div>
   </div>
-  <div>
+  <div
+    id="_MSBC_bar-1"
+  >
     <div
       className=
 
@@ -4432,7 +4473,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone19"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -4476,7 +4518,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </span>
             <div
               hidden={true}
-              id="tooltip20"
+              id="tooltip9"
               style={
                 Object {
                   "border": 0,
@@ -4527,7 +4569,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone21"
+        data-focuszone-id="FocusZone10"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -4557,8 +4600,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -4575,6 +4616,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#0078d4"
                 height={12}
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -4587,8 +4629,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -4605,6 +4645,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -4663,7 +4704,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone22"
+              data-focuszone-id="FocusZone11"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

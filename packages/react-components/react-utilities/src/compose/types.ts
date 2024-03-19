@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
@@ -134,9 +136,13 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
 
 /**
- * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)
+ * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
+ * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
+ *
+ * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
+ * types, to prevent unions from being expanded.
  */
-export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 'ref'> : P;
 
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
@@ -145,16 +151,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
  * types, to prevent unions from being expanded.
  */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutChildren<P> = 'children' extends keyof P ? (P extends unknown ? Omit<P, 'children'> : P) : P;
+export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
 
 /**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
@@ -176,11 +173,6 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
 //   We need both props to allow the user to specify native props for either slot because the `root` slot is
 //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
-
-/**
- * If type T includes `null`, remove it and add `undefined` instead.
- */
-export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
 /**
  * Defines the State object of a component given its slots.
@@ -214,13 +206,20 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 type ObscureEventName = 'onLostPointerCaptureCapture';
 
 /**
- * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ * Infers the element type from props that are declared using ComponentProps.
  */
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
+export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
   ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
-    ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
+    ? Element
     : never
   : never;
+
+/**
+ * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ */
+export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
+  Props & React.RefAttributes<InferredElementRefType<Props>>
+>;
 // A definition like this would also work, but typescript is more likely to unnecessarily expand
 // the props type with this version (and it's likely much more expensive to evaluate)
 // export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
@@ -233,3 +232,55 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
 export type SlotClassNames<Slots> = {
   [SlotName in keyof Slots]-?: string;
 };
+
+/**
+ * A definition of a slot, as a component, very similar to how a React component is declared,
+ * but with some additional metadata that is used to determine how to render the slot.
+ */
+export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
+  /**
+   * **NOTE**: Slot components are not callable.
+   */
+  (props: React.PropsWithChildren<{}>): React.ReactElement | null;
+  /**
+   * @internal
+   */
+  [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
+  /**
+   * @internal
+   */
+  [SLOT_ELEMENT_TYPE_SYMBOL]:
+    | React.ComponentType<Props>
+    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+};
+
+/**
+ * Data type for event handlers. It makes data a discriminated union, where each object requires `event` and `type` property.
+ * - `event` is the specific event type
+ * - `type` is a string literal. It serves as a clear identifier of the event type that reflects the component's state when the event occurred.
+ *    For example, the Tree component's `onNavigation` event handler has different `type` for different key presses: `{ event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight } | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }`.
+ *    Developers can use the `type` property to identify and filter events of interest.
+ * See RFC event-handlers-event-type.md for more details.
+ *
+ * Example usage:
+ * type OnOpenChangeData = (
+ *   | EventData\<'click', React.MouseEvent\<MyComponentElement\>\>
+ *   | EventData\<'keydown', React.KeyboardEvent\<MyComponentElement\>\>
+ * ) & \{ open: boolean; \};
+ */
+export type EventData<Type extends string, TEvent> =
+  | { type: undefined; event: React.SyntheticEvent | Event }
+  | { type: Type; event: TEvent };
+
+/**
+ * Type for props that are event handlers.
+ * See RFC event-handlers-event-type.md for more details.
+ *
+ * Example usage:
+ * type OnSomeEventData = EventData\<'click', React.MouseEvent\<MyComponentElement\>\> & \{ open: boolean; \};
+ * type SomeProps = \{ onSomeEvent?: EventHandler\<OnSomeEventData\>; \};
+ */
+export type EventHandler<TData extends EventData<string, unknown>> = (
+  ev: React.SyntheticEvent | Event,
+  data: TData,
+) => void;

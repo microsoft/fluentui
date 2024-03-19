@@ -1,15 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbDividerProps, BreadcrumbDividerState } from './BreadcrumbDivider.types';
-import {
-  ChevronRight20Regular,
-  ChevronRight16Regular,
-  ChevronRight12Regular,
-  ChevronLeft20Regular,
-  ChevronLeft16Regular,
-  ChevronLeft12Regular,
-} from '@fluentui/react-icons';
-import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
+import { ChevronRightRegular, ChevronLeftRegular } from '@fluentui/react-icons';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -26,56 +18,32 @@ export const useBreadcrumbDivider_unstable = (
   props: BreadcrumbDividerProps,
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbDividerState => {
-  const { size, dividerType } = useBreadcrumbContext_unstable();
+  const { size } = useBreadcrumbContext_unstable();
   const { dir } = useFluent();
-  const icon = getDividerIcon(size, dividerType, dir);
+  const icon = getDividerIcon(dir);
 
   return {
     components: {
       root: 'li',
     },
-    root: getNativeElementProps('li', {
-      ref,
-      'aria-hidden': true,
-      children: icon,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('li', {
+        ref,
+        'aria-hidden': true,
+        children: icon,
+        ...props,
+      }),
+      { elementType: 'li' },
+    ),
+    size,
   };
-};
-
-const dividerIcons = {
-  rtl: {
-    small: <ChevronLeft12Regular />,
-    medium: <ChevronLeft16Regular />,
-    large: <ChevronLeft20Regular />,
-  },
-  ltr: {
-    small: <ChevronRight12Regular />,
-    medium: <ChevronRight16Regular />,
-    large: <ChevronRight20Regular />,
-  },
 };
 
 /**
  * Get icon of the divider
  *
- * @param size - size of the Breadcrumb
- * @param dividerType - type of the divider, can be `slash` or `chevron`
+ * @param dir - RTL or LTR
  */
-function getDividerIcon(
-  size: BreadcrumbProps['size'] = 'medium',
-  dividerType: BreadcrumbProps['dividerType'],
-  dir: string,
-) {
-  const dividerIcon = dir === 'rtl' ? dividerIcons.rtl : dividerIcons.ltr;
-  if (size === 'small') {
-    if (dividerType === 'slash') {
-      return dir === 'rtl' ? '\\' : '/';
-    }
-    return dividerIcon.small;
-  }
-  if (size === 'large') {
-    return dividerIcon.large;
-  }
-  return dividerIcon.medium;
+function getDividerIcon(dir: string) {
+  return dir === 'rtl' ? <ChevronLeftRegular /> : <ChevronRightRegular />;
 }

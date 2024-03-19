@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "DataGrid now exposes containerWidthOffset prop, which is mainly used internally to adjust available space for column resizing based on other props",
-  "packageName": "@fluentui/react-table",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

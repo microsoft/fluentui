@@ -1,7 +1,6 @@
 import { ToastOffsetObject, ToastOffset, ToastPosition } from '../types';
 
 interface PositionStyles {
-  position: 'fixed';
   top?: number;
   left?: number;
   right?: number;
@@ -9,17 +8,33 @@ interface PositionStyles {
 }
 
 export const getPositionStyles = (position: ToastPosition, dir: 'rtl' | 'ltr', offset?: ToastOffset) => {
-  const positionStyles: PositionStyles = {
-    position: 'fixed',
-  };
+  const positionStyles: PositionStyles = {};
 
   const offsetStyles: ToastOffsetObject = offset ? (isShorthandOffset(offset) ? offset : offset[position] ?? {}) : {};
 
-  const { horizontal = 0, vertical = 0 } = offsetStyles;
+  const centered = position === 'top' || position === 'bottom';
+
+  const { horizontal = centered ? 0 : 20, vertical = 16 } = offsetStyles;
   const start = dir === 'ltr' ? 'left' : 'right';
   const end = dir === 'ltr' ? 'right' : 'left';
 
   switch (position) {
+    case 'top':
+      Object.assign(positionStyles, {
+        top: vertical,
+        left: `calc(50% + ${horizontal}px)`,
+        transform: 'translateX(-50%)',
+      });
+      break;
+
+    case 'bottom':
+      Object.assign(positionStyles, {
+        bottom: vertical,
+        left: `calc(50% + ${horizontal}px)`,
+        transform: 'translateX(-50%)',
+      });
+      break;
+
     case 'top-start':
       Object.assign(positionStyles, {
         top: vertical,

@@ -1,9 +1,9 @@
 {
   "name": "@fluentui/react-conformance",
-  "version": "0.16.3",
+  "version": "0.19.0",
   "description": "Customizable conformance testing utility for Fluent UI React components.",
   "main": "lib-commonjs/index.js",
-  "typings": "lib-commonjs/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -15,7 +15,15 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "test": "just-scripts test",
-    "lint": "just-scripts lint"
+    "lint": "just-scripts lint",
+    "generate-api": "just-scripts generate-api",
+    "type-check": "just-scripts type-check"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -27,7 +35,7 @@
     "chalk": "^2.4.2",
     "react-docgen-typescript": "^2.1.0",
     "react-is": "^17.0.2",
-    "tslib": "^2.1.0"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
@@ -37,5 +45,18 @@
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0",
     "typescript": "^4.3.0"
-  }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
 }

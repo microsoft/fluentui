@@ -1,13 +1,10 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
 import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
-import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
-import { TooltipProps } from '@fluentui/react-tooltip';
+import { assertSlots } from '@fluentui/react-utilities';
+import { PopoverTrigger } from '@fluentui/react-popover';
 import type { AvatarGroupPopoverState, AvatarGroupPopoverSlots } from './AvatarGroupPopover.types';
 
 /**
@@ -17,20 +14,20 @@ export const renderAvatarGroupPopover_unstable = (
   state: AvatarGroupPopoverState,
   contextValues: AvatarGroupContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<AvatarGroupPopoverSlots>(state);
+  assertSlots<AvatarGroupPopoverSlots>(state);
 
   return (
-    <slots.root {...(slotProps.root as PopoverProps)}>
+    <state.root>
       <PopoverTrigger disableButtonEnhancement>
-        <slots.tooltip {...(slotProps.tooltip as TooltipProps)}>
-          <slots.triggerButton {...slotProps.triggerButton} />
-        </slots.tooltip>
+        <state.tooltip>
+          <state.triggerButton />
+        </state.tooltip>
       </PopoverTrigger>
-      <slots.popoverSurface {...slotProps.popoverSurface}>
+      <state.popoverSurface>
         <AvatarGroupProvider value={contextValues.avatarGroup}>
-          <slots.content {...slotProps.content} />
+          <state.content />
         </AvatarGroupProvider>
-      </slots.popoverSurface>
-    </slots.root>
+      </state.popoverSurface>
+    </state.root>
   );
 };

@@ -1,8 +1,105 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2024 07:30:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.42](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.42)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.41..@fluentui/theme_v2.6.42)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/utilities to v8.14.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+
+## [2.6.41](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.41)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.40..@fluentui/theme_v2.6.41)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.24 ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by beachball)
+
+## [2.6.40](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.40)
+
+Wed, 10 Jan 2024 07:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.39..@fluentui/theme_v2.6.40)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.5.15 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/utilities to v8.13.23 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [2.6.39](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.39)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.38..@fluentui/theme_v2.6.39)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.5.14 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/utilities to v8.13.22 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [2.6.38](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.38)
+
+Thu, 09 Nov 2023 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.37..@fluentui/theme_v2.6.38)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.21 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+
+## [2.6.37](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.37)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.36..@fluentui/theme_v2.6.37)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/utilities to v8.13.20 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [2.6.36](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.36)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.35..@fluentui/theme_v2.6.36)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.19 ([PR #29313](https://github.com/microsoft/fluentui/pull/29313) by beachball)
+
+## [2.6.35](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.35)
+
+Fri, 18 Aug 2023 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.34..@fluentui/theme_v2.6.35)
+
+### Patches
+
+- docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN. ([PR #28895](https://github.com/microsoft/fluentui/pull/28895) by Humberto.Morimoto@microsoft.com)
+
+## [2.6.34](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.34)
+
+Wed, 28 Jun 2023 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.33..@fluentui/theme_v2.6.34)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.18 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+
+## [2.6.33](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.33)
+
+Mon, 19 Jun 2023 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.32..@fluentui/theme_v2.6.33)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.17 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
 
 ## [2.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.32)
 

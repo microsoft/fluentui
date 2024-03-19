@@ -23,25 +23,30 @@ export type TabSlots = {
   content: NonNullable<Slot<'span'>>;
 };
 
+export type TabInternalSlots = TabSlots & {
+  contentReservedSpace?: Slot<'span'>;
+};
+
 /**
  * Tab Props
  */
-export type TabProps = ComponentProps<Partial<TabSlots>> & {
-  /**
-   * A tab can be set to disable interaction.
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * The value that identifies this tab when selected.
-   */
-  value: TabValue;
-};
+export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> &
+  Pick<Partial<TabSlots>, 'content'> & {
+    /**
+     * A tab can be set to disable interaction.
+     * @default false
+     */
+    disabled?: boolean;
+    /**
+     * The value that identifies this tab when selected.
+     */
+    value: TabValue;
+  };
 
 /**
  * State used in rendering Tab
  */
-export type TabState = ComponentState<TabSlots> &
+export type TabState = ComponentState<TabInternalSlots> &
   Pick<TabProps, 'value'> &
   Required<Pick<TabProps, 'disabled'>> & {
     /**
@@ -59,6 +64,8 @@ export type TabState = ComponentState<TabSlots> &
     /**
      * When defined, tab content with selected style is rendered hidden to reserve space.
      * This keeps consistent content size between unselected and selected states.
+     *
+     * @deprecated - use `contentReservedSpace` internal slot instead.
      */
     contentReservedSpaceClassName?: string;
     /**

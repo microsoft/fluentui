@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Theme } from '@fluentui/react-theme';
 import { themes, defaultTheme, ThemeIds } from '../theme';
-import { THEME_ID } from '../constants';
+import { DIR_ID, THEME_ID } from '../constants';
 import { FluentGlobals, FluentStoryContext } from '../hooks';
 
 const findTheme = (themeId?: ThemeIds) => {
@@ -25,12 +25,13 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
   const { mode } = parameters;
   const isVrTest = mode === 'vr-test';
 
+  const dir = parameters.dir ?? globals[DIR_ID] ?? 'ltr';
   const globalTheme = getActiveFluentTheme(globals);
   const paramTheme = findTheme(parameters.fluentTheme);
   const { theme } = paramTheme ?? globalTheme;
 
   return (
-    <FluentProvider theme={theme} dir={parameters.dir}>
+    <FluentProvider theme={theme} dir={dir}>
       {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
     </FluentProvider>
   );

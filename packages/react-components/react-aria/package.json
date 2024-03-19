@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.3.22",
+  "version": "9.10.2",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,6 +15,8 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -31,15 +33,18 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.3",
-    "@fluentui/react-utilities": "^9.9.2",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-shared-contexts": "^9.15.2",
+    "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/react-tabster": "^9.19.5",
+    "@fluentui/react-utilities": "^9.18.5",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -55,5 +60,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

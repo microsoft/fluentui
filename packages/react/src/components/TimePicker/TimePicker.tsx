@@ -89,6 +89,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       return {
         key: formattedTimeString,
         text: optionText,
+        data: option,
       };
     });
   }, [dateStartAnchor, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
@@ -156,8 +157,13 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         setSelectedTime(errorMessageToDisplay ? new Date('invalid') : undefined);
         changedTime = new Date('invalid');
       } else {
-        const timeSelection = (option?.key as string) || input || '';
-        const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
+        let updatedTime;
+        if (option?.data instanceof Date) {
+          updatedTime = option.data;
+        } else {
+          const timeSelection = (option?.key as string) || input || '';
+          updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
+        }
         setSelectedTime(updatedTime);
         changedTime = updatedTime;
       }

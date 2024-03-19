@@ -7,6 +7,11 @@ export interface UseFocusableGroupOptions {
    * Behavior for the Tab key.
    */
   tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
+
+  /**
+   * Tabster can ignore default handling of keydown events
+   */
+  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
 }
 
 /**
@@ -23,6 +28,9 @@ export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.Tab
   return useTabsterAttributes({
     groupper: {
       tabbability: getTabbability(options?.tabBehavior),
+    },
+    focusable: {
+      ignoreKeydown: options?.ignoreDefaultKeydown,
     },
   });
 };

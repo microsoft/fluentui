@@ -6,12 +6,6 @@
     "outDir": "../../dist/out-tsc",
     "types": ["node"]
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/plop-templates/**",
-    "**/plop-templates-node/**",
-    "**/plop-templates-react/**"
-  ],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/plop-templates/**", "**/plop-templates-node/**"],
   "include": ["./**/*.ts", "./**/*.js"]
 }

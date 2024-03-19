@@ -1,100 +1,131 @@
 import * as React from 'react';
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
+import { PortalProps } from '@fluentui/react-portal';
+import { ListboxContextValue } from '../contexts/ListboxContext';
 
 /**
  * ComboboxBase Props
  * Shared types between Combobox and Dropdown components
  */
-export type ComboboxBaseProps = SelectionProps & {
-  /**
-   * Controls the colors and borders of the combobox trigger.
-   * @default 'outline'
-   */
-  appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
+export type ComboboxBaseProps = SelectionProps &
+  Pick<PortalProps, 'mountNode'> & {
+    /**
+     * Controls the colors and borders of the combobox trigger.
+     * @default 'outline'
+     */
+    appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
 
-  /**
-   * The default open state when open is uncontrolled
-   */
-  defaultOpen?: boolean;
+    /**
+     * If set, the combobox will show an icon to clear the current value.
+     */
+    clearable?: boolean;
 
-  /**
-   * The default value displayed in the trigger input or button when the combobox's value is uncontrolled
-   */
-  defaultValue?: string;
+    /**
+     * The default open state when open is uncontrolled
+     */
+    defaultOpen?: boolean;
 
-  /**
-   * Render the combobox's popup inline in the DOM.
-   * This has accessibility benefits, particularly for touch screen readers.
-   */
-  inlinePopup?: boolean;
+    /**
+     * The default value displayed in the trigger input or button when the combobox's value is uncontrolled
+     */
+    defaultValue?: string;
 
-  /**
-   * Callback when the open/closed state of the dropdown changes
-   */
-  onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
+    /**
+     * Render the combobox's popup inline in the DOM.
+     * This has accessibility benefits, particularly for touch screen readers.
+     */
+    inlinePopup?: boolean;
 
-  /**
-   * Sets the open/closed state of the dropdown.
-   * Use together with onOpenChange to fully control the dropdown's visibility
-   */
-  open?: boolean;
+    /**
+     * Callback when the open/closed state of the dropdown changes
+     */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
+    onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
 
-  /**
-   * If set, the placeholder will show when no value is selected
-   */
-  placeholder?: string;
+    /**
+     * Sets the open/closed state of the dropdown.
+     * Use together with onOpenChange to fully control the dropdown's visibility
+     */
+    open?: boolean;
 
-  /**
-   * Configure the positioning of the combobox dropdown
-   *
-   * @defaultvalue below
-   */
-  positioning?: PositioningShorthand;
+    /**
+     * If set, the placeholder will show when no value is selected
+     */
+    placeholder?: string;
 
-  /**
-   * Controls the size of the combobox faceplate
-   * @default 'medium'
-   */
-  size?: 'small' | 'medium' | 'large';
+    /**
+     * Configure the positioning of the combobox dropdown
+     *
+     * @defaultvalue below
+     */
+    positioning?: PositioningShorthand;
 
-  /**
-   * The value displayed by the Combobox.
-   * Use this with `onOptionSelect` to directly control the displayed value string
-   */
-  value?: string;
-};
+    /**
+     * Controls the size of the combobox faceplate
+     * @default 'medium'
+     */
+    size?: 'small' | 'medium' | 'large';
+
+    /**
+     * The value displayed by the Combobox.
+     * Use this with `onOptionSelect` to directly control the displayed value string
+     */
+    value?: string;
+  };
 
 /**
  * State used in rendering Combobox
  */
-export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inlinePopup' | 'size'>> &
-  Pick<ComboboxBaseProps, 'placeholder' | 'value' | 'multiselect'> &
+export type ComboboxBaseState = Required<
+  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>
+> &
+  Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
   SelectionState & {
-    /* Option data for the currently highlighted option (not the selected option) */
+    /**
+     * @deprecated - no longer used internally
+     */
     activeOption?: OptionValue;
 
-    // Whether the keyboard focus outline style should be visible
+    /**
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE for writing styles involving focusVisible
+     */
     focusVisible: boolean;
 
-    // whether the combobox/dropdown currently has focus
-    hasFocus: boolean;
-
-    /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
+    /**
+     * @deprecated - no longer used internally
+     * Whether the next blur event should be ignored, and the combobox/dropdown will not close.
+     */
     ignoreNextBlur: React.MutableRefObject<boolean>;
 
-    setActiveOption(option?: OptionValue): void;
+    /**
+     * @deprecated - no longer used internally
+     */
+    setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
+    /**
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see useSetKeyboardNavigation for imperatively setting focus visible state
+     */
     setFocusVisible(focusVisible: boolean): void;
+
+    /**
+     * whether the combobox/dropdown currently has focus
+     */
+    hasFocus: boolean;
 
     setHasFocus(hasFocus: boolean): void;
 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
 
     setValue(newValue: string | undefined): void;
+
+    onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
   };
 
 /**
@@ -112,4 +143,6 @@ export type ComboboxBaseOpenEvents =
 
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
+  activeDescendant: ActiveDescendantContextValue;
+  listbox: ListboxContextValue;
 };
