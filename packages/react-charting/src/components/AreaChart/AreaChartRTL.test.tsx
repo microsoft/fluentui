@@ -13,6 +13,7 @@ import {
   isTimezoneSet,
   testWithWait,
   testWithoutWait,
+  isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
@@ -244,6 +245,14 @@ const chartPointsWithDate = [
   },
 ];
 
+const tickValues = [
+  new Date('2020-01-06T00:00:00.000Z'),
+  new Date('2020-01-08T00:00:00.000Z'),
+  new Date('2020-01-15T00:00:00.000Z'),
+  new Date('2020-02-06T00:00:00.000Z'),
+  new Date('2020-02-15T00:00:00.000Z'),
+];
+
 const chartDataWithDates = {
   chartTitle: 'Area chart styled example',
   lineChartData: chartPointsWithDate,
@@ -272,9 +281,48 @@ describe('Area chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(tzIdentifier),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
   });
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values is given',
+    AreaChart,
+    { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values not given and tick format is given',
+    AreaChart,
+    { data: chartDataWithDates, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values is given and tick format not given',
+    AreaChart,
+    { data: chartDataWithDates, tickValues },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {
@@ -437,8 +485,6 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
-    undefined,
-    undefined,
   );
 
   testWithWait(
@@ -453,7 +499,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-calendar-compat",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "description": "Calendar compat component for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,11 +33,11 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-jsx-runtime": "^9.0.32",
-    "@fluentui/react-shared-contexts": "^9.15.0",
-    "@fluentui/react-tabster": "^9.19.3",
-    "@fluentui/react-theme": "^9.1.17",
-    "@fluentui/react-utilities": "^9.18.3",
+    "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/react-shared-contexts": "^9.15.2",
+    "@fluentui/react-tabster": "^9.19.5",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.5",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

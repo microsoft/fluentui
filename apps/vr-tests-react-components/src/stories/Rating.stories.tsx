@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { CircleRegular, CircleFilled, SquareRegular, SquareFilled } from '@fluentui/react-icons';
-import { Rating } from '@fluentui/react-rating-preview';
+import { Rating } from '@fluentui/react-rating';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Rating Converged', module)
