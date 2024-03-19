@@ -13,7 +13,7 @@ export type TagPickerSize = 'medium' | 'large' | 'extra-large';
  * Picker Props
  */
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
-  Pick<ComboboxProps, 'onOptionSelect' | 'positioning'> &
+  Pick<ComboboxProps, 'onOptionSelect' | 'positioning' | 'disabled'> &
   Pick<Partial<TagPickerContextValue>, 'size' | 'selectedOptions' | 'appearance'> & {
     /**
      * Can contain two children including a trigger and a popover
@@ -27,7 +27,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
  */
 export type TagPickerState = ComponentState<TagPickerSlots> &
   Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> &
-  Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'> & {
+  Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
     /**
      * Configures the positioned menu
      */

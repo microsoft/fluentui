@@ -24,6 +24,7 @@ export interface TagPickerContextValue
   popoverId: string;
   targetRef: React.RefObject<HTMLElement>;
   size: TagPickerSize;
+  disabled: boolean;
 }
 
 /**
@@ -46,6 +47,7 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   popoverId: '',
   size: 'medium',
   appearance: 'outline',
+  disabled: false,
 };
 
 const TagPickerContext = createContext<TagPickerContextValue | undefined>(undefined);

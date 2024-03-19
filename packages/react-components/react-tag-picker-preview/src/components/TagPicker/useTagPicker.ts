@@ -17,7 +17,7 @@ import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
-  const { positioning, size = 'medium' } = props;
+  const { positioning, size = 'medium', disabled = false } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
   const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
@@ -47,9 +47,16 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     size: 'medium',
   });
   const onOptionClickBase = state.onOptionClick;
-  state.onOptionClick = useEventCallback(e => {
-    onOptionClickBase(e);
-    state.setOpen(e, false);
+  state.onOptionClick = useEventCallback(event => {
+    onOptionClickBase(event);
+    state.setOpen(event, false);
+  });
+  const setOpenBase = state.setOpen;
+  state.setOpen = useEventCallback((event, newValue) => {
+    if (disabled) {
+      return;
+    }
+    setOpenBase(event, newValue);
   });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -81,6 +88,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     trigger,
     popover: state.open || state.hasFocus ? popover : undefined,
     popoverId,
+    disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),
     targetRef,

@@ -27,6 +27,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     getOptionById,
     open,
     popoverId,
+    disabled,
   } = state;
   return {
     activeDescendant: React.useMemo(
@@ -60,6 +61,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       getOptionById,
       open,
       popoverId,
+      disabled,
     },
   };
 }
