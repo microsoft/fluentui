@@ -2,14 +2,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
 
 export type ColorSwatchSlots = {
-  root: NonNullable<Slot<'div'>>;
-  button: NonNullable<Slot<'button'>>;
+  root: NonNullable<Slot<'button'>>;
 };
 
 /**
  * ColorSwatch Props
  */
-export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> &
+export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
   Pick<SwatchPickerProps, 'size' | 'shape'> & {
     /**
      * Swatch color

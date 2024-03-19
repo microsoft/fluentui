@@ -2,6 +2,78 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.185",
+      "version": "1.7.185",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.115.7",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-hooks to v8.6.37",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.19.35",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Mar 2024 07:26:23 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.184",
+      "version": "1.7.184",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.19.34",
+            "commit": "56422e2212b44e023d187fc924cd14aa68ecda8e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Mar 2024 07:26:26 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.183",
+      "version": "1.7.183",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.19.33",
+            "commit": "6e6a1bf624e5a682b3607d918793d6f0eeb6b12a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Mar 2024 07:26:30 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.182",
+      "version": "1.7.182",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.19.32",
+            "commit": "ac6cb0e0936751938e68e32600c9c1555f506727"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Mar 2024 07:26:19 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.181",
       "version": "1.7.181",

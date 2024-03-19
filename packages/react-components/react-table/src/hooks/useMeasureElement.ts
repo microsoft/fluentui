@@ -9,7 +9,9 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  */
 export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() {
   const [width, setWidth] = React.useState(0);
+
   const container = React.useRef<HTMLElement | undefined>(undefined);
+  const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
 
   const { targetDocument } = useFluent();
 
@@ -19,32 +21,41 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
     setWidth(containerWidth || 0);
   }, []);
 
-  // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = React.useState(() => createResizeObserverFromDocument(targetDocument, handleResize));
   const measureElementRef = React.useCallback(
     (el: TElement | null) => {
-      if (!targetDocument || !resizeObserver) {
+      if (!targetDocument) {
         return;
       }
 
-      // cleanup previous container
-      if (container.current) {
-        resizeObserver.unobserve(container.current);
+      // if the element is removed, stop observing it
+      if (!el && resizeObserverRef.current && container.current) {
+        resizeObserverRef.current.unobserve(container.current);
       }
 
       container.current = undefined;
+
       if (el?.parentElement) {
         container.current = el.parentElement;
-        resizeObserver.observe(container.current);
         handleResize();
+        resizeObserverRef.current?.observe(container.current);
       }
     },
-    [targetDocument, resizeObserver, handleResize],
+    [targetDocument, handleResize],
   );
 
   React.useEffect(() => {
-    return () => resizeObserver?.disconnect();
-  }, [resizeObserver]);
+    resizeObserverRef.current = createResizeObserverFromDocument(targetDocument, handleResize);
+
+    if (!container.current || !resizeObserverRef.current) {
+      return;
+    }
+
+    resizeObserverRef.current.observe(container.current);
+
+    return () => {
+      resizeObserverRef.current?.disconnect();
+    };
+  }, [handleResize, targetDocument]);
 
   return { width, measureElementRef };
 }

@@ -23,6 +23,11 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   defaultSelectedValue?: string;
 
   /**
+   * Whether SwatchPicker is row or grid
+   */
+  grid?: boolean;
+
+  /**
    * Triggers a callback when the value has been changed
    */
   onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
@@ -56,4 +61,4 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
+  Pick<SwatchPickerProps, 'grid' | 'size' | 'shape' | 'spacing'>;
