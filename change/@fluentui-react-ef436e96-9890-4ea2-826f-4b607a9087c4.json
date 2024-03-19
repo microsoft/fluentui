@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "wrap requestAnimationFrame around resize observer",
+  "packageName": "@fluentui/react",
+  "email": "kushagrlnu@microsoft.com",
+  "dependentChangeType": "patch"
+}
