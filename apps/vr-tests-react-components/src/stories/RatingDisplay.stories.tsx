@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { RatingDisplay } from '@fluentui/react-rating';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { Steps, StoryWright } from 'storywright';
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removed unneeded zIndex from tab active indicator",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

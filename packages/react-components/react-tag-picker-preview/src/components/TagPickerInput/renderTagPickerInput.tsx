@@ -13,7 +13,6 @@ export const renderTagPickerInput_unstable = (state: TagPickerInputState) => {
   return (
     <>
       <state.root />
-      {state.clearIcon && <state.clearIcon />}
       {state.expandIcon && <state.expandIcon />}
     </>
   );

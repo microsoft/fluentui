@@ -647,6 +647,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0" stopColor={this._colors[index]} />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+            </defs>
+          )}
           <path
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
@@ -678,7 +686,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             <path
               id={`${index}-graph-${this._uniqueIdForGraph}`}
               d={area(singleStackedData)!}
-              fill={this._colors[index]}
+              fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
               opacity={this._opacity[index]}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}

@@ -34,6 +34,7 @@ export const Default = () => {
         <ColorSwatch color="#011F5E" value="011F5E" aria-label="dark blue" />
         <ColorSwatch color="#712F9E" value="712F9E" aria-label="purple" />
       </SwatchPicker>
+
       <div
         className={styles.example}
         style={{

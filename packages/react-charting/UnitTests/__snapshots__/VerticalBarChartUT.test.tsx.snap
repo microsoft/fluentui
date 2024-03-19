@@ -17,11 +17,11 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
           overflow: hidden;
           width: 100%;
         }
-    id="chart_15"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_16"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -32,7 +32,8 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone17"
+      data-focuszone-id="FocusZone5"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -66,7 +67,7 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_15"
+          id="xAxisGElementchart_3"
           transform="translate(0, -35)"
         />
         <g
@@ -94,7 +95,7 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_15"
+          id="yAxisGElementchart_3"
           transform="translate(40, 0)"
         />
         <g>
@@ -141,7 +142,8 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone18"
+                data-focuszone-id="FocusZone6"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div

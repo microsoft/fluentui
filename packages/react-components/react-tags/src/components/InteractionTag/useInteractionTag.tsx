@@ -16,13 +16,19 @@ export const useInteractionTag_unstable = (
   props: InteractionTagProps,
   ref: React.Ref<HTMLDivElement>,
 ): InteractionTagState => {
-  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+  const { handleTagDismiss, size: contextSize, appearance: contextAppearance } = useTagGroupContext_unstable();
 
   const id = useId('fui-InteractionTag-', props.id);
 
   const interactionTagPrimaryId = useId('fui-InteractionTagPrimary-');
 
-  const { appearance = 'filled', disabled = false, shape = 'rounded', size = contextSize, value = id } = props;
+  const {
+    appearance = contextAppearance ?? 'filled',
+    disabled = false,
+    shape = 'rounded',
+    size = contextSize,
+    value = id,
+  } = props;
 
   return {
     appearance,

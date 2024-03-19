@@ -13,16 +13,17 @@ export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots> =
  */
 const useStyles = makeStyles({
   root: {
-    minHeight: '30px',
     alignItems: 'center',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
+    boxSizing: 'border-box',
     display: 'flex',
     minWidth: '250px',
     position: 'relative',
     flexWrap: 'wrap',
-    paddingLeft: tokens.spacingHorizontalMNudge,
+    paddingLeft: tokens.spacingHorizontalM,
+    // 20px is a static value representing the space required for the caret icon
+    paddingRight: `calc(${tokens.spacingHorizontalM} + 20px)`,
 
     // windows high contrast mode focus indicator
     ':focus-within': {
@@ -82,15 +83,14 @@ const useStyles = makeStyles({
   },
 
   // size variants
-  small: {
-    paddingRight: `calc(${tokens.spacingHorizontalSNudge} + 20px)`,
-  },
   medium: {
-    paddingRight: `calc(${tokens.spacingHorizontalMNudge} + 20px)`,
+    minHeight: '32px',
   },
   large: {
-    columnGap: tokens.spacingHorizontalSNudge,
-    paddingRight: `calc(${tokens.spacingHorizontalM} + 20px)`,
+    minHeight: '40px',
+  },
+  'extra-large': {
+    minHeight: '44px',
   },
 
   // appearance variants
@@ -156,8 +156,8 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
     styles.root,
     styles[state.size],
     styles[state.appearance],
-    !state.disabled && state.appearance === 'outline' && styles.outlineInteractive,
-    state.disabled && styles.disabled,
+    // !state.disabled && state.appearance === 'outline' && styles.outlineInteractive,
+    // state.disabled && styles.disabled,
     state.root.className,
   );
 

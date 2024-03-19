@@ -29,7 +29,7 @@ export const Default = (props: TeachingPopoverProps) => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
+      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
         <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(1)}
       </TeachingPopoverBody>

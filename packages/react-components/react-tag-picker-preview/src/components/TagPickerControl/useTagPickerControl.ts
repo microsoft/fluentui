@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 
@@ -16,11 +16,23 @@ export const useTagPickerControl_unstable = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
-  const { appearance = 'outline', size = 'medium', disabled = false, clearable = false } = props;
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef) as React.RefObject<HTMLDivElement>;
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
+  const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target !== triggerRef.current) {
+      event.preventDefault();
+    }
+  });
+  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (!event.defaultPrevented && event.target !== triggerRef.current) {
+      triggerRef.current?.focus();
+      setOpen(event, !open);
+    }
+  });
   return {
     components: {
       root: 'div',
@@ -28,26 +40,13 @@ export const useTagPickerControl_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef),
-        // TODO merge
-        onMouseDown: (e: React.MouseEvent<HTMLElement>) => {
-          if (e.target !== triggerRef.current) {
-            e.preventDefault();
-          }
-        },
-        onClick: (e: React.MouseEvent<HTMLElement>) => {
-          if (!e.defaultPrevented && e.target !== triggerRef.current) {
-            triggerRef.current?.focus();
-            setOpen(e, !open);
-          }
-        },
+        onMouseDown: handleMouseDown,
+        onClick: handleClick,
         ...props,
       }),
       { elementType: 'div' },
     ),
-
-    appearance,
     size,
-    disabled,
-    clearable,
+    appearance,
   };
 };
