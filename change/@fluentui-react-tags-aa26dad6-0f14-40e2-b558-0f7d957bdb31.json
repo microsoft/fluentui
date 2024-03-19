@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds appearance and dismissible to TagGroupContext",
+  "packageName": "@fluentui/react-tags",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

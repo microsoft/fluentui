@@ -2,6 +2,64 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/react-components_v9.47.1",
+      "version": "9.47.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "4f1b1fd95da8e50aabb74d61d30d7c2570c3e40e",
+            "comment": "reverting #30770 which caused compilation issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Mar 2024 21:43:48 GMT",
+      "tag": "@fluentui/react-components_v9.47.0",
+      "version": "9.47.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "9865fa91e4dd006de0cf96af196a24e2290a2337",
+            "comment": "fix: Applying correct styles to icon when ToggleButton is checked and has a subtle or transparent appearance."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "56422e2212b44e023d187fc924cd14aa68ecda8e",
+            "comment": "fix: add aria-labelledby to infolabel note"
+          }
+        ],
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364",
+            "comment": "'feat: add @fluentui/react-rating to suite."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364",
+            "comment": "'feat: Release Rating to stable."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e4022e259c27c90158ed0dbb5278df5aa714118f",
+            "comment": "feat: enable .js extension addition and directory import/export unwrapping in build output"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Mar 2024 19:33:20 GMT",
       "tag": "@fluentui/react-components_v9.46.8",
       "version": "9.46.8",

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "'feat: Release Rating to stable.",
-  "packageName": "@fluentui/react-rating",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

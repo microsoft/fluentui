@@ -6,7 +6,6 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
-  button: 'fui-ColorSwatch__button',
 };
 
 export const swatchCSSVars = {
@@ -65,16 +64,6 @@ const useStyles = makeResetStyles({
       color: 'Highlight',
       forcedColorAdjust: 'none',
     },
-  },
-});
-
-const useButtonStyles = makeResetStyles({
-  width: '100%',
-  height: '100%',
-  boxSizing: 'border-box',
-  opacity: 0,
-  ':hover': {
-    cursor: 'pointer',
   },
 });
 
@@ -140,7 +129,6 @@ const useShapeStyles = makeStyles({
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   const styles = useStyles();
-  const buttonStyles = useButtonStyles();
   const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
@@ -153,8 +141,6 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
     state.selected && selectedStyles.selected,
     state.root.className,
   );
-
-  state.button.className = mergeClasses(colorSwatchClassNames.button, buttonStyles, state.button.className);
 
   return state;
 };
