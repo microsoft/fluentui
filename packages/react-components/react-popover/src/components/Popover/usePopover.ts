@@ -64,7 +64,9 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
   const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
     clearTimeout(setOpenTimeoutRef.current);
-    if (!(e instanceof Event) && e.persist) {
+    // https://www.npmjs.com/package/is-react-synthetic-event
+    const isSyntheticEvent = typeof e !== 'object' || e === null ? false :  '_dispatchListeners' in e;
+    if (isSyntheticEvent && e.persist) {
       // < React 17 still uses pooled synthetic events
       e.persist();
     }
