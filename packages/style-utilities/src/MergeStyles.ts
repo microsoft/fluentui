@@ -14,6 +14,7 @@ export type {
   IRawStyle,
   IStyle,
   IStyleSet,
+  IStyleSetBase,
   IProcessedStyleSet,
   IStyleSheetConfig,
   ICSPSettings,
