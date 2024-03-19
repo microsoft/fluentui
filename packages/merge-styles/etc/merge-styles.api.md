@@ -568,20 +568,42 @@ export type ShadowConfig = {
     __isShadowConfig__: true;
 };
 
-// @public
-export class Stylesheet {
+// @public (undocumented)
+export class ShadowDomStylesheet extends Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
     // (undocumented)
     addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet, queue?: boolean): void;
-    argsFromClassName(className: string): IStyle[] | undefined;
-    cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
-    classNameFromKey(key: string): string | undefined;
-    // (undocumented)
-    protected _createStyleElement(): HTMLStyleElement;
     // (undocumented)
     getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
     // (undocumented)
     getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet>;
+    // (undocumented)
+    static getInstance(shadowConfig?: ShadowConfig): ShadowDomStylesheet;
+    // (undocumented)
+    insertRule(rule: string, preserve?: boolean): void;
+    // (undocumented)
+    makeCSSStyleSheet(): ExtendedCSSStyleSheet;
+    // (undocumented)
+    onAddSheet(callback: AddSheetCallback): Function;
+}
+
+// @public
+export class Stylesheet {
+    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
+    argsFromClassName(className: string): IStyle[] | undefined;
+    cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
+    classNameFromKey(key: string): string | undefined;
+    // (undocumented)
+    protected _classNameToArgs: {
+        [key: string]: {
+            args: any;
+            rules: string[];
+        };
+    };
+    // (undocumented)
+    protected _config: IStyleSheetConfig;
+    // (undocumented)
+    protected _createStyleElement(): HTMLStyleElement;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
@@ -593,16 +615,34 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
-    makeCSSStyleSheet(): ExtendedCSSStyleSheet;
+    protected _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean;
     // (undocumented)
-    onAddSheet(callback: AddSheetCallback): Function;
+    protected _keyToClassName: {
+        [key: string]: string;
+    };
+    // (undocumented)
+    protected _lastStyleElement?: HTMLStyleElement;
     onInsertRule(callback: Function | InsertRuleCallback): Function;
+    // (undocumented)
+    protected _onInsertRuleCallbacks: (Function | InsertRuleCallback)[];
     onReset(callback: Function): Function;
+    // (undocumented)
+    protected _onResetCallbacks: Function[];
+    // (undocumented)
+    protected _preservedRules: string[];
     reset(): void;
     // (undocumented)
     resetKeys(): void;
+    // (undocumented)
+    protected _rules: string[];
     serialize(): string;
     setConfig(config?: IStyleSheetConfig): void;
+    // (undocumented)
+    protected _sheetCounter: number;
+    // (undocumented)
+    protected _styleCounter: number;
+    // (undocumented)
+    protected _styleElement?: HTMLStyleElement;
 }
 
 // @public (undocumented)

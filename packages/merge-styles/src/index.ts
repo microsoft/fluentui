@@ -32,20 +32,22 @@ export { fontFace } from './fontFace';
 
 export { keyframes } from './keyframes';
 
-export {
-  InjectionMode,
-  Stylesheet,
-  SUPPORTS_CONSTRUCTABLE_STYLESHEETS,
-  SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS,
-} from './Stylesheet';
+export { InjectionMode, Stylesheet } from './Stylesheet';
 export type {
   ICSPSettings,
   ISerializedStylesheet,
   IStyleSheetConfig,
   ExtendedCSSStyleSheet,
   InsertRuleCallback,
-  AddSheetCallback,
 } from './Stylesheet';
+
+export {
+  ShadowDomStylesheet,
+  SUPPORTS_CONSTRUCTABLE_STYLESHEETS,
+  SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS,
+} from './ShadowDomStylesheet';
+
+export type { AddSheetCallback } from './ShadowDomStylesheet';
 
 export { setRTL } from './StyleOptionsState';
 

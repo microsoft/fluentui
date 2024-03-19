@@ -2,7 +2,8 @@
 // globals in stylesheets will be addressed as part of shadow DOM work.
 // See: https://github.com/microsoft/fluentui/issues/28058
 import { IStyle } from './IStyle';
-import { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
+import { GLOBAL_STYLESHEET_KEY, SHADOW_DOM_STYLESHEET_SETTING } from './shadowConfig';
+import type { ShadowConfig } from './shadowConfig';
 
 export const InjectionMode = {
   /**
@@ -112,29 +113,9 @@ declare global {
   }
 }
 
-export const SUPPORTS_CONSTRUCTABLE_STYLESHEETS =
-  typeof document !== 'undefined' && Array.isArray(document.adoptedStyleSheets) && 'replace' in CSSStyleSheet.prototype;
-
-let supportsModifyingAdoptedStyleSheets = false;
-
-if (SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
-  try {
-    document.adoptedStyleSheets.push();
-    supportsModifyingAdoptedStyleSheets = true;
-  } catch (e) {
-    supportsModifyingAdoptedStyleSheets = false;
-  }
-}
-
-export const SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS = supportsModifyingAdoptedStyleSheets;
-
-export type ExtendedCSSStyleSheet = CSSStyleSheet & {
-  bucketName: string;
-  metadata: Record<string, unknown>;
-};
-
 export type WindowWithMergeStyles = (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
+  [SHADOW_DOM_STYLESHEET_SETTING]?: typeof Stylesheet;
   FabricConfig?: {
     mergeStyles?: IStyleSheetConfig;
     serializedStylesheet?: ISerializedStylesheet;
@@ -155,8 +136,9 @@ try {
 
 let _stylesheet: Stylesheet | undefined;
 
-export const getGlobal = (win?: Window): WindowWithMergeStyles => {
-  return (win || _global) as WindowWithMergeStyles;
+export type ExtendedCSSStyleSheet = CSSStyleSheet & {
+  bucketName: string;
+  metadata: Record<string, unknown>;
 };
 
 type InsertRuleArgs = {
@@ -166,7 +148,6 @@ type InsertRuleArgs = {
 };
 
 export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
-export type AddSheetCallback = ({ key, sheet }: { key: string; sheet: ExtendedCSSStyleSheet }) => void;
 
 /**
  * Represents the state of styles registered in the page. Abstracts
@@ -176,72 +157,36 @@ export type AddSheetCallback = ({ key, sheet }: { key: string; sheet: ExtendedCS
  * @public
  */
 export class Stylesheet {
-  private _lastStyleElement?: HTMLStyleElement;
+  protected _lastStyleElement?: HTMLStyleElement;
+  protected _config: IStyleSheetConfig;
+
   private _styleElement?: HTMLStyleElement;
 
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
-  private _config: IStyleSheetConfig;
   private _styleCounter = 0;
   private _keyToClassName: { [key: string]: string } = {};
   private _onInsertRuleCallbacks: (Function | InsertRuleCallback)[] = [];
   private _onResetCallbacks: Function[] = [];
-  private _onAddSheetCallbacks: AddSheetCallback[] = [];
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
-  private _adoptableSheets: Map<string, ExtendedCSSStyleSheet>;
-  private _sheetCounter = 0;
 
   /**
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const sConfig = shadowConfig || DEFAULT_SHADOW_CONFIG;
-    const stylesheetKey = sConfig.stylesheetKey || GLOBAL_STYLESHEET_KEY;
-    const inShadow = sConfig.inShadow;
-    const win = sConfig.window || (typeof window !== 'undefined' ? window : undefined);
-    const global = (win || _global) as WindowWithMergeStyles;
-    const doc = win ? win.document : typeof document !== 'undefined' ? document : undefined;
+    const doc = typeof document !== 'undefined' ? document : undefined;
+    _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
-    _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
-
-    // When an app has multiple versions of Fluent v8 it is possible
-    // that an older version of Stylesheet is initialized before
-    // the version that supports shadow DOM. We check for this case
-    // and re-initialize the stylesheet in that case.
-    const oldStylesheetInitializedFirst = _stylesheet && !_stylesheet.addAdoptableStyleSheet;
-
-    if (
-      !_stylesheet ||
-      oldStylesheetInitializedFirst ||
-      (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)
-    ) {
-      const fabricConfig = global?.FabricConfig || {};
-      const defaultMergeStyles = {
-        window: win,
-        inShadow,
-        stylesheetKey,
-      };
-      fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-      fabricConfig.mergeStyles = { ...defaultMergeStyles, ...fabricConfig.mergeStyles };
-
-      let stylesheet: Stylesheet;
-      if (oldStylesheetInitializedFirst) {
-        stylesheet = new Stylesheet(fabricConfig.mergeStyles, JSON.parse(_stylesheet.serialize()));
-      } else {
-        stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
-      }
-
-      _stylesheet = stylesheet;
-      global[STYLESHEET_SETTING] = _stylesheet;
-    } else {
-      _stylesheet.setConfig({
-        window: win,
-        inShadow,
-        stylesheetKey,
-      });
+    if (_global[SHADOW_DOM_STYLESHEET_SETTING]) {
+      return _global[SHADOW_DOM_STYLESHEET_SETTING].getInstance(shadowConfig);
     }
-    if (win) {
-      _stylesheet.getAdoptableStyleSheet(stylesheetKey);
+
+    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)) {
+      const fabricConfig = _global.FabricConfig || {};
+      fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
+      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
+      _stylesheet = stylesheet;
+      _global[STYLESHEET_SETTING] = _stylesheet;
     }
 
     return _stylesheet;
@@ -262,29 +207,6 @@ export class Stylesheet {
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
     this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
     this._rules = serializedStylesheet?.rules ?? this._rules;
-    this._adoptableSheets = new Map();
-  }
-
-  public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet, queue: boolean = true): void {
-    if (!this._adoptableSheets.has(key)) {
-      this._adoptableSheets.set(key, sheet);
-      const win = this._config.window;
-      if (queue && win) {
-        win.queueMicrotask(() => {
-          this._onAddSheetCallbacks.forEach(callback => callback({ key, sheet }));
-        });
-      }
-    }
-  }
-
-  public getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet {
-    let sheet = this._adoptableSheets.get(key);
-    if (!sheet) {
-      sheet = this.makeCSSStyleSheet();
-      this.addAdoptableStyleSheet(key, sheet);
-    }
-
-    return sheet;
   }
 
   /**
@@ -309,14 +231,6 @@ export class Stylesheet {
       ...this._config,
       ...config,
     };
-  }
-
-  public getConfig(): IStyleSheetConfig {
-    return this._config;
-  }
-
-  public getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet> {
-    return this._adoptableSheets;
   }
 
   /**
@@ -344,14 +258,6 @@ export class Stylesheet {
 
     return () => {
       this._onInsertRuleCallbacks = this._onInsertRuleCallbacks.filter(cb => cb !== callback);
-    };
-  }
-
-  public onAddSheet(callback: AddSheetCallback): Function {
-    this._onAddSheetCallbacks.push(callback);
-
-    return () => {
-      this._onAddSheetCallbacks = this._onAddSheetCallbacks.filter(cb => cb !== callback);
     };
   }
 
@@ -424,27 +330,20 @@ export class Stylesheet {
     const { injectionMode, stylesheetKey = GLOBAL_STYLESHEET_KEY } = this._config;
 
     const injectStyles = injectionMode !== InjectionMode.none;
-    const addToConstructableStylesheet =
-      stylesheetKey === GLOBAL_STYLESHEET_KEY || !!this._adoptableSheets.has(stylesheetKey);
 
     let element: HTMLStyleElement | undefined = undefined;
-    let constructableSheet: CSSStyleSheet | undefined = undefined;
     let sheet: CSSStyleSheet | null = null;
 
     if (injectStyles) {
       element = this._getStyleElement();
     }
 
-    if (injectStyles && addToConstructableStylesheet) {
-      constructableSheet = this.getAdoptableStyleSheet(stylesheetKey);
-    }
-
     if (preserve) {
       this._preservedRules.push(rule);
     }
 
-    if (element || constructableSheet) {
-      sheet = constructableSheet || element?.sheet || null;
+    if (element) {
+      sheet = element?.sheet || null;
       switch (injectionMode) {
         case InjectionMode.insertNode:
           this._insertRuleIntoSheet(element?.sheet, rule);
@@ -455,10 +354,6 @@ export class Stylesheet {
             (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
           }
           break;
-      }
-
-      if (constructableSheet) {
-        this._insertRuleIntoSheet(constructableSheet, rule);
       }
     } else {
       this._rules.push(rule);
@@ -501,26 +396,6 @@ export class Stylesheet {
     this._keyToClassName = {};
   }
 
-  public makeCSSStyleSheet(): ExtendedCSSStyleSheet {
-    const win = this._config.window || window;
-    let sheet: ExtendedCSSStyleSheet | undefined = undefined;
-    if (!SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
-      const style = this._createStyleElement();
-      sheet = style.sheet as ExtendedCSSStyleSheet;
-    } else {
-      sheet = new (win as Window & typeof globalThis).CSSStyleSheet() as ExtendedCSSStyleSheet;
-    }
-
-    if (sheet) {
-      sheet.bucketName = 'merge-styles';
-      sheet.metadata = {
-        sortOrder: this._sheetCounter++,
-      };
-    }
-
-    return sheet;
-  }
-
   protected _createStyleElement(): HTMLStyleElement {
     const doc = this._config.window?.document || document;
     const head: HTMLHeadElement = doc.head;
@@ -559,7 +434,7 @@ export class Stylesheet {
     return styleElement;
   }
 
-  private _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean {
+  protected _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean {
     if (!sheet) {
       return false;
     }

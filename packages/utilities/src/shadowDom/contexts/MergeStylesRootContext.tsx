@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { GLOBAL_STYLESHEET_KEY, Stylesheet, makeShadowConfig, DEFAULT_SHADOW_CONFIG } from '@fluentui/merge-styles';
+import {
+  GLOBAL_STYLESHEET_KEY,
+  ShadowDomStylesheet,
+  makeShadowConfig,
+  DEFAULT_SHADOW_CONFIG,
+} from '@fluentui/merge-styles';
 import { getWindow } from '../../dom';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/useAdoptedStylesheet';
@@ -116,7 +121,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
       return;
     }
 
-    const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
+    const sheet = ShadowDomStylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
     const off = sheet.onAddSheet(sheetHandler);
 
     return () => {
@@ -132,7 +137,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
 
     let changed = false;
     const next = new Map<string, ExtendedCSSStyleSheet>(stylesheets);
-    const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
+    const sheet = ShadowDomStylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
 
     const adoptedSheets = sheet.getAdoptedSheets();
 
