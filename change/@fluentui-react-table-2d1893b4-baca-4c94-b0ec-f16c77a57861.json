@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: column resizing in StrictMode now works",
+  "packageName": "@fluentui/react-table",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
