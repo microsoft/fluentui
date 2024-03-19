@@ -11,7 +11,7 @@ export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
 };
 
 const useDrawerResetStyles = makeResetStyles({
-  ...drawerDefaultStyles,
+  ...(drawerDefaultStyles as Record<string, string>),
   position: 'relative',
 });
 

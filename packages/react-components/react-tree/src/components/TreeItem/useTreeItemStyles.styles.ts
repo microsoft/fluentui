@@ -1,4 +1,4 @@
-import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -28,9 +28,9 @@ const useBaseStyles = makeResetStyles({
     outlineStyle: 'none',
   },
   // This adds the focus outline for the TreeItemLayout element
-  ...createCustomFocusIndicatorStyle(
+  ...(createCustomFocusIndicatorStyle(
     {
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      borderRadius: tokens.borderRadiusMedium,
       outlineColor: tokens.colorStrokeFocus2,
       outlineRadius: tokens.borderRadiusMedium,
       // FIXME: tokens.strokeWidthThick causes some weird bugs
@@ -41,7 +41,7 @@ const useBaseStyles = makeResetStyles({
       customizeSelector: selector =>
         `${selector} > .${treeItemLayoutClassNames.root}, ${selector} > .${treeItemPersonaLayoutClassNames.root}`,
     },
-  ),
+  ) as Record<string, string>),
 });
 
 type StaticLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;

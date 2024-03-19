@@ -56,7 +56,7 @@ const useRootBaseStyles = makeResetStyles({
   },
 
   userSelect: 'none',
-  ...createFocusOutlineStyle(),
+  ...(createFocusOutlineStyle() as Record<string, string>),
 });
 
 const useContentBaseStyles = makeResetStyles({

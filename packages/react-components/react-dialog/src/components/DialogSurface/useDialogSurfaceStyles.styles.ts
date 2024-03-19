@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
@@ -14,15 +14,14 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
  * Styles for the root slot
  */
 const useRootBaseStyle = makeResetStyles({
-  ...createFocusOutlineStyle(),
-  ...shorthands.inset(0),
-  ...shorthands.padding(0),
-  ...shorthands.padding(SURFACE_PADDING),
-  ...shorthands.margin('auto'),
-  ...shorthands.borderStyle('none'),
-  ...shorthands.overflow('unset'),
-  ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
-  ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+  ...(createFocusOutlineStyle() as Record<string, string>),
+  inset: 0,
+  padding: SURFACE_PADDING,
+  margin: 'auto',
+  borderStyle: 'none',
+  overflow: 'unset',
+  border: `${SURFACE_BORDER_WIDTH} solid ${tokens.colorTransparentStroke}`,
+  borderRadius: tokens.borderRadiusXLarge,
 
   display: 'block',
   userSelect: 'unset',
@@ -82,7 +81,7 @@ const backdropVisible = {
   opacity: 1,
 };
 const useBackdropBaseStyle = makeResetStyles({
-  ...shorthands.inset('0px'),
+  inset: '0px',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
   position: 'fixed',
 

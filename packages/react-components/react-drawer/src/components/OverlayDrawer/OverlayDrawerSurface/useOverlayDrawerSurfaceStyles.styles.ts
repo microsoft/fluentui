@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
@@ -13,7 +13,7 @@ export const OverlayDrawerSurfaceClassNames: SlotClassNames<OverlayDrawerSurface
  * Styles for the backdrop slot
  */
 const useBackdropResetStyles = makeResetStyles({
-  ...shorthands.inset('0px'),
+  inset: '0px',
   position: 'fixed',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
 });

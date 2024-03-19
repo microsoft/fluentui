@@ -100,7 +100,7 @@ const useRootBaseClassName = makeResetStyles({
 
   // Focus styles
 
-  ...createCustomFocusIndicatorStyle({
+  ...(createCustomFocusIndicatorStyle({
     borderColor: tokens.colorStrokeFocus2,
     borderRadius: tokens.borderRadiusMedium,
     borderWidth: '1px',
@@ -109,15 +109,15 @@ const useRootBaseClassName = makeResetStyles({
       inset
     `,
     zIndex: 1,
-  }),
+  }) as Record<string, string>),
 
   // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
   '@supports (-moz-appearance:button)': {
-    ...createCustomFocusIndicatorStyle({
+    ...(createCustomFocusIndicatorStyle({
       boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
       inset
     `,
-    }),
+    }) as Record<string, string>),
   },
 });
 

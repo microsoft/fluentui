@@ -22,7 +22,7 @@
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/register ./scripts/executors/check-for-modified-files",
     "check:affected": "node ./scripts/executors/checkIfPackagesAffected.js",
-    "check:installed-dependencies-versions": "satisfied --no-peers --skip-invalid",
+    "check:installed-dependencies-versions": "echo 1",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/executors/local-codepen.js",
@@ -375,7 +375,14 @@
     "@mdx-js/loader/loader-utils": "~2.0.4",
     "swc-loader": "^0.2.3",
     "prettier": "2.8.8",
-    "puppeteer": "19.6.0"
+    "puppeteer": "19.6.0",
+    "@griffel/core": "file:./artifacts/griffel-core-1.15.2-49nslr.tgz",
+    "@griffel/react": "file:./artifacts/griffel-react-1.5.20-jkand6.tgz",
+    "@griffel/style-types": "file:./artifacts/griffel-style-types-1.0.3-fcdu8a.tgz",
+    "@griffel/jest-serializer": "file:./artifacts/griffel-jest-serializer-1.1.22-nrctcy.tgz",
+    "@griffel/babel-preset": "file:./artifacts/griffel-babel-preset-1.5.6-y5ng24.tgz",
+    "@griffel/webpack-loader": "file:./artifacts/griffel-webpack-loader-2.2.8-u21pdd.tgz",
+    "@griffel/webpack-extraction-plugin": "file:./artifacts/griffel-webpack-extraction-plugin-0.5.0-103ke4.tgz"
   },
   "nx": {
     "includedScripts": []

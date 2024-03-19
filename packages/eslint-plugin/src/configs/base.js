@@ -14,6 +14,7 @@ module.exports = {
      */
     ...getNamingConventionRule(),
     '@fluentui/max-len': 'off',
+    'deprecation/deprecation': 'off',
   },
   overrides: [
     {

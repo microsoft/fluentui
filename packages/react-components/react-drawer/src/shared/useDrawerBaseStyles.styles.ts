@@ -14,7 +14,7 @@ export const drawerCSSVars = {
  * Default shared styles for the Drawer component
  */
 export const drawerDefaultStyles: GriffelStyle = {
-  ...shorthands.overflow('hidden'),
+  overflow: 'hidden',
 
   width: `var(${drawerCSSVars.drawerSizeVar})`,
   maxWidth: '100vw',

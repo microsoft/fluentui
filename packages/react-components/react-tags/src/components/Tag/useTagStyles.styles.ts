@@ -47,10 +47,10 @@ const useRootRoundedBaseClassName = makeResetStyles({
   ...baseStyles,
 
   borderRadius: tokens.borderRadiusMedium,
-  ...createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-  }),
+  ...(createCustomFocusIndicatorStyle({
+    borderRadius: tokens.borderRadiusMedium,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+  }) as Record<string, string>),
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -60,7 +60,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',
@@ -76,10 +76,10 @@ const useRootCircularBaseClassName = makeResetStyles({
   ...baseStyles,
 
   borderRadius: tokens.borderRadiusCircular,
-  ...createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-  }),
+  ...(createCustomFocusIndicatorStyle({
+    borderRadius: tokens.borderRadiusCircular,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+  }) as Record<string, string>),
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -89,9 +89,9 @@ const useRootCircularBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
-      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
-      ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
+      borderLeft: `${tokens.strokeWidthThin} solid`,
+      borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',

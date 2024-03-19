@@ -28,7 +28,7 @@ const useRootBaseClassName = makeResetStyles({
   cursor: 'pointer',
   verticalAlign: 'middle',
   color: tokens.colorNeutralForeground3,
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+  ...(createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) as Record<string, string>),
 });
 
 const useRootStyles = makeStyles({

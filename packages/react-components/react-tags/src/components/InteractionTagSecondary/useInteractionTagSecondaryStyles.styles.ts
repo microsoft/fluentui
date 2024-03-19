@@ -26,7 +26,9 @@ const useRootBaseClassName = makeResetStyles({
   height: '100%',
   alignItems: 'center',
 
-  ...createCustomFocusIndicatorStyle(shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2)),
+  ...(createCustomFocusIndicatorStyle({
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+  }) as Record<string, string>),
 
   border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
