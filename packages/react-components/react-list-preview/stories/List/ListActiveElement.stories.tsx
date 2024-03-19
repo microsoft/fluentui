@@ -112,6 +112,7 @@ export const ListActiveElement = () => {
             avatar={avatar}
             className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}
             onFocus={onFocus}
+            data-value={name}
           />
         ))}
       </List>

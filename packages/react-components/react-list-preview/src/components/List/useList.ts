@@ -39,7 +39,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
   const onChange = useEventCallback((e: React.SyntheticEvent, data: OnSelectionChangeData) => {
     const selectedItemsAsArray = Array.from(data.selectedItems);
     setSelectionState(selectedItemsAsArray);
-    onSelectionChange?.(e, { selectedItems: selectedItemsAsArray });
+    onSelectionChange?.(e, { event: e, type: 'change', selectedItems: selectedItemsAsArray });
   });
 
   const selection = useListSelection({

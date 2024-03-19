@@ -9,6 +9,8 @@
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SelectionHookParams } from '@fluentui/react-utilities';
@@ -51,9 +53,7 @@ export type ListProps = ComponentProps<ListSlots> & {
     selectionMode?: SelectionMode_2;
     selectedItems?: SelectionItemId[];
     defaultSelectedItems?: SelectionItemId[];
-    onSelectionChange?: (event: React_2.SyntheticEvent, data: {
-        selectedItems: SelectionItemId[];
-    }) => void;
+    onSelectionChange?: EventHandler<OnListSelectionChangeData>;
 };
 
 // @public (undocumented)
