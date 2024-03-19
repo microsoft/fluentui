@@ -2,26 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type {
-  TagPickerControlState,
-  TagPickerControlSlots,
-  TagPickerControlContextValues,
-} from './TagPickerControl.types';
-import { TagPickerControlContextProvider } from '../../contexts/TagPickerControlContext';
+import type { TagPickerControlState, TagPickerControlSlots } from './TagPickerControl.types';
 
 /**
  * Render the final JSX of PickerControl
  */
-export const renderTagPickerControl_unstable = (
-  state: TagPickerControlState,
-  contexts: TagPickerControlContextValues,
-) => {
+export const renderTagPickerControl_unstable = (state: TagPickerControlState) => {
   assertSlots<TagPickerControlSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return (
-    <TagPickerControlContextProvider value={contexts.pickerControl}>
-      <state.root />
-    </TagPickerControlContextProvider>
-  );
+  return <state.root />;
 };

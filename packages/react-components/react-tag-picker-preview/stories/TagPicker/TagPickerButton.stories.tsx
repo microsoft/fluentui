@@ -30,16 +30,10 @@ export const Button = () => {
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl clearable>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag
-                key={option}
-                dismissible
-                shape="rounded"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-              >
+              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
                 {option}
               </Tag>
             ))}

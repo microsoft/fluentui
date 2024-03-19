@@ -26,6 +26,7 @@ export const Filtering = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
+    setQuery('');
   };
 
   const children = useComboboxFilter(
@@ -47,24 +48,17 @@ export const Filtering = () => {
       filter(optionText, queryText) {
         // TODO make this filter provide value too
         // In this example optionText is the same as value
-        return selectedOptions.indexOf(optionText) < 0 && optionText.toLowerCase().includes(queryText.toLowerCase());
+        return !selectedOptions.includes(optionText) && optionText.toLowerCase().includes(queryText.toLowerCase());
       },
     },
   );
-
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl clearable>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag
-                dismissible
-                key={option}
-                shape="rounded"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-              >
+              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
                 {option}
               </Tag>
             ))}
