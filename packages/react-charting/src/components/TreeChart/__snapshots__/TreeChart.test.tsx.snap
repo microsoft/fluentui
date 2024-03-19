@@ -7,7 +7,7 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
       &:focus {
         outline: none;
       }
-  data-focuszone-id="FocusZone2"
+  data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -956,7 +956,7 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
       &:focus {
         outline: none;
       }
-  data-focuszone-id="FocusZone1"
+  data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -1905,7 +1905,7 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
       &:focus {
         outline: none;
       }
-  data-focuszone-id="FocusZone3"
+  data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}

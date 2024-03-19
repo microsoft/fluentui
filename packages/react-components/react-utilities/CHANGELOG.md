@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 28 Feb 2024 02:34:19 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.5)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.4..@fluentui/react-utilities_v9.18.5)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.4)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.3..@fluentui/react-utilities_v9.18.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.3)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.2..@fluentui/react-utilities_v9.18.3)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
 
 ## [9.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.2)
 

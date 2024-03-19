@@ -56,7 +56,8 @@ export const useTeachingPopoverHeader_unstable = (
       renderByDefault: true,
       defaultProps: {
         children: <Dismiss12Regular />,
-        role: 'img',
+        role: 'button',
+        'aria-label': 'dismiss',
         onClick: onDismissButtonClick,
       },
       elementType: 'button',

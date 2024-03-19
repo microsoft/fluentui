@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-select",
-  "version": "9.1.65",
+  "version": "9.1.68",
   "description": "Fluent UI React Select component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,12 +33,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.55",
+    "@fluentui/react-field": "^9.1.58",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-jsx-runtime": "^9.0.31",
-    "@fluentui/react-shared-contexts": "^9.14.1",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.18.2",
+    "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/react-shared-contexts": "^9.15.2",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.5",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

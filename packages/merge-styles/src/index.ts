@@ -9,7 +9,7 @@ export type { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 export type { DeepPartial } from './DeepPartial';
 
 // eslint-disable-next-line deprecation/deprecation
-export type { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IStyleSet';
+export type { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, IStyleSetBase, Omit } from './IStyleSet';
 
 export type {
   ICSSRule,

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { ComboboxBaseState } from '../utils/ComboboxBase.types';
+import type { ComboboxBaseState } from '../utils/ComboboxBase.types';
+import type { TagPickerSize } from '../components/TagPicker/TagPicker.types';
 
 export interface TagPickerContextValue
   extends Pick<
     ComboboxBaseState,
     | 'multiselect'
     | 'open'
-    | 'hasFocus'
     | 'clearSelection'
     | 'getOptionById'
     | 'open'
@@ -17,12 +17,13 @@ export interface TagPickerContextValue
     | 'setOpen'
     | 'setValue'
     | 'value'
+    | 'appearance'
   > {
-  triggerRef: React.RefObject<HTMLElement>;
+  triggerRef: React.RefObject<HTMLInputElement>;
   popoverRef: React.RefObject<HTMLDivElement>;
   popoverId: string;
   targetRef: React.RefObject<HTMLElement>;
-  size: 'medium' | 'large' | 'extra-large';
+  size: TagPickerSize;
 }
 
 /**
@@ -34,7 +35,6 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   popoverRef: React.createRef<HTMLDivElement>(),
   targetRef: React.createRef<HTMLElement>(),
   open: false,
-  hasFocus: false,
   clearSelection: () => null,
   getOptionById: () => undefined,
   selectedOptions: [],
@@ -45,6 +45,7 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   value: undefined,
   popoverId: '',
   size: 'medium',
+  appearance: 'outline',
 };
 
 const TagPickerContext = createContext<TagPickerContextValue | undefined>(undefined);
