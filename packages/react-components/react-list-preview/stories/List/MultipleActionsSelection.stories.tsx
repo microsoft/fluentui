@@ -48,12 +48,23 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     ...shorthands.borderRadius('5px'),
   },
+  title: {
+    fontWeight: 600,
+    display: 'block',
+  },
   checkmark: {
     position: 'absolute',
     left: '10px',
     top: '10px',
     zIndex: 1,
   },
+  preview: {
+    ...shorthands.gridArea('preview'),
+    ...shorthands.overflow('hidden'),
+  },
+  header: { ...shorthands.gridArea('header') },
+  action: { ...shorthands.gridArea('action') },
+  secondaryAction: { ...shorthands.gridArea('secondary_action') },
 });
 
 const CardExample = (props: { title: string; value: string; selected?: boolean }) => {
@@ -68,16 +79,14 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
       checkmark={{ className: styles.checkmark }}
       aria-label={value}
     >
-      <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
+      <div role="gridcell" className={styles.preview}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
-      <div role="gridcell" style={{ gridArea: 'header' }}>
-        <Text weight="semibold" style={{ display: 'block' }}>
-          {props.title}
-        </Text>
+      <div role="gridcell" className={styles.header}>
+        <Text className={styles.title}>{props.title}</Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
-      <div role="gridcell" style={{ gridArea: 'action' }}>
+      <div role="gridcell" className={styles.action}>
         <Button
           appearance="primary"
           aria-label="Install"
@@ -90,7 +99,7 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
           Install
         </Button>
       </div>
-      <div role="gridcell" style={{ gridArea: 'secondary_action' }}>
+      <div role="gridcell" className={styles.secondaryAction}>
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button

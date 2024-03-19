@@ -47,6 +47,17 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     ...shorthands.borderRadius('5px'),
   },
+  title: {
+    fontWeight: 600,
+    display: 'block',
+  },
+  preview: {
+    ...shorthands.gridArea('preview'),
+    ...shorthands.overflow('hidden'),
+  },
+  header: { ...shorthands.gridArea('header') },
+  action: { ...shorthands.gridArea('action') },
+  secondaryAction: { ...shorthands.gridArea('secondary_action') },
 });
 
 const CardExample = (props: { title: string; value: string }) => {
@@ -61,16 +72,14 @@ const CardExample = (props: { title: string; value: string }) => {
       aria-label={value}
       onClick={() => alert('Primary action triggered!')}
     >
-      <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
+      <div className={styles.preview}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
-      <div style={{ gridArea: 'header' }}>
-        <Text weight="semibold" style={{ display: 'block' }}>
-          {props.title}
-        </Text>
+      <div className={styles.header}>
+        <Text className={styles.title}>{props.title}</Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
-      <div style={{ gridArea: 'action' }}>
+      <div className={styles.action}>
         <Button
           appearance="primary"
           aria-label="Install"
@@ -83,7 +92,7 @@ const CardExample = (props: { title: string; value: string }) => {
           Install
         </Button>
       </div>
-      <div style={{ gridArea: 'secondary_action' }}>
+      <div className={styles.secondaryAction}>
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
