@@ -38,19 +38,19 @@ export const Carousel = (props: TeachingPopoverProps) => (
         }}
       >
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
+        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(1)}
         </TeachingPopoverBody>
 
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
+        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(2)}
         </TeachingPopoverBody>
 
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
+        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(3)}
         </TeachingPopoverBody>
