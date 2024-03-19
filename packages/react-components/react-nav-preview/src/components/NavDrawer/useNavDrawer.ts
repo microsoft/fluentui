@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render NavDrawer.
