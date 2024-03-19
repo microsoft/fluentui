@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update Input styles to improve clickability",
+  "packageName": "@fluentui/react-input",
+  "email": "nathvichea1@gmail.com",
+  "dependentChangeType": "patch"
+}

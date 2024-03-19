@@ -28,7 +28,7 @@ const useRootClassName = makeResetStyles({
 
   // size: medium (default)
   minHeight: fieldHeights.medium,
-  padding: `0 ${tokens.spacingHorizontalMNudge}`,
+  padding: `0 ${tokens.spacingHorizontalXXS}`,
   ...typographyStyles.body1,
 
   // appearance: outline (default)
@@ -96,8 +96,6 @@ const useRootClassName = makeResetStyles({
 const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalSNudge,
     ...typographyStyles.caption1,
   },
   medium: {
@@ -105,8 +103,6 @@ const useRootStyles = makeStyles({
   },
   large: {
     minHeight: fieldHeights.large,
-    paddingLeft: tokens.spacingHorizontalM,
-    paddingRight: tokens.spacingHorizontalM,
     ...typographyStyles.body2,
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
@@ -199,7 +195,7 @@ const useInputClassName = makeResetStyles({
   flexGrow: 1,
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
-  padding: `0 ${tokens.spacingHorizontalXXS}`,
+  padding: `0 ${tokens.spacingHorizontalMNudge}`,
   color: tokens.colorNeutralForeground1,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
@@ -219,9 +215,14 @@ const useInputClassName = makeResetStyles({
 });
 
 const useInputElementStyles = makeStyles({
-  large: {
+  small: {
     paddingLeft: tokens.spacingHorizontalSNudge,
     paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  medium: {},
+  large: {
+    paddingLeft: tokens.spacingHorizontalL,
+    paddingRight: tokens.spacingHorizontalL,
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -258,6 +259,58 @@ const useContentStyles = makeStyles({
   },
 });
 
+const useBeforeStyles = makeStyles({
+  small: {
+    paddingLeft: tokens.spacingHorizontalSNudge,
+  },
+  medium: {
+    paddingLeft: tokens.spacingHorizontalMNudge,
+  },
+  large: {
+    paddingLeft: tokens.spacingHorizontalL,
+  },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+});
+
+const useAfterStyles = makeStyles({
+  small: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  medium: {
+    paddingRight: tokens.spacingHorizontalMNudge,
+  },
+  large: {
+    paddingRight: tokens.spacingHorizontalL,
+  },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+});
+const useInputHasBeforeClassName = makeStyles({
+  small: {
+    paddingLeft: 0,
+  },
+  medium: {
+    paddingLeft: 0,
+  },
+  large: {
+    paddingLeft: 0,
+  },
+});
+const useInputHasAfterClassName = makeStyles({
+  small: {
+    paddingRight: 0,
+  },
+  medium: {
+    paddingRight: 0,
+  },
+  large: {
+    paddingRight: 0,
+  },
+});
+
 /**
  * Apply styling to the Input slots based on the state
  */
@@ -270,6 +323,10 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const rootStyles = useRootStyles();
   const inputStyles = useInputElementStyles();
   const contentStyles = useContentStyles();
+  const beforeStyles = useBeforeStyles();
+  const afterStyles = useAfterStyles();
+  const inputHasBeforeClassName = useInputHasBeforeClassName();
+  const inputHasAfterClassName = useInputHasAfterClassName();
 
   state.root.className = mergeClasses(
     inputClassNames.root,
@@ -288,26 +345,30 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   state.input.className = mergeClasses(
     inputClassNames.input,
     useInputClassName(),
-    size === 'large' && inputStyles.large,
+    inputStyles[size],
     disabled && inputStyles.disabled,
     state.input.className,
   );
 
   const contentClasses = [useContentClassName(), disabled && contentStyles.disabled, contentStyles[size]];
+
   if (state.contentBefore) {
     state.contentBefore.className = mergeClasses(
       inputClassNames.contentBefore,
       ...contentClasses,
+      beforeStyles[size],
       state.contentBefore.className,
     );
+    state.input.className = mergeClasses(inputHasBeforeClassName[size], state.input.className);
   }
   if (state.contentAfter) {
     state.contentAfter.className = mergeClasses(
       inputClassNames.contentAfter,
       ...contentClasses,
+      afterStyles[size],
       state.contentAfter.className,
     );
+    state.input.className = mergeClasses(inputHasAfterClassName[size], state.input.className);
   }
-
   return state;
 };
