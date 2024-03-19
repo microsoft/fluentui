@@ -14,3 +14,14 @@ to use. Please consult the usage examples below for more details.
 
 > ⚠️ Once there is any kind of keyboard navigation on the component it must follow the
 > [aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids)
+
+### role="grid" vs role="table"
+
+Some examples will use `role="grid"` whereas other examples will either use semantic `<table>` elements or use
+`role="table"` with `<div>` elements. There is a notable reason why this is the case.
+**This does not relate to DataGrid or Table components, but rather ARIA roles**.
+
+When keyboard navigation is used to interact with rows or cells, prefer `role="grid"`, because the native table
+roles do not support any kind of interaction. You should remember that not every table needs to be interactive,
+and for most cases in web pages, screen reader users will be _**more confused**_ to navigate to `role="grid"`. Please
+consult with your accessibility champ to make sure that you are using the correct role.
