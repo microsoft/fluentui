@@ -4,6 +4,7 @@ import descriptionMd from './IconsDescription.md';
 export { Default } from './IconsDefault.stories';
 export { BundleIcon as bundleIcon } from './IconsBundleIcon.stories';
 export { Styling } from './IconsStyling.stories';
+export { FontSize } from './IconsFontSize.stories';
 
 export default {
   title: 'Icons/Overview',
@@ -17,7 +18,7 @@ export default {
     videos: [
       {
         href: 'https://www.youtube.com/watch?v=XSPwgmUZ4Tw',
-        preview: '/social/fluent-trainings-ep03.webp',
+        preview: './social/fluent-trainings-ep03.webp',
         source: 'youtube',
         title: 'Fluent UI React Trainings: Styling best practices and icons',
       },
