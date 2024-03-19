@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render NavDrawer.
@@ -13,11 +15,20 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
-  const inlineDrawerState = useInlineDrawer_unstable(props, ref);
+  const focusAttributes = useArrowNavigationGroup({ axis: 'vertical', circular: true });
+  const baseDrawerState = useInlineDrawer_unstable(
+    {
+      role: 'navigation',
+      as: 'div',
+      ...focusAttributes,
+      ...props,
+    },
+    ref,
+  );
   const navState = useNav_unstable(props, ref);
 
   return {
-    ...inlineDrawerState,
     ...navState,
+    ...baseDrawerState,
   };
 };
