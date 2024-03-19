@@ -572,17 +572,11 @@ export type ShadowConfig = {
 export class ShadowDomStylesheet extends Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
     // (undocumented)
-    addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet, queue?: boolean): void;
-    // (undocumented)
-    getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
-    // (undocumented)
     getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet>;
     // (undocumented)
     static getInstance(shadowConfig?: ShadowConfig): ShadowDomStylesheet;
     // (undocumented)
     insertRule(rule: string, preserve?: boolean): void;
-    // (undocumented)
-    makeCSSStyleSheet(): ExtendedCSSStyleSheet;
     // (undocumented)
     onAddSheet(callback: AddSheetCallback): Function;
 }
@@ -594,13 +588,6 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    protected _classNameToArgs: {
-        [key: string]: {
-            args: any;
-            rules: string[];
-        };
-    };
-    // (undocumented)
     protected _config: IStyleSheetConfig;
     // (undocumented)
     protected _createStyleElement(): HTMLStyleElement;
@@ -608,8 +595,6 @@ export class Stylesheet {
     getClassNameCache(): {
         [key: string]: string;
     };
-    // (undocumented)
-    getConfig(): IStyleSheetConfig;
     static getInstance(shadowConfig?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
@@ -617,32 +602,14 @@ export class Stylesheet {
     // (undocumented)
     protected _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean;
     // (undocumented)
-    protected _keyToClassName: {
-        [key: string]: string;
-    };
-    // (undocumented)
     protected _lastStyleElement?: HTMLStyleElement;
     onInsertRule(callback: Function | InsertRuleCallback): Function;
-    // (undocumented)
-    protected _onInsertRuleCallbacks: (Function | InsertRuleCallback)[];
     onReset(callback: Function): Function;
-    // (undocumented)
-    protected _onResetCallbacks: Function[];
-    // (undocumented)
-    protected _preservedRules: string[];
     reset(): void;
     // (undocumented)
     resetKeys(): void;
-    // (undocumented)
-    protected _rules: string[];
     serialize(): string;
     setConfig(config?: IStyleSheetConfig): void;
-    // (undocumented)
-    protected _sheetCounter: number;
-    // (undocumented)
-    protected _styleCounter: number;
-    // (undocumented)
-    protected _styleElement?: HTMLStyleElement;
 }
 
 // @public (undocumented)
