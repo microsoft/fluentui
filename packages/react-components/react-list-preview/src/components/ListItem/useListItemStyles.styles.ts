@@ -10,8 +10,8 @@ export const listItemClassNames: SlotClassNames<ListItemSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.padding(0),
-  ...shorthands.margin(0),
+  padding: 0,
+  margin: 0,
   textIndent: 0,
   listStyleType: 'none',
   ...createCustomFocusIndicatorStyle(
@@ -26,6 +26,10 @@ const useRootBaseStyles = makeResetStyles({
 const useCheckmarkBaseStyles = makeStyles({
   root: {
     alignSelf: 'center',
+    //eslint-disable-next-line
+    '& .fui-Checkbox__indicator': {
+      ...shorthands.margin('4px'),
+    },
   },
 });
 /**
@@ -65,9 +69,3 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
 
   return state;
 };
-
-export const useIndicatorStyle = makeStyles({
-  root: {
-    ...shorthands.margin('4px'),
-  },
-});

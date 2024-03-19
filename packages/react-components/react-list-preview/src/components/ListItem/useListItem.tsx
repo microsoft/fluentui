@@ -9,12 +9,18 @@ import {
   useFocusFinders,
   useMergedTabsterAttributes_unstable,
 } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useEventCallback,
+  useId,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { useIndicatorStyle } from './useListItemStyles.styles';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
@@ -63,8 +69,6 @@ export const useListItem_unstable = (
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
-
-  const baseIndicatorStyles = useIndicatorStyle();
 
   React.useEffect(() => {
     if (rootRef.current) {
@@ -146,8 +150,6 @@ export const useListItem_unstable = (
   });
 
   const onCheckboxChange = useEventCallback((e: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
-    props.checkmark?.onChange?.(e, data);
-
     if (!isSelectionEnabled || e.defaultPrevented) {
       return;
     }
@@ -189,14 +191,17 @@ export const useListItem_unstable = (
   const checkmark = slot.optional(props.checkmark, {
     defaultProps: {
       checked: isSelected,
-      onChange: onCheckboxChange,
       onClick: onCheckboxClick,
       tabIndex: -1,
-      indicator: { className: baseIndicatorStyles.root },
     },
     renderByDefault: isSelectionEnabled,
     elementType: Checkbox,
   });
+
+  if (checkmark) {
+    checkmark.onChange = mergeCallbacks(checkmark.onChange, onCheckboxChange);
+    checkmark.onClick = mergeCallbacks(checkmark.onClick, onCheckboxClick);
+  }
 
   const state: ListItemState = {
     components: {

@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-
 import * as React from 'react';
 import { fireEvent, render, within } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
