@@ -64,8 +64,10 @@ const useLabelStyles = makeStyles({
   },
 
   horizontalLarge: {
-    paddingTop: tokens.spacingVerticalS,
-    paddingBottom: tokens.spacingVerticalS,
+    // To align the label text with the Input text, it should be centered within the 40px height of the Input.
+    // This is (40px - lineHeightBase400) / 2 = 9px. Hardcoded since there is no 9px padding token.
+    paddingTop: '9px',
+    paddingBottom: '9px',
   },
 });
 
