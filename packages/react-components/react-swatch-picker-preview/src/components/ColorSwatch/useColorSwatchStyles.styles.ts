@@ -6,6 +6,8 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
+  icon: 'fui-ColorSwatch__icon',
+  disabledIcon: 'fui-ColorSwatch__disabledIcon',
 };
 
 export const swatchCSSVars = {
@@ -20,9 +22,12 @@ const { color } = swatchCSSVars;
 const useStyles = makeResetStyles({
   display: 'inline-flex',
   flexShrink: 0,
+  alignItems: 'center',
+  justifyContent: 'center',
   boxSizing: 'border-box',
   border: `1px solid ${tokens.colorTransparentStroke}`,
   background: `var(${color})`,
+  overflow: 'hidden',
   padding: '0',
   ':hover': {
     cursor: 'pointer',
@@ -125,6 +130,32 @@ const useShapeStyles = makeStyles({
   },
 });
 
+const useIconStyles = makeStyles({
+  disabledIcon: {
+    color: tokens.colorNeutralForegroundInverted,
+    ':hover': {
+      cursor: 'not-allowed',
+      boxShadow: 'none',
+    },
+  },
+  icon: {
+    display: 'flex',
+    alignSelf: 'center',
+  },
+  extraSmall: {
+    fontSize: '16px',
+  },
+  small: {
+    fontSize: '16px',
+  },
+  medium: {
+    fontSize: '20px',
+  },
+  large: {
+    fontSize: '24px',
+  },
+});
+
 /**
  * Apply styling to the ColorSwatch slots based on the state
  */
@@ -133,15 +164,31 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
+  const iconStyles = useIconStyles();
+
+  const size = state.size ?? 'medium';
 
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
     styles,
-    sizeStyles[state.size ?? 'medium'],
+    sizeStyles[size],
     shapeStyles[state.shape ?? 'square'],
     state.selected && selectedStyles.selected,
     state.root.className,
   );
+
+  if (state.disabled && state.disabledIcon) {
+    state.disabledIcon.className = mergeClasses(
+      iconStyles.icon,
+      iconStyles[size],
+      iconStyles.disabledIcon,
+      state.disabledIcon.className,
+    );
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.icon, iconStyles[size], state.icon.className);
+  }
 
   return state;
 };

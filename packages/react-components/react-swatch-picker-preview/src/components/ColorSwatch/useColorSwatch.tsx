@@ -3,6 +3,7 @@ import { slot, useEventCallback, getIntrinsicElementProps, mergeCallbacks } from
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
+import { ProhibitedFilled } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render ColorSwatch.
@@ -17,7 +18,7 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, value, onClick, style, ...rest } = props;
+  const { color, disabled, disabledIcon, icon, value, onClick, style, ...rest } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.grid);
@@ -45,9 +46,20 @@ export const useColorSwatch_unstable = (
       }
     : { 'aria-checked': selected };
 
+  const iconShorthand = slot.optional(icon, { elementType: 'span' });
+  const disabledIconShorthand = slot.optional(disabledIcon, {
+    defaultProps: {
+      children: <ProhibitedFilled />,
+    },
+    renderByDefault: true,
+    elementType: 'span',
+  });
+
   return {
     components: {
       root: 'button',
+      icon: 'span',
+      disabledIcon: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('button', {
@@ -56,6 +68,7 @@ export const useColorSwatch_unstable = (
         ...ariaSelected,
         onClick: onColorSwatchClick,
         type: 'button',
+        disabled,
         ...rest,
         style: {
           ...rootVariables,
@@ -64,7 +77,10 @@ export const useColorSwatch_unstable = (
       }),
       { elementType: 'button' },
     ),
-    size,
+    icon: iconShorthand,
+    disabledIcon: disabledIconShorthand,
+    disabled,
+    size: rest.size ?? size,
     shape,
     selected,
     color,
