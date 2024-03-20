@@ -7,7 +7,6 @@ export type {
 } from './TagPicker';
 export {
   TagPickerInput,
-  iconSizes,
   tagPickerInputClassNames,
   renderTagPickerInput_unstable,
   useTagPickerInputStyles_unstable,

@@ -32,13 +32,6 @@ import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
 
 // @public (undocumented)
-export const iconSizes: {
-    small: string;
-    medium: string;
-    large: string;
-};
-
-// @public (undocumented)
 export type PickerContextValues = {
     picker: TagPickerContextValue;
     activeDescendant: ActiveDescendantContextValue;
@@ -97,12 +90,13 @@ export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
 export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots>;
 
 // @public
-export type TagPickerControlProps = ComponentProps<TagPickerControlSlots>;
+export type TagPickerControlProps = ComponentProps<Partial<TagPickerControlSlots>>;
 
 // @public (undocumented)
 export type TagPickerControlSlots = {
     root: Slot<'div'>;
-};
+    secondaryAction: Slot<'span'>;
+} & Pick<ComboboxSlots, 'expandIcon'>;
 
 // @public
 export type TagPickerControlState = ComponentState<TagPickerControlSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;
@@ -139,8 +133,8 @@ export type TagPickerInputProps = Omit<ComponentProps<Partial<TagPickerInputSlot
 
 // @public (undocumented)
 export type TagPickerInputSlots = {
-    root: Slot<'input'>;
-} & Pick<ComboboxSlots, 'expandIcon'>;
+    root: NonNullable<Slot<'input'>>;
+};
 
 // @public
 export type TagPickerInputState = ComponentState<TagPickerInputSlots> & Pick<TagPickerContextValue, 'size' | 'disabled'>;
@@ -194,7 +188,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> & Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
     positioning?: PositioningShorthand;
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;

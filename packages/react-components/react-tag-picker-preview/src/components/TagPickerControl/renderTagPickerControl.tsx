@@ -10,5 +10,11 @@ import type { TagPickerControlState, TagPickerControlSlots } from './TagPickerCo
 export const renderTagPickerControl_unstable = (state: TagPickerControlState) => {
   assertSlots<TagPickerControlSlots>(state);
 
-  return <state.root />;
+  return (
+    <state.root>
+      {state.root.children}
+      {state.expandIcon && <state.expandIcon />}
+      {state.secondaryAction && <state.secondaryAction />}
+    </state.root>
+  );
 };

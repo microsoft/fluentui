@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { isHTMLElement, elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { TagPickerOnOptionSelectData, TagPickerProps, TagPickerState } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
@@ -18,6 +18,7 @@ import { SelectionProps } from '../../utils/Selection.types';
 export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
+  const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const { positioning, size = 'medium', disabled = false } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
@@ -63,6 +64,10 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   });
   const setOpenBase = state.setOpen;
   state.setOpen = useEventCallback((event, newValue) => {
+    // if event comes from secondary action, ignore it
+    if (isHTMLElement(event.target) && elementContains(secondaryActionRef.current, event.target)) {
+      return;
+    }
     if (disabled) {
       return;
     }
@@ -101,6 +106,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),
+    secondaryActionRef,
     targetRef,
     ...state,
     size,
