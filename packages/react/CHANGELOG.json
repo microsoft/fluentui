@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 20 Mar 2024 07:27:30 GMT",
+      "tag": "@fluentui/react_v8.116.0",
+      "version": "8.116.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "420834+andyrooger@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "61b2b750d65ebf39519bdf2ab1354ced00485ee5",
+            "comment": "Recreate async helper in tooltiphost on remount"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Mar 2024 07:30:28 GMT",
       "tag": "@fluentui/react_v8.115.7",
       "version": "8.115.7",
