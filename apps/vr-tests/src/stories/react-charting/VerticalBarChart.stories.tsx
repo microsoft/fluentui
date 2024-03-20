@@ -13,12 +13,140 @@ import {
   VerticalStackedBarChart,
 } from '@fluentui/react-charting';
 
+const VBCBasicExample = () => {
+  const points: IVerticalBarChartDataPoint[] = [
+    {
+      x: 0,
+      y: 10000,
+      legend: 'Oranges',
+      color: '#0078d4',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '10%',
+      lineData: {
+        y: 7000,
+        yAxisCalloutData: '34%',
+      },
+    },
+    {
+      x: 10000,
+      y: 50000,
+      legend: 'Dogs',
+      color: '#005a9e',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '20%',
+      lineData: {
+        y: 30000,
+      },
+    },
+    {
+      x: 25000,
+      y: 30000,
+      legend: 'Apples',
+      color: '#00188f',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '37%',
+      lineData: {
+        y: 3000,
+        yAxisCalloutData: '43%',
+      },
+    },
+    {
+      x: 40000,
+      y: 13000,
+      legend: 'Bananas',
+      color: '#00bcf2',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '88%',
+    },
+    {
+      x: 52000,
+      y: 43000,
+      legend: 'Giraffes',
+      color: '#0078d4',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '71%',
+      lineData: {
+        y: 30000,
+      },
+    },
+    {
+      x: 68000,
+      y: 30000,
+      legend: 'Cats',
+      color: '#005a9e',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '40%',
+      lineData: {
+        y: 5000,
+      },
+    },
+    {
+      x: 80000,
+      y: 20000,
+      legend: 'Elephants',
+      color: '#0078d4',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '87%',
+      lineData: {
+        y: 16000,
+      },
+    },
+    {
+      x: 92000,
+      y: 45000,
+      legend: 'Monkeys',
+      color: '#00bcf2',
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '33%',
+      lineData: {
+        y: 40000,
+        yAxisCalloutData: '45%',
+      },
+    },
+  ];
+
+  const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
+  const rootStyle = { width: `${650}px`, height: `${350}px` };
+
+  return (
+    <div style={rootStyle}>
+      <VerticalBarChart
+        culture={window.navigator.language}
+        chartTitle="Vertical bar chart basic example "
+        data={points}
+        width={650}
+        useSingleColor={false}
+        height={350}
+        lineLegendText={'just line'}
+        lineLegendColor={'brown'}
+        lineOptions={lineOptions}
+        hideLabels={false}
+        secondaryYScaleOptions={{ yMaxValue: 17, yMinValue: 5 }}
+      />
+    </div>
+  );
+};
+
+storiesOf('react-charting/VerticalBarChart', module)
+  .addDecorator((story, context) => TestWrapperDecorator(story, context))
+  .addDecorator((story, context) => {
+    const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+    return <StoryWright steps={steps}>{story()}</StoryWright>;
+  })
+  .addStory(
+    'Basic - Secondary Y Axis',
+    () => {
+      return <VBCBasicExample />;
+    },
+    { includeDarkMode: true, includeRtl: true },
+  );
+
 storiesOf('react-charting/VerticalBarChart', module)
   .addDecorator((story, context) => TestWrapperDecorator(story, context))
   .addDecorator((story, context) => {
     const steps = new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
-
       .click('.ms-OverflowSet-item:nth-child(4)') // Click on Apple Legend
       .executeScript(
         `document.querySelectorAll('rect')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
@@ -34,7 +162,6 @@ storiesOf('react-charting/VerticalBarChart', module)
       .executeScript(
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
-
       .click('.ms-OverflowSet-item:nth-child(4)') // Click(Deselect) on Apple Legend
       .executeScript(
         `document.querySelectorAll('rect')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
@@ -50,143 +177,39 @@ storiesOf('react-charting/VerticalBarChart', module)
       .executeScript(
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
+      .end();
+    return <StoryWright steps={steps}>{story()}</StoryWright>;
+  })
+  .addStory('Basic - Legend Interactions', () => {
+    return <VBCBasicExample />;
+  });
 
-      .click('.ms-OverflowSet-item:nth-child(0)') // Click on Just Line Legend
+storiesOf('react-charting/VerticalBarChart', module)
+  .addDecorator((story, context) => TestWrapperDecorator(story, context))
+  .addDecorator((story, context) => {
+    const steps = new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .click('.ms-OverflowSet-item:nth-child(1)') // Click on Just Line Legend
       .executeScript(
-        `document.querySelectorAll('[id^="_VBC_line]')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+        `document.querySelectorAll('[id^="_VBC_line"]')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: false,clientX:100,clientY:100}))`,
       )
       .snapshot('JustLineSelectedLine', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        `ddocument.querySelectorAll('[id^="_VBC_line]')[0].dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+        `document.querySelectorAll('[id^="_VBC_line"]')[0].dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: false,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
       .executeScript(
-        `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+        `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: false,clientX:100,clientY:100}))`,
       ) // Hover over selected bar
       .snapshot('JustLineUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: false,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
       .end();
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
-  .addStory(
-    'Basic - Secondary Y Axis',
-    () => {
-      const points: IVerticalBarChartDataPoint[] = [
-        {
-          x: 0,
-          y: 10000,
-          legend: 'Oranges',
-          color: '#0078d4',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '10%',
-          lineData: {
-            y: 7000,
-            yAxisCalloutData: '34%',
-          },
-        },
-        {
-          x: 10000,
-          y: 50000,
-          legend: 'Dogs',
-          color: '#005a9e',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '20%',
-          lineData: {
-            y: 30000,
-          },
-        },
-        {
-          x: 25000,
-          y: 30000,
-          legend: 'Apples',
-          color: '#00188f',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '37%',
-          lineData: {
-            y: 3000,
-            yAxisCalloutData: '43%',
-          },
-        },
-        {
-          x: 40000,
-          y: 13000,
-          legend: 'Bananas',
-          color: '#00bcf2',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '88%',
-        },
-        {
-          x: 52000,
-          y: 43000,
-          legend: 'Giraffes',
-          color: '#0078d4',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '71%',
-          lineData: {
-            y: 30000,
-          },
-        },
-        {
-          x: 68000,
-          y: 30000,
-          legend: 'Cats',
-          color: '#005a9e',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '40%',
-          lineData: {
-            y: 5000,
-          },
-        },
-        {
-          x: 80000,
-          y: 20000,
-          legend: 'Elephants',
-          color: '#0078d4',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '87%',
-          lineData: {
-            y: 16000,
-          },
-        },
-        {
-          x: 92000,
-          y: 45000,
-          legend: 'Monkeys',
-          color: '#00bcf2',
-          xAxisCalloutData: '2020/04/30',
-          yAxisCalloutData: '33%',
-          lineData: {
-            y: 40000,
-            yAxisCalloutData: '45%',
-          },
-        },
-      ];
-
-      const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
-
-      const rootStyle = { width: `${650}px`, height: `${350}px` };
-
-      return (
-        <div style={rootStyle}>
-          <VerticalBarChart
-            culture={window.navigator.language}
-            chartTitle="Vertical bar chart basic example "
-            data={points}
-            width={650}
-            useSingleColor={false}
-            height={350}
-            lineLegendText={'just line'}
-            lineLegendColor={'brown'}
-            lineOptions={lineOptions}
-            hideLabels={false}
-            secondaryYScaleOptions={{ yMaxValue: 17, yMinValue: 5 }}
-          />
-        </div>
-      );
-    },
-    { includeDarkMode: true, includeRtl: true },
-  );
+  .addStory('Basic - Legend Interactions Line', () => {
+    return <VBCBasicExample />;
+  });
 
 storiesOf('react-charting/VerticalBarChart', module)
   .addDecorator((story, context) => TestWrapperDecorator(story, context))
