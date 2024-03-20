@@ -44,8 +44,8 @@ export type ListItemSlots = {
 
 // @public
 export type ListItemState = ComponentState<ListItemSlots> & {
-    selectable?: boolean;
-    hasCustomOnClick?: boolean;
+    selectable: boolean;
+    navigable: boolean;
 };
 
 // @public

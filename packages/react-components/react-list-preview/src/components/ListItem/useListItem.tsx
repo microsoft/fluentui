@@ -211,7 +211,7 @@ export const useListItem_unstable = (
     root,
     checkmark,
     selectable: isSelectionEnabled,
-    hasCustomOnClick: typeof props.onClick === 'function',
+    navigable: focusableItems,
   };
 
   return state;

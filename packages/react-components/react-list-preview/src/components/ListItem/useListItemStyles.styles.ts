@@ -36,7 +36,7 @@ const useCheckmarkBaseStyles = makeStyles({
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  rootClickable: {
+  rootClickableOrSelectable: {
     display: 'flex',
     cursor: 'pointer',
   },
@@ -53,9 +53,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
-    // add the clickable root only if we know the items are selectable and there is no custom onClick
-    // because the custom onClick could be overriding the selection behavior.
-    (state.selectable || state.hasCustomOnClick) && styles.rootClickable,
+    (state.selectable || state.navigable) && styles.rootClickableOrSelectable,
     state.root.className,
   );
 
