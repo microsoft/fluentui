@@ -194,17 +194,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _elevateToMinimums(data: IChartDataPoint[]) {
     let sumOfData = 0;
     const minPercent = 0.01;
+    const elevatedData: IChartDataPoint[] = [];
     data.forEach(item => {
       sumOfData += item.data!;
     });
-    let numberOfElementsBelowMin = 0;
-    data.forEach(item => {
-      numberOfElementsBelowMin += item.data! < minPercent * sumOfData ? 1 : 0;
-    });
-    if (numberOfElementsBelowMin > 40) {
-      return data;
-    }
-    const elevatedData: IChartDataPoint[] = [];
     data.forEach(item => {
       elevatedData.push(
         minPercent * sumOfData > item.data!
