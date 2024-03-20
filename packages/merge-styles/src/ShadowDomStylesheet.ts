@@ -170,7 +170,27 @@ export class ShadowDomStylesheet extends Stylesheet {
       this._insertRuleIntoSheet(constructableSheet, rule);
     }
 
-    super.insertRule(rule, preserve);
+    super.insertRule(rule, preserve, stylesheetKey);
+  }
+
+  protected _getCacheKey(key: string): string {
+    const { inShadow = false, stylesheetKey: currentStylesheetKey = GLOBAL_STYLESHEET_KEY } = this._config;
+
+    if (inShadow) {
+      return `__${currentStylesheetKey}__${key}`;
+    }
+
+    return super._getCacheKey(key);
+  }
+
+  protected _createStyleElement(): HTMLStyleElement {
+    const styleElement = super._createStyleElement();
+
+    if (this._config.stylesheetKey === GLOBAL_STYLESHEET_KEY) {
+      styleElement.setAttribute('data-merge-styles-global', 'true');
+    }
+
+    return styleElement;
   }
 
   private _makeCSSStyleSheet(): ExtendedCSSStyleSheet {

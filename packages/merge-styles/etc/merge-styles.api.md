@@ -433,7 +433,7 @@ export interface ISerializedStylesheet {
     // (undocumented)
     classNameToArgs: Stylesheet['_classNameToArgs'];
     // (undocumented)
-    counter: Stylesheet['_styleCounter'];
+    counter: Stylesheet['_counter'];
     // (undocumented)
     keyToClassName: Stylesheet['_keyToClassName'];
     // (undocumented)
@@ -572,7 +572,11 @@ export type ShadowConfig = {
 export class ShadowDomStylesheet extends Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
     // (undocumented)
+    protected _createStyleElement(): HTMLStyleElement;
+    // (undocumented)
     getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet>;
+    // (undocumented)
+    protected _getCacheKey(key: string): string;
     // (undocumented)
     static getInstance(shadowConfig?: ShadowConfig): ShadowDomStylesheet;
     // (undocumented)
@@ -591,6 +595,8 @@ export class Stylesheet {
     protected _config: IStyleSheetConfig;
     // (undocumented)
     protected _createStyleElement(): HTMLStyleElement;
+    // (undocumented)
+    protected _getCacheKey(key: string): string;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
@@ -598,7 +604,7 @@ export class Stylesheet {
     static getInstance(shadowConfig?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
-    insertRule(rule: string, preserve?: boolean): void;
+    insertRule(rule: string, preserve?: boolean, stylesheetKey?: string): void;
     // (undocumented)
     protected _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean;
     // (undocumented)

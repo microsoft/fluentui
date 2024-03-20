@@ -92,7 +92,7 @@ export interface IStyleSheetConfig {
  */
 export interface ISerializedStylesheet {
   classNameToArgs: Stylesheet['_classNameToArgs'];
-  counter: Stylesheet['_styleCounter'];
+  counter: Stylesheet['_counter'];
   keyToClassName: Stylesheet['_keyToClassName'];
   preservedRules: Stylesheet['_preservedRules'];
   rules: Stylesheet['_rules'];
@@ -143,7 +143,7 @@ export type ExtendedCSSStyleSheet = CSSStyleSheet & {
 
 type InsertRuleArgs = {
   key?: string;
-  sheet?: ExtendedCSSStyleSheet;
+  sheet?: ExtendedCSSStyleSheet | null;
   rule?: string;
 };
 
@@ -164,7 +164,7 @@ export class Stylesheet {
 
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
-  private _styleCounter = 0;
+  private _counter = 0;
   private _keyToClassName: { [key: string]: string } = {};
   private _onInsertRuleCallbacks: (Function | InsertRuleCallback)[] = [];
   private _onResetCallbacks: Function[] = [];
@@ -174,19 +174,18 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const doc = typeof document !== 'undefined' ? document : undefined;
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (_global[SHADOW_DOM_STYLESHEET_SETTING]) {
       return _global[SHADOW_DOM_STYLESHEET_SETTING].getInstance(shadowConfig);
     }
 
-    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)) {
-      const fabricConfig = _global.FabricConfig || {};
-      fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
+    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
+      const fabricConfig = _global?.FabricConfig || {};
+
       const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
       _stylesheet = stylesheet;
-      _global[STYLESHEET_SETTING] = _stylesheet;
+      _global[STYLESHEET_SETTING] = stylesheet;
     }
 
     return _stylesheet;
@@ -203,7 +202,7 @@ export class Stylesheet {
     };
 
     this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
-    this._styleCounter = serializedStylesheet?.counter ?? this._styleCounter;
+    this._counter = serializedStylesheet?.counter ?? this._counter;
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
     this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
     this._rules = serializedStylesheet?.rules ?? this._rules;
@@ -216,7 +215,7 @@ export class Stylesheet {
   public serialize(): string {
     return JSON.stringify({
       classNameToArgs: this._classNameToArgs,
-      counter: this._styleCounter,
+      counter: this._counter,
       keyToClassName: this._keyToClassName,
       preservedRules: this._preservedRules,
       rules: this._rules,
@@ -270,7 +269,7 @@ export class Stylesheet {
     const { namespace } = this._config;
     const prefix = displayName || this._config.defaultPrefix;
 
-    return `${namespace ? namespace + '-' : ''}${prefix}-${this._styleCounter++}`;
+    return `${namespace ? namespace + '-' : ''}${prefix}-${this._counter++}`;
   }
 
   /**
@@ -278,8 +277,7 @@ export class Stylesheet {
    * registered with the stylesheet.
    */
   public cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void {
-    const cacheKey = this._getCacheKey(key);
-    this._keyToClassName[cacheKey] = className;
+    this._keyToClassName[this._getCacheKey(key)] = className;
     this._classNameToArgs[className] = {
       args,
       rules,
@@ -291,8 +289,7 @@ export class Stylesheet {
    * registered using cacheClassName.
    */
   public classNameFromKey(key: string): string | undefined {
-    const cacheKey = this._getCacheKey(key);
-    return this._keyToClassName[cacheKey];
+    return this._keyToClassName[this._getCacheKey(key)];
   }
 
   /**
@@ -326,33 +323,24 @@ export class Stylesheet {
    * Inserts a css rule into the stylesheet.
    * @param preserve - Preserves the rule beyond a reset boundary.
    */
-  public insertRule(rule: string, preserve?: boolean): void {
-    const { injectionMode, stylesheetKey = GLOBAL_STYLESHEET_KEY } = this._config;
+  public insertRule(rule: string, preserve?: boolean, stylesheetKey: string = GLOBAL_STYLESHEET_KEY): void {
+    const { injectionMode } = this._config;
 
-    const injectStyles = injectionMode !== InjectionMode.none;
-
-    let element: HTMLStyleElement | undefined = undefined;
-    let sheet: CSSStyleSheet | null = null;
-
-    if (injectStyles) {
-      element = this._getStyleElement();
-    }
+    const element: HTMLStyleElement | undefined =
+      injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
 
     if (preserve) {
       this._preservedRules.push(rule);
     }
 
     if (element) {
-      sheet = element?.sheet || null;
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          this._insertRuleIntoSheet(element?.sheet, rule);
+          this._insertRuleIntoSheet(element.sheet, rule);
           break;
 
         case InjectionMode.appendChild:
-          if (element) {
-            (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
-          }
+          (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
           break;
       }
     } else {
@@ -366,7 +354,7 @@ export class Stylesheet {
     }
 
     this._onInsertRuleCallbacks.forEach(callback =>
-      callback({ key: stylesheetKey, sheet: sheet as ExtendedCSSStyleSheet, rule }),
+      callback({ key: stylesheetKey, sheet: (element ? element.sheet : undefined) as ExtendedCSSStyleSheet, rule }),
     );
   }
 
@@ -384,7 +372,7 @@ export class Stylesheet {
    */
   public reset(): void {
     this._rules = [];
-    this._styleCounter = 0;
+    this._counter = 0;
     this._classNameToArgs = {};
     this._keyToClassName = {};
 
@@ -403,10 +391,6 @@ export class Stylesheet {
     let nodeToInsertBefore: Node | null = null;
 
     styleElement.setAttribute('data-merge-styles', 'true');
-
-    if (this._config.stylesheetKey === GLOBAL_STYLESHEET_KEY) {
-      styleElement.setAttribute('data-merge-styles-global', 'true');
-    }
 
     const { cspSettings } = this._config;
     if (cspSettings) {
@@ -451,6 +435,10 @@ export class Stylesheet {
     return false;
   }
 
+  protected _getCacheKey(key: string): string {
+    return key;
+  }
+
   private _getStyleElement(): HTMLStyleElement | undefined {
     if (!this._styleElement) {
       this._styleElement = this._createStyleElement();
@@ -464,16 +452,6 @@ export class Stylesheet {
       }
     }
     return this._styleElement;
-  }
-
-  private _getCacheKey(key: string): string {
-    const { inShadow = false, stylesheetKey: currentStylesheetKey = GLOBAL_STYLESHEET_KEY } = this._config;
-
-    if (inShadow) {
-      return `__${currentStylesheetKey}__${key}`;
-    }
-
-    return key;
   }
 
   private _findPlaceholderStyleTag(): Element | null {
