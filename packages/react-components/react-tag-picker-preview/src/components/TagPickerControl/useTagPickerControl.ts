@@ -22,6 +22,7 @@ export const useTagPickerControl_unstable = (
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
+  const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target !== triggerRef.current) {
       event.preventDefault();
@@ -48,5 +49,6 @@ export const useTagPickerControl_unstable = (
     ),
     size,
     appearance,
+    disabled,
   };
 };

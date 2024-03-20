@@ -103,7 +103,7 @@ export type TagPickerControlSlots = {
 };
 
 // @public
-export type TagPickerControlState = ComponentState<TagPickerControlSlots> & Pick<TagPickerContextValue, 'size' | 'appearance'>;
+export type TagPickerControlState = ComponentState<TagPickerControlSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;
 
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;

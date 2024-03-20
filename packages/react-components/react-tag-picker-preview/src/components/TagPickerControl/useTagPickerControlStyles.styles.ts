@@ -150,14 +150,13 @@ const useStyles = makeStyles({
  */
 export const useTagPickerControlStyles_unstable = (state: TagPickerControlState): TagPickerControlState => {
   const styles = useStyles();
-  // TODO handle invalid styles
   state.root.className = mergeClasses(
     tagPickerControlClassNames.root,
     styles.root,
     styles[state.size],
     styles[state.appearance],
-    // !state.disabled && state.appearance === 'outline' && styles.outlineInteractive,
-    // state.disabled && styles.disabled,
+    !state.disabled && state.appearance === 'outline' && styles.outlineInteractive,
+    state.disabled && styles.disabled,
     state.root.className,
   );
 
