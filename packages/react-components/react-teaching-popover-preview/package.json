@@ -47,7 +47,8 @@
     "@fluentui/react-tabster": "^9.19.5",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-aria": "^9.10.2",
-    "@fluentui/react-context-selector": "^9.1.56"
+    "@fluentui/react-context-selector": "^9.1.56",
+    "@fluentui/keyboard-keys": "^9.0.7"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
