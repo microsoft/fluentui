@@ -10,4 +10,4 @@ As a general guideline, it's recommended to utilize unsized icons since the same
 
 </details>
 
-You can preview [all icons in the catalog](?path=/docs/icons-catalog--page).
+You can preview <a href="#" data-sb-kind="icons-catalog--page">all icons in the catalog</a>.
