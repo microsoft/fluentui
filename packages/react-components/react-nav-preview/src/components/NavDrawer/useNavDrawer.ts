@@ -19,7 +19,6 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
   const navState = useNav_unstable(
     {
       role: 'navigation',
-      as: 'div',
       ...focusAttributes,
       ...props,
     },
@@ -31,3 +30,4 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     ...navState,
   };
 };
+3;
