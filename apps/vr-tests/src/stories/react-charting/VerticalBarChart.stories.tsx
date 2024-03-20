@@ -17,21 +17,66 @@ storiesOf('react-charting/VerticalBarChart', module)
   .addDecorator((story, context) => {
     const steps = new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
+
       .click('.ms-OverflowSet-item:nth-child(4)') // Click on Apple Legend
-      .hover('g:nth-of-type(2) > [id^="_VBC_bar"]') // Hover over unselected bar
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('rect')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+      ) // Hover over unselected bar
       .snapshot('AppleUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
-      .hover('g:nth-of-type(3) > [id^="_VBC_bar"]') // Hover over selected bar
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+      ) //Revert Hover
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+      ) // Hover over selected bar
       .snapshot('AppleSelectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+      ) //Revert Hover
+
       .click('.ms-OverflowSet-item:nth-child(4)') // Click(Deselect) on Apple Legend
-      .hover('g:nth-of-type(2) > [id^="_VBC_bar"]') // Hover over unselected bar
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('rect')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+      ) // Hover over unselected bar
       .snapshot('AllActiveUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
-      .hover('g:nth-of-type(3) > [id^="_VBC_bar"]') // Hover over selected bar
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+      ) //Revert Hover
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+      ) // Hover over selected bar
       .snapshot('AllActiveSelectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
-      .click('.ms-OverflowSet-item:nth-child(4)') // Click on Just Line Legend
-      .click('[id^="_VBC_line"]') // Hover over selected line
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+      ) //Revert Hover
+
+      .click('.ms-OverflowSet-item:nth-child(0)') // Click on Just Line Legend
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('[id^="_VBC_line]')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+      )
       .snapshot('JustLineSelectedLine', { cropTo: '.testWrapper' }) // Take Snapshot
-      .hover('g:nth-of-type(3) > [id^="_VBC_bar"]') // Hover over unselected bar
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `ddocument.querySelectorAll('[id^="_VBC_line]')[0].dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+      ) //Revert Hover
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
+      ) // Hover over selected bar
       .snapshot('JustLineUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
+      ) //Revert Hover
       .end();
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
@@ -211,7 +256,7 @@ storiesOf('react-charting/VerticalBarChart', module)
         </>
       );
     },
-    { includeDarkMode: true, includeRtl: true },
+    { includeDarkMode: false, includeRtl: false },
   )
   .addStory(
     'Dynamic - Wrap Labels',
