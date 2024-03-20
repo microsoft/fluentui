@@ -130,10 +130,7 @@ const simplePointsWithoutLine = [
 const maxBarGap = 5;
 
 describe('Vertical stacked bar chart rendering', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -196,10 +193,7 @@ describe('Vertical stacked bar chart rendering', () => {
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
-    beforeEach(() => {
-      sharedBeforeEach();
-      updateChartWidthAndHeight();
-    });
+    beforeEach(updateChartWidthAndHeight);
     afterEach(sharedAfterEach);
     testWithoutWait(
       `Should render the vertical stacked bar chart with Date x-axis data in ${tzName} timezone`,
@@ -219,10 +213,7 @@ describe('Vertical stacked bar chart rendering', () => {
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -251,8 +242,6 @@ describe('Vertical stacked bar chart - Subcomponent Line', () => {
 });
 
 describe('Vertical stacked bar chart - Subcomponent bar', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should set minimum bar height',
     VerticalStackedBarChart,
@@ -329,8 +318,6 @@ describe('Vertical stacked bar chart - Subcomponent bar', () => {
 });
 
 describe('Vertical stacked bar chart - Subcomponent Legends', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     VerticalStackedBarChart,
@@ -500,8 +487,6 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical stacked bar chart - Subcomponent callout', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should call the handler on mouse over bar and on mouse leave from bar',
     VerticalStackedBarChart,
@@ -618,8 +603,6 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
 });
 
 describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     VerticalStackedBarChart,
@@ -646,10 +629,7 @@ describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Vertical stacked bar chart - Screen resolution', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -684,10 +664,7 @@ describe('Vertical stacked bar chart - Screen resolution', () => {
 });
 
 describe('Vertical stacked bar chart - Theme', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -703,10 +680,7 @@ describe('Vertical stacked bar chart - Theme', () => {
 });
 
 describe('VerticalStackedBarChart - mouse events', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -782,8 +756,6 @@ describe('VerticalStackedBarChart - mouse events', () => {
 });
 
 describe('Vertical Stacked Bar Chart - axe-core', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     let axeResults;
