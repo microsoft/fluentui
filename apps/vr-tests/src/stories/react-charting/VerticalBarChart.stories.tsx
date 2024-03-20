@@ -1,3 +1,4 @@
+/* eslint-disable @fluentui/max-len */
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../../utilities/TestWrapperDecorator';
@@ -20,61 +21,49 @@ storiesOf('react-charting/VerticalBarChart', module)
 
       .click('.ms-OverflowSet-item:nth-child(4)') // Click on Apple Legend
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelectorAll('rect')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
       ) // Hover over unselected bar
       .snapshot('AppleUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
       ) // Hover over selected bar
       .snapshot('AppleSelectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
 
       .click('.ms-OverflowSet-item:nth-child(4)') // Click(Deselect) on Apple Legend
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelectorAll('rect')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
       ) // Hover over unselected bar
       .snapshot('AllActiveUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
       ) // Hover over selected bar
       .snapshot('AllActiveSelectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
 
       .click('.ms-OverflowSet-item:nth-child(0)') // Click on Just Line Legend
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelectorAll('[id^="_VBC_line]')[0].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
       )
       .snapshot('JustLineSelectedLine', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `ddocument.querySelectorAll('[id^="_VBC_line]')[0].dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelectorAll('rect')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:100,clientY:100}))`,
       ) // Hover over selected bar
       .snapshot('JustLineUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .executeScript(
-        // eslint-disable-next-line @fluentui/max-len
         `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseout', {bubbles: true,cancelable: true,clientX: 100,clientY: 100}));`,
       ) //Revert Hover
       .end();
