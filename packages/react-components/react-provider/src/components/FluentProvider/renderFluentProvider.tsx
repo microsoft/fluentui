@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
 import { IconDirectionContextProvider } from '@fluentui/react-icons';
-import { XPlatProvider } from '@fluentui/react-platform-adapter-preview';
+import { isReactNative, XPlatProvider } from '@fluentui/react-platform-adapter-preview';
 
 /**
  * Render the final JSX of FluentProvider
@@ -41,7 +41,7 @@ export const renderFluentProvider_unstable = (
                   <IconDirectionContextProvider value={contextValues.iconDirection}>
                     <OverridesProvider value={contextValues.overrides_unstable}>
                       <state.root>
-                        {canUseDOM() ? null : (
+                        {canUseDOM() || isReactNative() ? null : (
                           <style
                             // Using dangerous HTML because react can escape characters
                             // which can lead to invalid CSS.
