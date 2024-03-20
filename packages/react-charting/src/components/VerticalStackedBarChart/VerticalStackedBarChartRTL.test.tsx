@@ -21,9 +21,9 @@ const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
-}
+});
 
 const originalRAF = window.requestAnimationFrame;
 
