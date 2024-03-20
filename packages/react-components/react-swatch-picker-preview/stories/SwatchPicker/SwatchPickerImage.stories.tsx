@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 import { SwatchPicker, SwatchPickerOnSelectEventHandler, ImageSwatch } from '@fluentui/react-swatch-picker-preview';
-import seaImageSwatch from './assets/img-sea-swatch.jpg';
-import seaImageFile from './assets/img-sea.jpg';
-import bridgeImageSwatch from './assets/img-bridge-swatch.jpg';
-import bridgeImageFile from './assets/img-bridge.jpg';
-import parkImageSwatch from './assets/img-park-swatch.jpg';
-import parkImageFile from './assets/img-park.jpg';
 
 const useStyles = makeStyles({
   example: {
@@ -21,34 +15,36 @@ const useStyles = makeStyles({
   },
 });
 
+const DEFAULT_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg';
+
 const images = [
   {
-    src: seaImageSwatch,
+    swatchSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg',
     value: '0',
     label: 'sea',
-    backgroundImage: seaImageFile,
+    fullImageSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
   },
   {
-    src: bridgeImageSwatch,
+    swatchSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg',
     value: '1',
     label: 'bridge',
-    backgroundImage: bridgeImageFile,
+    fullImageSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
   },
   {
-    src: parkImageSwatch,
+    swatchSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg',
     value: '2',
     label: 'park',
-    backgroundImage: parkImageFile,
+    fullImageSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
   },
 ];
 
 export const SwatchPickerImage = () => {
   const [selectedValue, setSelectedValue] = React.useState('bridge');
-  const [selectedImage, setSelectedImage] = React.useState(bridgeImageFile);
+  const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
-    const value = parseInt(data.selectedValue, 10);
-    setSelectedImage(images[value].backgroundImage);
+    const image = images.find(img => img.value === data.selectedValue) || images[0];
+    setSelectedImage(image.fullImageSrc);
   };
 
   const styles = useStyles();
@@ -60,7 +56,7 @@ export const SwatchPickerImage = () => {
           <ImageSwatch
             className={styles.swatch}
             key={image.value}
-            src={image.src}
+            src={image.swatchSrc}
             value={image.value}
             aria-label={image.label}
           />

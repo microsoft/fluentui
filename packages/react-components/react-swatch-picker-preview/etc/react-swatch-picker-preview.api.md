@@ -46,11 +46,6 @@ export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
 // @public (undocumented)
 export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
 
-// @public (undocumented)
-export const imageSwatchCSSVars: {
-    src: string;
-};
-
 // @public
 export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
     src: string;

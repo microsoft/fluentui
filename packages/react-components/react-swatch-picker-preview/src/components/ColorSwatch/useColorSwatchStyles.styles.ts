@@ -49,6 +49,12 @@ const useStyles = makeResetStyles({
     outline: 'none',
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
   }),
+  ':disabled': {
+    ':hover': {
+      cursor: 'not-allowed',
+      boxShadow: 'none',
+    },
+  },
 
   // High contrast styles
 
@@ -133,10 +139,6 @@ const useShapeStyles = makeStyles({
 const useIconStyles = makeStyles({
   disabledIcon: {
     color: tokens.colorNeutralForegroundInverted,
-    ':hover': {
-      cursor: 'not-allowed',
-      boxShadow: 'none',
-    },
   },
   icon: {
     display: 'flex',

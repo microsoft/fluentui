@@ -18,9 +18,9 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, disabled, disabledIcon, icon, value, onClick, style, ...rest } = props;
-  const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
-  const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+  const { color, disabled, disabledIcon, icon, value, onClick, size, shape, style, ...rest } = props;
+  const _size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
+  const _shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.grid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
@@ -80,8 +80,8 @@ export const useColorSwatch_unstable = (
     icon: iconShorthand,
     disabledIcon: disabledIconShorthand,
     disabled,
-    size: rest.size ?? size,
-    shape,
+    size: size ?? _size,
+    shape: shape ?? _shape,
     selected,
     color,
     value,
