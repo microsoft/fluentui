@@ -36,10 +36,8 @@ const items: Item[] = names.map(name => ({
 }));
 
 const useStyles = makeStyles({
-  wrapper: {
-    display: 'grid',
-    gridTemplateColumns: '240px 1fr',
-    columnGap: '16px',
+  selectedInfo: {
+    marginTop: '16px',
   },
   button: {
     alignSelf: 'center',
@@ -88,7 +86,7 @@ const MyListItem = React.memo(
 export const ListActiveElement = () => {
   const classes = useStyles();
 
-  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>([]);
+  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Melda Bevel']);
 
   const onSelectionChange = React.useCallback((_, data) => {
     setSelectedItems(data.selectedItems);
@@ -103,7 +101,7 @@ export const ListActiveElement = () => {
   }, []);
 
   return (
-    <div className={classes.wrapper}>
+    <div>
       <List selectionMode="single" selectedItems={selectedItems} onSelectionChange={onSelectionChange}>
         {items.map(({ name, avatar }) => (
           <MyListItem
@@ -116,11 +114,11 @@ export const ListActiveElement = () => {
           />
         ))}
       </List>
-      <div>
+      <div className={classes.selectedInfo}>
+        Currently selected:{' '}
         <Text block weight="bold">
           {selectedItems[0]}
         </Text>
-        {selectedItems.length ? <Text>{selectedItems[0]} is a great person!</Text> : null}
       </div>
     </div>
   );
