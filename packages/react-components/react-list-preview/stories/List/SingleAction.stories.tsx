@@ -28,7 +28,7 @@ export const SingleAction = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
-      <List>
+      <List navigable>
         {names.map(name => (
           <ListItem
             id={`id_${name}`}

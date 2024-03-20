@@ -3,6 +3,7 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import { ListContextValue } from './List.types';
 
 export const listContextDefaultValue: ListContextValue = {
+  navigable: false,
   selection: undefined,
   as: undefined,
   accessibilityRoles: {

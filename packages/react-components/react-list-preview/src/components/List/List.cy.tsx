@@ -36,32 +36,26 @@ const testSequence = (sequence: Array<string>) => {
 
 const mountSimpleList = () => {
   mount(
-    <List>
-      <ListItem tabIndex={0} data-test="list-item-1">
-        List Item 1
-      </ListItem>
-      <ListItem tabIndex={0} data-test="list-item-2">
-        List Item 2
-      </ListItem>
-      <ListItem tabIndex={0} data-test="list-item-3">
-        List Item 3
-      </ListItem>
+    <List navigable>
+      <ListItem data-test="list-item-1">List Item 1</ListItem>
+      <ListItem data-test="list-item-2">List Item 2</ListItem>
+      <ListItem data-test="list-item-3">List Item 3</ListItem>
     </List>,
   );
 };
 
 const mountListWithSecondaryActions = () => {
   mount(
-    <List>
-      <ListItem tabIndex={0} data-test="list-item-1">
+    <List navigable>
+      <ListItem data-test="list-item-1">
         List Item 1<button data-test="list-item-1-button-1">1:button1</button>
         <button data-test="list-item-1-button-2">1:button2</button>
       </ListItem>
-      <ListItem tabIndex={0} data-test="list-item-2">
+      <ListItem data-test="list-item-2">
         List Item 2<button data-test="list-item-2-button-1">2:button1</button>
         <button data-test="button-2-2">2:button2</button>
       </ListItem>
-      <ListItem tabIndex={0} data-test="list-item-3">
+      <ListItem data-test="list-item-3">
         List Item 3<button data-test="button-3-1">3:button1</button>
         <button data-test="button-3-2">3:button2</button>
       </ListItem>
@@ -89,18 +83,19 @@ const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: 
   return (
     <>
       <List
+        navigable
         selectionMode={selectionMode}
         defaultSelectedItems={controlled ? undefined : defaultSelectedItems}
         selectedItems={controlled ? selectedItems : undefined}
         onSelectionChange={onChange}
       >
-        <ListItem tabIndex={0} value="list-item-1" data-test="list-item-1">
+        <ListItem value="list-item-1" data-test="list-item-1">
           List Item 1
         </ListItem>
-        <ListItem tabIndex={0} value="list-item-2" data-test="list-item-2">
+        <ListItem value="list-item-2" data-test="list-item-2">
           List Item 2
         </ListItem>
-        <ListItem tabIndex={0} value="list-item-3" data-test="list-item-3">
+        <ListItem value="list-item-3" data-test="list-item-3">
           List Item 3
         </ListItem>
       </List>
@@ -354,15 +349,9 @@ describe('List', () => {
       it("single select list is listbox/option and doesn't have multiselectable aria prop", () => {
         mount(
           <List selectionMode="single">
-            <ListItem tabIndex={0} data-test="list-item-1">
-              List Item 1
-            </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-2">
-              List Item 2
-            </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-3">
-              List Item 3
-            </ListItem>
+            <ListItem data-test="list-item-1">List Item 1</ListItem>
+            <ListItem data-test="list-item-2">List Item 2</ListItem>
+            <ListItem data-test="list-item-3">List Item 3</ListItem>
           </List>,
         );
         cy.get('ul').should('have.attr', 'role', 'listbox');
@@ -372,15 +361,9 @@ describe('List', () => {
       it('multiple select list is listbox/option and has multiselectable aria prop', () => {
         mount(
           <List selectionMode="multiselect">
-            <ListItem tabIndex={0} data-test="list-item-1">
-              List Item 1
-            </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-2">
-              List Item 2
-            </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-3">
-              List Item 3
-            </ListItem>
+            <ListItem data-test="list-item-1">List Item 1</ListItem>
+            <ListItem data-test="list-item-2">List Item 2</ListItem>
+            <ListItem data-test="list-item-3">List Item 3</ListItem>
           </List>,
         );
         cy.get('ul').should('have.attr', 'aria-multiselectable', 'true');
@@ -391,13 +374,13 @@ describe('List', () => {
       it('custom roles work', () => {
         mount(
           <List selectionMode="multiselect" role="customListRole">
-            <ListItem tabIndex={0} data-test="list-item-1" role="customListItemRole">
+            <ListItem data-test="list-item-1" role="customListItemRole">
               List Item 1
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-2" role="customListItemRole">
+            <ListItem data-test="list-item-2" role="customListItemRole">
               List Item 2
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-3" role="customListItemRole">
+            <ListItem data-test="list-item-3" role="customListItemRole">
               List Item 3
             </ListItem>
           </List>,
@@ -410,14 +393,14 @@ describe('List', () => {
     describe('with focusable children', () => {
       it('default list is grid/row', () => {
         mount(
-          <List>
-            <ListItem tabIndex={0} data-test="list-item-1">
+          <List navigable>
+            <ListItem data-test="list-item-1">
               List Item 1<button>Button 1</button>
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-2">
+            <ListItem data-test="list-item-2">
               List Item 2<button>Button 2</button>
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-3">
+            <ListItem data-test="list-item-3">
               List Item 3<button>Button 3</button>
             </ListItem>
           </List>,
@@ -429,13 +412,13 @@ describe('List', () => {
       it("single select list is grid/row and doesn't have multiselectable aria prop", () => {
         mount(
           <List selectionMode="single">
-            <ListItem tabIndex={0} data-test="list-item-1">
+            <ListItem data-test="list-item-1">
               List Item 1<button>Button 1</button>
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-2">
+            <ListItem data-test="list-item-2">
               List Item 2<button>Button 2</button>
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-3">
+            <ListItem data-test="list-item-3">
               List Item 3<button>Button 3</button>
             </ListItem>
           </List>,
@@ -447,13 +430,13 @@ describe('List', () => {
       it('multiple select list is grid/row and has multiselectable aria prop', () => {
         mount(
           <List selectionMode="multiselect">
-            <ListItem tabIndex={0} data-test="list-item-1">
+            <ListItem data-test="list-item-1">
               List Item 1<button>Button 1</button>
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-2">
+            <ListItem data-test="list-item-2">
               List Item 2<button>Button 2</button>
             </ListItem>
-            <ListItem tabIndex={0} data-test="list-item-3">
+            <ListItem data-test="list-item-3">
               List Item 3<button>Button 3</button>
             </ListItem>
           </List>,

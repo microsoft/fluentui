@@ -24,6 +24,7 @@ export type OnListSelectionChangeData = EventData<'change', React.SyntheticEvent
  * List Props
  */
 export type ListProps = ComponentProps<ListSlots> & {
+  navigable?: boolean;
   selectionMode?: SelectionMode;
   selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
@@ -31,6 +32,7 @@ export type ListProps = ComponentProps<ListSlots> & {
 };
 
 export type ListContextValue = {
+  navigable: boolean;
   selection?: ListSelectionState;
   as?: 'div' | 'ol' | 'ul';
   accessibilityRoles: ListAccessibilityRoles;

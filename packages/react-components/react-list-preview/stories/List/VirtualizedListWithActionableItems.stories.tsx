@@ -202,7 +202,7 @@ const countries = [
 ];
 
 const CountriesList = React.forwardRef<HTMLUListElement>((props: React.ComponentProps<typeof List>, ref) => (
-  <List aria-label="Countries" {...props} ref={ref} />
+  <List navigable aria-label="Countries" {...props} ref={ref} />
 ));
 
 export const VirtualizedListWithActionableItems = () => {

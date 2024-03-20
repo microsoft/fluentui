@@ -305,11 +305,11 @@ describe('List', () => {
       firstItem.focus();
       expect(document.activeElement).not.toBe(firstItem);
     });
-    it('should be focusable when onClick is passed', () => {
+    it('should be focusable when "navigable" is passed', () => {
       const result = render(
-        <List>
-          <ListItem onClick={() => null}>First ListItem</ListItem>
-          <ListItem onClick={() => null}>Second ListItem</ListItem>
+        <List navigable>
+          <ListItem>First ListItem</ListItem>
+          <ListItem>Second ListItem</ListItem>
         </List>,
       );
 
@@ -317,18 +317,7 @@ describe('List', () => {
       firstItem.focus();
       expect(document.activeElement).toBe(firstItem);
     });
-    it('should be focusable when onKeyDown is passed', () => {
-      const result = render(
-        <List>
-          <ListItem onKeyDown={() => null}>First ListItem</ListItem>
-          <ListItem onKeyDown={() => null}>Second ListItem</ListItem>
-        </List>,
-      );
 
-      const firstItem = result.getByText('First ListItem');
-      firstItem.focus();
-      expect(document.activeElement).toBe(firstItem);
-    });
     it('should be focusable when list is selectable', () => {
       const result = render(
         <List selectionMode="multiselect">

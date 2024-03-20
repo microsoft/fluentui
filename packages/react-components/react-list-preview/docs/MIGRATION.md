@@ -161,7 +161,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `design`                | N/A                                                                                                                                                        |
 | `horizontal`            | N/A - will be added in the future                                                                                                                          |
 | `items`                 | N/A - use `ListItem` components as Children                                                                                                                |
-| `navigable`             | `tabIndex={0}` if the `ListItem`, or automatic when `onClick` or `onKeyDown` is present                                                                    |
+| `navigable`             | `navigable`                                                                                                                                                |
 | `onSelectedIndexChange` | `onSelectionChange`                                                                                                                                        |
 | `ref`                   | `ref`                                                                                                                                                      |
 | `selectable`            | use `selectionMode` of value `single` or `multiselect`                                                                                                     |
@@ -189,7 +189,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `important`       | N/A                                                                                                                       |
 | `index`           | N/A                                                                                                                       |
 | `media`           | N/A - use children                                                                                                        |
-| `navigable`       | N/A - use `tabIndex={0}`                                                                                                  |
+| `navigable`       | N/A - use `tabIndex={0}` or `navigable` on the `List`                                                                     |
 | `onClick`         | `onClick`                                                                                                                 |
 | `ref`             | ref                                                                                                                       |
 | `selectable`      | N/A - use `List` property `selectionMode` for uncontrolled selection, or use `useListSelection` hook to control the state |

@@ -147,7 +147,7 @@ export const MultipleActionsWithPrimary = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
   return (
-    <List className={classes.list} aria-orientation="vertical">
+    <List navigable className={classes.list} aria-orientation="vertical">
       <CardExample title="Example List Item" value="card-1" />
       <CardExample title="Example List Item" value="card-2" />
       <CardExample title="Example List Item" value="card-3" />

@@ -23,7 +23,7 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
-  const { selectionMode, selectedItems, defaultSelectedItems, as, onSelectionChange } = props;
+  const { navigable, selectionMode, selectedItems, defaultSelectedItems, as, onSelectionChange } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
@@ -68,6 +68,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
       { elementType: DEFAULT_ROOT_EL_TYPE },
     ),
     accessibilityRoles,
+    navigable: navigable ?? false,
     as: as || DEFAULT_ROOT_EL_TYPE,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectionMode ? selection : undefined,

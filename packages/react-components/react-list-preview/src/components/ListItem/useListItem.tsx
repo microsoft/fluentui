@@ -54,6 +54,7 @@ export const useListItem_unstable = (
   const { value = id, onKeyDown, onClick, tabIndex } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
+  const navigable = useListContext_unstable(ctx => ctx.navigable);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
   const listItemRole = useListContext_unstable(ctx => ctx.accessibilityRoles.listItemRole);
@@ -61,7 +62,7 @@ export const useListItem_unstable = (
 
   const { findAllFocusable } = useFocusFinders();
 
-  const focusableItems = isSelectionEnabled || tabIndex === 0 || onClick || onKeyDown;
+  const focusableItems = isSelectionEnabled || navigable || tabIndex === 0;
 
   const parentRenderedAs = useListContext_unstable(ctx => ctx.as);
   const renderedAs = props.as || DEFAULT_ROOT_EL_TYPE;

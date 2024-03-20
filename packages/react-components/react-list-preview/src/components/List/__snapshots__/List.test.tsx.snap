@@ -10,7 +10,6 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
     <div
       class="fui-ListItem"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-1"
       id="test-value-1"
       role="listitem"
     >
@@ -19,7 +18,6 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
     <div
       class="fui-ListItem"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-2"
       id="test-value-2"
       role="listitem"
     >
@@ -39,7 +37,6 @@ exports[`List rendering renders a default state 1`] = `
     <li
       class="fui-ListItem"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-1"
       id="test-value-1"
       role="listitem"
       value="test-value-1"
@@ -49,7 +46,6 @@ exports[`List rendering renders a default state 1`] = `
     <li
       class="fui-ListItem"
       data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-2"
       id="test-value-2"
       role="listitem"
       value="test-value-2"
@@ -72,7 +68,6 @@ exports[`List selection multiselect items are properly rendered with all attribu
       aria-selected="false"
       class="fui-ListItem"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-1"
       id="test-value-1"
       role="option"
       tabindex="0"
@@ -98,7 +93,6 @@ exports[`List selection multiselect items are properly rendered with all attribu
       aria-selected="false"
       class="fui-ListItem"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-2"
       id="test-value-2"
       role="option"
       tabindex="0"
@@ -135,7 +129,6 @@ exports[`List selection single select items are properly rendered with all attri
       aria-selected="false"
       class="fui-ListItem"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-1"
       id="test-value-1"
       role="option"
       tabindex="0"
@@ -161,7 +154,6 @@ exports[`List selection single select items are properly rendered with all attri
       aria-selected="false"
       class="fui-ListItem"
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
-      data-value="test-value-2"
       id="test-value-2"
       role="option"
       tabindex="0"
