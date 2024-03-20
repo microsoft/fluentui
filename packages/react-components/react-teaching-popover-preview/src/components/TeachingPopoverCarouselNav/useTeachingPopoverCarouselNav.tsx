@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  mergeCallbacks,
-  slot,
-  useEventCallback,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
@@ -29,8 +23,6 @@ export const useTeachingPopoverCarouselNav_unstable = (
   const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
   const setCurrentPage = useTeachingPopoverCarouselContext_unstable(context => context.setCurrentPage);
-
-  const localRef = useMergedRefs(ref);
 
   let handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.isDefaultPrevented()) {
@@ -72,7 +64,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: localRef,
+        ref,
         role: 'tablist',
         tabIndex: 0,
         ...props,
