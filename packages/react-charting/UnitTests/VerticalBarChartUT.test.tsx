@@ -25,13 +25,11 @@ const stringPoints = [
   },
 ];
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
-}
+});
 
 runTest('VerticalBarChart unit tests', () => {
-  beforeEach(sharedBeforeEach);
-
   runTest('Get domain margins', () => {
     test('Should return the correct margins when total width is greater than required width', () => {
       const margin = {
@@ -262,10 +260,7 @@ function sharedAfterEach() {
 }
 
 describe('vertical bar chart with numeric x-axis data', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(

@@ -11,9 +11,9 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
-}
+});
 
 const originalRAF = window.requestAnimationFrame;
 
@@ -208,10 +208,7 @@ const chartPointsWithGaps = {
 };
 
 describe('Line chart rendering', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -373,8 +370,6 @@ const eventAnnotationProps = {
 };
 
 describe('Line chart - Subcomponent line', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithoutWait(
     'Should render the lines with the specified colors',
     LineChart,
@@ -403,8 +398,6 @@ describe('Line chart - Subcomponent line', () => {
 });
 
 describe('Line chart - Subcomponent legend', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
     LineChart,
@@ -550,8 +543,6 @@ describe('Line chart - Subcomponent legend', () => {
 });
 
 describe('Line chart - Subcomponent Time Range', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should render time range with sepcified data',
     LineChart,
@@ -587,8 +578,6 @@ describe('Line chart - Subcomponent Time Range', () => {
 });
 
 describe('Line chart - Subcomponent xAxis Labels', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     LineChart,
@@ -615,8 +604,6 @@ describe.skip('Line chart - Subcomponent Event', () => {
       value: mockGetComputedTextLength,
     },
   );
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should render events with defined data',
     LineChart,
@@ -634,10 +621,7 @@ describe.skip('Line chart - Subcomponent Event', () => {
 });
 
 describe('Screen resolution', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -674,10 +658,7 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme and accessibility', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -693,8 +674,6 @@ describe('Theme and accessibility', () => {
 });
 
 describe('Line chart - Accessibility', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<LineChart data={basicChartPoints} />);
     let axeResults;

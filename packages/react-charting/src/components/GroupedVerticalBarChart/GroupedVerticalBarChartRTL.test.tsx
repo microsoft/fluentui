@@ -12,9 +12,9 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
-}
+});
 
 const originalRAF = window.requestAnimationFrame;
 
@@ -140,10 +140,7 @@ const chartPoints = [
 ];
 
 describe('Grouped Vertical bar chart rendering', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -168,7 +165,6 @@ describe('Grouped Vertical bar chart rendering', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent bar', () => {
-  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should render the bars with the specified colors',
     GroupedVerticalBarChart,
@@ -212,7 +208,6 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent Legends', () => {
-  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     GroupedVerticalBarChart,
@@ -319,7 +314,6 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent callout', () => {
-  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the callout over the bar on mouse over',
     GroupedVerticalBarChart,
@@ -387,7 +381,6 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent Labels', () => {
-  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should render the xAxis label based on noOfCharsToTruncate',
     GroupedVerticalBarChart,
@@ -436,10 +429,7 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
 });
 
 describe('Grouped vertical bar chart - Screen resolution', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -474,10 +464,7 @@ describe('Grouped vertical bar chart - Screen resolution', () => {
 });
 
 describe('Vertical stacked bar chart - Theme', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -493,10 +480,7 @@ describe('Vertical stacked bar chart - Theme', () => {
 });
 
 describe('Grouped Vertical Bar chart rendering', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should re-render the Grouped Vertical Bar chart with data', async () => {
@@ -531,7 +515,6 @@ describe('Grouped Vertical Bar chart rendering', () => {
 });
 
 describe('Grouped Vertical Bar Chart - axe-core', () => {
-  beforeEach(sharedBeforeEach);
   test('Should pass accessibility tests', async () => {
     const { container } = render(<GroupedVerticalBarChart data={accessibilityDataPoints} />);
     let axeResults;

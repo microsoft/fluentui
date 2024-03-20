@@ -19,10 +19,6 @@ const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
-  resetIds();
-}
-
 const originalRAF = window.requestAnimationFrame;
 
 function updateChartWidthAndHeight() {
@@ -41,6 +37,10 @@ function updateChartWidthAndHeight() {
       width: 650,
     } as DOMRect);
 }
+beforeEach(() => {
+  resetIds();
+});
+
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
@@ -275,10 +275,7 @@ const chartDataWithDates = {
 };
 
 describe('Area chart rendering', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -291,10 +288,7 @@ describe('Area chart rendering', () => {
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
-    beforeEach(() => {
-      sharedBeforeEach();
-      updateChartWidthAndHeight();
-    });
+    beforeEach(updateChartWidthAndHeight);
     afterEach(sharedAfterEach);
 
     testWithoutWait(
@@ -312,7 +306,6 @@ describe('Area chart rendering', () => {
 });
 
 describe('Area chart - Subcomponent Area', () => {
-  beforeEach(sharedBeforeEach);
   testWithoutWait('Should render the Areas with the specified colors', AreaChart, { data: chartData }, container => {
     const areas = getById(container, /graph-areaChart/i);
     // Assert
@@ -323,7 +316,6 @@ describe('Area chart - Subcomponent Area', () => {
 });
 
 describe('Area chart - Subcomponent legend', () => {
-  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should highlight the corresponding Area on mouse over on legends',
     AreaChart,
@@ -408,7 +400,6 @@ describe('Area chart - Subcomponent legend', () => {
 });
 
 describe('Area chart - Subcomponent callout', () => {
-  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the callout over the area on mouse over',
     AreaChart,
@@ -460,7 +451,6 @@ describe('Area chart - Subcomponent callout', () => {
 });
 
 describe('Area chart - Subcomponent xAxis Labels', () => {
-  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     AreaChart,
@@ -492,10 +482,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -532,10 +519,7 @@ describe('Screen resolution', () => {
 });
 
 describe('AreaChart - Theme', () => {
-  beforeEach(() => {
-    sharedBeforeEach();
-    updateChartWidthAndHeight();
-  });
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -551,7 +535,6 @@ describe('AreaChart - Theme', () => {
 });
 
 describe('AreaChart - Accessibility tests', () => {
-  beforeEach(sharedBeforeEach);
   test('Should pass accessibility tests', async () => {
     const { container } = render(<AreaChart data={chartData} />);
     let axeResults;
