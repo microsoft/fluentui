@@ -21,7 +21,7 @@ export const getStylesFromClassName: (className: string) => {
 }[];
 
 // @public (undocumented)
-export const isReactNative: () => boolean;
+export const isReactNative: boolean;
 
 // @public (undocumented)
 export const jsxPlatformAdapter: (reactJsx: JSXRuntime) => JSXRuntime;

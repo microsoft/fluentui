@@ -1,1 +1,1 @@
-export const isReactNative = true;
+export const isReactNative: boolean = true;
