@@ -4,13 +4,7 @@ import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import {
-  slot,
-  useMergedRefs,
-  getIntrinsicElementProps,
-  useEventCallback,
-  mergeCallbacks,
-} from '@fluentui/react-utilities';
+import { slot, useMergedRefs, getIntrinsicElementProps, useEventCallback } from '@fluentui/react-utilities';
 import { useInputTriggerSlot } from '../../utils/useInputTriggerSlot';
 import { Backspace, Enter } from '@fluentui/keyboard-keys';
 
@@ -29,6 +23,7 @@ export const useTagPickerInput_unstable = (
 ): TagPickerInputState => {
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
+  const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const {
     triggerRef,
     clearSelection,
@@ -44,7 +39,7 @@ export const useTagPickerInput_unstable = (
     value: contextValue,
   } = usePickerContext();
 
-  const { value = contextValue, disabled } = props;
+  const { value = contextValue, disabled = contextDisabled } = props;
 
   const root = useInputTriggerSlot(
     {
@@ -108,21 +103,9 @@ export const useTagPickerInput_unstable = (
       },
       elementType: 'span',
     }),
+    disabled,
     size,
   };
-
-  /* handle open/close + focus change when clicking expandIcon */
-  const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
-
-  const onExpandIconMouseDown = useEventCallback(
-    mergeCallbacks(onIconMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
-      event.preventDefault();
-    }),
-  );
-
-  if (state.expandIcon) {
-    state.expandIcon.onMouseDown = onExpandIconMouseDown;
-  }
 
   return state;
 };

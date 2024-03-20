@@ -8,6 +8,7 @@ export { Button } from './TagPickerButton.stories';
 export { Filtering } from './TagPickerFiltering.stories';
 export { Size } from './TagPickerSize.stories';
 export { Appearance } from './TagPickerAppearance.stories';
+export { Disabled } from './TagPickerDisabled.stories';
 
 export default {
   title: 'Preview Components/Tag Picker',

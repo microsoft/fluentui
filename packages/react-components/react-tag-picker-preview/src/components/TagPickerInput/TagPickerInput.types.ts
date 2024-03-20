@@ -22,4 +22,5 @@ export type TagPickerInputProps = Omit<
 /**
  * State used in rendering TagPickerInput
  */
-export type TagPickerInputState = ComponentState<TagPickerInputSlots> & Pick<TagPickerContextValue, 'size'>;
+export type TagPickerInputState = ComponentState<TagPickerInputSlots> &
+  Pick<TagPickerContextValue, 'size' | 'disabled'>;

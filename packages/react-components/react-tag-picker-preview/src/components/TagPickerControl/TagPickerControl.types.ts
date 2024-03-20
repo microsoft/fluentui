@@ -14,4 +14,4 @@ export type TagPickerControlProps = ComponentProps<TagPickerControlSlots>;
  * State used in rendering PickerControl
  */
 export type TagPickerControlState = ComponentState<TagPickerControlSlots> &
-  Pick<TagPickerContextValue, 'size' | 'appearance'>;
+  Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;

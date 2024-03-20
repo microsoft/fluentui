@@ -121,7 +121,7 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
     tagPickerInputClassNames.root,
     styles.root,
     styles[state.size],
-    // state.disabled && styles.disabled,
+    state.disabled && styles.disabled,
     state.root.className,
   );
 
@@ -130,7 +130,7 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
       tagPickerInputClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[state.size],
-      // state.disabled && iconStyles.disabled,
+      state.disabled && iconStyles.disabled,
       // state.showClearIcon && iconStyles.visuallyHidden,
       state.expandIcon.className,
     );
