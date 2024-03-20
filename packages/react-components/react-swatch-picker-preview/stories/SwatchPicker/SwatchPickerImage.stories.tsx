@@ -56,10 +56,10 @@ export const SwatchPickerImage = () => {
   return (
     <>
       <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedValue} onSelectionChange={handleSelect}>
-        {images.map((image, key) => (
+        {images.map(image => (
           <ImageSwatch
             className={styles.swatch}
-            key={key}
+            key={image.value}
             src={image.src}
             value={image.value}
             aria-label={image.label}
