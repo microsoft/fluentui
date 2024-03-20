@@ -2,6 +2,36 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Wed, 20 Mar 2024 07:27:31 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.67",
+      "version": "8.107.67",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.116.0",
+            "commit": "e1c4956ba0ac868534ce097f6dda298309dbe59f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.66",
+      "version": "8.107.66",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.115.7",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Feb 2024 07:25:24 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.65",
       "version": "8.107.65",

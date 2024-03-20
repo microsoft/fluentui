@@ -64,7 +64,7 @@ export type PositioningImperativeRef = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: TargetElement) => void;
+  setTarget: (target: TargetElement | null) => void;
 };
 
 export type PositioningVirtualElement = {

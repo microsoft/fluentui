@@ -58,6 +58,10 @@ export function useTableSelectionState<TItem>(
       return false;
     }
 
+    if (selectableRowIds.size === 0) {
+      return false;
+    }
+
     let res = true;
     selectableRowIds.forEach(selectableRowId => {
       if (!selected.has(selectableRowId)) {

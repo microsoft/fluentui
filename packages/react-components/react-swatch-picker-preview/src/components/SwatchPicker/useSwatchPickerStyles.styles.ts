@@ -1,22 +1,33 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types';
-
+import { tokens } from '@fluentui/react-theme';
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
-  // TODO: add class names for all slots on SwatchPickerSlots.
-  // Should be of the form `<slotName>: 'fui-SwatchPicker__<slotName>`
 };
+
+export const swatchPickerCSSVars = {
+  gridGap: `--fui-SwatchPicker--gridGap`,
+};
+
+const { gridGap } = swatchPickerCSSVars;
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingVerticalNone),
+    display: 'flex',
   },
-
-  // TODO add additional classes for different states and/or slots
+  row: {
+    flexDirection: 'row',
+    columnGap: `var(${gridGap})`,
+  },
+  grid: {
+    flexDirection: 'column',
+    rowGap: `var(${gridGap})`,
+  },
 });
 
 /**
@@ -24,10 +35,8 @@ const useStyles = makeStyles({
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const layoutStyle = state.grid ? styles.grid : styles.row;
+  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, layoutStyle, state.root.className);
 
   return state;
 };

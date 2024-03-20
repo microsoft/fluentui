@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING: rename createAtom() to createMotionComponent() & createPresence() to createPresenceMotion()",
-  "packageName": "@fluentui/react-motions-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

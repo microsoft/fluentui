@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
+
+const { gridGap } = swatchPickerCSSVars;
+
+export const spacingMap = {
+  small: '2px',
+  medium: '4px',
+};
 
 /**
  * Create the state required to render SwatchPicker.
@@ -15,20 +24,54 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
+  const { grid, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
+
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: grid ? 'grid-linear' : 'both',
+    memorizeCurrent: true,
+  });
+
+  const role = grid ? 'grid' : 'radiogroup';
+
+  const [selectedValue, setSelectedValue] = useControllableState({
+    state: props.selectedValue,
+    defaultState: props.defaultSelectedValue,
+    initialState: '',
+  });
+
+  const requestSelectionChange: SwatchPickerState['requestSelectionChange'] = useEventCallback((event, data) => {
+    onSelectionChange?.(event, {
+      type: 'click',
+      event,
+      selectedValue: data.selectedValue,
+      selectedColor: data.selectedColor,
+    });
+    setSelectedValue(data.selectedValue);
+  });
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        ...props,
+        role,
+        ...focusAttributes,
+        ...rest,
+        style: {
+          [gridGap]: spacingMap[spacing],
+          ...style,
+        },
       }),
       { elementType: 'div' },
     ),
+    grid,
+    requestSelectionChange,
+    selectedValue,
+    size,
+    shape,
+    spacing,
   };
 };

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: DataGrid - prevent unwanted sort after column resizing (#27803)",
+  "packageName": "@fluentui/react-table",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -196,7 +196,6 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
   function isPackagePartOfReactComponentsSuite(projectName) {
     const suiteProject = allPackageInfo['@fluentui/react-components'];
 
-    // this is needed because react-northstar is a lerna sub-project thus `getAllPackageInfo` returns only projects within `packages/fluentui/` folder
     if (suiteProject) {
       const suiteDependencies = suiteProject.packageJson.dependencies ?? {};
       return Boolean(suiteDependencies[projectName]);

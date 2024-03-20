@@ -2,6 +2,81 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.63",
+      "version": "9.0.0-beta.63",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.63",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.62",
+      "version": "9.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.62",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.61",
+      "version": "9.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.61",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Feb 2024 02:34:19 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.60",
+      "version": "9.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.60",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:30 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.59",
+      "version": "9.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.59",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jan 2024 23:16:54 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.58",
       "version": "9.0.0-beta.58",

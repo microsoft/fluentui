@@ -13,18 +13,16 @@ import {
   isTimezoneSet,
   testWithWait,
   testWithoutWait,
+  isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
-beforeEach(() => {
-  // When adding a new snapshot test, it's observed that other snapshots may fail due to
-  // components sharing a common global counter for IDs. To prevent this from happening,
-  // we should reset the IDs before each test execution.
+function sharedBeforeEach() {
   resetIds();
-});
+}
 
 const chart1Points = [
   {
@@ -247,6 +245,14 @@ const chartPointsWithDate = [
   },
 ];
 
+const tickValues = [
+  new Date('2020-01-06T00:00:00.000Z'),
+  new Date('2020-01-08T00:00:00.000Z'),
+  new Date('2020-01-15T00:00:00.000Z'),
+  new Date('2020-02-06T00:00:00.000Z'),
+  new Date('2020-02-15T00:00:00.000Z'),
+];
+
 const chartDataWithDates = {
   chartTitle: 'Area chart styled example',
   lineChartData: chartPointsWithDate,
@@ -255,6 +261,7 @@ const chartDataWithDates = {
 };
 
 describe('Area chart rendering', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should render the area chart with numeric x-axis data',
     AreaChart,
@@ -274,12 +281,52 @@ describe('Area chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(tzIdentifier),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
   });
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values is given',
+    AreaChart,
+    { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values not given and tick format is given',
+    AreaChart,
+    { data: chartDataWithDates, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values is given and tick format not given',
+    AreaChart,
+    { data: chartDataWithDates, tickValues },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait('Should render the Areas with the specified colors', AreaChart, { data: chartData }, container => {
     const areas = getById(container, /graph-areaChart/i);
     // Assert
@@ -290,6 +337,7 @@ describe('Area chart - Subcomponent Area', () => {
 });
 
 describe('Area chart - Subcomponent legend', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should highlight the corresponding Area on mouse over on legends',
     AreaChart,
@@ -374,6 +422,7 @@ describe('Area chart - Subcomponent legend', () => {
 });
 
 describe('Area chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the callout over the area on mouse over',
     AreaChart,
@@ -425,6 +474,7 @@ describe('Area chart - Subcomponent callout', () => {
 });
 
 describe('Area chart - Subcomponent xAxis Labels', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     AreaChart,
@@ -435,8 +485,6 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
-    undefined,
-    undefined,
   );
 
   testWithWait(
@@ -451,11 +499,12 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
   const originalInnerWidth = global.innerWidth;
   const originalInnerHeight = global.innerHeight;
   afterEach(() => {
@@ -499,22 +548,25 @@ describe('Screen resolution', () => {
   );
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <AreaChart culture={window.navigator.language} data={chartData} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
-});
-
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<AreaChart data={chartData} />);
-  let axeResults;
-  await act(async () => {
-    axeResults = await axe(container);
+describe('AreaChart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <AreaChart culture={window.navigator.language} data={chartData} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
   });
-  expect(axeResults).toHaveNoViolations();
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<AreaChart data={chartData} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });

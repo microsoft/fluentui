@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "9.14.0",
+  "version": "9.15.2",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-theme": "^9.1.19",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

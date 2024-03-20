@@ -633,6 +633,25 @@ import { RadioOnChangeData } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import { RadioSlots } from '@fluentui/react-radio';
 import { RadioState } from '@fluentui/react-radio';
+import { Rating } from '@fluentui/react-rating';
+import { ratingClassNames } from '@fluentui/react-rating';
+import { RatingContextValues } from '@fluentui/react-rating';
+import { RatingDisplay } from '@fluentui/react-rating';
+import { ratingDisplayClassNames } from '@fluentui/react-rating';
+import { RatingDisplayContextValues } from '@fluentui/react-rating';
+import { RatingDisplayProps } from '@fluentui/react-rating';
+import { RatingDisplaySlots } from '@fluentui/react-rating';
+import { RatingDisplayState } from '@fluentui/react-rating';
+import { RatingItem } from '@fluentui/react-rating';
+import { ratingItemClassNames } from '@fluentui/react-rating';
+import { RatingItemProps } from '@fluentui/react-rating';
+import { RatingItemProvider } from '@fluentui/react-rating';
+import { RatingItemSlots } from '@fluentui/react-rating';
+import { RatingItemState } from '@fluentui/react-rating';
+import { RatingOnChangeEventData } from '@fluentui/react-rating';
+import { RatingProps } from '@fluentui/react-rating';
+import { RatingSlots } from '@fluentui/react-rating';
+import { RatingState } from '@fluentui/react-rating';
 import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
@@ -721,6 +740,9 @@ import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { renderRating_unstable } from '@fluentui/react-rating';
+import { renderRatingDisplay_unstable } from '@fluentui/react-rating';
+import { renderRatingItem_unstable } from '@fluentui/react-rating';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
@@ -1320,6 +1342,15 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRating_unstable } from '@fluentui/react-rating';
+import { useRatingContextValues } from '@fluentui/react-rating';
+import { useRatingDisplay_unstable } from '@fluentui/react-rating';
+import { useRatingDisplayContextValues } from '@fluentui/react-rating';
+import { useRatingDisplayStyles_unstable } from '@fluentui/react-rating';
+import { useRatingItem_unstable } from '@fluentui/react-rating';
+import { useRatingItemContextValue_unstable } from '@fluentui/react-rating';
+import { useRatingItemStyles_unstable } from '@fluentui/react-rating';
+import { useRatingStyles_unstable } from '@fluentui/react-rating';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
@@ -2693,6 +2724,44 @@ export { RadioSlots }
 
 export { RadioState }
 
+export { Rating }
+
+export { ratingClassNames }
+
+export { RatingContextValues }
+
+export { RatingDisplay }
+
+export { ratingDisplayClassNames }
+
+export { RatingDisplayContextValues }
+
+export { RatingDisplayProps }
+
+export { RatingDisplaySlots }
+
+export { RatingDisplayState }
+
+export { RatingItem }
+
+export { ratingItemClassNames }
+
+export { RatingItemProps }
+
+export { RatingItemProvider }
+
+export { RatingItemSlots }
+
+export { RatingItemState }
+
+export { RatingOnChangeEventData }
+
+export { RatingProps }
+
+export { RatingSlots }
+
+export { RatingState }
+
 export { RegisterTabEventHandler }
 
 export { renderAccordion_unstable }
@@ -2868,6 +2937,12 @@ export { renderProgressBar_unstable }
 export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
+
+export { renderRating_unstable }
+
+export { renderRatingDisplay_unstable }
+
+export { renderRatingItem_unstable }
 
 export { renderSelect_unstable }
 
@@ -4066,6 +4141,24 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useRating_unstable }
+
+export { useRatingContextValues }
+
+export { useRatingDisplay_unstable }
+
+export { useRatingDisplayContextValues }
+
+export { useRatingDisplayStyles_unstable }
+
+export { useRatingItem_unstable }
+
+export { useRatingItemContextValue_unstable }
+
+export { useRatingItemStyles_unstable }
+
+export { useRatingStyles_unstable }
 
 export { useRestoreFocusSource }
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update style hooks to return state",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

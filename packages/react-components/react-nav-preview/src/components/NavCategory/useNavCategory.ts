@@ -1,6 +1,7 @@
 import * as React from 'react';
-import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';
 import { useNavContext_unstable } from '../NavContext';
+
+import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';
 
 /**
  * Create the state required to render NavCategory.
@@ -14,9 +15,9 @@ import { useNavContext_unstable } from '../NavContext';
 export const useNavCategory_unstable = (props: NavCategoryProps, ref: React.Ref<HTMLDivElement>): NavCategoryState => {
   const { value, children } = props;
 
-  const { openItems } = useNavContext_unstable();
+  const { openCategories } = useNavContext_unstable();
 
-  const open: boolean = openItems?.includes(value);
+  const open: boolean = openCategories?.includes(value);
 
   return {
     open,

@@ -6,15 +6,13 @@ import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/Test
 import { HeatMapChartBase } from './HeatMapChart.base';
 import { resetIds } from '@fluentui/react';
 const { Timezone } = require('../../../scripts/constants');
+const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
-beforeEach(() => {
-  // When adding a new snapshot test, it's observed that other snapshots may fail due to
-  // components sharing a common global counter for IDs. To prevent this from happening,
-  // we should reset the IDs before each test execution.
+function sharedBeforeEach() {
   resetIds();
-});
+}
 
 const stringPoints: string[] = ['p1', 'p2', 'p3', 'p4'];
 const numericPoints: number[] = [10, 20, 30, 40];
@@ -146,36 +144,43 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
 ];
 
 describe('HeatMap chart rendering', () => {
-  conditionalTest(isTimezoneSet(Timezone.UTC))('Should re-render the HeatMap chart with data', async () => {
-    // Arrange
-    const { container, rerender } = render(
-      <HeatMapChart
-        data={[]}
-        domainValuesForColorScale={[0, 600]}
-        rangeValuesForColorScale={['lightblue', 'darkblue']}
-      />,
-    );
-    const getById = queryAllByAttribute.bind(null, 'id');
-    // Assert
-    expect(container).toMatchSnapshot();
-    expect(getById(container, /_HeatMap_empty/i)).toHaveLength(1);
-    // Act
-    rerender(
-      <HeatMapChart
-        data={HeatMapDateStringData}
-        domainValuesForColorScale={[0, 600]}
-        rangeValuesForColorScale={['lightblue', 'darkblue']}
-      />,
-    );
-    await waitFor(() => {
+  beforeEach(sharedBeforeEach);
+
+  conditionalTest(isTimezoneSet(Timezone.UTC) && env === 'TEST')(
+    'Should re-render the HeatMap chart with data',
+    async () => {
+      // Arrange
+      const { container, rerender } = render(
+        <HeatMapChart
+          data={[]}
+          domainValuesForColorScale={[0, 600]}
+          rangeValuesForColorScale={['lightblue', 'darkblue']}
+        />,
+      );
+      const getById = queryAllByAttribute.bind(null, 'id');
       // Assert
       expect(container).toMatchSnapshot();
-      expect(getById(container, /_HeatMap_empty/i)).toHaveLength(0);
-    });
-  });
+      expect(getById(container, /_HeatMap_empty/i)).toHaveLength(1);
+      // Act
+      rerender(
+        <HeatMapChart
+          data={HeatMapDateStringData}
+          domainValuesForColorScale={[0, 600]}
+          rangeValuesForColorScale={['lightblue', 'darkblue']}
+        />,
+      );
+      await waitFor(() => {
+        // Assert
+        expect(container).toMatchSnapshot();
+        expect(getById(container, /_HeatMap_empty/i)).toHaveLength(0);
+      });
+    },
+  );
 });
 
 describe('Heat Map Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(
       <HeatMapChart
@@ -193,6 +198,8 @@ describe('Heat Map Chart - axe-core', () => {
 });
 
 describe('HeatMapChart interaction and accessibility tests', () => {
+  beforeEach(sharedBeforeEach);
+
   it(`should highlight the corresponding rectangle(s) when the mouse moves over a legend and
   unhighlight them when the mouse moves out of the legend`, () => {
     const { container } = render(
@@ -270,6 +277,8 @@ describe('HeatMapChart interaction and accessibility tests', () => {
 });
 
 describe('HeatMapChart snapshot tests', () => {
+  beforeEach(sharedBeforeEach);
+
   // Date and numeric axes in heatmap chart accept d3 format strings for formatting their ticks.
   // This format string is used to convert all data points into strings,
   // after which a string axis is created with the converted values.
@@ -302,6 +311,8 @@ describe('HeatMapChart snapshot tests', () => {
 });
 
 describe('Heat Map Chart - Subcomponent Legend', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should select legend on single mouse click on legends', async () => {
     const { container } = render(
       <HeatMapChart

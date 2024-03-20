@@ -125,10 +125,17 @@ export const TagGroup: ForwardRefComponent<TagGroupProps>;
 // @public (undocumented)
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
 
+// @public (undocumented)
+export type TagGroupContextValues = {
+    tagGroup: TagGroupContextValue;
+};
+
 // @public
 export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
     onDismiss?: TagDismissHandler<Value>;
     size?: TagSize;
+    appearance?: TagAppearance;
+    dismissible?: boolean;
 };
 
 // @public (undocumented)
@@ -137,7 +144,7 @@ export type TagGroupSlots = {
 };
 
 // @public
-export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
+export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
 };
 

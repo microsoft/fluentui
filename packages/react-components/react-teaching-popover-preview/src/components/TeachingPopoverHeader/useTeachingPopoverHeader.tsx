@@ -4,7 +4,6 @@ import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './T
 
 import { Dismiss12Regular, Lightbulb16Regular } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 /**
  * Returns the props and state required to render the component
@@ -19,7 +18,7 @@ export const useTeachingPopoverHeader_unstable = (
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     if (!ev.defaultPrevented) {
@@ -46,7 +45,7 @@ export const useTeachingPopoverHeader_unstable = (
       { elementType: 'h3' },
     ),
     icon: slot.optional(icon, {
-      renderByDefault: props.icon !== null, // Users may want to null out icon
+      renderByDefault: true,
       defaultProps: {
         children: <Lightbulb16Regular />,
         'aria-hidden': true,
@@ -57,7 +56,8 @@ export const useTeachingPopoverHeader_unstable = (
       renderByDefault: true,
       defaultProps: {
         children: <Dismiss12Regular />,
-        role: 'img',
+        role: 'button',
+        'aria-label': 'dismiss',
         onClick: onDismissButtonClick,
       },
       elementType: 'button',

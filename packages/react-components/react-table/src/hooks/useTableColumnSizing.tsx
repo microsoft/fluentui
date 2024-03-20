@@ -30,7 +30,7 @@ export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizi
   return (tableState: TableFeaturesState<TItem>) => useTableColumnSizingState(tableState, params);
 }
 
-function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
+function getColumnStyles(column: ColumnWidthState, dragging?: boolean): React.CSSProperties {
   const width = column.width;
 
   return {
@@ -39,6 +39,8 @@ function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
     // non-native element styles (flex layout)
     minWidth: width,
     maxWidth: width,
+    // Fixed the unwanted sort: https://github.com/microsoft/fluentui/issues/27803
+    ...(dragging ? { pointerEvents: 'none' } : {}),
   };
 }
 
@@ -68,7 +70,7 @@ function useTableColumnSizingState<TItem>(
   );
 
   const { getColumnById, setColumnWidth, getColumns } = columnResizeState;
-  const { getOnMouseDown } = mouseHandler;
+  const { getOnMouseDown, dragging } = mouseHandler;
   return {
     ...tableState,
     tableRef: measureElementRef,
@@ -101,12 +103,12 @@ function useTableColumnSizingState<TItem>(
 
           return col
             ? {
-                style: getColumnStyles(col),
+                style: getColumnStyles(col, dragging),
                 aside,
               }
             : {};
         },
-        [getColumnById, columns, getKeyboardResizingProps, getOnMouseDown],
+        [getColumnById, columns, dragging, getKeyboardResizingProps, getOnMouseDown],
       ),
       getTableCellProps: React.useCallback(
         (columnId: TableColumnId) => {

@@ -9,6 +9,8 @@ export interface ActiveDescendantImperativeRef {
   blur: () => void;
   active: () => string | undefined;
   focus: (id: string) => void;
+  hideAttributes: () => void;
+  showAttributes: () => void;
 }
 
 export interface ActiveDescendantOptions {
