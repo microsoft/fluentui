@@ -6,8 +6,16 @@ import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import {
+  getByClass,
+  getById,
+  testWithWait,
+  testWithoutWait,
+  isTimezoneSet,
+  isTestEnv,
+} from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
@@ -37,11 +45,6 @@ function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
 }
-
-const beforeAll = () => {
-  jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
-  jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
-};
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
@@ -230,7 +233,47 @@ describe('Line chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Line chart with date x-axis data when tick Values is given',
+    LineChart,
+    { data: dateChartPoints, tickValues, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Line chart with date x-axis data when tick Values not given and tick format is given',
+    LineChart,
+    { data: dateChartPoints, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+  );
+
+  testWithWait(
+    'Should render the Line chart with date x-axis data when tick Values is given and tick format not given',
+    LineChart,
+    { data: dateChartPoints, tickValues },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
@@ -392,8 +435,6 @@ describe('Line chart - Subcomponent line', () => {
       // Assert
       expect(lines).toHaveLength(8);
     },
-    undefined,
-    beforeAll,
   );
 });
 
@@ -551,8 +592,6 @@ describe('Line chart - Subcomponent Time Range', () => {
       // Assert
       expect(getByClass(container, /rect/i).length > 0);
     },
-    undefined,
-    beforeAll,
   );
 
   testWithWait(
@@ -572,8 +611,6 @@ describe('Line chart - Subcomponent Time Range', () => {
       expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
       expect(filledBars[1].getAttribute('fill-opacity')).toEqual('0.1');
     },
-    undefined,
-    beforeAll,
   );
 });
 
@@ -589,8 +626,6 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
-    undefined,
-    beforeAll,
   );
 });
 
@@ -615,8 +650,6 @@ describe.skip('Line chart - Subcomponent Event', () => {
       expect(event).toBeDefined();
       fireEvent.click(event!);
     },
-    undefined,
-    beforeAll,
   );
 });
 

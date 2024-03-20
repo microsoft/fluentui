@@ -74,7 +74,7 @@
       "@fluentui/react-progress": ["packages/react-components/react-progress/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/src/index.ts"],
-      "@fluentui/react-rating-preview": ["packages/react-components/react-rating-preview/src/index.ts"],
+      "@fluentui/react-rating": ["packages/react-components/react-rating/src/index.ts"],
       "@fluentui/react-search-preview": ["packages/react-components/react-search-preview/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-components/react-shared-contexts/src/index.ts"],

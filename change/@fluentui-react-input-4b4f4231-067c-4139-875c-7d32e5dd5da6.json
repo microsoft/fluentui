@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Increase hit target of input element to fill to the border",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

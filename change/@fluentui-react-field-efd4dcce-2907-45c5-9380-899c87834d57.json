@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Align horizontal Field labels with control text",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

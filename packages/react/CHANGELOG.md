@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 13 Mar 2024 07:30:28 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Mar 2024 07:27:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.116.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.116.0)
+
+Wed, 20 Mar 2024 07:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.7..@fluentui/react_v8.116.0)
+
+### Minor changes
+
+- Recreate async helper in tooltiphost on remount ([PR #28232](https://github.com/microsoft/fluentui/pull/28232) by 420834+andyrooger@users.noreply.github.com)
 
 ## [8.115.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.7)
 
