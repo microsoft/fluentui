@@ -32,6 +32,8 @@ export type CustomStyleHooksContextValue = Partial<{
   useListboxStyles_unstable: CustomStyleHook;
   useListStyles_unstable: CustomStyleHook;
   useListItemStyles_unstable: CustomStyleHook;
+  /* @deprecated Use onClick handler on the ListItem itself instead. */
+  useListItemButtonStyles_unstable: CustomStyleHook;
   useOptionStyles_unstable: CustomStyleHook;
   useOptionGroupStyles_unstable: CustomStyleHook;
   useDividerStyles_unstable: CustomStyleHook;
