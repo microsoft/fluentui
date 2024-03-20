@@ -1,1 +1,1 @@
-export const isReactNative = () => false;
+export const isReactNative = false;

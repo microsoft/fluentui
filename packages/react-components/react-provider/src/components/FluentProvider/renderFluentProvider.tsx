@@ -41,7 +41,7 @@ export const renderFluentProvider_unstable = (
                   <IconDirectionContextProvider value={contextValues.iconDirection}>
                     <OverridesProvider value={contextValues.overrides_unstable}>
                       <state.root>
-                        {canUseDOM() || isReactNative() ? null : (
+                        {canUseDOM() || isReactNative ? null : (
                           <style
                             // Using dangerous HTML because react can escape characters
                             // which can lead to invalid CSS.
