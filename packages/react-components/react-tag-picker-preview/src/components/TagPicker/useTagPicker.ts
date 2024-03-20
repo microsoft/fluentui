@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
-import type { TagPickerProps, TagPickerState } from './TagPicker.types';
+import type { TagPickerOnOptionSelectData, TagPickerProps, TagPickerState } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
+import { SelectionProps } from '../../utils/Selection.types';
 
 /**
  * Create the state required to render Picker.
@@ -39,8 +40,17 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
+  const handleOptionSelect: SelectionProps['onOptionSelect'] = useEventCallback((event, data) =>
+    props.onOptionSelect?.(event, {
+      ...data,
+      type: event.type,
+      event,
+    } as TagPickerOnOptionSelectData),
+  );
+
   const state = useComboboxBaseState({
     ...props,
+    onOptionSelect: handleOptionSelect,
     activeDescendantController,
     editable: true,
     multiselect: true,
