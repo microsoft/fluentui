@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Enable arrow navigation on nav group",
+  "packageName": "@fluentui/react-teaching-popover-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
