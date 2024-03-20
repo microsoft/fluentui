@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-platform-adapter",
+  "name": "@fluentui/react-platform-adapter-preview",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "description": "Cross-platform adapters for implementations that differ between web and native",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

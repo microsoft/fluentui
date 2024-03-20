@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@fluentui/react-platform-adapter';
+import { makeStyles, mergeClasses } from '@fluentui/react-platform-adapter-preview';
 import { tokens } from '@fluentui/react-theme';
 import type { LabelSlots, LabelState } from './Label.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

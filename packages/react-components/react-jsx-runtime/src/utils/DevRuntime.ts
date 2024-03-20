@@ -1,5 +1,5 @@
 import * as ReactDevRuntime from 'react/jsx-dev-runtime';
-import { jsxPlatformAdapter } from '@fluentui/react-platform-adapter';
+import { jsxPlatformAdapter } from '@fluentui/react-platform-adapter-preview';
 import type { JSXRuntime } from './types';
 
 export const DevRuntime = {

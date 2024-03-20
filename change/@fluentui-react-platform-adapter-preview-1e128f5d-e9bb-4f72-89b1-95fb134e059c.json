@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Create package react-platform-adapter-preview",
+  "packageName": "@fluentui/react-platform-adapter-preview",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

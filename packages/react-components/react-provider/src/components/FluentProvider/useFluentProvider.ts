@@ -1,4 +1,4 @@
-import { useRenderer_unstable } from '@fluentui/react-platform-adapter';
+import { useRenderer_unstable } from '@fluentui/react-platform-adapter-preview';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,

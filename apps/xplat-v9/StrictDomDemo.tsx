@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
 import { Label } from '@fluentui/react-label';
-import { getStylesFromClassName, makeStyles, shorthands } from '@fluentui/react-platform-adapter';
+import { getStylesFromClassName, makeStyles, shorthands } from '@fluentui/react-platform-adapter-preview';
 import { FluentProvider } from '@fluentui/react-provider';
 import { tokens, webLightTheme } from '@fluentui/react-theme';
 import { html } from 'react-strict-dom';
