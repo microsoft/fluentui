@@ -9,7 +9,6 @@ import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from '@fluentui/keyboard-ke
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
 import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
-import { useRef } from 'react';
 
 /**
  * Returns the props and state required to render the component
