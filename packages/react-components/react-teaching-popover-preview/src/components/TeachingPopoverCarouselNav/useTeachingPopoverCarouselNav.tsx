@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
@@ -24,8 +30,16 @@ export const useTeachingPopoverCarouselNav_unstable = (
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
   const setCurrentPage = useTeachingPopoverCarouselContext_unstable(context => context.setCurrentPage);
 
+  const localRef = useMergedRefs(ref);
+
   let handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.isDefaultPrevented()) {
+      return;
+    }
+
+    let target = ev.target as HTMLDivElement;
+    // We only want this enabled at the tablist level, not within
+    if (target.role !== 'tablist') {
       return;
     }
 
@@ -58,7 +72,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: localRef,
         role: 'tablist',
         tabIndex: 0,
         ...props,
