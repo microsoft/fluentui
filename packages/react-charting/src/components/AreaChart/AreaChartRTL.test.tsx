@@ -291,9 +291,9 @@ describe('Area chart rendering', () => {
     ['when tick Values is given and tick format not given', { data: chartDataWithDates, tickValues }],
   ];
 
-  describe.each(testCases)('', (testCase, props) => {
+  testCases.forEach(([testcase, props]) => {
     testWithWait(
-      `Should render the Area chart with date x-axis data ${testCase}`,
+      `Should render the Area chart with date x-axis data ${testcase}`,
       AreaChart,
       props,
       container => {
@@ -302,7 +302,7 @@ describe('Area chart rendering', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+      !isTimezoneSet(Timezone.UTC),
     );
   });
 });

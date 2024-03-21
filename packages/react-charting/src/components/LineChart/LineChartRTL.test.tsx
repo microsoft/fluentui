@@ -218,10 +218,9 @@ describe('Line chart rendering', () => {
     ['when tick Values not given and tick format is given', { data: dateChartPoints, tickFormat: '%m/%d' }],
     ['when tick Values is given and tick format not given', { data: dateChartPoints, tickValues }],
   ];
-
-  describe.each(testCases)('', (testCase, props) => {
+  testCases.forEach(([testcase, props]) => {
     testWithWait(
-      `Should render the Line chart with date x-axis data ${testCase}`,
+      `Should render the Line chart with date x-axis data ${testcase}`,
       LineChart,
       props,
       container => {
@@ -230,7 +229,7 @@ describe('Line chart rendering', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+      !isTimezoneSet(Timezone.UTC),
     );
   });
 

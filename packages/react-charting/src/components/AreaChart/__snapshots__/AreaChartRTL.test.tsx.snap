@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Area chart rendering  Should render the Area chart with date x-axis data when tick Values is given 1`] = `
+exports[`Area chart rendering Should render the Area chart with date x-axis data when tick Values is given 1`] = `
 <div>
   <div
     class=
@@ -539,7 +539,7 @@ exports[`Area chart rendering  Should render the Area chart with date x-axis dat
 </div>
 `;
 
-exports[`Area chart rendering  Should render the Area chart with date x-axis data when tick Values is given and tick format not given 1`] = `
+exports[`Area chart rendering Should render the Area chart with date x-axis data when tick Values is given and tick format not given 1`] = `
 <div>
   <div
     class=
@@ -1078,7 +1078,7 @@ exports[`Area chart rendering  Should render the Area chart with date x-axis dat
 </div>
 `;
 
-exports[`Area chart rendering  Should render the Area chart with date x-axis data when tick Values not given and tick format is given 1`] = `
+exports[`Area chart rendering Should render the Area chart with date x-axis data when tick Values not given and tick format is given 1`] = `
 <div>
   <div
     class=
