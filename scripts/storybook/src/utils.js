@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nx/devkit');
+const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration, getProjects } = require('@nx/devkit');
 const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
@@ -214,24 +214,25 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
  * @returns
  */
 function getPackageStoriesGlob(options) {
+  const projects = getAllProjects();
+
   const excludeStoriesInsertionFromPackages = options.excludeStoriesInsertionFromPackages ?? [];
-  const projectMetadata = getProjectMetadata(options.packageName);
+  const projectMetadata = getMetadata(options.packageName, projects);
 
   /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
   const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  packageJson.dependencies = packageJson.dependencies ?? {};
-
-  const dependencies = { ...packageJson.dependencies };
+  const dependencies = { ...(packageJson.dependencies ?? {}) };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
+  const packages = Object.keys(dependencies);
 
-  return Object.keys(dependencies)
+  const result = packages
     .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))
     .map(pkgName => {
       const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
-      const pkgMetadata = getProjectMetadata(pkgName);
+      const pkgMetadata = getMetadata(pkgName, projects);
 
       if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
         return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
@@ -239,6 +240,27 @@ function getPackageStoriesGlob(options) {
 
       return `${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`;
     });
+
+  return result;
+
+  // ========================================
+  // Helpers
+  // ========================================
+
+  function getAllProjects() {
+    const tree = new FsTree(workspaceRoot, false);
+    return getProjects(tree);
+  }
+
+  function getMetadata(/** @type {string}*/ packageName, /** @type {ReturnType<typeof getAllProjects>}*/ allProjects) {
+    const metadata = allProjects.get(packageName);
+
+    if (!metadata) {
+      throw new Error(`Project ${options.packageName} not found in workspace`);
+    }
+
+    return metadata;
+  }
 }
 
 /**
