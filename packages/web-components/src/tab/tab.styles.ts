@@ -28,14 +28,14 @@ export const styles = css`
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
-    line-height: var(${lineHeightBase300});
-    font-family: var(${fontFamilyBase});
-    font-size: var(${fontSizeBase300});
-    color: var(${colorNeutralForeground2});
+    line-height: ${lineHeightBase300};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    color: ${colorNeutralForeground2};
     fill: currentcolor;
     grid-row: 1;
-    padding: var(${spacingHorizontalM}) var(${spacingHorizontalMNudge});
-    border-radius: var(${borderRadiusMedium});
+    padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
+    border-radius: ${borderRadiusMedium};
   }
   :host .tab-content {
     display: inline-flex;
@@ -44,8 +44,8 @@ export const styles = css`
   }
 
   :host([aria-selected='true']) {
-    color: var(${colorNeutralForeground1});
-    font-weight: var(${fontWeightSemibold});
+    color: ${colorNeutralForeground1};
+    font-weight: ${fontWeightSemibold};
   }
 
   /* adds hidden textContent to prevent shifting ui on bold / unbolding of text */
@@ -53,13 +53,13 @@ export const styles = css`
     content: var(--textContent);
     visibility: hidden;
     height: 0;
-    line-height: var(${lineHeightBase300});
-    font-weight: var(${fontWeightSemibold});
+    line-height: ${lineHeightBase300};
+    font-weight: ${fontWeightSemibold};
   }
 
   :host([aria-selected='true'])::after {
-    background-color: var(${colorCompoundBrandStroke});
-    border-radius: var(${borderRadiusCircular});
+    background-color: ${colorCompoundBrandStroke};
+    border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
     position: absolute;
@@ -67,8 +67,8 @@ export const styles = css`
   }
 
   :host([aria-selected='false']:hover)::after {
-    background-color: var(${colorNeutralStroke1Hover});
-    border-radius: var(${borderRadiusCircular});
+    background-color: ${colorNeutralStroke1Hover};
+    border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
     position: absolute;
@@ -76,7 +76,7 @@ export const styles = css`
   }
 
   :host([aria-selected='true'][disabled])::after {
-    background-color: var(${colorNeutralForegroundDisabled});
+    background-color: ${colorNeutralForegroundDisabled};
   }
 
   ::slotted([slot='start']),
@@ -91,8 +91,8 @@ export const styles = css`
   }
   :host([disabled]) {
     cursor: not-allowed;
-    fill: var(${colorNeutralForegroundDisabled});
-    color: var(${colorNeutralForegroundDisabled});
+    fill: ${colorNeutralForegroundDisabled};
+    color: ${colorNeutralForegroundDisabled};
   }
 
   :host([disabled]:hover)::after {
@@ -104,9 +104,9 @@ export const styles = css`
   }
 
   :host(:focus-visible) {
-    border-radius: var(${borderRadiusSmall});
-    box-shadow: 0 0 0 3px var(${colorStrokeFocus2});
-    outline: 1px solid var(${colorStrokeFocus1});
+    border-radius: ${borderRadiusSmall};
+    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

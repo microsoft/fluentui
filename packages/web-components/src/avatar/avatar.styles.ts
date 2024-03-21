@@ -125,12 +125,12 @@ export const styles = css`
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    font-family: var(${fontFamilyBase});
-    font-weight: var(${fontWeightSemibold});
-    font-size: var(${fontSizeBase300});
-    border-radius: var(${borderRadiusCircular});
-    color: var(${colorNeutralForeground3});
-    background-color: var(${colorNeutralBackground6});
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightSemibold};
+    font-size: ${fontSizeBase300};
+    border-radius: ${borderRadiusCircular};
+    color: ${colorNeutralForeground3};
+    background-color: ${colorNeutralBackground6};
     contain: layout style;
   }
 
@@ -145,14 +145,14 @@ export const styles = css`
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border-radius: var(${borderRadiusCircular});
+    border-radius: ${borderRadiusCircular};
   }
 
   ::slotted([slot='badge']) {
     position: absolute;
     bottom: 0;
     right: 0;
-    box-shadow: 0 0 0 var(${strokeWidthThin}) var(${colorNeutralBackground1});
+    box-shadow: 0 0 0 ${strokeWidthThin}) ${colorNeutralBackground1};
   }
 
   :host([size='64']) ::slotted([slot='badge']),
@@ -160,14 +160,14 @@ export const styles = css`
   :host([size='96']) ::slotted([slot='badge']),
   :host([size='120']) ::slotted([slot='badge']),
   :host([size='128']) ::slotted([slot='badge']) {
-    box-shadow: 0 0 0 var(${strokeWidthThick}) var(${colorNeutralBackground1});
+    box-shadow: 0 0 0 ${strokeWidthThick}) ${colorNeutralBackground1};
   }
 
   :host([size='16']),
   :host([size='20']),
   :host([size='24']) {
-    font-size: var(${fontSizeBase100});
-    font-weight: var(${fontWeightRegular});
+    font-size: ${fontSizeBase100};
+    font-weight: ${fontWeightRegular};
   }
 
   :host([size='16']) {
@@ -204,7 +204,7 @@ export const styles = css`
   :host([size='28']) {
     width: 28px;
     height: 28px;
-    font-size: var(${fontSizeBase200});
+    font-size: ${fontSizeBase200};
   }
 
   :host([size='36']) {
@@ -219,7 +219,7 @@ export const styles = css`
 
   :host([size='48']),
   :host([size='56']) {
-    font-size: var(${fontSizeBase400});
+    font-size: ${fontSizeBase400};
   }
 
   :host([size='48']) {
@@ -249,7 +249,7 @@ export const styles = css`
   :host([size='64']),
   :host([size='72']),
   :host([size='96']) {
-    font-size: var(${fontSizeBase500});
+    font-size: ${fontSizeBase500};
   }
 
   :host([size='64']) .default-icon,
@@ -289,7 +289,7 @@ export const styles = css`
 
   :host([size='120']),
   :host([size='128']) {
-    font-size: var(${fontSizeBase600});
+    font-size: ${fontSizeBase600};
   }
 
   :host([size='120']) {
@@ -303,186 +303,186 @@ export const styles = css`
   }
 
   :host([shape='square']) {
-    border-radius: var(${borderRadiusMedium});
+    border-radius: ${borderRadiusMedium};
   }
 
   :host([shape='square'][size='20']),
   :host([shape='square'][size='24']) {
-    border-radius: var(${borderRadiusSmall});
+    border-radius: ${borderRadiusSmall};
   }
 
   :host([shape='square'][size='56']),
   :host([shape='square'][size='64']),
   :host([shape='square'][size='72']) {
-    border-radius: var(${borderRadiusLarge});
+    border-radius: ${borderRadiusLarge};
   }
   :host([shape='square'][size='96']),
   :host([shape='square'][size='120']),
   :host([shape='square'][size='128']) {
-    border-radius: var(${borderRadiusXLarge});
+    border-radius: ${borderRadiusXLarge};
   }
 
   :host([data-color='brand']) {
-    color: var(${colorNeutralForegroundStaticInverted});
-    background-color: var(${colorBrandBackgroundStatic});
+    color: ${colorNeutralForegroundStaticInverted};
+    background-color: ${colorBrandBackgroundStatic};
   }
 
   :host([data-color='dark-red']) {
-    color: var(${colorPaletteDarkRedForeground2});
-    background-color: var(${colorPaletteDarkRedBackground2});
+    color: ${colorPaletteDarkRedForeground2};
+    background-color: ${colorPaletteDarkRedBackground2};
   }
 
   :host([data-color='cranberry']) {
-    color: var(${colorPaletteCranberryForeground2});
-    background-color: var(${colorPaletteCranberryBackground2});
+    color: ${colorPaletteCranberryForeground2};
+    background-color: ${colorPaletteCranberryBackground2};
   }
 
   :host([data-color='red']) {
-    color: var(${colorPaletteRedForeground2});
-    background-color: var(${colorPaletteRedBackground2});
+    color: ${colorPaletteRedForeground2};
+    background-color: ${colorPaletteRedBackground2};
   }
 
   :host([data-color='pumpkin']) {
-    color: var(${colorPalettePumpkinForeground2});
-    background-color: var(${colorPalettePumpkinBackground2});
+    color: ${colorPalettePumpkinForeground2};
+    background-color: ${colorPalettePumpkinBackground2};
   }
 
   :host([data-color='peach']) {
-    color: var(${colorPalettePeachForeground2});
-    background-color: var(${colorPalettePeachBackground2});
+    color: ${colorPalettePeachForeground2};
+    background-color: ${colorPalettePeachBackground2};
   }
 
   :host([data-color='marigold']) {
-    color: var(${colorPaletteMarigoldForeground2});
-    background-color: var(${colorPaletteMarigoldBackground2});
+    color: ${colorPaletteMarigoldForeground2};
+    background-color: ${colorPaletteMarigoldBackground2};
   }
 
   :host([data-color='gold']) {
-    color: var(${colorPaletteGoldForeground2});
-    background-color: var(${colorPaletteGoldBackground2});
+    color: ${colorPaletteGoldForeground2};
+    background-color: ${colorPaletteGoldBackground2};
   }
 
   :host([data-color='brass']) {
-    color: var(${colorPaletteBrassForeground2});
-    background-color: var(${colorPaletteBrassBackground2});
+    color: ${colorPaletteBrassForeground2};
+    background-color: ${colorPaletteBrassBackground2};
   }
 
   :host([data-color='brown']) {
-    color: var(${colorPaletteBrownForeground2});
-    background-color: var(${colorPaletteBrownBackground2});
+    color: ${colorPaletteBrownForeground2};
+    background-color: ${colorPaletteBrownBackground2};
   }
 
   :host([data-color='forest']) {
-    color: var(${colorPaletteForestForeground2});
-    background-color: var(${colorPaletteForestBackground2});
+    color: ${colorPaletteForestForeground2};
+    background-color: ${colorPaletteForestBackground2};
   }
 
   :host([data-color='seafoam']) {
-    color: var(${colorPaletteSeafoamForeground2});
-    background-color: var(${colorPaletteSeafoamBackground2});
+    color: ${colorPaletteSeafoamForeground2};
+    background-color: ${colorPaletteSeafoamBackground2};
   }
 
   :host([data-color='dark-green']) {
-    color: var(${colorPaletteDarkGreenForeground2});
-    background-color: var(${colorPaletteDarkGreenBackground2});
+    color: ${colorPaletteDarkGreenForeground2};
+    background-color: ${colorPaletteDarkGreenBackground2};
   }
 
   :host([data-color='light-teal']) {
-    color: var(${colorPaletteLightTealForeground2});
-    background-color: var(${colorPaletteLightTealBackground2});
+    color: ${colorPaletteLightTealForeground2};
+    background-color: ${colorPaletteLightTealBackground2};
   }
 
   :host([data-color='teal']) {
-    color: var(${colorPaletteTealForeground2});
-    background-color: var(${colorPaletteTealBackground2});
+    color: ${colorPaletteTealForeground2};
+    background-color: ${colorPaletteTealBackground2};
   }
 
   :host([data-color='steel']) {
-    color: var(${colorPaletteSteelForeground2});
-    background-color: var(${colorPaletteSteelBackground2});
+    color: ${colorPaletteSteelForeground2};
+    background-color: ${colorPaletteSteelBackground2};
   }
 
   :host([data-color='blue']) {
-    color: var(${colorPaletteBlueForeground2});
-    background-color: var(${colorPaletteBlueBackground2});
+    color: ${colorPaletteBlueForeground2};
+    background-color: ${colorPaletteBlueBackground2};
   }
 
   :host([data-color='royal-blue']) {
-    color: var(${colorPaletteRoyalBlueForeground2});
-    background-color: var(${colorPaletteRoyalBlueBackground2});
+    color: ${colorPaletteRoyalBlueForeground2};
+    background-color: ${colorPaletteRoyalBlueBackground2};
   }
 
   :host([data-color='cornflower']) {
-    color: var(${colorPaletteCornflowerForeground2});
-    background-color: var(${colorPaletteCornflowerBackground2});
+    color: ${colorPaletteCornflowerForeground2};
+    background-color: ${colorPaletteCornflowerBackground2};
   }
 
   :host([data-color='navy']) {
-    color: var(${colorPaletteNavyForeground2});
-    background-color: var(${colorPaletteNavyBackground2});
+    color: ${colorPaletteNavyForeground2};
+    background-color: ${colorPaletteNavyBackground2};
   }
 
   :host([data-color='lavender']) {
-    color: var(${colorPaletteLavenderForeground2});
-    background-color: var(${colorPaletteLavenderBackground2});
+    color: ${colorPaletteLavenderForeground2};
+    background-color: ${colorPaletteLavenderBackground2};
   }
 
   :host([data-color='purple']) {
-    color: var(${colorPalettePurpleForeground2});
-    background-color: var(${colorPalettePurpleBackground2});
+    color: ${colorPalettePurpleForeground2};
+    background-color: ${colorPalettePurpleBackground2};
   }
 
   :host([data-color='grape']) {
-    color: var(${colorPaletteGrapeForeground2});
-    background-color: var(${colorPaletteGrapeBackground2});
+    color: ${colorPaletteGrapeForeground2};
+    background-color: ${colorPaletteGrapeBackground2};
   }
 
   :host([data-color='lilac']) {
-    color: var(${colorPaletteLilacForeground2});
-    background-color: var(${colorPaletteLilacBackground2});
+    color: ${colorPaletteLilacForeground2};
+    background-color: ${colorPaletteLilacBackground2};
   }
 
   :host([data-color='pink']) {
-    color: var(${colorPalettePinkForeground2});
-    background-color: var(${colorPalettePinkBackground2});
+    color: ${colorPalettePinkForeground2};
+    background-color: ${colorPalettePinkBackground2};
   }
 
   :host([data-color='magenta']) {
-    color: var(${colorPaletteMagentaForeground2});
-    background-color: var(${colorPaletteMagentaBackground2});
+    color: ${colorPaletteMagentaForeground2};
+    background-color: ${colorPaletteMagentaBackground2};
   }
 
   :host([data-color='plum']) {
-    color: var(${colorPalettePlumForeground2});
-    background-color: var(${colorPalettePlumBackground2});
+    color: ${colorPalettePlumForeground2};
+    background-color: ${colorPalettePlumBackground2};
   }
 
   :host([data-color='beige']) {
-    color: var(${colorPaletteBeigeForeground2});
-    background-color: var(${colorPaletteBeigeBackground2});
+    color: ${colorPaletteBeigeForeground2};
+    background-color: ${colorPaletteBeigeBackground2};
   }
 
   :host([data-color='mink']) {
-    color: var(${colorPaletteMinkForeground2});
-    background-color: var(${colorPaletteMinkBackground2});
+    color: ${colorPaletteMinkForeground2};
+    background-color: ${colorPaletteMinkBackground2};
   }
 
   :host([data-color='platinum']) {
-    color: var(${colorPalettePlatinumForeground2});
-    background-color: var(${colorPalettePlatinumBackground2});
+    color: ${colorPalettePlatinumForeground2};
+    background-color: ${colorPalettePlatinumBackground2};
   }
 
   :host([data-color='anchor']) {
-    color: var(${colorPaletteAnchorForeground2});
-    background-color: var(${colorPaletteAnchorBackground2});
+    color: ${colorPaletteAnchorForeground2};
+    background-color: ${colorPaletteAnchorBackground2};
   }
 
   :host([active]) {
     /* Work-around for text pixel snapping at the end of the animation */
     transform: perspective(1px);
     transition-property: transform, opacity;
-    transition-duration: var(${durationUltraSlow}), var(${durationFaster});
-    transition-delay: var(${animations.fastEase}), var(${animations.nullEasing});
+    transition-duration: ${durationUltraSlow}, ${durationFaster};
+    transition-delay: ${animations.fastEase}, ${animations.nullEasing};
   }
 
   :host([active])::before {
@@ -494,13 +494,13 @@ export const styles = css`
     right: 0;
     border-radius: inherit;
     transition-property: margin, opacity;
-    transition-duration: var(${durationUltraSlow}), var(${durationSlower});
-    transition-delay: var(${animations.fastEase}), var(${animations.nullEasing});
+    transition-duration: ${durationUltraSlow}), ${durationSlower};
+    transition-delay: ${animations.fastEase}), ${animations.nullEasing});
   }
   :host([active])::before {
-    box-shadow: var(${shadow8});
+    box-shadow: ${shadow8};
     border-style: solid;
-    border-color: var(${colorBrandBackgroundStatic});
+    border-color: ${colorBrandBackgroundStatic};
   }
 
   :host([active][appearance='shadow'])::before {
@@ -509,40 +509,40 @@ export const styles = css`
   }
 
   :host([active]:not([appearance='shadow']))::before {
-    margin: calc(-2 * var(${strokeWidthThick}));
-    border-width: var(${strokeWidthThick});
+    margin: calc(-2 * ${strokeWidthThick});
+    border-width: ${strokeWidthThick};
   }
 
   :host([size='56'][active]:not([appearance='shadow']))::before,
   :host([size='64'][active]:not([appearance='shadow']))::before {
-    margin: calc(-2 * var(${strokeWidthThicker}));
-    border-width: var(${strokeWidthThicker});
+    margin: calc(-2 * ${strokeWidthThicker});
+    border-width: ${strokeWidthThicker};
   }
 
   :host([size='72'][active]:not([appearance='shadow']))::before,
   :host([size='96'][active]:not([appearance='shadow']))::before,
   :host([size='120'][active]:not([appearance='shadow']))::before,
   :host([size='128'][active]:not([appearance='shadow']))::before {
-    margin: calc(-2 * var(${strokeWidthThickest}));
-    border-width: var(${strokeWidthThickest});
+    margin: calc(-2 * ${strokeWidthThickest});
+    border-width: ${strokeWidthThickest};
   }
 
   :host([size='20'][active][appearance])::before,
   :host([size='24'][active][appearance])::before,
   :host([size='28'][active][appearance])::before {
-    box-shadow: var(${shadow4});
+    box-shadow: ${shadow4};
   }
 
   :host([size='56'][active][appearance])::before,
   :host([size='64'][active][appearance])::before {
-    box-shadow: var(${shadow16});
+    box-shadow: ${shadow16};
   }
 
   :host([size='72'][active][appearance])::before,
   :host([size='96'][active][appearance])::before,
   :host([size='120'][active][appearance])::before,
   :host([size='128'][active][appearance])::before {
-    box-shadow: var(${shadow28});
+    box-shadow: ${shadow28};
   }
 
   :host([active][appearance='ring'])::before {
@@ -553,16 +553,16 @@ export const styles = css`
     opacity: 0.8;
     transform: scale(0.875);
     transition-property: transform, opacity;
-    transition-duration: var(${durationUltraSlow}), var(${durationFaster});
-    transition-delay: var(${animations.fastOutSlowInMin}), var(${animations.nullEasing});
+    transition-duration: ${durationUltraSlow}, ${durationFaster};
+    transition-delay: ${animations.fastOutSlowInMin}, ${animations.nullEasing};
   }
 
   :host([active='inactive'])::before {
     margin: 0;
     opacity: 0;
     transition-property: margin, opacity;
-    transition-duration: var(${durationUltraSlow}), var(${durationSlower});
-    transition-delay: var(${animations.fastOutSlowInMin}), var(${animations.nullEasing});
+    transition-duration: ${durationUltraSlow}, ${durationSlower};
+    transition-delay: ${animations.fastOutSlowInMin}, ${animations.nullEasing};
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
