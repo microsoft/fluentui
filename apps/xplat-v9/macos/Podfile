@@ -4,7 +4,7 @@ workspace 'xplat-v9.xcworkspace'
 
 options = {
   :bridgeless_enabled => false,
-  :fabric_enabled => false,
+  :fabric_enabled => true,
   :hermes_enabled => false,
 }
 
