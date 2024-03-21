@@ -210,10 +210,11 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
  *
  * This helper is useful for creating aggregated storybooks which will generate multiple stories across packages.
  *
- * @param {{packageName:string,callerPath:string}} options
+ * @param {{packageName:string,callerPath:string,excludeStoriesInsertionFromPackages?:string[]}} options
  * @returns
  */
 function getPackageStoriesGlob(options) {
+  const excludeStoriesInsertionFromPackages = options.excludeStoriesInsertionFromPackages ?? [];
   const projectMetadata = getProjectMetadata(options.packageName);
 
   /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
@@ -227,7 +228,7 @@ function getPackageStoriesGlob(options) {
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
-    .filter(pkgName => pkgName.startsWith('@fluentui/'))
+    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))
     .map(pkgName => {
       const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
       const pkgMetadata = getProjectMetadata(pkgName);
