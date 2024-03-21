@@ -27,7 +27,7 @@ export const styles = css`
     height: auto;
   }
   :host([bordered]) ::slotted(img) {
-    border:${strokeWidthThin} solid${colorNeutralStroke2};
+    border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
   :host([fit='none']) ::slotted(img) {
     object-fit: none;
