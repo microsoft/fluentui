@@ -1,4 +1,4 @@
-import { TabList } from '@fluentui/react-components';
+import { Tab, TabList } from '@fluentui/react-components';
 
 import descriptionMd from './TabListDescription.md';
 import bestPracticesMd from './TabListBestPractices.md';
@@ -20,6 +20,9 @@ export { WithPanels } from './TabListWithPanels.stories';
 export default {
   title: 'Components/TabList',
   component: TabList,
+  subcomponents: {
+    Tab,
+  },
   parameters: {
     docs: {
       description: {

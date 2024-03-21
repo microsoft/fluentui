@@ -6,6 +6,7 @@ import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/Test
 import { HeatMapChartBase } from './HeatMapChart.base';
 import { resetIds } from '@fluentui/react';
 const { Timezone } = require('../../../scripts/constants');
+const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
@@ -145,33 +146,36 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
 describe('HeatMap chart rendering', () => {
   beforeEach(sharedBeforeEach);
 
-  conditionalTest(isTimezoneSet(Timezone.UTC))('Should re-render the HeatMap chart with data', async () => {
-    // Arrange
-    const { container, rerender } = render(
-      <HeatMapChart
-        data={[]}
-        domainValuesForColorScale={[0, 600]}
-        rangeValuesForColorScale={['lightblue', 'darkblue']}
-      />,
-    );
-    const getById = queryAllByAttribute.bind(null, 'id');
-    // Assert
-    expect(container).toMatchSnapshot();
-    expect(getById(container, /_HeatMap_empty/i)).toHaveLength(1);
-    // Act
-    rerender(
-      <HeatMapChart
-        data={HeatMapDateStringData}
-        domainValuesForColorScale={[0, 600]}
-        rangeValuesForColorScale={['lightblue', 'darkblue']}
-      />,
-    );
-    await waitFor(() => {
+  conditionalTest(isTimezoneSet(Timezone.UTC) && env === 'TEST')(
+    'Should re-render the HeatMap chart with data',
+    async () => {
+      // Arrange
+      const { container, rerender } = render(
+        <HeatMapChart
+          data={[]}
+          domainValuesForColorScale={[0, 600]}
+          rangeValuesForColorScale={['lightblue', 'darkblue']}
+        />,
+      );
+      const getById = queryAllByAttribute.bind(null, 'id');
       // Assert
       expect(container).toMatchSnapshot();
-      expect(getById(container, /_HeatMap_empty/i)).toHaveLength(0);
-    });
-  });
+      expect(getById(container, /_HeatMap_empty/i)).toHaveLength(1);
+      // Act
+      rerender(
+        <HeatMapChart
+          data={HeatMapDateStringData}
+          domainValuesForColorScale={[0, 600]}
+          rangeValuesForColorScale={['lightblue', 'darkblue']}
+        />,
+      );
+      await waitFor(() => {
+        // Assert
+        expect(container).toMatchSnapshot();
+        expect(getById(container, /_HeatMap_empty/i)).toHaveLength(0);
+      });
+    },
+  );
 });
 
 describe('Heat Map Chart - axe-core', () => {

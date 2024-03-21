@@ -25,6 +25,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const setCurrentPage = useTeachingPopoverCarouselContext_unstable(context => context.setCurrentPage);
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
+  const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
   const onPageChange = useTeachingPopoverCarouselContext_unstable(context => context.onPageChange);
   const isSelected = currentPage === index;
 
@@ -47,7 +48,9 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
       elementType: 'button',
       defaultProps: {
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        role: 'tab',
         type: 'button',
+        'aria-label': `${index} of ${totalPages}`,
       },
     },
   );

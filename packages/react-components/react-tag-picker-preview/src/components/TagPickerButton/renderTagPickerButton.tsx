@@ -13,7 +13,6 @@ export const renderTagPickerButton_unstable = (state: TagPickerButtonState) => {
   return (
     <>
       <state.root />
-      {state.clearButton && <state.clearButton />}
       {state.expandIcon && <state.expandIcon />}
     </>
   );
