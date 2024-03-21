@@ -38,6 +38,7 @@ Start the test app from the `apps/xplat-v9` directory:
 
 ```sh
 cd apps/xplat-v9
+pod install --project-directory=ios # or "macos" if you want to use them
 yarn windows # or "ios" or "macos" or "android"
 ```
 
