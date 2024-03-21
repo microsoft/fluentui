@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update tabster and replace deprecated functions",
+  "packageName": "@fluentui/react-table",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
