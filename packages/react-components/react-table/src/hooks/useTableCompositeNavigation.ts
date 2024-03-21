@@ -9,7 +9,7 @@ import {
   useFocusFinders,
 } from '@fluentui/react-tabster';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { TabsterTypes, dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent } from '@fluentui/react-tabster';
+import { TabsterTypes, TabsterEvents } from '@fluentui/react-tabster';
 
 export function useTableCompositeNavigation(): {
   onTableKeyDown: React.KeyboardEventHandler;
@@ -61,12 +61,13 @@ export function useTableCompositeNavigation(): {
 
       // Escape groupper focus trap before arrow down
       if ((e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
-        dispatchGroupperMoveFocusEvent(activeElement as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
+        activeElement.dispatchEvent(
+          new TabsterEvents.GroupperMoveFocusEvent({ action: TabsterTypes.GroupperMoveFocusActions.Escape }),
+        );
 
         activeElement = targetDocument.activeElement;
-
         if (activeElement) {
-          dispatchMoverMoveFocusEvent(activeElement as HTMLElement, TabsterTypes.MoverKeys[e.key]);
+          activeElement.dispatchEvent(new TabsterEvents.MoverMoveFocusEvent({ key: TabsterTypes.MoverKeys[e.key] }));
         }
       }
     },
