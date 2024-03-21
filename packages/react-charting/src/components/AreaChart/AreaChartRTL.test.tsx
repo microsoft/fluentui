@@ -293,7 +293,7 @@ describe('Area chart rendering', () => {
 
   describe.each(testCases)('', (testCase, props) => {
     testWithWait(
-      `Should render the Area chart with date x-axis data${testCase}`,
+      `Should render the Area chart with date x-axis data ${testCase}`,
       AreaChart,
       props,
       container => {

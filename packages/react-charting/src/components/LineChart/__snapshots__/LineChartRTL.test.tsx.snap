@@ -1,1446 +1,1446 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Line chart rendering  Should render the Line chart with date x-axis data when tick Values is given 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_9"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_10"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone11"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="LineChart"
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_9"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_9"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <line
+            id="verticalLine3"
+            stroke="#323130"
+            stroke-dasharray="5,5"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="0"
+          />
+          <g>
+            <line
+              id="borderID2_0_1"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="40"
+              x2="27.763157894736842"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="borderID2_0_2"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="27.763157894736842"
+              x2="16.31578947368421"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="borderID2_0_3"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="16.31578947368421"
+              x2="4.0789473684210495"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="borderID2_0_4"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="4.0789473684210495"
+              x2="-7.763157894736841"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="borderID2_0_5"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="-7.763157894736841"
+              x2="-20"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_1"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="40"
+              x2="27.763157894736842"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_2"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="27.763157894736842"
+              x2="16.31578947368421"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="lineID1_0_3"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="16.31578947368421"
+              x2="4.0789473684210495"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_4"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="4.0789473684210495"
+              x2="-7.763157894736841"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="lineID1_0_5"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="-7.763157894736841"
+              x2="-20"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <path
+              aria-label="1/1/2020, 12:00:00 AM. First, 30."
+              d="M39.5 -3.2692307692307736
+     A0.5 0.5 0 1 0 40.5 -3.2692307692307736
+     M39.5 -3.2692307692307736
+     A 0.5 0.5 0 1 1 40.5 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_1"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="0"
+            />
+            <path
+              aria-label="2/1/2020, 12:00:00 AM. First, 50."
+              d="M27.263157894736842 17.884615384615383
+     A0.5 0.5 0 1 0 28.263157894736842 17.884615384615383
+     M27.263157894736842 17.884615384615383
+     A 0.5 0.5 0 1 1 28.263157894736842 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_2"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="3/1/2020, 12:00:00 AM. First, 30."
+              d="M15.815789473684209 -3.2692307692307736
+     A0.5 0.5 0 1 0 16.81578947368421 -3.2692307692307736
+     M15.815789473684209 -3.2692307692307736
+     A 0.5 0.5 0 1 1 16.81578947368421 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_3"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="4/1/2020, 12:00:00 AM. First, 50."
+              d="M3.5789473684210495 17.884615384615383
+     A0.5 0.5 0 1 0 4.5789473684210495 17.884615384615383
+     M3.5789473684210495 17.884615384615383
+     A 0.5 0.5 0 1 1 4.5789473684210495 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_4"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="5/1/2020, 12:00:00 AM. First, 30."
+              d="M-8.26315789473684 -3.2692307692307736
+     A0.5 0.5 0 1 0 -7.263157894736841 -3.2692307692307736
+     M-8.26315789473684 -3.2692307692307736
+     A 0.5 0.5 0 1 1 -7.263157894736841 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_5"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="6/1/2020, 12:00:00 AM. First, 50."
+              d="M-20.5 17.884615384615383
+     A0.5 0.5 0 1 0 -19.5 17.884615384615383
+     M-20.5 17.884615384615383
+     A 0.5 0.5 0 1 1 -19.5 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_55L"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <circle
+              cx="-20"
+              cy="17.884615384615383"
+              focusable="false"
+              id="circle0_0_55D"
+              opacity="0"
+              r="8"
+              stroke-width="0"
+              width="0"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone12"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="First"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="1"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #637cef;
+                              border-color: #637cef;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #637cef, #637cef);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        First
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Line chart rendering  Should render the Line chart with date x-axis data when tick Values is given and tick format not given 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_9"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_10"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone11"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="LineChart"
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_9"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_9"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <line
+            id="verticalLine3"
+            stroke="#323130"
+            stroke-dasharray="5,5"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="0"
+          />
+          <g>
+            <line
+              id="borderID2_0_1"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="40"
+              x2="27.763157894736842"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="borderID2_0_2"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="27.763157894736842"
+              x2="16.31578947368421"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="borderID2_0_3"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="16.31578947368421"
+              x2="4.0789473684210495"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="borderID2_0_4"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="4.0789473684210495"
+              x2="-7.763157894736841"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="borderID2_0_5"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="-7.763157894736841"
+              x2="-20"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_1"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="40"
+              x2="27.763157894736842"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_2"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="27.763157894736842"
+              x2="16.31578947368421"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="lineID1_0_3"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="16.31578947368421"
+              x2="4.0789473684210495"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_4"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="4.0789473684210495"
+              x2="-7.763157894736841"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="lineID1_0_5"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="-7.763157894736841"
+              x2="-20"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <path
+              aria-label="1/1/2020, 12:00:00 AM. First, 30."
+              d="M39.5 -3.2692307692307736
+     A0.5 0.5 0 1 0 40.5 -3.2692307692307736
+     M39.5 -3.2692307692307736
+     A 0.5 0.5 0 1 1 40.5 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_1"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="0"
+            />
+            <path
+              aria-label="2/1/2020, 12:00:00 AM. First, 50."
+              d="M27.263157894736842 17.884615384615383
+     A0.5 0.5 0 1 0 28.263157894736842 17.884615384615383
+     M27.263157894736842 17.884615384615383
+     A 0.5 0.5 0 1 1 28.263157894736842 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_2"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="3/1/2020, 12:00:00 AM. First, 30."
+              d="M15.815789473684209 -3.2692307692307736
+     A0.5 0.5 0 1 0 16.81578947368421 -3.2692307692307736
+     M15.815789473684209 -3.2692307692307736
+     A 0.5 0.5 0 1 1 16.81578947368421 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_3"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="4/1/2020, 12:00:00 AM. First, 50."
+              d="M3.5789473684210495 17.884615384615383
+     A0.5 0.5 0 1 0 4.5789473684210495 17.884615384615383
+     M3.5789473684210495 17.884615384615383
+     A 0.5 0.5 0 1 1 4.5789473684210495 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_4"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="5/1/2020, 12:00:00 AM. First, 30."
+              d="M-8.26315789473684 -3.2692307692307736
+     A0.5 0.5 0 1 0 -7.263157894736841 -3.2692307692307736
+     M-8.26315789473684 -3.2692307692307736
+     A 0.5 0.5 0 1 1 -7.263157894736841 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_5"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="6/1/2020, 12:00:00 AM. First, 50."
+              d="M-20.5 17.884615384615383
+     A0.5 0.5 0 1 0 -19.5 17.884615384615383
+     M-20.5 17.884615384615383
+     A 0.5 0.5 0 1 1 -19.5 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_55L"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <circle
+              cx="-20"
+              cy="17.884615384615383"
+              focusable="false"
+              id="circle0_0_55D"
+              opacity="0"
+              r="8"
+              stroke-width="0"
+              width="0"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone12"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="First"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="1"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #637cef;
+                              border-color: #637cef;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #637cef, #637cef);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        First
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Line chart rendering  Should render the Line chart with date x-axis data when tick Values not given and tick format is given 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_9"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_10"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone11"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="LineChart"
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_9"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_9"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <line
+            id="verticalLine3"
+            stroke="#323130"
+            stroke-dasharray="5,5"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="0"
+          />
+          <g>
+            <line
+              id="borderID2_0_1"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="40"
+              x2="27.763157894736842"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="borderID2_0_2"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="27.763157894736842"
+              x2="16.31578947368421"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="borderID2_0_3"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="16.31578947368421"
+              x2="4.0789473684210495"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="borderID2_0_4"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="4.0789473684210495"
+              x2="-7.763157894736841"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="borderID2_0_5"
+              opacity="1"
+              stroke="#ffffff"
+              stroke-linecap="round"
+              stroke-width="8"
+              x1="-7.763157894736841"
+              x2="-20"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_1"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="40"
+              x2="27.763157894736842"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_2"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="27.763157894736842"
+              x2="16.31578947368421"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="lineID1_0_3"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="16.31578947368421"
+              x2="4.0789473684210495"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <line
+              id="lineID1_0_4"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="4.0789473684210495"
+              x2="-7.763157894736841"
+              y1="17.884615384615383"
+              y2="-3.2692307692307736"
+            />
+            <line
+              id="lineID1_0_5"
+              opacity="1"
+              stroke="#637cef"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="-7.763157894736841"
+              x2="-20"
+              y1="-3.2692307692307736"
+              y2="17.884615384615383"
+            />
+            <path
+              aria-label="1/1/2020, 12:00:00 AM. First, 30."
+              d="M39.5 -3.2692307692307736
+     A0.5 0.5 0 1 0 40.5 -3.2692307692307736
+     M39.5 -3.2692307692307736
+     A 0.5 0.5 0 1 1 40.5 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_1"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="0"
+            />
+            <path
+              aria-label="2/1/2020, 12:00:00 AM. First, 50."
+              d="M27.263157894736842 17.884615384615383
+     A0.5 0.5 0 1 0 28.263157894736842 17.884615384615383
+     M27.263157894736842 17.884615384615383
+     A 0.5 0.5 0 1 1 28.263157894736842 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_2"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="3/1/2020, 12:00:00 AM. First, 30."
+              d="M15.815789473684209 -3.2692307692307736
+     A0.5 0.5 0 1 0 16.81578947368421 -3.2692307692307736
+     M15.815789473684209 -3.2692307692307736
+     A 0.5 0.5 0 1 1 16.81578947368421 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_3"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="4/1/2020, 12:00:00 AM. First, 50."
+              d="M3.5789473684210495 17.884615384615383
+     A0.5 0.5 0 1 0 4.5789473684210495 17.884615384615383
+     M3.5789473684210495 17.884615384615383
+     A 0.5 0.5 0 1 1 4.5789473684210495 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_4"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="5/1/2020, 12:00:00 AM. First, 30."
+              d="M-8.26315789473684 -3.2692307692307736
+     A0.5 0.5 0 1 0 -7.263157894736841 -3.2692307692307736
+     M-8.26315789473684 -3.2692307692307736
+     A 0.5 0.5 0 1 1 -7.263157894736841 -3.2692307692307736
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_5"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="6/1/2020, 12:00:00 AM. First, 50."
+              d="M-20.5 17.884615384615383
+     A0.5 0.5 0 1 0 -19.5 17.884615384615383
+     M-20.5 17.884615384615383
+     A 0.5 0.5 0 1 1 -19.5 17.884615384615383
+     "
+              data-is-focusable="true"
+              fill="#637cef"
+              id="circle0_0_55L"
+              opacity="1"
+              role="img"
+              stroke="#637cef"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <circle
+              cx="-20"
+              cy="17.884615384615383"
+              focusable="false"
+              id="circle0_0_55D"
+              opacity="0"
+              r="8"
+              stroke-width="0"
+              width="0"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone12"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="First"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="1"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #637cef;
+                              border-color: #637cef;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #637cef, #637cef);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        First
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Line chart rendering Should render the Line chart with date x-axis data 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
-    role="presentation"
-  >
-    <div
-      id="defaultTabbableElement_10"
-    />
-    <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
-      data-tabster="{\\"uncontrolled\\": {}}"
-    >
-      <svg
-        aria-label="LineChart"
-        focusable="false"
-        height="0"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_9"
-          transform="translate(0, -35)"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          id="yAxisGElementchart_9"
-          transform="translate(40, 0)"
-        />
-        <g>
-          <line
-            id="verticalLine3"
-            stroke="#323130"
-            stroke-dasharray="5,5"
-            visibility="hidden"
-            x1="0"
-            x2="0"
-            y1="0"
-            y2="0"
-          />
-          <g>
-            <line
-              id="borderID2_0_1"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="40"
-              x2="27.763157894736842"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="borderID2_0_2"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="27.763157894736842"
-              x2="16.31578947368421"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="borderID2_0_3"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="16.31578947368421"
-              x2="4.0789473684210495"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="borderID2_0_4"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="4.0789473684210495"
-              x2="-7.763157894736841"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="borderID2_0_5"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="-7.763157894736841"
-              x2="-20"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_1"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="40"
-              x2="27.763157894736842"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_2"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="27.763157894736842"
-              x2="16.31578947368421"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="lineID1_0_3"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="16.31578947368421"
-              x2="4.0789473684210495"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_4"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="4.0789473684210495"
-              x2="-7.763157894736841"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="lineID1_0_5"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="-7.763157894736841"
-              x2="-20"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <path
-              aria-label="1/1/2020, 12:00:00 AM. First, 30."
-              d="M39.5 -3.2692307692307736
-     A0.5 0.5 0 1 0 40.5 -3.2692307692307736
-     M39.5 -3.2692307692307736
-     A 0.5 0.5 0 1 1 40.5 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_1"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="0"
-            />
-            <path
-              aria-label="2/1/2020, 12:00:00 AM. First, 50."
-              d="M27.263157894736842 17.884615384615383
-     A0.5 0.5 0 1 0 28.263157894736842 17.884615384615383
-     M27.263157894736842 17.884615384615383
-     A 0.5 0.5 0 1 1 28.263157894736842 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_2"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="3/1/2020, 12:00:00 AM. First, 30."
-              d="M15.815789473684209 -3.2692307692307736
-     A0.5 0.5 0 1 0 16.81578947368421 -3.2692307692307736
-     M15.815789473684209 -3.2692307692307736
-     A 0.5 0.5 0 1 1 16.81578947368421 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_3"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="4/1/2020, 12:00:00 AM. First, 50."
-              d="M3.5789473684210495 17.884615384615383
-     A0.5 0.5 0 1 0 4.5789473684210495 17.884615384615383
-     M3.5789473684210495 17.884615384615383
-     A 0.5 0.5 0 1 1 4.5789473684210495 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_4"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="5/1/2020, 12:00:00 AM. First, 30."
-              d="M-8.26315789473684 -3.2692307692307736
-     A0.5 0.5 0 1 0 -7.263157894736841 -3.2692307692307736
-     M-8.26315789473684 -3.2692307692307736
-     A 0.5 0.5 0 1 1 -7.263157894736841 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_5"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="6/1/2020, 12:00:00 AM. First, 50."
-              d="M-20.5 17.884615384615383
-     A0.5 0.5 0 1 0 -19.5 17.884615384615383
-     M-20.5 17.884615384615383
-     A 0.5 0.5 0 1 1 -19.5 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_55L"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <circle
-              cx="-20"
-              cy="17.884615384615383"
-              focusable="false"
-              id="circle0_0_55D"
-              opacity="0"
-              r="8"
-              stroke-width="0"
-              width="0"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
-      >
-        <div>
-          <div
-            style="position: relative;"
-          >
-            <div
-              data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
-            >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
-                data-tabster="{\\"uncontrolled\\": {}}"
-                role="listbox"
-              >
-                <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
-                  role="group"
-                >
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="First"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="1"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="0"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #637cef;
-                              border-color: #637cef;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #637cef, #637cef);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        First
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Line chart rendering Should render the Line chart with date x-axis data when tick Values is given 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
-    role="presentation"
-  >
-    <div
-      id="defaultTabbableElement_10"
-    />
-    <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
-      data-tabster="{\\"uncontrolled\\": {}}"
-    >
-      <svg
-        aria-label="LineChart"
-        focusable="false"
-        height="0"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_9"
-          transform="translate(0, -35)"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          id="yAxisGElementchart_9"
-          transform="translate(40, 0)"
-        />
-        <g>
-          <line
-            id="verticalLine3"
-            stroke="#323130"
-            stroke-dasharray="5,5"
-            visibility="hidden"
-            x1="0"
-            x2="0"
-            y1="0"
-            y2="0"
-          />
-          <g>
-            <line
-              id="borderID2_0_1"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="40"
-              x2="27.763157894736842"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="borderID2_0_2"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="27.763157894736842"
-              x2="16.31578947368421"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="borderID2_0_3"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="16.31578947368421"
-              x2="4.0789473684210495"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="borderID2_0_4"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="4.0789473684210495"
-              x2="-7.763157894736841"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="borderID2_0_5"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="-7.763157894736841"
-              x2="-20"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_1"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="40"
-              x2="27.763157894736842"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_2"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="27.763157894736842"
-              x2="16.31578947368421"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="lineID1_0_3"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="16.31578947368421"
-              x2="4.0789473684210495"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_4"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="4.0789473684210495"
-              x2="-7.763157894736841"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="lineID1_0_5"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="-7.763157894736841"
-              x2="-20"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <path
-              aria-label="1/1/2020, 12:00:00 AM. First, 30."
-              d="M39.5 -3.2692307692307736
-     A0.5 0.5 0 1 0 40.5 -3.2692307692307736
-     M39.5 -3.2692307692307736
-     A 0.5 0.5 0 1 1 40.5 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_1"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="0"
-            />
-            <path
-              aria-label="2/1/2020, 12:00:00 AM. First, 50."
-              d="M27.263157894736842 17.884615384615383
-     A0.5 0.5 0 1 0 28.263157894736842 17.884615384615383
-     M27.263157894736842 17.884615384615383
-     A 0.5 0.5 0 1 1 28.263157894736842 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_2"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="3/1/2020, 12:00:00 AM. First, 30."
-              d="M15.815789473684209 -3.2692307692307736
-     A0.5 0.5 0 1 0 16.81578947368421 -3.2692307692307736
-     M15.815789473684209 -3.2692307692307736
-     A 0.5 0.5 0 1 1 16.81578947368421 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_3"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="4/1/2020, 12:00:00 AM. First, 50."
-              d="M3.5789473684210495 17.884615384615383
-     A0.5 0.5 0 1 0 4.5789473684210495 17.884615384615383
-     M3.5789473684210495 17.884615384615383
-     A 0.5 0.5 0 1 1 4.5789473684210495 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_4"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="5/1/2020, 12:00:00 AM. First, 30."
-              d="M-8.26315789473684 -3.2692307692307736
-     A0.5 0.5 0 1 0 -7.263157894736841 -3.2692307692307736
-     M-8.26315789473684 -3.2692307692307736
-     A 0.5 0.5 0 1 1 -7.263157894736841 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_5"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="6/1/2020, 12:00:00 AM. First, 50."
-              d="M-20.5 17.884615384615383
-     A0.5 0.5 0 1 0 -19.5 17.884615384615383
-     M-20.5 17.884615384615383
-     A 0.5 0.5 0 1 1 -19.5 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_55L"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <circle
-              cx="-20"
-              cy="17.884615384615383"
-              focusable="false"
-              id="circle0_0_55D"
-              opacity="0"
-              r="8"
-              stroke-width="0"
-              width="0"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
-      >
-        <div>
-          <div
-            style="position: relative;"
-          >
-            <div
-              data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
-            >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
-                data-tabster="{\\"uncontrolled\\": {}}"
-                role="listbox"
-              >
-                <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
-                  role="group"
-                >
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="First"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="1"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="0"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #637cef;
-                              border-color: #637cef;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #637cef, #637cef);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        First
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Line chart rendering Should render the Line chart with date x-axis data when tick Values is given and tick format not given 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
-    role="presentation"
-  >
-    <div
-      id="defaultTabbableElement_10"
-    />
-    <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
-      data-tabster="{\\"uncontrolled\\": {}}"
-    >
-      <svg
-        aria-label="LineChart"
-        focusable="false"
-        height="0"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_9"
-          transform="translate(0, -35)"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          id="yAxisGElementchart_9"
-          transform="translate(40, 0)"
-        />
-        <g>
-          <line
-            id="verticalLine3"
-            stroke="#323130"
-            stroke-dasharray="5,5"
-            visibility="hidden"
-            x1="0"
-            x2="0"
-            y1="0"
-            y2="0"
-          />
-          <g>
-            <line
-              id="borderID2_0_1"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="40"
-              x2="27.763157894736842"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="borderID2_0_2"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="27.763157894736842"
-              x2="16.31578947368421"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="borderID2_0_3"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="16.31578947368421"
-              x2="4.0789473684210495"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="borderID2_0_4"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="4.0789473684210495"
-              x2="-7.763157894736841"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="borderID2_0_5"
-              opacity="1"
-              stroke="#ffffff"
-              stroke-linecap="round"
-              stroke-width="8"
-              x1="-7.763157894736841"
-              x2="-20"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_1"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="40"
-              x2="27.763157894736842"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_2"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="27.763157894736842"
-              x2="16.31578947368421"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="lineID1_0_3"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="16.31578947368421"
-              x2="4.0789473684210495"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <line
-              id="lineID1_0_4"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="4.0789473684210495"
-              x2="-7.763157894736841"
-              y1="17.884615384615383"
-              y2="-3.2692307692307736"
-            />
-            <line
-              id="lineID1_0_5"
-              opacity="1"
-              stroke="#637cef"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="-7.763157894736841"
-              x2="-20"
-              y1="-3.2692307692307736"
-              y2="17.884615384615383"
-            />
-            <path
-              aria-label="1/1/2020, 12:00:00 AM. First, 30."
-              d="M39.5 -3.2692307692307736
-     A0.5 0.5 0 1 0 40.5 -3.2692307692307736
-     M39.5 -3.2692307692307736
-     A 0.5 0.5 0 1 1 40.5 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_1"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="0"
-            />
-            <path
-              aria-label="2/1/2020, 12:00:00 AM. First, 50."
-              d="M27.263157894736842 17.884615384615383
-     A0.5 0.5 0 1 0 28.263157894736842 17.884615384615383
-     M27.263157894736842 17.884615384615383
-     A 0.5 0.5 0 1 1 28.263157894736842 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_2"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="3/1/2020, 12:00:00 AM. First, 30."
-              d="M15.815789473684209 -3.2692307692307736
-     A0.5 0.5 0 1 0 16.81578947368421 -3.2692307692307736
-     M15.815789473684209 -3.2692307692307736
-     A 0.5 0.5 0 1 1 16.81578947368421 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_3"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="4/1/2020, 12:00:00 AM. First, 50."
-              d="M3.5789473684210495 17.884615384615383
-     A0.5 0.5 0 1 0 4.5789473684210495 17.884615384615383
-     M3.5789473684210495 17.884615384615383
-     A 0.5 0.5 0 1 1 4.5789473684210495 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_4"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="5/1/2020, 12:00:00 AM. First, 30."
-              d="M-8.26315789473684 -3.2692307692307736
-     A0.5 0.5 0 1 0 -7.263157894736841 -3.2692307692307736
-     M-8.26315789473684 -3.2692307692307736
-     A 0.5 0.5 0 1 1 -7.263157894736841 -3.2692307692307736
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_5"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="6/1/2020, 12:00:00 AM. First, 50."
-              d="M-20.5 17.884615384615383
-     A0.5 0.5 0 1 0 -19.5 17.884615384615383
-     M-20.5 17.884615384615383
-     A 0.5 0.5 0 1 1 -19.5 17.884615384615383
-     "
-              data-is-focusable="true"
-              fill="#637cef"
-              id="circle0_0_55L"
-              opacity="1"
-              role="img"
-              stroke="#637cef"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <circle
-              cx="-20"
-              cy="17.884615384615383"
-              focusable="false"
-              id="circle0_0_55D"
-              opacity="0"
-              r="8"
-              stroke-width="0"
-              width="0"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
-      >
-        <div>
-          <div
-            style="position: relative;"
-          >
-            <div
-              data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
-            >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
-                data-tabster="{\\"uncontrolled\\": {}}"
-                role="listbox"
-              >
-                <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
-                  role="group"
-                >
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="First"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="1"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="0"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #637cef;
-                              border-color: #637cef;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #637cef, #637cef);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        First
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Line chart rendering Should render the Line chart with date x-axis data when tick Values not given and tick format is given 1`] = `
 <div>
   <div
     class=
