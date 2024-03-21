@@ -23,6 +23,7 @@ exports[`AccordionHeader renders a default state 1`] = `
         style={
           Object {
             "transform": "rotate(0deg)",
+            "transition": "transform 200ms ease-out",
           }
         }
         viewBox="0 0 20 20"
