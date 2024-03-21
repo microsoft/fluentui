@@ -27,6 +27,8 @@ export const renderAccordionPanel_unstable = (state: AccordionPanelState) => {
     //     exit: { easing: exitEasing },
     //   }}
     // >
-    <Collapse>{<state.root>{state.root.children}</state.root>}</Collapse>
+    <Collapse>
+      <state.root>{state.root.children}</state.root>
+    </Collapse>
   );
 };
