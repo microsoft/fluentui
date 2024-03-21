@@ -12,6 +12,7 @@ import { KeyborgFocusInEvent } from 'keyborg';
 import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
+import { Events as TabsterEvents } from 'tabster';
 import { Types as TabsterTypes } from 'tabster';
 
 // @internal (undocumented)
@@ -59,6 +60,8 @@ export { KeyborgFocusInEvent }
 
 // @public (undocumented)
 export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
+
+export { TabsterEvents }
 
 export { TabsterTypes }
 
