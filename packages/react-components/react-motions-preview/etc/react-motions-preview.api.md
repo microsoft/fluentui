@@ -4,9 +4,14 @@
 
 ```ts
 
-import type { EventData } from '@fluentui/react-utilities';
-import type { EventHandler } from '@fluentui/react-utilities';
+import { EventData } from '@fluentui/react-utilities';
+import { EventHandler } from '@fluentui/react-utilities';
+import { FC } from 'react';
+import { JSXElementConstructor } from 'react';
+import { MotionImperativeRef as MotionImperativeRef_2 } from '@fluentui/react-motions-preview';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
+import { Ref } from 'react';
 
 // @public (undocumented)
 export type AtomMotion = {
@@ -15,6 +20,18 @@ export type AtomMotion = {
 
 // @public (undocumented)
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+
+// @public (undocumented)
+export const Collapse: FC<    {
+appear?: boolean | undefined;
+children: ReactElement<any, string | JSXElementConstructor<any>>;
+imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
+direction: "enter" | "exit";
+}> | undefined;
+visible?: boolean | undefined;
+unmountOnExit?: boolean | undefined;
+}>;
 
 // @public
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
@@ -90,14 +107,15 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 export type PresenceMotion = {
-    enter: AtomMotion;
-    exit: AtomMotion;
+    [transition in PresenceTransitionName]: AtomMotion;
 };
 
-// @public (undocumented)
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+// @public
+export type PresenceMotionFn<CustomProps = {}> = (params: {
+    element: HTMLElement;
+} & PresenceTransitionProps<CustomProps>) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
 
