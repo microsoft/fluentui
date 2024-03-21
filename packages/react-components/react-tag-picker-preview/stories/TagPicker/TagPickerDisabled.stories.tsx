@@ -21,35 +21,33 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Default = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+export const Disabled = () => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([
+    options[0],
+    options[1],
+    options[2],
+    options[3],
+  ]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
 
   return (
     <div style={{ maxWidth: 400 }}>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl clearable>
+      <TagPicker disabled onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag
-                dismissible
-                key={option}
-                shape="rounded"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-              >
+              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
           <TagPickerInput />
         </TagPickerControl>
-
         <TagPickerList>
           {options
-            .filter(option => selectedOptions.indexOf(option) < 0)
+            .filter(option => !selectedOptions.includes(option))
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"

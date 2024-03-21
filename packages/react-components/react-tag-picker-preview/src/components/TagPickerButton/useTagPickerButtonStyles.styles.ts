@@ -1,12 +1,10 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButton.types';
 
 export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots> = {
   root: 'fui-TagPickerButton',
-  clearButton: 'fui-TagPickerButton__clearButton',
   expandIcon: 'fui-TagPickerButton__expandIcon',
 };
 
@@ -43,7 +41,7 @@ const useStyles = makeStyles({
   },
 
   // size variants
-  small: {
+  medium: {
     ...typographyStyles.caption1,
     ...shorthands.padding(
       '3px',
@@ -52,7 +50,7 @@ const useStyles = makeStyles({
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
   },
-  medium: {
+  large: {
     ...typographyStyles.body1,
     ...shorthands.padding(
       '5px',
@@ -61,7 +59,7 @@ const useStyles = makeStyles({
       `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
   },
-  large: {
+  'extra-large': {
     columnGap: tokens.spacingHorizontalSNudge,
     ...typographyStyles.body2,
     ...shorthands.padding(
@@ -160,15 +158,15 @@ const useIconStyles = makeStyles({
   },
 
   // icon size variants
-  small: {
+  medium: {
     fontSize: iconSizes.small,
     marginLeft: tokens.spacingHorizontalXXS,
   },
-  medium: {
+  large: {
     fontSize: iconSizes.medium,
     marginLeft: tokens.spacingHorizontalXXS,
   },
-  large: {
+  'extra-large': {
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
   },
@@ -178,26 +176,11 @@ const useIconStyles = makeStyles({
   },
 });
 
-const useBaseClearButtonStyle = makeResetStyles({
-  alignSelf: 'center',
-  backgroundColor: tokens.colorTransparentBackground,
-  border: 'none',
-  cursor: 'pointer',
-  height: 'fit-content',
-  margin: 0,
-  marginRight: tokens.spacingHorizontalMNudge,
-  padding: 0,
-  position: 'relative',
-
-  ...createFocusOutlineStyle(),
-});
-
 /**
  * Apply styling to the PickerButton slots based on the state
  */
 export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): TagPickerButtonState => {
   const styles = useStyles();
-  const clearButtonStyles = useBaseClearButtonStyle();
   const iconStyles = useIconStyles();
   state.root.className = mergeClasses(
     tagPickerButtonClassNames.root,
@@ -207,25 +190,13 @@ export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): 
     state.root.className,
   );
 
-  if (state.clearButton) {
-    state.clearButton.className = mergeClasses(
-      tagPickerButtonClassNames.clearButton,
-      clearButtonStyles,
-      iconStyles.icon,
-      iconStyles[state.size],
-      state.disabled && iconStyles.disabled,
-      !state.showClearIcon && styles.hidden,
-      state.clearButton.className,
-    );
-  }
-
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
       tagPickerButtonClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[state.size],
-      state.disabled && iconStyles.disabled,
-      state.showClearIcon && styles.hidden,
+      // state.disabled && iconStyles.disabled,
+      // state.showClearIcon && styles.hidden,
       state.expandIcon.className,
     );
   }

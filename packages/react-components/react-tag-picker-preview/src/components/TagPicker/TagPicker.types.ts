@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler } from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState, ListboxContextValue } from '@fluentui/react-combobox';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
@@ -7,13 +7,29 @@ import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 
 export type TagPickerSlots = {};
 
+export type TagPickerSize = 'medium' | 'large' | 'extra-large';
+
+/*
+ * Data for the onOptionSelect callback.
+ * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
+ */
+export type TagPickerOnOptionSelectData = {
+  optionValue: string | undefined;
+  optionText: string | undefined;
+  selectedOptions: string[];
+} & (
+  | EventData<'click', React.MouseEvent<HTMLDivElement>>
+  | EventData<'change', React.ChangeEvent<HTMLDivElement>>
+  | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
+);
+
 /**
  * Picker Props
- * TODO: pick only necessary props form combobox
  */
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
-  Omit<ComboboxProps, 'size' | 'value'> &
-  Pick<Partial<TagPickerContextValue>, 'size'> & {
+  Pick<ComboboxProps, 'positioning' | 'disabled'> &
+  Pick<Partial<TagPickerContextValue>, 'size' | 'selectedOptions' | 'appearance'> & {
+    onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     /**
      * Can contain two children including a trigger and a popover
      */
@@ -26,7 +42,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
  */
 export type TagPickerState = ComponentState<TagPickerSlots> &
   Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> &
-  Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'> & {
+  Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
     /**
      * Configures the positioned menu
      */
@@ -34,7 +50,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
 
     trigger: React.ReactNode;
 
-    popover: React.ReactNode;
+    popover?: React.ReactNode;
   };
 
 export type TagPickerContextValues = {

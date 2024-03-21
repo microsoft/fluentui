@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: add system colors on hover",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

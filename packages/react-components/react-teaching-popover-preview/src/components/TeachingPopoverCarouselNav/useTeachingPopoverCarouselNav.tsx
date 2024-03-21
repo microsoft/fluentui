@@ -36,7 +36,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        role: 'list',
+        role: 'tablist',
         tabIndex: 0,
         ...props,
         children: rootChildren,
