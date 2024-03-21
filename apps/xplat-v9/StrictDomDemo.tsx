@@ -5,7 +5,7 @@ import { Label } from '@fluentui/react-label';
 import { getStylesFromClassName, makeStyles, shorthands } from '@fluentui/react-platform-adapter-preview';
 import { FluentProvider } from '@fluentui/react-provider';
 import { tokens, webLightTheme } from '@fluentui/react-theme';
-import { html } from 'react-strict-dom';
+import { ButtonStories } from './stories/Button/ButtonStories.stories';
 
 const useClassNames = makeStyles({
   root: {
@@ -25,11 +25,10 @@ export const StrictDomDemo = (props: { cond?: boolean }) => {
   const classNames = useClassNames();
 
   return (
-    <FluentProvider theme={webLightTheme}>
-      <html.div style={getStylesFromClassName(classNames.root)}>
-        <Label required>Required label</Label>
-        <Button appearance="primary">Primary button</Button>
-      </html.div>
+    <FluentProvider theme={webLightTheme} className={classNames.root}>
+      <Label required>Required label</Label>
+      <Button appearance="primary">Primary button</Button>
+      <ButtonStories />
     </FluentProvider>
   );
 };
