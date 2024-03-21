@@ -109,8 +109,7 @@ export const styles = css`
   }
   :host([disabled]) .thumb-cursor {
     background-color: ${colorNeutralForegroundDisabled};
-    box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1},
-      0 0 0 1px ${colorNeutralStrokeDisabled};
+    box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStrokeDisabled};
   }
 
   /* Positioning Region */
