@@ -1047,14 +1047,14 @@ PODS:
     - React-jsi (= 0.73.6)
     - React-logger (= 0.73.6)
     - React-perflogger (= 0.73.6)
-  - ReactNativeHost (0.4.4):
+  - ReactNativeHost (0.4.5):
     - React-Core
     - React-cxxreact
     - React-RCTAppDelegate
     - React-RCTFabric
     - ReactCommon/turbomodule/core
     - Yoga
-  - ReactTestApp-DevSupport (3.3.6):
+  - ReactTestApp-DevSupport (3.4.2):
     - React-Core
     - React-jsi
   - ReactTestApp-Resources (1.0.0-dev)
@@ -1279,8 +1279,8 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 9daefa990db62f8874bc9d6e7e504272c6b6c57f
   React-utils: d16c1d2251c088ad817996621947d0ac8167b46c
   ReactCommon: 447281ad2034ea3252bf81a60d1f77d5afb0b636
-  ReactNativeHost: 46268e9273b0afaf9e9720d6cc81507d95d8dd7a
-  ReactTestApp-DevSupport: 6af39aef21b12310172abaa0d1e0f01a87aaa8c4
+  ReactNativeHost: 0af0e2481deb1a3c7b1b76397cbd04d87eef1505
+  ReactTestApp-DevSupport: 18f9bba9f2af749727720c0f045943a615d11de0
   ReactTestApp-Resources: 857244f3a23f2b3157b364fa06cf3e8866deff9c
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
