@@ -19,7 +19,7 @@ const { color } = swatchCSSVars;
 /**
  * Styles for the root slot
  */
-const useStyles = makeResetStyles({
+const useResetStyles = makeResetStyles({
   display: 'inline-flex',
   flexShrink: 0,
   alignItems: 'center',
@@ -49,12 +49,6 @@ const useStyles = makeResetStyles({
     outline: 'none',
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
   }),
-  ':disabled': {
-    ':hover': {
-      cursor: 'not-allowed',
-      boxShadow: 'none',
-    },
-  },
 
   // High contrast styles
 
@@ -79,7 +73,13 @@ const useStyles = makeResetStyles({
   },
 });
 
-const useStylesSelected = makeStyles({
+const useStyles = makeStyles({
+  disabled: {
+    ':hover': {
+      cursor: 'not-allowed',
+      boxShadow: 'none',
+    },
+  },
   selected: {
     ...shorthands.border('none'),
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
@@ -162,8 +162,8 @@ const useIconStyles = makeStyles({
  * Apply styling to the ColorSwatch slots based on the state
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
+  const resetStyles = useResetStyles();
   const styles = useStyles();
-  const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
   const iconStyles = useIconStyles();
@@ -172,10 +172,11 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
 
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
-    styles,
+    resetStyles,
     sizeStyles[size],
     shapeStyles[state.shape ?? 'square'],
-    state.selected && selectedStyles.selected,
+    state.selected && styles.selected,
+    state.disabled && styles.disabled,
     state.root.className,
   );
 
