@@ -302,7 +302,7 @@ describe('Area chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(Timezone.UTC),
+      !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
     );
   });
 });
