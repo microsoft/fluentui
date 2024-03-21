@@ -3,12 +3,12 @@
 
 import * as React from 'react';
 
-import { Default } from './ButtonDefault.stories';
-import { Shape } from './ButtonShape.stories';
-import { Appearance } from './ButtonAppearance.stories';
-import { Size } from './ButtonSize.stories';
-import { Disabled } from './ButtonDisabled.stories';
-import { WithLongText } from './ButtonWithLongText.stories';
+import { Default } from './ButtonDefault';
+import { Shape } from './ButtonShape';
+import { Appearance } from './ButtonAppearance';
+import { Size } from './ButtonSize';
+import { Disabled } from './ButtonDisabled';
+import { WithLongText } from './ButtonWithLongText';
 
 export const ButtonStories = () => (
   <div>

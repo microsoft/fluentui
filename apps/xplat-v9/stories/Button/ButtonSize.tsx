@@ -8,7 +8,7 @@ import { makeStyles } from '@fluentui/react-platform-adapter-preview';
 
 const useStyles = makeStyles({
   innerWrapper: {
-    alignItems: 'start',
+    // alignItems: 'start',
     columnGap: '15px',
     display: 'flex',
   },

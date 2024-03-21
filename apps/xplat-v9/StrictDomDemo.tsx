@@ -1,11 +1,10 @@
 import * as React from 'react';
 
-import { Button } from '@fluentui/react-button';
 import { Label } from '@fluentui/react-label';
-import { getStylesFromClassName, makeStyles, shorthands } from '@fluentui/react-platform-adapter-preview';
+import { mergeClasses, makeStyles, shorthands } from '@fluentui/react-platform-adapter-preview';
 import { FluentProvider } from '@fluentui/react-provider';
 import { tokens, webLightTheme } from '@fluentui/react-theme';
-import { ButtonStories } from './stories/Button/ButtonStories.stories';
+import { ButtonStories } from './stories/Button/ButtonStories';
 
 const useClassNames = makeStyles({
   root: {
@@ -19,15 +18,12 @@ const useClassNames = makeStyles({
   },
 });
 
-export const StrictDomDemo = (props: { cond?: boolean }) => {
-  const { cond } = props;
-
+export const StrictDomDemo = () => {
   const classNames = useClassNames();
 
   return (
-    <FluentProvider theme={webLightTheme} className={classNames.root}>
-      <Label required>Required label</Label>
-      <Button appearance="primary">Primary button</Button>
+    <FluentProvider theme={webLightTheme} className={mergeClasses(classNames.root)}>
+      <Label required>Label</Label>
       <ButtonStories />
     </FluentProvider>
   );
