@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate to monosize 0.4",
+  "packageName": "@fluentui/global-context",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
