@@ -38,15 +38,28 @@ Start the test app from the `apps/xplat-v9` directory:
 
 ```sh
 cd apps/xplat-v9
-pod install --project-directory=ios # or "macos" if you want to use them
 yarn windows # or "ios" or "macos" or "android"
 ```
+
+#### iOS/macOS specific
+
+To be able to run the iOS and macOS app successfully, remember to run this before `yarn ios`/`yarn macos`:
+
+```sh
+pod install --project-directory=ios
+# OR
+pod install --project-directory=macos
+```
+
+#### Running the bundler
 
 If Metro (the React Native bundler) doesn't automatically start, open a new terminal window on the same path (`apps/xplat-v9`) and run:
 
 ```sh
 yarn start
 ```
+
+If you are having issues with the bundler, you can also try running it with cache resetting: `yarn start --reset-cache`.
 
 ## Updating `microsoft/fluentui`
 
