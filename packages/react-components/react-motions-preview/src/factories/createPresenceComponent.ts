@@ -75,7 +75,8 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
         return;
       }
 
-      if (elementRef.current) {
+      // Check for .animate which may not be available in some environments, e.g. unit tests
+      if (elementRef.current && elementRef.current.animate) {
         const definition = typeof motion === 'function' ? motion({ element: elementRef.current }) : motion;
         const { keyframes, ...options } = definition.exit;
 
@@ -104,7 +105,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     }, [animationRef, isReducedMotion, onExitFinish, visible]);
 
     useIsomorphicLayoutEffect(() => {
-      if (!elementRef.current) {
+      if (!(elementRef.current && elementRef.current.animate)) {
         return;
       }
 
