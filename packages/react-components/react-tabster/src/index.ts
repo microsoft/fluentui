@@ -45,5 +45,11 @@ export type { KeyborgFocusInEvent } from 'keyborg';
 export { KEYBORG_FOCUSIN } from 'keyborg';
 
 // @internal (undocumented)
-// eslint-disable-next-line deprecation/deprecation
-export { TabsterTypes, TabsterEvents, dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent };
+export {
+  TabsterTypes,
+  TabsterEvents,
+  // eslint-disable-next-line deprecation/deprecation
+  dispatchGroupperMoveFocusEvent,
+  // eslint-disable-next-line deprecation/deprecation
+  dispatchMoverMoveFocusEvent,
+};
