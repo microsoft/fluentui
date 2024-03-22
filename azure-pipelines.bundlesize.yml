@@ -1,6 +1,6 @@
 pr:
   - master
-  - shadow-dom
+  - shadow-dom # temporary to get preliminary results
 
 trigger:
   - master

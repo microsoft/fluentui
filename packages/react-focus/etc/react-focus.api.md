@@ -5,7 +5,7 @@
 ```ts
 
 import type { IRefObject } from '@fluentui/utilities';
-import { MergeStylesShadowRootContextValue } from '@fluentui/utilities/lib/shadowDom/MergeStylesShadowRootContext';
+import { MergeStylesShadowRootContextValue } from '@fluentui/utilities';
 import type { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 

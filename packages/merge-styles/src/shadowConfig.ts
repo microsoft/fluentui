@@ -6,6 +6,7 @@ export type ShadowConfig = {
 };
 
 export const GLOBAL_STYLESHEET_KEY = '__global__';
+export const SHADOW_DOM_STYLESHEET_SETTING = '__shadow_dom_stylesheet__';
 
 export const DEFAULT_SHADOW_CONFIG: ShadowConfig = {
   stylesheetKey: GLOBAL_STYLESHEET_KEY,

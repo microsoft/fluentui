@@ -43,6 +43,7 @@
     "@fluentui/react-focus": "^8.8.42",
     "@fluentui/react-hooks": "^8.7.0",
     "@fluentui/react-icons-mdl2": "^1.3.59",
+    "@fluentui/react-window-provider": "^2.2.18",
     "@fluentui/scheme-utilities": "^8.3.44",
     "@fluentui/style-utilities": "^8.10.5",
     "@fluentui/theme": "^2.6.43",

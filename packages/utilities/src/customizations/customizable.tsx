@@ -3,7 +3,7 @@ import { Customizations } from './Customizations';
 import { hoistStatics } from '../hoistStatics';
 import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets, makeShadowConfig } from '@fluentui/merge-styles';
-import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
+import { MergeStylesShadowRootConsumer } from '../shadowDom/contexts/MergeStylesShadowRootConsumer';
 import { getWindow } from '../dom/getWindow';
 import { WindowContext } from '@fluentui/react-window-provider';
 import type { ICustomizerContext } from './CustomizerContext';

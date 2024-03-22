@@ -2,7 +2,7 @@ import type { ExtendedCSSStyleSheet } from './Stylesheet';
 
 export const cloneCSSStyleSheet = (srcSheet: CSSStyleSheet, targetSheet: CSSStyleSheet): CSSStyleSheet => {
   for (let i = 0; i < srcSheet.cssRules.length; i++) {
-    targetSheet.insertRule(srcSheet.cssRules[i].cssText);
+    targetSheet.insertRule(srcSheet.cssRules[i].cssText, i);
   }
 
   return targetSheet;

@@ -73,10 +73,9 @@ export const getClassNames = memoizeFunction(
 
 export const getComboBoxOptionClassNames = memoizeFunction(
   (styles: Partial<IComboBoxOptionStyles>): IComboBoxOptionClassNames => {
-    // const mergeStyles = mergeStylesShadow(styles.__shadowConfig__);
     return {
-      optionText: mergeStyles('ms-ComboBox-optionText', styles.optionText),
-      root: mergeStyles('ms-ComboBox-option', styles.root, {
+      optionText: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-optionText', styles.optionText),
+      root: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-option', styles.root, {
         selectors: {
           ':hover': styles.rootHovered,
           ':focus': styles.rootFocused,

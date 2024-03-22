@@ -92,7 +92,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     const shadowConfig = styleFunctionOrObject
       ? (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__shadowConfig__
       : undefined;
-    const key = shadowConfig?.window ?? '__default__';
+    const key = shadowConfig && shadowConfig.window ? shadowConfig.window : '__default__';
 
     if (!windowMap.has(key)) {
       windowMap.set(key, new Map());
