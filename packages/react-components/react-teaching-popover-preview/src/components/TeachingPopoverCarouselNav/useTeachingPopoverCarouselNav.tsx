@@ -22,7 +22,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     circular: false,
     axis: 'horizontal',
     memorizeCurrent: false,
-    // eslint-disable-next-line naming-convention
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault: true,
   });
 
