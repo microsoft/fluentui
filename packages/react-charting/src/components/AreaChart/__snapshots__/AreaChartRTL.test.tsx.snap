@@ -3811,9 +3811,9 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
       <svg
         aria-label="Area chart styled example"
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -3841,9 +3841,127 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(58.1880081300813,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 07
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(158.9197154471545,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(259.6514227642277,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 21
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(360.3831300813008,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 28
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(461.114837398374,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Feb 04
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(561.8465447154472,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Feb 11
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -3869,20 +3987,120 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_6"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              19
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              38
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              57
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              76
+            </text>
+          </g>
+        </g>
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="272"
             id="rectangle3"
-            width="-13.01829268292683"
+            width="561.3465447154472"
           />
         </g>
         <g>
           <path
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816"
             fill="transparent"
             id="0-line-areaChart_0"
             opacity="0.3"
@@ -3891,14 +4109,14 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             stroke-width="2"
           />
           <path
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816L630,257C582.033,257,534.065,257,486.098,257C385.366,257,284.634,257,183.902,257C145.528,257,107.154,257,68.78,257C59.187,257,49.593,257,40,257Z"
             fill="#0099BC"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
             opacity="0.7"
           />
           <path
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211"
             fill="transparent"
             id="1-line-areaChart_0"
             opacity="0.3"
@@ -3906,7 +4124,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             stroke-width="5"
           />
           <path
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211L630,225.816C582.033,194.632,534.065,163.447,486.098,163.447C385.366,163.447,284.634,238.289,183.902,238.289C145.528,238.289,107.154,207.105,68.78,207.105C59.187,207.105,49.593,224.257,40,241.408Z"
             fill="#77004D"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
@@ -3914,12 +4132,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816L630,257C582.033,257,534.065,257,486.098,257C385.366,257,284.634,257,183.902,257C145.528,257,107.154,257,68.78,257C59.187,257,49.593,257,40,257Z"
           >
             <circle
               aria-label="1/6/2018, 12:00:00 AM. legend1, 5."
               cx="40"
-              cy="-31.38157894736842"
+              cy="241.4078947368421"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_0"
@@ -3932,8 +4150,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/8/2018, 12:00:00 AM. legend1, 16."
-              cx="37.073170731707314"
-              cy="-23.42105263157895"
+              cx="68.78048780487805"
+              cy="207.10526315789474"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_1"
@@ -3946,8 +4164,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/16/2018, 12:00:00 AM. legend1, 6."
-              cx="25.365853658536583"
-              cy="-30.657894736842106"
+              cx="183.90243902439025"
+              cy="238.28947368421052"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_2"
@@ -3960,8 +4178,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/6/2018, 12:00:00 AM. legend1, 30."
-              cx="-5.365853658536585"
-              cy="-13.289473684210524"
+              cx="486.0975609756098"
+              cy="163.44736842105263"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_3"
@@ -3974,8 +4192,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/16/2018, 12:00:00 AM. legend1, 10."
-              cx="-20"
-              cy="-27.763157894736842"
+              cx="630"
+              cy="225.81578947368422"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_4"
@@ -3989,12 +4207,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211L630,225.816C582.033,194.632,534.065,163.447,486.098,163.447C385.366,163.447,284.634,238.289,183.902,238.289C145.528,238.289,107.154,207.105,68.78,207.105C59.187,207.105,49.593,224.257,40,241.408Z"
           >
             <circle
               aria-label="1/6/2018, 12:00:00 AM. legend2, 10."
               cx="40"
-              cy="-24.14473684210526"
+              cy="210.2236842105263"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_5"
@@ -4007,8 +4225,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/8/2018, 12:00:00 AM. legend2, 33."
-              cx="37.073170731707314"
-              cy="0.46052631578947434"
+              cx="68.78048780487805"
+              cy="104.19736842105263"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_6"
@@ -4021,8 +4239,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/16/2018, 12:00:00 AM. legend2, 21."
-              cx="25.365853658536583"
-              cy="-15.460526315789476"
+              cx="183.90243902439025"
+              cy="172.80263157894737"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_7"
@@ -4035,8 +4253,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/6/2018, 12:00:00 AM. legend2, 44."
-              cx="-5.365853658536585"
-              cy="18.55263157894737"
+              cx="486.0975609756098"
+              cy="26.23684210526315"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_8"
@@ -4049,8 +4267,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/16/2018, 12:00:00 AM. legend2, 22."
-              cx="-20"
-              cy="-11.842105263157896"
+              cx="630"
+              cy="157.21052631578948"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_9"
@@ -4072,7 +4290,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="292"
           />
         </g>
       </svg>
@@ -4104,7 +4322,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -4350,9 +4568,9 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
       <svg
         aria-label="Area chart styled example"
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -4380,9 +4598,127 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(50.09349593495935,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 07
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(150.8252032520325,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(251.5569105691057,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 21
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(352.2886178861789,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 28
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(453.020325203252,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Feb 04
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(553.7520325203252,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Feb 11
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -4408,20 +4744,120 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_6"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              19
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              38
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              57
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              76
+            </text>
+          </g>
+        </g>
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="272"
             id="rectangle3"
-            width="-12.19512195121951"
+            width="553.2520325203252"
           />
         </g>
         <g>
           <path
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816"
             fill="transparent"
             id="0-line-areaChart_0"
             opacity="0.3"
@@ -4430,14 +4866,14 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             stroke-width="2"
           />
           <path
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816L630,257C582.033,257,534.065,257,486.098,257C385.366,257,284.634,257,183.902,257C145.528,257,107.154,257,68.78,257C59.187,257,49.593,257,40,257Z"
             fill="#0099BC"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
             opacity="0.7"
           />
           <path
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211"
             fill="transparent"
             id="1-line-areaChart_0"
             opacity="0.3"
@@ -4445,7 +4881,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             stroke-width="5"
           />
           <path
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211L630,225.816C582.033,194.632,534.065,163.447,486.098,163.447C385.366,163.447,284.634,238.289,183.902,238.289C145.528,238.289,107.154,207.105,68.78,207.105C59.187,207.105,49.593,224.257,40,241.408Z"
             fill="#77004D"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
@@ -4453,12 +4889,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816L630,257C582.033,257,534.065,257,486.098,257C385.366,257,284.634,257,183.902,257C145.528,257,107.154,257,68.78,257C59.187,257,49.593,257,40,257Z"
           >
             <circle
               aria-label="1/6/2018, 12:00:00 AM. legend1, 5."
               cx="40"
-              cy="-31.38157894736842"
+              cy="241.4078947368421"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_0"
@@ -4471,8 +4907,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/8/2018, 12:00:00 AM. legend1, 16."
-              cx="37.073170731707314"
-              cy="-23.42105263157895"
+              cx="68.78048780487805"
+              cy="207.10526315789474"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_1"
@@ -4485,8 +4921,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/16/2018, 12:00:00 AM. legend1, 6."
-              cx="25.365853658536583"
-              cy="-30.657894736842106"
+              cx="183.90243902439025"
+              cy="238.28947368421052"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_2"
@@ -4499,8 +4935,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/6/2018, 12:00:00 AM. legend1, 30."
-              cx="-5.365853658536585"
-              cy="-13.289473684210524"
+              cx="486.0975609756098"
+              cy="163.44736842105263"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_3"
@@ -4513,8 +4949,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/16/2018, 12:00:00 AM. legend1, 10."
-              cx="-20"
-              cy="-27.763157894736842"
+              cx="630"
+              cy="225.81578947368422"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_4"
@@ -4528,12 +4964,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211L630,225.816C582.033,194.632,534.065,163.447,486.098,163.447C385.366,163.447,284.634,238.289,183.902,238.289C145.528,238.289,107.154,207.105,68.78,207.105C59.187,207.105,49.593,224.257,40,241.408Z"
           >
             <circle
               aria-label="1/6/2018, 12:00:00 AM. legend2, 10."
               cx="40"
-              cy="-24.14473684210526"
+              cy="210.2236842105263"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_5"
@@ -4546,8 +4982,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/8/2018, 12:00:00 AM. legend2, 33."
-              cx="37.073170731707314"
-              cy="0.46052631578947434"
+              cx="68.78048780487805"
+              cy="104.19736842105263"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_6"
@@ -4560,8 +4996,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/16/2018, 12:00:00 AM. legend2, 21."
-              cx="25.365853658536583"
-              cy="-15.460526315789476"
+              cx="183.90243902439025"
+              cy="172.80263157894737"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_7"
@@ -4574,8 +5010,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/6/2018, 12:00:00 AM. legend2, 44."
-              cx="-5.365853658536585"
-              cy="18.55263157894737"
+              cx="486.0975609756098"
+              cy="26.23684210526315"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_8"
@@ -4588,8 +5024,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/16/2018, 12:00:00 AM. legend2, 22."
-              cx="-20"
-              cy="-11.842105263157896"
+              cx="630"
+              cy="157.21052631578948"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_9"
@@ -4611,7 +5047,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="292"
           />
         </g>
       </svg>
@@ -4643,7 +5079,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -4889,9 +5325,9 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
       <svg
         aria-label="Area chart styled example"
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -4919,9 +5355,127 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(54.890243902439025,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 07
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(155.6219512195122,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(256.3536585365854,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 21
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(357.0853658536586,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Jan 28
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(457.81707317073165,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Feb 04
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(558.5487804878048,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              Feb 11
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -4947,20 +5501,120 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_6"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              19
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              38
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              57
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              76
+            </text>
+          </g>
+        </g>
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="272"
             id="rectangle3"
-            width="-12.682926829268293"
+            width="558.0487804878048"
           />
         </g>
         <g>
           <path
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816"
             fill="transparent"
             id="0-line-areaChart_0"
             opacity="0.3"
@@ -4969,14 +5623,14 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             stroke-width="2"
           />
           <path
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816L630,257C582.033,257,534.065,257,486.098,257C385.366,257,284.634,257,183.902,257C145.528,257,107.154,257,68.78,257C59.187,257,49.593,257,40,257Z"
             fill="#0099BC"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
             opacity="0.7"
           />
           <path
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211"
             fill="transparent"
             id="1-line-areaChart_0"
             opacity="0.3"
@@ -4984,7 +5638,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             stroke-width="5"
           />
           <path
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211L630,225.816C582.033,194.632,534.065,163.447,486.098,163.447C385.366,163.447,284.634,238.289,183.902,238.289C145.528,238.289,107.154,207.105,68.78,207.105C59.187,207.105,49.593,224.257,40,241.408Z"
             fill="#77004D"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
@@ -4992,12 +5646,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
+            d="M40,241.408C49.593,224.257,59.187,207.105,68.78,207.105C107.154,207.105,145.528,238.289,183.902,238.289C284.634,238.289,385.366,163.447,486.098,163.447C534.065,163.447,582.033,194.632,630,225.816L630,257C582.033,257,534.065,257,486.098,257C385.366,257,284.634,257,183.902,257C145.528,257,107.154,257,68.78,257C59.187,257,49.593,257,40,257Z"
           >
             <circle
               aria-label="1/6/2018, 12:00:00 AM. legend1, 5."
               cx="40"
-              cy="-31.38157894736842"
+              cy="241.4078947368421"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_0"
@@ -5010,8 +5664,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/8/2018, 12:00:00 AM. legend1, 16."
-              cx="37.073170731707314"
-              cy="-23.42105263157895"
+              cx="68.78048780487805"
+              cy="207.10526315789474"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_1"
@@ -5024,8 +5678,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/16/2018, 12:00:00 AM. legend1, 6."
-              cx="25.365853658536583"
-              cy="-30.657894736842106"
+              cx="183.90243902439025"
+              cy="238.28947368421052"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_2"
@@ -5038,8 +5692,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/6/2018, 12:00:00 AM. legend1, 30."
-              cx="-5.365853658536585"
-              cy="-13.289473684210524"
+              cx="486.0975609756098"
+              cy="163.44736842105263"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_3"
@@ -5052,8 +5706,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/16/2018, 12:00:00 AM. legend1, 10."
-              cx="-20"
-              cy="-27.763157894736842"
+              cx="630"
+              cy="225.81578947368422"
               data-is-focusable="true"
               fill="#0099BC"
               id="circle2_4"
@@ -5067,12 +5721,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
+            d="M40,210.224C49.593,157.211,59.187,104.197,68.78,104.197C107.154,104.197,145.528,172.803,183.902,172.803C284.634,172.803,385.366,26.237,486.098,26.237C534.065,26.237,582.033,91.724,630,157.211L630,225.816C582.033,194.632,534.065,163.447,486.098,163.447C385.366,163.447,284.634,238.289,183.902,238.289C145.528,238.289,107.154,207.105,68.78,207.105C59.187,207.105,49.593,224.257,40,241.408Z"
           >
             <circle
               aria-label="1/6/2018, 12:00:00 AM. legend2, 10."
               cx="40"
-              cy="-24.14473684210526"
+              cy="210.2236842105263"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_5"
@@ -5085,8 +5739,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/8/2018, 12:00:00 AM. legend2, 33."
-              cx="37.073170731707314"
-              cy="0.46052631578947434"
+              cx="68.78048780487805"
+              cy="104.19736842105263"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_6"
@@ -5099,8 +5753,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="1/16/2018, 12:00:00 AM. legend2, 21."
-              cx="25.365853658536583"
-              cy="-15.460526315789476"
+              cx="183.90243902439025"
+              cy="172.80263157894737"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_7"
@@ -5113,8 +5767,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/6/2018, 12:00:00 AM. legend2, 44."
-              cx="-5.365853658536585"
-              cy="18.55263157894737"
+              cx="486.0975609756098"
+              cy="26.23684210526315"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_8"
@@ -5127,8 +5781,8 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
             <circle
               aria-label="2/16/2018, 12:00:00 AM. legend2, 22."
-              cx="-20"
-              cy="-11.842105263157896"
+              cx="630"
+              cy="157.21052631578948"
               data-is-focusable="true"
               fill="#77004D"
               id="circle2_9"
@@ -5150,7 +5804,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="292"
           />
         </g>
       </svg>
@@ -5182,7 +5836,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -5428,9 +6082,9 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
       <svg
         aria-label="Area chart multiple example"
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -5458,9 +6112,109 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(171.61111111111111,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(302.72222222222223,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(433.8333333333333,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(564.9444444444445,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              60
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -5486,20 +6240,120 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_6"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              37
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              74
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              110
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              150
+            </text>
+          </g>
+        </g>
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="272"
             id="rectangle3"
-            width="-20"
+            width="630"
           />
         </g>
         <g>
           <path
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331"
             fill="transparent"
             id="0-line-areaChart_0"
             opacity="0.3"
@@ -5507,14 +6361,14 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             stroke-width="3"
           />
           <path
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
             fill="green"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
             opacity="1"
           />
           <path
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257"
             fill="transparent"
             id="1-line-areaChart_0"
             opacity="0.3"
@@ -5522,14 +6376,14 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             stroke-width="3"
           />
           <path
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
             fill="yellow"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
             opacity="1"
           />
           <path
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203"
             fill="transparent"
             id="2-line-areaChart_0"
             opacity="0.3"
@@ -5537,7 +6391,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             stroke-width="3"
           />
           <path
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
             fill="blue"
             fill-opacity="0.7"
             id="2-graph-areaChart_0"
@@ -5545,12 +6399,12 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
           >
             <circle
               aria-label="20. legend1, 9."
               cx="40"
-              cy="-31.655405405405403"
+              cy="242.58783783783784"
               data-is-focusable="true"
               fill="green"
               id="circle2_0"
@@ -5562,8 +6416,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="25. legend1, 14."
-              cx="33.333333333333336"
-              cy="-29.7972972972973"
+              cx="105.55555555555556"
+              cy="234.5810810810811"
               data-is-focusable="true"
               fill="green"
               id="circle2_1"
@@ -5575,8 +6429,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="30. legend1, 14."
-              cx="26.666666666666664"
-              cy="-29.7972972972973"
+              cx="171.11111111111111"
+              cy="234.5810810810811"
               data-is-focusable="true"
               fill="green"
               id="circle2_2"
@@ -5588,8 +6442,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="35. legend1, 23."
-              cx="20.000000000000007"
-              cy="-26.4527027027027"
+              cx="236.66666666666669"
+              cy="220.1689189189189"
               data-is-focusable="true"
               fill="green"
               id="circle2_3"
@@ -5601,8 +6455,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="40. legend1, 20."
-              cx="13.333333333333332"
-              cy="-27.567567567567572"
+              cx="302.22222222222223"
+              cy="224.972972972973"
               data-is-focusable="true"
               fill="green"
               id="circle2_4"
@@ -5614,8 +6468,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="45. legend1, 31."
-              cx="6.666666666666668"
-              cy="-23.47972972972973"
+              cx="367.77777777777777"
+              cy="207.35810810810813"
               data-is-focusable="true"
               fill="green"
               id="circle2_5"
@@ -5627,8 +6481,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="50. legend1, 29."
-              cx="3.552713678800501e-15"
-              cy="-24.222972972972972"
+              cx="433.3333333333333"
+              cy="210.5608108108108"
               data-is-focusable="true"
               fill="green"
               id="circle2_6"
@@ -5640,8 +6494,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="55. legend1, 27."
-              cx="-6.666666666666666"
-              cy="-24.966216216216214"
+              cx="498.8888888888889"
+              cy="213.76351351351352"
               data-is-focusable="true"
               fill="green"
               id="circle2_7"
@@ -5653,8 +6507,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="60. legend1, 37."
-              cx="-13.333333333333332"
-              cy="-21.25"
+              cx="564.4444444444445"
+              cy="197.75"
               data-is-focusable="true"
               fill="green"
               id="circle2_8"
@@ -5666,8 +6520,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="65. legend1, 51."
-              cx="-20"
-              cy="-16.047297297297302"
+              cx="630"
+              cy="175.33108108108112"
               data-is-focusable="true"
               fill="green"
               id="circle2_9"
@@ -5680,12 +6534,12 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
           >
             <circle
               aria-label="20. legend2, 21."
               cx="40"
-              cy="-23.851351351351347"
+              cy="208.95945945945945"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_10"
@@ -5697,8 +6551,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="25. legend2, 25."
-              cx="33.333333333333336"
-              cy="-20.506756756756758"
+              cx="105.55555555555556"
+              cy="194.5472972972973"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_11"
@@ -5710,8 +6564,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="30. legend2, 10."
-              cx="26.666666666666664"
-              cy="-26.08108108108108"
+              cx="171.11111111111111"
+              cy="218.56756756756758"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_12"
@@ -5723,8 +6577,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="35. legend2, 10."
-              cx="20.000000000000007"
-              cy="-22.736486486486484"
+              cx="236.66666666666669"
+              cy="204.1554054054054"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_13"
@@ -5736,8 +6590,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="40. legend2, 14."
-              cx="13.333333333333332"
-              cy="-22.364864864864863"
+              cx="302.22222222222223"
+              cy="202.55405405405403"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_14"
@@ -5749,8 +6603,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="45. legend2, 18."
-              cx="6.666666666666668"
-              cy="-16.79054054054054"
+              cx="367.77777777777777"
+              cy="178.53378378378375"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_15"
@@ -5762,8 +6616,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="50. legend2, 9."
-              cx="3.552713678800501e-15"
-              cy="-20.87837837837838"
+              cx="433.3333333333333"
+              cy="196.14864864864865"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_16"
@@ -5775,8 +6629,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="55. legend2, 23."
-              cx="-6.666666666666666"
-              cy="-16.41891891891892"
+              cx="498.8888888888889"
+              cy="176.93243243243242"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_17"
@@ -5788,8 +6642,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="60. legend2, 7."
-              cx="-13.333333333333332"
-              cy="-18.648648648648646"
+              cx="564.4444444444445"
+              cy="186.54054054054052"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_18"
@@ -5801,8 +6655,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="65. legend2, 55."
-              cx="-20"
-              cy="4.391891891891893"
+              cx="630"
+              cy="87.25675675675676"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_19"
@@ -5815,12 +6669,12 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
           >
             <circle
               aria-label="20. legend3, 30."
               cx="40"
-              cy="-12.702702702702698"
+              cy="160.91891891891888"
               data-is-focusable="true"
               fill="blue"
               id="circle2_20"
@@ -5832,8 +6686,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="25. legend3, 35."
-              cx="33.333333333333336"
-              cy="-7.5"
+              cx="105.55555555555556"
+              cy="138.5"
               data-is-focusable="true"
               fill="blue"
               id="circle2_21"
@@ -5845,8 +6699,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="30. legend3, 33."
-              cx="26.666666666666664"
-              cy="-13.817567567567572"
+              cx="171.11111111111111"
+              cy="165.722972972973"
               data-is-focusable="true"
               fill="blue"
               id="circle2_22"
@@ -5858,8 +6712,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="35. legend3, 40."
-              cx="20.000000000000007"
-              cy="-7.871621621621623"
+              cx="236.66666666666669"
+              cy="140.10135135135135"
               data-is-focusable="true"
               fill="blue"
               id="circle2_23"
@@ -5871,8 +6725,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="40. legend3, 10."
-              cx="13.333333333333332"
-              cy="-18.648648648648646"
+              cx="302.22222222222223"
+              cy="186.54054054054052"
               data-is-focusable="true"
               fill="blue"
               id="circle2_24"
@@ -5884,8 +6738,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="45. legend3, 40."
-              cx="6.666666666666668"
-              cy="-1.9256756756756772"
+              cx="367.77777777777777"
+              cy="114.47972972972974"
               data-is-focusable="true"
               fill="blue"
               id="circle2_25"
@@ -5897,8 +6751,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="50. legend3, 34."
-              cx="3.552713678800501e-15"
-              cy="-8.243243243243242"
+              cx="433.3333333333333"
+              cy="141.7027027027027"
               data-is-focusable="true"
               fill="blue"
               id="circle2_26"
@@ -5910,8 +6764,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="55. legend3, 40."
-              cx="-6.666666666666666"
-              cy="-1.5540540540540544"
+              cx="498.8888888888889"
+              cy="112.87837837837837"
               data-is-focusable="true"
               fill="blue"
               id="circle2_27"
@@ -5923,8 +6777,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="60. legend3, 60."
-              cx="-13.333333333333332"
-              cy="3.648648648648651"
+              cx="564.4444444444445"
+              cy="90.45945945945944"
               data-is-focusable="true"
               fill="blue"
               id="circle2_28"
@@ -5936,8 +6790,8 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
             <circle
               aria-label="65. legend3, 40."
-              cx="-20"
-              cy="19.256756756756758"
+              cx="630"
+              cy="23.202702702702695"
               data-is-focusable="true"
               fill="blue"
               id="circle2_29"
@@ -5958,7 +6812,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="292"
           />
         </g>
       </svg>
@@ -5990,7 +6844,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -6335,9 +7189,9 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
         <svg
           aria-label="Area chart multiple example"
           focusable="false"
-          height="0"
+          height="292"
           style="display: block;"
-          width="0"
+          width="650"
         >
           <g
             class=
@@ -6365,9 +7219,109 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
             id="xAxisGElementchart_9"
-            transform="translate(0, -35)"
-          />
+            text-anchor="middle"
+            transform="translate(0, 257)"
+          >
+            <path
+              class="domain"
+              d="M40.5,6V0.5H630.5V6"
+              stroke="#000"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(40.5,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                20
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(171.61111111111111,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                30
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(302.72222222222223,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                40
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(433.8333333333333,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                50
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(564.9444444444445,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                60
+              </text>
+            </g>
+          </g>
           <g
             class=
 
@@ -6393,20 +7347,120 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
             id="yAxisGElementchart_9"
+            text-anchor="end"
             transform="translate(40, 0)"
-          />
+          >
+            <path
+              class="domain"
+              d="M-6,257.5H0.5V20.5H-6"
+              stroke="#000"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,257.5)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,198.25)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                37
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,139)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                74
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,79.75)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                110
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,20.5)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                150
+              </text>
+            </g>
+          </g>
           <g>
             <rect
               fill="transparent"
-              height="-20"
+              height="272"
               id="rectangle6"
-              width="-20"
+              width="630"
             />
           </g>
           <g>
             <path
-              d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
+              d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331"
               fill="transparent"
               id="0-line-areaChart_3"
               opacity="0.3"
@@ -6414,14 +7468,14 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               stroke-width="3"
             />
             <path
-              d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+              d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
               fill="green"
               fill-opacity="0.7"
               id="0-graph-areaChart_3"
               opacity="1"
             />
             <path
-              d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
+              d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257"
               fill="transparent"
               id="1-line-areaChart_3"
               opacity="0.3"
@@ -6429,14 +7483,14 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               stroke-width="3"
             />
             <path
-              d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+              d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
               fill="yellow"
               fill-opacity="0.7"
               id="1-graph-areaChart_3"
               opacity="1"
             />
             <path
-              d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
+              d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203"
               fill="transparent"
               id="2-line-areaChart_3"
               opacity="0.3"
@@ -6444,7 +7498,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               stroke-width="3"
             />
             <path
-              d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+              d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
               fill="blue"
               fill-opacity="0.7"
               id="2-graph-areaChart_3"
@@ -6452,12 +7506,12 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             />
             <g
               clip-path="url(#clip)"
-              d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+              d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
             >
               <circle
                 aria-label="20. legend1, 9."
                 cx="40"
-                cy="-31.655405405405403"
+                cy="242.58783783783784"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_0"
@@ -6469,8 +7523,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="25. legend1, 14."
-                cx="33.333333333333336"
-                cy="-29.7972972972973"
+                cx="105.55555555555556"
+                cy="234.5810810810811"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_1"
@@ -6482,8 +7536,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="30. legend1, 14."
-                cx="26.666666666666664"
-                cy="-29.7972972972973"
+                cx="171.11111111111111"
+                cy="234.5810810810811"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_2"
@@ -6495,8 +7549,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="35. legend1, 23."
-                cx="20.000000000000007"
-                cy="-26.4527027027027"
+                cx="236.66666666666669"
+                cy="220.1689189189189"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_3"
@@ -6508,8 +7562,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="40. legend1, 20."
-                cx="13.333333333333332"
-                cy="-27.567567567567572"
+                cx="302.22222222222223"
+                cy="224.972972972973"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_4"
@@ -6521,8 +7575,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="45. legend1, 31."
-                cx="6.666666666666668"
-                cy="-23.47972972972973"
+                cx="367.77777777777777"
+                cy="207.35810810810813"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_5"
@@ -6534,8 +7588,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="50. legend1, 29."
-                cx="3.552713678800501e-15"
-                cy="-24.222972972972972"
+                cx="433.3333333333333"
+                cy="210.5608108108108"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_6"
@@ -6547,8 +7601,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="55. legend1, 27."
-                cx="-6.666666666666666"
-                cy="-24.966216216216214"
+                cx="498.8888888888889"
+                cy="213.76351351351352"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_7"
@@ -6560,8 +7614,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="60. legend1, 37."
-                cx="-13.333333333333332"
-                cy="-21.25"
+                cx="564.4444444444445"
+                cy="197.75"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_8"
@@ -6573,8 +7627,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="65. legend1, 51."
-                cx="-20"
-                cy="-16.047297297297302"
+                cx="630"
+                cy="175.33108108108112"
                 data-is-focusable="true"
                 fill="green"
                 id="circle5_9"
@@ -6587,12 +7641,12 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             </g>
             <g
               clip-path="url(#clip)"
-              d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+              d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
             >
               <circle
                 aria-label="20. legend2, 21."
                 cx="40"
-                cy="-23.851351351351347"
+                cy="208.95945945945945"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_10"
@@ -6604,8 +7658,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="25. legend2, 25."
-                cx="33.333333333333336"
-                cy="-20.506756756756758"
+                cx="105.55555555555556"
+                cy="194.5472972972973"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_11"
@@ -6617,8 +7671,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="30. legend2, 10."
-                cx="26.666666666666664"
-                cy="-26.08108108108108"
+                cx="171.11111111111111"
+                cy="218.56756756756758"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_12"
@@ -6630,8 +7684,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="35. legend2, 10."
-                cx="20.000000000000007"
-                cy="-22.736486486486484"
+                cx="236.66666666666669"
+                cy="204.1554054054054"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_13"
@@ -6643,8 +7697,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="40. legend2, 14."
-                cx="13.333333333333332"
-                cy="-22.364864864864863"
+                cx="302.22222222222223"
+                cy="202.55405405405403"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_14"
@@ -6656,8 +7710,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="45. legend2, 18."
-                cx="6.666666666666668"
-                cy="-16.79054054054054"
+                cx="367.77777777777777"
+                cy="178.53378378378375"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_15"
@@ -6669,8 +7723,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="50. legend2, 9."
-                cx="3.552713678800501e-15"
-                cy="-20.87837837837838"
+                cx="433.3333333333333"
+                cy="196.14864864864865"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_16"
@@ -6682,8 +7736,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="55. legend2, 23."
-                cx="-6.666666666666666"
-                cy="-16.41891891891892"
+                cx="498.8888888888889"
+                cy="176.93243243243242"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_17"
@@ -6695,8 +7749,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="60. legend2, 7."
-                cx="-13.333333333333332"
-                cy="-18.648648648648646"
+                cx="564.4444444444445"
+                cy="186.54054054054052"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_18"
@@ -6708,8 +7762,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="65. legend2, 55."
-                cx="-20"
-                cy="4.391891891891893"
+                cx="630"
+                cy="87.25675675675676"
                 data-is-focusable="true"
                 fill="yellow"
                 id="circle5_19"
@@ -6722,12 +7776,12 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             </g>
             <g
               clip-path="url(#clip)"
-              d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+              d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
             >
               <circle
                 aria-label="20. legend3, 30."
                 cx="40"
-                cy="-12.702702702702698"
+                cy="160.91891891891888"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_20"
@@ -6739,8 +7793,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="25. legend3, 35."
-                cx="33.333333333333336"
-                cy="-7.5"
+                cx="105.55555555555556"
+                cy="138.5"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_21"
@@ -6752,8 +7806,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="30. legend3, 33."
-                cx="26.666666666666664"
-                cy="-13.817567567567572"
+                cx="171.11111111111111"
+                cy="165.722972972973"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_22"
@@ -6765,8 +7819,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="35. legend3, 40."
-                cx="20.000000000000007"
-                cy="-7.871621621621623"
+                cx="236.66666666666669"
+                cy="140.10135135135135"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_23"
@@ -6778,8 +7832,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="40. legend3, 10."
-                cx="13.333333333333332"
-                cy="-18.648648648648646"
+                cx="302.22222222222223"
+                cy="186.54054054054052"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_24"
@@ -6791,8 +7845,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="45. legend3, 40."
-                cx="6.666666666666668"
-                cy="-1.9256756756756772"
+                cx="367.77777777777777"
+                cy="114.47972972972974"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_25"
@@ -6804,8 +7858,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="50. legend3, 34."
-                cx="3.552713678800501e-15"
-                cy="-8.243243243243242"
+                cx="433.3333333333333"
+                cy="141.7027027027027"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_26"
@@ -6817,8 +7871,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="55. legend3, 40."
-                cx="-6.666666666666666"
-                cy="-1.5540540540540544"
+                cx="498.8888888888889"
+                cy="112.87837837837837"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_27"
@@ -6830,8 +7884,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="60. legend3, 60."
-                cx="-13.333333333333332"
-                cy="3.648648648648651"
+                cx="564.4444444444445"
+                cy="90.45945945945944"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_28"
@@ -6843,8 +7897,8 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
               <circle
                 aria-label="65. legend3, 40."
-                cx="-20"
-                cy="19.256756756756758"
+                cx="630"
+                cy="23.202702702702695"
                 data-is-focusable="true"
                 fill="blue"
                 id="circle5_29"
@@ -6865,7 +7919,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               x1="0"
               x2="0"
               y1="0"
-              y2="0"
+              y2="292"
             />
           </g>
         </svg>
@@ -6897,7 +7951,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             >
               <div
                 data-automation-id="visibleContent"
-                style="position: fixed; visibility: hidden;"
+                style=""
               >
                 <div
                   aria-label="Legends"
@@ -7230,9 +8284,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       <svg
         aria-label="Area chart multiple example"
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -7260,9 +8314,109 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(171.61111111111111,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(302.72222222222223,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(433.8333333333333,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(564.9444444444445,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              60
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -7288,20 +8442,120 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_6"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              37
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              74
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              110
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              150
+            </text>
+          </g>
+        </g>
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="272"
             id="rectangle3"
-            width="-20"
+            width="630"
           />
         </g>
         <g>
           <path
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331"
             fill="transparent"
             id="0-line-areaChart_0"
             opacity="0.3"
@@ -7309,14 +8563,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
             fill="green"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
             opacity="1"
           />
           <path
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257"
             fill="transparent"
             id="1-line-areaChart_0"
             opacity="0.3"
@@ -7324,14 +8578,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
             fill="yellow"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
             opacity="1"
           />
           <path
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203"
             fill="transparent"
             id="2-line-areaChart_0"
             opacity="0.3"
@@ -7339,7 +8593,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
             fill="blue"
             fill-opacity="0.7"
             id="2-graph-areaChart_0"
@@ -7347,12 +8601,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
           >
             <circle
               aria-label="20. legend1, 9."
               cx="40"
-              cy="-31.655405405405403"
+              cy="242.58783783783784"
               data-is-focusable="true"
               fill="green"
               id="circle2_0"
@@ -7364,8 +8618,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="25. legend1, 14."
-              cx="33.333333333333336"
-              cy="-29.7972972972973"
+              cx="105.55555555555556"
+              cy="234.5810810810811"
               data-is-focusable="true"
               fill="green"
               id="circle2_1"
@@ -7377,8 +8631,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="30. legend1, 14."
-              cx="26.666666666666664"
-              cy="-29.7972972972973"
+              cx="171.11111111111111"
+              cy="234.5810810810811"
               data-is-focusable="true"
               fill="green"
               id="circle2_2"
@@ -7390,8 +8644,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="35. legend1, 23."
-              cx="20.000000000000007"
-              cy="-26.4527027027027"
+              cx="236.66666666666669"
+              cy="220.1689189189189"
               data-is-focusable="true"
               fill="green"
               id="circle2_3"
@@ -7403,8 +8657,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="40. legend1, 20."
-              cx="13.333333333333332"
-              cy="-27.567567567567572"
+              cx="302.22222222222223"
+              cy="224.972972972973"
               data-is-focusable="true"
               fill="green"
               id="circle2_4"
@@ -7416,8 +8670,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="45. legend1, 31."
-              cx="6.666666666666668"
-              cy="-23.47972972972973"
+              cx="367.77777777777777"
+              cy="207.35810810810813"
               data-is-focusable="true"
               fill="green"
               id="circle2_5"
@@ -7429,8 +8683,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="50. legend1, 29."
-              cx="3.552713678800501e-15"
-              cy="-24.222972972972972"
+              cx="433.3333333333333"
+              cy="210.5608108108108"
               data-is-focusable="true"
               fill="green"
               id="circle2_6"
@@ -7442,8 +8696,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="55. legend1, 27."
-              cx="-6.666666666666666"
-              cy="-24.966216216216214"
+              cx="498.8888888888889"
+              cy="213.76351351351352"
               data-is-focusable="true"
               fill="green"
               id="circle2_7"
@@ -7455,8 +8709,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="60. legend1, 37."
-              cx="-13.333333333333332"
-              cy="-21.25"
+              cx="564.4444444444445"
+              cy="197.75"
               data-is-focusable="true"
               fill="green"
               id="circle2_8"
@@ -7468,8 +8722,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="65. legend1, 51."
-              cx="-20"
-              cy="-16.047297297297302"
+              cx="630"
+              cy="175.33108108108112"
               data-is-focusable="true"
               fill="green"
               id="circle2_9"
@@ -7482,12 +8736,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
           >
             <circle
               aria-label="20. legend2, 21."
               cx="40"
-              cy="-23.851351351351347"
+              cy="208.95945945945945"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_10"
@@ -7499,8 +8753,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="25. legend2, 25."
-              cx="33.333333333333336"
-              cy="-20.506756756756758"
+              cx="105.55555555555556"
+              cy="194.5472972972973"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_11"
@@ -7512,8 +8766,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="30. legend2, 10."
-              cx="26.666666666666664"
-              cy="-26.08108108108108"
+              cx="171.11111111111111"
+              cy="218.56756756756758"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_12"
@@ -7525,8 +8779,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="35. legend2, 10."
-              cx="20.000000000000007"
-              cy="-22.736486486486484"
+              cx="236.66666666666669"
+              cy="204.1554054054054"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_13"
@@ -7538,8 +8792,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="40. legend2, 14."
-              cx="13.333333333333332"
-              cy="-22.364864864864863"
+              cx="302.22222222222223"
+              cy="202.55405405405403"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_14"
@@ -7551,8 +8805,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="45. legend2, 18."
-              cx="6.666666666666668"
-              cy="-16.79054054054054"
+              cx="367.77777777777777"
+              cy="178.53378378378375"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_15"
@@ -7564,8 +8818,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="50. legend2, 9."
-              cx="3.552713678800501e-15"
-              cy="-20.87837837837838"
+              cx="433.3333333333333"
+              cy="196.14864864864865"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_16"
@@ -7577,8 +8831,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="55. legend2, 23."
-              cx="-6.666666666666666"
-              cy="-16.41891891891892"
+              cx="498.8888888888889"
+              cy="176.93243243243242"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_17"
@@ -7590,8 +8844,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="60. legend2, 7."
-              cx="-13.333333333333332"
-              cy="-18.648648648648646"
+              cx="564.4444444444445"
+              cy="186.54054054054052"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_18"
@@ -7603,8 +8857,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="65. legend2, 55."
-              cx="-20"
-              cy="4.391891891891893"
+              cx="630"
+              cy="87.25675675675676"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_19"
@@ -7617,12 +8871,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
           >
             <circle
               aria-label="20. legend3, 30."
               cx="40"
-              cy="-12.702702702702698"
+              cy="160.91891891891888"
               data-is-focusable="true"
               fill="blue"
               id="circle2_20"
@@ -7634,8 +8888,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="25. legend3, 35."
-              cx="33.333333333333336"
-              cy="-7.5"
+              cx="105.55555555555556"
+              cy="138.5"
               data-is-focusable="true"
               fill="blue"
               id="circle2_21"
@@ -7647,8 +8901,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="30. legend3, 33."
-              cx="26.666666666666664"
-              cy="-13.817567567567572"
+              cx="171.11111111111111"
+              cy="165.722972972973"
               data-is-focusable="true"
               fill="blue"
               id="circle2_22"
@@ -7660,8 +8914,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="35. legend3, 40."
-              cx="20.000000000000007"
-              cy="-7.871621621621623"
+              cx="236.66666666666669"
+              cy="140.10135135135135"
               data-is-focusable="true"
               fill="blue"
               id="circle2_23"
@@ -7673,8 +8927,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="40. legend3, 10."
-              cx="13.333333333333332"
-              cy="-18.648648648648646"
+              cx="302.22222222222223"
+              cy="186.54054054054052"
               data-is-focusable="true"
               fill="blue"
               id="circle2_24"
@@ -7686,8 +8940,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="45. legend3, 40."
-              cx="6.666666666666668"
-              cy="-1.9256756756756772"
+              cx="367.77777777777777"
+              cy="114.47972972972974"
               data-is-focusable="true"
               fill="blue"
               id="circle2_25"
@@ -7699,8 +8953,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="50. legend3, 34."
-              cx="3.552713678800501e-15"
-              cy="-8.243243243243242"
+              cx="433.3333333333333"
+              cy="141.7027027027027"
               data-is-focusable="true"
               fill="blue"
               id="circle2_26"
@@ -7712,8 +8966,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="55. legend3, 40."
-              cx="-6.666666666666666"
-              cy="-1.5540540540540544"
+              cx="498.8888888888889"
+              cy="112.87837837837837"
               data-is-focusable="true"
               fill="blue"
               id="circle2_27"
@@ -7725,8 +8979,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="60. legend3, 60."
-              cx="-13.333333333333332"
-              cy="3.648648648648651"
+              cx="564.4444444444445"
+              cy="90.45945945945944"
               data-is-focusable="true"
               fill="blue"
               id="circle2_28"
@@ -7738,8 +8992,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
             <circle
               aria-label="65. legend3, 40."
-              cx="-20"
-              cy="19.256756756756758"
+              cx="630"
+              cy="23.202702702702695"
               data-is-focusable="true"
               fill="blue"
               id="circle2_29"
@@ -7760,7 +9014,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="292"
           />
         </g>
       </svg>
@@ -7792,7 +9046,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -8124,9 +9378,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       <svg
         aria-label="Area chart multiple example"
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -8154,9 +9408,109 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(171.61111111111111,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(302.72222222222223,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(433.8333333333333,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(564.9444444444445,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              60
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -8182,20 +9536,120 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_6"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              37
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              74
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              110
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              150
+            </text>
+          </g>
+        </g>
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="272"
             id="rectangle3"
-            width="-20"
+            width="630"
           />
         </g>
         <g>
           <path
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331"
             fill="transparent"
             id="0-line-areaChart_0"
             opacity="0.3"
@@ -8203,14 +9657,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
             fill="green"
             fill-opacity="0.7"
             id="0-graph-areaChart_0"
             opacity="1"
           />
           <path
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257"
             fill="transparent"
             id="1-line-areaChart_0"
             opacity="0.3"
@@ -8218,14 +9672,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
             fill="yellow"
             fill-opacity="0.7"
             id="1-graph-areaChart_0"
             opacity="1"
           />
           <path
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203"
             fill="transparent"
             id="2-line-areaChart_0"
             opacity="0.3"
@@ -8233,7 +9687,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
             fill="blue"
             fill-opacity="0.7"
             id="2-graph-areaChart_0"
@@ -8241,12 +9695,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
+            d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
           >
             <circle
               aria-label="20. legend1, 9."
               cx="40"
-              cy="-31.655405405405403"
+              cy="242.58783783783784"
               data-is-focusable="true"
               fill="green"
               id="circle2_0"
@@ -8258,8 +9712,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="25. legend1, 14."
-              cx="33.333333333333336"
-              cy="-29.7972972972973"
+              cx="105.55555555555556"
+              cy="234.5810810810811"
               data-is-focusable="true"
               fill="green"
               id="circle2_1"
@@ -8271,8 +9725,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="30. legend1, 14."
-              cx="26.666666666666664"
-              cy="-29.7972972972973"
+              cx="171.11111111111111"
+              cy="234.5810810810811"
               data-is-focusable="true"
               fill="green"
               id="circle2_2"
@@ -8284,8 +9738,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="35. legend1, 23."
-              cx="20.000000000000007"
-              cy="-26.4527027027027"
+              cx="236.66666666666669"
+              cy="220.1689189189189"
               data-is-focusable="true"
               fill="green"
               id="circle2_3"
@@ -8297,8 +9751,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="40. legend1, 20."
-              cx="13.333333333333332"
-              cy="-27.567567567567572"
+              cx="302.22222222222223"
+              cy="224.972972972973"
               data-is-focusable="true"
               fill="green"
               id="circle2_4"
@@ -8310,8 +9764,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="45. legend1, 31."
-              cx="6.666666666666668"
-              cy="-23.47972972972973"
+              cx="367.77777777777777"
+              cy="207.35810810810813"
               data-is-focusable="true"
               fill="green"
               id="circle2_5"
@@ -8323,8 +9777,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="50. legend1, 29."
-              cx="3.552713678800501e-15"
-              cy="-24.222972972972972"
+              cx="433.3333333333333"
+              cy="210.5608108108108"
               data-is-focusable="true"
               fill="green"
               id="circle2_6"
@@ -8336,8 +9790,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="55. legend1, 27."
-              cx="-6.666666666666666"
-              cy="-24.966216216216214"
+              cx="498.8888888888889"
+              cy="213.76351351351352"
               data-is-focusable="true"
               fill="green"
               id="circle2_7"
@@ -8349,8 +9803,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="60. legend1, 37."
-              cx="-13.333333333333332"
-              cy="-21.25"
+              cx="564.4444444444445"
+              cy="197.75"
               data-is-focusable="true"
               fill="green"
               id="circle2_8"
@@ -8362,8 +9816,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="65. legend1, 51."
-              cx="-20"
-              cy="-16.047297297297302"
+              cx="630"
+              cy="175.33108108108112"
               data-is-focusable="true"
               fill="green"
               id="circle2_9"
@@ -8376,12 +9830,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
+            d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
           >
             <circle
               aria-label="20. legend2, 21."
               cx="40"
-              cy="-23.851351351351347"
+              cy="208.95945945945945"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_10"
@@ -8393,8 +9847,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="25. legend2, 25."
-              cx="33.333333333333336"
-              cy="-20.506756756756758"
+              cx="105.55555555555556"
+              cy="194.5472972972973"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_11"
@@ -8406,8 +9860,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="30. legend2, 10."
-              cx="26.666666666666664"
-              cy="-26.08108108108108"
+              cx="171.11111111111111"
+              cy="218.56756756756758"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_12"
@@ -8419,8 +9873,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="35. legend2, 10."
-              cx="20.000000000000007"
-              cy="-22.736486486486484"
+              cx="236.66666666666669"
+              cy="204.1554054054054"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_13"
@@ -8432,8 +9886,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="40. legend2, 14."
-              cx="13.333333333333332"
-              cy="-22.364864864864863"
+              cx="302.22222222222223"
+              cy="202.55405405405403"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_14"
@@ -8445,8 +9899,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="45. legend2, 18."
-              cx="6.666666666666668"
-              cy="-16.79054054054054"
+              cx="367.77777777777777"
+              cy="178.53378378378375"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_15"
@@ -8458,8 +9912,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="50. legend2, 9."
-              cx="3.552713678800501e-15"
-              cy="-20.87837837837838"
+              cx="433.3333333333333"
+              cy="196.14864864864865"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_16"
@@ -8471,8 +9925,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="55. legend2, 23."
-              cx="-6.666666666666666"
-              cy="-16.41891891891892"
+              cx="498.8888888888889"
+              cy="176.93243243243242"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_17"
@@ -8484,8 +9938,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="60. legend2, 7."
-              cx="-13.333333333333332"
-              cy="-18.648648648648646"
+              cx="564.4444444444445"
+              cy="186.54054054054052"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_18"
@@ -8497,8 +9951,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="65. legend2, 55."
-              cx="-20"
-              cy="4.391891891891893"
+              cx="630"
+              cy="87.25675675675676"
               data-is-focusable="true"
               fill="yellow"
               id="circle2_19"
@@ -8511,12 +9965,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
           <g
             clip-path="url(#clip)"
-            d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
+            d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
           >
             <circle
               aria-label="20. legend3, 30."
               cx="40"
-              cy="-12.702702702702698"
+              cy="160.91891891891888"
               data-is-focusable="true"
               fill="blue"
               id="circle2_20"
@@ -8528,8 +9982,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="25. legend3, 35."
-              cx="33.333333333333336"
-              cy="-7.5"
+              cx="105.55555555555556"
+              cy="138.5"
               data-is-focusable="true"
               fill="blue"
               id="circle2_21"
@@ -8541,8 +9995,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="30. legend3, 33."
-              cx="26.666666666666664"
-              cy="-13.817567567567572"
+              cx="171.11111111111111"
+              cy="165.722972972973"
               data-is-focusable="true"
               fill="blue"
               id="circle2_22"
@@ -8554,8 +10008,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="35. legend3, 40."
-              cx="20.000000000000007"
-              cy="-7.871621621621623"
+              cx="236.66666666666669"
+              cy="140.10135135135135"
               data-is-focusable="true"
               fill="blue"
               id="circle2_23"
@@ -8567,8 +10021,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="40. legend3, 10."
-              cx="13.333333333333332"
-              cy="-18.648648648648646"
+              cx="302.22222222222223"
+              cy="186.54054054054052"
               data-is-focusable="true"
               fill="blue"
               id="circle2_24"
@@ -8580,8 +10034,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="45. legend3, 40."
-              cx="6.666666666666668"
-              cy="-1.9256756756756772"
+              cx="367.77777777777777"
+              cy="114.47972972972974"
               data-is-focusable="true"
               fill="blue"
               id="circle2_25"
@@ -8593,8 +10047,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="50. legend3, 34."
-              cx="3.552713678800501e-15"
-              cy="-8.243243243243242"
+              cx="433.3333333333333"
+              cy="141.7027027027027"
               data-is-focusable="true"
               fill="blue"
               id="circle2_26"
@@ -8606,8 +10060,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="55. legend3, 40."
-              cx="-6.666666666666666"
-              cy="-1.5540540540540544"
+              cx="498.8888888888889"
+              cy="112.87837837837837"
               data-is-focusable="true"
               fill="blue"
               id="circle2_27"
@@ -8619,8 +10073,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="60. legend3, 60."
-              cx="-13.333333333333332"
-              cy="3.648648648648651"
+              cx="564.4444444444445"
+              cy="90.45945945945944"
               data-is-focusable="true"
               fill="blue"
               id="circle2_28"
@@ -8632,8 +10086,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
             <circle
               aria-label="65. legend3, 40."
-              cx="-20"
-              cy="19.256756756756758"
+              cx="630"
+              cy="23.202702702702695"
               data-is-focusable="true"
               fill="blue"
               id="circle2_29"
@@ -8654,7 +10108,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             x1="0"
             x2="0"
             y1="0"
-            y2="0"
+            y2="292"
           />
         </g>
       </svg>
@@ -8686,7 +10140,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"

@@ -19,8 +19,31 @@ const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
 }
 
 const calloutItemStyle = mergeStyles({
@@ -188,7 +211,8 @@ const chartPointsWithGaps = {
 };
 
 describe('Line chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the Line chart with numeric x-axis data',
@@ -374,8 +398,6 @@ const eventAnnotationProps = {
 };
 
 describe('Line chart - Subcomponent line', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithoutWait(
     'Should render the lines with the specified colors',
     LineChart,
@@ -402,8 +424,6 @@ describe('Line chart - Subcomponent line', () => {
 });
 
 describe('Line chart - Subcomponent legend', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
     LineChart,
@@ -549,8 +569,6 @@ describe('Line chart - Subcomponent legend', () => {
 });
 
 describe('Line chart - Subcomponent Time Range', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should render time range with sepcified data',
     LineChart,
@@ -582,8 +600,6 @@ describe('Line chart - Subcomponent Time Range', () => {
 });
 
 describe('Line chart - Subcomponent xAxis Labels', () => {
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     LineChart,
@@ -608,8 +624,6 @@ describe.skip('Line chart - Subcomponent Event', () => {
       value: mockGetComputedTextLength,
     },
   );
-  beforeEach(sharedBeforeEach);
-
   testWithWait(
     'Should render events with defined data',
     LineChart,
@@ -625,16 +639,8 @@ describe.skip('Line chart - Subcomponent Event', () => {
 });
 
 describe('Screen resolution', () => {
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-  });
-  beforeEach(sharedBeforeEach);
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -670,7 +676,8 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme and accessibility', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
     // Arrange
@@ -682,7 +689,9 @@ describe('Theme and accessibility', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+});
 
+describe('Line chart - Accessibility', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<LineChart data={basicChartPoints} />);
     let axeResults;
