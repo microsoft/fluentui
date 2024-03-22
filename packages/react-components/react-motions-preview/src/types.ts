@@ -21,14 +21,18 @@ export type PresenceTransitionProps<CustomProps = {}> = {
  * Override properties for presence transitions.
  *
  * @example <caption>Override duration for all transitions</caption>
+ * ```
  * const override: PresenceOverride = {
  *  all: { duration: 1000 },
  * };
+ * ```
  *
  * @example <caption>Override easing for exit transition</caption>
+ * ```
  * const override: PresenceOverride = {
  *  exit: { easing: 'ease-out' },
  * };
+ * ```
  */
 export type PresenceOverride<CustomProps = {}> = {
   /** Override supplied properties (e.g. duration) for all transitions, i.e. the `enter` and `exit` atoms.  */
