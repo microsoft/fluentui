@@ -35,9 +35,8 @@ export type ListProps = ComponentProps<ListSlots> & {
 export type ListContextValue = {
   navigationMode: ListNavigationMode | undefined;
   selection?: ListSelectionState;
-  as?: 'div' | 'ol' | 'ul';
   listItemRole: string;
-  validateListItems: (listItemElement: HTMLElement) => void;
+  validateListItem: (listItemElement: HTMLElement) => void;
 };
 
 export type ListContextValues = {

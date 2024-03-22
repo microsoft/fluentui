@@ -6,7 +6,7 @@
  * @returns
  */
 export const validateGridCellsArePresent = (listRole: string, listItemEl: HTMLElement) => {
-  if (process.env.NODE_ENV === 'production' || listRole !== 'grid') {
+  if (listRole !== 'grid') {
     return;
   }
 

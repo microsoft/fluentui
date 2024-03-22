@@ -5,9 +5,8 @@ import { ListContextValue } from './List.types';
 export const listContextDefaultValue: ListContextValue = {
   navigationMode: undefined,
   selection: undefined,
-  as: undefined,
   listItemRole: 'listitem',
-  validateListItems: () => {
+  validateListItem: () => {
     /* noop */
   },
 };

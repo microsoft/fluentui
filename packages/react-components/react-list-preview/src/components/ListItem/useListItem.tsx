@@ -23,19 +23,6 @@ import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
-function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', renderedAs?: 'div' | 'li') {
-  if (process.env.NODE_ENV === 'production') {
-    return;
-  }
-
-  if (renderedAs === 'div' && parentRenderedAs !== 'div') {
-    throw new Error('ListItem cannot be rendered as a div when its parent is not a div.');
-  }
-  if (renderedAs === 'li' && parentRenderedAs === 'div') {
-    throw new Error('ListItem cannot be rendered as a li when its parent is a div.');
-  }
-}
-
 /**
  * Create the state required to render ListItem.
  *
@@ -57,24 +44,19 @@ export const useListItem_unstable = (
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
   const listItemRole = useListContext_unstable(ctx => ctx.listItemRole);
-  const validateListItems = useListContext_unstable(ctx => ctx.validateListItems);
+  const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
 
   const finalListItemRole = role || listItemRole;
 
   const focusableItems = Boolean(isSelectionEnabled || navigationMode || tabIndex === 0);
 
-  const parentRenderedAs = useListContext_unstable(ctx => ctx.as);
-  const renderedAs = props.as || DEFAULT_ROOT_EL_TYPE;
-
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
-
-  validateProperElementTypes(parentRenderedAs, renderedAs);
 
   React.useEffect(() => {
     if (rootRef.current) {
-      validateListItems(rootRef.current);
+      validateListItem(rootRef.current);
     }
-  }, [validateListItems]);
+  }, [validateListItem]);
 
   const focusableGroupAttrs = useFocusableGroup({
     ignoreDefaultKeydown: { Enter: true },

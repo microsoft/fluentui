@@ -13,6 +13,7 @@ import {
   calculateListItemRoleForListRole,
   calculateListRole,
   validateGridCellsArePresent,
+  validateProperElementTypes,
   validateProperRolesAreUsed,
 } from '../../utils';
 
@@ -28,8 +29,14 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
-  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, as, onSelectionChange } = props;
-  const haveListItemsBeenValidated = React.useRef(false);
+  const {
+    navigationMode,
+    selectionMode,
+    selectedItems,
+    defaultSelectedItems,
+    as = DEFAULT_ROOT_EL_TYPE,
+    onSelectionChange,
+  } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
@@ -60,14 +67,15 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
 
   const { findAllFocusable } = useFocusFinders();
 
-  const validateListItems = useEventCallback((listItemEl: HTMLElement) => {
-    if (!haveListItemsBeenValidated.current) {
-      const itemRole = listItemEl.getAttribute('role') || '';
-      const focusable = findAllFocusable(listItemEl);
-      validateProperRolesAreUsed(listRole, itemRole, !!selectionMode, focusable.length > 0);
-      validateGridCellsArePresent(listRole, listItemEl);
-      haveListItemsBeenValidated.current = true;
+  const validateListItem = useEventCallback((listItemEl: HTMLElement) => {
+    if (process.env.NODE_ENV === 'production') {
+      return;
     }
+    const itemRole = listItemEl.getAttribute('role') || '';
+    const focusable = findAllFocusable(listItemEl);
+    validateProperElementTypes(as, listItemEl.tagName.toLocaleLowerCase());
+    validateProperRolesAreUsed(listRole, itemRole, !!selectionMode, focusable.length > 0);
+    validateGridCellsArePresent(listRole, listItemEl);
   });
 
   return {
@@ -87,9 +95,8 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
       { elementType: DEFAULT_ROOT_EL_TYPE },
     ),
     listItemRole,
-    validateListItems,
+    validateListItem,
     navigationMode,
-    as: as || DEFAULT_ROOT_EL_TYPE,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectionMode ? selection : undefined,
   };
