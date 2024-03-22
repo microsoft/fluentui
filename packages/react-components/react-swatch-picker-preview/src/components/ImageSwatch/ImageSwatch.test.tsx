@@ -15,7 +15,7 @@ describe('ImageSwatch', () => {
       <div>
         <button
           class="fui-ImageSwatch"
-          style="--fui-SwatchPicker--image: url(path/img.png);"
+          style="background-image: url(path/img.png);"
         />
       </div>
     `);

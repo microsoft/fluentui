@@ -27,7 +27,7 @@ export const Default = () => {
         <ColorSwatch color="#FF1921" value="FF1921" aria-label="red" />
         <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="orange" />
         <ColorSwatch color="#FEFF37" value="FEFF37" aria-label="yellow" />
-        <ColorSwatch color="#90D057" value="90D057" aria-label="light green" />
+        <ColorSwatch disabled color="#90D057" value="90D057" aria-label="light green" />
         <ColorSwatch color="#00B053" value="00B053" aria-label="green" />
         <ColorSwatch color="#00AFED" value="00AFED" aria-label="light blue" />
         <ColorSwatch color="#006EBD" value="006EBD" aria-label="blue" />

@@ -43,8 +43,8 @@ export const SwatchPickerLayout = () => {
     <>
       <h3>Row</h3>
       <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedValue} onSelectionChange={handleSelect}>
-        {colors.map((color, index) => {
-          return <ColorSwatchWithTooltip key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatchWithTooltip key={color.value} {...color} />;
         })}
       </SwatchPicker>
       <h3>Grid</h3>
