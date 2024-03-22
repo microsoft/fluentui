@@ -6,10 +6,15 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
-import { useListAccessibilityRoles } from '../../hooks/useListAccessibilityRoles';
+import {
+  calculateListItemRoleForListRole,
+  calculateListRole,
+  validateGridCellsArePresent,
+  validateProperRolesAreUsed,
+} from '../../utils';
 
 const DEFAULT_ROOT_EL_TYPE = 'ul';
 
@@ -23,7 +28,8 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
-  const { navigable, selectionMode, selectedItems, defaultSelectedItems, as, onSelectionChange } = props;
+  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, as, onSelectionChange } = props;
+  const haveListItemsBeenValidated = React.useRef(false);
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
@@ -49,7 +55,20 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     defaultSelectedItems,
   });
 
-  const accessibilityRoles = useListAccessibilityRoles(!!selectionMode);
+  const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);
+  const listItemRole = calculateListItemRoleForListRole(listRole);
+
+  const { findAllFocusable } = useFocusFinders();
+
+  const validateListItems = useEventCallback((listItemEl: HTMLElement) => {
+    if (!haveListItemsBeenValidated.current) {
+      const itemRole = listItemEl.getAttribute('role') || '';
+      const focusable = findAllFocusable(listItemEl);
+      validateProperRolesAreUsed(listRole, itemRole, !!selectionMode, focusable.length > 0);
+      validateGridCellsArePresent(listRole, listItemEl);
+      haveListItemsBeenValidated.current = true;
+    }
+  });
 
   return {
     components: {
@@ -58,7 +77,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     root: slot.always(
       getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
-        role: accessibilityRoles.listRole,
+        role: listRole,
         ...(selectionMode && {
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
@@ -67,8 +86,9 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
       }),
       { elementType: DEFAULT_ROOT_EL_TYPE },
     ),
-    accessibilityRoles,
-    navigable: navigable ?? false,
+    listItemRole,
+    validateListItems,
+    navigationMode,
     as: as || DEFAULT_ROOT_EL_TYPE,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectionMode ? selection : undefined,

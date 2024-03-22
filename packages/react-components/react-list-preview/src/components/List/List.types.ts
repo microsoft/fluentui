@@ -10,7 +10,6 @@ import type {
   EventData,
 } from '@fluentui/react-utilities';
 import type { ListSelectionState } from '../../hooks/types';
-import { ListAccessibilityRoles } from '../../hooks/useListAccessibilityRoles';
 
 export type ListSlots = {
   root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
@@ -20,11 +19,13 @@ export type OnListSelectionChangeData = EventData<'change', React.SyntheticEvent
   selectedItems: SelectionItemId[];
 };
 
+export type ListNavigationMode = 'items' | 'composite';
+
 /**
  * List Props
  */
 export type ListProps = ComponentProps<ListSlots> & {
-  navigable?: boolean;
+  navigationMode?: ListNavigationMode;
   selectionMode?: SelectionMode;
   selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
@@ -32,10 +33,11 @@ export type ListProps = ComponentProps<ListSlots> & {
 };
 
 export type ListContextValue = {
-  navigable: boolean;
+  navigationMode: ListNavigationMode | undefined;
   selection?: ListSelectionState;
   as?: 'div' | 'ol' | 'ul';
-  accessibilityRoles: ListAccessibilityRoles;
+  listItemRole: string;
+  validateListItems: (listItemElement: HTMLElement) => void;
 };
 
 export type ListContextValues = {

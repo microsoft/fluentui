@@ -305,9 +305,22 @@ describe('List', () => {
       firstItem.focus();
       expect(document.activeElement).not.toBe(firstItem);
     });
-    it('should be focusable when "navigable" is passed', () => {
+    it('should be focusable when "navigationMode" is "items"', () => {
       const result = render(
-        <List navigable>
+        <List navigationMode="items">
+          <ListItem>First ListItem</ListItem>
+          <ListItem>Second ListItem</ListItem>
+        </List>,
+      );
+
+      const firstItem = result.getByText('First ListItem');
+      firstItem.focus();
+      expect(document.activeElement).toBe(firstItem);
+    });
+
+    it('should be focusable when "navigationMode" is "composite"', () => {
+      const result = render(
+        <List navigationMode="composite">
           <ListItem>First ListItem</ListItem>
           <ListItem>Second ListItem</ListItem>
         </List>,

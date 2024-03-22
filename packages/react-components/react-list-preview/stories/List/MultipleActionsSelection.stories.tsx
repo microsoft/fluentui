@@ -158,6 +158,7 @@ export const MultipleActionsSelection = (props: Partial<ListProps>) => {
   return (
     <List
       selectionMode="multiselect"
+      navigationMode="composite"
       className={classes.list}
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
     >
@@ -183,6 +184,9 @@ MultipleActionsSelection.parameters = {
         'Because the selection is the action on the item, to properly narrate the state of selection',
         'we are using the role grid / row / gridcell here to properly announce when the selection on the',
         'item is toggled.',
+        '',
+        'To enable the user to navigate inside of the list items by pressing the `RightArrow` key,',
+        'the `navigationMode` prop should be set to `composite`.',
       ].join('\n'),
     },
   },

@@ -6,7 +6,6 @@ import {
   TabsterTypes,
   useArrowNavigationGroup,
   useFocusableGroup,
-  useFocusFinders,
   useMergedTabsterAttributes_unstable,
 } from '@fluentui/react-tabster';
 import {
@@ -51,18 +50,18 @@ export const useListItem_unstable = (
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
   const id = useId('listItem');
-  const { value = id, onKeyDown, onClick, tabIndex } = props;
+  const { value = id, onKeyDown, onClick, tabIndex, role } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
-  const navigable = useListContext_unstable(ctx => ctx.navigable);
+  const navigationMode = useListContext_unstable(ctx => ctx.navigationMode);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
-  const listItemRole = useListContext_unstable(ctx => ctx.accessibilityRoles.listItemRole);
-  const setFocusableChildren = useListContext_unstable(ctx => ctx.accessibilityRoles.setFocusableChildren);
+  const listItemRole = useListContext_unstable(ctx => ctx.listItemRole);
+  const validateListItems = useListContext_unstable(ctx => ctx.validateListItems);
 
-  const { findAllFocusable } = useFocusFinders();
+  const finalListItemRole = role || listItemRole;
 
-  const focusableItems = isSelectionEnabled || navigable || tabIndex === 0;
+  const focusableItems = Boolean(isSelectionEnabled || navigationMode || tabIndex === 0);
 
   const parentRenderedAs = useListContext_unstable(ctx => ctx.as);
   const renderedAs = props.as || DEFAULT_ROOT_EL_TYPE;
@@ -73,10 +72,9 @@ export const useListItem_unstable = (
 
   React.useEffect(() => {
     if (rootRef.current) {
-      const focusable = findAllFocusable(rootRef.current);
-      setFocusableChildren(focusable.length > 0);
+      validateListItems(rootRef.current);
     }
-  }, [findAllFocusable, setFocusableChildren]);
+  }, [validateListItems]);
 
   const focusableGroupAttrs = useFocusableGroup({
     ignoreDefaultKeydown: { Enter: true },
@@ -144,8 +142,8 @@ export const useListItem_unstable = (
       e.currentTarget.click();
     }
 
-    // Handle entering the list item when user presses the ArrowRight
-    if (e.key === ArrowRight) {
+    // Handle entering the list item when user presses the ArrowRight, when composite navigation is enabled
+    if (e.key === ArrowRight && navigationMode === 'composite') {
       dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Enter);
     }
   });
@@ -175,7 +173,7 @@ export const useListItem_unstable = (
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
-      role: listItemRole,
+      role: finalListItemRole,
       id: String(value),
       ...(isSelectionEnabled && {
         'aria-selected': isSelected,

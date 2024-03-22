@@ -164,6 +164,7 @@ export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
     <List
       className={classes.list}
       selectionMode="multiselect"
+      navigationMode="composite"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
     >
       <CardExample title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />

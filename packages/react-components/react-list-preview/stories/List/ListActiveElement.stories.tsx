@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   selectedInfo: {
     marginTop: '16px',
   },
-  button: {
+  buttonWrapper: {
     alignSelf: 'center',
   },
   item: {
@@ -60,6 +60,7 @@ const MyListItem = React.memo(
       <ListItem key={name} value={name} aria-label={name} {...rest} checkmark={null}>
         <Persona
           name={name}
+          role="gridcell"
           secondaryText="Available"
           presence={{ status: 'available' }}
           avatar={{
@@ -68,16 +69,17 @@ const MyListItem = React.memo(
             },
           }}
         />
-        <Button
-          aria-label={`Mute ${name}`}
-          size="small"
-          icon={<Mic16Regular />}
-          className={styles.button}
-          onClick={e => {
-            e.stopPropagation();
-            alert(`Muting ${name}`);
-          }}
-        />
+        <div role="gridcell" className={styles.buttonWrapper}>
+          <Button
+            aria-label={`Mute ${name}`}
+            size="small"
+            icon={<Mic16Regular />}
+            onClick={e => {
+              e.stopPropagation();
+              alert(`Muting ${name}`);
+            }}
+          />
+        </div>
       </ListItem>
     );
   },
@@ -102,7 +104,12 @@ export const ListActiveElement = () => {
 
   return (
     <div>
-      <List selectionMode="single" selectedItems={selectedItems} onSelectionChange={onSelectionChange}>
+      <List
+        selectionMode="single"
+        navigationMode="composite"
+        selectedItems={selectedItems}
+        onSelectionChange={onSelectionChange}
+      >
         {items.map(({ name, avatar }) => (
           <MyListItem
             key={name}

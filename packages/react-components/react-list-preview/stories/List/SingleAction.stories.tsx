@@ -28,7 +28,7 @@ export const SingleAction = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
-      <List navigable>
+      <List navigationMode="items">
         {names.map(name => (
           <ListItem
             id={`id_${name}`}
@@ -58,6 +58,8 @@ SingleAction.parameters = {
       story: [
         'When the list item should have a primary action on it, you can pass the `onClick` prop to the `ListItem` component.',
         'This callback will also be automatically called when the user presses the Enter or Space key on the list item.',
+        '',
+        'To enable keyboard navigation between the list items, the `navigationMode` prop should be set to `items`.',
       ].join('\n'),
     },
   },

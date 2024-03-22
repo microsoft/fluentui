@@ -36,7 +36,7 @@ const testSequence = (sequence: Array<string>) => {
 
 const mountSimpleList = () => {
   mount(
-    <List navigable>
+    <List navigationMode="items">
       <ListItem data-test="list-item-1">List Item 1</ListItem>
       <ListItem data-test="list-item-2">List Item 2</ListItem>
       <ListItem data-test="list-item-3">List Item 3</ListItem>
@@ -46,7 +46,7 @@ const mountSimpleList = () => {
 
 const mountListWithSecondaryActions = () => {
   mount(
-    <List navigable>
+    <List navigationMode="composite">
       <ListItem data-test="list-item-1">
         List Item 1<button data-test="list-item-1-button-1">1:button1</button>
         <button data-test="list-item-1-button-2">1:button2</button>
@@ -83,7 +83,7 @@ const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: 
   return (
     <>
       <List
-        navigable
+        navigationMode="items"
         selectionMode={selectionMode}
         defaultSelectedItems={controlled ? undefined : defaultSelectedItems}
         selectedItems={controlled ? selectedItems : undefined}
@@ -391,9 +391,9 @@ describe('List', () => {
     });
 
     describe('with focusable children', () => {
-      it('default list is grid/row', () => {
+      it('default list is grid/row for composite', () => {
         mount(
-          <List navigable>
+          <List navigationMode="composite">
             <ListItem data-test="list-item-1">
               List Item 1<button>Button 1</button>
             </ListItem>
@@ -411,7 +411,7 @@ describe('List', () => {
 
       it("single select list is grid/row and doesn't have multiselectable aria prop", () => {
         mount(
-          <List selectionMode="single">
+          <List selectionMode="single" navigationMode="composite">
             <ListItem data-test="list-item-1">
               List Item 1<button>Button 1</button>
             </ListItem>
@@ -429,7 +429,7 @@ describe('List', () => {
 
       it('multiple select list is grid/row and has multiselectable aria prop', () => {
         mount(
-          <List selectionMode="multiselect">
+          <List selectionMode="multiselect" navigationMode="composite">
             <ListItem data-test="list-item-1">
               List Item 1<button>Button 1</button>
             </ListItem>

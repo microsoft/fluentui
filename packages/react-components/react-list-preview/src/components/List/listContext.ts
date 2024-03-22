@@ -3,15 +3,12 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import { ListContextValue } from './List.types';
 
 export const listContextDefaultValue: ListContextValue = {
-  navigable: false,
+  navigationMode: undefined,
   selection: undefined,
   as: undefined,
-  accessibilityRoles: {
-    listRole: 'list',
-    listItemRole: 'listitem',
-    setFocusableChildren: () => {
-      /* noop */
-    },
+  listItemRole: 'listitem',
+  validateListItems: () => {
+    /* noop */
   },
 };
 

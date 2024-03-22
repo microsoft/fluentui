@@ -72,14 +72,14 @@ const CardExample = (props: { title: string; value: string }) => {
       aria-label={value}
       onClick={() => alert('Primary action triggered!')}
     >
-      <div className={styles.preview}>
+      <div role="gridcell" className={styles.preview}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
-      <div className={styles.header}>
+      <div role="gridcell" className={styles.header}>
         <Text className={styles.title}>{props.title}</Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
-      <div className={styles.action}>
+      <div role="gridcell" className={styles.action}>
         <Button
           appearance="primary"
           aria-label="Install"
@@ -92,7 +92,7 @@ const CardExample = (props: { title: string; value: string }) => {
           Install
         </Button>
       </div>
-      <div className={styles.secondaryAction}>
+      <div role="gridcell" className={styles.secondaryAction}>
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
@@ -147,7 +147,7 @@ export const MultipleActionsWithPrimary = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
   return (
-    <List navigable className={classes.list} aria-orientation="vertical">
+    <List navigationMode="composite" className={classes.list} aria-orientation="vertical">
       <CardExample title="Example List Item" value="card-1" />
       <CardExample title="Example List Item" value="card-2" />
       <CardExample title="Example List Item" value="card-3" />
@@ -168,7 +168,9 @@ MultipleActionsWithPrimary.parameters = {
         "Base item with multiple actions. Doesn't support selection, but the list items have a primary action ",
         'that can be triggered by clicking on the item or pressing Enter.',
         '',
-        'You can navigate inside of the list items by pressing the `Right Arrow` key.',
+        'To make the navigation work properly, the `navigationMode` prop should be set to `composite`.',
+        'This will allow the user to navigate inside of the list items by pressing the `Right Arrow` key.',
+        'It also sets the `grid` role automatically to the list.',
       ].join('\n'),
     },
   },
