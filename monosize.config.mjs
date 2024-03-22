@@ -8,10 +8,8 @@ const config = {
   storage: createAzureStorage({
     endpoint: 'https://fluentbundlesize.azurewebsites.net/api/latest',
   }),
-  bundler: webpackBundler({
-    enhanceConfig: config => {
-      return config;
-    },
+  bundler: webpackBundler(config => {
+    return config;
   }),
 };
 
