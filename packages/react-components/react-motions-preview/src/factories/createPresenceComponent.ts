@@ -88,8 +88,11 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
       // Check for .animate which may not be available in some environments, e.g. unit tests
       if (elementRef.current && elementRef.current.animate) {
         const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
-        const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
-        const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
+        // Only create override objects if there are any overrides;
+        // otherwise use undefined so enter/exit overrides won't be passed to the motion function
+        const enter =
+          all || enterProp ? ({ ...all, ...enterProp } as Partial<PresenceParams & CustomProps>) : undefined;
+        const exit = all || exitProp ? ({ ...all, ...exitProp } as Partial<PresenceParams & CustomProps>) : undefined;
 
         const definition = typeof motion === 'function' ? motion({ element: elementRef.current, enter, exit }) : motion;
         const { keyframes, ...options } = definition.exit;
@@ -127,8 +130,9 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
 
       if (shouldEnter) {
         const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
-        const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
-        const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
+        const enter =
+          all || enterProp ? ({ ...all, ...enterProp } as Partial<PresenceParams & CustomProps>) : undefined;
+        const exit = all || exitProp ? ({ ...all, ...exitProp } as Partial<PresenceParams & CustomProps>) : undefined;
 
         const definition = typeof motion === 'function' ? motion({ element: elementRef.current, enter, exit }) : motion;
         const { keyframes, ...options } = definition.enter;
