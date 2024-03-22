@@ -268,7 +268,7 @@ storiesOf('react-charting/VerticalBarChart', module)
         </>
       );
     },
-    { includeDarkMode: false, includeRtl: false },
+    { includeDarkMode: true, includeRtl: true },
   )
   .addStory(
     'Dynamic - Wrap Labels',
