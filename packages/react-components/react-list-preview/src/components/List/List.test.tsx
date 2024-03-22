@@ -16,6 +16,14 @@ describe('List', () => {
     displayName: 'List',
   });
 
+  // Mock the console.warn, because we're getting the legitimate about mismatched roles when testing custom roles
+  // and false warnings about the mismatched roles because of tabster not working reliably in tests.
+  const consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => jest.fn());
+
+  afterAll(() => {
+    consoleWarn.mockRestore();
+  });
+
   describe('rendering', () => {
     it('renders a default state', () => {
       const result = render(
@@ -134,17 +142,85 @@ describe('List', () => {
 
     it('custom - should have passed roles', () => {
       const result = render(
-        <List selectionMode="multiselect" role="grid">
-          <ListItem role="row">First ListItem</ListItem>
-          <ListItem role="row">Second ListItem</ListItem>
+        <List selectionMode="multiselect" role="test">
+          <ListItem role="foo">First ListItem</ListItem>
+          <ListItem role="foo">Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.getAllByRole('test')).toHaveLength(1);
+      expect(result.getAllByRole('foo')).toHaveLength(2);
+    });
+
+    it('custom - should have passed roles when when navigationMode is "items"', () => {
+      const result = render(
+        <List selectionMode="multiselect" navigationMode="items" role="test">
+          <ListItem role="foo">First ListItem</ListItem>
+          <ListItem role="foo">Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.getAllByRole('test')).toHaveLength(1);
+      expect(result.getAllByRole('foo')).toHaveLength(2);
+    });
+
+    it('custom - should have passed roles when when navigationMode is "composite"', () => {
+      const result = render(
+        <List selectionMode="multiselect" navigationMode="composite" role="test">
+          <ListItem role="foo">First ListItem</ListItem>
+          <ListItem role="foo">Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.getAllByRole('test')).toHaveLength(1);
+      expect(result.getAllByRole('foo')).toHaveLength(2);
+    });
+
+    it('navigationMode = items - should have list/listitem roles', () => {
+      const result = render(
+        <List navigationMode="items">
+          <ListItem>First ListItem</ListItem>
+          <ListItem>Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.getAllByRole('list')).toHaveLength(1);
+      expect(result.getAllByRole('listitem')).toHaveLength(2);
+    });
+
+    it('navigationMode = items with selection- should have listbox/option roles', () => {
+      const result = render(
+        <List navigationMode="items" selectionMode="single">
+          <ListItem>First ListItem</ListItem>
+          <ListItem>Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.getAllByRole('listbox')).toHaveLength(1);
+      expect(result.getAllByRole('option')).toHaveLength(2);
+    });
+    it('navigationMode = composite should have grid/row roles', () => {
+      const result = render(
+        <List navigationMode="composite">
+          <ListItem>First ListItem</ListItem>
+          <ListItem>Second ListItem</ListItem>
         </List>,
       );
 
       expect(result.getAllByRole('grid')).toHaveLength(1);
       expect(result.getAllByRole('row')).toHaveLength(2);
     });
+    it('navigationMode = composite with selection should have grid/row roles', () => {
+      const result = render(
+        <List navigationMode="composite" selectionMode="single">
+          <ListItem>First ListItem</ListItem>
+          <ListItem>Second ListItem</ListItem>
+        </List>,
+      );
 
-    // TODO: Add more tests for multiple action once those components are created
+      expect(result.getAllByRole('grid')).toHaveLength(1);
+      expect(result.getAllByRole('row')).toHaveLength(2);
+    });
   });
 
   describe('selection', () => {
