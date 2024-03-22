@@ -7,7 +7,7 @@ import type {
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
-import { useTabsterAttribute } from '@fluentui/react-tabster';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -43,7 +43,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
     [onClick, setCurrentPage, index, onPageChange],
   );
 
-  const defaultTabProps = useTabsterAttribute({
+  const defaultTabProps = useTabsterAttributes({
     focusable: { isDefault: isSelected },
   });
 
