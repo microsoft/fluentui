@@ -200,7 +200,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
     data.forEach(item => {
       elevatedData.push(
-        minPercent * sumOfData > item.data!
+        minPercent * sumOfData > item.data! && item.data! > 0
           ? { ...item, data: minPercent * sumOfData, yAxisCalloutData: item.data!.toLocaleString() }
           : item,
       );
