@@ -16,7 +16,9 @@
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.stories.ts",
-    "**/*.stories.tsx"
+    "**/*.stories.tsx",
+    "**/*.cy.ts",
+    "**/*.cy.tsx"
   ],
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "cypress.config.ts"]
 }
