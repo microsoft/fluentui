@@ -19,7 +19,6 @@ import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 

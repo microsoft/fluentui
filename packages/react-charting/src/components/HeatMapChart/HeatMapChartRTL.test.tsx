@@ -6,7 +6,6 @@ import { conditionalTest, getByClass, isTimezoneSet, isTestEnv } from '../../uti
 import { HeatMapChartBase } from './HeatMapChart.base';
 import { resetIds } from '@fluentui/react';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 

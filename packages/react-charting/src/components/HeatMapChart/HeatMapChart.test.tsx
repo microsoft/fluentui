@@ -11,7 +11,6 @@ import { DarkTheme } from '@fluentui/theme-samples';
 import { act } from 'react-dom/test-utils';
 import { conditionalDescribe, conditionalTest, isTimezoneSet, isTestEnv } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
