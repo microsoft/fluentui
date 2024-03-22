@@ -55,7 +55,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
         role: 'tab',
         type: 'button',
-        'aria-label': `${index} of ${totalPages}`,
+        'aria-label': `${currentPage + 1} of ${totalPages}`,
         ...defaultTabProps,
       },
     },
