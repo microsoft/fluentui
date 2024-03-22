@@ -10,8 +10,31 @@ const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
 }
 
 const stringPoints: string[] = ['p1', 'p2', 'p3', 'p4'];
@@ -144,7 +167,8 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
 ];
 
 describe('HeatMap chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   conditionalTest(isTimezoneSet(Timezone.UTC) && env === 'TEST')(
     'Should re-render the HeatMap chart with data',
@@ -179,8 +203,6 @@ describe('HeatMap chart rendering', () => {
 });
 
 describe('Heat Map Chart - axe-core', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(
       <HeatMapChart
@@ -198,8 +220,6 @@ describe('Heat Map Chart - axe-core', () => {
 });
 
 describe('HeatMapChart interaction and accessibility tests', () => {
-  beforeEach(sharedBeforeEach);
-
   it(`should highlight the corresponding rectangle(s) when the mouse moves over a legend and
   unhighlight them when the mouse moves out of the legend`, () => {
     const { container } = render(
@@ -277,7 +297,8 @@ describe('HeatMapChart interaction and accessibility tests', () => {
 });
 
 describe('HeatMapChart snapshot tests', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   // Date and numeric axes in heatmap chart accept d3 format strings for formatting their ticks.
   // This format string is used to convert all data points into strings,
@@ -311,8 +332,6 @@ describe('HeatMapChart snapshot tests', () => {
 });
 
 describe('Heat Map Chart - Subcomponent Legend', () => {
-  beforeEach(sharedBeforeEach);
-
   test('Should select legend on single mouse click on legends', async () => {
     const { container } = render(
       <HeatMapChart

@@ -48,9 +48,9 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -78,9 +78,55 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_1"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,0V0.5H630.5V0"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(188.96039603960392,0)"
+          >
+            <line
+              stroke="#000"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              Mar/01
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.039603960396,0)"
+          >
+            <line
+              stroke="#000"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              Mar/02
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -106,21 +152,65 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_1"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M0,257.5H0.5V20.5H0"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,197.16336633663366)"
+          >
+            <line
+              stroke="#000"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              p1
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.83663366336633)"
+          >
+            <line
+              stroke="#000"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              p2
+            </text>
+          </g>
+        </g>
         <g
           aria-label="Mar/01, p2. Nasty, 50/2391. a good day to start with in Texas with best air quality."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(10.297029702970299, -7.227722772277229)"
+          transform="translate(45.8415841584158, 22.34653465346534)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -136,7 +226,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             50
           </text>
@@ -148,12 +238,12 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(-19.405940594059405, -7.227722772277229)"
+          transform="translate(337.9207920792079, 22.34653465346534)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -169,7 +259,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             25
           </text>
@@ -180,12 +270,12 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(10.297029702970299, -34.45544554455446)"
+          transform="translate(45.8415841584158, 139.67326732673268)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -201,7 +291,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             50
           </text>
@@ -213,12 +303,12 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(-19.405940594059405, -34.45544554455446)"
+          transform="translate(337.9207920792079, 139.67326732673268)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -234,7 +324,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             25
           </text>
@@ -268,7 +358,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -513,9 +603,9 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -543,9 +633,55 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_1"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,0V0.5H630.5V0"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(188.96039603960392,0)"
+          >
+            <line
+              stroke="#000"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.039603960396,0)"
+          >
+            <line
+              stroke="#000"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              40
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -571,21 +707,65 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_1"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M0,257.5H0.5V20.5H0"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,197.16336633663366)"
+          >
+            <line
+              stroke="#000"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.83663366336633)"
+          >
+            <line
+              stroke="#000"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+        </g>
         <g
           aria-label="Lorem ipsum dolor sit amet"
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(10.297029702970299, -7.227722772277229)"
+          transform="translate(45.8415841584158, 22.34653465346534)"
         >
           <rect
             fill="rgb(151, 189, 219)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -601,7 +781,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           />
         </g>
         <g
@@ -610,12 +790,12 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(-19.405940594059405, -7.227722772277229)"
+          transform="translate(337.9207920792079, 22.34653465346534)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -631,7 +811,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           />
         </g>
         <g
@@ -640,12 +820,12 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(10.297029702970299, -34.45544554455446)"
+          transform="translate(45.8415841584158, 139.67326732673268)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -661,7 +841,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           />
         </g>
         <g
@@ -670,12 +850,12 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(-19.405940594059405, -34.45544554455446)"
+          transform="translate(337.9207920792079, 139.67326732673268)"
         >
           <rect
             fill="rgb(144, 180, 215)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -691,7 +871,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           />
         </g>
       </svg>
@@ -723,7 +903,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -968,9 +1148,9 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -998,9 +1178,55 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_1"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M40.5,0V0.5H630.5V0"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(188.96039603960392,0)"
+          >
+            <line
+              stroke="#000"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              xPoint p3
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.039603960396,0)"
+          >
+            <line
+              stroke="#000"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              xPoint p4
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -1026,21 +1252,65 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_1"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M0,257.5H0.5V20.5H0"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,197.16336633663366)"
+          >
+            <line
+              stroke="#000"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              yPoint p1
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.83663366336633)"
+          >
+            <line
+              stroke="#000"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              yPoint p2
+            </text>
+          </g>
+        </g>
         <g
           aria-label="xPoint p3, yPoint p2. Nasty, 25."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(10.297029702970299, -7.227722772277229)"
+          transform="translate(45.8415841584158, 22.34653465346534)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -1056,7 +1326,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             25
           </text>
@@ -1067,12 +1337,12 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(-19.405940594059405, -7.227722772277229)"
+          transform="translate(337.9207920792079, 22.34653465346534)"
         >
           <rect
             fill="rgb(144, 180, 215)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -1088,7 +1358,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             100
           </text>
@@ -1099,12 +1369,12 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(10.297029702970299, -34.45544554455446)"
+          transform="translate(45.8415841584158, 139.67326732673268)"
         >
           <rect
             fill="rgb(151, 189, 219)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -1120,7 +1390,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             75
           </text>
@@ -1131,12 +1401,12 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(-19.405940594059405, -34.45544554455446)"
+          transform="translate(337.9207920792079, 139.67326732673268)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="114.98019801980197"
+            width="286.23762376237624"
           />
           <text
             class=
@@ -1152,7 +1422,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
             50
           </text>
@@ -1186,7 +1456,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
