@@ -213,44 +213,29 @@ describe('Line chart rendering', () => {
     !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
-  testWithWait(
-    'Should render the Line chart with date x-axis data when tick Values is given',
-    LineChart,
-    { data: dateChartPoints, tickValues, tickFormat: '%m/%d' },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
-  );
-
-  testWithWait(
-    'Should render the Line chart with date x-axis data when tick Values not given and tick format is given',
-    LineChart,
-    { data: dateChartPoints, tickFormat: '%m/%d' },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
-  );
-
-  testWithWait(
-    'Should render the Line chart with date x-axis data when tick Values is given and tick format not given',
-    LineChart,
-    { data: dateChartPoints, tickValues },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
-  );
+  const testCases = [
+    ['when tick Values is given', { data: dateChartPoints, tickValues, tickFormat: '%m/%d' }],
+    ['when tick Values not given and tick format is given', { data: dateChartPoints, tickFormat: '%m/%d' }],
+    ['when tick Values is given and tick format not given', { data: dateChartPoints, tickValues }],
+    ['when tick Values given and tick format is %m/%d/%y', { data: dateChartPoints, tickFormat: '%m/%d/%y' }],
+    ['when tick Values given and tick format is %d', { data: dateChartPoints, tickValues, tickFormat: '%d' }],
+    ['when tick Values given and tick format is %m', { data: dateChartPoints, tickValues, tickFormat: '%m' }],
+    ['when tick Values given and tick format is %m/%y', { data: dateChartPoints, tickValues, tickFormat: '%m/%y' }],
+  ];
+  testCases.forEach(([testcase, props]) => {
+    testWithWait(
+      `Should render the Line chart with date x-axis data ${testcase}`,
+      LineChart,
+      props,
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+    );
+  });
 
   testWithoutWait(
     'Should render the Line chart with points in multiple shapes',

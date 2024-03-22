@@ -285,44 +285,30 @@ describe('Area chart rendering', () => {
     );
   });
 
-  testWithWait(
-    'Should render the Area chart with date x-axis data when tick Values is given',
-    AreaChart,
-    { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
-  );
+  const testCases = [
+    ['when tick Values is given', { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' }],
+    ['when tick Values not given and tick format is given', { data: chartDataWithDates, tickFormat: '%m/%d' }],
+    ['when tick Values is given and tick format not given', { data: chartDataWithDates, tickValues }],
+    ['when tick Values given and tick format is %m/%d/%y', { data: chartDataWithDates, tickFormat: '%m/%d/%y' }],
+    ['when tick Values given and tick format is %d', { data: chartDataWithDates, tickValues, tickFormat: '%d' }],
+    ['when tick Values given and tick format is %m', { data: chartDataWithDates, tickValues, tickFormat: '%m' }],
+    ['when tick Values given and tick format is %m/%y', { data: chartDataWithDates, tickValues, tickFormat: '%m/%y' }],
+  ];
 
-  testWithWait(
-    'Should render the Area chart with date x-axis data when tick Values not given and tick format is given',
-    AreaChart,
-    { data: chartDataWithDates, tickFormat: '%m/%d' },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
-  );
-
-  testWithWait(
-    'Should render the Area chart with date x-axis data when tick Values is given and tick format not given',
-    AreaChart,
-    { data: chartDataWithDates, tickValues },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
-  );
+  testCases.forEach(([testcase, props]) => {
+    testWithWait(
+      `Should render the Area chart with date x-axis data ${testcase}`,
+      AreaChart,
+      props,
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+    );
+  });
 });
 
 describe('Area chart - Subcomponent Area', () => {
