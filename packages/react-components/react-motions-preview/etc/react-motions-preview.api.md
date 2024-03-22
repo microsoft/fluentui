@@ -31,13 +31,14 @@ direction: "enter" | "exit";
 }> | undefined;
 visible?: boolean | undefined;
 unmountOnExit?: boolean | undefined;
+override?: PresenceOverride<    {}> | undefined;
 }>;
 
 // @public
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
+export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>): React_2.FC<PresenceComponentProps<{}>>;
 
 // @public (undocumented)
 export const curves: {
