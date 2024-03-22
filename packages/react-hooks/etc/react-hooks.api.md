@@ -121,7 +121,7 @@ export function useTarget<TElement extends HTMLElement = HTMLElement>(target: Ta
 export const useUnmount: (callback: () => void) => void;
 
 // @public
-export function useWarnings<P>(options: IWarningOptions<P>): void;
+export function useWarnings<P extends {}>(options: IWarningOptions<P>): void;
 
 // (No @packageDocumentation comment for this package)
 
