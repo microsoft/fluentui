@@ -12,6 +12,7 @@ import {
   isTimezoneSet,
   testWithWait,
   testWithoutWait,
+  isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import * as utils from '@fluentui/react/lib/Utilities';
@@ -134,7 +135,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
@@ -150,7 +151,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
@@ -166,7 +167,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
@@ -182,7 +183,7 @@ describe('Vertical stacked bar chart rendering', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
   });
 });

@@ -6,7 +6,7 @@ import { IHeatMapChartData, IHeatMapChartDataPoint } from '../src/HorizontalBarC
 import { render } from '@testing-library/react';
 import { dataToBuffer } from 'memfs/lib/volume';
 import { XAxisTypes, YAxisType } from '../src/utilities/index';
-import { conditionalTest, isTimezoneSet, forEachTimezone } from '../src/utilities/TestUtility.test';
+import { conditionalTest, isTimezoneSet, forEachTimezone, isTestEnv } from '../src/utilities/TestUtility.test';
 import { resetIds } from '@fluentui/react';
 
 const env = require('../config/tests');
@@ -546,7 +546,7 @@ runTest('_createNewDataSet', () => {
 
 runTest('Timezone related test cases', () => {
   forEachTimezone((tzName, tzIdentifier) => {
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper data set for date axis with default axis type in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -563,7 +563,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper aria-label for date xPoint and yPoint in ${tzName} timezone`,
       () => {
         const p1 = {
@@ -583,7 +583,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper aria-label for date xPoint and yPoint without legend in ${tzName} timezone`,
       () => {
         const p1 = {
@@ -603,7 +603,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper aria-label for numeric xPoint and date yPoint in ${tzName} timezone`,
       () => {
         const p1 = {
@@ -623,7 +623,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper X and Y values for date xPoint and yPoint in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -639,7 +639,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper xIndex for date xPoint in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -654,7 +654,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper yIndex for date xPoint in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -669,7 +669,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper string formatted date for date point in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -683,7 +683,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper string formatted date for empty point in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -697,7 +697,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper string formatted date for date point in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -711,7 +711,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper xAxis data points for date points in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({
@@ -726,7 +726,7 @@ runTest('Timezone related test cases', () => {
       },
     );
 
-    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+    conditionalTest(isTimezoneSet(tzIdentifier) && isTestEnv())(
       `Should return proper yAxis data points for date points in ${tzName} timezone`,
       () => {
         const instance = new HeatMapChartBase({

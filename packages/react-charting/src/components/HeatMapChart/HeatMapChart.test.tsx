@@ -9,7 +9,7 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { act } from 'react-dom/test-utils';
-import { conditionalDescribe, conditionalTest, isTimezoneSet } from '../../utilities/TestUtility.test';
+import { conditionalDescribe, conditionalTest, isTimezoneSet, isTestEnv } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
 
@@ -100,7 +100,7 @@ const HeatMapStringDateData: IHeatMapChartProps['data'] = [
   },
 ];
 
-conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('HeatMapChart snapShot testing', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC) && isTestEnv())('HeatMapChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
@@ -333,7 +333,7 @@ describe('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  conditionalTest(isTimezoneSet(Timezone.UTC) && env === 'TEST')(
+  conditionalTest(isTimezoneSet(Timezone.UTC) && isTestEnv())(
     'Should render callout correctly on mouseover',
     async () => {
       await act(async () => {
