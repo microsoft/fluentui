@@ -61,7 +61,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     state.checkmark.className = mergeClasses(
       listItemClassNames.checkmark,
       checkmarkBaseStyles.root,
-      state.checkmark?.className,
+      state.checkmark.className,
     );
   }
 

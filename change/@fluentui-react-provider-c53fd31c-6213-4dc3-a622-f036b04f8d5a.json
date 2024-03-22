@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "remove unused useListItemButtonStyles_unstable",
+  "comment": "deprecate unused useListItemButtonStyles_unstable",
   "packageName": "@fluentui/react-provider",
   "email": "jirivyhnalek@microsoft.com",
   "dependentChangeType": "patch"
