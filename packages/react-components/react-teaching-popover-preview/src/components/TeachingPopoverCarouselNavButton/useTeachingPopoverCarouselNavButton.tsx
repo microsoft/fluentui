@@ -43,11 +43,9 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
     [onClick, setCurrentPage, index, onPageChange],
   );
 
-  const defaultTabProps = isSelected
-    ? useTabsterAttribute({
-        focusable: { isDefault: true },
-      })
-    : {};
+  const defaultTabProps = useTabsterAttribute({
+    focusable: { isDefault: isSelected },
+  });
 
   const _carouselButton = slot.always<ARIAButtonSlotProps<'a'>>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
