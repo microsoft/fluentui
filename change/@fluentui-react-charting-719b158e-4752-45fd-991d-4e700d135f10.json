@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Build errors in TypeScript 5.3",
-  "packageName": "@fluentui/react-charting",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
