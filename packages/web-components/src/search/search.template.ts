@@ -75,6 +75,7 @@ export const searchTemplate: (context: ElementDefinitionContext, definition: Sea
           <button
             class="clear-button ${x => (x.value ? '' : 'clear-button__hidden')}"
             part="clear-button"
+            aria-hidden="true"
             tabindex="-1"
             @click=${x => x.handleClearInput()}
           >
