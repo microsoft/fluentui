@@ -217,6 +217,10 @@ describe('Line chart rendering', () => {
     ['when tick Values is given', { data: dateChartPoints, tickValues, tickFormat: '%m/%d' }],
     ['when tick Values not given and tick format is given', { data: dateChartPoints, tickFormat: '%m/%d' }],
     ['when tick Values is given and tick format not given', { data: dateChartPoints, tickValues }],
+    ['when tick Values given and tick format is %m/%d/%y', { data: dateChartPoints, tickFormat: '%m/%d/%y' }],
+    ['when tick Values given and tick format is %d', { data: dateChartPoints, tickValues, tickFormat: '%d' }],
+    ['when tick Values given and tick format is %m', { data: dateChartPoints, tickValues, tickFormat: '%m' }],
+    ['when tick Values given and tick format is %m/%y', { data: dateChartPoints, tickValues, tickFormat: '%m/%y' }],
   ];
   testCases.forEach(([testcase, props]) => {
     testWithWait(

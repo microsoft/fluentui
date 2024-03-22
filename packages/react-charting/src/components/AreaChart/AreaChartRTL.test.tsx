@@ -289,6 +289,10 @@ describe('Area chart rendering', () => {
     ['when tick Values is given', { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' }],
     ['when tick Values not given and tick format is given', { data: chartDataWithDates, tickFormat: '%m/%d' }],
     ['when tick Values is given and tick format not given', { data: chartDataWithDates, tickValues }],
+    ['when tick Values given and tick format is %m/%d/%y', { data: chartDataWithDates, tickFormat: '%m/%d/%y' }],
+    ['when tick Values given and tick format is %d', { data: chartDataWithDates, tickValues, tickFormat: '%d' }],
+    ['when tick Values given and tick format is %m', { data: chartDataWithDates, tickValues, tickFormat: '%m' }],
+    ['when tick Values given and tick format is %m/%y', { data: chartDataWithDates, tickValues, tickFormat: '%m/%y' }],
   ];
 
   testCases.forEach(([testcase, props]) => {
