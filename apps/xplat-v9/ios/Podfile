@@ -3,7 +3,6 @@ require_relative '../node_modules/react-native-test-app/test_app'
 workspace 'xplat-v9.xcworkspace'
 
 options = {
-  :bridgeless_enabled => false,
   :fabric_enabled => true,
   :hermes_enabled => false,
 }
