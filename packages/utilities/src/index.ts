@@ -239,12 +239,28 @@ import './version';
 export type { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
 
 export {
+  MergeStylesRootProvider,
   MergeStylesShadowRootContext,
   MergeStylesShadowRootProvider,
   useAdoptedStylesheet,
+  useAdoptedStylesheetEx,
   useHasMergeStylesShadowRootContext,
+  useMergeStylesHooks,
+  useMergeStylesRootStylesheets,
   useMergeStylesShadowRootContext,
   useShadowConfig,
-} from './shadowDom/MergeStylesShadowRootContext';
+  useStyled,
+} from './shadowDom';
 
-export { MergeStylesRootProvider, useMergeStylesRootStylesheets } from './shadowDom/MergeStylesRootContext';
+export type {
+  AdoptedStylesheetHook,
+  AdoptedStylesheetExHook,
+  HasMergeStylesShadowRootContextHook,
+  MergeStylesRootContextValue,
+  MergeStylesRootProviderProps,
+  MergeStylesShadowRootContextValue,
+  MergeStylesShadowRootProviderProps,
+  MergeStylesContextConsumerProps,
+  ShadowConfigHook,
+  UseStyledHook,
+} from './shadowDom';

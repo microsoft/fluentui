@@ -5,6 +5,12 @@
 ```ts
 
 // @public (undocumented)
+export type AddSheetCallback = ({ key, sheet }: {
+    key: string;
+    sheet: ExtendedCSSStyleSheet;
+}) => void;
+
+// @public (undocumented)
 export const cloneCSSStyleSheet: (srcSheet: CSSStyleSheet, targetSheet: CSSStyleSheet) => CSSStyleSheet;
 
 // @public
@@ -36,10 +42,8 @@ export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-// Warning: (ae-forgotten-export) The symbol "EventArgs" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type EventHandler<T> = (args: EventArgs<T>) => void;
+export const DEFAULT_SHADOW_CONFIG: ShadowConfig;
 
 // @public (undocumented)
 export type ExtendedCSSStyleSheet = CSSStyleSheet & {
@@ -98,6 +102,11 @@ export const InjectionMode: {
 
 // @public (undocumented)
 export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
+
+// Warning: (ae-forgotten-export) The symbol "InsertRuleArgs" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
@@ -424,7 +433,7 @@ export interface ISerializedStylesheet {
     // (undocumented)
     classNameToArgs: Stylesheet['_classNameToArgs'];
     // (undocumented)
-    counter: Stylesheet['_styleCounter'];
+    counter: Stylesheet['_counter'];
     // (undocumented)
     keyToClassName: Stylesheet['_keyToClassName'];
     // (undocumented)
@@ -567,18 +576,35 @@ export type ShadowConfig = {
     __isShadowConfig__: true;
 };
 
+// @public (undocumented)
+export class ShadowDomStylesheet extends Stylesheet {
+    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
+    // (undocumented)
+    protected _createStyleElement(): HTMLStyleElement;
+    // (undocumented)
+    getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet>;
+    // (undocumented)
+    protected _getCacheKey(key: string): string;
+    // (undocumented)
+    static getInstance(shadowConfig?: ShadowConfig): ShadowDomStylesheet;
+    // (undocumented)
+    insertRule(rule: string, preserve?: boolean): void;
+    // (undocumented)
+    onAddSheet(callback: AddSheetCallback): Function;
+}
+
 // @public
 export class Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
-    // (undocumented)
-    addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void;
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    forEachAdoptedStyleSheet(callback: (value: ExtendedCSSStyleSheet, key: string, map: Map<string, ExtendedCSSStyleSheet>) => void): void;
+    protected _config: IStyleSheetConfig;
     // (undocumented)
-    getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
+    protected _createStyleElement(): HTMLStyleElement;
+    // (undocumented)
+    protected _getCacheKey(key: string): string;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
@@ -586,21 +612,13 @@ export class Stylesheet {
     static getInstance(shadowConfig?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
-    insertRule(rule: string, preserve?: boolean): void;
+    insertRule(rule: string, preserve?: boolean, stylesheetKey?: string): void;
     // (undocumented)
-    makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet;
+    protected _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean;
     // (undocumented)
-    offAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-    // (undocumented)
-    offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-    // (undocumented)
-    onAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-    onInsertRule(callback: Function): Function;
-    // (undocumented)
-    onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
+    protected _lastStyleElement?: HTMLStyleElement;
+    onInsertRule(callback: Function | InsertRuleCallback): Function;
     onReset(callback: Function): Function;
-    // (undocumented)
-    projectStylesToWindow(targetWindow: Window): void;
     reset(): void;
     // (undocumented)
     resetKeys(): void;

@@ -1,93 +1,31 @@
 import * as React from 'react';
 import {
-  GLOBAL_STYLESHEET_KEY,
   SUPPORTS_CONSTRUCTABLE_STYLESHEETS,
   SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS,
   Stylesheet,
   makeShadowConfig,
   cloneCSSStyleSheet,
-  EventHandler,
 } from '@fluentui/merge-styles';
-import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
 import { useWindow } from '@fluentui/react-window-provider';
-import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
+import { useMergeStylesRootStylesheets } from './useMergeStylesRootStylesheets';
+import { useMergeStylesShadowRootContext } from './useMergeStylesShadowRoot';
+import type { ExtendedCSSStyleSheet, InsertRuleCallback } from '@fluentui/merge-styles';
+import type { MergeStylesShadowRootContextValue } from '../contexts/MergeStylesShadowRootContext';
 
-type PolyfileInsertListeners = Record<string, EventHandler<CSSStyleSheet>>;
+type PolyfillInsertListeners = Record<string, Function>;
 
-export type MergeStylesShadowRootContextValue = {
-  /**
-   * Map of stylesheets available in the context.
-   */
-  stylesheets: Map<string, CSSStyleSheet>;
-
-  /**
-   * Shadow root for this context.
-   */
-  shadowRoot?: ShadowRoot | null;
-};
-
-export const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue | undefined>(
-  undefined,
-);
-
-export type MergeStylesShadowRootProviderProps = {
-  /**
-   * Shadow root for this context.
-   */
-  shadowRoot?: ShadowRoot | null;
-};
-
-/**
- * Context for a shadow root.
- */
-export const MergeStylesShadowRootProvider: React.FC<MergeStylesShadowRootProviderProps> = ({
-  shadowRoot,
-  ...props
-}) => {
-  const value = React.useMemo(() => {
-    return {
-      stylesheets: new Map(),
-      shadowRoot,
-    };
-  }, [shadowRoot]);
-
-  return (
-    <MergeStylesShadowRootContext.Provider value={value} {...props}>
-      <GlobalStyles />
-      {props.children}
-    </MergeStylesShadowRootContext.Provider>
-  );
-};
-
-export type MergeStylesContextConsumerProps = {
-  stylesheetKey: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: (inShadow: boolean) => React.ReactElement<any, any>;
-};
-
-export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerProps> = ({
-  stylesheetKey,
-  children,
-}) => {
-  const shadowCtx = useMergeStylesShadowRootContext();
-  const rootMergeStyles = useMergeStylesRootStylesheets();
-  const win = useWindow();
-
-  useAdoptedStylesheetEx(GLOBAL_STYLESHEET_KEY, shadowCtx, rootMergeStyles, win);
-  useAdoptedStylesheetEx(stylesheetKey, shadowCtx, rootMergeStyles, win);
-
-  return children(!!shadowCtx);
-};
-
-const GlobalStyles: React.FC = props => {
-  useAdoptedStylesheet(GLOBAL_STYLESHEET_KEY);
-  return null;
-};
+export type AdoptedStylesheetHook = (stylesheetKey: string) => boolean;
+export type AdoptedStylesheetExHook = (
+  stylesheetKey: string,
+  shadowCtx: MergeStylesShadowRootContextValue | undefined,
+  rootMergeStyles: Map<string, ExtendedCSSStyleSheet>,
+  win: Window | undefined,
+) => boolean;
 
 /**
  * Use adopted stylesheets in the parent shadow root.
  */
-export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
+export const useAdoptedStylesheet: AdoptedStylesheetHook = stylesheetKey => {
   const shadowCtx = useMergeStylesShadowRootContext();
   const rootMergeStyles = useMergeStylesRootStylesheets();
   const win = useWindow();
@@ -98,13 +36,8 @@ export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
 /**
  * Optimization for specific cases like nested customizables.
  */
-const useAdoptedStylesheetEx = (
-  stylesheetKey: string,
-  shadowCtx: MergeStylesShadowRootContextValue | undefined,
-  rootMergeStyles: Map<string, ExtendedCSSStyleSheet>,
-  win: Window | undefined,
-): boolean => {
-  const polyfillInsertListners = React.useRef<PolyfileInsertListeners>({});
+export const useAdoptedStylesheetEx: AdoptedStylesheetExHook = (stylesheetKey, shadowCtx, rootMergeStyles, win) => {
+  const polyfillInsertListners = React.useRef<PolyfillInsertListeners>({});
 
   React.useEffect(() => {
     if (!shadowCtx) {
@@ -114,9 +47,8 @@ const useAdoptedStylesheetEx = (
     polyfillInsertListners.current = {};
 
     return () => {
-      const sheet = Stylesheet.getInstance(makeShadowConfig(stylesheetKey, true, win));
       Object.keys(polyfillListeners).forEach(key => {
-        sheet.offInsertRuleIntoConstructableStyleSheet(polyfillListeners[key]);
+        polyfillListeners[key]();
       });
     };
   }, [win, stylesheetKey, shadowCtx]);
@@ -148,7 +80,7 @@ const adoptSheet = (
   doc: Document,
   stylesheetKey: string,
   stylesheet: ExtendedCSSStyleSheet,
-  listenerRef: PolyfileInsertListeners,
+  listenerRef: PolyfillInsertListeners,
 ) => {
   const shadowRoot = shadowCtx.shadowRoot!;
 
@@ -195,7 +127,7 @@ const adoptSheet = (
     if (style.sheet) {
       cloneCSSStyleSheet(stylesheet, style.sheet);
       if (!listenerRef[stylesheetKey]) {
-        const onInsert: EventHandler<CSSStyleSheet> = ({ key, rule }) => {
+        const onInsert: InsertRuleCallback = ({ key, rule }) => {
           if (key === stylesheetKey) {
             if (shadowCtx && rule) {
               updatePolyfillSheet(shadowCtx, key, rule);
@@ -205,38 +137,8 @@ const adoptSheet = (
         const polyfillSheet = Stylesheet.getInstance(
           makeShadowConfig(stylesheetKey, true, doc.defaultView ?? undefined),
         );
-        polyfillSheet.onInsertRuleIntoConstructableStyleSheet(onInsert);
-        listenerRef[stylesheetKey] = onInsert;
+        listenerRef[stylesheetKey] = polyfillSheet.onInsertRule(onInsert);
       }
     }
   }
-};
-
-/**
- * Test if a context is available.
- * @returns true if there is a context.
- */
-export const useHasMergeStylesShadowRootContext = () => {
-  return !!useMergeStylesShadowRootContext();
-};
-
-/**
- * Get a reference to the shadow root context.
- * @returns The context for the shadow root.
- */
-export const useMergeStylesShadowRootContext = () => {
-  return React.useContext(MergeStylesShadowRootContext);
-};
-
-/**
- * Get a shadow config.
- * @param stylesheetKey - Globally unique key
- * @param win - Reference to the `window` global.
- * @returns ShadowConfig
- */
-export const useShadowConfig = (stylesheetKey: string, win?: Window) => {
-  const inShadow = useHasMergeStylesShadowRootContext();
-  return React.useMemo(() => {
-    return makeShadowConfig(stylesheetKey, inShadow, win);
-  }, [stylesheetKey, inShadow, win]);
 };

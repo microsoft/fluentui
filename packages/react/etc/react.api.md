@@ -356,7 +356,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
-import { ShadowConfig } from '@fluentui/merge-styles';
+import type { ShadowConfig } from '@fluentui/style-utilities';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -376,12 +376,16 @@ import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
 import { unregisterIcons } from '@fluentui/style-utilities';
 import { useAdoptedStylesheet } from '@fluentui/utilities';
+import { useAdoptedStylesheetEx } from '@fluentui/utilities';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { useFocusRects } from '@fluentui/utilities';
 import { useHasMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useMergeStylesHooks } from '@fluentui/utilities';
 import { useMergeStylesRootStylesheets } from '@fluentui/utilities';
 import { useMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useShadowConfig } from '@fluentui/utilities';
+import { useStyled } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { values } from '@fluentui/utilities';
 import { videoProperties } from '@fluentui/utilities';
@@ -11442,6 +11446,8 @@ export function updateT(color: IColor, t: number): IColor;
 
 export { useAdoptedStylesheet }
 
+export { useAdoptedStylesheetEx }
+
 export { useCustomizationSettings }
 
 export { useDocument }
@@ -11456,12 +11462,18 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React_2.Ref<TElement>;
 
+export { useMergeStylesHooks }
+
 export { useMergeStylesRootStylesheets }
 
 export { useMergeStylesShadowRootContext }
 
 // @public
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode) => ResponsiveMode;
+
+export { useShadowConfig }
+
+export { useStyled }
 
 // @public @deprecated
 export type UseStylesOptions = {
