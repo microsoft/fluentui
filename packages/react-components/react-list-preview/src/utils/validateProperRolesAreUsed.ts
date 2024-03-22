@@ -20,13 +20,13 @@ export const validateProperRolesAreUsed = (
 
   // Explode when the pair of roles is invalid
   if (role === 'list' && listItemRole !== 'listitem') {
-    throw new Error('When role is "list", listItemRole must be "listitem".');
+    throw new Error('When the List role is "list", ListItem role must be "listitem".');
   }
   if (role === 'listbox' && listItemRole !== 'option') {
-    throw new Error('When role is "listbox", listItemRole must be "option".');
+    throw new Error('When the List role is "listbox", ListItem role must be "option".');
   }
   if (role === 'grid' && listItemRole !== 'row') {
-    throw new Error('When role is "grid", listItemRole must be "row".');
+    throw new Error('When the List role is "grid", ListItem role must be "row".');
   }
 
   const expectedRole = (() => {
