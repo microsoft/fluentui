@@ -25,7 +25,6 @@
     "@fluentui/react-persona": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-spinbutton": "*",
-    "@fluentui/react-teaching-popover-preview": "*",
     "@fluentui/react-theme": "*",
     "@griffel/core": "^1.14.1",
     "@microsoft/load-themed-styles": "^1.10.26",
