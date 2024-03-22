@@ -15,12 +15,12 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    columnGap: '4px',
+    columnGap: tokens.spacingHorizontalXS,
     alignItems: 'center',
     justifyContent: 'center',
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius('4px'),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       ...shorthands.borderColor('transparent'),
     }),
   },

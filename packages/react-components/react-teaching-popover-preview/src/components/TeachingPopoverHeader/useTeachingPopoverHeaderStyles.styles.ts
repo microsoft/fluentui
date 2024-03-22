@@ -42,8 +42,8 @@ const useStyles = makeStyles({
     marginInlineStart: 'auto',
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius('4px'),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       ...shorthands.borderColor('transparent'),
     }),
   },

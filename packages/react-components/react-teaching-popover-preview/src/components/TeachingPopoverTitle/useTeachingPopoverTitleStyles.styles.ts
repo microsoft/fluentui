@@ -38,8 +38,8 @@ const useStyles = makeStyles({
     borderBottomRightRadius: tokens.borderRadiusNone,
     borderRightStyle: 'none',
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius('4px'),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       ...shorthands.borderColor('transparent'),
     }),
     marginInlineStart: 'auto',

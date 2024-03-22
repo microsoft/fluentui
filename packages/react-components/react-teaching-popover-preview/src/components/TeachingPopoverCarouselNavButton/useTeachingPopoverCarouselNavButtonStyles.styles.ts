@@ -28,8 +28,8 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('50%'),
     ...shorthands.padding('0px'),
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius('4px'),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       ...shorthands.borderColor('transparent'),
     }),
     backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 30%, transparent)`,
@@ -45,8 +45,8 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('4px'),
     ...shorthands.padding('0px'),
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius('4px'),
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
       ...shorthands.borderColor('transparent'),
     }),
   },
