@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Collapse } from '@fluentui/react-motions-preview';
-import { Checkbox } from '@fluentui/components';
+import { Checkbox } from '@fluentui/react-components';
 import { loremIpsum } from '../loremIpsum';
 
 export const Default = () => {
