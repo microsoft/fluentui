@@ -7,14 +7,7 @@ import type { TagPickerInputSlots, TagPickerInputState } from './TagPickerInput.
 
 export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots> = {
   root: 'fui-TagPickerInput',
-  clearIcon: 'fui-TagPickerInput__clearIcon',
   expandIcon: 'fui-TagPickerInput__expandIcon',
-};
-
-const fieldHeights = {
-  small: '22px',
-  medium: '30px',
-  large: '38px',
 };
 
 export const iconSizes = {
@@ -33,7 +26,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
     flexGrow: 1,
-    paddingLeft: tokens.spacingHorizontalXXS,
+    boxSizing: 'border-box',
 
     '&:focus': {
       outlineStyle: 'none',
@@ -46,17 +39,17 @@ const useStyles = makeStyles({
   },
 
   // size variants
-  small: {
-    height: fieldHeights.small,
-    ...typographyStyles.caption1,
-  },
   medium: {
-    height: fieldHeights.medium,
     ...typographyStyles.body1,
+    ...shorthands.paddingBlock(tokens.spacingVerticalSNudge),
   },
   large: {
-    height: fieldHeights.large,
-    ...typographyStyles.body2,
+    ...typographyStyles.body1,
+    ...shorthands.paddingBlock(tokens.spacingVerticalMNudge),
+  },
+  'extra-large': {
+    ...typographyStyles.body1,
+    ...shorthands.paddingBlock(tokens.spacingVerticalM),
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -100,15 +93,15 @@ const useIconStyles = makeStyles({
   },
 
   // icon size variants
-  small: {
+  medium: {
     fontSize: iconSizes.small,
     marginLeft: tokens.spacingHorizontalXXS,
   },
-  medium: {
+  large: {
     fontSize: iconSizes.medium,
     marginLeft: tokens.spacingHorizontalXXS,
   },
-  large: {
+  'extra-large': {
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
   },
@@ -132,24 +125,13 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
     state.root.className,
   );
 
-  if (state.clearIcon) {
-    state.clearIcon.className = mergeClasses(
-      tagPickerInputClassNames.clearIcon,
-      iconStyles.icon,
-      iconStyles[state.size],
-      state.disabled && iconStyles.disabled,
-      !state.showClearIcon && iconStyles.visuallyHidden,
-      state.clearIcon.className,
-    );
-  }
-
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
       tagPickerInputClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[state.size],
       state.disabled && iconStyles.disabled,
-      state.showClearIcon && iconStyles.visuallyHidden,
+      // state.showClearIcon && iconStyles.visuallyHidden,
       state.expandIcon.className,
     );
   }

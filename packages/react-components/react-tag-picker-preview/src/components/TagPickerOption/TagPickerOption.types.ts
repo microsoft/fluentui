@@ -11,7 +11,7 @@ export type TagPickerOptionSlots = Omit<OptionSlots, 'checkIcon'> & {
  * TagPickerOption Props
  */
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> &
-  Omit<OptionProps, 'checkIcon'> & {
+  Omit<OptionProps, 'checkIcon' | 'disabled'> & {
     children: React.ReactNode;
     text?: string;
     value: string;

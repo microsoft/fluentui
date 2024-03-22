@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Fri, 19 Jan 2024 07:29:32 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 07:28:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.7.0)
+
+Fri, 22 Mar 2024 07:28:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.37..@fluentui/react-hooks_v8.7.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30813](https://github.com/microsoft/fluentui/pull/30813) by behowell@microsoft.com)
+- Bump @fluentui/utilities to v8.15.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+
+## [8.6.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.37)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.36..@fluentui/react-hooks_v8.6.37)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.14.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
 
 ## [8.6.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.36)
 

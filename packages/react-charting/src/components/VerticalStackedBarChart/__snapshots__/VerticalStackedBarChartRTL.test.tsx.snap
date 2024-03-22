@@ -37,9 +37,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -67,9 +67,73 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)rotate(-45)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              January
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)rotate(-45)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)rotate(-45)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -95,61 +159,355 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
-            x1="37.14285714285714"
-            x2="4.571428571428569"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
-            x1="4.571428571428569"
-            x2="-28"
-            y1="-12.450000000000003"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="159.83"
             y2="20"
           />
           <circle
-            cx="37.14285714285714"
-            cy="-11.900000000000004"
+            cx="279"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
-            cx="4.571428571428569"
-            cy="-12.450000000000003"
+            cx="327"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
-            cx="-28"
+            cx="375"
             cy="20"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
         </g>
@@ -182,7 +540,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -599,9 +957,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -629,9 +987,73 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)rotate(-45)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              January
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)rotate(-45)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)rotate(-45)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -657,61 +1079,355 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
-            x1="37.14285714285714"
-            x2="4.571428571428569"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
-            x1="4.571428571428569"
-            x2="-28"
-            y1="-12.450000000000003"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="159.83"
             y2="20"
           />
           <circle
-            cx="37.14285714285714"
-            cy="-11.900000000000004"
+            cx="279"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
-            cx="4.571428571428569"
-            cy="-12.450000000000003"
+            cx="327"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
-            cx="-28"
+            cx="375"
             cy="20"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
         </g>
@@ -744,7 +1460,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -1161,9 +1877,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -1191,9 +1907,73 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              January
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -1219,61 +1999,355 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
-            x1="37.14285714285714"
-            x2="4.571428571428569"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
-            x1="4.571428571428569"
-            x2="-28"
-            y1="-12.450000000000003"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="159.83"
             y2="20"
           />
           <circle
-            cx="37.14285714285714"
-            cy="-11.900000000000004"
+            cx="279"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
-            cx="4.571428571428569"
-            cy="-12.450000000000003"
+            cx="327"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
-            cx="-28"
+            cx="375"
             cy="20"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(5.428571428571429, 0)"
+            transform="translate(8, 0)"
             visibility="hidden"
           />
         </g>
@@ -1306,7 +2380,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -1736,9 +2810,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
       >
         <svg
           focusable="false"
-          height="0"
+          height="292"
           style="display: block;"
-          width="0"
+          width="650"
         >
           <g
             class=
@@ -1766,9 +2840,109 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
             id="xAxisGElementchart_6"
-            transform="translate(0, -35)"
-          />
+            text-anchor="middle"
+            transform="translate(0, 257)"
+          >
+            <path
+              class="domain"
+              d="M56.5,6V0.5H614.5V6"
+              stroke="#000"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(56.5,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(196,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                5
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335.5,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                10
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(475,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                15
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(614.5,0)"
+            >
+              <line
+                stroke="#000"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="#000"
+                y="16"
+              >
+                20
+              </text>
+            </g>
+          </g>
           <g
             class=
 
@@ -1794,10 +2968,229 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
             id="yAxisGElementchart_6"
+            text-anchor="end"
             transform="translate(40, 0)"
-          />
-          <g />
+          >
+            <path
+              class="domain"
+              d="M-6,257.5H0.5V20.5H-6"
+              stroke="#000"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,257.5)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,198.25)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                13
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,139)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                26
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,79.75)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                39
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,20.5)"
+            >
+              <line
+                stroke="#000"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="#000"
+                x="-10"
+              >
+                52
+              </text>
+            </g>
+          </g>
+          <g>
+            <g>
+              <g
+                id="0-singleBar"
+              >
+                <rect
+                  aria-label="2020/04/30. Metadata1, 40%."
+                  class=
+
+                      {
+                        cursor: default;
+                        opacity: ;
+                      }
+                  data-is-focusable="true"
+                  fill="#0078d4"
+                  height="182.30769230769232"
+                  role="img"
+                  tabindex="0"
+                  transform="translate(0, 0)"
+                  width="16"
+                  x="48"
+                  y="74.69230769230768"
+                />
+                <rect
+                  aria-label="2020/04/30. Metadata2, 5%."
+                  class=
+
+                      {
+                        cursor: default;
+                        opacity: ;
+                      }
+                  data-is-focusable="true"
+                  fill="#00188f"
+                  height="22.78846153846154"
+                  role="img"
+                  tabindex="-1"
+                  transform="translate(0, 0)"
+                  width="16"
+                  x="48"
+                  y="51.90384615384614"
+                />
+              </g>
+              <text
+                aria-label="Total: 45"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                role="img"
+                text-anchor="middle"
+                transform="translate(0, 0)"
+                x="56"
+                y="45.90384615384614"
+              >
+                45
+              </text>
+            </g>
+            <g>
+              <g
+                id="1-singleBar"
+              >
+                <rect
+                  aria-label="2020/04/30. Metadata1, 30%."
+                  class=
+
+                      {
+                        cursor: default;
+                        opacity: ;
+                      }
+                  data-is-focusable="true"
+                  fill="#0078d4"
+                  height="136.73076923076923"
+                  role="img"
+                  tabindex="-1"
+                  transform="translate(0, 0)"
+                  width="16"
+                  x="606"
+                  y="120.26923076923077"
+                />
+                <rect
+                  aria-label="2020/04/30. Metadata2, 20%."
+                  class=
+
+                      {
+                        cursor: default;
+                        opacity: ;
+                      }
+                  data-is-focusable="true"
+                  fill="#00188f"
+                  height="91.15384615384615"
+                  role="img"
+                  tabindex="-1"
+                  transform="translate(0, 0)"
+                  width="16"
+                  x="606"
+                  y="29.115384615384627"
+                />
+              </g>
+              <text
+                aria-label="Total: 50"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                role="img"
+                text-anchor="middle"
+                transform="translate(0, 0)"
+                x="614"
+                y="23.115384615384627"
+              >
+                50
+              </text>
+            </g>
+          </g>
           <g />
         </svg>
       </div>
@@ -1828,7 +3221,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <div
                 data-automation-id="visibleContent"
-                style="position: fixed; visibility: hidden;"
+                style=""
               >
                 <div
                   aria-label="Legends"
@@ -2074,9 +3467,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -2104,9 +3497,73 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(281.5295081967213,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              September
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -2132,10 +3589,304 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="Wed May 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Sep 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="289.0295081967213"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Mar 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
@@ -2144,9 +3895,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="18.89836065573771"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            x2="281.0295081967213"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
@@ -2154,14 +3905,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="18.89836065573771"
-            x2="-36"
-            y1="-12.450000000000003"
+            x1="281.0295081967213"
+            x2="614"
+            y1="159.83"
             y2="20"
           />
           <circle
             cx="56"
-            cy="-11.900000000000004"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -2170,8 +3921,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="18.89836065573771"
-            cy="-12.450000000000003"
+            cx="281.0295081967213"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -2180,7 +3931,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="-36"
+            cx="614"
             cy="20"
             fill="#ffffff"
             r="8"
@@ -2219,7 +3970,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -2636,9 +4387,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -2666,9 +4417,73 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(281.5295081967213,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              September
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -2694,10 +4509,304 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="Wed May 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Sep 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="289.0295081967213"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Mar 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
@@ -2706,9 +4815,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="18.89836065573771"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            x2="281.0295081967213"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
@@ -2716,14 +4825,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="18.89836065573771"
-            x2="-36"
-            y1="-12.450000000000003"
+            x1="281.0295081967213"
+            x2="614"
+            y1="159.83"
             y2="20"
           />
           <circle
             cx="56"
-            cy="-11.900000000000004"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -2732,8 +4841,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="18.89836065573771"
-            cy="-12.450000000000003"
+            cx="281.0295081967213"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -2742,7 +4851,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="-36"
+            cx="614"
             cy="20"
             fill="#ffffff"
             r="8"
@@ -2781,7 +4890,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -3198,9 +5307,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -3228,9 +5337,217 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(113.21475409836066,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              June
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              July
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(224.81475409836065,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              August
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(281.5295081967213,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              September
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(336.4147540983606,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              October
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(393.12950819672136,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              November
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(448.0147540983607,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              December
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(504.72950819672127,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              2020
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(561.4442622950819,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -3256,10 +5573,304 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="Wed May 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Sep 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="289.0295081967213"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Mar 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
@@ -3268,9 +5879,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="18.89836065573771"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            x2="281.0295081967213"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
@@ -3278,14 +5889,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="18.89836065573771"
-            x2="-36"
-            y1="-12.450000000000003"
+            x1="281.0295081967213"
+            x2="614"
+            y1="159.83"
             y2="20"
           />
           <circle
             cx="56"
-            cy="-11.900000000000004"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -3294,8 +5905,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="18.89836065573771"
-            cy="-12.450000000000003"
+            cx="281.0295081967213"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -3304,7 +5915,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="-36"
+            cx="614"
             cy="20"
             fill="#ffffff"
             r="8"
@@ -3343,7 +5954,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -3760,9 +6371,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -3790,9 +6401,199 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.91926229508197,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(113.63401639344261,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              June
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.51926229508197,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              July
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(225.23401639344263,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              August
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(281.94877049180326,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              September
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(336.83401639344265,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              October
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(393.5487704918033,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              November
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(448.4340163934426,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              December
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(505.14877049180325,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              2020
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(561.8635245901639,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -3818,10 +6619,304 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="Wed May 01 2019 00:00:00 GMT+0530 (India Standard Time). Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Sep 01 2019 00:00:00 GMT+0530 (India Standard Time). Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="289.0295081967213"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Mar 01 2020 00:00:00 GMT+0530 (India Standard Time). Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
@@ -3830,9 +6925,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="18.89836065573771"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            x2="281.0295081967213"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
@@ -3840,14 +6935,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="18.89836065573771"
-            x2="-36"
-            y1="-12.450000000000003"
+            x1="281.0295081967213"
+            x2="614"
+            y1="159.83"
             y2="20"
           />
           <circle
             cx="56"
-            cy="-11.900000000000004"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -3856,8 +6951,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="18.89836065573771"
-            cy="-12.450000000000003"
+            cx="281.0295081967213"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -3866,7 +6961,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="-36"
+            cx="614"
             cy="20"
             fill="#ffffff"
             r="8"
@@ -3905,7 +7000,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -4322,9 +7417,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -4352,9 +7447,199 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(112.67347356918454,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              June
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(167.551222510586,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              July
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(224.25822975003416,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              August
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(280.9652369894823,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              September
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.84298593088374,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              October
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(392.54999317033196,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              November
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(447.4277421117333,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              December
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(504.1347493511815,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              2020
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(560.8417565906298,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(613.8902472339844,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -4380,10 +7665,304 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="Wed May 01 2019 00:00:00 GMT-0700 (Pacific Daylight Time). Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Sep 01 2019 00:00:00 GMT-0700 (Pacific Daylight Time). Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="280.99877065974596"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(-8, 0)"
+                width="16"
+                x="280.99877065974596"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(-8, 0)"
+                width="16"
+                x="280.99877065974596"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="288.99877065974596"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Mar 01 2020 00:00:00 GMT-0800 (Pacific Standard Time). Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
@@ -4392,9 +7971,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="18.90342849337522"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            x2="280.99877065974596"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
@@ -4402,14 +7981,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="18.90342849337522"
-            x2="-36"
-            y1="-12.450000000000003"
+            x1="280.99877065974596"
+            x2="614"
+            y1="159.83"
             y2="20"
           />
           <circle
             cx="56"
-            cy="-11.900000000000004"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -4418,8 +7997,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="18.90342849337522"
-            cy="-12.450000000000003"
+            cx="280.99877065974596"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -4428,7 +8007,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="-36"
+            cx="614"
             cy="20"
             fill="#ffffff"
             r="8"
@@ -4467,7 +8046,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -4884,9 +8463,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -4914,9 +8493,217 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(113.21475409836066,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              June
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              July
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(224.81475409836065,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              August
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(281.5295081967213,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              September
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(336.4147540983606,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              October
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(393.12950819672136,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              November
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(448.0147540983607,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              December
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(504.72950819672127,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              2020
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(561.4442622950819,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -4942,10 +8729,304 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="Wed May 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="252.26"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.37"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="249.89"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="243.89"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Sep 01 2019 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="71.1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="185.9"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="7.109999999999999"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="178.79000000000002"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="94.79999999999998"
+                transform="translate(-8, 0)"
+                width="16"
+                x="281.0295081967213"
+                y="83.99000000000004"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="289.0295081967213"
+              y="77.99000000000004"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="Sun Mar 01 2020 00:00:00 GMT+0000 (Coordinated Universal Time). Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="13.999999999999986"
+            >
+              100
+            </text>
+          </g>
+        </g>
         <g>
           <line
             opacity="1"
@@ -4954,9 +9035,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="18.89836065573771"
-            y1="-11.900000000000004"
-            y2="-12.450000000000003"
+            x2="281.0295081967213"
+            y1="157.46000000000004"
+            y2="159.83"
           />
           <line
             opacity="1"
@@ -4964,14 +9045,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="18.89836065573771"
-            x2="-36"
-            y1="-12.450000000000003"
+            x1="281.0295081967213"
+            x2="614"
+            y1="159.83"
             y2="20"
           />
           <circle
             cx="56"
-            cy="-11.900000000000004"
+            cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -4980,8 +9061,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="18.89836065573771"
-            cy="-12.450000000000003"
+            cx="281.0295081967213"
+            cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
@@ -4990,7 +9071,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="-36"
+            cx="614"
             cy="20"
             fill="#ffffff"
             r="8"
@@ -5029,7 +9110,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -5446,9 +9527,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -5476,9 +9557,109 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_3"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(196,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              5
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(475,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              15
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -5504,10 +9685,229 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
-        <g />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              id="0-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 40%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="182.30769230769232"
+                role="img"
+                tabindex="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="48"
+                y="74.69230769230768"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 5%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="22.78846153846154"
+                role="img"
+                tabindex="-1"
+                transform="translate(0, 0)"
+                width="16"
+                x="48"
+                y="51.90384615384614"
+              />
+            </g>
+            <text
+              aria-label="Total: 45"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="56"
+              y="45.90384615384614"
+            >
+              45
+            </text>
+          </g>
+          <g>
+            <g
+              id="1-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 30%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="136.73076923076923"
+                role="img"
+                tabindex="-1"
+                transform="translate(0, 0)"
+                width="16"
+                x="606"
+                y="120.26923076923077"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 20%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="91.15384615384615"
+                role="img"
+                tabindex="-1"
+                transform="translate(0, 0)"
+                width="16"
+                x="606"
+                y="29.115384615384627"
+              />
+            </g>
+            <text
+              aria-label="Total: 50"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="614"
+              y="23.115384615384627"
+            >
+              50
+            </text>
+          </g>
+        </g>
         <g />
       </svg>
     </div>
@@ -5538,7 +9938,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -5783,9 +10183,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     >
       <svg
         focusable="false"
-        height="310"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -5818,11 +10218,11 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           font-size="10"
           id="xAxisGElementchart_3"
           text-anchor="middle"
-          transform="translate(0, 275)"
+          transform="translate(0, 257)"
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H-35.5V6"
+            d="M56.5,6V0.5H614.5V6"
             stroke="#000"
           />
           <g
@@ -5846,7 +10246,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(33.5,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="#000"
@@ -5864,7 +10264,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(10.5,0)"
+            transform="translate(335.5,0)"
           >
             <line
               stroke="#000"
@@ -5882,7 +10282,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-12.5,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="#000"
@@ -5900,7 +10300,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-35.5,0)"
+            transform="translate(614.5,0)"
           >
             <line
               stroke="#000"
@@ -5950,23 +10350,23 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         >
           <path
             class="domain"
-            d="M-6,275.5H0.5V20.5H-6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,275.5)"
+            transform="translate(0,257.5)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               0
             </text>
@@ -5974,17 +10374,17 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,211.75)"
+            transform="translate(0,198.25)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               13
             </text>
@@ -5992,17 +10392,17 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,148)"
+            transform="translate(0,139)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               26
             </text>
@@ -6010,17 +10410,17 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,84.25)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               39
             </text>
@@ -6032,13 +10432,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               52
             </text>
@@ -6059,13 +10459,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="196.15384615384616"
+                height="182.30769230769232"
                 role="img"
                 tabindex="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="78.84615384615384"
+                y="74.69230769230768"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -6077,13 +10477,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="24.51923076923077"
+                height="22.78846153846154"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="54.326923076923066"
+                y="51.90384615384614"
               />
             </g>
             <text
@@ -6099,7 +10499,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="56"
-              y="48.326923076923066"
+              y="45.90384615384614"
             >
               45
             </text>
@@ -6118,13 +10518,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="147.1153846153846"
+                height="136.73076923076923"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
-                x="-44"
-                y="127.88461538461539"
+                x="606"
+                y="120.26923076923077"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -6136,13 +10536,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="98.07692307692308"
+                height="91.15384615384615"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
-                x="-44"
-                y="29.807692307692307"
+                x="606"
+                y="29.115384615384627"
               />
             </g>
             <text
@@ -6157,8 +10557,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
-              x="-36"
-              y="23.807692307692307"
+              x="614"
+              y="23.115384615384627"
             >
               50
             </text>
@@ -6386,63 +10786,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class=
-          ms-Callout-container
-          {
-            position: relative;
-          }
-      style="display: none;"
-    >
-      <div
-        class=
-            ms-Callout
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              border-radius: 2px;
-              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-              box-sizing: border-box;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              outline: transparent;
-              position: absolute;
-              z-index: 1000000;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              border-color: WindowText;
-              border-style: solid;
-              border-width: 1px;
-            }
-            &::-moz-focus-inner {
-              border: 0px;
-            }
-        data-is-focusable="true"
-        id="toolTipcallout0"
-        style="opacity: 0; filter: opacity(0); pointer-events: none;"
-        tabindex="-1"
-      >
-        <div
-          class=
-              ms-Callout-main
-              {
-                background-color: #ffffff;
-                border-radius: 2px;
-                overflow-x: hidden;
-                overflow-y: auto;
-                position: relative;
-                width: 100%;
-              }
-          role="text"
-          style="outline: none; max-height: 100%;"
-        />
-      </div>
-    </div>
-    <div>
-      Loading...
     </div>
   </div>
 </div>
@@ -6485,9 +10828,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         focusable="false"
-        height="310"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -6520,11 +10863,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           font-size="10"
           id="xAxisGElementchart_3"
           text-anchor="middle"
-          transform="translate(0, 275)"
+          transform="translate(0, 257)"
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H-35.5V6"
+            d="M56.5,6V0.5H614.5V6"
             stroke="#000"
           />
           <g
@@ -6548,7 +10891,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(33.5,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="#000"
@@ -6566,7 +10909,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(10.5,0)"
+            transform="translate(335.5,0)"
           >
             <line
               stroke="#000"
@@ -6584,7 +10927,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(-12.5,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="#000"
@@ -6602,7 +10945,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(-35.5,0)"
+            transform="translate(614.5,0)"
           >
             <line
               stroke="#000"
@@ -6652,23 +10995,23 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         >
           <path
             class="domain"
-            d="M-6,275.5H0.5V20.5H-6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,275.5)"
+            transform="translate(0,257.5)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               0
             </text>
@@ -6676,17 +11019,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,211.75)"
+            transform="translate(0,198.25)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               13
             </text>
@@ -6694,17 +11037,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,148)"
+            transform="translate(0,139)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               26
             </text>
@@ -6712,17 +11055,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,84.25)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               39
             </text>
@@ -6734,13 +11077,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               52
             </text>
@@ -6761,13 +11104,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="196.15384615384616"
+                height="182.30769230769232"
                 role="img"
                 tabindex="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="78.84615384615384"
+                y="74.69230769230768"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -6779,13 +11122,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="24.51923076923077"
+                height="22.78846153846154"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="54.326923076923066"
+                y="51.90384615384614"
               />
             </g>
             <text
@@ -6801,7 +11144,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(0, 0)"
               x="56"
-              y="48.326923076923066"
+              y="45.90384615384614"
             >
               45
             </text>
@@ -6820,13 +11163,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="147.1153846153846"
+                height="136.73076923076923"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
-                x="-44"
-                y="127.88461538461539"
+                x="606"
+                y="120.26923076923077"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -6838,13 +11181,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="98.07692307692308"
+                height="91.15384615384615"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
-                x="-44"
-                y="29.807692307692307"
+                x="606"
+                y="29.115384615384627"
               />
             </g>
             <text
@@ -6859,8 +11202,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
-              x="-36"
-              y="23.807692307692307"
+              x="614"
+              y="23.115384615384627"
             >
               50
             </text>
@@ -7085,71 +11428,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 </div>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class=
-          ms-Callout-container
-          {
-            position: relative;
-          }
-    >
-      <div
-        class=
-            ms-Callout
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              border-radius: 2px;
-              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-              box-sizing: border-box;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              outline: transparent;
-              position: absolute;
-              z-index: 1000000;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              border-color: WindowText;
-              border-style: solid;
-              border-width: 1px;
-            }
-            &::-moz-focus-inner {
-              border: 0px;
-            }
-        data-is-focusable="true"
-        id="toolTipcallout0"
-        style="opacity: 0; filter: opacity(0); pointer-events: none;"
-        tabindex="-1"
-      >
-        <div
-          class=
-              ms-Callout-main
-              {
-                background-color: #ffffff;
-                border-radius: 2px;
-                overflow-x: hidden;
-                overflow-y: auto;
-                position: relative;
-                width: 100%;
-              }
-          role="text"
-          style="outline: none; max-height: 100%;"
-        >
-          <div>
-            <pre>
-              {
-  "legend": "Metadata1",
-  "data": 40,
-  "color": "#0078d4",
-  "xAxisCalloutData": "2020/04/30",
-  "yAxisCalloutData": "40%"
-}
-            </pre>
           </div>
         </div>
       </div>
@@ -7195,9 +11473,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         focusable="false"
-        height="310"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -7230,11 +11508,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           font-size="10"
           id="xAxisGElementchart_3"
           text-anchor="middle"
-          transform="translate(0, 275)"
+          transform="translate(0, 257)"
         >
           <path
             class="domain"
-            d="M56.5,6V0.5H-35.5V6"
+            d="M56.5,6V0.5H614.5V6"
             stroke="#000"
           />
           <g
@@ -7258,7 +11536,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(33.5,0)"
+            transform="translate(196,0)"
           >
             <line
               stroke="#000"
@@ -7276,7 +11554,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(10.5,0)"
+            transform="translate(335.5,0)"
           >
             <line
               stroke="#000"
@@ -7294,7 +11572,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(-12.5,0)"
+            transform="translate(475,0)"
           >
             <line
               stroke="#000"
@@ -7312,7 +11590,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(-35.5,0)"
+            transform="translate(614.5,0)"
           >
             <line
               stroke="#000"
@@ -7362,23 +11640,23 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         >
           <path
             class="domain"
-            d="M-6,275.5H0.5V20.5H-6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,275.5)"
+            transform="translate(0,257.5)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               0
             </text>
@@ -7386,17 +11664,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,211.75)"
+            transform="translate(0,198.25)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               13
             </text>
@@ -7404,17 +11682,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,148)"
+            transform="translate(0,139)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               26
             </text>
@@ -7422,17 +11700,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,84.25)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               39
             </text>
@@ -7444,13 +11722,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           >
             <line
               stroke="#000"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="#000"
-              x="-70"
+              x="-10"
             >
               52
             </text>
@@ -7473,11 +11751,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="196.15384615384616"
+                height="182.30769230769232"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="78.84615384615384"
+                y="74.69230769230768"
               />
               <rect
                 class=
@@ -7487,11 +11765,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#00188f"
-                height="24.51923076923077"
+                height="22.78846153846154"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="54.326923076923066"
+                y="51.90384615384614"
               />
             </g>
             <text
@@ -7507,7 +11785,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(0, 0)"
               x="56"
-              y="48.326923076923066"
+              y="45.90384615384614"
             >
               45
             </text>
@@ -7528,11 +11806,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="147.1153846153846"
+                height="136.73076923076923"
                 transform="translate(0, 0)"
                 width="16"
-                x="-44"
-                y="127.88461538461539"
+                x="606"
+                y="120.26923076923077"
               />
               <rect
                 class=
@@ -7542,11 +11820,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#00188f"
-                height="98.07692307692308"
+                height="91.15384615384615"
                 transform="translate(0, 0)"
                 width="16"
-                x="-44"
-                y="29.807692307692307"
+                x="606"
+                y="29.115384615384627"
               />
             </g>
             <text
@@ -7561,8 +11839,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
-              x="-36"
-              y="23.807692307692307"
+              x="614"
+              y="23.115384615384627"
             >
               50
             </text>
@@ -7576,23 +11854,23 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             stroke-width="3"
             transform="translate(0, 0)"
             x1="56"
-            x2="-36"
-            y1="201.4423076923077"
-            y2="127.88461538461539"
+            x2="614"
+            y1="188.6346153846154"
+            y2="120.26923076923077"
           />
           <circle
             cx="56"
-            cy="201.4423076923077"
+            cy="188.6346153846154"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="visibility"
+            visibility="hidden"
           />
           <circle
-            cx="-36"
-            cy="127.88461538461539"
+            cx="614"
+            cy="120.26923076923077"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
@@ -7905,92 +12183,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 </div>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class=
-          ms-Callout-container
-          {
-            position: relative;
-          }
-    >
-      <div
-        class=
-            ms-Callout
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              border-radius: 2px;
-              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-              box-sizing: border-box;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              outline: transparent;
-              position: absolute;
-              z-index: 1000000;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              border-color: WindowText;
-              border-style: solid;
-              border-width: 1px;
-            }
-            &::-moz-focus-inner {
-              border: 0px;
-            }
-        data-is-focusable="true"
-        id="toolTipcallout0"
-        style="opacity: 0; filter: opacity(0); pointer-events: none;"
-        tabindex="-1"
-      >
-        <div
-          class=
-              ms-Callout-main
-              {
-                background-color: #ffffff;
-                border-radius: 2px;
-                overflow-x: hidden;
-                overflow-y: auto;
-                position: relative;
-                width: 100%;
-              }
-          role="text"
-          style="outline: none; max-height: 100%;"
-        >
-          <div>
-            <pre>
-              {
-  "chartData": [
-    {
-      "legend": "Metadata1",
-      "data": 40,
-      "color": "#0078d4",
-      "xAxisCalloutData": "2020/04/30",
-      "yAxisCalloutData": "40%"
-    },
-    {
-      "legend": "Metadata2",
-      "data": 5,
-      "color": "#00188f",
-      "xAxisCalloutData": "2020/04/30",
-      "yAxisCalloutData": "5%"
-    }
-  ],
-  "xAxisPoint": 0,
-  "lineData": [
-    {
-      "y": 15,
-      "legend": "Line1",
-      "color": "#ffb900",
-      "data": 15,
-      "shouldDrawBorderBottom": true
-    }
-  ]
-}
-            </pre>
           </div>
         </div>
       </div>

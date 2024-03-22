@@ -11,7 +11,7 @@ import {
   Stories,
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-components';
+import { tokens, Link, Text } from '@fluentui/react-components';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
@@ -44,7 +44,56 @@ const useStyles = makeStyles({
     columnGap: tokens.spacingHorizontalXXXL,
     display: 'flex',
   },
+  description: {
+    display: 'flex',
+  },
 });
+
+const useVideoClasses = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap(tokens.spacingHorizontalMNudge),
+  },
+  preview: {
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap(tokens.spacingHorizontalM),
+    ...shorthands.padding(tokens.spacingHorizontalM),
+    backgroundColor: tokens.colorNeutralBackground2,
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground2Hover,
+    },
+  },
+  image: {
+    width: '200px',
+  },
+});
+
+const VideoPreviews: React.FC<{
+  videos: {
+    href: string;
+    preview: string;
+    source: 'youtube';
+    title: string;
+  }[];
+}> = props => {
+  const { videos } = props;
+  const classes = useVideoClasses();
+
+  return (
+    <div className={classes.container}>
+      {videos.map(video => (
+        <Link className={classes.preview} href={video.href} target="_blank" key={video.href}>
+          <img alt={`Video: ${video.preview}`} src={video.preview} className={classes.image} />
+          <Text>{video.title}</Text>
+        </Link>
+      ))}
+    </div>
+  );
+};
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
@@ -53,6 +102,7 @@ export const FluentDocsPage = () => {
   const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();
   const primaryStory = stories[0];
+  const videos = context.parameters?.videos ?? null;
   const styles = useStyles();
   // DEBUG
   // console.log('FluentDocsPage', context);
@@ -77,7 +127,10 @@ export const FluentDocsPage = () => {
             <DirSwitch dir={dir} />
           </div>
           <Subtitle />
-          <Description />
+          <div className={styles.description}>
+            <Description />
+            {videos && <VideoPreviews videos={videos} />}
+          </div>
           <hr className={styles.divider} />
           <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
             {primaryStory.name}

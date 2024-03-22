@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and xAxisCalloutData in IST timezone 1`] = `"Jan 1, 2022. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and xAxisCalloutData in Pacific timezone 1`] = `"Jan 1, 2022. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and xAxisCalloutData in UTC timezone 1`] = `"Jan 1, 2022. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and y value in IST timezone 1`] = `"1/1/2022, 5:30:00 AM. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and y value in Pacific timezone 1`] = `"12/31/2021, 4:00:00 PM. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and y value in UTC timezone 1`] = `"1/1/2022, 12:00:00 AM. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and yAxisCalloutData in IST timezone 1`] = `"1/1/2022, 5:30:00 AM. Legend 1, 10 units."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and yAxisCalloutData in Pacific timezone 1`] = `"12/31/2021, 4:00:00 PM. Legend 1, 10 units."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and yAxisCalloutData in UTC timezone 1`] = `"1/1/2022, 12:00:00 AM. Legend 1, 10 units."`;
