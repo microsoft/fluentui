@@ -12,7 +12,11 @@ import {
   joinPathFragments,
   updateJson,
   readJson,
+  getProjects,
+  ProjectConfiguration,
+  output,
 } from '@nx/devkit';
+import { tsquery } from '@phenomnomnominal/tsquery';
 
 import tsConfigBaseAllGenerator from '../tsconfig-base-all/index';
 import { TsConfig } from '../../types';
@@ -24,14 +28,33 @@ interface Options extends SplitLibraryInTwoGeneratorSchema {
   projectOffsetFromRoot: { old: string; updated: string };
   oldContent: {
     tsConfig: Record<string, unknown>;
-    eslintrc: Record<string, unknown>;
   };
 }
 
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
-  const projectConfig = readProjectConfiguration(tree, options.project);
+  if (options.project && options.all) {
+    throw new Error('Cannot specify both project and all');
+  }
 
-  const eslintRcPath = joinPathFragments(projectConfig.root, '.eslintrc.json');
+  if (options.all) {
+    const projects = getProjects(tree);
+    for (const [projectName] of projects) {
+      splitLibraryInTwoInternal(tree, { projectName });
+    }
+  }
+  if (options.project) {
+    splitLibraryInTwoInternal(tree, { projectName: options.project });
+  }
+
+  await tsConfigBaseAllGenerator(tree, { verify: false });
+
+  await formatFiles(tree);
+}
+
+function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string }) {
+  const projectConfig = readProjectConfiguration(tree, options.projectName);
+
+  assertProject(tree, projectConfig);
 
   const normalizedOptions = {
     ...options,
@@ -41,7 +64,6 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
       updated: offsetFromRoot(projectConfig.root) + '../',
     },
     oldContent: {
-      eslintrc: tree.exists(eslintRcPath) ? readJson(tree, eslintRcPath) : {},
       tsConfig: readJson(tree, joinPathFragments(projectConfig.root, 'tsconfig.json')),
     },
   };
@@ -50,10 +72,6 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 
   makeSrcLibrary(tree, normalizedOptions);
   makeStoriesLibrary(tree, normalizedOptions);
-
-  await tsConfigBaseAllGenerator(tree, { verify: false });
-
-  await formatFiles(tree);
 }
 
 export default splitLibraryInTwoGenerator;
@@ -133,15 +151,9 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     joinPathFragments(newProjectRoot, '.storybook'),
   );
 
-  // TODO = probably having a generator to invoke here would be more efficient
-  tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), stripIndents`export {}`);
-  tree.write(
-    joinPathFragments(newProjectRoot, 'just.config.ts'),
-    stripIndents`
-      import { preset, task } from '@fluentui/scripts-tasks';
-
-      preset();
-  `,
+  const storiesWorkspaceDeps = getWorkspaceDependencies(
+    tree,
+    Array.from(getImportsFromStories(tree, newProjectSourceRoot)),
   );
 
   const templates = {
@@ -177,9 +189,7 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
         format: 'just-scripts prettier',
       },
       devDependencies: {
-        // TODO: parse AST to get proper version of deps needed
-        '@fluentui/react-components': '*',
-        '@fluentui/react-icons': '^2.0.224',
+        ...storiesWorkspaceDeps,
         // always added
         '@fluentui/react-storybook-addon': '*',
         '@fluentui/react-storybook-addon-export-to-sandbox': '*',
@@ -188,6 +198,12 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
         '@fluentui/scripts-tasks': '*',
       },
     },
+    justConfig: stripIndents`
+      import { preset, task } from '@fluentui/scripts-tasks';
+
+      preset();
+  `,
+    publicApi: stripIndents`export {}`,
     eslintrc: {
       extends: ['plugin:@fluentui/eslint-plugin/react'],
       root: true,
@@ -218,7 +234,11 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     },
   };
 
+  // TODO = probably having a generator to invoke here would be more efficient
+
   tree.write(joinPathFragments(newProjectRoot, 'README.md'), templates.readme);
+  tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), templates.publicApi);
+  tree.write(joinPathFragments(newProjectRoot, 'just.config.ts'), templates.justConfig);
   writeJson(tree, joinPathFragments(newProjectRoot, '.eslintrc.json'), templates.eslintrc);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), templates.tsconfig.root);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
@@ -254,8 +274,42 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     json.compilerOptions.paths[newProjectName] = [`${newProjectSourceRoot}/index.ts`];
     return json;
   });
+}
 
-  // TODO - update all relative paths
+function assertProject(tree: Tree, projectConfig: ProjectConfiguration) {
+  const tags = projectConfig.tags ?? [];
+
+  if (projectConfig.projectType !== 'library') {
+    output.warn({ title: 'This generator is only for libraries' });
+    return;
+  }
+
+  if (projectConfig.name?.endsWith('-preview')) {
+    output.warn({ title: 'preview projects are not supported YET, skipping...' });
+    return;
+  }
+
+  if (tags.includes('compat')) {
+    output.warn({ title: 'compat projects are not supported YET, skipping...' });
+    return;
+  }
+
+  if (projectConfig.root?.endsWith('/stories') || projectConfig.root?.endsWith('/library')) {
+    output.warn({ title: 'attempting to migrate already migrated projects, skipping...' });
+    return;
+  }
+
+  const isV9Stable = tags.includes('vNext') && tags.includes('platform:web');
+
+  if (!isV9Stable) {
+    output.warn({ title: 'This generator is only for v9 stable web libraries' });
+    return;
+  }
+
+  if (!tree.exists(joinPathFragments(projectConfig.root, 'stories'))) {
+    output.warn({ title: '/stories directory does not exist within project, skipping...' });
+    return;
+  }
 }
 
 function updateFileContent(tree: Tree, filePath: string, updater: (content: string) => string) {
@@ -286,4 +340,49 @@ function updateCodeowners(tree: Tree, options: Options) {
 
     tree.write(codeownersPath, newContent);
   }
+}
+
+function getImportPaths(tree: Tree, filePath: string) {
+  const fileContent = tree.read(filePath, 'utf8') ?? '';
+  const ast = tsquery.ast(fileContent);
+
+  const importNodes = tsquery.match(ast, 'ImportDeclaration') as import('typescript').ImportDeclaration[];
+  const importPaths = importNodes.map(node => node.moduleSpecifier.getText().replace(/['"]/g, ''));
+
+  const requireNodes = tsquery.match(
+    ast,
+    'CallExpression[expression.name="require"]',
+  ) as import('typescript').CallExpression[];
+  const requirePaths = requireNodes.map(node => (node.arguments[0] as import('typescript').StringLiteral).text);
+
+  return [...importPaths, ...requirePaths];
+}
+
+function getImportsFromStories(tree: Tree, root: string) {
+  const storiesDir = joinPathFragments(root);
+
+  const imports: string[] = [];
+
+  visitNotIgnoredFiles(tree, storiesDir, file => {
+    if (!(file.endsWith('.stories.tsx') || file.endsWith('.stories.ts'))) {
+      return;
+    }
+
+    const importPaths = getImportPaths(tree, file);
+    imports.push(...importPaths);
+  });
+
+  return new Set(imports);
+}
+
+function getWorkspaceDependencies(tree: Tree, imports: string[]) {
+  const allProjects = getProjects(tree);
+  const dependencies: Record<string, string> = {};
+  imports.forEach(importPath => {
+    if (allProjects.has(importPath)) {
+      dependencies[importPath] = '*';
+    }
+  });
+
+  return dependencies;
 }
