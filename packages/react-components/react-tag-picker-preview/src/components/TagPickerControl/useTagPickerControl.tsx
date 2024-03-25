@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  ExtractSlotProps,
+  Slot,
+  getIntrinsicElementProps,
+  slot,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { ChevronDownRegular } from '@fluentui/react-icons';
+import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
+import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
 
 /**
  * Create the state required to render PickerControl.
@@ -25,6 +34,9 @@ export const useTagPickerControl_unstable = (
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+
+  const innerRef = React.useRef<HTMLDivElement>(null);
+
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target !== triggerRef.current) {
       event.preventDefault();
@@ -43,30 +55,41 @@ export const useTagPickerControl_unstable = (
   if (secondaryAction) {
     secondaryAction.ref = secondaryActionRef;
   }
+  const expandIcon = slot.optional(props.expandIcon, {
+    renderByDefault: true,
+    defaultProps: {
+      'aria-expanded': open,
+      children: <ChevronDownRegular />,
+      role: 'button',
+    },
+    elementType: 'span',
+  });
+  const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
+    innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
+  });
+  const aside = slot.optional<ExtractSlotProps<Slot<'span'>>>(undefined, {
+    elementType: 'span',
+    renderByDefault: Boolean(secondaryAction || expandIcon),
+    defaultProps: { ref: observerRef },
+  });
   return {
     components: {
       root: 'div',
       expandIcon: 'span',
       secondaryAction: 'span',
+      aside: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, targetRef),
+        ref: useMergedRefs(ref, targetRef, innerRef),
         onMouseDown: handleMouseDown,
         onClick: handleClick,
         ...props,
       }),
       { elementType: 'div' },
     ),
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        'aria-expanded': open,
-        children: <ChevronDownRegular />,
-        role: 'button',
-      },
-      elementType: 'span',
-    }),
+    aside,
+    expandIcon,
     secondaryAction,
     size,
     appearance,
