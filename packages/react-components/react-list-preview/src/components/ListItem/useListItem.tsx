@@ -138,6 +138,9 @@ export const useListItem_unstable = (
     toggleItem?.(e, value);
   });
 
+  // By default, we stop the propagation of the click event on the checkbox to prevent the list item from being clicked.
+  // This behavior can be prevented by the consumer by passing a custom onClick handler to the checkmark slot,
+  // as these callbacks are not merged.
   const onCheckboxClick = useEventCallback((e: React.MouseEvent<HTMLInputElement>) => {
     e.stopPropagation();
   });
@@ -180,7 +183,6 @@ export const useListItem_unstable = (
 
   if (checkmark) {
     checkmark.onChange = mergeCallbacks(checkmark.onChange, onCheckboxChange);
-    checkmark.onClick = mergeCallbacks(checkmark.onClick, onCheckboxClick);
   }
 
   const state: ListItemState = {
