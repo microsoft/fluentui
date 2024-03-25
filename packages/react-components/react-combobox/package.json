@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-combobox",
-  "version": "9.9.3",
+  "version": "9.9.4",
   "description": "Fluent UI React Combobox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
     "@fluentui/react-aria": "^9.10.2",
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-context-selector": "^9.1.56",
-    "@fluentui/react-field": "^9.1.58",
+    "@fluentui/react-field": "^9.1.59",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.34",
     "@fluentui/react-portal": "^9.4.18",
