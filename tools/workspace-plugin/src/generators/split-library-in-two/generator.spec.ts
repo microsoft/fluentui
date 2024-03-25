@@ -88,6 +88,7 @@ describe('split-library-in-two generator', () => {
       expect.objectContaining({
         name: '@proj/react-hello',
         scripts: expect.objectContaining({
+          'test-ssr': 'test-ssr \\"../stories/src/**/*.stories.tsx\\"',
           'type-check': 'just-scripts type-check',
           storybook: 'yarn --cwd ../stories storybook',
         }),
@@ -149,7 +150,6 @@ describe('split-library-in-two generator', () => {
           "lint": "eslint src/",
           "start": "yarn storybook",
           "storybook": "start-storybook",
-          "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
           "type-check": "just-scripts type-check",
         },
         "version": "0.0.0",
