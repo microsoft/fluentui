@@ -7,6 +7,7 @@ import {
   serializeJson,
   readJson,
   updateJson,
+  writeJson,
 } from '@nx/devkit';
 
 import { splitLibraryInTwoGenerator } from './generator';
@@ -196,7 +197,35 @@ describe('split-library-in-two generator', () => {
         ],
       }
     `);
-    expect(readJson(tree, `${storiesConfig.root}/.eslintrc.json`)).toMatchInlineSnapshot(`Object {}`);
+    expect(readJson(tree, `${storiesConfig.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
+      Object {
+        "extends": Array [
+          "plugin:@fluentui/eslint-plugin/react",
+        ],
+        "root": true,
+      }
+    `);
+    expect(tree.read(`${storiesConfig.root}/README.md`, 'utf-8')).toMatchInlineSnapshot(`
+      "# @proj/react-hello-stories
+
+      Storybook stories for packages/react-components/react-hello
+
+      ## Usage
+
+      To include within storybook specify stories globs:
+
+      \\\\\`\\\\\`\\\\\`js
+      module.exports = {
+      stories: ['../packages/react-components/react-hello/stories/src/**/*.stories.mdx', '../packages/react-components/react-hello/stories/src/**/index.stories.@(ts|tsx)'],
+      }
+      \\\\\`\\\\\`\\\\\`
+
+      ## API
+
+      no public API available
+      "
+    `);
+
     expect(readJson(tree, `${storiesConfig.root}/.storybook/tsconfig.json`)).toMatchInlineSnapshot(`
       Object {
         "compilerOptions": Object {
@@ -252,6 +281,9 @@ describe('split-library-in-two generator', () => {
 
 function setup(tree: Tree) {
   setupCodeowners(tree, { content: '' });
+  writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
+  writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
+  writeJson(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
   tree = setupDummyPackage(tree, { projectName: 'react-hello' });
 
   return tree;

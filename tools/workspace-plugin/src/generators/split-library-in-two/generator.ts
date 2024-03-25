@@ -51,7 +51,7 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   makeSrcLibrary(tree, normalizedOptions);
   makeStoriesLibrary(tree, normalizedOptions);
 
-  tsConfigBaseAllGenerator(tree, { verify: false });
+  await tsConfigBaseAllGenerator(tree, { verify: false });
 
   await formatFiles(tree);
 }
@@ -145,7 +145,25 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
   );
 
   const templates = {
-    readme: stripIndents``,
+    readme: stripIndents`
+      # ${newProjectName}
+
+      Storybook stories for ${options.projectConfig.root}
+
+      ## Usage
+
+      To include within storybook specify stories globs:
+
+      \`\`\`js
+      module.exports = {
+        stories: ['../${newProjectSourceRoot}/**/*.stories.mdx', '../${newProjectSourceRoot}/**/index.stories.@(ts|tsx)'],
+      }
+      \`\`\`
+
+      ## API
+
+      no public API available
+    `,
     packageJson: {
       name: newProjectName,
       version: '0.0.0',
@@ -170,7 +188,10 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
         '@fluentui/scripts-tasks': '*',
       },
     },
-    eslintrc: options.oldContent.eslintrc,
+    eslintrc: {
+      extends: ['plugin:@fluentui/eslint-plugin/react'],
+      root: true,
+    },
     tsconfig: {
       root: {
         ...options.oldContent.tsConfig,
