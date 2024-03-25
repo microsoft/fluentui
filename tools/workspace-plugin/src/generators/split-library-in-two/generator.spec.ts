@@ -208,6 +208,18 @@ describe('split-library-in-two generator', () => {
           "plugin:@fluentui/eslint-plugin/react",
         ],
         "root": true,
+        "rules": Object {
+          "import/no-extraneous-dependencies": Array [
+            "error",
+            Object {
+              "devDependencies": true,
+              "packageDir": Array [
+                ".",
+                "../../../../",
+              ],
+            },
+          ],
+        },
       }
     `);
     expect(tree.read(`${storiesConfig.root}/README.md`, 'utf-8')).toMatchInlineSnapshot(`

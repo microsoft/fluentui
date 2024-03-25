@@ -207,6 +207,12 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     eslintrc: {
       extends: ['plugin:@fluentui/eslint-plugin/react'],
       root: true,
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          { packageDir: ['.', options.projectOffsetFromRoot.updated], devDependencies: true },
+        ],
+      },
     },
     tsconfig: {
       root: {
