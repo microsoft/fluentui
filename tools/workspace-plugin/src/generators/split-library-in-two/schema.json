@@ -6,14 +6,17 @@
   "properties": {
     "project": {
       "type": "string",
-      "description": "",
+      "description": "Which project would you like to split?",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "Which project would you like to split?",
       "x-dropdown": "projects"
+    },
+    "all": {
+      "type": "boolean",
+      "description": "Run generator on all vNext packages"
     }
   },
-  "required": ["project"]
+  "required": []
 }
