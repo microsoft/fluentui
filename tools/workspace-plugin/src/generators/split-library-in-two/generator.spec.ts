@@ -146,7 +146,7 @@ describe('split-library-in-two generator', () => {
         "private": true,
         "scripts": Object {
           "format": "just-scripts prettier",
-          "lint": "just-scripts lint",
+          "lint": "eslint src/",
           "start": "yarn storybook",
           "storybook": "start-storybook",
           "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
@@ -212,7 +212,6 @@ describe('split-library-in-two generator', () => {
           "import/no-extraneous-dependencies": Array [
             "error",
             Object {
-              "devDependencies": true,
               "packageDir": Array [
                 ".",
                 "../../../../",
