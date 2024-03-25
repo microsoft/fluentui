@@ -6,11 +6,15 @@ import {
   addProjectConfiguration,
   serializeJson,
   readJson,
+  updateJson,
 } from '@nx/devkit';
 
 import { splitLibraryInTwoGenerator } from './generator';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 import { setupCodeowners } from '../../utils-testing';
+import { TsConfig } from '../../types';
+import { addCodeowner } from '../add-codeowners';
+import { workspacePaths } from '../../utils';
 
 describe('split-library-in-two generator', () => {
   let tree: Tree;
@@ -23,12 +27,25 @@ describe('split-library-in-two generator', () => {
 
   it('should split v9 project into 2', async () => {
     const oldConfig = readProjectConfiguration(tree, options.project);
+
     await splitLibraryInTwoGenerator(tree, options);
+
     const newConfig = readProjectConfiguration(tree, options.project);
     const storiesConfig = readProjectConfiguration(tree, `${options.project}-stories`);
 
     // new Shared
     expect(tree.children(oldConfig.root)).toEqual(['stories', 'library']);
+
+    expect(readJson(tree, '/tsconfig.base.json').compilerOptions.paths).toEqual({
+      '@proj/react-hello': ['packages/react-components/react-hello/library/src/index.ts'],
+      '@proj/react-hello-stories': ['packages/react-components/react-hello/stories/src/index.ts'],
+    });
+
+    expect(tree.read(workspacePaths.github.codeowners, 'utf-8')).toMatchInlineSnapshot(`
+      "packages/react-components/react-hello/library Mr.Wick
+      packages/react-components/react-hello/stories Mr.Wick
+      # <%= NX-CODEOWNER-PLACEHOLDER %>"
+    `);
 
     // new SRC
     expect(tree.exists(`${newConfig.root}/.storybook/main.js`)).toBe(false);
@@ -110,11 +127,23 @@ describe('split-library-in-two generator', () => {
 
     expect(readJson(tree, `${storiesConfig.root}/package.json`)).toMatchInlineSnapshot(`
       Object {
+        "devDependencies": Object {
+          "@fluentui/eslint-plugin": "*",
+          "@fluentui/react-components": "*",
+          "@fluentui/react-icons": "^2.0.224",
+          "@fluentui/react-storybook-addon": "*",
+          "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+          "@fluentui/scripts-storybook": "*",
+          "@fluentui/scripts-tasks": "*",
+        },
         "name": "@proj/react-hello-stories",
         "private": true,
         "scripts": Object {
+          "format": "just-scripts prettier",
+          "lint": "just-scripts lint",
           "start": "yarn storybook",
           "storybook": "start-storybook",
+          "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
           "type-check": "just-scripts type-check",
         },
         "version": "0.0.0",
@@ -222,7 +251,7 @@ describe('split-library-in-two generator', () => {
 });
 
 function setup(tree: Tree) {
-  setupCodeowners(tree, { content: `` });
+  setupCodeowners(tree, { content: '' });
   tree = setupDummyPackage(tree, { projectName: 'react-hello' });
 
   return tree;
@@ -403,6 +432,14 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     sourceRoot: `${rootPath}/src`,
     projectType: 'library',
     tags: ['vNext', 'platform:web'],
+  });
+
+  addCodeowner(tree, { owner: 'Mr.Wick', packageName: npmProjectName });
+
+  updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
+    json.compilerOptions.paths = json.compilerOptions.paths ?? {};
+    json.compilerOptions.paths[npmProjectName] = [`${rootPath}/src/index.ts`];
+    return json;
   });
 
   return tree;

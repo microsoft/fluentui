@@ -14,8 +14,8 @@ import {
   readJson,
 } from '@nx/devkit';
 
-import * as path from 'path';
 import { TsConfig } from '../../types';
+import { workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
 interface Options extends SplitLibraryInTwoGeneratorSchema {
@@ -30,15 +30,7 @@ interface Options extends SplitLibraryInTwoGeneratorSchema {
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
   const projectConfig = readProjectConfiguration(tree, options.project);
 
-  // const projectRoot = `libs/${options.name}`;
-  // addProjectConfiguration(tree, options.name, {
-  //   root: projectRoot,
-  //   projectType: 'library',
-  //   sourceRoot: `${projectRoot}/src`,
-  //   targets: {},
-  // });
-
-  const eslintRcPath = path.join(projectConfig.root, '.eslintrc.json');
+  const eslintRcPath = joinPathFragments(projectConfig.root, '.eslintrc.json');
 
   const normalizedOptions = {
     ...options,
@@ -49,13 +41,13 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
     },
     oldContent: {
       eslintrc: tree.exists(eslintRcPath) ? readJson(tree, eslintRcPath) : {},
-      tsConfig: readJson(tree, path.join(projectConfig.root, 'tsconfig.json')),
+      tsConfig: readJson(tree, joinPathFragments(projectConfig.root, 'tsconfig.json')),
     },
   };
 
   cleanup(tree, normalizedOptions);
 
-  splitSrcToLibrary(tree, normalizedOptions);
+  makeSrcLibrary(tree, normalizedOptions);
   makeStoriesLibrary(tree, normalizedOptions);
 
   await formatFiles(tree);
@@ -64,18 +56,18 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 export default splitLibraryInTwoGenerator;
 
 function cleanup(tree: Tree, options: Options) {
-  tree.delete(path.join(options.projectConfig.root, 'dist'));
-  tree.delete(path.join(options.projectConfig.root, 'lib'));
-  tree.delete(path.join(options.projectConfig.root, 'lib-commonjs'));
-  tree.delete(path.join(options.projectConfig.root, 'temp'));
-  tree.delete(path.join(options.projectConfig.root, '.eslintcache'));
-  tree.delete(path.join(options.projectConfig.root, '.swc'));
-  tree.delete(path.join(options.projectConfig.root, 'node_modules'));
+  tree.delete(joinPathFragments(options.projectConfig.root, 'dist'));
+  tree.delete(joinPathFragments(options.projectConfig.root, 'lib'));
+  tree.delete(joinPathFragments(options.projectConfig.root, 'lib-commonjs'));
+  tree.delete(joinPathFragments(options.projectConfig.root, 'temp'));
+  tree.delete(joinPathFragments(options.projectConfig.root, '.eslintcache'));
+  tree.delete(joinPathFragments(options.projectConfig.root, '.swc'));
+  tree.delete(joinPathFragments(options.projectConfig.root, 'node_modules'));
 }
 
-function splitSrcToLibrary(tree: Tree, options: Options) {
-  const newProjectRoot = path.join(options.projectConfig.root, 'library');
-  const newProjectSourceRoot = path.join(newProjectRoot, 'src');
+function makeSrcLibrary(tree: Tree, options: Options) {
+  const newProjectRoot = joinPathFragments(options.projectConfig.root, 'library');
+  const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, options.projectConfig.root, file => {
     if (file.includes('/stories/') || file.includes('/.storybook/')) {
@@ -93,14 +85,14 @@ function splitSrcToLibrary(tree: Tree, options: Options) {
     sourceRoot: newProjectSourceRoot,
   });
 
-  updateJson(tree, path.join(newProjectRoot, 'package.json'), json => {
+  updateJson(tree, joinPathFragments(newProjectRoot, 'package.json'), json => {
     json.scripts ??= {};
     json.scripts.storybook = 'yarn --cwd ../stories storybook';
     json.scripts['type-check'] = 'just-scripts type-check';
     return json;
   });
 
-  updateJson(tree, path.join(newProjectRoot, 'tsconfig.json'), (json: TsConfig) => {
+  updateJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), (json: TsConfig) => {
     json.extends = json.extends?.replace(options.projectOffsetFromRoot.old, options.projectOffsetFromRoot.updated);
     json.references = json.references?.filter(ref => {
       return !ref.path.startsWith('./.storybook');
@@ -108,31 +100,40 @@ function splitSrcToLibrary(tree: Tree, options: Options) {
     return json;
   });
 
-  updateFileContent(tree, path.join(newProjectRoot, 'jest.config.js'), content => {
+  updateFileContent(tree, joinPathFragments(newProjectRoot, 'jest.config.js'), content => {
     const newContent = content.replace(options.projectOffsetFromRoot.old, options.projectOffsetFromRoot.updated);
 
     return newContent;
   });
+
+  updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
+    json.compilerOptions.paths = json.compilerOptions.paths ?? {};
+    json.compilerOptions.paths[options.projectConfig.name!] = [`${newProjectSourceRoot}/index.ts`];
+    return json;
+  });
+
+  updateCodeowners(tree, options);
 }
 
 function makeStoriesLibrary(tree: Tree, options: Options) {
-  const newProjectRoot = path.join(options.projectConfig.root, 'stories');
-  const newProjectSourceRoot = path.join(newProjectRoot, 'src');
+  const newProjectRoot = joinPathFragments(options.projectConfig.root, 'stories');
+  const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
+  const newProjectName = `${options.projectConfig.name}-stories`;
 
   // move stories/
-  moveFilesToNewDirectory(tree, path.join(options.projectConfig.root, 'stories'), newProjectSourceRoot);
+  moveFilesToNewDirectory(tree, joinPathFragments(options.projectConfig.root, 'stories'), newProjectSourceRoot);
 
   // move .storybook/
   moveFilesToNewDirectory(
     tree,
-    path.join(options.projectConfig.root, '.storybook'),
-    path.join(newProjectRoot, '.storybook'),
+    joinPathFragments(options.projectConfig.root, '.storybook'),
+    joinPathFragments(newProjectRoot, '.storybook'),
   );
 
   // TODO = probably having a generator to invoke here would be more efficient
-  tree.write(path.join(newProjectSourceRoot, 'index.ts'), stripIndents`export {}`);
+  tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), stripIndents`export {}`);
   tree.write(
-    path.join(newProjectRoot, 'just.config.ts'),
+    joinPathFragments(newProjectRoot, 'just.config.ts'),
     stripIndents`
       import { preset, task } from '@fluentui/scripts-tasks';
 
@@ -143,13 +144,27 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
   const templates = {
     readme: stripIndents``,
     packageJson: {
-      name: `${options.projectConfig.name}-stories`,
+      name: newProjectName,
       version: '0.0.0',
       private: true,
       scripts: {
         start: 'yarn storybook',
         storybook: 'start-storybook',
         'type-check': 'just-scripts type-check',
+        'test-ssr': 'test-ssr "./src/**/*.stories.tsx"',
+        lint: 'just-scripts lint',
+        format: 'just-scripts prettier',
+      },
+      devDependencies: {
+        // TODO: parse AST to get proper version of deps needed
+        '@fluentui/react-components': '*',
+        '@fluentui/react-icons': '^2.0.224',
+        // always added
+        '@fluentui/react-storybook-addon': '*',
+        '@fluentui/react-storybook-addon-export-to-sandbox': '*',
+        '@fluentui/scripts-storybook': '*',
+        '@fluentui/eslint-plugin': '*',
+        '@fluentui/scripts-tasks': '*',
       },
     },
     eslintrc: options.oldContent.eslintrc,
@@ -210,6 +225,12 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     tags: ['vNext', 'platform:web', 'type:stories'],
   });
 
+  updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
+    json.compilerOptions.paths = json.compilerOptions.paths ?? {};
+    json.compilerOptions.paths[newProjectName] = [`${newProjectSourceRoot}/index.ts`];
+    return json;
+  });
+
   // TODO - update all relative paths
 }
 
@@ -220,4 +241,25 @@ function updateFileContent(tree: Tree, filePath: string, updater: (content: stri
 
   const content = tree.read(filePath, 'utf-8') ?? '';
   tree.write(filePath, updater(content));
+}
+
+function updateCodeowners(tree: Tree, options: Options) {
+  const codeownersPath = workspacePaths.github.codeowners;
+
+  const content = tree.read(codeownersPath, 'utf-8') ?? '';
+
+  const lines = content.split('\n');
+  const lineIndex = lines.findIndex(line => line.includes(options.projectConfig.root));
+
+  if (lineIndex !== -1) {
+    const currentLine = lines[lineIndex];
+    const updatedLine = currentLine.replace(options.projectConfig.root, `${options.projectConfig.root}/library`);
+    const newLine = currentLine.replace(options.projectConfig.root, `${options.projectConfig.root}/stories`);
+
+    lines.splice(lineIndex, 1, updatedLine, newLine);
+
+    const newContent = lines.join('\n');
+
+    tree.write(codeownersPath, newContent);
+  }
 }
