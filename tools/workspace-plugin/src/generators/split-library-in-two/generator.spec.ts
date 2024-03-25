@@ -11,7 +11,6 @@ import {
 } from '@nx/devkit';
 
 import { splitLibraryInTwoGenerator } from './generator';
-import { SplitLibraryInTwoGeneratorSchema } from './schema';
 import { setupCodeowners } from '../../utils-testing';
 import { TsConfig } from '../../types';
 import { addCodeowner } from '../add-codeowners';
@@ -19,7 +18,7 @@ import { workspacePaths } from '../../utils';
 
 describe('split-library-in-two generator', () => {
   let tree: Tree;
-  const options: SplitLibraryInTwoGeneratorSchema = { project: '@proj/react-hello' };
+  const options = { project: '@proj/react-hello' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
@@ -37,13 +36,18 @@ describe('split-library-in-two generator', () => {
     // new Shared
     expect(tree.children(oldConfig.root)).toEqual(['stories', 'library']);
 
-    expect(readJson(tree, '/tsconfig.base.json').compilerOptions.paths).toEqual({
-      '@proj/react-hello': ['packages/react-components/react-hello/library/src/index.ts'],
-      '@proj/react-hello-stories': ['packages/react-components/react-hello/stories/src/index.ts'],
-    });
+    expect(readJson(tree, '/tsconfig.base.json').compilerOptions.paths).toEqual(
+      expect.objectContaining({
+        '@proj/react-hello': ['packages/react-components/react-hello/library/src/index.ts'],
+        '@proj/react-hello-stories': ['packages/react-components/react-hello/stories/src/index.ts'],
+      }),
+    );
 
     expect(tree.read(workspacePaths.github.codeowners, 'utf-8')).toMatchInlineSnapshot(`
-      "packages/react-components/react-hello/library Mr.Wick
+      "packages/react-components/react-components Mr.Wick
+      packages/react-components/react-one-compat Mr.Wick
+      packages/react-components/react-two-preview Mr.Wick
+      packages/react-components/react-hello/library Mr.Wick
       packages/react-components/react-hello/stories Mr.Wick
       # <%= NX-CODEOWNER-PLACEHOLDER %>"
     `);
@@ -130,12 +134,13 @@ describe('split-library-in-two generator', () => {
       Object {
         "devDependencies": Object {
           "@fluentui/eslint-plugin": "*",
-          "@fluentui/react-components": "*",
-          "@fluentui/react-icons": "^2.0.224",
           "@fluentui/react-storybook-addon": "*",
           "@fluentui/react-storybook-addon-export-to-sandbox": "*",
           "@fluentui/scripts-storybook": "*",
           "@fluentui/scripts-tasks": "*",
+          "@proj/react-components": "*",
+          "@proj/react-one-compat": "*",
+          "@proj/react-two-preview": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
@@ -284,6 +289,16 @@ function setup(tree: Tree) {
   writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
   writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
   writeJson(tree, 'tsconfig.base.all.json', { compilerOptions: { paths: {} } });
+
+  updateJson(tree, '/package.json', json => {
+    json.devDependencies = json.devDependencies ?? {};
+    json.devDependencies['@proj/react-icons'] = '2.0.224';
+    return json;
+  });
+
+  tree = setupDummyPackage(tree, { projectName: 'react-components' });
+  tree = setupDummyPackage(tree, { projectName: 'react-one-compat' });
+  tree = setupDummyPackage(tree, { projectName: 'react-two-preview' });
   tree = setupDummyPackage(tree, { projectName: 'react-hello' });
 
   return tree;
@@ -443,6 +458,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     `${rootPath}/stories/index.stories.tsx`,
     stripIndents`
     import { Meta } from '@storybook/react';
+    import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 
     export { Default } from './Default.stories';
     export default {} as Meta
@@ -452,7 +468,9 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     `${rootPath}/stories/Default.stories.tsx`,
     stripIndents`
     import * as React from 'react';
-    import { Text } from '@fluentui/react-components';
+    import { Text } from '@proj/react-components';
+    import { OneCompat } from '@proj/react-one-compat'
+    import { OnePreview } from '@proj/react-two-preview'
 
     export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
   `,
