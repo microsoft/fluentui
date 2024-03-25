@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount } from '@cypress/react';
-import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { SwatchPicker } from './SwatchPicker';
