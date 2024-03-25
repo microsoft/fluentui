@@ -15,6 +15,8 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "generate-api": "just-scripts generate-api",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -28,6 +30,7 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
