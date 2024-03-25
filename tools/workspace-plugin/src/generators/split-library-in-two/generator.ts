@@ -14,6 +14,7 @@ import {
   readJson,
 } from '@nx/devkit';
 
+import tsConfigBaseAllGenerator from '../tsconfig-base-all/index';
 import { TsConfig } from '../../types';
 import { workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
@@ -49,6 +50,8 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 
   makeSrcLibrary(tree, normalizedOptions);
   makeStoriesLibrary(tree, normalizedOptions);
+
+  tsConfigBaseAllGenerator(tree, { verify: false });
 
   await formatFiles(tree);
 }
