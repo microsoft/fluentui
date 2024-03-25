@@ -146,7 +146,7 @@ describe('split-library-in-two generator', () => {
         "private": true,
         "scripts": Object {
           "format": "just-scripts prettier",
-          "lint": "just-scripts lint",
+          "lint": "eslint src/",
           "start": "yarn storybook",
           "storybook": "start-storybook",
           "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
@@ -208,6 +208,17 @@ describe('split-library-in-two generator', () => {
           "plugin:@fluentui/eslint-plugin/react",
         ],
         "root": true,
+        "rules": Object {
+          "import/no-extraneous-dependencies": Array [
+            "error",
+            Object {
+              "packageDir": Array [
+                ".",
+                "../../../../",
+              ],
+            },
+          ],
+        },
       }
     `);
     expect(tree.read(`${storiesConfig.root}/README.md`, 'utf-8')).toMatchInlineSnapshot(`

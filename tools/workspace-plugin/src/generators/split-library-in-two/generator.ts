@@ -185,7 +185,7 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
         storybook: 'start-storybook',
         'type-check': 'just-scripts type-check',
         'test-ssr': 'test-ssr "./src/**/*.stories.tsx"',
-        lint: 'just-scripts lint',
+        lint: 'eslint src/',
         format: 'just-scripts prettier',
       },
       devDependencies: {
@@ -207,6 +207,9 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     eslintrc: {
       extends: ['plugin:@fluentui/eslint-plugin/react'],
       root: true,
+      rules: {
+        'import/no-extraneous-dependencies': ['error', { packageDir: ['.', options.projectOffsetFromRoot.updated] }],
+      },
     },
     tsconfig: {
       root: {
