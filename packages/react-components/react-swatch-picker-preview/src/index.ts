@@ -22,3 +22,20 @@ export {
   swatchCSSVars,
 } from './ColorSwatch';
 export type { ColorSwatchProps, ColorSwatchSlots, ColorSwatchState } from './ColorSwatch';
+export {
+  ImageSwatch,
+  renderImageSwatch_unstable,
+  useImageSwatchStyles_unstable,
+  useImageSwatch_unstable,
+  imageSwatchClassNames,
+} from './ImageSwatch';
+export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './ImageSwatch';
+export type { SwatchPickerRowProps, SwatchPickerRowSlots, SwatchPickerRowState } from './SwatchPickerRow';
+export {
+  SwatchPickerRow,
+  renderSwatchPickerRow_unstable,
+  useSwatchPickerRowStyles_unstable,
+  useSwatchPickerRow_unstable,
+  swatchPickerRowClassNames,
+} from './SwatchPickerRow';
+export { renderSwatchPickerRow, renderSwatchPickerGrid } from './utils/renderUtils';

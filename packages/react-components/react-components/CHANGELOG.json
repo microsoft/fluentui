@@ -2,6 +2,141 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:13 GMT",
+      "tag": "@fluentui/react-components_v9.47.2",
+      "version": "9.47.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "6d4674456c1967df1df5e1dbdaf8e10b2d16c8cd",
+            "comment": "fix: Build errors in TypeScript 5.3"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "f2820eb640ac2048abfccab17308ccec5535aa6c",
+            "comment": "fix: column resizing in StrictMode now works"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "19195df9f17f287bf4c66dd30453dd0d0a0ced93",
+            "comment": "fix: DataGrid - prevent unwanted sort after column resizing (#27803)"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "f49b9c8c05ebf1cb3d00034c1cb249f4e960a9db",
+            "comment": "feat: adds appearance and dismissible to TagGroupContext"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f12eeea634b2db04163ae95fb9f5d8187bcde17c",
+            "comment": "fix: Align Combobox's text baseline with other controls like Input"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "e1c4956ba0ac868534ce097f6dda298309dbe59f",
+            "comment": "fix: Align horizontal Field labels with control text"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "2526d651701baae743deaa5bbb4eaaa6f0759394",
+            "comment": "Revert #30845 \"fix: Input should start with undefined, same as textarea\""
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "62641cd4f7f772d9fdee16b76084c76cf253f7c2",
+            "comment": "chore: Increase hit target of input element to fill to the border"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b85906d89b8695ca44eaa969bdee8ba791bc8b54",
+            "comment": "bugfix: add system colors on hover"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "252b620fd2c67cad2eb3b23ae3900416888bcd9e",
+            "comment": "bug: Fix accessibility labels and roles"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "e827e3310250859526473f44f67a608e73295235",
+            "comment": "docs: update Readme to remove unstable statement"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/react-components_v9.47.1",
+      "version": "9.47.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "4f1b1fd95da8e50aabb74d61d30d7c2570c3e40e",
+            "comment": "reverting #30770 which caused compilation issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Mar 2024 21:43:48 GMT",
+      "tag": "@fluentui/react-components_v9.47.0",
+      "version": "9.47.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "9865fa91e4dd006de0cf96af196a24e2290a2337",
+            "comment": "fix: Applying correct styles to icon when ToggleButton is checked and has a subtle or transparent appearance."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "56422e2212b44e023d187fc924cd14aa68ecda8e",
+            "comment": "fix: add aria-labelledby to infolabel note"
+          }
+        ],
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364",
+            "comment": "'feat: add @fluentui/react-rating to suite."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364",
+            "comment": "'feat: Release Rating to stable."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e4022e259c27c90158ed0dbb5278df5aa714118f",
+            "comment": "feat: enable .js extension addition and directory import/export unwrapping in build output"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Mar 2024 19:33:20 GMT",
       "tag": "@fluentui/react-components_v9.46.8",
       "version": "9.46.8",

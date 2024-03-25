@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 13 Mar 2024 07:30:28 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 07:28:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.0)
+
+Fri, 22 Mar 2024 07:28:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.14.0..@fluentui/utilities_v8.15.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30814](https://github.com/microsoft/fluentui/pull/30814) by behowell@microsoft.com)
 
 ## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.14.0)
 

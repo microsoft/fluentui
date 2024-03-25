@@ -2,19 +2,25 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
 
 export type ColorSwatchSlots = {
-  root: NonNullable<Slot<'div'>>;
-  button: NonNullable<Slot<'button'>>;
+  root: NonNullable<Slot<'button'>>;
+  icon?: Slot<'span'>;
+  disabledIcon?: Slot<'span'>;
 };
 
 /**
  * ColorSwatch Props
  */
-export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> &
+export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
   Pick<SwatchPickerProps, 'size' | 'shape'> & {
     /**
      * Swatch color
      */
     color: string;
+
+    /**
+     * Whether the swatch is disabled
+     */
+    disabled?: boolean;
 
     /**
      * Swatch value
@@ -26,6 +32,6 @@ export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'b
  * State used in rendering ColorSwatch
  */
 export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
-  Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
+  Pick<ColorSwatchProps, 'color' | 'disabled' | 'size' | 'shape' | 'value'> & {
     selected: boolean;
   };

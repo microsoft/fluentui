@@ -37,12 +37,7 @@ export {
   useTagPickerControlStyles_unstable,
   useTagPickerControl_unstable,
 } from './TagPickerControl';
-export type {
-  TagPickerControlContextValues,
-  TagPickerControlProps,
-  TagPickerControlSlots,
-  TagPickerControlState,
-} from './TagPickerControl';
+export type { TagPickerControlProps, TagPickerControlSlots, TagPickerControlState } from './TagPickerControl';
 export {
   TagPickerOption,
   tagPickerOptionClassNames,

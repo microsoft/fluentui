@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 07 Mar 2024 19:33:27 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2024 11:12:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.59)
+
+Mon, 25 Mar 2024 11:12:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.58..@fluentui/react-field_v9.1.59)
+
+### Patches
+
+- fix: Align horizontal Field labels with control text ([PR #30732](https://github.com/microsoft/fluentui/pull/30732) by behowell@microsoft.com)
+
+## [9.1.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.58)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.57..@fluentui/react-field_v9.1.58)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.56 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.34 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-label to v9.1.66 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.1.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.57)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.56..@fluentui/react-field_v9.1.57)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.55 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.33 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-label to v9.1.65 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
 
 ## [9.1.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.56)
 
