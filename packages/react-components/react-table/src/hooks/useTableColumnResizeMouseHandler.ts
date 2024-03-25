@@ -13,6 +13,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);
+  const [dragging, setDragging] = React.useState<boolean>(false);
 
   const { targetDocument } = useFluent();
   const globalWin = targetDocument?.defaultView;
@@ -54,6 +55,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
         targetDocument?.removeEventListener('touchend', onDragEnd);
         targetDocument?.removeEventListener('touchmove', onDrag);
       }
+      setDragging(false);
     },
     [onDrag, targetDocument],
   );
@@ -73,11 +75,13 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
         }
         targetDocument?.addEventListener('mouseup', onDragEnd);
         targetDocument?.addEventListener('mousemove', onDrag);
+        setDragging(true);
       }
 
       if (isTouchEvent(event)) {
         targetDocument?.addEventListener('touchend', onDragEnd);
         targetDocument?.addEventListener('touchmove', onDrag);
+        setDragging(true);
       }
     },
     [getColumnWidth, onDrag, onDragEnd, targetDocument],
@@ -85,5 +89,6 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
 
   return {
     getOnMouseDown,
+    dragging,
   };
 }

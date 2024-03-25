@@ -25,13 +25,11 @@ const stringPoints = [
   },
 ];
 
-function sharedBeforeEach() {
+beforeEach(() => {
   resetIds();
-}
+});
 
 runTest('VerticalBarChart unit tests', () => {
-  beforeEach(sharedBeforeEach);
-
   runTest('Get domain margins', () => {
     test('Should return the correct margins when total width is greater than required width', () => {
       const margin = {
@@ -153,19 +151,6 @@ runTest('VerticalBarChart unit tests', () => {
       expect(Math.ceil(scales.yBarScale(3645))).toEqual(containerHeight);
     });
 
-    testWithoutWait(
-      'Should render the vertical bar chart with numeric x-axis data - RTL',
-      VerticalBarChart,
-      { data: chartPointsVBC },
-      container => {
-        // Assert
-        expect(container).toMatchSnapshot();
-      },
-      () => {
-        jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
-      },
-    );
-
     it('Should return scales for numeric axis - RTL', () => {
       jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
       const margin = {
@@ -249,4 +234,45 @@ runTest('VerticalBarChart unit tests', () => {
       expect(result).toEqual('2020/04/30. First, 10%.');
     });
   });
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
+describe('vertical bar chart with numeric x-axis data', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  testWithoutWait(
+    'Should render the vertical bar chart with numeric x-axis data - RTL',
+    VerticalBarChart,
+    { data: chartPointsVBC },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    () => {
+      jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
+    },
+  );
 });

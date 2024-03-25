@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Applying correct styles to icon when ToggleButton is checked and has a subtle or transparent appearance.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
