@@ -38,6 +38,7 @@ import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInli
 import { SpinnerBasicExample } from '../components/spinner.stories';
 import { DetailsListCustomColumnsExample } from '../components/DetailsListCustomColumnsExample.stories';
 import { ChoiceGroupImageExample } from '../components/choiceGroupWithImagesandIcons.stories';
+import { DetailsListCustomGroupHeadersExample } from '../components/detailsListGroupedHeader.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -92,6 +93,8 @@ const Example = () => (
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
       <DetailsListCustomColumnsExample />
+      <Label>DetailsList Custom Header</Label>
+      <DetailsListCustomGroupHeadersExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
