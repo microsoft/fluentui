@@ -1,3 +1,4 @@
 export interface SplitLibraryInTwoGeneratorSchema {
-  project: string;
+  project?: string;
+  all?: string;
 }
