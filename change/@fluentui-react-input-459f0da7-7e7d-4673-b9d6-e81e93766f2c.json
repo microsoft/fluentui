@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Revert #30845 \"fix: Input should start with undefined, same as textarea\"",
-  "packageName": "@fluentui/react-input",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

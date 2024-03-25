@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2024 11:12:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.59)
+
+Mon, 25 Mar 2024 11:12:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.58..@fluentui/react-field_v9.1.59)
+
+### Patches
+
+- fix: Align horizontal Field labels with control text ([PR #30732](https://github.com/microsoft/fluentui/pull/30732) by behowell@microsoft.com)
 
 ## [9.1.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.58)
 

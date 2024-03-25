@@ -2,6 +2,21 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:13 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "6d4674456c1967df1df5e1dbdaf8e10b2d16c8cd",
+            "comment": "fix: Build errors in TypeScript 5.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.0.25",
       "version": "0.0.25",
