@@ -38,4 +38,5 @@ export {
   useSwatchPickerRow_unstable,
   swatchPickerRowClassNames,
 } from './SwatchPickerRow';
-export { renderSwatchPickerRow, renderSwatchPickerGrid } from './utils/renderUtils';
+export { renderSwatchPickerGrid } from './utils/renderUtils';
+export type { SwatchProps, SwatchPickerGridProps } from './utils/renderUtils';

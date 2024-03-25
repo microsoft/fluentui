@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -27,14 +27,18 @@ export const SwatchPickerSpacing = () => {
 
   return (
     <div className={styles.example}>
-      <SwatchPicker aria-label="SwatchPicker medium spacing">
-        {colors.map(color => {
-          return <ColorSwatch key={color.value} {...color} />;
+      <h3>Medium</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker medium spacing">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
         })}
       </SwatchPicker>
-      <SwatchPicker aria-label="SwatchPicker small spacing" spacing="small">
-        {colors.map(color => {
-          return <ColorSwatch key={color.value} {...color} />;
+      <h3>Small</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker small spacing" spacing="small">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
         })}
       </SwatchPicker>
     </div>

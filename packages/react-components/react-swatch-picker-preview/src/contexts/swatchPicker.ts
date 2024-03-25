@@ -5,26 +5,28 @@ import { SwatchPickerProps, SwatchPickerState } from '../components/SwatchPicker
 /**
  * The context through which individual color controls communicate with the picker.
  */
-export type SwatchPickerContextValue = Pick<
-  SwatchPickerProps,
-  'size' | 'shape' | 'spacing' | 'selectedValue' | 'grid'
-> & {
+export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing' | 'selectedValue'> & {
+  /**
+   * Whether layout is grid.
+   */
+  isGrid: boolean;
+
   /**
    * Callback used by ColorSwatch to request a change on it's selected state
    * Should be used to select ColorSwatch
    */
   requestSelectionChange: (
     event: React.MouseEvent<HTMLButtonElement>,
-    data: { selectedValue: string; selectedColor: string },
+    data: { selectedValue: string; selectedSwatch: string },
   ) => void;
 };
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
-  const { grid, size, shape, spacing, requestSelectionChange, selectedValue } = state;
+  const { isGrid, size, shape, spacing, requestSelectionChange, selectedValue } = state;
 
   // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
   const swatchPicker: SwatchPickerContextValue = {
-    grid,
+    isGrid,
     size,
     shape,
     spacing,
@@ -39,7 +41,7 @@ export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
   requestSelectionChange: () => {
     /*noop*/
   },
-  grid: false,
+  isGrid: false,
   size: 'medium',
   shape: 'square',
   spacing: 'medium',
