@@ -3,7 +3,9 @@
 exports[`TeachingPopoverCarouselNavButton renders a default state 1`] = `
 <div>
   <button
+    aria-label="0 of 1"
     class="fui-TeachingPopoverCarouselNavButton"
+    role="tab"
     type="button"
   />
 </div>

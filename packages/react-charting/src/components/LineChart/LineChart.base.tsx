@@ -1214,9 +1214,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     x: number | Date,
     y: number | Date,
     lineHeight: number,
-    xAxisCalloutData: string,
+    xAxisCalloutData: string | undefined,
     circleId: string,
-    xAxisCalloutAccessibilityData: IAccessibilityProps,
+    xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
