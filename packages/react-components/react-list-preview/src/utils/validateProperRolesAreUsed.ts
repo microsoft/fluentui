@@ -39,7 +39,7 @@ export const validateProperRolesAreUsed = (
 
   if (role !== expectedRole) {
     /* eslint-disable-next-line no-console */
-    console.warn(`@fluentui/react-list-preview [useList]:\nThe role "${role}" does not match the expected role "${expectedRole}".\nPlease set the List role appropriately to ensure good accessibility.\nIf you are using this role intentionally, make sure to verify screen reader support.
+    console.warn(`@fluentui/react-list-preview [useList]:\nThe role "${role}" does not match the expected role "${expectedRole}".\nPlease use the "navigationMode" property for automatic role assignment and keyboard navigation.\nIf you are using this role intentionally, make sure to verify screen reader support.
     `);
   }
 };

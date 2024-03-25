@@ -38,7 +38,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-checkbox": "^9.2.17",
+    "@fluentui/react-checkbox": "^9.2.18",
     "@fluentui/react-context-selector": "^9.1.56",
     "@fluentui/react-jsx-runtime": "^9.0.34",
     "@fluentui/keyboard-keys": "^9.0.7",
