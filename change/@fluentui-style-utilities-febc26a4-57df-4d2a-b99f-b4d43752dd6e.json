@@ -1,7 +1,7 @@
 {
-  "type": "none",
-  "comment": "pre-release work subject to change",
+  "type": "patch",
+  "comment": "feat: add support for shadow dom and constructable stylesheets",
   "packageName": "@fluentui/style-utilities",
   "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
