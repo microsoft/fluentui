@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-swatch-picker-preview",
   "version": "0.0.0",
-  "private": true,
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
