@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "'feat: add @fluentui/react-teaching-popover to suite",
+  "packageName": "@fluentui/react-components",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

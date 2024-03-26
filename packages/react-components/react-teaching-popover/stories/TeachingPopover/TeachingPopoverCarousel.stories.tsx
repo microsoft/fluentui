@@ -9,8 +9,8 @@ import {
   TeachingPopoverTitle,
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
-} from '@fluentui/react-teaching-popover-preview';
-import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
+} from '@fluentui/react-components';
+import type { TeachingPopoverProps } from '@fluentui/react-components';
 
 const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
@@ -22,8 +22,8 @@ const ExampleContent = (index: number) => {
   );
 };
 
-export const CarouselBrand = (props: TeachingPopoverProps) => (
-  <TeachingPopover appearance="brand" withArrow={true} {...props}>
+export const Carousel = (props: TeachingPopoverProps) => (
+  <TeachingPopover withArrow={true} {...props}>
     <TeachingPopoverTrigger>
       <Button>TeachingPopover trigger</Button>
     </TeachingPopoverTrigger>

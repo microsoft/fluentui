@@ -1,4 +1,4 @@
-# @fluentui/react-teaching-popover-preview Spec
+# @fluentui/react-teaching-popover Spec
 
 ## Background
 
@@ -21,28 +21,17 @@ For more complicated features, we recommend using the TeachingPopoverCarousel, t
 ## Sample Code
 
 ```jsx
-<TeachingPopover>
+<TeachingPopover withArrow={true} {...props}>
   <TeachingPopoverTrigger>
     <Button>TeachingPopover trigger</Button>
   </TeachingPopoverTrigger>
   <TeachingPopoverSurface>
     <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-    <TeachingPopoverBody
-      media={{
-        src: 'mediaSrc',
-      }}
-    >
-      <TeachingPopoverTitle>{'Teaching Popover Title'}</TeachingPopoverTitle>
+    <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
+      <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
       {ExampleContent(1)}
     </TeachingPopoverBody>
-    <TeachingPopoverActions>
-      <TeachingPopoverButton buttonType="secondary" altStepText="Close">
-        {'Learn More'}
-      </TeachingPopoverButton>
-      <TeachingPopoverButton buttonType="primary" altStepText="Finish">
-        {'Got it'}
-      </TeachingPopoverButton>
-    </TeachingPopoverActions>
+    <TeachingPopoverFooter strings={{ primary: 'Learn more', secondary: 'Got it' }} />
   </TeachingPopoverSurface>
 </TeachingPopover>
 ```
@@ -50,48 +39,38 @@ For more complicated features, we recommend using the TeachingPopoverCarousel, t
 ## Sample Code - Carousel
 
 ```jsx
-<TeachingPopover>
+<TeachingPopover withArrow={true} {...props}>
   <TeachingPopoverTrigger>
     <Button>TeachingPopover trigger</Button>
   </TeachingPopoverTrigger>
   <TeachingPopoverSurface>
     <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-    <TeachingPopoverCarousel>
-      <TeachingPopoverBody
-        media={{
-          src: 'mediaSrc-1',
-        }}
-      >
-        <TeachingPopoverTitle>{'Title - 1'}</TeachingPopoverTitle>
+    <TeachingPopoverCarousel
+      strings={{
+        next: 'Next',
+        previous: 'Previous',
+        initialStepText: 'Close',
+        finalStepText: 'Finish',
+      }}
+    >
+      {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
+      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
+        <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(1)}
       </TeachingPopoverBody>
-      <TeachingPopoverBody
-        media={{
-          src: 'mediaSrc-2',
-        }}
-      >
-        <TeachingPopoverTitle>{'Title - 2'}</TeachingPopoverTitle>
+
+      {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
+      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
+        <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(2)}
       </TeachingPopoverBody>
-      <TeachingPopoverBody
-        media={{
-          src: 'mediaSrc-3',
-        }}
-      >
-        <TeachingPopoverTitle>{'Title - 3'}</TeachingPopoverTitle>
+
+      {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
+      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
+        <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(3)}
       </TeachingPopoverBody>
     </TeachingPopoverCarousel>
-    {/* TeachingPopoverActions ensure that carousel & popover functionality work in sync */}
-    <TeachingPopoverActions>
-      <TeachingPopoverButton buttonType="secondary" altStepText="Close">
-        {'Back'}
-      </TeachingPopoverButton>
-      <TeachingPopoverPageCount countStyle="count">{'of'}</TeachingPopoverPageCount>
-      <TeachingPopoverButton buttonType="primary" altStepText="Finish">
-        {'Next'}
-      </TeachingPopoverButton>
-    </TeachingPopoverActions>
   </TeachingPopoverSurface>
 </TeachingPopover>
 ```
@@ -106,10 +85,10 @@ Dictated by a TeachingPopoverCarousel wrapper being present or not, and must con
 
 TeachingPopover respects the appearance prop inherited from popover: default (current Theme) or 'brand' - 'inverted' has been deprecated for this component as it is not within current design spec.
 
-#### TeachingPopoverPageCount countStyle: Icon vs Count
+#### TeachingPopoverCarousel paginationType: Icon vs Text
 
-'icon' will place visual buttons for reading & selecting page
-'count' will display page numbers for reading, must be localized by user, or '/' will be used, i.e. '4/6'
+'icon' will place visual buttons for reading & selecting page and is the default appearance
+'text' will display page numbers for reading, must be localized by user, or '/' will be used, i.e. '4/6'
 
 #### TeachingPopoverBody mediaLength: 'short', 'medium', 'tall'
 
@@ -118,11 +97,9 @@ Short: Enforces a height of: '117px'
 Medium: Enforces a height of: '176px'
 Tall: Enforces a height of: '288px'
 
-#### TeachingPopoverButton - buttonType: 'primary', 'secondary'
+#### TeachingPopoverFooter - strings
 
-This prop will dictate underlying style of the buttons, as well as handle alternate functionality for carousel:
-Primary - Go to Next
-Secondary - Go to Previous.
+Teaching popover footer requires the localized strings to be placed for button and count text (if text paginationType).
 
 ## API
 
@@ -136,20 +113,19 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 The V8 TeachingPopover was a unified single component with a visibility flag, the data and especially localized strings such as title, heading, and body text, will need to be segmented out into the appropriate sub-components and composed as described in sample code.
 
-Primary/Secondary button props can be moved to 'TeachingPopoverButton' with a 'primary' and 'secondary' buttonType applied.
-
 All popover logic, such as logic on dismiss or open, can be accessed via the underlying popover extension [Popover.md](../../react-popover/docs/Spec.md) - note that these classes have been extended, and their equivalent 'TeachingPopover' version should be used.
 
-| Popover (v9)   | TeachingPopover (v9)                              |
-| -------------- | ------------------------------------------------- |
-| Popover        | TeachingPopover                                   |
-| PopoverTrigger | TeachingPopoverTrigger + TeachingPopoverButton(s) |
-| PopoverSurface | TeachingPopoverSurface                            |
-| PopoverContext | PopoverContext + TeachingPopoverContext           |
+| Popover (v9)   | TeachingPopover (v9)                    |
+| -------------- | --------------------------------------- |
+| Popover        | TeachingPopover                         |
+| PopoverTrigger | TeachingPopoverTrigger                  |
+| PopoverSurface | TeachingPopoverSurface                  |
+| PopoverContext | PopoverContext + TeachingPopoverContext |
+| N/A            | TeachingPopoverCarousel                 |
 
 The original PopoverContext provider is preserved, this ensures that popover functionality can be accessed via and compatible with the underlying inherited context hooks, while any TeachingPopover specific context is provided via TeachingPopoverContext.
 
-TeachingPopoverTrigger has no additional functionality over PopoverTrigger, and is used to wrap the launch button or connected UI component. Internally, TeachingPopoverButtons provide primary/secondary action functionality and additional styling based on state over tge trigger wrapper.
+TeachingPopoverTrigger has no additional functionality over PopoverTrigger, and is used to wrap the show popover button.
 
 Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onPageChange and onFinish for external use or control.
 
@@ -164,10 +140,6 @@ TeachingPopover adheres to the same underlying behaviors as [Popover](../../reac
 A TeachingPopoverCarousel contains multiple TeachingPopoverBody's, these pages will be controlled via the secondary/primary TeachingPopoverButtons that are keyboard accessible in the popovers' footer (TeachingPopoverActions).
 
 Additionally, users are recommended to include a TeachingPopoverPageCount that will aide the user with text based page data, or accessible icon interactions to select or skip to a specific page.
-
-#### TeachingPopoverButton
-
-These buttons will be used to control both the trigger action (close popover) and pagination (based on 'secondary' vs 'primary' button type) as well as being extendable to apply custom functionality such as opening a link from 'Learn More'. This functionality has deviated slightly from TeachingPopoverTrigger, as it requires additional style overrides for branded appearance.
 
 #### TeachingPopoverHeader
 
@@ -185,10 +157,22 @@ TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody
 
 This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop (TeachingPopoverBodyMediaLength type). It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
 
+#### TeachingPopoverFooter
+
+This section contains non-carousel buttons with both a secondary and primary button, these can be customized via slots or removed.
+
+#### TeachingPopoverCarouselNav
+
+This section contains carousel navigation with both a secondary and primary button, these can be customized via slots but must be present for carousel functionality.
+
+#### TeachingPopoverCarouselNavButton
+
+This can be used to recreate the carousel nav if desired, however it is recommended to just use TeachingPopoverCarouselNav for complete functionality.
+
 ## Accessibility
 
 Focus and popover functionality will be handled by the underlying popover and focus zone, see functionality breakdown here: [Popover.md](../../react-popover/docs/Spec.md)
 
 Keyboard accessibility will follow the default DOM tab order, and all interaction elements are ARIA compliant buttons, including the icon version of carousel pagination.
 
-Tabster tabBehavior: 'limited' is applied to the carousel icons, using 'Enter' will dive into the list of page icons, and can be exited via continuing tab, or using 'escape' key - Additionally, the pagination icons will adhere to the 'tabList' A11y spec when a carousel is present in icon mode.
+Tabster arrow navigation is applied to the carousel icons, 'Tab' will dive into the list of page icons that can then be selected via arrow keys, and can be exited via 'Tab' to the next focusable element - Additionally, the pagination icons will adhere to the 'tabList' A11y spec when a carousel is present in icon mode.
