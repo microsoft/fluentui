@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Checkbox, Dropdown, Input, Option, ToggleButton, useId } from '@fluentui/react-components';
 import { Collapse, durations, curves } from '@fluentui/react-motions-preview';
-import description from './CollapseOverrideAllEasing.stories.md';
+import description from './OverrideAll.stories.md';
 
 import { loremIpsum } from '../loremIpsum';
 
@@ -30,7 +30,7 @@ const optionTextForEasing = (optionKey: CurveKey) => {
 const paramStyles: React.CSSProperties = { color: 'lightgreen' };
 const monospaceFont = 'Lucida Console, Monaco, Courier New';
 
-export const OverrideAllEasing = () => {
+export const OverrideAll = () => {
   const [visible, setVisible] = React.useState(false);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const comboId = useId('combo-default');
@@ -121,19 +121,19 @@ export const OverrideAllEasing = () => {
                   </Option>
                 ))}
               </Dropdown>
-
-              <Checkbox label="animate opacity" checked={animateOpacity} onChange={() => setAnimateOpacity(v => !v)} />
             </td>
           </tr>
         </tbody>
       </table>
+
+      <Checkbox label="animate opacity" checked={animateOpacity} onChange={() => setAnimateOpacity(v => !v)} />
 
       <div style={{ padding: '15px 0' }}>
         <ToggleButton checked={visible} onClick={() => setVisible(v => !v)}>
           <span>{visible ? '☑️' : '🔲'}</span>&nbsp; visible
         </ToggleButton>
       </div>
-      {/* <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} /> */}
+
       <Collapse
         visible={visible}
         animateOpacity={animateOpacity}
@@ -145,7 +145,7 @@ export const OverrideAllEasing = () => {
   );
 };
 
-OverrideAllEasing.parameters = {
+OverrideAll.parameters = {
   docs: {
     description: {
       story: description,
