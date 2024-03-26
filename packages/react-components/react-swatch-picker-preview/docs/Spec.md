@@ -57,17 +57,18 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
 ### Components
 
-| Purpose                                                      | Fabric (V8)         | V9           | Matching? |
-| ------------------------------------------------------------ | ------------------- | ------------ | --------- |
-| Component responsible for rendering swatches as row and grid | SwatchColorPicker   | SwatchPicker | ⚠️        |
-| Color cell                                                   | ColorPickerGridCell | ColorSwatch  | ⚠️        |
-| Image cell                                                   |                     | ImageSwatch  | ❌        |
-| Empty cell                                                   |                     | EmptySwatch  | ❌        |
+| Purpose                                                      | Fabric (V8)         | V9              | Matching? |
+| ------------------------------------------------------------ | ------------------- | --------------- | --------- |
+| Component responsible for rendering swatches as row and grid | SwatchColorPicker   | SwatchPicker    | ⚠️        |
+| Color cell                                                   | ColorPickerGridCell | ColorSwatch     | ⚠️        |
+| Image cell                                                   |                     | ImageSwatch     | ❌        |
+| Empty cell                                                   |                     | EmptySwatch     | ❌        |
+| Row component for a grid layout                              |                     | SwatchPickerRow | ❌        |
 
 ## Sample Code
 
 ```jsx
-<SwatchPicker aria-label="Font color" layout="grid" columnCount={3}>
+<SwatchPicker aria-label="Font color">
   <ColorSwatch color="#FF1921" value="FF1921" aria-label="Red" />
   <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="Orange" />
   <ColorSwatch color="FEFF37" value="FEFF37" aria-label="Yellow" />
@@ -96,9 +97,12 @@ To use grid layout it should be more than 4 swatches.
 
 - Color
 - Gradient
+- Icon
+- Symbol
 - Image
 - Pattern / texture
 - Empty
+- No color
 
 ### Shapes
 
@@ -140,25 +144,38 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 | Property             | Values                                   | Default   | Purpose                                 |
 | -------------------- | ---------------------------------------- | --------- | --------------------------------------- |
-| disabled             | `boolean`                                | `false`   | Whether SwatchPicker is disabled        |
-| layout               | `grid: GridProps, row: RowProps`         | `row`     | Sets layout of the SwatchPicker         |
+| defaultSelectedValue | `string`                                 |           | Default selected swatch                 |
+| layout               | `grid`, `row`                            | `row`     | Sets layout of the SwatchPicker         |
 | onSelectionChange    | `function`                               | undefined | Callback called when swatch is selected |
 | shape                | `square`, `circular`, `rounded`          | `square`  | Sets shape                              |
 | size                 | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell         |
 | spacing              | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells     |
 | selectedValue        | `string`                                 |           | Selected swatch                         |
-| defaultSelectedValue | `string`                                 |           | Default selected swatch                 |
 
 Note:
-For layout union type is used. Grid layout should have `columnCount` prop and Row laout an be responsive.
+For grid layout use `SwatchPickerRow` component.
+
+To simplify usage of grid layout use `renderUtils`.
 
 ```ts
-type GridProps = {
-  columnCount: number;
-};
-type RowProps = {
-  responsive?: boolean;
-};
+import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
+```
+
+```tsx
+<SwatchPicker
+  layout="grid"
+  aria-label="SwatchPicker default"
+  selectedValue={selectedValue}
+  onSelectionChange={handleSelect}
+>
+  {renderSwatchPickerGrid({
+    items,
+    columnCount: 3,
+    renderRow: ({ children, rowId }) => <SwatchPickerRow key={rowId}>{children}</SwatchPickerRow>,
+    renderSwatch: item =>
+      item.src ? <ImageSwatch key={item.value} {...item} /> : <ColorSwatch key={item.value} {...item} />,
+  })}
+</SwatchPicker>
 ```
 
 | Slots | Values | Default | Description                  |
@@ -177,8 +194,7 @@ type RowProps = {
 
 | Slots        | Values   | Default  | Description                                                             |
 | ------------ | -------- | -------- | ----------------------------------------------------------------------- |
-| root         | `div`    | `div`    | The root of the ColorSwatch element (contains accessibility attributes) |
-| button       | `button` | `button` | Button element as primary slot                                          |
+| root         | `button` | `button` | The root of the ColorSwatch element (contains accessibility attributes) |
 | icon         | `span`   | `span`   | Swatch with icon                                                        |
 | disabledIcon | `span`   | `span`   | Disabled icon                                                           |
 
@@ -192,12 +208,11 @@ type RowProps = {
 | disabled | `boolean`                                |          |                                 |
 | value    | `string`                                 |          | Unique value of the swatch      |
 
-| Slots        | Values   | Default  | Description                                                             |
-| ------------ | -------- | -------- | ----------------------------------------------------------------------- |
-| root         | `button` | `button` | The root of the ImageSwatch element (contains accessibility attributes) |
-| button       | `button` | `button` | Button element as primary slot                                          |
-| icon         | `span`   | `span`   | Swatch with icon                                                        |
-| disabledIcon | `span`   | `span`   | Disabled icon                                                           |
+| Slots        | Values   | Default  | Description                         |
+| ------------ | -------- | -------- | ----------------------------------- |
+| root         | `button` | `button` | The root of the ImageSwatch element |
+| icon         | `span`   | `span`   | Swatch with icon                    |
+| disabledIcon | `span`   | `span`   | Disabled icon                       |
 
 ### EmptySwatch
 
@@ -214,12 +229,13 @@ type RowProps = {
 
 ### Components
 
-| Component    | Purpose                                                              |
-| ------------ | -------------------------------------------------------------------- |
-| SwatchPicker | Renders SwatchPicker which can represent swatches as a row or a grid |
-| ColorSwatch  | Renders a color or an icon                                           |
-| ImageSwatch  | Renders an image, texture or a pattern                               |
-| EmptySwatch  | Renders empty swatch                                                 |
+| Component       | Purpose                                                              |
+| --------------- | -------------------------------------------------------------------- |
+| SwatchPicker    | Renders SwatchPicker which can represent swatches as a row or a grid |
+| SwatchPickerRow | Renders element with a role `row`. Used for a `grid` layout.         |
+| ColorSwatch     | Renders a color or an icon                                           |
+| ImageSwatch     | Renders an image, texture or a pattern                               |
+| EmptySwatch     | Renders empty swatch                                                 |
 
 #### SwatchPicker component
 
@@ -227,8 +243,28 @@ type RowProps = {
 
 #### DOM
 
+`row` layout:
+
 ```HTML
 <div role="radiogroup" aria-label="Color grid" class="fui-SwatchPicker">
+  <!-- Content rendered here -->
+</div>
+```
+
+`grid` layout:
+
+```HTML
+<div role="grid" aria-label="Color grid" class="fui-SwatchPicker">
+  <!-- Content rendered here -->
+</div>
+```
+
+#### SwatchPickerRow component
+
+#### DOM
+
+```HTML
+<div role="row">
   <!-- Content rendered here -->
 </div>
 ```
@@ -239,32 +275,35 @@ is used for picking colors:
 
 - solid color
 - gradient
+- icon
+- symbol
 
 ![ColorSwatch Anatomy](./assets/color-swatch.jpg)
 
 #### DOM
 
+`row` layout:
+
 ```HTML
-<div
+<button
+  aria-label="Pink"
   role="radio"
+  aria-checked="true"
+  style="--fui-SwatchPicker--color: #ff0099"
+  class="fui-ColorSwatch">
+</button>
+```
+
+`grid` layout:
+
+```HTML
+<button
+  aria-label="Pink"
+  role="gridcell"
   aria-selected="true"
   style="--fui-SwatchPicker--color: #ff0099"
-  class="fui-ColorSwatch"
->
-  <button aria-label="Pink"></button>
-</div>
-<div
-  role="radio"
-  aria-selected="true"
-  style="--fui-SwatchPicker--color: #ff0000"
-  class="fui-ColorSwatch"
->
-  <button aria-label="Yellow with icon">
-    <span class="fui-ColorSwatch__icon r0">
-      <!-- Icon rendered here -->
-    </span>
-  </button>
-</div>
+  class="fui-ColorSwatch">
+</button>
 ```
 
 #### ImageSwatch component
@@ -279,13 +318,28 @@ is used to pick images:
 
 #### DOM
 
+`row` layout
+
 ```HTML
 <button
-  role="radio"
-  aria-selected="true"
-  style="--fui-SwatchPicker--image: {url}"
   aria-label="Image name"
-  class="fui-ColorSwatch"
+  role="radio"
+  aria-checked="true"
+  style="background-image: url({url})"
+  class="fui-ImageSwatch"
+>
+</button>
+```
+
+`grid` layout:
+
+```HTML
+<button
+  aria-label="Image name"
+  role="gridcell"
+  aria-selected="true"
+  style="background-image: url({url})"
+  class="fui-ImageSwatch"
 >
 </button>
 ```
