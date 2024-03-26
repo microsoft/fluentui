@@ -1,10 +1,10 @@
-import { DropdownProps, DropdownSlots } from '@fluentui/react-combobox';
+import { DropdownProps } from '@fluentui/react-combobox';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TagPickerContextValue } from '../../contexts/TagPickerContext';
 
 export type TagPickerButtonSlots = {
   root: Slot<'button'>;
-} & Pick<DropdownSlots, 'expandIcon'>;
+};
 
 /**
  * PickerButton Props

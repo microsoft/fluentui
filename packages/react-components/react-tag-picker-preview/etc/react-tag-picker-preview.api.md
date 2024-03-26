@@ -13,7 +13,6 @@ import type { ComboboxState } from '@fluentui/react-combobox';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { DropdownProps } from '@fluentui/react-combobox';
-import { DropdownSlots } from '@fluentui/react-combobox';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
@@ -77,7 +76,7 @@ export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<D
 // @public (undocumented)
 export type TagPickerButtonSlots = {
     root: Slot<'button'>;
-} & Pick<DropdownSlots, 'expandIcon'>;
+};
 
 // @public
 export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> & Pick<TagPickerContextValue, 'size'> & {
