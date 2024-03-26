@@ -5,7 +5,7 @@ import type {
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
 
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
 import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
 
@@ -18,7 +18,14 @@ export const useTeachingPopoverCarouselNav_unstable = (
   props: TeachingPopoverCarouselNavProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselNavState => {
-  const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited' });
+  const focusableGroupAttr = useArrowNavigationGroup({
+    circular: false,
+    axis: 'horizontal',
+    memorizeCurrent: false,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault: true,
+  });
+
   const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
 
