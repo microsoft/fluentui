@@ -77,3 +77,5 @@ npx yarn-deduplicate --strategy fewer
 yarn install
 
 ```
+
+After doing so, before commiting any post-merge-commit fixes, make sure to also run `npx syncpack list-mismatches`. It is likely that the `xplat` branch is going to be somewhat out of sync with other changes from core, so make sure to address them before proceeding. Here's an example of a PR doing so.
