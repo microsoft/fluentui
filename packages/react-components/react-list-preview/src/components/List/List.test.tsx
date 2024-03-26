@@ -4,7 +4,6 @@ import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
 import { ListItem } from '../ListItem/ListItem';
-import { EventHandler } from 'react';
 import { ListItemActionEvent } from '../../events/ListItemActionEvent';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
