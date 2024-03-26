@@ -30,6 +30,7 @@ onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
 direction: "enter" | "exit";
 }> | undefined;
 visible?: boolean | undefined;
+animateOpacity?: boolean | undefined;
 unmountOnExit?: boolean | undefined;
 override?: PresenceOverride<    {}> | undefined;
 }>;
@@ -116,6 +117,7 @@ export type PresenceMotion = {
 // @public
 export type PresenceMotionFn<CustomProps = {}> = (params: {
     element: HTMLElement;
+    animateOpacity?: boolean;
 } & PresenceTransitionProps<CustomProps>) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
