@@ -32,7 +32,7 @@
   "dependencies": {
     "@babel/core": "^7.10.4",
     "@babel/generator": "^7.12.13",
-    "@babel/types": "7.23.6",
+    "@babel/types": "7.24.0",
     "@babel/helper-plugin-utils": "^7.12.13",
     "@babel/template": "^7.12.13",
     "@babel/traverse": "^7.12.13",
