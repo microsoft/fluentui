@@ -290,54 +290,6 @@ is used to pick images:
 </button>
 ```
 
-## Migration
-
-### Fabric (v8) property mapping
-
-#### Props no longer supported with an equivalent functionality in SwatchPicker V9:
-
-- `colorCells ` => Use `children` prop instead.
-- `cellBorderWidth` - customizable via CSS.
-- `cellHeight`, `cellWidth` and `width` - use `size` prop instead. For custom size use CSS.
-- `cellMargin` - use `spacing` instead.
-- `cellShape` - use `shape` instead.
-- `className` => Slot system supports it by default. We don't need to provide it explicitly.
-- `styles` => Use style customization through `className` instead.
-- `theme`
-- `defaultSelectedId` => use `defaultSelectedValue` instead
-- `selectedId` => use `selectedValue` instead
-
-#### Props no longer supported
-
-- `ariaPosInSet`
-- `ariaSetSize`
-- `doNotContainWithinFocusZone`
-- `focusOnHover`
-- `getColorGridCellStyles`
-- `mouseLeaveParentSelector`
-- `onCellFocused`
-- `onCellHovered`
-- `onRenderColorCell` => Custom render function for the color cell. This can replace the entire button element, including the default focus and hover states.
-- `onRenderColorCellContent` => Custom render function for inner content of the color cell. This will retain the cell's default button behavior and overrides just the inner content.
-- `shouldFocusCircularNavigate`
-
-#### Props supported
-
-- `columnCount`
-- `disabled`
-- `onChange`
-
-#### Property Mapping
-
-| v8 `SwatchColorPicker` | v9 `SwatchPicker` |
-| ---------------------- | ----------------- |
-| `className`            |                   |
-| `columnCount `         | `columnCount `    |
-| `ariaPosInSet`         |                   |
-| `ariaSetSize`          |                   |
-| `cellBorderWidth`      |                   |
-|                        | `size`            |
-
 ## Behaviors
 
 ### Mouse
