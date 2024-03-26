@@ -81,7 +81,7 @@ SingleActionSelection.parameters = {
         '',
         'You can pass `selectionMode` prop with value "single" or "multiselect" to the List component to get support for selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state. While we are saving the results of `onSelectionChange`, it is purely for keeping track of the selection state and is not used to control the selection.',
         '',
-        'The items can be toggled by clicking on them, clicking on the checkbox or pressing a Spacebar when the item is focused. Keyboard navigation is automatically enabled and `navigationMode` is set to `items`.',
+        'The items can be toggled by clicking on the list item, or pressing `Spacebar` or `Enter` when the item is focused. Keyboard navigation is automatically enabled and `navigationMode` is set to `items`.',
         '',
         'Also this example only has one action in the list item, and its for toggling the selection. The roles for this one are listbox and option.',
       ].join('\n'),

@@ -16,16 +16,26 @@ An interactive list is a List where each of its items has at least one action at
 
 To make the list interactive and navigable, the `navigationMode` should can be passed. Proper accessibility roles and keyboard navigation is used based on the navigation mode `items` or `composite`. More on this later.
 
+### Adding an action
+
+To add an action on the List Item, use `onAction` callback, which will be called when user clicks the list item,
+presses `Enter` or `Space` (when selection is not enabled).
+
+Using the `onAction` callback instead of `onClick` has multiple advantages, namely:
+
+- you get the support of `Enter` and `Space` key for free
+- when selection is enabled, only `Enter` triggers the action, and `Space` toggles selection
+
 ### Selection
 
 Selection is a common feature for single and multi action list items. It's behavior is consistent across both use scenarios. Selection can be enabled by passing `selectionMode` property to the `List`.
 
 **Selection can be toggled by clicking the checkbox or pressing `Space` on selected list item.**
 
-When selection is enabled, the **selection is also the primary action** of the list item, which can be **triggered by mouse click**.
+When selection is enabled, the **selection is also the primary action** of the list item, which can be **triggered by mouse click or Enter**.
 
-This behavior can be overriden by passing a custom `onClick` where `event.preventDefault()` is called and custom primary action can be triggered.
-In this case, `Space` key can still be used to toggle selection, but `Enter` and `click` will trigger the custom action.
+This behavior for Enter and click can be overriden by passing a custom `onAction` where `event.preventDefault()` is called and custom primary action can be triggered.
+In this case, `Space` will still be used to toggle selection, but `Enter` and `click` will trigger the custom action.
 
 **The `navigationMode` in case the selection is enabled defaults to `items`. If there are focusable elements inside each list item, make sure to change this to `composite` to get proper accessibility and keyboard navigation.**
 
@@ -72,4 +82,8 @@ In the most complex scenario, user will be navigating a **selectable** list with
   - `items` - items are focusable, up and down arrow keys navigate between them. Default role is `list` and `listitem`, when selection is enabled, it is `listbox` and `option`.
   - `composite` - use when there are other focusable elements inside of the list items. This enables up/down arrow keys to move between items and right/left arrow keys to focus on the items inside.
     - composite navigation switches to role `grid` and `row`. **It is important for each direct child of `ListItem` in this case to have `gridcell` role, otherwise the screen readers get confused.**
+- use `onAction` instead of `onClick` callback to register `click` mouse event and `Enter` / `Space` keyboard events
 - Selection can be enabled with `selectionMode` property. When selectionMode is enabled, the List automatically behaves as if it was passed `navigationMode="single` and this doesn't have to be passed. Do not forget to set this to `composite`, if there are focusable elements inside.
+- When Selection is enabled:
+  - `Spacebar` and checkbox `click` always toggle selection
+  - `Enter` and list item `click` toggle selection unless this behavior has been prevented in the `onAction` callback

@@ -221,7 +221,7 @@ export const VirtualizedListWithActionableItems = () => {
           key={index}
           aria-setsize={countries.length}
           aria-posinset={index + 1}
-          onClick={() => alert(data[index])}
+          onAction={() => alert(data[index])}
         >
           {data[index]}
         </ListItem>

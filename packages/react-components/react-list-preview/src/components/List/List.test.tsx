@@ -5,6 +5,7 @@ import { List } from './List';
 import { ListProps } from './List.types';
 import { ListItem } from '../ListItem/ListItem';
 import { EventHandler } from 'react';
+import { ListItemActionEvent } from '../../events/ListItemActionEvent';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
@@ -321,18 +322,32 @@ describe('List', () => {
         firstItem.click();
         expect(onClick).toHaveBeenCalledTimes(1);
       });
+      it('Click should trigger onAction', () => {
+        const onAction = jest.fn();
+
+        const result = render(
+          <List>
+            <ListItem onAction={onAction}>First ListItem</ListItem>
+            <ListItem>Second ListItem</ListItem>
+          </List>,
+        );
+
+        const firstItem = result.getByText('First ListItem');
+        firstItem.click();
+        expect(onAction).toHaveBeenCalledTimes(1);
+      });
     });
 
     describe('with selection', () => {
       function interactWithFirstElement(
         interaction: (firstItem: HTMLElement) => void,
-        customOnclick?: EventHandler<React.SyntheticEvent<HTMLElement>>,
+        customAction?: (e: ListItemActionEvent) => void,
       ) {
-        const onClick = jest.fn(customOnclick);
+        const onAction = jest.fn(customAction);
 
         const result = render(
           <List selectionMode="multiselect">
-            <ListItem onClick={onClick}>First ListItem</ListItem>
+            <ListItem onAction={onAction}>First ListItem</ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
@@ -340,29 +355,29 @@ describe('List', () => {
         const firstItem = result.getByText('First ListItem');
         interaction(firstItem);
 
-        return { listItem: firstItem, onClick };
+        return { listItem: firstItem, onAction };
       }
 
-      it('Click should trigger selection and callback by default', () => {
-        const { listItem, onClick } = interactWithFirstElement(item => item.click());
-        expect(onClick).toHaveBeenCalledTimes(1);
+      it('Click should trigger selection and onAction callback by default', () => {
+        const { listItem, onAction } = interactWithFirstElement(item => item.click());
+        expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, true);
       });
 
       it('preventDefault should prevent selection', () => {
-        const { listItem, onClick } = interactWithFirstElement(
+        const { listItem, onAction } = interactWithFirstElement(
           item => item.click(),
           e => e.preventDefault(),
         );
-        expect(onClick).toHaveBeenCalledTimes(1);
+        expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, false);
       });
 
-      it("Click on the checkbox should trigger selection, onClick shouldn't be called", () => {
-        const { listItem, onClick } = interactWithFirstElement(item => {
+      it("Click on the checkbox should trigger selection, onAction shouldn't be called", () => {
+        const { listItem, onAction } = interactWithFirstElement(item => {
           within(item).getByRole('checkbox').click();
         });
-        expect(onClick).not.toHaveBeenCalled();
+        expect(onAction).not.toHaveBeenCalled();
         expectListboxItemSelected(listItem, true);
       });
     });
@@ -436,61 +451,61 @@ describe('List', () => {
   describe('keyboard behavior', () => {
     describe('no selection', () => {
       function pressKeyOnListItem(key: string) {
-        const onClick = jest.fn();
+        const onAction = jest.fn();
 
         const result = render(
           <List>
-            <ListItem onClick={onClick}>First ListItem</ListItem>
+            <ListItem onAction={onAction}>First ListItem</ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
 
         const firstItem = result.getByText('First ListItem');
         fireEvent.keyDown(firstItem, { key });
-        return { onClick };
+        return { onAction };
       }
 
       it('should NOT trigger onClick when random key is pressed', () => {
-        expect(pressKeyOnListItem('a').onClick).toHaveBeenCalledTimes(0);
+        expect(pressKeyOnListItem('a').onAction).toHaveBeenCalledTimes(0);
       });
       it('Space should trigger onClick', () => {
-        expect(pressKeyOnListItem(' ').onClick).toHaveBeenCalledTimes(1);
+        expect(pressKeyOnListItem(' ').onAction).toHaveBeenCalledTimes(1);
       });
       it('Enter should trigger onClick', () => {
-        expect(pressKeyOnListItem('Enter').onClick).toHaveBeenCalledTimes(1);
+        expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('with selection', () => {
-      function pressOnListItem(key: string, customOnclick?: EventHandler<React.SyntheticEvent<HTMLElement>>) {
-        const onClick = jest.fn(customOnclick);
+      function pressOnListItem(key: string, customOnaction?: (e: ListItemActionEvent) => void) {
+        const onAction = jest.fn(customOnaction);
 
         const result = render(
           <List selectionMode="multiselect">
-            <ListItem onClick={onClick}>First ListItem</ListItem>
+            <ListItem onAction={onAction}>First ListItem</ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
 
         const firstItem = result.getByText('First ListItem');
         fireEvent.keyDown(firstItem, { key });
-        return { onClick, listItem: firstItem };
+        return { onAction, listItem: firstItem };
       }
 
       it('Spacebar toggles selection by default, onClick is not called', () => {
-        const { onClick, listItem } = pressOnListItem(' ');
-        expect(onClick).not.toHaveBeenCalled();
+        const { onAction, listItem } = pressOnListItem(' ');
+        expect(onAction).not.toHaveBeenCalled();
         expectListboxItemSelected(listItem, true);
       });
 
       it('Enter toggles selection by default, onClick is called', () => {
-        const { onClick, listItem } = pressOnListItem('Enter');
-        expect(onClick).toHaveBeenCalledTimes(1);
+        const { onAction, listItem } = pressOnListItem('Enter');
+        expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, true);
       });
       it("Enter doesn't toggle selection if default is prevented", () => {
-        const { onClick, listItem } = pressOnListItem('Enter', e => e.preventDefault());
-        expect(onClick).toHaveBeenCalledTimes(1);
+        const { onAction, listItem } = pressOnListItem('Enter', e => e.preventDefault());
+        expect(onAction).toHaveBeenCalledTimes(1);
         expectListboxItemSelected(listItem, false);
       });
     });

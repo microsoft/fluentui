@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 
 // Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
 const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string }) => {
-  const onClick = React.useCallback(
+  const onAction = React.useCallback(
     event => {
       // This prevents the change in selection on click/Enter
       event.preventDefault();
@@ -46,7 +46,7 @@ const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string 
     [name],
   );
   return (
-    <ListItem key={name} value={name} aria-label={name} onClick={onClick}>
+    <ListItem key={name} value={name} aria-label={name} onAction={onAction}>
       <Persona
         name={name}
         secondaryText="Available"
@@ -88,10 +88,17 @@ SingleActionSelectionDifferentPrimary.parameters = {
   docs: {
     description: {
       story: [
-        'This example is similar to the previous one, but it implements a custom `onClick` prop on the `ListItem`,',
+        'This example is similar to the previous one, but it implements a custom primary action on `ListItem`,',
         'allowing us to trigger a different action than the selection when the user clicks on the list item or ',
         'presses Enter. This is useful when you want to have a primary action on the list item, but still want ',
         'to allow the user to select it.',
+        '',
+        'To change the default action on the `ListItem` (when user clicks on it or presses Enter), you can use the',
+        '`onAction` prop. By callign `event.preventDefault()` in the `onAction` callback, you can prevent the default',
+        'action (toggling the selection) from happening. This way, you can perform a completely custom action.',
+        'In this example, the custom action is an alert that triggers when the user',
+        'clicks on the list item or presses Enter.',
+        '',
         '',
         'The selection can still be toggled by clicking on the checkbox or pressing `Space` when the item is focused.',
       ].join('\n'),

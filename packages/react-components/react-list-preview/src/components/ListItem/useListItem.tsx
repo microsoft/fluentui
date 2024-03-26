@@ -9,6 +9,7 @@ import {
   useMergedTabsterAttributes_unstable,
 } from '@fluentui/react-tabster';
 import {
+  elementContains,
   getIntrinsicElementProps,
   mergeCallbacks,
   slot,
@@ -20,6 +21,7 @@ import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { createListItemActionEvent, ListItemActionEvent } from '../../events/ListItemActionEvent';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
@@ -37,7 +39,7 @@ export const useListItem_unstable = (
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
   const id = useId('listItem');
-  const { value = id, onKeyDown, onClick, tabIndex, role } = props;
+  const { value = id, onKeyDown, onClick, tabIndex, role, onAction } = props;
 
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const navigationMode = useListContext_unstable(ctx => ctx.navigationMode);
@@ -51,12 +53,31 @@ export const useListItem_unstable = (
   const focusableItems = Boolean(isSelectionEnabled || navigationMode || tabIndex === 0);
 
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
+  const checkmarkRef = React.useRef<HTMLInputElement | null>(null);
+
+  const handleAction: (e: ListItemActionEvent) => void = useEventCallback(e => {
+    onAction?.(e);
+
+    if (e.defaultPrevented) {
+      return;
+    }
+
+    if (isSelectionEnabled) {
+      toggleItem?.(e.detail.originalEvent, value);
+    }
+  });
 
   React.useEffect(() => {
     if (rootRef.current) {
       validateListItem(rootRef.current);
     }
   }, [validateListItem]);
+
+  const triggerAction = (e: React.MouseEvent | React.KeyboardEvent) => {
+    const actionEvent = createListItemActionEvent(e);
+    handleAction(actionEvent);
+    e.target.dispatchEvent(actionEvent);
+  };
 
   const focusableGroupAttrs = useFocusableGroup({
     ignoreDefaultKeydown: { Enter: true },
@@ -66,17 +87,21 @@ export const useListItem_unstable = (
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
 
-    if (!isSelectionEnabled || e.defaultPrevented) {
+    if (e.defaultPrevented) {
       return;
     }
 
-    toggleItem?.(e, value);
+    const isFromCheckbox = checkmarkRef.current && elementContains(checkmarkRef.current, e.target as Node);
+    if (isFromCheckbox) {
+      return;
+    }
+
+    triggerAction(e);
   });
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onKeyDown?.(e);
 
-    // Return early if prevented default
     if (e.defaultPrevented) {
       return;
     }
@@ -109,19 +134,19 @@ export const useListItem_unstable = (
 
     // Space always toggles selection (if enabled)
     if (e.key === Space) {
+      // we have to prevent default here otherwise the space key will scroll the page
       e.preventDefault();
       if (isSelectionEnabled) {
         toggleItem?.(e, value);
       } else {
-        e.currentTarget.click();
+        triggerAction(e);
       }
     }
 
-    // Handle clicking the list item when user presses the Enter key
-    // This internally triggers selection in the onClick handler if it hasn't been prevented
+    // Handle action on the list item when user presses the Enter key
+    // This internally triggers selection in the handleAction if it hasn't been prevented
     if (e.key === Enter) {
-      e.preventDefault();
-      e.currentTarget.click();
+      triggerAction(e);
     }
 
     // Handle entering the list item when user presses the ArrowRight, when composite navigation is enabled
@@ -136,13 +161,6 @@ export const useListItem_unstable = (
     }
 
     toggleItem?.(e, value);
-  });
-
-  // By default, we stop the propagation of the click event on the checkbox to prevent the list item from being clicked.
-  // This behavior can be prevented by the consumer by passing a custom onClick handler to the checkmark slot,
-  // as these callbacks are not merged.
-  const onCheckboxClick = useEventCallback((e: React.MouseEvent<HTMLInputElement>) => {
-    e.stopPropagation();
   });
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
@@ -166,7 +184,7 @@ export const useListItem_unstable = (
       ...tabsterAttributes,
       ...props,
       onKeyDown: handleKeyDown,
-      onClick: isSelectionEnabled || onClick ? handleClick : undefined,
+      onClick: isSelectionEnabled || onClick || onAction ? handleClick : undefined,
     }),
     { elementType: DEFAULT_ROOT_EL_TYPE },
   );
@@ -174,15 +192,16 @@ export const useListItem_unstable = (
   const checkmark = slot.optional(props.checkmark, {
     defaultProps: {
       checked: isSelected,
-      onClick: onCheckboxClick,
       tabIndex: -1,
     },
     renderByDefault: isSelectionEnabled,
     elementType: Checkbox,
   });
 
+  const mergedCheckmarkRef = useMergedRefs(checkmark?.ref, checkmarkRef);
   if (checkmark) {
     checkmark.onChange = mergeCallbacks(checkmark.onChange, onCheckboxChange);
+    checkmark.ref = mergedCheckmarkRef;
   }
 
   const state: ListItemState = {

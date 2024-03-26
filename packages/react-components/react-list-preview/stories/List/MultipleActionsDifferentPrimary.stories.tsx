@@ -78,7 +78,7 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
       aria-label={value}
-      onClick={e => {
+      onAction={e => {
         // Prevent the default behavior - toggling the selection
         e.preventDefault();
         alert('Primary action triggered!');
@@ -184,9 +184,9 @@ MultipleActionsDifferentPrimary.parameters = {
   docs: {
     description: {
       story: [
-        'Similar to previous example, but this one implements a custom `onClick` prop on the `ListItem`, ',
+        'Similar to previous example, but this one implements a custom `onAction` prop on the `ListItem`, ',
         'allowing us to trigger a different action than the selection when the user clicks ',
-        'on the list item.',
+        'on the list item or presses Enter.',
         '',
         'The primary action can be triggered by clicking on the list item or pressing `Enter`.',
         '',

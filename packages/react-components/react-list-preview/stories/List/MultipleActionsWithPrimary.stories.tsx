@@ -70,7 +70,7 @@ const CardExample = (props: { title: string; value: string }) => {
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       aria-label={value}
-      onClick={() => alert('Primary action triggered!')}
+      onAction={() => alert('Primary action triggered!')}
     >
       <div role="gridcell" className={styles.preview}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />

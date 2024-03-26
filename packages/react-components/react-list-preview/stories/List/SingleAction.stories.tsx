@@ -34,7 +34,7 @@ export const SingleAction = () => {
             id={`id_${name}`}
             key={name}
             aria-label={`${name}, available`}
-            onClick={() => alert(`Triggered action on ${name}`)}
+            onAction={() => alert(`Triggered action on ${name}`)}
           >
             <Persona
               name={name}
@@ -56,8 +56,10 @@ SingleAction.parameters = {
   docs: {
     description: {
       story: [
-        'When the list item should have a primary action on it, you can pass the `onClick` prop to the `ListItem` component.',
+        'When the list item should have a custom primary action on it, you can pass the `onAction` prop to the `ListItem` component.',
         'This callback will also be automatically called when the user presses the Enter or Space key on the list item.',
+        '',
+        'To learn more about what event triggered the action, you can check the `event.details.originalEvent`.',
         '',
         'To enable keyboard navigation between the list items, the `navigationMode` prop should be set to `items`.',
       ].join('\n'),
