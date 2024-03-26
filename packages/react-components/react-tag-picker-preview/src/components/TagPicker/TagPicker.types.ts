@@ -42,7 +42,10 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
  */
 export type TagPickerState = ComponentState<TagPickerSlots> &
   Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> &
-  Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
+  Pick<
+    TagPickerContextValue,
+    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'
+  > & {
     /**
      * Configures the positioned menu
      */

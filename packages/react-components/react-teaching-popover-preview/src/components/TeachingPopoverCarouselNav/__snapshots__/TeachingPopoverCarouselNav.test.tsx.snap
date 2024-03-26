@@ -4,19 +4,21 @@ exports[`TeachingPopoverCarouselNav renders a default state 1`] = `
 <div>
   <div
     class="fui-TeachingPopoverCarouselNav"
-    data-tabster="{\\"groupper\\":{\\"tabbability\\":1},\\"focusable\\":{}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
     role="tablist"
     tabindex="0"
   >
     <button
-      aria-label="0 of 2"
+      aria-label="1 of 2"
       class="fui-TeachingPopoverCarouselNavButton"
+      data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
       role="tab"
       type="button"
     />
     <button
       aria-label="1 of 2"
       class="fui-TeachingPopoverCarouselNavButton"
+      data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
       role="tab"
       type="button"
     />
