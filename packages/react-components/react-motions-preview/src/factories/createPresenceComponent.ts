@@ -60,7 +60,7 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
       imperativeRef,
       onMotionFinish,
       visible,
-      animateOpacity = true,
+      animateOpacity,
       unmountOnExit,
       override = {},
     } = { ...itemContext, ...props };
