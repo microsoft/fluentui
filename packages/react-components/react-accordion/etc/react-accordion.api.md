@@ -221,7 +221,7 @@ export const useAccordionItemContext_unstable: () => AccordionItemContextValue<u
 export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues;
 
 // @public (undocumented)
-export const useAccordionItemStyles_unstable: (state: AccordionItemState) => AccordionItemState<unknown>;
+export const useAccordionItemStyles_unstable: (state: AccordionItemState) => AccordionItemState;
 
 // @public
 export const useAccordionPanel_unstable: (props: AccordionPanelProps, ref: React_2.Ref<HTMLElement>) => AccordionPanelState;
@@ -230,7 +230,7 @@ export const useAccordionPanel_unstable: (props: AccordionPanelProps, ref: React
 export const useAccordionPanelStyles_unstable: (state: AccordionPanelState) => AccordionPanelState;
 
 // @public (undocumented)
-export const useAccordionStyles_unstable: (state: AccordionState) => AccordionState<unknown>;
+export const useAccordionStyles_unstable: (state: AccordionState) => AccordionState;
 
 // (No @packageDocumentation comment for this package)
 
