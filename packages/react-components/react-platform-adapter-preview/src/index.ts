@@ -9,5 +9,5 @@ export { shorthands } from './styling/shorthands';
 export { isReactNative } from './utilities/isReactNative';
 
 // re-export some griffel types to have fluent use the griffel adapter instead of griffel directly
-export { useRenderer_unstable, TextDirectionProvider } from '@griffel/react';
 export { makeStyles as makeStylesCore } from '@griffel/core';
+export { TextDirectionProvider, useRenderer_unstable } from '@griffel/react';

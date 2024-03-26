@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-platform-adapter-preview": "^0.0.0",
     "@fluentui/react-shared-contexts": "^9.15.2",
     "@swc/helpers": "^0.5.1"
   },

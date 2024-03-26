@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update api.md file from TypeScript 5 changes",
+  "packageName": "@fluentui/react-accordion",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}
