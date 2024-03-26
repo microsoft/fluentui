@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, Dropdown, Input, Option, useId } from '@fluentui/react-components';
+import { Checkbox, Dropdown, Input, Option, ToggleButton, useId } from '@fluentui/react-components';
 import { Collapse, durations, curves } from '@fluentui/react-motions-preview';
 import description from './CollapseOverrideAllEasing.stories.md';
 
@@ -32,6 +32,7 @@ const monospaceFont = 'Lucida Console, Monaco, Courier New';
 
 export const OverrideAllEasing = () => {
   const [visible, setVisible] = React.useState(false);
+  const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const comboId = useId('combo-default');
   const [durationName, setDurationName] = React.useState<DurationKey>(defaultDurationName);
   const [customDuration, setCustomDuration] = React.useState<number>(0);
@@ -54,7 +55,9 @@ export const OverrideAllEasing = () => {
             borderRadius: 5,
           }}
         >
-          {`<Collapse ... override={{ all: { duration: `}
+          {`<Collapse ...`}
+          <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
+          {` override={{ all: { duration: `}
           <span style={paramStyles}>{durationValueInCode}</span>
           {`, easing: `}
           <span style={paramStyles}>{curveName}</span>
@@ -118,13 +121,24 @@ export const OverrideAllEasing = () => {
                   </Option>
                 ))}
               </Dropdown>
+
+              <Checkbox label="animate opacity" checked={animateOpacity} onChange={() => setAnimateOpacity(v => !v)} />
             </td>
           </tr>
         </tbody>
       </table>
 
-      <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} />
-      <Collapse visible={visible} override={{ all: { easing: curves[curveName], duration } }}>
+      <div style={{ padding: '15px 0' }}>
+        <ToggleButton checked={visible} onClick={() => setVisible(v => !v)}>
+          <span>{visible ? '☑️' : '🔲'}</span>&nbsp; visible
+        </ToggleButton>
+      </div>
+      {/* <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} /> */}
+      <Collapse
+        visible={visible}
+        animateOpacity={animateOpacity}
+        override={{ all: { easing: curves[curveName], duration } }}
+      >
         <div>{loremIpsum(10)}</div>
       </Collapse>
     </div>
