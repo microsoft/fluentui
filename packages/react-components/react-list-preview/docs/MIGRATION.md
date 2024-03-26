@@ -190,7 +190,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `index`           | N/A                                                                                                                       |
 | `media`           | N/A - use children                                                                                                        |
 | `navigable`       | N/A - use `tabIndex={0}` or `navigable` on the `List`                                                                     |
-| `onClick`         | `onClick`                                                                                                                 |
+| `onClick`         | `onAction`                                                                                                                |
 | `ref`             | ref                                                                                                                       |
 | `selectable`      | N/A - use `List` property `selectionMode` for uncontrolled selection, or use `useListSelection` hook to control the state |
 | `selected`        | N/A - the selection state takes care of this automatically                                                                |
