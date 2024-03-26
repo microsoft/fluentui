@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
-import { imageSwatchCSSVars } from './useImageSwatchStyles.styles';
 
 /**
  * Create the state required to render ImageSwatch.
@@ -33,10 +32,6 @@ export const useImageSwatch_unstable = (
     ),
   );
 
-  const rootVariables = {
-    [imageSwatchCSSVars.src]: `url(${src})`,
-  };
-
   return {
     components: {
       root: 'button',
@@ -47,7 +42,7 @@ export const useImageSwatch_unstable = (
         onClick: onImageSwatchClick,
         ...rest,
         style: {
-          ...rootVariables,
+          backgroundImage: `url(${src})`,
           ...style,
         },
       }),

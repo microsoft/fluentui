@@ -2,6 +2,21 @@
   "name": "@fluentui/react-teaching-popover-preview",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:15 GMT",
+      "tag": "@fluentui/react-teaching-popover-preview_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "252b620fd2c67cad2eb3b23ae3900416888bcd9e",
+            "comment": "bug: Fix accessibility labels and roles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-teaching-popover-preview_v0.2.2",
       "version": "0.2.2",

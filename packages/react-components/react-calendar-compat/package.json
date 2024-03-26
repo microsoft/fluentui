@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-calendar-compat",
-  "version": "0.0.25",
+  "version": "0.1.0",
   "description": "Calendar compat component for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

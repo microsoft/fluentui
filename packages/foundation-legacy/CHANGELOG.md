@@ -1,8 +1,19 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Wed, 13 Mar 2024 07:30:27 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 07:28:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.0)
+
+Fri, 22 Mar 2024 07:28:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.3.0..@fluentui/foundation-legacy_v8.4.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30808](https://github.com/microsoft/fluentui/pull/30808) by behowell@microsoft.com)
+- Bump @fluentui/style-utilities to v8.10.5 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/utilities to v8.15.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
 
 ## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.3.0)
 

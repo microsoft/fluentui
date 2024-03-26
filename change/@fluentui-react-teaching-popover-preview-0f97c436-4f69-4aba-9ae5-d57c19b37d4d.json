@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "bug: Fix accessibility labels and roles",
+  "comment": "fix: Focus borders and navigation container style (arrow vs group)",
   "packageName": "@fluentui/react-teaching-popover-preview",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"

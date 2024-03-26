@@ -4,16 +4,8 @@ import type { ImageSwatchSlots, ImageSwatchState } from './ImageSwatch.types';
 import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
-export const imageSwatchCSSVars = {
-  src: `--fui-SwatchPicker--image`,
-};
-
-const { src } = imageSwatchCSSVars;
-
 export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots> = {
   root: 'fui-ImageSwatch',
-  // TODO: add class names for all slots on ImageSwatchSlots.
-  // Should be of the form `<slotName>: 'fui-ImageSwatch__<slotName>`
 };
 
 /**
@@ -23,7 +15,6 @@ const useStyles = makeResetStyles({
   display: 'inline-flex',
   boxSizing: 'border-box',
   border: `1px solid ${tokens.colorTransparentStroke}`,
-  backgroundImage: `var(${src})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   padding: '0',

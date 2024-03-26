@@ -13,9 +13,9 @@ import type { ComboboxState } from '@fluentui/react-combobox';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { DropdownProps } from '@fluentui/react-combobox';
-import { DropdownSlots } from '@fluentui/react-combobox';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Listbox } from '@fluentui/react-combobox';
 import type { ListboxContextValue } from '@fluentui/react-combobox';
@@ -30,13 +30,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TagGroupContextValues } from '@fluentui/react-tags';
 import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
-
-// @public (undocumented)
-export const iconSizes: {
-    small: string;
-    medium: string;
-    large: string;
-};
 
 // @public (undocumented)
 export type PickerContextValues = {
@@ -83,7 +76,7 @@ export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<D
 // @public (undocumented)
 export type TagPickerButtonSlots = {
     root: Slot<'button'>;
-} & Pick<DropdownSlots, 'expandIcon'>;
+};
 
 // @public
 export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> & Pick<TagPickerContextValue, 'size'> & {
@@ -94,18 +87,21 @@ export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> & Pick<T
 export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
 
 // @public (undocumented)
-export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots>;
+export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots>;
 
 // @public
-export type TagPickerControlProps = ComponentProps<TagPickerControlSlots>;
+export type TagPickerControlProps = ComponentProps<Partial<TagPickerControlSlots>>;
 
 // @public (undocumented)
 export type TagPickerControlSlots = {
-    root: Slot<'div'>;
-};
+    root: Slot<ExtractSlotProps<Slot<'div'> & {
+        style?: TagPickerControlCSSProperties;
+    }>>;
+    secondaryAction: Slot<'span'>;
+} & Pick<ComboboxSlots, 'expandIcon'>;
 
 // @public
-export type TagPickerControlState = ComponentState<TagPickerControlSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;
+export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPickerControlInternalSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;
 
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
@@ -139,8 +135,8 @@ export type TagPickerInputProps = Omit<ComponentProps<Partial<TagPickerInputSlot
 
 // @public (undocumented)
 export type TagPickerInputSlots = {
-    root: Slot<'input'>;
-} & Pick<ComboboxSlots, 'expandIcon'>;
+    root: NonNullable<Slot<'input'>>;
+};
 
 // @public
 export type TagPickerInputState = ComponentState<TagPickerInputSlots> & Pick<TagPickerContextValue, 'size' | 'disabled'>;
@@ -194,7 +190,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> & Pick<TagPickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
     positioning?: PositioningShorthand;
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;

@@ -38,8 +38,9 @@ const useStyles = makeStyles({
     borderBottomRightRadius: tokens.borderRadiusNone,
     borderRightStyle: 'none',
     ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderColor('transparent'),
     }),
     marginInlineStart: 'auto',
   },

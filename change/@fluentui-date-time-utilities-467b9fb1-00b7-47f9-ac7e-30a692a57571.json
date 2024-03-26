@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Build errors in TypeScript 5.3",
-  "packageName": "@fluentui/date-time-utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "export design token with rollup bundle",
+  "packageName": "@fluentui/web-components",
+  "email": "=",
+  "dependentChangeType": "patch"
+}
