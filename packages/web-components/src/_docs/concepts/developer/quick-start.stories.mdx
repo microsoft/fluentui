@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Quick Start" />
+
+## Install
+
+Fluent UI should be installed as a `dependency` of your app.
+
+**Yarn**
+
+```sh
+yarn add @fluentui/web-components
+```
+
+**NPM**
+
+```sh
+npm i @fluentui/web-components
+```
+
+**pnpm**
+
+```sh
+pnpm add @fluentui/web-components
+```
+
+## Setup
+
+Fluent UI Web Components are styled using tokens in the form of CSS variables. You can use the `setTheme` utility to provide a theme for your website or application.
+
+```js
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+
+setTheme(webLightTheme);
+```
+
+## Usage
+
+That's it. You can now use Fluent UI Web Components in your app.
+
+**Importing the defined component:**
+
+```js
+import '@fluentui/web-components/button.js';
+```
+
+**Defining the element yourself using named imports:**
+
+```js
+import { ButtonDefinition, FluentDesignSystem } from '@fluentui/web-components';
+
+ButtonDefinition.define(FluentDesignSystem.registry);
+```
