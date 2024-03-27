@@ -1,17 +1,16 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
 
 export type EmptySwatchSlots = {
-  root: Slot<'div'>;
+  root: Slot<'button'>;
 };
 
 /**
  * EmptySwatch Props
  */
-export type EmptySwatchProps = ComponentProps<EmptySwatchSlots> & {};
+export type EmptySwatchProps = ComponentProps<EmptySwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'>;
 
 /**
  * State used in rendering EmptySwatch
  */
-export type EmptySwatchState = ComponentState<EmptySwatchSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from EmptySwatchProps.
-// & Required<Pick<EmptySwatchProps, 'propName'>>
+export type EmptySwatchState = ComponentState<EmptySwatchSlots> & Pick<EmptySwatchProps, 'size' | 'shape'>;

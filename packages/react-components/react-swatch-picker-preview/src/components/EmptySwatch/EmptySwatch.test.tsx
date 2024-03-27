@@ -9,10 +9,15 @@ describe('EmptySwatch', () => {
     displayName: 'EmptySwatch',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
-    const result = render(<EmptySwatch>Default EmptySwatch</EmptySwatch>);
-    expect(result.container).toMatchSnapshot();
+    const result = render(<EmptySwatch />);
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <button
+          class="fui-EmptySwatch"
+          role="radio"
+        />
+      </div>
+    `);
   });
 });

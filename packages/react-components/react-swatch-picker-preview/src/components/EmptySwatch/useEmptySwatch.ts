@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { EmptySwatchProps, EmptySwatchState } from './EmptySwatch.types';
+import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 
 /**
  * Create the state required to render EmptySwatch.
@@ -11,21 +12,29 @@ import type { EmptySwatchProps, EmptySwatchState } from './EmptySwatch.types';
  * @param props - props from this instance of EmptySwatch
  * @param ref - reference to root HTMLDivElement of EmptySwatch
  */
-export const useEmptySwatch_unstable = (props: EmptySwatchProps, ref: React.Ref<HTMLDivElement>): EmptySwatchState => {
+export const useEmptySwatch_unstable = (
+  props: EmptySwatchProps,
+  ref: React.Ref<HTMLButtonElement>,
+): EmptySwatchState => {
+  const { size, shape, ...rest } = props;
+  const _size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
+  const _shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+  const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
+
+  const role = isGrid ? 'gridcell' : 'radio';
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: 'button',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps('button', {
         ref,
-        ...props,
+        role,
+        ...rest,
       }),
-      { elementType: 'div' },
+      { elementType: 'button' },
     ),
+    size: size ?? _size,
+    shape: shape ?? _shape,
   };
 };

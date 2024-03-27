@@ -1,22 +1,59 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { EmptySwatchSlots, EmptySwatchState } from './EmptySwatch.types';
+import { tokens } from '@fluentui/react-theme';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots> = {
   root: 'fui-EmptySwatch',
-  // TODO: add class names for all slots on EmptySwatchSlots.
-  // Should be of the form `<slotName>: 'fui-EmptySwatch__<slotName>`
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
+const useStyles = makeResetStyles({
+  backgroundColor: tokens.colorTransparentBackground,
+  border: `1px dashed ${tokens.colorNeutralForeground4}`,
+});
 
-  // TODO add additional classes for different states and/or slots
+const useSizeStyles = makeStyles({
+  extraSmall: {
+    width: '20px',
+    height: '20px',
+  },
+  small: {
+    width: '24px',
+    height: '24px',
+  },
+  medium: {
+    width: '28px',
+    height: '28px',
+  },
+  large: {
+    width: '32px',
+    height: '32px',
+  },
+});
+
+const useShapeStyles = makeStyles({
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    }),
+  },
+  circular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
+  },
+  square: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusNone),
+    }),
+  },
 });
 
 /**
@@ -24,10 +61,18 @@ const useStyles = makeStyles({
  */
 export const useEmptySwatchStyles_unstable = (state: EmptySwatchState): EmptySwatchState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(emptySwatchClassNames.root, styles.root, state.root.className);
+  const sizeStyles = useSizeStyles();
+  const shapeStyles = useShapeStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const size = state.size ?? 'medium';
+
+  state.root.className = mergeClasses(
+    emptySwatchClassNames.root,
+    styles,
+    sizeStyles[size],
+    shapeStyles[state.shape ?? 'square'],
+    state.root.className,
+  );
 
   return state;
 };

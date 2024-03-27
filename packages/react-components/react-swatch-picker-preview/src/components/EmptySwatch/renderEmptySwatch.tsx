@@ -10,6 +10,5 @@ import type { EmptySwatchState, EmptySwatchSlots } from './EmptySwatch.types';
 export const renderEmptySwatch_unstable = (state: EmptySwatchState) => {
   assertSlots<EmptySwatchSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <state.root />;
 };

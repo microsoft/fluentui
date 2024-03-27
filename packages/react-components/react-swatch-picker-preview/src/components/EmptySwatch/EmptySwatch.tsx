@@ -6,7 +6,7 @@ import { useEmptySwatchStyles_unstable } from './useEmptySwatchStyles.styles';
 import type { EmptySwatchProps } from './EmptySwatch.types';
 
 /**
- * EmptySwatch component - TODO: add more docs
+ * EmptySwatch component is used for adding new color swatches.
  */
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps> = React.forwardRef((props, ref) => {
   const state = useEmptySwatch_unstable(props, ref);
