@@ -47,6 +47,7 @@ const files = people
   })
   .flat();
 
+// eslint-disable-next-line
 const useStyles = makeStyles({
   grid: {
     boxShadow: `${tokens.shadow16}`,
@@ -192,8 +193,7 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
     }
   }, [value]);
 
-  const selectActive = () => {
-    // eslint-disable-next-line no-case-declarations
+  const selectActive = React.useCallback(() => {
     const activeId = activeDescendantGridImperativeRef.current?.active();
     if (activeId) {
       const next = options.find(x => x.id === activeId) ?? files.find(x => x.id === activeId);
@@ -205,10 +205,9 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
         setValue(selectedText ?? '');
       }
     }
-  };
+  }, [selected]);
 
-  const isAction = () => {
-    // eslint-disable-next-line no-case-declarations
+  const isAction = React.useCallback(() => {
     const activeId = activeDescendantGridImperativeRef.current?.active();
 
     if (!activeId || !targetDocument) {
@@ -217,21 +216,25 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
 
     const el = targetDocument?.getElementById(activeId);
     return [el?.getAttribute('data-action'), el?.getAttribute('data-option-id') ?? null] as const;
-  };
+  }, [targetDocument]);
 
   const performAction = (action: string, optionId: string) => {
     const text = options.find(x => x.id === optionId)?.text ?? files.find(x => x.id === optionId)?.text;
     switch (action) {
       case 'call':
+        // eslint-disable-next-line
         alert(`Calling ${text}`);
         break;
       case 'send':
+        // eslint-disable-next-line
         prompt(`Send message to ${text}`);
         break;
       case 'share':
+        // eslint-disable-next-line
         alert(`Copied link to clipboard`);
         break;
       case 'open':
+        // eslint-disable-next-line
         alert(`Opened file ${text}`);
         break;
       case 'filter-files':
@@ -243,57 +246,60 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
     }
   };
 
-  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    let preventDefault: boolean | undefined | void = false;
-    switch (e.key) {
-      case 'Enter':
-        // eslint-disable-next-line no-case-declarations
-        const [action, optionId] = isAction();
-        if (action && optionId) {
-          performAction(action, optionId);
-        } else {
+  const onInputKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      let preventDefault: boolean | undefined | void = false;
+      switch (e.key) {
+        case 'Enter':
+          const [action, optionId] = isAction();
+          if (action && optionId) {
+            performAction(action, optionId);
+          } else {
+            selectActive();
+            setOpen(false);
+          }
+          preventDefault = true;
+          break;
+        case 'Escape':
+          setOpen(false);
+          preventDefault = true;
+          break;
+        case 'ArrowDown':
+          setOpen(true);
+          if (activeDescendantGridImperativeRef.current?.active()) {
+            activeDescendantGridImperativeRef.current?.nextRow();
+          } else {
+            activeDescendantGridImperativeRef.current?.first();
+          }
+          preventDefault = true;
+          break;
+        case 'ArrowUp':
+          setOpen(true);
+          activeDescendantGridImperativeRef.current?.prevRow();
+          preventDefault = true;
+          break;
+        case 'ArrowRight':
+          preventDefault = activeDescendantGridImperativeRef?.current?.nextFocusable();
+          break;
+        case 'ArrowLeft':
+          preventDefault = activeDescendantGridImperativeRef?.current?.prevFocusable();
+          break;
+        case 'Tab':
           selectActive();
           setOpen(false);
-        }
-        preventDefault = true;
-        break;
-      case 'Escape':
-        setOpen(false);
-        preventDefault = true;
-        break;
-      case 'ArrowDown':
-        setOpen(true);
-        if (activeDescendantGridImperativeRef.current?.active()) {
-          activeDescendantGridImperativeRef.current?.nextRow();
-        } else {
-          activeDescendantGridImperativeRef.current?.first();
-        }
-        preventDefault = true;
-        break;
-      case 'ArrowUp':
-        setOpen(true);
-        activeDescendantGridImperativeRef.current?.prevRow();
-        preventDefault = true;
-        break;
-      case 'ArrowRight':
-        preventDefault = activeDescendantGridImperativeRef?.current?.nextFocusable();
-        break;
-      case 'ArrowLeft':
-        preventDefault = activeDescendantGridImperativeRef?.current?.prevFocusable();
-        break;
-      case 'Tab':
-        selectActive();
-        setOpen(false);
-        break;
-      default:
-        setOpen(true);
-    }
+          break;
+        default:
+          setOpen(true);
+      }
 
-    if (preventDefault) {
-      e.preventDefault();
-    }
-  };
+      if (preventDefault) {
+        e.preventDefault();
+      }
+    },
+    [isAction, selectActive],
+  );
 
+  // eslint-disable-next-line
   React.useLayoutEffect(() => {
     if (open) {
       activeDescendantGridImperativeRef.current?.first();
@@ -311,8 +317,16 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
   }, [value]);
 
   React.useEffect(() => {
+    // eslint-disable-next-line
     console.log('selected', selected);
   }, [selected]);
+
+  const handleInputChange = React.useCallback(
+    e => {
+      setValue(e.target.value);
+    },
+    [setValue],
+  );
 
   return (
     <form role="search">
@@ -320,7 +334,7 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
         <Input
           data-selected={selected}
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={handleInputChange}
           aria-controls={open ? gridId : undefined}
           aria-expanded={open}
           role="combobox"
@@ -332,7 +346,8 @@ export const TreeGridActiveDescendantComboboxRenderer = () => {
           root={{
             ref: targetRef,
             onClick: () => {
-              setOpen(true), inputRef.current?.focus();
+              setOpen(true);
+              inputRef.current?.focus();
             },
           }}
           ref={inputRef as React.Ref<HTMLInputElement>}
