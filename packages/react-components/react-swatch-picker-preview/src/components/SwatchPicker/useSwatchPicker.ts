@@ -24,15 +24,16 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { grid, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
+  const { layout, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
 
+  const isGrid = layout === 'grid';
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: grid ? 'grid-linear' : 'both',
+    axis: isGrid ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
 
-  const role = grid ? 'grid' : 'radiogroup';
+  const role = isGrid ? 'grid' : 'radiogroup';
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedValue,
@@ -45,7 +46,7 @@ export const useSwatchPicker_unstable = (
       type: 'click',
       event,
       selectedValue: data.selectedValue,
-      selectedColor: data.selectedColor,
+      selectedSwatch: data.selectedSwatch,
     });
     setSelectedValue(data.selectedValue);
   });
@@ -67,7 +68,7 @@ export const useSwatchPicker_unstable = (
       }),
       { elementType: 'div' },
     ),
-    grid,
+    isGrid,
     requestSelectionChange,
     selectedValue,
     size,
