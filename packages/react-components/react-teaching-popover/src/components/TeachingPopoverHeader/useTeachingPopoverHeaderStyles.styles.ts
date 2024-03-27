@@ -100,5 +100,6 @@ export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHe
       state.icon.className,
     );
   }
+
   return state;
 };

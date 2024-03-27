@@ -9,8 +9,8 @@ import {
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
   TeachingPopoverFooter,
-} from '@fluentui/react-teaching-popover-preview';
-import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
+} from '@fluentui/react-components';
+import type { TeachingPopoverProps } from '@fluentui/react-components';
 
 const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 

@@ -6,7 +6,7 @@ This log was last generated on Mon, 25 Mar 2024 11:12:15 GMT and should not be m
 
 ## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.3)
 
-Mon, 25 Mar 2024 11:12:15 GMT 
+Mon, 25 Mar 2024 11:12:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.2.2..@fluentui/react-teaching-popover-preview_v0.2.3)
 
 ### Patches
@@ -15,7 +15,7 @@ Mon, 25 Mar 2024 11:12:15 GMT
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.2)
 
-Mon, 18 Mar 2024 19:50:46 GMT 
+Mon, 18 Mar 2024 19:50:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.2.1..@fluentui/react-teaching-popover-preview_v0.2.2)
 
 ### Patches
@@ -32,7 +32,7 @@ Mon, 18 Mar 2024 19:50:46 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.1)
 
-Fri, 15 Mar 2024 21:43:49 GMT 
+Fri, 15 Mar 2024 21:43:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.2.0..@fluentui/react-teaching-popover-preview_v0.2.1)
 
 ### Patches
@@ -49,7 +49,7 @@ Fri, 15 Mar 2024 21:43:49 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.0)
 
-Thu, 07 Mar 2024 19:33:26 GMT 
+Thu, 07 Mar 2024 19:33:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.14..@fluentui/react-teaching-popover-preview_v0.2.0)
 
 ### Minor changes
@@ -67,7 +67,7 @@ Thu, 07 Mar 2024 19:33:26 GMT
 
 ## [0.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.14)
 
-Wed, 28 Feb 2024 02:34:19 GMT 
+Wed, 28 Feb 2024 02:34:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.13..@fluentui/react-teaching-popover-preview_v0.1.14)
 
 ### Patches
@@ -83,7 +83,7 @@ Wed, 28 Feb 2024 02:34:19 GMT
 
 ## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.13)
 
-Tue, 20 Feb 2024 14:22:27 GMT 
+Tue, 20 Feb 2024 14:22:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.12..@fluentui/react-teaching-popover-preview_v0.1.13)
 
 ### Patches
@@ -98,7 +98,7 @@ Tue, 20 Feb 2024 14:22:27 GMT
 
 ## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.12)
 
-Tue, 06 Feb 2024 17:55:21 GMT 
+Tue, 06 Feb 2024 17:55:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.11..@fluentui/react-teaching-popover-preview_v0.1.12)
 
 ### Patches
@@ -110,7 +110,7 @@ Tue, 06 Feb 2024 17:55:21 GMT
 
 ## [0.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.11)
 
-Tue, 30 Jan 2024 23:16:54 GMT 
+Tue, 30 Jan 2024 23:16:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.10..@fluentui/react-teaching-popover-preview_v0.1.11)
 
 ### Patches
@@ -125,7 +125,7 @@ Tue, 30 Jan 2024 23:16:54 GMT
 
 ## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.10)
 
-Mon, 29 Jan 2024 13:56:06 GMT 
+Mon, 29 Jan 2024 13:56:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.9..@fluentui/react-teaching-popover-preview_v0.1.10)
 
 ### Patches
@@ -134,7 +134,7 @@ Mon, 29 Jan 2024 13:56:06 GMT
 
 ## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.9)
 
-Fri, 26 Jan 2024 10:40:22 GMT 
+Fri, 26 Jan 2024 10:40:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.8..@fluentui/react-teaching-popover-preview_v0.1.9)
 
 ### Patches
@@ -143,7 +143,7 @@ Fri, 26 Jan 2024 10:40:22 GMT
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.8)
 
-Tue, 23 Jan 2024 15:11:00 GMT 
+Tue, 23 Jan 2024 15:11:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.7..@fluentui/react-teaching-popover-preview_v0.1.8)
 
 ### Patches
@@ -158,7 +158,7 @@ Tue, 23 Jan 2024 15:11:00 GMT
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.7)
 
-Thu, 18 Jan 2024 14:25:03 GMT 
+Thu, 18 Jan 2024 14:25:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.6..@fluentui/react-teaching-popover-preview_v0.1.7)
 
 ### Patches
@@ -174,7 +174,7 @@ Thu, 18 Jan 2024 14:25:03 GMT
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.6)
 
-Wed, 17 Jan 2024 16:18:50 GMT 
+Wed, 17 Jan 2024 16:18:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.5..@fluentui/react-teaching-popover-preview_v0.1.6)
 
 ### Patches
@@ -189,7 +189,7 @@ Wed, 17 Jan 2024 16:18:50 GMT
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.5)
 
-Tue, 16 Jan 2024 13:14:24 GMT 
+Tue, 16 Jan 2024 13:14:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.4..@fluentui/react-teaching-popover-preview_v0.1.5)
 
 ### Patches
@@ -203,7 +203,7 @@ Tue, 16 Jan 2024 13:14:24 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.4)
 
-Thu, 11 Jan 2024 09:04:29 GMT 
+Thu, 11 Jan 2024 09:04:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.3..@fluentui/react-teaching-popover-preview_v0.1.4)
 
 ### Patches
@@ -215,7 +215,7 @@ Thu, 11 Jan 2024 09:04:29 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.3)
 
-Tue, 09 Jan 2024 10:21:34 GMT 
+Tue, 09 Jan 2024 10:21:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.2..@fluentui/react-teaching-popover-preview_v0.1.3)
 
 ### Patches
@@ -224,7 +224,7 @@ Tue, 09 Jan 2024 10:21:34 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.2)
 
-Mon, 08 Jan 2024 16:24:27 GMT 
+Mon, 08 Jan 2024 16:24:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.1..@fluentui/react-teaching-popover-preview_v0.1.2)
 
 ### Patches
@@ -240,7 +240,7 @@ Mon, 08 Jan 2024 16:24:27 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.1.1)
 
-Wed, 03 Jan 2024 09:26:44 GMT 
+Wed, 03 Jan 2024 09:26:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.1.0..@fluentui/react-teaching-popover-preview_v0.1.1)
 
 ### Patches

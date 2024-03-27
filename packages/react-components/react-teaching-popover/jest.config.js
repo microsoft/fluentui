@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-teaching-popover-preview',
+  displayName: 'react-teaching-popover',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

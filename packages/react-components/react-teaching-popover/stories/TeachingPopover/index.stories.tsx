@@ -1,4 +1,4 @@
-import { TeachingPopover } from '@fluentui/react-teaching-popover-preview';
+import { TeachingPopover } from '@fluentui/react-components';
 import descriptionMd from './TeachingPopoverDescription.md';
 
 export { Default } from './TeachingPopoverDefault.stories';
@@ -8,7 +8,7 @@ export { CarouselBrand } from './TeachingPopoverCarouselBranded.stories';
 export { CarouselText } from './TeachingPopoverCarouselText.stories';
 
 export default {
-  title: 'Preview Components/TeachingPopover',
+  title: 'Components/TeachingPopover',
   component: TeachingPopover,
   parameters: {
     docs: {
