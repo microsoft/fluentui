@@ -21,7 +21,6 @@ import {
   OpenRegular,
   ShareRegular,
 } from '@fluentui/react-icons';
-import { useTitle } from './utils';
 import {
   ActiveDescendantGridFocusableImperativeRef,
   ACTIVEDESCENDANT_ATTRIBUTE,
@@ -145,7 +144,6 @@ const filesFilterId = 'files-filter';
 const noResultsRowId = 'noResults-row';
 
 export const TreeGridActiveDescendantComboboxRenderer = () => {
-  useTitle('Filters Grid');
   const { targetDocument } = useFluent();
   const [filter, setFilter] = React.useState<'none' | 'files' | 'people'>('none');
   const styles = useStyles();

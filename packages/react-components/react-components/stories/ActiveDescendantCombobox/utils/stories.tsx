@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFluent } from '@fluentui/react-components';
 
 const APP_TITLE = 'Active Descendant Combobox';
 const APP_TITLE_SEPARATOR = ' | ';
@@ -29,9 +30,13 @@ export const ComboboxesListLink: React.FC = props => (
 export const BackLink = () => <ComboboxesListLink>Go back to main menu</ComboboxesListLink>;
 
 export const Prototype: React.FC<{ pageTitle: string }> = ({ pageTitle, children }) => {
+  const { targetDocument } = useFluent();
+
   React.useEffect(() => {
-    document.title = pageTitle + APP_TITLE_SEPARATOR + APP_TITLE;
-  }, [pageTitle]);
+    if (targetDocument) {
+      targetDocument.title = pageTitle + APP_TITLE_SEPARATOR + APP_TITLE;
+    }
+  }, [targetDocument, pageTitle]);
 
   return (
     <>
