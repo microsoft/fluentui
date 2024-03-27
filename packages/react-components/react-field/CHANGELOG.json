@@ -2,6 +2,21 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:13 GMT",
+      "tag": "@fluentui/react-field_v9.1.59",
+      "version": "9.1.59",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "e1c4956ba0ac868534ce097f6dda298309dbe59f",
+            "comment": "fix: Align horizontal Field labels with control text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-field_v9.1.58",
       "version": "9.1.58",

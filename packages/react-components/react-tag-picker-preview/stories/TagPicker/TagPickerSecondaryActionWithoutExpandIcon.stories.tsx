@@ -2,13 +2,13 @@ import * as React from 'react';
 import {
   TagPicker,
   TagPickerList,
-  TagPickerButton,
+  TagPickerInput,
   TagPickerControl,
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar } from '@fluentui/react-components';
+import { Tag, Avatar, Button } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -21,35 +21,38 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Button = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+export const SecondaryActionWithoutExpandIcon = () => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
     setSelectedOptions(data.selectedOptions);
+  };
+  const handleAllClear: React.MouseEventHandler = event => {
+    setSelectedOptions([]);
   };
 
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl clearable>
+        <TagPickerControl
+          expandIcon={null}
+          secondaryAction={
+            <Button appearance="transparent" size="small" shape="rounded" onClick={handleAllClear}>
+              All Clear
+            </Button>
+          }
+        >
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag
-                key={option}
-                dismissible
-                shape="rounded"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-              >
+              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerButton />
+          <TagPickerInput />
         </TagPickerControl>
-
         <TagPickerList>
           {options
-            .filter(option => selectedOptions.indexOf(option) < 0)
+            .filter(option => !selectedOptions.includes(option))
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"

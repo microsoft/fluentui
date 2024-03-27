@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:14 GMT",
+      "tag": "@fluentui/react-menu_v9.13.5",
+      "version": "9.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b85906d89b8695ca44eaa969bdee8ba791bc8b54",
+            "comment": "bugfix: add system colors on hover"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-menu_v9.13.4",
       "version": "9.13.4",

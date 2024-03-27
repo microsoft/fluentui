@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-teaching-popover-preview
 
-This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2024 10:29:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.4)
+
+Wed, 27 Mar 2024 10:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.2.3..@fluentui/react-teaching-popover-preview_v0.2.4)
+
+### Patches
+
+- fix: Focus borders and navigation container style (arrow vs group) ([PR #30862](https://github.com/microsoft/fluentui/pull/30862) by mifraser@microsoft.com)
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.3)
+
+Mon, 25 Mar 2024 11:12:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-teaching-popover-preview_v0.2.2..@fluentui/react-teaching-popover-preview_v0.2.3)
+
+### Patches
+
+- bug: Fix accessibility labels and roles ([PR #30805](https://github.com/microsoft/fluentui/pull/30805) by mifraser@microsoft.com)
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-teaching-popover-preview_v0.2.2)
 

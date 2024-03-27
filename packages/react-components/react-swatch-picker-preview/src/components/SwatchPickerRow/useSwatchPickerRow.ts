@@ -30,7 +30,7 @@ export const useSwatchPickerRow_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        role: props.role ?? 'row',
+        role: 'row',
         ...rest,
         style: {
           [rowGap]: spacingMap[spacing ?? 'medium'],

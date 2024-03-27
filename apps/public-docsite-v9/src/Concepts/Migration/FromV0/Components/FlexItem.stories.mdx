@@ -52,16 +52,16 @@ If you are using `Flex` with horizontal direction, please use `pushRow` instead 
 
 ## How to migrate props:
 
-| `FlexItem` props          | migrate guide                                                                                                                                                                                |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| className                 | apply on the child component                                                                                                                                                                 |
-| variables, design, styles | apply on the child component (see corresponding migration guide for the particular component                                                                                                 |
-| align                     | use `flexItem.align()` mixin in child component's style file                                                                                                                                 |
-| flexDirection             | ignore                                                                                                                                                                                       |
-| grow                      | use `flexItem.grow()` mixin in child component's style file                                                                                                                                  |
-| push                      | use `flexItem.pushRow()` or `flexItem.pushColumn()` mixin in child component's style file depending on the parent Flex direction                                                             |
-| shrink                    | use `flexItem.shrink()` mixin in child component's style file                                                                                                                                |
-| size                      | use `flexItem.size()` mixin in child component's style file. For arbitrary (pixel or rem) values, use style overrides as described in [Migrate style overrides](#./Migrate-style-overrides). |
+| `FlexItem` props          | migrate guide                                                                                                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| className                 | apply on the child component                                                                                                                                                               |
+| variables, design, styles | apply on the child component (see corresponding migration guide for the particular component                                                                                               |
+| align                     | use `flexItem.align()` mixin in child component's style file                                                                                                                               |
+| flexDirection             | ignore                                                                                                                                                                                     |
+| grow                      | use `flexItem.grow()` mixin in child component's style file                                                                                                                                |
+| push                      | use `flexItem.pushRow()` or `flexItem.pushColumn()` mixin in child component's style file depending on the parent Flex direction                                                           |
+| shrink                    | use `flexItem.shrink()` mixin in child component's style file                                                                                                                              |
+| size                      | use `flexItem.size()` mixin in child component's style file. For arbitrary (pixel or rem) values, use style overrides as described in [Migrate style overrides](#migrate-style-overrides). |
 
 ---
 

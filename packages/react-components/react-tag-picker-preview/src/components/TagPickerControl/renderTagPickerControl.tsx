@@ -5,23 +5,24 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type {
   TagPickerControlState,
   TagPickerControlSlots,
-  TagPickerControlContextValues,
+  TagPickerControlInternalSlots,
 } from './TagPickerControl.types';
-import { TagPickerControlContextProvider } from '../../contexts/TagPickerControlContext';
 
 /**
  * Render the final JSX of PickerControl
  */
-export const renderTagPickerControl_unstable = (
-  state: TagPickerControlState,
-  contexts: TagPickerControlContextValues,
-) => {
-  assertSlots<TagPickerControlSlots>(state);
+export const renderTagPickerControl_unstable = (state: TagPickerControlState) => {
+  assertSlots<TagPickerControlSlots & TagPickerControlInternalSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return (
-    <TagPickerControlContextProvider value={contexts.pickerControl}>
-      <state.root />
-    </TagPickerControlContextProvider>
+    <state.root>
+      {state.root.children}
+      {state.aside && (
+        <state.aside>
+          {state.secondaryAction && <state.secondaryAction />}
+          {state.expandIcon && <state.expandIcon />}
+        </state.aside>
+      )}
+    </state.root>
   );
 };

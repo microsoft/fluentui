@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
-import type { TagPickerProps, TagPickerState } from './TagPicker.types';
+import { isHTMLElement, elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import type { TagPickerOnOptionSelectData, TagPickerProps, TagPickerState } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
+import { SelectionProps } from '../../utils/Selection.types';
 
 /**
  * Create the state required to render Picker.
@@ -17,7 +18,8 @@ import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
-  const { positioning, size = 'medium' } = props;
+  const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
+  const { positioning, size = 'medium', disabled = false } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
   const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
@@ -39,17 +41,37 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
+  const handleOptionSelect: SelectionProps['onOptionSelect'] = useEventCallback((event, data) =>
+    props.onOptionSelect?.(event, {
+      ...data,
+      type: event.type,
+      event,
+    } as TagPickerOnOptionSelectData),
+  );
+
   const state = useComboboxBaseState({
     ...props,
+    onOptionSelect: handleOptionSelect,
     activeDescendantController,
     editable: true,
     multiselect: true,
     size: 'medium',
   });
   const onOptionClickBase = state.onOptionClick;
-  state.onOptionClick = useEventCallback(e => {
-    onOptionClickBase(e);
-    state.setOpen(e, false);
+  state.onOptionClick = useEventCallback(event => {
+    onOptionClickBase(event);
+    state.setOpen(event, false);
+  });
+  const setOpenBase = state.setOpen;
+  state.setOpen = useEventCallback((event, newValue) => {
+    // if event comes from secondary action, ignore it
+    if (isHTMLElement(event.target) && elementContains(secondaryActionRef.current, event.target)) {
+      return;
+    }
+    if (disabled) {
+      return;
+    }
+    setOpenBase(event, newValue);
   });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -79,10 +101,12 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     activeDescendantController,
     components: {},
     trigger,
-    popover,
+    popover: state.open || state.hasFocus ? popover : undefined,
     popoverId,
+    disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),
+    secondaryActionRef,
     targetRef,
     ...state,
     size,

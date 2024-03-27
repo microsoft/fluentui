@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   TagPicker,
   TagPickerList,
-  TagPickerInput,
+  TagPickerButton,
   TagPickerControl,
   TagPickerProps,
   TagPickerOption,
@@ -21,7 +21,7 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Default = () => {
+export const Button = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
@@ -30,21 +30,15 @@ export const Default = () => {
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl clearable>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag
-                dismissible
-                key={option}
-                shape="rounded"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-              >
+              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput />
+          <TagPickerButton />
         </TagPickerControl>
 
         <TagPickerList>

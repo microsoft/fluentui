@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { slot } from '@fluentui/react-utilities';
-import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
@@ -19,7 +17,6 @@ export const useTagPickerButton_unstable = (
   props: TagPickerButtonProps,
   ref: React.Ref<HTMLButtonElement>,
 ): TagPickerButtonState => {
-  const { clearable = false, size = 'medium', disabled = false } = props;
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const {
     triggerRef,
@@ -52,43 +49,16 @@ export const useTagPickerButton_unstable = (
     },
   });
 
+  const size = useTagPickerContext_unstable(ctx => ctx.size);
+
   const state: TagPickerButtonState = {
     components: {
       root: 'button',
-      clearButton: 'button',
-      expandIcon: 'span',
     },
     root,
-    clearButton: slot.optional(props.clearButton, {
-      defaultProps: {
-        'aria-label': 'Clear selection',
-        children: <DismissIcon />,
-        // Safari doesn't allow to focus an element with this
-        tabIndex: 0,
-        type: 'button',
-      },
-      elementType: 'button',
-      renderByDefault: true,
-    }),
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        children: <ChevronDownIcon />,
-      },
-      elementType: 'span',
-    }),
-
-    clearable,
     size,
-    disabled,
-    showClearIcon: false,
     hasSelectedOption,
   };
-
-  // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
-  if (multiselect) {
-    state.clearButton = undefined;
-  }
 
   return state;
 };

@@ -14,7 +14,7 @@ export interface IBaseSelectedItemsListState<T> {
   items: T[];
 }
 
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
+export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsListProps<T>>
   extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T>
 {

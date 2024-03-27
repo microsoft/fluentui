@@ -29,7 +29,7 @@ export interface IShallowUntilTarget {
  *
  * @public
  */
-export function shallowUntilTarget<P, S>(
+export function shallowUntilTarget<P extends {}, S extends {}>(
   componentInstance: React.ReactElement<P>,
   TargetComponent: string,
   options: IShallowUntilTarget = {

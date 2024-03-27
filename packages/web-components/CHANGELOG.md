@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 01 Mar 2024 07:26:28 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2024 07:26:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.6.0)
+
+Wed, 27 Mar 2024 07:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.17..@fluentui/web-components_v2.6.0)
+
+### Minor changes
+
+- export design token with rollup bundle ([PR #30784](https://github.com/microsoft/fluentui/pull/30784) by =)
 
 ## [2.5.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.17)
 
