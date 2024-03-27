@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-swatch-picker-preview",
+  "entries": [
+    {
+      "date": "Wed, 27 Mar 2024 10:29:33 GMT",
+      "tag": "@fluentui/react-swatch-picker-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "01721416e3753e85cfc3f19fccf0815add5d370a",
+            "comment": "'feat: release react-swatch-picker to unstable"
+          }
+        ]
+      }
+    }
+  ]
+}
