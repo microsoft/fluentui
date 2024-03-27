@@ -63,3 +63,15 @@ export const Disabled = () => {
     </div>
   );
 };
+
+Disabled.parameters = {
+  docs: {
+    description: {
+      story: `
+A \`TagPicker\` can be \`disabled\`. Disabling \`TagPicker\` will disable the access to the \`TagPickerList\`, but it'll still allow modifications to the \`selectedOptions\`.
+
+> The \`Tag\` component can also be disabled, in the case where that given tag should not be reachable
+      `,
+    },
+  },
+};
