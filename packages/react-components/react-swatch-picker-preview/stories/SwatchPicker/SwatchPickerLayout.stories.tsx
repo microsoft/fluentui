@@ -4,8 +4,6 @@ import {
   SwatchPicker,
   SwatchPickerOnSelectEventHandler,
   ColorSwatch,
-  ImageSwatch,
-  SwatchPickerRow,
   renderSwatchPickerGrid,
 } from '@fluentui/react-swatch-picker-preview';
 import type { ColorSwatchProps, ImageSwatchProps, SwatchProps } from '@fluentui/react-swatch-picker-preview';
