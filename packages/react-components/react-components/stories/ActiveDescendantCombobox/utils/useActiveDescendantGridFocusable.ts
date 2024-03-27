@@ -17,19 +17,11 @@ export function useActiveDescendantGridFocusable(
   imperativeRef: React.RefObject<ActiveDescendantGridFocusableImperativeRef>,
 ) {
   const activeParentRef = React.useRef<HTMLInputElement>(null);
-  const treeWalkerRef = React.useRef<TreeWalker>();
   const listboxRef = React.useRef<HTMLDivElement | null>(null);
 
   const listboxCbRef = React.useCallback((el: HTMLDivElement | null) => {
     if (el) {
       listboxRef.current = el;
-      treeWalkerRef.current = el.ownerDocument.createTreeWalker(listboxRef.current, NodeFilter.SHOW_ELEMENT, node => {
-        if (!isHTMLElement(node)) {
-          return NodeFilter.FILTER_SKIP;
-        }
-
-        return node.role === 'row' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-      });
     }
   }, []);
 
@@ -121,7 +113,7 @@ export function useActiveDescendantGridFocusable(
 
   React.useImperativeHandle(imperativeRef, () => ({
     first() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
+      if (!listboxRef.current) {
         return false;
       }
 
@@ -133,7 +125,7 @@ export function useActiveDescendantGridFocusable(
       setActiveDescendant(getNextActiveRowOrFocusable(firstRow));
     },
     nextRow() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
+      if (!listboxRef.current) {
         return false;
       }
 
@@ -165,7 +157,7 @@ export function useActiveDescendantGridFocusable(
       return true;
     },
     prevRow() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
+      if (!listboxRef.current) {
         return false;
       }
 
@@ -197,7 +189,7 @@ export function useActiveDescendantGridFocusable(
       return true;
     },
     nextFocusable() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
+      if (!listboxRef.current) {
         return false;
       }
 
@@ -228,7 +220,7 @@ export function useActiveDescendantGridFocusable(
       return true;
     },
     prevFocusable() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
+      if (!listboxRef.current) {
         return false;
       }
 
@@ -267,7 +259,7 @@ export function useActiveDescendantGridFocusable(
       setActiveDescendant(undefined);
     },
     focus(id) {
-      if (!listboxRef.current || !treeWalkerRef.current) {
+      if (!listboxRef.current) {
         return;
       }
 
