@@ -42,9 +42,7 @@ export const SwatchPickerShape = () => {
       </SwatchPicker>
       <h3>Rounded</h3>
       <SwatchPicker aria-label="SwatchPicker rounded shape" shape="rounded">
-        {colors.map(color => {
-          return <ColorSwatch key={color.value} {...color} />;
-        })}
+        {colors.map(color => <ColorSwatch key={color.value} {...color} />)}
       </SwatchPicker>
     </div>
   );
