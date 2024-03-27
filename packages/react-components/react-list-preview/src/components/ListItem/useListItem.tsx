@@ -91,7 +91,7 @@ export const useListItem_unstable = (
       return;
     }
 
-    const isFromCheckbox = checkmarkRef.current && elementContains(checkmarkRef.current, e.target as Node);
+    const isFromCheckbox = elementContains(checkmarkRef.current, e.target as Node);
     if (isFromCheckbox) {
       return;
     }
