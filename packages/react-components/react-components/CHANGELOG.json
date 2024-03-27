@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 27 Mar 2024 10:29:33 GMT",
+      "tag": "@fluentui/react-components_v9.47.2",
+      "version": "9.47.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "01721416e3753e85cfc3f19fccf0815add5d370a",
+            "comment": "'feat: release react-swatch-picker to unstable"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "0d85624652674035a8e9a4be24b2987afaeb009c",
+            "comment": "fix: Focus borders and navigation container style (arrow vs group)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Mar 2024 11:12:13 GMT",
       "tag": "@fluentui/react-components_v9.47.2",
       "version": "9.47.2",

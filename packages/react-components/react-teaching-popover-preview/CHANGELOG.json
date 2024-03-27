@@ -2,6 +2,21 @@
   "name": "@fluentui/react-teaching-popover-preview",
   "entries": [
     {
+      "date": "Wed, 27 Mar 2024 10:29:34 GMT",
+      "tag": "@fluentui/react-teaching-popover-preview_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "0d85624652674035a8e9a4be24b2987afaeb009c",
+            "comment": "fix: Focus borders and navigation container style (arrow vs group)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Mar 2024 11:12:15 GMT",
       "tag": "@fluentui/react-teaching-popover-preview_v0.2.3",
       "version": "0.2.3",
