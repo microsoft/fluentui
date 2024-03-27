@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
@@ -22,16 +24,19 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
     color: string;
+    disabled?: boolean;
     value: string;
 };
 
 // @public (undocumented)
 export type ColorSwatchSlots = {
     root: NonNullable<Slot<'button'>>;
+    icon?: Slot<'span'>;
+    disabledIcon?: Slot<'span'>;
 };
 
 // @public
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'disabled' | 'size' | 'shape' | 'value'> & {
     selected: boolean;
 };
 
@@ -40,11 +45,6 @@ export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
 
 // @public (undocumented)
 export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
-
-// @public (undocumented)
-export const imageSwatchCSSVars: {
-    src: string;
-};
 
 // @public
 export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {

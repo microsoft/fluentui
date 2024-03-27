@@ -1,10 +1,10 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { ComboboxSlots, ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
 import { TagPickerContextValue } from '../../contexts/TagPickerContext';
 
 export type TagPickerInputSlots = {
-  root: Slot<'input'>;
-} & Pick<ComboboxSlots, 'expandIcon'>;
+  root: NonNullable<Slot<'input'>>;
+};
 
 /**
  * TagPickerInput Props

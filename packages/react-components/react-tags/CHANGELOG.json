@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:15 GMT",
+      "tag": "@fluentui/react-tags_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "f49b9c8c05ebf1cb3d00034c1cb249f4e960a9db",
+            "comment": "feat: adds appearance and dismissible to TagGroupContext"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-tags_v9.1.3",
       "version": "9.1.3",

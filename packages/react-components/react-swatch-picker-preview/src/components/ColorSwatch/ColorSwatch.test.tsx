@@ -2,11 +2,22 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ColorSwatch } from './ColorSwatch';
+import { colorSwatchClassNames } from './useColorSwatchStyles.styles';
 
 describe('ColorSwatch', () => {
   isConformant({
     Component: ColorSwatch,
     displayName: 'ColorSwatch',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {},
+          expectedClassNames: {
+            root: colorSwatchClassNames.root,
+          },
+        },
+      ],
+    },
   });
 
   it('renders a default state', () => {

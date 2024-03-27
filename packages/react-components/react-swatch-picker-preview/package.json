@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-swatch-picker-preview",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,6 +14,8 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "generate-api": "just-scripts generate-api",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -28,10 +29,12 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.56",
+    "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.34",
     "@fluentui/react-shared-contexts": "^9.15.2",
     "@fluentui/react-tabster": "^9.19.5",

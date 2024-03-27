@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Mon, 25 Mar 2024 11:12:15 GMT",
+      "tag": "@fluentui/react-tree_v9.4.36",
+      "version": "9.4.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.18",
+            "commit": "2526d651701baae743deaa5bbb4eaaa6f0759394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-radio to v9.2.13",
+            "commit": "2526d651701baae743deaa5bbb4eaaa6f0759394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-tree_v9.4.35",
       "version": "9.4.35",

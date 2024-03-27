@@ -2,6 +2,106 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 27 Mar 2024 10:29:33 GMT",
+      "tag": "@fluentui/react-components_v9.47.2",
+      "version": "9.47.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "01721416e3753e85cfc3f19fccf0815add5d370a",
+            "comment": "'feat: release react-swatch-picker to unstable"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "0d85624652674035a8e9a4be24b2987afaeb009c",
+            "comment": "fix: Focus borders and navigation container style (arrow vs group)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Mar 2024 11:12:13 GMT",
+      "tag": "@fluentui/react-components_v9.47.2",
+      "version": "9.47.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "6d4674456c1967df1df5e1dbdaf8e10b2d16c8cd",
+            "comment": "fix: Build errors in TypeScript 5.3"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "f2820eb640ac2048abfccab17308ccec5535aa6c",
+            "comment": "fix: column resizing in StrictMode now works"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "19195df9f17f287bf4c66dd30453dd0d0a0ced93",
+            "comment": "fix: DataGrid - prevent unwanted sort after column resizing (#27803)"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "f49b9c8c05ebf1cb3d00034c1cb249f4e960a9db",
+            "comment": "feat: adds appearance and dismissible to TagGroupContext"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f12eeea634b2db04163ae95fb9f5d8187bcde17c",
+            "comment": "fix: Align Combobox's text baseline with other controls like Input"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "e1c4956ba0ac868534ce097f6dda298309dbe59f",
+            "comment": "fix: Align horizontal Field labels with control text"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "2526d651701baae743deaa5bbb4eaaa6f0759394",
+            "comment": "Revert #30845 \"fix: Input should start with undefined, same as textarea\""
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "62641cd4f7f772d9fdee16b76084c76cf253f7c2",
+            "comment": "chore: Increase hit target of input element to fill to the border"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b85906d89b8695ca44eaa969bdee8ba791bc8b54",
+            "comment": "bugfix: add system colors on hover"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "252b620fd2c67cad2eb3b23ae3900416888bcd9e",
+            "comment": "bug: Fix accessibility labels and roles"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "e827e3310250859526473f44f67a608e73295235",
+            "comment": "docs: update Readme to remove unstable statement"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-components_v9.47.1",
       "version": "9.47.1",

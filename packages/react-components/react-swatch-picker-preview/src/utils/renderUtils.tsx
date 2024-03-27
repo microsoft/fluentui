@@ -8,8 +8,8 @@ export const renderSwatchPickerRow = (
 ) => {
   return (
     <SwatchPickerRow key={`row-${rowIdx}`}>
-      {colors.map((color, index) => (
-        <SwatchElement key={`${color.value}-${index}`} {...color} />
+      {colors.map(color => (
+        <SwatchElement key={color.value} {...color} />
       ))}
     </SwatchPickerRow>
   );

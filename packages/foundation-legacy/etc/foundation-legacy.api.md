@@ -204,7 +204,7 @@ export type ValidProps = object;
 export type ValidShorthand = string | number | boolean;
 
 // @public
-export function withSlots<P>(type: ISlot<P> | React_2.FunctionComponent<P> | string, props?: (React_2.Attributes & P) | null, ...children: React_2.ReactNode[]): ReturnType<React_2.FunctionComponent<P>>;
+export function withSlots<P extends {}>(type: ISlot<P> | React_2.FunctionComponent<P> | string, props?: (React_2.Attributes & P) | null, ...children: React_2.ReactNode[]): ReturnType<React_2.FunctionComponent<P>>;
 
 // (No @packageDocumentation comment for this package)
 

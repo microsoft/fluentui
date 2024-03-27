@@ -22,7 +22,7 @@ function hasKey<T>(i: T): i is T & { key: string | number } {
 /**
  * Class when used with SuggestionsStore, renders a basic suggestions control
  */
-export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T extends {}> extends React.Component<ISuggestionsCoreProps<T>, {}> {
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
   protected _selectedElement = React.createRef<HTMLDivElement>();

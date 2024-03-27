@@ -1,29 +1,38 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import type { TagPickerControlSlots, TagPickerControlState } from './TagPickerControl.types';
+import type {
+  TagPickerControlInternalSlots,
+  TagPickerControlSlots,
+  TagPickerControlState,
+} from './TagPickerControl.types';
 
-export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots> = {
+export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots> = {
   root: 'fui-TagPickerControl',
+  expandIcon: 'fui-TagPickerControl__expandIcon',
+  secondaryAction: 'fui-TagPickerControl__secondaryAction',
+  aside: 'fui-TagPickerControl__aside',
 };
 
-// TODO reuse styles from combobox root slot
+export const tagPickerControlAsideWidthToken = '--fui-TagPickerControl-aside-width' as const;
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    alignItems: 'center',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.paddingInline(
+      tokens.spacingHorizontalM,
+      `calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`,
+    ),
+    alignItems: 'center',
     columnGap: tokens.spacingHorizontalXXS,
     boxSizing: 'border-box',
     display: 'flex',
     minWidth: '250px',
     position: 'relative',
     flexWrap: 'wrap',
-    paddingLeft: tokens.spacingHorizontalM,
-    // 20px is a static value representing the space required for the caret icon
-    paddingRight: `calc(${tokens.spacingHorizontalM} + 20px)`,
 
     // windows high contrast mode focus indicator
     ':focus-within': {
@@ -145,11 +154,71 @@ const useStyles = makeStyles({
   },
 });
 
+const useAsideStyles = makeStyles({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'absolute',
+    top: '0',
+    right: tokens.spacingHorizontalM,
+  },
+  // size variants
+  medium: {
+    minHeight: '32px',
+  },
+  large: {
+    minHeight: '40px',
+  },
+  'extra-large': {
+    minHeight: '44px',
+  },
+});
+
+export const iconSizes = {
+  small: '16px',
+  medium: '20px',
+  large: '24px',
+};
+
+const useIconStyles = makeStyles({
+  icon: {
+    boxSizing: 'border-box',
+    color: tokens.colorNeutralStrokeAccessible,
+    cursor: 'pointer',
+    display: 'block',
+    fontSize: tokens.fontSizeBase500,
+    // the SVG must have display: block for accurate positioning
+    // otherwise an extra inline space is inserted after the svg element
+    '& svg': {
+      display: 'block',
+    },
+  },
+  // icon size variants
+  medium: {
+    fontSize: iconSizes.small,
+    marginLeft: tokens.spacingHorizontalXXS,
+  },
+  large: {
+    fontSize: iconSizes.medium,
+    marginLeft: tokens.spacingHorizontalXXS,
+  },
+  'extra-large': {
+    fontSize: iconSizes.large,
+    marginLeft: tokens.spacingHorizontalSNudge,
+  },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
+  },
+});
+
 /**
  * Apply styling to the PickerControl slots based on the state
  */
 export const useTagPickerControlStyles_unstable = (state: TagPickerControlState): TagPickerControlState => {
   const styles = useStyles();
+  const iconStyles = useIconStyles();
+  const asideStyles = useAsideStyles();
   state.root.className = mergeClasses(
     tagPickerControlClassNames.root,
     styles.root,
@@ -159,6 +228,32 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
     state.disabled && styles.disabled,
     state.root.className,
   );
+
+  if (state.aside) {
+    state.aside.className = mergeClasses(
+      tagPickerControlClassNames.aside,
+      asideStyles.root,
+      asideStyles[state.size],
+      state.aside.className,
+    );
+  }
+
+  if (state.expandIcon) {
+    state.expandIcon.className = mergeClasses(
+      tagPickerControlClassNames.expandIcon,
+      iconStyles.icon,
+      iconStyles[state.size],
+      state.disabled && iconStyles.disabled,
+      state.expandIcon.className,
+    );
+  }
+
+  if (state.secondaryAction) {
+    state.secondaryAction.className = mergeClasses(
+      tagPickerControlClassNames.secondaryAction,
+      state.secondaryAction.className,
+    );
+  }
 
   return state;
 };

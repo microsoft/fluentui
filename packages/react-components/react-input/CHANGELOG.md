@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2024 11:12:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.69)
+
+Mon, 25 Mar 2024 11:12:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.68..@fluentui/react-input_v9.4.69)
+
+### Patches
+
+- Revert #30845 "fix: Input should start with undefined, same as textarea" ([PR #30845](https://github.com/microsoft/fluentui/pull/30845) by lingfangao@hotmail.com)
+- chore: Increase hit target of input element to fill to the border ([PR #30825](https://github.com/microsoft/fluentui/pull/30825) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.59 ([PR #30845](https://github.com/microsoft/fluentui/pull/30845) by beachball)
 
 ## [9.4.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.68)
 
