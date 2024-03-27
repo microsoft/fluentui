@@ -1,4 +1,4 @@
-import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
+import { Button, makeStyles, Persona, SelectionItemId } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
@@ -25,46 +25,20 @@ const items: Item[] = names.map(name => ({
 }));
 
 const useStyles = makeStyles({
-  wrapper: {
-    maxHeight: '300px',
-    overflowY: 'auto',
-    ...shorthands.padding('2px'),
-  },
   buttonControls: {
     display: 'flex',
     columnGap: '8px',
     marginBottom: '16px',
   },
-  button: {
-    ...shorthands.padding(0),
-  },
 });
 
-// Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
-const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string }) => {
-  return (
-    <ListItem key={name} value={name} aria-label={name}>
-      <Persona
-        name={name}
-        secondaryText="Available"
-        presence={{ status: 'available' }}
-        avatar={{
-          image: {
-            src: avatar,
-          },
-        }}
-      />
-    </ListItem>
-  );
-});
-
-export const ListSelectionControlledBasic = () => {
+export const SingleActionSelectionControlled = () => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Demetra Manwaring', 'Bart Merrill']);
 
   return (
-    <div className={classes.wrapper}>
+    <div>
       <div className={classes.buttonControls}>
         <Button onClick={e => setSelectedItems(items.map(({ id }) => id))}>Select all</Button>
       </div>
@@ -75,22 +49,32 @@ export const ListSelectionControlledBasic = () => {
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
       >
         {items.map(({ name, avatar }) => (
-          <MyListItem key={name} name={name} avatar={avatar} />
+          <ListItem key={name} value={name} aria-label={name}>
+            <Persona
+              name={name}
+              secondaryText="Available"
+              presence={{ status: 'available' }}
+              avatar={{
+                image: {
+                  src: avatar,
+                },
+              }}
+            />
+          </ListItem>
         ))}
       </List>
-      <div>Selected people: {selectedItems.join(', ')}</div>
     </div>
   );
 };
 
-ListSelectionControlledBasic.parameters = {
+SingleActionSelectionControlled.parameters = {
   docs: {
     description: {
       story: [
         'This example shows how to use the `selectedItems` and `onSelectionChange`',
-        'props to control the selection state.',
+        'props to control the selection state of the List and keep track of it in the parent component.',
         '',
-        'This is a basic example how selection can be controlled with a simple array of selected values in a state.',
+        'This is more in line with how we expect the selection to be used in production environment.',
       ].join('\n'),
     },
   },

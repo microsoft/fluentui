@@ -13,7 +13,6 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
@@ -80,9 +79,6 @@ export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLL
 
 // @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;
-
-// @public (undocumented)
-export function useListSelection(options?: SelectionHookParams): ListSelectionState;
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;

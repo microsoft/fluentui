@@ -67,10 +67,17 @@ const useStyles = makeStyles({
   secondaryAction: { ...shorthands.gridArea('secondary_action') },
 });
 
-const CardExample = (props: { title: string; value: string; selected?: boolean }) => {
+const CustomListItem = (props: { title: string; value: string; selected?: boolean }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
+
+  // This will be triggered by user pressing Enter or clicking on the list item
+  const onAction = React.useCallback(event => {
+    // This prevents the change in selection on click/Enter
+    event.preventDefault();
+    alert(`Triggered custom action!`);
+  }, []);
 
   return (
     <ListItem
@@ -78,11 +85,7 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
       aria-label={value}
-      onAction={e => {
-        // Prevent the default behavior - toggling the selection
-        e.preventDefault();
-        alert('Primary action triggered!');
-      }}
+      onAction={onAction}
     >
       <div role="gridcell" className={styles.preview}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
@@ -97,7 +100,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
           aria-label="Install"
           onClick={e => {
             e.preventDefault();
-            e.stopPropagation();
             alert('Installing!');
           }}
         >
@@ -110,7 +112,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
             <Button
               onClick={e => {
                 e.preventDefault();
-                e.stopPropagation();
               }}
               appearance="transparent"
               icon={<MoreHorizontal20Regular />}
@@ -123,7 +124,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -132,7 +132,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -141,7 +140,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -163,19 +161,20 @@ export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
   return (
     <List
       className={classes.list}
-      selectionMode="multiselect"
       navigationMode="composite"
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
     >
-      <CardExample title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
-      <CardExample title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />
-      <CardExample title="Example List Item" value="card-3" selected={selectedItems.includes('card-3')} />
-      <CardExample title="Example List Item" value="card-4" selected={selectedItems.includes('card-4')} />
-      <CardExample title="Example List Item" value="card-5" selected={selectedItems.includes('card-5')} />
-      <CardExample title="Example List Item" value="card-6" selected={selectedItems.includes('card-6')} />
-      <CardExample title="Example List Item" value="card-7" selected={selectedItems.includes('card-7')} />
-      <CardExample title="Example List Item" value="card-8" selected={selectedItems.includes('card-8')} />
-      <CardExample title="Example List Item" value="card-9" selected={selectedItems.includes('card-9')} />
+      <CustomListItem title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
+      <CustomListItem title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />
+      <CustomListItem title="Example List Item" value="card-3" selected={selectedItems.includes('card-3')} />
+      <CustomListItem title="Example List Item" value="card-4" selected={selectedItems.includes('card-4')} />
+      <CustomListItem title="Example List Item" value="card-5" selected={selectedItems.includes('card-5')} />
+      <CustomListItem title="Example List Item" value="card-6" selected={selectedItems.includes('card-6')} />
+      <CustomListItem title="Example List Item" value="card-7" selected={selectedItems.includes('card-7')} />
+      <CustomListItem title="Example List Item" value="card-8" selected={selectedItems.includes('card-8')} />
+      <CustomListItem title="Example List Item" value="card-9" selected={selectedItems.includes('card-9')} />
     </List>
   );
 };

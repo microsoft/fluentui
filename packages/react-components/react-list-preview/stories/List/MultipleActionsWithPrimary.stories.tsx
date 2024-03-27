@@ -15,6 +15,7 @@ import {
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
+
 import * as React from 'react';
 
 const useListItemRootStyles = makeResetStyles({
@@ -60,17 +61,24 @@ const useStyles = makeStyles({
   secondaryAction: { ...shorthands.gridArea('secondary_action') },
 });
 
-const CardExample = (props: { title: string; value: string }) => {
+const CustomListItem = (props: { title: string; value: string }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
+
+  // This will be triggered by user pressing Enter or clicking on the list item
+  const onAction = React.useCallback(event => {
+    // This prevents the change in selection on click/Enter
+    event.preventDefault();
+    alert(`Triggered custom action!`);
+  }, []);
 
   return (
     <ListItem
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       aria-label={value}
-      onAction={() => alert('Primary action triggered!')}
+      onAction={onAction}
     >
       <div role="gridcell" className={styles.preview}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
@@ -85,7 +93,6 @@ const CardExample = (props: { title: string; value: string }) => {
           aria-label="Install"
           onClick={e => {
             e.preventDefault();
-            e.stopPropagation();
             alert('Installing!');
           }}
         >
@@ -96,12 +103,9 @@ const CardExample = (props: { title: string; value: string }) => {
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
-              onClick={e => {
-                e.preventDefault();
-                e.stopPropagation();
-              }}
               appearance="transparent"
               icon={<MoreHorizontal20Regular />}
+              onClick={e => e.preventDefault()}
               aria-label="More actions"
             />
           </MenuTrigger>
@@ -111,7 +115,6 @@ const CardExample = (props: { title: string; value: string }) => {
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -120,7 +123,6 @@ const CardExample = (props: { title: string; value: string }) => {
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -129,7 +131,6 @@ const CardExample = (props: { title: string; value: string }) => {
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -147,16 +148,16 @@ export const MultipleActionsWithPrimary = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
   return (
-    <List navigationMode="composite" className={classes.list} aria-orientation="vertical">
-      <CardExample title="Example List Item" value="card-1" />
-      <CardExample title="Example List Item" value="card-2" />
-      <CardExample title="Example List Item" value="card-3" />
-      <CardExample title="Example List Item" value="card-4" />
-      <CardExample title="Example List Item" value="card-5" />
-      <CardExample title="Example List Item" value="card-6" />
-      <CardExample title="Example List Item" value="card-7" />
-      <CardExample title="Example List Item" value="card-8" />
-      <CardExample title="Example List Item" value="card-9" />
+    <List navigationMode="composite" className={classes.list}>
+      <CustomListItem title="Example List Item" value="card-1" />
+      <CustomListItem title="Example List Item" value="card-2" />
+      <CustomListItem title="Example List Item" value="card-3" />
+      <CustomListItem title="Example List Item" value="card-4" />
+      <CustomListItem title="Example List Item" value="card-5" />
+      <CustomListItem title="Example List Item" value="card-6" />
+      <CustomListItem title="Example List Item" value="card-7" />
+      <CustomListItem title="Example List Item" value="card-8" />
+      <CustomListItem title="Example List Item" value="card-9" />
     </List>
   );
 };

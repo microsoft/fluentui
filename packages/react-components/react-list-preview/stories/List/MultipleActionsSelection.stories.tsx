@@ -67,7 +67,7 @@ const useStyles = makeStyles({
   secondaryAction: { ...shorthands.gridArea('secondary_action') },
 });
 
-const CardExample = (props: { title: string; value: string; selected?: boolean }) => {
+const CustomListItem = (props: { title: string; value: string; selected?: boolean }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -92,7 +92,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
           aria-label="Install"
           onClick={e => {
             e.preventDefault();
-            e.stopPropagation();
             alert('Installing!');
           }}
         >
@@ -105,7 +104,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
             <Button
               onClick={e => {
                 e.preventDefault();
-                e.stopPropagation();
               }}
               appearance="transparent"
               icon={<MoreHorizontal20Regular />}
@@ -118,7 +116,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -127,7 +124,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -136,7 +132,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
               <MenuItem
                 onClick={e => {
                   e.preventDefault();
-                  e.stopPropagation();
                   alert('Clicked menu item');
                 }}
               >
@@ -157,20 +152,21 @@ export const MultipleActionsSelection = (props: Partial<ListProps>) => {
 
   return (
     <List
-      selectionMode="multiselect"
-      navigationMode="composite"
       className={classes.list}
+      navigationMode="composite"
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
     >
-      <CardExample title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
-      <CardExample title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />
-      <CardExample title="Example List Item" value="card-3" selected={selectedItems.includes('card-3')} />
-      <CardExample title="Example List Item" value="card-4" selected={selectedItems.includes('card-4')} />
-      <CardExample title="Example List Item" value="card-5" selected={selectedItems.includes('card-5')} />
-      <CardExample title="Example List Item" value="card-6" selected={selectedItems.includes('card-6')} />
-      <CardExample title="Example List Item" value="card-7" selected={selectedItems.includes('card-7')} />
-      <CardExample title="Example List Item" value="card-8" selected={selectedItems.includes('card-8')} />
-      <CardExample title="Example List Item" value="card-9" selected={selectedItems.includes('card-9')} />
+      <CustomListItem title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
+      <CustomListItem title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />
+      <CustomListItem title="Example List Item" value="card-3" selected={selectedItems.includes('card-3')} />
+      <CustomListItem title="Example List Item" value="card-4" selected={selectedItems.includes('card-4')} />
+      <CustomListItem title="Example List Item" value="card-5" selected={selectedItems.includes('card-5')} />
+      <CustomListItem title="Example List Item" value="card-6" selected={selectedItems.includes('card-6')} />
+      <CustomListItem title="Example List Item" value="card-7" selected={selectedItems.includes('card-7')} />
+      <CustomListItem title="Example List Item" value="card-8" selected={selectedItems.includes('card-8')} />
+      <CustomListItem title="Example List Item" value="card-9" selected={selectedItems.includes('card-9')} />
     </List>
   );
 };
