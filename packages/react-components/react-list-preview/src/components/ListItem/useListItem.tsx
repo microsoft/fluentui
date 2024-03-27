@@ -106,52 +106,55 @@ export const useListItem_unstable = (
       return;
     }
 
-    // If the list items themselves are focusable and the event is fired from an element inside the list item
-    if (focusableItems && e.target !== e.currentTarget) {
-      // If it's one of the Arrows defined, jump out of the list item to focus on the ListItem itself
-      // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
-      // arrowNavigationAttributes handles it and prevents it from bubbling here.
-
-      if (e.key === ArrowLeft) {
-        dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
-      }
-
-      if (e.key === ArrowDown || e.key === ArrowUp) {
-        e.preventDefault();
-        // Press ESC on the original target to get focus to the parent group (List)
-        dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
-
-        // Now dispatch the original key to move up or down in the list
-        dispatchMoverMoveFocusEvent(e.currentTarget as HTMLElement, TabsterTypes.MoverKeys[e.key]);
-      }
-    }
-
-    // Now return early if the event is not fired from the list item itself
-    // as the following code handles the events specifically coming from the list item
+    // If the event is fired from an element inside the list item
     if (e.target !== e.currentTarget) {
+      if (focusableItems) {
+        // If the items are focusable, we need to handle the arrow keys to move focus to them
+        switch (e.key) {
+          // If it's one of the Arrows defined, jump out of the list item to focus on the ListItem itself
+          // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
+          // arrowNavigationAttributes handles it and prevents it from bubbling here.
+          case ArrowLeft:
+            dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
+            break;
+
+          case ArrowDown:
+          case ArrowUp:
+            e.preventDefault();
+            // Press ESC on the original target to get focus to the parent group (List)
+            dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
+            // Now dispatch the original key to move up or down in the list
+            dispatchMoverMoveFocusEvent(e.currentTarget as HTMLElement, TabsterTypes.MoverKeys[e.key]);
+        }
+        return;
+      }
       return;
     }
 
-    // Space always toggles selection (if enabled)
-    if (e.key === Space) {
-      // we have to prevent default here otherwise the space key will scroll the page
-      e.preventDefault();
-      if (isSelectionEnabled) {
-        toggleItem?.(e, value);
-      } else {
+    switch (e.key) {
+      case Space:
+        // we have to prevent default here otherwise the space key will scroll the page
+        e.preventDefault();
+
+        // Space always toggles selection (if enabled)
+        if (isSelectionEnabled) {
+          toggleItem?.(e, value);
+        } else {
+          triggerAction(e);
+        }
+
+        break;
+
+      case Enter:
         triggerAction(e);
-      }
-    }
+        break;
 
-    // Handle action on the list item when user presses the Enter key
-    // This internally triggers selection in the handleAction if it hasn't been prevented
-    if (e.key === Enter) {
-      triggerAction(e);
-    }
+      case ArrowRight:
+        if (navigationMode === 'composite') {
+          dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Enter);
+        }
 
-    // Handle entering the list item when user presses the ArrowRight, when composite navigation is enabled
-    if (e.key === ArrowRight && navigationMode === 'composite') {
-      dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Enter);
+        break;
     }
   });
 
