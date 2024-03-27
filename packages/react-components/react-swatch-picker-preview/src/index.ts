@@ -40,3 +40,4 @@ export {
 } from './SwatchPickerRow';
 export { renderSwatchPickerGrid } from './utils/renderUtils';
 export type { SwatchProps, SwatchPickerGridProps } from './utils/renderUtils';
+export * from './EmptySwatch';
