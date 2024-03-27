@@ -81,13 +81,6 @@ export const SwatchPickerLayout = () => {
         {renderSwatchPickerGrid({
           items,
           columnCount: 3,
-          renderRow: ({ children, rowId }) => <SwatchPickerRow key={rowId}>{children}</SwatchPickerRow>,
-          renderSwatch: (item: SwatchProps) =>
-            (item as ImageSwatchProps).src ? (
-              <ImageSwatch key={item.value} src={(item as ImageSwatchProps).src ?? ''} {...item} />
-            ) : (
-              <ColorSwatch key={item.value} color={item.color ?? ''} {...item} />
-            ),
         })}
       </SwatchPicker>
       <div
