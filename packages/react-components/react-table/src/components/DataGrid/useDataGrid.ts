@@ -41,6 +41,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     columnSizingOptions,
     onColumnResize,
     containerWidthOffset,
+    resizableColumnsOptions = {},
   } = props;
 
   const widthOffset = containerWidthOffset ?? (selectionMode ? -CELL_WIDTH : 0);
@@ -73,6 +74,9 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       // The selection cell is not part of the columns, therefore its width needs to be subtracted
       // from the container to make sure the columns don't overflow the table.
       containerWidthOffset: widthOffset,
+      // Disables automatic resizing of columns when the container overflows.
+      // This allows the sum of the columns to be larger than the container.
+      autoFitColumns: resizableColumnsOptions.autoFitColumns ?? true,
     }),
   ]);
 
