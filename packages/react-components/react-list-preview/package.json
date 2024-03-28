@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-list-preview",
   "version": "0.0.1",
+  "private": true,
   "description": "React List v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

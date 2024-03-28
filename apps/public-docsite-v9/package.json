@@ -34,7 +34,6 @@
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",
-    "@fluentui/react-list-preview": "*",
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-swatch-picker-preview": "*",
     "@fluentui/react-motion-preview": "*",
