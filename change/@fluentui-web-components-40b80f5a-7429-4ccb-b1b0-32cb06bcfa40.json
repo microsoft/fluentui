@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Changed CSS selector in tree item to dynamically accept various tag names as intended by FAST.",
+  "packageName": "@fluentui/web-components",
+  "email": "github@flyp.si",
+  "dependentChangeType": "patch"
+}
