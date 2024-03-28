@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
@@ -20,19 +22,43 @@ export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
-export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
     color: string;
+    disabled?: boolean;
     value: string;
 };
 
 // @public (undocumented)
 export type ColorSwatchSlots = {
-    root: NonNullable<Slot<'div'>>;
-    button: NonNullable<Slot<'button'>>;
+    root: NonNullable<Slot<'button'>>;
+    icon?: Slot<'span'>;
+    disabledIcon?: Slot<'span'>;
 };
 
 // @public
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'disabled' | 'size' | 'shape' | 'value'> & {
+    selected: boolean;
+};
+
+// @public
+export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
+
+// @public (undocumented)
+export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
+
+// @public
+export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+    src: string;
+    value: string;
+};
+
+// @public (undocumented)
+export type ImageSwatchSlots = {
+    root: Slot<'button'>;
+};
+
+// @public
+export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
     selected: boolean;
 };
 
@@ -40,7 +66,16 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
 
 // @public
+export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
+
+// @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSX.Element;
+
+// @public (undocumented)
+export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSX.Element[];
+
+// @public
+export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSX.Element;
 
 // @public (undocumented)
 export const swatchCSSVars: {
@@ -55,9 +90,18 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
 
 // @public (undocumented)
 export const swatchPickerCSSVars: {
-    columnCountGrid: string;
-    cellSize: string;
     gridGap: string;
+};
+
+// @public (undocumented)
+export type SwatchPickerGridProps = {
+    items: SwatchProps[];
+    columnCount: number;
+    renderRow?: (props: {
+        children: JSX.Element[];
+        rowId: string | number;
+    }) => JSX.Element;
+    renderSwatch?: (item: SwatchProps) => JSX.Element;
 };
 
 // @public (undocumented)
@@ -66,12 +110,13 @@ export type SwatchPickerOnSelectEventHandler = EventHandler<SwatchPickerOnSelect
 // @public (undocumented)
 export type SwatchPickerOnSelectionChangeData = EventData<'click', React_2.MouseEvent<HTMLButtonElement>> & {
     selectedValue: string;
-    selectedColor: string;
+    selectedSwatch: string;
 };
 
 // @public
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     defaultSelectedValue?: string;
+    layout?: 'row' | 'grid';
     onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
     selectedValue?: string;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
@@ -79,13 +124,35 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     spacing?: 'small' | 'medium';
 };
 
+// @public
+export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;
+
+// @public (undocumented)
+export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots>;
+
+// @public
+export type SwatchPickerRowProps = ComponentProps<SwatchPickerRowSlots>;
+
+// @public (undocumented)
+export type SwatchPickerRowSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SwatchPickerRowState = ComponentState<SwatchPickerRowSlots>;
+
 // @public (undocumented)
 export type SwatchPickerSlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
+export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'> & {
+    isGrid: boolean;
+};
+
+// @public (undocumented)
+export type SwatchProps = ImageSwatchProps | ColorSwatchProps;
 
 // @public
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
@@ -94,7 +161,19 @@ export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref
 export const useColorSwatchStyles_unstable: (state: ColorSwatchState) => ColorSwatchState;
 
 // @public
+export const useImageSwatch_unstable: (props: ImageSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ImageSwatchState;
+
+// @public
+export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSwatchState;
+
+// @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
+
+// @public
+export const useSwatchPickerRow_unstable: (props: SwatchPickerRowProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerRowState;
+
+// @public
+export const useSwatchPickerRowStyles_unstable: (state: SwatchPickerRowState) => SwatchPickerRowState;
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;

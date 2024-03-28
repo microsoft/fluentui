@@ -7,20 +7,6 @@ import type { TagPickerInputSlots, TagPickerInputState } from './TagPickerInput.
 
 export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots> = {
   root: 'fui-TagPickerInput',
-  clearIcon: 'fui-TagPickerInput__clearIcon',
-  expandIcon: 'fui-TagPickerInput__expandIcon',
-};
-
-const fieldHeights = {
-  small: '22px',
-  medium: '30px',
-  large: '38px',
-};
-
-export const iconSizes = {
-  small: '16px',
-  medium: '20px',
-  large: '24px',
 };
 
 /**
@@ -33,7 +19,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
     flexGrow: 1,
-    paddingLeft: tokens.spacingHorizontalXXS,
+    boxSizing: 'border-box',
 
     '&:focus': {
       outlineStyle: 'none',
@@ -46,17 +32,17 @@ const useStyles = makeStyles({
   },
 
   // size variants
-  small: {
-    height: fieldHeights.small,
-    ...typographyStyles.caption1,
-  },
   medium: {
-    height: fieldHeights.medium,
     ...typographyStyles.body1,
+    ...shorthands.paddingBlock(tokens.spacingVerticalSNudge),
   },
   large: {
-    height: fieldHeights.large,
-    ...typographyStyles.body2,
+    ...typographyStyles.body1,
+    ...shorthands.paddingBlock(tokens.spacingVerticalMNudge),
+  },
+  'extra-large': {
+    ...typographyStyles.body1,
+    ...shorthands.paddingBlock(tokens.spacingVerticalM),
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -66,56 +52,6 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-
-  // TODO add additional classes for different states and/or slots
-});
-
-const useIconStyles = makeStyles({
-  icon: {
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
-    cursor: 'pointer',
-    display: 'block',
-    fontSize: tokens.fontSizeBase500,
-    position: 'absolute',
-    right: '10px',
-    top: '5px',
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
-      display: 'block',
-    },
-  },
-  hidden: {
-    display: 'none',
-  },
-  visuallyHidden: {
-    clip: 'rect(0px, 0px, 0px, 0px)',
-    height: '1px',
-    ...shorthands.margin('-1px'),
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('0px'),
-    width: '1px',
-    position: 'absolute',
-  },
-
-  // icon size variants
-  small: {
-    fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  medium: {
-    fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  large: {
-    fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
-  },
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'not-allowed',
-  },
 });
 
 /**
@@ -123,7 +59,6 @@ const useIconStyles = makeStyles({
  */
 export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): TagPickerInputState => {
   const styles = useStyles();
-  const iconStyles = useIconStyles();
   state.root.className = mergeClasses(
     tagPickerInputClassNames.root,
     styles.root,
@@ -131,28 +66,5 @@ export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): Ta
     state.disabled && styles.disabled,
     state.root.className,
   );
-
-  if (state.clearIcon) {
-    state.clearIcon.className = mergeClasses(
-      tagPickerInputClassNames.clearIcon,
-      iconStyles.icon,
-      iconStyles[state.size],
-      state.disabled && iconStyles.disabled,
-      !state.showClearIcon && iconStyles.visuallyHidden,
-      state.clearIcon.className,
-    );
-  }
-
-  if (state.expandIcon) {
-    state.expandIcon.className = mergeClasses(
-      tagPickerInputClassNames.expandIcon,
-      iconStyles.icon,
-      iconStyles[state.size],
-      state.disabled && iconStyles.disabled,
-      state.showClearIcon && iconStyles.visuallyHidden,
-      state.expandIcon.className,
-    );
-  }
-
   return state;
 };

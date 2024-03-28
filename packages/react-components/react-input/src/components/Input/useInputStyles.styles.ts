@@ -17,6 +17,26 @@ const fieldHeights = {
   large: '40px',
 };
 
+// With no contentBefore or contentAfter, the input slot uses combined padding to increase its hit target.
+// If there is contentBefore or contentAfter, then the root and input slots use their individual padding.
+const horizontalPadding = {
+  root: {
+    small: tokens.spacingHorizontalSNudge,
+    medium: tokens.spacingHorizontalMNudge,
+    large: tokens.spacingHorizontalM,
+  },
+  input: {
+    small: tokens.spacingHorizontalXXS,
+    medium: tokens.spacingHorizontalXXS,
+    large: tokens.spacingHorizontalSNudge,
+  },
+  combined: {
+    small: tokens.spacingHorizontalS, // SNudge + XXS
+    medium: tokens.spacingHorizontalM, // MNudge + XXS
+    large: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
+  },
+};
+
 const useRootClassName = makeResetStyles({
   display: 'inline-flex',
   alignItems: 'center',
@@ -28,7 +48,6 @@ const useRootClassName = makeResetStyles({
 
   // size: medium (default)
   minHeight: fieldHeights.medium,
-  padding: `0 ${tokens.spacingHorizontalMNudge}`,
   ...typographyStyles.body1,
 
   // appearance: outline (default)
@@ -96,8 +115,6 @@ const useRootClassName = makeResetStyles({
 const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalSNudge,
     ...typographyStyles.caption1,
   },
   medium: {
@@ -105,8 +122,6 @@ const useRootStyles = makeStyles({
   },
   large: {
     minHeight: fieldHeights.large,
-    paddingLeft: tokens.spacingHorizontalM,
-    paddingRight: tokens.spacingHorizontalM,
     ...typographyStyles.body2,
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
@@ -192,14 +207,33 @@ const useRootStyles = makeStyles({
       outlineStyle: 'none',
     },
   },
+  smallWithContentBefore: {
+    paddingLeft: horizontalPadding.root.small,
+  },
+  smallWithContentAfter: {
+    paddingRight: horizontalPadding.root.small,
+  },
+  mediumWithContentBefore: {
+    paddingLeft: horizontalPadding.root.medium,
+  },
+  mediumWithContentAfter: {
+    paddingRight: horizontalPadding.root.medium,
+  },
+  largeWithContentBefore: {
+    paddingLeft: horizontalPadding.root.large,
+  },
+  largeWithContentAfter: {
+    paddingRight: horizontalPadding.root.large,
+  },
 });
 
 const useInputClassName = makeResetStyles({
+  alignSelf: 'stretch',
   boxSizing: 'border-box',
   flexGrow: 1,
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
-  padding: `0 ${tokens.spacingHorizontalXXS}`,
+  padding: `0 ${horizontalPadding.combined.medium}`,
   color: tokens.colorNeutralForeground1,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
@@ -219,9 +253,34 @@ const useInputClassName = makeResetStyles({
 });
 
 const useInputElementStyles = makeStyles({
+  small: {
+    paddingLeft: horizontalPadding.combined.small,
+    paddingRight: horizontalPadding.combined.small,
+  },
+  medium: {
+    // Included in useInputClassName
+  },
   large: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingLeft: horizontalPadding.combined.large,
+    paddingRight: horizontalPadding.combined.large,
+  },
+  smallWithContentBefore: {
+    paddingLeft: horizontalPadding.input.small,
+  },
+  smallWithContentAfter: {
+    paddingRight: horizontalPadding.input.small,
+  },
+  mediumWithContentBefore: {
+    paddingLeft: horizontalPadding.input.medium,
+  },
+  mediumWithContentAfter: {
+    paddingRight: horizontalPadding.input.medium,
+  },
+  largeWithContentBefore: {
+    paddingLeft: horizontalPadding.input.large,
+  },
+  largeWithContentAfter: {
+    paddingRight: horizontalPadding.input.large,
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -275,6 +334,8 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     inputClassNames.root,
     useRootClassName(),
     rootStyles[size],
+    state.contentBefore && rootStyles[`${size}WithContentBefore`],
+    state.contentAfter && rootStyles[`${size}WithContentAfter`],
     rootStyles[appearance],
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
@@ -288,7 +349,9 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   state.input.className = mergeClasses(
     inputClassNames.input,
     useInputClassName(),
-    size === 'large' && inputStyles.large,
+    inputStyles[size],
+    state.contentBefore && inputStyles[`${size}WithContentBefore`],
+    state.contentAfter && inputStyles[`${size}WithContentAfter`],
     disabled && inputStyles.disabled,
     state.input.className,
   );

@@ -7,6 +7,7 @@ import type {
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -25,6 +26,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const setCurrentPage = useTeachingPopoverCarouselContext_unstable(context => context.setCurrentPage);
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
+  const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
   const onPageChange = useTeachingPopoverCarouselContext_unstable(context => context.onPageChange);
   const isSelected = currentPage === index;
 
@@ -41,13 +43,20 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
     [onClick, setCurrentPage, index, onPageChange],
   );
 
+  const defaultTabProps = useTabsterAttributes({
+    focusable: { isDefault: isSelected },
+  });
+
   const _carouselButton = slot.always<ARIAButtonSlotProps<'a'>>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
       defaultProps: {
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        role: 'tab',
         type: 'button',
+        'aria-label': `${currentPage + 1} of ${totalPages}`,
+        ...defaultTabProps,
       },
     },
   );
