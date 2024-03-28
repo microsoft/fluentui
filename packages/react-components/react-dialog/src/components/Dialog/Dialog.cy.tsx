@@ -1,3 +1,5 @@
+/// <reference types="cypress-real-events" />
+
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 
@@ -394,7 +396,7 @@ describe('Dialog', () => {
     });
   });
   describe('modalType = non-modal', () => {
-    it('should close with escape keydown', () => {
+    it('should close with escape keydown and return focus to trigger', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger disableButtonEnhancement>
@@ -423,6 +425,7 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.focused().realType('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
+      cy.get(dialogTriggerOpenSelector).should('be.focused');
     });
     it('should not lock body scroll when dialog open', () => {
       mount(
