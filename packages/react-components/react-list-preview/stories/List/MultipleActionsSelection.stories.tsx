@@ -1,6 +1,7 @@
 import {
   Button,
   Caption1,
+  Image,
   makeResetStyles,
   makeStyles,
   Menu,
@@ -13,8 +14,8 @@ import {
   Text,
   tokens,
 } from '@fluentui/react-components';
-import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 
@@ -45,6 +46,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
   },
   image: {
+    height: '160px',
     maxWidth: '100%',
     ...shorthands.borderRadius('5px'),
   },
@@ -67,7 +69,7 @@ const useStyles = makeStyles({
   secondaryAction: { ...shorthands.gridArea('secondary_action') },
 });
 
-const CustomListItem = (props: { title: string; value: string; selected?: boolean }) => {
+const CustomListItem = (props: { title: string; value: string }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -80,7 +82,12 @@ const CustomListItem = (props: { title: string; value: string; selected?: boolea
       aria-label={value}
     >
       <div role="gridcell" className={styles.preview}>
-        <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
+        <Image
+          fit="cover"
+          className={styles.image}
+          src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image.png"
+          alt="Presentation Preview"
+        />
       </div>
       <div role="gridcell" className={styles.header}>
         <Text className={styles.title}>{props.title}</Text>
@@ -145,7 +152,7 @@ const CustomListItem = (props: { title: string; value: string; selected?: boolea
   );
 };
 
-export const MultipleActionsSelection = (props: Partial<ListProps>) => {
+export const MultipleActionsSelection = () => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
@@ -158,15 +165,15 @@ export const MultipleActionsSelection = (props: Partial<ListProps>) => {
       selectedItems={selectedItems}
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
     >
-      <CustomListItem title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
-      <CustomListItem title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />
-      <CustomListItem title="Example List Item" value="card-3" selected={selectedItems.includes('card-3')} />
-      <CustomListItem title="Example List Item" value="card-4" selected={selectedItems.includes('card-4')} />
-      <CustomListItem title="Example List Item" value="card-5" selected={selectedItems.includes('card-5')} />
-      <CustomListItem title="Example List Item" value="card-6" selected={selectedItems.includes('card-6')} />
-      <CustomListItem title="Example List Item" value="card-7" selected={selectedItems.includes('card-7')} />
-      <CustomListItem title="Example List Item" value="card-8" selected={selectedItems.includes('card-8')} />
-      <CustomListItem title="Example List Item" value="card-9" selected={selectedItems.includes('card-9')} />
+      <CustomListItem title="Example List Item" value="card-1" />
+      <CustomListItem title="Example List Item" value="card-2" />
+      <CustomListItem title="Example List Item" value="card-3" />
+      <CustomListItem title="Example List Item" value="card-4" />
+      <CustomListItem title="Example List Item" value="card-5" />
+      <CustomListItem title="Example List Item" value="card-6" />
+      <CustomListItem title="Example List Item" value="card-7" />
+      <CustomListItem title="Example List Item" value="card-8" />
+      <CustomListItem title="Example List Item" value="card-9" />
     </List>
   );
 };

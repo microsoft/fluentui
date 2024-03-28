@@ -1,6 +1,7 @@
 import {
   Button,
   Caption1,
+  Image,
   makeResetStyles,
   makeStyles,
   Menu,
@@ -14,7 +15,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 
@@ -45,6 +46,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
   },
   image: {
+    height: '160px',
     maxWidth: '100%',
     ...shorthands.borderRadius('5px'),
   },
@@ -81,7 +83,12 @@ const CustomListItem = (props: { title: string; value: string }) => {
       onAction={onAction}
     >
       <div role="gridcell" className={styles.preview}>
-        <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
+        <Image
+          fit="cover"
+          className={styles.image}
+          src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image.png"
+          alt="Presentation Preview"
+        />
       </div>
       <div role="gridcell" className={styles.header}>
         <Text className={styles.title}>{props.title}</Text>
@@ -144,7 +151,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
   );
 };
 
-export const MultipleActionsWithPrimary = (props: Partial<ListProps>) => {
+export const MultipleActionsWithPrimary = () => {
   const classes = useStyles();
 
   return (

@@ -12,15 +12,6 @@ import { Mic16Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
-const names = [
-  'Melda Bevel',
-  'Demetra Manwaring',
-  'Eusebia Stufflebeam',
-  'Israel Rabin',
-  'Bart Merrill',
-  'Sonya Farner',
-  'Kristan Cable',
-];
 
 type Item = {
   name: string;
@@ -28,7 +19,15 @@ type Item = {
   avatar: string;
 };
 
-const items: Item[] = names.map(name => ({
+const items: Item[] = [
+  'Melda Bevel',
+  'Demetra Manwaring',
+  'Eusebia Stufflebeam',
+  'Israel Rabin',
+  'Bart Merrill',
+  'Sonya Farner',
+  'Kristan Cable',
+].map(name => ({
   name,
   id: name,
   avatar:
@@ -51,39 +50,6 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorSubtleBackgroundSelected,
   },
 });
-
-// Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
-const MyListItem = React.memo(
-  ({ name, avatar, ...rest }: React.ComponentProps<typeof ListItem> & { name: string; avatar: string }) => {
-    const styles = useStyles();
-    return (
-      <ListItem key={name} value={name} aria-label={name} {...rest} checkmark={null}>
-        <Persona
-          name={name}
-          role="gridcell"
-          secondaryText="Available"
-          presence={{ status: 'available' }}
-          avatar={{
-            image: {
-              src: avatar,
-            },
-          }}
-        />
-        <div role="gridcell" className={styles.buttonWrapper}>
-          <Button
-            aria-label={`Mute ${name}`}
-            size="small"
-            icon={<Mic16Regular />}
-            onClick={e => {
-              e.stopPropagation();
-              alert(`Muting ${name}`);
-            }}
-          />
-        </div>
-      </ListItem>
-    );
-  },
-);
 
 export const ListActiveElement = () => {
   const classes = useStyles();
@@ -111,14 +77,38 @@ export const ListActiveElement = () => {
         onSelectionChange={onSelectionChange}
       >
         {items.map(({ name, avatar }) => (
-          <MyListItem
+          <ListItem
             key={name}
-            name={name}
-            avatar={avatar}
+            value={name}
             className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}
-            onFocus={onFocus}
             data-value={name}
-          />
+            aria-label={name}
+            onFocus={onFocus}
+            checkmark={null}
+          >
+            <Persona
+              name={name}
+              role="gridcell"
+              secondaryText="Available"
+              presence={{ status: 'available' }}
+              avatar={{
+                image: {
+                  src: avatar,
+                },
+              }}
+            />
+            <div role="gridcell" className={classes.buttonWrapper}>
+              <Button
+                aria-label={`Mute ${name}`}
+                size="small"
+                icon={<Mic16Regular />}
+                onClick={e => {
+                  e.stopPropagation();
+                  alert(`Muting ${name}`);
+                }}
+              />
+            </div>
+          </ListItem>
         ))}
       </List>
       <div className={classes.selectedInfo}>

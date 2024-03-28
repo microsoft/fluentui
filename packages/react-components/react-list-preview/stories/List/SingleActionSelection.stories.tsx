@@ -2,14 +2,6 @@ import { Persona } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
-const names = [
-  'Melda Bevel',
-  'Demetra Manwaring',
-  'Eusebia Stufflebeam',
-  'Israel Rabin',
-  'Bart Merrill',
-  'Sonya Farner',
-];
 
 type Item = {
   name: string;
@@ -17,7 +9,14 @@ type Item = {
   avatar: string;
 };
 
-const items: Item[] = names.map(name => ({
+const items: Item[] = [
+  'Melda Bevel',
+  'Demetra Manwaring',
+  'Eusebia Stufflebeam',
+  'Israel Rabin',
+  'Bart Merrill',
+  'Sonya Farner',
+].map(name => ({
   name,
   id: name,
   avatar:

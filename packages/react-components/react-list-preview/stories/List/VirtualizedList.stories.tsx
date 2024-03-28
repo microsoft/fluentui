@@ -216,7 +216,7 @@ export const VirtualizedList = () => {
       outerElementType={CountriesList}
     >
       {({ index, style, data }) => (
-        <ListItem style={style} key={index} aria-setsize={countries.length} aria-posinset={index + 1}>
+        <ListItem style={style} aria-setsize={countries.length} aria-posinset={index + 1}>
           {data[index]}
         </ListItem>
       )}

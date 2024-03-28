@@ -218,7 +218,6 @@ export const VirtualizedListWithActionableItems = () => {
       {({ index, style, data }) => (
         <ListItem
           style={style}
-          key={index}
           aria-setsize={countries.length}
           aria-posinset={index + 1}
           onAction={() => alert(data[index])}
