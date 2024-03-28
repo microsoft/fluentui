@@ -12,7 +12,7 @@ export const renderListItem_unstable = (state: ListItemState) => {
 
   return (
     <state.root>
-      {state.checkmark ? <state.checkmark /> : null}
+      {state.checkmark && <state.checkmark />}
       {state.root.children}
     </state.root>
   );

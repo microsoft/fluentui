@@ -5,7 +5,7 @@ import { ListItem } from './ListItem';
 import { ListItemProps } from './ListItem.types';
 
 describe('ListItem', () => {
-  isConformant({
+  isConformant<ListItemProps>({
     Component: ListItem as React.FunctionComponent<ListItemProps>,
     displayName: 'ListItem',
     testOptions: {

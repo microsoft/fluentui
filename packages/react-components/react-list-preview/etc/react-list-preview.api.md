@@ -72,7 +72,7 @@ export const renderList_unstable: (state: ListState, contextValues: ListContextV
 export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
 
 // @public
-export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement>) => ListState;
+export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
 
 // @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
