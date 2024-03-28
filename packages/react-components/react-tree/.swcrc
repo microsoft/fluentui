@@ -11,7 +11,10 @@
   ],
   "jsc": {
     "experimental": {
-      "plugins": [["swc-plugin-de-indent-template-literal", {}]]
+      "plugins": [
+        ["swc-plugin-de-indent-template-literal", {}],
+        ["@bsunderhus/swc-plugin-react-slot", {}]
+      ]
     },
     "parser": {
       "syntax": "typescript",
