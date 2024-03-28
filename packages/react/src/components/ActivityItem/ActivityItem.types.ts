@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { IStyle } from '../../Styling';
+import type { IStyle, ITheme } from '../../Styling';
 import type { IRenderFunction } from '../../Utilities';
 import type { IPersonaSharedProps } from '../../Persona';
 
@@ -92,7 +92,18 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * @defaultvalue false
    */
   animateBeaconSignal?: boolean;
+
+  /**
+   * Theme for the component
+   */
+  theme?: ITheme;
 }
+
+/**
+ * {@docCategory ActivityItem}
+ */
+export type IActivityItemStyleProps = Required<Pick<IActivityItemProps, 'theme'>> &
+  Pick<IActivityItemProps, 'animateBeaconSignal' | 'beaconColorOne' | 'beaconColorTwo' | 'className' | 'isCompact'>;
 
 /**
  * {@docCategory ActivityItem}

@@ -1,5 +1,15 @@
-export { ActivityItem, getActivityItemClassNames, getActivityItemStyles } from './ActivityItem';
-export type { IActivityItemClassNames, IActivityItemProps, IActivityItemStyles } from './ActivityItem';
+export {
+  ActivityItem,
+  getActivityItemClassNames,
+  // eslint-disable-next-line deprecation/deprecation
+  getActivityItemStyles,
+} from './ActivityItem';
+export type {
+  IActivityItemClassNames,
+  IActivityItemProps,
+  IActivityItemStyleProps,
+  IActivityItemStyles,
+} from './ActivityItem';
 export { Autofill } from './Autofill';
 export type { IAutofill, IAutofillProps, IAutofillState } from './Autofill';
 export { Announced, AnnouncedBase } from './Announced';
