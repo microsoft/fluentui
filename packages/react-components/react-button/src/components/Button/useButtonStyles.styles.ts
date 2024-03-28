@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -562,42 +563,68 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
 
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
-  state.root.className = mergeClasses(
-    buttonClassNames.root,
-    rootBaseClassName,
+  const rootClassName = useMemo(
+    () =>
+      mergeClasses(
+        buttonClassNames.root,
+        rootBaseClassName,
 
-    appearance && rootStyles[appearance],
+        appearance && rootStyles[appearance],
 
-    rootStyles[size],
-    icon && size === 'small' && rootStyles.smallWithIcon,
-    icon && size === 'large' && rootStyles.largeWithIcon,
-    rootStyles[shape],
+        rootStyles[size],
+        icon && size === 'small' && rootStyles.smallWithIcon,
+        icon && size === 'large' && rootStyles.largeWithIcon,
+        rootStyles[shape],
 
-    // Disabled styles
-    (disabled || disabledFocusable) && rootDisabledStyles.base,
-    (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
-    appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
+        // Disabled styles
+        (disabled || disabledFocusable) && rootDisabledStyles.base,
+        (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
+        appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
-    // Focus styles
-    appearance === 'primary' && rootFocusStyles.primary,
-    rootFocusStyles[size],
-    rootFocusStyles[shape],
+        // Focus styles
+        appearance === 'primary' && rootFocusStyles.primary,
+        rootFocusStyles[size],
+        rootFocusStyles[shape],
 
-    // Icon-only styles
-    iconOnly && rootIconOnlyStyles[size],
+        // Icon-only styles
+        iconOnly && rootIconOnlyStyles[size],
 
-    // User provided class name
-    state.root.className,
+        // User provided class name
+        state.root.className,
+      ),
+    [
+      appearance,
+      disabled,
+      disabledFocusable,
+      icon,
+      iconOnly,
+      rootBaseClassName,
+      rootDisabledStyles,
+      rootFocusStyles,
+      rootIconOnlyStyles,
+      rootStyles,
+      shape,
+      size,
+      state.root.className,
+    ],
   );
 
+  const iconClassName = useMemo(
+    () =>
+      mergeClasses(
+        buttonClassNames.icon,
+        iconBaseClassName,
+        !!state.root.children && iconStyles[iconPosition],
+        iconStyles[size],
+        state.icon?.className,
+      ),
+    [iconBaseClassName, iconPosition, iconStyles, size, state.icon, state.root.children],
+  );
+
+  state.root.className = rootClassName;
+
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      buttonClassNames.icon,
-      iconBaseClassName,
-      !!state.root.children && iconStyles[iconPosition],
-      iconStyles[size],
-      state.icon.className,
-    );
+    state.icon.className = iconClassName;
   }
 
   return state;
