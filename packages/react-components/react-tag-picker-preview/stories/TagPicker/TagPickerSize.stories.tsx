@@ -75,3 +75,11 @@ export const Size = () => (
     </div>
   </>
 );
+
+Size.parameters = {
+  docs: {
+    description: {
+      story: `A \`TagPicker\`'s size can be set to \`medium\` (default), \`large\` or \`extra-large\`.`,
+    },
+  },
+};

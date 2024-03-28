@@ -2,6 +2,27 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 28 Mar 2024 10:43:54 GMT",
+      "tag": "@fluentui/react-components_v9.47.2",
+      "version": "9.47.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "fa0be6273745fe22574c29db093d64db12348a30",
+            "comment": "feat(react-swatch-picker): changed API in rendering utils"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "a697cff7f93952d4c31fb135812a7fa3a19e2aee",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Mar 2024 10:29:33 GMT",
       "tag": "@fluentui/react-components_v9.47.2",
       "version": "9.47.2",

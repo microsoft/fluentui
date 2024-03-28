@@ -2,15 +2,19 @@
 
 ## Background
 
-_Description and use cases of this component_
+A List is a component that displays a set of vertically stacked components.
+
+If you are displaying more than one dimension of the data, the List probably isn't the proper component to use, instead, consider using Table or DataGrid.
+
+The List supports plain list items, interactive list items with one action or multiple actions. It also has support for single and multi selection built in. This can be utilized in either uncontrolled or controlled way.
+
+All of the List scenarios are also accessible, as the whole component was built with accessibility in mind. It is easily navigable with a keyboard and supports different screen reader applications.
 
 ## Prior Art
 
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- [Fluent UI v0 docs](https://fluentsite.z22.web.core.windows.net/components/list/definition)
+- [Fluent UI v8 docs](https://developer.microsoft.com/en-us/fluentui#/controls/web/list)
+- [Open UI research](https://open-ui.org/components/list.research/)
 
 ## Sample Code
 

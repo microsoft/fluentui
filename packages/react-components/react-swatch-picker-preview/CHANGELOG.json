@@ -2,6 +2,21 @@
   "name": "@fluentui/react-swatch-picker-preview",
   "entries": [
     {
+      "date": "Thu, 28 Mar 2024 10:43:54 GMT",
+      "tag": "@fluentui/react-swatch-picker-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "fa0be6273745fe22574c29db093d64db12348a30",
+            "comment": "feat(react-swatch-picker): changed API in rendering utils"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Mar 2024 10:29:33 GMT",
       "tag": "@fluentui/react-swatch-picker-preview_v0.1.0",
       "version": "0.1.0",

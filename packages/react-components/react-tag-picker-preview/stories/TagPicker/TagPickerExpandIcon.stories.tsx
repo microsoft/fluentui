@@ -8,7 +8,8 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, Button } from '@fluentui/react-components';
+import { Tag, Avatar } from '@fluentui/react-components';
+import { ArrowDownFilled } from '@fluentui/react-icons';
 
 const options = [
   'John Doe',
@@ -21,26 +22,16 @@ const options = [
   'Maria Rossi',
 ];
 
-export const SecondaryActionWithoutExpandIcon = () => {
+export const ExpandIcon = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
     setSelectedOptions(data.selectedOptions);
-  };
-  const handleAllClear: React.MouseEventHandler = event => {
-    setSelectedOptions([]);
   };
 
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl
-          expandIcon={null}
-          secondaryAction={
-            <Button appearance="transparent" size="small" shape="rounded" onClick={handleAllClear}>
-              All Clear
-            </Button>
-          }
-        >
+        <TagPickerControl expandIcon={<ArrowDownFilled />}>
           <TagPickerGroup>
             {selectedOptions.map(option => (
               <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
@@ -67,4 +58,14 @@ export const SecondaryActionWithoutExpandIcon = () => {
       </TagPicker>
     </div>
   );
+};
+
+ExpandIcon.parameters = {
+  docs: {
+    description: {
+      story: `
+\`TagPickerControl\` provides an \`expandIcon\` slot for modifying the default \`expandIcon\` chevron.
+You can also remove the slot entirely by providing \`null\` to it.`,
+    },
+  },
 };

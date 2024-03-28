@@ -19,7 +19,6 @@ import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Listbox } from '@fluentui/react-combobox';
 import type { ListboxContextValue } from '@fluentui/react-combobox';
-import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
 import { PortalProps } from '@fluentui/react-portal';
@@ -165,23 +164,24 @@ export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps>;
 export const tagPickerOptionClassNames: SlotClassNames<TagPickerOptionSlots>;
 
 // @public
-export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & Omit<OptionProps, 'checkIcon' | 'disabled'> & {
+export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
     children: React_2.ReactNode;
     text?: string;
     value: string;
 };
 
 // @public (undocumented)
-export type TagPickerOptionSlots = Omit<OptionSlots, 'checkIcon'> & {
+export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
     media?: Slot<'div'>;
     secondaryContent?: Slot<'span'>;
 };
 
 // @public
-export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Omit<OptionState, 'checkIcon'>;
+export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'multiselect' | 'root' | 'selected'>;
 
 // @public
-export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled'> & Pick<Partial<TagPickerContextValue>, 'size' | 'selectedOptions' | 'appearance'> & {
+export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     children: [JSX.Element, JSX.Element] | JSX.Element;
 };
@@ -190,8 +190,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
-    positioning?: PositioningShorthand;
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'multiselect' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
 };
