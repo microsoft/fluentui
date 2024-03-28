@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update tabster version",
+  "packageName": "@fluentui/react-tabster",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
