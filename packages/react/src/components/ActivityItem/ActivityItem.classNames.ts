@@ -23,17 +23,25 @@ export const getClassNames = memoizeFunction(
     isCompact: boolean,
   ): IActivityItemClassNames => {
     return {
-      root: mergeStyles('ms-ActivityItem', className, styles.root, isCompact && styles.isCompactRoot),
+      root: mergeStyles(
+        styles.__shadowConfig__,
+        'ms-ActivityItem',
+        className,
+        styles.root,
+        isCompact && styles.isCompactRoot,
+      ),
 
-      pulsingBeacon: mergeStyles('ms-ActivityItem-pulsingBeacon', styles.pulsingBeacon),
+      pulsingBeacon: mergeStyles(styles.__shadowConfig__, 'ms-ActivityItem-pulsingBeacon', styles.pulsingBeacon),
 
       personaContainer: mergeStyles(
+        styles.__shadowConfig__,
         'ms-ActivityItem-personaContainer',
         styles.personaContainer,
         isCompact && styles.isCompactPersonaContainer,
       ),
 
       activityPersona: mergeStyles(
+        styles.__shadowConfig__,
         'ms-ActivityItem-activityPersona',
         styles.activityPersona,
         isCompact && styles.isCompactPersona,
@@ -41,20 +49,27 @@ export const getClassNames = memoizeFunction(
       ),
 
       activityTypeIcon: mergeStyles(
+        styles.__shadowConfig__,
         'ms-ActivityItem-activityTypeIcon',
         styles.activityTypeIcon,
         isCompact && styles.isCompactIcon,
       ),
 
       activityContent: mergeStyles(
+        styles.__shadowConfig__,
         'ms-ActivityItem-activityContent',
         styles.activityContent,
         isCompact && styles.isCompactContent,
       ),
 
-      activityText: mergeStyles('ms-ActivityItem-activityText', styles.activityText),
-      commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText),
-      timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp, isCompact && styles.isCompactTimeStamp),
+      activityText: mergeStyles(styles.__shadowConfig__, 'ms-ActivityItem-activityText', styles.activityText),
+      commentText: mergeStyles(styles.__shadowConfig__, 'ms-ActivityItem-commentText', styles.commentText),
+      timeStamp: mergeStyles(
+        styles.__shadowConfig__,
+        'ms-ActivityItem-timeStamp',
+        styles.timeStamp,
+        isCompact && styles.isCompactTimeStamp,
+      ),
     };
   },
 );

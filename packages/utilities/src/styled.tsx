@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
+import { useMergeStylesHooks } from './shadowDom/index';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
-import type { IStyleSetBase, IStyleFunctionOrObject } from '@fluentui/merge-styles';
+import type { IStyleSetBase, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSetBase> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -31,6 +32,9 @@ export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyle
 
   /** True if no styles prop or styles from Customizer is passed to wrapped component. */
   __noStyleOverride__: boolean;
+
+  /** Shadow DOM configuration object */
+  __shadowConfig__?: ShadowConfig;
 };
 
 /**
@@ -98,6 +102,8 @@ export function styled<
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
+    const { useStyled } = useMergeStylesHooks();
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
     const propStyles = props.styles;
@@ -121,6 +127,8 @@ export function styled<
 
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
     }
+
+    styles.current.__shadowConfig__ = useStyled(scope);
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });

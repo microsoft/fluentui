@@ -91,6 +91,24 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -122,6 +140,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -260,6 +281,24 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -290,6 +329,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {

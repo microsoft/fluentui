@@ -116,12 +116,18 @@ export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void
 /**
  * When no default layer host is provided, this function is executed to create the default host.
  */
-export function createDefaultLayerHost(doc: Document): Node | null {
+export function createDefaultLayerHost(doc: Document, shadowRoot: ShadowRoot | null = null): Node | null {
   const host = doc.createElement('div');
   host.setAttribute('id', defaultHostId);
   (host as HTMLElement).style.cssText = 'position:fixed;z-index:1000000';
 
-  doc?.body.appendChild(host);
+  if (shadowRoot) {
+    shadowRoot.appendChild(host);
+  } else {
+    doc?.body.appendChild(host);
+  }
+
+  // doc?.body.appendChild(host);
 
   return host;
 }
@@ -129,11 +135,12 @@ export function createDefaultLayerHost(doc: Document): Node | null {
 /**
  * This function can be optionally called to clean up the default layer host as needed.
  */
-export function cleanupDefaultLayerHost(doc: Document) {
-  const host = doc.querySelector(`#${defaultHostId}`);
+export function cleanupDefaultLayerHost(doc: Document, shadowRoot: ShadowRoot | null = null) {
+  const root = shadowRoot ?? doc;
+  const host = root.querySelector(`#${defaultHostId}`);
 
   if (host) {
-    doc.removeChild(host);
+    root.removeChild(host);
   }
 }
 

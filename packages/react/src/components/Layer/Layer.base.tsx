@@ -85,7 +85,8 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = (doc: Document): Node | null => {
+    const getHost = (doc: Document, shadowRoot: ShadowRoot | null = null): Node | null => {
+      const root = shadowRoot ?? doc;
       if (hostId) {
         const layerHost = getLayerHost(hostId);
 
@@ -93,17 +94,17 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
           return layerHost.rootRef.current ?? null;
         }
 
-        return doc.getElementById(hostId) ?? null;
+        return root.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
 
         // Find the host.
-        let host: Node | null = defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : null;
+        let host: Node | null = defaultHostSelector ? (root.querySelector(defaultHostSelector) as Node) : null;
 
         // If no host is available, create a container for injecting layers in.
         // Having a container scopes layout computation.
         if (!host) {
-          host = createDefaultLayerHost(doc);
+          host = createDefaultLayerHost(doc, shadowRoot);
         }
 
         return host;
@@ -127,12 +128,15 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // If a doc or host exists, it will remove and update layer parentNodes.
     const createLayerElement = () => {
       const doc = getDocument(rootRef.current);
+      const shadowRoot = (rootRef.current?.getRootNode() as ShadowRoot)?.host
+        ? (rootRef?.current?.getRootNode() as ShadowRoot)
+        : undefined;
 
-      if (!doc) {
+      if (!doc || (!doc && !shadowRoot)) {
         return;
       }
 
-      const host = getHost(doc);
+      const host = getHost(doc, shadowRoot);
 
       if (!host) {
         return;

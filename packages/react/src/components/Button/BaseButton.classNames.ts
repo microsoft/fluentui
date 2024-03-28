@@ -43,7 +43,7 @@ export const getBaseButtonClassNames = memoizeFunction(
     const classNames = getGlobalClassNames(ButtonGlobalClassNames, theme || {});
 
     const isExpanded = expanded && !isSplit;
-    return mergeStyleSets({
+    return mergeStyleSets(styles.__shadowConfig__, {
       root: [
         classNames.msButton,
         styles.root,

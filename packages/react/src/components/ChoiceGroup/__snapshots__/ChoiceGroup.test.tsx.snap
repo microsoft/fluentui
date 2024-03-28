@@ -69,6 +69,27 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   border-color: WindowText;
                   border-width: 2px;
                 }
+                :host(.ms-Fabric--isFocusVisible) & {
+                  outline: transparent;
+                  position: relative;
+                }
+                :host(.ms-Fabric--isFocusVisible) &::-moz-focus-inner {
+                  border: 0px;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:after {
+                  border: 1px solid #605e5c;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  pointer-events: none;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
+                  border-color: WindowText;
+                  border-width: 2px;
+                }
           >
             <input
               class=
@@ -544,6 +565,27 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+                  border-color: WindowText;
+                  border-width: 2px;
+                }
+                :host(.ms-Fabric--isFocusVisible) & {
+                  outline: transparent;
+                  position: relative;
+                }
+                :host(.ms-Fabric--isFocusVisible) &::-moz-focus-inner {
+                  border: 0px;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:after {
+                  border: 1px solid #605e5c;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  pointer-events: none;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:after {
                   border-color: WindowText;
                   border-width: 2px;
                 }
