@@ -1,11 +1,12 @@
 type PackageDependencies = { [dependencyName: string]: string };
 
+const IMPORT_PATH_REGEX = /from ['"](.*?)['"];/g;
+
 function matchAll(str: string, re: RegExp) {
-  const regexp = new RegExp(re, 'g');
   let match: RegExpExecArray | null = null;
   const matches: RegExpExecArray[] = [];
 
-  while ((match = regexp.exec(str))) {
+  while ((match = re.exec(str))) {
     matches.push(match);
   }
 
@@ -24,15 +25,21 @@ export const getDependencies = (
   requiredDependencies: PackageDependencies,
   optionalDependencies: PackageDependencies,
 ) => {
-  const matches = matchAll(fileContent, /from ['"](.*?)['"];/g);
+  const importPaths = matchAll(fileContent, IMPORT_PATH_REGEX);
 
-  const dependenciesInCode = Array.from(matches).reduce((dependencies, match) => {
-    if (!match[1].startsWith('react/')) {
-      const dependency = parsePackageName(match[1]).name;
+  const dependenciesInCode = importPaths.reduce((dependencies, match) => {
+    const importPath = match[1];
+    const isReactPath = importPath.startsWith('react/');
+    const isRelativeImportPath = importPath.startsWith('.');
 
-      if (!dependencies.hasOwnProperty(dependency)) {
-        dependencies[dependency] = optionalDependencies[dependency] ?? 'latest';
-      }
+    if (isReactPath || isRelativeImportPath) {
+      return dependencies;
+    }
+
+    const dependency = parsePackageName(importPath).name;
+
+    if (!dependencies.hasOwnProperty(dependency)) {
+      dependencies[dependency] = optionalDependencies[dependency] ?? 'latest';
     }
 
     return dependencies;
