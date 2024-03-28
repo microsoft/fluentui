@@ -37,4 +37,7 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> &
   };
 
 /** Overloaded onChange event type, used to merge functionality of regular text entry and the dismiss button */
-export type SearchBoxChangeEvent = React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>;
+export type SearchBoxChangeEvent =
+  | React.ChangeEvent<HTMLInputElement>
+  | React.MouseEvent<HTMLSpanElement>
+  | React.KeyboardEvent<HTMLSpanElement>;
