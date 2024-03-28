@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release preview package",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
