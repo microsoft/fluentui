@@ -58,6 +58,7 @@
     "@fluentui/react-spinbutton": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/react-swatch-picker-preview": "*",
     "@fluentui/react-switch": "*",
     "@fluentui/react-table": "*",
     "@fluentui/react-tabs": "*",

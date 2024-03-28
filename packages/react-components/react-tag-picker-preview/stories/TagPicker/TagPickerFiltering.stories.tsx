@@ -71,3 +71,13 @@ export const Filtering = () => {
     </div>
   );
 };
+
+Filtering.parameters = {
+  docs: {
+    description: {
+      story: `
+\`TagPicker\` can take advantage of the provided [\`useComboboxFilter\`](https://react.fluentui.dev/?path=/docs/components-combobox--default#filtering) hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.
+`,
+    },
+  },
+};

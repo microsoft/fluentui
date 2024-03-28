@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
-import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { slot, useMergedRefs, getIntrinsicElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { useMergedRefs, getIntrinsicElementProps, useEventCallback } from '@fluentui/react-utilities';
 import { useInputTriggerSlot } from '../../utils/useInputTriggerSlot';
 import { Backspace, Enter } from '@fluentui/keyboard-keys';
 
@@ -91,18 +90,8 @@ export const useTagPickerInput_unstable = (
   const state: TagPickerInputState = {
     components: {
       root: 'input',
-      expandIcon: 'span',
     },
     root,
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        'aria-expanded': open,
-        children: <ChevronDownIcon />,
-        role: 'button',
-      },
-      elementType: 'span',
-    }),
     disabled,
     size,
   };

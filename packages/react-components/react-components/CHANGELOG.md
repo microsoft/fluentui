@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 25 Mar 2024 11:12:13 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Mar 2024 10:43:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.2)
+
+Thu, 28 Mar 2024 10:43:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.2..@fluentui/react-components_v9.47.2)
+
+### Minor changes
+
+- `@fluentui/react-swatch-picker-preview`
+  - feat(react-swatch-picker): changed API in rendering utils ([PR #30868](https://github.com/microsoft/fluentui/pull/30868) by vkozlova@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - feat: release preview package ([PR #30897](https://github.com/microsoft/fluentui/pull/30897) by bernardo.sunderhus@gmail.com)
+
+## [9.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.2)
+
+Wed, 27 Mar 2024 10:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.2..@fluentui/react-components_v9.47.2)
+
+### Minor changes
+
+- `@fluentui/react-swatch-picker-preview`
+  - 'feat: release react-swatch-picker to unstable ([PR #30881](https://github.com/microsoft/fluentui/pull/30881) by vkozlova@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-teaching-popover-preview`
+  - fix: Focus borders and navigation container style (arrow vs group) ([PR #30862](https://github.com/microsoft/fluentui/pull/30862) by mifraser@microsoft.com)
 
 ## [9.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.2)
 

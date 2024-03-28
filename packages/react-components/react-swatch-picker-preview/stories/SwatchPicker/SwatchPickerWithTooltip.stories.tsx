@@ -21,7 +21,7 @@ export const SwatchPickerWithTooltip = () => {
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
-    setSelectedColor(data.selectedColor);
+    setSelectedColor(data.selectedSwatch);
   };
 
   const styles = useStyles();

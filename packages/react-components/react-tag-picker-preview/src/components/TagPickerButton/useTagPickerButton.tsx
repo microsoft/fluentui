@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { slot } from '@fluentui/react-utilities';
-import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
@@ -56,16 +54,8 @@ export const useTagPickerButton_unstable = (
   const state: TagPickerButtonState = {
     components: {
       root: 'button',
-      expandIcon: 'span',
     },
     root,
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        children: <ChevronDownIcon />,
-      },
-      elementType: 'span',
-    }),
     size,
     hasSelectedOption,
   };
