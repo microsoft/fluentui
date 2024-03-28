@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: picker tags only show focus styling when focused",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

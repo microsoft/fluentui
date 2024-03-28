@@ -224,15 +224,11 @@ exports[`TagPicker renders correctly 1`] = `
                   border-color: Highlight;
                   color: Highlight;
                 }
-                &:focus {
-                  background: #0078d4;
-                  color: #ffffff;
-                }
                 &:active {
                   background-color: #005a9e;
                   color: #ffffff;
                 }
-                .is-selected & {
+                .is-selected &:focus {
                   background: #0078d4;
                   color: #ffffff;
                 }
@@ -625,15 +621,11 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   border-color: Highlight;
                   color: Highlight;
                 }
-                &:focus {
-                  background: #0078d4;
-                  color: #ffffff;
-                }
                 &:active {
                   background-color: #005a9e;
                   color: #ffffff;
                 }
-                .is-selected & {
+                .is-selected &:focus {
                   background: #0078d4;
                   color: #ffffff;
                 }
