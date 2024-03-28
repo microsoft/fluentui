@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "fix(swatch-picker): added bundle size configuration",
   "packageName": "@fluentui/react-swatch-picker-preview",
   "email": "vkozlova@microsoft.com",
