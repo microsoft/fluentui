@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: End key should move activeOption ",
+  "packageName": "@fluentui/react-aria",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

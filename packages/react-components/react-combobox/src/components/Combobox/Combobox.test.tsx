@@ -837,6 +837,62 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
   });
 
+  it('should move active option with home and end', () => {
+    const { getByTestId, getByText } = render(
+      <Combobox open data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    userEvent.click(getByText('Green'));
+    userEvent.keyboard('{End}');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Blue').id);
+
+    userEvent.keyboard('{Home}');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
+  });
+
+  it('should move active option with page up and page down', () => {
+    const { getByTestId, getByText } = render(
+      <Combobox open data-testid="combobox">
+        <Option>Aqua</Option>
+        <Option>Black</Option>
+        <Option>Blue</Option>
+        <Option>Brown</Option>
+        <Option>Green</Option>
+        <Option>Grey</Option>
+        <Option>Gold</Option>
+        <Option>Indigo</Option>
+        <Option>Orange</Option>
+        <Option>Pink</Option>
+        <Option>Purple</Option>
+        <Option>Red</Option>
+        <Option>Violet</Option>
+        <Option>White</Option>
+        <Option>Yellow</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    userEvent.click(getByText('Aqua'));
+    userEvent.keyboard('{PageDown}');
+
+    // should move forward 10
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Purple').id);
+
+    userEvent.keyboard('{ArrowDown}');
+    userEvent.keyboard('{PageUp}');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Black').id);
+  });
+
   it('should move active option based on typing', () => {
     const { getByTestId, getByText } = render(
       <Combobox open data-testid="combobox">
