@@ -1,4 +1,7 @@
 export {
+  brandWeb,
+  brandOffice,
+  brandTeams,
   teamsDarkTheme,
   teamsHighContrastTheme,
   teamsLightTheme,

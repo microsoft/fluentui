@@ -4,6 +4,7 @@ export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeams
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
 export { typographyStyles } from './global/index';
+export { brandWeb, brandOffice, brandTeams } from './global/brandColors';
 
 export type {
   Brands,

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Export brand colors",
+  "packageName": "@fluentui/tokens",
+  "email": "tigeroakes@microsoft.com",
+  "dependentChangeType": "patch"
+}
