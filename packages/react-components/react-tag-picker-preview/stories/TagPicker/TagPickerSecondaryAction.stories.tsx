@@ -67,3 +67,13 @@ export const SecondaryAction = () => {
     </div>
   );
 };
+
+SecondaryAction.parameters = {
+  docs: {
+    description: {
+      story: `
+\`TagPickerControl\` provides a \`secondaryAction\` slot for possible extra functionalities that may be desired. \`secondaryAction\` slot is \`absolute\` positioned on the top right corner of the control component together with \`expandIcon\` slot.
+`,
+    },
+  },
+};

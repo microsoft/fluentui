@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch, renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -26,20 +26,25 @@ export const SwatchPickerShape = () => {
   const styles = useStyles();
   return (
     <div className={styles.example}>
-      <SwatchPicker aria-label="SwatchPicker square shape">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+      <h3>Square</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker square shape">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
         })}
       </SwatchPicker>
-      <SwatchPicker aria-label="SwatchPicker circular shape" shape="circular">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+      <h3>Circular</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker circular shape" shape="circular">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
         })}
       </SwatchPicker>
+      <h3>Rounded</h3>
       <SwatchPicker aria-label="SwatchPicker rounded shape" shape="rounded">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
-        })}
+        {colors.map(color => (
+          <ColorSwatch key={color.value} {...color} />
+        ))}
       </SwatchPicker>
     </div>
   );

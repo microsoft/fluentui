@@ -8,12 +8,6 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     selectedOptions,
     selectOption,
     multiselect,
-    // eslint-disable-next-line deprecation/deprecation
-    focusVisible,
-    // eslint-disable-next-line deprecation/deprecation
-    setActiveOption,
-    // eslint-disable-next-line deprecation/deprecation
-    activeOption,
     value,
     triggerRef,
     secondaryActionRef,
@@ -41,9 +35,8 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       selectedOptions,
       selectOption,
       multiselect,
-      focusVisible,
-      setActiveOption,
-      activeOption,
+      focusVisible: false,
+      setActiveOption: noop,
     },
     picker: {
       value,
@@ -67,3 +60,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     },
   };
 }
+
+const noop = () => {
+  /** noop */
+};
