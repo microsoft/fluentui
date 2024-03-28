@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate to monosize 0.5",
+  "packageName": "@fluentui/react-charting",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
