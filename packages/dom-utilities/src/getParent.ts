@@ -18,12 +18,9 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
   }
 
   // Support looking for parents in shadow DOM
-  if (
-    typeof (child as HTMLSlotElement).assignedElements !== 'function' &&
-    (child as HTMLElement).assignedSlot?.parentNode
-  ) {
+  if (typeof (child as HTMLSlotElement).assignedElements !== 'function' && child.assignedSlot?.parentNode) {
     // Element is slotted
-    return (child as HTMLElement).assignedSlot as HTMLElement;
+    return child.assignedSlot as HTMLElement;
   } else if (child.parentNode?.nodeType === 11) {
     // nodeType 11 is DOCUMENT_FRAGMENT
     // Element is in shadow root
