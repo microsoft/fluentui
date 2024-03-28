@@ -34,6 +34,8 @@ export type {
 export { applyFocusVisiblePolyfill } from './focus/index';
 import { Types as TabsterTypes, dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent } from 'tabster';
 
+export type TabsterMoveFocusEvent = TabsterTypes.TabsterMoveFocusEvent;
+
 export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
 
 export type { KeyborgFocusInEvent } from 'keyborg';
