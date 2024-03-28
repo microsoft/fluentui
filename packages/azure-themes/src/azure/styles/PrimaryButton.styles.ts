@@ -92,6 +92,16 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootDisabled: {
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+      selectors: {
+        '&.is-disabled:focus': {
+          backgroundColor: `${extendedSemanticColors.primaryButtonBackgroundDisabled} `,
+          color: `${semanticColors.primaryButtonTextDisabled}`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled}`,
+          '::after': {
+            outlineColor: extendedSemanticColors.ButtonBorderFocus,
+          },
+        },
+      },
     },
   };
 };
