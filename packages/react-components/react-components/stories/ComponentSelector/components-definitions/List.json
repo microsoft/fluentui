@@ -1,0 +1,6 @@
+{
+  "name": "List",
+  "link": "",
+  "extends": "ListBase",
+  "static": "true"
+}

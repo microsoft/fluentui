@@ -1,0 +1,7 @@
+{
+  "name": "TreeBase",
+  "navigationByArrowKeys": "true",
+  "narratesPosition": "true",
+  "interactive": "true",
+  "hierarchical": "true"
+}
