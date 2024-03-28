@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add circleIDs to refArray for triggering callouts using circleIDs",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
