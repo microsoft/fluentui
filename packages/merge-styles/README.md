@@ -507,7 +507,7 @@ window.FabricConfig = {
 
 ## Shadow DOM
 
-`merge-styles` has experimental support for [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM). This feature is opt-in and incrementally adoptable. To enable the feature you need to include two [React Providers](https://react.dev/reference/react/createContext#provider):
+`merge-styles` has support for [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM). This feature is opt-in and incrementally adoptable. To enable the feature you need to include two [React Providers](https://react.dev/reference/react/createContext#provider):
 
 1. `MergeStylesRootProvider`: acts as the "global" context for your application. You should have one of these per page.
 2. `MergeStylesShadowRootProvider`: a context for each shadow root in your application. You should have one of these per shadow root.
@@ -549,21 +549,22 @@ Shadow DOM support is achieved in `merge-styles` by using [constructable stylesh
 
 If you use `customizable` or `styled` the existing "scope" value provided to these functions is used a unique key. If no key is provided `merge-styles` falls back to a "global" key. This global key is a catch-all and allows us to support code that was written before shadow DOM support was added or code that is called outside of React context.
 
-All `@fluentui/react` styles are scoped to via `customizable` and `styled` (and some updates to specific component styles where needed). If your components use these functions and you set the "scope" property your components will automatically be scoped.
+All `@fluentui/react` styles are scoped via `customizable` and `styled` (and some updates to specific component styles where needed). If your components use these functions and you set the "scope" property your components will automatically be scoped.
 If you're using `mergeStyles()` (and other `merge-styles` APIs) directly, your styles will be placed in the global scope and still be available in shadow roots, just not as optimally as possible.
 
 #### Style scoping example
 
 ```tsx
-import { useWindow } from '@fluentui/react';
+import { useMergeStylesHooks } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/merge-styles';
-import { useShadowConfig, useAdoptedStylesheet } from '@fluentui/utilities';
 import type { ShadowConfig } from '@fluentui/merge-styles';
 
 // This must be globally unique for the application
 const MY_COMPONENT_STYLESHEET_KEY: string = 'my-unique-key';
 
 const MyComponent = props => {
+  const { useWindow, useShadowConfig, useAdoptedStylesheet } = useMergeStylesHooks();
+
   // Make sure multi-window scenarios work (e.g., pop outs)
   const win: Window = useWindow();
   const shadowConfig: ShadowConfig = useShadowConfig(MY_COMPONENT_STYLESHEET_KEY, win);
