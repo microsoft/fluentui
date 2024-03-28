@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added Azure brand to brandColors",
+  "packageName": "@fluentui/tokens",
+  "email": "123518484+adr1-jpg@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
