@@ -6,6 +6,20 @@ import {
   DEFAULT_SHADOW_CONFIG,
 } from '@fluentui/merge-styles';
 import { getWindow } from '../../dom';
+
+import {
+  useAdoptedStylesheet as useAdoptedStylesheetDefault,
+  useAdoptedStylesheetEx as useAdoptedStylesheetExDefault,
+} from '../hooks/useAdoptedStylesheet';
+import { useShadowConfig as useShadowConfigDefault } from '../hooks/useShadowConfig';
+import {
+  useHasMergeStylesShadowRootContext as useHasMergeStylesShadowRootContextDefault,
+  useMergeStylesShadowRootContext as useMergeStylesShadowRootContextDefault,
+} from '../hooks/useMergeStylesShadowRoot';
+import { useMergeStylesRootStylesheets as useMergeStylesRootStylesheetsDefault } from '../hooks/useMergeStylesRootStylesheets';
+import { useStyled as useStyledDefault } from '../hooks/useStyled';
+import { useWindow as useWindowDefault } from '@fluentui/react-window-provider';
+
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/useAdoptedStylesheet';
 import type { ShadowConfigHook } from '../hooks/useShadowConfig';
@@ -156,14 +170,15 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
   const value = React.useMemo(() => {
     return {
       stylesheets,
-      useAdoptedStylesheet: useAdoptedStylesheet || noop,
-      useAdoptedStylesheetEx: useAdoptedStylesheetEx || noop,
-      useShadowConfig: useShadowConfig || noopShadow,
-      useMergeStylesShadowRootContext: useMergeStylesShadowRootContext || noopUndefined,
-      useHasMergeStylesShadowRootContext: useHasMergeStylesShadowRootContext || noop,
-      useMergeStylesRootStylesheets: useMergeStylesRootStylesheets || noopRootStylesheets,
-      useWindow: useWindow || noopUndefined,
-      useStyled: useStyled || noopUndefined,
+      useAdoptedStylesheet: useAdoptedStylesheet || useAdoptedStylesheetDefault,
+      useAdoptedStylesheetEx: useAdoptedStylesheetEx || useAdoptedStylesheetExDefault,
+      useShadowConfig: useShadowConfig || useShadowConfigDefault,
+      useMergeStylesShadowRootContext: useMergeStylesShadowRootContext || useMergeStylesShadowRootContextDefault,
+      useHasMergeStylesShadowRootContext:
+        useHasMergeStylesShadowRootContext || useHasMergeStylesShadowRootContextDefault,
+      useMergeStylesRootStylesheets: useMergeStylesRootStylesheets || useMergeStylesRootStylesheetsDefault,
+      useWindow: useWindow || useWindowDefault,
+      useStyled: useStyled || useStyledDefault,
     };
   }, [
     stylesheets,
