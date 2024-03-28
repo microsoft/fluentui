@@ -188,7 +188,7 @@ export const renderAccordionHeader_unstable: (state: AccordionHeaderState, conte
 export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
+export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element;
 
 // @public
 export const useAccordion_unstable: <Value = unknown>(props: AccordionProps<Value>, ref: React_2.Ref<HTMLElement>) => AccordionState<Value>;

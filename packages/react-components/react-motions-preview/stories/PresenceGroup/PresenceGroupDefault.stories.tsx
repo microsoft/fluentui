@@ -168,7 +168,7 @@ const ItemMotion = createPresenceComponent({
       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
     ],
-    easing: motionTokens.easingEasyEase,
+    easing: motionTokens.curveEasyEase,
     duration: motionTokens.durationUltraSlow,
   },
   exit: {
@@ -176,7 +176,7 @@ const ItemMotion = createPresenceComponent({
       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
     ],
-    easing: motionTokens.easingEasyEase,
+    easing: motionTokens.curveEasyEase,
     duration: motionTokens.durationUltraSlow,
   },
 });
