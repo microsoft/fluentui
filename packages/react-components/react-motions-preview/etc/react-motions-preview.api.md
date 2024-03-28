@@ -23,52 +23,29 @@ export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_
 export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
 
 // @public (undocumented)
-const durationFast = 150;
+export const curves: {
+    readonly curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
+    readonly curveAccelerateMid: "cubic-bezier(1,0,1,1)";
+    readonly curveAccelerateMin: "cubic-bezier(0.8,0,0.78,1)";
+    readonly curveDecelerateMax: "cubic-bezier(0.1,0.9,0.2,1)";
+    readonly curveDecelerateMid: "cubic-bezier(0,0,0,1)";
+    readonly curveDecelerateMin: "cubic-bezier(0.33,0,0.1,1)";
+    readonly curveEasyEaseMax: "cubic-bezier(0.8,0,0.2,1)";
+    readonly curveEasyEase: "cubic-bezier(0.33,0,0.67,1)";
+    readonly curveLinear: "cubic-bezier(0,0,1,1)";
+};
 
 // @public (undocumented)
-const durationFaster = 100;
-
-// @public (undocumented)
-const durationNormal = 200;
-
-// @public (undocumented)
-const durationSlow = 300;
-
-// @public (undocumented)
-const durationSlower = 400;
-
-// @public (undocumented)
-const durationUltraFast = 50;
-
-// @public (undocumented)
-const durationUltraSlow = 500;
-
-// @public (undocumented)
-const easingAccelerateMax = "cubic-bezier(1,0,1,1)";
-
-// @public (undocumented)
-const easingAccelerateMid = "cubic-bezier(0.7,0,1,0.5)";
-
-// @public (undocumented)
-const easingAccelerateMin = "cubic-bezier(0.8,0,1,1)";
-
-// @public (undocumented)
-const easingDecelerateMax = "cubic-bezier(0,0,0,1)";
-
-// @public (undocumented)
-const easingDecelerateMid = "cubic-bezier(0.1,0.9,0.2,1)";
-
-// @public (undocumented)
-const easingDecelerateMin = "cubic-bezier(0.33,0,0.1,1)";
-
-// @public (undocumented)
-const easingEasyEase = "cubic-bezier(0.33,0,0.67,1)";
-
-// @public (undocumented)
-const easingLinear = "cubic-bezier(0,0,1,1)";
-
-// @public (undocumented)
-const easingMaxEasyEase = "cubic-bezier(0.8,0,0.1,1)";
+export const durations: {
+    readonly durationUltraFast: 50;
+    readonly durationFaster: 100;
+    readonly durationFast: 150;
+    readonly durationNormal: 200;
+    readonly durationGentle: 250;
+    readonly durationSlow: 300;
+    readonly durationSlower: 400;
+    readonly durationUltraSlow: 500;
+};
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -76,27 +53,26 @@ export type MotionImperativeRef = {
     setPlayState: (state: 'running' | 'paused') => void;
 };
 
-declare namespace motionTokens {
-    export {
-        durationUltraFast,
-        durationFaster,
-        durationFast,
-        durationNormal,
-        durationSlow,
-        durationSlower,
-        durationUltraSlow,
-        easingAccelerateMax,
-        easingAccelerateMid,
-        easingAccelerateMin,
-        easingDecelerateMax,
-        easingDecelerateMid,
-        easingDecelerateMin,
-        easingMaxEasyEase,
-        easingEasyEase,
-        easingLinear
-    }
-}
-export { motionTokens }
+// @public (undocumented)
+export const motionTokens: {
+    curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
+    curveAccelerateMid: "cubic-bezier(1,0,1,1)";
+    curveAccelerateMin: "cubic-bezier(0.8,0,0.78,1)";
+    curveDecelerateMax: "cubic-bezier(0.1,0.9,0.2,1)";
+    curveDecelerateMid: "cubic-bezier(0,0,0,1)";
+    curveDecelerateMin: "cubic-bezier(0.33,0,0.1,1)";
+    curveEasyEaseMax: "cubic-bezier(0.8,0,0.2,1)";
+    curveEasyEase: "cubic-bezier(0.33,0,0.67,1)";
+    curveLinear: "cubic-bezier(0,0,1,1)";
+    durationUltraFast: 50;
+    durationFaster: 100;
+    durationFast: 150;
+    durationNormal: 200;
+    durationGentle: 250;
+    durationSlow: 300;
+    durationSlower: 400;
+    durationUltraSlow: 500;
+};
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
