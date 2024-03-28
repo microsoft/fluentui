@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add table navigation hook",
+  "packageName": "@fluentui/react-tabster",
+  "email": "adam.samec@gmail.com",
+  "dependentChangeType": "patch"
+}
