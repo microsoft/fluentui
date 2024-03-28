@@ -92,3 +92,20 @@ export const Appearance = () => {
     </>
   );
 };
+
+Appearance.parameters = {
+  docs: {
+    description: {
+      story: `
+A \`TagPicker\` can have the following appearance variants:
+
+* \`outline\` (default): has a border around all four sides.
+* \`underline\`: only has a bottom border.
+* \`filled-darker\`: no border, only a subtle background color difference against a white page. All tags will be by default \`outline\`.
+* \`filled-lighter\`: no border, and a white background.
+
+This is equivalent to the [\`Combobox\`](https://react.fluentui.dev/?path=/docs/components-combobox--default#appearance) \`appearance\` property.
+      `,
+    },
+  },
+};
