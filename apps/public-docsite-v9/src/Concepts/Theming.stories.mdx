@@ -145,3 +145,34 @@ import { themeToTokensObject } from '@fluentui/react-components';
 
 export const customTokens = themeToTokensObject(customLightTheme);
 ```
+
+### Creating theme styles without `FluentProvider`
+
+`createCSSRuleFromTheme()` allows you to create CSS from a theme and apply this CSS, for example, to `<body>`.
+
+It's framework agnostic and can be used without React. Safe for SSR scenarios:
+
+```ts
+import { createCSSRuleFromTheme, webLightTheme, webDarkTheme } from '@fluentui/react-components';
+
+const lightThemeCSS = createCSSRuleFromTheme('.fluentui-light-theme', webLightTheme);
+const darkThemeCSS = createCSSRuleFromTheme('.fluentui-dark-theme', webDarkTheme);
+
+// As this point it can be applied anywhere, for example, in EJS template
+const styleEl = document.createElement('style');
+
+styleEl.sheet.insertRule(lightThemeCSS);
+styleEl.sheet.insertRule(darkThemeCSS);
+
+document.head.appendChild(styleEl);
+
+document.body.classList.add(window.__THEME === 'DARK' ? 'fluentui-dark-theme' : 'fluentui-light-theme');
+```
+
+If theme switching is not needed, you can also use `:root` as selector:
+
+```ts
+import { createCSSRuleFromTheme, webLightTheme } from '@fluentui/react-components';
+
+createCSSRuleFromTheme(':root', webLightTheme);
+```
