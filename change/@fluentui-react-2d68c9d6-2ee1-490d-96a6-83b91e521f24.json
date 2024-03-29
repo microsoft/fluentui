@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: GroupedList initiates FocusRects",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
