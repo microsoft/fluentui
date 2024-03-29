@@ -34,9 +34,6 @@ export function useTarget<TElement extends HTMLElement = HTMLElement>(
     const currentElement = hostElement?.current;
     if (target) {
       if (typeof target === 'string') {
-        // const currentDoc: Document = getDocument(currentElement)!;
-        // targetRef.current = currentDoc ? currentDoc.querySelector(target) : null;
-
         // If element is part of shadow dom, then querySelector on shadow root, else query on document
         if ((currentElement?.getRootNode() as ShadowRoot)?.host) {
           targetRef.current = (currentElement?.getRootNode() as ShadowRoot)?.querySelector(target) ?? null;
