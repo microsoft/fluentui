@@ -833,8 +833,9 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight);
+
+        if (barHeight < Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
