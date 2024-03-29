@@ -9,6 +9,8 @@ interface IAreaChartBasicState {
   height: number;
   isCalloutselected: boolean;
   showAxisTitles: boolean;
+  isHeightSliderFocused: boolean;
+  isWidthSliderFocused: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -24,6 +26,8 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       height: 300,
       isCalloutselected: false,
       showAxisTitles: true,
+      isHeightSliderFocused: false,
+      isWidthSliderFocused: false,
     };
   }
 
@@ -170,6 +174,9 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+          style={this.state.isWidthSliderFocused ? { outline: '-webkit-focus-ring-color auto 5px' } : {}}
+          onFocus={() => this.setState({ isWidthSliderFocused: true })}
+          onBlur={() => this.setState({ isWidthSliderFocused: false })}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -180,6 +187,9 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           id="changeHeight_Basic"
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
+          style={this.state.isHeightSliderFocused ? { outline: '-webkit-focus-ring-color auto 5px' } : {}}
+          onFocus={() => this.setState({ isHeightSliderFocused: true })}
+          onBlur={() => this.setState({ isHeightSliderFocused: false })}
         />
 
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
