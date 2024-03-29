@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Elevate data points less than 1% of total sum to 1%",
-  "packageName": "@fluentui/react-charting",
-  "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "patch"
-}

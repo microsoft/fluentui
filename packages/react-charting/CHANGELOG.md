@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 22 Mar 2024 07:28:53 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2024 07:28:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.38)
+
+Fri, 29 Mar 2024 07:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.37..@fluentui/react-charting_v5.19.38)
+
+### Patches
+
+- Elevate data points less than 1% of total sum to 1% ([PR #30834](https://github.com/microsoft/fluentui/pull/30834) by shubhabrata08@gmail.com)
+- Bump @fluentui/theme-samples to v8.7.141 ([PR #30870](https://github.com/microsoft/fluentui/pull/30870) by beachball)
+- Bump @fluentui/react to v8.117.1 ([PR #30870](https://github.com/microsoft/fluentui/pull/30870) by beachball)
 
 ## [5.19.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.37)
 
