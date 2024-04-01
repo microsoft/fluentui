@@ -16,6 +16,26 @@ Fluent UI components are styled using CSS in JS. This technique requires a style
 
 Place a `<FluentProvider />` at the root of your app and pass theme as a prop.
 
+### React 18
+
+```jsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
+
+import App from './App';
+
+const root = createRoot(document.getElementById('root'));
+
+root.render(
+  <FluentProvider theme={teamsLightTheme}>
+    <App />
+  </FluentProvider>,
+);
+```
+
+### React 17
+
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
