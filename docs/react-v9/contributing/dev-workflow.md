@@ -46,7 +46,7 @@ Make the changes you need, and commit along the way.
 git status // Shows all changed files
 git add . // Stages the changed files
 git commit -m "Your brief message." // Makes the commits. You may notice a slight lag during committing as our linters work away.
-git push // Pushes your changes to your forked branch.
+git push --force// Pushes your changes to your forked branch.
 ```
 
 ### Syncing with master
@@ -57,7 +57,7 @@ It is strongly recommended that you rebase your branch onto (rather than merging
 git checkout master // Switches to master
 git pull upstream master // Syncs your local master with the latest version of master at the origin
 git checkout your-fancy-branch // Switches to your branch
-git rebase master // Tacks your commits onto the end of master.
+git rebase -i master // Tacks your commits onto the end of master. Force is necessary since rebase changes history.
 ```
 
 Resolve any conflicts in your editor.
@@ -68,17 +68,15 @@ Creating _draft_ pull requests is often an easy way to keep track of your work w
 
 In other cases, such as before checking in or running tests, you may need to run a full build (or build up to a certain package):
 
-- `yarn build` - build everything. It is good the run this weekly, or anytime you start a new project off master.
+- `yarn lage build --since master` - build everything. It is good the run this weekly, or anytime you start a new project off master.
 - `yarn buildto package-name` - build up to a package.
   - `yarn buildto @fluentui/react`
 
-You can also `cd` to any package under `packages/*` and run `yarn build` to build individual things, though keep in mind that this may require dependencies to be built first (using `build --to`).
-
 ### Making a pull request
 
-Make sure all your changes are committed, and run a build on the package that was updated, e.g. `yarn workspace @fluentui/react-components build` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update the right docs accordingly. Commit this change.
+Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update the right docs accordingly. Commit this change.
 
-If your changes make any changes or additions to the DOM, you may need to run `yarn update-snapshots`. Check these updates in.
+If your changes make any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. Check these updates in.
 
 Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
 
@@ -86,18 +84,18 @@ Before creating a pull request, be sure to run `yarn change` and provide a high-
 - Minor - Adding new API surface area that is backwards compatible and does not dramatically change the intent of an API.
 - Patch - No change in API surface area.
 
-After choosing a change type, the description should follow the [semantic commit message format](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716), and be prepended by one of the following: `feat:`, `fix:`, `chore:`, `docs:`, or `refactor:`.
+After choosing a change type, the description should follow the [semantic commit message format](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716), and be prepended by one of the following: `feat:`, `fix:`, `chore:`, `docs:`, or `refactor:`. Use [this guide](https://www.conventionalcommits.org/en/v1.0.0/#summary) for more guidance on how to write your change log files.
 
 When your change is ready, [create a pull request](https://github.com/microsoft/fluentui/pulls) from your branch to the `master` branch in `microsoft/fluentui`.
 
 Common checklist for PR's
 
 - Descriptive title: "feat: Adding 'multiple' prop to Nav"
-- Brief description of the improvement you're making. You may briefly summarize the issue. Assume the PR is the reviewer's starting point and they should only have to dive into the issue for very specific details.
+- Brief description of the improvement you're making. You should summarize the issue you are addressing. Assume the PR is the reviewer's starting point and they should only have to dive into the issue for very specific details.
 - Link to the relevant issue.
 - Visual aid for changes to give more context. Before and After clips help a lot.
 - Open questions - Point reviewers to places in your code you're looking for specific feedback on.
-- How to test - Briefly explain how a reviewer can test your code.
+- How to test - Briefly explain how a reviewer can test your code, and what they should focus on.
 - Reviewers will be automatically added based on the location of the changes in the code base.
 
 If you're using an internal Microsoft linked account, feel free to squash that big green button. 🎉
