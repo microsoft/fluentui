@@ -62,7 +62,7 @@ git rebase -i master // Tacks your commits onto the end of master. Force is nece
 
 Resolve any conflicts in your editor.
 
-`git push` // Pushes your changes to your forked branch.
+`git push upstream --force` // Pushes your changes to your forked branch. Include `upstream` if you have an open pull request, otherwise do not include it.
 
 Creating _draft_ pull requests is often an easy way to keep track of your work without it being actively reviewed by others.
 
