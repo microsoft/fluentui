@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-teaching-popover",
   "version": "9.0.0",
-  "description": "New fluentui react package",
+  "description": "TeachingPopover displays content in a pop up format over other content, it provides primary and secondary actions to users with an additional TeachingPopoverCarousel extension that enables multiple pages within the TeachingPopover.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
