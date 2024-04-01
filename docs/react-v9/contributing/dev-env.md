@@ -17,11 +17,12 @@ This document describes how to set up your development environment and contribut
   - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to your MS account
 - Install **[Node.js LTS](https://nodejs.org/en/)** (18 as of writing)
   - Optional: If you're developing across multiple repos with varying Node version requirements, you may want to use `nvm` to install and manage Node versions.
-- Install **[Yarn 1](https://classic.yarnpkg.com/) (we do not support Yarn 2)**
+- Install **[Yarn v1](https://classic.yarnpkg.com/) (we do not use Yarn >=v2)**
   - easiest way: run `npm install -g yarn@1`
 - Install **[Git](https://git-scm.com/)**
 - Install **[Visual Studio Code](https://code.visualstudio.com/)** or any other editor of your preference
-- Optional: If you'd like a GUI for Git, some team members use **[GitHub app](https://desktop.github.com/)** or **[SourceTree](https://www.atlassian.com/software/sourcetree)**
+- Install **[Nx Console extension for Visual Studio](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console)**
+- Optional: If you'd like a GUI for Git, some team members use the one built into VSCode, **[GitHub app](https://desktop.github.com/)** or **[SourceTree](https://www.atlassian.com/software/sourcetree)**
 - Optional: **[Snipping tool](https://apps.microsoft.com/detail/9mz95kl8mr0l?launch=true&mode=full&hl=en-us&gl=us&ocid=bingwebsearch)** for screen grabs and recordings
 - Optional: **[Accessibility insight for web](https://accessibilityinsights.io/)**
 - Optional: **[Node Version Manager](https://github.com/nvm-sh/nvm)**
@@ -41,7 +42,7 @@ Open a command line and run:
 
 If you do not wish to contribute changes, for `@fluentui/react` version 8 please follow the instructions on the [`@fluentui/react` README](https://github.com/microsoft/fluentui/blob/master/packages/react/README.md#building-the-repo) page for how to clone and build the main repo. Else, keep reading.
 
-Run `yarn`. This may take 20-40 minutes initially.
+Run `yarn`. This may take a while initially.
 
 Run `yarn start` and select your start up project.
 
@@ -52,7 +53,7 @@ Run `yarn start` and select your start up project.
 
 ## Creating your own fork
 
-To contribute changes, start by creating your own fork of the repository. (We develop in forks because there are lots of developers in this project, and creating lots of branches on the main repository wouldn't scale.)
+We use forks forks for development, which means you need to setup a fork. [Read about that here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 
 1. Ensure you are logged in to GitHub.
 2. Navigate to the **[microsoft/fluentui](https://github.com/microsoft/fluentui)** repository.
