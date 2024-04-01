@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 01 Apr 2024 07:26:16 GMT",
+      "tag": "@fluentui/react-charting_v5.19.39",
+      "version": "5.19.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "87f37bcda562f8d5bcde71e8896b6ccd74e750d6",
+            "comment": "Fix incorrect bar height for y values < 1 in vertical stacked bar chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Mar 2024 07:28:45 GMT",
       "tag": "@fluentui/react-charting_v5.19.38",
       "version": "5.19.38",

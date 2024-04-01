@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix incorrect bar height for y values < 1 in vertical stacked bar chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
