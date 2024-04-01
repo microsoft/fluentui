@@ -833,6 +833,7 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     d3Select(d1)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div

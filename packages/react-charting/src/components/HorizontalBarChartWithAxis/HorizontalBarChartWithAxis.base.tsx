@@ -491,6 +491,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     for (let i = 0; i < tickObjectLength; i++) {
       const d1 = tickObject[i];
       d3Select(d1)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .on('mouseover', (event: any, d) => {
           if (!this.state.tooltipElement) {
             div.style('opacity', 0.9);
