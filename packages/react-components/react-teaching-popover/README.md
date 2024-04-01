@@ -6,7 +6,7 @@ A Teaching Popover is a structured popover to showcase information about a new c
 
 For a simple feature, a single paged TeachingPopover can be used to display core information, while extensive reading can be linked via a 'Learn More' secondary action.
 
-For more complicated features, we recommend using the TeachingPopoverCarousel, this will enable multiple steps of information with an associating title/image, and can guide the user through multi-step tutorials - in situations where a single page is likely to require multiple TeachingPopovers pointing to various components, the upcoming TeachingCallout component will be better suited.
+For more complicated features, we recommend using the TeachingPopoverCarousel, this will enable multiple steps of information with an associating title/image, and can guide the user through multi-step tutorials.
 
 ## Sample Code
 
