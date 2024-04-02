@@ -36,7 +36,6 @@
     "@fluentui/theme-designer": "*",
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-swatch-picker-preview": "*",
-    "@fluentui/react-motion-preview": "*",
     "@fluentui/react-motions-preview": "*",
     "@fluentui/react-tag-picker-preview": "*",
     "@fluentui/react-teaching-popover-preview": "*",
