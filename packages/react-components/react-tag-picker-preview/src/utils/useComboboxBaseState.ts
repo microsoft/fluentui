@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
+import { ComboboxBaseOpenEvents, ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
-import { useOptionCollection } from '../../../react-combobox/src/utils/useOptionCollection';
-import { useSelection } from '../../../react-combobox/src/utils/useSelection';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
-import { ComboboxBaseOpenEvents } from '../../../react-combobox/src/utils/ComboboxBase.types';
-import { OptionValue } from '../../../react-combobox/src/utils/OptionCollection.types';
+import { OptionValue } from './OptionCollection.types';
+import { useOptionCollection } from './useOptionCollection';
+import { useSelection } from './useSelection';
 
 /**
  * @internal
