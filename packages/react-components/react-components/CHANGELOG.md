@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 28 Mar 2024 10:43:54 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2024 09:47:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.47.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.3)
+
+Tue, 02 Apr 2024 09:47:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.2..@fluentui/react-components_v9.47.3)
+
+### Minor changes
+
+- `@fluentui/react-shared-contexts`
+  - deprecate unused ListItemButton exports ([PR #29760](https://github.com/microsoft/fluentui/pull/29760) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix: When month picker is overlaid and gototoday button is pressed, hide month picker. ([PR #30870](https://github.com/microsoft/fluentui/pull/30870) by estebanmu@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: rotating SVG should not cause parent overflow ([PR #30615](https://github.com/microsoft/fluentui/pull/30615) by sarah.higley@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - bugfix: removes errouneous combobox imports ([PR #30926](https://github.com/microsoft/fluentui/pull/30926) by bernardo.sunderhus@gmail.com)
 
 ## [9.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.2)
 
