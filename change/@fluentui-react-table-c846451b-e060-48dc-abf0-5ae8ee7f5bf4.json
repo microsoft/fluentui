@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add resizableColumnsOptions with option to allowContainerOverflow",
+  "packageName": "@fluentui/react-table",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
