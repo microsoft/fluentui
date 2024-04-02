@@ -135,7 +135,8 @@ export const useTeachingPopoverCarousel_unstable = (
     // Handle customized page count localization
     if (props.renderPageCountText) {
       pageCount.children = props.renderPageCountText(currentPage, totalPages);
-    } else {
+    } else if (typeof props.pageCount === 'string') {
+      // When a string is provided, we will pre/append the localized pagination
       pageCount.children = `${currentPage + 1} ${pageCount.children ?? '/'} ${totalPages}`;
     }
   }
