@@ -90,28 +90,31 @@ export const useTeachingPopoverCarousel_unstable = (
   const previous = slot.optional(props.previous, {
     defaultProps: {
       appearance: appearance === 'brand' ? 'outline' : undefined,
-      children: currentPage === 0 ? strings.initialStepText : strings.previous,
     },
     renderByDefault: true,
     elementType: Button,
   });
 
-  // Merge any provided callback with previous button
+  // Merge any provided callback with previous button and handle variant text
   if (previous) {
+    if (currentPage === 0) {
+      previous.children = props.initialStepText;
+    }
     previous.onClick = mergeCallbacks(previous?.onClick, handlePrevButtonClick);
   }
 
   const next = slot.always(props.next, {
     defaultProps: {
       appearance: appearance === 'brand' ? undefined : 'primary',
-      children: currentPage === totalPages - 1 ? strings.finalStepText : strings.next,
-      onClick: handleNextButtonClick,
     },
     elementType: Button,
   });
 
   // Merge any provided callback with next button
   if (next) {
+    if (currentPage === totalPages - 1) {
+      next.children = props.finalStepText;
+    }
     next.onClick = mergeCallbacks(next?.onClick, handleNextButtonClick);
   }
 
@@ -123,18 +126,19 @@ export const useTeachingPopoverCarousel_unstable = (
 
   const footer = slot.always(props.footer, { elementType: 'div' });
 
-  let pageCountTextChildren;
-  if (typeof props.strings.pageCountText === 'function') {
-    const renderFunc = props.children as TeachingPopoverPageCountChildRenderFunction;
-    pageCountTextChildren = { children: renderFunc(currentPage, totalPages) };
-  } else {
-    pageCountTextChildren = { children: `${currentPage + 1} ${props.strings.pageCountText ?? '/'} ${totalPages}` };
-  }
-  const pageCount = slot.optional(props.nav, {
-    defaultProps: { ...pageCountTextChildren },
+  const pageCount = slot.optional(props.pageCount, {
     renderByDefault: paginationType === 'text',
-    elementType: TeachingPopoverCarouselNav,
+    elementType: 'div',
   });
+
+  if (pageCount) {
+    // Handle customized page count localization
+    if (props.renderPageCountText) {
+      pageCount.children = props.renderPageCountText(currentPage, totalPages);
+    } else {
+      pageCount.children = `${currentPage + 1} ${pageCount.children ?? '/'} ${totalPages}`;
+    }
+  }
 
   return {
     appearance,

@@ -29,14 +29,7 @@ export const CarouselBrand = (props: TeachingPopoverProps) => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverCarousel
-        strings={{
-          next: 'Next',
-          previous: 'Previous',
-          initialStepText: 'Close',
-          finalStepText: 'Finish',
-        }}
-      >
+      <TeachingPopoverCarousel next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>

@@ -40,17 +40,6 @@ export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
 
 // For localization or customization, users may want to modify this for their own purposes
 export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
-export type TeachingPopoverPageCountRenderType = TeachingPopoverPageCountChildRenderFunction | string;
-export type TeachingPopoverStrings = {
-  previous: string;
-  initialStepText: string;
-  next: string;
-  finalStepText: string;
-  /**
-   * Localize the separator between numbers, or use a function to fully override
-   */
-  pageCountText?: TeachingPopoverPageCountRenderType;
-};
 
 export type TeachingPopoverPageChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   /**
@@ -62,7 +51,7 @@ export type TeachingPopoverPageChangeData = EventData<'click', React.MouseEvent<
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopoverCarouselSlots>> & {
+export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopoverCarouselSlots>> & {
   /**
    * Controls whether buttons will be centered (balanced) or right aligned
    * Defaults to 'centered'.
@@ -76,9 +65,19 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
   paginationType?: 'text' | 'icon';
 
   /**
-   * Strings used to localize carousel functionality
+   * The text to be displayed on the initial step of carousel
    */
-  strings: TeachingPopoverStrings;
+  initialStepText: string;
+
+  /**
+   * The text to be displayed on the final step of carousel
+   */
+  finalStepText: string;
+
+  /**
+   * Localize the separator between numbers, or use a function to fully override
+   */
+  renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
 
   /**
    * Page at which carousel should be initialized to

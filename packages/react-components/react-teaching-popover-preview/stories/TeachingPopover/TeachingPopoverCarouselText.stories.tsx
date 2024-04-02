@@ -30,14 +30,12 @@ export const CarouselText = (props: TeachingPopoverProps) => (
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
       <TeachingPopoverCarousel
-        paginationType={'text'}
-        strings={{
-          next: 'Next',
-          previous: 'Previous',
-          initialStepText: 'Close',
-          finalStepText: 'Finish',
-          pageCountText: 'of',
-        }}
+        next="Next"
+        previous="Previous"
+        initialStepText="Close"
+        finalStepText="Finish"
+        paginationType="text"
+        pageCount="of"
       >
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
