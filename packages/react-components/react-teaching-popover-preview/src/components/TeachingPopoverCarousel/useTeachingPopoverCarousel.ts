@@ -6,11 +6,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import type {
-  TeachingPopoverCarouselProps,
-  TeachingPopoverCarouselState,
-  TeachingPopoverPageCountChildRenderFunction,
-} from './TeachingPopoverCarousel.types';
+import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import { Button } from '@fluentui/react-button';
 import { useState } from 'react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
@@ -20,7 +16,7 @@ export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselState => {
-  const { layout = 'centered', paginationType = 'icon', strings, onPageChange, onFinish } = props;
+  const { layout = 'centered', paginationType = 'icon', onPageChange, onFinish } = props;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
