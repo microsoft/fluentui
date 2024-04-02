@@ -21,14 +21,14 @@ Place a `<FluentProvider />` at the root of your app and pass theme as a prop.
 ```jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <FluentProvider theme={teamsLightTheme}>
+  <FluentProvider theme={webLightTheme}>
     <App />
   </FluentProvider>,
 );
@@ -39,12 +39,12 @@ root.render(
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 
 import App from './App';
 
 ReactDOM.render(
-  <FluentProvider theme={teamsLightTheme}>
+  <FluentProvider theme={webLightTheme}>
     <App />
   </FluentProvider>,
   document.getElementById('root'),
