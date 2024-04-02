@@ -2,11 +2,12 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
 import { tokens } from '@fluentui/react-theme';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
-  button: 'fui-ColorSwatch__button',
+  icon: 'fui-ColorSwatch__icon',
+  disabledIcon: 'fui-ColorSwatch__disabledIcon',
 };
 
 export const swatchCSSVars = {
@@ -18,47 +19,80 @@ const { color } = swatchCSSVars;
 /**
  * Styles for the root slot
  */
-const useStyles = makeResetStyles({
-  position: 'relative',
+const useResetStyles = makeResetStyles({
+  display: 'inline-flex',
+  flexShrink: 0,
+  alignItems: 'center',
+  justifyContent: 'center',
   boxSizing: 'border-box',
-  border: 'none',
-  padding: 0,
+  border: `1px solid ${tokens.colorTransparentStroke}`,
   background: `var(${color})`,
+  overflow: 'hidden',
+  padding: '0',
   ':hover': {
     cursor: 'pointer',
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandBackgroundInverted}`,
+    border: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
   },
   ':hover:active': {
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
-    border: `${tokens.strokeWidthThick} solid ${tokens.colorBrandBackgroundInverted}`,
+    border: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
   },
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
-});
+  ':focus': {
+    outline: 'none',
+  },
+  ':focus-visible': {
+    outline: 'none',
+  },
+  ...createCustomFocusIndicatorStyle({
+    border: 'none',
+    outline: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+  }),
 
-const useButtonStyles = makeResetStyles({
-  position: 'absolute',
-  left: 0,
-  top: 0,
-  width: '100%',
-  height: '100%',
-  boxSizing: 'border-box',
-  margin: 0,
-  opacity: 0,
-});
+  // High contrast styles
 
-const useStylesSelected = makeStyles({
-  selected: {
-    ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+  '@media (forced-colors: active)': {
+    ':focus': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
+    },
+
     ':hover': {
-      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+
+    ':hover:active': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+  },
+});
+
+const useStyles = makeStyles({
+  disabled: {
+    ':hover': {
+      cursor: 'not-allowed',
+      boxShadow: 'none',
+    },
+  },
+  selected: {
+    ...shorthands.border('none'),
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
+    ':hover': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
     },
     ':hover:active': {
-      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 7px ${tokens.colorStrokeFocus1}`,
     },
+    ...createCustomFocusIndicatorStyle({
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus2}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    }),
   },
 });
 
@@ -84,12 +118,43 @@ const useSizeStyles = makeStyles({
 const useShapeStyles = makeStyles({
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    }),
   },
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
   },
   square: {
     ...shorthands.borderRadius(tokens.borderRadiusNone),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusNone),
+    }),
+  },
+});
+
+const useIconStyles = makeStyles({
+  disabledIcon: {
+    color: tokens.colorNeutralForegroundInverted,
+  },
+  icon: {
+    display: 'flex',
+    alignSelf: 'center',
+  },
+  extraSmall: {
+    fontSize: '16px',
+  },
+  small: {
+    fontSize: '16px',
+  },
+  medium: {
+    fontSize: '20px',
+  },
+  large: {
+    fontSize: '24px',
   },
 });
 
@@ -97,22 +162,36 @@ const useShapeStyles = makeStyles({
  * Apply styling to the ColorSwatch slots based on the state
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
+  const resetStyles = useResetStyles();
   const styles = useStyles();
-  const buttonStyles = useButtonStyles();
-  const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
+  const iconStyles = useIconStyles();
+
+  const size = state.size ?? 'medium';
 
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
-    styles,
-    sizeStyles[state.size ?? 'medium'],
+    resetStyles,
+    sizeStyles[size],
     shapeStyles[state.shape ?? 'square'],
-    state.selected && selectedStyles.selected,
+    state.selected && styles.selected,
+    state.disabled && styles.disabled,
     state.root.className,
   );
 
-  state.button.className = mergeClasses(colorSwatchClassNames.button, buttonStyles, state.button.className);
+  if (state.disabled && state.disabledIcon) {
+    state.disabledIcon.className = mergeClasses(
+      iconStyles.icon,
+      iconStyles[size],
+      iconStyles.disabledIcon,
+      state.disabledIcon.className,
+    );
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.icon, iconStyles[size], state.icon.className);
+  }
 
   return state;
 };

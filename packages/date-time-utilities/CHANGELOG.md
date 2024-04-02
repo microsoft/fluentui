@@ -1,8 +1,17 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Wed, 10 Jan 2024 07:28:50 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 07:28:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.6.0)
+
+Fri, 22 Mar 2024 07:28:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.16..@fluentui/date-time-utilities_v8.6.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30807](https://github.com/microsoft/fluentui/pull/30807) by behowell@microsoft.com)
 
 ## [8.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.16)
 

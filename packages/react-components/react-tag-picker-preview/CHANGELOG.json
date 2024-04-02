@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-tag-picker-preview",
+  "entries": [
+    {
+      "date": "Thu, 28 Mar 2024 10:43:54 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "a697cff7f93952d4c31fb135812a7fa3a19e2aee",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    }
+  ]
+}

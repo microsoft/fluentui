@@ -135,8 +135,8 @@ function useTriggerKeydown(
   };
 
   const setKeyboardNavigation = useSetKeyboardNavigation();
-  return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
-    const action = getDropdownActionFromKey(e, { open, multiselect });
+  return useEventCallback((event: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
+    const action = getDropdownActionFromKey(event, { open, multiselect });
     const activeOption = getActiveOption();
 
     switch (action) {
@@ -149,7 +149,7 @@ function useTriggerKeydown(
       case 'Close':
       case 'CloseSelect':
       case 'Select':
-        e.preventDefault();
+        event.preventDefault();
         break;
     }
 
@@ -172,21 +172,21 @@ function useTriggerKeydown(
         pageUp();
         break;
       case 'Open':
-        setOpen(e, true);
+        setOpen(event, true);
         break;
       case 'Close':
         // stop propagation for escape key to avoid dismissing any parent popups
-        e.stopPropagation();
-        setOpen(e, false);
+        event.stopPropagation();
+        setOpen(event, false);
         break;
       case 'CloseSelect':
-        !multiselect && !activeOption?.disabled && setOpen(e, false);
+        !multiselect && !activeOption?.disabled && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectOption(e, activeOption);
+        activeOption && selectOption(event, activeOption);
         break;
       case 'Tab':
-        !multiselect && activeOption && selectOption(e, activeOption);
+        !multiselect && activeOption && selectOption(event, activeOption);
         break;
     }
   });

@@ -1,7 +1,7 @@
 jest.mock('react-dom');
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { chartPointsDC, pointsDC } from '../../utilities/test-data';
+import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -52,6 +52,7 @@ export const noColorsChartPoints: IChartProps = {
 };
 
 describe('DonutChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
   it('renders DonutChart correctly', () => {
     let component: any;
     rendererAct(() => {
@@ -123,6 +124,14 @@ describe('DonutChart snapShot testing', () => {
     let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPointsDC} hideLabels={false} showLabelsInPercent={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should elevate all smaller values to minimums', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<DonutChart data={chartPointsDCElevateMinimums} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -234,6 +243,7 @@ describe('DonutChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
   it('No empty chart aria label div rendered', () => {
     domAct(() => {
       wrapper = mount(<DonutChart data={chartPointsDC} />);

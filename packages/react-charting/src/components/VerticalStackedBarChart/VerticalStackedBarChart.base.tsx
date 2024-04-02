@@ -833,8 +833,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight);
+        if (barHeight < Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -978,7 +978,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         return point.x as Date;
       })!;
       const xBarScale = d3ScaleUtc()
-        .domain([sDate, lDate])
+        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
           containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
@@ -988,7 +988,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     const xBarScale = d3ScaleBand()
       .domain(this._xAxisLabels)
-      .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+      .range(
+        this._isRtl
+          ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+          : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+      )
       .paddingInner(this._xAxisInnerPadding)
       .paddingOuter(this._xAxisOuterPadding);
 

@@ -1572,3 +1572,39 @@ export {
   useAriaLiveAnnouncerContextValues_unstable,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
+
+export {
+  Rating,
+  ratingClassNames,
+  renderRating_unstable,
+  useRatingStyles_unstable,
+  useRating_unstable,
+  useRatingContextValues,
+  RatingItem,
+  ratingItemClassNames,
+  renderRatingItem_unstable,
+  useRatingItemStyles_unstable,
+  useRatingItem_unstable,
+  RatingItemProvider,
+  useRatingItemContextValue_unstable,
+  RatingDisplay,
+  ratingDisplayClassNames,
+  renderRatingDisplay_unstable,
+  useRatingDisplayStyles_unstable,
+  useRatingDisplay_unstable,
+  useRatingDisplayContextValues,
+} from '@fluentui/react-rating';
+export type {
+  RatingProps,
+  RatingSlots,
+  RatingState,
+  RatingOnChangeEventData,
+  RatingContextValues,
+  RatingItemProps,
+  RatingItemSlots,
+  RatingItemState,
+  RatingDisplayProps,
+  RatingDisplaySlots,
+  RatingDisplayState,
+  RatingDisplayContextValues,
+} from '@fluentui/react-rating';

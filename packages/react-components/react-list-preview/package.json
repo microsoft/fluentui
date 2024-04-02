@@ -2,7 +2,7 @@
   "name": "@fluentui/react-list-preview",
   "version": "0.0.0",
   "private": true,
-  "description": "New fluentui react package",
+  "description": "React List v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -27,7 +27,9 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -37,10 +39,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.31",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.18.2",
-    "@fluentui/react-shared-contexts": "^9.14.1",
+    "@fluentui/react-checkbox": "^9.2.18",
+    "@fluentui/react-context-selector": "^9.1.56",
+    "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-tabster": "^9.19.5",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.5",
+    "@fluentui/react-shared-contexts": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

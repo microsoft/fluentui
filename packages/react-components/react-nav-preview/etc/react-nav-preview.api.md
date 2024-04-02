@@ -11,6 +11,9 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { InlineDrawerProps } from '@fluentui/react-drawer';
+import { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { InlineDrawerState } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -73,6 +76,18 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
 export type NavContextValues = {
     nav: NavContextValue;
 };
+
+// @public
+export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
+
+// @public (undocumented)
+export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+
+// @public
+export type NavDrawerProps = InlineDrawerProps & NavProps;
+
+// @public
+export type NavDrawerState = InlineDrawerState & NavContextValue;
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
@@ -182,6 +197,9 @@ export const renderNavCategory_unstable: (state: NavCategoryState, contextValues
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
 
 // @public
+export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
+
+// @public
 export const renderNavItem_unstable: (state: NavItemState) => JSX.Element;
 
 // @public
@@ -204,6 +222,12 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
+
+// @public
+export const useNavDrawer_unstable: (props: NavDrawerProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerState;
+
+// @public
+export const useNavDrawerStyles_unstable: (state: NavDrawerState) => NavDrawerState;
 
 // @public
 export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavItemState;

@@ -4,84 +4,78 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
 
 // @public (undocumented)
 export const listClassNames: SlotClassNames<ListSlots>;
 
-// @public
+// @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
-
-// @public
-export const ListItemButton: ForwardRefComponent<ListItemButtonProps>;
-
-// @public (undocumented)
-export const listItemButtonClassNames: SlotClassNames<ListItemButtonSlots>;
-
-// @public
-export type ListItemButtonProps = ComponentProps<ListItemButtonSlots> & {};
-
-// @public (undocumented)
-export type ListItemButtonSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type ListItemButtonState = ComponentState<ListItemButtonSlots>;
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
 
 // @public
-export type ListItemProps = ComponentProps<ListItemSlots> & {};
+export type ListItemProps = ComponentProps<ListItemSlots> & {
+    value?: string | number;
+    onAction?: (e: ListItemActionEvent) => void;
+};
 
 // @public (undocumented)
 export type ListItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'li', 'div'>>;
+    checkmark?: Slot<typeof Checkbox>;
 };
 
 // @public
-export type ListItemState = ComponentState<ListItemSlots>;
+export type ListItemState = ComponentState<ListItemSlots> & {
+    selectable: boolean;
+    navigable: boolean;
+};
 
 // @public
-export type ListProps = ComponentProps<ListSlots> & {};
+export type ListProps = ComponentProps<ListSlots> & {
+    navigationMode?: ListNavigationMode;
+    selectionMode?: SelectionMode_2;
+    selectedItems?: SelectionItemId[];
+    defaultSelectedItems?: SelectionItemId[];
+    onSelectionChange?: EventHandler<OnListSelectionChangeData>;
+};
 
 // @public (undocumented)
 export type ListSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
 };
 
 // @public
-export type ListState = ComponentState<ListSlots>;
+export type ListState = ComponentState<ListSlots> & ListContextValue;
 
 // @public
-export const renderList_unstable: (state: ListState) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
 
 // @public
 export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
 
 // @public
-export const renderListItemButton_unstable: (state: ListItemButtonState) => JSX.Element;
+export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
 
 // @public
-export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement>) => ListState;
-
-// @public
-export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLDivElement>) => ListItemState;
-
-// @public
-export const useListItemButton_unstable: (props: ListItemButtonProps, ref: React_2.Ref<HTMLDivElement>) => ListItemButtonState;
-
-// @public
-export const useListItemButtonStyles_unstable: (state: ListItemButtonState) => ListItemButtonState;
+export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
 
 // @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;

@@ -179,7 +179,7 @@ Info tip subtitle located at the top of the popover, provides a dismiss button b
 
 TBD: Replace as slots inside TeachingPopoverBody?
 
-TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody, it does not provide a dismiss by default, but is available via 'showDismiss' - there should only ever be one 'dismiss' icon, so this option is intended for when no TeachingPopoverHeader is provided.
+TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody, it does not provide a dismiss by default' - there should only ever be one 'dismiss' icon, so this option is intended for when no TeachingPopoverHeader is provided.
 
 #### TeachingPopoverBody
 

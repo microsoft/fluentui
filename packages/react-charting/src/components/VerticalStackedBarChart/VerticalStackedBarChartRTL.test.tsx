@@ -18,15 +18,36 @@ import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
+const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
 beforeEach(() => {
-  // When adding a new snapshot test, it's observed that other snapshots may fail due to
-  // components sharing a common global counter for IDs. To prevent this from happening,
-  // we should reset the IDs before each test execution.
   resetIds();
 });
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -110,6 +131,9 @@ const simplePointsWithoutLine = [
 const maxBarGap = 5;
 
 describe('Vertical stacked bar chart rendering', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the vertical stacked bar chart with numeric x-axis data',
     VerticalStackedBarChart,
@@ -134,7 +158,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -150,7 +174,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -166,10 +190,12 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
+    beforeEach(updateChartWidthAndHeight);
+    afterEach(sharedAfterEach);
     testWithoutWait(
       `Should render the vertical stacked bar chart with Date x-axis data in ${tzName} timezone`,
       VerticalStackedBarChart,
@@ -182,12 +208,15 @@ describe('Vertical stacked bar chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(tzIdentifier),
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
     );
   });
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render line with the data provided',
     VerticalStackedBarChart,
@@ -601,15 +630,8 @@ describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Vertical stacked bar chart - Screen resolution', () => {
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-  });
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -643,6 +665,9 @@ describe('Vertical stacked bar chart - Screen resolution', () => {
 });
 
 describe('Vertical stacked bar chart - Theme', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -656,6 +681,9 @@ describe('Vertical stacked bar chart - Theme', () => {
 });
 
 describe('VerticalStackedBarChart - mouse events', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should render callout correctly on mouseover',
     VerticalStackedBarChart,

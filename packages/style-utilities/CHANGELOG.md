@@ -1,8 +1,30 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 31 Jan 2024 07:27:57 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 07:28:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.5)
+
+Fri, 22 Mar 2024 07:28:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.10.4..@fluentui/style-utilities_v8.10.5)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.43 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/utilities to v8.15.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+
+## [8.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.4)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.10.3..@fluentui/style-utilities_v8.10.4)
+
+### Patches
+
+- fix: Update IStyleSet type to fix error when using TypeScript 5.3+ ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by behowell@microsoft.com)
+- Bump @fluentui/theme to v2.6.42 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/merge-styles to v8.6.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/utilities to v8.14.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
 
 ## [8.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.3)
 

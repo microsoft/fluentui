@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/merge-styles",
-  "version": "8.5.15",
+  "version": "8.6.0",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
