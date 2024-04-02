@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 29 Mar 2024 07:28:44 GMT",
+      "tag": "@fluentui/react_v8.117.1",
+      "version": "8.117.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "01b8efbe9f79b7afa0ab785523e4ad78817fa376",
+            "comment": "fix: GroupedList initiates FocusRects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Mar 2024 07:28:52 GMT",
       "tag": "@fluentui/react_v8.117.0",
       "version": "8.117.0",

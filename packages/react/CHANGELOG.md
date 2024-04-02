@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 22 Mar 2024 07:28:52 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2024 07:28:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.117.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.1)
+
+Fri, 29 Mar 2024 07:28:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.0..@fluentui/react_v8.117.1)
+
+### Patches
+
+- fix: GroupedList initiates FocusRects ([PR #30458](https://github.com/microsoft/fluentui/pull/30458) by sarah.higley@microsoft.com)
 
 ## [8.117.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.0)
 
