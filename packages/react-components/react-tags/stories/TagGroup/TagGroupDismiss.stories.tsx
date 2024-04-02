@@ -78,7 +78,7 @@ const DismissWithTags = () => {
       <Button
         onClick={resetItems}
         ref={resetButtonRef}
-        disabled={visibleTags.length !== initialTags.length}
+        disabled={visibleTags.length === initialTags.length}
         className={styles.resetButton}
         size="small"
       >
