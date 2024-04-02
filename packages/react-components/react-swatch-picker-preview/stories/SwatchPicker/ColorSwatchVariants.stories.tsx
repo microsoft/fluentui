@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const ColorSwatchVariants = () => {
   const styles = useStyles();
   return (
     <div className={styles.example}>
