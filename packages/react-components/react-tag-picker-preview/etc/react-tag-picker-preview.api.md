@@ -19,6 +19,9 @@ import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Listbox } from '@fluentui/react-combobox';
 import type { ListboxContextValue } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
 import { PortalProps } from '@fluentui/react-portal';
@@ -53,10 +56,13 @@ export function renderTagPickerGroup_unstable(state: TagPickerGroupState, contex
 export const renderTagPickerInput_unstable: (state: TagPickerInputState) => JSX.Element;
 
 // @public
-export const renderTagPickerList_unstable: (state: TagPickerListState) => JSX.Element | null;
+export const renderTagPickerList_unstable: (state: TagPickerListState) => JSX.Element;
 
 // @public
 export const renderTagPickerOption_unstable: (state: TagPickerOptionState) => JSX.Element;
+
+// @public
+export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => JSX.Element;
 
 // @public
 export const TagPicker: React_2.FC<TagPickerProps>;
@@ -164,6 +170,21 @@ export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps>;
 export const tagPickerOptionClassNames: SlotClassNames<TagPickerOptionSlots>;
 
 // @public
+export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps>;
+
+// @public (undocumented)
+export const tagPickerOptionGroupClassNames: SlotClassNames<TagPickerOptionGroupSlots>;
+
+// @public
+export type TagPickerOptionGroupProps = OptionGroupProps;
+
+// @public (undocumented)
+export type TagPickerOptionGroupSlots = OptionGroupSlots;
+
+// @public
+export type TagPickerOptionGroupState = OptionGroupState;
+
+// @public
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
     children: React_2.ReactNode;
     text?: string;
@@ -230,6 +251,12 @@ export const useTagPickerListStyles_unstable: (state: TagPickerListState) => Tag
 
 // @public
 export const useTagPickerOption_unstable: (props: TagPickerOptionProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerOptionState;
+
+// @public
+export const useTagPickerOptionGroup: (props: TagPickerOptionGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerOptionGroupState;
+
+// @public
+export const useTagPickerOptionGroupStyles: (state: TagPickerOptionGroupState) => TagPickerOptionGroupState;
 
 // @public
 export const useTagPickerOptionStyles_unstable: (state: TagPickerOptionState) => TagPickerOptionState;
