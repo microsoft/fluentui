@@ -12,9 +12,7 @@ exports[`TeachingPopoverCarousel renders a default state 1`] = `
       <button
         class="fui-Button fui-TeachingPopoverCarousel__previous"
         type="button"
-      >
-        Close
-      </button>
+      />
       <div
         class="fui-TeachingPopoverCarouselNav fui-TeachingPopoverCarousel__nav"
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
@@ -32,9 +30,7 @@ exports[`TeachingPopoverCarousel renders a default state 1`] = `
       <button
         class="fui-Button fui-TeachingPopoverCarousel__next"
         type="button"
-      >
-        Finish
-      </button>
+      />
     </div>
   </div>
 </div>

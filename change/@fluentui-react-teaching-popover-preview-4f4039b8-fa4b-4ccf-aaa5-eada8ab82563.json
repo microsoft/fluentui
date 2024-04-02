@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Ensure all sub components are overridable and enable better string pass through via slots",
+  "packageName": "@fluentui/react-teaching-popover-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
