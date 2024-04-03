@@ -2,6 +2,21 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Wed, 03 Apr 2024 07:29:31 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.19",
+      "version": "2.2.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-window-provider",
+            "comment": "Bump @fluentui/set-version to v8.2.15",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jan 2024 07:28:49 GMT",
       "tag": "@fluentui/react-window-provider_v2.2.18",
       "version": "2.2.18",

@@ -2,6 +2,89 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 03 Apr 2024 07:29:31 GMT",
+      "tag": "@fluentui/react_v8.117.2",
+      "version": "8.117.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3150bfa1b9200d7f24be2ba791ba6fa32e835eae",
+            "comment": "chore: migrate to monosize 0.5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.6.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.35",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.6.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.43",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.7.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.19",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/set-version to v8.2.15",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.6",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.44",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.15.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Mar 2024 07:28:44 GMT",
       "tag": "@fluentui/react_v8.117.1",
       "version": "8.117.1",
