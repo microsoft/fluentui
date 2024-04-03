@@ -19,6 +19,7 @@ export { Appearance } from './TagPickerAppearance.stories';
 export { Disabled } from './TagPickerDisabled.stories';
 export { ExpandIcon } from './TagPickerExpandIcon.stories';
 export { SecondaryAction } from './TagPickerSecondaryAction.stories';
+export { Grouped } from './TagPickerGrouped.stories';
 
 export default {
   title: 'Preview Components/Tag Picker',
