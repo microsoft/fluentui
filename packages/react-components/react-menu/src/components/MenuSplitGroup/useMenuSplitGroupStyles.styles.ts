@@ -23,7 +23,7 @@ const useStyles = makeStyles({
       '::before': {
         content: '""',
         width: tokens.strokeWidthThin,
-        height: '24px',
+        height: '20px',
         backgroundColor: tokens.colorNeutralStroke1,
       },
     },
