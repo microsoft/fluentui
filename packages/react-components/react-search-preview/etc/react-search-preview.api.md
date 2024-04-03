@@ -23,6 +23,9 @@ export const renderSearchBox_unstable: (state: SearchBoxState) => JSX.Element;
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 
+// @public
+export type SearchBoxChangeEvent = React_2.ChangeEvent<HTMLInputElement> | React_2.MouseEvent<HTMLSpanElement>;
+
 // @public (undocumented)
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 

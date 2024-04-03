@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "export SearchBoxChangeEvent type.",
+  "packageName": "@fluentui/react-search-preview",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
