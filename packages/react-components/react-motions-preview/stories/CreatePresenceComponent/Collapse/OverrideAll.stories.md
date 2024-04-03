@@ -1,1 +1,1 @@
-Override `easing` and `duration` for all transitions (enter and exit).
+Customize enter and exit transitions identically, using the `all` override.
