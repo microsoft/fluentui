@@ -35,18 +35,13 @@ const optionTextForEasing = (optionKey: CurveKey | '') => {
 const paramStyles: React.CSSProperties = { color: 'lightgreen' };
 const monospaceFont = 'Lucida Console, Monaco, Courier New';
 
-export const OverrideAll = () => {
-  const [visible, setVisible] = React.useState(false);
-  const [animateOpacity, setAnimateOpacity] = React.useState(true);
-  const comboId = useId('combo-default');
+const useMotionConfig = () => {
   const [durationName, setDurationName] = React.useState<DurationKey | ''>(defaultDurationName);
   const [customDuration, setCustomDuration] = React.useState<number>(0);
   const [curveName, setCurveName] = React.useState<CurveKey | ''>(defaultEasingName);
 
-  // Construct the override object, only including properties that are set
   const duration = customDuration ? customDuration : durationName ? durations[durationName] : undefined;
   const easing = curveName ? curves[curveName] : undefined;
-  // const all = easing || duration ? { easing, duration } : undefined;
   const all = easing || duration ? ({} as { easing?: string; duration?: number }) : undefined;
   if (duration) {
     all!.duration = duration;
@@ -55,6 +50,18 @@ export const OverrideAll = () => {
     all!.easing = easing;
   }
   const override = all ? { all } : undefined;
+
+  return { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override };
+};
+
+export const OverrideAll = () => {
+  const [visible, setVisible] = React.useState(false);
+  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  const comboId = useId('combo-default');
+
+  // call useMotionConfig
+  const { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override } =
+    useMotionConfig();
 
   // Create the options for the dropdowns
   const defaultDurationOption: [string, number] = ['', NaN];
