@@ -109,6 +109,8 @@ export type NavItemRegisterData = {
 // @public (undocumented)
 export type NavItemSlots = {
     root: Slot<'a'>;
+    selectedIcon?: Slot<'span'>;
+    unSelectedIcon?: Slot<'span'>;
     content: NonNullable<Slot<'span'>>;
 };
 
