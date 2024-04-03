@@ -4,11 +4,15 @@ import { NavItemValue } from '../NavContext.types';
 export type NavItemSlots = {
   root: Slot<'a'>;
 
-  // TODO - light this up when we get design spec
-  // /**
-  //  * Icon that renders before the content.
-  //  */
-  // icon?: Slot<'span'>;
+  /**
+   * Icon that renders before the content when the item is selected.
+   */
+  selectedIcon?: Slot<'span'>;
+
+  /**
+   * Icon that renders before the content when the item is unselected.
+   */
+  unSelectedIcon?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot
