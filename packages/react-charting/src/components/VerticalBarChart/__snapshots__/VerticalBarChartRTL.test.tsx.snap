@@ -77,7 +77,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -85,13 +85,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -103,13 +103,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(163.80769230769232,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5,000
@@ -121,13 +121,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(271.11538461538464,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -139,13 +139,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(378.4230769230769,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15,000
@@ -157,13 +157,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(485.7307692307692,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20,000
@@ -175,13 +175,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(593.0384615384615,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -223,7 +223,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -231,13 +231,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -249,13 +249,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -267,13 +267,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -285,13 +285,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -303,13 +303,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -820,7 +820,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -828,13 +828,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -846,13 +846,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(163.80769230769232,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5,000
@@ -864,13 +864,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(271.11538461538464,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -882,13 +882,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(378.4230769230769,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15,000
@@ -900,13 +900,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(485.7307692307692,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20,000
@@ -918,13 +918,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(593.0384615384615,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -966,7 +966,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -974,13 +974,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -992,13 +992,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -1010,13 +1010,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -1028,13 +1028,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -1046,13 +1046,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -1576,7 +1576,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M56.5,6V0.5H614.5V6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -1584,13 +1584,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(56.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 0
@@ -1602,13 +1602,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(163.80769230769232,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 5,000
@@ -1620,13 +1620,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(271.11538461538464,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 10,000
@@ -1638,13 +1638,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(378.4230769230769,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 15,000
@@ -1656,13 +1656,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(485.7307692307692,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 20,000
@@ -1674,13 +1674,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(593.0384615384615,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 25,000
@@ -1722,7 +1722,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M-6,257.5H0.5V20.5H-6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -1730,13 +1730,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(0,257.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 0
@@ -1748,13 +1748,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(0,198.25)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 13k
@@ -1766,13 +1766,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(0,139)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 25k
@@ -1784,13 +1784,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(0,79.75)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 38k
@@ -1802,13 +1802,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
               transform="translate(0,20.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 50k
@@ -2331,7 +2331,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <path
             class="domain"
             d="M279.5,6V0.5H391.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2339,13 +2339,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(287,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -2357,13 +2357,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -2375,13 +2375,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(383,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -2423,7 +2423,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2431,13 +2431,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -2449,13 +2449,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -2467,13 +2467,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -2485,13 +2485,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -2503,13 +2503,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -10828,7 +10828,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -10836,13 +10836,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -10854,13 +10854,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(163.80769230769232,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5,000
@@ -10872,13 +10872,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(271.11538461538464,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -10890,13 +10890,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(378.4230769230769,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15,000
@@ -10908,13 +10908,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(485.7307692307692,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20,000
@@ -10926,13 +10926,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(593.0384615384615,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -10974,7 +10974,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -10982,13 +10982,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -11000,13 +11000,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -11018,13 +11018,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -11036,13 +11036,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -11054,13 +11054,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -11571,7 +11571,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             class="domain"
             d="M255.5,6V0.5H415.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -11579,13 +11579,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(263,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               This is a medium long label. 
@@ -11597,13 +11597,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(311,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               This is a long label This is a long label
@@ -11615,13 +11615,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(359,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               This label is as long as the previous one
@@ -11633,13 +11633,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(407,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               A short label
@@ -11681,7 +11681,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -11689,13 +11689,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -11707,13 +11707,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               880
@@ -11725,13 +11725,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               1.8k
@@ -11743,13 +11743,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               2.6k
@@ -11761,13 +11761,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               3.5k
@@ -12378,7 +12378,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -12386,13 +12386,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -12404,13 +12404,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(163.80769230769232,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5,000
@@ -12422,13 +12422,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(271.11538461538464,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -12440,13 +12440,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(378.4230769230769,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15,000
@@ -12458,13 +12458,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(485.7307692307692,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20,000
@@ -12476,13 +12476,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(593.0384615384615,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -12524,7 +12524,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -12532,13 +12532,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -12550,13 +12550,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -12568,13 +12568,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -12586,13 +12586,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -12604,13 +12604,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -13167,7 +13167,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -13175,13 +13175,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -13193,13 +13193,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(163.80769230769232,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5,000
@@ -13211,13 +13211,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(271.11538461538464,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -13229,13 +13229,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(378.4230769230769,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15,000
@@ -13247,13 +13247,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(485.7307692307692,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20,000
@@ -13265,13 +13265,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(593.0384615384615,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -13313,7 +13313,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -13321,13 +13321,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -13339,13 +13339,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -13357,13 +13357,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -13375,13 +13375,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -13393,13 +13393,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
