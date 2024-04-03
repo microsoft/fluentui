@@ -15,13 +15,13 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotComponentType } from '@fluentui/react-utilities';
@@ -87,7 +87,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 };
 
 // @public @deprecated (undocumented)
-export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps<ComboboxContextValue>>;
+export const ComboboxProvider: (props: ProviderProps<ComboboxContextValue>) => ReactElement<any, string | JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type ComboboxSlots = {
@@ -162,7 +162,7 @@ export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps & {
 };
 
 // @public (undocumented)
-export const ListboxProvider: React_2.Provider<ListboxContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListboxContextValue | undefined>>;
+export const ListboxProvider: (props: React_2.ProviderProps<ListboxContextValue | undefined>) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type ListboxSlots = {
