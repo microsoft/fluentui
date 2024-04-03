@@ -11,7 +11,7 @@ const config = {
     '@microsoft/fast-foundation': '/node_modules/@microsoft/fast-foundation/dist/esm/index.js',
     '@microsoft/fast-foundation/utilities.js': '/node_modules/@microsoft/fast-foundation/dist/esm/utilities/index.js',
     '@microsoft/fast-web-utilities': '/node_modules/@microsoft/fast-web-utilities/dist/index.js',
-    '@fluentui/tokens': '/node_modules/@fluentui/tokens/lib/index.js',
+    '@fluentui/tokens': '/tensile-assets/benchmark-dependencies/tokens.js',
     '@fluentui/web-components': '/node_modules/@fluentui/web-components/dist/esm/index.js',
     '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js',
     '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.esm.js',

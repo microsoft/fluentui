@@ -163,3 +163,7 @@ tsdoc-metadata.json
 
 # benchmarking
 .tensile/
+
+# tools cache
+.swc
+.nx/cache
