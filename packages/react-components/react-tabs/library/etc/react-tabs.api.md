@@ -7,11 +7,11 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Provider } from 'react';
+import { JSXElementConstructor } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -78,7 +78,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 };
 
 // @public (undocumented)
-export const TabListProvider: Provider<TabListContextValue> & FC<ProviderProps<TabListContextValue>>;
+export const TabListProvider: (props: ProviderProps<TabListContextValue>) => ReactElement<any, string | JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type TabListSlots = {

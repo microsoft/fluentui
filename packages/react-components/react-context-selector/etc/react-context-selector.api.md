@@ -7,9 +7,8 @@
 import * as React_2 from 'react';
 
 // @internal (undocumented)
-export type Context<Value> = React_2.Context<Value> & {
-    Provider: React_2.FC<React_2.ProviderProps<Value>>;
-    Consumer: never;
+export type Context<Value> = Omit<React_2.Context<ContextValue<Value>>, 'Consumer' | 'Provider'> & {
+    Provider: (props: React_2.ProviderProps<Value>) => React_2.ReactElement;
 };
 
 // @public (undocumented)
@@ -17,18 +16,10 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 
 // @internal (undocumented)
 export type ContextValue<Value> = {
-    listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
-    value: React_2.MutableRefObject<Value>;
-    version: React_2.MutableRefObject<ContextVersion>;
+    value: Value;
+    subscribe: (listener: () => void) => () => void;
+    notify?: () => void;
 };
-
-// @internal (undocumented)
-export type ContextValues<Value> = ContextValue<Value> & {
-    listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
-};
-
-// @internal (undocumented)
-export type ContextVersion = number;
 
 // @internal (undocumented)
 export const createContext: <Value>(defaultValue: Value) => Context<Value>;

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: update types",
+  "packageName": "@fluentui/global-context",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

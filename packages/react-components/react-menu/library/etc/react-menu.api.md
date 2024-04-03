@@ -246,7 +246,7 @@ export type MenuListProps = ComponentProps<MenuListSlots> & {
 };
 
 // @public (undocumented)
-export const MenuListProvider: React_2.Provider<MenuListContextValue> & React_2.FC<React_2.ProviderProps<MenuListContextValue>>;
+export const MenuListProvider: (props: React_2.ProviderProps<MenuListContextValue>) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type MenuListSlots = {
@@ -345,7 +345,7 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
 };
 
 // @public (undocumented)
-export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
+export const MenuProvider: (props: React_2.ProviderProps<MenuContextValue>) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type MenuSlots = {};

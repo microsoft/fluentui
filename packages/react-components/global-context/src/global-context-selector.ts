@@ -45,7 +45,7 @@ export const createContext = <T>(defaultValue: T, name: string, packageName: str
   const globalSymbols = Object.getOwnPropertySymbols(globalObject);
   if (!globalSymbols.includes(sym)) {
     // eslint-disable-next-line @fluentui/no-context-default-value
-    globalObject[sym] = baseCreateContext<unknown>(defaultValue);
+    globalObject[sym] = baseCreateContext<unknown>(defaultValue) as React.Context<unknown>;
   }
 
   return globalObject[sym] as React.Context<T>;

@@ -1,7 +1,18 @@
-import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
+import type { Context, ContextSelector, ContextValue } from './types';
+
+function checkIfSnapshotChanged<T>(inst: { value: T; getSnapshot: () => T }): boolean {
+  const latestGetSnapshot = inst.getSnapshot;
+  const prevValue = inst.value;
+  try {
+    const nextValue = latestGetSnapshot();
+    return !Object.is(prevValue, nextValue);
+  } catch (error) {
+    return true;
+  }
+}
 
 /**
  * @internal
@@ -13,72 +24,40 @@ export const useContextSelector = <Value, SelectedValue>(
   context: Context<Value>,
   selector: ContextSelector<Value, SelectedValue>,
 ): SelectedValue => {
-  const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
+  'use no memo';
 
-  const {
-    value: { current: value },
-    version: { current: version },
-    listeners,
-  } = contextValue;
-  const selected = selector(value);
+  const store = React.useContext(context as React.Context<ContextValue<Value>>);
+  const getSnapshot = () => selector(store.value);
 
-  const [state, setState] = React.useState<readonly [Value, SelectedValue]>([value, selected]);
-  const dispatch = (
-    payload:
-      | undefined // undefined from render below
-      | readonly [ContextVersion, Value], // from provider effect
-  ) => {
-    setState(prevState => {
-      if (!payload) {
-        // early bail out when is dispatched during render
-        return [value, selected] as const;
-      }
-
-      if (payload[0] <= version) {
-        if (Object.is(prevState[1], selected)) {
-          return prevState; // bail out
-        }
-
-        return [value, selected] as const;
-      }
-
-      try {
-        if (Object.is(prevState[0], payload[1])) {
-          return prevState; // do not update
-        }
-
-        const nextSelected = selector(payload[1]);
-
-        if (Object.is(prevState[1], nextSelected)) {
-          return prevState; // do not update
-        }
-
-        return [payload[1], nextSelected] as const;
-      } catch (e) {
-        // ignored (stale props or some other reason)
-      }
-
-      // explicitly spread to enforce typing
-      return [prevState[0], prevState[1]] as const; // schedule update
-    });
-  };
-
-  if (!Object.is(state[1], selected)) {
-    // schedule re-render
-    // this is safe because it's self contained
-    dispatch(undefined);
-  }
-
-  const stableDispatch = useEventCallback(dispatch);
+  const value = getSnapshot();
+  const [{ inst }, forceUpdate] = React.useState({
+    inst: { value, getSnapshot },
+  });
 
   useIsomorphicLayoutEffect(() => {
-    listeners.push(stableDispatch);
+    inst.value = value;
+    inst.getSnapshot = getSnapshot;
 
-    return () => {
-      const index = listeners.indexOf(stableDispatch);
-      listeners.splice(index, 1);
+    if (checkIfSnapshotChanged(inst)) {
+      forceUpdate({ inst });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, getSnapshot]);
+
+  React.useEffect(() => {
+    if (checkIfSnapshotChanged(inst)) {
+      forceUpdate({ inst });
+    }
+
+    const handleStoreChange = () => {
+      if (checkIfSnapshotChanged(inst)) {
+        forceUpdate({ inst });
+      }
     };
-  }, [stableDispatch, listeners]);
 
-  return state[1] as SelectedValue;
+    return store.subscribe(handleStoreChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [store]);
+
+  return value;
 };
