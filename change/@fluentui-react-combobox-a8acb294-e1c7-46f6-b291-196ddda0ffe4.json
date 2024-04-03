@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: move freeform and disabled to ComboboxBase types",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

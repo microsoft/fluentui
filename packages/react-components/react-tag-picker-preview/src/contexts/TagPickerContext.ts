@@ -18,6 +18,8 @@ export interface TagPickerContextValue
     | 'setValue'
     | 'value'
     | 'appearance'
+    | 'disabled'
+    | 'freeform'
   > {
   triggerRef: React.RefObject<HTMLInputElement>;
   popoverRef: React.RefObject<HTMLDivElement>;
@@ -25,7 +27,6 @@ export interface TagPickerContextValue
   targetRef: React.RefObject<HTMLElement>;
   secondaryActionRef: React.RefObject<HTMLSpanElement>;
   size: TagPickerSize;
-  disabled: boolean;
 }
 
 /**
@@ -50,6 +51,7 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   size: 'medium',
   appearance: 'outline',
   disabled: false,
+  freeform: false,
 };
 
 const TagPickerContext = createContext<TagPickerContextValue | undefined>(undefined);
