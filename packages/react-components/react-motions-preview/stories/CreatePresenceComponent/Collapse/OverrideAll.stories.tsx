@@ -89,28 +89,34 @@ export const OverrideAll = () => {
     </>
   ) : null;
 
+  const exampleCodeJSX = (
+    <>
+      {`<Collapse ...`}
+      <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
+      {overrideJSX}
+      {'>'}
+    </>
+  );
+
+  const exampleCodeBlock = (
+    <div
+      style={{
+        fontWeight: 'bold',
+        fontFamily: monospaceFont,
+        backgroundColor: 'black',
+        color: 'lightgrey',
+        padding: 20,
+        borderRadius: 5,
+      }}
+    >
+      {exampleCodeJSX}
+    </div>
+  );
+
   return (
     <div>
-      <div>
-        <div
-          style={{
-            fontWeight: 'bold',
-            fontFamily: monospaceFont,
-            backgroundColor: 'black',
-            color: 'lightgrey',
-            padding: 20,
-            borderRadius: 5,
-          }}
-        >
-          {`<Collapse ...`}
-          <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
-          {overrideJSX}
-          {'>'}
-        </div>
-      </div>
-
+      <div>{exampleCodeBlock}</div>
       <br />
-
       <table>
         <tbody>
           <tr>
