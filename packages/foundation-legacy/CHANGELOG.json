@@ -2,6 +2,39 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Wed, 03 Apr 2024 07:29:31 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/merge-styles to v8.6.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/set-version to v8.2.15",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.10.6",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/utilities to v8.15.1",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Mar 2024 07:28:52 GMT",
       "tag": "@fluentui/foundation-legacy_v8.4.0",
       "version": "8.4.0",

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 02 Apr 2024 09:48:01 GMT",
+      "tag": "@fluentui/react-badge_v9.2.30",
+      "version": "9.2.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.35",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.16.0",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.18.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-badge_v9.2.29",
       "version": "9.2.29",

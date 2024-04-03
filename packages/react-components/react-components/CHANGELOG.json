@@ -2,6 +2,49 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 02 Apr 2024 09:47:59 GMT",
+      "tag": "@fluentui/react-components_v9.47.3",
+      "version": "9.47.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "caf072510560c342c3e6e0bcc57b83b8500d21f6",
+            "comment": "fix: When month picker is overlaid and gototoday button is pressed, hide month picker."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "4d88f24d3c4497ab92919f8bc66370183447ddce",
+            "comment": "fix: rotating SVG should not cause parent overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "39be3880226fd063eaeb69574bf2f646fbb785c9",
+            "comment": "bugfix: removes errouneous combobox imports"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ff674cf53a5dce6feab08ac0f478b6d38fcb00d6",
+            "comment": "deprecate unused ListItemButton exports"
+          }
+        ],
+        "none": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "dcd849883786889d1812d62443e258ff005aee7e",
+            "comment": "fix(swatch-picker): added bundle size configuration"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Mar 2024 10:43:54 GMT",
       "tag": "@fluentui/react-components_v9.47.2",
       "version": "9.47.2",

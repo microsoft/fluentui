@@ -2,6 +2,27 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Tue, 02 Apr 2024 09:48:01 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.64",
+      "version": "9.0.0-beta.64",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.57",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.18.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/global-context_v9.0.0-beta.63",
       "version": "9.0.0-beta.63",

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Mon, 25 Mar 2024 11:12:13 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.1)
+
+Tue, 02 Apr 2024 09:48:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.1.0..@fluentui/react-calendar-compat_v0.1.1)
+
+### Patches
+
+- fix: When month picker is overlaid and gototoday button is pressed, hide month picker. ([PR #30870](https://github.com/microsoft/fluentui/pull/30870) by estebanmu@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.35 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.16.0 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-tabster to v9.19.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.0)
 

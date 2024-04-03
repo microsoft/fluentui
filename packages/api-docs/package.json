@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "8.2.14",
+  "version": "8.2.15",
   "description": "Transforms API Extractor .api.json files into .page.json files",
   "repository": {
     "type": "git",
