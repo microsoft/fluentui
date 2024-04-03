@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-globals */
+/* eslint-disable no-restricted-globals, no-restricted-properties */
 import * as React from 'react';
 import {
   makeStyles,
@@ -10,8 +10,31 @@ import {
   webDarkTheme,
 } from '@fluentui/react-components';
 
+const useStyles = makeStyles({
+  colorBrandBackground: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+  colorBrandBackground2: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorNeutralForeground2,
+  },
+  box: {
+    ...shorthands.padding(tokens.spacingHorizontalM),
+  },
+  horizontalLayout: {
+    display: 'flex',
+    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
+  },
+  verticalLayout: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
+  },
+});
+
 export const Switching = () => {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const lightThemeCSS = createCSSRuleFromTheme('.fluentui-light-theme', webLightTheme);
     const darkThemeCSS = createCSSRuleFromTheme('.fluentui-dark-theme', webDarkTheme);
 
@@ -19,6 +42,10 @@ export const Switching = () => {
     document.head.appendChild(style);
     style.sheet?.insertRule(lightThemeCSS);
     style.sheet?.insertRule(darkThemeCSS);
+
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   // Toggle the class name to change themes
@@ -61,26 +88,3 @@ export const Switching = () => {
     </div>
   );
 };
-
-const useStyles = makeStyles({
-  colorBrandBackground: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-  },
-  colorBrandBackground2: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorNeutralForeground2,
-  },
-  box: {
-    ...shorthands.padding(tokens.spacingHorizontalM),
-  },
-  horizontalLayout: {
-    display: 'flex',
-    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
-  },
-  verticalLayout: {
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
-  },
-});
