@@ -71,8 +71,8 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   state.root.className = mergeClasses(
     navItemClassNames.root,
     rootDefaultStyles,
-    state.root.className,
     selected && indicatorStyles.base,
+    state.root.className,
   );
 
   state.content.className = mergeClasses(
@@ -85,8 +85,8 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   if (state.selectedIcon) {
     state.selectedIcon.className = mergeClasses(
       navItemClassNames.selectedIcon,
-      state.selectedIcon.className,
       selectedIconStyles.base,
+      state.selectedIcon.className,
     );
   }
 
