@@ -18,13 +18,10 @@ export const renderNavCategoryItem_unstable = (
   return (
     <NavCategoryItemProvider value={contextValues.navCategoryItem}>
       <state.root>
-        {/* TODO: These were copied from AccordionHeader.
-        We need to decide if they are still applicable
-        in our scenario and how to adapt them. */}
-        {/* <state.button> */}
-        {/* Todo: {state.icon && <state.icon />} */}
+        {state.selected && state.selectedIcon && <state.selectedIcon />}
+        {!state.selected && state.unSelectedIcon && <state.unSelectedIcon />}
         {state.root.children}
-        {state.expandIcon && <state.expandIcon />} {/* </state.button> */}
+        {state.expandIcon && <state.expandIcon />}
       </state.root>
     </NavCategoryItemProvider>
   );

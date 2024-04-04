@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { ChevronRightRegular } from '@fluentui/react-icons';
+import { ChevronRight20Regular } from '@fluentui/react-icons';
 import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
@@ -18,7 +18,7 @@ export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemState => {
-  const { onClick, expandIcon } = props;
+  const { onClick, expandIcon, selectedIcon, unSelectedIcon } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
@@ -30,41 +30,30 @@ export const useNavCategoryItem_unstable = (
 
   const selected = selectedCategoryValue === value;
 
-  // TODO - these are copied from AccordionHeader.
-  // We need to figure out if they are applicable to this
-  // scenario and adapt them accordingly.
-
-  // const buttonSlot = slot.always(button, {
-  //   elementType: 'button',
-  //   defaultProps: {
-  //     // we may decide to light these up later
-  //     // disabled,
-  //     // disabledFocusable,
-  //     'aria-expanded': open,
-  //     type: 'button',
-  //     onClick: onNavCategoryItemClick,
-  //   },
-  // });
-
-  // buttonSlot.onClick = useEventCallback(event => {
-  //   if (isResolvedShorthand(button)) {
-  //     button.onClick?.(event);
-  //   }
-  //   if (!event.defaultPrevented) {
-  //     onRequestNavCategoryItemToggle(event, { value, event }); //({ value, event });
-  //   }
-  // });
+  const selectedIconSlot = selected
+    ? slot.optional(selectedIcon, {
+        renderByDefault: false,
+        elementType: 'span',
+        defaultProps: { children: selectedIcon },
+      })
+    : undefined;
+  const unSelectedIconSlot = !selected
+    ? slot.optional(unSelectedIcon, {
+        renderByDefault: false,
+        elementType: 'span',
+        defaultProps: { children: unSelectedIcon },
+      })
+    : undefined;
 
   return {
     open,
     value,
     selected,
-    // TODO add appropriate props/defaults
     components: {
       root: 'button',
-      // button: 'div',
       expandIcon: 'span',
-      // icon: 'div',
+      selectedIcon: 'span',
+      unSelectedIcon: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('button', {
@@ -78,20 +67,12 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronRightRegular />,
+        children: <ChevronRight20Regular />,
         'aria-hidden': true,
       },
       elementType: 'span',
     }),
-    // button: useARIAButtonProps(buttonSlot.as, buttonSlot),
-    // button: slot.always(
-    //   getIntrinsicElementProps('button', {
-    //     ref,
-    //     role: 'button',
-    //     type: 'button',
-    //     onClick: onNavCategoryItemClick,
-    //   }),
-    //   { elementType: 'button' },
-    // ),
+    selectedIcon: selectedIconSlot,
+    unSelectedIcon: unSelectedIconSlot,
   };
 };
