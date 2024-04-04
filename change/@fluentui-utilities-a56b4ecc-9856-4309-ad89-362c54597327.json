@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "`@types/react` should be optional",
+  "packageName": "@fluentui/utilities",
+  "email": "4123478+tido64@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
