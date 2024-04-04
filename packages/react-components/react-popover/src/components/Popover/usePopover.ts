@@ -36,6 +36,10 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     ...props,
   } as const;
 
+  const { targetDocument } = useFluent();
+  // eslint-disable-next-line no-restricted-globals
+  const win = targetDocument?.defaultView ?? window;
+
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   if (process.env.NODE_ENV !== 'production') {
@@ -89,7 +93,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   );
 
   const positioningRefs = usePopoverRefs(initialState);
-  const { targetDocument } = useFluent();
 
   useOnClickOutside({
     contains: elementContains,

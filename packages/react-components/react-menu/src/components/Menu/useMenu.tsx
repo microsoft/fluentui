@@ -174,6 +174,8 @@ const useMenuOpenState = (
     Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
   const { targetDocument } = useFluent();
+  // eslint-disable-next-line no-restricted-globals
+  const win = targetDocument?.defaultView ?? window;
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
