@@ -1,14 +1,5 @@
 This document describes how to set up your development environment and contribute changes to the Fluent UI project. It assumes basic working knowledge with Git and related tools. A typical developer should budget 2 hours from fresh install to their first successful build completion.
 
-- [Basic setup](#basic-setup)
-  - [Install dev tools](#install-dev-tools)
-  - [Verify your environment](#verify-your-environment)
-  - [Building (without contributing)](#building-without-contributing)
-- [Configuration for contribution](#Configuration-for-contribution)
-  - [Creating your own fork](#creating-your-own-fork)
-  - [Cloning your fork and setting the upstream remote](#cloning-your-fork-and-setting-the-upstream-remote)
-  - [Git configuration](#git-configuration)
-
 # Basic setup
 
 ### Install dev tools
