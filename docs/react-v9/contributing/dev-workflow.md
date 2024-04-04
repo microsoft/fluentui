@@ -14,7 +14,7 @@ We strongly recommend using the CLI as your primary interface with git. GUIs are
 
 That said, some team members use [SourceTree](https://www.sourcetreeapp.com/), [GitHub app](https://desktop.github.com/) or the git integrations available in VS Code.
 
-We don't have an official branch naming policy. However some developers use the following to make their branches easier to find: `user/[alias]/your-fancy-branch-name`, ie `user/johndoe/fix-that-bug`.
+We don't have an official branch naming policy. Since every contribution happens from your personal fork, there's little risk of naming clashes. However some developers use the following to make their branches easier to find: `user/[alias]/your-fancy-branch-name`, ie `user/jdoe/fix-that-bug`.
 
 ### Building
 
@@ -68,8 +68,8 @@ Creating _draft_ pull requests is often an easy way to keep track of your work w
 
 In other cases, such as before checking in or running tests, you may need to run a full build (or build up to a certain package):
 
-- `yarn lage build --since master` - build everything. It is good the run this weekly, or anytime you start a new project off master.
-- `yarn buildto package-name` - build up to a package.
+- `yarn lage build --since master` - build everything. You shouldn't need to do this for regular work flow.
+- `yarn buildto package-name` - build up to a package. It is good to run this weekly, or anytim you start a new project off master.
   - `yarn buildto @fluentui/react`
 
 ### Making a pull request
