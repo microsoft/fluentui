@@ -4,7 +4,7 @@ import { Collapse } from '@fluentui/react-motions-preview';
 import { useMotionConfigurator } from '../utils/useMotionConfigurator';
 import description from './OverrideAll.stories.md';
 
-import { loremIpsum } from '../loremIpsum';
+import { loremIpsum } from '../utils/loremIpsum';
 
 export const OverrideAll = () => {
   const [visible, setVisible] = React.useState(false);

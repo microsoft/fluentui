@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Collapse } from '@fluentui/react-motions-preview';
 import { Checkbox } from '@fluentui/react-components';
-import { loremIpsum } from '../loremIpsum';
+import { loremIpsum } from '../utils/loremIpsum';
 
 export const Default = () => {
   const [visible, setVisible] = React.useState(false);
