@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Thu, 04 Apr 2024 12:08:07 GMT",
+      "tag": "@fluentui/react-accordion_v9.3.48",
+      "version": "9.3.48",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "16266eaeaa2d4187090d0b8d7aee2d8d9f8a2dff",
+            "comment": "fix: remove border from high contrast mode to match styles and make focus more visible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-accordion_v9.3.47",
       "version": "9.3.47",

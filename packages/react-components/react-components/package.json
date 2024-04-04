@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.47.3",
+  "version": "9.47.4",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,14 +32,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-accordion": "^9.3.47",
+    "@fluentui/react-accordion": "^9.3.48",
     "@fluentui/react-alert": "9.0.0-beta.115",
     "@fluentui/react-avatar": "^9.6.20",
     "@fluentui/react-badge": "^9.2.30",
     "@fluentui/react-button": "^9.3.74",
     "@fluentui/react-card": "^9.0.73",
     "@fluentui/react-checkbox": "^9.2.19",
-    "@fluentui/react-combobox": "^9.9.5",
+    "@fluentui/react-combobox": "^9.9.6",
     "@fluentui/react-dialog": "^9.9.16",
     "@fluentui/react-divider": "^9.2.66",
     "@fluentui/react-drawer": "^9.1.10",
@@ -66,7 +66,7 @@
     "@fluentui/react-spinbutton": "^9.2.70",
     "@fluentui/react-spinner": "^9.4.3",
     "@fluentui/react-switch": "^9.1.76",
-    "@fluentui/react-table": "^9.12.1",
+    "@fluentui/react-table": "^9.13.0",
     "@fluentui/react-tabs": "^9.4.15",
     "@fluentui/react-tabster": "^9.19.6",
     "@fluentui/react-tags": "^9.2.1",

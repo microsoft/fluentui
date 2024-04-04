@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 12:08:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.13.0)
+
+Thu, 04 Apr 2024 12:08:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.12.1..@fluentui/react-table_v9.13.0)
+
+### Minor changes
+
+- add resizableColumnsOptions with option to allowContainerOverflow ([PR #30717](https://github.com/microsoft/fluentui/pull/30717) by jirivyhnalek@microsoft.com)
 
 ## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.12.1)
 

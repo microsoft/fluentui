@@ -34,7 +34,7 @@ export type TagPickerOnOpenChangeData = { open: boolean } & (
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
   Pick<
     ComboboxProps,
-    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'
+    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'
   > &
   Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
@@ -67,10 +67,12 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'appearance'
     | 'clearSelection'
     | 'getOptionById'
+    | 'freeform'
+    | 'disabled'
   > &
   Pick<
     TagPickerContextValue,
-    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'
+    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'
   > & {
     trigger: React.ReactNode;
     popover?: React.ReactNode;
