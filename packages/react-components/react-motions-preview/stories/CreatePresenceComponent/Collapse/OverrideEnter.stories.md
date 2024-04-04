@@ -1,1 +1,1 @@
-Customize enter transition only, using the `enter` override.
+Customize duration and easing for enter transition only, using the `enter` override.

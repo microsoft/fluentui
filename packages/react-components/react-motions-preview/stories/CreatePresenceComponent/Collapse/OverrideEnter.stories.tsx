@@ -9,7 +9,7 @@ import { loremIpsum } from '../loremIpsum';
 export const OverrideEnter = () => {
   const [visible, setVisible] = React.useState(false);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
-  // Use the motion configurator UI for customizing duration and easing, and generates an override object
+  // Use the motion configurator UI to customize duration and easing, and generate an override object
   const { configuratorJSX, override } = useMotionConfigurator({ animateOpacity, overrideName: 'enter' });
 
   return (

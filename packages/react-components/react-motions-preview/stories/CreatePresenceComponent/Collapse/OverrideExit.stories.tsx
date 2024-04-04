@@ -2,15 +2,15 @@ import * as React from 'react';
 import { Checkbox, ToggleButton } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motions-preview';
 import { useMotionConfigurator } from '../utils/useMotionConfigurator';
-import description from './OverrideAll.stories.md';
+import description from './OverrideExit.stories.md';
 
 import { loremIpsum } from '../loremIpsum';
 
-export const OverrideAll = () => {
+export const OverrideExit = () => {
   const [visible, setVisible] = React.useState(false);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   // Use the motion configurator UI to customize duration and easing, and generate an override object
-  const { configuratorJSX, override } = useMotionConfigurator({ animateOpacity, overrideName: 'all' });
+  const { configuratorJSX, override } = useMotionConfigurator({ animateOpacity, overrideName: 'exit' });
 
   return (
     <>
@@ -30,7 +30,7 @@ export const OverrideAll = () => {
   );
 };
 
-OverrideAll.parameters = {
+OverrideExit.parameters = {
   docs: {
     description: {
       story: description,
