@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix colors for high contrast mode in chart hover card",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
