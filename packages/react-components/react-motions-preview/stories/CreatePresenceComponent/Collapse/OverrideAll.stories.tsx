@@ -54,9 +54,7 @@ const useMotionConfig = () => {
   return { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override };
 };
 
-export const OverrideAll = () => {
-  const [visible, setVisible] = React.useState(false);
-  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+const useMotionConfigurator = ({ animateOpacity }: { animateOpacity: boolean }) => {
   const comboId = useId('combo-default');
 
   // call useMotionConfig
@@ -120,7 +118,7 @@ export const OverrideAll = () => {
     </div>
   );
 
-  return (
+  const configuratorJSX = (
     <div>
       <div>{exampleCodeBlock}</div>
       <br />
@@ -188,7 +186,20 @@ export const OverrideAll = () => {
           </tr>
         </tbody>
       </table>
+    </div>
+  );
 
+  return { configuratorJSX, override };
+};
+
+export const OverrideAll = () => {
+  const [visible, setVisible] = React.useState(false);
+  const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  const { configuratorJSX, override } = useMotionConfigurator({ animateOpacity });
+
+  return (
+    <>
+      {configuratorJSX}
       <Checkbox label="animate opacity" checked={animateOpacity} onChange={() => setAnimateOpacity(v => !v)} />
 
       <div style={{ padding: '15px 0' }}>
@@ -197,10 +208,10 @@ export const OverrideAll = () => {
         </ToggleButton>
       </div>
 
-      <Collapse visible={visible} animateOpacity={animateOpacity} override={override}>
+      <Collapse {...{ visible, animateOpacity, override }}>
         <div>{loremIpsum(10)}</div>
       </Collapse>
-    </div>
+    </>
   );
 };
 
