@@ -75,13 +75,18 @@ export type ComboboxBaseProps = SelectionProps &
      * Use this with `onOptionSelect` to directly control the displayed value string
      */
     value?: string;
+    /*
+     * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
+     */
+    freeform?: boolean;
+    disabled?: boolean;
   };
 
 /**
  * State used in rendering Combobox
  */
 export type ComboboxBaseState = Required<
-  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>
+  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size' | 'freeform' | 'disabled'>
 > &
   Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
