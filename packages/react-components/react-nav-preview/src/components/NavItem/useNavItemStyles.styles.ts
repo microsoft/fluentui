@@ -37,6 +37,8 @@ const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
 });
 
+const indicatorHeight = '20px';
+
 const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
@@ -44,7 +46,7 @@ const useIndicatorStyles = makeStyles({
       transform: 'translateX(-18px)', // per spec
       backgroundColor: tokens.colorNeutralForeground2BrandSelected,
       width: '4px', // No relevant to any design token for these
-      height: '20px',
+      height: indicatorHeight,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: '""',
     },
@@ -54,6 +56,7 @@ const useIndicatorStyles = makeStyles({
 const useSelectedIconStyles = makeStyles({
   base: {
     color: tokens.colorNeutralForeground2BrandSelected,
+    height: indicatorHeight,
   },
 });
 

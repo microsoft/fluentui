@@ -2,10 +2,20 @@ import * as React from 'react';
 import { Nav, NavItem, NavItemProps } from '@fluentui/react-nav-preview';
 import { Folder20Regular, Folder20Filled } from '@fluentui/react-icons';
 
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  root: { display: 'flex', flexDirection: 'column', rowGap: '60px' },
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '260px',
+    rowGap: '60px',
+    paddingTop: '48px',
+    paddingBottom: '48px',
+    paddingLeft: '48px',
+    paddingRight: '48px',
+    backgroundColor: tokens.colorNeutralBackground4,
+  },
 });
 
 export const Default = (props: Partial<NavItemProps>) => {
