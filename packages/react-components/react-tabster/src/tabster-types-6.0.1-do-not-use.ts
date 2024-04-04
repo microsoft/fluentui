@@ -521,7 +521,7 @@ export interface FindFocusableProps {
    */
   isBackward?: boolean;
   /**
-   * @param el element visited.
+   * @param el - element visited.
    * @returns if an element should be accepted.
    */
   acceptCondition?(el: HTMLElement): boolean;
@@ -958,7 +958,7 @@ interface ModalizerAPIInternal extends TabsterPartWithAcceptElement {
    * When active, everything outside of the modalizers with the specific user
    * defined id gets `aria-hidden`.
    *
-   * @param userId user defined identifier or undefined (if nothing is modal).
+   * @param userId - user defined identifier or undefined (if nothing is modal).
    */
   /** @internal */
   setActive(modalizer: Modalizer | undefined): void;
@@ -972,9 +972,9 @@ export interface ModalizerAPI extends ModalizerAPIInternal, Disposable {
   /**
    * Activates a Modalizer and focuses the first or default element within
    *
-   * @param elementFromModalizer An element that belongs to a Modalizer
-   * @param noFocusFirst Do not focus on the first element in the Modalizer
-   * @param noFocusDefault Do not focus the default element in the Modalizre
+   * @param elementFromModalizer - An element that belongs to a Modalizer
+   * @param noFocusFirst - Do not focus on the first element in the Modalizer
+   * @param noFocusDefault - Do not focus the default element in the Modalizre
    */
   focus(elementFromModalizer: HTMLElement, noFocusFirst?: boolean, noFocusDefault?: boolean): boolean;
 }
@@ -991,8 +991,8 @@ export interface Restorer extends Disposable, TabsterPart<RestorerProps> {}
  * A signature for the accessibleCheck callback from getModalizer().
  * It is called when active Modalizer sets aria-hidden on elements outsidef of it.
  *
- * @param element The element that is about to receive aria-hidden.
- * @param activeModalizerElements The container elements of the active modalizer.
+ * @param element - The element that is about to receive aria-hidden.
+ * @param activeModalizerElements - The container elements of the active modalizer.
  * @returns true if the element should remain accessible and should not receive
  * aria-hidden.
  */
