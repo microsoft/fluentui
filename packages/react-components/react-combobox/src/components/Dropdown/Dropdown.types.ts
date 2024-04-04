@@ -29,13 +29,13 @@ export type DropdownSlots = {
 /**
  * Dropdown Props
  */
-export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & ComboboxBaseProps;
+export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & Omit<ComboboxBaseProps, 'freeform'>;
 
 /**
  * State used in rendering Dropdown
  */
 export type DropdownState = ComponentState<DropdownSlots> &
-  ComboboxBaseState & {
+  Omit<ComboboxBaseState, 'freeform'> & {
     /* Whether the placeholder is currently displayed */
     placeholderVisible: boolean;
 

@@ -79,14 +79,13 @@ export type ComboboxBaseProps = SelectionProps &
      * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
      */
     freeform?: boolean;
-    disabled?: boolean;
   };
 
 /**
  * State used in rendering Combobox
  */
 export type ComboboxBaseState = Required<
-  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size' | 'freeform' | 'disabled'>
+  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size' | 'freeform'>
 > &
   Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
@@ -131,6 +130,7 @@ export type ComboboxBaseState = Required<
     setValue(newValue: string | undefined): void;
 
     onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
+    disabled: boolean;
   };
 
 /**

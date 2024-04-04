@@ -16,6 +16,7 @@ export const useComboboxBaseState = (
   props: ComboboxBaseProps & {
     children?: React.ReactNode;
     editable?: boolean;
+    disabled?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
   },
 ): ComboboxBaseState => {
