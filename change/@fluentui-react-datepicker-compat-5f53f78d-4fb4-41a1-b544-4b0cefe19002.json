@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Align arrow down behavior with Combobox.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove border from high contrast mode to match styles and make focus more visible",
-  "packageName": "@fluentui/react-accordion",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

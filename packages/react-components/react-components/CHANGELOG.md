@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 02 Apr 2024 09:47:59 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 12:08:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.47.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.4)
+
+Thu, 04 Apr 2024 12:08:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.3..@fluentui/react-components_v9.47.4)
+
+### Minor changes
+
+- `@fluentui/react-list-preview`
+  - feat: Release preview package ([PR #30898](https://github.com/microsoft/fluentui/pull/30898) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - export SearchBoxChangeEvent type. ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by seanmonahan@microsoft.com)
+- `@fluentui/react-table`
+  - add resizableColumnsOptions with option to allowContainerOverflow ([PR #30717](https://github.com/microsoft/fluentui/pull/30717) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - feature: adds freeform support for TagPicker ([PR #30947](https://github.com/microsoft/fluentui/pull/30947) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: remove border from high contrast mode to match styles and make focus more visible ([PR #30865](https://github.com/microsoft/fluentui/pull/30865) by sarah.higley@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: move freeform and disabled to ComboboxBase types ([PR #30947](https://github.com/microsoft/fluentui/pull/30947) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Align arrow down behavior with Combobox. ([PR #30954](https://github.com/microsoft/fluentui/pull/30954) by estebanmu@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - feat: adds TagPickerOptionGroup component ([PR #30934](https://github.com/microsoft/fluentui/pull/30934) by bernardo.sunderhus@gmail.com)
 
 ## [9.47.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.3)
 

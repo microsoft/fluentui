@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: adds freeform support for TagPicker",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

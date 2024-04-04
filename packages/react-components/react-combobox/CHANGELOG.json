@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 04 Apr 2024 12:08:07 GMT",
+      "tag": "@fluentui/react-combobox_v9.9.6",
+      "version": "9.9.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8afa3612153320a278065a7799e4b5ca5b5073a0",
+            "comment": "chore: move freeform and disabled to ComboboxBase types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-combobox_v9.9.5",
       "version": "9.9.5",
