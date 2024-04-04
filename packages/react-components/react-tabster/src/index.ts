@@ -46,8 +46,10 @@ export {
   /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.)  */
   TabsterTypes6_0_1_DoNotUse as TabsterTypes,
   /** @deprecated Use element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape })) */
+  // eslint-disable-next-line deprecation/deprecation
   dispatchGroupperMoveFocusEvent,
   /** @deprecated Use element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown })) */
+  // eslint-disable-next-line deprecation/deprecation
   dispatchMoverMoveFocusEvent,
 };
 
