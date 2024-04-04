@@ -1,6 +1,13 @@
 import { useBrowserTimer } from './useBrowserTimer';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
+const setTimeoutNoop = (callback: Function) => {
+  callback();
+  return 0;
+};
+
+const clearTimeoutNoop = (handle: number) => handle;
+
 /**
  * @internal
  * Helper to manage a browser timeout.
@@ -11,8 +18,10 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  */
 export function useTimeout() {
   const { targetDocument } = useFluent();
-  // eslint-disable-next-line no-restricted-globals
-  const win = targetDocument?.defaultView ?? window;
+  const win = targetDocument?.defaultView;
 
-  return useBrowserTimer(win.setTimeout, win.clearTimeout);
+  const setTimerFn = win ? win.setTimeout : setTimeoutNoop;
+  const clearTimerFn = win ? win.clearTimeout : clearTimeoutNoop;
+
+  return useBrowserTimer(setTimerFn, clearTimerFn);
 }
