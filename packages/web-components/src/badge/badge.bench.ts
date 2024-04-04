@@ -1,12 +1,12 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './button.definition.js';
+import { definition } from './badge.definition.js';
 
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const button = document.createElement('fluent-button');
-  button.appendChild(document.createTextNode('Button'));
-  return button;
+  const badge = document.createElement('fluent-badge');
+  badge.appendChild(document.createTextNode('Badge'));
+  return badge;
 };
 
 export default itemRenderer;

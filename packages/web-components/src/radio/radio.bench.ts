@@ -1,12 +1,12 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './button.definition.js';
+import { definition } from './radio.definition.js';
 
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const button = document.createElement('fluent-button');
-  button.appendChild(document.createTextNode('Button'));
-  return button;
+  const radio = document.createElement('fluent-radio');
+  radio.appendChild(document.createTextNode('Radio'));
+  return radio;
 };
 
 export default itemRenderer;

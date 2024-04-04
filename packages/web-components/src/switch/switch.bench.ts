@@ -1,12 +1,12 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './button.definition.js';
+import { definition } from './switch.definition.js';
 
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const button = document.createElement('fluent-button');
-  button.appendChild(document.createTextNode('Button'));
-  return button;
+  const switchEl = document.createElement('fluent-switch');
+  switchEl.appendChild(document.createTextNode('Switch'));
+  return switchEl;
 };
 
 export default itemRenderer;

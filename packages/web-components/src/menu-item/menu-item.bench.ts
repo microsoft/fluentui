@@ -1,12 +1,12 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './button.definition.js';
+import { definition } from './menu-item.definition.js';
 
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const button = document.createElement('fluent-button');
-  button.appendChild(document.createTextNode('Button'));
-  return button;
+  const menuItem = document.createElement('fluent-menu-item');
+  menuItem.appendChild(document.createTextNode('Menu item'));
+  return menuItem;
 };
 
 export default itemRenderer;

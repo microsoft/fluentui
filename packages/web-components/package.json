@@ -178,7 +178,7 @@
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
-    "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && tensile --file ./dist/esm/button/button.bench.js --config ./tensile.config.js",
+    "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
     "compile": "node ./scripts/compile",
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
@@ -199,7 +199,7 @@
   "devDependencies": {
     "@microsoft/api-extractor": "7.31.2",
     "@storybook/html": "6.5.15",
-    "@tensile-perf/web-components": "~0.1.12",
+    "@tensile-perf/web-components": "~0.1.13",
     "rimraf": "^3.0.2",
     "typescript": "4.7.4"
   },

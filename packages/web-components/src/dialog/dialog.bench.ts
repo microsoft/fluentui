@@ -1,12 +1,13 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition } from './button.definition.js';
+import { definition } from './dialog.definition.js';
 
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const button = document.createElement('fluent-button');
-  button.appendChild(document.createTextNode('Button'));
-  return button;
+  const dialog = document.createElement('fluent-dialog');
+  dialog.appendChild(document.createTextNode('Dialog'));
+
+  return dialog;
 };
 
 export default itemRenderer;
