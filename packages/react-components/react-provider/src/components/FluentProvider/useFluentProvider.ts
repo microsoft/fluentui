@@ -65,7 +65,7 @@ export const useFluentProvider_unstable = (
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
     theme: mergedTheme,
     targetDocument,
-    rendererAttributes: renderer.styleElementAttributes ?? {},
+    rendererAttributes: renderer.styleElementAttributes ?? EMPTY_OBJECT,
   });
 
   if (process.env.NODE_ENV !== 'production') {
