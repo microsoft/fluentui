@@ -1,10 +1,12 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
+import { SelectionEvents } from './Selection.types';
 
 /**
  * @internal
@@ -28,6 +30,8 @@ export const useComboboxBaseState = (
     onOpenChange,
     size = 'medium',
     activeDescendantController,
+    freeform = false,
+    disabled = false,
   } = props;
 
   const optionCollection = useOptionCollection();
@@ -70,15 +74,25 @@ export const useComboboxBaseState = (
 
   const ignoreNextBlur = React.useRef(false);
 
-  const selectionState = useSelection(props);
-  const { selectedOptions } = selectionState;
-
   // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
   const [controllableValue, setValue] = useControllableState({
     state: props.value,
     initialState: undefined,
   });
+
+  const { selectedOptions, selectOption: baseSelectOption, clearSelection } = useSelection(props);
+
+  // reset any typed value when an option is selected
+  const selectOption = React.useCallback(
+    (ev: SelectionEvents, option: OptionValue) => {
+      ReactDOM.unstable_batchedUpdates(() => {
+        setValue(undefined);
+        baseSelectOption(ev, option);
+      });
+    },
+    [setValue, baseSelectOption],
+  );
 
   const value = React.useMemo(() => {
     // don't compute the value if it is defined through props or setValue,
@@ -117,10 +131,18 @@ export const useComboboxBaseState = (
 
   const setOpen = React.useCallback(
     (event: ComboboxBaseOpenEvents, newState: boolean) => {
+      if (disabled) {
+        return;
+      }
       onOpenChange?.(event, { open: newState });
-      setOpenState(newState);
+      ReactDOM.unstable_batchedUpdates(() => {
+        if (!newState && !freeform) {
+          setValue(undefined);
+        }
+        setOpenState(newState);
+      });
     },
-    [onOpenChange, setOpenState],
+    [onOpenChange, setOpenState, setValue, freeform, disabled],
   );
 
   // update active option based on change in open state
@@ -152,7 +174,11 @@ export const useComboboxBaseState = (
 
   return {
     ...optionCollection,
-    ...selectionState,
+    freeform,
+    disabled,
+    selectOption,
+    clearSelection,
+    selectedOptions,
     activeOption: UNSAFE_activeOption,
     appearance,
     clearable,

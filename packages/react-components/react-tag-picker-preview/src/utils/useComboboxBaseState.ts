@@ -1,10 +1,12 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { ComboboxBaseOpenEvents, ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
 import { OptionValue } from './OptionCollection.types';
 import { useOptionCollection } from './useOptionCollection';
 import { useSelection } from './useSelection';
+import { SelectionEvents } from './Selection.types';
 
 /**
  * @internal
@@ -23,6 +25,8 @@ export const useComboboxBaseState = (
     clearable = false,
     editable = false,
     inlinePopup = false,
+    freeform = false,
+    disabled = false,
     mountNode = undefined,
     multiselect,
     onOpenChange,
@@ -70,8 +74,7 @@ export const useComboboxBaseState = (
 
   const ignoreNextBlur = React.useRef(false);
 
-  const selectionState = useSelection(props);
-  const { selectedOptions } = selectionState;
+  const { selectedOptions, selectOption: baseSelectOption, clearSelection } = useSelection(props);
 
   // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
@@ -79,6 +82,17 @@ export const useComboboxBaseState = (
     state: props.value,
     initialState: undefined,
   });
+
+  // reset any typed value when an option is selected
+  const selectOption = React.useCallback(
+    (ev: SelectionEvents, option: OptionValue) => {
+      ReactDOM.unstable_batchedUpdates(() => {
+        setValue(undefined);
+        baseSelectOption(ev, option);
+      });
+    },
+    [setValue, baseSelectOption],
+  );
 
   const value = React.useMemo(() => {
     // don't compute the value if it is defined through props or setValue,
@@ -152,7 +166,11 @@ export const useComboboxBaseState = (
 
   return {
     ...optionCollection,
-    ...selectionState,
+    selectedOptions,
+    selectOption,
+    clearSelection,
+    freeform,
+    disabled,
     activeOption: UNSAFE_activeOption,
     appearance,
     clearable,

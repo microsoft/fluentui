@@ -33,11 +33,6 @@ export type ComboboxSlots = {
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   ComboboxBaseProps & {
     /*
-     * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
-     */
-    freeform?: boolean;
-
-    /*
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
      */
     children?: React.ReactNode;

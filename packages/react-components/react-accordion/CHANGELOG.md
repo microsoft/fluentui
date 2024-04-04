@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 12:08:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.48)
+
+Thu, 04 Apr 2024 12:08:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.47..@fluentui/react-accordion_v9.3.48)
+
+### Patches
+
+- fix: remove border from high contrast mode to match styles and make focus more visible ([PR #30865](https://github.com/microsoft/fluentui/pull/30865) by sarah.higley@microsoft.com)
 
 ## [9.3.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.47)
 

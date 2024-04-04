@@ -14,7 +14,6 @@ export type TagPickerInputProps = Omit<
   'children' | 'size' | 'defaultValue'
 > &
   Pick<ComboboxProps, 'clearable' | 'appearance'> & {
-    freeform?: boolean;
     disabled?: boolean;
     value?: string;
   };

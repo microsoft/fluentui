@@ -24,7 +24,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
-  const { positioning, size = 'medium', disabled = false } = props;
+  const { positioning, size = 'medium' } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
   const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
@@ -75,9 +75,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     if (isHTMLElement(event.target) && elementContains(secondaryActionRef.current, event.target)) {
       return;
     }
-    if (disabled) {
-      return;
-    }
     comboboxState.setOpen(event, newValue);
   });
 
@@ -87,7 +84,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     trigger,
     popover: comboboxState.open || comboboxState.hasFocus ? popover : undefined,
     popoverId,
-    disabled,
+    disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),
     secondaryActionRef,
@@ -110,6 +107,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     setValue: comboboxState.setValue,
     multiselect: comboboxState.multiselect,
     value: comboboxState.value,
+    freeform: comboboxState.freeform,
   };
 };
 

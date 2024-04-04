@@ -22,6 +22,7 @@ export const useTagPickerInput_unstable = (
 ): TagPickerInputState => {
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
+  const freeform = useTagPickerContext_unstable(ctx => ctx.freeform);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const {
     triggerRef,
@@ -36,7 +37,7 @@ export const useTagPickerInput_unstable = (
     multiselect,
     popoverId,
     value: contextValue,
-  } = usePickerContext();
+  } = useTagPickerContexts();
 
   const { value = contextValue, disabled = contextDisabled } = props;
 
@@ -71,7 +72,7 @@ export const useTagPickerInput_unstable = (
     useMergedRefs(triggerRef, ref),
     {
       activeDescendantController,
-      freeform: props.freeform,
+      freeform,
       state: {
         clearSelection,
         getOptionById,
@@ -99,7 +100,7 @@ export const useTagPickerInput_unstable = (
   return state;
 };
 
-function usePickerContext() {
+function useTagPickerContexts() {
   return {
     triggerRef: useTagPickerContext_unstable(ctx => ctx.triggerRef),
     clearSelection: useTagPickerContext_unstable(ctx => ctx.clearSelection),

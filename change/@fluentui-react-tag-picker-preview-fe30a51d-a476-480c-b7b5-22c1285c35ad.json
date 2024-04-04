@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: adds TagPickerOptionGroup component",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
