@@ -1,7 +1,7 @@
-import { createContext } from '@fluentui/react-context-selector';
-import { CarouselStore } from './Carousel.types';
-import { useCarouselWalker } from './useCarouselWalker';
+import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import { CarouselPageChangeData, CarouselStore } from './Carousel.types';
 import * as React from 'react';
+import { EventHandler } from '@fluentui/react-utilities';
 
 /**
  * A hook for managing a collection of carousel pages
@@ -57,18 +57,53 @@ export const createCarouselStore = (): CarouselStore => {
   };
 };
 
-export type CarouselContextType = {
+export const useCarouselCollection = () => {
+  const [store] = React.useState(() => createCarouselStore());
+  const [value, setValue] = React.useState<string | null>(null);
+
+  // Helper function to enable index based pagination
+  const setIndex = (index: number) => {
+    let value = store.getIndex(index);
+    setValue(value);
+  };
+
+  let initialPage = store.getSnapshot().length > 0 ? store.getSnapshot()[0] : null;
+
+  return {
+    store: store,
+    value: value ?? initialPage,
+    setValue,
+    setIndex,
+    totalPages: store.getSnapshot().length,
+    currentIndex: value ? store.getSnapshot().indexOf(value) : 0,
+  };
+};
+
+export type CarouselContextValue = {
   store: CarouselStore;
   value: string;
   setValue: (value: string) => void;
   setIndex: (index: number) => void;
-  pageRef: React.MutableRefObject<string | undefined | null>;
+  currentIndex: number;
+  onPageChange?: EventHandler<CarouselPageChangeData>;
+  totalPages: number;
 };
 
-export const CarouselContext = createContext<CarouselContextType>({
+export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
   value: '',
   setValue: (value: string) => {},
   setIndex: (index: number) => {},
-  pageRef: React.createRef(),
-});
+  onPageChange: () => null,
+  totalPages: 1,
+  currentIndex: 0,
+};
+
+export const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(
+  undefined,
+) as Context<CarouselContextValue>;
+
+export const CarouselProvider = CarouselContext.Provider;
+
+export const useCarouselContext_unstable = <T>(selector: ContextSelector<CarouselContextValue, T>): T =>
+  useContextSelector(CarouselContext, (ctx = carouselContextDefaultValue) => selector(ctx));

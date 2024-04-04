@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNavProps } from '../TeachingPopoverCarouselNav/index';
+import { CarouselPageChangeData } from './Carousel/Carousel.types';
+import { CarouselContextValue } from './Carousel/useCarouselCollection';
+import { CarouselWalkerContextValue } from './Carousel/useCarouselWalker';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -41,13 +44,6 @@ export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
 // For localization or customization, users may want to modify this for their own purposes
 export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
 
-export type TeachingPopoverPageChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
-  /**
-   * The page to be set after event has occurred.
-   */
-  currentPage: number;
-};
-
 /**
  * TeachingPopoverCarousel Props
  */
@@ -75,7 +71,7 @@ export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopove
   finalStepText: string;
 
   /**
-   * Localize the separator between numbers, or use a function to fully override
+   * Localize the page count text via function to fully override
    */
   renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
 
@@ -85,14 +81,14 @@ export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopove
   defaultCurrentPage?: number;
 
   /**
-   * Callback to notify a page change (can be used to update 'currentPage' externally).
+   * Callback to notify a page change
    */
-  onPageChange?: EventHandler<TeachingPopoverPageChangeData>;
+  onPageChange?: EventHandler<CarouselPageChangeData>;
 
   /**
    * Callback to notify when the final button step of a carousel has been activated.
    */
-  onFinish?: EventHandler<TeachingPopoverPageChangeData>;
+  onFinish?: EventHandler<CarouselPageChangeData>;
 
   /**
    * Controllable page state
@@ -108,4 +104,5 @@ export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouse
   setCurrentPage: (page: number) => void;
 } & Partial<Pick<PopoverContextValue, 'appearance'>> &
   Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> &
-  Required<Pick<TeachingPopoverCarouselProps, 'currentPage'>>;
+  CarouselContextValue &
+  CarouselWalkerContextValue;

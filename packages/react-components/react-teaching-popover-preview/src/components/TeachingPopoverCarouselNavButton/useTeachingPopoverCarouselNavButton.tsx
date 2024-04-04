@@ -6,8 +6,9 @@ import type {
 } from './TeachingPopoverCarouselNavButton.types';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
+import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -24,11 +25,15 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
 ): TeachingPopoverCarouselNavButtonState => {
   const { index, onClick, as = 'a' } = props;
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const setCurrentPage = useTeachingPopoverCarouselContext_unstable(context => context.setCurrentPage);
-  const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
-  const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
-  const onPageChange = useTeachingPopoverCarouselContext_unstable(context => context.onPageChange);
+
+  const setCurrentPage = useCarouselContext_unstable(context => context.setIndex);
+  const currentPage = useCarouselContext_unstable(context => context.currentIndex);
+  const totalPages = useCarouselContext_unstable(context => context.totalPages);
+  const onPageChange = useCarouselContext_unstable(context => context.onPageChange);
+  const store = useCarouselContext_unstable(context => context.store);
   const isSelected = currentPage === index;
+
+  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
 
   const setNewPage = React.useCallback(
     event => {
@@ -37,10 +42,10 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
       }
       if (!event.defaultPrevented && isHTMLElement(event.target)) {
         setCurrentPage(index);
-        onPageChange?.(event, { event, type: 'click', currentPage: index });
+        onPageChange?.(event, { event, type: 'click', index, value: values[index] });
       }
     },
-    [onClick, setCurrentPage, index, onPageChange],
+    [onClick, setCurrentPage, index, onPageChange, values],
   );
 
   const defaultTabProps = useTabsterAttributes({

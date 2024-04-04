@@ -29,15 +29,12 @@ export {
   renderTeachingPopoverCarousel_unstable,
   useTeachingPopoverCarouselStyles_unstable,
   useTeachingPopoverCarousel_unstable,
-  TeachingPopoverCarouselProvider,
-  useTeachingPopoverCarouselContext_unstable,
   useTeachingPopoverCarouselContextValues_unstable,
 } from './TeachingPopoverCarousel';
 export type {
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselSlots,
   TeachingPopoverCarouselState,
-  TeachingPopoverCarouselContextValue,
 } from './TeachingPopoverCarousel';
 export {
   TeachingPopoverCarouselNav,

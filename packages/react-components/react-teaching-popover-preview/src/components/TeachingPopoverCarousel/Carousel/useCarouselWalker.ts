@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { CAROUSEL_ACTIVE_ITM, CAROUSEL_ITEM } from './constants';
 import { createContext } from 'react';
+import { Context, ContextSelector } from '@fluentui/react-context-selector';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export const useCarouselWalker = () => {
   const treeWalkerRef = React.useRef<TreeWalker>(document.createTreeWalker(document.body));
@@ -59,7 +61,7 @@ export const useCarouselWalker = () => {
 
           return null;
         },
-        next(value: string) {
+        nextPage(value: string) {
           const res = this.find(value);
           if (!res) {
             return null;
@@ -74,7 +76,7 @@ export const useCarouselWalker = () => {
           return null;
         },
 
-        prev(value: string) {
+        prevPage(value: string) {
           const res = this.find(value);
           if (!res) {
             return null;
@@ -94,19 +96,27 @@ export const useCarouselWalker = () => {
   };
 };
 
-export type CarouselWalkerType = ReturnType<typeof useCarouselWalker>['walker'];
+export type CarouselWalkerContextValue = ReturnType<typeof useCarouselWalker>['walker'];
+export const carouselWalkerContextDefaultValue: CarouselWalkerContextValue = {
+  find: () => {
+    return null;
+  },
+  nextPage: () => {
+    return null;
+  },
+  prevPage: () => {
+    return null;
+  },
+  active: () => {
+    return null;
+  },
+};
 
-export const CarouselWalkerContext = createContext<CarouselWalkerType>({
-  find() {
-    return null;
-  },
-  next() {
-    return null;
-  },
-  prev() {
-    return null;
-  },
-  active() {
-    return null;
-  },
-});
+export const CarouselWalkerContext: Context<CarouselWalkerContextValue> = createContext<
+  CarouselWalkerContextValue | undefined
+>(undefined) as Context<CarouselWalkerContextValue>;
+
+export const CarouselWalkerProvider = CarouselWalkerContext.Provider;
+
+export const useCarouselWalkerContext_unstable = <T>(selector: ContextSelector<CarouselWalkerContextValue, T>): T =>
+  useContextSelector(CarouselWalkerContext, (ctx = carouselWalkerContextDefaultValue) => selector(ctx));
