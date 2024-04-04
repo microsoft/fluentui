@@ -125,7 +125,7 @@ export const useListItem_unstable = (
             // Press ESC on the original target to get focus to the parent group (List)
             e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
             // Now dispatch the original key to move up or down in the list
-            e.target.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys[e.key] }));
+            e.currentTarget.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys[e.key] }));
         }
         return;
       }
