@@ -16,37 +16,34 @@ const useStyles = makeStyles({
   },
 });
 
-const items = [
-  { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
-  { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
-  { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
-  { color: '#00B053', value: '00B053', 'aria-label': 'green' },
-  {},
-  {},
-  {},
-  {},
-];
+const ITEMS_LIMIT = 8;
 
 export const EmptySwatchExample = () => {
+  const styles = useStyles();
+
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
-  const [idx, setIdx] = React.useState(4);
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [items, setItems] = React.useState<Array<{ color: string; value: string; 'aria-label': string }>>([
+    { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
+    { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
+    { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
+    { color: '#00B053', value: '00B053', 'aria-label': 'green' },
+  ]);
+  const emptyItems = new Array(ITEMS_LIMIT - items.length).fill(null);
+
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedSwatch);
   };
+  const handleAddColor = () => {
+    const newColor = inputRef.current?.value as string;
+    // "value" should be unique as it's used as a key and for selection
+    const newValue = `custom-${newColor} [${items.length - ITEMS_LIMIT}]`;
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
-
-  const addNewColor = () => {
-    const value = inputRef.current?.value;
-    if (value && items.length < 9) {
-      items[idx] = { color: value, value: `custom-${value}`, 'aria-label': value };
-      setIdx(idx + 1);
-    }
+    setItems([...items, { color: newColor, value: newValue, 'aria-label': newColor }]);
   };
-
-  const styles = useStyles();
 
   return (
     <>
@@ -55,18 +52,19 @@ export const EmptySwatchExample = () => {
         selectedValue={selectedValue}
         onSelectionChange={handleSelect}
       >
-        {items.map(item =>
-          item.color ? <ColorSwatch key={item.value} {...item} /> : <EmptySwatch key={item.value} />,
-        )}
+        {items.map(item => (
+          <ColorSwatch key={item.value} {...item} />
+        ))}
+        {emptyItems.map((_, index) => (
+          <EmptySwatch key={index} />
+        ))}
       </SwatchPicker>
-      <div
-        className={styles.example}
-        style={{
-          backgroundColor: selectedColor,
-        }}
-      />
+
+      <div className={styles.example} style={{ backgroundColor: selectedColor }} />
       <input ref={inputRef} type="color" id="color-select" name="color-select" />
-      <button onClick={addNewColor}>Add new color</button>
+      <button disabled={items.length >= ITEMS_LIMIT} onClick={handleAddColor}>
+        Add new color
+      </button>
     </>
   );
 };
