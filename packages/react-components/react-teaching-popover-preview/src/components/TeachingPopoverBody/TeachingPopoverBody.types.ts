@@ -15,7 +15,11 @@ export type TeachingPopoverBodySlots = {
 
 export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
   mediaLength?: TeachingPopoverBodyMediaLength;
+
+  /*Required for pagination if used in carousel*/
+  value?: string;
 };
 
 export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> &
-  Partial<Pick<TeachingPopoverBodyProps, 'mediaLength'>>;
+  Partial<Pick<TeachingPopoverBodyProps, 'mediaLength'>> &
+  Required<Pick<TeachingPopoverBodyProps, 'value'>>;

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { TeachingPopoverBodyProps, TeachingPopoverBodyState } from './TeachingPopoverBody.types';
+import { CAROUSEL_ITEM } from '../TeachingPopoverCarousel/Carousel/constants';
 /**
  * Returns the props and state required to render the component
  * @param props - TeachingPopoverBody properties
@@ -10,7 +11,9 @@ export const useTeachingPopoverBody_unstable = (
   props: TeachingPopoverBodyProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverBodyState => {
-  const { mediaLength } = props;
+  const { mediaLength, value } = props;
+
+  const idValue = useId(CAROUSEL_ITEM, value);
 
   return {
     components: {
@@ -26,5 +29,6 @@ export const useTeachingPopoverBody_unstable = (
     ),
     media: slot.optional(props.media, { elementType: 'span' }),
     mediaLength: mediaLength ?? 'short',
+    value: idValue,
   };
 };

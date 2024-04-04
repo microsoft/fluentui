@@ -1,0 +1,107 @@
+import * as React from 'react';
+import { CAROUSEL_ITEM } from './constants';
+import { CarouselContext, createCarouselStore } from './useCarouselCollection';
+import { CarouselWalkerContext, useCarouselWalker } from './useCarouselWalker';
+import { useMergedRefs } from '@fluentui/react-utilities';
+
+// TODO: Migrate this into an external @fluentui/carousel component
+// For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
+export function Carousel_unstable(props: { children: React.ReactNode }) {
+  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker();
+  const [store] = React.useState(() => createCarouselStore());
+
+  const { children } = props;
+  // We track a ref to current page for init and up to date access
+  const pageRef = React.useRef<string | undefined>(undefined);
+  const [value, setValue] = React.useState('');
+
+  const rootRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
+
+    console.log('Got item: ', allItems);
+
+    for (let i = 0; i < allItems.length; i++) {
+      store.addValue(allItems.item(i).getAttribute(CAROUSEL_ITEM)!);
+      console.log('Adding to store: ', store);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const config: MutationObserverInit = {
+      attributes: true,
+      attributeFilter: [CAROUSEL_ITEM],
+      childList: true,
+      subtree: true,
+    };
+
+    // Callback function to execute when mutations are observed
+    const callback: MutationCallback = mutationList => {
+      console.log('Mutation callback');
+      for (const mutation of mutationList) {
+        console.log('Mutation callback - added');
+        for (const addedNode of Array.from(mutation.addedNodes)) {
+          if (addedNode instanceof HTMLElement && addedNode.hasAttribute(CAROUSEL_ITEM)) {
+            const newValue = addedNode.getAttribute(CAROUSEL_ITEM)!;
+            const previous = addedNode.previousElementSibling?.getAttribute(CAROUSEL_ITEM) ?? null;
+
+            console.log(previous);
+            store.insertValue(newValue, previous);
+          }
+        }
+
+        for (const removedNode of Array.from(mutation.removedNodes)) {
+          if (removedNode instanceof HTMLElement && removedNode?.hasAttribute(CAROUSEL_ITEM)) {
+            const removedValue = removedNode.getAttribute(CAROUSEL_ITEM)!;
+            store.removeValue(removedValue);
+          }
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(rootRef.current!, config);
+    console.log('observing');
+
+    console.log('STORE: ', store.getSnapshot());
+    // Later, you can stop observing
+    return () => {
+      console.log('observer disconnect');
+      observer.disconnect();
+    };
+  }, []);
+
+  console.log('[i] render: Carousel', { value });
+
+  const _setValue = (value: string) => {
+    console.log('SETTING VALUE:', value);
+    pageRef.current = value;
+    setValue(value);
+
+    console.log('STORE: ', store.getSnapshot());
+  };
+
+  const setIndex = (index: number) => {
+    console.log('SETTING index:', index);
+    let value = store.getIndex(index);
+    console.log('SETTING index value: ', value);
+    _setValue(value);
+    console.log('STORE: ', store.getSnapshot());
+  };
+
+  console.log('TEST: ', carouselWalker.active());
+
+  return (
+    <div data-carousel ref={useMergedRefs(rootRef, carouselRef)}>
+      <CarouselWalkerContext.Provider value={carouselWalker}>
+        <CarouselContext.Provider value={{ store, value, setValue: _setValue, pageRef, setIndex }}>
+          {children}
+        </CarouselContext.Provider>
+      </CarouselWalkerContext.Provider>
+    </div>
+  );
+}

@@ -5,12 +5,16 @@ import {
   slot,
   useControllableState,
   useEventCallback,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import { Button } from '@fluentui/react-button';
-import { useState } from 'react';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
+import { CarouselContext } from './Carousel/useCarouselCollection';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { useCarouselWalker } from './Carousel/useCarouselWalker';
 
 export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
@@ -22,31 +26,37 @@ export const useTeachingPopoverCarousel_unstable = (
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
-  const reactChildArray = React.Children.toArray(props.children);
-
-  const [totalPages, setTotalPages] = useState(reactChildArray.length);
-
-  // ToDo: Imperative setCurrentPage hook
   const [currentPage, setCurrentPage] = useControllableState({
     initialState: 0,
     defaultState: props.defaultCurrentPage,
     state: props.currentPage,
   });
 
-  React.useEffect(() => {
-    // Update total pages if child length changes.
-    if (totalPages !== reactChildArray.length) {
-      setTotalPages(reactChildArray.length);
-    }
-  }, [reactChildArray.length, totalPages, setTotalPages]);
+  const { walker: carouselWalker } = useCarouselWalker();
 
-  // Get current pagination child (w/ array safety)
-  const currentPageElement =
-    currentPage < reactChildArray.length ? reactChildArray[currentPage] : reactChildArray[reactChildArray.length - 1];
+  const active = carouselWalker.active();
+  console.log('active:', active);
+  const store = useContextSelector(CarouselContext, c => c.store);
+  const setValue = useContextSelector(CarouselContext, c => c.setValue);
+  const setIndex = useContextSelector(CarouselContext, c => c.setIndex);
+
+  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+  const _currentPage = useContextSelector(CarouselContext, c => values.indexOf(c.value) + 1);
+  const totalPages = values.length;
+
+  console.log('Total pages: ', totalPages);
+
+  useIsomorphicLayoutEffect(() => {
+    // Handles external updates of currentPage via props
+    if (currentPage !== _currentPage) {
+      setIndex(currentPage);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   const handleNextButtonClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-      const nextPage = Math.min(currentPage + 1, totalPages);
+      const nextPage = Math.min(_currentPage + 1, totalPages);
       if (event.isDefaultPrevented()) {
         return;
       }
@@ -58,6 +68,12 @@ export const useTeachingPopoverCarousel_unstable = (
         }
         toggleOpen(event);
       } else {
+        if (active?.value) {
+          const next = carouselWalker.next(active.value);
+          if (next?.value) {
+            setValue(next?.value);
+          }
+        }
         onPageChange?.(event, { event, type: 'click', currentPage: nextPage });
         setCurrentPage(nextPage);
       }
@@ -77,6 +93,12 @@ export const useTeachingPopoverCarousel_unstable = (
         }
         toggleOpen(event);
       } else {
+        if (active?.value) {
+          const prev = carouselWalker.prev(active.value);
+          if (prev?.value) {
+            setValue(prev.value);
+          }
+        }
         onPageChange?.(event, { event, type: 'click', currentPage: prevPage });
         setCurrentPage(prevPage);
       }
@@ -156,7 +178,6 @@ export const useTeachingPopoverCarousel_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         ...props,
-        children: currentPageElement,
       }),
       { elementType: 'div' },
     ),

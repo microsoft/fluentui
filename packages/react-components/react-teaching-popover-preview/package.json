@@ -47,7 +47,8 @@
     "@fluentui/react-tabster": "^9.19.6",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-aria": "^9.10.3",
-    "@fluentui/react-context-selector": "^9.1.57"
+    "@fluentui/react-context-selector": "^9.1.57",
+    "use-sync-external-store": "^1.2.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
