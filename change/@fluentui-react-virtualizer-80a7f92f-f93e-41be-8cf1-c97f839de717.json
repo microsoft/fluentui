@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: use setTimeout and clearTimeout from Fluent context.",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
