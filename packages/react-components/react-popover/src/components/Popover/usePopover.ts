@@ -37,8 +37,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   } as const;
 
   const { targetDocument } = useFluent();
-  // eslint-disable-next-line no-restricted-globals
-  const win = targetDocument?.defaultView ?? window;
+  const win = targetDocument?.defaultView;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

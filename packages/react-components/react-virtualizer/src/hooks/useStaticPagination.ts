@@ -28,13 +28,6 @@ export const useStaticVirtualizerPagination = (
       scrollContainer.current = null;
       clearScrollTimer();
     }
-  };
-
-  React.useEffect(() => {
-    return () => {
-      clearListeners();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**
