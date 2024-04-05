@@ -4,8 +4,8 @@ import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useMergedRefs, getIntrinsicElementProps, useEventCallback } from '@fluentui/react-utilities';
-import { useInputTriggerSlot } from '../../utils/useInputTriggerSlot';
 import { Backspace, Enter } from '@fluentui/keyboard-keys';
+import { useInputTriggerSlot } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render TagPickerInput.

@@ -7,6 +7,7 @@
 /// <reference types="react" />
 
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import { ComboboxBaseState } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
@@ -24,8 +25,6 @@ import { OptionGroupSlots } from '@fluentui/react-combobox';
 import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
-import { PortalProps } from '@fluentui/react-portal';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
