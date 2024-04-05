@@ -8,3 +8,4 @@ export { PresenceGroup } from './components/PresenceGroup';
 export type { AtomMotion, AtomMotionFn, PresenceMotion, PresenceMotionFn, MotionImperativeRef } from './types';
 
 export { Collapse } from './motions/presence/components/Collapse';
+export { Fade } from './motions/presence/components/Fade';

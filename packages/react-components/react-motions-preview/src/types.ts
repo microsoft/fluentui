@@ -14,6 +14,7 @@ type EasingString = string;
 export type PresenceOverrideFields = { duration: DurationMS; easing: EasingString };
 
 export type PresenceTransitionProps<CustomOverrideFields = {}> = {
+  // TODO: make each transition optional?
   // [transition in PresenceTransitionName | 'all']?: Partial<PresenceOverrideFields & CustomOverrideFields>;
   [transition in PresenceTransitionName]: Partial<PresenceOverrideFields & CustomOverrideFields> | undefined;
 };
