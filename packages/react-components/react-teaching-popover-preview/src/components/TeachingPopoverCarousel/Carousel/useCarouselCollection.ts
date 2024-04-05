@@ -30,6 +30,7 @@ export const createCarouselStore = (): CarouselStore => {
     removeValue(value: string) {
       const pos = values.indexOf(value);
       values.splice(pos, 1);
+      // Required to be defined as a 'new' array for useSyncExternalStore
       values = [...values];
       emitChange();
     },
