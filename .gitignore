@@ -155,6 +155,9 @@ rush.json
 # tsdoc
 tsdoc-metadata.json
 
+# benchmarking
+.tensile/
+
 # tools cache
 gulp-cache
 .cache

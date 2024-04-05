@@ -3,6 +3,7 @@
 # Tests
 *.spec.*
 *.test.*
+*.bench.*
 coverage/
 __fixtures__
 __mocks__
