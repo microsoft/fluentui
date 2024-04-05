@@ -523,6 +523,7 @@
           "@fluentui/web-components"
         ],
         "dependencies": [
+          "@fluentui/tokens",
           "@microsoft/fast-element",
           "@microsoft/api-extractor",
           "typescript"
