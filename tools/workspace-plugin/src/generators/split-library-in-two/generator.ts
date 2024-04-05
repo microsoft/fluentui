@@ -115,7 +115,9 @@ function makeSrcLibrary(tree: Tree, options: Options) {
     json.scripts ??= {};
     json.scripts.storybook = 'yarn --cwd ../stories storybook';
     json.scripts['type-check'] = 'just-scripts type-check';
-    json.scripts['test-ssr'] = 'test-ssr \\"../stories/src/**/*.stories.tsx\\"';
+    if (json.scripts['test-ssr']) {
+      json.scripts['test-ssr'] = 'test-ssr \\"../stories/src/**/*.stories.tsx\\"';
+    }
     return json;
   });
 
