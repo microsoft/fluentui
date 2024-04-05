@@ -422,6 +422,29 @@ export const BadgeStyles: ElementStyles;
 // @public (undocumented)
 export const BadgeTemplate: ElementViewTemplate<Badge>;
 
+// @public
+export class BaseTabs extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    orientation: TabsOrientation;
+    // @internal (undocumented)
+    orientationChanged(): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabpanels: HTMLElement[];
+    // @internal (undocumented)
+    tabpanelsChanged(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    tabsChanged(): void;
+}
+
 // @public (undocumented)
 export const borderRadiusCircular = "--borderRadiusCircular";
 
@@ -2633,30 +2656,14 @@ export const TabPanelStyles: ElementStyles;
 // @public (undocumented)
 export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 
-// @public
-export class Tabs extends FASTElement {
-    activeid: string;
-    // @internal (undocumented)
-    activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
-    adjust(adjustment: number): void;
-    appearance?: TabsAppearance;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    disabled?: boolean;
-    orientation: TabsOrientation;
-    // @internal (undocumented)
-    orientationChanged(): void;
+// @public (undocumented)
+export class Tabs extends BaseTabs {
     // (undocumented)
-    protected setTabs: () => void;
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TabsAppearance;
+    disabled?: boolean;
     size?: TabsSize;
-    // @internal (undocumented)
-    tabpanels: HTMLElement[];
-    // @internal (undocumented)
-    tabpanelsChanged(): void;
-    // @internal (undocumented)
-    tabs: HTMLElement[];
-    // @internal (undocumented)
+    // (undocumented)
     tabsChanged(): void;
 }
 
