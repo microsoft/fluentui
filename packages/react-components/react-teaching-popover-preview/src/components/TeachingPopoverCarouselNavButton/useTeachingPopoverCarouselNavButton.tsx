@@ -41,9 +41,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
       }
       if (!event.defaultPrevented && isHTMLElement(event.target)) {
         setCurrentPage(index);
-        console.log('Setting current page: ', index);
         onPageChange?.(event, { event, type: 'click', index, value: values[index] });
-        console.log('Setting values[index]: ', values[index]);
       }
     },
     [onClick, setCurrentPage, index, onPageChange, values],

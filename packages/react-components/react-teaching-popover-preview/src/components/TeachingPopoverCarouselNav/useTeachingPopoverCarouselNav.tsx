@@ -31,11 +31,9 @@ export const useTeachingPopoverCarouselNav_unstable = (
 
   const store = useCarouselContext_unstable(context => context.store);
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
-  console.log('re-render');
 
   // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
-    console.log('rootChildren re-render');
     return Array.from(Array(values.length), (_, i) => <TeachingPopoverCarouselNavButton key={i} index={i} />);
   }, [values.length]);
 
