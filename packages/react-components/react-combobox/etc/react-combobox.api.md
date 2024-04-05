@@ -44,6 +44,7 @@ export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
 
 // @public
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
+    freeform?: boolean;
     children?: React_2.ReactNode;
 };
 
@@ -81,7 +82,7 @@ export type DropdownOpenChangeData = ComboboxBaseOpenChangeData;
 export type DropdownOpenEvents = ComboboxBaseOpenEvents;
 
 // @public
-export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & Omit<ComboboxBaseProps, 'freeform'>;
+export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & ComboboxBaseProps;
 
 // @public (undocumented)
 export type DropdownSlots = {

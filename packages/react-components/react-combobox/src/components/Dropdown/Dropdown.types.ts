@@ -29,7 +29,7 @@ export type DropdownSlots = {
 /**
  * Dropdown Props
  */
-export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & Omit<ComboboxBaseProps, 'freeform'>;
+export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & ComboboxBaseProps;
 
 /**
  * State used in rendering Dropdown
