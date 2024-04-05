@@ -28,7 +28,7 @@ export const useTeachingPopoverCarousel_unstable = (
   } = props;
   const { carousel, carouselWalker, carouselRef } = useCarousel_unstable();
 
-  const { store, setValue, setIndex, currentIndex: _currentPage, totalPages: _totalPages } = carousel;
+  const { store, setValue, setIndex, currentIndex: _currentPage, totalPages: _totalPages, value } = carousel;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -36,7 +36,14 @@ export const useTeachingPopoverCarousel_unstable = (
 
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
   const totalPages = values.length;
-  console.log('Rerender? ', totalPages);
+
+  useIsomorphicLayoutEffect(() => {
+    if (value && !values.includes(value)) {
+      // Safety check that the page we are on hasn't been removed
+      // Stick to current index so we won't impact UI if things change
+      setIndex(_currentPage);
+    }
+  }, [values, value, _currentPage, setIndex]);
 
   useIsomorphicLayoutEffect(() => {
     // Handles default initialization page on mount
@@ -47,8 +54,10 @@ export const useTeachingPopoverCarousel_unstable = (
   }, []);
 
   useIsomorphicLayoutEffect(() => {
+    console.log('Updating current page');
     // Handles external updates of currentPage via props
     if (currentPage !== undefined && currentPage !== _currentPage) {
+      console.log('Set index:', currentPage);
       setIndex(currentPage);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

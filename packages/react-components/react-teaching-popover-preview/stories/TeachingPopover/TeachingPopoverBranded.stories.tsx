@@ -12,7 +12,7 @@ import {
 } from '@fluentui/react-teaching-popover-preview';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 
-const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
 const ExampleContent = (index: number) => {
   return (
@@ -29,7 +29,7 @@ export const DefaultBrand = (props: TeachingPopoverProps) => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
+      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
         <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(1)}
       </TeachingPopoverBody>

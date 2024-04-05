@@ -51,6 +51,7 @@ export function useCarousel_unstable() {
         for (const removedNode of Array.from(mutation.removedNodes)) {
           if (removedNode instanceof HTMLElement && removedNode?.hasAttribute(CAROUSEL_ITEM)) {
             const removedValue = removedNode.getAttribute(CAROUSEL_ITEM)!;
+
             store.removeValue(removedValue);
           }
         }

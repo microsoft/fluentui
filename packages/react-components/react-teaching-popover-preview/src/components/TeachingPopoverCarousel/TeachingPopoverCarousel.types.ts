@@ -99,10 +99,8 @@ export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopove
 /**
  * TeachingPopoverCarousel State and Context Hooks
  */
-export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & {
-  totalPages: number;
-  setCurrentPage: (page: number) => void;
-} & Partial<Pick<PopoverContextValue, 'appearance'>> &
+export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> &
+  Partial<Pick<PopoverContextValue, 'appearance'>> &
   Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> &
   CarouselContextValue &
   CarouselWalkerContextValue;

@@ -12,23 +12,9 @@ import {
 } from '@fluentui/react-teaching-popover-preview';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 
-const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
-
-const ExampleContent = (index: number) => {
-  return (
-    <>
-      <div>{`This is page: ${index}`}</div>
-    </>
-  );
-};
+const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
 export const Carousel = (props: TeachingPopoverProps) => {
-  const [arrayFlag, setArrayFlag] = React.useState(true);
-  const array = [1, 2, 3];
-  const array1 = [1, 2, 4, 3];
-  const useArray = !!arrayFlag ? array : array1;
-  console.log('arrayFlag: ', !!arrayFlag);
-  console.log('ARRAY: ', useArray);
   return (
     <TeachingPopover withArrow={true} {...props}>
       <TeachingPopoverTrigger>
@@ -37,28 +23,20 @@ export const Carousel = (props: TeachingPopoverProps) => {
       <TeachingPopoverSurface>
         <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
         <TeachingPopoverCarousel next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
-          {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
+          <TeachingPopoverBody value={'test-0'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+            <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+            <div>{`This is page: 0`}</div>
+          </TeachingPopoverBody>
 
-          {useArray.map((arrItem, index) => {
-            return (
-              <TeachingPopoverBody
-                value={'test-' + arrItem}
-                key={arrItem}
-                media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}
-              >
-                <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-                {ExampleContent(arrItem)}
-                <Button
-                  onClick={() => {
-                    console.log('Setting array flag: ', !arrayFlag);
-                    setArrayFlag(!arrayFlag);
-                  }}
-                >
-                  {'Add more pages'}
-                </Button>
-              </TeachingPopoverBody>
-            );
-          })}
+          <TeachingPopoverBody value={'test-1'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+            <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+            <div>{`This is page: 1`}</div>
+          </TeachingPopoverBody>
+
+          <TeachingPopoverBody value={'test-2'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+            <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+            <div>{`This is page: 2`}</div>
+          </TeachingPopoverBody>
         </TeachingPopoverCarousel>
       </TeachingPopoverSurface>
     </TeachingPopover>
