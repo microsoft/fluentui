@@ -35,6 +35,9 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   if (options.project && options.all) {
     throw new Error('Cannot specify both project and all');
   }
+  if (!(options.project || options.all)) {
+    throw new Error('missing `project` or `all` option');
+  }
 
   if (options.all) {
     const projects = getProjects(tree);
@@ -54,7 +57,9 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.projectName);
 
-  assertProject(tree, projectConfig);
+  if (!assertProject(tree, projectConfig)) {
+    return;
+  }
 
   const normalizedOptions = {
     ...options,
@@ -302,7 +307,10 @@ function assertProject(tree: Tree, projectConfig: ProjectConfiguration) {
     return;
   }
 
-  const isV9Stable = tags.includes('vNext') && tags.includes('platform:web');
+  const isV9Stable =
+    tags.includes('vNext') &&
+    tags.includes('platform:web') &&
+    !(tags.includes('v8') || tags.includes('react-northstar'));
 
   if (!isV9Stable) {
     output.warn({ title: 'This generator is only for v9 stable web libraries' });
@@ -313,6 +321,8 @@ function assertProject(tree: Tree, projectConfig: ProjectConfiguration) {
     output.warn({ title: '/stories directory does not exist within project, skipping...' });
     return;
   }
+
+  return true;
 }
 
 function updateFileContent(tree: Tree, filePath: string, updater: (content: string) => string) {
