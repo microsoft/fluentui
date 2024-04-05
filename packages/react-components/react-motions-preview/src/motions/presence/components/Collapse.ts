@@ -45,5 +45,5 @@ const collapseMotion: PresenceMotionFn<CollapseParams> = ({
   };
 };
 
-// Create a React component that applies collapse/expand transitions to its children
+/** A React component that applies collapse/expand transitions to its children. */
 export const Collapse = createPresenceComponent(collapseMotion);

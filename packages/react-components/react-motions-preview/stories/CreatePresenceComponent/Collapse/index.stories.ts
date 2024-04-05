@@ -7,7 +7,7 @@ export { OverrideEnter } from './OverrideEnter.stories';
 export { OverrideExit } from './OverrideExit.stories';
 
 export default {
-  title: 'Utilities/Web Motions (Preview)/Collapse',
+  title: 'Utilities/Web Motions (Preview)/Presence Components/Collapse',
   component: Collapse,
   parameters: {
     docs: {

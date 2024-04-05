@@ -7,7 +7,7 @@ export { Default } from './Default.stories';
 // export { OverrideExit } from './OverrideExit.stories';
 
 export default {
-  title: 'Utilities/Web Motions (Preview)/Fade',
+  title: 'Utilities/Web Motions (Preview)/Presence Components/Fade',
   component: Fade,
   parameters: {
     docs: {

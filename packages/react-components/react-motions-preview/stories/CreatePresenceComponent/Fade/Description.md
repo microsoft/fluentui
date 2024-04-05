@@ -1,5 +1,5 @@
-The Fade component manages the presence of content with an opacity change.
+The Fade component manages content presence, using fade in/out.
 
-```jsx
-<Fade>{content}</Fade>
-```
+<code>
+<b>\<Fade visible={...}></b> {content} <b>\</Fade></b>
+</code>
