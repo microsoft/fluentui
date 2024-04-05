@@ -6,9 +6,17 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 export const navItemClassNames: SlotClassNames<NavItemSlots> = {
   root: 'fui-NavItem',
   content: 'fui-NavItem__content',
-  selectedIcon: 'fui-NavItem__selectedIcon',
-  unSelectedIcon: 'fui-NavItem__unSelectedIcon',
+  icon: 'fui-NavItem__icon',
 };
+
+// These should match the constants defined in @fluentui/react-icons
+// This package avoids taking a dependency on the icons package for only the constants.
+const iconClassNames = {
+  filled: 'fui-Icon-filled',
+  regular: 'fui-Icon-regular',
+};
+
+const navItemTokens = { indicatorWidth: '4px', indicatorOffset: '-18px', indicatorHeight: '20px' };
 
 /**
  * Styles for the root slot
@@ -37,26 +45,38 @@ const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
 });
 
-const indicatorHeight = '20px';
-
 const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
       position: 'absolute',
-      transform: 'translateX(-18px)', // per spec
+      transform: `translateX(${navItemTokens.indicatorOffset})`, // per spec
       backgroundColor: tokens.colorNeutralForeground2BrandSelected,
-      width: '4px', // No relevant to any design token for these
-      height: indicatorHeight,
+      width: navItemTokens.indicatorWidth,
+      height: navItemTokens.indicatorHeight,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: '""',
     },
   },
 });
 
-const useSelectedIconStyles = makeStyles({
+const useIconStyles = makeStyles({
   base: {
-    color: tokens.colorNeutralForeground2BrandSelected,
-    height: indicatorHeight,
+    height: navItemTokens.indicatorHeight,
+    [`& .${iconClassNames.filled}`]: {
+      display: 'none',
+    },
+    [`& .${iconClassNames.regular}`]: {
+      display: 'inline',
+    },
+  },
+  selected: {
+    [`& .${iconClassNames.filled}`]: {
+      display: 'inline',
+      color: tokens.colorNeutralForeground2BrandSelected,
+    },
+    [`& .${iconClassNames.regular}`]: {
+      display: 'none',
+    },
   },
 });
 
@@ -67,7 +87,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   const rootDefaultStyles = useRootDefaultStyles();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
-  const selectedIconStyles = useSelectedIconStyles();
+  const iconStyles = useIconStyles();
 
   const { selected } = state;
 
@@ -84,18 +104,13 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
     state.content.className,
   );
 
-  // Only shows in the selected state
-  if (state.selectedIcon) {
-    state.selectedIcon.className = mergeClasses(
-      navItemClassNames.selectedIcon,
-      selectedIconStyles.base,
-      state.selectedIcon.className,
+  if (state.icon) {
+    state.icon.className = mergeClasses(
+      navItemClassNames.icon,
+      iconStyles.base,
+      selected && iconStyles.selected,
+      state.icon.className,
     );
-  }
-
-  // Only shows in the selected state
-  if (state.unSelectedIcon) {
-    state.unSelectedIcon.className = mergeClasses(navItemClassNames.unSelectedIcon, state.unSelectedIcon.className);
   }
 
   return state;

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Nav, NavItem, NavItemProps } from '@fluentui/react-nav-preview';
-import { Folder20Regular, Folder20Filled } from '@fluentui/react-icons';
-
+import { Folder20Regular, Folder20Filled, bundleIcon } from '@fluentui/react-icons';
 import { makeStyles, tokens } from '@fluentui/react-components';
+
+const Folder = bundleIcon(Folder20Filled, Folder20Regular);
 
 const useStyles = makeStyles({
   root: {
@@ -36,22 +37,10 @@ export const Default = (props: Partial<NavItemProps>) => {
         </NavItem>
       </Nav>
       <Nav defaultSelectedValue={'2'}>
-        <NavItem
-          value="1"
-          selectedIcon={<Folder20Filled />}
-          unSelectedIcon={<Folder20Regular />}
-          target="_blank"
-          onClick={someClickHandler}
-        >
+        <NavItem value="1" icon={<Folder />} target="_blank" onClick={someClickHandler}>
           Not Selected, icon present
         </NavItem>
-        <NavItem
-          value="2"
-          selectedIcon={<Folder20Filled />}
-          unSelectedIcon={<Folder20Regular />}
-          target="_blank"
-          onClick={someClickHandler}
-        >
+        <NavItem value="2" icon={<Folder />} target="_blank" onClick={someClickHandler}>
           Selected, icon present
         </NavItem>
       </Nav>

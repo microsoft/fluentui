@@ -13,7 +13,7 @@ describe('NavItem', () => {
           expectedClassNames: {
             root: navItemClassNames.root,
             content: navItemClassNames.content,
-            selectedIcon: navItemClassNames.selectedIcon,
+            selectedIcon: navItemClassNames.icon,
           },
         },
       ],

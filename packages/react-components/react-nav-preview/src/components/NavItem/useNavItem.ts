@@ -14,7 +14,7 @@ import type { NavItemProps, NavItemState } from './NavItem.types';
  * @param ref - reference to root HTMLDivElement of NavItem
  */
 export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
-  const { content, onClick, value, selectedIcon, unSelectedIcon } = props;
+  const { content, onClick, value, icon } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
@@ -41,23 +41,8 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
     elementType: 'span',
   });
 
-  const selectedIconSlot = selected
-    ? slot.optional(selectedIcon, {
-        renderByDefault: false,
-        elementType: 'span',
-        defaultProps: { children: selectedIcon },
-      })
-    : undefined;
-  const unSelectedIconSlot = !selected
-    ? slot.optional(unSelectedIcon, {
-        renderByDefault: false,
-        elementType: 'span',
-        defaultProps: { children: unSelectedIcon },
-      })
-    : undefined;
-
   return {
-    components: { root: 'a', content: 'span', selectedIcon: 'span', unSelectedIcon: 'span' },
+    components: { root: 'a', content: 'span', icon: 'span' },
     root: slot.always(
       getIntrinsicElementProps('a', {
         ref,
@@ -68,8 +53,11 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
       }),
       { elementType: 'a' },
     ),
-    selectedIcon: selectedIconSlot,
-    unSelectedIcon: unSelectedIconSlot,
+    icon: slot.optional(icon, {
+      renderByDefault: false,
+      elementType: 'span',
+      defaultProps: { children: icon },
+    }),
     content: contentSlot,
     selected,
     value,
