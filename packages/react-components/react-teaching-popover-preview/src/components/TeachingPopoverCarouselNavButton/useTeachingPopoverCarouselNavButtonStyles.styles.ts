@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     },
   },
   rootSelected: {
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', 'transparent'), // For high contrast
+    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
     width: '16px',
     ...shorthands.border(0),
     ...shorthands.borderRadius('4px'),
