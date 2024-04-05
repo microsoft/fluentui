@@ -16,7 +16,8 @@ export type TeachingPopoverBodySlots = {
 export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
   mediaLength?: TeachingPopoverBodyMediaLength;
 
-  /*Required for pagination if used in carousel*/
+  /* Passed into CarouselItem to identify pages.
+   Will generate an id with useId() if not provided */
   value?: string;
 };
 

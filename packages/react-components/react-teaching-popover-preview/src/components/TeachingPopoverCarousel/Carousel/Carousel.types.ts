@@ -26,3 +26,12 @@ export type CarouselPageChangeData = EventData<'click', React.MouseEvent<HTMLBut
    */
   value?: string;
 };
+
+export type CarouselItemProps = {
+  /**
+   * The value used to identify a page,
+   * it should be unique and is nessecary for pagination
+   */
+  value: string;
+  children?: React.ReactNode;
+};

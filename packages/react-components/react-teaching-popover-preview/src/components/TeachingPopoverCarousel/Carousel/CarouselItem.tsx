@@ -1,8 +1,9 @@
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { CarouselContext } from './useCarouselCollection';
 import * as React from 'react';
+import { CarouselItemProps } from './Carousel.types';
 
-export function CarouselItem_unstable(props: { children?: React.ReactNode; value: string }) {
+export function CarouselItem_unstable(props: CarouselItemProps) {
   const { value } = props;
 
   const carouselContext = useContextSelector(CarouselContext, c => c);

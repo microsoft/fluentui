@@ -13,7 +13,7 @@ export const useTeachingPopoverBody_unstable = (
 ): TeachingPopoverBodyState => {
   const { mediaLength, value } = props;
 
-  const idValue = useId(CAROUSEL_ITEM, value);
+  const idValue = useId(`${CAROUSEL_ITEM}-`, value);
 
   return {
     components: {

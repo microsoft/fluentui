@@ -30,6 +30,7 @@ export const createCarouselStore = (): CarouselStore => {
     removeValue(value: string) {
       const pos = values.indexOf(value);
       values.splice(pos, 1);
+      values = [...values];
       emitChange();
     },
     subscribe(listener: () => void) {
