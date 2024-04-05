@@ -53,8 +53,19 @@ describe('split-library-in-two generator', () => {
     `);
 
     // new SRC
-    expect(tree.exists(`${newConfig.root}/.storybook/main.js`)).toBe(false);
-    expect(tree.exists(`${newConfig.root}/stories/index.stories.tsx`)).toBe(false);
+    expect(tree.children(newConfig.root)).toMatchInlineSnapshot(`
+      Array [
+        "package.json",
+        "tsconfig.json",
+        "tsconfig.lib.json",
+        ".babelrc.json",
+        "jest.config.js",
+        "config",
+        "just.config.ts",
+        "src",
+        "project.json",
+      ]
+    `);
 
     expect(newConfig).toMatchInlineSnapshot(`
       Object {
@@ -70,6 +81,14 @@ describe('split-library-in-two generator', () => {
       }
     `);
 
+    expect(readJson(tree, `${newConfig.root}/.babelrc.json`)).toEqual({ extends: '../../../../../.babelrc-v9.json' });
+    expect(readJson(tree, `${newConfig.root}/config/api-extractor.json`)).toEqual(
+      expect.objectContaining({
+        mainEntryPointFilePath:
+          '<projectRoot>../../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts',
+      }),
+    );
+
     expect(readJson(tree, `${newConfig.root}/tsconfig.json`)).toEqual(
       expect.objectContaining({
         extends: '../../../../tsconfig.base.json',
@@ -84,11 +103,18 @@ describe('split-library-in-two generator', () => {
       }),
     );
 
+    expect(readJson(tree, `${newConfig.root}/tsconfig.lib.json`).compilerOptions).toEqual(
+      expect.objectContaining({
+        declarationDir: '../../../../dist/out-tsc/types',
+        outDir: '../../../../dist/out-tsc',
+      }),
+    );
+
     expect(readJson(tree, `${newConfig.root}/package.json`)).toEqual(
       expect.objectContaining({
         name: '@proj/react-hello',
         scripts: expect.objectContaining({
-          'test-ssr': 'test-ssr \\"../stories/src/**/*.stories.tsx\\"',
+          'test-ssr': 'test-ssr "../stories/src/**/*.stories.tsx"',
           'type-check': 'just-scripts type-check',
           storybook: 'yarn --cwd ../stories storybook',
         }),
@@ -368,6 +394,14 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
         },
       ],
     },
+    tsConfigLib: {
+      extends: './tsconfig.json',
+      compilerOptions: {
+        declaration: true,
+        declarationDir: '../../../dist/out-tsc/types',
+        outDir: '../../../dist/out-tsc',
+      },
+    },
     jestConfig: stripIndents`
       module.exports = {
         displayName: 'react-text',
@@ -386,7 +420,9 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
         snapshotSerializers: ['@griffel/jest-serializer'],
       };
       `,
-    babelConfig: {},
+    babelConfig: {
+      extends: '../../../../.babelrc-v9.json',
+    },
     justConfig: `
       import { preset, task } from '@fluentui/scripts-tasks';
 
@@ -440,6 +476,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
 
   tree.write(`${rootPath}/package.json`, serializeJson(templates.packageJson));
   tree.write(`${rootPath}/tsconfig.json`, serializeJson(templates.tsConfig));
+  tree.write(`${rootPath}/tsconfig.lib.json`, serializeJson(templates.tsConfigLib));
   tree.write(`${rootPath}/.babelrc.json`, serializeJson(templates.babelConfig));
   tree.write(`${rootPath}/jest.config.js`, templates.jestConfig);
   tree.write(`${rootPath}/config/api-extractor.json`, serializeJson(templates.apiExtractorConfig));
