@@ -4,16 +4,16 @@
  */
 
 /**
- * WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG!
- * WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG!
+ * WARNING! ATTENTION! WARNING! ATTENTION! WARNING! ATTENTION!
+ * WARNING! ATTENTION! WARNING! ATTENTION! WARNING! ATTENTION!
  *
  * Do not use anything from this file. It is a snapshot of the older Tabster typings exposed by a mistake.
  * The exposed typings should have been removed, but we don't do it in minor versions to avoid breaking changes.
  * Everything reexported from this file as react-tabster/TabsterTypes is marked as deprecated and shouldn't
  * be used anywhre.
  *
- * WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG!
- * WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG! WARNING! ATTENTION! ACHTUNG!
+ * WARNING! ATTENTION! WARNING! ATTENTION! WARNING! ATTENTION!
+ * WARNING! ATTENTION! WARNING! ATTENTION! WARNING! ATTENTION!
  */
 
 export const TabsterAttributeName = 'data-tabster';

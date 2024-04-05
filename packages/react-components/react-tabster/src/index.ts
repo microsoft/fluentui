@@ -39,8 +39,8 @@ export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
 export type { KeyborgFocusInEvent } from 'keyborg';
 export { KEYBORG_FOCUSIN } from 'keyborg';
 
-// WARNING! ATTENTION! ACHTUNG! TabsterTypes was exported from here by mistake. To avoid breaking changes,
-// we are putting a snapshot of TabsterTypes@6.0.1 and marking the entire export as deprecated.
+// WARNING! ATTENTION! Tabster.Types was exported from here by mistake. To avoid breaking changes,
+// we are putting a snapshot of Tabster.Types@6.0.1 and marking the entire export as deprecated.
 import * as TabsterTypes6_0_1_DoNotUse from './tabster-types-6.0.1-do-not-use';
 export {
   /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.)  */
