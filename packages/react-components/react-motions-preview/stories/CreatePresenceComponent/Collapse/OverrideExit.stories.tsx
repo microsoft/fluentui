@@ -10,7 +10,11 @@ export const OverrideExit = () => {
   const [visible, setVisible] = React.useState(false);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   // Use the motion configurator UI to customize duration and easing, and generate an override object
-  const { configuratorJSX, override } = useMotionConfigurator({ animateOpacity, overrideName: 'exit' });
+  const { configuratorJSX, override } = useMotionConfigurator({
+    animateOpacity,
+    tagName: 'Collapse',
+    overrideName: 'exit',
+  });
 
   return (
     <>

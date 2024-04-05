@@ -53,9 +53,11 @@ const useMotionConfig = ({ overrideName }: { overrideName: 'enter' | 'exit' | 'a
 
 export const useMotionConfigurator = ({
   animateOpacity,
+  tagName,
   overrideName,
 }: {
   animateOpacity: boolean;
+  tagName: string;
   overrideName: 'enter' | 'exit' | 'all';
 }) => {
   const comboId = useId('combo-default');
@@ -99,7 +101,7 @@ export const useMotionConfigurator = ({
 
   const exampleCodeJSX = (
     <>
-      {`<Collapse ...`}
+      {`<${tagName} ...`}
       <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
       {overrideJSX}
       {'>'}
