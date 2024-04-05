@@ -12,12 +12,11 @@ export function CarouselItem_unstable(props: { children?: React.ReactNode; value
   }
 
   const visible = useContextSelector(CarouselContext, c => c.value === value);
-  console.log('Current page value ref:', value);
 
   return (
     <>
       <span data-carousel-item={value} data-carousel-active-item={!!visible} hidden />
-      <div hidden={!visible}>{props.children}</div>
+      {!!visible && <div>{props.children}</div>}
     </>
   );
 }

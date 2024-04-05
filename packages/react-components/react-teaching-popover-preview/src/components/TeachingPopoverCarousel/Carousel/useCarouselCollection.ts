@@ -13,6 +13,7 @@ export const createCarouselStore = (): CarouselStore => {
   const carouselStore = {
     addValue(value: string) {
       values = [...values, value];
+
       emitChange();
     },
     insertValue(value: string, prev: string | null) {
@@ -20,16 +21,16 @@ export const createCarouselStore = (): CarouselStore => {
         values = [value, ...values];
       } else {
         const pos = values.indexOf(prev);
-        console.log(prev, values, pos);
         values.splice(pos + 1, 0, value);
+        // Required to be defined as a 'new' array for useSyncExternalStore
+        values = [...values];
       }
-
-      console.log(values);
+      emitChange();
     },
     removeValue(value: string) {
       const pos = values.indexOf(value);
       values.splice(pos, 1);
-      console.log(values);
+      emitChange();
     },
     subscribe(listener: () => void) {
       listeners = [...listeners, listener];
@@ -57,7 +58,7 @@ export const createCarouselStore = (): CarouselStore => {
   };
 };
 
-export const useCarouselCollection = () => {
+export const useCarouselCollection_unstable = () => {
   const [store] = React.useState(() => createCarouselStore());
   const [value, setValue] = React.useState<string | null>(null);
 

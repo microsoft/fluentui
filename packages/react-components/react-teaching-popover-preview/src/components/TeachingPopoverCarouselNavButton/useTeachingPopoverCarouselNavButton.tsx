@@ -8,7 +8,6 @@ import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
-import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -33,7 +32,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   const store = useCarouselContext_unstable(context => context.store);
   const isSelected = currentPage === index;
 
-  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+  const values = store.getSnapshot();
 
   const setNewPage = React.useCallback(
     event => {
@@ -42,7 +41,9 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
       }
       if (!event.defaultPrevented && isHTMLElement(event.target)) {
         setCurrentPage(index);
+        console.log('Setting current page: ', index);
         onPageChange?.(event, { event, type: 'click', index, value: values[index] });
+        console.log('Setting values[index]: ', values[index]);
       }
     },
     [onClick, setCurrentPage, index, onPageChange, values],

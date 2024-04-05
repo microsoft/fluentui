@@ -28,7 +28,7 @@ export const useTeachingPopoverCarousel_unstable = (
   } = props;
   const { carousel, carouselWalker, carouselRef } = useCarousel_unstable();
 
-  const { store, setValue, setIndex, currentIndex: _currentPage } = carousel;
+  const { store, setValue, setIndex, currentIndex: _currentPage, totalPages: _totalPages } = carousel;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -36,6 +36,7 @@ export const useTeachingPopoverCarousel_unstable = (
 
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
   const totalPages = values.length;
+  console.log('Rerender? ', totalPages);
 
   useIsomorphicLayoutEffect(() => {
     // Handles default initialization page on mount
@@ -61,9 +62,6 @@ export const useTeachingPopoverCarousel_unstable = (
       }
 
       const active = carouselWalker.active();
-      console.log('NEXT ACTIVE: ', active);
-      console.log('NEXT VALUE: ', active?.value);
-
       if (nextPage >= totalPages) {
         onFinish?.(event, { event, type: 'click', index: _currentPage, value: values[_currentPage] });
         if (triggerRef.current) {
@@ -90,8 +88,6 @@ export const useTeachingPopoverCarousel_unstable = (
       }
 
       const active = carouselWalker.active();
-      console.log('PREV ACTIVE: ', active);
-      console.log('PREV VALUE: ', active?.value);
       if (_currentPage <= 0) {
         if (triggerRef.current) {
           triggerRef.current.focus();

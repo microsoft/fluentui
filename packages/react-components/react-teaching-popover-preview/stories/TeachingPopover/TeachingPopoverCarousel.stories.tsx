@@ -22,32 +22,45 @@ const ExampleContent = (index: number) => {
   );
 };
 
-export const Carousel = (props: TeachingPopoverProps) => (
-  <TeachingPopover withArrow={true} {...props}>
-    <TeachingPopoverTrigger>
-      <Button>TeachingPopover trigger</Button>
-    </TeachingPopoverTrigger>
-    <TeachingPopoverSurface>
-      <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverCarousel next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
-        {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(1)}
-        </TeachingPopoverBody>
+export const Carousel = (props: TeachingPopoverProps) => {
+  const [arrayFlag, setArrayFlag] = React.useState(true);
+  const array = [1, 2, 3];
+  const array1 = [1, 2, 4, 3];
+  const useArray = !!arrayFlag ? array : array1;
+  console.log('arrayFlag: ', !!arrayFlag);
+  console.log('ARRAY: ', useArray);
+  return (
+    <TeachingPopover withArrow={true} {...props}>
+      <TeachingPopoverTrigger>
+        <Button>TeachingPopover trigger</Button>
+      </TeachingPopoverTrigger>
+      <TeachingPopoverSurface>
+        <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
+        <TeachingPopoverCarousel next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
+          {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
 
-        {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(2)}
-        </TeachingPopoverBody>
-
-        {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(3)}
-        </TeachingPopoverBody>
-      </TeachingPopoverCarousel>
-    </TeachingPopoverSurface>
-  </TeachingPopover>
-);
+          {useArray.map((arrItem, index) => {
+            return (
+              <TeachingPopoverBody
+                value={'test-' + arrItem}
+                key={arrItem}
+                media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}
+              >
+                <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+                {ExampleContent(arrItem)}
+                <Button
+                  onClick={() => {
+                    console.log('Setting array flag: ', !arrayFlag);
+                    setArrayFlag(!arrayFlag);
+                  }}
+                >
+                  {'Add more pages'}
+                </Button>
+              </TeachingPopoverBody>
+            );
+          })}
+        </TeachingPopoverCarousel>
+      </TeachingPopoverSurface>
+    </TeachingPopover>
+  );
+};

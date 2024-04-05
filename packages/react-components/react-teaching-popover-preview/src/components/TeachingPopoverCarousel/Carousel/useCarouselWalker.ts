@@ -4,7 +4,7 @@ import { createContext } from 'react';
 import { Context, ContextSelector } from '@fluentui/react-context-selector';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
-export const useCarouselWalker = () => {
+export const useCarouselWalker_unstable = () => {
   const treeWalkerRef = React.useRef<TreeWalker>(document.createTreeWalker(document.body));
   const htmlRef = React.useRef<HTMLDivElement>(document.createElement('div'));
   const ref = React.useCallback((el: HTMLDivElement | null) => {
@@ -96,7 +96,7 @@ export const useCarouselWalker = () => {
   };
 };
 
-export type CarouselWalkerContextValue = ReturnType<typeof useCarouselWalker>['walker'];
+export type CarouselWalkerContextValue = ReturnType<typeof useCarouselWalker_unstable>['walker'];
 export const carouselWalkerContextDefaultValue: CarouselWalkerContextValue = {
   find: () => {
     return null;
@@ -118,5 +118,6 @@ export const CarouselWalkerContext: Context<CarouselWalkerContextValue> = create
 
 export const CarouselWalkerProvider = CarouselWalkerContext.Provider;
 
-export const useCarouselWalkerContext_unstable = <T>(selector: ContextSelector<CarouselWalkerContextValue, T>): T =>
-  useContextSelector(CarouselWalkerContext, (ctx = carouselWalkerContextDefaultValue) => selector(ctx));
+export const useCarouselWalker_unstableContext_unstable = <T>(
+  selector: ContextSelector<CarouselWalkerContextValue, T>,
+): T => useContextSelector(CarouselWalkerContext, (ctx = carouselWalkerContextDefaultValue) => selector(ctx));

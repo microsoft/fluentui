@@ -8,6 +8,7 @@ import type {
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 /**
  * Returns the props and state required to render the component
@@ -26,16 +27,20 @@ export const useTeachingPopoverCarouselNav_unstable = (
     unstable_hasDefault: true,
   });
 
-  const totalPages = useCarouselContext_unstable(context => context.totalPages);
   const currentPage = useCarouselContext_unstable(context => context.currentIndex);
+
+  const store = useCarouselContext_unstable(context => context.store);
+  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+  console.log('re-render');
 
   // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
-    return Array.from(Array(totalPages), (_, i) => <TeachingPopoverCarouselNavButton key={i} index={i} />);
-  }, [totalPages]);
+    console.log('rootChildren re-render');
+    return Array.from(Array(values.length), (_, i) => <TeachingPopoverCarouselNavButton key={i} index={i} />);
+  }, [values.length]);
 
   return {
-    totalPages,
+    totalPages: values.length,
     currentPage,
     components: {
       root: 'div',
