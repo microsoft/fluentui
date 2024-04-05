@@ -51,20 +51,20 @@ const useMotionConfig = ({ overrideName }: { overrideName: 'enter' | 'exit' | 'a
   return { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override };
 };
 
-export const useMotionConfigurator = ({
-  animateOpacity,
-  tagName,
+export const OverrideControls = ({
   overrideName,
+  setDurationName,
+  customDuration,
+  setCustomDuration,
+  setCurveName,
 }: {
-  animateOpacity: boolean;
-  tagName: string;
   overrideName: 'enter' | 'exit' | 'all';
+  setDurationName: (durationName: DurationKey | '') => void;
+  customDuration: number;
+  setCustomDuration: (customDuration: number) => void;
+  setCurveName: (curveName: CurveKey | '') => void;
 }) => {
   const comboId = useId('combo-default');
-
-  // Get the motion configuration from the hook
-  const { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override } =
-    useMotionConfig({ overrideName });
 
   // Create the options for the dropdowns
   const defaultDurationOption: [string, number] = ['', NaN];
@@ -73,7 +73,92 @@ export const useMotionConfigurator = ({
   const defaultCurveNameOption = '';
   const curveNameOptions = [defaultCurveNameOption, ...Object.keys(curves)];
 
-  // Construct JSX for override properties, hiding them if they are not set
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label id={comboId}>duration: &nbsp;</label>
+          </td>
+          <td>
+            <Dropdown
+              aria-labelledby={comboId}
+              placeholder="(default)"
+              defaultValue={optionTextForDuration([defaultDurationName, defaultDuration])}
+              defaultSelectedOptions={[optionTextForDuration([defaultDurationName, defaultDuration])]}
+              onOptionSelect={(e, data) => {
+                // Clear the custom duration when a preset is selected
+                setCustomDuration(0);
+                setDurationName(data.optionValue as DurationKey | '');
+              }}
+            >
+              {durationOptions.map(([optionKey, optionValue]) => {
+                return (
+                  <Option key={optionKey} value={optionKey}>
+                    {optionTextForDuration([optionKey, optionValue])}
+                  </Option>
+                );
+              })}
+            </Dropdown>
+
+            <Input
+              style={{ width: '7rem' }}
+              defaultValue=""
+              value={customDuration ? String(customDuration) : ''}
+              placeholder="custom (ms)"
+              onChange={(e, data) => {
+                setCustomDuration(Number(data.value || 0));
+              }}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label id={comboId}>easing: &nbsp;</label>
+          </td>
+          <td>
+            <Dropdown
+              aria-labelledby={comboId}
+              placeholder="(default)"
+              defaultValue={optionTextForEasing(defaultEasingName)}
+              defaultSelectedOptions={[optionTextForEasing(defaultEasingName)]}
+              onOptionSelect={(e, data) => {
+                setCurveName(data.optionValue as CurveKey | '');
+              }}
+            >
+              {curveNameOptions.map(optionKey => {
+                return (
+                  <Option key={optionKey} value={optionKey}>
+                    {optionTextForEasing(optionKey as CurveKey | '')}
+                  </Option>
+                );
+              })}
+            </Dropdown>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
+export const OverrideCodePreview = ({
+  animateOpacity,
+  tagName,
+  overrideName,
+  durationName,
+  customDuration,
+  curveName,
+  override,
+}: {
+  animateOpacity: boolean;
+  tagName: string;
+  overrideName: 'enter' | 'exit' | 'all';
+  durationName: DurationKey | '';
+  customDuration: number;
+  curveName: CurveKey | '';
+  override: { [key: string]: { duration?: number; easing?: string } } | undefined;
+}) => {
+  // Construct code preview for override properties, hiding them if they are not set
   const durationValueInCode = customDuration ? customDuration : durationName;
   const durationJSX = durationValueInCode ? (
     <>
@@ -89,6 +174,9 @@ export const useMotionConfigurator = ({
       <span style={paramStyles}>{curveName}</span>
     </>
   ) : null;
+
+  // const overrideJSON = override ? JSON.stringify(override) : '';
+  // const overrideJSX = overrideJSON ? <>{` override={${overrideJSON}}`}</> : null;
 
   const overrideJSX = override ? (
     <>
@@ -122,75 +210,37 @@ export const useMotionConfigurator = ({
       {exampleCodeJSX}
     </div>
   );
+  return exampleCodeBlock;
+};
+
+export const useMotionConfigurator = ({
+  animateOpacity,
+  tagName,
+  overrideName,
+}: {
+  animateOpacity: boolean;
+  tagName: string;
+  overrideName: 'enter' | 'exit' | 'all';
+}) => {
+  // Get the motion configuration from the hook
+  const { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override } =
+    useMotionConfig({ overrideName });
 
   const configuratorJSX = (
     <div>
-      <div>{exampleCodeBlock}</div>
+      <div>
+        {OverrideCodePreview({
+          animateOpacity,
+          tagName,
+          overrideName,
+          durationName,
+          customDuration,
+          curveName,
+          override,
+        })}
+      </div>
       <br />
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <label id={comboId}>duration: &nbsp;</label>
-            </td>
-            <td>
-              <Dropdown
-                aria-labelledby={comboId}
-                placeholder="(default)"
-                defaultValue={optionTextForDuration([defaultDurationName, defaultDuration])}
-                defaultSelectedOptions={[optionTextForDuration([defaultDurationName, defaultDuration])]}
-                onOptionSelect={(e, data) => {
-                  // Clear the custom duration when a preset is selected
-                  setCustomDuration(0);
-                  setDurationName(data.optionValue as DurationKey | '');
-                }}
-              >
-                {durationOptions.map(([optionKey, optionValue]) => {
-                  return (
-                    <Option key={optionKey} value={optionKey}>
-                      {optionTextForDuration([optionKey, optionValue])}
-                    </Option>
-                  );
-                })}
-              </Dropdown>
-
-              <Input
-                style={{ width: '7rem' }}
-                defaultValue=""
-                value={customDuration ? String(customDuration) : ''}
-                placeholder="custom (ms)"
-                onChange={(e, data) => {
-                  setCustomDuration(Number(data.value || 0));
-                }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label id={comboId}>easing: &nbsp;</label>
-            </td>
-            <td>
-              <Dropdown
-                aria-labelledby={comboId}
-                placeholder="(default)"
-                defaultValue={optionTextForEasing(defaultEasingName)}
-                defaultSelectedOptions={[optionTextForEasing(defaultEasingName)]}
-                onOptionSelect={(e, data) => {
-                  setCurveName(data.optionValue as CurveKey | '');
-                }}
-              >
-                {curveNameOptions.map(optionKey => {
-                  return (
-                    <Option key={optionKey} value={optionKey}>
-                      {optionTextForEasing(optionKey as CurveKey | '')}
-                    </Option>
-                  );
-                })}
-              </Dropdown>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      {OverrideControls({ overrideName, setDurationName, customDuration, setCustomDuration, setCurveName })}
     </div>
   );
 
