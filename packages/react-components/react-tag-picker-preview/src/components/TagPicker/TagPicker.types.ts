@@ -72,7 +72,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
   > &
   Pick<
     TagPickerContextValue,
-    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'
+    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'
   > & {
     trigger: React.ReactNode;
     popover?: React.ReactNode;
