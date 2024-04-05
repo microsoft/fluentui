@@ -9,11 +9,11 @@ describe('NavItem', () => {
     testOptions: {
       'has-static-classnames': [
         {
-          props: { selectedIcon: 'Test Icon', content: 'Some Content' },
+          props: { icon: 'Test Icon', content: 'Some Content' },
           expectedClassNames: {
             root: navItemClassNames.root,
             content: navItemClassNames.content,
-            selectedIcon: navItemClassNames.icon,
+            icon: navItemClassNames.icon,
           },
         },
       ],
