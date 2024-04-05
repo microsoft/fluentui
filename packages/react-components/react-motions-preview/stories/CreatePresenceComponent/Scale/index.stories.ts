@@ -2,7 +2,7 @@ import ScaleDescription from './Description.md';
 import { Scale } from '@fluentui/react-motions-preview';
 
 export { Default } from './Default.stories';
-// export { OverrideAll } from './OverrideAll.stories';
+export { OverrideAll } from './OverrideAll.stories';
 // export { OverrideEnter } from './OverrideEnter.stories';
 // export { OverrideExit } from './OverrideExit.stories';
 
