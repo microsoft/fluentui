@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Avoid re-inserting Style Element to HEAD when re-rendering FluentProvider",
-  "packageName": "@fluentui/react-provider",
-  "email": "ramyrafik@gmail.com",
-  "dependentChangeType": "patch"
-}
