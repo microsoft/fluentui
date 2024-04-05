@@ -23,7 +23,7 @@ export const StrictDomDemo = () => {
 
   return (
     <FluentProvider theme={webLightTheme} className={mergeClasses(classNames.root)}>
-      <Label required>Label</Label>
+      <Label required>This is a test</Label>
       <ButtonStories />
     </FluentProvider>
   );
