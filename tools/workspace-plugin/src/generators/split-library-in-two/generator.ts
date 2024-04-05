@@ -15,6 +15,7 @@ import {
   getProjects,
   ProjectConfiguration,
   output,
+  installPackagesTask,
 } from '@nx/devkit';
 import { tsquery } from '@phenomnomnominal/tsquery';
 
@@ -52,6 +53,10 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   await tsConfigBaseAllGenerator(tree, { verify: false });
 
   await formatFiles(tree);
+
+  return () => {
+    installPackagesTask(tree, true);
+  };
 }
 
 function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string }) {
@@ -111,31 +116,69 @@ function makeSrcLibrary(tree: Tree, options: Options) {
     sourceRoot: newProjectSourceRoot,
   });
 
-  updateJson(tree, joinPathFragments(newProjectRoot, 'package.json'), json => {
+  const filePaths = {
+    pkgJson: joinPathFragments(newProjectRoot, 'package.json'),
+    tsConfig: joinPathFragments(newProjectRoot, 'tsconfig.json'),
+    tsConfigLib: joinPathFragments(newProjectRoot, 'tsconfig.lib.json'),
+    babelRc: joinPathFragments(newProjectRoot, '.babelrc.json'),
+    apiExtractorConfig: joinPathFragments(newProjectRoot, 'config/api-extractor.json'),
+    jestConfig: joinPathFragments(newProjectRoot, 'jest.config.js'),
+    rootTsConfig: '/tsconfig.base.json',
+  };
+
+  updateJson(tree, filePaths.pkgJson, json => {
     json.scripts ??= {};
     json.scripts.storybook = 'yarn --cwd ../stories storybook';
     json.scripts['type-check'] = 'just-scripts type-check';
     if (json.scripts['test-ssr']) {
-      json.scripts['test-ssr'] = 'test-ssr \\"../stories/src/**/*.stories.tsx\\"';
+      json.scripts['test-ssr'] = `test-ssr \"../stories/src/**/*.stories.tsx\"`;
     }
     return json;
   });
 
-  updateJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), (json: TsConfig) => {
+  updateJson(tree, filePaths.tsConfig, (json: TsConfig) => {
     json.extends = json.extends?.replace(options.projectOffsetFromRoot.old, options.projectOffsetFromRoot.updated);
     json.references = json.references?.filter(ref => {
       return !ref.path.startsWith('./.storybook');
     });
     return json;
   });
+  updateJson(tree, filePaths.tsConfigLib, (json: TsConfig) => {
+    json.compilerOptions.declarationDir = json.compilerOptions.declarationDir?.replace(
+      options.projectOffsetFromRoot.old,
+      options.projectOffsetFromRoot.updated,
+    );
+    json.compilerOptions.outDir = json.compilerOptions.outDir?.replace(
+      options.projectOffsetFromRoot.old,
+      options.projectOffsetFromRoot.updated,
+    );
 
-  updateFileContent(tree, joinPathFragments(newProjectRoot, 'jest.config.js'), content => {
+    return json;
+  });
+
+  if (tree.exists(filePaths.babelRc)) {
+    updateJson(tree, filePaths.babelRc, json => {
+      json.extends = json.extends?.replace(options.projectOffsetFromRoot.old, options.projectOffsetFromRoot.updated);
+
+      return json;
+    });
+  }
+
+  if (tree.exists(filePaths.apiExtractorConfig)) {
+    updateJson(tree, filePaths.apiExtractorConfig, json => {
+      json.mainEntryPointFilePath = `<projectRoot>${options.projectOffsetFromRoot.updated}dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts`;
+
+      return json;
+    });
+  }
+
+  updateFileContent(tree, filePaths.jestConfig, content => {
     const newContent = content.replace(options.projectOffsetFromRoot.old, options.projectOffsetFromRoot.updated);
 
     return newContent;
   });
 
-  updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
+  updateJson(tree, filePaths.rootTsConfig, (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
     json.compilerOptions.paths[options.projectConfig.name!] = [`${newProjectSourceRoot}/index.ts`];
     return json;
