@@ -1,5 +1,6 @@
 export { XPlatProvider, suppressCssVariableInsertion } from './XPlatProvider/XPlatProvider';
 export type { XPlatProviderProps } from './XPlatProvider/XPlatProvider.types';
+export { Checkmark12Filled, CheckmarkFilled, ChevronDownRegular, DismissRegular } from './icons/icons';
 export { jsxPlatformAdapter } from './jsx/jsxPlatformAdapter';
 export { getStylesFromClassName } from './styling/classNameMap';
 export { makeResetStyles } from './styling/makeResetStyles';

@@ -34,6 +34,7 @@
     "@stylexjs/stylex": "^0.5.1"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-shared-contexts": "^9.15.2",
     "@fluentui/react-theme": "^9.1.19",
     "@griffel/core": "^1.14.1",
