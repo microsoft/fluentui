@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
