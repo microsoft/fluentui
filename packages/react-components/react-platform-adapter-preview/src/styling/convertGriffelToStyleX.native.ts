@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { GriffelStyle } from '@griffel/core';
 import type { UserAuthoredStyles as StyleXStyle } from '@stylexjs/stylex/lib/StyleXTypes';
 
@@ -15,6 +16,11 @@ type ValueWithSelectors = {
 type Selector = keyof ValueWithSelectors;
 
 function isSelector(key: string): key is Selector {
+  // Compound selectors are not supported
+  if (key.includes(',')) {
+    return false;
+  }
+
   return key.startsWith(':') || key.startsWith('@') || key === 'default';
 }
 
@@ -43,6 +49,40 @@ function makeValueWithSelectors(
     default: existingValue ?? null,
     [selector]: makeValueWithSelectors(nestedSelectors, value),
   } as ValueWithSelectors;
+}
+
+function convertGriffelValueToStyleX(
+  griffelStyle: GriffelStyle,
+  property: string,
+): [keyof GriffelStyle & keyof StyleXStyle, GriffelStyle[keyof GriffelStyle]] | [undefined, undefined] {
+  const prop = property as keyof GriffelStyle & keyof StyleXStyle;
+  const value = griffelStyle[prop];
+  if (
+    prop.startsWith('grid') ||
+    prop.startsWith('outline') ||
+    prop === 'transform' || // REVIEW: Transform seems to be partly supported but causes errors
+    prop === 'cursor' ||
+    prop === 'clipPath' ||
+    prop === 'boxShadow' ||
+    (prop === 'display' && value === 'grid') ||
+    (prop === 'position' && value === 'static') ||
+    (prop === 'height' && value === 'fit-content')
+  ) {
+    console.log(`[convertGriffelToStyleX] Ignoring unsupported property '${prop}: ${value}'`);
+    return [undefined, undefined];
+  }
+
+  if (prop === 'columnGap' || prop === 'rowGap') {
+    console.log(`[convertGriffelToStyleX] Converting '${prop}' to 'gap'`);
+    return ['gap', value];
+  }
+
+  if (prop === 'display' && value === 'inline-flex') {
+    console.log(`[convertGriffelToStyleX] Converting 'display: inline-flex' to 'display: flex'`);
+    return ['display', 'flex'];
+  }
+
+  return [prop, value];
 }
 
 /**
@@ -80,17 +120,19 @@ function mergeSelectorValues(selectors: Selector[], griffelStyle: GriffelStyle, 
       continue;
     }
 
-    const property = key as keyof GriffelStyle & keyof StyleXStyle;
-    const value = griffelStyle[property];
+    const [property, value] = convertGriffelValueToStyleX(griffelStyle, key);
+    if (property === undefined || value === undefined || value === null) {
+      continue;
+    }
 
     if (typeof value === 'string' || typeof value === 'number') {
       strictDomStyle[property] = makeValueWithSelectors(selectors, value, strictDomStyle[property]);
     } else if (Array.isArray(value)) {
-      console.warn('Unsupported array value for ', key);
+      console.log('[convertGriffelToStyleX] Unsupported array value for ', key);
     } else if (isSelector(key) && isValueWithSelectors(value)) {
       mergeSelectorValues([...selectors, key], value, strictDomStyle);
     } else {
-      console.warn(`Unsupported selector `, [...selectors, key]);
+      console.log(`[convertGriffelToStyleX] Unsupported selector `, [...selectors, key]);
     }
   }
 }
@@ -103,10 +145,8 @@ export const convertGriffelToStyleX = (griffelStyle: GriffelStyle): StyleXStyle 
       continue;
     }
 
-    const property = key as keyof GriffelStyle & keyof StyleXStyle;
-
-    const value = griffelStyle[property];
-    if (value === null) {
+    const [property, value] = convertGriffelValueToStyleX(griffelStyle, key);
+    if (value === undefined || value === null) {
       continue;
     }
 
@@ -119,11 +159,14 @@ export const convertGriffelToStyleX = (griffelStyle: GriffelStyle): StyleXStyle 
         strictDomStyle[property] = value;
       }
     } else if (Array.isArray(value)) {
-      console.warn('Unsupported array value for ', key);
-    } else if (isSelector(key) && isValueWithSelectors(value)) {
-      mergeSelectorValues([key], value, strictDomStyle);
+      console.log('[convertGriffelToStyleX] Unsupported array value for ', property);
+    } else if (property.includes('::') || property.includes(':before') || property.includes(':after')) {
+      // TODO this could potentially be solved by automatically adding extra elements to the DOM tree
+      console.log('[convertGriffelToStyleX] Unsupported pseudo-element ', property);
+    } else if (isSelector(property) && isValueWithSelectors(value)) {
+      mergeSelectorValues([property], value, strictDomStyle);
     } else {
-      console.warn(`Unsupported selector `, key);
+      console.log('[convertGriffelToStyleX] Unsupported selector ', property);
     }
   }
 
