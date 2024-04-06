@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
-import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
+import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-platform-adapter-preview';
 import { useListboxContext_unstable } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
