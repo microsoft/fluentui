@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 08 Apr 2024 04:08:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.9",
+      "version": "3.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "9ac84d348585fbbb214b18be076c566ec60f9d99",
+            "comment": "chore: setup perf benchmarking in web components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/web-components",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.2",
+            "commit": "9ac84d348585fbbb214b18be076c566ec60f9d99"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Feb 2024 04:08:06 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.8",
       "version": "3.0.0-beta.8",
