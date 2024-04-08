@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: setup perf benchmarking in web components",
-  "packageName": "@fluentui/web-components",
-  "email": "=",
-  "dependentChangeType": "patch"
-}
