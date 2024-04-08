@@ -6,7 +6,6 @@ import { addResolvePath, condition, option, parallel, series, task } from 'just-
 
 import { apiExtractor } from './api-extractor';
 import { JustArgs, getJustArgv } from './argv';
-import { babel, hasBabel } from './babel';
 import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
 import { eslint } from './eslint';
@@ -23,6 +22,7 @@ import { ts } from './ts';
 import { typeCheck } from './type-check';
 import { verifyPackaging } from './verify-packaging';
 import { webpack, webpackDevServer } from './webpack';
+import { wyw } from './wyw';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -72,7 +72,7 @@ export function preset() {
   task('prettier', prettier);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
-  task('babel:postprocess', babel);
+  task('wyw', wyw);
   task('generate-api', generateApi);
   task('type-check', typeCheck);
   task('verify-packaging', () => verifyPackaging(args));
@@ -96,12 +96,7 @@ export function preset() {
   });
 
   task('ts', () => {
-    return series(
-      'ts:compile',
-      'copy-compiled',
-      'ts:postprocess',
-      condition('babel:postprocess', () => hasBabel()),
-    );
+    return series('ts:compile', 'copy-compiled', 'ts:postprocess');
   });
 
   task(
@@ -117,11 +112,7 @@ export function preset() {
 
   task('swc:compile', () => {
     const moduleFlag = args.module;
-    return series(
-      'swc:esm',
-      condition('babel:postprocess', () => hasBabel()),
-      resolveModuleCompilation(moduleFlag),
-    );
+    return series('swc:esm', 'wyw', resolveModuleCompilation(moduleFlag));
   });
 
   task('code-style', series('prettier', 'lint'));
