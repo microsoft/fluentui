@@ -106,11 +106,14 @@ export const OverrideControls = ({
               placeholder="(default)"
               defaultValue={optionTextForDuration([defaultDurationName, defaultDuration])}
               defaultSelectedOptions={[optionTextForDuration([defaultDurationName, defaultDuration])]}
-              onOptionSelect={(e, data) => {
-                // Clear the custom duration when a preset is selected
-                setCustomDuration(0);
-                setDurationName(data.optionValue as DurationKey | '');
-              }}
+              onOptionSelect={React.useCallback(
+                (e: unknown, data: { optionValue: string | undefined }) => {
+                  // Clear the custom duration when a preset is selected
+                  setCustomDuration(0);
+                  setDurationName(data.optionValue as DurationKey | '');
+                },
+                [setCustomDuration, setDurationName],
+              )}
             >
               {durationOptions.map(([optionKey, optionValue]) => {
                 return (
@@ -126,9 +129,12 @@ export const OverrideControls = ({
               defaultValue=""
               value={customDuration ? String(customDuration) : ''}
               placeholder="custom (ms)"
-              onChange={(e, data) => {
-                setCustomDuration(Number(data.value || 0));
-              }}
+              onChange={React.useCallback(
+                (e: unknown, data: { value: number | undefined }) => {
+                  setCustomDuration(Number(data.value || 0));
+                },
+                [setCustomDuration],
+              )}
             />
           </td>
         </tr>
@@ -142,9 +148,12 @@ export const OverrideControls = ({
               placeholder="(default)"
               defaultValue={optionTextForEasing(defaultEasingName)}
               defaultSelectedOptions={[optionTextForEasing(defaultEasingName)]}
-              onOptionSelect={(e, data) => {
-                setCurveName(data.optionValue as CurveKey | '');
-              }}
+              onOptionSelect={React.useCallback(
+                (e: unknown, data: { optionValue: string | undefined }) => {
+                  setCurveName(data.optionValue as CurveKey | '');
+                },
+                [setCurveName],
+              )}
             >
               {curveNameOptions.map(optionKey => {
                 return (
@@ -171,7 +180,7 @@ export const OverrideCodePreviewJSON = ({
   unmountOnExit: boolean;
   tagName: string;
   // overrideNamed: { [key: string]: { duration?: DurationKey; easing?: CurveKey } } | undefined;
-  overrideNamed: Record<string, any> | undefined;
+  overrideNamed: Record<string, unknown> | undefined;
 }) => {
   const overrideJSON =
     overrideNamed && Object.keys(overrideNamed).length
@@ -226,7 +235,7 @@ export const OverrideCodePreview = ({
   curveName: CurveKey | '';
   override: { [key: string]: { duration?: number; easing?: string } } | undefined;
   // overrideNamed: { [key: string]: { duration?: DurationKey; easing?: CurveKey } } | undefined;
-  overrideNamed: Record<string, any> | undefined;
+  overrideNamed: Record<string, unknown> | undefined;
 }) => {
   // Construct code preview for override properties, hiding them if they are not set
   // const durationValueInCode = customDuration ? customDuration : durationName;
