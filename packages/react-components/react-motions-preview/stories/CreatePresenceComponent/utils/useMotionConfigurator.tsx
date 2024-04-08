@@ -173,9 +173,10 @@ export const OverrideCodePreviewJSON = ({
   // overrideNamed: { [key: string]: { duration?: DurationKey; easing?: CurveKey } } | undefined;
   overrideNamed: Record<string, any> | undefined;
 }) => {
-  const overrideJSON = Object.keys(overrideNamed).length
-    ? JSON.stringify(overrideNamed, null, ' ').replace(/"/g, '').replace(/:/g, ': ')
-    : '';
+  const overrideJSON =
+    overrideNamed && Object.keys(overrideNamed).length
+      ? JSON.stringify(overrideNamed, null, ' ').replace(/"/g, '').replace(/:/g, ': ')
+      : '';
   const overrideJSX = overrideJSON ? <>{` override={${overrideJSON}}`}</> : null;
 
   const exampleCodeJSX = (
