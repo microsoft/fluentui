@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: adds support for InteractionTag",
+  "packageName": "@fluentui/react-tag-picker-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

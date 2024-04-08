@@ -16,11 +16,10 @@ export const useTagPickerOption_unstable = (
   props: TagPickerOptionProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerOptionState => {
-  const baseState = useOption_unstable(props as OptionProps, ref);
+  const optionState = useOption_unstable(props as OptionProps, ref);
   const state: TagPickerOptionState = {
-    ...baseState,
     components: {
-      ...baseState.components,
+      ...optionState.components,
       media: 'div',
       secondaryContent: 'span',
     },
@@ -30,6 +29,9 @@ export const useTagPickerOption_unstable = (
     secondaryContent: slot.optional(props.secondaryContent, {
       elementType: 'span',
     }),
+    root: optionState.root,
+    selected: optionState.selected,
+    multiselect: optionState.multiselect,
   };
 
   return state;

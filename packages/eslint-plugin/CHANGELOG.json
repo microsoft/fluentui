@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 03 Apr 2024 07:29:30 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.5",
+      "version": "1.17.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654",
+            "comment": "chore(eslint-plugin): migrate to eslint-plugin-jsdoc to latest in order to support Node 20"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Feb 2024 07:37:49 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.4",
       "version": "1.17.4",

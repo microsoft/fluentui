@@ -1,7 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler } from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState, ListboxContextValue } from '@fluentui/react-combobox';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 
@@ -23,13 +22,24 @@ export type TagPickerOnOptionSelectData = {
   | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
 );
 
+export type TagPickerOnOpenChangeData = { open: boolean } & (
+  | EventData<'click', React.MouseEvent<HTMLDivElement>>
+  | EventData<'change', React.ChangeEvent<HTMLDivElement>>
+  | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
+);
+
 /**
  * Picker Props
  */
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
-  Pick<ComboboxProps, 'positioning' | 'disabled'> &
-  Pick<Partial<TagPickerContextValue>, 'size' | 'selectedOptions' | 'appearance'> & {
+  Pick<
+    ComboboxProps,
+    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'
+  > &
+  Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
+
     /**
      * Can contain two children including a trigger and a popover
      */
@@ -38,21 +48,33 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
 
 /**
  * State used in rendering Picker
- * TODO: only pick from ComboboxState
  */
 export type TagPickerState = ComponentState<TagPickerSlots> &
-  Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> &
+  Pick<
+    ComboboxState,
+    | 'open'
+    | 'activeDescendantController'
+    | 'mountNode'
+    | 'onOptionClick'
+    | 'registerOption'
+    | 'selectedOptions'
+    | 'selectOption'
+    | 'multiselect'
+    | 'value'
+    | 'setValue'
+    | 'setOpen'
+    | 'setHasFocus'
+    | 'appearance'
+    | 'clearSelection'
+    | 'getOptionById'
+    | 'freeform'
+    | 'disabled'
+  > &
   Pick<
     TagPickerContextValue,
-    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'
+    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'
   > & {
-    /**
-     * Configures the positioned menu
-     */
-    positioning?: PositioningShorthand;
-
     trigger: React.ReactNode;
-
     popover?: React.ReactNode;
   };
 

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-search-preview
 
-This log was last generated on Mon, 25 Mar 2024 11:12:15 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 12:08:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.2.0)
+
+Thu, 04 Apr 2024 12:08:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.51..@fluentui/react-search-preview_v0.2.0)
+
+### Minor changes
+
+- export SearchBoxChangeEvent type. ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by seanmonahan@microsoft.com)
+
+## [0.1.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.51)
+
+Tue, 02 Apr 2024 09:48:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.50..@fluentui/react-search-preview_v0.1.51)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.70 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.35 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
 
 ## [0.1.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.50)
 

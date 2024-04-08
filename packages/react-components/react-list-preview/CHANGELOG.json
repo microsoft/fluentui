@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-list-preview",
+  "entries": [
+    {
+      "date": "Thu, 04 Apr 2024 12:08:07 GMT",
+      "tag": "@fluentui/react-list-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "0efb5211010f21904cfe4522e30dc3eb9b38cb3b",
+            "comment": "feat: Release preview package"
+          }
+        ]
+      }
+    }
+  ]
+}

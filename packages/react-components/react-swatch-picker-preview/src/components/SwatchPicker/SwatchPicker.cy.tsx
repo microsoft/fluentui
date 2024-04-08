@@ -7,7 +7,7 @@ import { ColorSwatch } from '../ColorSwatch';
 import { ImageSwatch } from '../ImageSwatch';
 import { SwatchPickerRow } from '../SwatchPickerRow';
 import type { SwatchPickerProps, SwatchPickerOnSelectEventHandler } from '../SwatchPicker';
-import { renderSwatchPickerRow, renderSwatchPickerGrid } from '../../utils/renderUtils';
+import { renderSwatchPickerGrid } from '../../utils/renderUtils';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -97,7 +97,7 @@ const SwatchPickerGridColorSample = (props: SwatchPickerProps) => (
     </p>
 
     <SwatchPicker {...props} id="swatch-picker">
-      {renderSwatchPickerGrid(colors, 3, (row, index) => renderSwatchPickerRow(row, index, ColorSwatch))}
+      {renderSwatchPickerGrid({ items: colors, columnCount: 3 })}
     </SwatchPicker>
 
     <p tabIndex={0} id="after">
@@ -130,7 +130,12 @@ const SwatchPickerGridSample = () => {
   };
 
   return (
-    <SwatchPicker grid selectedValue={selectedValue} onSelectionChange={handleSelect} id="swatch-picker-color-row">
+    <SwatchPicker
+      layout="grid"
+      selectedValue={selectedValue}
+      onSelectionChange={handleSelect}
+      id="swatch-picker-color-row"
+    >
       <SwatchPickerRow>
         <ColorSwatch color="#FF1921" value="FF1921" aria-label="red" id="swatch-0" />
         <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="orange" id="swatch-1" disabled />
@@ -181,7 +186,7 @@ describe('SwatchPicker', () => {
 
     describe('grid layout', () => {
       it('should be focusable', () => {
-        mountFluent(<SwatchPickerGridColorSample grid />);
+        mountFluent(<SwatchPickerGridColorSample layout="grid" />);
 
         cy.get('#before').focus();
 

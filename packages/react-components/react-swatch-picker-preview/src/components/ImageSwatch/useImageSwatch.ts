@@ -27,7 +27,7 @@ export const useImageSwatch_unstable = (
     mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
       requestSelectionChange(event, {
         selectedValue: value,
-        selectedColor: src,
+        selectedSwatch: src,
       }),
     ),
   );

@@ -293,11 +293,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="3"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="249.26"
               />
             </g>
             <text
@@ -313,7 +313,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="243.26"
             >
               2.5
             </text>
@@ -1213,11 +1213,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="3"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="249.26"
               />
             </g>
             <text
@@ -1233,7 +1233,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="243.26"
             >
               2.5
             </text>
@@ -2133,11 +2133,11 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       opacity: ;
                     }
                 fill="#00188f"
-                height="2.37"
+                height="3"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.89"
+                y="249.26"
               />
             </g>
             <text
@@ -2153,7 +2153,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.89"
+              y="243.26"
             >
               2.5
             </text>

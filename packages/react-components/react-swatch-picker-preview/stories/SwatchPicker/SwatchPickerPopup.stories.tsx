@@ -48,7 +48,7 @@ export const SwatchPickerPopup = () => {
 
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
-    setSelectedColor(data.selectedColor);
+    setSelectedColor(data.selectedSwatch);
   };
 
   const styles = useStyles();
