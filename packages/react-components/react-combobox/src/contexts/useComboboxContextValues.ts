@@ -3,7 +3,7 @@ import { ComboboxState } from '../Combobox';
 import type { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
 export function useComboboxContextValues(
-  state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>,
+  state: Omit<ComboboxBaseState, 'freeform'> & Pick<ComboboxState, 'activeDescendantController'>,
 ): ComboboxBaseContextValues {
   const {
     appearance,

@@ -44,6 +44,7 @@ export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
 
 // @public
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
+    freeform?: boolean;
     children?: React_2.ReactNode;
 };
 
@@ -93,7 +94,7 @@ export type DropdownSlots = {
 };
 
 // @public
-export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
+export type DropdownState = ComponentState<DropdownSlots> & Omit<ComboboxBaseState, 'freeform'> & {
     placeholderVisible: boolean;
     showClearButton?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
@@ -216,7 +217,7 @@ export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.Keyboar
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
 // @public (undocumented)
-export function useComboboxContextValues(state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
+export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freeform'> & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
 
 // @internal (undocumented)
 export function useComboboxFilter<T extends {
