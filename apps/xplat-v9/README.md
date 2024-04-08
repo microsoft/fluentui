@@ -80,16 +80,16 @@ After which you should be able to see the webapp running locally.
 To pull the latest from `microsoft/fluentui`, run the following command:
 
 ```sh
-git pull https://github.com/microsoft/fluentui.git master
+git pull https://github.com/microsoft/fluentui.git master --no-rebase
 ```
 
-If there are merge conflicts in `yarn.lock`, **accept all incoming** merge conflicts. Then run the following commands:
+If there are merge conflicts, address them at this phase.
+
+If the conflict are in `yarn.lock`, directly run the following commands:
 
 ```sh
 yarn install
 npx yarn-deduplicate --strategy fewer
-yarn install
-
 ```
 
-After doing so, before commiting any post-merge-commit fixes, make sure to also run `npx syncpack list-mismatches`. It is likely that the `xplat` branch is going to be somewhat out of sync with other changes from core, so make sure to address them before proceeding. Here's [an example of a PR](https://github.com/microsoft/fluentui/pull/30876) doing so.
+After addressing all the merge conflicts, make sure to also run `npx syncpack list-mismatches`. It is likely that the `xplat` branch is going to be somewhat out of sync with version bumps that have happened in the `master` branch, so make sure to address them before proceeding. Here's [an example of a PR](https://github.com/microsoft/fluentui/pull/30876) doing so.
