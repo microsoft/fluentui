@@ -9,11 +9,13 @@ import { loremIpsum } from '../utils/loremIpsum';
 export const OverrideEach = () => {
   const [visible, setVisible] = React.useState(false);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  const [unmountOnExit, setUnmountOnExit] = React.useState(false);
   // Use the motion configurator UI to customize duration and easing, and generate an override object
 
   // configurator for enter transition
   const { configuratorJSX: configuratorJSXEnter, override: overrideEnter } = useMotionConfigurator({
     animateOpacity,
+    unmountOnExit,
     tagName: 'Scale',
     overrideName: 'enter',
   });
@@ -21,6 +23,7 @@ export const OverrideEach = () => {
   // configurator for exit transition
   const { configuratorJSX: configuratorJSXExit, override: overrideExit } = useMotionConfigurator({
     animateOpacity,
+    unmountOnExit,
     tagName: 'Scale',
     overrideName: 'exit',
   });
@@ -37,6 +40,7 @@ export const OverrideEach = () => {
       {configuratorJSXExit}
 
       <Checkbox label="animate opacity" checked={animateOpacity} onChange={() => setAnimateOpacity(v => !v)} />
+      <Checkbox label="unmount on exit" checked={unmountOnExit} onChange={() => setUnmountOnExit(v => !v)} />
 
       <div style={{ padding: '15px 0' }}>
         <ToggleButton checked={visible} onClick={() => setVisible(v => !v)}>
@@ -44,7 +48,7 @@ export const OverrideEach = () => {
         </ToggleButton>
       </div>
 
-      <Scale {...{ visible, animateOpacity, override }}>
+      <Scale {...{ visible, animateOpacity, override, unmountOnExit }}>
         <div>{loremIpsum(10)}</div>
       </Scale>
     </>

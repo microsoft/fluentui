@@ -143,14 +143,17 @@ export const OverrideControls = ({
 
 export const OverrideCodePreview = ({
   animateOpacity,
+  unmountOnExit,
   tagName,
   overrideName,
   durationName,
   customDuration,
   curveName,
   override,
+  overrideNamed,
 }: {
   animateOpacity: boolean;
+  unmountOnExit: boolean;
   tagName: string;
   overrideName: 'enter' | 'exit' | 'all';
   durationName: DurationKey | '';
@@ -191,6 +194,7 @@ export const OverrideCodePreview = ({
     <>
       {`<${tagName} ...`}
       <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
+      <span style={paramStyles}>{!unmountOnExit ? '' : ' unmountOnExit={true}'}</span>
       {overrideJSX}
       {'>'}
     </>
@@ -215,10 +219,12 @@ export const OverrideCodePreview = ({
 
 export const useMotionConfigurator = ({
   animateOpacity,
+  unmountOnExit = false,
   tagName,
   overrideName,
 }: {
   animateOpacity: boolean;
+  unmountOnExit?: boolean;
   tagName: string;
   overrideName: 'enter' | 'exit' | 'all';
 }) => {
@@ -231,6 +237,7 @@ export const useMotionConfigurator = ({
       <div>
         {OverrideCodePreview({
           animateOpacity,
+          unmountOnExit,
           tagName,
           overrideName,
           durationName,
