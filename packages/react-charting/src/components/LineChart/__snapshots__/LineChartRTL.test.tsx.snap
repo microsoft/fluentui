@@ -3918,7 +3918,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -3926,13 +3926,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -3944,13 +3944,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(158.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -3962,13 +3962,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(276.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -3980,13 +3980,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(394.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -3998,13 +3998,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(512.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -4016,13 +4016,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               70
@@ -4064,7 +4064,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -4072,13 +4072,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -4090,13 +4090,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               23
@@ -4108,13 +4108,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               46
@@ -4126,13 +4126,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               69
@@ -4144,13 +4144,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               92
@@ -4731,7 +4731,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -4739,13 +4739,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -4757,13 +4757,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(158.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -4775,13 +4775,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(276.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -4793,13 +4793,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(394.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -4811,13 +4811,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(512.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -4829,13 +4829,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               70
@@ -4877,7 +4877,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -4885,13 +4885,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -4903,13 +4903,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               23
@@ -4921,13 +4921,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               46
@@ -4939,13 +4939,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               69
@@ -4957,13 +4957,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               92
@@ -5546,7 +5546,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -5554,13 +5554,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -5572,13 +5572,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(158.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -5590,13 +5590,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(276.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -5608,13 +5608,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(394.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -5626,13 +5626,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(512.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -5644,13 +5644,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               70
@@ -5692,7 +5692,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -5700,13 +5700,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -5718,13 +5718,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               23
@@ -5736,13 +5736,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               46
@@ -5754,13 +5754,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               69
@@ -5772,13 +5772,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               92
@@ -6359,7 +6359,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -6367,13 +6367,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -6385,13 +6385,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(158.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -6403,13 +6403,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(276.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -6421,13 +6421,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(394.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -6439,13 +6439,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(512.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -6457,13 +6457,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               70
@@ -6505,7 +6505,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -6513,13 +6513,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -6531,13 +6531,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               23
@@ -6549,13 +6549,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               46
@@ -6567,13 +6567,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               69
@@ -6585,13 +6585,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               92
@@ -7185,7 +7185,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M40.5,6V0.5H630.5V6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -7193,13 +7193,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(40.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 20
@@ -7211,13 +7211,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(158.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 30
@@ -7229,13 +7229,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(276.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 40
@@ -7247,13 +7247,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(394.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 50
@@ -7265,13 +7265,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(512.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 60
@@ -7283,13 +7283,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(630.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 70
@@ -7331,7 +7331,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M-6,257.5H0.5V20.5H-6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -7339,13 +7339,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(0,257.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 0
@@ -7357,13 +7357,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(0,198.25)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 23
@@ -7375,13 +7375,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(0,139)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 46
@@ -7393,13 +7393,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(0,79.75)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 69
@@ -7411,13 +7411,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               transform="translate(0,20.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 92
