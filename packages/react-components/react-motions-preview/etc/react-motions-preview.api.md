@@ -21,7 +21,7 @@ export type AtomMotion = {
 // @public (undocumented)
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
-// @public (undocumented)
+// @public
 export const Collapse: FC<    {
 appear?: boolean | undefined;
 children: ReactElement<any, string | JSXElementConstructor<any>>;
@@ -65,6 +65,20 @@ export const durations: {
     readonly durationSlower: 400;
     readonly durationUltraSlow: 500;
 };
+
+// @public
+export const Fade: FC<    {
+appear?: boolean | undefined;
+children: ReactElement<any, string | JSXElementConstructor<any>>;
+imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
+direction: "enter" | "exit";
+}> | undefined;
+visible?: boolean | undefined;
+animateOpacity?: boolean | undefined;
+unmountOnExit?: boolean | undefined;
+override?: PresenceOverride<    {}> | undefined;
+}>;
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -119,6 +133,20 @@ export type PresenceMotionFn<CustomProps = {}> = (params: {
     element: HTMLElement;
     animateOpacity?: boolean;
 } & PresenceTransitionProps<CustomProps>) => PresenceMotion;
+
+// @public
+export const Scale: FC<    {
+appear?: boolean | undefined;
+children: ReactElement<any, string | JSXElementConstructor<any>>;
+imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
+direction: "enter" | "exit";
+}> | undefined;
+visible?: boolean | undefined;
+animateOpacity?: boolean | undefined;
+unmountOnExit?: boolean | undefined;
+override?: PresenceOverride<    {}> | undefined;
+}>;
 
 // (No @packageDocumentation comment for this package)
 
