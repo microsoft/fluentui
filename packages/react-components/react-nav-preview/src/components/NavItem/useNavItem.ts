@@ -11,7 +11,7 @@ import type { NavItemProps, NavItemState } from './NavItem.types';
  * before being passed to renderNavItem_unstable.
  *
  * @param props - props from this instance of NavItem
- * @param ref - reference to root HTMLDivElement of NavItem
+ * @param ref - reference to root HTMLAnchorElement of NavItem
  */
 export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
   const { content, onClick, value, icon } = props;
@@ -54,9 +54,7 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
       { elementType: 'a' },
     ),
     icon: slot.optional(icon, {
-      renderByDefault: false,
       elementType: 'span',
-      defaultProps: { children: icon },
     }),
     content: contentSlot,
     selected,

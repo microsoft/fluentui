@@ -2,6 +2,7 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavItemSlots, NavItemState } from './NavItem.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export const navItemClassNames: SlotClassNames<NavItemSlots> = {
   root: 'fui-NavItem',
@@ -9,21 +10,22 @@ export const navItemClassNames: SlotClassNames<NavItemSlots> = {
   icon: 'fui-NavItem__icon',
 };
 
-// These should match the constants defined in @fluentui/react-icons
-// This package avoids taking a dependency on the icons package for only the constants.
-const iconClassNames = {
-  filled: 'fui-Icon-filled',
-  regular: 'fui-Icon-regular',
+const navItemTokens = {
+  indicatorOffset: '18',
+  indicatorWidth: '4',
+  indicatorHeight: '20',
 };
-
-const navItemTokens = { indicatorWidth: '4px', indicatorOffset: '-18px', indicatorHeight: '20px' };
 
 /**
  * Styles for the root slot
  */
-const useRootDefaultStyles = makeResetStyles({
+const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
-  gap: tokens.spacingHorizontalL,
+  // direction: 'rtl',
+  textTransform: 'none',
+  position: 'relative',
+  justifyContent: 'start',
+  gap: tokens.spacingVerticalL,
   padding: tokens.spacingVerticalMNudge,
   backgroundColor: tokens.colorNeutralBackground4,
   borderRadius: tokens.borderRadiusMedium,
@@ -45,14 +47,17 @@ const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
 });
 
+// right: `${navItemTokens.indicatorOffset}px`,
+// width: `${navItemTokens.indicatorWidth}px`,
+
 const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
       position: 'absolute',
-      transform: `translateX(${navItemTokens.indicatorOffset})`, // per spec
+      marginInlineStart: `-${navItemTokens.indicatorOffset}px`,
       backgroundColor: tokens.colorNeutralForeground2BrandSelected,
-      width: navItemTokens.indicatorWidth,
-      height: navItemTokens.indicatorHeight,
+      height: `${navItemTokens.indicatorHeight}px`,
+      width: `${navItemTokens.indicatorWidth}px`,
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: '""',
     },
@@ -61,20 +66,25 @@ const useIndicatorStyles = makeStyles({
 
 const useIconStyles = makeStyles({
   base: {
-    height: navItemTokens.indicatorHeight,
-    [`& .${iconClassNames.filled}`]: {
+    minHeight: '20px',
+    minWidth: '20px',
+    alignItems: 'top',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    ...shorthands.overflow('hidden'),
+    [`& .${iconFilledClassName}`]: {
       display: 'none',
     },
-    [`& .${iconClassNames.regular}`]: {
+    [`& .${iconRegularClassName}`]: {
       display: 'inline',
     },
   },
   selected: {
-    [`& .${iconClassNames.filled}`]: {
+    [`& .${iconFilledClassName}`]: {
       display: 'inline',
       color: tokens.colorNeutralForeground2BrandSelected,
     },
-    [`& .${iconClassNames.regular}`]: {
+    [`& .${iconRegularClassName}`]: {
       display: 'none',
     },
   },
@@ -84,7 +94,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the NavItem slots based on the state
  */
 export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => {
-  const rootDefaultStyles = useRootDefaultStyles();
+  const rootDefaultClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
   const iconStyles = useIconStyles();
@@ -93,7 +103,7 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
 
   state.root.className = mergeClasses(
     navItemClassNames.root,
-    rootDefaultStyles,
+    rootDefaultClassName,
     selected && indicatorStyles.base,
     state.root.className,
   );

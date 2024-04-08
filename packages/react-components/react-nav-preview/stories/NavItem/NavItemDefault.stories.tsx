@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Nav, NavItem, NavItemProps } from '@fluentui/react-nav-preview';
 import { Folder20Regular, Folder20Filled, bundleIcon } from '@fluentui/react-icons';
-import { makeStyles, tokens } from '@fluentui/react-components';
+import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const Folder = bundleIcon(Folder20Filled, Folder20Regular);
 
@@ -11,10 +11,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     maxWidth: '260px',
     rowGap: '60px',
-    paddingTop: '48px',
-    paddingBottom: '48px',
-    paddingLeft: '48px',
-    paddingRight: '48px',
+    ...shorthands.padding('40px'),
     backgroundColor: tokens.colorNeutralBackground4,
   },
 });
