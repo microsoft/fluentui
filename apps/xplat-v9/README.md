@@ -61,6 +61,20 @@ yarn start
 
 If you are having issues with the bundler, you can also try running it with cache resetting: `yarn start --reset-cache`.
 
+#### Using the web app
+
+Within the `web` folder there is a small webapp ([vite](https://vitejs.dev/)+react) that we can use to verify that the `StrictDomDemo` code works still in web as well - it literally imports it directly.
+
+To use it, you have to:
+
+```sh
+cd web
+yarn install # it does not do that automagically, we want to keep it opt-in
+yarn dev
+```
+
+After which you should be able to see the webapp running locally.
+
 ## Updating `microsoft/fluentui`
 
 To pull the latest from `microsoft/fluentui`, run the following command:

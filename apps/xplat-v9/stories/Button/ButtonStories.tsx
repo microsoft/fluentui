@@ -14,8 +14,8 @@ export const ButtonStories = () => (
   <div>
     <h1>Default</h1>
     <Default />
-    <h1>Shape</h1>
-    <Shape />
+    {/* <h1>Shape</h1>
+    <Shape /> */}
     <h1>Appearance</h1>
     <Appearance />
     <h1>Size</h1>
