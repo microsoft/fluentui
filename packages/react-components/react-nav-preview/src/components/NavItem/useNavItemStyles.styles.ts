@@ -21,7 +21,6 @@ const navItemTokens = {
  */
 const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
-  // direction: 'rtl',
   textTransform: 'none',
   position: 'relative',
   justifyContent: 'start',

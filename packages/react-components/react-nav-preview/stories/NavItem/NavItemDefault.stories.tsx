@@ -25,7 +25,7 @@ export const Default = (props: Partial<NavItemProps>) => {
 
   return (
     <div className={classes.root}>
-      <Nav defaultSelectedValue={'2'}>
+      <Nav defaultSelectedValue="2">
         <NavItem value="1" target="_blank" onClick={someClickHandler}>
           Not Selected, no Icon
         </NavItem>
@@ -33,7 +33,7 @@ export const Default = (props: Partial<NavItemProps>) => {
           Selected, no icon
         </NavItem>
       </Nav>
-      <Nav defaultSelectedValue={'2'}>
+      <Nav defaultSelectedValue="2">
         <NavItem value="1" icon={<Folder />} target="_blank" onClick={someClickHandler}>
           Not Selected, icon present
         </NavItem>
