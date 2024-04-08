@@ -328,6 +328,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                           margin-top: unset;
                           padding-left: 8px;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          forced-color-adjust: none;
+                        }
                   >
                     <div
                       className=
@@ -340,6 +343,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                             font-size: 12px;
                             font-weight: 400;
                             line-height: 16px;
+                          }
+                          @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                            color: rgb(255, 255, 255);
                           }
                     >
                       first Lorem ipsum dolor sit amet
@@ -355,6 +361,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                             font-size: 28px;
                             font-weight: bold;
                             line-height: 36px;
+                          }
+                          @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                            color: rgb(255, 255, 255);
                           }
                     >
                       40
