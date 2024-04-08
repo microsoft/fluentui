@@ -54,7 +54,7 @@ export const createCarouselStore = (): CarouselStore => {
   };
 
   function emitChange() {
-    for (let listener of listeners) {
+    for (const listener of listeners) {
       listener();
     }
   }
@@ -70,24 +70,24 @@ export const useCarouselCollection_unstable = () => {
   const [index, _setIndex] = React.useState<number>(0);
 
   // Helper function to enable index based pagination
-  const setIndex = (index: number) => {
-    let value = store.getIndex(index);
-    _setIndex(index);
-    if (value) {
-      _setValue(value);
+  const setIndex = (_index: number) => {
+    let _value = store.getIndex(_index);
+    _setIndex(_index);
+    if (_value) {
+      _setValue(_value);
     }
   };
 
-  const setValue = (value: string) => {
-    let index = store.getSnapshot().indexOf(value);
-    _setValue(value);
+  const setValue = (_value: string) => {
+    let _index = store.getSnapshot().indexOf(_value);
+    _setValue(_value);
     if (index >= 0) {
-      _setIndex(index);
+      _setIndex(_index);
     }
   };
 
   // Backup for value on initial state - will set to current index or first rendered page.
-  let initialPage = store.getSnapshot().length > index ? store.getSnapshot()[index] : store.getSnapshot()[0];
+  const initialPage = store.getSnapshot().length > index ? store.getSnapshot()[index] : store.getSnapshot()[0];
 
   return {
     store: store,
@@ -112,8 +112,8 @@ export type CarouselContextValue = {
 export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
   value: '',
-  setValue: (value: string) => {},
-  setIndex: (index: number) => {},
+  setValue: (_value: string) => null,
+  setIndex: (_index: number) => null,
   onPageChange: () => null,
   totalPages: 1,
   currentIndex: 0,
