@@ -43,16 +43,16 @@ describe('split-library-in-two generator', () => {
       }),
     );
 
-    expect(tree.read(workspacePaths.github.codeowners, 'utf-8')).toMatchInlineSnapshot(`
-      "packages/react-components/react-components Mr.Wick
-      packages/react-components/react-one-compat Mr.Wick
-      packages/react-components/react-two-preview Mr.Wick
-      packages/react-components/react-hello/library Mr.Wick
-      packages/react-components/react-hello/stories Mr.Wick
-      # <%= NX-CODEOWNER-PLACEHOLDER %>"
-    `);
+    expect(tree.read(workspacePaths.github.codeowners, 'utf-8')).toEqual(
+      expect.stringContaining(stripIndents`
+        packages/react-components/react-hello/library Mr.Wick
+        packages/react-components/react-hello/stories Mr.Wick
+    `),
+    );
 
-    // new SRC
+    // ==============
+    // new SRC ( library )
+    // ==============
     expect(tree.children(newConfig.root)).toMatchInlineSnapshot(`
       Array [
         "package.json",
@@ -118,6 +118,11 @@ describe('split-library-in-two generator', () => {
           'type-check': 'just-scripts type-check',
           storybook: 'yarn --cwd ../stories storybook',
         }),
+        devDependencies: {
+          '@proj/react-one-for-test': '*',
+          '@proj/react-provider': '*',
+          '@proj/react-theme': '*',
+        },
       }),
     );
 
@@ -141,7 +146,9 @@ describe('split-library-in-two generator', () => {
       "
     `);
 
+    // ==============
     // new SB
+    // ==============
     expect(storiesConfig).toMatchInlineSnapshot(`
       Object {
         "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
@@ -336,6 +343,9 @@ function setup(tree: Tree) {
   tree = setupDummyPackage(tree, { projectName: 'react-components' });
   tree = setupDummyPackage(tree, { projectName: 'react-one-compat' });
   tree = setupDummyPackage(tree, { projectName: 'react-two-preview' });
+  tree = setupDummyPackage(tree, { projectName: 'react-one-for-test' });
+  tree = setupDummyPackage(tree, { projectName: 'react-provider' });
+  tree = setupDummyPackage(tree, { projectName: 'react-theme' });
   tree = setupDummyPackage(tree, { projectName: 'react-hello' });
 
   return tree;
@@ -495,6 +505,44 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     describe('test me', () => {
       it('should greet', () => {
         expect(greet).toBe('hello');
+      });
+    });
+  `,
+  );
+
+  // cypress
+
+  tree.write(
+    `${rootPath}/src/Foo.cy.tsx`,
+    stripIndents`
+    import * as React from 'react';
+    import { mount as mountBase } from '@cypress/react';
+    import { FluentProvider } from '@proj/react-provider';
+    import { teamsLightTheme } from '@proj/react-theme';
+
+    const mount = (element: JSX.Element) => {
+      mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+    };
+
+    describe('FlatTree', () => {
+      it('should have all but first level items hidden', () => {
+        mount(<div />);
+        cy.get('[data-testid="test"]').should('not.exist');
+      });
+    });
+  `,
+  );
+  // jest
+
+  tree.write(
+    `${rootPath}/src/Foo.test.tsx`,
+    stripIndents`
+    import { Foo } from './Foo';
+    import { OneForTest } from '@proj/react-one-for-test'
+
+    describe('zzz', () => {
+      it('should zzz', () => {
+        expect(OneForTest).toBe(OneForTest);
       });
     });
   `,

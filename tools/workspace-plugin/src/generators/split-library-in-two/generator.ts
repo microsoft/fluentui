@@ -133,6 +133,16 @@ function makeSrcLibrary(tree: Tree, options: Options) {
     if (json.scripts['test-ssr']) {
       json.scripts['test-ssr'] = `test-ssr \"../stories/src/**/*.stories.tsx\"`;
     }
+
+    const deps = getMissingDevDependenciesFromCypressAndJestFiles(tree, {
+      sourceRoot: newProjectSourceRoot,
+      projectName: options.projectConfig.name!,
+      dependencies: json.dependencies,
+    });
+
+    json.devDependencies ??= {};
+    json.devDependencies = { ...deps, ...json.devDependencies };
+
     return json;
   });
 
@@ -204,7 +214,13 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
 
   const storiesWorkspaceDeps = getWorkspaceDependencies(
     tree,
-    Array.from(getImportsFromStories(tree, newProjectSourceRoot)),
+    Array.from(
+      getImportsFromSourceFiles(
+        tree,
+        newProjectSourceRoot,
+        file => file.endsWith('.stories.tsx') || file.endsWith('.stories.ts'),
+      ),
+    ),
   );
 
   const templates = {
@@ -416,13 +432,11 @@ function getImportPaths(tree: Tree, filePath: string) {
   return [...importPaths, ...requirePaths];
 }
 
-function getImportsFromStories(tree: Tree, root: string) {
-  const storiesDir = joinPathFragments(root);
-
+function getImportsFromSourceFiles(tree: Tree, root: string, filter: (file: string) => boolean) {
   const imports: string[] = [];
 
-  visitNotIgnoredFiles(tree, storiesDir, file => {
-    if (!(file.endsWith('.stories.tsx') || file.endsWith('.stories.ts'))) {
+  visitNotIgnoredFiles(tree, root, file => {
+    if (!filter(file)) {
       return;
     }
 
@@ -443,4 +457,76 @@ function getWorkspaceDependencies(tree: Tree, imports: string[]) {
   });
 
   return dependencies;
+}
+
+function getMissingDevDependenciesFromCypressAndJestFiles(
+  tree: Tree,
+  options: { sourceRoot: string; projectName: string; dependencies: Record<string, string> },
+) {
+  const { projectName, sourceRoot, dependencies } = options;
+
+  const cypressWorkspaceDeps = getWorkspaceDependencies(
+    tree,
+    Array.from(
+      getImportsFromSourceFiles(tree, sourceRoot, file => file.endsWith('.cy.tsx') || file.endsWith('.cy.ts')),
+    ),
+  );
+
+  const jestWorkspaceDeps = getWorkspaceDependencies(
+    tree,
+    Array.from(
+      getImportsFromSourceFiles(
+        tree,
+        sourceRoot,
+        file =>
+          file.endsWith('.test.tsx') ||
+          file.endsWith('.test.ts') ||
+          file.endsWith('.spec.tsx') ||
+          file.endsWith('.spec.ts'),
+      ),
+    ),
+  );
+
+  const deps = { ...cypressWorkspaceDeps, ...jestWorkspaceDeps };
+
+  if (deps[projectName]) {
+    // don't add self to deps
+    delete deps[projectName];
+
+    output.warn({
+      title: 'Not adding self to dependencies',
+      bodyLines: ['You should not import from you package absolute path within test files. Prefer relative imports.'],
+    });
+  }
+
+  if (dependencies) {
+    const log: string[] = [];
+
+    Object.keys(dependencies).forEach(dep => {
+      if (deps[dep]) {
+        delete deps[dep];
+        log.push(dep);
+      }
+    });
+
+    if (log.length > 0) {
+      output.warn({
+        title: 'Not adding dependencies that are already present in package.json',
+        bodyLines: log,
+      });
+    }
+  }
+
+  if (deps['@fluentui/react-components']) {
+    output.error({
+      title: 'react-components cannot be used within cypress or jest test files as it creates circular dependency.',
+      bodyLines: [
+        'Please remove/replace problematic imports from the test files and remove the dependency from "package.json#devDependencies".',
+      ],
+    });
+  }
+
+  output.log({ title: 'Adding missing dependencies', bodyLines: Object.keys(deps) });
+
+  return deps;
 }
