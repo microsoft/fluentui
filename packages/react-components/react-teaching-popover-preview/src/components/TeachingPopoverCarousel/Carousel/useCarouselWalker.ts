@@ -4,7 +4,7 @@ import { createContext } from 'react';
 import { Context, ContextSelector } from '@fluentui/react-context-selector';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts/src/ProviderContext';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export const useCarouselWalker_unstable = () => {
   const { targetDocument } = useFluent();
