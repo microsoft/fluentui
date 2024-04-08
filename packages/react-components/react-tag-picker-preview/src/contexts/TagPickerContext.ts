@@ -26,6 +26,7 @@ export interface TagPickerContextValue
   popoverId: string;
   targetRef: React.RefObject<HTMLElement>;
   secondaryActionRef: React.RefObject<HTMLSpanElement>;
+  tagPickerGroupRef: React.RefObject<HTMLDivElement>;
   size: TagPickerSize;
 }
 
@@ -37,6 +38,7 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   triggerRef: React.createRef<HTMLInputElement>(),
   popoverRef: React.createRef<HTMLDivElement>(),
   targetRef: React.createRef<HTMLElement>(),
+  tagPickerGroupRef: React.createRef<HTMLDivElement>(),
   secondaryActionRef: React.createRef<HTMLDivElement>(),
   open: false,
   clearSelection: () => null,

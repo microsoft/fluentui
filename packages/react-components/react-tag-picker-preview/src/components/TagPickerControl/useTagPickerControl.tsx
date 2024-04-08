@@ -27,7 +27,6 @@ export const useTagPickerControl_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef) as React.RefObject<HTMLDivElement>;
-  const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
@@ -40,12 +39,6 @@ export const useTagPickerControl_unstable = (
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target !== triggerRef.current) {
       event.preventDefault();
-    }
-  });
-  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (!event.defaultPrevented && event.target !== triggerRef.current) {
-      triggerRef.current?.focus();
-      setOpen(event, !open);
     }
   });
   const secondaryAction = slot.optional(props.secondaryAction, {
@@ -83,7 +76,6 @@ export const useTagPickerControl_unstable = (
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef, innerRef),
         onMouseDown: handleMouseDown,
-        onClick: handleClick,
         ...props,
       }),
       { elementType: 'div' },

@@ -210,7 +210,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'multiselect' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'multiselect' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
 };
