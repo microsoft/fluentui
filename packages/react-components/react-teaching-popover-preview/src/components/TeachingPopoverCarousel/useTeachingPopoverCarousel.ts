@@ -31,7 +31,6 @@ export const useTeachingPopoverCarousel_unstable = (
   const { store, setValue, setIndex, currentIndex: _currentPage, totalPages: _totalPages, value } = carousel;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());

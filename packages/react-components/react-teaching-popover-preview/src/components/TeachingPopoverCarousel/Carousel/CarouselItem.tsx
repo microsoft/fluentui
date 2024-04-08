@@ -3,6 +3,7 @@ import { CarouselContext } from './useCarouselCollection';
 import * as React from 'react';
 import { CarouselItemProps } from './Carousel.types';
 
+// TODO: We are going to move this to it's own <CarouselItem/> component, for now we use a simple function to wrap.
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function CarouselItem_unstable(props: CarouselItemProps) {
   const { value } = props;

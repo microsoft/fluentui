@@ -1,7 +1,5 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type TeachingPopoverBodyMediaLength = 'short' | 'medium' | 'tall';
-
 export type TeachingPopoverBodySlots = {
   /**
    * The element wrapping the buttons.
@@ -14,7 +12,7 @@ export type TeachingPopoverBodySlots = {
 };
 
 export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
-  mediaLength?: TeachingPopoverBodyMediaLength;
+  mediaLength?: 'short' | 'medium' | 'tall';
 
   /* Passed into CarouselItem to identify pages.
    Will generate an id with useId() if not provided */
@@ -22,5 +20,4 @@ export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> 
 };
 
 export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> &
-  Partial<Pick<TeachingPopoverBodyProps, 'mediaLength'>> &
-  Required<Pick<TeachingPopoverBodyProps, 'value'>>;
+  Required<Pick<TeachingPopoverBodyProps, 'value' | 'mediaLength'>>;

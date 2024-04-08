@@ -10,10 +10,8 @@ import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { Button } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import type { ContextSelector } from '@fluentui/react-context-selector';
 import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
@@ -24,8 +22,6 @@ import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -71,11 +67,9 @@ export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps>;
 export const teachingPopoverBodyClassNames: SlotClassNames<TeachingPopoverBodySlots>;
 
 // @public (undocumented)
-export type TeachingPopoverBodyMediaLength = 'short' | 'medium' | 'tall';
-
-// @public (undocumented)
 export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
-    mediaLength?: TeachingPopoverBodyMediaLength;
+    mediaLength?: 'short' | 'medium' | 'tall';
+    value?: string;
 };
 
 // @public (undocumented)
@@ -85,16 +79,13 @@ export type TeachingPopoverBodySlots = {
 };
 
 // @public (undocumented)
-export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> & Partial<Pick<TeachingPopoverBodyProps, 'mediaLength'>>;
+export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> & Required<Pick<TeachingPopoverBodyProps, 'value' | 'mediaLength'>>;
 
 // @public
 export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps>;
 
 // @public (undocumented)
 export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCarouselSlots>;
-
-// @public
-export type TeachingPopoverCarouselContextValue = Pick<TeachingPopoverCarouselState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'onPageChange'>;
 
 // @public
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
@@ -138,34 +129,30 @@ export type TeachingPopoverCarouselNavState = ComponentState<TeachingPopoverCaro
 };
 
 // @public
-export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopoverCarouselSlots>> & {
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
     layout?: TeachingPopoverCarouselLayout;
     paginationType?: 'text' | 'icon';
-    strings: TeachingPopoverStrings;
+    initialStepText: string;
+    finalStepText: string;
+    renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
     defaultCurrentPage?: number;
-    onPageChange?: EventHandler<TeachingPopoverPageChangeData>;
-    onFinish?: EventHandler<TeachingPopoverPageChangeData>;
+    onPageChange?: EventHandler<CarouselPageChangeData>;
+    onFinish?: EventHandler<CarouselPageChangeData>;
     currentPage?: number;
 };
 
 // @public (undocumented)
-export const TeachingPopoverCarouselProvider: Provider<TeachingPopoverCarouselContextValue> & FC<ProviderProps<TeachingPopoverCarouselContextValue>>;
-
-// @public (undocumented)
 export type TeachingPopoverCarouselSlots = {
     root: NonNullable<Slot<'div'>>;
-    footer: NonNullable<Slot<'div'>>;
-    previous: Slot<typeof Button>;
+    footer?: NonNullable<Slot<'div'>>;
+    previous?: Slot<typeof Button>;
     next: NonNullable<Slot<typeof Button>>;
-    nav: Slot<TeachingPopoverCarouselNavProps>;
-    pageCount: Slot<'div'>;
+    nav?: Slot<TeachingPopoverCarouselNavProps>;
+    pageCount?: Slot<'div'>;
 };
 
 // @public
-export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & {
-    totalPages: number;
-    setCurrentPage: (page: number) => void;
-} & Partial<Pick<PopoverContextValue, 'appearance'>> & Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> & Required<Pick<TeachingPopoverCarouselProps, 'currentPage'>>;
+export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> & Partial<Pick<PopoverContextValue, 'appearance'>> & Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> & CarouselContextValue & CarouselWalkerContextValue;
 
 // @public
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
@@ -174,9 +161,7 @@ export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterPro
 export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFooterSlots>;
 
 // @public (undocumented)
-export type TeachingPopoverFooterProps = ComponentProps<Partial<TeachingPopoverFooterSlots>> & {
-    strings: TeachingPopoverFooterStrings;
-} & Pick<TeachingPopoverFooterState, 'footerLayout'>;
+export type TeachingPopoverFooterProps = ComponentProps<TeachingPopoverFooterSlots> & Pick<TeachingPopoverFooterState, 'footerLayout'>;
 
 // @public (undocumented)
 export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlots> & Pick<PopoverContextValue, 'appearance'> & {
@@ -264,9 +249,6 @@ export const useTeachingPopoverBodyStyles_unstable: (state: TeachingPopoverBodyS
 
 // @public (undocumented)
 export const useTeachingPopoverCarousel_unstable: (props: TeachingPopoverCarouselProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselState;
-
-// @public (undocumented)
-export const useTeachingPopoverCarouselContext_unstable: <T>(selector: ContextSelector<TeachingPopoverCarouselContextValue, T>) => T;
 
 // @public (undocumented)
 export function useTeachingPopoverCarouselContextValues_unstable(state: TeachingPopoverCarouselState): TeachingPopoverCarouselContextValues;

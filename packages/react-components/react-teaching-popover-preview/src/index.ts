@@ -18,7 +18,6 @@ export {
   useTeachingPopoverBody_unstable,
 } from './TeachingPopoverBody';
 export type {
-  TeachingPopoverBodyMediaLength,
   TeachingPopoverBodyProps,
   TeachingPopoverBodySlots,
   TeachingPopoverBodyState,

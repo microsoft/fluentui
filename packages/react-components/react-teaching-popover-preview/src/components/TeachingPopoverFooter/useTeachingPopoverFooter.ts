@@ -14,7 +14,6 @@ export const useTeachingPopoverFooter_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterState => {
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const handleButtonClick = useEventCallback(
@@ -23,9 +22,6 @@ export const useTeachingPopoverFooter_unstable = (
         return;
       }
 
-      if (triggerRef.current) {
-        triggerRef.current.focus();
-      }
       toggleOpen(event);
     },
   );

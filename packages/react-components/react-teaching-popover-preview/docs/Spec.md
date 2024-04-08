@@ -183,7 +183,7 @@ TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody
 
 #### TeachingPopoverBody
 
-This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop (TeachingPopoverBodyMediaLength type). It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
+This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop. It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
 
 ## Accessibility
 
