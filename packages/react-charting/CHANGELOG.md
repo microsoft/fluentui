@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 03 Apr 2024 07:29:31 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Apr 2024 07:25:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.41)
+
+Mon, 08 Apr 2024 07:25:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.40..@fluentui/react-charting_v5.19.41)
+
+### Patches
+
+- Fix colors for high contrast mode in chart hover card ([PR #30970](https://github.com/microsoft/fluentui/pull/30970) by kumarkshitij@microsoft.com)
 
 ## [5.19.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.40)
 

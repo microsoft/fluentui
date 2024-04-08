@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 08 Apr 2024 07:25:53 GMT",
+      "tag": "@fluentui/react-charting_v5.19.41",
+      "version": "5.19.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "11cddcb584c4957e3fee39a8ffd48cba0969db61",
+            "comment": "Fix colors for high contrast mode in chart hover card"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Apr 2024 07:29:31 GMT",
       "tag": "@fluentui/react-charting_v5.19.40",
       "version": "5.19.40",
