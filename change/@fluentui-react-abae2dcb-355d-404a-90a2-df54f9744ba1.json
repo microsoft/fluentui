@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: selected option focus outline has contrast against bg",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
