@@ -32,7 +32,7 @@ const optionTextForEasing = (optionKey: CurveKey | '') => {
 const paramStyles: React.CSSProperties = { color: 'lightgreen' };
 const monospaceFont = 'Lucida Console, Monaco, Courier New';
 
-const useMotionConfig = ({ overrideName }: { overrideName: 'enter' | 'exit' | 'all' }) => {
+export const useMotionConfig = ({ overrideName }: { overrideName: 'enter' | 'exit' | 'all' }) => {
   const [durationName, setDurationName] = React.useState<DurationKey | ''>(defaultDurationName);
   const [customDuration, setCustomDuration] = React.useState<number>(0);
   const [curveName, setCurveName] = React.useState<CurveKey | ''>(defaultEasingName);
@@ -46,9 +46,29 @@ const useMotionConfig = ({ overrideName }: { overrideName: 'enter' | 'exit' | 'a
   if (easing) {
     overrideObj!.easing = easing;
   }
-  const override = overrideObj ? { [overrideName]: overrideObj } : undefined;
 
-  return { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override };
+  const overrideObjNamed =
+    easing || duration ? ({} as { easing?: typeof curveName; duration?: typeof durationName | string }) : undefined;
+  if (duration) {
+    overrideObjNamed!.duration = customDuration ? String(customDuration) : durationName;
+  }
+  if (easing) {
+    overrideObjNamed!.easing = curveName;
+  }
+
+  const override = overrideObj ? { [overrideName]: overrideObj } : undefined;
+  const overrideNamed = overrideObj ? { [overrideName]: overrideObjNamed } : undefined;
+
+  return {
+    durationName,
+    setDurationName,
+    customDuration,
+    setCustomDuration,
+    curveName,
+    setCurveName,
+    override,
+    overrideNamed,
+  };
 };
 
 export const OverrideControls = ({
@@ -141,6 +161,50 @@ export const OverrideControls = ({
   );
 };
 
+export const OverrideCodePreviewJSON = ({
+  animateOpacity,
+  unmountOnExit,
+  tagName,
+  overrideNamed,
+}: {
+  animateOpacity: boolean;
+  unmountOnExit: boolean;
+  tagName: string;
+  // overrideNamed: { [key: string]: { duration?: DurationKey; easing?: CurveKey } } | undefined;
+  overrideNamed: Record<string, any> | undefined;
+}) => {
+  const overrideJSON = Object.keys(overrideNamed).length
+    ? JSON.stringify(overrideNamed, null, ' ').replace(/"/g, '').replace(/:/g, ': ')
+    : '';
+  const overrideJSX = overrideJSON ? <>{` override={${overrideJSON}}`}</> : null;
+
+  const exampleCodeJSX = (
+    <>
+      {`<${tagName} ...`}
+      <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
+      <span style={paramStyles}>{!unmountOnExit ? '' : ' unmountOnExit={true}'}</span>
+      {overrideJSX}
+      {'>'}
+    </>
+  );
+
+  const exampleCodeBlock = (
+    <div
+      style={{
+        fontWeight: 'bold',
+        fontFamily: monospaceFont,
+        backgroundColor: 'black',
+        color: 'lightgrey',
+        padding: 20,
+        borderRadius: 5,
+      }}
+    >
+      {exampleCodeJSX}
+    </div>
+  );
+  return exampleCodeBlock;
+};
+
 export const OverrideCodePreview = ({
   animateOpacity,
   unmountOnExit,
@@ -160,35 +224,37 @@ export const OverrideCodePreview = ({
   customDuration: number;
   curveName: CurveKey | '';
   override: { [key: string]: { duration?: number; easing?: string } } | undefined;
+  // overrideNamed: { [key: string]: { duration?: DurationKey; easing?: CurveKey } } | undefined;
+  overrideNamed: Record<string, any> | undefined;
 }) => {
   // Construct code preview for override properties, hiding them if they are not set
-  const durationValueInCode = customDuration ? customDuration : durationName;
-  const durationJSX = durationValueInCode ? (
-    <>
-      {` duration: `}
-      <span style={paramStyles}>{durationValueInCode}</span>
-    </>
-  ) : null;
+  // const durationValueInCode = customDuration ? customDuration : durationName;
+  // const durationJSX = durationValueInCode ? (
+  //   <>
+  //     {` duration: `}
+  //     <span style={paramStyles}>{durationValueInCode}</span>
+  //   </>
+  // ) : null;
 
-  const easingJSX = curveName ? (
-    <>
-      {durationJSX ? ',' : ''}
-      {` easing: `}
-      <span style={paramStyles}>{curveName}</span>
-    </>
-  ) : null;
+  // const easingJSX = curveName ? (
+  //   <>
+  //     {durationJSX ? ',' : ''}
+  //     {` easing: `}
+  //     <span style={paramStyles}>{curveName}</span>
+  //   </>
+  // ) : null;
 
-  // const overrideJSON = override ? JSON.stringify(override) : '';
-  // const overrideJSX = overrideJSON ? <>{` override={${overrideJSON}}`}</> : null;
+  const overrideJSON = override ? JSON.stringify(overrideNamed, null, ' ').replace(/"/g, '').replace(/:/g, ': ') : '';
+  const overrideJSX = overrideJSON ? <>{` override={${overrideJSON}}`}</> : null;
 
-  const overrideJSX = override ? (
-    <>
-      {` override={{ ${overrideName}: {`}
-      {durationJSX}
-      {easingJSX}
-      {` } }}`}
-    </>
-  ) : null;
+  // const overrideJSX = override ? (
+  //   <>
+  //     {` override={{ ${overrideName}: {`}
+  //     {durationJSX}
+  //     {easingJSX}
+  //     {` } }}`}
+  //   </>
+  // ) : null;
 
   const exampleCodeJSX = (
     <>
@@ -229,27 +295,44 @@ export const useMotionConfigurator = ({
   overrideName: 'enter' | 'exit' | 'all';
 }) => {
   // Get the motion configuration from the hook
-  const { durationName, setDurationName, customDuration, setCustomDuration, curveName, setCurveName, override } =
-    useMotionConfig({ overrideName });
+  const {
+    durationName,
+    setDurationName,
+    customDuration,
+    setCustomDuration,
+    curveName,
+    setCurveName,
+    override,
+    overrideNamed,
+  } = useMotionConfig({ overrideName });
+
+  const codePreviewJSX = OverrideCodePreview({
+    animateOpacity,
+    unmountOnExit,
+    tagName,
+    overrideName,
+    durationName,
+    customDuration,
+    curveName,
+    override,
+    overrideNamed,
+  });
+
+  const overrideControlsJSX = OverrideControls({
+    overrideName,
+    setDurationName,
+    customDuration,
+    setCustomDuration,
+    setCurveName,
+  });
 
   const configuratorJSX = (
     <div>
-      <div>
-        {OverrideCodePreview({
-          animateOpacity,
-          unmountOnExit,
-          tagName,
-          overrideName,
-          durationName,
-          customDuration,
-          curveName,
-          override,
-        })}
-      </div>
+      <div>{codePreviewJSX}</div>
       <br />
-      {OverrideControls({ overrideName, setDurationName, customDuration, setCustomDuration, setCurveName })}
+      {overrideControlsJSX}
     </div>
   );
 
-  return { configuratorJSX, override };
+  return { configuratorJSX, codePreviewJSX, overrideControlsJSX, override, overrideNamed };
 };

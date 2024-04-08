@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Checkbox, ToggleButton } from '@fluentui/react-components';
 import { Scale } from '@fluentui/react-motions-preview';
-import { useMotionConfigurator } from '../utils/useMotionConfigurator';
+import { useMotionConfigurator, OverrideCodePreviewJSON } from '../utils/useMotionConfigurator';
 import description from './OverrideEach.stories.md';
 
 import { loremIpsum } from '../utils/loremIpsum';
+
+const tagName = 'Scale';
 
 export const OverrideEach = () => {
   const [visible, setVisible] = React.useState(false);
@@ -13,31 +15,54 @@ export const OverrideEach = () => {
   // Use the motion configurator UI to customize duration and easing, and generate an override object
 
   // configurator for enter transition
-  const { configuratorJSX: configuratorJSXEnter, override: overrideEnter } = useMotionConfigurator({
+  const {
+    // configuratorJSX: configuratorJSXEnter,
+    // codePreviewJSX: codePreviewJSXEnter,
+    overrideControlsJSX: overrideControlsJSXEnter,
+    override: overrideEnter,
+    overrideNamed: overrideNamedEnter,
+  } = useMotionConfigurator({
     animateOpacity,
     unmountOnExit,
-    tagName: 'Scale',
+    tagName,
     overrideName: 'enter',
   });
 
   // configurator for exit transition
-  const { configuratorJSX: configuratorJSXExit, override: overrideExit } = useMotionConfigurator({
+  const {
+    // configuratorJSX: configuratorJSXExit,
+    // codePreviewJSX: codePreviewJSXExit,
+    overrideControlsJSX: overrideControlsJSXExit,
+    override: overrideExit,
+    overrideNamed: overrideNamedExit,
+  } = useMotionConfigurator({
     animateOpacity,
     unmountOnExit,
-    tagName: 'Scale',
+    tagName,
     overrideName: 'exit',
   });
 
   // Merge overrides for enter and exit transitions
   const override = { ...overrideEnter, ...overrideExit };
+  const overrideNamed = { ...overrideNamedEnter, ...overrideNamedExit };
 
   return (
     <>
-      <h2>enter</h2>
-      {configuratorJSXEnter}
+      <OverrideCodePreviewJSON {...{ animateOpacity, unmountOnExit, tagName, overrideNamed }} />
 
-      <h2>exit</h2>
-      {configuratorJSXExit}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        <div>
+          <h3>enter</h3>
+          {/* {configuratorJSXEnter} */}
+          {overrideControlsJSXEnter}
+        </div>
+
+        <div>
+          <h3>exit</h3>
+          {/* {configuratorJSXExit} */}
+          {overrideControlsJSXExit}
+        </div>
+      </div>
 
       <Checkbox label="animate opacity" checked={animateOpacity} onChange={() => setAnimateOpacity(v => !v)} />
       <Checkbox label="unmount on exit" checked={unmountOnExit} onChange={() => setUnmountOnExit(v => !v)} />
