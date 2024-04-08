@@ -71,7 +71,7 @@ export const useCarouselCollection_unstable = () => {
 
   // Helper function to enable index based pagination
   const setIndex = (_index: number) => {
-    let _value = store.getIndex(_index);
+    const _value = store.getIndex(_index);
     _setIndex(_index);
     if (_value) {
       _setValue(_value);
@@ -79,7 +79,7 @@ export const useCarouselCollection_unstable = () => {
   };
 
   const setValue = (_value: string) => {
-    let _index = store.getSnapshot().indexOf(_value);
+    const _index = store.getSnapshot().indexOf(_value);
     _setValue(_value);
     if (index >= 0) {
       _setIndex(_index);
