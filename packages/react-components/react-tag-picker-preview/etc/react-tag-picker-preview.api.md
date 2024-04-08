@@ -105,7 +105,9 @@ export type TagPickerControlSlots = {
 } & Pick<ComboboxSlots, 'expandIcon'>;
 
 // @public
-export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPickerControlInternalSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;
+export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPickerControlInternalSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'> & {
+    invalid: boolean;
+};
 
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;

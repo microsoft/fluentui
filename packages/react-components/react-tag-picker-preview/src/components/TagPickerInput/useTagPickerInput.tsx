@@ -6,6 +6,7 @@ import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useMergedRefs, getIntrinsicElementProps, useEventCallback } from '@fluentui/react-utilities';
 import { Backspace, Enter } from '@fluentui/keyboard-keys';
 import { useInputTriggerSlot } from '@fluentui/react-combobox';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 
 /**
  * Create the state required to render TagPickerInput.
@@ -20,6 +21,7 @@ export const useTagPickerInput_unstable = (
   props: TagPickerInputProps,
   ref: React.Ref<HTMLInputElement>,
 ): TagPickerInputState => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const freeform = useTagPickerContext_unstable(ctx => ctx.freeform);
