@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import type { ComboboxBaseState } from '../utils/ComboboxBase.types';
 import type { TagPickerSize } from '../components/TagPicker/TagPicker.types';
+import { ComboboxBaseState } from '@fluentui/react-combobox';
 
 export interface TagPickerContextValue
   extends Pick<

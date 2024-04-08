@@ -9,8 +9,7 @@ import type {
 import { optionClassNames } from '@fluentui/react-combobox';
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
-import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import { useComboboxBaseState, ComboboxBaseState } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render Picker.
