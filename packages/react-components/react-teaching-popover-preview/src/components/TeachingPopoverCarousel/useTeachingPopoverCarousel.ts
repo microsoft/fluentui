@@ -54,10 +54,8 @@ export const useTeachingPopoverCarousel_unstable = (
   }, []);
 
   useIsomorphicLayoutEffect(() => {
-    console.log('Updating current page');
     // Handles external updates of currentPage via props
     if (currentPage !== undefined && currentPage !== _currentPage) {
-      console.log('Set index:', currentPage);
       setIndex(currentPage);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,9 +71,6 @@ export const useTeachingPopoverCarousel_unstable = (
       const active = carouselWalker.active();
       if (nextPage >= totalPages) {
         onFinish?.(event, { event, type: 'click', index: _currentPage, value: values[_currentPage] });
-        if (triggerRef.current) {
-          triggerRef.current.focus();
-        }
         toggleOpen(event);
       } else {
         if (active?.value) {
@@ -98,9 +93,6 @@ export const useTeachingPopoverCarousel_unstable = (
 
       const active = carouselWalker.active();
       if (_currentPage <= 0) {
-        if (triggerRef.current) {
-          triggerRef.current.focus();
-        }
         toggleOpen(event);
       } else {
         if (active?.value) {

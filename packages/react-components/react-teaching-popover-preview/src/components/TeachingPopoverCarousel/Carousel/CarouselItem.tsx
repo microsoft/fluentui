@@ -3,6 +3,7 @@ import { CarouselContext } from './useCarouselCollection';
 import * as React from 'react';
 import { CarouselItemProps } from './Carousel.types';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export function CarouselItem_unstable(props: CarouselItemProps) {
   const { value } = props;
 
@@ -12,7 +13,7 @@ export function CarouselItem_unstable(props: CarouselItemProps) {
     return props.children;
   }
 
-  const visible = useContextSelector(CarouselContext, c => c.value === value);
+  const visible = carouselContext.value === value;
 
   return (
     <>

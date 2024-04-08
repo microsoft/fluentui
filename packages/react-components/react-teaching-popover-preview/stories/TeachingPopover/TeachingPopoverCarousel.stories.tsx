@@ -25,17 +25,17 @@ export const Carousel = (props: TeachingPopoverProps) => {
         <TeachingPopoverCarousel next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
           <TeachingPopoverBody value={'test-0'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
             <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-            <div>{`This is page: 0`}</div>
+            <div>{`This is page: 1`}</div>
           </TeachingPopoverBody>
 
           <TeachingPopoverBody value={'test-1'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
             <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-            <div>{`This is page: 1`}</div>
+            <div>{`This is page: 2`}</div>
           </TeachingPopoverBody>
 
           <TeachingPopoverBody value={'test-2'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
             <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-            <div>{`This is page: 2`}</div>
+            <div>{`This is page: 3`}</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarousel>
       </TeachingPopoverSurface>

@@ -16,12 +16,12 @@ export type TeachingPopoverCarouselSlots = {
   /**
    * The element wrapping the navigation of the carousel.
    */
-  footer: NonNullable<Slot<'div'>>;
+  footer?: NonNullable<Slot<'div'>>;
 
   /**
    * The previous button slot.
    */
-  previous: Slot<typeof Button>;
+  previous?: Slot<typeof Button>;
 
   /**
    * The next button slot.
@@ -31,12 +31,12 @@ export type TeachingPopoverCarouselSlots = {
   /**
    * The page nav slot when using icon navigation.
    */
-  nav: Slot<TeachingPopoverCarouselNavProps>;
+  nav?: Slot<TeachingPopoverCarouselNavProps>;
 
   /**
    * The page count text slot for paginationType text
    */
-  pageCount: Slot<'div'>;
+  pageCount?: Slot<'div'>;
 };
 
 export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
@@ -47,7 +47,7 @@ export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, 
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopoverCarouselSlots>> & {
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
   /**
    * Controls whether buttons will be centered (balanced) or right aligned
    * Defaults to 'centered'.
@@ -99,7 +99,7 @@ export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopove
 /**
  * TeachingPopoverCarousel State and Context Hooks
  */
-export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> &
+export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> &
   Partial<Pick<PopoverContextValue, 'appearance'>> &
   Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> &
   CarouselContextValue &

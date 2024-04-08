@@ -33,5 +33,5 @@ export type CarouselItemProps = {
    * it should be unique and is nessecary for pagination
    */
   value: string;
-  children?: React.ReactNode;
+  children: JSX.Element;
 };

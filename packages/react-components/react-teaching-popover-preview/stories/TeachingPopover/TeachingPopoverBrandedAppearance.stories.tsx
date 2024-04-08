@@ -14,14 +14,6 @@ import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-prev
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
-const ExampleContent = (index: number) => {
-  return (
-    <>
-      <div>{`This is page: ${index}`}</div>
-    </>
-  );
-};
-
 export const DefaultBrand = (props: TeachingPopoverProps) => (
   <TeachingPopover appearance="brand" withArrow={true} {...props}>
     <TeachingPopoverTrigger>
@@ -31,9 +23,9 @@ export const DefaultBrand = (props: TeachingPopoverProps) => (
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
       <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
         <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-        {ExampleContent(1)}
+        <div>{`This is a teaching popover body`}</div>
       </TeachingPopoverBody>
-      <TeachingPopoverFooter strings={{ primary: 'Learn more', secondary: 'Got it' }} />
+      <TeachingPopoverFooter primary={'Learn more'} secondary={'Got it'} />
     </TeachingPopoverSurface>
   </TeachingPopover>
 );

@@ -14,14 +14,6 @@ import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-prev
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
-const ExampleContent = (index: number) => {
-  return (
-    <>
-      <div>{`This is page: ${index}`}</div>
-    </>
-  );
-};
-
 export const CarouselText = (props: TeachingPopoverProps) => (
   <TeachingPopover withArrow={true} {...props}>
     <TeachingPopoverTrigger>
@@ -40,19 +32,19 @@ export const CarouselText = (props: TeachingPopoverProps) => (
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(1)}
+          <div>{`This is page: 1`}</div>
         </TeachingPopoverBody>
 
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(2)}
+          <div>{`This is page: 2`}</div>
         </TeachingPopoverBody>
 
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(3)}
+          <div>{`This is page: 3`}</div>
         </TeachingPopoverBody>
       </TeachingPopoverCarousel>
     </TeachingPopoverSurface>
