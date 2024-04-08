@@ -16,14 +16,14 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const attributeVisibilityRef = React.useRef(true);
 
   const removeAttribute = React.useCallback(() => {
-    activeParentRef.current?.removeAttribute('aria-activedescendant');
+    activeParentRef.current?.removeAttribute?.('aria-activedescendant');
   }, []);
   const setAttribute = React.useCallback((id?: string) => {
     if (id) {
       activeIdRef.current = id;
     }
     if (attributeVisibilityRef.current && activeIdRef.current) {
-      activeParentRef.current?.setAttribute('aria-activedescendant', activeIdRef.current);
+      activeParentRef.current?.setAttribute?.('aria-activedescendant', activeIdRef.current);
     }
   }, []);
 
@@ -35,9 +35,9 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
 
     if (isNavigatingWithKeyboard) {
-      active.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
+      active.setAttribute?.(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
     } else {
-      active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
+      active.removeAttribute?.(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
   });
 
@@ -51,8 +51,8 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const blurActiveDescendant = React.useCallback(() => {
     const active = getActiveDescendant();
     if (active) {
-      active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
-      active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
+      active.removeAttribute?.(ACTIVEDESCENDANT_ATTRIBUTE);
+      active.removeAttribute?.(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
 
     removeAttribute();
@@ -69,10 +69,10 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
       scrollIntoView(nextActive, listboxRef.current);
       setAttribute(nextActive.id);
-      nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
+      nextActive.setAttribute?.(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
       if (focusVisibleRef.current) {
-        nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
+        nextActive.setAttribute?.(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
     },
     [listboxRef, blurActiveDescendant, setAttribute],

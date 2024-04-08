@@ -39,6 +39,7 @@
     "@fluentui/react-field": "^9.1.58",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/react-platform-adapter-preview": "^0.0.0",
     "@fluentui/react-portal": "^9.4.18",
     "@fluentui/react-positioning": "^9.14.2",
     "@fluentui/react-shared-contexts": "^9.15.2",

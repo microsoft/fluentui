@@ -1,7 +1,7 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from '@fluentui/react-aria';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-platform-adapter-preview';
 import type { OptionSlots, OptionState } from './Option.types';
 
 export const optionClassNames: SlotClassNames<OptionSlots> = {

@@ -1,7 +1,7 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@fluentui/react-platform-adapter-preview';
 import { iconSizes } from '../../utils/internalTokens';
 import type { DropdownSlots, DropdownState } from './Dropdown.types';
 
@@ -239,12 +239,12 @@ const useIconStyles = makeStyles({
 const useBaseClearButtonStyle = makeResetStyles({
   alignSelf: 'center',
   backgroundColor: tokens.colorTransparentBackground,
-  border: 'none',
+  ...shorthands.borderStyle('none'),
   cursor: 'pointer',
   height: 'fit-content',
-  margin: 0,
+  ...shorthands.margin(0),
   marginRight: tokens.spacingHorizontalMNudge,
-  padding: 0,
+  ...shorthands.padding(0),
   position: 'relative',
 
   ...createFocusOutlineStyle(),

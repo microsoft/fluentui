@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';

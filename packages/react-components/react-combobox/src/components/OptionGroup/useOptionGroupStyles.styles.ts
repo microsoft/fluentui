@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-platform-adapter-preview';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {

@@ -4,6 +4,12 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import { Checkmark12Filled } from '@fluentui/react-icons';
+import { CheckmarkFilled } from '@fluentui/react-icons';
+import { ChevronDownRegular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { GriffelStyle } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { makeStyles as makeStylesCore } from '@griffel/core';
@@ -14,6 +20,14 @@ import { shorthands } from '@griffel/react';
 import { TextDirectionProvider } from '@griffel/react';
 import type { Theme } from '@fluentui/react-theme';
 import { useRenderer_unstable } from '@griffel/react';
+
+export { Checkmark12Filled }
+
+export { CheckmarkFilled }
+
+export { ChevronDownRegular }
+
+export { DismissRegular }
 
 // @public (undocumented)
 export const getStylesFromClassName: (className: string) => {
