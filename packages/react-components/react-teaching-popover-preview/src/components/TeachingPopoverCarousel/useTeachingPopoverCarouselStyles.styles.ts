@@ -25,8 +25,8 @@ const useStyles = makeStyles({
   },
   footerRightAligned: {
     ...shorthands.gap('8px'),
-    ':first-child': {
-      marginRight: 'auto',
+    '& :first-child': {
+      marginInlineEnd: 'auto',
     },
   },
   previous: {

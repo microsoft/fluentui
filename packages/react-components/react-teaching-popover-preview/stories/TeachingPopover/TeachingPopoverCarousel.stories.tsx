@@ -22,7 +22,13 @@ export const Carousel = (props: TeachingPopoverProps) => {
       </TeachingPopoverTrigger>
       <TeachingPopoverSurface>
         <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-        <TeachingPopoverCarousel next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
+        <TeachingPopoverCarousel
+          layout={'offset'}
+          next="Next"
+          previous="Previous"
+          initialStepText="Close"
+          finalStepText="Finish"
+        >
           <TeachingPopoverBody value={'test-0'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
             <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
             <div>{`This is page: 1`}</div>
