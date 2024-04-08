@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CAROUSEL_ITEM } from './constants';
 import { useCarouselCollection_unstable } from './useCarouselCollection';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { isHTMLElement, useMergedRefs } from '@fluentui/react-utilities';
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
@@ -18,7 +18,7 @@ export function useCarousel_unstable() {
     for (let i = 0; i < allItems.length; i++) {
       store.addValue(allItems.item(i).getAttribute(CAROUSEL_ITEM)!);
     }
-  }, []);
+  }, [store]);
 
   React.useEffect(() => {
     const config: MutationObserverInit = {
@@ -32,7 +32,7 @@ export function useCarousel_unstable() {
     const callback: MutationCallback = mutationList => {
       for (const mutation of mutationList) {
         for (const addedNode of Array.from(mutation.addedNodes)) {
-          if (addedNode instanceof HTMLElement && addedNode.hasAttribute(CAROUSEL_ITEM)) {
+          if (isHTMLElement(addedNode) && addedNode.hasAttribute(CAROUSEL_ITEM)) {
             const newValue = addedNode.getAttribute(CAROUSEL_ITEM)!;
             let previousNode = addedNode.previousElementSibling;
             let previous = addedNode.previousElementSibling?.getAttribute(CAROUSEL_ITEM) ?? null;
@@ -49,7 +49,7 @@ export function useCarousel_unstable() {
         }
 
         for (const removedNode of Array.from(mutation.removedNodes)) {
-          if (removedNode instanceof HTMLElement && removedNode?.hasAttribute(CAROUSEL_ITEM)) {
+          if (isHTMLElement(removedNode) && removedNode?.hasAttribute(CAROUSEL_ITEM)) {
             const removedValue = removedNode.getAttribute(CAROUSEL_ITEM)!;
 
             store.removeValue(removedValue);
@@ -68,7 +68,7 @@ export function useCarousel_unstable() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [store]);
 
   return {
     carouselRef: useMergedRefs(rootRef, carouselRef),

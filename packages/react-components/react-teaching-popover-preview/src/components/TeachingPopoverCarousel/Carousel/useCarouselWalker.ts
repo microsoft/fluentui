@@ -3,27 +3,38 @@ import { CAROUSEL_ACTIVE_ITM, CAROUSEL_ITEM } from './constants';
 import { createContext } from 'react';
 import { Context, ContextSelector } from '@fluentui/react-context-selector';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { isHTMLElement } from '@fluentui/react-utilities';
+import { useFluent } from '@fluentui/react-shared-contexts/src/ProviderContext';
 
 export const useCarouselWalker_unstable = () => {
-  const treeWalkerRef = React.useRef<TreeWalker>(document.createTreeWalker(document.body));
-  const htmlRef = React.useRef<HTMLDivElement>(document.createElement('div'));
-  const ref = React.useCallback((el: HTMLDivElement | null) => {
-    if (!el) {
-      htmlRef.current = document.createElement('div');
-      return;
-    }
+  const { targetDocument } = useFluent();
 
-    htmlRef.current = el;
-    treeWalkerRef.current = document.createTreeWalker(el, NodeFilter.SHOW_ELEMENT, {
-      acceptNode(node) {
-        if (!(node instanceof HTMLElement)) {
-          return NodeFilter.FILTER_SKIP;
-        }
+  const treeWalkerRef = React.useRef<TreeWalker | undefined>(targetDocument?.createTreeWalker(targetDocument.body));
+  const htmlRef = React.useRef<HTMLDivElement | undefined>(targetDocument?.createElement('div'));
+  const ref = React.useCallback(
+    (el: HTMLDivElement | null) => {
+      if (!targetDocument) {
+        return;
+      }
 
-        return node.hasAttribute(CAROUSEL_ITEM) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-      },
-    });
-  }, []);
+      if (!el) {
+        htmlRef.current = targetDocument.createElement('div');
+        return;
+      }
+
+      htmlRef.current = el;
+      treeWalkerRef.current = targetDocument.createTreeWalker(el, NodeFilter.SHOW_ELEMENT, {
+        acceptNode(node) {
+          if (!isHTMLElement(node)) {
+            return NodeFilter.FILTER_SKIP;
+          }
+
+          return node.hasAttribute(CAROUSEL_ITEM) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+        },
+      });
+    },
+    [targetDocument],
+  );
 
   return {
     ref,
@@ -44,10 +55,13 @@ export const useCarouselWalker_unstable = () => {
           };
         },
         find(value: string) {
+          if (!treeWalkerRef.current?.currentNode || !htmlRef.current) {
+            return;
+          }
           treeWalkerRef.current.currentNode = htmlRef.current;
           let nextNode: Node | null = null;
           while ((nextNode = treeWalkerRef.current.nextNode())) {
-            if (!(nextNode instanceof HTMLElement)) {
+            if (!isHTMLElement(nextNode)) {
               continue;
             }
 
@@ -63,13 +77,13 @@ export const useCarouselWalker_unstable = () => {
         },
         nextPage(value: string) {
           const res = this.find(value);
-          if (!res) {
+          if (!res || !treeWalkerRef.current?.currentNode) {
             return null;
           }
 
           treeWalkerRef.current.currentNode = res.el;
           const next = treeWalkerRef.current.nextNode();
-          if (next instanceof HTMLElement) {
+          if (isHTMLElement(next)) {
             return { el: next, value: next.getAttribute(CAROUSEL_ITEM)! };
           }
 
@@ -78,13 +92,13 @@ export const useCarouselWalker_unstable = () => {
 
         prevPage(value: string) {
           const res = this.find(value);
-          if (!res) {
+          if (!res || !treeWalkerRef.current?.currentNode) {
             return null;
           }
 
           treeWalkerRef.current.currentNode = res.el;
           const next = treeWalkerRef.current.previousNode();
-          if (next instanceof HTMLElement) {
+          if (isHTMLElement(next)) {
             return { el: next, value: next.getAttribute(CAROUSEL_ITEM)! };
           }
 
@@ -118,6 +132,5 @@ export const CarouselWalkerContext: Context<CarouselWalkerContextValue> = create
 
 export const CarouselWalkerProvider = CarouselWalkerContext.Provider;
 
-export const useCarouselWalker_unstableContext_unstable = <T>(
-  selector: ContextSelector<CarouselWalkerContextValue, T>,
-): T => useContextSelector(CarouselWalkerContext, (ctx = carouselWalkerContextDefaultValue) => selector(ctx));
+export const useCarouselWalkerContext_unstable = <T>(selector: ContextSelector<CarouselWalkerContextValue, T>): T =>
+  useContextSelector(CarouselWalkerContext, (ctx = carouselWalkerContextDefaultValue) => selector(ctx));
