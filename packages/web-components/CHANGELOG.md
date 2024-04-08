@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 12 Feb 2024 04:08:06 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Apr 2024 04:08:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.9)
+
+Mon, 08 Apr 2024 04:08:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.8..@fluentui/web-components_v3.0.0-beta.9)
+
+### Changes
+
+- chore: setup perf benchmarking in web components ([PR #30972](https://github.com/microsoft/fluentui/pull/30972) by =)
+- Bump @fluentui/tokens to v1.0.0-alpha.2 ([PR #30972](https://github.com/microsoft/fluentui/pull/30972) by beachball)
 
 ## [3.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.8)
 
