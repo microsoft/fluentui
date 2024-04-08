@@ -9,12 +9,12 @@ const tokenNames = Object.keys(tokens) as (keyof Theme)[];
  */
 export const setTheme = (theme: Theme) => {
   for (const t of tokenNames) {
-    document.body.style.setProperty(tokens[t] as string, theme[t] as string);
+    document.body.style.setProperty(`--${t}`, theme[t] as string);
   }
 };
 
 export const setThemeFor = (element: HTMLElement, theme: Theme) => {
   for (const t of tokenNames) {
-    element.style.setProperty(tokens[t] as string, theme[t] as string);
+    element.style.setProperty(`--${t}`, theme[t] as string);
   }
 };

@@ -23,7 +23,7 @@ export const styles = css`
     align-items: center;
     height: 2px;
     overflow-x: hidden;
-    border-radius: var(${borderRadiusMedium});
+    border-radius: ${borderRadiusMedium};
     contain: content;
   }
 
@@ -40,50 +40,50 @@ export const styles = css`
   }
 
   :host([validation-state='error']) .determinate {
-    background-color: var(${colorPaletteRedBackground3});
+    background-color: ${colorPaletteRedBackground3};
   }
 
   :host([validation-state='error']) .indeterminate-indicator-1,
   :host([validation-state='error']) .indeterminate-indicator-2 {
     background: linear-gradient(
       to right,
-      var(${colorPaletteRedBackground2}) 0%,
-      var(${colorPaletteRedBackground3}) 50%,
-      var(${colorPaletteRedBackground2})
+      ${colorPaletteRedBackground2} 0%,
+      ${colorPaletteRedBackground3} 50%,
+      ${colorPaletteRedBackground2}
     );
   }
 
   :host([validation-state='warning']) .determinate {
-    background-color: var(${colorPaletteDarkOrangeBackground3});
+    background-color: ${colorPaletteDarkOrangeBackground3};
   }
 
   :host([validation-state='warning']) .indeterminate-indicator-1,
   :host([validation-state='warning']) .indeterminate-indicator-2 {
     background: linear-gradient(
       to right,
-      var(${colorPaletteDarkOrangeBackground2}) 0%,
-      var(${colorPaletteDarkOrangeBackground3}) 50%,
-      var(${colorPaletteDarkOrangeBackground2})
+      ${colorPaletteDarkOrangeBackground2} 0%,
+      ${colorPaletteDarkOrangeBackground3} 50%,
+      ${colorPaletteDarkOrangeBackground2}
     );
   }
 
   :host([validation-state='success']) .determinate {
-    background-color: var(${colorPaletteGreenBackground3});
+    background-color: ${colorPaletteGreenBackground3};
   }
 
   :host([validation-state='success']) .indeterminate-indicator-1,
   :host([validation-state='success']) .indeterminate-indicator-2 {
     background: linear-gradient(
       to right,
-      var(${colorPaletteGreenBackground2}) 0%,
-      var(${colorPaletteGreenBackground3}) 50%,
-      var(${colorPaletteGreenBackground2})
+      ${colorPaletteGreenBackground2} 0%,
+      ${colorPaletteGreenBackground3} 50%,
+      ${colorPaletteGreenBackground2}
     );
   }
 
   .progress {
-    background-color: var(${colorNeutralBackground6});
-    border-radius: var(${borderRadiusMedium});
+    background-color: ${colorNeutralBackground6};
+    border-radius: ${borderRadiusMedium};
     width: 100%;
     height: 2px;
     display: flex;
@@ -92,8 +92,8 @@ export const styles = css`
   }
 
   .determinate {
-    background-color: var(${colorCompoundBrandBackground});
-    border-radius: var(${borderRadiusMedium});
+    background-color: ${colorCompoundBrandBackground};
+    border-radius: ${borderRadiusMedium};
     height: 2px;
     transition: all 0.2s ease-in-out;
     display: flex;
@@ -105,11 +105,11 @@ export const styles = css`
     height: 100%;
     background: linear-gradient(
       to right,
-      var(${colorBrandBackground2}) 0%,
-      var(${colorCompoundBrandBackground}) 50%,
-      var(${colorBrandBackground2})
+      ${colorBrandBackground2} 0%,
+      ${colorCompoundBrandBackground} 50%,
+      ${colorBrandBackground2}
     );
-    border-radius: var(${borderRadiusMedium});
+    border-radius: ${borderRadiusMedium};
     animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
     width: 40%;
     animation: indeterminate-1 3s infinite;
@@ -121,11 +121,11 @@ export const styles = css`
     height: 100%;
     background: linear-gradient(
       to right,
-      var(${colorBrandBackground2}) 0%,
-      var(${colorCompoundBrandBackground}) 50%,
-      var(${colorBrandBackground2})
+      ${colorBrandBackground2} 0%,
+      ${colorCompoundBrandBackground} 50%,
+      ${colorBrandBackground2}
     );
-    border-radius: var(${borderRadiusMedium});
+    border-radius: ${borderRadiusMedium};
     animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
     width: 60%;
     animation: indeterminate-2 3s infinite;

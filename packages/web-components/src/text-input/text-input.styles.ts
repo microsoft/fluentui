@@ -54,18 +54,18 @@ export const styles = css`
   ${display('block')}
 
   :host {
-    font-family: var(${fontFamilyBase});
-    font-size: var(${fontSizeBase300});
-    font-weight: var(${fontWeightRegular});
-    line-height: var(${lineHeightBase300});
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase300};
     max-width: 400px;
   }
   .label {
     display: flex;
-    color: var(${colorNeutralForeground1});
-    padding-bottom: var(${spacingVerticalXS});
+    color: ${colorNeutralForeground1};
+    padding-bottom: ${spacingVerticalXS};
     flex-shrink: 0;
-    padding-inline-end: var(${spacingHorizontalXS});
+    padding-inline-end: ${spacingHorizontalXS};
   }
   .label__hidden {
     display: none;
@@ -78,11 +78,11 @@ export const styles = css`
     align-items: center;
     flex-direction: row;
     width: 100%;
-    padding: 0 var(${spacingHorizontalMNudge});
-    border: var(${strokeWidthThin}) solid var(${colorNeutralStroke1});
-    border-bottom-color: var(${colorNeutralStrokeAccessible});
-    border-radius: var(${borderRadiusMedium});
-    gap: var(${spacingHorizontalXXS});
+    padding: 0 ${spacingHorizontalMNudge};
+    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
+    border-bottom-color: ${colorNeutralStrokeAccessible};
+    border-radius: ${borderRadiusMedium};
+    gap: ${spacingHorizontalXXS};
   }
   .root::after {
     box-sizing: border-box;
@@ -91,25 +91,25 @@ export const styles = css`
     left: -1px;
     bottom: 0px;
     right: -1px;
-    height: max(2px, var(${borderRadiusMedium}));
-    border-radius: 0 0 var(${borderRadiusMedium}) var(${borderRadiusMedium});
-    border-bottom: 2px solid var(${colorCompoundBrandStroke});
+    height: max(2px, ${borderRadiusMedium});
+    border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
+    border-bottom: 2px solid ${colorCompoundBrandStroke};
     clip-path: inset(calc(100% - 2px) 1px 0px);
     transform: scaleX(0);
     transition-property: transform;
-    transition-duration: var(${durationUltraFast});
-    transition-delay: var(${curveAccelerateMid});
+    transition-duration: ${durationUltraFast};
+    transition-delay: ${curveAccelerateMid};
   }
   .control {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    color: var(${colorNeutralForeground1});
-    border-radius: var(${borderRadiusMedium});
-    background: var(${colorTransparentBackground});
-    font-family: var(${fontFamilyBase});
-    font-weight: var(${fontWeightRegular});
-    font-size: var(${fontSizeBase300});
+    color: ${colorNeutralForeground1};
+    border-radius: ${borderRadiusMedium};
+    background: ${colorTransparentBackground};
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightRegular};
+    font-size: ${fontSizeBase300};
     border: none;
     background: transparent;
     vertical-align: center;
@@ -119,29 +119,29 @@ export const styles = css`
     border: 0;
   }
   .control::placeholder {
-    color: var(${colorNeutralForeground4});
+    color: ${colorNeutralForeground4};
   }
   :host ::slotted([slot='start']),
   :host ::slotted([slot='end']) {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(${colorNeutralForeground3});
-    font-size: var(${fontSizeBase500});
+    color: ${colorNeutralForeground3};
+    font-size: ${fontSizeBase500};
   }
   :host ::slotted([slot='start']) {
-    padding-right: var(${spacingHorizontalXXS});
+    padding-right: ${spacingHorizontalXXS};
   }
   :host ::slotted([slot='end']) {
-    padding-left: var(${spacingHorizontalXXS});
-    gap: var(${spacingHorizontalXS});
+    padding-left: ${spacingHorizontalXXS};
+    gap: ${spacingHorizontalXS};
   }
   :host(:hover) .root {
-    border-color: var(${colorNeutralStroke1Hover});
-    border-bottom-color: var(${colorNeutralStrokeAccessibleHover});
+    border-color: ${colorNeutralStroke1Hover};
+    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
   :host(:active) .root {
-    border-color: var(${colorNeutralStroke1Pressed});
+    border-color: ${colorNeutralStroke1Pressed};
   }
   :host(:focus-within) .root {
     outline: transparent solid 2px;
@@ -150,96 +150,96 @@ export const styles = css`
   :host(:focus-within) .root::after {
     transform: scaleX(1);
     transition-property: transform;
-    transition-duration: var(${durationNormal});
-    transition-delay: var(${curveDecelerateMid});
+    transition-duration: ${durationNormal};
+    transition-delay: ${curveDecelerateMid};
   }
   :host(:focus-within:active) .root:after {
-    border-bottom-color: var(${colorCompoundBrandStrokePressed});
+    border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
   :host([appearance='outline']:focus-within) .root {
-    border: var(${strokeWidthThin}) solid var(${colorNeutralStroke1});
+    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
   :host(:focus-within) .control {
-    color: var(${colorNeutralForeground1});
+    color: ${colorNeutralForeground1};
   }
   :host([disabled]) .root {
-    background: var(${colorTransparentBackground});
-    border: var(${strokeWidthThin}) solid var(${colorNeutralStrokeDisabled});
+    background: ${colorTransparentBackground};
+    border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
   :host([disabled]) .control::placeholder,
   :host([disabled]) ::slotted([slot='start']),
   :host([disabled]) ::slotted([slot='end']) {
-    color: var(${colorNeutralForegroundDisabled});
+    color: ${colorNeutralForegroundDisabled};
   }
   ::selection {
-    color: var(${colorNeutralForegroundInverted});
-    background-color: var(${colorNeutralBackgroundInverted});
+    color: ${colorNeutralForegroundInverted};
+    background-color: ${colorNeutralBackgroundInverted};
   }
   :host([control-size='small']) .control {
-    font-size: var(${fontSizeBase200});
-    font-weight: var(${fontWeightRegular});
-    line-height: var(${lineHeightBase200});
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase200};
   }
   :host([control-size='small']) .root {
     height: 24px;
-    gap: var(${spacingHorizontalXXS});
-    padding: 0 var(${spacingHorizontalSNudge});
+    gap: ${spacingHorizontalXXS};
+    padding: 0 ${spacingHorizontalSNudge};
   }
   :host([control-size='small']) ::slotted([slot='start']),
   :host([control-size='small']) ::slotted([slot='end']) {
-    font-size: var(${fontSizeBase400});
+    font-size: ${fontSizeBase400};
   }
   :host([control-size='large']) .control {
-    font-size: var(${fontSizeBase400});
-    font-weight: var(${fontWeightRegular});
-    line-height: var(${lineHeightBase400});
+    font-size: ${fontSizeBase400};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase400};
   }
   :host([control-size='large']) .root {
     height: 40px;
-    gap: var(${spacingHorizontalS});
-    padding: 0 var(${spacingHorizontalM});
+    gap: ${spacingHorizontalS};
+    padding: 0 ${spacingHorizontalM};
   }
   :host([control-size='large']) ::slotted([slot='start']),
   :host([control-size='large']) ::slotted([slot='end']) {
-    font-size: var(${fontSizeBase600});
+    font-size: ${fontSizeBase600};
   }
   :host([appearance='underline']) .root {
-    background: var(${colorTransparentBackground});
+    background: ${colorTransparentBackground};
     border: 0;
     border-radius: 0;
-    border-bottom: var(${strokeWidthThin}) solid var(${colorNeutralStrokeAccessible});
+    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
   }
   :host([appearance='underline']:hover) .root {
-    border-bottom-color: var(${colorNeutralStrokeAccessibleHover});
+    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
   :host([appearance='underline']:active) .root {
-    border-bottom-color: var(${colorNeutralStrokeAccessiblePressed});
+    border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([appearance='underline']:focus-within) .root {
     border: 0;
-    border-bottom-color: var(${colorNeutralStrokeAccessiblePressed});
+    border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([appearance='underline'][disabled]) .root {
-    border-bottom-color: var(${colorNeutralStrokeDisabled});
+    border-bottom-color: ${colorNeutralStrokeDisabled};
   }
   :host([appearance='filled-lighter']) .root,
   :host([appearance='filled-darker']) .root {
-    border: var(${strokeWidthThin}) solid var(${colorTransparentStroke});
-    box-shadow: var(${shadow2});
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    box-shadow: ${shadow2};
   }
   :host([appearance='filled-lighter']) .root {
-    background: var(${colorNeutralBackground1});
+    background: ${colorNeutralBackground1};
   }
   :host([appearance='filled-darker']) .root {
-    background: var(${colorNeutralBackground3});
+    background: ${colorNeutralBackground3};
   }
   :host([appearance='filled-lighter']:hover) .root,
   :host([appearance='filled-darker']:hover) .root {
-    border-color: var(${colorTransparentStrokeInteractive});
+    border-color: ${colorTransparentStrokeInteractive};
   }
   :host([appearance='filled-lighter']:active) .root,
   :host([appearance='filled-darker']:active) .root {
-    border-color: var(${colorTransparentStrokeInteractive});
-    background: var(${colorNeutralBackground3});
+    border-color: ${colorTransparentStrokeInteractive};
+    background: ${colorNeutralBackground3};
   }
 `;
