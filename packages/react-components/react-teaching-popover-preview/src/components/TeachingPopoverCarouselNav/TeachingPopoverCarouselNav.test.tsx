@@ -15,7 +15,7 @@ describe('TeachingPopoverCarouselNav', () => {
 
   beforeEach(() => {
     resetIdsForTests();
-    mockTeachingPopoverCarouselContext({ totalPages: 2, currentPage: 0 });
+    mockTeachingPopoverCarouselContext({});
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
