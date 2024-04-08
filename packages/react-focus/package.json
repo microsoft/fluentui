@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "8.8.42",
+  "version": "8.8.43",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,11 +36,11 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.4.14",
-    "@fluentui/merge-styles": "^8.6.0",
-    "@fluentui/set-version": "^8.2.14",
-    "@fluentui/style-utilities": "^8.10.5",
-    "@fluentui/utilities": "^8.15.0",
+    "@fluentui/keyboard-key": "^0.4.15",
+    "@fluentui/merge-styles": "^8.6.1",
+    "@fluentui/set-version": "^8.2.15",
+    "@fluentui/style-utilities": "^8.10.6",
+    "@fluentui/utilities": "^8.15.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

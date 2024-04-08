@@ -37,7 +37,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
-  const baseState = useComboboxBaseState({ ...props, activeDescendantController });
+  const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
   const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({

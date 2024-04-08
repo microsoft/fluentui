@@ -3,7 +3,7 @@ import type { TagPickerListProps, TagPickerListState } from './TagPickerList.typ
 import { Listbox } from '@fluentui/react-combobox';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useMergedRefs } from '@fluentui/react-utilities';
-import { useListboxSlot } from '../../utils/useListboxSlot';
+import { useListboxSlot } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render TagPickerList.

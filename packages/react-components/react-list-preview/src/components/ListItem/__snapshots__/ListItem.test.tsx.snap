@@ -2,10 +2,13 @@
 
 exports[`ListItem renders a default state 1`] = `
 <div>
-  <div
+  <li
     class="fui-ListItem"
+    data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+    id="listItem9"
+    role="listitem"
   >
     Default ListItem
-  </div>
+  </li>
 </div>
 `;

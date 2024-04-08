@@ -82,7 +82,7 @@ const useRootStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground1,
+    color: tokens.colorBrandForeground2,
     borderLeftColor: tokens.colorBrandStroke2, // divider
     ':hover': {
       cursor: 'pointer',

@@ -8,14 +8,10 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     selectedOptions,
     selectOption,
     multiselect,
-    // eslint-disable-next-line deprecation/deprecation
-    focusVisible,
-    // eslint-disable-next-line deprecation/deprecation
-    setActiveOption,
-    // eslint-disable-next-line deprecation/deprecation
-    activeOption,
     value,
     triggerRef,
+    secondaryActionRef,
+    tagPickerGroupRef,
     targetRef,
     size,
     setValue,
@@ -28,6 +24,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     open,
     popoverId,
     disabled,
+    freeform,
   } = state;
   return {
     activeDescendant: React.useMemo(
@@ -40,15 +37,16 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       selectedOptions,
       selectOption,
       multiselect,
-      focusVisible,
-      setActiveOption,
-      activeOption,
+      focusVisible: false,
+      setActiveOption: noop,
     },
     picker: {
       value,
       multiselect,
       triggerRef,
       targetRef,
+      secondaryActionRef,
+      tagPickerGroupRef,
       size,
       setValue,
       setOpen,
@@ -62,6 +60,11 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       open,
       popoverId,
       disabled,
+      freeform,
     },
   };
 }
+
+const noop = () => {
+  /** noop */
+};

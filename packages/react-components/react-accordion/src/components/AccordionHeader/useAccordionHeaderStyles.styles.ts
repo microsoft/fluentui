@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   button: {
     position: 'relative',
     width: '100%',
-    ...shorthands.border('1px', 'solid', 'transparent'),
+    ...shorthands.borderWidth('0'),
     ...shorthands.padding(0, tokens.spacingHorizontalM, 0, tokens.spacingHorizontalMNudge),
     minHeight: '44px',
     display: 'flex',

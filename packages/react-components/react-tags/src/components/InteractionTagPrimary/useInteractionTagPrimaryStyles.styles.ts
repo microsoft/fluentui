@@ -171,7 +171,7 @@ const useRootStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground1,
+    color: tokens.colorBrandForeground2,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,

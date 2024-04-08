@@ -227,6 +227,9 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                       margin-top: unset;
                       padding-left: 8px;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      forced-color-adjust: none;
+                    }
               >
                 <div
                   class=
@@ -239,6 +242,9 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                         font-size: 12px;
                         font-weight: 400;
                         line-height: 16px;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                        color: rgb(255, 255, 255);
                       }
                 >
                   2020/04/30
@@ -254,6 +260,9 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                         font-size: 28px;
                         font-weight: bold;
                         line-height: 36px;
+                      }
+                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                        color: rgb(255, 255, 255);
                       }
                 >
                   20,000

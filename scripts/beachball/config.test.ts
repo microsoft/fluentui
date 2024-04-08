@@ -13,7 +13,7 @@ describe(`beachball configs`, () => {
       },
       ignorePatterns: [
         '**/*.{shot,snap}',
-        '**/*.{test,spec}.{ts,tsx}',
+        '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
         '**/__fixtures__/**',
