@@ -53,10 +53,14 @@ export const useTagPickerInput_unstable = (
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         props.onKeyDown?.(event);
         if (event.key === Enter) {
-          ReactDOM.unstable_batchedUpdates(() => {
-            setValue(undefined);
-            setOpen(event, false);
-          });
+          if (open) {
+            ReactDOM.unstable_batchedUpdates(() => {
+              setValue(undefined);
+              setOpen(event, false);
+            });
+          } else {
+            setOpen(event, true);
+          }
         }
 
         if (event.key === Backspace && value?.length === 0 && selectedOptions.length) {
