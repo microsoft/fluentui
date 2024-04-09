@@ -73,7 +73,7 @@ export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
 export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots>;
 
 // @public
-export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<DropdownProps, 'clearable' | 'size' | 'appearance'> & {
+export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<DropdownProps, 'size' | 'appearance'> & {
     disabled?: boolean;
 };
 
@@ -185,7 +185,6 @@ export type TagPickerOptionGroupState = OptionGroupState;
 // @public
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
     children: React_2.ReactNode;
-    text?: string;
     value: string;
 };
 
@@ -196,7 +195,7 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 };
 
 // @public
-export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'multiselect' | 'root' | 'selected'>;
+export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'root'>;
 
 // @public
 export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
