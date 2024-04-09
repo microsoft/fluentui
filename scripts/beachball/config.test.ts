@@ -24,6 +24,7 @@ describe(`beachball configs`, () => {
         '**/bundle-size/**',
         '**/common/isConformant.ts',
         '**/src/testing/**',
+        '**/src/e2e/**',
         '**/config/tests.js',
         '**/jest.config.js',
         '**/SPEC*.md',
