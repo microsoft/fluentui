@@ -24,7 +24,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium' } = props;
+  const { positioning, size = 'medium', inline = false } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
   const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
@@ -96,6 +96,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     tagPickerGroupRef,
     targetRef,
     size,
+    inline,
     open: comboboxState.open,
     mountNode: comboboxState.mountNode,
     onOptionClick: useEventCallback(event => {
