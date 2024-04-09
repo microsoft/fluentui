@@ -5,6 +5,10 @@ import * as React from 'react';
 
 export type TagPickerControlSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TagPickerControlCSSProperties }>>;
+  /**
+   * A secondary action should be a button-like element to be rendered right after
+   * the trigger responsible for opening/closing the tag picker popover.
+   */
   secondaryAction: Slot<'span'>;
 } & Pick<ComboboxSlots, 'expandIcon'>;
 
