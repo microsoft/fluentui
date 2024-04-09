@@ -9,9 +9,20 @@ const TEN_MEGABYTES = 1024 * 10000;
 /**
  * Gets nx project metadata
  * @param {string} projectName - package name
+ * @param {ReturnType<typeof import('@nx/devkit').getProjects>=} allProjects - all workspace projects
  * @returns {import('@nx/devkit').ProjectConfiguration}
  */
-function getProjectMetadata(projectName) {
+function getProjectMetadata(projectName, allProjects) {
+  if (allProjects) {
+    const project = allProjects.get(projectName);
+
+    if (!project) {
+      throw new Error(`Project ${projectName} not found in workspace`);
+    }
+
+    return project;
+  }
+
   return readProjectConfiguration(tree, projectName);
 }
 

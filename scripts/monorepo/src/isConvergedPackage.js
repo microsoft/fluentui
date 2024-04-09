@@ -14,11 +14,12 @@ const { getProjectMetadata } = require('./utils');
  * @param {PathOrPackageJson} [options.packagePathOrJson] - optional different package path to run in OR previously-read package.json
  * (defaults to reading package.json from `process.cwd()`)
  * @param {'library' | 'application' | 'all'} [options.projectType] - filter for what project types you wanna apply the condition
+ * @param {ReturnType<typeof import('@nx/devkit').getProjects>} [options.projects] - pass all workspace projects for significantly faster execution ( useful if you need to run this function multiple times )
  *
  * @returns {boolean} true if it's a converged package (version >= 9)
  */
 function isConvergedPackage(options = {}) {
-  const { packagePathOrJson, projectType = 'all' } = options;
+  const { packagePathOrJson, projectType = 'all', projects } = options;
   const packageJson =
     !packagePathOrJson || typeof packagePathOrJson === 'string'
       ? readConfig('package.json', /** @type {string|undefined} */ (packagePathOrJson))
@@ -28,7 +29,7 @@ function isConvergedPackage(options = {}) {
     throw new Error(`package.json doesn't exist`);
   }
 
-  const metadata = getProjectMetadata(packageJson.name);
+  const metadata = getProjectMetadata(packageJson.name, projects);
 
   if (projectType !== 'all' && metadata.projectType !== projectType) {
     return false;
