@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
-    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-icons": "^2.0.235",
     "@fluentui/react-jsx-runtime": "^9.0.35",
     "@fluentui/react-shared-contexts": "^9.16.0",
     "@fluentui/react-tabster": "^9.19.6",

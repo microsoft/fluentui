@@ -34,7 +34,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-icons": "^2.0.235",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",
