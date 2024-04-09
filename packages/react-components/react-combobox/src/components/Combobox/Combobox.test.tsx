@@ -893,6 +893,31 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Black').id);
   });
 
+  it('should move active option with page up and page down with less than 10 options', () => {
+    const { getByTestId, getByText } = render(
+      <Combobox open data-testid="combobox">
+        <Option>Aqua</Option>
+        <Option>Black</Option>
+        <Option>Blue</Option>
+        <Option>Brown</Option>
+        <Option>Green</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    userEvent.click(getByText('Aqua'));
+    userEvent.keyboard('{PageDown}');
+
+    // should move forward to last option if there are less than 10 options
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+
+    userEvent.keyboard('{ArrowDown}');
+    userEvent.keyboard('{PageUp}');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Aqua').id);
+  });
+
   it('should move active option based on typing', () => {
     const { getByTestId, getByText } = render(
       <Combobox open data-testid="combobox">
