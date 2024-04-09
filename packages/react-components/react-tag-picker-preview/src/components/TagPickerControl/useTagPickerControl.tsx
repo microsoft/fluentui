@@ -12,6 +12,7 @@ import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
 import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
+import { useFieldContext_unstable } from '@fluentui/react-field';
 
 /**
  * Create the state required to render PickerControl.
@@ -27,25 +28,19 @@ export const useTagPickerControl_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef) as React.RefObject<HTMLDivElement>;
-  const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+  const invalid = useFieldContext_unstable()?.validationState === 'error';
 
   const innerRef = React.useRef<HTMLDivElement>(null);
 
   const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target !== triggerRef.current) {
       event.preventDefault();
-    }
-  });
-  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (!event.defaultPrevented && event.target !== triggerRef.current) {
-      triggerRef.current?.focus();
-      setOpen(event, !open);
     }
   });
   const secondaryAction = slot.optional(props.secondaryAction, {
@@ -83,7 +78,6 @@ export const useTagPickerControl_unstable = (
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef, innerRef),
         onMouseDown: handleMouseDown,
-        onClick: handleClick,
         ...props,
       }),
       { elementType: 'div' },
@@ -94,5 +88,6 @@ export const useTagPickerControl_unstable = (
     size,
     appearance,
     disabled,
+    invalid,
   };
 };

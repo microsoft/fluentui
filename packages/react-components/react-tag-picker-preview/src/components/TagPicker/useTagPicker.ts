@@ -9,8 +9,7 @@ import type {
 import { optionClassNames } from '@fluentui/react-combobox';
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
-import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import { useComboboxBaseState, ComboboxBaseState } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render Picker.
@@ -24,7 +23,8 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
-  const { positioning, size = 'medium' } = props;
+  const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
+  const { positioning, size = 'medium', inline = false } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
   const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
@@ -72,7 +72,12 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
 
   const setOpen: ComboboxBaseState['setOpen'] = useEventCallback((event, newValue) => {
     // if event comes from secondary action, ignore it
-    if (isHTMLElement(event.target) && elementContains(secondaryActionRef.current, event.target)) {
+    // if event comes from tags, ignore it
+    if (
+      isHTMLElement(event.target) &&
+      (elementContains(secondaryActionRef.current, event.target) ||
+        elementContains(tagPickerGroupRef.current, event.target))
+    ) {
       return;
     }
     comboboxState.setOpen(event, newValue);
@@ -88,8 +93,10 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),
     secondaryActionRef,
+    tagPickerGroupRef,
     targetRef,
     size,
+    inline,
     open: comboboxState.open,
     mountNode: comboboxState.mountNode,
     onOptionClick: useEventCallback(event => {

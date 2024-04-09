@@ -7,6 +7,7 @@
 /// <reference types="react" />
 
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import { ComboboxBaseState } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
 import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
@@ -24,8 +25,6 @@ import { OptionGroupSlots } from '@fluentui/react-combobox';
 import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
-import { PortalProps } from '@fluentui/react-portal';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -74,7 +73,7 @@ export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
 export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots>;
 
 // @public
-export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<DropdownProps, 'clearable' | 'size' | 'appearance'> & {
+export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> & Pick<DropdownProps, 'size' | 'appearance'> & {
     disabled?: boolean;
 };
 
@@ -106,7 +105,9 @@ export type TagPickerControlSlots = {
 } & Pick<ComboboxSlots, 'expandIcon'>;
 
 // @public
-export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPickerControlInternalSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'>;
+export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPickerControlInternalSlots> & Pick<TagPickerContextValue, 'size' | 'appearance' | 'disabled'> & {
+    invalid: boolean;
+};
 
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
@@ -186,7 +187,6 @@ export type TagPickerOptionGroupState = OptionGroupState;
 // @public
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
     children: React_2.ReactNode;
-    text?: string;
     value: string;
 };
 
@@ -197,22 +197,24 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 };
 
 // @public
-export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'multiselect' | 'root' | 'selected'>;
+export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'root'>;
 
 // @public
 export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    inline?: boolean;
 };
 
 // @public (undocumented)
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'multiselect' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'multiselect' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
+    inline: boolean;
 };
 
 // @public

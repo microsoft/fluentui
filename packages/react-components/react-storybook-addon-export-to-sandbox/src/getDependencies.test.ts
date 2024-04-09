@@ -39,6 +39,20 @@ describe('getDependencies', () => {
     });
   });
 
+  it('should ignore relative paths', () => {
+    const code = `
+      import { a } from 'dependency-a';
+      import { b } from 'dependency-b';
+      import { invalid } from './hello.md';
+    `;
+    const deps = getDependencies(code, {}, {});
+
+    expect(deps).toEqual({
+      'dependency-a': 'latest',
+      'dependency-b': 'latest',
+    });
+  });
+
   it('versions in optionalDependencies should not be included if code doesnt use them', () => {
     const code = `
       import { stuff } from 'dependency-other';
@@ -49,6 +63,7 @@ describe('getDependencies', () => {
       ['dependency-other']: 'latest',
     });
   });
+
   it('versions in optionalDependencies should win ', () => {
     const code = `
       import { stuff } from 'dependency';

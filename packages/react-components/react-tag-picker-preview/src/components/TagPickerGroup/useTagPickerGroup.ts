@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.types';
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { tagPickerAppearanceToTagAppearance, tagPickerSizeToTagSize } from '../../utils/tagPicker2Tag';
 
 /**
@@ -21,6 +21,7 @@ export const useTagPickerGroup_unstable = (
   const selectedOptions = useTagPickerContext_unstable(ctx => ctx.selectedOptions);
   const hasOneSelectedOption = useTagPickerContext_unstable(ctx => ctx.selectedOptions.length === 1);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const size = useTagPickerContext_unstable(ctx => tagPickerSizeToTagSize(ctx.size));
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
@@ -44,7 +45,7 @@ export const useTagPickerGroup_unstable = (
         }
       }),
     },
-    ref,
+    useMergedRefs(ref, tagPickerGroupRef),
   );
 
   return {
