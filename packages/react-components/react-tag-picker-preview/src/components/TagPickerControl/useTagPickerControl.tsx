@@ -12,6 +12,7 @@ import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
 import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
+import { useFieldContext_unstable } from '@fluentui/react-field';
 
 /**
  * Create the state required to render PickerControl.
@@ -33,6 +34,7 @@ export const useTagPickerControl_unstable = (
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+  const invalid = useFieldContext_unstable()?.validationState === 'error';
 
   const innerRef = React.useRef<HTMLDivElement>(null);
 
@@ -86,5 +88,6 @@ export const useTagPickerControl_unstable = (
     size,
     appearance,
     disabled,
+    invalid,
   };
 };
