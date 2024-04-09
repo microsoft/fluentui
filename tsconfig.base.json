@@ -46,7 +46,6 @@
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
-      "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
       "@fluentui/react-infolabel": ["packages/react-components/react-infolabel/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
       "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
