@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation/utilities.js';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   colorBrandForeground1,
   colorBrandStroke1,

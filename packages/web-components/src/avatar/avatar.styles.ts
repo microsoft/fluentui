@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation/utilities.js';
+import { display } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusLarge,
