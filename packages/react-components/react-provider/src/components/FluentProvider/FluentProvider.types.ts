@@ -1,4 +1,4 @@
-import type { IconDirectionContextValue } from '@fluentui/react-icons';
+import type { IconDirectionContextValue } from '@fluentui/react-icons/providers';
 import type {
   OverridesContextValue_unstable as OverridesContextValue,
   ProviderContextValue_unstable as ProviderContextValue,
