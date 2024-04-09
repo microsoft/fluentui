@@ -11,9 +11,9 @@ export const navItemClassNames: SlotClassNames<NavItemSlots> = {
 };
 
 const navItemTokens = {
-  indicatorOffset: '18',
-  indicatorWidth: '4',
-  indicatorHeight: '20',
+  indicatorOffset: 18,
+  indicatorWidth: 4,
+  indicatorHeight: 20,
 };
 
 /**
@@ -45,9 +45,6 @@ const useRootDefaultClassName = makeResetStyles({
 const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
 });
-
-// right: `${navItemTokens.indicatorOffset}px`,
-// width: `${navItemTokens.indicatorWidth}px`,
 
 const useIndicatorStyles = makeStyles({
   base: {
