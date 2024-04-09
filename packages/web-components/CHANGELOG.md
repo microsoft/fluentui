@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 08 Apr 2024 04:08:59 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Apr 2024 04:08:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.10)
+
+Tue, 09 Apr 2024 04:08:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.9..@fluentui/web-components_v3.0.0-beta.10)
+
+### Changes
+
+- revert design token syntax change for DX ([PR #30819](https://github.com/microsoft/fluentui/pull/30819) by =)
 
 ## [3.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.9)
 

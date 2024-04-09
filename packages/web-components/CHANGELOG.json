@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 09 Apr 2024 04:08:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.10",
+      "version": "3.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "0bdcbe7aedc829f039ed48cd9ef546709429e5fb",
+            "comment": "revert design token syntax change for DX"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Apr 2024 04:08:59 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.9",
       "version": "3.0.0-beta.9",

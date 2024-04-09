@@ -23,7 +23,7 @@
   "dependencies": {
     "@fluentui/react-button": "^9.2.3",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/web-components": "3.0.0-beta.9",
+    "@fluentui/web-components": "3.0.0-beta.10",
     "tslib": "^2.1.0"
   }
 }
