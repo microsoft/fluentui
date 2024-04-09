@@ -69,11 +69,9 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         !disabled && [
           classNames.isSelected,
           {
-            selectors: {
-              ':focus-within': {
-                background: palette.themePrimary,
-                color: palette.white,
-              },
+            ':focus-within': {
+              background: palette.themePrimary,
+              color: palette.white,
             },
           },
         ],

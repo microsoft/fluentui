@@ -140,11 +140,9 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       invalid &&
         selected &&
         !disabled && {
-          selectors: {
-            ':focus-within': {
-              background: palette.redDark,
-              color: palette.white,
-            },
+          ':focus-within': {
+            background: palette.redDark,
+            color: palette.white,
           },
         },
       ((invalid && !selected) || (invalid && selected && disabled)) && {
