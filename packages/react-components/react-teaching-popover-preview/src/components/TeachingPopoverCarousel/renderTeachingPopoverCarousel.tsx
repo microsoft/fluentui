@@ -16,20 +16,12 @@ export const renderTeachingPopoverCarousel_unstable = (
 ) => {
   assertSlots<TeachingPopoverCarouselSlots>(state);
 
-  const { layout } = state;
-
   return (
     <CarouselWalkerProvider value={contextValues.carouselWalker}>
       <CarouselProvider value={contextValues.carousel}>
         <state.root>
           {state.root.children}
-          <state.footer>
-            {layout === 'centered' && state.previous && <state.previous />}
-            {state.nav && <state.nav />}
-            {state.pageCount && <state.pageCount />}
-            {layout === 'offset' && state.previous && <state.previous />}
-            <state.next />
-          </state.footer>
+          <state.footer />
         </state.root>
       </CarouselProvider>
     </CarouselWalkerProvider>

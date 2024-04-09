@@ -23,6 +23,18 @@ export type {
   TeachingPopoverBodyState,
 } from './TeachingPopoverBody';
 export {
+  TeachingPopoverCarouselCard,
+  teachingPopoverCarouselCardClassNames,
+  renderTeachingPopoverCarouselCard_unstable,
+  useTeachingPopoverCarouselCardStyles_unstable,
+  useTeachingPopoverCarouselCard_unstable,
+} from './TeachingPopoverCarouselCard';
+export type {
+  TeachingPopoverCarouselCardProps,
+  TeachingPopoverCarouselCardSlots,
+  TeachingPopoverCarouselCardState,
+} from './TeachingPopoverCarouselCard';
+export {
   TeachingPopoverCarousel,
   teachingPopoverCarouselClassNames,
   renderTeachingPopoverCarousel_unstable,
@@ -35,6 +47,18 @@ export type {
   TeachingPopoverCarouselSlots,
   TeachingPopoverCarouselState,
 } from './TeachingPopoverCarousel';
+export {
+  TeachingPopoverCarouselFooter,
+  teachingPopoverCarouselFooterClassNames,
+  renderTeachingPopoverCarouselFooter_unstable,
+  useTeachingPopoverCarouselFooterStyles_unstable,
+  useTeachingPopoverCarouselFooter_unstable,
+} from './TeachingPopoverCarouselFooter';
+export type {
+  TeachingPopoverCarouselFooterProps,
+  TeachingPopoverCarouselFooterSlots,
+  TeachingPopoverCarouselFooterState,
+} from './TeachingPopoverCarouselFooter';
 export {
   TeachingPopoverCarouselNav,
   teachingPopoverCarouselNavClassNames,

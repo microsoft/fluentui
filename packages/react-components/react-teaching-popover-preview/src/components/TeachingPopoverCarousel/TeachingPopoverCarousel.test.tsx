@@ -8,10 +8,13 @@ describe('TeachingPopoverCarousel', () => {
     Component: TeachingPopoverCarousel,
     displayName: 'TeachingPopoverCarousel',
     requiredProps: {
-      next: 'Next',
-      previous: 'Previous',
-      initialStepText: 'Close',
-      finalStepText: 'Finish',
+      footer: {
+        next: 'Next',
+        previous: 'Previous',
+        initialStepText: 'Close',
+        finalStepText: 'Finish',
+        pageCount: 'of',
+      },
     },
     disabledTests: ['component-has-static-classnames-object'],
   });
@@ -21,11 +24,13 @@ describe('TeachingPopoverCarousel', () => {
   it('renders a default state', () => {
     const result = render(
       <TeachingPopoverCarousel
-        next="Next"
-        previous="Previous"
-        initialStepText="Close"
-        finalStepText="Finish"
-        pageCount="of"
+        footer={{
+          next: 'Next',
+          previous: 'Previous',
+          initialStepText: 'Close',
+          finalStepText: 'Finish',
+          pageCount: 'of',
+        }}
       >
         Default TeachingPopoverCarousel
       </TeachingPopoverCarousel>,

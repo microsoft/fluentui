@@ -1,0 +1,153 @@
+import * as React from 'react';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import type {
+  TeachingPopoverCarouselFooterProps,
+  TeachingPopoverCarouselFooterState,
+} from './TeachingPopoverCarouselFooter.types';
+import { Button } from '@fluentui/react-button';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
+import { CarouselWalkerContext } from '../TeachingPopoverCarousel/Carousel/useCarouselWalker';
+import { CarouselContext } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
+
+export const useTeachingPopoverCarouselFooter_unstable = (
+  props: TeachingPopoverCarouselFooterProps,
+  ref: React.Ref<HTMLDivElement>,
+): TeachingPopoverCarouselFooterState => {
+  const { layout = 'centered', paginationType = 'icon', onPageChange, onFinish } = props;
+
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
+
+  const carouselWalker = React.useContext(CarouselWalkerContext);
+  const setValue = useContextSelector(CarouselContext, c => c.setValue);
+
+  const store = useContextSelector(CarouselContext, c => c.store);
+  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+
+  const cValue = useContextSelector(CarouselContext, c => c.value);
+  const activeIndex = cValue === '' ? 0 : values.indexOf(cValue);
+  const totalPages = values.length;
+
+  const handleNextButtonClick = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+      if (event.isDefaultPrevented()) {
+        return;
+      }
+      const active = carouselWalker.active();
+
+      if (active?.value) {
+        const next = carouselWalker.nextPage(active.value);
+        if (next) {
+          setValue(next?.value);
+          onPageChange?.(event, { event, type: 'click', value: next?.value });
+        } else {
+          onFinish?.(event, { event, type: 'click', value: active?.value });
+          toggleOpen(event);
+        }
+      }
+    },
+  );
+
+  const handlePrevButtonClick = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+      if (event.isDefaultPrevented()) {
+        return;
+      }
+      const active = carouselWalker.active();
+
+      if (active?.value) {
+        const prev = carouselWalker.prevPage(active.value);
+        if (prev) {
+          setValue(prev?.value);
+          onPageChange?.(event, { event, type: 'click', value: prev?.value });
+        } else {
+          onFinish?.(event, { event, type: 'click', value: active?.value });
+          toggleOpen(event);
+        }
+      }
+    },
+  );
+
+  const previous = slot.optional(props.previous, {
+    defaultProps: {
+      appearance: appearance === 'brand' ? 'outline' : undefined,
+    },
+    renderByDefault: true,
+    elementType: Button,
+  });
+
+  // Merge any provided callback with previous button and handle variant text
+  if (previous) {
+    if (activeIndex === 0) {
+      // We conditionally render the text based on whether initial page or not
+      previous.children = props.initialStepText;
+    }
+    previous.onClick = mergeCallbacks(previous?.onClick, handlePrevButtonClick);
+  }
+
+  const next = slot.always(props.next, {
+    defaultProps: {
+      appearance: appearance === 'brand' ? undefined : 'primary',
+    },
+    elementType: Button,
+  });
+
+  // Merge any provided callback with next button
+  if (activeIndex === values.length - 1) {
+    next.children = props.finalStepText;
+  }
+  next.onClick = mergeCallbacks(next?.onClick, handleNextButtonClick);
+
+  const nav =
+    paginationType === 'icon'
+      ? slot.optional(props.nav, {
+          renderByDefault: true,
+          elementType: TeachingPopoverCarouselNav,
+        })
+      : undefined;
+
+  const pageCount =
+    paginationType === 'text'
+      ? slot.optional(props.pageCount, {
+          renderByDefault: true,
+          elementType: 'div',
+        })
+      : undefined;
+
+  if (pageCount) {
+    // Handle customized page count localization
+    if (props.renderPageCountText) {
+      pageCount.children = props.renderPageCountText(activeIndex + 1, totalPages);
+    } else if (typeof props.pageCount === 'string') {
+      // When a string is provided, we will pre/append the localized pagination
+      pageCount.children = `${activeIndex + 1} ${pageCount.children ?? '/'} ${totalPages}`;
+    }
+  }
+
+  return {
+    appearance,
+    onPageChange,
+    layout,
+    components: {
+      root: 'div',
+      next: Button,
+      previous: Button,
+      nav: TeachingPopoverCarouselNav,
+      pageCount: 'div',
+    },
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    previous,
+    next,
+    nav,
+    pageCount,
+  };
+};

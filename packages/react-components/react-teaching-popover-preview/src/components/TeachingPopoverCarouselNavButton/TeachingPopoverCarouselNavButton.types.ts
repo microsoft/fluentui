@@ -14,9 +14,9 @@ export type TeachingPopoverCarouselNavButtonSlots = {
  */
 export type TeachingPopoverCarouselNavButtonProps = ComponentProps<Partial<TeachingPopoverCarouselNavButtonSlots>> & {
   /**
-   * The page index that will be used to update carousel context
+   * The page value that will be used to update carousel context
    */
-  index: number;
+  value: string;
 };
 
 /**

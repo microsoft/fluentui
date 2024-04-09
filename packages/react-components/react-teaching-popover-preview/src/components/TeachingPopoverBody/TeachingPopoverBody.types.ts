@@ -13,11 +13,7 @@ export type TeachingPopoverBodySlots = {
 
 export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
   mediaLength?: 'short' | 'medium' | 'tall';
-
-  /* Passed into CarouselItem to identify pages.
-   Will generate an id with useId() if not provided */
-  value?: string;
 };
 
 export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> &
-  Required<Pick<TeachingPopoverBodyProps, 'value' | 'mediaLength'>>;
+  Required<Pick<TeachingPopoverBodyProps, 'mediaLength'>>;

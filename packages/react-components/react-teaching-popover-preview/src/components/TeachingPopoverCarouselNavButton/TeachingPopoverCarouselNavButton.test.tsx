@@ -4,7 +4,7 @@ import { TeachingPopoverCarouselNavButton } from './TeachingPopoverCarouselNavBu
 
 describe('TeachingPopoverCarouselNavButton', () => {
   it('renders a default state', () => {
-    const result = render(<TeachingPopoverCarouselNavButton index={0} />);
+    const result = render(<TeachingPopoverCarouselNavButton value={'test-1'} />);
     expect(result.container).toMatchSnapshot();
   });
 });

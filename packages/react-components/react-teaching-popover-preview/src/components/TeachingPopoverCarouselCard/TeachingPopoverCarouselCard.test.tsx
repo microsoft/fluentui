@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { TeachingPopoverCarouselNav } from './TeachingPopoverCarouselNav';
+import { TeachingPopoverCarouselCard } from './TeachingPopoverCarouselCard';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { mockTeachingPopoverCarouselContext } from '../../testing/mockTeachingPopoverCarouselContext';
 
-jest.mock('../TeachingPopoverCarousel/TeachingPopoverCarouselContext');
-
-describe('TeachingPopoverCarouselNav', () => {
+describe('TeachingPopoverCarouselCard', () => {
   isConformant({
-    Component: TeachingPopoverCarouselNav,
-    displayName: 'TeachingPopoverCarouselNav',
+    Component: TeachingPopoverCarouselCard,
+    displayName: 'TeachingPopoverCarouselCard',
+    requiredProps: { value: 'test' },
   });
 
   beforeEach(() => {
@@ -19,7 +18,9 @@ describe('TeachingPopoverCarouselNav', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<TeachingPopoverCarouselNav>Default TeachingPopoverCarouselNav</TeachingPopoverCarouselNav>);
+    const result = render(
+      <TeachingPopoverCarouselCard value="test">Default TeachingPopoverCarouselCard</TeachingPopoverCarouselCard>,
+    );
     expect(result.container).toMatchSnapshot();
   });
 });

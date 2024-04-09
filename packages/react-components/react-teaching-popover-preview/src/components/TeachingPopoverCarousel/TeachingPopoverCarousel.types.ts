@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import { Button } from '@fluentui/react-button';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
-import { TeachingPopoverCarouselNavProps } from '../TeachingPopoverCarouselNav/index';
-import { CarouselPageChangeData } from './Carousel/Carousel.types';
 import { CarouselContextValue } from './Carousel/useCarouselCollection';
 import { CarouselWalkerContextValue } from './Carousel/useCarouselWalker';
+import { TeachingPopoverCarouselFooterProps } from '../TeachingPopoverCarouselFooter/index';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -16,27 +14,7 @@ export type TeachingPopoverCarouselSlots = {
   /**
    * The element wrapping the navigation of the carousel.
    */
-  footer?: NonNullable<Slot<'div'>>;
-
-  /**
-   * The previous button slot.
-   */
-  previous?: Slot<typeof Button>;
-
-  /**
-   * The next button slot.
-   */
-  next: NonNullable<Slot<typeof Button>>;
-
-  /**
-   * The page nav slot when using icon navigation.
-   */
-  nav?: Slot<TeachingPopoverCarouselNavProps>;
-
-  /**
-   * The page count text slot for paginationType text
-   */
-  pageCount?: Slot<'div'>;
+  footer: NonNullable<Slot<TeachingPopoverCarouselFooterProps>>;
 };
 
 export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
@@ -47,60 +25,12 @@ export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, 
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
-  /**
-   * Controls whether buttons will be centered (balanced) or right aligned
-   * Defaults to 'centered'.
-   */
-  layout?: TeachingPopoverCarouselLayout;
-
-  /**
-   * Dictates whether pagination uses text or icons
-   * Defaults to icons
-   */
-  paginationType?: 'text' | 'icon';
-
-  /**
-   * The text to be displayed on the initial step of carousel
-   */
-  initialStepText: string;
-
-  /**
-   * The text to be displayed on the final step of carousel
-   */
-  finalStepText: string;
-
-  /**
-   * Localize the page count text via function to fully override
-   */
-  renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
-
-  /**
-   * Page at which carousel should be initialized to
-   */
-  defaultCurrentPage?: number;
-
-  /**
-   * Callback to notify a page change
-   */
-  onPageChange?: EventHandler<CarouselPageChangeData>;
-
-  /**
-   * Callback to notify when the final button step of a carousel has been activated.
-   */
-  onFinish?: EventHandler<CarouselPageChangeData>;
-
-  /**
-   * Controllable page state
-   */
-  currentPage?: number;
-};
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {};
 
 /**
  * TeachingPopoverCarousel State and Context Hooks
  */
 export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> &
   Partial<Pick<PopoverContextValue, 'appearance'>> &
-  Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> &
   CarouselContextValue &
   CarouselWalkerContextValue;

@@ -8,7 +8,7 @@ import { isHTMLElement, useMergedRefs } from '@fluentui/react-utilities';
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
 export function useCarousel_unstable() {
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
-  const { store, value, setValue, currentIndex, setIndex, totalPages } = useCarouselCollection_unstable();
+  const { store, value, setValue } = useCarouselCollection_unstable();
 
   const rootRef = React.useRef<HTMLDivElement>(null);
 
@@ -77,9 +77,6 @@ export function useCarousel_unstable() {
       store,
       value,
       setValue,
-      setIndex,
-      currentIndex,
-      totalPages,
     },
   };
 }

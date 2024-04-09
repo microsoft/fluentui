@@ -13,17 +13,13 @@ export type TeachingPopoverCarouselContextValues = {
 export function useTeachingPopoverCarouselContextValues_unstable(
   state: TeachingPopoverCarouselState,
 ): TeachingPopoverCarouselContextValues {
-  const { store, value, setValue, setIndex, onPageChange, totalPages, currentIndex, find, nextPage, prevPage, active } =
-    state;
+  const { store, value, setValue, onPageChange, find, nextPage, prevPage, active } = state;
 
   const carousel = {
     store,
     value,
     setValue,
-    setIndex,
     onPageChange,
-    totalPages,
-    currentIndex,
   };
 
   const carouselWalker = { find, nextPage, prevPage, active };

@@ -9,6 +9,7 @@ import {
   TeachingPopoverTitle,
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
+  TeachingPopoverCarouselCard,
 } from '@fluentui/react-teaching-popover-preview';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 
@@ -23,26 +24,33 @@ export const Carousel = (props: TeachingPopoverProps) => {
       <TeachingPopoverSurface>
         <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
         <TeachingPopoverCarousel
-          layout={'offset'}
-          next="Next"
-          previous="Previous"
-          initialStepText="Close"
-          finalStepText="Finish"
+          footer={{
+            next: 'Next',
+            previous: 'Previous',
+            initialStepText: 'Close',
+            finalStepText: 'Finish',
+          }}
         >
-          <TeachingPopoverBody value={'test-0'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
-            <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-            <div>{`This is page: 1`}</div>
-          </TeachingPopoverBody>
+          <TeachingPopoverCarouselCard value="test-0">
+            <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+              <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+              <div>{`This is page: 1`}</div>
+            </TeachingPopoverBody>
+          </TeachingPopoverCarouselCard>
 
-          <TeachingPopoverBody value={'test-1'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
-            <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-            <div>{`This is page: 2`}</div>
-          </TeachingPopoverBody>
+          <TeachingPopoverCarouselCard value="test-1">
+            <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+              <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+              <div>{`This is page: 2`}</div>
+            </TeachingPopoverBody>
+          </TeachingPopoverCarouselCard>
 
-          <TeachingPopoverBody value={'test-2'} media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
-            <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-            <div>{`This is page: 3`}</div>
-          </TeachingPopoverBody>
+          <TeachingPopoverCarouselCard value="test-3">
+            <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+              <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+              <div>{`This is page: 3`}</div>
+            </TeachingPopoverBody>
+          </TeachingPopoverCarouselCard>
         </TeachingPopoverCarousel>
       </TeachingPopoverSurface>
     </TeachingPopover>

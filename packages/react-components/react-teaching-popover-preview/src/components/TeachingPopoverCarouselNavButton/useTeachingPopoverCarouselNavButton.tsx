@@ -7,7 +7,11 @@ import type {
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import {
+  CarouselContext,
+  useCarouselContext_unstable,
+} from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -22,17 +26,21 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   props: TeachingPopoverCarouselNavButtonProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): TeachingPopoverCarouselNavButtonState => {
-  const { index, onClick, as = 'a' } = props;
+  const { value, onClick, as = 'a' } = props;
   const appearance = usePopoverContext_unstable(context => context.appearance);
 
-  const setCurrentPage = useCarouselContext_unstable(context => context.setIndex);
-  const currentPage = useCarouselContext_unstable(context => context.currentIndex);
-  const totalPages = useCarouselContext_unstable(context => context.totalPages);
   const onPageChange = useCarouselContext_unstable(context => context.onPageChange);
   const store = useCarouselContext_unstable(context => context.store);
-  const isSelected = currentPage === index;
-
   const values = store.getSnapshot();
+  let cValue = useContextSelector(CarouselContext, c => c.value);
+  if (cValue === '') {
+    cValue = values[0];
+  }
+  const setValue = useContextSelector(CarouselContext, c => c.setValue);
+  const index = values.indexOf(cValue);
+  const totalPages = values.length;
+
+  const isSelected = cValue === value;
 
   const setNewPage = React.useCallback(
     event => {
@@ -40,11 +48,11 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
         onClick(event);
       }
       if (!event.defaultPrevented && isHTMLElement(event.target)) {
-        setCurrentPage(index);
-        onPageChange?.(event, { event, type: 'click', index, value: values[index] });
+        setValue(value);
+        onPageChange?.(event, { event, type: 'click', value });
       }
     },
-    [onClick, setCurrentPage, index, onPageChange, values],
+    [onClick, onPageChange, setValue, value],
   );
 
   const defaultTabProps = useTabsterAttributes({
@@ -59,7 +67,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
         role: 'tab',
         type: 'button',
-        'aria-label': `${currentPage + 1} of ${totalPages}`,
+        'aria-label': `${index + 1} of ${totalPages}`,
         ...defaultTabProps,
       },
     },

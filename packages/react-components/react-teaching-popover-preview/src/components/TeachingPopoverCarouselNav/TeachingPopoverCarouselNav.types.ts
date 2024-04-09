@@ -8,15 +8,6 @@ export type TeachingPopoverCarouselNavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type TeachingPopoverCarouselNavState = ComponentState<TeachingPopoverCarouselNavSlots> & {
-  /**
-   * The current carousel page.
-   */
-  currentPage: number;
-  /**
-   * The total number of carousel pages, controlled by children within carousel itself.
-   */
-  totalPages: number;
-};
+export type TeachingPopoverCarouselNavState = ComponentState<TeachingPopoverCarouselNavSlots> & {};
 
 export type TeachingPopoverCarouselNavProps = ComponentProps<Partial<TeachingPopoverCarouselNavSlots>>;
