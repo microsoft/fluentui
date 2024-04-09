@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "revert design token syntax change for DX",
-  "packageName": "@fluentui/web-components",
-  "email": "=",
-  "dependentChangeType": "patch"
-}
