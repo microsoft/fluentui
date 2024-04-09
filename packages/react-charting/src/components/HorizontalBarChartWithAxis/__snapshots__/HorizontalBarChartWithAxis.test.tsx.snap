@@ -33,7 +33,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           overflow: auto;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -178,7 +177,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                     outline: none;
                   }
               data-focuszone-id="FocusZone5"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -598,7 +596,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           overflow: auto;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -732,7 +729,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           overflow: auto;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -873,7 +869,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     outline: none;
                   }
               data-focuszone-id="FocusZone5"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1285,7 +1280,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           overflow: auto;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1426,7 +1420,6 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     outline: none;
                   }
               data-focuszone-id="FocusZone5"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

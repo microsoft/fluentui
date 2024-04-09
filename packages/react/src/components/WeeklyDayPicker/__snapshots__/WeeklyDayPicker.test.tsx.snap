@@ -125,7 +125,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           padding-bottom: 10px;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3503,7 +3502,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           padding-bottom: 10px;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

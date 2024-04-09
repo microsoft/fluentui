@@ -20,7 +20,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -191,7 +190,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
           outline: none;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

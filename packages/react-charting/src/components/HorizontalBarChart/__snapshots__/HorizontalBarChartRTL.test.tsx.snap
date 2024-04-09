@@ -26,7 +26,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 outline: none;
               }
           data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -95,7 +94,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="one"
@@ -160,7 +158,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -229,7 +226,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="two"
@@ -294,7 +290,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -363,7 +358,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="three"
@@ -446,7 +440,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 outline: none;
               }
           data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -515,7 +508,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="one"
@@ -580,7 +572,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -649,7 +640,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="two"
@@ -714,7 +704,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -783,7 +772,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="three"
@@ -879,7 +867,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone5"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -948,7 +935,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   padding-right: 0px;
                 }
             data-focuszone-id="FocusZone7"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <svg
               aria-label="one"
@@ -1013,7 +999,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone8"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -1082,7 +1067,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   padding-right: 0px;
                 }
             data-focuszone-id="FocusZone10"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <svg
               aria-label="two"
@@ -1147,7 +1131,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone11"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -1216,7 +1199,6 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   padding-right: 0px;
                 }
             data-focuszone-id="FocusZone13"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <svg
               aria-label="three"
@@ -1312,7 +1294,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1381,7 +1362,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="one"
@@ -1446,7 +1426,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1515,7 +1494,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="two"
@@ -1580,7 +1558,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1649,7 +1626,6 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="three"
@@ -1732,7 +1708,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 outline: none;
               }
           data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1801,7 +1776,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="one"
@@ -1866,7 +1840,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1935,7 +1908,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="two"
@@ -2000,7 +1972,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2069,7 +2040,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 padding-right: 0px;
               }
           data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
             aria-label="three"

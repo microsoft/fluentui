@@ -25,7 +25,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             outline: none;
           }
       data-focuszone-id="FocusZone3"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -311,7 +310,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone4"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -632,7 +630,6 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               outline: none;
             }
         data-focuszone-id="FocusZone6"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <div>
           <svg
@@ -764,7 +761,6 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone7"
-                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div

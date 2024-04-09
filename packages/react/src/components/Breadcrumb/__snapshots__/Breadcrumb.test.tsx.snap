@@ -33,7 +33,6 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -424,7 +423,6 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -839,7 +837,6 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1173,7 +1170,6 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1483,7 +1479,6 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1697,7 +1692,6 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -2103,7 +2097,6 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -2509,7 +2502,6 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
-            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=

@@ -44,7 +44,6 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -519,7 +518,6 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -749,7 +747,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -1224,7 +1221,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1454,7 +1450,6 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -1929,7 +1924,6 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2159,7 +2153,6 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -2634,7 +2627,6 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2864,7 +2856,6 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -3339,7 +3330,6 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -3569,7 +3559,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           overflow: auto;
         }
     data-focuszone-id="FocusZone5"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3923,7 +3912,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4439,7 +4427,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
           overflow: auto;
         }
     data-focuszone-id="FocusZone5"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4793,7 +4780,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                     outline: none;
                   }
               data-focuszone-id="FocusZone6"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5815,7 +5801,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           overflow: auto;
         }
     data-focuszone-id="FocusZone5"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -6158,7 +6143,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               outline: none;
             }
         data-focuszone-id="FocusZone6"
-        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -6488,7 +6472,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           overflow: auto;
         }
     data-focuszone-id="FocusZone5"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -9230,7 +9213,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               overflow: auto;
             }
         data-focuszone-id="FocusZone8"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           focusable="false"
@@ -9705,7 +9687,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone9"
-                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div

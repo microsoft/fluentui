@@ -23,7 +23,6 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -119,7 +118,6 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -403,7 +401,6 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -499,7 +496,6 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -691,7 +687,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -787,7 +782,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -899,7 +893,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -995,7 +988,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1107,7 +1099,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1193,7 +1184,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1305,7 +1295,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1401,7 +1390,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1513,7 +1501,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1583,7 +1570,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1695,7 +1681,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1791,7 +1776,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1903,7 +1887,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           outline: none;
         }
     data-focuszone-id="FocusZone4"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1973,7 +1956,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           outline: none;
         }
     data-focuszone-id="FocusZone6"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2108,7 +2090,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                     outline: none;
                   }
               data-focuszone-id="FocusZone7"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

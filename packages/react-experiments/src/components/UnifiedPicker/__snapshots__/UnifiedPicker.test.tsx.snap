@@ -13,7 +13,6 @@ exports[`UnifiedPicker renders correctly with no items 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -166,7 +165,6 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
           outline: none;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

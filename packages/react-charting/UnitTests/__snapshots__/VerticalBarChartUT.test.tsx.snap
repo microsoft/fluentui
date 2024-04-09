@@ -33,7 +33,6 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -460,7 +459,6 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div

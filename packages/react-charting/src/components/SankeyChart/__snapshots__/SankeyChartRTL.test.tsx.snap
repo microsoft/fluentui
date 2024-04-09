@@ -26,7 +26,6 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             outline: none;
           }
       data-focuszone-id="FocusZone15"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -424,7 +423,6 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               outline: none;
             }
         data-focuszone-id="FocusZone18"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           focusable="false"
@@ -822,7 +820,6 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             outline: none;
           }
       data-focuszone-id="FocusZone15"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
