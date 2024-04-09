@@ -789,6 +789,7 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { SearchBox } from '@fluentui/react-search';
+import { SearchBoxChangeEvent } from '@fluentui/react-search';
 import { searchBoxClassNames } from '@fluentui/react-search';
 import { SearchBoxProps } from '@fluentui/react-search';
 import { SearchBoxSlots } from '@fluentui/react-search';
@@ -3039,6 +3040,8 @@ export { ResolveShorthandFunction }
 export { ResolveShorthandOptions }
 
 export { SearchBox }
+
+export { SearchBoxChangeEvent }
 
 export { searchBoxClassNames }
 
