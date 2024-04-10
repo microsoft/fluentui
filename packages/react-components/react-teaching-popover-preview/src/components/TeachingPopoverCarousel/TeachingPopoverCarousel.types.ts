@@ -4,6 +4,7 @@ import { PopoverContextValue } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselFooterProps } from '../TeachingPopoverCarouselFooter/index';
 import { type CarouselContextValue } from './Carousel/useCarouselCollection';
 import { type CarouselWalker } from './Carousel/useCarouselWalker';
+import type { CarouselWalkerContextValue } from './Carousel/CarouselWalkerContext';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -31,3 +32,11 @@ export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouse
 export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> &
   Partial<Pick<PopoverContextValue, 'appearance'>> &
   CarouselContextValue & { carouselWalker: CarouselWalker };
+
+/**
+ * Context shared between TeachingPopoverCarousel and its children components
+ */
+export type TeachingPopoverCarouselContextValues = {
+  carousel: CarouselContextValue;
+  carouselWalker: CarouselWalkerContextValue;
+};
