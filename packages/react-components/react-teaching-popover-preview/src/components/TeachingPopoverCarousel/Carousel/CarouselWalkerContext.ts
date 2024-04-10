@@ -10,7 +10,7 @@ export const carouselWalkerContextDefaultValue: CarouselWalkerContextValue = {
   active: () => null,
 };
 
-export const CarouselWalkerContext = React.createContext<CarouselWalkerContextValue | undefined>(undefined);
+const CarouselWalkerContext = React.createContext<CarouselWalkerContextValue | undefined>(undefined);
 
 export const CarouselWalkerProvider = CarouselWalkerContext.Provider;
 

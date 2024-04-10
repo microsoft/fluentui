@@ -18,7 +18,7 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   onPageChange: () => null,
 };
 
-export const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(
+const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(
   undefined,
 ) as Context<CarouselContextValue>;
 
