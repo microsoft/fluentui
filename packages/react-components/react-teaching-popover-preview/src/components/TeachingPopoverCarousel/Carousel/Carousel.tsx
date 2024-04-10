@@ -46,6 +46,10 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     for (let i = 0; i < allItems.length; i++) {
       store.addValue(allItems.item(i).getAttribute(CAROUSEL_ITEM)!);
     }
+
+    return () => {
+      store.clear();
+    };
   }, [store]);
 
   React.useEffect(() => {

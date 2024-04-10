@@ -5,6 +5,10 @@ export const createCarouselStore = (): CarouselStore => {
   let listeners: Array<() => void> = [];
 
   const carouselStore = {
+    clear() {
+      values = [];
+      emitChange();
+    },
     addValue(value: string) {
       values = [...values, value];
 
