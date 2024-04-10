@@ -6,14 +6,14 @@ import { createCarouselStore } from './createCarouselStore';
 
 export type CarouselContextValue = {
   store: CarouselStore;
-  value: string;
+  value: string | null;
   setValue: (value: string) => void;
   onPageChange?: EventHandler<CarouselPageChangeData>;
 };
 
 export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
-  value: '',
+  value: null,
   setValue: () => {},
   onPageChange: () => null,
 };

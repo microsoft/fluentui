@@ -23,6 +23,7 @@ export const CarouselText = (props: TeachingPopoverProps) => (
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
       <TeachingPopoverCarousel
+        defaultValue="test-1"
         footer={{
           paginationType: 'text',
           next: 'Next',

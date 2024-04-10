@@ -24,6 +24,7 @@ export const Carousel = (props: TeachingPopoverProps) => {
       <TeachingPopoverSurface>
         <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
         <TeachingPopoverCarousel
+          defaultValue="test-0"
           footer={{
             next: 'Next',
             previous: 'Previous',

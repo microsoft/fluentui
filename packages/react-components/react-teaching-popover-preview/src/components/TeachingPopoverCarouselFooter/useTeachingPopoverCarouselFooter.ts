@@ -26,7 +26,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   const values = useCarouselValues_unstable(values => values);
 
   const cValue = useCarouselContext_unstable(c => c.value);
-  const activeIndex = cValue === '' ? 0 : values.indexOf(cValue);
+  const activeIndex = cValue === '' ? 0 : values.indexOf(cValue ?? '');
   const totalPages = values.length;
 
   const handleNextButtonClick = useEventCallback(

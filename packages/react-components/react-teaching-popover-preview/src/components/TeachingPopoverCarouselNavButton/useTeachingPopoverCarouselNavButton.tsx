@@ -34,7 +34,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
     cValue = values[0];
   }
   const setValue = useCarouselContext_unstable(c => c.setValue);
-  const index = values.indexOf(cValue);
+  const index = values.indexOf(cValue ?? '');
   const totalPages = values.length;
 
   const isSelected = cValue === value;

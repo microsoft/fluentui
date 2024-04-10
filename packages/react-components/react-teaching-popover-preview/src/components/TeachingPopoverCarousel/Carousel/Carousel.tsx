@@ -19,9 +19,19 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
   const [value, setValue] = useControllableState({
     defaultState: options.defaultValue,
     state: options.value,
-    initialState: '',
+    initialState: null,
   });
   const rootRef = React.useRef<HTMLDivElement>(null);
+
+  if (process.env.NODE_ENV !== 'production') {
+    React.useEffect(() => {
+      if (value === null) {
+        console.error(
+          'useCarousel: Carousel needs to have a `defaultValue` or `value` prop set. If you want to control the value, use the `value` prop.',
+        );
+      }
+    }, [value]);
+  }
 
   React.useEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
