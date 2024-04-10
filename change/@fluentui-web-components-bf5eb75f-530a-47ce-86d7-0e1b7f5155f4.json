@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(web-components): fix toolbar stealing focus when document has moved focus to another element",
-  "packageName": "@fluentui/web-components",
-  "email": "=",
-  "dependentChangeType": "patch"
-}
