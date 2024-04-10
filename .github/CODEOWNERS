@@ -237,7 +237,7 @@ packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/flu
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
-packages/react-components/react-search @microsoft/cxe-red
+packages/react-components/react-search @microsoft/cxe-red @smhigley
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
