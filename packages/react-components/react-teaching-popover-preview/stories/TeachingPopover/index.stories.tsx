@@ -2,9 +2,9 @@ import { TeachingPopover } from '@fluentui/react-teaching-popover-preview';
 import descriptionMd from './TeachingPopoverDescription.md';
 
 export { Default } from './TeachingPopoverDefault.stories';
-export { DefaultBrand } from './TeachingPopoverBrandedAppearance.stories';
+export { AppearanceBrand } from './TeachingPopoverAppearanceBrand.stories';
 export { Carousel } from './TeachingPopoverCarousel.stories';
-export { CarouselBrand } from './TeachingPopoverCarouselBrandedAppearance.stories';
+export { CarouselBrand } from './TeachingPopoverCarouselAppearanceBrand.stories';
 export { CarouselText } from './TeachingPopoverCarouselText.stories';
 
 export default {
