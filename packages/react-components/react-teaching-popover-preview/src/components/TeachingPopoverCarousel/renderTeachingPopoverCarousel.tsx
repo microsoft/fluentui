@@ -1,10 +1,10 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
-import type { TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
-import { TeachingPopoverCarouselSlots } from './TeachingPopoverCarousel.types';
+
 import { assertSlots } from '@fluentui/react-utilities';
+import type { TeachingPopoverCarouselState, TeachingPopoverCarouselSlots } from './TeachingPopoverCarousel.types';
 import { TeachingPopoverCarouselContextValues } from './TeachingPopoverCarouselContext';
-import { CarouselWalkerProvider } from './Carousel/useCarouselWalker';
+import { CarouselWalkerProvider } from './Carousel/CarouselWalkerContext';
 import { CarouselProvider } from './Carousel/useCarouselCollection';
 
 /**

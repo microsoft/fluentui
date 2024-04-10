@@ -1,6 +1,6 @@
 import { CarouselContextValue } from './Carousel/useCarouselCollection';
-import { CarouselWalkerContextValue } from './Carousel/useCarouselWalker';
 import { TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
+import { type CarouselWalkerContextValue } from './Carousel/CarouselWalkerContext';
 
 /**
  * Context shared between TeachingPopoverCarousel and its children components
@@ -13,7 +13,7 @@ export type TeachingPopoverCarouselContextValues = {
 export function useTeachingPopoverCarouselContextValues_unstable(
   state: TeachingPopoverCarouselState,
 ): TeachingPopoverCarouselContextValues {
-  const { store, value, setValue, onPageChange, find, nextPage, prevPage, active } = state;
+  const { store, value, setValue, onPageChange, carouselWalker } = state;
 
   const carousel = {
     store,
@@ -21,8 +21,6 @@ export function useTeachingPopoverCarouselContextValues_unstable(
     setValue,
     onPageChange,
   };
-
-  const carouselWalker = { find, nextPage, prevPage, active };
 
   return { carousel, carouselWalker };
 }

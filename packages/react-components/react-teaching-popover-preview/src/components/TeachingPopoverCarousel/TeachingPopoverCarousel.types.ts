@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
-import { CarouselContextValue } from './Carousel/useCarouselCollection';
-import { CarouselWalkerContextValue } from './Carousel/useCarouselWalker';
+
 import { TeachingPopoverCarouselFooterProps } from '../TeachingPopoverCarouselFooter/index';
+import { type CarouselContextValue } from './Carousel/useCarouselCollection';
+import { type CarouselWalker } from './Carousel/useCarouselWalker';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -17,20 +17,17 @@ export type TeachingPopoverCarouselSlots = {
   footer: NonNullable<Slot<TeachingPopoverCarouselFooterProps>>;
 };
 
-export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
-
-// For localization or customization, users may want to modify this for their own purposes
-export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
-
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {};
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
+  defaultValue?: string;
+  value?: string;
+};
 
 /**
  * TeachingPopoverCarousel State and Context Hooks
  */
 export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> &
   Partial<Pick<PopoverContextValue, 'appearance'>> &
-  CarouselContextValue &
-  CarouselWalkerContextValue;
+  CarouselContextValue & { carouselWalker: CarouselWalker };

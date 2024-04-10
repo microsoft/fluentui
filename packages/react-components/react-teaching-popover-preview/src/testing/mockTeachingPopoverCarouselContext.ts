@@ -1,7 +1,7 @@
 import { useTeachingPopoverCarouselContextValues_unstable } from '../TeachingPopoverCarousel';
 import type { TeachingPopoverCarouselContextValues } from '../TeachingPopoverCarousel';
 import { carouselContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/useCarouselCollection';
-import { carouselWalkerContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/useCarouselWalker';
+import { carouselWalkerContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
 
 /**
  * A test utility to mock the usePopoverContext_unstable hook that relies on context selector

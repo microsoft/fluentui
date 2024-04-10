@@ -7,7 +7,7 @@ import type {
 import { Button } from '@fluentui/react-button';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
-import { CarouselWalkerContext } from '../TeachingPopoverCarousel/Carousel/useCarouselWalker';
+import { useCarouselWalkerContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
 import { CarouselContext } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
@@ -21,7 +21,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
-  const carouselWalker = React.useContext(CarouselWalkerContext);
+  const carouselWalker = useCarouselWalkerContext_unstable();
   const setValue = useContextSelector(CarouselContext, c => c.setValue);
 
   const store = useContextSelector(CarouselContext, c => c.store);

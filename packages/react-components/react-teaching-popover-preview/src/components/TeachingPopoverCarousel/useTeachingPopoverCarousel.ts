@@ -29,7 +29,7 @@ export const useTeachingPopoverCarousel_unstable = (
       { elementType: 'div' },
     ),
     footer,
-    ...carouselWalker,
+    carouselWalker,
     ...carousel,
   };
 };

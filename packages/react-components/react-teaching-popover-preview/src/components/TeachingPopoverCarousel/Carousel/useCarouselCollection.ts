@@ -85,7 +85,7 @@ export type CarouselContextValue = {
 export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
   value: '',
-  setValue: (_value: string) => null,
+  setValue: () => {},
   onPageChange: () => null,
 };
 
