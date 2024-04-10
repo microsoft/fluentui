@@ -144,7 +144,7 @@ const peopleFilterId = 'people-filter';
 const filesFilterId = 'files-filter';
 const noResultsRowId = 'noResults-row';
 
-export const TreeGridActiveDescendantComboboxRenderer = () => {
+export const GridActiveDescendantComboboxRenderer = () => {
   const { targetDocument } = useFluent();
   const [filter, setFilter] = React.useState<'none' | 'files' | 'people'>('none');
   const styles = useStyles();

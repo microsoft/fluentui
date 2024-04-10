@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { isHTMLElement } from '@fluentui/react-utilities';
 import { ACTIVEDESCENDANT_ATTRIBUTE, FOCUSABLES_SELECTOR } from './constants';
 
 export interface ActiveDescendantGridFocusableImperativeRef {

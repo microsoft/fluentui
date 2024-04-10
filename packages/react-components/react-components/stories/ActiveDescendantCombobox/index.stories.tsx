@@ -1,4 +1,4 @@
-export { TreeGridActiveDescendantCombobox } from './TreeGridActiveDescendantCombobox.stories';
+export { GridActiveDescendantCombobox } from './GridActiveDescendantCombobox.stories';
 
 export default {
   title: 'Concepts/Developer/Accessibility/ActiveDescendantComboboxes',
