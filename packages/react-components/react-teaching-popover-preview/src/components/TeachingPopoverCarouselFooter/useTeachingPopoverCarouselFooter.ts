@@ -1,14 +1,15 @@
-import * as React from 'react';
+import { Button } from '@fluentui/react-button';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
+import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
+import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
 import type {
   TeachingPopoverCarouselFooterProps,
   TeachingPopoverCarouselFooterState,
 } from './TeachingPopoverCarouselFooter.types';
-import { Button } from '@fluentui/react-button';
-import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
-import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
-import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 export const useTeachingPopoverCarouselFooter_unstable = (
   props: TeachingPopoverCarouselFooterProps,
@@ -20,8 +21,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
   const values = useCarouselValues_unstable(values => values);
 
-  const cValue = useCarouselContext_unstable(c => c.value);
-  const activeIndex = cValue === '' ? 0 : values.indexOf(cValue ?? '');
+  const activeIndex = useCarouselContext_unstable(c => (c.value === null ? 0 : values.indexOf(c.value)));
   const totalPages = values.length;
 
   const handleNextButtonClick = useEventCallback(
