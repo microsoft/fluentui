@@ -25,15 +25,15 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): TeachingPopoverCarouselNavButtonState => {
   const { value, onClick, as = 'a' } = props;
-  const appearance = usePopoverContext_unstable(context => context.appearance);
 
-  const onPageChange = useCarouselContext_unstable(context => context.onPageChange);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
+
   const values = useCarouselValues_unstable(values => values);
   let cValue = useCarouselContext_unstable(c => c.value);
   if (cValue === '') {
     cValue = values[0];
   }
-  const setValue = useCarouselContext_unstable(c => c.setValue);
   const index = values.indexOf(cValue ?? '');
   const totalPages = values.length;
 
@@ -41,15 +41,13 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
 
   const setNewPage = React.useCallback(
     event => {
-      if (onClick) {
-        onClick(event);
-      }
+      onClick?.(event);
+
       if (!event.defaultPrevented && isHTMLElement(event.target)) {
-        setValue(value);
-        onPageChange?.(event, { event, type: 'click', value });
+        selectPageByValue(event, value);
       }
     },
-    [onClick, onPageChange, setValue, value],
+    [onClick, value],
   );
 
   const defaultTabProps = useTabsterAttributes({

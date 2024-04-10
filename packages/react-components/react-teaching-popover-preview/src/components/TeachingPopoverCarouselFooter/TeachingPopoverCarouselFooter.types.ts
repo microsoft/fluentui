@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNavProps } from '../TeachingPopoverCarouselNav/index';
-import { CarouselPageChangeData } from '../TeachingPopoverCarousel/Carousel/Carousel.types';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -67,16 +66,6 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
    * Localize the page count text via function to fully override
    */
   renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
-
-  /**
-   * Callback to notify a page change
-   */
-  onPageChange?: EventHandler<CarouselPageChangeData>;
-
-  /**
-   * Callback to notify when the final button step of a carousel has been activated.
-   */
-  onFinish?: EventHandler<CarouselPageChangeData>;
 };
 
 /**
@@ -84,4 +73,4 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
  */
 export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> &
   Partial<Pick<PopoverContextValue, 'appearance'>> &
-  Pick<TeachingPopoverCarouselFooterProps, 'layout' | 'onPageChange'>;
+  Pick<TeachingPopoverCarouselFooterProps, 'layout'>;

@@ -1,21 +1,21 @@
-import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { EventHandler } from '@fluentui/react-utilities';
-import { CarouselPageChangeData, CarouselStore } from './Carousel.types';
+import { type Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import * as React from 'react';
 
+import { CarouselStore } from './Carousel.types';
 import { createCarouselStore } from './createCarouselStore';
 
 export type CarouselContextValue = {
   store: CarouselStore;
   value: string | null;
-  setValue: (value: string) => void;
-  onPageChange?: EventHandler<CarouselPageChangeData>;
+  selectPageByDirection: (event: React.MouseEvent<HTMLButtonElement>, direction: 'next' | 'prev') => void;
+  selectPageByValue: (event: React.MouseEvent<HTMLButtonElement>, value: string) => void;
 };
 
 export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
   value: null,
-  setValue: () => {},
-  onPageChange: () => null,
+  selectPageByDirection: () => {},
+  selectPageByValue: () => {},
 };
 
 const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(

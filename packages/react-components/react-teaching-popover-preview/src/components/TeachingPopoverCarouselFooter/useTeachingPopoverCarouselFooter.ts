@@ -7,7 +7,6 @@ import type {
 import { Button } from '@fluentui/react-button';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
-import { useCarouselWalkerContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
@@ -15,14 +14,10 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   props: TeachingPopoverCarouselFooterProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselFooterState => {
-  const { layout = 'centered', paginationType = 'icon', onPageChange, onFinish } = props;
+  const { layout = 'centered', paginationType = 'icon' } = props;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
-
-  const carouselWalker = useCarouselWalkerContext_unstable();
-  const setValue = useCarouselContext_unstable(c => c.setValue);
-
+  const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
   const values = useCarouselValues_unstable(values => values);
 
   const cValue = useCarouselContext_unstable(c => c.value);
@@ -34,18 +29,8 @@ export const useTeachingPopoverCarouselFooter_unstable = (
       if (event.isDefaultPrevented()) {
         return;
       }
-      const active = carouselWalker.active();
 
-      if (active?.value) {
-        const next = carouselWalker.nextPage(active.value);
-        if (next) {
-          setValue(next?.value);
-          onPageChange?.(event, { event, type: 'click', value: next?.value });
-        } else {
-          onFinish?.(event, { event, type: 'click', value: active?.value });
-          toggleOpen(event);
-        }
-      }
+      selectPageByDirection(event, 'next');
     },
   );
 
@@ -54,18 +39,8 @@ export const useTeachingPopoverCarouselFooter_unstable = (
       if (event.isDefaultPrevented()) {
         return;
       }
-      const active = carouselWalker.active();
 
-      if (active?.value) {
-        const prev = carouselWalker.prevPage(active.value);
-        if (prev) {
-          setValue(prev?.value);
-          onPageChange?.(event, { event, type: 'click', value: prev?.value });
-        } else {
-          onFinish?.(event, { event, type: 'click', value: active?.value });
-          toggleOpen(event);
-        }
-      }
+      selectPageByDirection(event, 'prev');
     },
   );
 
@@ -127,7 +102,6 @@ export const useTeachingPopoverCarouselFooter_unstable = (
 
   return {
     appearance,
-    onPageChange,
     layout,
     components: {
       root: 'div',

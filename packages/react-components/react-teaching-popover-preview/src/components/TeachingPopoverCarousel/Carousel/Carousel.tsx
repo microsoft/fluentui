@@ -1,18 +1,25 @@
-import { isHTMLElement, useMergedRefs, useControllableState } from '@fluentui/react-utilities';
+import { isHTMLElement, useMergedRefs, useControllableState, EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
+import type { CarouselPageChangeData } from './Carousel.types';
+import { CarouselContextValue } from './CarouselContext';
 
-type UseCarouselOptions = {
+export type UseCarouselOptions = {
   defaultValue?: string;
   value?: string;
+
+  onPageChange?: EventHandler<CarouselPageChangeData>;
+  onFinish?: EventHandler<CarouselPageChangeData>;
 };
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
 export function useCarousel_unstable(options: UseCarouselOptions) {
+  const { onPageChange, onFinish } = options;
+
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
   const [store] = React.useState(() => createCarouselStore());
 
@@ -91,13 +98,42 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     };
   }, [store]);
 
+  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = React.useCallback(
+    (event, direction) => {
+      const active = carouselWalker.active();
+
+      if (!active?.value) {
+        return;
+      }
+
+      const newPage =
+        direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
+
+      if (newPage) {
+        setValue(newPage?.value);
+        onPageChange?.(event, { event, type: 'click', value: newPage?.value });
+      } else {
+        onFinish?.(event, { event, type: 'click', value: active?.value });
+      }
+    },
+    [carouselWalker, setValue],
+  );
+  const selectPageByValue: CarouselContextValue['selectPageByValue'] = React.useCallback(
+    (event, value) => {
+      setValue(value);
+      onPageChange?.(event, { event, type: 'click', value });
+    },
+    [setValue],
+  );
+
   return {
     carouselRef: useMergedRefs(rootRef, carouselRef),
     carouselWalker,
     carousel: {
       store,
       value,
-      setValue,
+      selectPageByDirection,
+      selectPageByValue,
     },
   };
 }
