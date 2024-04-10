@@ -35,7 +35,9 @@ export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>
 
 // @public (undocumented)
 export type NavCategoryItemSlots = {
-    root: Slot<'button'>;
+    root: NonNullable<Slot<'button'>>;
+    icon?: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
     expandIcon: NonNullable<Slot<'span'>>;
 };
 
