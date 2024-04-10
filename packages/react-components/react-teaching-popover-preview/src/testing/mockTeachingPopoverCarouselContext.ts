@@ -1,7 +1,6 @@
 import { useTeachingPopoverCarouselContextValues_unstable } from '../TeachingPopoverCarousel';
 import type { TeachingPopoverCarouselContextValues } from '../TeachingPopoverCarousel';
 import { carouselContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/CarouselContext';
-import { carouselWalkerContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
 
 /**
  * A test utility to mock the usePopoverContext_unstable hook that relies on context selector
@@ -11,7 +10,6 @@ import { carouselWalkerContextDefaultValue } from '../components/TeachingPopover
 export const mockTeachingPopoverCarouselContext = (options: Partial<TeachingPopoverCarouselContextValues> = {}) => {
   const mockContext: TeachingPopoverCarouselContextValues = {
     carousel: carouselContextDefaultValue,
-    carouselWalker: carouselWalkerContextDefaultValue,
     ...options,
   };
   (useTeachingPopoverCarouselContextValues_unstable as jest.Mock).mockImplementation(

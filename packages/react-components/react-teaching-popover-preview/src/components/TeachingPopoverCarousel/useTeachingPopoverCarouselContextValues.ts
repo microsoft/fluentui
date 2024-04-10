@@ -6,7 +6,7 @@ import type {
 export function useTeachingPopoverCarouselContextValues_unstable(
   state: TeachingPopoverCarouselState,
 ): TeachingPopoverCarouselContextValues {
-  const { store, value, selectPageByValue, selectPageByDirection, carouselWalker } = state;
+  const { store, value, selectPageByValue, selectPageByDirection } = state;
 
   const carousel = {
     store,
@@ -15,5 +15,5 @@ export function useTeachingPopoverCarouselContextValues_unstable(
     selectPageByValue,
   };
 
-  return { carousel, carouselWalker };
+  return { carousel };
 }

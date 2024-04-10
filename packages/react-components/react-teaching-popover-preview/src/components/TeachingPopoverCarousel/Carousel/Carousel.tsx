@@ -128,7 +128,6 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
 
   return {
     carouselRef: useMergedRefs(rootRef, carouselRef),
-    carouselWalker,
     carousel: {
       store,
       value,

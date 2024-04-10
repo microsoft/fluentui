@@ -8,7 +8,6 @@ import type {
   TeachingPopoverCarouselContextValues,
 } from './TeachingPopoverCarousel.types';
 import { CarouselProvider } from './Carousel/CarouselContext';
-import { CarouselWalkerProvider } from './Carousel/CarouselWalkerContext';
 
 /**
  * Render the final JSX of TeachingPopoverCarousel
@@ -20,13 +19,11 @@ export const renderTeachingPopoverCarousel_unstable = (
   assertSlots<TeachingPopoverCarouselSlots>(state);
 
   return (
-    <CarouselWalkerProvider value={contextValues.carouselWalker}>
-      <CarouselProvider value={contextValues.carousel}>
-        <state.root>
-          {state.root.children}
-          <state.footer />
-        </state.root>
-      </CarouselProvider>
-    </CarouselWalkerProvider>
+    <CarouselProvider value={contextValues.carousel}>
+      <state.root>
+        {state.root.children}
+        <state.footer />
+      </state.root>
+    </CarouselProvider>
   );
 };

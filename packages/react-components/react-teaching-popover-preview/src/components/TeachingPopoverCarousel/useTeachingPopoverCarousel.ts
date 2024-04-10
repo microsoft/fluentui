@@ -15,7 +15,7 @@ export const useTeachingPopoverCarousel_unstable = (
     toggleOpen(event as React.MouseEvent<HTMLElement>);
   });
 
-  const { carousel, carouselWalker, carouselRef } = useCarousel_unstable({
+  const { carousel, carouselRef } = useCarousel_unstable({
     defaultValue: props.defaultValue,
     value: props.value,
 
@@ -40,7 +40,6 @@ export const useTeachingPopoverCarousel_unstable = (
       { elementType: 'div' },
     ),
     footer,
-    carouselWalker,
     ...carousel,
   };
 };
