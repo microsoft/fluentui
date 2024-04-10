@@ -1,15 +1,27 @@
+import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
+
 import { CAROUSEL_ITEM } from './constants';
 import { useCarouselCollection_unstable } from './useCarouselCollection';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { isHTMLElement, useMergedRefs } from '@fluentui/react-utilities';
 
+type UseCarouselOptions = {
+  defaultValue?: string;
+  value?: string;
+};
+
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
-export function useCarousel_unstable() {
+export function useCarousel_unstable(options: UseCarouselOptions) {
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
-  const { store, value, setValue } = useCarouselCollection_unstable();
+  const { store } = useCarouselCollection_unstable();
 
+  const [value, setValue] = useControllableState({
+    defaultState: options.defaultValue,
+    state: options.value,
+    initialState: '',
+  });
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {

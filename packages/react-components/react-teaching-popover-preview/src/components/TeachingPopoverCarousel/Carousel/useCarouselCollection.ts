@@ -66,12 +66,9 @@ export const createCarouselStore = (): CarouselStore => {
 
 export const useCarouselCollection_unstable = () => {
   const [store] = React.useState(() => createCarouselStore());
-  const [value, setValue] = React.useState<string>('');
 
   return {
     store,
-    value,
-    setValue,
   };
 };
 

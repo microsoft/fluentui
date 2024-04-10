@@ -9,10 +9,12 @@ export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselState => {
-  const { carousel, carouselWalker, carouselRef } = useCarousel_unstable();
+  const { carousel, carouselWalker, carouselRef } = useCarousel_unstable({
+    defaultValue: props.defaultValue,
+    value: props.value,
+  });
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
-
   const footer = slot.always(props.footer, { elementType: TeachingPopoverCarouselFooter });
 
   return {
