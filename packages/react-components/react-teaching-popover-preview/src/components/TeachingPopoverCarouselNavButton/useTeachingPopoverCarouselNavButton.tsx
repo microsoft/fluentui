@@ -30,14 +30,10 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
 
   const values = useCarouselValues_unstable(values => values);
-  let cValue = useCarouselContext_unstable(c => c.value);
-  if (cValue === '') {
-    cValue = values[0];
-  }
-  const index = values.indexOf(cValue ?? '');
-  const totalPages = values.length;
+  const isSelected = useCarouselContext_unstable(c => c.value === value);
 
-  const isSelected = cValue === value;
+  const currentIndex = values.indexOf(value);
+  const totalPages = values.length;
 
   const handleClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -59,7 +55,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
         role: 'tab',
         type: 'button',
-        'aria-label': `${index + 1} of ${totalPages}`,
+        'aria-label': `${currentIndex + 1} of ${totalPages}`,
         ...defaultTabProps,
       },
     },
