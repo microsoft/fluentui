@@ -28,6 +28,8 @@ import {
 } from './utils';
 import { people } from './data';
 
+const HAS_ACTIONS_HINT = 'Has additional actions, use right arrow';
+
 const options = people.map(person => ({
   id: person.split(' ')[0],
   text: person,
@@ -406,7 +408,6 @@ export const GridActiveDescendantComboboxRenderer = () => {
               const callActionId = `${option.id}-call`;
               const sendActionId = `${option.id}-send`;
               const contentId = `${option.id}-content`;
-              const additionalId = `${option.id}-additional`;
               return (
                 <div
                   key={option.id}
@@ -416,16 +417,11 @@ export const GridActiveDescendantComboboxRenderer = () => {
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
                   aria-labelledby={contentId}
-                  aria-describedby={additionalId}
+                  aria-description={HAS_ACTIONS_HINT}
                 >
                   <div role="gridcell">
                     <Avatar color="colorful" name={option.text} />
-                    <span id={contentId}>
-                      {option.text}{' '}
-                      <span id={additionalId} className={styles.hidden}>
-                        has additional actions, use right arrow
-                      </span>
-                    </span>
+                    <span id={contentId}>{option.text}</span>
                   </div>
 
                   <div role="gridcell">
@@ -471,7 +467,6 @@ export const GridActiveDescendantComboboxRenderer = () => {
               const shareActionId = `${option.id}-share`;
               const openActionId = `${option.id}-open`;
               const contentId = `${option.id}-content`;
-              const additionalId = `${option.id}-additional`;
               return (
                 <div
                   key={option.id}
@@ -481,16 +476,11 @@ export const GridActiveDescendantComboboxRenderer = () => {
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
                   aria-labelledby={contentId}
-                  aria-describedby={additionalId}
+                  aria-description={HAS_ACTIONS_HINT}
                 >
                   <div role="gridcell">
                     <Avatar color="colorful" name={option.text} />
-                    <span id={contentId}>
-                      {option.text}{' '}
-                      <span id={additionalId} className={styles.hidden}>
-                        has additional actions
-                      </span>
-                    </span>
+                    <span id={contentId}>{option.text}</span>
                   </div>
 
                   <div role="gridcell">
