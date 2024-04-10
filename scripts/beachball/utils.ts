@@ -1,6 +1,4 @@
-import * as path from 'node:path';
-
-import { getWorkspaceProjects, isConvergedPackage, workspaceRoot } from '@fluentui/scripts-monorepo';
+import { getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.
@@ -42,19 +40,8 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
 }
 
 function getVNextPackagePaths() {
-  const projectPackageJsonPaths: string[] = [];
-  const allProjects = getWorkspaceProjects();
+  const allProjects = getAllPackageInfo(isConvergedPackage);
+  const values = Object.values(allProjects);
 
-  allProjects.forEach(project => {
-    if (
-      isConvergedPackage({
-        packagePathOrJson: path.join(workspaceRoot, project.root, 'package.json'),
-        projects: allProjects,
-      })
-    ) {
-      projectPackageJsonPaths.push(project.root);
-    }
-  });
-
-  return projectPackageJsonPaths;
+  return values.map(project => project.packagePath);
 }
