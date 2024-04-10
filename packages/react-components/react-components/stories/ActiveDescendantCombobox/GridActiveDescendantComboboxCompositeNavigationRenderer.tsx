@@ -146,7 +146,7 @@ const peopleFilterId = 'people-filter';
 const filesFilterId = 'files-filter';
 const noResultsRowId = 'noResults-row';
 
-export const GridActiveDescendantComboboxRenderer = () => {
+export const GridActiveDescendantComboboxCompositeNavigationRenderer = () => {
   const { targetDocument } = useFluent();
   const [filter, setFilter] = React.useState<'none' | 'files' | 'people'>('none');
   const styles = useStyles();
@@ -416,11 +416,11 @@ export const GridActiveDescendantComboboxRenderer = () => {
                   tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
-                  aria-labelledby={contentId}
-                  aria-description={HAS_ACTIONS_HINT}
+                  // aria-labelledby={contentId}
+                  // aria-description={HAS_ACTIONS_HINT}
                 >
                   <div role="gridcell">
-                    <Avatar color="colorful" name={option.text} />
+                    <Avatar color="colorful" name={option.text} aria-hidden="true" />
                     <span id={contentId}>{option.text}</span>
                   </div>
 
@@ -475,11 +475,11 @@ export const GridActiveDescendantComboboxRenderer = () => {
                   tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
-                  aria-labelledby={contentId}
-                  aria-description={HAS_ACTIONS_HINT}
+                  // aria-labelledby={contentId}
+                  // aria-description={HAS_ACTIONS_HINT}
                 >
                   <div role="gridcell">
-                    <Avatar color="colorful" name={option.text} />
+                    <Avatar color="colorful" name={option.text} aria-hidden="true" />
                     <span id={contentId}>{option.text}</span>
                   </div>
 
