@@ -29,14 +29,14 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
   public componentDidMount(): void {
     const style = document.createElement('style');
     const focusStylingCSS = `
-    .rootDiv [contentEditable=true]:focus,
-    .rootDiv [tabindex]:focus,
-    .rootDiv area[href]:focus,
-    .rootDiv button:focus,
-    .rootDiv iframe:focus,
-    .rootDiv input:focus,
-    .rootDiv select:focus,
-    .rootDiv textarea:focus {
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
       outline: -webkit-focus-ring-color auto 5px;
     }
     `;
@@ -45,7 +45,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
   }
 
   public render(): JSX.Element {
-    return <div className="rootDiv">{this._basicExample()}</div>;
+    return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
