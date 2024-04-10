@@ -10,20 +10,23 @@ export type NavCategoryItemSlots = {
   /**
    * The root element
    */
-  root: Slot<'button'>;
+  root: NonNullable<Slot<'button'>>;
 
   /**
-   * The component to be used as button in heading
+   * Icon that renders before the content.
    */
-  // button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+  icon?: Slot<'span'>;
+
+  /**
+   * Component children are placed in this slot
+   * Avoid using the `children` property in this slot in favour of Component children whenever possible.
+   */
+  content: NonNullable<Slot<'span'>>;
+
   /**
    * Expand icon slot rendered before (or after) children content in heading.
    */
   expandIcon: NonNullable<Slot<'span'>>;
-  // /**
-  //  * Expand icon slot rendered before (or after) children content in heading.
-  //  */
-  // icon?: Slot<'div'>;
 };
 
 /**

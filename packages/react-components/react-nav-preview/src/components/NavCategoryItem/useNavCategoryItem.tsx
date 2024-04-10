@@ -18,7 +18,7 @@ export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemState => {
-  const { onClick, expandIcon } = props;
+  const { content, onClick, expandIcon, icon } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
@@ -30,41 +30,20 @@ export const useNavCategoryItem_unstable = (
 
   const selected = selectedCategoryValue === value;
 
-  // TODO - these are copied from AccordionHeader.
-  // We need to figure out if they are applicable to this
-  // scenario and adapt them accordingly.
-
-  // const buttonSlot = slot.always(button, {
-  //   elementType: 'button',
-  //   defaultProps: {
-  //     // we may decide to light these up later
-  //     // disabled,
-  //     // disabledFocusable,
-  //     'aria-expanded': open,
-  //     type: 'button',
-  //     onClick: onNavCategoryItemClick,
-  //   },
-  // });
-
-  // buttonSlot.onClick = useEventCallback(event => {
-  //   if (isResolvedShorthand(button)) {
-  //     button.onClick?.(event);
-  //   }
-  //   if (!event.defaultPrevented) {
-  //     onRequestNavCategoryItemToggle(event, { value, event }); //({ value, event });
-  //   }
-  // });
+  const contentSlot = slot.always(content, {
+    defaultProps: { children: props.children },
+    elementType: 'span',
+  });
 
   return {
     open,
     value,
     selected,
-    // TODO add appropriate props/defaults
     components: {
       root: 'button',
-      // button: 'div',
+      icon: 'span',
+      content: 'span',
       expandIcon: 'span',
-      // icon: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('button', {
@@ -83,15 +62,9 @@ export const useNavCategoryItem_unstable = (
       },
       elementType: 'span',
     }),
-    // button: useARIAButtonProps(buttonSlot.as, buttonSlot),
-    // button: slot.always(
-    //   getIntrinsicElementProps('button', {
-    //     ref,
-    //     role: 'button',
-    //     type: 'button',
-    //     onClick: onNavCategoryItemClick,
-    //   }),
-    //   { elementType: 'button' },
-    // ),
+    icon: slot.optional(icon, {
+      elementType: 'span',
+    }),
+    content: contentSlot,
   };
 };

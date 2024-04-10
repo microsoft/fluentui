@@ -19,7 +19,7 @@ const navItemTokens = {
 /**
  * Styles for the root slot
  */
-const useRootDefaultClassName = makeResetStyles({
+export const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
   textTransform: 'none',
   position: 'relative',
@@ -42,11 +42,11 @@ const useRootDefaultClassName = makeResetStyles({
 /**
  * Styles for the content slot (children)
  */
-const useContentStyles = makeStyles({
+export const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
 });
 
-const useIndicatorStyles = makeStyles({
+export const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
       position: 'absolute',
@@ -60,7 +60,7 @@ const useIndicatorStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
+export const useIconStyles = makeStyles({
   base: {
     minHeight: '20px',
     minWidth: '20px',

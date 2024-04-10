@@ -1,25 +1,25 @@
-import { makeResetStyles, mergeClasses, makeStyles } from '@griffel/react';
-import { typographyStyles } from '@fluentui/react-theme';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
+import {
+  useContentStyles,
+  useIconStyles,
+  useIndicatorStyles,
+  useRootDefaultClassName,
+} from '../NavItem/useNavItemStyles.styles';
+import { typographyStyles } from '@fluentui/react-theme';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
+  icon: 'fui-NavCategoryItem__icon',
+  content: 'fui-NavCategoryItem__content',
   expandIcon: 'fui-NavCategoryItem__expandIcon',
 };
 
-/**
- * Styles for the root slot
- */
-const useRootStyles = makeResetStyles({
-  display: 'flex',
-  ...typographyStyles.body1,
-});
-
-const useContentStyles = makeStyles({
-  icon: {
-    display: 'flex',
+const useExpandIconStyles = makeStyles({
+  base: {
+    marginInlineStart: 'auto',
   },
   open: {
     transform: 'rotate(-90deg)',
@@ -31,27 +31,50 @@ const useContentStyles = makeStyles({
 });
 
 /**
+ * Styles for the root slot
+ */
+export const useUniqueNavCategoryRootDefaultClassName = makeResetStyles({
+  border: 'none',
+  width: '100%',
+});
+
+/**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  const defaultRootStyles = useRootStyles();
+  const defaultUniqueNavCategoryRootDefaultClassName = useUniqueNavCategoryRootDefaultClassName();
+  const defaultRootClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
+  const indicatorStyles = useIndicatorStyles();
+  const iconStyles = useIconStyles();
+  const expandIconStyles = useExpandIconStyles();
 
-  const { selected } = state;
+  const { selected, open } = state;
 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
-    defaultRootStyles,
+    defaultRootClassName,
+    defaultUniqueNavCategoryRootDefaultClassName,
     state.root.className,
-    selected && state.open === false && contentStyles.selected,
+    selected && open === false && indicatorStyles.base,
+    selected && open === false && contentStyles.selected,
   );
 
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
-    contentStyles.icon,
-    state.open ? contentStyles.open : contentStyles.closed,
+    expandIconStyles.base,
+    state.open ? expandIconStyles.open : expandIconStyles.closed,
     state.expandIcon.className,
   );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(
+      navCategoryItemClassNames.icon,
+      iconStyles.base,
+      selected && iconStyles.selected,
+      state.icon.className,
+    );
+  }
 
   return state;
 };
