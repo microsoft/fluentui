@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
@@ -11,8 +11,10 @@ export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
 /**
  * Styles for the content slot (children)
  */
-const useNavSubItemSpecificClassNames = makeResetStyles({
-  paddingInlineStart: '36px',
+const useNavSubItemSpecificStyles = makeStyles({
+  base: {
+    paddingInlineStart: '36px',
+  },
 });
 
 /**
@@ -22,7 +24,7 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
   const rootDefaultClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
-  const navSubItemSpecificClassNames = useNavSubItemSpecificClassNames();
+  const navSubItemSpecificStyles = useNavSubItemSpecificStyles();
 
   const { selected } = state;
 
@@ -35,7 +37,7 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
 
   state.content.className = mergeClasses(
     navSubItemClassNames.content,
-    navSubItemSpecificClassNames,
+    navSubItemSpecificStyles.base,
     selected && contentStyles.selected,
     state.content.className,
   );

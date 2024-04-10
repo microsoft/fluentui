@@ -30,6 +30,7 @@ export const useRootDefaultClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusMedium,
   color: tokens.colorNeutralForeground2,
   textDecorationLine: 'none',
+  border: 'none',
   ...typographyStyles.body1,
   ':hover': {
     backgroundColor: tokens.colorNeutralBackground4Hover,

@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
@@ -33,16 +33,17 @@ const useExpandIconStyles = makeStyles({
 /**
  * Styles for the root slot
  */
-export const useUniqueNavCategoryRootDefaultClassName = makeResetStyles({
-  border: 'none',
-  width: '100%',
+export const useUniqueNavCategoryRootDefaultStyles = makeStyles({
+  base: {
+    width: '100%',
+  },
 });
 
 /**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  const defaultUniqueNavCategoryRootDefaultClassName = useUniqueNavCategoryRootDefaultClassName();
+  const defaultUniqueNavCategoryRootStyles = useUniqueNavCategoryRootDefaultStyles();
   const defaultRootClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
@@ -54,7 +55,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
     defaultRootClassName,
-    defaultUniqueNavCategoryRootDefaultClassName,
+    defaultUniqueNavCategoryRootStyles.base,
     state.root.className,
     selected && open === false && indicatorStyles.base,
     selected && open === false && contentStyles.selected,
