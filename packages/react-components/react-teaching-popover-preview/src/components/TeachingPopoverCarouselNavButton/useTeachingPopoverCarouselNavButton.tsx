@@ -1,7 +1,7 @@
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, isHTMLElement, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type {
@@ -39,16 +39,13 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
 
   const isSelected = cValue === value;
 
-  const setNewPage = React.useCallback(
-    event => {
-      onClick?.(event);
+  const handleClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
+    onClick?.(event);
 
-      if (!event.defaultPrevented && isHTMLElement(event.target)) {
-        selectPageByValue(event, value);
-      }
-    },
-    [onClick, value],
-  );
+    if (!event.defaultPrevented && isHTMLElement(event.target)) {
+      selectPageByValue(event, value);
+    }
+  });
 
   const defaultTabProps = useTabsterAttributes({
     focusable: { isDefault: isSelected },
@@ -68,7 +65,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
     },
   );
 
-  _carouselButton.onClick = setNewPage;
+  _carouselButton.onClick = handleClick;
 
   const state: TeachingPopoverCarouselNavButtonState = {
     isSelected,
