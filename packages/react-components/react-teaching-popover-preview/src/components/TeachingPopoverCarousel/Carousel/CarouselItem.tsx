@@ -1,5 +1,4 @@
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { CarouselContext } from './useCarouselCollection';
+import { useCarouselContext_unstable } from './CarouselContext';
 import * as React from 'react';
 import { CarouselItemProps } from './Carousel.types';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
@@ -9,8 +8,8 @@ import { useSyncExternalStore } from 'use-sync-external-store/shim';
 export function CarouselItem_unstable(props: CarouselItemProps) {
   const { value } = props;
 
-  const store = useContextSelector(CarouselContext, c => c.store);
-  let selectedValue = useContextSelector(CarouselContext, c => c.value);
+  const store = useCarouselContext_unstable(c => c.store);
+  let selectedValue = useCarouselContext_unstable(c => c.value);
 
   // Subscribe so we update on store values change
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());

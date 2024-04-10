@@ -8,8 +8,7 @@ import { Button } from '@fluentui/react-button';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
 import { useCarouselWalkerContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
-import { CarouselContext } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 export const useTeachingPopoverCarouselFooter_unstable = (
@@ -22,12 +21,12 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const carouselWalker = useCarouselWalkerContext_unstable();
-  const setValue = useContextSelector(CarouselContext, c => c.setValue);
+  const setValue = useCarouselContext_unstable(c => c.setValue);
 
-  const store = useContextSelector(CarouselContext, c => c.store);
+  const store = useCarouselContext_unstable(c => c.store);
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
 
-  const cValue = useContextSelector(CarouselContext, c => c.value);
+  const cValue = useCarouselContext_unstable(c => c.value);
   const activeIndex = cValue === '' ? 0 : values.indexOf(cValue);
   const totalPages = values.length;
 

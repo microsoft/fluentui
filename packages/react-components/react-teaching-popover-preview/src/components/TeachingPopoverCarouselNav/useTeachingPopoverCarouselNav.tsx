@@ -7,9 +7,8 @@ import type {
 
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
-import { CarouselContext } from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
-import { useContextSelector } from '@fluentui/react-context-selector';
 
 /**
  * Returns the props and state required to render the component
@@ -28,7 +27,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     unstable_hasDefault: true,
   });
 
-  const store = useContextSelector(CarouselContext, c => c.store);
+  const store = useCarouselContext_unstable(c => c.store);
   const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
 
   // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering

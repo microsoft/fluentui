@@ -1,8 +1,8 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
 
-import { TeachingPopoverCarouselFooterProps } from '../TeachingPopoverCarouselFooter/index';
-import { type CarouselContextValue } from './Carousel/useCarouselCollection';
+import { type TeachingPopoverCarouselFooterProps } from '../TeachingPopoverCarouselFooter/index';
+import { type CarouselContextValue } from './Carousel/CarouselContext';
 import { type CarouselWalker } from './Carousel/useCarouselWalker';
 import type { CarouselWalkerContextValue } from './Carousel/CarouselWalkerContext';
 

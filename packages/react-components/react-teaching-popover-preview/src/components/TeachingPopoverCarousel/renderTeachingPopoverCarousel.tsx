@@ -7,8 +7,8 @@ import type {
   TeachingPopoverCarouselSlots,
   TeachingPopoverCarouselContextValues,
 } from './TeachingPopoverCarousel.types';
+import { CarouselProvider } from './Carousel/CarouselContext';
 import { CarouselWalkerProvider } from './Carousel/CarouselWalkerContext';
-import { CarouselProvider } from './Carousel/useCarouselCollection';
 
 /**
  * Render the final JSX of TeachingPopoverCarousel

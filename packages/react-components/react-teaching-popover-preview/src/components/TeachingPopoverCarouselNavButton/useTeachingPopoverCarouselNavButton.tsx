@@ -7,11 +7,7 @@ import type {
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import {
-  CarouselContext,
-  useCarouselContext_unstable,
-} from '../TeachingPopoverCarousel/Carousel/useCarouselCollection';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -32,11 +28,11 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   const onPageChange = useCarouselContext_unstable(context => context.onPageChange);
   const store = useCarouselContext_unstable(context => context.store);
   const values = store.getSnapshot();
-  let cValue = useContextSelector(CarouselContext, c => c.value);
+  let cValue = useCarouselContext_unstable(c => c.value);
   if (cValue === '') {
     cValue = values[0];
   }
-  const setValue = useContextSelector(CarouselContext, c => c.setValue);
+  const setValue = useCarouselContext_unstable(c => c.setValue);
   const index = values.indexOf(cValue);
   const totalPages = values.length;
 

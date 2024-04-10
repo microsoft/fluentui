@@ -1,6 +1,6 @@
 import { useTeachingPopoverCarouselContextValues_unstable } from '../TeachingPopoverCarousel';
 import type { TeachingPopoverCarouselContextValues } from '../TeachingPopoverCarousel';
-import { carouselContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/useCarouselCollection';
+import { carouselContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/CarouselContext';
 import { carouselWalkerContextDefaultValue } from '../components/TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
 
 /**
