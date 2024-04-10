@@ -94,7 +94,7 @@ Tue, 20 Feb 2024 14:22:24 GMT
 
 ## [0.1.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.44)
 
-Tue, 06 Feb 2024 17:55:20 GMT 
+Tue, 06 Feb 2024 17:55:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.43..@fluentui/react-search-preview_v0.1.44)
 
 ### Patches
@@ -103,7 +103,7 @@ Tue, 06 Feb 2024 17:55:20 GMT
 
 ## [0.1.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.43)
 
-Tue, 30 Jan 2024 23:16:54 GMT 
+Tue, 30 Jan 2024 23:16:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.42..@fluentui/react-search-preview_v0.1.43)
 
 ### Patches
@@ -114,7 +114,7 @@ Tue, 30 Jan 2024 23:16:54 GMT
 
 ## [0.1.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.42)
 
-Mon, 29 Jan 2024 13:56:06 GMT 
+Mon, 29 Jan 2024 13:56:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.41..@fluentui/react-search-preview_v0.1.42)
 
 ### Patches
@@ -123,7 +123,7 @@ Mon, 29 Jan 2024 13:56:06 GMT
 
 ## [0.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.41)
 
-Tue, 23 Jan 2024 15:11:00 GMT 
+Tue, 23 Jan 2024 15:11:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.40..@fluentui/react-search-preview_v0.1.41)
 
 ### Patches
@@ -134,7 +134,7 @@ Tue, 23 Jan 2024 15:11:00 GMT
 
 ## [0.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.40)
 
-Thu, 18 Jan 2024 14:25:03 GMT 
+Thu, 18 Jan 2024 14:25:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.39..@fluentui/react-search-preview_v0.1.40)
 
 ### Patches
@@ -145,7 +145,7 @@ Thu, 18 Jan 2024 14:25:03 GMT
 
 ## [0.1.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.39)
 
-Wed, 17 Jan 2024 16:18:50 GMT 
+Wed, 17 Jan 2024 16:18:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.38..@fluentui/react-search-preview_v0.1.39)
 
 ### Patches
@@ -156,7 +156,7 @@ Wed, 17 Jan 2024 16:18:50 GMT
 
 ## [0.1.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.38)
 
-Tue, 16 Jan 2024 13:14:23 GMT 
+Tue, 16 Jan 2024 13:14:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.37..@fluentui/react-search-preview_v0.1.38)
 
 ### Patches
@@ -167,7 +167,7 @@ Tue, 16 Jan 2024 13:14:23 GMT
 
 ## [0.1.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.37)
 
-Mon, 08 Jan 2024 16:24:25 GMT 
+Mon, 08 Jan 2024 16:24:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.36..@fluentui/react-search-preview_v0.1.37)
 
 ### Patches
@@ -179,7 +179,7 @@ Mon, 08 Jan 2024 16:24:25 GMT
 
 ## [0.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.36)
 
-Wed, 03 Jan 2024 09:26:44 GMT 
+Wed, 03 Jan 2024 09:26:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.35..@fluentui/react-search-preview_v0.1.36)
 
 ### Patches
@@ -190,7 +190,7 @@ Wed, 03 Jan 2024 09:26:44 GMT
 
 ## [0.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.35)
 
-Mon, 18 Dec 2023 14:40:46 GMT 
+Mon, 18 Dec 2023 14:40:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.34..@fluentui/react-search-preview_v0.1.35)
 
 ### Patches
@@ -201,7 +201,7 @@ Mon, 18 Dec 2023 14:40:46 GMT
 
 ## [0.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.34)
 
-Thu, 14 Dec 2023 09:58:46 GMT 
+Thu, 14 Dec 2023 09:58:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.33..@fluentui/react-search-preview_v0.1.34)
 
 ### Patches
@@ -212,7 +212,7 @@ Thu, 14 Dec 2023 09:58:46 GMT
 
 ## [0.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.33)
 
-Thu, 30 Nov 2023 13:42:08 GMT 
+Thu, 30 Nov 2023 13:42:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.32..@fluentui/react-search-preview_v0.1.33)
 
 ### Patches
@@ -222,7 +222,7 @@ Thu, 30 Nov 2023 13:42:08 GMT
 
 ## [0.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.32)
 
-Mon, 20 Nov 2023 09:55:10 GMT 
+Mon, 20 Nov 2023 09:55:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.31..@fluentui/react-search-preview_v0.1.32)
 
 ### Patches
@@ -231,7 +231,7 @@ Mon, 20 Nov 2023 09:55:10 GMT
 
 ## [0.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.31)
 
-Thu, 09 Nov 2023 17:29:42 GMT 
+Thu, 09 Nov 2023 17:29:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.30..@fluentui/react-search-preview_v0.1.31)
 
 ### Patches
@@ -244,7 +244,7 @@ Thu, 09 Nov 2023 17:29:42 GMT
 
 ## [0.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.30)
 
-Wed, 01 Nov 2023 12:55:59 GMT 
+Wed, 01 Nov 2023 12:55:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.29..@fluentui/react-search-preview_v0.1.30)
 
 ### Patches
@@ -254,7 +254,7 @@ Wed, 01 Nov 2023 12:55:59 GMT
 
 ## [0.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.29)
 
-Sat, 28 Oct 2023 23:35:59 GMT 
+Sat, 28 Oct 2023 23:35:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.28..@fluentui/react-search-preview_v0.1.29)
 
 ### Patches
@@ -263,7 +263,7 @@ Sat, 28 Oct 2023 23:35:59 GMT
 
 ## [0.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.28)
 
-Wed, 18 Oct 2023 17:54:08 GMT 
+Wed, 18 Oct 2023 17:54:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.27..@fluentui/react-search-preview_v0.1.28)
 
 ### Patches
@@ -274,7 +274,7 @@ Wed, 18 Oct 2023 17:54:08 GMT
 
 ## [0.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.27)
 
-Thu, 12 Oct 2023 14:55:44 GMT 
+Thu, 12 Oct 2023 14:55:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.26..@fluentui/react-search-preview_v0.1.27)
 
 ### Patches
@@ -284,7 +284,7 @@ Thu, 12 Oct 2023 14:55:44 GMT
 
 ## [0.1.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.26)
 
-Wed, 11 Oct 2023 13:54:26 GMT 
+Wed, 11 Oct 2023 13:54:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.25..@fluentui/react-search-preview_v0.1.26)
 
 ### Patches
@@ -295,7 +295,7 @@ Wed, 11 Oct 2023 13:54:26 GMT
 
 ## [0.1.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.25)
 
-Mon, 09 Oct 2023 20:45:44 GMT 
+Mon, 09 Oct 2023 20:45:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.24..@fluentui/react-search-preview_v0.1.25)
 
 ### Patches
@@ -306,7 +306,7 @@ Mon, 09 Oct 2023 20:45:44 GMT
 
 ## [0.1.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.24)
 
-Thu, 05 Oct 2023 15:25:35 GMT 
+Thu, 05 Oct 2023 15:25:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.23..@fluentui/react-search-preview_v0.1.24)
 
 ### Patches
@@ -317,7 +317,7 @@ Thu, 05 Oct 2023 15:25:35 GMT
 
 ## [0.1.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.23)
 
-Wed, 04 Oct 2023 08:45:47 GMT 
+Wed, 04 Oct 2023 08:45:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.22..@fluentui/react-search-preview_v0.1.23)
 
 ### Patches
@@ -328,7 +328,7 @@ Wed, 04 Oct 2023 08:45:47 GMT
 
 ## [0.1.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.22)
 
-Mon, 02 Oct 2023 08:56:05 GMT 
+Mon, 02 Oct 2023 08:56:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.21..@fluentui/react-search-preview_v0.1.22)
 
 ### Patches
@@ -337,7 +337,7 @@ Mon, 02 Oct 2023 08:56:05 GMT
 
 ## [0.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.21)
 
-Tue, 26 Sep 2023 17:49:10 GMT 
+Tue, 26 Sep 2023 17:49:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.20..@fluentui/react-search-preview_v0.1.21)
 
 ### Patches
@@ -350,7 +350,7 @@ Tue, 26 Sep 2023 17:49:10 GMT
 
 ## [0.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.20)
 
-Tue, 26 Sep 2023 15:31:51 GMT 
+Tue, 26 Sep 2023 15:31:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.19..@fluentui/react-search-preview_v0.1.20)
 
 ### Patches
@@ -364,7 +364,7 @@ Tue, 26 Sep 2023 15:31:51 GMT
 
 ## [0.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.19)
 
-Wed, 20 Sep 2023 17:47:41 GMT 
+Wed, 20 Sep 2023 17:47:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.18..@fluentui/react-search-preview_v0.1.19)
 
 ### Patches
@@ -375,7 +375,7 @@ Wed, 20 Sep 2023 17:47:41 GMT
 
 ## [0.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.18)
 
-Wed, 20 Sep 2023 14:59:53 GMT 
+Wed, 20 Sep 2023 14:59:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.17..@fluentui/react-search-preview_v0.1.18)
 
 ### Patches
@@ -385,7 +385,7 @@ Wed, 20 Sep 2023 14:59:53 GMT
 
 ## [0.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.17)
 
-Thu, 14 Sep 2023 16:44:47 GMT 
+Thu, 14 Sep 2023 16:44:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.16..@fluentui/react-search-preview_v0.1.17)
 
 ### Patches
@@ -395,7 +395,7 @@ Thu, 14 Sep 2023 16:44:47 GMT
 
 ## [0.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.16)
 
-Tue, 12 Sep 2023 08:51:33 GMT 
+Tue, 12 Sep 2023 08:51:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.15..@fluentui/react-search-preview_v0.1.16)
 
 ### Patches
@@ -406,7 +406,7 @@ Tue, 12 Sep 2023 08:51:33 GMT
 
 ## [0.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.15)
 
-Wed, 06 Sep 2023 13:31:31 GMT 
+Wed, 06 Sep 2023 13:31:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.14..@fluentui/react-search-preview_v0.1.15)
 
 ### Patches
@@ -417,7 +417,7 @@ Wed, 06 Sep 2023 13:31:31 GMT
 
 ## [0.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.14)
 
-Tue, 05 Sep 2023 15:39:04 GMT 
+Tue, 05 Sep 2023 15:39:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.13..@fluentui/react-search-preview_v0.1.14)
 
 ### Patches
@@ -428,7 +428,7 @@ Tue, 05 Sep 2023 15:39:04 GMT
 
 ## [0.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.13)
 
-Tue, 05 Sep 2023 13:29:01 GMT 
+Tue, 05 Sep 2023 13:29:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.12..@fluentui/react-search-preview_v0.1.13)
 
 ### Patches
@@ -442,7 +442,7 @@ Tue, 05 Sep 2023 13:29:01 GMT
 
 ## [0.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.12)
 
-Tue, 29 Aug 2023 12:57:36 GMT 
+Tue, 29 Aug 2023 12:57:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.11..@fluentui/react-search-preview_v0.1.12)
 
 ### Patches
@@ -453,7 +453,7 @@ Tue, 29 Aug 2023 12:57:36 GMT
 
 ## [0.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.11)
 
-Thu, 24 Aug 2023 10:26:35 GMT 
+Thu, 24 Aug 2023 10:26:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.10..@fluentui/react-search-preview_v0.1.11)
 
 ### Patches
@@ -464,7 +464,7 @@ Thu, 24 Aug 2023 10:26:35 GMT
 
 ## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.10)
 
-Wed, 23 Aug 2023 12:01:49 GMT 
+Wed, 23 Aug 2023 12:01:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.9..@fluentui/react-search-preview_v0.1.10)
 
 ### Patches
@@ -475,7 +475,7 @@ Wed, 23 Aug 2023 12:01:49 GMT
 
 ## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.9)
 
-Mon, 21 Aug 2023 11:38:02 GMT 
+Mon, 21 Aug 2023 11:38:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.8..@fluentui/react-search-preview_v0.1.9)
 
 ### Patches
@@ -484,7 +484,7 @@ Mon, 21 Aug 2023 11:38:02 GMT
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.8)
 
-Wed, 16 Aug 2023 17:41:08 GMT 
+Wed, 16 Aug 2023 17:41:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.7..@fluentui/react-search-preview_v0.1.8)
 
 ### Patches
@@ -494,7 +494,7 @@ Wed, 16 Aug 2023 17:41:08 GMT
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.7)
 
-Wed, 16 Aug 2023 11:38:33 GMT 
+Wed, 16 Aug 2023 11:38:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.6..@fluentui/react-search-preview_v0.1.7)
 
 ### Patches
@@ -504,7 +504,7 @@ Wed, 16 Aug 2023 11:38:33 GMT
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.6)
 
-Fri, 11 Aug 2023 12:14:26 GMT 
+Fri, 11 Aug 2023 12:14:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.5..@fluentui/react-search-preview_v0.1.6)
 
 ### Patches
@@ -515,7 +515,7 @@ Fri, 11 Aug 2023 12:14:26 GMT
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.5)
 
-Wed, 09 Aug 2023 13:17:02 GMT 
+Wed, 09 Aug 2023 13:17:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.4..@fluentui/react-search-preview_v0.1.5)
 
 ### Patches
@@ -527,7 +527,7 @@ Wed, 09 Aug 2023 13:17:02 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.4)
 
-Fri, 04 Aug 2023 08:52:58 GMT 
+Fri, 04 Aug 2023 08:52:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.3..@fluentui/react-search-preview_v0.1.4)
 
 ### Patches
@@ -539,7 +539,7 @@ Fri, 04 Aug 2023 08:52:58 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.3)
 
-Tue, 01 Aug 2023 10:17:21 GMT 
+Tue, 01 Aug 2023 10:17:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.2..@fluentui/react-search-preview_v0.1.3)
 
 ### Patches
@@ -548,7 +548,7 @@ Tue, 01 Aug 2023 10:17:21 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.2)
 
-Tue, 25 Jul 2023 13:29:21 GMT 
+Tue, 25 Jul 2023 13:29:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.1..@fluentui/react-search-preview_v0.1.2)
 
 ### Patches
@@ -558,7 +558,7 @@ Tue, 25 Jul 2023 13:29:21 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.1)
 
-Thu, 20 Jul 2023 18:27:36 GMT 
+Thu, 20 Jul 2023 18:27:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.0..@fluentui/react-search-preview_v0.1.1)
 
 ### Patches

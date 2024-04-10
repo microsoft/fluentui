@@ -1,6 +1,6 @@
 {
-  "name": "@fluentui/react-search-preview",
-  "version": "0.2.0",
+  "name": "@fluentui/react-search",
+  "version": "9.0.0-alpha.0",
   "description": "Search input for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

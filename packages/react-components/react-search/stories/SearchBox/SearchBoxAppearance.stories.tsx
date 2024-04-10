@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from '@fluentui/react-search-preview';
-import { Field, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
+import { Field, makeStyles, mergeClasses, SearchBox, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from '@fluentui/react-search-preview';
-import { Field } from '@fluentui/react-components';
+import { Field, SearchBox } from '@fluentui/react-components';
 
 export const Placeholder = () => {
   return (

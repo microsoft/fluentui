@@ -1,4 +1,4 @@
-import { SearchBox } from '@fluentui/react-search-preview';
+import { SearchBox } from '@fluentui/react-components';
 
 import descriptionMd from './SearchBoxDescription.md';
 import bestPracticesMd from './SearchBoxBestPractices.md';
@@ -12,7 +12,7 @@ export { Size } from './SearchBoxSize.stories';
 export { Controlled } from './SearchBoxControlled.stories';
 
 export default {
-  title: 'Preview Components/SearchBox',
+  title: 'Components/SearchBox',
   component: SearchBox,
   parameters: {
     docs: {
