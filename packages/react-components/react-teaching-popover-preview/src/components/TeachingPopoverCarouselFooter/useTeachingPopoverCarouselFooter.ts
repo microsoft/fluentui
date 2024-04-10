@@ -19,7 +19,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
-  const values = useCarouselValues_unstable(values => values);
+  const values = useCarouselValues_unstable(_values => _values);
 
   const activeIndex = useCarouselContext_unstable(c => (c.value === null ? 0 : values.indexOf(c.value)));
   const totalPages = values.length;
