@@ -32,6 +32,7 @@ export type ComboboxSlots = {
  */
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   ComboboxBaseProps & {
+    freeform?: boolean;
     /*
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
      */

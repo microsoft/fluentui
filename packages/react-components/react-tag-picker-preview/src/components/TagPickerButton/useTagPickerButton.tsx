@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { useButtonTriggerSlot } from '../../utils/useButtonTriggerSlot';
+import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render PickerButton.

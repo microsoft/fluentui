@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2024 14:17:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.18)
+
+Fri, 05 Apr 2024 14:17:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.13.17..@fluentui/react-provider_v9.13.18)
+
+### Patches
+
+- Avoid re-inserting Style Element to HEAD when re-rendering FluentProvider ([PR #30960](https://github.com/microsoft/fluentui/pull/30960) by ramyrafik@gmail.com)
 
 ## [9.13.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.17)
 

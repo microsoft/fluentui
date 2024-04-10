@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: export internal hooks into API",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -108,7 +108,8 @@ export type NavItemRegisterData = {
 
 // @public (undocumented)
 export type NavItemSlots = {
-    root: Slot<'a'>;
+    root: NonNullable<Slot<'a'>>;
+    icon?: Slot<'span'>;
     content: NonNullable<Slot<'span'>>;
 };
 

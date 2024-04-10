@@ -2,13 +2,12 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { NavItemValue } from '../NavContext.types';
 
 export type NavItemSlots = {
-  root: Slot<'a'>;
+  root: NonNullable<Slot<'a'>>;
 
-  // TODO - light this up when we get design spec
-  // /**
-  //  * Icon that renders before the content.
-  //  */
-  // icon?: Slot<'span'>;
+  /**
+   * Icon that renders before the content.
+   */
+  icon?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot

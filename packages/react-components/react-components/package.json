@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.47.4",
+  "version": "9.47.5",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -57,7 +57,7 @@
     "@fluentui/react-popover": "^9.9.3",
     "@fluentui/react-positioning": "^9.14.3",
     "@fluentui/react-progress": "^9.1.70",
-    "@fluentui/react-provider": "^9.13.17",
+    "@fluentui/react-provider": "^9.13.18",
     "@fluentui/react-radio": "^9.2.14",
     "@fluentui/react-select": "^9.1.70",
     "@fluentui/react-shared-contexts": "^9.16.0",
