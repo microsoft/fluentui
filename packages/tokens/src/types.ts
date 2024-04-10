@@ -603,7 +603,7 @@ export type TypographyStyles = {
 };
 
 export type BorderRadiusTokens = {
-  borderRadiusNone: string;
+  borderRadiusNone: string | 0;
   borderRadiusSmall: string;
   borderRadiusMedium: string;
   borderRadiusLarge: string;

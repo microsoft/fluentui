@@ -10,7 +10,7 @@ import { makeStyles as makeStylesCore } from '@griffel/core';
 import { mergeClasses } from '@griffel/react';
 import type { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
-import { shorthands } from '@griffel/react';
+import { shorthands } from '@griffel/core';
 import { TextDirectionProvider } from '@griffel/react';
 import type { Theme } from '@fluentui/react-theme';
 import { useRenderer_unstable } from '@griffel/react';

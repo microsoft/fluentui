@@ -1,8 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import * as React from 'react';
-
+import 'react';
 import { Default } from './ButtonDefault';
 import { Shape } from './ButtonShape';
 import { Appearance } from './ButtonAppearance';
@@ -14,8 +13,8 @@ export const ButtonStories = () => (
   <div>
     <h1>Default</h1>
     <Default />
-    {/* <h1>Shape</h1>
-    <Shape /> */}
+    <h1>Shape</h1>
+    <Shape />
     <h1>Appearance</h1>
     <Appearance />
     <h1>Size</h1>

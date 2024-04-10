@@ -1,1 +1,1 @@
-export { shorthands } from '@griffel/react';
+export { shorthands } from '@griffel/core';

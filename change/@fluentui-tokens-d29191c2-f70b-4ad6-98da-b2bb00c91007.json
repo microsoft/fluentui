@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use 0 instead of '0' to better support RSD",
+  "packageName": "@fluentui/tokens",
+  "email": "4123478+tido64@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
