@@ -1,18 +1,17 @@
-import { useCarouselContext_unstable } from './CarouselContext';
 import * as React from 'react';
-import { CarouselItemProps } from './Carousel.types';
-import { useSyncExternalStore } from 'use-sync-external-store/shim';
+
+import { useCarouselContext_unstable } from './CarouselContext';
+import type { CarouselItemProps } from './Carousel.types';
+import { useCarouselValues_unstable } from './useCarouselValues';
 
 // TODO: We are going to move this to it's own <CarouselItem/> component, for now we use a simple function to wrap.
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function CarouselItem_unstable(props: CarouselItemProps) {
   const { value } = props;
 
-  const store = useCarouselContext_unstable(c => c.store);
   let selectedValue = useCarouselContext_unstable(c => c.value);
-
   // Subscribe so we update on store values change
-  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+  const values = useCarouselValues_unstable(values => values);
 
   if (!selectedValue) {
     // Default to first page if undefined

@@ -9,7 +9,7 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
 import { useCarouselWalkerContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselWalkerContext';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
-import { useSyncExternalStore } from 'use-sync-external-store/shim';
+import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 export const useTeachingPopoverCarouselFooter_unstable = (
   props: TeachingPopoverCarouselFooterProps,
@@ -23,8 +23,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   const carouselWalker = useCarouselWalkerContext_unstable();
   const setValue = useCarouselContext_unstable(c => c.setValue);
 
-  const store = useCarouselContext_unstable(c => c.store);
-  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+  const values = useCarouselValues_unstable(values => values);
 
   const cValue = useCarouselContext_unstable(c => c.value);
   const activeIndex = cValue === '' ? 0 : values.indexOf(cValue);

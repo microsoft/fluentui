@@ -1,13 +1,15 @@
-import * as React from 'react';
+import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, isHTMLElement, slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+
 import type {
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonState,
 } from './TeachingPopoverCarouselNavButton.types';
-import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
-import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
+import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -26,8 +28,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const onPageChange = useCarouselContext_unstable(context => context.onPageChange);
-  const store = useCarouselContext_unstable(context => context.store);
-  const values = store.getSnapshot();
+  const values = useCarouselValues_unstable(values => values);
   let cValue = useCarouselContext_unstable(c => c.value);
   if (cValue === '') {
     cValue = values[0];

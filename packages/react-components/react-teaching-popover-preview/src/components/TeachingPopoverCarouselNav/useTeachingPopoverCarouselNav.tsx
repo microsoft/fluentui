@@ -1,14 +1,13 @@
-import * as React from 'react';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+
 import type {
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
-
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
-import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
-import { useSyncExternalStore } from 'use-sync-external-store/shim';
+import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
  * Returns the props and state required to render the component
@@ -26,9 +25,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault: true,
   });
-
-  const store = useCarouselContext_unstable(c => c.store);
-  const values = useSyncExternalStore(store.subscribe, () => store.getSnapshot());
+  const values = useCarouselValues_unstable(values => values);
 
   // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
