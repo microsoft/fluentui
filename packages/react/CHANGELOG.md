@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 03 Apr 2024 07:29:31 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Apr 2024 07:28:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.117.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.4)
+
+Wed, 10 Apr 2024 07:28:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.3..@fluentui/react_v8.117.4)
+
+### Patches
+
+- fix: picker tags only show focus styling when focused ([PR #30710](https://github.com/microsoft/fluentui/pull/30710) by sarah.higley@microsoft.com)
+
+## [8.117.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.3)
+
+Tue, 09 Apr 2024 07:26:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.2..@fluentui/react_v8.117.3)
+
+### Patches
+
+- fix: selected option focus outline has contrast against bg ([PR #30979](https://github.com/microsoft/fluentui/pull/30979) by sarah.higley@microsoft.com)
 
 ## [8.117.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.2)
 
