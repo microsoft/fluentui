@@ -9,8 +9,6 @@ interface IAreaChartBasicState {
   height: number;
   isCalloutselected: boolean;
   showAxisTitles: boolean;
-  isHeightSliderFocused: boolean;
-  isWidthSliderFocused: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -26,13 +24,28 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       height: 300,
       isCalloutselected: false,
       showAxisTitles: true,
-      isHeightSliderFocused: false,
-      isWidthSliderFocused: false,
     };
+  }
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .rootDiv [contentEditable=true]:focus,
+    .rootDiv [tabindex]:focus,
+    .rootDiv area[href]:focus,
+    .rootDiv button:focus,
+    .rootDiv iframe:focus,
+    .rootDiv input:focus,
+    .rootDiv select:focus,
+    .rootDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div className="rootDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -174,9 +187,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
-          style={this.state.isWidthSliderFocused ? { outline: '-webkit-focus-ring-color auto 5px' } : {}}
-          onFocus={() => this.setState({ isWidthSliderFocused: true })}
-          onBlur={() => this.setState({ isWidthSliderFocused: false })}
         />
         <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
@@ -187,9 +197,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           id="changeHeight_Basic"
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
-          style={this.state.isHeightSliderFocused ? { outline: '-webkit-focus-ring-color auto 5px' } : {}}
-          onFocus={() => this.setState({ isHeightSliderFocused: true })}
-          onBlur={() => this.setState({ isHeightSliderFocused: false })}
         />
 
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
