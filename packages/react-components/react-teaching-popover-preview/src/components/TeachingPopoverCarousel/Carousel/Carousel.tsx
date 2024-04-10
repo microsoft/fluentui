@@ -31,8 +31,10 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (value === null) {
+        // eslint-disable-next-line no-console
         console.error(
           'useCarousel: Carousel needs to have a `defaultValue` or `value` prop set. If you want to control the value, use the `value` prop.',
         );

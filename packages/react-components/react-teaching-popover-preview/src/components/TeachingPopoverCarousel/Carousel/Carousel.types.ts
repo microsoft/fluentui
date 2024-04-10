@@ -8,7 +8,6 @@ export type CarouselStore = {
   removeValue: (value: string) => void;
   subscribe: (listener: () => void) => () => void;
   getSnapshot: () => string[];
-  getIndex: (index: number) => string;
 };
 
 export type CarouselItem = {

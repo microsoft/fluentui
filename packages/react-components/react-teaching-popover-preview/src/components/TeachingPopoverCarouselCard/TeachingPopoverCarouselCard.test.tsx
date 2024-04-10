@@ -2,19 +2,20 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverCarouselCard } from './TeachingPopoverCarouselCard';
-import { resetIdsForTests } from '@fluentui/react-utilities';
-import { mockTeachingPopoverCarouselContext } from '../../testing/mockTeachingPopoverCarouselContext';
 
 describe('TeachingPopoverCarouselCard', () => {
   isConformant({
     Component: TeachingPopoverCarouselCard,
     displayName: 'TeachingPopoverCarouselCard',
     requiredProps: { value: 'test' },
-  });
-
-  beforeEach(() => {
-    resetIdsForTests();
-    mockTeachingPopoverCarouselContext({});
+    disabledTests: [
+      // Carousel card does not render DOM elements
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-has-static-classnames',
+      'component-handles-classname',
+      'component-has-static-classnames-object',
+    ],
   });
 
   it('renders a default state', () => {

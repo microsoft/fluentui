@@ -4,7 +4,8 @@ import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverCarouselFooter } from './TeachingPopoverCarouselFooter';
 
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { mockTeachingPopoverCarouselContext } from '../../testing/mockTeachingPopoverCarouselContext';
+
+// jest.mock('../TeachingPopoverCarousel/Carousel/CarouselContext');
 
 describe('TeachingPopoverCarouselFooter', () => {
   isConformant({
@@ -21,7 +22,6 @@ describe('TeachingPopoverCarouselFooter', () => {
 
   beforeEach(() => {
     resetIdsForTests();
-    mockTeachingPopoverCarouselContext({});
   });
 
   it('renders a default state', () => {

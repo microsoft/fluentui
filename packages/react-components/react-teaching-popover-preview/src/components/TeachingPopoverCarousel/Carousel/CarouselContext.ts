@@ -14,8 +14,12 @@ export type CarouselContextValue = {
 export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
   value: null,
-  selectPageByDirection: () => {},
-  selectPageByValue: () => {},
+  selectPageByDirection: () => {
+    return;
+  },
+  selectPageByValue: () => {
+    return;
+  },
 };
 
 const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(

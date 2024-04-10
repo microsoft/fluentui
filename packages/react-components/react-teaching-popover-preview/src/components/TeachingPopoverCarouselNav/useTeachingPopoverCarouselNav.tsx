@@ -25,7 +25,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault: true,
   });
-  const values = useCarouselValues_unstable(values => values);
+  const values = useCarouselValues_unstable(_values => _values);
 
   // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {

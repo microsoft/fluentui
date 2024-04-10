@@ -42,13 +42,6 @@ export const createCarouselStore = (): CarouselStore => {
     getSnapshot() {
       return values;
     },
-    getIndex(index: number) {
-      if (index < values.length) {
-        return values[index];
-      }
-      // Safety fallback if not found, undefined is ok too.
-      return values[0];
-    },
   };
 
   function emitChange() {

@@ -124,10 +124,6 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
     initialStepText: string;
     finalStepText: string;
     renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
-    defaultCurrentPage?: number;
-    onPageChange?: EventHandler<CarouselPageChangeData>;
-    onFinish?: EventHandler<CarouselPageChangeData>;
-    currentPage?: number;
 };
 
 // @public (undocumented)
@@ -140,7 +136,7 @@ export type TeachingPopoverCarouselFooterSlots = {
 };
 
 // @public
-export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> & Partial<Pick<PopoverContextValue, 'appearance'>> & Pick<TeachingPopoverCarouselFooterProps, 'layout' | 'onPageChange'>;
+export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> & Partial<Pick<PopoverContextValue, 'appearance'>> & Pick<TeachingPopoverCarouselFooterProps, 'layout'>;
 
 // @public
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
@@ -181,7 +177,12 @@ export type TeachingPopoverCarouselNavSlots = {
 export type TeachingPopoverCarouselNavState = ComponentState<TeachingPopoverCarouselNavSlots> & {};
 
 // @public
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {};
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
+    defaultValue?: string;
+    value?: string;
+    onPageChange?: EventHandler<CarouselPageChangeData>;
+    onFinish?: EventHandler<CarouselPageChangeData>;
+};
 
 // @public (undocumented)
 export type TeachingPopoverCarouselSlots = {
@@ -190,7 +191,7 @@ export type TeachingPopoverCarouselSlots = {
 };
 
 // @public
-export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> & Partial<Pick<PopoverContextValue, 'appearance'>> & CarouselContextValue & CarouselWalkerContextValue;
+export type TeachingPopoverCarouselState = ComponentState<Required<TeachingPopoverCarouselSlots>> & Partial<Pick<PopoverContextValue, 'appearance'>> & CarouselContextValue;
 
 // @public
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;

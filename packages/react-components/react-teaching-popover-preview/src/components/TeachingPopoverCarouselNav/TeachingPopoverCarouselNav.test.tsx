@@ -2,20 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverCarouselNav } from './TeachingPopoverCarouselNav';
-import { resetIdsForTests } from '@fluentui/react-utilities';
-import { mockTeachingPopoverCarouselContext } from '../../testing/mockTeachingPopoverCarouselContext';
-
-jest.mock('../TeachingPopoverCarousel/TeachingPopoverCarouselContext');
 
 describe('TeachingPopoverCarouselNav', () => {
   isConformant({
     Component: TeachingPopoverCarouselNav,
     displayName: 'TeachingPopoverCarouselNav',
-  });
-
-  beforeEach(() => {
-    resetIdsForTests();
-    mockTeachingPopoverCarouselContext({});
   });
 
   it('renders a default state', () => {
