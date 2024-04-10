@@ -122,14 +122,14 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
         onFinish?.(event, { event, type: 'click', value: active?.value });
       }
     },
-    [carouselWalker, setValue],
+    [carouselWalker, onFinish, onPageChange, setValue],
   );
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = React.useCallback(
-    (event, value) => {
-      setValue(value);
-      onPageChange?.(event, { event, type: 'click', value });
+    (event, _value) => {
+      setValue(_value);
+      onPageChange?.(event, { event, type: 'click', value: _value });
     },
-    [setValue],
+    [onPageChange, setValue],
   );
 
   return {

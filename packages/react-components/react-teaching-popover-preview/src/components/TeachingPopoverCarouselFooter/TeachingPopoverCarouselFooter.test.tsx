@@ -3,10 +3,6 @@ import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverCarouselFooter } from './TeachingPopoverCarouselFooter';
 
-import { resetIdsForTests } from '@fluentui/react-utilities';
-
-// jest.mock('../TeachingPopoverCarousel/Carousel/CarouselContext');
-
 describe('TeachingPopoverCarouselFooter', () => {
   isConformant({
     Component: TeachingPopoverCarouselFooter,
@@ -18,10 +14,6 @@ describe('TeachingPopoverCarouselFooter', () => {
       finalStepText: 'Finish',
     },
     disabledTests: ['component-has-static-classnames-object'],
-  });
-
-  beforeEach(() => {
-    resetIdsForTests();
   });
 
   it('renders a default state', () => {
