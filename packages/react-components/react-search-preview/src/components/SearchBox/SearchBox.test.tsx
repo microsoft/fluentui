@@ -130,4 +130,32 @@ describe('SearchBox', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ value: '' }));
   });
+
+  it('can tab into the dismiss button', () => {
+    const onChange = jest.fn();
+    renderedComponent = render(<SearchBox defaultValue="hello" onChange={onChange} />);
+
+    // First click into the text box
+    userEvent.click(renderedComponent.getByRole('searchbox'));
+    userEvent.tab();
+
+    const focusedElement = document.activeElement;
+    expect(focusedElement).toBeDefined();
+    expect(focusedElement?.tagName.toLowerCase()).toEqual('span');
+    expect(focusedElement?.getAttribute('aria-label')).toEqual('clear');
+  });
+
+  it('clears the searchbox when pressing {enter} on the dismiss button', () => {
+    const onChange = jest.fn();
+    renderedComponent = render(<SearchBox defaultValue="hello" onChange={onChange} />);
+
+    const input = renderedComponent.getByRole('searchbox');
+    const dismissButton = renderedComponent.getByLabelText('clear');
+    const previousValue = (input as HTMLInputElement).value;
+    userEvent.type(dismissButton, '{enter}');
+
+    expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ key: 'Enter' }), { value: '' });
+    expect(previousValue).toEqual('hello');
+    expect((input as HTMLInputElement).value).toEqual('');
+  });
 });
