@@ -69,11 +69,6 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
   renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
 
   /**
-   * Page at which carousel should be initialized to
-   */
-  defaultCurrentPage?: number;
-
-  /**
    * Callback to notify a page change
    */
   onPageChange?: EventHandler<CarouselPageChangeData>;
@@ -82,11 +77,6 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
    * Callback to notify when the final button step of a carousel has been activated.
    */
   onFinish?: EventHandler<CarouselPageChangeData>;
-
-  /**
-   * Controllable page state
-   */
-  currentPage?: number;
 };
 
 /**
