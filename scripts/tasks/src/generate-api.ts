@@ -17,9 +17,7 @@ function generateTypeDeclarations() {
     '--emitDeclarationOnly',
     // turn off path aliases.
     '--baseUrl .',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  ].join(' ');
 
   return execSync(cmd, { stdio: 'inherit' });
 }
