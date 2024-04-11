@@ -1,14 +1,15 @@
+import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 import type {
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonState,
 } from './TeachingPopoverCarouselNavButton.types';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
+import { useValueIdContext } from '../TeachingPopoverCarouselNav/valueIdContext';
 
 /**
  * Create the state required to render TeachingPopoverCarouselNavButton.
@@ -23,7 +24,9 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
   props: TeachingPopoverCarouselNavButtonProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): TeachingPopoverCarouselNavButtonState => {
-  const { value, onClick, as = 'a' } = props;
+  const { onClick, as = 'a' } = props;
+
+  const value = useValueIdContext();
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);

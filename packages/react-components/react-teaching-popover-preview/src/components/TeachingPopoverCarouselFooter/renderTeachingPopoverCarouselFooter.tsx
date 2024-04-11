@@ -15,8 +15,7 @@ export const renderTeachingPopoverCarouselFooter_unstable = (state: TeachingPopo
   return (
     <state.root>
       {layout === 'centered' && state.previous && <state.previous />}
-      {state.nav && <state.nav />}
-      {state.pageCount && <state.pageCount />}
+      {state.root.children}
       {layout === 'offset' && state.previous && <state.previous />}
       <state.next />
     </state.root>

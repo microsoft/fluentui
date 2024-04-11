@@ -20,10 +20,7 @@ export const renderTeachingPopoverCarousel_unstable = (
 
   return (
     <CarouselProvider value={contextValues.carousel}>
-      <state.root>
-        {state.root.children}
-        <state.footer />
-      </state.root>
+      <state.root />
     </CarouselProvider>
   );
 };

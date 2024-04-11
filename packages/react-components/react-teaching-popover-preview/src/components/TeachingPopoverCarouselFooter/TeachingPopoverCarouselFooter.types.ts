@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
 import { PopoverContextValue } from '@fluentui/react-popover';
-import { TeachingPopoverCarouselNavProps } from '../TeachingPopoverCarouselNav/index';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -19,16 +18,6 @@ export type TeachingPopoverCarouselFooterSlots = {
    * The next button slot.
    */
   next: NonNullable<Slot<typeof Button>>;
-
-  /**
-   * The page nav slot when using icon navigation.
-   */
-  nav?: Slot<TeachingPopoverCarouselNavProps>;
-
-  /**
-   * The page count text slot for paginationType text
-   */
-  pageCount?: Slot<'div'>;
 };
 
 export type TeachingPopoverCarouselFooterLayout = 'offset' | 'centered';
@@ -47,12 +36,6 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
   layout?: TeachingPopoverCarouselFooterLayout;
 
   /**
-   * Dictates whether pagination uses text or icons
-   * Defaults to icons
-   */
-  paginationType?: 'text' | 'icon';
-
-  /**
    * The text to be displayed on the initial step of carousel
    */
   initialStepText: string;
@@ -61,11 +44,6 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
    * The text to be displayed on the final step of carousel
    */
   finalStepText: string;
-
-  /**
-   * Localize the page count text via function to fully override
-   */
-  renderPageCountText?: TeachingPopoverPageCountChildRenderFunction;
 };
 
 /**

@@ -6,7 +6,6 @@ import type {
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
-import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
 import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
@@ -27,13 +26,9 @@ export const useTeachingPopoverCarouselNav_unstable = (
   });
   const values = useCarouselValues_unstable(snapshot => snapshot);
 
-  // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
-  const rootChildren = React.useMemo(
-    () => values.map(value => <TeachingPopoverCarouselNavButton key={value} value={value} />),
-    [values],
-  );
-
   return {
+    values,
+    renderNavButton: props.children,
     components: {
       root: 'div',
     },
@@ -43,8 +38,8 @@ export const useTeachingPopoverCarouselNav_unstable = (
         role: 'tablist',
         tabIndex: 0,
         ...props,
-        children: rootChildren,
         ...focusableGroupAttr,
+        children: null,
       }),
       { elementType: 'div' },
     ),

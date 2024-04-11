@@ -10,6 +10,9 @@ import {
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
   TeachingPopoverCarouselCard,
+  TeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselNav,
+  TeachingPopoverCarouselNavButton,
 } from '@fluentui/react-teaching-popover-preview';
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
@@ -21,15 +24,7 @@ export const Carousel = () => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
-      <TeachingPopoverCarousel
-        defaultValue="test-0"
-        footer={{
-          next: 'Next',
-          previous: 'Previous',
-          initialStepText: 'Close',
-          finalStepText: 'Finish',
-        }}
-      >
+      <TeachingPopoverCarousel defaultValue="test-0">
         <TeachingPopoverCarouselCard value="test-0">
           <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
@@ -50,6 +45,12 @@ export const Carousel = () => (
             <div>This is page: 3</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
+          <TeachingPopoverCarouselNav>
+            {(value: string) => <TeachingPopoverCarouselNavButton />}
+          </TeachingPopoverCarouselNav>
+        </TeachingPopoverCarouselFooter>
       </TeachingPopoverCarousel>
     </TeachingPopoverSurface>
   </TeachingPopover>

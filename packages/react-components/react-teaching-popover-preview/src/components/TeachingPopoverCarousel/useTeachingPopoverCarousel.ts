@@ -3,7 +3,6 @@ import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from 
 import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useCarousel_unstable, type UseCarouselOptions } from './Carousel/Carousel';
-import { TeachingPopoverCarouselFooter } from '../TeachingPopoverCarouselFooter/index';
 
 export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
@@ -18,19 +17,15 @@ export const useTeachingPopoverCarousel_unstable = (
   const { carousel, carouselRef } = useCarousel_unstable({
     defaultValue: props.defaultValue,
     value: props.value,
-
     onPageChange: props.onPageChange,
     onFinish: handleFinish,
   });
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const footer = slot.always(props.footer, { elementType: TeachingPopoverCarouselFooter });
-
   return {
     appearance,
     components: {
       root: 'div',
-      footer: TeachingPopoverCarouselFooter,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -39,7 +34,6 @@ export const useTeachingPopoverCarousel_unstable = (
       }),
       { elementType: 'div' },
     ),
-    footer,
     ...carousel,
   };
 };
