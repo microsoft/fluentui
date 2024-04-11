@@ -1,5 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { typographyStyles } from '@fluentui/react-theme';
 
 import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
 import {
@@ -7,8 +8,7 @@ import {
   useIconStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
-} from '../NavItem/useNavItemStyles.styles';
-import { typographyStyles } from '@fluentui/react-theme';
+} from '../sharedNavStyles.styles';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
@@ -22,9 +22,6 @@ const useExpandIconStyles = makeStyles({
     marginInlineStart: 'auto',
   },
   open: {
-    transform: 'rotate(-90deg)',
-  },
-  closed: {
     transform: 'rotate(90deg)',
   },
   selected: typographyStyles.body1Strong,
@@ -64,7 +61,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
     expandIconStyles.base,
-    state.open ? expandIconStyles.open : expandIconStyles.closed,
+    state.open && expandIconStyles.open,
     state.expandIcon.className,
   );
 

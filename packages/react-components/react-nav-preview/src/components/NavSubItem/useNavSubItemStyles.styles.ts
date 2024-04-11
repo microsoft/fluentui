@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
-import { useContentStyles, useIndicatorStyles, useRootDefaultClassName } from '../NavItem/useNavItemStyles.styles';
+import { useContentStyles, useIndicatorStyles, useRootDefaultClassName } from '../sharedNavStyles.styles';
 
 export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
   root: 'fui-NavSubItem',
