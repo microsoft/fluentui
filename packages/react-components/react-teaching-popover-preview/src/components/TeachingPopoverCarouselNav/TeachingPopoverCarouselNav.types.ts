@@ -1,5 +1,5 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverCarouselNavSlots = {
   /**

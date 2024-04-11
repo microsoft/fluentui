@@ -126,3 +126,4 @@ export {
   useTeachingPopoverFooter_unstable,
 } from './TeachingPopoverFooter';
 export type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter';
+export * from './TeachingPopoverCarouselPageCount';

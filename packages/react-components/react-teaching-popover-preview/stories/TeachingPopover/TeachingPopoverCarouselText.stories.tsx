@@ -13,6 +13,7 @@ import {
   TeachingPopoverCarouselFooter,
   TeachingPopoverCarouselNav,
   TeachingPopoverCarouselNavButton,
+  TeachingPopoverCarouselPageCount,
 } from '@fluentui/react-teaching-popover-preview';
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
@@ -47,9 +48,9 @@ export const CarouselText = () => (
         </TeachingPopoverCarouselCard>
 
         <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
-          <TeachingPopoverCarouselNav>
-            {(value: string) => <TeachingPopoverCarouselNavButton />}
-          </TeachingPopoverCarouselNav>
+          <TeachingPopoverCarouselPageCount>
+            {(currentIndex: number, totalPages: number) => `${currentIndex} of ${totalPages}`}
+          </TeachingPopoverCarouselPageCount>
         </TeachingPopoverCarouselFooter>
       </TeachingPopoverCarousel>
     </TeachingPopoverSurface>

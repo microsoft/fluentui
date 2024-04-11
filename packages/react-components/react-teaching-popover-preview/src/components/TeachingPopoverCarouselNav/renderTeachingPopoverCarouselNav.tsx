@@ -12,12 +12,10 @@ export const renderTeachingPopoverCarouselNav_unstable = (state: TeachingPopover
   assertSlots<TeachingPopoverCarouselNavSlots>(state);
 
   const { values, renderNavButton } = state;
-  console.log('values:', values);
 
   return (
     <state.root>
       {values.map(value => {
-        console.log('Rendering value:', value);
         return (
           <ValueIdContextProvider value={value} key={value}>
             {renderNavButton(value)}

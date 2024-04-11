@@ -24,6 +24,7 @@ export const useTeachingPopoverCarouselNav_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault: true,
   });
+
   const values = useCarouselValues_unstable(snapshot => snapshot);
 
   return {
