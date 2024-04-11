@@ -4,6 +4,7 @@ import descriptionMd from './NavDrawerDescription.md';
 import bestPracticesMd from './NavDrawerBestPractices.md';
 
 export { Default } from './NavDrawerDefault.stories';
+export { NavDrawerCustomStyleHook } from './NavDrawerCustomStyleHook.stories';
 
 export default {
   title: 'Preview Components/NavDrawer',
