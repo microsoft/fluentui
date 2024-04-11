@@ -743,6 +743,7 @@ import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderRating_unstable } from '@fluentui/react-rating';
 import { renderRatingDisplay_unstable } from '@fluentui/react-rating';
 import { renderRatingItem_unstable } from '@fluentui/react-rating';
+import { renderSearchBox_unstable } from '@fluentui/react-search';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
@@ -787,6 +788,12 @@ import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import { SearchBox } from '@fluentui/react-search';
+import { SearchBoxChangeEvent } from '@fluentui/react-search';
+import { searchBoxClassNames } from '@fluentui/react-search';
+import { SearchBoxProps } from '@fluentui/react-search';
+import { SearchBoxSlots } from '@fluentui/react-search';
+import { SearchBoxState } from '@fluentui/react-search';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
@@ -1350,6 +1357,8 @@ import { useRatingStyles_unstable } from '@fluentui/react-rating';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
+import { useSearchBox_unstable } from '@fluentui/react-search';
+import { useSearchBoxStyles_unstable } from '@fluentui/react-search';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -2940,6 +2949,8 @@ export { renderRatingDisplay_unstable }
 
 export { renderRatingItem_unstable }
 
+export { renderSearchBox_unstable }
+
 export { renderSelect_unstable }
 
 export { renderSkeleton_unstable }
@@ -3027,6 +3038,18 @@ export { resolveShorthand }
 export { ResolveShorthandFunction }
 
 export { ResolveShorthandOptions }
+
+export { SearchBox }
+
+export { SearchBoxChangeEvent }
+
+export { searchBoxClassNames }
+
+export { SearchBoxProps }
+
+export { SearchBoxSlots }
+
+export { SearchBoxState }
 
 export { Select }
 
@@ -4153,6 +4176,10 @@ export { useRestoreFocusSource }
 export { useRestoreFocusTarget }
 
 export { useScrollbarWidth }
+
+export { useSearchBox_unstable }
+
+export { useSearchBoxStyles_unstable }
 
 export { useSelect_unstable }
 
