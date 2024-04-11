@@ -8,13 +8,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import {
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerHeaderNavigation,
-  DrawerHeaderTitle,
-} from '@fluentui/react-drawer';
+import { DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
 const useStyles = makeStyles({
