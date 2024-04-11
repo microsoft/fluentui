@@ -17,6 +17,7 @@ import {
   output,
   installPackagesTask,
 } from '@nx/devkit';
+import * as path from 'node:path';
 import { tsquery } from '@phenomnomnominal/tsquery';
 
 import tsConfigBaseAllGenerator from '../tsconfig-base-all/index';
@@ -87,25 +88,32 @@ function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string })
 export default splitLibraryInTwoGenerator;
 
 function cleanup(tree: Tree, options: Options) {
-  tree.delete(joinPathFragments(options.projectConfig.root, 'dist'));
-  tree.delete(joinPathFragments(options.projectConfig.root, 'lib'));
-  tree.delete(joinPathFragments(options.projectConfig.root, 'lib-commonjs'));
-  tree.delete(joinPathFragments(options.projectConfig.root, 'temp'));
-  tree.delete(joinPathFragments(options.projectConfig.root, '.eslintcache'));
-  tree.delete(joinPathFragments(options.projectConfig.root, '.swc'));
-  tree.delete(joinPathFragments(options.projectConfig.root, 'node_modules'));
+  output.log({ title: 'Cleaning up build assets...' });
+  const oldProjectRoot = options.projectConfig.root;
+  tree.delete(joinPathFragments(oldProjectRoot, 'dist'));
+  tree.delete(joinPathFragments(oldProjectRoot, 'lib'));
+  tree.delete(joinPathFragments(oldProjectRoot, 'lib-commonjs'));
+  tree.delete(joinPathFragments(oldProjectRoot, 'temp'));
+  tree.delete(joinPathFragments(oldProjectRoot, '.eslintcache'));
+  tree.delete(joinPathFragments(oldProjectRoot, '.swc'));
+  tree.delete(joinPathFragments(oldProjectRoot, 'node_modules'));
 }
 
 function makeSrcLibrary(tree: Tree, options: Options) {
-  const newProjectRoot = joinPathFragments(options.projectConfig.root, 'library');
+  output.log({ title: 'creating library/ project' });
+
+  const oldProjectRoot = options.projectConfig.root;
+  const newProjectRoot = joinPathFragments(oldProjectRoot, 'library');
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
-  visitNotIgnoredFiles(tree, options.projectConfig.root, file => {
+  visitNotIgnoredFiles(tree, oldProjectRoot, file => {
     if (file.includes('/stories/') || file.includes('/.storybook/')) {
       return;
     }
 
-    tree.rename(file, file.replace(options.projectConfig.root, newProjectRoot));
+    const newFileName = `${newProjectRoot}/${path.relative(oldProjectRoot, file)}`;
+
+    tree.rename(file, newFileName);
   });
 
   updateProjectConfiguration(tree, options.projectConfig.name!, {
@@ -200,17 +208,19 @@ function makeSrcLibrary(tree: Tree, options: Options) {
 }
 
 function makeStoriesLibrary(tree: Tree, options: Options) {
-  const newProjectRoot = joinPathFragments(options.projectConfig.root, 'stories');
+  output.log({ title: 'creating stories/ project' });
+  const oldProjectRoot = options.projectConfig.root;
+  const newProjectRoot = joinPathFragments(oldProjectRoot, 'stories');
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
   const newProjectName = `${options.projectConfig.name}-stories`;
 
   // move stories/
-  moveFilesToNewDirectory(tree, joinPathFragments(options.projectConfig.root, 'stories'), newProjectSourceRoot);
+  moveFilesToNewDirectory(tree, joinPathFragments(oldProjectRoot, 'stories'), newProjectSourceRoot);
 
   // move .storybook/
   moveFilesToNewDirectory(
     tree,
-    joinPathFragments(options.projectConfig.root, '.storybook'),
+    joinPathFragments(oldProjectRoot, '.storybook'),
     joinPathFragments(newProjectRoot, '.storybook'),
   );
 
