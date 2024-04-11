@@ -3,6 +3,7 @@ import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
+import { navCustomStyleHooks } from '../CustomStyleHooks/navCustomStyles.styles';
 
 /**
  * Create the state required to render NavDrawer.
@@ -25,7 +26,13 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     ref,
   );
 
+  const styleHooks = {
+    ...navCustomStyleHooks,
+    ...props.customStyleHooks,
+  };
+
   return {
+    customStyleHooks: styleHooks,
     ...baseDrawerState,
     ...navState,
   };

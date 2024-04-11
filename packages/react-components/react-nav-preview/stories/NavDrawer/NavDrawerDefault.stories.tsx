@@ -8,7 +8,13 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerBody } from '@fluentui/react-drawer';
+import {
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerHeaderNavigation,
+  DrawerHeaderTitle,
+} from '@fluentui/react-drawer';
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
 const useStyles = makeStyles({
@@ -34,6 +40,10 @@ export const Default = (props: Partial<NavDrawerProps>) => {
   return (
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} size="small" open={true}>
+        <DrawerHeader>
+          <DrawerHeaderNavigation>I am some navigation</DrawerHeaderNavigation>
+          <DrawerHeaderTitle>Drawer with title</DrawerHeaderTitle>
+        </DrawerHeader>
         <DrawerBody>
           <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
             First
@@ -73,6 +83,7 @@ export const Default = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
         </DrawerBody>
+        <DrawerFooter>I am a footer</DrawerFooter>
       </NavDrawer>
     </div>
   );

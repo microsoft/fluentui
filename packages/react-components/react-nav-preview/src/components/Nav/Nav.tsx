@@ -15,6 +15,7 @@ export const Nav: ForwardRefComponent<NavProps> = React.forwardRef((props, ref) 
   const contextValues = useNavContextValues_unstable(state);
 
   useNavStyles_unstable(state);
+
   return renderNav_unstable(state, contextValues);
 });
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import type { NavContextValue, NavItemValue } from '../NavContext.types';
 

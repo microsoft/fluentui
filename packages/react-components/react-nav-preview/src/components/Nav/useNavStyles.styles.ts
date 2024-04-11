@@ -4,8 +4,6 @@ import type { NavSlots, NavState } from './Nav.types';
 
 export const navClassNames: SlotClassNames<NavSlots> = {
   root: 'fui-Nav',
-  // TODO: add class names for all slots on NavSlots.
-  // Should be of the form `<slotName>: 'fui-Nav__<slotName>`
 };
 
 /**
@@ -16,8 +14,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -26,9 +22,6 @@ const useStyles = makeStyles({
 export const useNavStyles_unstable = (state: NavState): NavState => {
   const styles = useStyles();
   state.root.className = mergeClasses(navClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

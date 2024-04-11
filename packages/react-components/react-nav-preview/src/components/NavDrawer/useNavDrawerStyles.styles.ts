@@ -25,9 +25,6 @@ export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerSta
   const styles = useStyles();
   state.root.className = mergeClasses(navDrawerClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
   useInlineDrawerStyles_unstable(state);
   return state;
 };

@@ -6,6 +6,7 @@ import type { NavDrawerState } from './NavDrawer.types';
 import { NavContextValues } from '../NavContext.types';
 import { NavProvider } from '../NavContext';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { CustomStyleHooksContext_unstable as CustomStyleHooksContext } from '@fluentui/react-shared-contexts';
 
 /**
  * Render the final JSX of NavDrawer
@@ -13,10 +14,11 @@ import { InlineDrawerSlots } from '@fluentui/react-drawer';
 export const renderNavDrawer_unstable = (state: NavDrawerState, contextValues: NavContextValues) => {
   assertSlots<InlineDrawerSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return (
     <NavProvider value={contextValues.nav}>
-      <state.root />
+      <CustomStyleHooksContext.Provider value={state.customStyleHooks}>
+        <state.root />
+      </CustomStyleHooksContext.Provider>
     </NavProvider>
   );
 };
