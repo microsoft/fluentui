@@ -111,8 +111,6 @@ export function apiExtractor(): TaskFunction {
     const compilerConfig = getTsPathAliasesApiExtractorConfig({
       tsConfig: tsConfigs.lib,
       packageJson,
-      pathAliasesTsConfigPath: isLocalBuild ? path.join(workspaceRoot, 'tsconfig.base.json') : undefined,
-      definitionsRootPath: 'dist/out-tsc/types',
     });
 
     // NOTE: internally just-tasks calls `options.onConfigLoaded?.(rawConfig);` so we need to mutate object properties (js passes objects by reference)
