@@ -176,7 +176,7 @@ function makeSrcLibrary(tree: Tree, options: Options) {
 
   if (tree.exists(filePaths.apiExtractorConfig)) {
     updateJson(tree, filePaths.apiExtractorConfig, json => {
-      json.mainEntryPointFilePath = `<projectRoot>${options.projectOffsetFromRoot.updated}dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts`;
+      json.mainEntryPointFilePath = `<projectRoot>/${options.projectOffsetFromRoot.updated}dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts`;
 
       return json;
     });

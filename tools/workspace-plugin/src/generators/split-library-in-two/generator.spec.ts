@@ -8,6 +8,7 @@ import {
   readJson,
   updateJson,
   writeJson,
+  output,
 } from '@nx/devkit';
 
 import { splitLibraryInTwoGenerator } from './generator';
@@ -16,6 +17,10 @@ import { TsConfig } from '../../types';
 import { addCodeowner } from '../add-codeowners';
 import { workspacePaths } from '../../utils';
 
+const noop = () => {
+  return;
+};
+
 describe('split-library-in-two generator', () => {
   let tree: Tree;
   const options = { project: '@proj/react-hello' };
@@ -23,6 +28,10 @@ describe('split-library-in-two generator', () => {
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
     tree = setup(tree);
+
+    jest.spyOn(output, 'log').mockImplementation(noop);
+    jest.spyOn(output, 'warn').mockImplementation(noop);
+    jest.spyOn(output, 'error').mockImplementation(noop);
   });
 
   it('should split v9 project into 2', async () => {
@@ -85,7 +94,7 @@ describe('split-library-in-two generator', () => {
     expect(readJson(tree, `${newConfig.root}/config/api-extractor.json`)).toEqual(
       expect.objectContaining({
         mainEntryPointFilePath:
-          '<projectRoot>../../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts',
+          '<projectRoot>/../../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts',
       }),
     );
 
