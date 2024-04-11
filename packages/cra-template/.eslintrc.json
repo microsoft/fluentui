@@ -6,7 +6,9 @@
       "files": ["template/**/*.{ts,tsx}"],
       "rules": {
         // the rule can't understand that the actual list of deps is in template.json
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        // valid in some template files - don't wanna spam consumer with inline eslint-disabled pragmas
+        "@typescript-eslint/triple-slash-reference": "off"
       }
     }
   ]
