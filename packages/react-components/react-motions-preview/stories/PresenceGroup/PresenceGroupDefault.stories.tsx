@@ -9,7 +9,7 @@ import {
   MessageBarBody,
 } from '@fluentui/react-components';
 import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
-import { createPresenceComponent, motionTokens, PresenceGroup } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, motionTokens, PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 const useClasses = makeStyles({
@@ -162,24 +162,26 @@ const users = [
   },
 ];
 
-const ItemMotion = createPresenceComponent({
-  enter: {
-    keyframes: [
-      { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
-      { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
-    ],
-    easing: motionTokens.curveEasyEase,
-    duration: motionTokens.durationUltraSlow,
-  },
-  exit: {
-    keyframes: [
-      { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
-      { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
-    ],
-    easing: motionTokens.curveEasyEase,
-    duration: motionTokens.durationUltraSlow,
-  },
-});
+// const ItemMotion = createPresenceComponent({
+//   enter: {
+//     keyframes: [
+//       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
+//       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
+//     ],
+//     easing: motionTokens.curveEasyEase,
+//     duration: motionTokens.durationUltraSlow,
+//   },
+//   exit: {
+//     keyframes: [
+//       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
+//       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
+//     ],
+//     easing: motionTokens.curveEasyEase,
+//     duration: motionTokens.durationUltraSlow,
+//   },
+// });
+
+const ItemMotion = Collapse;
 
 export const PresenceGroupDefault = () => {
   const classes = useClasses();
