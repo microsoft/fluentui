@@ -360,11 +360,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
       {open && (
         <div role="grid" id={gridId} ref={gridRef} className={styles.grid}>
           {!shouldDisplayEmpty && (
-            <div
-              role="row"
-              id={filterRowId}
-              // tabIndex={0}
-            >
+            <div role="row" id={filterRowId}>
               <div role="gridcell" aria-colspan={3}>
                 <TagGroup size="small" role="presentation">
                   <Tag
@@ -413,13 +409,12 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
                   key={option.id}
                   id={rowId}
                   role="row"
-                  tabIndex={0}
+                  // tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
-                  aria-labelledby={contentId}
-                  aria-description={HAS_ACTIONS_HINT}
+                  // aria-labelledby={contentId}
                 >
-                  <div role="gridcell">
+                  <div role="gridcell" tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
                     <Avatar color="colorful" name={option.text} />
                     <span id={contentId}>{option.text}</span>
                   </div>
@@ -472,13 +467,12 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
                   key={option.id}
                   id={rowId}
                   role="row"
-                  tabIndex={0}
+                  // tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
-                  aria-labelledby={contentId}
-                  aria-description={HAS_ACTIONS_HINT}
+                  // aria-labelledby={contentId}
                 >
-                  <div role="gridcell">
+                  <div role="gridcell" tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
                     <Avatar color="colorful" name={option.text} />
                     <span id={contentId}>{option.text}</span>
                   </div>
