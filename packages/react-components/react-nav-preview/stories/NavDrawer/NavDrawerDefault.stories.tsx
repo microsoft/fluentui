@@ -41,7 +41,6 @@ export const Default = (props: Partial<NavDrawerProps>) => {
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} size="small" open={true}>
         <DrawerHeader>
-          <DrawerHeaderNavigation>I am some navigation</DrawerHeaderNavigation>
           <DrawerHeaderTitle>Drawer with title</DrawerHeaderTitle>
         </DrawerHeader>
         <DrawerBody>
