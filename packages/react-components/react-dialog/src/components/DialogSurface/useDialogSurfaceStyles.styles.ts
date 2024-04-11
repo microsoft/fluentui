@@ -2,7 +2,13 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { MEDIA_QUERY_BREAKPOINT_SELECTOR, SURFACE_BORDER_WIDTH, SURFACE_PADDING } from '../../contexts';
+import {
+  FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+  MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  MEDIA_QUERY_SHORT_SCREEN,
+  SURFACE_BORDER_WIDTH,
+  SURFACE_PADDING,
+} from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
@@ -37,6 +43,16 @@ const useRootBaseStyle = makeResetStyles({
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
+  },
+
+  [MEDIA_QUERY_SHORT_SCREEN]: {
+    overflowY: 'auto',
+    // We need to offset the scrollbar by adding transparent borders otherwise
+    // it conflits with the border radius.
+    paddingRight: `calc(${SURFACE_PADDING} - ${FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
+    borderRightWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderTopWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+    borderBottomWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
   },
 });
 

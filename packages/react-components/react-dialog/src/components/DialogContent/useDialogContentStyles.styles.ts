@@ -2,6 +2,7 @@ import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { MEDIA_QUERY_SHORT_SCREEN } from '../../contexts';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
   root: 'fui-DialogContent',
@@ -21,6 +22,10 @@ const useStyles = makeResetStyles({
   gridRowEnd: 2,
   gridColumnStart: 1,
   gridColumnEnd: 4,
+
+  [MEDIA_QUERY_SHORT_SCREEN]: {
+    overflowY: 'unset',
+  },
 });
 
 /**
