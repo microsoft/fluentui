@@ -12,6 +12,7 @@ export const navItemTokens = {
 
 /**
  * Styles for the root slot
+ * Shared across NavItem, NavCategoryItem, and NavSubItem
  */
 export const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
@@ -36,11 +37,16 @@ export const useRootDefaultClassName = makeResetStyles({
 
 /**
  * Styles for the content slot (children)
+ * Shared across NavItem, NavCategoryItem, and NavSubItem
  */
 export const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
 });
 
+/**
+ * French fry styles
+ * Shared across NavItem, NavCategoryItem, and NavSubItem
+ */
 export const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
@@ -55,6 +61,10 @@ export const useIndicatorStyles = makeStyles({
   },
 });
 
+/**
+ * Styles for the icon slot
+ * Shared across NavItem, NavCategoryItem, and NavSubItem
+ */
 export const useIconStyles = makeStyles({
   base: {
     minHeight: '20px',

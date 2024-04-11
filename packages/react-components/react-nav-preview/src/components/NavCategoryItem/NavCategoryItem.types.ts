@@ -1,6 +1,6 @@
-import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
-
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+
+import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
 
 export type NavCategoryItemContextValues = {
   navCategoryItem: NavCategoryItemContextValue;
@@ -14,6 +14,7 @@ export type NavCategoryItemSlots = {
 
   /**
    * Icon that renders before the content.
+   * Should be specific to each Category
    */
   icon?: Slot<'span'>;
 
@@ -24,7 +25,7 @@ export type NavCategoryItemSlots = {
   content: NonNullable<Slot<'span'>>;
 
   /**
-   * Expand icon slot rendered before (or after) children content in heading.
+   * Expand icon slot rendered after the content to indicate an open and closed state.
    */
   expandIcon: NonNullable<Slot<'span'>>;
 };

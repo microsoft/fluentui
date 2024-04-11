@@ -30,7 +30,7 @@ const useExpandIconStyles = makeStyles({
 /**
  * Styles for the root slot
  */
-export const useUniqueNavCategoryRootDefaultStyles = makeStyles({
+export const useRootStyles = makeStyles({
   base: {
     width: '100%',
   },
@@ -40,7 +40,7 @@ export const useUniqueNavCategoryRootDefaultStyles = makeStyles({
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  const defaultUniqueNavCategoryRootStyles = useUniqueNavCategoryRootDefaultStyles();
+  const rootStyles = useRootStyles();
   const defaultRootClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
@@ -52,7 +52,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
     defaultRootClassName,
-    defaultUniqueNavCategoryRootStyles.base,
+    rootStyles.base,
     state.root.className,
     selected && open === false && indicatorStyles.base,
     selected && open === false && contentStyles.selected,
