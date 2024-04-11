@@ -8,6 +8,7 @@ describe('TeachingPopoverCarousel', () => {
     Component: TeachingPopoverCarousel,
     displayName: 'TeachingPopoverCarousel',
     requiredProps: {
+      defaultValue: '',
       footer: {
         next: 'Next',
         previous: 'Previous',
@@ -24,6 +25,7 @@ describe('TeachingPopoverCarousel', () => {
   it('renders a default state', () => {
     const result = render(
       <TeachingPopoverCarousel
+        defaultValue=""
         footer={{
           next: 'Next',
           previous: 'Previous',

@@ -1,7 +1,7 @@
 import { type Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import * as React from 'react';
 
-import { CarouselStore } from './Carousel.types';
+import type { CarouselStore } from './Carousel.types';
 import { createCarouselStore } from './createCarouselStore';
 
 export type CarouselContextValue = {
@@ -15,10 +15,10 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   store: createCarouselStore(),
   value: null,
   selectPageByDirection: () => {
-    return;
+    /** noop */
   },
   selectPageByValue: () => {
-    return;
+    /** noop */
   },
 };
 

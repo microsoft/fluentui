@@ -25,12 +25,13 @@ export const useTeachingPopoverCarouselNav_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault: true,
   });
-  const values = useCarouselValues_unstable(_values => _values);
+  const values = useCarouselValues_unstable(snapshot => snapshot);
 
   // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
-  const rootChildren = React.useMemo(() => {
-    return Array.from(Array(values.length), (_, i) => <TeachingPopoverCarouselNavButton key={i} value={values[i]} />);
-  }, [values]);
+  const rootChildren = React.useMemo(
+    () => values.map(value => <TeachingPopoverCarouselNavButton key={value} value={value} />),
+    [values],
+  );
 
   return {
     components: {

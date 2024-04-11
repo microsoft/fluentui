@@ -1,4 +1,10 @@
-import { isHTMLElement, useMergedRefs, useControllableState, EventHandler } from '@fluentui/react-utilities';
+import {
+  isHTMLElement,
+  useMergedRefs,
+  useControllableState,
+  type EventHandler,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { CAROUSEL_ITEM } from './constants';
@@ -104,33 +110,27 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     };
   }, [store]);
 
-  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = React.useCallback(
-    (event, direction) => {
-      const active = carouselWalker.active();
+  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
+    const active = carouselWalker.active();
 
-      if (!active?.value) {
-        return;
-      }
+    if (!active?.value) {
+      return;
+    }
 
-      const newPage =
-        direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
+    const newPage =
+      direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
 
-      if (newPage) {
-        setValue(newPage?.value);
-        onPageChange?.(event, { event, type: 'click', value: newPage?.value });
-      } else {
-        onFinish?.(event, { event, type: 'click', value: active?.value });
-      }
-    },
-    [carouselWalker, onFinish, onPageChange, setValue],
-  );
-  const selectPageByValue: CarouselContextValue['selectPageByValue'] = React.useCallback(
-    (event, _value) => {
-      setValue(_value);
-      onPageChange?.(event, { event, type: 'click', value: _value });
-    },
-    [onPageChange, setValue],
-  );
+    if (newPage) {
+      setValue(newPage?.value);
+      onPageChange?.(event, { event, type: 'click', value: newPage?.value });
+    } else {
+      onFinish?.(event, { event, type: 'click', value: active?.value });
+    }
+  });
+  const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
+    setValue(_value);
+    onPageChange?.(event, { event, type: 'click', value: _value });
+  });
 
   return {
     carouselRef: useMergedRefs(rootRef, carouselRef),
