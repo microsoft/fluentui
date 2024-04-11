@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Inline Listbox should render on top of relatively positioned elements.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
