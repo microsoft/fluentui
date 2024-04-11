@@ -130,7 +130,7 @@ export const OverrideControls = ({
               value={customDuration ? String(customDuration) : ''}
               placeholder="custom (ms)"
               onChange={React.useCallback(
-                (e: unknown, data: { value: number | undefined }) => {
+                (e: unknown, data: { value: string | undefined }) => {
                   setCustomDuration(Number(data.value || 0));
                 },
                 [setCustomDuration],
