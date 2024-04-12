@@ -8,8 +8,6 @@ const config = {
     '@tensile-perf/web-components': '/node_modules/@tensile-perf/web-components/lib/index.js',
     '@microsoft/fast-element': '/node_modules/@microsoft/fast-element/dist/fast-element.min.js',
     '@microsoft/fast-element/utilities.js': '/node_modules/@microsoft/fast-element/dist/esm/utilities.js',
-    '@microsoft/fast-foundation': '/node_modules/@microsoft/fast-foundation/dist/esm/index.js',
-    '@microsoft/fast-foundation/utilities.js': '/node_modules/@microsoft/fast-foundation/dist/esm/utilities/index.js',
     '@microsoft/fast-web-utilities': '/node_modules/@microsoft/fast-web-utilities/dist/index.js',
     '@fluentui/tokens': '/tensile-assets/benchmark-dependencies/tokens.js',
     '@fluentui/web-components': '/node_modules/@fluentui/web-components/dist/esm/index.js',

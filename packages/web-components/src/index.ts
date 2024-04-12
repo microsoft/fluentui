@@ -30,3 +30,7 @@ export * from './toggle-button/index.js';
 
 export * from './fluent-design-system.js';
 export * from './theme/index.js';
+
+export * from './utils/direction.js';
+export * from './utils/display.js';
+export * from './utils/behaviors/match-media-stylesheet-behavior.js';

@@ -10,6 +10,8 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import type { HostBehavior } from '@microsoft/fast-element';
+import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
@@ -1648,6 +1650,9 @@ export const CounterBadgeStyles: ElementStyles;
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
 
+// @public
+export type CSSDisplayPropertyValue = 'block' | 'contents' | 'flex' | 'grid' | 'inherit' | 'initial' | 'inline' | 'inline-block' | 'inline-flex' | 'inline-grid' | 'inline-table' | 'list-item' | 'none' | 'run-in' | 'table' | 'table-caption' | 'table-cell' | 'table-column' | 'table-column-group' | 'table-footer-group' | 'table-header-group' | 'table-row' | 'table-row-group';
+
 // @public (undocumented)
 export const curveAccelerateMax = "var(--curveAccelerateMax)";
 
@@ -1674,6 +1679,9 @@ export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
 
 // @public (undocumented)
 export const curveLinear = "var(--curveLinear)";
+
+// @public
+export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "DelegatesARIAButton" because one of its declarations is marked as @internal
 //
@@ -1740,6 +1748,9 @@ export const DialogStyles: ElementStyles;
 
 // @public
 export const DialogTemplate: ElementViewTemplate<Dialog>;
+
+// @public
+export function display(displayValue: CSSDisplayPropertyValue): string;
 
 // @public
 export class Divider extends FASTElement {
@@ -1881,6 +1892,15 @@ export const fontWeightRegular = "var(--fontWeightRegular)";
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public
+export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+
+// @public
+export const getDirection: (rootNode: HTMLElement) => Direction;
+
+// @public
+export const hidden = ":host([hidden]){display:none}";
+
+// @public
 class Image_2 extends FASTElement {
     block?: boolean;
     bordered?: boolean;
@@ -1940,6 +1960,9 @@ export const LabelStyles: ElementStyles;
 // @public (undocumented)
 export const LabelTemplate: ElementViewTemplate<Label>;
 
+// @public
+export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+
 // @public (undocumented)
 export const lineHeightBase100 = "var(--lineHeightBase100)";
 
@@ -1969,6 +1992,29 @@ export const lineHeightHero800 = "var(--lineHeightHero800)";
 
 // @public (undocumented)
 export const lineHeightHero900 = "var(--lineHeightHero900)";
+
+// @public
+export abstract class MatchMediaBehavior implements HostBehavior {
+    constructor(query: MediaQueryList);
+    connectedCallback(controller: HostController): void;
+    protected abstract constructListener(controller: HostController): MediaQueryListListener;
+    disconnectedCallback(controller: HostController): void;
+    readonly query: MediaQueryList;
+}
+
+// @public
+export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
+    constructor(query: MediaQueryList, styles: ElementStyles);
+    protected constructListener(controller: HostController): MediaQueryListListener;
+    readonly query: MediaQueryList;
+    // @internal
+    removedCallback(controller: HostController<any>): void;
+    readonly styles: ElementStyles;
+    static with(query: MediaQueryList): (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+}
+
+// @public
+export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListEvent) => void;
 
 // @public
 export class Menu extends FASTElement {

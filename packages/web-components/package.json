@@ -205,9 +205,9 @@
   },
   "dependencies": {
     "@microsoft/fast-element": "2.0.0-beta.26",
-    "@microsoft/fast-foundation": "3.0.0-alpha.31",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
+    "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },
   "beachball": {
