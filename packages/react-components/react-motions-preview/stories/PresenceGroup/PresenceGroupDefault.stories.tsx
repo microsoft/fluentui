@@ -257,7 +257,9 @@ export const PresenceGroupDefault = () => {
 
           <PresenceGroup>
             {users.slice(0, limit).map(item => (
-              <ItemMotion key={item.name}>
+              // HACK: use the motion name in the key to force re-render of all items,
+              // otherwise the motions don't reliably update when the selected motion name changes
+              <ItemMotion key={item.name + '_' + motionName}>
                 <Persona
                   avatar={{
                     image: { src: item.image },
