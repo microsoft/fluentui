@@ -7,7 +7,7 @@ import { apiExtractor } from './api-extractor';
 import { JustArgs, getJustArgv } from './argv';
 import { babel } from './babel';
 import { clean } from './clean';
-import { copy, copyCompiled } from './copy';
+import { copy, copyCompiledFactory } from './copy';
 import { eslint } from './eslint';
 import { generateApi } from './generate-api';
 import { jest as jestTask, jestWatch } from './jest';
@@ -55,7 +55,7 @@ export function preset() {
   task('no-op', () => {}).cached!();
   task('clean', clean);
   task('copy', copy);
-  task('copy-compiled', copyCompiled);
+  task('copy-compiled', copyCompiledFactory(metadata));
   task('jest', jestTask);
   task('jest-watch', jestWatch);
   task('sass', sass(metadata.hasSass()));
