@@ -9,7 +9,8 @@ import {
   MessageBarBody,
 } from '@fluentui/react-components';
 import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
-import { createPresenceComponent, motionTokens, PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
+// import { createPresenceComponent, motionTokens, PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
+import { PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 const useClasses = makeStyles({
