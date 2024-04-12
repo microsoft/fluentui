@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { PresenceMotionFn, createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
 import { PresenceOverrideFields, PresenceTransitionProps } from '../../../types';
 
@@ -46,4 +47,22 @@ const collapseMotion: PresenceMotionFn<CollapseParams> = ({
 };
 
 /** A React component that applies collapse/expand transitions to its children. */
-export const Collapse = createPresenceComponent(collapseMotion);
+const Collapse = createPresenceComponent(collapseMotion);
+
+// TODO: create a factory function for variants, to reduce boilerplate
+const Snappy = (props: React.ComponentProps<typeof Collapse>) =>
+  Collapse({ ...props, override: { all: { duration: motionTokens.durationUltraFast } } });
+
+const Gentle = (props: React.ComponentProps<typeof Collapse>) =>
+  Collapse({ ...props, override: { all: { duration: 1000 } } });
+
+const Pushy = (props: React.ComponentProps<typeof Collapse>) =>
+  Collapse({
+    ...props,
+    override: { all: { duration: motionTokens.durationUltraSlow, easing: motionTokens.curveEasyEaseMax } },
+  });
+
+// To support <Collapse>, <Collapse.Snappy>, etc.
+const WithVariants = Object.assign(Collapse, { Snappy, Gentle, Pushy });
+
+export { WithVariants as Collapse };
