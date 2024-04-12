@@ -88,6 +88,12 @@ const useStyles = makeStyles({
     display: 'none',
   },
 
+  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+  inlineListbox: {
+    zIndex: 1,
+  },
+
   button: {
     alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
@@ -285,6 +291,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     state.listbox.className = mergeClasses(
       dropdownClassNames.listbox,
       styles.listbox,
+      state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
       state.listbox.className,
     );
