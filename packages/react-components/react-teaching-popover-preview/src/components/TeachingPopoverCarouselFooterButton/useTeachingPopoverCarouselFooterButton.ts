@@ -9,7 +9,6 @@ import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
-import { useCallback } from 'react';
 
 /**
  * Create the state required to render TeachingPopoverCarouselFooterButton.
