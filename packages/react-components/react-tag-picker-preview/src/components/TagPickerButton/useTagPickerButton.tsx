@@ -30,6 +30,8 @@ export const useTagPickerButton_unstable = (
     popoverId,
     hasSelectedOption,
   } = usePickerContext();
+  // casting is required here as triggerRef can either be button or input,
+  // but in this case we can assure it's a button
   const root = useButtonTriggerSlot(props, triggerRef as React.RefObject<HTMLButtonElement>, {
     activeDescendantController,
     defaultProps: {
