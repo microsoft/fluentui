@@ -961,9 +961,8 @@ export function domainRangeOfVSBCNumeric(
 ): IDomainNRange {
   const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
   const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
-  // barWidth / 2 - for to get tick middle of the bar
-  const rMax = margins.left! + barWidth / 2;
-  const rMin = width - margins.right! - barWidth / 2;
+  const rMax = margins.left!;
+  const rMin = width - margins.right!;
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMax, rEndValue: rMin }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMax, rEndValue: rMin };
@@ -1017,8 +1016,8 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
     lDate = d3Max(points as any[], point => point.x as Date)!;
   }
 
-  const rStartValue = margins.left! + (barWidth ? barWidth / 2 : 0);
-  const rEndValue = width - margins.right! - (barWidth ? barWidth / 2 : 0);
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
 
   return isRTL
     ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
@@ -1043,8 +1042,8 @@ export function domainRageOfVerticalNumeric(
 ): IDomainNRange {
   const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
   const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const rMin = margins.left! + barWidth / 2;
-  const rMax = containerWidth - margins.right! - barWidth / 2;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMin, rEndValue: rMax }
@@ -1517,4 +1516,26 @@ export const getScalePadding = (prop: number | undefined, shorthandProp?: number
 
 export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
   return typeof prop === 'number' || typeof shorthandProp === 'number';
+};
+
+export const getClosestPairDiffAndRange = (data: number[] | Date[]): [number, number] | undefined => {
+  if (data.length < 2) {
+    return;
+  }
+  data = data.sort((a, b) =>
+    a instanceof Date ? (a as Date).getTime() - (b as Date).getTime() : (a as number) - (b as number),
+  );
+  let minDiff = Number.MAX_VALUE;
+  for (let i = 1; i < data.length; i++) {
+    const diff =
+      data[i] instanceof Date
+        ? (data[i] as Date).getTime() - (data[i - 1] as Date).getTime()
+        : (data[i] as number) - (data[i - 1] as number);
+    minDiff = Math.min(minDiff, diff);
+  }
+  const range =
+    data[0] instanceof Date
+      ? (data[data.length - 1] as Date).getTime() - (data[0] as Date).getTime()
+      : (data[data.length - 1] as number) - (data[0] as number);
+  return [minDiff, range];
 };

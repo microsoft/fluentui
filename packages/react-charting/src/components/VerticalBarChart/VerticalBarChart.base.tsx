@@ -40,6 +40,7 @@ import {
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
+  getClosestPairDiffAndRange,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -159,7 +160,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {...(this._isHavingLine && { isCalloutForStack: true })}
         legendBars={legendBars}
         datasetForXAxisDomain={this._xAxisLabels}
-        barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
@@ -532,25 +532,18 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
-          this.margins.left! + this._domainMargin,
-          containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
+          this.margins.left! + this._domainMargin - this._barWidth / 2,
+          containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
         ]);
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       xBarScale = d3ScaleUtc()
-        .domain([sDate, lDate])
-        .range(
-          this._isRtl
-            ? [
-                containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-                this.margins.left! + this._domainMargin + this._barWidth / 2,
-              ]
-            : [
-                this.margins.left! + this._domainMargin + this._barWidth / 2,
-                containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-              ],
-        );
+        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
+        .range([
+          this.margins.left! + this._domainMargin - this._barWidth / 2,
+          containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
+        ]);
     } else {
       xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
@@ -732,7 +725,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       } else {
         adjustedBarHeight = barHeight;
       }
-      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
+      const xPoint = xBarScale(point.x as number);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
@@ -955,9 +948,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
-          this._domainMargin += (totalWidth - reqWidth) / 2;
+          this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
       }
+    } else {
+      this._barWidth = this._calculateAppropriateBarWidth(containerWidth);
+      this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
 
     return {
@@ -973,4 +969,17 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
     );
   }
+
+  private _calculateAppropriateBarWidth = (containerWidth: number) => {
+    const data = (this.props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
+    const result = getClosestPairDiffAndRange(data);
+    if (!result) {
+      return 16;
+    }
+    const [closestPairDiff, range] = result;
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    const barWidth = Math.ceil((totalWidth * closestPairDiff) / (2 * range + closestPairDiff));
+    return barWidth;
+  };
 }
