@@ -8,7 +8,6 @@ import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import { JSXElementConstructor } from 'react';
-import { MotionImperativeRef as MotionImperativeRef_2 } from '@fluentui/react-motions-preview';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import { Ref } from 'react';
@@ -21,19 +20,23 @@ export type AtomMotion = {
 // @public (undocumented)
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
-// @public
-export const Collapse: FC<    {
-appear?: boolean | undefined;
-children: ReactElement<any, string | JSXElementConstructor<any>>;
-imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
-onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
-direction: "enter" | "exit";
-}> | undefined;
-visible?: boolean | undefined;
-animateOpacity?: boolean | undefined;
-unmountOnExit?: boolean | undefined;
-override?: PresenceOverride<    {}> | undefined;
-}>;
+// @public (undocumented)
+export const Collapse: React_2.FC<{
+    appear?: boolean | undefined;
+    children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined> | undefined;
+    onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
+    direction: "enter" | "exit";
+    }> | undefined;
+    visible?: boolean | undefined;
+    animateOpacity?: boolean | undefined;
+    unmountOnExit?: boolean | undefined;
+    override?: PresenceOverride<    {}> | undefined;
+}> & {
+    Snappy: (props: React_2.ComponentProps<typeof Collapse_2>) => React_2.ReactElement<any, any> | null;
+    Gentle: (props: React_2.ComponentProps<typeof Collapse_2>) => React_2.ReactElement<any, any> | null;
+    Pushy: (props: React_2.ComponentProps<typeof Collapse_2>) => React_2.ReactElement<any, any> | null;
+};
 
 // @public
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
@@ -70,7 +73,7 @@ export const durations: {
 export const Fade: FC<    {
 appear?: boolean | undefined;
 children: ReactElement<any, string | JSXElementConstructor<any>>;
-imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+imperativeRef?: Ref<MotionImperativeRef | undefined> | undefined;
 onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
 direction: "enter" | "exit";
 }> | undefined;
@@ -138,7 +141,7 @@ export type PresenceMotionFn<CustomProps = {}> = (params: {
 export const Scale: FC<    {
 appear?: boolean | undefined;
 children: ReactElement<any, string | JSXElementConstructor<any>>;
-imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+imperativeRef?: Ref<MotionImperativeRef | undefined> | undefined;
 onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
 direction: "enter" | "exit";
 }> | undefined;
