@@ -1,8 +1,8 @@
 import { spawnSync } from 'child_process';
 import * as path from 'path';
 
-import { PackageJson, findGitRoot, flushTreeChanges, getProjectMetadata, tree } from '@fluentui/scripts-monorepo';
-import { addProjectConfiguration } from '@nx/devkit';
+import { PackageJson, findGitRoot, flushTreeChanges, tree } from '@fluentui/scripts-monorepo';
+import { addProjectConfiguration, getProjects } from '@nx/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import _ from 'lodash';
@@ -188,10 +188,14 @@ function replaceVersionsFromReference(
 
   const depTypes = ['dependencies', 'devDependencies', 'peerDependencies'] as const;
 
+  const projects = getProjects(tree);
   // Read the package.json files of the given reference packages and combine into one object.
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
   const packageJsons = referencePackages.map(pkgName => {
-    const metadata = getProjectMetadata(pkgName);
+    const metadata = projects.get(pkgName);
+    if (!metadata) {
+      throw new Error(`Couldn't find metadata for package ${pkgName}`);
+    }
 
     return fs.readJSONSync(path.join(metadata.root, 'package.json'));
   });
