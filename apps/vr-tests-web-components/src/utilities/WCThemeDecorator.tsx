@@ -2,11 +2,8 @@ import * as React from 'react';
 import { StoryContext } from '@storybook/addons';
 import { ComponentStory } from '@storybook/react';
 import { FASTElement, customElement, html, attr } from '@microsoft/fast-element';
-import { DesignToken } from '@microsoft/fast-foundation';
 import { teamsLightTheme, teamsDarkTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
 import { setThemeFor } from '@fluentui/web-components';
-
-DesignToken.registerDefaultStyleTarget();
 
 const themes = [
   { id: 'web-light', label: 'Web Light', theme: webLightTheme },
