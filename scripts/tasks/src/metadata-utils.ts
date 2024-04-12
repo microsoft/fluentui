@@ -9,9 +9,10 @@ export function getRawMetadata(projectRoot: string) {
   const packageJsonPath = path.join(root, 'package.json');
   const projectJsonPath = path.join(root, 'project.json');
 
-  /** @type {import('@nx/devkit').ProjectConfiguration} */
-  const project = JSON.parse(fs.readFileSync(projectJsonPath, 'utf-8'));
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  const project: import('@nx/devkit').ProjectConfiguration = JSON.parse(fs.readFileSync(projectJsonPath, 'utf-8'));
+  const packageJson: import('nx/src/utils/package-json').PackageJson = JSON.parse(
+    fs.readFileSync(packageJsonPath, 'utf-8'),
+  );
 
   const metadata = { project, packageJson };
 
