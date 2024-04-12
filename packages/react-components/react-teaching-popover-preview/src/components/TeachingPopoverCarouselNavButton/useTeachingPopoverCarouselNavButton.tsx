@@ -22,7 +22,7 @@ import { useValueIdContext } from '../TeachingPopoverCarouselNav/valueIdContext'
  */
 export const useTeachingPopoverCarouselNavButton_unstable = (
   props: TeachingPopoverCarouselNavButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): TeachingPopoverCarouselNavButtonState => {
   const { onClick, as = 'a' } = props;
 
@@ -49,7 +49,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
     {
       elementType: 'button',
       defaultProps: {
-        ref,
+        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
         role: 'tab',
         type: 'button',
         ...defaultTabProps,
