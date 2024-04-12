@@ -10,7 +10,6 @@ import {
 
 export const navItemClassNames: SlotClassNames<NavItemSlots> = {
   root: 'fui-NavItem',
-  content: 'fui-NavItem__content',
   icon: 'fui-NavItem__icon',
 };
 
@@ -29,13 +28,8 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
     navItemClassNames.root,
     rootDefaultClassName,
     selected && indicatorStyles.base,
-    state.root.className,
-  );
-
-  state.content.className = mergeClasses(
-    navItemClassNames.content,
     selected && contentStyles.selected,
-    state.content.className,
+    state.root.className,
   );
 
   if (state.icon) {

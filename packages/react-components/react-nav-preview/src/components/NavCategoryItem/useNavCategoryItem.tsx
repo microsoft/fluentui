@@ -18,7 +18,7 @@ export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,
   ref: React.Ref<HTMLButtonElement>,
 ): NavCategoryItemState => {
-  const { content, onClick, expandIcon, icon } = props;
+  const { onClick, expandIcon, icon } = props;
 
   const { open, value } = useNavCategoryContext_unstable();
 
@@ -30,11 +30,6 @@ export const useNavCategoryItem_unstable = (
 
   const selected = selectedCategoryValue === value;
 
-  const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
-
   return {
     open,
     value,
@@ -42,7 +37,6 @@ export const useNavCategoryItem_unstable = (
     components: {
       root: 'button',
       icon: 'span',
-      content: 'span',
       expandIcon: 'span',
     },
     root: slot.always(
@@ -65,6 +59,5 @@ export const useNavCategoryItem_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    content: contentSlot,
   };
 };

@@ -13,7 +13,6 @@ import {
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
   icon: 'fui-NavCategoryItem__icon',
-  content: 'fui-NavCategoryItem__content',
   expandIcon: 'fui-NavCategoryItem__expandIcon',
 };
 

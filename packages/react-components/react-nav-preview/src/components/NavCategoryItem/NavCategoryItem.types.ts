@@ -19,12 +19,6 @@ export type NavCategoryItemSlots = {
   icon?: Slot<'span'>;
 
   /**
-   * Component children are placed in this slot
-   * Avoid using the `children` property in this slot in favour of Component children whenever possible.
-   */
-  content: NonNullable<Slot<'span'>>;
-
-  /**
    * Expand icon slot rendered after the content to indicate an open and closed state.
    */
   expandIcon: NonNullable<Slot<'span'>>;
