@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Dropdown, Input, Option, useId } from '@fluentui/react-components';
+import { Input } from '@fluentui/react-input';
+import { Dropdown, Option } from '@fluentui/react-combobox';
+import { useId } from '@fluentui/react-utilities';
+
 import { durations, curves } from '@fluentui/react-motions-preview';
 
 type DurationKey = keyof typeof durations;

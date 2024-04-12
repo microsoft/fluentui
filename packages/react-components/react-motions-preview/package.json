@@ -36,6 +36,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-combobox": "^9.9.6",
+    "@fluentui/react-input": "^9.4.70",
     "@fluentui/react-shared-contexts": "^9.16.0",
     "@fluentui/react-utilities": "^9.18.6",
     "@swc/helpers": "^0.5.1",
