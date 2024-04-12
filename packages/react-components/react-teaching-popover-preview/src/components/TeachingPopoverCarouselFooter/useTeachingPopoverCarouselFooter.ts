@@ -12,13 +12,14 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   props: TeachingPopoverCarouselFooterProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselFooterState => {
-  const { layout = 'centered' } = props;
+  const { layout = 'centered', initialStepText, finalStepText } = props;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const previous = slot.optional(props.previous, {
     defaultProps: {
       navType: 'prev',
+      altText: initialStepText,
     },
     renderByDefault: true,
     elementType: TeachingPopoverCarouselFooterButton,
@@ -27,6 +28,7 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   const next = slot.always(props.next, {
     defaultProps: {
       navType: 'next',
+      altText: finalStepText,
     },
     elementType: TeachingPopoverCarouselFooterButton,
   });

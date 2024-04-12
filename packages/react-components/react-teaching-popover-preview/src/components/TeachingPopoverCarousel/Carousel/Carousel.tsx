@@ -127,6 +127,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
       onFinish?.(event, { event, type: 'click', value: active?.value });
     }
   });
+
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
     setValue(_value);
     onPageChange?.(event, { event, type: 'click', value: _value });

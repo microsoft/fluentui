@@ -24,18 +24,7 @@ describe('TeachingPopoverCarousel', () => {
 
   it('renders a default state', () => {
     const result = render(
-      <TeachingPopoverCarousel
-        defaultValue=""
-        footer={{
-          next: 'Next',
-          previous: 'Previous',
-          initialStepText: 'Close',
-          finalStepText: 'Finish',
-          pageCount: 'of',
-        }}
-      >
-        Default TeachingPopoverCarousel
-      </TeachingPopoverCarousel>,
+      <TeachingPopoverCarousel defaultValue="">Default TeachingPopoverCarousel</TeachingPopoverCarousel>,
     );
     expect(result.container).toMatchSnapshot();
   });

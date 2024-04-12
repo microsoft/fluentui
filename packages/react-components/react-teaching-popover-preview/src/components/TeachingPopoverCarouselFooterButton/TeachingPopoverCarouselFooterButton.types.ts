@@ -2,6 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { ButtonProps, ButtonState } from '@fluentui/react-button';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ReactNode } from 'react';
 
 export type TeachingPopoverCarouselFooterButtonSlots = {
   root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
@@ -16,6 +17,11 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
      * Defines whether the button should be next or previous type - used for both styling and functionality.
      */
     navType: 'next' | 'prev';
+
+    /**
+     * The ReactNode provided to the button when it is on it's first (navType 'prev') or last (navType 'next') step
+     */
+    altText: ReactNode;
   };
 
 /**
@@ -23,7 +29,7 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
  */
 export type TeachingPopoverCarouselFooterButtonState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
   ButtonState &
-  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType'> & {
+  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
     /* Rename popover appearance to prevent conflict with button appearance */
     popoverAppearance: PopoverContextValue['appearance'];
   };
