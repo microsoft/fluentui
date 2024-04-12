@@ -26,7 +26,10 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "bundle-size": "monosize measure"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -49,6 +52,7 @@
     "@fluentui/react-context-selector": "^9.1.57",
     "@fluentui/react-positioning": "^9.14.3",
     "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-field": "^9.1.60",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

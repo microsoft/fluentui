@@ -1,4 +1,5 @@
-import { Button, CompoundButton } from '../index';
-import { MenuButton } from './index';
+import { hello } from '../utilities';
+import { someMd } from './content.md';
 
-export const ButtonStories = () => console.log(Button, CompoundButton, MenuButton);
+// this will create invalid output
+export const ButtonStories = () => console.log(hello, someMd);

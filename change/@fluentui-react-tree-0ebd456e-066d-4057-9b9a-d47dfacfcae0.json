@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Allow overriding aria-selected through props.",
+  "packageName": "@fluentui/react-tree",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}

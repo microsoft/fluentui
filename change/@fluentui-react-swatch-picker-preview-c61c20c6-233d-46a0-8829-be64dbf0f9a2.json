@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-swatch-picker): Added EmptySwatch component",
+  "packageName": "@fluentui/react-swatch-picker-preview",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}

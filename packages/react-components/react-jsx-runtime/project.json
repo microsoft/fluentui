@@ -4,5 +4,5 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-jsx-runtime/src",
-  "tags": ["vNext", "platform:web"]
+  "tags": ["vNext", "platform:any"]
 }

@@ -1,8 +1,8 @@
 import { execSync } from 'child_process';
-import * as semver from 'semver';
-import yargs from 'yargs';
 
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
+import * as semver from 'semver';
+import yargs from 'yargs';
 
 function tagPackages(npmToken: string) {
   const packagesToTag = getPackagesToTag();
@@ -42,10 +42,10 @@ function tagPackage(name: string, version: string, npmToken: string): boolean {
 }
 
 function getPackagesToTag() {
-  const packageInfos: AllPackageInfo = getAllPackageInfo();
+  const packageInfos: AllPackageInfo = getAllPackageInfo(isConvergedPackage);
   return Object.values(packageInfos)
     .map(packageInfo => {
-      if (!packageInfo.packageJson.private && isConvergedPackage({ packagePathOrJson: packageInfo.packageJson })) {
+      if (!packageInfo.packageJson.private) {
         return {
           name: packageInfo.packageJson.name,
           version: packageInfo.packageJson.version,
@@ -67,4 +67,6 @@ function main(argv: yargs.Arguments) {
 
 if (require.main === module && process.env.RELEASE_VNEXT) {
   main(yargs.argv);
+} else {
+  console.log('"RELEASE_VNEXT" not set - skipping');
 }
