@@ -1650,7 +1650,7 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.0.tgz#ae7ae7923d41f3d84cb2fd88740a89436610bbec"
   integrity sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==
 
-"@floating-ui/dom@^1.0.3", "@floating-ui/dom@^1.2.0":
+"@floating-ui/dom@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.0.tgz#a60212069cc58961c478037c30eba4b191c75316"
   integrity sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==
@@ -3045,17 +3045,6 @@
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.0.tgz#494f6c87057bcbb42406982d68a92887d6b5acb1"
   integrity sha512-VKJYMkS5zgzHHb66sY7AFpYv6IfFhXrjQcAyNgi2ivD65My1XOhtjfKez5ELcLFRJfgZNAxvI8kE69apXERTkw==
-
-"@microsoft/fast-foundation@3.0.0-alpha.31":
-  version "3.0.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-3.0.0-alpha.31.tgz#096b143d3f513801899d3a1eac00b09913064c4c"
-  integrity sha512-266JfAlmiz1uGQ0cnGIPtahZZ3WVNS8+6vrjsHmEg46sJTzb+9WfhgFan40y+MzgvWzZGr1Y1mh6GVpwVmKFJA==
-  dependencies:
-    "@floating-ui/dom" "^1.0.3"
-    "@microsoft/fast-element" "2.0.0-beta.26"
-    "@microsoft/fast-web-utilities" "^6.0.0"
-    tabbable "^5.2.0"
-    tslib "^2.4.0"
 
 "@microsoft/fast-web-utilities@^6.0.0":
   version "6.0.0"
@@ -24244,10 +24233,10 @@ systeminformation@^5.3.3:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.12.3.tgz#1e6dc99070ace7d88b6a1dd465f4f3ce7d63901a"
   integrity sha512-aPyTDzK/VjEheGEODprxFTMahIWTHGyWXxTsh9EOHjeekVltrIWrle4dOZouOlOYgtKM1pDoHkrR+IssgYCK/A==
 
-tabbable@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.2.0.tgz#4fba60991d8bb89d06e5d9455c92b453acf88fb2"
-  integrity sha512-0uyt8wbP0P3T4rrsfYg/5Rg3cIJ8Shl1RJ54QMqYxm1TLdWqJD1u6+RQjr2Lor3wmfT7JRHkirIwy99ydBsyPg==
+tabbable@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.2.0.tgz#732fb62bc0175cfcec257330be187dcfba1f3b97"
+  integrity sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==
 
 table-layout@^1.0.2:
   version "1.0.2"
