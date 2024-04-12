@@ -24,7 +24,7 @@ const scaleMotion: PresenceMotionFn<CollapseParams> = ({
   const toScale = 1;
 
   const enterKeyframes = [
-    { opacity: fromOpacity, transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'unset' },
+    { opacity: fromOpacity, transform: `scale3d(${fromScale}, ${fromScale}, 1)`, visibility: 'visible' },
     { opacity: toOpacity, transform: `scale3d(${toScale}, ${toScale}, 1)` },
   ];
 

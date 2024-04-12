@@ -50,7 +50,7 @@ export const OverrideEach = () => {
     <>
       <OverrideCodePreviewJSON {...{ animateOpacity, unmountOnExit, tagName, overrideNamed }} />
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
         <div>
           <h3>enter</h3>
           {/* {configuratorJSXEnter} */}
