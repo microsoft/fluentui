@@ -1,5 +1,6 @@
-import { PresenceMotionFn, createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
-import { PresenceOverrideFields, PresenceTransitionProps } from '../../../types';
+import { createPresenceComponent } from '../../../factories/createPresenceComponent';
+import { motionTokens } from '../../motionTokens';
+import { PresenceMotionFn, PresenceOverrideFields, PresenceTransitionProps } from '../../../types';
 
 const duration = motionTokens.durationSlow;
 

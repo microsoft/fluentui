@@ -1,5 +1,6 @@
-import { PresenceMotionFn, createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
-import { PresenceTransitionProps } from '../../../types';
+import { createPresenceComponent } from '../../../factories/createPresenceComponent';
+import { motionTokens } from '../../motionTokens';
+import { PresenceMotionFn, PresenceTransitionProps } from '../../../types';
 
 const duration = motionTokens.durationNormal;
 const easing = motionTokens.curveLinear;
