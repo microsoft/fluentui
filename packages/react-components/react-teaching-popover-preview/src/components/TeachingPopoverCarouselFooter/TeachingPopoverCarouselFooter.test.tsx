@@ -18,13 +18,7 @@ describe('TeachingPopoverCarouselFooter', () => {
 
   it('renders a default state', () => {
     const result = render(
-      <TeachingPopoverCarouselFooter
-        next="Next"
-        previous="Previous"
-        initialStepText="Close"
-        finalStepText="Finish"
-        pageCount="of"
-      >
+      <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
         Default TeachingPopoverCarouselFooter
       </TeachingPopoverCarouselFooter>,
     );

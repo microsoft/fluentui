@@ -15,7 +15,7 @@ export type CarouselItem = {
   value: string | null;
 };
 
-export type CarouselPageChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+export type CarouselPageChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
    * The value to be set after event has occurred.
    */

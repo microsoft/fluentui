@@ -7,8 +7,11 @@ import { createCarouselStore } from './createCarouselStore';
 export type CarouselContextValue = {
   store: CarouselStore;
   value: string | null;
-  selectPageByDirection: (event: React.MouseEvent<HTMLButtonElement>, direction: 'next' | 'prev') => void;
-  selectPageByValue: (event: React.MouseEvent<HTMLButtonElement>, value: string) => void;
+  selectPageByDirection: (
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+    direction: 'next' | 'prev',
+  ) => void;
+  selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
 };
 
 export const carouselContextDefaultValue: CarouselContextValue = {

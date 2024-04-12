@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Button } from '@fluentui/react-button';
 import { PopoverContextValue } from '@fluentui/react-popover';
+import { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -12,12 +12,12 @@ export type TeachingPopoverCarouselFooterSlots = {
   /**
    * The previous button slot.
    */
-  previous?: Slot<typeof Button>;
+  previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
 
   /**
    * The next button slot.
    */
-  next: NonNullable<Slot<typeof Button>>;
+  next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
 };
 
 export type TeachingPopoverCarouselFooterLayout = 'offset' | 'centered';
