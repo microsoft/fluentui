@@ -1,17 +1,31 @@
 import {
   makeStyles,
   Button,
+  Dropdown,
+  Option,
   Persona,
   shorthands,
   // tokens,
   MessageBar,
   MessageBarTitle,
   MessageBarBody,
+  useId,
 } from '@fluentui/react-components';
 import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
 // import { createPresenceComponent, motionTokens, PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
-import { PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
+import { PresenceGroup, Collapse, Scale, Fade } from '@fluentui/react-motions-preview';
 import * as React from 'react';
+
+const motionOptions = {
+  Collapse,
+  ['Collapse.Pushy']: Collapse.Pushy,
+  ['Collapse.Gentle']: Collapse.Gentle,
+  ['Collapse.Snappy']: Collapse.Snappy,
+  ['Scale']: Scale,
+  ['Fade']: Fade,
+};
+
+type MotionName = keyof typeof motionOptions;
 
 const useClasses = makeStyles({
   container: {
@@ -83,7 +97,7 @@ const users = [
   },
   {
     image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ColinBallinger.jpg',
-    name: 'ColinBallinger',
+    name: 'Colin Ballinger',
   },
   {
     image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/DaisyPhillips.jpg',
@@ -163,6 +177,8 @@ const users = [
   },
 ];
 
+// const ItemMotion = Collapse;
+
 // const ItemMotion = createPresenceComponent({
 //   enter: {
 //     keyframes: [
@@ -182,11 +198,12 @@ const users = [
 //   },
 // });
 
-const ItemMotion = Collapse.Pushy;
-
 export const PresenceGroupDefault = () => {
+  const comboId = useId('combo-variant');
   const classes = useClasses();
   const [limit, setLimit] = React.useState(3);
+  const [motionName, setMotionName] = React.useState<MotionName>(Object.keys(motionOptions)[0] as MotionName);
+  const ItemMotion = motionOptions[motionName];
 
   return (
     <>
@@ -204,6 +221,28 @@ export const PresenceGroupDefault = () => {
           <Button disabled={limit === 0} icon={<DeleteRegular />} onClick={() => setLimit(l => l - 1)} size="small">
             Remove user
           </Button>
+
+          <Dropdown
+            aria-labelledby={comboId}
+            // placeholder="(default)"
+            defaultValue={motionName}
+            // defaultSelectedOptions={}
+            onOptionSelect={React.useCallback(
+              (e: unknown, data: { optionValue: string | undefined }) => {
+                // Clear the custom duration when a preset is selected
+                data.optionValue && setMotionName(data.optionValue as keyof typeof motionOptions);
+              },
+              [setMotionName],
+            )}
+          >
+            {Object.keys(motionOptions).map(optionKey => {
+              return (
+                <Option key={optionKey} value={optionKey}>
+                  {optionKey}
+                </Option>
+              );
+            })}
+          </Dropdown>
         </div>
 
         <div className={classes.card}>
