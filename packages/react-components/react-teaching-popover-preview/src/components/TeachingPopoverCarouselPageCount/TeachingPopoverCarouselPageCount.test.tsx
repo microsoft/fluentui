@@ -7,13 +7,18 @@ describe('TeachingPopoverCarouselPageCount', () => {
   isConformant({
     Component: TeachingPopoverCarouselPageCount,
     displayName: 'TeachingPopoverCarouselPageCount',
+    requiredProps: {
+      children: (currentPage, totalPages) => <div>{`${currentPage} of ${totalPages}`}</div>,
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(
-      <TeachingPopoverCarouselPageCount>Default TeachingPopoverCarouselPageCount</TeachingPopoverCarouselPageCount>,
+      <TeachingPopoverCarouselPageCount>
+        {(currentPage, totalPages) => <div>{`${currentPage} of ${totalPages}`}</div>}
+      </TeachingPopoverCarouselPageCount>,
     );
     expect(result.container).toMatchSnapshot();
   });
