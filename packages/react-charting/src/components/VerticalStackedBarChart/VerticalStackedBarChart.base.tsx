@@ -310,15 +310,13 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _createLines = (
-    xScale: NumericScale,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
     yScale: NumericScale,
     containerHeight: number,
     containerWidth: number,
     secondaryYScale?: NumericScale,
   ): JSX.Element => {
-    const isNumeric = this._xAxisType === XAxisTypes.NumericAxis;
-    const isDate = this._xAxisType === XAxisTypes.DateAxis;
-    const { xBarScale } = this._getScales(containerHeight, containerWidth);
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
     const borderForLines: React.ReactNode[] = [];
@@ -328,31 +326,15 @@ export class VerticalStackedBarChartBase extends React.Component<
       ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
       : 0;
 
-    const xScaleBandwidthTranslate =
-      isNumeric || isDate
-        ? 0
-        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (xBarScale as any).bandwidth() / 2;
+    const xScaleBandwidthTranslate = this._xAxisType !== XAxisTypes.StringAxis ? 0 : xScale.bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
       const shouldHighlight = this._legendHighlighted(item) || this._noLegendHighlighted(); // item is legend name
       for (let i = 1; i < lineObject[item].length; i++) {
-        const x1 = isNumeric
-          ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
-          : isDate
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as Date)
-          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string);
+        const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
         const useSecondaryYScale =
           lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && secondaryYScale;
         const y1 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
-        const x2 = isNumeric
-          ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
-          : isDate
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as Date)
-          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string);
+        const x2 = xScale(lineObject[item][i].xItem.xAxisPoint);
         const y2 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i].y) : yScale(lineObject[item][i].y);
 
         if (lineBorderWidth > 0) {
@@ -397,15 +379,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
-            cx={
-              isNumeric
-                ? xScale(circlePoint.xItem.xAxisPoint as number)
-                : isDate
-                ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  (xBarScale as any)(circlePoint.xItem.xAxisPoint as Date)
-                : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  (xBarScale as any)(circlePoint.xItem.xAxisPoint as string)
-            }
+            cx={xScale(circlePoint.xItem.xAxisPoint)}
             cy={
               circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
             }
@@ -1082,6 +1056,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         /** Rate at which the space between the bars changes wrt the bar width */
         const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
         const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
 

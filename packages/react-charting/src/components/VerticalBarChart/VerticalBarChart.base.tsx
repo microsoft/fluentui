@@ -941,6 +941,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         /** Rate at which the space between the bars changes wrt the bar width */
         const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
         const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
 
