@@ -1,4 +1,4 @@
-export { TagPicker, renderTagPicker_unstable, useTagPicker_unstable } from './TagPicker';
+export { TagPicker, renderTagPicker, useTagPicker } from './TagPicker';
 export type {
   TagPickerContextValues as PickerContextValues,
   TagPickerProps,
@@ -8,49 +8,49 @@ export type {
 export {
   TagPickerInput,
   tagPickerInputClassNames,
-  renderTagPickerInput_unstable,
-  useTagPickerInputStyles_unstable,
-  useTagPickerInput_unstable,
+  renderTagPickerInput,
+  useTagPickerInputStyles,
+  useTagPickerInput,
 } from './TagPickerInput';
 export type { TagPickerInputProps, TagPickerInputSlots, TagPickerInputState } from './TagPickerInput';
 export {
   TagPickerList,
   tagPickerListClassNames,
-  renderTagPickerList_unstable,
-  useTagPickerListStyles_unstable,
-  useTagPickerList_unstable,
+  renderTagPickerList,
+  useTagPickerListStyles,
+  useTagPickerList,
 } from './TagPickerList';
 export type { TagPickerListProps, TagPickerListSlots, TagPickerListState } from './TagPickerList';
 export {
   TagPickerButton,
   tagPickerButtonClassNames,
-  renderTagPickerButton_unstable,
-  useTagPickerButtonStyles_unstable,
-  useTagPickerButton_unstable,
+  renderTagPickerButton,
+  useTagPickerButtonStyles,
+  useTagPickerButton,
 } from './TagPickerButton';
 export type { TagPickerButtonProps, TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButton';
 export {
   TagPickerControl,
   tagPickerControlClassNames,
-  renderTagPickerControl_unstable,
-  useTagPickerControlStyles_unstable,
-  useTagPickerControl_unstable,
+  renderTagPickerControl,
+  useTagPickerControlStyles,
+  useTagPickerControl,
 } from './TagPickerControl';
 export type { TagPickerControlProps, TagPickerControlSlots, TagPickerControlState } from './TagPickerControl';
 export {
   TagPickerOption,
   tagPickerOptionClassNames,
-  renderTagPickerOption_unstable,
-  useTagPickerOptionStyles_unstable,
-  useTagPickerOption_unstable,
+  renderTagPickerOption,
+  useTagPickerOptionStyles,
+  useTagPickerOption,
 } from './TagPickerOption';
 export type { TagPickerOptionProps, TagPickerOptionSlots, TagPickerOptionState } from './TagPickerOption';
 export {
   TagPickerGroup,
   tagPickerGroupClassNames,
-  renderTagPickerGroup_unstable,
-  useTagPickerGroupStyles_unstable,
-  useTagPickerGroup_unstable,
+  renderTagPickerGroup,
+  useTagPickerGroupStyles,
+  useTagPickerGroup,
 } from './TagPickerGroup';
 export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup';
 

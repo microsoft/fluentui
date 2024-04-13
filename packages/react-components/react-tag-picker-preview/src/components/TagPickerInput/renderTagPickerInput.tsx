@@ -7,7 +7,7 @@ import type { TagPickerInputState, TagPickerInputSlots } from './TagPickerInput.
 /**
  * Render the final JSX of TagPickerInput
  */
-export const renderTagPickerInput_unstable = (state: TagPickerInputState) => {
+export const renderTagPickerInput = (state: TagPickerInputState) => {
   assertSlots<TagPickerInputSlots>(state);
 
   return <state.root />;

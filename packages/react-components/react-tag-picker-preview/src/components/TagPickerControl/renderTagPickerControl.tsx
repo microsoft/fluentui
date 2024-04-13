@@ -11,7 +11,7 @@ import type {
 /**
  * Render the final JSX of PickerControl
  */
-export const renderTagPickerControl_unstable = (state: TagPickerControlState) => {
+export const renderTagPickerControl = (state: TagPickerControlState) => {
   assertSlots<TagPickerControlSlots & TagPickerControlInternalSlots>(state);
 
   return (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent as useFluent } from '@fluentui/react-shared-contexts';
 
 export const useResizeObserverRef = <E extends HTMLElement>(callback: ResizeObserverCallback): React.Ref<E> => {
   const { targetDocument } = useFluent();

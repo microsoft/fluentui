@@ -14,12 +14,12 @@ import { useComboboxBaseState, ComboboxBaseState } from '@fluentui/react-combobo
 /**
  * Create the state required to render Picker.
  *
- * The returned state can be modified with hooks such as usePickerStyles_unstable,
- * before being passed to renderPicker_unstable.
+ * The returned state can be modified with hooks such as usePickerStyles,
+ * before being passed to renderPicker.
  *
  * @param props - props from this instance of Picker
  */
-export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
+export const useTagPicker = (props: TagPickerProps): TagPickerState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);

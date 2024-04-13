@@ -1,7 +1,7 @@
 import { mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerOptionGroupSlots, TagPickerOptionGroupState } from './TagPickerOptionGroup.types';
-import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionGroupStyles } from '@fluentui/react-combobox';
 
 export const tagPickerOptionGroupClassNames: SlotClassNames<TagPickerOptionGroupSlots> = {
   root: 'fui-TagPickerOptionGroup',
@@ -12,7 +12,7 @@ export const tagPickerOptionGroupClassNames: SlotClassNames<TagPickerOptionGroup
  * Apply styling to the TagPickerOptionGroup slots based on the state
  */
 export const useTagPickerOptionGroupStyles = (state: TagPickerOptionGroupState): TagPickerOptionGroupState => {
-  useOptionGroupStyles_unstable(state);
+  useOptionGroupStyles(state);
   state.root.className = mergeClasses(tagPickerOptionGroupClassNames.root, state.root.className);
 
   if (state.label) {

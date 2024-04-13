@@ -65,7 +65,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the TagPickerInput slots based on the state
  */
-export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): TagPickerInputState => {
+export const useTagPickerInputStyles = (state: TagPickerInputState): TagPickerInputState => {
   const baseStyle = useBaseStyle();
   const styles = useStyles();
   state.root.className = mergeClasses(

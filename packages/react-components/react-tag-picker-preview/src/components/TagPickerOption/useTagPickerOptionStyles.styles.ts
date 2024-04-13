@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerOptionSlots, TagPickerOptionState } from './TagPickerOption.types';
-import { useOptionStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionStyles } from '@fluentui/react-combobox';
 
 export const tagPickerOptionClassNames: SlotClassNames<TagPickerOptionSlots> = {
   root: 'fui-TagPickerOption',
@@ -32,8 +32,8 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the TagPickerOption slots based on the state
  */
-export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): TagPickerOptionState => {
-  useOptionStyles_unstable({
+export const useTagPickerOptionStyles = (state: TagPickerOptionState): TagPickerOptionState => {
+  useOptionStyles({
     ...state,
     active: false,
     disabled: false,

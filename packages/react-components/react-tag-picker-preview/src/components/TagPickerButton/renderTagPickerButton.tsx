@@ -7,7 +7,7 @@ import type { TagPickerButtonState, TagPickerButtonSlots } from './TagPickerButt
 /**
  * Render the final JSX of PickerButton
  */
-export const renderTagPickerButton_unstable = (state: TagPickerButtonState) => {
+export const renderTagPickerButton = (state: TagPickerButtonState) => {
   assertSlots<TagPickerButtonSlots>(state);
 
   return <state.root />;

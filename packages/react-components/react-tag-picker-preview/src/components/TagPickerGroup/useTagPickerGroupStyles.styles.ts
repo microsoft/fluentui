@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup.types';
-import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagGroupStyles } from '@fluentui/react-tags';
 import { tokens } from '@fluentui/react-theme';
 import { tagSizeToTagPickerSize } from '../../utils/tagPicker2Tag';
 
@@ -35,8 +35,8 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the TagPickerGroup slots based on the state
  */
-export const useTagPickerGroupStyles_unstable = (state: TagPickerGroupState): TagPickerGroupState => {
-  useTagGroupStyles_unstable(state);
+export const useTagPickerGroupStyles = (state: TagPickerGroupState): TagPickerGroupState => {
+  useTagGroupStyles(state);
   const styles = useStyles();
   state.root.className = mergeClasses(
     tagPickerGroupClassNames.root,

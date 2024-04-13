@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
-import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
+import { useTagPickerContext } from '../../contexts/TagPickerContext';
 import {
   useMergedRefs,
   getIntrinsicElementProps,
@@ -11,27 +11,27 @@ import {
 } from '@fluentui/react-utilities';
 import { Backspace, Enter } from '@fluentui/keyboard-keys';
 import { useInputTriggerSlot } from '@fluentui/react-combobox';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldControlProps } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
 
 /**
  * Create the state required to render TagPickerInput.
  *
- * The returned state can be modified with hooks such as useTagPickerInputStyles_unstable,
- * before being passed to renderTagPickerInput_unstable.
+ * The returned state can be modified with hooks such as useTagPickerInputStyles,
+ * before being passed to renderTagPickerInput.
  *
  * @param props - props from this instance of TagPickerInput
  * @param ref - reference to root HTMLDivElement of TagPickerInput
  */
-export const useTagPickerInput_unstable = (
+export const useTagPickerInput = (
   props: TagPickerInputProps,
   ref: React.Ref<HTMLInputElement>,
 ): TagPickerInputState => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+  props = useFieldControlProps(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
   const { controller: activeDescendantController } = useActiveDescendantContext();
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const freeform = useTagPickerContext_unstable(ctx => ctx.freeform);
-  const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+  const size = useTagPickerContext(ctx => ctx.size);
+  const freeform = useTagPickerContext(ctx => ctx.freeform);
+  const contextDisabled = useTagPickerContext(ctx => ctx.disabled);
   const {
     triggerRef,
     clearSelection,
@@ -134,18 +134,18 @@ export const useTagPickerInput_unstable = (
 
 function useTagPickerContexts() {
   return {
-    triggerRef: useTagPickerContext_unstable(ctx => ctx.triggerRef) as React.RefObject<HTMLInputElement>,
-    clearSelection: useTagPickerContext_unstable(ctx => ctx.clearSelection),
-    getOptionById: useTagPickerContext_unstable(ctx => ctx.getOptionById),
-    open: useTagPickerContext_unstable(ctx => ctx.open),
-    selectOption: useTagPickerContext_unstable(ctx => ctx.selectOption),
-    selectedOptions: useTagPickerContext_unstable(ctx => ctx.selectedOptions),
-    setHasFocus: useTagPickerContext_unstable(ctx => ctx.setHasFocus),
-    setOpen: useTagPickerContext_unstable(ctx => ctx.setOpen),
-    setValue: useTagPickerContext_unstable(ctx => ctx.setValue),
-    multiselect: useTagPickerContext_unstable(ctx => ctx.multiselect),
-    value: useTagPickerContext_unstable(ctx => ctx.value),
-    popoverId: useTagPickerContext_unstable(ctx => ctx.popoverId),
+    triggerRef: useTagPickerContext(ctx => ctx.triggerRef) as React.RefObject<HTMLInputElement>,
+    clearSelection: useTagPickerContext(ctx => ctx.clearSelection),
+    getOptionById: useTagPickerContext(ctx => ctx.getOptionById),
+    open: useTagPickerContext(ctx => ctx.open),
+    selectOption: useTagPickerContext(ctx => ctx.selectOption),
+    selectedOptions: useTagPickerContext(ctx => ctx.selectedOptions),
+    setHasFocus: useTagPickerContext(ctx => ctx.setHasFocus),
+    setOpen: useTagPickerContext(ctx => ctx.setOpen),
+    setValue: useTagPickerContext(ctx => ctx.setValue),
+    multiselect: useTagPickerContext(ctx => ctx.multiselect),
+    value: useTagPickerContext(ctx => ctx.value),
+    popoverId: useTagPickerContext(ctx => ctx.popoverId),
   };
 }
 

@@ -9,34 +9,34 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
-import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
+import { useTagPickerContext } from '../../contexts/TagPickerContext';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
 import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
-import { useFieldContext_unstable } from '@fluentui/react-field';
+import { useFieldContext } from '@fluentui/react-field';
 
 /**
  * Create the state required to render PickerControl.
  *
- * The returned state can be modified with hooks such as usePickerControlStyles_unstable,
- * before being passed to renderPickerControl_unstable.
+ * The returned state can be modified with hooks such as usePickerControlStyles,
+ * before being passed to renderPickerControl.
  *
  * @param props - props from this instance of PickerControl
  * @param ref - reference to root HTMLDivElement of PickerControl
  */
-export const useTagPickerControl_unstable = (
+export const useTagPickerControl = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
-  const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
-  const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
-  const open = useTagPickerContext_unstable(ctx => ctx.open);
-  const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
-  const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
-  const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
-  const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
-  const invalid = useFieldContext_unstable()?.validationState === 'error';
+  const targetRef = useTagPickerContext(ctx => ctx.targetRef);
+  const triggerRef = useTagPickerContext(ctx => ctx.triggerRef);
+  const open = useTagPickerContext(ctx => ctx.open);
+  const setOpen = useTagPickerContext(ctx => ctx.setOpen);
+  const secondaryInnerActionRef = useTagPickerContext(ctx => ctx.secondaryActionRef);
+  const size = useTagPickerContext(ctx => ctx.size);
+  const appearance = useTagPickerContext(ctx => ctx.appearance);
+  const disabled = useTagPickerContext(ctx => ctx.disabled);
+  const invalid = useFieldContext()?.validationState === 'error';
 
   const innerRef = React.useRef<HTMLDivElement>(null);
 

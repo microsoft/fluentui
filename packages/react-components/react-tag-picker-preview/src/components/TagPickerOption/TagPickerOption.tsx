@@ -1,18 +1,18 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useTagPickerOption_unstable } from './useTagPickerOption';
-import { renderTagPickerOption_unstable } from './renderTagPickerOption';
-import { useTagPickerOptionStyles_unstable } from './useTagPickerOptionStyles.styles';
+import { useTagPickerOption } from './useTagPickerOption';
+import { renderTagPickerOption } from './renderTagPickerOption';
+import { useTagPickerOptionStyles } from './useTagPickerOptionStyles.styles';
 import type { TagPickerOptionProps } from './TagPickerOption.types';
 
 /**
  * TagPickerOption component - TODO: add more docs
  */
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps> = React.forwardRef((props, ref) => {
-  const state = useTagPickerOption_unstable(props, ref);
+  const state = useTagPickerOption(props, ref);
 
-  useTagPickerOptionStyles_unstable(state);
-  return renderTagPickerOption_unstable(state);
+  useTagPickerOptionStyles(state);
+  return renderTagPickerOption(state);
 });
 
 TagPickerOption.displayName = 'TagPickerOption';

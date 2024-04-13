@@ -134,7 +134,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the PickerButton slots based on the state
  */
-export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): TagPickerButtonState => {
+export const useTagPickerButtonStyles = (state: TagPickerButtonState): TagPickerButtonState => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     tagPickerButtonClassNames.root,

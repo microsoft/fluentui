@@ -59,5 +59,5 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
 const TagPickerContext = createContext<TagPickerContextValue | undefined>(undefined);
 
 export const TagPickerContextProvider = TagPickerContext.Provider;
-export const useTagPickerContext_unstable = <T>(selector: ContextSelector<TagPickerContextValue, T>) =>
+export const useTagPickerContext = <T>(selector: ContextSelector<TagPickerContextValue, T>) =>
   useContextSelector(TagPickerContext, (ctx = tagPickerContextDefaultValue) => selector(ctx));
