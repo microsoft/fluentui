@@ -40,6 +40,7 @@ import {
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
+  getClosestPairDiffAndRange,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -201,7 +202,6 @@ export class VerticalStackedBarChartBase extends React.Component<
           legendBars={legendBars}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
-          barwidth={this._barWidth}
           focusZoneDirection={
             isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
           }
@@ -771,7 +771,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
 
-    if (this._xAxisType === XAxisTypes.StringAxis && this.props.barWidth === 'auto') {
+    if (this._xAxisType === XAxisTypes.StringAxis) {
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
@@ -786,14 +786,8 @@ export class VerticalStackedBarChartBase extends React.Component<
           ? (singleChartData.xAxisPoint as Date)
           : (singleChartData.xAxisPoint as string),
       );
-      //Time Range is  +/-barwidth/2 , so we have to adjust
-      //that while making bars because the tick must come in center of bar
       const xScaleBandwidthTranslate =
-        this._xAxisType === XAxisTypes.NumericAxis
-          ? 0
-          : this._xAxisType === XAxisTypes.DateAxis
-          ? -this._barWidth / 2
-          : (xBarScale.bandwidth() - this._barWidth) / 2;
+        this._xAxisType !== XAxisTypes.StringAxis ? 0 : (xBarScale.bandwidth() - this._barWidth) / 2;
 
       let barTotalValue = 0;
 
@@ -964,8 +958,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
-          this.margins.left! + this._domainMargin,
-          containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
+          this.margins.left! + this._domainMargin - this._barWidth / 2,
+          containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
         ]);
 
       return { xBarScale, yBarScale };
@@ -980,7 +974,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       const xBarScale = d3ScaleUtc()
         .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
         .range([
-          this.margins.left! + this._domainMargin + this._barWidth / 2,
+          this.margins.left! + this._domainMargin - this._barWidth / 2,
           containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
         ]);
 
@@ -1093,9 +1087,16 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
-          this._domainMargin += (totalWidth - reqWidth) / 2;
+          this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
       }
+    } else {
+      this._barWidth = getBarWidth(
+        this.props.barWidth,
+        this.props.maxBarWidth,
+        this._calculateAppropriateBarWidth(containerWidth),
+      );
+      this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
 
     return {
@@ -1112,4 +1113,17 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.data.filter(item => item.chartData.length === 0).length === 0
     );
   }
+
+  private _calculateAppropriateBarWidth = (containerWidth: number) => {
+    const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
+    const result = getClosestPairDiffAndRange(data);
+    if (!result || result[1] === 0) {
+      return 16;
+    }
+    const [closestPairDiff, range] = result;
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    const barWidth = Math.ceil((totalWidth * closestPairDiff) / (2 * range + closestPairDiff));
+    return barWidth;
+  };
 }

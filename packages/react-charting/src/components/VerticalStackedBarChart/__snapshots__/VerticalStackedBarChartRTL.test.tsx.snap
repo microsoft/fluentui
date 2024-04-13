@@ -76,13 +76,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M279.5,6V0.5H391.5V6"
+            d="M297.5,6V0.5H373.5V6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(287,0)rotate(-45)"
+            transform="translate(302.42857142857144,0)rotate(-45)"
           >
             <line
               stroke="#000"
@@ -118,7 +118,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(383,0)rotate(-45)"
+            transform="translate(367.57142857142856,0)rotate(-45)"
           >
             <line
               stroke="#000"
@@ -281,8 +281,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="4.74"
                 transform="translate(0, 0)"
-                width="16"
-                x="279"
+                width="10.857142857142858"
+                x="297"
                 y="252.26"
               />
               <rect
@@ -295,28 +295,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="3"
                 transform="translate(0, 0)"
-                width="16"
-                x="279"
+                width="10.857142857142858"
+                x="297"
                 y="249.26"
               />
             </g>
-            <text
-              aria-label="Total: 2.5"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="287"
-              y="243.26"
-            >
-              2.5
-            </text>
           </g>
           <g>
             <g
@@ -336,8 +319,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="71.1"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="185.9"
               />
               <rect
@@ -350,8 +333,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="7.109999999999999"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="178.79000000000002"
               />
               <rect
@@ -364,28 +347,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00bcf2"
                 height="94.79999999999998"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="83.99000000000004"
               />
             </g>
-            <text
-              aria-label="Total: 73"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="335"
-              y="77.99000000000004"
-            >
-              73
-            </text>
           </g>
           <g>
             <g
@@ -405,8 +371,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="23.700000000000003"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="233.3"
               />
               <rect
@@ -419,8 +385,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="142.20000000000002"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="91.1"
               />
               <rect
@@ -433,28 +399,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00bcf2"
                 height="71.10000000000001"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="19.999999999999986"
               />
             </g>
-            <text
-              aria-label="Total: 100"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="383"
-              y="13.999999999999986"
-            >
-              100
-            </text>
           </g>
         </g>
         <g>
@@ -463,9 +412,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(8, 0)"
-            x1="279"
-            x2="327"
+            transform="translate(5.428571428571429, 0)"
+            x1="297"
+            x2="329.57142857142856"
             y1="157.46000000000004"
             y2="159.83"
           />
@@ -474,40 +423,40 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(8, 0)"
-            x1="327"
-            x2="375"
+            transform="translate(5.428571428571429, 0)"
+            x1="329.57142857142856"
+            x2="362.1428571428571"
             y1="159.83"
             y2="20"
           />
           <circle
-            cx="279"
+            cx="297"
             cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
           <circle
-            cx="327"
+            cx="329.57142857142856"
             cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
           <circle
-            cx="375"
+            cx="362.1428571428571"
             cy="20"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
         </g>
@@ -996,13 +945,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M279.5,6V0.5H391.5V6"
+            d="M297.5,6V0.5H373.5V6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(287,0)rotate(-45)"
+            transform="translate(302.42857142857144,0)rotate(-45)"
           >
             <line
               stroke="#000"
@@ -1038,7 +987,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(383,0)rotate(-45)"
+            transform="translate(367.57142857142856,0)rotate(-45)"
           >
             <line
               stroke="#000"
@@ -1201,8 +1150,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="4.74"
                 transform="translate(0, 0)"
-                width="16"
-                x="279"
+                width="10.857142857142858"
+                x="297"
                 y="252.26"
               />
               <rect
@@ -1215,28 +1164,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="3"
                 transform="translate(0, 0)"
-                width="16"
-                x="279"
+                width="10.857142857142858"
+                x="297"
                 y="249.26"
               />
             </g>
-            <text
-              aria-label="Total: 2.5"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="287"
-              y="243.26"
-            >
-              2.5
-            </text>
           </g>
           <g>
             <g
@@ -1256,8 +1188,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="71.1"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="185.9"
               />
               <rect
@@ -1270,8 +1202,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="7.109999999999999"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="178.79000000000002"
               />
               <rect
@@ -1284,28 +1216,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00bcf2"
                 height="94.79999999999998"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="83.99000000000004"
               />
             </g>
-            <text
-              aria-label="Total: 73"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="335"
-              y="77.99000000000004"
-            >
-              73
-            </text>
           </g>
           <g>
             <g
@@ -1325,8 +1240,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#0078d4"
                 height="23.700000000000003"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="233.3"
               />
               <rect
@@ -1339,8 +1254,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00188f"
                 height="142.20000000000002"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="91.1"
               />
               <rect
@@ -1353,28 +1268,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 fill="#00bcf2"
                 height="71.10000000000001"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="19.999999999999986"
               />
             </g>
-            <text
-              aria-label="Total: 100"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="383"
-              y="13.999999999999986"
-            >
-              100
-            </text>
           </g>
         </g>
         <g>
@@ -1383,9 +1281,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(8, 0)"
-            x1="279"
-            x2="327"
+            transform="translate(5.428571428571429, 0)"
+            x1="297"
+            x2="329.57142857142856"
             y1="157.46000000000004"
             y2="159.83"
           />
@@ -1394,40 +1292,40 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(8, 0)"
-            x1="327"
-            x2="375"
+            transform="translate(5.428571428571429, 0)"
+            x1="329.57142857142856"
+            x2="362.1428571428571"
             y1="159.83"
             y2="20"
           />
           <circle
-            cx="279"
+            cx="297"
             cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
           <circle
-            cx="327"
+            cx="329.57142857142856"
             cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
           <circle
-            cx="375"
+            cx="362.1428571428571"
             cy="20"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
         </g>
@@ -1916,13 +1814,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
         >
           <path
             class="domain"
-            d="M279.5,6V0.5H391.5V6"
+            d="M297.5,6V0.5H373.5V6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(287,0)"
+            transform="translate(302.42857142857144,0)"
           >
             <line
               stroke="#000"
@@ -1958,7 +1856,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           <g
             class="tick"
             opacity="1"
-            transform="translate(383,0)"
+            transform="translate(367.57142857142856,0)"
           >
             <line
               stroke="#000"
@@ -2121,8 +2019,8 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#0078d4"
                 height="4.74"
                 transform="translate(0, 0)"
-                width="16"
-                x="279"
+                width="10.857142857142858"
+                x="297"
                 y="252.26"
               />
               <rect
@@ -2135,28 +2033,11 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#00188f"
                 height="3"
                 transform="translate(0, 0)"
-                width="16"
-                x="279"
+                width="10.857142857142858"
+                x="297"
                 y="249.26"
               />
             </g>
-            <text
-              aria-label="Total: 2.5"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="287"
-              y="243.26"
-            >
-              2.5
-            </text>
           </g>
           <g>
             <g
@@ -2176,8 +2057,8 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#0078d4"
                 height="71.1"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="185.9"
               />
               <rect
@@ -2190,8 +2071,8 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#00188f"
                 height="7.109999999999999"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="178.79000000000002"
               />
               <rect
@@ -2204,28 +2085,11 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#00bcf2"
                 height="94.79999999999998"
                 transform="translate(0, 0)"
-                width="16"
-                x="327"
+                width="10.857142857142858"
+                x="329.57142857142856"
                 y="83.99000000000004"
               />
             </g>
-            <text
-              aria-label="Total: 73"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="335"
-              y="77.99000000000004"
-            >
-              73
-            </text>
           </g>
           <g>
             <g
@@ -2245,8 +2109,8 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#0078d4"
                 height="23.700000000000003"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="233.3"
               />
               <rect
@@ -2259,8 +2123,8 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#00188f"
                 height="142.20000000000002"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="91.1"
               />
               <rect
@@ -2273,28 +2137,11 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 fill="#00bcf2"
                 height="71.10000000000001"
                 transform="translate(0, 0)"
-                width="16"
-                x="375"
+                width="10.857142857142858"
+                x="362.1428571428571"
                 y="19.999999999999986"
               />
             </g>
-            <text
-              aria-label="Total: 100"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="383"
-              y="13.999999999999986"
-            >
-              100
-            </text>
           </g>
         </g>
         <g>
@@ -2303,9 +2150,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(8, 0)"
-            x1="279"
-            x2="327"
+            transform="translate(5.428571428571429, 0)"
+            x1="297"
+            x2="329.57142857142856"
             y1="157.46000000000004"
             y2="159.83"
           />
@@ -2314,40 +2161,40 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             stroke="#e3008c"
             stroke-linecap="round"
             stroke-width="3"
-            transform="translate(8, 0)"
-            x1="327"
-            x2="375"
+            transform="translate(5.428571428571429, 0)"
+            x1="329.57142857142856"
+            x2="362.1428571428571"
             y1="159.83"
             y2="20"
           />
           <circle
-            cx="279"
+            cx="297"
             cy="157.46000000000004"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
           <circle
-            cx="327"
+            cx="329.57142857142856"
             cy="159.83"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
           <circle
-            cx="375"
+            cx="362.1428571428571"
             cy="20"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            transform="translate(8, 0)"
+            transform="translate(5.428571428571429, 0)"
             visibility="hidden"
           />
         </g>

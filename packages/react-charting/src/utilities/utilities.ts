@@ -1497,7 +1497,7 @@ export const getBarWidth = (
   if (typeof barWidthProp === 'number') {
     barWidth = barWidthProp;
   } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
-    barWidth = DEFAULT_BAR_WIDTH;
+    barWidth = Math.min(defaultValue, DEFAULT_BAR_WIDTH);
   } else {
     barWidth = defaultValue;
   }

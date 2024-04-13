@@ -646,11 +646,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }
       const xPoint = xBarScale(point.x);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
-      if (this.props.barWidth === 'auto') {
-        // Setting the bar width here is safe because there are no dependencies earlier in the code
-        // that rely on the width of bars in vertical bar charts with string x-axis.
-        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
-      }
+      // Setting the bar width here is safe because there are no dependencies earlier in the code
+      // that rely on the width of bars in vertical bar charts with string x-axis.
+      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
       return (
         <g
           key={point.x instanceof Date ? point.x.getTime() : point.x}
@@ -952,7 +950,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         }
       }
     } else {
-      this._barWidth = this._calculateAppropriateBarWidth(containerWidth);
+      this._barWidth = getBarWidth(
+        this.props.barWidth,
+        this.props.maxBarWidth,
+        this._calculateAppropriateBarWidth(containerWidth),
+      );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
 
@@ -973,7 +975,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _calculateAppropriateBarWidth = (containerWidth: number) => {
     const data = (this.props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
     const result = getClosestPairDiffAndRange(data);
-    if (!result) {
+    if (!result || result[1] === 0) {
       return 16;
     }
     const [closestPairDiff, range] = result;

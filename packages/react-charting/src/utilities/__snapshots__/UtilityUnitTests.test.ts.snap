@@ -3952,8 +3952,8 @@ exports[`domainRageOfVerticalNumeric should return domain and range values corre
 Object {
   "dEndValue": 30,
   "dStartValue": 10,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
@@ -3961,8 +3961,8 @@ exports[`domainRageOfVerticalNumeric should return domain and range values corre
 Object {
   "dEndValue": 10,
   "dStartValue": 30,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
@@ -4033,8 +4033,8 @@ exports[`domainRangeOfVSBCNumeric should return domain and range values correctl
 Object {
   "dEndValue": 30,
   "dStartValue": 10,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
@@ -4042,8 +4042,8 @@ exports[`domainRangeOfVSBCNumeric should return domain and range values correctl
 Object {
   "dEndValue": 10,
   "dStartValue": 30,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
@@ -4129,8 +4129,8 @@ exports[`getDomainNRangeValues should return domain and range values correctly f
 Object {
   "dEndValue": 2021-01-03T00:00:00.000Z,
   "dStartValue": 2021-01-02T00:00:00.000Z,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
@@ -4147,8 +4147,8 @@ exports[`getDomainNRangeValues should return domain and range values correctly f
 Object {
   "dEndValue": 30,
   "dStartValue": 10,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
@@ -4156,8 +4156,8 @@ exports[`getDomainNRangeValues should return domain and range values correctly f
 Object {
   "dEndValue": 30,
   "dStartValue": 10,
-  "rEndValue": 82,
-  "rStartValue": 13,
+  "rEndValue": 90,
+  "rStartValue": 5,
 }
 `;
 
