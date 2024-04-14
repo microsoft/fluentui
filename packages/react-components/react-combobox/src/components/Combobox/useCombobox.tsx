@@ -40,6 +40,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
 
   const { clearable, clearSelection, multiselect, open, selectedOptions, value, hasFocus } = baseState;
+  const { onHighlightedOptionChange } = props;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
@@ -70,6 +71,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       ...triggerNativeProps,
     },
     activeDescendantController,
+    onHighlightedOptionChange,
   });
 
   const rootSlot = slot.always(props.root, {

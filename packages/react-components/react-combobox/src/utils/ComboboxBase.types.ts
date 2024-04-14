@@ -144,6 +144,8 @@ export type ComboboxBaseOpenEvents =
   | React.KeyboardEvent<HTMLElement>
   | React.FocusEvent<HTMLElement>;
 
+export type ComboboxBaseHighlightChangeEvents = React.KeyboardEvent<HTMLElement> | React.ChangeEvent<HTMLInputElement>;
+
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
   activeDescendant: ActiveDescendantContextValue;
@@ -158,5 +160,5 @@ export type HighlightedOptionChangeData = {
 };
 
 export type HighlightedOptionProps = {
-  onHighlightedOptionChange: (event: ComboboxBaseOpenEvents, data?: HighlightedOptionChangeData) => void;
+  onHighlightedOptionChange?: (event?: ComboboxBaseHighlightChangeEvents, data?: HighlightedOptionChangeData) => void;
 };

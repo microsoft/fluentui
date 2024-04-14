@@ -208,9 +208,9 @@ function useTriggerKeydown(
         break;
     }
 
-    const newActiveOption = getActiveOption();
-    if (activeOption !== newActiveOption) {
-      onHighlightedOptionChange(e, newActiveOption);
+    const highlightedOption = getActiveOption();
+    if (onHighlightedOptionChange && highlightedOption !== activeOption) {
+      onHighlightedOptionChange(e, { highlightedOption });
     }
   });
 }

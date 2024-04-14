@@ -18,19 +18,31 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
   const styles = useStyles();
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
+  const eventCount = React.useRef(0);
+
   const onHighlightedOptionChange = React.useCallback(
     (e, data) => {
-      setActiveOptionText(data?.text);
+      eventCount.current++;
+      setActiveOptionText(
+        `HighlightedOptionChange: ${data?.highlightedOption?.text} Called ${eventCount.current} times.`,
+      );
     },
     [setActiveOptionText],
   );
 
+  const onMouseEnter = React.useCallback(
+    e => {
+      eventCount.current++;
+      setActiveOptionText(`Mouse enter: ${e.target.textContent} Called ${eventCount.current} times.`);
+    },
+    [setActiveOptionText],
+  );
   return (
     <div className={styles.root}>
       {activeOptionText}
       <label id={dropdownId}>Schedule a meeting</label>
-      <Dropdown aria-labelledby={dropdownId} {...props} onHighlightedOptionChange={onHighlightedOptionChange}>
-        <Option text="Katri Athokas">
+      <Dropdown aria-labelledby={dropdownId} onHighlightedOptionChange={onHighlightedOptionChange} {...props}>
+        <Option text="Katri Athokas" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Katri Athokas"
@@ -40,7 +52,7 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
             secondaryText="Available"
           />
         </Option>
-        <Option text="Elvia Atkins">
+        <Option text="Elvia Atkins" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Elvia Atkins"
@@ -50,7 +62,7 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
             secondaryText="Busy"
           />
         </Option>
-        <Option text="Cameron Evans">
+        <Option text="Cameron Evans" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Cameron Evans"
@@ -60,7 +72,7 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
             secondaryText="Away"
           />
         </Option>
-        <Option text="Wanda Howard">
+        <Option text="Wanda Howard" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Wanda Howard"
@@ -80,7 +92,7 @@ HighlightedOptionChange.parameters = {
     description: {
       story:
         'OnHighlightedOptionChange event handler allows reacting on changing the active option from Dropdown Listbox ' +
-        'triggered by keyboard. To react on mouse hover events, use onHover event handler on the invididual options.',
+        'triggered by keyboard. To react on mouse hover events, use onMouseEnter event handler on the invididual options.',
     },
   },
 };
