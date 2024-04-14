@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
@@ -14,7 +14,7 @@ export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
  */
 const useRootResetStyles = makeResetStyles({
   ...typographyStyles.subtitle1,
-  ...shorthands.margin(0),
+  margin: 0,
   gridRowStart: 1,
   gridRowEnd: 1,
   gridColumnStart: 1,
@@ -44,9 +44,9 @@ const useActionResetStyles = makeResetStyles({
  */
 export const useDialogTitleInternalStyles = makeResetStyles({
   ...createFocusOutlineStyle(),
-  ...shorthands.overflow('visible'),
-  ...shorthands.padding(0),
-  ...shorthands.borderStyle('none'),
+  overflow: 'visible',
+  padding: 0,
+  borderStyle: 'none',
   position: 'relative',
   boxSizing: 'content-box',
   backgroundColor: 'inherit',

@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -11,8 +11,8 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  ...shorthands.padding(tokens.strokeWidthThick),
-  ...shorthands.margin(`calc(${tokens.strokeWidthThick} * -1)`),
+  padding: tokens.strokeWidthThick,
+  margin: `calc(${tokens.strokeWidthThick} * -1)`,
   ...typographyStyles.body1,
   overflowY: 'auto',
   minHeight: '32px',
