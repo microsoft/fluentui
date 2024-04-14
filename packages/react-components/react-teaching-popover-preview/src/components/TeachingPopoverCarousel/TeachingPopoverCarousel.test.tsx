@@ -9,13 +9,6 @@ describe('TeachingPopoverCarousel', () => {
     displayName: 'TeachingPopoverCarousel',
     requiredProps: {
       defaultValue: '',
-      footer: {
-        next: 'Next',
-        previous: 'Previous',
-        initialStepText: 'Close',
-        finalStepText: 'Finish',
-        pageCount: 'of',
-      },
     },
     disabledTests: ['component-has-static-classnames-object'],
   });
