@@ -17,6 +17,7 @@ type UseInputTriggerSlotOptions = {
   freeform: boolean | undefined;
   defaultProps?: Partial<ComboboxProps>;
   activeDescendantController: ActiveDescendantImperativeRef;
+  onHighlightedOptionChange: (event: React.KeyboardEvent<HTMLElement>, data: HighlightedOptionChangeData) => void;
 };
 
 /**
@@ -45,6 +46,7 @@ export function useInputTriggerSlot(
     freeform,
     defaultProps,
     activeDescendantController,
+    onHighlightedOptionChange,
   } = options;
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -104,6 +106,7 @@ export function useInputTriggerSlot(
     defaultProps,
     elementType: 'input',
     activeDescendantController,
+    onHighlightedOptionChange,
   });
 
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);

@@ -4,12 +4,13 @@ import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
+import { HighlightedOptionProps } from '../../utils/ComboboxBase.types';
 
 type UseButtonTriggerSlotOptions = {
   state: UseTriggerSlotState;
   defaultProps: unknown;
   activeDescendantController: ActiveDescendantImperativeRef;
-};
+} & HighlightedOptionProps;
 
 /**
  * @internal
@@ -115,6 +116,7 @@ export function useButtonTriggerSlot(
     defaultProps,
     elementType: 'button',
     activeDescendantController,
+    onHighlightedOptionChange: options.onHighlightedOptionChange,
   });
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 

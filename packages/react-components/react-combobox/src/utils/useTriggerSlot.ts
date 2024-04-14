@@ -4,7 +4,7 @@ import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
-import type { ComboboxBaseState } from './ComboboxBase.types';
+import type { ComboboxBaseState, HighlightedOptionProps } from './ComboboxBase.types';
 import { OptionValue } from './OptionCollection.types';
 
 export type UseTriggerSlotState = Pick<
@@ -37,13 +37,14 @@ export function useTriggerSlot(
 export function useTriggerSlot(
   triggerSlotFromProp: NonNullable<Slot<'input'>> | NonNullable<Slot<'button'>>,
   ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement>,
-  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
+  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' } & HighlightedOptionProps,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
     state: { open, setOpen, setHasFocus },
     defaultProps,
     elementType,
     activeDescendantController,
+    onHighlightedOptionChange,
   } = options;
 
   const trigger = slot.always(triggerSlotFromProp, {
@@ -83,7 +84,7 @@ export function useTriggerSlot(
 
   // handle combobox keyboard interaction
   trigger.onKeyDown = mergeCallbacks(
-    useTriggerKeydown({ activeDescendantController, ...options.state }),
+    useTriggerKeydown({ activeDescendantController, onHighlightedOptionChange, ...options.state }),
     trigger.onKeyDown,
   );
 
@@ -93,9 +94,18 @@ export function useTriggerSlot(
 function useTriggerKeydown(
   options: {
     activeDescendantController: ActiveDescendantImperativeRef;
-  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'>,
+  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'> &
+    HighlightedOptionProps,
 ) {
-  const { activeDescendantController, getOptionById, setOpen, selectOption, multiselect, open } = options;
+  const {
+    activeDescendantController,
+    getOptionById,
+    setOpen,
+    selectOption,
+    multiselect,
+    open,
+    onHighlightedOptionChange,
+  } = options;
 
   const getActiveOption = React.useCallback(() => {
     const activeOptionId = activeDescendantController.active();
@@ -196,6 +206,11 @@ function useTriggerKeydown(
       case 'Tab':
         !multiselect && activeOption && selectOption(e, activeOption);
         break;
+    }
+
+    const newActiveOption = getActiveOption();
+    if (activeOption !== newActiveOption) {
+      onHighlightedOptionChange(e, newActiveOption);
     }
   });
 }
