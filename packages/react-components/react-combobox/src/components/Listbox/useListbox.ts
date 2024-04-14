@@ -36,7 +36,7 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  const { multiselect } = props;
+  const { multiselect, onHighlightedOptionChange } = props;
   const optionCollection = useOptionCollection();
   const { getOptionById } = optionCollection;
 
@@ -87,6 +87,12 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       case 'CloseSelect':
         activeOption && selectOption(event, activeOption);
         break;
+    }
+
+    const newActiveOptionId = activeDescendantController.active();
+    if (activeOptionId !== newActiveOptionId) {
+      const newActiveOption = newActiveOptionId ? getOptionById(newActiveOptionId) : null;
+      onHighlightedOptionChange(event, newActiveOption);
     }
   };
 

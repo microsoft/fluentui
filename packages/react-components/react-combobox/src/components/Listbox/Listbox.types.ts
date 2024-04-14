@@ -3,6 +3,7 @@ import type { ActiveDescendantContextValue, ActiveDescendantImperativeRef } from
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionState } from '../../utils/Selection.types';
 import type { ListboxContextValue } from '../../contexts/ListboxContext';
+import { ActiveOptionProps } from '../../utils/ActiveOption.types';
 
 export type ListboxSlots = {
   /* The root slot, a `<div>` with `role="listbox"` */
@@ -12,7 +13,7 @@ export type ListboxSlots = {
 /**
  * Listbox Props
  */
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps & ActiveOptionProps;
 
 /**
  * State used in rendering Listbox
