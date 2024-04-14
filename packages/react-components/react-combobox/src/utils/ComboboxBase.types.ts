@@ -6,14 +6,13 @@ import type { OptionValue, OptionCollectionState } from '../utils/OptionCollecti
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
 import { ListboxContextValue } from '../contexts/ListboxContext';
-import { ActiveOptionProps } from './HighlightedOption.types';
 
 /**
  * ComboboxBase Props
  * Shared types between Combobox and Dropdown components
  */
 export type ComboboxBaseProps = SelectionProps &
-  ActiveOptionProps &
+  HighlightedOptionProps &
   Pick<PortalProps, 'mountNode'> & {
     /**
      * Controls the colors and borders of the combobox trigger.

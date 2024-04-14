@@ -5,7 +5,7 @@ import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ComboboxProps } from '../Combobox/Combobox.types';
 import { UseTriggerSlotState, useTriggerSlot } from '../../utils/useTriggerSlot';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import { ComboboxBaseState, HighlightedOptionProps } from '../../utils/ComboboxBase.types';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
@@ -17,8 +17,7 @@ type UseInputTriggerSlotOptions = {
   freeform: boolean | undefined;
   defaultProps?: Partial<ComboboxProps>;
   activeDescendantController: ActiveDescendantImperativeRef;
-  onHighlightedOptionChange: (event: React.KeyboardEvent<HTMLElement>, data: HighlightedOptionChangeData) => void;
-};
+} & HighlightedOptionProps;
 
 /**
  * @internal

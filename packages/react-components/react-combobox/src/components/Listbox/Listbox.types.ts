@@ -12,7 +12,7 @@ export type ListboxSlots = {
 /**
  * Listbox Props
  */
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps & ActiveOptionProps;
+export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 
 /**
  * State used in rendering Listbox
