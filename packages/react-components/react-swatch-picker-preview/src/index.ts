@@ -47,6 +47,16 @@ export {
 export { renderSwatchPickerGrid } from './utils/renderUtils';
 export type { SwatchProps, SwatchPickerGridProps } from './utils/renderUtils';
 export {
+  calculateContrastRatio,
+  calculateContrastRatioFromHex,
+  calculateContrastRatioFromRgb,
+  calculateRelativeLuminance,
+  convertColorToRgb,
+  getContrastRatio,
+  hexToRgb,
+} from './utils/contrastUtils';
+export type { Rgb } from './utils/contrastUtils';
+export {
   EmptySwatch,
   renderEmptySwatch_unstable,
   useEmptySwatchStyles_unstable,

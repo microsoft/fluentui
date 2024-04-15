@@ -32,7 +32,7 @@ describe('SwatchPicker', () => {
             aria-checked="false"
             class="fui-ColorSwatch"
             role="radio"
-            style="--fui-SwatchPicker--color: #f09;"
+            style="--fui-SwatchPicker--color: #f09; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
             type="button"
           />
           <button
@@ -40,7 +40,7 @@ describe('SwatchPicker', () => {
             class="fui-ColorSwatch"
             disabled=""
             role="radio"
-            style="--fui-SwatchPicker--color: #0f0;"
+            style="--fui-SwatchPicker--color: #0f0; --fui-SwatchPicker--borderColor: var(--colorTransparentStroke);"
             type="button"
           >
             <span
@@ -49,6 +49,7 @@ describe('SwatchPicker', () => {
               <svg
                 aria-hidden="true"
                 class=""
+                color="#FFFFFF"
                 fill="currentColor"
                 height="1em"
                 viewBox="0 0 20 20"

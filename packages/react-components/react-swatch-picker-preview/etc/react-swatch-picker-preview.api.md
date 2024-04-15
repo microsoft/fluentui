@@ -17,6 +17,18 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export function calculateContrastRatio(l1: number, l2: number): number;
+
+// @public (undocumented)
+export function calculateContrastRatioFromHex(hex1: string, hex2: string): number | undefined;
+
+// @public (undocumented)
+export function calculateContrastRatioFromRgb(rgb1: Rgb, rgb2: Rgb): number | undefined;
+
+// @public
+export function calculateRelativeLuminance(rgb: Rgb): number | undefined;
+
+// @public
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 
 // @public (undocumented)
@@ -24,6 +36,7 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+    borderColor?: string;
     color: string;
     disabled?: boolean;
     value: string;
@@ -41,6 +54,9 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
     selected: boolean;
 };
 
+// @public (undocumented)
+export function convertColorToRgb(color: string): Rgb;
+
 // @public
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
 
@@ -57,6 +73,12 @@ export type EmptySwatchSlots = {
 
 // @public
 export type EmptySwatchState = ComponentState<EmptySwatchSlots> & Pick<EmptySwatchProps, 'size' | 'shape'>;
+
+// @public (undocumented)
+export function getContrastRatio(color1: string, color2: string): number | undefined;
+
+// @public
+export function hexToRgb(hex: string): Rgb;
 
 // @public
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
@@ -99,8 +121,12 @@ export const renderSwatchPickerGrid: (props: SwatchPickerGridProps) => JSX.Eleme
 export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JSX.Element;
 
 // @public (undocumented)
+export type Rgb = [number, number, number] | null;
+
+// @public (undocumented)
 export const swatchCSSVars: {
     color: string;
+    borderColor: string;
 };
 
 // @public

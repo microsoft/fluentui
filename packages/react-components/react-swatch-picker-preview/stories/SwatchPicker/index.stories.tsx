@@ -21,6 +21,7 @@ export { ColorSwatchVariants } from './ColorSwatchVariants.stories';
 export { SwatchPickerMixedSwatches } from './SwatchPickerMixedSwatches.stories';
 export { SwatchPickerWithTooltip } from './SwatchPickerWithTooltip.stories';
 export { SwatchPickerPopup } from './SwatchPickerPopup.stories';
+export { SwatchPickerContrastBorders } from './SwatchPickerContrastBorders.stories';
 
 const metadata: ComponentMeta<typeof SwatchPicker> = {
   title: 'Preview Components/SwatchPicker',

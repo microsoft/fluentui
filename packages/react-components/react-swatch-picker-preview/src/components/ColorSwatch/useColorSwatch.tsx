@@ -4,7 +4,10 @@ import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import { ProhibitedFilled } from '@fluentui/react-icons';
+import { calculateContrastRatioFromHex } from '../../utils/contrastUtils';
+import { tokens } from '@fluentui/react-theme';
 
+const DISABLED_ICON_COLOR = '#FFFFFF';
 /**
  * Create the state required to render ColorSwatch.
  *
@@ -18,13 +21,16 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, disabled, disabledIcon, icon, value, onClick, size, shape, style, ...rest } = props;
+  const { borderColor, color, disabled, disabledIcon, icon, value, onClick, size, shape, style, ...rest } = props;
   const _size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const _shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
+
+  const contrastRatio = calculateContrastRatioFromHex(color, DISABLED_ICON_COLOR);
+  const disabledContrastColor = contrastRatio && contrastRatio < 3 ? '#000000' : DISABLED_ICON_COLOR;
 
   const onColorSwatchClick = useEventCallback(
     mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -37,6 +43,7 @@ export const useColorSwatch_unstable = (
 
   const rootVariables = {
     [swatchCSSVars.color]: color,
+    [swatchCSSVars.borderColor]: borderColor ?? tokens.colorTransparentStroke,
   };
 
   const role = isGrid ? 'gridcell' : 'radio';
@@ -49,7 +56,7 @@ export const useColorSwatch_unstable = (
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
   const disabledIconShorthand = slot.optional(disabledIcon, {
     defaultProps: {
-      children: <ProhibitedFilled />,
+      children: <ProhibitedFilled color={disabledContrastColor} />,
     },
     renderByDefault: true,
     elementType: 'span',
