@@ -11,6 +11,7 @@ import {
 import { DrawerBody, DrawerBodyState, DrawerFooter, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { CustomStyleHooksContextValue } from '@fluentui/react-shared-contexts/src/CustomStyleHooksContext';
+
 const useStyles = makeStyles({
   root: {
     ...shorthands.overflow('hidden'),
@@ -23,19 +24,19 @@ const useStyles = makeStyles({
 });
 
 // This bit validates that the style hooks can be disagreed with.
-export const useNavDrawerBodyStyles = (state: unknown) => {
+const useNavDrawerBodyStyles = (state: unknown) => {
   const styles = useSharedNavBackgroundStyles();
 
   const drawerBodyState = state as DrawerBodyState;
 
-  drawerBodyState.root.className = mergeClasses(drawerBodyState.root.className, styles.base, bodyStyles.base);
+  drawerBodyState.root.className = mergeClasses(drawerBodyState.root.className, styles.base);
 };
 
-export const navCustomStyleHooks: CustomStyleHooksContextValue = {
+const navCustomStyleHooks: CustomStyleHooksContextValue = {
   useDrawerBodyStyles_unstable: useNavDrawerBodyStyles,
 };
 
-export const useSharedNavBackgroundStyles = makeStyles({
+const useSharedNavBackgroundStyles = makeStyles({
   base: {
     backgroundColor: 'green',
   },
