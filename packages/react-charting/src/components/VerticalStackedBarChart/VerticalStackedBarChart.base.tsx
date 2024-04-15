@@ -202,6 +202,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           legendBars={legendBars}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
+          barwidth={this._barWidth}
           focusZoneDirection={
             isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
           }

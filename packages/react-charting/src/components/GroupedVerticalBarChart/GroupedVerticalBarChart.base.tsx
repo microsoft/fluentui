@@ -186,6 +186,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
+        barwidth={this._barWidth}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {

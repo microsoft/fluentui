@@ -160,6 +160,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {...(this._isHavingLine && { isCalloutForStack: true })}
         legendBars={legendBars}
         datasetForXAxisDomain={this._xAxisLabels}
+        barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
