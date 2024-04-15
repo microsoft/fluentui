@@ -11,8 +11,6 @@ import {
   TeachingPopoverTrigger,
   TeachingPopoverCarouselCard,
   TeachingPopoverCarouselFooter,
-  TeachingPopoverCarouselNav,
-  TeachingPopoverCarouselNavButton,
   TeachingPopoverCarouselPageCount,
 } from '@fluentui/react-teaching-popover-preview';
 
