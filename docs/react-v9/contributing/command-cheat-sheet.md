@@ -1,7 +1,6 @@
 This is a helpful list of helpful every day commands.
 
 yarn // installs everything. It fixes many things.
-yarn build // builds the whole monorepo. You should only need to do this on initial startup.
 yarn buildto package-name // Does a yarn build scoped to a specific package and its dependencies for faster speeds vs building the whole repo.
 yarn test // runs a test suite. It is slightly different from the test suite in the CI/CD test suite. Can be run from inside a given package to run faster.
 yarn create-package // scaffolds a new package
@@ -28,3 +27,5 @@ git branch // lists all the branches on your local machine
 git push // pushes things to your forked repo, not the main repo.
 git push upstream // pushes your branch to the main repo.
 git push upstream --force // force is needed after a rebase.
+
+lage build --to react // build v8 so intellisense works.
