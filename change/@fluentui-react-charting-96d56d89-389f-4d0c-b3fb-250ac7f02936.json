@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix overlapping bars on continuous axes",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
