@@ -729,7 +729,7 @@ export {
   useTabListStyles_unstable,
   useTabList_unstable,
 } from '@fluentui/react-tabs';
-// testing 2
+// testing
 export type {
   TabProps,
   TabSlots,
