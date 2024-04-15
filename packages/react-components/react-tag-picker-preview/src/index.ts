@@ -53,3 +53,16 @@ export {
   useTagPickerGroup_unstable,
 } from './TagPickerGroup';
 export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup';
+
+export {
+  TagPickerOptionGroup,
+  tagPickerOptionGroupClassNames,
+  renderTagPickerOptionGroup,
+  useTagPickerOptionGroupStyles,
+  useTagPickerOptionGroup,
+} from './TagPickerOptionGroup';
+export type {
+  TagPickerOptionGroupProps,
+  TagPickerOptionGroupSlots,
+  TagPickerOptionGroupState,
+} from './TagPickerOptionGroup';

@@ -296,7 +296,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
         case ArrowDown:
           ev.preventDefault();
-          if (ev.altKey && !open) {
+          if (!open) {
             showDatePickerPopup();
           }
           break;

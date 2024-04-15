@@ -1,8 +1,26 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Wed, 10 Jan 2024 07:28:48 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.16)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.15..@fluentui/dom-utilities_v2.2.16)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [2.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.15)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.14..@fluentui/dom-utilities_v2.2.15)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
 
 ## [2.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.14)
 

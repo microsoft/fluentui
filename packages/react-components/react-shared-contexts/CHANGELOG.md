@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.16.0)
+
+Tue, 02 Apr 2024 09:48:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.15.2..@fluentui/react-shared-contexts_v9.16.0)
+
+### Minor changes
+
+- deprecate unused ListItemButton exports ([PR #29760](https://github.com/microsoft/fluentui/pull/29760) by jirivyhnalek@microsoft.com)
 
 ## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.2)
 

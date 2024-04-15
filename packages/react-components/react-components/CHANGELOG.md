@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 27 Mar 2024 10:29:33 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2024 14:17:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.47.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.5)
+
+Fri, 05 Apr 2024 14:17:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.4..@fluentui/react-components_v9.47.5)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - Avoid re-inserting Style Element to HEAD when re-rendering FluentProvider ([PR #30960](https://github.com/microsoft/fluentui/pull/30960) by ramyrafik@gmail.com)
+
+## [9.47.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.4)
+
+Thu, 04 Apr 2024 12:08:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.3..@fluentui/react-components_v9.47.4)
+
+### Minor changes
+
+- `@fluentui/react-list-preview`
+  - feat: Release preview package ([PR #30898](https://github.com/microsoft/fluentui/pull/30898) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - export SearchBoxChangeEvent type. ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by seanmonahan@microsoft.com)
+- `@fluentui/react-table`
+  - add resizableColumnsOptions with option to allowContainerOverflow ([PR #30717](https://github.com/microsoft/fluentui/pull/30717) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - feature: adds freeform support for TagPicker ([PR #30947](https://github.com/microsoft/fluentui/pull/30947) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: remove border from high contrast mode to match styles and make focus more visible ([PR #30865](https://github.com/microsoft/fluentui/pull/30865) by sarah.higley@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: move freeform and disabled to ComboboxBase types ([PR #30947](https://github.com/microsoft/fluentui/pull/30947) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Align arrow down behavior with Combobox. ([PR #30954](https://github.com/microsoft/fluentui/pull/30954) by estebanmu@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - feat: adds TagPickerOptionGroup component ([PR #30934](https://github.com/microsoft/fluentui/pull/30934) by bernardo.sunderhus@gmail.com)
+
+## [9.47.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.3)
+
+Tue, 02 Apr 2024 09:47:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.2..@fluentui/react-components_v9.47.3)
+
+### Minor changes
+
+- `@fluentui/react-shared-contexts`
+  - deprecate unused ListItemButton exports ([PR #29760](https://github.com/microsoft/fluentui/pull/29760) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix: When month picker is overlaid and gototoday button is pressed, hide month picker. ([PR #30870](https://github.com/microsoft/fluentui/pull/30870) by estebanmu@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: rotating SVG should not cause parent overflow ([PR #30615](https://github.com/microsoft/fluentui/pull/30615) by sarah.higley@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - bugfix: removes errouneous combobox imports ([PR #30926](https://github.com/microsoft/fluentui/pull/30926) by bernardo.sunderhus@gmail.com)
+
+## [9.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.2)
+
+Thu, 28 Mar 2024 10:43:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.47.2..@fluentui/react-components_v9.47.2)
+
+### Minor changes
+
+- `@fluentui/react-swatch-picker-preview`
+  - feat(react-swatch-picker): changed API in rendering utils ([PR #30868](https://github.com/microsoft/fluentui/pull/30868) by vkozlova@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - feat: release preview package ([PR #30897](https://github.com/microsoft/fluentui/pull/30897) by bernardo.sunderhus@gmail.com)
 
 ## [9.47.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.2)
 

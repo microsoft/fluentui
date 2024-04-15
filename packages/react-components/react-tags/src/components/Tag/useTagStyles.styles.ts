@@ -48,8 +48,8 @@ const useRootRoundedBaseClassName = makeResetStyles({
 
   borderRadius: tokens.borderRadiusMedium,
   ...createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    borderRadius: tokens.borderRadiusMedium,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
   }),
 
   /**
@@ -60,7 +60,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',
@@ -77,8 +77,8 @@ const useRootCircularBaseClassName = makeResetStyles({
 
   borderRadius: tokens.borderRadiusCircular,
   ...createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    borderRadius: tokens.borderRadiusCircular,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
   }),
 
   /**
@@ -89,9 +89,9 @@ const useRootCircularBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
-      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
-      ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
+      borderLeft: `${tokens.strokeWidthThin} solid`,
+      borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',

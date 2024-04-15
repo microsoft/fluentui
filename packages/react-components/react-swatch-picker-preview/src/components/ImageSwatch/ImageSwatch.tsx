@@ -6,7 +6,7 @@ import { useImageSwatchStyles_unstable } from './useImageSwatchStyles.styles';
 import type { ImageSwatchProps } from './ImageSwatch.types';
 
 /**
- * ImageSwatch component - TODO: add more docs
+ * ImageSwatch component is used to render an images, patterns and textures.
  */
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps> = React.forwardRef((props, ref) => {
   const state = useImageSwatch_unstable(props, ref);

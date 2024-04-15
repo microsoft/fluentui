@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: removes freeform prop that was wrongly introduced by PR #30947 ",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

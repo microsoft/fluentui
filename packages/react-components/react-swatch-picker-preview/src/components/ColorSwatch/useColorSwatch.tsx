@@ -21,7 +21,7 @@ export const useColorSwatch_unstable = (
   const { color, disabled, disabledIcon, icon, value, onClick, size, shape, style, ...rest } = props;
   const _size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const _shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
-  const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.grid);
+  const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
@@ -30,7 +30,7 @@ export const useColorSwatch_unstable = (
     mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
       requestSelectionChange(event, {
         selectedValue: value,
-        selectedColor: color,
+        selectedSwatch: color,
       }),
     ),
   );

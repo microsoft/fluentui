@@ -1,4 +1,12 @@
-import { TagPicker } from '@fluentui/react-tag-picker-preview';
+import {
+  TagPicker,
+  TagPickerControl,
+  TagPickerButton,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+  TagPickerGroup,
+} from '@fluentui/react-tag-picker-preview';
 
 import descriptionMd from './TagPickerDescription.md';
 import bestPracticesMd from './TagPickerBestPractices.md';
@@ -9,12 +17,16 @@ export { Filtering } from './TagPickerFiltering.stories';
 export { Size } from './TagPickerSize.stories';
 export { Appearance } from './TagPickerAppearance.stories';
 export { Disabled } from './TagPickerDisabled.stories';
+export { ExpandIcon } from './TagPickerExpandIcon.stories';
 export { SecondaryAction } from './TagPickerSecondaryAction.stories';
-export { SecondaryActionWithoutExpandIcon } from './TagPickerSecondaryActionWithoutExpandIcon.stories';
+export { Grouped } from './TagPickerGrouped.stories';
+export { Freeform } from './TagPickerFreeform.stories';
+export { InteractionTagExample as InteractionTag } from './TagPickerInteractionTag.stories';
 
 export default {
   title: 'Preview Components/Tag Picker',
   component: TagPicker,
+  subcomponents: { TagPickerControl, TagPickerGroup, TagPickerButton, TagPickerInput, TagPickerList, TagPickerOption },
   parameters: {
     docs: {
       description: {

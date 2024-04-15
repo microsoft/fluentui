@@ -47,6 +47,10 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
+
+      [`.${IsFocusVisibleClassName} &:focus:after`]: {
+        borderColor: 'HighlightText',
+      },
     },
     ['.ms-Checkbox-checkbox']: {
       [HighContrastSelector]: {

@@ -2,6 +2,68 @@
   "name": "@fluentui/react-swatch-picker-preview",
   "entries": [
     {
+      "date": "Tue, 02 Apr 2024 09:48:00 GMT",
+      "tag": "@fluentui/react-swatch-picker-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "dcd849883786889d1812d62443e258ff005aee7e",
+            "comment": "fix(swatch-picker): added bundle size configuration"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.57",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.35",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.16.0",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.19.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Mar 2024 10:43:54 GMT",
+      "tag": "@fluentui/react-swatch-picker-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "fa0be6273745fe22574c29db093d64db12348a30",
+            "comment": "feat(react-swatch-picker): changed API in rendering utils"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Mar 2024 10:29:33 GMT",
       "tag": "@fluentui/react-swatch-picker-preview_v0.1.0",
       "version": "0.1.0",
