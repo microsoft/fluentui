@@ -24,15 +24,23 @@ steps:
       yarn workspace @fluentui/pr-deploy-site generate:site
     displayName: generate PR Deploy Site
 
-  - task: AzureFileCopy@6
+  # - task: AzureFileCopy@6
+  #   displayName: Upload PR deploy site
+  #   inputs:
+  #     azureSubscription: $(azureSubscription)
+  #     BlobPrefix: $(deployBasePath)
+  #     ContainerName: '$web'
+  #     Destination: AzureBlob
+  #     SourcePath: 'apps/pr-deploy-site/dist'
+  #     storage: $(azureStorage)
+
+  - task: AzureCLI@2
     displayName: Upload PR deploy site
     inputs:
       azureSubscription: $(azureSubscription)
-      BlobPrefix: $(deployBasePath)
-      ContainerName: '$web'
-      Destination: AzureBlob
-      SourcePath: 'apps/pr-deploy-site/dist'
-      storage: $(azureStorage)
+      scriptType: 'ps'
+      scriptLocation: 'inlineScript'
+      inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source apps/pr-deploy-site/dist --destination $web --destination-path $(deployBasePath)'
 
   - task: GithubPRStatus@0
     displayName: 'Update PR deploy site github status'

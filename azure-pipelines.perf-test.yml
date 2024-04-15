@@ -60,16 +60,25 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
-      - task: AzureFileCopy@6
+      # - task: AzureFileCopy@6
+      #   condition: eq(variables.isPR, true)
+      #   displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
+      #   inputs:
+      #     SourcePath: 'packages/fluentui/perf-test-northstar/dist'
+      #     azureSubscription: $(azureSubscription)
+      #     storage: $(azureStorage)
+      #     Destination: AzureBlob
+      #     ContainerName: '$web'
+      #     BlobPrefix: '$(deployBasePath)/perf-test-northstar'
+
+      - task: AzureCLI@2
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
-          SourcePath: 'packages/fluentui/perf-test-northstar/dist'
           azureSubscription: $(azureSubscription)
-          storage: $(azureStorage)
-          Destination: AzureBlob
-          ContainerName: '$web'
-          BlobPrefix: '$(deployBasePath)/perf-test-northstar'
+          scriptType: 'ps'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source packages/fluentui/perf-test-northstar/dist --destination $web --destination-path $(deployBasePath)/perf-test-northstar'
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -119,16 +128,25 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureFileCopy@6
+      # - task: AzureFileCopy@6
+      #   condition: eq(variables.isPR, true)
+      #   displayName: Upload Perf Test Result to PR deploy site (V8)
+      #   inputs:
+      #     SourcePath: 'apps/perf-test/dist'
+      #     azureSubscription: $(azureSubscription)
+      #     storage: $(azureStorage)
+      #     Destination: AzureBlob
+      #     ContainerName: '$web'
+      #     BlobPrefix: '$(deployBasePath)/perf-test'
+
+      - task: AzureCLI@2
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
-          SourcePath: 'apps/perf-test/dist'
           azureSubscription: $(azureSubscription)
-          storage: $(azureStorage)
-          Destination: AzureBlob
-          ContainerName: '$web'
-          BlobPrefix: '$(deployBasePath)/perf-test'
+          scriptType: 'ps'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source apps/perf-test/dist --destination $web --destination-path $(deployBasePath)/perf-test'
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -160,16 +178,25 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureFileCopy@6
+      # - task: AzureFileCopy@6
+      #   condition: eq(variables.isPR, true)
+      #   displayName: Upload Perf Test Result to PR deploy site (React Components)
+      #   inputs:
+      #     SourcePath: 'apps/perf-test-react-components/dist'
+      #     azureSubscription: $(azureSubscription)
+      #     storage: $(azureStorage)
+      #     Destination: AzureBlob
+      #     ContainerName: '$web'
+      #     BlobPrefix: '$(deployBasePath)/perf-test-react-components'
+
+      - task: AzureCLI@2
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (React Components)
         inputs:
-          SourcePath: 'apps/perf-test-react-components/dist'
           azureSubscription: $(azureSubscription)
-          storage: $(azureStorage)
-          Destination: AzureBlob
-          ContainerName: '$web'
-          BlobPrefix: '$(deployBasePath)/perf-test-react-components'
+          scriptType: 'ps'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source apps/perf-test-react-components/dist --destination $web --destination-path $(deployBasePath)/perf-test-react-components'
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
