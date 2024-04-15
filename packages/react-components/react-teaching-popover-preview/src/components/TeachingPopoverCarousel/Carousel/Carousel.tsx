@@ -74,17 +74,13 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
         for (const addedNode of Array.from(mutation.addedNodes)) {
           if (isHTMLElement(addedNode) && addedNode.hasAttribute(CAROUSEL_ITEM)) {
             const newValue = addedNode.getAttribute(CAROUSEL_ITEM)!;
-            let previousNode = addedNode.previousElementSibling;
-            let previous = addedNode.previousElementSibling?.getAttribute(CAROUSEL_ITEM) ?? null;
-
-            // Sometime the previous page might be an actual page we are currently on, so we track further in case.
-            // This will also let us use hidden elements instead of conditional rendering if desired.
-            while (previousNode && !previous) {
-              previousNode = previousNode?.previousElementSibling;
-              previous = previousNode?.getAttribute(CAROUSEL_ITEM) ?? null;
+            const newNode = carouselWalker.find(newValue);
+            if (!newNode?.value) {
+              return;
             }
 
-            store.insertValue(newValue, previous);
+            const previousNode = carouselWalker.prevPage(newNode?.value);
+            store.insertValue(newValue, previousNode?.value ?? null);
           }
         }
 
@@ -108,7 +104,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     return () => {
       observer.disconnect();
     };
-  }, [store]);
+  }, [carouselWalker, store]);
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
