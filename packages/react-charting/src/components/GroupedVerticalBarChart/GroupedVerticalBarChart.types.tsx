@@ -23,8 +23,8 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   data: IGroupedVerticalBarChartData[];
 
   /**
-   * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px.
-   * When set to `auto` (which is only applicable to string x-axis), the bar width is calculated from padding values.
+   * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px,
+   * which may decrease to prevent overlap. When set to `'auto'`, the bar width is calculated from padding values.
    * @default 16
    */
   barwidth?: number | 'default' | 'auto';
