@@ -40,17 +40,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@fluentui/dom-utilities": "^2.2.16",
     "@fluentui/merge-styles": "^8.6.2",
     "@fluentui/set-version": "^8.2.16",
-    "@fluentui/react-window-provider": "^2.2.18",
-=======
-    "@fluentui/dom-utilities": "^2.2.15",
-    "@fluentui/merge-styles": "^8.6.1",
-    "@fluentui/set-version": "^8.2.15",
-    "@fluentui/react-window-provider": "^2.2.19",
->>>>>>> syncpack
+    "@fluentui/react-window-provider": "^2.2.20",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
