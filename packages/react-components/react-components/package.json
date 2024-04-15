@@ -29,8 +29,7 @@
     "@fluentui/eslint-plugin": "*",
     "react-hook-form": "^5.7.2",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@types/use-sync-external-store": "^0.0.6"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-accordion": "^9.3.47",
