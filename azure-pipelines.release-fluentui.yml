@@ -158,15 +158,15 @@ extends:
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
                     NODE_ENV=production yarn northstar:build:docs
 
-              - task: AzureUpload@2
+              - task: AzureFileCopy@6
                 displayName: Upload to Azure
                 inputs:
                   SourcePath: packages/fluentui/docs/dist
                   azureSubscription: 'Azure - fluentsite storage'
                   storage: fluentsite
+                  Destination: AzureBlob
                   ContainerName: $web
                   BlobPrefix: $(deployBasePath)
-                  Gzip: true
 
               - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
                 displayName: 📒 Generate Manifest Docsite

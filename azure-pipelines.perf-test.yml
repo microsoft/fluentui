@@ -60,13 +60,14 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
-      - task: AzureUpload@2
+      - task: AzureFileCopy@6
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
           SourcePath: 'packages/fluentui/perf-test-northstar/dist'
           azureSubscription: $(azureSubscription)
           storage: $(azureStorage)
+          Destination: AzureBlob
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)/perf-test-northstar'
 
@@ -118,13 +119,14 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureUpload@2
+      - task: AzureFileCopy@6
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
           SourcePath: 'apps/perf-test/dist'
           azureSubscription: $(azureSubscription)
           storage: $(azureStorage)
+          Destination: AzureBlob
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)/perf-test'
 
@@ -158,13 +160,14 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureUpload@2
+      - task: AzureFileCopy@6
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (React Components)
         inputs:
           SourcePath: 'apps/perf-test-react-components/dist'
           azureSubscription: $(azureSubscription)
           storage: $(azureStorage)
+          Destination: AzureBlob
           ContainerName: '$web'
           BlobPrefix: '$(deployBasePath)/perf-test-react-components'
 
