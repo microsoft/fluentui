@@ -39,7 +39,7 @@ const images = [
 ];
 
 export const SwatchPickerImage = () => {
-  const [selectedValue, setSelectedValue] = React.useState('bridge');
+  const [selectedValue, setSelectedValue] = React.useState('1');
   const [selectedImage, setSelectedImage] = React.useState(DEFAULT_IMAGE);
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
