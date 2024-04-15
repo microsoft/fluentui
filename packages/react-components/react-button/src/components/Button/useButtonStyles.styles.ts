@@ -59,7 +59,7 @@ const useRootBaseClassName = makeResetStyles({
   },
 
   padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
-  minWidth: 'min-content',
+  minWidth: '96px',
   borderRadius: tokens.borderRadiusMedium,
 
   fontSize: tokens.fontSizeBase300,
