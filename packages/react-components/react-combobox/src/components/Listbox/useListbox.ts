@@ -58,10 +58,12 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       // Typescript doesn't support custom event types on handler
       const event = untypedEvent as ActiveDescendantChangeEvent;
 
+      const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
+      const nextOption = optionCollection.getOptionById(event.detail.id);
+      console.log(event.detail, previousOption, nextOption);
       // TODO pass onActiveDescendantChange from ListboxContext so that combobox/dropdown/tagpicker can all use it
-      // ctx.onActiveDescendantChange(event, { ...event.detail });
+      // ctx.onActiveDescendantChange(event, { previousOption, nextOption });
       // detail: {id: string: previousId: string}
-      console.log(event.detail);
     });
   }, []);
 
