@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import {
+  ActiveDescendantChangeEvent,
   useActiveDescendant,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
@@ -47,6 +48,22 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
+
+  const listenerRef = React.useCallback((el: HTMLDivElement | null) => {
+    if (!el) {
+      return;
+    }
+
+    el.addEventListener('activedescendantchange', (untypedEvent: Event) => {
+      // Typescript doesn't support custom event types on handler
+      const event = untypedEvent as ActiveDescendantChangeEvent;
+
+      // TODO pass onActiveDescendantChange from ListboxContext so that combobox/dropdown/tagpicker can all use it
+      // ctx.onActiveDescendantChange(event, { ...event.detail });
+      // detail: {id: string: previousId: string}
+      console.log(event.detail);
+    });
+  }, []);
 
   const activeDescendantContext = useActiveDescendantContext();
   const activeDescendantController = useHasParentActiveDescendantContext()
@@ -117,7 +134,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef),
+        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef, listenerRef),
         role: multiselect ? 'menu' : 'listbox',
         tabIndex: 0,
         ...props,
