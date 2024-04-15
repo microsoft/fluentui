@@ -111,7 +111,7 @@ export type TeachingPopoverCarouselCardProps = ComponentProps<TeachingPopoverCar
 
 // @public (undocumented)
 export type TeachingPopoverCarouselCardSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: NonNullable<Slot<CarouselItemProps>>;
 };
 
 // @public (undocumented)

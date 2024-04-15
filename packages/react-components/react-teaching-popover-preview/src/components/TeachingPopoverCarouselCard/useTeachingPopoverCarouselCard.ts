@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselCardProps,
   TeachingPopoverCarouselCardState,

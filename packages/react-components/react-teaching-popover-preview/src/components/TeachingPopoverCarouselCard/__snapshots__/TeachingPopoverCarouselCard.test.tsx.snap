@@ -2,10 +2,13 @@
 
 exports[`TeachingPopoverCarouselCard renders a default state 1`] = `
 <div>
-  <span
+  <div
+    class="fui-TeachingPopoverCarouselCard"
     data-carousel-active-item="false"
     data-carousel-item="test"
     hidden=""
-  />
+  >
+    Default TeachingPopoverCarouselCard
+  </div>
 </div>
 `;
