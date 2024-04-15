@@ -186,7 +186,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
-        barwidth={this._barWidth}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -212,15 +211,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
   ) => {
     const xScale0 = this._createX0Scale(containerWidth);
 
-    if (this.props.barwidth === 'auto') {
-      // Setting the bar width here is safe because there are no dependencies earlier in the code
-      // that rely on the width of bars in vertical bar charts with string x-axis.
-      this._barWidth = getBarWidth(
-        this.props.barwidth,
-        this.props.maxBarWidth,
-        xScale0.bandwidth() / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
-      );
-    }
+    // Setting the bar width here is safe because there are no dependencies earlier in the code
+    // that rely on the width of bars in vertical bar charts with string x-axis.
+    this._barWidth = getBarWidth(
+      this.props.barwidth,
+      this.props.maxBarWidth,
+      xScale0.bandwidth() / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
+    );
     this._groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * this._barWidth;
 
     const xScale1 = this._createX1Scale();
@@ -602,6 +599,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         /** Total width available to render the bars */
         const totalWidth =
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+        this._barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth);
         const groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * this._barWidth;
         /** Rate at which the space between the groups changes wrt the group width */
         const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
@@ -610,7 +608,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
-          this._domainMargin += (totalWidth - reqWidth) / 2;
+          this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
       }
     }

@@ -1491,15 +1491,15 @@ const MIN_BAR_WIDTH = 1;
 export const getBarWidth = (
   barWidthProp: number | 'default' | 'auto' | undefined,
   maxBarWidthProp: number | undefined,
-  defaultValue = DEFAULT_BAR_WIDTH,
+  adjustedValue = DEFAULT_BAR_WIDTH,
 ): number => {
   let barWidth: number;
   if (typeof barWidthProp === 'number') {
     barWidth = barWidthProp;
   } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
-    barWidth = Math.min(defaultValue, DEFAULT_BAR_WIDTH);
+    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
   } else {
-    barWidth = defaultValue;
+    barWidth = adjustedValue;
   }
   if (typeof maxBarWidthProp === 'number') {
     barWidth = Math.min(barWidth, maxBarWidthProp);
