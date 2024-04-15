@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 15 Apr 2024 04:09:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.11",
+      "version": "3.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "0d4cc99c6174fc0e9320cb448aa7ae136ce1fae3",
+            "comment": "fix(web-components): remove final dependencies on fast-foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Apr 2024 04:08:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.10",
       "version": "3.0.0-beta.10",
