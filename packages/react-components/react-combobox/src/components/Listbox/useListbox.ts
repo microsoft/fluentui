@@ -58,6 +58,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       // Typescript doesn't support custom event types on handler
       const event = untypedEvent as ActiveDescendantChangeEvent;
 
+      // TODO - you will need to get these values from the optionCollection of the the parent combobox/dropdown/tagpicker
       const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
       const nextOption = optionCollection.getOptionById(event.detail.id);
       console.log(event.detail, previousOption, nextOption);
