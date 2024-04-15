@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Button doesn't shrink past min-content",
-  "packageName": "@fluentui/react-button",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
