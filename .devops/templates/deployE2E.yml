@@ -24,7 +24,7 @@ steps:
       yarn workspace @fluentui/pr-deploy-site generate:site
     displayName: generate PR Deploy Site
 
-  - task: AzureUpload@3
+  - task: AzureUpload@2
     displayName: Upload PR deploy site
     inputs:
       azureSubscription: $(azureSubscription)
