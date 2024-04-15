@@ -158,7 +158,7 @@ extends:
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
                     NODE_ENV=production yarn northstar:build:docs
 
-              - task: AzureUpload@2
+              - task: AzureUpload@3
                 displayName: Upload to Azure
                 inputs:
                   SourcePath: packages/fluentui/docs/dist

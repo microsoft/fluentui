@@ -60,7 +60,7 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
-      - task: AzureUpload@2
+      - task: AzureUpload@3
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
@@ -118,7 +118,7 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureUpload@2
+      - task: AzureUpload@3
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
@@ -158,7 +158,7 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureUpload@2
+      - task: AzureUpload@3
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (React Components)
         inputs:
