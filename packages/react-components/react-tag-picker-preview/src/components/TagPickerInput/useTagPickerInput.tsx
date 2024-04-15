@@ -9,7 +9,7 @@ import {
   useEventCallback,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
-import { Backspace, Enter } from '@fluentui/keyboard-keys';
+import { Backspace, Enter, Space } from '@fluentui/keyboard-keys';
 import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
@@ -78,6 +78,10 @@ export const useTagPickerInput_unstable = (
       ...getIntrinsicElementProps('input', props),
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         props.onKeyDown?.(event);
+        if (event.key === Space && open) {
+          setOpen(event, false);
+          return;
+        }
         if (event.key === Enter) {
           if (open) {
             ReactDOM.unstable_batchedUpdates(() => {
