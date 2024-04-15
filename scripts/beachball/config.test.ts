@@ -13,7 +13,7 @@ describe(`beachball configs`, () => {
       },
       ignorePatterns: [
         '**/*.{shot,snap}',
-        '**/*.{test,spec}.{ts,tsx}',
+        '**/*.{test,spec,cy}.{ts,tsx}',
         '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
         '**/__fixtures__/**',
@@ -24,6 +24,7 @@ describe(`beachball configs`, () => {
         '**/bundle-size/**',
         '**/common/isConformant.ts',
         '**/src/testing/**',
+        '**/src/e2e/**',
         '**/config/tests.js',
         '**/jest.config.js',
         '**/SPEC*.md',

@@ -157,7 +157,7 @@ export type MenuItemLinkSlots = {
 export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
 
 // @public (undocumented)
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
+export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> & Pick<Partial<MenuItemSlots>, 'content'> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
     disabled?: boolean;
@@ -479,7 +479,7 @@ export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAB
 export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemCheckboxState;
 
 // @public (undocumented)
-export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
+export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
 
 // @public
 export const useMenuItemLink_unstable: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
@@ -494,7 +494,7 @@ export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2
 export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
 
 // @public
-export const useMenuItemStyles_unstable: (state: MenuItemState) => void;
+export const useMenuItemStyles_unstable: (state: MenuItemState) => MenuItemState;
 
 // @public
 export const useMenuList_unstable: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;

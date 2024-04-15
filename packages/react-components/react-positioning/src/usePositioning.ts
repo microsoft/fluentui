@@ -22,6 +22,9 @@ import {
   matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
+import { devtools } from '@floating-ui/devtools';
+import { devtoolsCallback } from './utils/devtools';
+import { POSITIONING_END_EVENT } from './constants';
 
 /**
  * @internal
@@ -62,7 +65,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     options.positioningRef,
     () => ({
       updatePosition: () => managerRef.current?.updatePosition(),
-      setTarget: (target: TargetElement) => {
+      setTarget: (target: TargetElement | null) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -133,8 +136,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
   });
 
+  const onPositioningEnd = useEventCallback(() => options.onPositioningEnd?.());
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
     if (containerRef.current !== container) {
+      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd);
+      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd);
       containerRef.current = container;
       updatePositionManager();
     }
@@ -170,9 +176,10 @@ function usePositioningOptions(options: PositioningOptions) {
     fallbackPositions,
     useTransform,
     matchTargetSize,
+    disableUpdateOnResize = false,
   } = options;
 
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
   const isRtl = dir === 'rtl';
   const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
   const autoSize = normalizeAutoSize(rawAutoSize);
@@ -200,6 +207,7 @@ function usePositioningOptions(options: PositioningOptions) {
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
+        process.env.NODE_ENV !== 'production' && targetDocument && devtools(targetDocument, devtoolsCallback(options)),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -209,8 +217,11 @@ function usePositioningOptions(options: PositioningOptions) {
         middleware,
         strategy: positionStrategy,
         useTransform,
+        disableUpdateOnResize,
       };
     },
+    // Options is missing here, but it's not required
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       align,
       arrowPadding,
@@ -228,6 +239,8 @@ function usePositioningOptions(options: PositioningOptions) {
       fallbackPositions,
       useTransform,
       matchTargetSize,
+      targetDocument,
+      disableUpdateOnResize,
     ],
   );
 }

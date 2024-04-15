@@ -9,6 +9,7 @@ export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
 export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
+export { Actions } from './DialogActions.stories';
 export { FluidActions } from './DialogFluidDialogActions.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
 export { ControllingOpenAndClose } from './DialogControllingOpenAndClose.stories';

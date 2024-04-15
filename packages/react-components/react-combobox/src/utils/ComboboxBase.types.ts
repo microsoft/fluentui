@@ -1,9 +1,11 @@
 import * as React from 'react';
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
+import { ListboxContextValue } from '../contexts/ListboxContext';
 
 /**
  * ComboboxBase Props
@@ -16,6 +18,11 @@ export type ComboboxBaseProps = SelectionProps &
      * @default 'outline'
      */
     appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
+
+    /**
+     * If set, the combobox will show an icon to clear the current value.
+     */
+    clearable?: boolean;
 
     /**
      * The default open state when open is uncontrolled
@@ -36,6 +43,7 @@ export type ComboboxBaseProps = SelectionProps &
     /**
      * Callback when the open/closed state of the dropdown changes
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
 
     /**
@@ -72,31 +80,54 @@ export type ComboboxBaseProps = SelectionProps &
 /**
  * State used in rendering Combobox
  */
-export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inlinePopup' | 'size'>> &
+export type ComboboxBaseState = Required<
+  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>
+> &
   Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
   SelectionState & {
-    /* Option data for the currently highlighted option (not the selected option) */
+    /**
+     * @deprecated - no longer used internally
+     */
     activeOption?: OptionValue;
 
-    // Whether the keyboard focus outline style should be visible
+    /**
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE for writing styles involving focusVisible
+     */
     focusVisible: boolean;
 
-    // whether the combobox/dropdown currently has focus
-    hasFocus: boolean;
-
-    /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
+    /**
+     * @deprecated - no longer used internally
+     * Whether the next blur event should be ignored, and the combobox/dropdown will not close.
+     */
     ignoreNextBlur: React.MutableRefObject<boolean>;
 
+    /**
+     * @deprecated - no longer used internally
+     */
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
+    /**
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see useSetKeyboardNavigation for imperatively setting focus visible state
+     */
     setFocusVisible(focusVisible: boolean): void;
+
+    /**
+     * whether the combobox/dropdown currently has focus
+     */
+    hasFocus: boolean;
 
     setHasFocus(hasFocus: boolean): void;
 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
 
     setValue(newValue: string | undefined): void;
+
+    onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
+    disabled: boolean;
+    freeform: boolean;
   };
 
 /**
@@ -114,4 +145,6 @@ export type ComboboxBaseOpenEvents =
 
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
+  activeDescendant: ActiveDescendantContextValue;
+  listbox: ListboxContextValue;
 };

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-infobutton",
-  "version": "9.0.0-beta.75",
+  "version": "9.0.0-beta.99",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,19 +35,19 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.217",
-    "@fluentui/react-label": "^9.1.49",
-    "@fluentui/react-popover": "^9.8.20",
-    "@fluentui/react-tabster": "^9.14.4",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.2",
-    "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-label": "^9.1.67",
+    "@fluentui/react-popover": "^9.9.3",
+    "@fluentui/react-tabster": "^9.19.6",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.6",
+    "@fluentui/react-jsx-runtime": "^9.0.35",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

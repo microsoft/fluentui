@@ -5,10 +5,15 @@ import generator from './index';
 import { TsconfigBaseAllGeneratorSchema } from './schema';
 
 describe('tsconfig-base-all generator', () => {
+  const noop = () => {};
   let tree: Tree;
   const options: TsconfigBaseAllGeneratorSchema = {};
 
   beforeEach(() => {
+    jest.restoreAllMocks();
+
+    jest.spyOn(console, 'log').mockImplementation(noop);
+
     tree = createTreeWithEmptyWorkspace();
     writeJson(tree, '/tsconfig.base.v0.json', {
       compilerOptions: {

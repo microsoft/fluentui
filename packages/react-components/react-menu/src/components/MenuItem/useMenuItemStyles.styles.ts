@@ -1,7 +1,7 @@
 import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
@@ -24,6 +24,7 @@ const useRootBaseStyles = makeResetStyles({
   paddingRight: tokens.spacingVerticalSNudge, // 6px
   paddingLeft: tokens.spacingVerticalSNudge,
   paddingTop: tokens.spacingVerticalSNudge,
+  paddingBottom: tokens.spacingVerticalSNudge,
   boxSizing: 'border-box',
   maxWidth: '290px',
   minHeight: '32px',
@@ -49,6 +50,21 @@ const useRootBaseStyles = makeResetStyles({
     },
   },
 
+  ':hover:active': {
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    color: tokens.colorNeutralForeground2Pressed,
+  },
+
+  // High contrast styles
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'Canvas',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+    },
+    ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
+  },
+
   userSelect: 'none',
   ...createFocusOutlineStyle(),
 });
@@ -63,6 +79,8 @@ const useContentBaseStyles = makeResetStyles({
 const useSecondaryContentBaseStyles = makeResetStyles({
   paddingLeft: '2px',
   paddingRight: '2px',
+  ...typographyStyles.caption1,
+  lineHeight: tokens.lineHeightBase300,
   color: tokens.colorNeutralForeground3,
   ':hover': {
     color: tokens.colorNeutralForeground3Hover,
@@ -129,6 +147,11 @@ const useStyles = makeStyles({
       },
     },
 
+    ':hover:active': {
+      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackground1,
+    },
+
     ':focus': {
       color: tokens.colorNeutralForegroundDisabled,
     },
@@ -137,19 +160,22 @@ const useStyles = makeStyles({
       color: 'GrayText',
       ':hover': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.icon}`]: {
           color: 'GrayText',
+          backgroundColor: 'Canvas',
         },
       },
       ':focus': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
       },
     },
   },
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles_unstable = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();
@@ -190,5 +216,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
       state.submenuIndicator.className,
     );
   }
+
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
+
+  return state;
 };

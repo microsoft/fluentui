@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.20)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.19..@fluentui/react-window-provider_v2.2.20)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [2.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.19)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.18..@fluentui/react-window-provider_v2.2.19)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [2.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.18)
+
+Wed, 10 Jan 2024 07:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.17..@fluentui/react-window-provider_v2.2.18)
+
+### Patches
+
+- chore: clean up exports ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [2.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.17)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.16..@fluentui/react-window-provider_v2.2.17)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
 
 ## [2.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.16)
 

@@ -1,13 +1,6 @@
-import {
-  addProjectConfiguration,
-  joinPathFragments,
-  NxJsonConfiguration,
-  readJson,
-  readNxJson,
-  serializeJson,
-  Tree,
-} from '@nx/devkit';
+import { addProjectConfiguration, joinPathFragments, readJson, serializeJson, Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { getProjectNameWithoutScope } from '../../utils';
 
 import generator from './index';
 
@@ -90,8 +83,7 @@ describe(`cypress-component-configuration`, () => {
 function setupDummyPackage(tree: Tree, options: { name: string; projectType?: 'application' | 'library' }) {
   const { name: pkgName, projectType = 'library' } = options;
 
-  const workspaceConfig = readNxJson(tree) ?? {};
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `${projectType === 'application' ? 'apps' : 'packages'}/${normalizedPkgName}`,
   };
@@ -135,8 +127,4 @@ function setupDummyPackage(tree: Tree, options: { name: string; projectType?: 'a
   });
 
   return tree;
-}
-
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
 }

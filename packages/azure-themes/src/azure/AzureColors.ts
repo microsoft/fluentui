@@ -215,7 +215,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     icon: {
       success: BaseColors.GREEN_57A300,
-      error: BaseColors.RED_E00B1C,
+      error: BaseColors.RED_F1707B,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,
       upsell: BaseColors.PURPLE_8A2DA5,
@@ -1010,7 +1010,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hoveredRowLink: BaseColors.BLUE_106EBE,
     hoveredLink: BaseColors.BLUE_106EBE,
     hoveredBackground: BaseColors.GRAY_F3F2F1,
-    selectedLink: BaseColors.BLUE_106EBE,
+    selectedLink: BaseColors.BLUE_005A9E,
     selectedHoveredLink: BaseColors.BLUE_005A9E,
   },
   radioButton: {

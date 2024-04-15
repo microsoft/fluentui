@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   addMonths,
   addYears,
@@ -10,10 +11,10 @@ import {
   DEFAULT_DATE_FORMATTING,
   FirstWeekOfYear,
   focusAsync,
-  getWindow,
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
+import { defaultNavigationIcons } from './calendarNavigationIcons';
 import { useCalendarStyles_unstable } from './useCalendarStyles.styles';
 import type { ICalendarDay } from '../CalendarDay/CalendarDay.types';
 import type { ICalendarMonth } from '../CalendarMonth/CalendarMonth.types';
@@ -85,20 +86,21 @@ function useVisibilityState({
   showMonthPickerAsOverlay,
 }: CalendarProps) {
   /** State used to show/hide month picker */
+  const showMonthPickerAsOverlayState = useShowMonthPickerAsOverlay({
+    isDayPickerVisible: isDayPickerVisibleProp,
+    showMonthPickerAsOverlay,
+  });
+
   const [isMonthPickerVisible, setIsMonthPickerVisible] = useControllableState({
     defaultState: false,
     initialState: true,
-    state: getShowMonthPickerAsOverlay({ isDayPickerVisible: isDayPickerVisibleProp, showMonthPickerAsOverlay })
-      ? undefined
-      : isMonthPickerVisibleProp,
+    state: showMonthPickerAsOverlayState ? undefined : isMonthPickerVisibleProp,
   });
   /** State used to show/hide day picker */
   const [isDayPickerVisible, setIsDayPickerVisible] = useControllableState({
     defaultState: true,
     initialState: true,
-    state: getShowMonthPickerAsOverlay({ isDayPickerVisible: isDayPickerVisibleProp, showMonthPickerAsOverlay })
-      ? undefined
-      : isDayPickerVisibleProp,
+    state: showMonthPickerAsOverlayState ? undefined : isDayPickerVisibleProp,
   });
 
   const toggleDayMonthPickerVisibility = () => {
@@ -113,14 +115,16 @@ function useFocusLogic({ componentRef }: CalendarProps, isDayPickerVisible: bool
   const dayPicker = React.useRef<ICalendarDay>(null);
   const monthPicker = React.useRef<ICalendarMonth>(null);
   const focusOnUpdate = React.useRef(false);
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
 
   const focus = React.useCallback(() => {
     if (isDayPickerVisible && dayPicker.current) {
-      focusAsync(dayPicker.current);
+      focusAsync(dayPicker.current, win);
     } else if (isMonthPickerVisible && monthPicker.current) {
-      focusAsync(monthPicker.current);
+      focusAsync(monthPicker.current, win);
     }
-  }, [isDayPickerVisible, isMonthPickerVisible]);
+  }, [isDayPickerVisible, isMonthPickerVisible, win]);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 
@@ -169,10 +173,14 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       showSixWeeksByDefault = false,
       showWeekNumbers = false,
       strings = DEFAULT_CALENDAR_STRINGS,
-      today = new Date(),
+      today: todayProp,
       value,
       workWeekDays = defaultWorkWeekDays,
     } = props;
+
+    const today = React.useMemo(() => {
+      return todayProp ?? new Date();
+    }, [todayProp]);
 
     const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState({
       onSelectDate,
@@ -240,10 +248,12 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       navigateDay(date);
     };
 
-    const onHeaderSelect = getShowMonthPickerAsOverlay({
+    const showMonthPickerAsOverlay = useShowMonthPickerAsOverlay({
       isDayPickerVisible: isDayPickerVisibleProp,
       showMonthPickerAsOverlay: showMonthPickerAsOverlayProp,
-    })
+    });
+
+    const onHeaderSelect = showMonthPickerAsOverlay
       ? (): void => {
           toggleDayMonthPickerVisibility();
 
@@ -253,6 +263,9 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
 
     const onGotoToday = (): void => {
       navigateDay(today!);
+      if (showMonthPickerAsOverlay && isMonthPickerVisible) {
+        toggleDayMonthPickerVisibility();
+      }
       focusOnNextUpdate();
     };
 
@@ -306,10 +319,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
       }
     };
-    const showMonthPickerAsOverlay = getShowMonthPickerAsOverlay({
-      isDayPickerVisible: isDayPickerVisibleProp,
-      showMonthPickerAsOverlay: showMonthPickerAsOverlayProp,
-    });
 
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
 
@@ -371,6 +380,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
             showSixWeeksByDefault={showSixWeeksByDefault}
             minDate={minDate}
             maxDate={maxDate}
+            navigationIcons={defaultNavigationIcons}
             restrictedDates={restrictedDates}
             workWeekDays={workWeekDays}
             componentRef={dayPicker}
@@ -397,6 +407,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
               minDate={minDate}
               maxDate={maxDate}
               componentRef={monthPicker}
+              navigationIcons={defaultNavigationIcons}
               {...calendarMonthProps} // at end of list so consumer's custom functions take precedence
             />
             {renderGoToTodayButton()}
@@ -410,7 +421,8 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
 );
 Calendar.displayName = 'Calendar';
 
-function getShowMonthPickerAsOverlay({ isDayPickerVisible, showMonthPickerAsOverlay }: CalendarProps) {
-  const win = getWindow();
+const useShowMonthPickerAsOverlay = ({ isDayPickerVisible, showMonthPickerAsOverlay }: CalendarProps) => {
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
   return showMonthPickerAsOverlay || (isDayPickerVisible && win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
-}
+};

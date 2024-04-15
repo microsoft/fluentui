@@ -536,7 +536,7 @@ export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends React_2.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
+export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps<T>> extends React_2.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected canAddItems(): boolean;
@@ -597,7 +597,7 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends React_2.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
+export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps<T>> extends React_2.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
     constructor(basePickerProps: P);
     // (undocumented)
     completeSuggestion: () => void;
@@ -670,7 +670,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
+export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -690,6 +690,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
     // (undocumented)
@@ -784,7 +786,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
 }
 
 // @public (undocumented)
-export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
+export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
     // (undocumented)
     protected onBackspace(ev: React_2.KeyboardEvent<HTMLElement>): void;
     // (undocumented)
@@ -792,7 +794,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 }
 
 // @public (undocumented)
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React_2.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
+export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsListProps<T>> extends React_2.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     addItems: (items: T[]) => void;
@@ -800,6 +802,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected copyItems(items: T[]): void;
     // (undocumented)
@@ -1177,7 +1181,7 @@ export { createTheme }
 export { css }
 
 // @public
-export function cssColor(color?: string): IRGB | undefined;
+export function cssColor(color?: string, doc?: Document): IRGB | undefined;
 
 export { customizable }
 
@@ -1309,6 +1313,8 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         layoutMode: DetailsListLayoutMode;
@@ -1750,7 +1756,7 @@ export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 export function getColorFromRGBA(rgba: IRGB): IColor;
 
 // @public
-export function getColorFromString(inputColor: string): IColor | undefined;
+export function getColorFromString(inputColor: string, doc?: Document): IColor | undefined;
 
 // @public (undocumented)
 export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
@@ -1860,7 +1866,7 @@ export function getLayerHostSelector(): string | undefined;
 export const getLayerStyles: (props: ILayerStyleProps) => ILayerStyles;
 
 // @public
-export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean, win?: Window): number;
 
 // @public
 export const getMeasurementCache: () => {
@@ -3214,6 +3220,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     hideOverflow?: boolean;
     isBeakVisible?: boolean;
     layerProps?: ILayerProps;
+    minimumScrollResizeHeight?: number;
     minPagePadding?: number;
     onDismiss?: (ev?: Event | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
@@ -3221,6 +3228,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
     popupProps?: IPopupProps;
+    preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
     // @deprecated
     preventDismissOnLostFocus?: boolean;
@@ -7012,6 +7020,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
+    onExpandButtonToggled?: (expandSingleLine: boolean) => void;
     // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
@@ -8137,6 +8146,8 @@ export interface IScrollablePaneContext {
         notifySubscribers: (sort?: boolean) => void;
         syncScrollSticky: (sticky: Sticky) => void;
     };
+    // (undocumented)
+    window: Window | undefined;
 }
 
 // @public (undocumented)
@@ -9333,6 +9344,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     readOnly?: boolean;
     resizable?: boolean;
     revealPasswordAriaLabel?: string;
+    scrollContainerRef?: React_2.RefObject<HTMLElement>;
     styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
     suffix?: string;
     theme?: ITheme;
@@ -9782,6 +9794,8 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
+    // (undocumented)
     static defaultProps: IKeytipLayerProps;
     // (undocumented)
     getCurrentSequence(): string;
@@ -9889,6 +9903,8 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         startIndex: number;
@@ -10053,6 +10069,8 @@ export const Nav: React_2.FunctionComponent<INavProps>;
 export class NavBase extends React_2.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
+    // (undocumented)
     static defaultProps: INavProps;
     focus(forceIntoFirstElement?: boolean): boolean;
     // (undocumented)
@@ -10144,6 +10162,8 @@ export class PanelBase extends React_2.Component<IPanelProps, IPanelState> imple
     componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: IPanelProps;
     // (undocumented)
@@ -10408,13 +10428,13 @@ export enum Position {
 }
 
 // @public (undocumented)
-export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, shouldScroll?: boolean, minimumScrollResizeHeight?: number, win?: Window): ICalloutPositionedInfo;
 
 // @public (undocumented)
-export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, win?: Window): ICalloutPositionedInfo;
 
 // @public
-export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData): IPositionedData;
+export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData, win?: Window): IPositionedData;
 
 // @public (undocumented)
 export const PositioningContainer: React_2.FunctionComponent<IPositioningContainerProps>;
@@ -10594,6 +10614,8 @@ export class ScrollablePaneBase extends React_2.Component<IScrollablePaneProps, 
     componentWillUnmount(): void;
     // (undocumented)
     get contentContainer(): HTMLDivElement | null;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     forceLayoutUpdate(): void;
     // (undocumented)
@@ -11039,7 +11061,7 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
 }
 
 // @public
-export class SuggestionsControl<T> extends React_2.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
+export class SuggestionsControl<T extends {}> extends React_2.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
     constructor(suggestionsProps: ISuggestionsControlProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -11121,7 +11143,7 @@ export class SuggestionsController<T> {
 }
 
 // @public
-export class SuggestionsCore<T> extends React_2.Component<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T extends {}> extends React_2.Component<ISuggestionsCoreProps<T>, {}> {
     constructor(suggestionsProps: ISuggestionsCoreProps<T>);
     // (undocumented)
     componentDidUpdate(): void;
@@ -11359,7 +11381,11 @@ export const TooltipHost: React_2.FunctionComponent<ITooltipHostProps>;
 export class TooltipHostBase extends React_2.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
     constructor(props: ITooltipHostProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         delay: TooltipDelay;

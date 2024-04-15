@@ -1,15 +1,22 @@
-import { render, screen, queryAllByAttribute, fireEvent } from '@testing-library/react';
-import { chartPoints } from './DonutChart.test';
+import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-library/react';
+import { chartPointsDC } from '../../utilities/test-data';
 import { DonutChart } from './index';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
 import { resetIds } from '../../Utilities';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+function sharedBeforeEach() {
+  resetIds();
+}
 
 describe('Donut chart interactions', () => {
   beforeEach(() => {
-    resetIds();
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -18,7 +25,7 @@ describe('Donut chart interactions', () => {
   test('Should hide callout on mouse leave', () => {
     // Arrange
     const { container } = render(
-      <DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
+      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
     );
 
     // Act
@@ -35,7 +42,7 @@ describe('Donut chart interactions', () => {
   test('Should show callout on focus', () => {
     // Arrange
     const { container } = render(
-      <DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
+      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
     );
 
     // Act
@@ -49,7 +56,7 @@ describe('Donut chart interactions', () => {
   test('Should remove focus on blur', () => {
     // Arrange
     const { container } = render(
-      <DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
+      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
     );
 
     // Act
@@ -63,7 +70,7 @@ describe('Donut chart interactions', () => {
 
   test('Should highlight the corresponding Pie on mouse over on legends', () => {
     // Arrange
-    const { container } = render(<DonutChart data={chartPoints} innerRadius={55} hideLegend={false} />);
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} />);
 
     // Act
     const legend = screen.queryByText('first');
@@ -78,7 +85,7 @@ describe('Donut chart interactions', () => {
 
   test('Should select legend on single mouse click on legends', () => {
     // Arrange
-    const { container } = render(<DonutChart data={chartPoints} innerRadius={55} hideLegend={false} />);
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} />);
 
     // Act
     const legend = screen.queryByText('first');
@@ -95,7 +102,7 @@ describe('Donut chart interactions', () => {
 
   test('Should deselect legend on double mouse click on legends', () => {
     // Arrange
-    const { container } = render(<DonutChart data={chartPoints} innerRadius={55} hideLegend={false} />);
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} />);
 
     // Act
     const legend = screen.queryByText('first');
@@ -117,7 +124,7 @@ describe('Donut chart interactions', () => {
 
   test('Should show Pies with same opacity on mouse out of legends', () => {
     // Arrange
-    const { container } = render(<DonutChart data={chartPoints} innerRadius={55} hideLegend={false} />);
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} />);
 
     // Act
     const legend = screen.queryByText('first');
@@ -135,7 +142,7 @@ describe('Donut chart interactions', () => {
   test('Should display correct callout data on mouse move', () => {
     // Arrange
     const { container } = render(
-      <DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
+      <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
     );
 
     // Act
@@ -155,7 +162,7 @@ describe('Donut chart interactions', () => {
     jest.spyOn(utils, 'wrapTextInsideDonut').mockImplementation(() => '1000');
     // Arrange
     const { container } = render(
-      <DonutChart data={chartPoints} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />,
+      <DonutChart data={chartPointsDC} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />,
     );
     const getByClass = queryAllByAttribute.bind(null, 'class');
 
@@ -170,11 +177,23 @@ describe('Donut chart interactions', () => {
     // Arrange
     const { container } = render(
       <ThemeProvider theme={DarkTheme}>
-        <DonutChart culture={window.navigator.language} data={chartPoints} innerRadius={55} />
+        <DonutChart culture={window.navigator.language} data={chartPointsDC} innerRadius={55} />
       </ThemeProvider>,
     );
 
     // Assert
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Donut Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<DonutChart data={chartPointsDC} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });

@@ -43,14 +43,16 @@ type ColumnResizeStateAction<T> =
     };
 
 const createReducer =
-  <T>() =>
+  <T>(autoFitColumns?: boolean) =>
   (state: ComponentState<T>, action: ColumnResizeStateAction<T>): ComponentState<T> => {
     switch (action.type) {
       case 'CONTAINER_WIDTH_UPDATED':
         return {
           ...state,
           containerWidth: action.containerWidth,
-          columnWidthState: adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth),
+          columnWidthState: autoFitColumns
+            ? adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth)
+            : state.columnWidthState,
         };
 
       case 'COLUMNS_UPDATED':
@@ -58,7 +60,7 @@ const createReducer =
         return {
           ...state,
           columns: action.columns,
-          columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth),
+          columnWidthState: autoFitColumns ? adjustColumnWidthsToFitContainer(newS, state.containerWidth) : newS,
         };
 
       case 'COLUMN_SIZING_OPTIONS_UPDATED':
@@ -66,7 +68,9 @@ const createReducer =
         return {
           ...state,
           columnSizingOptions: action.columnSizingOptions,
-          columnWidthState: adjustColumnWidthsToFitContainer(newState, state.containerWidth),
+          columnWidthState: autoFitColumns
+            ? adjustColumnWidthsToFitContainer(newState, state.containerWidth)
+            : newState,
         };
 
       case 'SET_COLUMN_WIDTH':
@@ -85,7 +89,9 @@ const createReducer =
         // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
         newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'idealWidth', width);
         // Adjust the widths to the container size
-        newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
+        if (autoFitColumns) {
+          newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
+        }
 
         return { ...state, columnWidthState: newColumnWidthState };
     }
@@ -96,9 +102,9 @@ export function useTableColumnResizeState<T>(
   containerWidth: number,
   params: UseTableColumnSizingParams = {},
 ): ColumnResizeState {
-  const { onColumnResize, columnSizingOptions } = params;
+  const { onColumnResize, columnSizingOptions, autoFitColumns = true } = params;
 
-  const reducer = React.useMemo(() => createReducer<T>(), []);
+  const reducer = React.useMemo(() => createReducer<T>(autoFitColumns), [autoFitColumns]);
 
   const [state, dispatch] = React.useReducer(reducer, {
     columns,
@@ -138,9 +144,15 @@ export function useTableColumnResizeState<T>(
   );
 
   return {
-    getColumnById: (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),
-    getColumns: () => state.columnWidthState,
-    getColumnWidth: (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
+    getColumnById: React.useCallback(
+      (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),
+      [state.columnWidthState],
+    ),
+    getColumns: React.useCallback(() => state.columnWidthState, [state.columnWidthState]),
+    getColumnWidth: React.useCallback(
+      (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
+      [state.columnWidthState],
+    ),
     setColumnWidth,
   };
 }

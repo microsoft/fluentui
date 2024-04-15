@@ -1,5 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from '@fluentui/react-aria';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { OptionSlots, OptionState } from './Option.types';
 
@@ -25,19 +26,21 @@ const useStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalS),
     position: 'relative',
 
-    '&:hover': {
+    ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
 
-    '&:active': {
+    ':active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
+      color: tokens.colorNeutralForeground1Pressed,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
   },
 
   active: {
-    // taken from @fluentui/react-tabster
-    // cannot use createFocusIndicatorStyle() directly, since we aren't using the :focus selector
-    '::after': {
+    [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
       content: '""',
       position: 'absolute',
       pointerEvents: 'none',
@@ -58,12 +61,16 @@ const useStyles = makeStyles({
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
 
-    '&:hover': {
+    ':hover': {
       backgroundColor: tokens.colorTransparentBackground,
+      color: tokens.colorNeutralForegroundDisabled,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
 
-    '&:active': {
+    ':active': {
       backgroundColor: tokens.colorTransparentBackground,
+      color: tokens.colorNeutralForegroundDisabled,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
 
     '@media (forced-colors: active)': {
@@ -119,18 +126,19 @@ const useStyles = makeStyles({
       color: 'GrayText',
     },
   },
+  multiselectCheckDisabled: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
 });
 
 /**
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
-  const { active, disabled, focusVisible, multiselect, selected } = state;
+  const { disabled, multiselect, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     optionClassNames.root,
     styles.root,
-    active && focusVisible && styles.active,
+    styles.active,
     disabled && styles.disabled,
     selected && styles.selected,
     state.root.className,
@@ -144,6 +152,7 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
       selected && styles.selectedCheck,
       selected && multiselect && styles.selectedMultiselectCheck,
       disabled && styles.checkDisabled,
+      disabled && multiselect && styles.multiselectCheckDisabled,
       state.checkIcon.className,
     );
   }

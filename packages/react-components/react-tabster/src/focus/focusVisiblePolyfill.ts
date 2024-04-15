@@ -63,7 +63,8 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   // and contains metadata about the focus event
   const keyborgListener = (e: KeyborgFocusInEvent) => {
     disposeCurrentElement();
-    registerElementIfNavigating(e.target);
+    const target = e.composedPath()[0];
+    registerElementIfNavigating(target);
   };
 
   // Make sure that when focus leaves the scope, the focus visible class is removed
@@ -77,7 +78,9 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
-  registerElementIfNavigating(targetWindow.document.activeElement);
+  if (scope.contains(targetWindow.document.activeElement)) {
+    registerElementIfNavigating(targetWindow.document.activeElement);
+  }
 
   // Return disposer
   return () => {

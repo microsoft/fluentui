@@ -1,11 +1,5 @@
-import { SelectionMode, getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
-import type {
-  TreeCheckedChangeData,
-  TreeNavigationData_unstable,
-  TreeOpenChangeData,
-  TreeProps,
-  TreeState,
-} from '../Tree';
+import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
 import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
 import { createOpenItems } from '../utils/createOpenItems';
@@ -29,26 +23,36 @@ export function useRootTree(
 
   const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
-  const requestOpenChange = (data: TreeOpenChangeData) => {
-    const nextOpenItems = createNextOpenItems(data, openItems);
-    props.onOpenChange?.(data.event, {
-      ...data,
-      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+
+  const requestOpenChange = (request: Extract<TreeItemRequest, { requestType: 'open' }>) => {
+    props.onOpenChange?.(request.event, {
+      ...request,
+      openItems: createNextOpenItems(request, openItems).dangerouslyGetInternalSet_unstable(),
     });
   };
 
-  const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
+  const requestCheckedChange = (request: Extract<TreeItemRequest, { requestType: 'selection' }>) => {
+    if (selectionMode === 'none') {
+      return;
+    }
+    props.onCheckedChange?.(request.event, {
+      ...request,
+      selectionMode,
+      checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
+      // Casting is required here due to selection | multiselection spreading the union problem
+    } as TreeCheckedChangeData);
+  };
 
-  const requestNavigation = (data: TreeNavigationData_unstable) => {
-    props.onNavigation?.(data.event, data);
-    switch (data.type) {
+  const requestNavigation = (request: Extract<TreeItemRequest, { requestType: 'navigate' }>) => {
+    props.onNavigation?.(request.event, request);
+    switch (request.type) {
       case treeDataTypes.ArrowDown:
       case treeDataTypes.ArrowUp:
       case treeDataTypes.Home:
       case treeDataTypes.End:
         // stop the default behavior of the event
         // which is to scroll the page
-        data.event.preventDefault();
+        request.event.preventDefault();
     }
   };
 
@@ -57,24 +61,14 @@ export function useRootTree(
       case 'navigate':
         return requestNavigation(request);
       case 'open':
-        return requestOpenChange({
-          ...request,
-          open: request.itemType === 'branch' && !openItems.has(request.value),
-          openItems: openItems.dangerouslyGetInternalSet_unstable(),
-        });
+        return requestOpenChange(request);
       case 'selection':
-        return requestCheckedChange({
-          ...request,
-          selectionMode: selectionMode as SelectionMode,
-          checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
-        } as TreeCheckedChangeData);
+        return requestCheckedChange(request);
     }
   });
 
   return {
-    components: {
-      root: 'div',
-    },
+    components: { root: 'div' },
     contextType: 'root',
     selectionMode,
     open: true,

@@ -1,7 +1,9 @@
-const fs = require('fs-extra');
+const fs = require('fs');
 const path = require('path');
-const lernaAlias = require('lerna-alias');
-const findGitRoot = require('./findGitRoot');
+
+const { workspaceRoot } = require('@nx/devkit');
+
+const { getWorkspaceProjects } = require('./workspace-utils');
 
 /**
  * @type {import('./types').AllPackageInfo}
@@ -14,25 +16,31 @@ let cwdForPackageInfo;
 
 /**
  * @returns {typeof packageInfo}
+ * @param {(metadata:{project:import('@nx/devkit').ProjectConfiguration;packageJson:import('nx/src/utils/package-json').PackageJson})=>boolean} [predicate]
  */
-function getAllPackageInfo() {
-  if (packageInfo && cwdForPackageInfo === process.cwd()) {
+function getAllPackageInfo(predicate) {
+  if (!predicate && packageInfo && cwdForPackageInfo === process.cwd()) {
     return packageInfo;
   }
 
-  // Get mapping from package name to package path
-  // (rollup helper happens to be good for getting basic package name/path pairs)
-  const packagePaths = lernaAlias.rollup({ sourceDirectory: false });
-  delete packagePaths['@fluentui/noop']; // not a real package
+  const projects = getWorkspaceProjects();
 
   packageInfo = {};
   cwdForPackageInfo = process.cwd();
-  const gitRoot = findGitRoot();
 
-  for (const [packageName, packagePath] of Object.entries(packagePaths)) {
-    packageInfo[packageName] = {
-      packagePath: path.relative(gitRoot, packagePath),
-      packageJson: fs.readJSONSync(path.join(packagePath, 'package.json')),
+  for (const [projectName, projectConfig] of projects) {
+    const packageJson = JSON.parse(
+      fs.readFileSync(path.join(workspaceRoot, projectConfig.root, 'package.json'), 'utf-8'),
+    );
+
+    if (predicate && !predicate({ project: projectConfig, packageJson })) {
+      continue;
+    }
+
+    packageInfo[projectName] = {
+      packagePath: projectConfig.root,
+      packageJson,
+      projectConfig,
     };
   }
 

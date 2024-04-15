@@ -61,7 +61,7 @@ A comprehensive contributor guide is available in our internal [wiki](https://ak
 
 ## Testing
 
-![Static Badge](https://img.shields.io/badge/coverage-87%25-brightgreen)
+![Test Coverage Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2Ffluentui-charting-contrib%2Ftest-coverage-artifacts%2FubuntuCoverage.json&query=%24.statementCoverage&suffix=%25&label=coverage&color=brightgreen)
 
 The library has a wide variety of tests to ensure quality of the library.
 The tests range from component tests, unit tests, visual regression tests, accessibility tests, integration tests and manual tests.
@@ -121,7 +121,7 @@ Performance is measured and has been improved for the following scenarios.
 <tr>
     <td>7.</td>
     <td>1 Areachart with 30,000 datapoints</td>
-    <td>49</td>
+    <td>70</td>
 </tr>
 <tr>
     <td>8.</td>

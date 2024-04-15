@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
@@ -15,16 +15,14 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
  */
 const useRootBaseStyle = makeResetStyles({
   ...createFocusOutlineStyle(),
-  ...shorthands.inset(0),
-  ...shorthands.padding(0),
-  ...shorthands.padding(SURFACE_PADDING),
-  ...shorthands.margin('auto'),
-  ...shorthands.borderStyle('none'),
-  ...shorthands.overflow('unset'),
-  ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
-  ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+  inset: 0,
+  padding: SURFACE_PADDING,
+  margin: 'auto',
+  borderStyle: 'none',
+  overflow: 'unset',
+  border: `${SURFACE_BORDER_WIDTH} solid ${tokens.colorTransparentStroke}`,
+  borderRadius: tokens.borderRadiusXLarge,
 
-  contain: 'content',
   display: 'block',
   userSelect: 'unset',
   visibility: 'unset',
@@ -41,26 +39,36 @@ const useRootBaseStyle = makeResetStyles({
   },
 });
 
+const rootVisible = {
+  boxShadow: tokens.shadow64,
+  transform: 'scale(1) translateZ(0)',
+  opacity: 1,
+};
+const rootWhenAnimating = {
+  transitionDuration: tokens.durationGentle,
+  transitionProperty: 'opacity, transform, box-shadow',
+  // // FIXME: https://github.com/microsoft/fluentui/issues/29473
+  transitionTimingFunction: tokens.curveDecelerateMid,
+};
 const useRootStyles = makeStyles({
   animated: {
     // initial style before animation:
     opacity: 0,
-    transitionDuration: tokens.durationGentle,
-    transitionProperty: 'opacity, transform, box-shadow',
-    // // FIXME: https://github.com/microsoft/fluentui/issues/29473
-    transitionTimingFunction: tokens.curveDecelerateMid,
     boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)',
     transform: 'scale(0.85) translateZ(0)',
   },
-  unmounted: {},
-  entering: {},
-  entered: {
+  static: {
     boxShadow: tokens.shadow64,
-    transform: 'scale(1) translateZ(0)',
-    opacity: 1,
   },
-  idle: {},
+  unmounted: {},
+  entering: {
+    ...rootWhenAnimating,
+    ...rootVisible,
+  },
+  entered: rootVisible,
+  idle: rootVisible,
   exiting: {
+    ...rootWhenAnimating,
     transitionTimingFunction: tokens.curveAccelerateMin,
   },
   exited: {},
@@ -69,8 +77,11 @@ const useRootStyles = makeStyles({
 /**
  * Styles for the backdrop slot
  */
+const backdropVisible = {
+  opacity: 1,
+};
 const useBackdropBaseStyle = makeResetStyles({
-  ...shorthands.inset('0px'),
+  inset: '0px',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
   position: 'fixed',
 
@@ -87,11 +98,9 @@ const useBackdropStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
   },
   unmounted: {},
-  entering: {},
-  entered: {
-    opacity: 1,
-  },
-  idle: {},
+  entering: backdropVisible,
+  entered: backdropVisible,
+  idle: backdropVisible,
   exiting: {
     transitionTimingFunction: tokens.curveAccelerateMin,
   },
@@ -113,7 +122,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     rootBaseStyle,
-    transitionStatus && rootStyles.animated,
+    transitionStatus ? rootStyles.animated : rootStyles.static,
     transitionStatus && rootStyles[transitionStatus],
     root.className,
   );

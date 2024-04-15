@@ -293,6 +293,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         display: block;
                       }
                   data-focuszone-id="FocusZone1"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   id="Dropdown0-list"
                   role="listbox"
                 >
@@ -433,6 +434,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             border-color: Highlight;
                             color: HighlightText;
                           }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border-color: HighlightText;
+                            bottom: 0px;
+                            left: 0px;
+                            right: 0px;
+                            top: 0px;
+                          }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
@@ -467,12 +475,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            bottom: 0px;
-                            left: 0px;
-                            right: 0px;
-                            top: 0px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             inset: 2px;
@@ -700,6 +702,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           border-color: Highlight;
                           color: HighlightText;
                         }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border-color: HighlightText;
+                          bottom: 0px;
+                          left: 0px;
+                          right: 0px;
+                          top: 0px;
+                        }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
@@ -734,12 +743,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          bottom: 0px;
-                          left: 0px;
-                          right: 0px;
-                          top: 0px;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           inset: 2px;
@@ -1541,6 +1544,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         display: block;
                       }
                   data-focuszone-id="FocusZone1"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   id="Dropdown0-list"
                   role="listbox"
                 >
@@ -1641,6 +1645,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             border: 0;
                           }
                           .ms-Fabric--isFocusVisible &:focus:after {
+                            border-color: HighlightText;
                             border: 1px solid transparent;
                             bottom: 0px;
                             content: "";
@@ -1829,6 +1834,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
+                          border-color: HighlightText;
                           border: 1px solid transparent;
                           bottom: 0px;
                           content: "";

@@ -10,7 +10,9 @@ export const MenuItemLinkNavigation = () => (
 
     <MenuPopover>
       <MenuList>
-        <MenuItemLink href="https://www.microsoft.com">Home</MenuItemLink>
+        <MenuItemLink href="https://www.microsoft.com" target="_blank">
+          Home
+        </MenuItemLink>
         <MenuItemLink href="https://www.microsoft.com">Online shop</MenuItemLink>
         <MenuItemLink href="https://www.microsoft.com">Contact us</MenuItemLink>
         <MenuItemLink href="https://www.microsoft.com">About</MenuItemLink>

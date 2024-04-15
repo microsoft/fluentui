@@ -32,6 +32,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useListboxStyles_unstable: CustomStyleHook;
   useListStyles_unstable: CustomStyleHook;
   useListItemStyles_unstable: CustomStyleHook;
+  /* @deprecated Use onClick handler on the ListItem itself instead. */
   useListItemButtonStyles_unstable: CustomStyleHook;
   useOptionStyles_unstable: CustomStyleHook;
   useOptionGroupStyles_unstable: CustomStyleHook;
@@ -119,6 +120,20 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarActionsStyles_unstable: CustomStyleHook;
   useMessageBarGroupStyles_unstable: CustomStyleHook;
   useToasterStyles_unstable: CustomStyleHook;
+  /** @deprecated TeachingPopover wrapper has no styles (non-UI hooks only). */
+  useTeachingPopoverStyles_unstable: CustomStyleHook;
+  /** @deprecated Replaced by TeachingPopoverFooter / TeachingPopoverCarousel internal functionality. */
+  useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
+  useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
+  /** @deprecated Replaced by TeachingPopoverFooter / TeachingPopoverCarousel styling hooks */
+  useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+  useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+  /** @deprecated Replaced by TeachingPopoverCarouselNav styling hooks */
+  useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
+  useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
+  useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+  useTimePickerCompatStyles_unstable: CustomStyleHook;
 }>;
 
 /**

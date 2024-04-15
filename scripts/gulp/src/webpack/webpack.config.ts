@@ -1,12 +1,11 @@
+import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import _ from 'lodash';
-import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-
-import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 
 import config from '../config';
 
@@ -112,7 +111,7 @@ const webpackConfig: webpack.Configuration &
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
     // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
-    // spam the log (note that build:docs is the resolved command used by lerna run build --stream)
+    // spam the log (note that build:docs is the resolved command used by nx run build --stream)
     !process.env.TF_BUILD &&
     !process.argv.includes('build:docs')
       ? new webpack.ProgressPlugin({
@@ -125,7 +124,7 @@ const webpackConfig: webpack.Configuration &
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      ...config.lernaAliases({ type: 'webpack' }),
+      ...config.webpackAliases,
       src: paths.packageSrc('react-northstar'),
       faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',

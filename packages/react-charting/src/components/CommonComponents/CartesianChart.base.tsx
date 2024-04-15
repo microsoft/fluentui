@@ -11,8 +11,8 @@ import {
   IYValueHover,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import {
-  convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
@@ -86,6 +86,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
+  private isIntegralDataset: boolean = true;
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -159,6 +160,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         startFromX: 0,
       });
     }
+    this.isIntegralDataset = !this.props.points.some((point: { y: number }) => {
+      return point.y % 1 !== 0;
+    });
   }
 
   public componentWillUnmount(): void {
@@ -207,6 +211,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     } else if (this.state.startFromX !== 0) {
       this.setState({
         startFromX: 0,
+      });
+    }
+    if (prevProps.points !== this.props.points) {
+      this.isIntegralDataset = !this.props.points.some((point: { y: number }) => {
+        return point.y % 1 !== 0;
       });
     }
   }
@@ -389,10 +398,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             axisData,
             chartType,
             this.props.barwidth!,
+            this.isIntegralDataset,
             true,
           );
         }
-        yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
+        yScale = createYAxis(
+          YAxisParams,
+          this._isRtl,
+          axisData,
+          chartType,
+          this.props.barwidth!,
+          this.isIntegralDataset,
+        );
       }
 
       /*

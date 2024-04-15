@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.66.4",
+  "version": "0.66.5",
   "private": true,
   "license": "MIT",
   "dependencies": {
@@ -10,7 +10,6 @@
     "@fluentui/react-northstar": "*",
     "@fluentui/react-northstar-prototypes": "*",
     "@types/react-router-dom": "^5.1.5",
-    "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
     "react-router-dom": "^5.2.0"
   },

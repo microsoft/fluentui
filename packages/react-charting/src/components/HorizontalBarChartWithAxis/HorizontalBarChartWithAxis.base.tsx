@@ -5,24 +5,25 @@ import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand a
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { ILegend } from '../../components/Legends/Legends.types';
+import { Legends } from '../../components/Legends/Legends';
 import {
   IAccessibilityProps,
-  CartesianChart,
-  ChartHoverCard,
   IBasestate,
-  IMargins,
-  ILegend,
+  IHorizontalBarChartWithAxisDataPoint,
   IRefArrayData,
+  IMargins,
+} from '../../types/IDataPoint';
+import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
+import {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,
   IHorizontalBarChartWithAxisStyles,
-  IHorizontalBarChartWithAxisDataPoint,
-  Legends,
-  IChildProps,
-  IYValueHover,
-} from '../../index';
+} from './HorizontalBarChartWithAxis.types';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
+  ChartHoverCard,
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
@@ -425,7 +426,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
@@ -644,11 +645,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {

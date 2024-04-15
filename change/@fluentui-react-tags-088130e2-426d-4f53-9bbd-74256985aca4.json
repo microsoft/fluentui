@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: refactor styles defined in makeResetStyles() to avoid shorthands.*()",
+  "packageName": "@fluentui/react-tags",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

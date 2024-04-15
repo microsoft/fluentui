@@ -7,6 +7,7 @@ import {
   createTableColumn,
   DataGridCell,
   DataGridBody,
+  DataGridHeaderCell,
 } from '@fluentui/react-table';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -169,8 +170,10 @@ describe('DataGrid', () => {
     cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
     cy.focused().should('have.text', '2-1').should('have.attr', 'role', 'gridcell').realPress('Tab');
     cy.focused().should('have.text', 'After').realPress(['Shift', 'Tab']);
-    cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
-    cy.focused().should('have.text', '7-1').should('have.attr', 'role', 'gridcell').realPress(['Shift', 'Tab']);
+    cy.focused().should('have.attr', 'role', 'row').should('have.text', '2-12-22-3').realPress('PageUp');
+    cy.focused().should('have.text', 'header-1').should('have.attr', 'role', 'gridcell').realPress('ArrowRight');
+    cy.focused().should('have.text', 'header-2').realPress('ArrowRight');
+    cy.focused().should('have.text', 'header-3').should('have.attr', 'role', 'gridcell').realPress(['Shift', 'Tab']);
     cy.focused().should('have.text', 'Before');
   });
 
@@ -219,5 +222,78 @@ describe('DataGrid', () => {
     cy.focused().should('have.text', '2-3');
     cy.realPress('ArrowRight');
     cy.focused().should('have.text', 'action').should('have.prop', 'tagName', 'BUTTON');
+  });
+
+  describe('Column resizing', () => {
+    beforeEach(() => {
+      cy.viewport(900, 600);
+    });
+
+    const validateHeaderWidth = (columnId: string, width: number) => {
+      cy.get('div')
+        .contains(columnId)
+        .should(el => expect(el.width()).eq(width));
+    };
+
+    it('renders ideal column widths', () => {
+      const columnSizingOptions = {
+        first: {
+          idealWidth: 150,
+          minWidth: 70,
+        },
+        second: {
+          idealWidth: 160,
+          minWidth: 80,
+        },
+        third: {
+          idealWidth: 170,
+          minWidth: 90,
+        },
+      };
+      const ResizableDataGrid = () => (
+        <DataGrid items={testItems} columns={testColumns} resizableColumns columnSizingOptions={columnSizingOptions}>
+          <DataGridHeader>
+            <DataGridRow<Item>>
+              {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+            </DataGridRow>
+          </DataGridHeader>
+          <DataGridBody<Item>>
+            {({ item }) => (
+              <DataGridRow<Item>>
+                {({ renderCell, columnId }) => (
+                  <DataGridCell focusMode={columnId === 'action' ? 'none' : 'cell'}>{renderCell(item)}</DataGridCell>
+                )}
+              </DataGridRow>
+            )}
+          </DataGridBody>
+        </DataGrid>
+      );
+
+      mount(<ResizableDataGrid />);
+
+      // Ideal widths
+      validateHeaderWidth('header-1', 150);
+      validateHeaderWidth('header-2', 160);
+      validateHeaderWidth('header-3', 526); // this is ideal + rest of the space
+
+      // Minimum widths
+      cy.viewport(200, 600);
+      validateHeaderWidth('header-1', 70);
+      validateHeaderWidth('header-2', 80);
+      validateHeaderWidth('header-3', 90);
+
+      // growing
+      cy.viewport(400, 600);
+
+      validateHeaderWidth('header-1', 150);
+      validateHeaderWidth('header-2', 96);
+      validateHeaderWidth('header-3', 90);
+
+      // Ideal widths again
+      cy.viewport(900, 600);
+      validateHeaderWidth('header-1', 150);
+      validateHeaderWidth('header-2', 160);
+      validateHeaderWidth('header-3', 526);
+    });
   });
 });

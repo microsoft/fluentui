@@ -2,16 +2,49 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { DefaultPalette, ThemeProvider } from '@fluentui/react';
+import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import {
+  getByClass,
+  getById,
+  testWithWait,
+  testWithoutWait,
+  isTimezoneSet,
+  isTestEnv,
+} from '../../utilities/TestUtility.test';
+import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
 
-const beforeAll = () => {
-  jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
-  jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
-};
+expect.extend(toHaveNoViolations);
+
+beforeEach(() => {
+  resetIds();
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
@@ -53,12 +86,12 @@ const basicChartPoints = {
 const datePoints: ILineChartPoints[] = [
   {
     data: [
-      { x: new Date('01/01/2020'), y: 30 },
-      { x: new Date('02/01/2020'), y: 50 },
-      { x: new Date('03/01/2020'), y: 30 },
-      { x: new Date('04/01/2020'), y: 50 },
-      { x: new Date('05/01/2020'), y: 30 },
-      { x: new Date('06/01/2020'), y: 50 },
+      { x: new Date('2020-01-01T00:00:00.000Z'), y: 30 },
+      { x: new Date('2020-02-01T00:00:00.000Z'), y: 50 },
+      { x: new Date('2020-03-01T00:00:00.000Z'), y: 30 },
+      { x: new Date('2020-04-01T00:00:00.000Z'), y: 50 },
+      { x: new Date('2020-05-01T00:00:00.000Z'), y: 30 },
+      { x: new Date('2020-06-01T00:00:00.000Z'), y: 50 },
     ],
     legend: 'First',
     lineOptions: {
@@ -78,8 +111,8 @@ const colorFillBarData = [
     color: 'blue',
     data: [
       {
-        startX: new Date('01/01/2020'),
-        endX: new Date('02/01/2020'),
+        startX: new Date('2020-01-01T00:00:00.000Z'),
+        endX: new Date('2020-02-01T00:00:00.000Z'),
       },
     ],
   },
@@ -88,8 +121,8 @@ const colorFillBarData = [
     color: 'red',
     data: [
       {
-        startX: new Date('04/01/2018'),
-        endX: new Date('05/01/2018'),
+        startX: new Date('2018-04-01T00:00:00.000Z'),
+        endX: new Date('2020-05-01T00:00:00.000Z'),
       },
     ],
     applyPattern: true,
@@ -178,6 +211,9 @@ const chartPointsWithGaps = {
 };
 
 describe('Line chart rendering', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the Line chart with numeric x-axis data',
     LineChart,
@@ -197,8 +233,33 @@ describe('Line chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
+
+  const testCases = [
+    ['when tick Values is given', { data: dateChartPoints, tickValues, tickFormat: '%m/%d' }],
+    ['when tick Values not given and tick format is given', { data: dateChartPoints, tickFormat: '%m/%d' }],
+    ['when tick Values is given and tick format not given', { data: dateChartPoints, tickValues }],
+    ['when tick Values given and tick format is %m/%d/%y', { data: dateChartPoints, tickFormat: '%m/%d/%y' }],
+    ['when tick Values given and tick format is %d', { data: dateChartPoints, tickValues, tickFormat: '%d' }],
+    ['when tick Values given and tick format is %m', { data: dateChartPoints, tickValues, tickFormat: '%m' }],
+    ['when tick Values given and tick format is %m/%y', { data: dateChartPoints, tickValues, tickFormat: '%m/%y' }],
+  ];
+  testCases.forEach(([testcase, props]) => {
+    testWithWait(
+      `Should render the Line chart with date x-axis data ${testcase}`,
+      LineChart,
+      props,
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
+    );
+  });
 
   testWithoutWait(
     'Should render the Line chart with points in multiple shapes',
@@ -292,13 +353,13 @@ const simplePoints = {
 };
 
 const tickValues = [
-  new Date('2020-03-03'),
-  new Date('2020-03-04'),
-  new Date('2020-03-05'),
-  new Date('2020-03-06'),
-  new Date('2020-03-07'),
-  new Date('2020-03-08'),
-  new Date('2020-03-09'),
+  new Date('2020-03-03T00:00:00.000Z'),
+  new Date('2020-03-04T00:00:00.000Z'),
+  new Date('2020-03-05T00:00:00.000Z'),
+  new Date('2020-03-06T00:00:00.000Z'),
+  new Date('2020-03-07T00:00:00.000Z'),
+  new Date('2020-03-08T00:00:00.000Z'),
+  new Date('2020-03-09T00:00:00.000Z'),
 ];
 
 const eventAnnotationProps = {
@@ -359,8 +420,6 @@ describe('Line chart - Subcomponent line', () => {
       // Assert
       expect(lines).toHaveLength(8);
     },
-    undefined,
-    beforeAll,
   );
 });
 
@@ -518,8 +577,6 @@ describe('Line chart - Subcomponent Time Range', () => {
       // Assert
       expect(getByClass(container, /rect/i).length > 0);
     },
-    undefined,
-    beforeAll,
   );
 
   testWithWait(
@@ -539,8 +596,6 @@ describe('Line chart - Subcomponent Time Range', () => {
       expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
       expect(filledBars[1].getAttribute('fill-opacity')).toEqual('0.1');
     },
-    undefined,
-    beforeAll,
   );
 });
 
@@ -556,20 +611,6 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
-    undefined,
-    beforeAll,
-  );
-
-  testWithWait(
-    'Should show rotated x-axis labels',
-    LineChart,
-    { data: dateChartPoints, rotateXAxisLables: true },
-    container => {
-      // Assert
-      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
-    },
-    undefined,
-    beforeAll,
   );
 });
 
@@ -583,7 +624,6 @@ describe.skip('Line chart - Subcomponent Event', () => {
       value: mockGetComputedTextLength,
     },
   );
-
   testWithWait(
     'Should render events with defined data',
     LineChart,
@@ -595,21 +635,12 @@ describe.skip('Line chart - Subcomponent Event', () => {
       expect(event).toBeDefined();
       fireEvent.click(event!);
     },
-    undefined,
-    beforeAll,
   );
 });
 
 describe('Screen resolution', () => {
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
-  });
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -644,13 +675,29 @@ describe('Screen resolution', () => {
   );
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <LineChart culture={window.navigator.language} data={basicChartPoints} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
+describe('Theme and accessibility', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <LineChart culture={window.navigator.language} data={basicChartPoints} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Line chart - Accessibility', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });

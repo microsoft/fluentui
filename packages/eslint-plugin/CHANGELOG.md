@@ -1,8 +1,45 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Sat, 28 Oct 2023 00:29:15 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.17.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.6)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.5..@fluentui/eslint-plugin_v1.17.6)
+
+### Patches
+
+- fix(eslint-plugin): ignore bundle-size package directory ([PR #31018](https://github.com/microsoft/fluentui/pull/31018) by martinhochel@microsoft.com)
+- feat(eslint-plugin): add triple-slash-reference rule to  ban TS '///' within source code ([PR #30993](https://github.com/microsoft/fluentui/pull/30993) by martinhochel@microsoft.com)
+
+## [1.17.5](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.5)
+
+Wed, 03 Apr 2024 07:29:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.4..@fluentui/eslint-plugin_v1.17.5)
+
+### Patches
+
+- chore(eslint-plugin): migrate to eslint-plugin-jsdoc to latest in order to support Node 20 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by marata@microsoft.com)
+
+## [1.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.4)
+
+Wed, 10 Jan 2024 07:28:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.3..@fluentui/eslint-plugin_v1.17.4)
+
+### Patches
+
+- chore: add restricted globals for @fluentui/react and related packages ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+
+## [1.17.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.3)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.2..@fluentui/eslint-plugin_v1.17.3)
+
+### Patches
+
+- chore: disallow `window` and `document` access for @fluentui/react-components ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
 
 ## [1.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.2)
 

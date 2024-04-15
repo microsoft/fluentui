@@ -14,7 +14,7 @@ import { getVirtualParent } from '@fluentui/dom-utilities';
 import type { IProcessedStyleSet } from '@fluentui/merge-styles';
 import { IStyleFunction } from '@fluentui/merge-styles';
 import { IStyleFunctionOrObject } from '@fluentui/merge-styles';
-import type { IStyleSet } from '@fluentui/merge-styles';
+import type { IStyleSetBase } from '@fluentui/merge-styles';
 import { isVirtualElement } from '@fluentui/dom-utilities';
 import { IVirtualElement } from '@fluentui/dom-utilities';
 import { Omit as Omit_2 } from '@fluentui/merge-styles';
@@ -45,7 +45,7 @@ export function appendFunction(parent: any, ...functions: any[]): () => void;
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
+export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
     asyncPlaceholder?: React_2.ElementType<any> | undefined;
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
@@ -87,13 +87,13 @@ export const audioProperties: Record<string, number>;
 
 // @public
 export class AutoScroll {
-    constructor(element: HTMLElement);
+    constructor(element: HTMLElement, win?: Window);
     // (undocumented)
     dispose(): void;
 }
 
 // @public @deprecated
-export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React_2.Component<TProps, TState> {
+export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {}> extends React_2.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected get _async(): Async;
     get className(): string;
@@ -129,7 +129,7 @@ export function calculatePrecision(value: number | string): number;
 export function canUseDOM(): boolean;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSetBase>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
@@ -138,7 +138,7 @@ export const colGroupProperties: Record<string, number>;
 export const colProperties: Record<string, number>;
 
 // @public
-export function composeComponentAs<TProps>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
+export function composeComponentAs<TProps extends {}>(outer: IComponentAs<TProps>, inner: IComponentAs<TProps>): IComponentAs<TProps>;
 
 // @public
 export function composeRenderFunction<TProps>(outer: IRenderFunction<TProps>, inner: IRenderFunction<TProps>): IRenderFunction<TProps>;
@@ -241,7 +241,7 @@ export class EventGroup {
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
-    static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
+    static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean, doc?: Document): boolean | undefined;
     raise(eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
     // (undocumented)
     static stopPropagation(event: any): void;
@@ -375,7 +375,7 @@ export function getPreviousElement(rootElement: HTMLElement, currentElement: HTM
 export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
 
 // @public
-export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
+export function getRect(element: HTMLElement | Window | null, win?: Window): IRectangle | undefined;
 
 // @public @deprecated (undocumented)
 export function getResourceUrl(url: string): string;
@@ -391,7 +391,7 @@ export function getRTLSafeKeyCode(key: number, theme?: {
 }): number;
 
 // @public
-export function getScrollbarWidth(): number;
+export function getScrollbarWidth(doc?: Document): number;
 
 export { getVirtualParent }
 
@@ -671,7 +671,7 @@ export interface IPoint extends Point {
 }
 
 // @public (undocumented)
-export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
+export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSetBase> {
     // (undocumented)
     styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 }
@@ -811,7 +811,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // @public
-export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean;
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null, win?: Window): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1052,7 +1052,7 @@ export { portalContainsElement }
 export function precisionRound(value: number, precision: number, base?: number): number;
 
 // @public @deprecated
-export function raiseClick(target: Element): void;
+export function raiseClick(target: Element, doc?: Document): void;
 
 // @public
 export class Rectangle {
@@ -1228,16 +1228,16 @@ export function setWarningCallback(warningCallback?: (message: string) => void):
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
-export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap', doc?: Document): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSetBase>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
 
 // @public (undocumented)
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
 
 // @public (undocumented)
-export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
+export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
     __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
     __noStyleOverride__: boolean;
 };
@@ -1282,13 +1282,13 @@ export const videoProperties: Record<string, number>;
 export function warn(message: string): void;
 
 // @public
-export function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
+export function warnConditionallyRequiredProps<P extends {}>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
 
 // @public
 export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): void;
 
 // @public
-export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;
+export function warnDeprecations<P extends {}>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;
 
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;

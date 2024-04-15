@@ -21,6 +21,8 @@ const FORM = 'form';
 const SWAY = 'sway';
 const PLAYLIST = 'playlist';
 const LOOP_WORKSPACE = 'loopworkspace';
+const TODOITEM = 'todoitem';
+const PLANNER = 'planner';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -147,13 +149,25 @@ export function getFileTypeIconNameFromExtensionOrType(
       case FileIconType.loopworkspace:
         iconBaseName = LOOP_WORKSPACE;
         break;
+      case FileIconType.planner:
+        iconBaseName = PLANNER;
+        break;
+      case FileIconType.todoItem:
+        iconBaseName = TODOITEM;
+        break;
     }
   }
   return iconBaseName || GENERIC_FILE;
 }
 
-export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
-  let devicePixelRatio: number = window.devicePixelRatio;
+export function getFileTypeIconSuffix(
+  size: FileTypeIconSize,
+  imageFileType: ImageFileType = 'svg',
+  win?: Window,
+): string {
+  // eslint-disable-next-line no-restricted-globals
+  win ??= window;
+  let devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.

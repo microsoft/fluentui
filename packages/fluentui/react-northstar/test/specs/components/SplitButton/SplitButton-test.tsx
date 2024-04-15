@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { keyboardKey } from '@fluentui/accessibility';
 
-import { SplitButton } from 'src/components/SplitButton/SplitButton';
+import { SplitButton, SplitButtonProps } from 'src/components/SplitButton/SplitButton';
 import { splitButtonToggleClassName } from 'src/components/SplitButton/SplitButtonToggle';
 import { isConformant } from 'test/specs/commonTests';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -23,7 +23,7 @@ const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(w
 
 describe('SplitButton', () => {
   isConformant(SplitButton, { testPath: __filename, constructorName: 'SplitButton', autoControlledProps: ['open'] });
-  implementsPopperProps(SplitButton, { requiredProps: { open: true } });
+  implementsPopperProps<SplitButtonProps>(SplitButton, { requiredProps: { open: true } });
 
   describe('open', () => {
     test('is toggled between true and false on toggle button click', () => {

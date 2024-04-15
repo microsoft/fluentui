@@ -6,9 +6,10 @@ import { useStaticVirtualizerMeasure } from '../../Hooks';
 import { useImperativeHandle } from 'react';
 import { scrollToItemStatic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
+import { useStaticVirtualizerPagination } from '../../hooks/useStaticPagination';
 
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState {
-  const { imperativeRef, itemSize, numItems, axis = 'vertical', reversed } = props;
+  const { imperativeRef, itemSize, numItems, axis = 'vertical', reversed, enablePagination = false } = props;
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
@@ -19,7 +20,9 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   if (virtualizerLengthRef.current !== virtualizerLength) {
     virtualizerLengthRef.current = virtualizerLength;
   }
-  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef) as React.RefObject<HTMLDivElement>;
+
+  const paginationRef = useStaticVirtualizerPagination({ axis, itemSize }, enablePagination);
+  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef) as React.RefObject<HTMLDivElement>;
   const imperativeVirtualizerRef = React.useRef<VirtualizerDataRef | null>(null);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
