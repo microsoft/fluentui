@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(web-components): remove final dependencies on fast-foundation",
-  "packageName": "@fluentui/web-components",
-  "email": "=",
-  "dependentChangeType": "patch"
-}
