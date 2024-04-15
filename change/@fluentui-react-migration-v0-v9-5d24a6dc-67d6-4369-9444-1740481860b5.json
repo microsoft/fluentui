@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: refactor styles defined in makeResetStyles() to avoid shorthands.*()",
+  "packageName": "@fluentui/react-migration-v0-v9",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
