@@ -37,7 +37,6 @@ export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>
 export type NavCategoryItemSlots = {
     root: NonNullable<Slot<'button'>>;
     icon?: Slot<'span'>;
-    content: NonNullable<Slot<'span'>>;
     expandIcon: NonNullable<Slot<'span'>>;
 };
 
@@ -112,7 +111,6 @@ export type NavItemRegisterData = {
 export type NavItemSlots = {
     root: NonNullable<Slot<'a'>>;
     icon?: Slot<'span'>;
-    content: NonNullable<Slot<'span'>>;
 };
 
 // @public
@@ -179,7 +177,6 @@ export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
 // @public (undocumented)
 export type NavSubItemSlots = {
     root: Slot<'a'>;
-    content: NonNullable<Slot<'span'>>;
 };
 
 // @public
