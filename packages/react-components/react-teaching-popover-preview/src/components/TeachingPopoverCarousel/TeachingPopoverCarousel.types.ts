@@ -2,7 +2,7 @@ import { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/re
 import { PopoverContextValue } from '@fluentui/react-popover';
 
 import { type CarouselContextValue } from './Carousel/CarouselContext';
-import type { CarouselPageChangeData } from './Carousel/Carousel.types';
+import type { CarouselValueChangeData } from './Carousel/Carousel.types';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -28,12 +28,12 @@ export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouse
   /**
    * Callback to notify a page change.
    */
-  onPageChange?: EventHandler<CarouselPageChangeData>;
+  onValueChange?: EventHandler<CarouselValueChangeData>;
 
   /**
    * Callback to notify when the final button step of a carousel has been activated.
    */
-  onFinish?: EventHandler<CarouselPageChangeData>;
+  onFinish?: EventHandler<CarouselValueChangeData>;
 };
 
 /**

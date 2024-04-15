@@ -151,7 +151,7 @@ The original PopoverContext provider is preserved, this ensures that popover fun
 
 TeachingPopoverTrigger has no additional functionality over PopoverTrigger, and is used to wrap the launch button or connected UI component. Internally, TeachingPopoverButtons provide primary/secondary action functionality and additional styling based on state over tge trigger wrapper.
 
-Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onPageChange and onFinish for external use or control.
+Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onValueChange and onFinish for external use or control.
 
 ## Behaviors
 

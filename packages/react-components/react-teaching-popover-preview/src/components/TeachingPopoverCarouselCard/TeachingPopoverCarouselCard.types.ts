@@ -1,10 +1,11 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { CarouselItemProps } from '../TeachingPopoverCarousel/Carousel/CarouselItem/CarouselItem.types';
 
 export type TeachingPopoverCarouselCardSlots = {
   /**
    * The element wrapping the buttons.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<CarouselItemProps>>;
 };
 
 export type TeachingPopoverCarouselCardProps = ComponentProps<TeachingPopoverCarouselCardSlots> & {

@@ -4,6 +4,7 @@ import type {
   TeachingPopoverCarouselCardProps,
   TeachingPopoverCarouselCardState,
 } from './TeachingPopoverCarouselCard.types';
+import { CarouselItem } from '../TeachingPopoverCarousel/Carousel/CarouselItem/Carouseltem';
 /**
  * Returns the props and state required to render the component
  * @param props - TeachingPopoverCarouselCard properties
@@ -16,16 +17,10 @@ export const useTeachingPopoverCarouselCard_unstable = (
   const { value } = props;
 
   return {
-    components: {
-      root: 'div',
-    },
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
     value,
+    components: {
+      root: CarouselItem,
+    },
+    root: slot.always({ ...props, ref }, { elementType: CarouselItem }),
   };
 };

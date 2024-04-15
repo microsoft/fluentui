@@ -2,7 +2,7 @@ import * as React from 'react';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-import { CAROUSEL_ACTIVE_ITM, CAROUSEL_ITEM } from './constants';
+import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from './constants';
 
 export type CarouselWalker = {
   find(value: string): { el: HTMLElement; value: string } | null;
@@ -15,7 +15,7 @@ export const useCarouselWalker_unstable = () => {
   const { targetDocument } = useFluent();
 
   const treeWalkerRef = React.useRef<TreeWalker | undefined>(targetDocument?.createTreeWalker(targetDocument.body));
-  const htmlRef = React.useRef<HTMLDivElement | undefined>(targetDocument?.createElement('div'));
+  const htmlRef = React.useRef<HTMLDivElement | null>(null);
 
   const ref = React.useCallback(
     (el: HTMLDivElement | null) => {
@@ -24,7 +24,6 @@ export const useCarouselWalker_unstable = () => {
       }
 
       if (!el) {
-        htmlRef.current = targetDocument.createElement('div');
         return;
       }
 
@@ -51,7 +50,7 @@ export const useCarouselWalker_unstable = () => {
             return null;
           }
 
-          const activeEl = htmlRef.current.querySelector(`[${CAROUSEL_ACTIVE_ITM}="true"]`)!;
+          const activeEl = htmlRef.current.querySelector(`[${CAROUSEL_ACTIVE_ITEM}="true"]`)!;
 
           if (isHTMLElement(activeEl)) {
             return {

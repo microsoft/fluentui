@@ -17,7 +17,7 @@ export const useTeachingPopoverCarousel_unstable = (
   const { carousel, carouselRef } = useCarousel_unstable({
     defaultValue: props.defaultValue,
     value: props.value,
-    onPageChange: props.onPageChange,
+    onValueChange: props.onValueChange,
     onFinish: handleFinish,
   });
 

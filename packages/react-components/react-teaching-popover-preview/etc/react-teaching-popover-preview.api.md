@@ -236,8 +236,8 @@ export type TeachingPopoverCarouselPageCountState = ComponentState<TeachingPopov
 export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
     defaultValue?: string;
     value?: string;
-    onPageChange?: EventHandler<CarouselPageChangeData>;
-    onFinish?: EventHandler<CarouselPageChangeData>;
+    onValueChange?: EventHandler<CarouselValueChangeData>;
+    onFinish?: EventHandler<CarouselValueChangeData>;
 };
 
 // @public (undocumented)
