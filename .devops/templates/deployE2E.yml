@@ -34,7 +34,7 @@ steps:
   #     SourcePath: 'apps/pr-deploy-site/dist'
   #     storage: $(azureStorage)
 
-  - task: AzureCLI@2
+  - task: AzureCLI@2.236.0
     displayName: Upload PR deploy site
     inputs:
       azureSubscription: $(azureSubscription)

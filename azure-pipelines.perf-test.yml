@@ -71,7 +71,7 @@ jobs:
       #     ContainerName: '$web'
       #     BlobPrefix: '$(deployBasePath)/perf-test-northstar'
 
-      - task: AzureCLI@2
+      - task: AzureCLI@2.236.0
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
@@ -139,7 +139,7 @@ jobs:
       #     ContainerName: '$web'
       #     BlobPrefix: '$(deployBasePath)/perf-test'
 
-      - task: AzureCLI@2
+      - task: AzureCLI@2.236.0
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
@@ -189,7 +189,7 @@ jobs:
       #     ContainerName: '$web'
       #     BlobPrefix: '$(deployBasePath)/perf-test-react-components'
 
-      - task: AzureCLI@2
+      - task: AzureCLI@2.236.0
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (React Components)
         inputs:
