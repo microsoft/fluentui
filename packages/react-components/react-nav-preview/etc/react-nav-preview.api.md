@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -85,10 +86,14 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
 
 // @public
-export type NavDrawerProps = InlineDrawerProps & NavProps;
+export type NavDrawerProps = InlineDrawerProps & NavProps & {
+    customStyleHooks?: CustomStyleHooksContextValue_unstable;
+};
 
 // @public
-export type NavDrawerState = InlineDrawerState & NavContextValue;
+export type NavDrawerState = InlineDrawerState & NavContextValue & {
+    customStyleHooks?: CustomStyleHooksContextValue_unstable;
+};
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
