@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { createPresenceComponent } from '../../../factories/createPresenceComponent';
 import { motionTokens } from '../../motionTokens';
 import { PresenceMotionFn, PresenceOverrideFields, PresenceTransitionProps } from '../../../types';
+import { createPresenceVariant } from '../../../factories/createPresenceVariant';
 
 const duration = motionTokens.durationNormal;
 const easing = motionTokens.curveDecelerateMid;
@@ -50,20 +50,19 @@ const collapseMotion: PresenceMotionFn<CollapseParams> = ({
 /** A React component that applies collapse/expand transitions to its children. */
 const Collapse = createPresenceComponent(collapseMotion);
 
-// TODO: create a factory function for variants, to reduce boilerplate
-const Snappy = (props: React.ComponentProps<typeof Collapse>) =>
-  Collapse({ ...props, override: { all: { duration: motionTokens.durationUltraFast } } });
+const Snappy = createPresenceVariant({
+  component: Collapse,
+  override: { all: { duration: motionTokens.durationUltraFast } },
+});
 
-const Gentle = (props: React.ComponentProps<typeof Collapse>) =>
-  Collapse({ ...props, override: { all: { duration: 1000 } } });
+const Gentle = createPresenceVariant({ component: Collapse, override: { all: { duration: 1000 } } });
 
-const Pushy = (props: React.ComponentProps<typeof Collapse>) =>
-  Collapse({
-    ...props,
-    override: { all: { duration: motionTokens.durationUltraSlow, easing: motionTokens.curveEasyEaseMax } },
-  });
+const Pushy = createPresenceVariant({
+  component: Collapse,
+  override: { all: { duration: motionTokens.durationUltraSlow, easing: motionTokens.curveEasyEaseMax } },
+});
 
-// To support <Collapse>, <Collapse.Snappy>, etc.
+// Support default <Collapse> plus variants like <Collapse.Snappy>
 const WithVariants = Object.assign(Collapse, { Snappy, Gentle, Pushy });
 
 export { WithVariants as Collapse };

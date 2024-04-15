@@ -18,7 +18,7 @@ type PresenceMotionEventData = EventData<'animation', AnimationPlaybackEvent> & 
   direction: 'enter' | 'exit';
 };
 
-type PresenceComponentProps<CustomOverrides = {}> = {
+export type PresenceComponentProps<CustomOverrides = {}> = {
   /**
    * By default, the child component won't execute the "enter" motion when it initially mounts, regardless of the value
    * of "visible". If you desire this behavior, ensure both "appear" and "visible" are set to "true".
