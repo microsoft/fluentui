@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselCardProps,
   TeachingPopoverCarouselCardState,
@@ -21,6 +21,15 @@ export const useTeachingPopoverCarouselCard_unstable = (
     components: {
       root: CarouselItem,
     },
-    root: slot.always({ ...props, ref }, { elementType: CarouselItem }),
+    root: slot.always(
+      {
+        ...getIntrinsicElementProps('div', {
+          ref,
+          ...props,
+        }),
+        value,
+      },
+      { elementType: CarouselItem },
+    ),
   };
 };
