@@ -76,7 +76,7 @@ jobs:
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
           azureSubscription: $(azureSubscription)
-          scriptType: 'ps'
+          scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source packages/fluentui/perf-test-northstar/dist --destination $web --destination-path $(deployBasePath)/perf-test-northstar'
 
@@ -144,7 +144,7 @@ jobs:
         displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
           azureSubscription: $(azureSubscription)
-          scriptType: 'ps'
+          scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source apps/perf-test/dist --destination $web --destination-path $(deployBasePath)/perf-test'
 
@@ -194,7 +194,7 @@ jobs:
         displayName: Upload Perf Test Result to PR deploy site (React Components)
         inputs:
           azureSubscription: $(azureSubscription)
-          scriptType: 'ps'
+          scriptType: 'bash'
           scriptLocation: 'inlineScript'
           inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source apps/perf-test-react-components/dist --destination $web --destination-path $(deployBasePath)/perf-test-react-components'
 

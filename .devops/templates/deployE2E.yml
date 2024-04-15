@@ -38,7 +38,7 @@ steps:
     displayName: Upload PR deploy site
     inputs:
       azureSubscription: $(azureSubscription)
-      scriptType: 'ps'
+      scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: 'az storage blob upload-batch --account-name $(azureStorage) --source apps/pr-deploy-site/dist --destination $web --destination-path $(deployBasePath)'
 
