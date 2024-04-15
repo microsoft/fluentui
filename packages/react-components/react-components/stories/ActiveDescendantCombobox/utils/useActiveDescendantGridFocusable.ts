@@ -68,6 +68,14 @@ export function useActiveDescendantGridFocusable(
     return getFocusables(parent)[0];
   };
 
+  const getFirstFocusableOrSelf = (element: HTMLElement) => {
+    let focusable = getFirstFocusable(element);
+    if (focusable) {
+      return focusable;
+    }
+    return element.tabIndex === 0 ? element : undefined;
+  };
+
   const getNextActiveRowOrFocusable = (nextActiveRow: HTMLElement) => {
     let nextActive;
     if (nextActiveRow.getAttribute('tabindex') === '0') {
@@ -209,26 +217,31 @@ export function useActiveDescendantGridFocusable(
         return false;
       }
 
-      const activeRow = getParentRow(active);
-      if (!activeRow) {
+      const row = getParentRow(active);
+      if (!row) {
         return false;
       }
 
-      const activeRowCells = Array.from(activeRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const activeCellIndex = activeRowCells.findIndex(x => x === active);
-      if (activeCellIndex < 0) {
+      const rowCells = Array.from(row.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
+      const cellIndex = rowCells.findIndex(x => x === active);
+      if (cellIndex < 0) {
         return false;
       }
 
       treeWalkerRef.current.currentNode = active;
-      const nextActiveRow = treeWalkerRef.current.nextNode() as HTMLElement | null;
-      if (!nextActiveRow) {
+      const nextRow = treeWalkerRef.current.nextNode() as HTMLElement | null;
+      if (!nextRow) {
         return false;
       }
 
-      const nextActiveRowCells = Array.from(nextActiveRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const nextActiveCellIndex = Math.min(nextActiveRowCells.length - 1, activeCellIndex);
-      setActiveDescendant(nextActiveRowCells[nextActiveCellIndex]);
+      const nextRowCells = Array.from(nextRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
+      const nextCellIndex = Math.min(nextRowCells.length - 1, cellIndex);
+      const nextCellFirstFocusable = getFirstFocusableOrSelf(nextRowCells[nextCellIndex]);
+      if (!nextCellFirstFocusable) {
+        return false;
+      }
+
+      setActiveDescendant(nextCellFirstFocusable);
 
       return true;
     },
@@ -242,27 +255,31 @@ export function useActiveDescendantGridFocusable(
         return false;
       }
 
-      const activeRow = getParentRow(active);
-      if (!activeRow) {
+      const row = getParentRow(active);
+      if (!row) {
         return false;
       }
 
-      const activeRowCells = Array.from(activeRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const activeCellIndex = activeRowCells.findIndex(x => x === active);
-      if (activeCellIndex < 0) {
+      const rowCells = Array.from(row.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
+      const cellIndex = rowCells.findIndex(x => x === active);
+      if (cellIndex < 0) {
         return false;
       }
 
       treeWalkerRef.current.currentNode = active;
-      treeWalkerRef.current.previousNode();
-      const nextActiveRow = treeWalkerRef.current.previousNode() as HTMLElement | null;
-      if (!nextActiveRow) {
+      const prevRow = treeWalkerRef.current.previousNode() as HTMLElement | null;
+      if (!prevRow) {
         return false;
       }
 
-      const nextActiveRowCells = Array.from(nextActiveRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const nextActiveCellIndex = Math.min(nextActiveRowCells.length, activeCellIndex);
-      setActiveDescendant(nextActiveRowCells[nextActiveCellIndex]);
+      const prevRowCells = Array.from(prevRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
+      const prevCellIndex = Math.min(prevRowCells.length - 1, cellIndex);
+      const prevCellFirstFocusable = getFirstFocusableOrSelf(prevRowCells[prevCellIndex]);
+      if (!prevCellFirstFocusable) {
+        return false;
+      }
+
+      setActiveDescendant(prevCellFirstFocusable);
 
       return true;
     },

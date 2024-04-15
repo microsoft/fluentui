@@ -269,7 +269,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
         case 'ArrowDown':
           setOpen(true);
           if (activeDescendantGridImperativeRef.current?.active()) {
-            activeDescendantGridImperativeRef.current?.nextRow();
+            activeDescendantGridImperativeRef.current?.focusableBelow();
           } else {
             activeDescendantGridImperativeRef.current?.first();
           }
@@ -277,7 +277,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
           break;
         case 'ArrowUp':
           setOpen(true);
-          activeDescendantGridImperativeRef.current?.prevRow();
+          activeDescendantGridImperativeRef.current?.focusableAbove();
           preventDefault = true;
           break;
         case 'ArrowRight':
