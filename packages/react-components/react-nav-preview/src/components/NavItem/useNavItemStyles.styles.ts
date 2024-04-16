@@ -1,6 +1,4 @@
 import { mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { NavItemSlots, NavItemState } from './NavItem.types';
 import {
   useContentStyles,
   useIconStyles,
@@ -8,6 +6,8 @@ import {
   useRootDefaultClassName,
 } from '../sharedNavStyles.styles';
 
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { NavItemSlots, NavItemState } from './NavItem.types';
 export const navItemClassNames: SlotClassNames<NavItemSlots> = {
   root: 'fui-NavItem',
   icon: 'fui-NavItem__icon',

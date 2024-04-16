@@ -1,6 +1,5 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
 import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavCategoryItemContextValues = {
   navCategoryItem: NavCategoryItemContextValue;

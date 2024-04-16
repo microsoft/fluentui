@@ -1,14 +1,14 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { typographyStyles } from '@fluentui/react-theme';
-
-import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
 import {
   useContentStyles,
   useIconStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
 } from '../sharedNavStyles.styles';
+
+import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
