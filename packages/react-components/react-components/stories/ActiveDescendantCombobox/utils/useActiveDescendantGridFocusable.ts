@@ -31,16 +31,19 @@ export function useActiveDescendantGridFocusable(
     [${ACTIVEDESCENDANT_ATTRIBUTE}]`);
   };
 
-  const getNearestParentWithRole = (element: HTMLElement, role: string) => {
+  const getNearestParentWithRole = (element: HTMLElement, roles: string | string[]) => {
     let current: HTMLElement | null = element;
-    while (current && current.role !== role) {
+    if (typeof roles === 'string') {
+      roles = [roles];
+    }
+    while (current && (current.role === null || !roles.includes(current.role))) {
       current = current.parentElement;
     }
     return current;
   };
 
   const getSiblingRowCellFirstFocusable = (active: HTMLElement, direction: string) => {
-    const currentCell = getNearestParentWithRole(active, 'gridcell');
+    const currentCell = getNearestParentWithRole(active, ['gridcell', 'rowheader']);
     if (!currentCell) {
       return undefined;
     }

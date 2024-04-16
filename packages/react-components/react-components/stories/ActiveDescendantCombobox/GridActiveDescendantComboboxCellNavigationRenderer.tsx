@@ -398,7 +398,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
             ) : null}
             {displayOptions.map(option => {
               const rowId = `${option.id}-row`;
-              const cellId = `${option.id}-firstCell`;
+              const rowHeaderId = `${option.id}-rowHeader`;
               const callActionId = `${option.id}-call`;
               const sendActionId = `${option.id}-send`;
               const contentId = `${option.id}-content`;
@@ -412,7 +412,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
                   className={styles.option}
                   // aria-labelledby={contentId}
                 >
-                  <div role="gridcell" id={cellId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
+                  <div role="rowheader" id={rowHeaderId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
                     <Avatar color="colorful" name={option.text} />
                     <span id={contentId}>{option.text}</span>
                   </div>
@@ -457,7 +457,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
             ) : null}
             {displayFiles.map(option => {
               const rowId = `${option.id}-row`;
-              const cellId = `${option.id}-firstCell`;
+              const rowHeaderId = `${option.id}-rowHeader`;
               const shareActionId = `${option.id}-share`;
               const openActionId = `${option.id}-open`;
               const contentId = `${option.id}-content`;
@@ -471,7 +471,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
                   className={styles.option}
                   // aria-labelledby={contentId}
                 >
-                  <div role="gridcell" id={cellId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
+                  <div role="rowheader" id={rowHeaderId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
                     <Avatar color="colorful" name={option.text} />
                     <span id={contentId}>{option.text}</span>
                   </div>
