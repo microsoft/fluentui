@@ -1,6 +1,6 @@
-import * as path from 'path';
+// import * as path from 'path';
 
-import { workspaceRoot } from '@nx/devkit';
+// import { workspaceRoot } from '@nx/devkit';
 
 import { getTsPathAliasesApiExtractorConfig } from './utils';
 
@@ -23,8 +23,8 @@ describe(`utils`, () => {
           dependencies: { ...options.packageJson?.dependencies },
           peerDependencies: { ...options.packageJson?.peerDependencies },
         },
-        definitionsRootPath: options.definitionsRootPath ?? 'dist/types',
-        pathAliasesTsConfigPath: options.pathAliasesTsConfigPath ?? undefined,
+        // definitionsRootPath: options.definitionsRootPath ?? 'dist/types',
+        // pathAliasesTsConfigPath: options.pathAliasesTsConfigPath ?? undefined,
       };
 
       return getTsPathAliasesApiExtractorConfig(defaults as Options);
@@ -40,7 +40,7 @@ describe(`utils`, () => {
 
     it(`should not use path aliases to emitted declaration files`, () => {
       const actual = setup({
-        definitionsRootPath: 'dist/for/types',
+        // definitionsRootPath: 'dist/for/types',
       });
 
       expect(actual.overrideTsconfig.compilerOptions).toEqual(
@@ -51,8 +51,8 @@ describe(`utils`, () => {
     // This is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
     it.skip(`should override path aliases to emitted declaration files instead of source files`, () => {
       const actual = setup({
-        definitionsRootPath: 'dist/for/types',
-        pathAliasesTsConfigPath: path.join(workspaceRoot, 'tsconfig.base.json'),
+        // definitionsRootPath: 'dist/for/types',
+        // pathAliasesTsConfigPath: path.join(workspaceRoot, 'tsconfig.base.json'),
       });
 
       const newPaths = actual.overrideTsconfig.compilerOptions.paths as unknown as Record<string, string[]>;

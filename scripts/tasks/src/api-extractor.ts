@@ -1,7 +1,7 @@
 import * as path from 'path';
 
 import type { ExtractorMessageCategory, ExtractorResult } from '@microsoft/api-extractor';
-import { workspaceRoot } from '@nx/devkit';
+// import { workspaceRoot } from '@nx/devkit';
 import chalk from 'chalk';
 import { isCI } from 'ci-info';
 import * as glob from 'glob';
