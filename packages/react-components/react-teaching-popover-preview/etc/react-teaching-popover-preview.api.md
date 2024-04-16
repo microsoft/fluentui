@@ -13,7 +13,7 @@ import { ButtonState } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { EventData } from '@fluentui/react-utilities';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
@@ -163,7 +163,7 @@ export type TeachingPopoverCarouselFooterSlots = {
 };
 
 // @public
-export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> & Partial<Pick<PopoverContextValue, 'appearance'>> & Pick<TeachingPopoverCarouselFooterProps, 'layout'>;
+export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> & Pick<TeachingPopoverCarouselFooterProps, 'layout'>;
 
 // @public
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
@@ -175,7 +175,7 @@ export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopov
 export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<TeachingPopoverCarouselNavButtonSlots>;
 
 // @public
-export type TeachingPopoverCarouselNavButtonProps = ComponentProps<TeachingPopoverCarouselNavButtonSlots> & {};
+export type TeachingPopoverCarouselNavButtonProps = ComponentProps<TeachingPopoverCarouselNavButtonSlots>;
 
 // @public (undocumented)
 export type TeachingPopoverCarouselNavButtonSlots = {
