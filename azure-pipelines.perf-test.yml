@@ -60,17 +60,6 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
-      # - task: AzureFileCopy@6
-      #   condition: eq(variables.isPR, true)
-      #   displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
-      #   inputs:
-      #     SourcePath: 'packages/fluentui/perf-test-northstar/dist'
-      #     azureSubscription: $(azureSubscription)
-      #     storage: $(azureStorage)
-      #     Destination: AzureBlob
-      #     ContainerName: '$web'
-      #     BlobPrefix: '$(deployBasePath)/perf-test-northstar'
-
       - task: AzureCLI@2.236.0
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
@@ -78,13 +67,12 @@ jobs:
           azureSubscription: $(azureSubscription)
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          arguments: '$(azureStorage) $(deployBasePath)'
           inlineScript: |
             az storage blob upload-batch \
               --destination '$web' \
               --source packages/fluentui/perf-test-northstar/dist \
-              --account-name $1 \
-              --destination-path $2/perf-test-northstar \
+              --account-name $(azureStorage) \
+              --destination-path $(deployBasePath)/perf-test-northstar \
               --auth-mode login
 
       - task: GithubPRComment@0
@@ -135,17 +123,6 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      # - task: AzureFileCopy@6
-      #   condition: eq(variables.isPR, true)
-      #   displayName: Upload Perf Test Result to PR deploy site (V8)
-      #   inputs:
-      #     SourcePath: 'apps/perf-test/dist'
-      #     azureSubscription: $(azureSubscription)
-      #     storage: $(azureStorage)
-      #     Destination: AzureBlob
-      #     ContainerName: '$web'
-      #     BlobPrefix: '$(deployBasePath)/perf-test'
-
       - task: AzureCLI@2.236.0
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (V8)
@@ -153,13 +130,12 @@ jobs:
           azureSubscription: $(azureSubscription)
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          arguments: '$(azureStorage) $(deployBasePath)'
           inlineScript: |
             az storage blob upload-batch \
               --destination '$web' \
               --source apps/perf-test/dist \
-              --account-name $1 \
-              --destination-path $2/perf-test \
+              --account-name $(azureStorage) \
+              --destination-path $(deployBasePath)/perf-test \
               --auth-mode login
 
       - task: GithubPRComment@0
@@ -192,17 +168,6 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      # - task: AzureFileCopy@6
-      #   condition: eq(variables.isPR, true)
-      #   displayName: Upload Perf Test Result to PR deploy site (React Components)
-      #   inputs:
-      #     SourcePath: 'apps/perf-test-react-components/dist'
-      #     azureSubscription: $(azureSubscription)
-      #     storage: $(azureStorage)
-      #     Destination: AzureBlob
-      #     ContainerName: '$web'
-      #     BlobPrefix: '$(deployBasePath)/perf-test-react-components'
-
       - task: AzureCLI@2.236.0
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (React Components)
@@ -210,13 +175,12 @@ jobs:
           azureSubscription: $(azureSubscription)
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          arguments: '$(azureStorage) $(deployBasePath)'
           inlineScript: |
             az storage blob upload-batch \
               --destination '$web' \
               --source apps/perf-test-react-components/dist \
-              --account-name $1 \
-              --destination-path $2/perf-test-react-components \
+              --account-name $(azureStorage) \
+              --destination-path $(deployBasePath)/perf-test-react-components \
               --auth-mode login
 
       - task: GithubPRComment@0
