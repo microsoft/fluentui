@@ -60,6 +60,9 @@ export { KeyborgFocusInEvent }
 // @public (undocumented)
 export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
 
+// @public (undocumented)
+export type TabsterMoveFocusEvent = TabsterTypes.TabsterMoveFocusEvent;
+
 export { TabsterTypes }
 
 // @public

@@ -5,6 +5,10 @@ export {
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableCompositeNavigation,
+  useAdamTableInteractiveNavigation,
+  useAdamTableInteractive2Navigation,
+  useAdamTableCompositeNavigation,
+  useAdamTableCombinedNavigation,
 } from './hooks';
 
 export type {
