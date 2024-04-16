@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "outDir": "dist/esm",
-    "types": ["mocha", "node", "webpack-env"]
+    "types": ["web", "node", "webpack-env"]
   },
   "include": ["src/**/*.test.*", "src/**/*.spec.*"]
 }
