@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   wrapper: {
     columnGap: '15px',
     display: 'flex',
+    minWidth: 'min-content',
   },
 });
 

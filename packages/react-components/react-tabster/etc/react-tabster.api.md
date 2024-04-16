@@ -6,13 +6,14 @@
 
 import { dispatchGroupperMoveFocusEvent } from 'tabster';
 import { dispatchMoverMoveFocusEvent } from 'tabster';
+import { Events } from 'tabster';
 import type { GriffelStyle } from '@griffel/react';
 import { KEYBORG_FOCUSIN } from 'keyborg';
 import { KeyborgFocusInEvent } from 'keyborg';
 import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
-import { Types as TabsterTypes } from 'tabster';
+import { Types } from 'tabster';
 
 // @internal (undocumented)
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
@@ -38,9 +39,449 @@ export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIn
     style?: Partial<FocusOutlineStyleOptions>;
 }
 
+// @public (undocumented)
+interface CrossOriginAPI {
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    focusedElement: CrossOriginFocusedElementState;
+    // (undocumented)
+    isSetUp(): boolean;
+    // (undocumented)
+    observedElement: CrossOriginObservedElementState;
+    // (undocumented)
+    setup(sendUp?: CrossOriginTransactionSend | null): (msg: CrossOriginMessage) => void;
+}
+
+// @public (undocumented)
+interface CrossOriginElement {
+    // (undocumented)
+    focus(noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
+    // (undocumented)
+    readonly id?: string;
+    // (undocumented)
+    readonly observedDetails?: string;
+    // (undocumented)
+    readonly observedName?: string;
+    // (undocumented)
+    readonly ownerId: string;
+    // (undocumented)
+    readonly rootId?: string;
+    // (undocumented)
+    readonly uid: string;
+}
+
+// @public (undocumented)
+interface CrossOriginFocusedElementState extends Subscribable<CrossOriginElement | undefined, FocusedElementDetails>, Disposable {
+    // (undocumented)
+    focus(element: CrossOriginElement, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
+    // (undocumented)
+    focusById(elementId: string, rootId?: string, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
+    // (undocumented)
+    focusByObservedName(observedName: string, timeout?: number, rootId?: string, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): Promise<boolean>;
+}
+
+// @public (undocumented)
+interface CrossOriginMessage {
+    // (undocumented)
+    data: CrossOriginTransactionData<any, any>;
+    // (undocumented)
+    send: CrossOriginTransactionSend;
+}
+
+// @public (undocumented)
+interface CrossOriginObservedElementState extends Subscribable<CrossOriginElement, ObservedElementProps>, Disposable {
+    // (undocumented)
+    getElement(observedName: string, accessibility?: ObservedElementAccesibility): Promise<CrossOriginElement | null>;
+    // (undocumented)
+    requestFocus(observedName: string, timeout: number): Promise<boolean>;
+    // (undocumented)
+    waitElement(observedName: string, timeout: number, accessibility?: ObservedElementAccesibility): Promise<CrossOriginElement | null>;
+}
+
+// @public (undocumented)
+interface CrossOriginSentTo {
+    // (undocumented)
+    [id: string]: true;
+}
+
+// @public (undocumented)
+interface CrossOriginTransactionData<I, O> {
+    // (undocumented)
+    beginData?: I;
+    // (undocumented)
+    endData?: O;
+    // (undocumented)
+    isResponse: boolean;
+    // (undocumented)
+    owner: string;
+    // (undocumented)
+    sentto: CrossOriginSentTo;
+    // (undocumented)
+    target?: string;
+    // (undocumented)
+    timeout?: number;
+    // (undocumented)
+    timestamp: number;
+    // (undocumented)
+    transaction: string;
+    // (undocumented)
+    type: CrossOriginTransactionType;
+}
+
+// @public (undocumented)
+type CrossOriginTransactionSend = (data: CrossOriginTransactionData<any, any>) => void;
+
+// @public (undocumented)
+type CrossOriginTransactionType = CrossOriginTransactionTypes[keyof CrossOriginTransactionTypes];
+
+// @public (undocumented)
+interface CrossOriginTransactionTypes {
+    // (undocumented)
+    Bootstrap: 1;
+    // (undocumented)
+    FocusElement: 2;
+    // (undocumented)
+    GetElement: 4;
+    // (undocumented)
+    Ping: 6;
+    // (undocumented)
+    RestoreFocusInDeloser: 5;
+    // (undocumented)
+    State: 3;
+}
+
+// @public (undocumented)
+interface Deloser extends TabsterPart<DeloserProps> {
+    // (undocumented)
+    clearHistory(preserveExisting?: boolean): void;
+    // (undocumented)
+    customFocusLostHandler(element: HTMLElement): boolean;
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    findAvailable(): HTMLElement | null;
+    // (undocumented)
+    focusDefault(): boolean;
+    // (undocumented)
+    focusFirst(): boolean;
+    // (undocumented)
+    getActions(): DeloserElementActions;
+    // (undocumented)
+    isActive(): boolean;
+    // (undocumented)
+    resetFocus(): boolean;
+    // (undocumented)
+    setActive(active: boolean): void;
+    // (undocumented)
+    setSnapshot(index: number): void;
+    // (undocumented)
+    readonly uid: string;
+    // (undocumented)
+    unshift(element: HTMLElement): void;
+}
+
+// @public (undocumented)
+interface DeloserAPI extends DeloserInterfaceInternal, Disposable {
+    // (undocumented)
+    getActions(element: HTMLElement): DeloserElementActions | undefined;
+    // (undocumented)
+    pause(): void;
+    // (undocumented)
+    resume(restore?: boolean): void;
+}
+
+// @public (undocumented)
+type DeloserConstructor = (element: HTMLElement, props: DeloserProps) => Deloser;
+
+// @public (undocumented)
+interface DeloserElementActions {
+    // (undocumented)
+    clearHistory: (preserveExisting?: boolean) => void;
+    // (undocumented)
+    focusDefault: () => boolean;
+    // (undocumented)
+    focusFirst: () => boolean;
+    // (undocumented)
+    isActive: () => boolean;
+    // (undocumented)
+    resetFocus: () => boolean;
+    // (undocumented)
+    setSnapshot: (index: number) => void;
+}
+
+// @public (undocumented)
+const DeloserEventName = "tabster:deloser";
+
+// @public (undocumented)
+interface DeloserOnElement {
+    // (undocumented)
+    deloser: Deloser;
+}
+
+// @public (undocumented)
+interface DeloserProps {
+    // (undocumented)
+    noSelectorCheck?: boolean;
+    // (undocumented)
+    restoreFocusOrder?: RestoreFocusOrder;
+}
+
 export { dispatchGroupperMoveFocusEvent }
 
 export { dispatchMoverMoveFocusEvent }
+
+// @public (undocumented)
+interface Disposable {
+    // @internal (undocumented)
+    dispose(): void;
+}
+
+// @public (undocumented)
+type DisposeFunc = () => void;
+
+// @public (undocumented)
+interface DOMAPI {
+    // (undocumented)
+    appendChild(parent: Node, child: Node): Node;
+    // (undocumented)
+    createMutationObserver: (callback: MutationCallback) => MutationObserver;
+    // (undocumented)
+    createTreeWalker(doc: Document, root: Node, whatToShow?: number, filter?: NodeFilter | null): TreeWalker;
+    // (undocumented)
+    getActiveElement(doc: Document): Element | null;
+    // (undocumented)
+    getElementById(doc: Document, id: string): HTMLElement | null;
+    // (undocumented)
+    getFirstChild(node: Node | null | undefined): ChildNode | null;
+    // (undocumented)
+    getFirstElementChild(element: Element | null | undefined): Element | null;
+    // (undocumented)
+    getLastChild(node: Node | null | undefined): ChildNode | null;
+    // (undocumented)
+    getLastElementChild(element: Element | null | undefined): Element | null;
+    // (undocumented)
+    getNextElementSibling(element: Element | null | undefined): Element | null;
+    // (undocumented)
+    getNextSibling(node: Node | null | undefined): ChildNode | null;
+    // (undocumented)
+    getParentElement(element: HTMLElement | null | undefined): HTMLElement | null;
+    // (undocumented)
+    getParentNode(node: Node | null | undefined): ParentNode | null;
+    // (undocumented)
+    getPreviousElementSibling(element: Element | null | undefined): Element | null;
+    // (undocumented)
+    getPreviousSibling(node: Node | null | undefined): ChildNode | null;
+    // (undocumented)
+    getSelection(ref: Node): Selection | null;
+    // (undocumented)
+    insertBefore(parent: Node, child: Node, referenceChild: Node | null): Node;
+    // (undocumented)
+    nodeContains(parent: Node | null | undefined, child: Node | null | undefined): boolean;
+    // (undocumented)
+    querySelector(element: ParentNode, selector: string): Element | null;
+    // (undocumented)
+    querySelectorAll(element: ParentNode, selector: string): Element[];
+}
+
+// @public (undocumented)
+interface DummyInputManager {
+    // (undocumented)
+    moveOut: (backwards: boolean) => void;
+    // (undocumented)
+    moveOutWithDefaultAction: (backwards: boolean, relatedEvent: KeyboardEvent) => void;
+}
+
+// @public (undocumented)
+interface DummyInputObserver {
+    // (undocumented)
+    add(dummy: HTMLElement, callback: () => void): void;
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    domChanged?(parent: HTMLElement): void;
+    // (undocumented)
+    remove(dummy: HTMLElement): void;
+    // (undocumented)
+    updatePositions(compute: (scrollTopLeftCache: Map<HTMLElement, {
+        scrollTop: number;
+        scrollLeft: number;
+    } | null>) => () => void): void;
+}
+
+// @public (undocumented)
+type FindAllProps = Pick<FindFocusableProps, 'container' | 'modalizerId' | 'currentElement' | 'isBackward' | 'includeProgrammaticallyFocusable' | 'useActiveModalizer' | 'acceptCondition' | 'ignoreAccessibility' | 'onElement'>;
+
+// @public (undocumented)
+type FindDefaultProps = Pick<FindFocusableProps, 'container' | 'modalizerId' | 'includeProgrammaticallyFocusable' | 'useActiveModalizer' | 'ignoreAccessibility'>;
+
+// @public
+type FindElementCallback = (element: HTMLElement) => boolean;
+
+// @public (undocumented)
+type FindFirstProps = Pick<FindFocusableProps, 'container' | 'modalizerId' | 'includeProgrammaticallyFocusable' | 'useActiveModalizer' | 'ignoreAccessibility'>;
+
+// @public (undocumented)
+interface FindFocusableOutputProps {
+    outOfDOMOrder?: boolean;
+    uncontrolled?: HTMLElement | null;
+}
+
+// @public (undocumented)
+interface FindFocusableProps {
+    // (undocumented)
+    acceptCondition?(el: HTMLElement): boolean;
+    container: HTMLElement;
+    currentElement?: HTMLElement;
+    ignoreAccessibility?: boolean;
+    includeProgrammaticallyFocusable?: boolean;
+    isBackward?: boolean;
+    modalizerId?: string | null;
+    onElement?: FindElementCallback;
+    referenceElement?: HTMLElement;
+    useActiveModalizer?: boolean;
+}
+
+// @public (undocumented)
+type FindNextProps = Pick<FindFocusableProps, 'currentElement' | 'referenceElement' | 'container' | 'modalizerId' | 'includeProgrammaticallyFocusable' | 'useActiveModalizer' | 'ignoreAccessibility'>;
+
+// @public (undocumented)
+interface FocusableAcceptElementState {
+    // (undocumented)
+    acceptCondition: (el: HTMLElement) => boolean;
+    // (undocumented)
+    cachedGrouppers: {
+        [id: string]: {
+            isActive: boolean | undefined;
+            first?: HTMLElement | null;
+        };
+    };
+    // (undocumented)
+    container: HTMLElement;
+    // (undocumented)
+    currentCtx?: TabsterContext;
+    // (undocumented)
+    found?: boolean;
+    // (undocumented)
+    foundBackward?: HTMLElement;
+    // (undocumented)
+    foundElement?: HTMLElement;
+    // (undocumented)
+    from: HTMLElement;
+    // (undocumented)
+    fromCtx?: TabsterContext;
+    // (undocumented)
+    hasCustomCondition?: boolean;
+    // (undocumented)
+    ignoreAccessibility?: boolean;
+    // (undocumented)
+    includeProgrammaticallyFocusable?: boolean;
+    // (undocumented)
+    isBackward?: boolean;
+    // (undocumented)
+    isFindAll?: boolean;
+    // (undocumented)
+    modalizerUserId?: string;
+    // (undocumented)
+    rejectElementsFrom?: HTMLElement;
+    skippedFocusable?: boolean;
+    // (undocumented)
+    uncontrolled?: HTMLElement;
+}
+
+// @public (undocumented)
+interface FocusableAPI extends Disposable {
+    // (undocumented)
+    findAll(options: FindAllProps): HTMLElement[];
+    // (undocumented)
+    findDefault(options: FindDefaultProps, out?: FindFocusableOutputProps): HTMLElement | null;
+    // (undocumented)
+    findElement(options: FindFocusableProps, out?: FindFocusableOutputProps): HTMLElement | null | undefined;
+    // (undocumented)
+    findFirst(options: FindFirstProps, out?: FindFocusableOutputProps): HTMLElement | null | undefined;
+    // (undocumented)
+    findLast(options: FindFirstProps, out?: FindFocusableOutputProps): HTMLElement | null | undefined;
+    // (undocumented)
+    findNext(options: FindNextProps, out?: FindFocusableOutputProps): HTMLElement | null | undefined;
+    // (undocumented)
+    findPrev(options: FindNextProps, out?: FindFocusableOutputProps): HTMLElement | null | undefined;
+    // (undocumented)
+    getProps(element: HTMLElement): FocusableProps;
+    // (undocumented)
+    isAccessible(element: HTMLElement): boolean;
+    // (undocumented)
+    isFocusable(element: HTMLElement, includeProgrammaticallyFocusable?: boolean, noVisibleCheck?: boolean, noAccessibleCheck?: boolean): boolean;
+    // (undocumented)
+    isVisible(element: HTMLElement): boolean;
+}
+
+// @public (undocumented)
+interface FocusableOnElement {
+    // (undocumented)
+    focusable: FocusableProps;
+}
+
+// @public (undocumented)
+interface FocusableProps {
+    excludeFromMover?: boolean;
+    ignoreAriaDisabled?: boolean;
+    ignoreKeydown?: {
+        Tab?: boolean;
+        Escape?: boolean;
+        Enter?: boolean;
+        ArrowUp?: boolean;
+        ArrowDown?: boolean;
+        ArrowLeft?: boolean;
+        ArrowRight?: boolean;
+        PageUp?: boolean;
+        PageDown?: boolean;
+        Home?: boolean;
+        End?: boolean;
+    };
+    // (undocumented)
+    isDefault?: boolean;
+    // (undocumented)
+    isIgnored?: boolean;
+}
+
+// @public (undocumented)
+const FocusableSelector: string;
+
+// @public (undocumented)
+interface FocusedElementDetails {
+    // (undocumented)
+    isFocusedProgrammatically?: boolean;
+    // (undocumented)
+    modalizerId?: string;
+    // (undocumented)
+    relatedTarget?: HTMLElement;
+}
+
+// @public (undocumented)
+interface FocusedElementState extends Subscribable<HTMLElement | undefined, FocusedElementDetails>, Disposable {
+    // (undocumented)
+    focus(element: HTMLElement, noFocusedProgrammaticallyFlag?: boolean, noAccessibleCheck?: boolean): boolean;
+    // (undocumented)
+    focusDefault(container: HTMLElement): boolean;
+    // (undocumented)
+    focusFirst(props: FindFirstProps): boolean;
+    // (undocumented)
+    focusLast(props: FindFirstProps): boolean;
+    // @internal (undocumented)
+    getFirstOrLastTabbable(isFirst: boolean, props: Pick<FindFocusableProps, 'container' | 'ignoreAccessibility'>): HTMLElement | undefined;
+    // (undocumented)
+    getFocusedElement(): HTMLElement | undefined;
+    // (undocumented)
+    getLastFocusedElement(): HTMLElement | undefined;
+    // (undocumented)
+    resetFocus(container: HTMLElement): boolean;
+}
+
+// @public (undocumented)
+const FocusInEventName = "tabster:focusin";
+
+// @public (undocumented)
+const FocusOutEventName = "tabster:focusout";
 
 // @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
@@ -53,34 +494,964 @@ export type FocusOutlineStyleOptions = {
     outlineOffset?: string | FocusOutlineOffset;
 };
 
+// @public (undocumented)
+type GetTabster = () => TabsterCore;
+
+// @public (undocumented)
+interface GetTabsterContextOptions {
+    checkRtl?: boolean;
+    referenceElement?: HTMLElement;
+}
+
+// @public (undocumented)
+type GetWindow = () => Window;
+
+// @public (undocumented)
+interface Groupper extends TabsterPart<GroupperProps>, TabsterPartWithFindNextTabbable, TabsterPartWithAcceptElement {
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    readonly dummyManager: DummyInputManager | undefined;
+    // (undocumented)
+    getFirst(orContainer: boolean): HTMLElement | undefined;
+    // (undocumented)
+    readonly id: string;
+    // (undocumented)
+    isActive(noIfFirstIsFocused?: boolean): boolean | undefined;
+    // (undocumented)
+    makeTabbable(isUnlimited: boolean): void;
+    // (undocumented)
+    setFirst(element: HTMLElement | undefined): void;
+}
+
+// @public (undocumented)
+interface GroupperAPI extends GroupperAPIInternal, Disposable {
+    // @internal
+    moveFocus(element: HTMLElement, action: GroupperMoveFocusAction): HTMLElement | null;
+}
+
+// @public (undocumented)
+interface GroupperAPIInternal {
+    // @internal (undocumented)
+    createGroupper(element: HTMLElement, props: GroupperProps, sys: SysProps | undefined): Groupper;
+    // @internal (undocumented)
+    handleKeyPress(element: HTMLElement, event: KeyboardEvent, fromModalizer?: boolean): void;
+}
+
+// @public (undocumented)
+interface GroupperAPIInternal {
+    // (undocumented)
+    forgetCurrentGrouppers(): void;
+}
+
+// @public (undocumented)
+type GroupperConstructor = (tabster: TabsterCore, element: HTMLElement, props: GroupperProps) => Groupper;
+
+// @public (undocumented)
+type GroupperMoveFocusAction = GroupperMoveFocusActions_2[keyof GroupperMoveFocusActions_2];
+
+// @public (undocumented)
+export const GroupperMoveFocusActions: {
+    readonly Enter: 1;
+    readonly Escape: 2;
+};
+
+// @public (undocumented)
+interface GroupperMoveFocusActions_2 {
+    // (undocumented)
+    Enter: 1;
+    // (undocumented)
+    Escape: 2;
+}
+
+// @public (undocumented)
+const GroupperMoveFocusActions_2: GroupperMoveFocusActions_2;
+
+// @public (undocumented)
+export const GroupperMoveFocusEvent: typeof Events.GroupperMoveFocusEvent;
+
+// @public (undocumented)
+type GroupperMoveFocusEvent_2 = CustomEvent<{
+    action: GroupperMoveFocusAction;
+} | undefined>;
+
+// @public (undocumented)
+export type GroupperMoveFocusEventDetail = Events.GroupperMoveFocusEventDetail;
+
+// @public (undocumented)
+export const GroupperMoveFocusEventName: "tabster:groupper:movefocus";
+
+// @public (undocumented)
+const GroupperMoveFocusEventName_2 = "tabster:groupper:movefocus";
+
+// @public (undocumented)
+interface GroupperOnElement {
+    // (undocumented)
+    groupper: Groupper;
+}
+
+// @public (undocumented)
+interface GroupperProps {
+    // (undocumented)
+    delegated?: boolean;
+    // (undocumented)
+    tabbability?: GroupperTabbability;
+}
+
+// @public (undocumented)
+interface GroupperTabbabilities {
+    // (undocumented)
+    Limited: 1;
+    // (undocumented)
+    LimitedTrapFocus: 2;
+    // (undocumented)
+    Unlimited: 0;
+}
+
+// @public (undocumented)
+const GroupperTabbabilities: GroupperTabbabilities;
+
+// @public (undocumented)
+type GroupperTabbability = GroupperTabbabilities[keyof GroupperTabbabilities];
+
+// @public (undocumented)
+interface InternalAPI {
+    // (undocumented)
+    resumeObserver(syncState: boolean): void;
+    // (undocumented)
+    stopObserver(): void;
+}
+
+// @public (undocumented)
+interface KeyboardNavigationState extends Subscribable<boolean>, Disposable {
+    // (undocumented)
+    isNavigatingWithKeyboard(): boolean;
+    // (undocumented)
+    setNavigatingWithKeyboard(isNavigatingWithKeyboard: boolean): void;
+}
+
 export { KEYBORG_FOCUSIN }
 
 export { KeyborgFocusInEvent }
 
 // @public (undocumented)
-export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
+interface Modalizer extends TabsterPart<ModalizerProps>, TabsterPartWithFindNextTabbable {
+    // (undocumented)
+    contains(element: HTMLElement): boolean;
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    readonly dummyManager: DummyInputManager | undefined;
+    // (undocumented)
+    focused(noIncrement?: boolean): number;
+    // (undocumented)
+    isActive(): boolean;
+    // (undocumented)
+    makeActive(isActive: boolean): void;
+    // (undocumented)
+    triggerFocusEvent(eventName: ModalizerEventName, allElements: boolean): boolean;
+    // (undocumented)
+    readonly userId: string;
+}
 
-export { TabsterTypes }
+// @public (undocumented)
+const ModalizerActiveEventName = "tabster:modalizer:active";
+
+// @public (undocumented)
+interface ModalizerAPI extends ModalizerAPIInternal, Disposable {
+    focus(elementFromModalizer: HTMLElement, noFocusFirst?: boolean, noFocusDefault?: boolean): boolean;
+}
+
+// @public (undocumented)
+const ModalizerBeforeFocusOutEventName = "tabster:modalizer:beforefocusout";
+
+// @public (undocumented)
+type ModalizerConstructor = (tabster: TabsterCore, element: HTMLElement, props: ModalizerProps) => Modalizer;
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => TabsterTypes.TabsterDOMAttribute;
+type ModalizerElementAccessibleCheck = (element: HTMLElement, activeModalizerElements?: HTMLElement[]) => boolean;
+
+// @public (undocumented)
+type ModalizerEvent = TabsterEventWithDetails<ModalizerEventDetails>;
+
+// @public (undocumented)
+type ModalizerEventDetails = {
+    id: string;
+    element: HTMLElement;
+    eventName: ModalizerEventName;
+};
+
+// @public (undocumented)
+type ModalizerEventName = typeof ModalizerActiveEventName | typeof ModalizerInactiveEventName | typeof ModalizerBeforeFocusOutEventName | typeof ModalizerFocusInEventName | typeof ModalizerFocusOutEventName;
+
+// @public (undocumented)
+const ModalizerFocusInEventName = "tabster:modalizer:focusin";
+
+// @public (undocumented)
+const ModalizerFocusOutEventName = "tabster:modalizer:focusout";
+
+// @public (undocumented)
+const ModalizerInactiveEventName = "tabster:modalizer:inactive";
+
+// @public (undocumented)
+interface ModalizerOnElement {
+    // (undocumented)
+    modalizer: Modalizer;
+}
+
+// @public (undocumented)
+interface ModalizerProps {
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    isAlwaysAccessible?: boolean;
+    // (undocumented)
+    isNoFocusDefault?: boolean;
+    // (undocumented)
+    isNoFocusFirst?: boolean;
+    // (undocumented)
+    isOthersAccessible?: boolean;
+    isTrapped?: boolean;
+}
+
+// @public (undocumented)
+const MoveFocusEventName = "tabster:movefocus";
+
+// @public (undocumented)
+interface Mover extends TabsterPart<MoverProps>, TabsterPartWithFindNextTabbable, TabsterPartWithAcceptElement {
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    readonly dummyManager: DummyInputManager | undefined;
+    // (undocumented)
+    getCurrent(): HTMLElement | null;
+    // (undocumented)
+    getState(element: HTMLElement): MoverElementState | undefined;
+    // (undocumented)
+    readonly id: string;
+    // (undocumented)
+    setCurrent(element: HTMLElement | undefined): void;
+    // (undocumented)
+    readonly visibilityTolerance: NonNullable<MoverProps['visibilityTolerance']>;
+}
+
+// @public (undocumented)
+interface MoverAPI extends MoverAPIInternal, Disposable {
+    // @internal
+    moveFocus(fromElement: HTMLElement, key: MoverKey): HTMLElement | null;
+}
+
+// @public (undocumented)
+type MoverConstructor = (tabster: TabsterCore, element: HTMLElement, props: MoverProps) => Mover;
+
+// @public (undocumented)
+type MoverDirection = MoverDirections[keyof MoverDirections];
+
+// @public (undocumented)
+interface MoverDirections {
+    // (undocumented)
+    Both: 0;
+    // (undocumented)
+    Grid: 3;
+    // (undocumented)
+    GridLinear: 4;
+    // (undocumented)
+    Horizontal: 2;
+    // (undocumented)
+    Vertical: 1;
+}
+
+// @public (undocumented)
+const MoverDirections: MoverDirections;
+
+// @public (undocumented)
+interface MoverElementState {
+    // (undocumented)
+    isCurrent: boolean | undefined;
+    // (undocumented)
+    visibility: Visibility;
+}
+
+// @public (undocumented)
+type MoverEvent = TabsterEventWithDetails<MoverElementState>;
+
+// @public (undocumented)
+const MoverEventName = "tabster:mover";
+
+// @public (undocumented)
+type MoverKey = MoverKeys_2[keyof MoverKeys_2];
+
+// @public (undocumented)
+export const MoverKeys: {
+    readonly ArrowUp: 1;
+    readonly ArrowDown: 2;
+    readonly ArrowLeft: 3;
+    readonly ArrowRight: 4;
+    readonly PageUp: 5;
+    readonly PageDown: 6;
+    readonly Home: 7;
+    readonly End: 8;
+};
+
+// @public (undocumented)
+interface MoverKeys_2 {
+    // (undocumented)
+    ArrowDown: 2;
+    // (undocumented)
+    ArrowLeft: 3;
+    // (undocumented)
+    ArrowRight: 4;
+    // (undocumented)
+    ArrowUp: 1;
+    // (undocumented)
+    End: 8;
+    // (undocumented)
+    Home: 7;
+    // (undocumented)
+    PageDown: 6;
+    // (undocumented)
+    PageUp: 5;
+}
+
+// @public (undocumented)
+const MoverKeys_2: MoverKeys_2;
+
+// @public (undocumented)
+export const MoverMoveFocusEvent: typeof Events.MoverMoveFocusEvent;
+
+// @public (undocumented)
+type MoverMoveFocusEvent_2 = CustomEvent<{
+    key: MoverKey;
+} | undefined>;
+
+// @public (undocumented)
+export type MoverMoveFocusEventDetail = Events.MoverMoveFocusEventDetail;
+
+// @public
+export const MoverMoveFocusEventName: "tabster:mover:movefocus";
+
+// @public (undocumented)
+const MoverMoveFocusEventName_2 = "tabster:mover:movefocus";
+
+// @public (undocumented)
+interface MoverOnElement {
+    // (undocumented)
+    mover: Mover;
+}
+
+// @public (undocumented)
+interface MoverProps {
+    cyclic?: boolean;
+    // (undocumented)
+    direction?: MoverDirection;
+    hasDefault?: boolean;
+    // (undocumented)
+    memorizeCurrent?: boolean;
+    // (undocumented)
+    tabbable?: boolean;
+    trackState?: boolean;
+    visibilityAware?: Visibility;
+    visibilityTolerance?: number;
+}
+
+// @public (undocumented)
+type NextTabbable = {
+    element: HTMLElement | null | undefined;
+    uncontrolled?: HTMLElement | null;
+    outOfDOMOrder?: boolean;
+};
+
+// @public (undocumented)
+interface ObservedElementAccesibilities {
+    // (undocumented)
+    Accessible: 1;
+    // (undocumented)
+    Any: 0;
+    // (undocumented)
+    Focusable: 2;
+}
+
+// @public (undocumented)
+const ObservedElementAccesibilities: ObservedElementAccesibilities;
+
+// @public (undocumented)
+type ObservedElementAccesibility = ObservedElementAccesibilities[keyof ObservedElementAccesibilities];
+
+// @public (undocumented)
+interface ObservedElementAPI extends Subscribable<HTMLElement, ObservedElementDetails>, Disposable, ObservedElementAPIInternal {
+    // (undocumented)
+    getElement(observedName: string, accessibility?: ObservedElementAccesibility): HTMLElement | null;
+    // (undocumented)
+    requestFocus(observedName: string, timeout: number): ObservedElementAsyncRequest<boolean>;
+    // (undocumented)
+    waitElement(observedName: string, timeout: number, accessibility?: ObservedElementAccesibility): ObservedElementAsyncRequest<HTMLElement | null>;
+}
+
+// @public (undocumented)
+interface ObservedElementAsyncRequest<T> {
+    // (undocumented)
+    cancel(): void;
+    // (undocumented)
+    result: Promise<T>;
+}
+
+// @public (undocumented)
+interface ObservedElementDetails extends ObservedElementProps {
+    // (undocumented)
+    accessibility?: ObservedElementAccesibility;
+}
+
+// @public (undocumented)
+interface ObservedElementProps {
+    // (undocumented)
+    details?: any;
+    // (undocumented)
+    names: string[];
+}
+
+// @public (undocumented)
+interface ObservedOnElement {
+    // (undocumented)
+    observed: ObservedElementProps;
+}
+
+// @public (undocumented)
+interface OutlineAPI extends Disposable {
+    // (undocumented)
+    setup(props?: Partial<OutlineProps>): void;
+}
+
+// @public (undocumented)
+interface OutlinedElementProps {
+    // (undocumented)
+    isIgnored?: boolean;
+}
+
+// @public (undocumented)
+interface OutlineElements {
+    // (undocumented)
+    bottom: HTMLDivElement;
+    // (undocumented)
+    container: HTMLDivElement;
+    // (undocumented)
+    left: HTMLDivElement;
+    // (undocumented)
+    right: HTMLDivElement;
+    // (undocumented)
+    top: HTMLDivElement;
+}
+
+// @public (undocumented)
+interface OutlineOnElement {
+    // (undocumented)
+    outline: OutlinedElementProps;
+}
+
+// @public (undocumented)
+interface OutlineProps {
+    // (undocumented)
+    areaClass: string;
+    // (undocumented)
+    outlineClass: string;
+    // (undocumented)
+    outlineColor: string;
+    // (undocumented)
+    outlineWidth: number;
+    // (undocumented)
+    zIndex: number;
+}
+
+// @public (undocumented)
+type RestoreFocusOrder = RestoreFocusOrders[keyof RestoreFocusOrders];
+
+// @public (undocumented)
+interface RestoreFocusOrders {
+    // (undocumented)
+    DeloserDefault: 1;
+    // (undocumented)
+    DeloserFirst: 3;
+    // (undocumented)
+    History: 0;
+    // (undocumented)
+    RootDefault: 2;
+    // (undocumented)
+    RootFirst: 4;
+}
+
+// @public (undocumented)
+const RestoreFocusOrders: RestoreFocusOrders;
+
+// @public (undocumented)
+interface Restorer extends Disposable, TabsterPart<RestorerProps> {
+}
+
+// @public (undocumented)
+interface RestorerAPI extends RestorerAPIInternal, Disposable {
+}
+
+// @public (undocumented)
+interface RestorerOnElement {
+    // (undocumented)
+    restorer: Restorer;
+}
+
+// @public (undocumented)
+interface RestorerProps {
+    // (undocumented)
+    type: RestorerType;
+}
+
+// @public (undocumented)
+type RestorerType = (typeof RestorerTypes)[keyof typeof RestorerTypes];
+
+// @public (undocumented)
+const RestorerTypes: {
+    readonly Source: 0;
+    readonly Target: 1;
+};
+
+// @public (undocumented)
+interface Root extends TabsterPart<RootProps> {
+    // @internal (undocumented)
+    addDummyInputs(): void;
+    // (undocumented)
+    dispose(): void;
+    // (undocumented)
+    moveOutWithDefaultAction(backwards: boolean, relatedEvent: KeyboardEvent): void;
+    // (undocumented)
+    readonly uid: string;
+}
+
+// @public (undocumented)
+interface RootAPI extends Disposable, RootAPIInternal {
+    // (undocumented)
+    eventTarget: EventTarget;
+}
+
+// @public (undocumented)
+type RootConstructor = (tabster: TabsterCore, element: HTMLElement, props: RootProps) => Root;
+
+// @public (undocumented)
+interface RootFocusEventDetails {
+    // (undocumented)
+    element: HTMLElement;
+}
+
+// @public (undocumented)
+interface RootOnElement {
+    // (undocumented)
+    root: Root;
+}
+
+// @public (undocumented)
+interface RootProps {
+    // (undocumented)
+    restoreFocusOrder?: RestoreFocusOrder;
+}
+
+// @public (undocumented)
+interface Subscribable<A, B = undefined> {
+    // (undocumented)
+    subscribe(callback: SubscribableCallback<A, B>): void;
+    // @internal (undocumented)
+    subscribeFirst(callback: SubscribableCallback<A, B>): void;
+    // (undocumented)
+    unsubscribe(callback: SubscribableCallback<A, B>): void;
+}
+
+// @public (undocumented)
+type SubscribableCallback<A, B = undefined> = (val: A, details: B) => void;
+
+// @public (undocumented)
+type SysDummyInputsPosition = SysDummyInputsPositions[keyof SysDummyInputsPositions];
+
+// @public (undocumented)
+interface SysDummyInputsPositions {
+    // (undocumented)
+    Auto: 0;
+    // (undocumented)
+    Inside: 1;
+    // (undocumented)
+    Outside: 2;
+}
+
+// @public (undocumented)
+const SysDummyInputsPositions: SysDummyInputsPositions;
+
+// @public (undocumented)
+interface SysOnElement {
+    // (undocumented)
+    sys: SysProps;
+}
+
+// @public
+interface SysProps {
+    dummyInputsPosition?: SysDummyInputsPosition;
+}
+
+// @public (undocumented)
+interface Tabster {
+    // @internal (undocumented)
+    core: TabsterCore;
+    // (undocumented)
+    focusable: FocusableAPI;
+    // (undocumented)
+    focusedElement: FocusedElementState;
+    // (undocumented)
+    keyboardNavigation: KeyboardNavigationState;
+    // (undocumented)
+    root: RootAPI;
+    // (undocumented)
+    uncontrolled: UncontrolledAPI;
+}
+
+// @public
+const TabsterAttributeName = "data-tabster";
+
+// @public (undocumented)
+interface TabsterAttributeOnElement {
+    // (undocumented)
+    object: TabsterAttributeProps;
+    // (undocumented)
+    string: string;
+}
+
+// @public (undocumented)
+type TabsterAttributeProps = Partial<{
+    deloser: DeloserProps;
+    root: RootProps;
+    uncontrolled: UncontrolledProps;
+    modalizer: ModalizerProps;
+    focusable: FocusableProps;
+    groupper: GroupperProps;
+    mover: MoverProps;
+    observed: ObservedElementProps;
+    outline: OutlinedElementProps;
+    sys: SysProps;
+    restorer: RestorerProps;
+}>;
+
+// @public (undocumented)
+interface TabsterAugmentedAttributes {
+    // (undocumented)
+    [name: string]: string | null;
+}
+
+// @public (undocumented)
+interface TabsterCompat {
+    // (undocumented)
+    attributeTransform?: <P>(old: P) => TabsterAttributeProps;
+}
+
+// @public (undocumented)
+interface TabsterContext {
+    // (undocumented)
+    excludedFromMover?: boolean;
+    // (undocumented)
+    groupper?: Groupper;
+    // (undocumented)
+    groupperBeforeMover?: boolean;
+    // (undocumented)
+    ignoreKeydown: (e: KeyboardEvent) => boolean;
+    // (undocumented)
+    modalizer?: Modalizer;
+    // (undocumented)
+    modalizerInGroupper?: Groupper;
+    // (undocumented)
+    mover?: Mover;
+    // (undocumented)
+    root: Root;
+    rtl?: boolean;
+    // (undocumented)
+    uncontrolled?: HTMLElement | null;
+}
+
+// @public (undocumented)
+type TabsterContextMoverGroupper = {
+    isMover: true;
+    mover: Mover;
+} | {
+    isMover: false;
+    groupper: Groupper;
+};
+
+// @public (undocumented)
+interface TabsterCore extends Pick<TabsterCoreProps, 'controlTab' | 'rootDummyInputs'>, Disposable, TabsterCoreInternal, Omit<Tabster, 'core'> {
+}
+
+// @public (undocumented)
+interface TabsterCoreProps {
+    // (undocumented)
+    autoRoot?: RootProps;
+    checkUncontrolledCompletely?: (element: HTMLElement, completely: boolean) => boolean | undefined;
+    // @deprecated (undocumented)
+    checkUncontrolledTrappingFocus?: (element: HTMLElement) => boolean;
+    controlTab?: boolean;
+    DOMAPI?: Partial<DOMAPI>;
+    getParent?(el: Node): Node | null;
+    rootDummyInputs?: boolean;
+}
+
+// @public (undocumented)
+export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+interface TabsterDOMAttribute_2 {
+    // (undocumented)
+    [TabsterAttributeName]: string | undefined;
+}
+
+// @public (undocumented)
+const TabsterDummyInputAttributeName = "data-tabster-dummy";
+
+// @public (undocumented)
+interface TabsterElementStorage {
+    // (undocumented)
+    [uid: string]: TabsterElementStorageEntry;
+}
+
+// @public (undocumented)
+interface TabsterElementStorageEntry {
+    // (undocumented)
+    attr?: TabsterAttributeOnElement;
+    // (undocumented)
+    aug?: TabsterAugmentedAttributes;
+    // (undocumented)
+    tabster?: TabsterOnElement;
+}
+
+// @public (undocumented)
+type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
+
+// @public (undocumented)
+type TabsterMoveFocusEvent = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
+
+// @public (undocumented)
+interface TabsterMoveFocusEventDetails {
+    // (undocumented)
+    by: 'mover' | 'groupper' | 'modalizer' | 'root';
+    // (undocumented)
+    next: HTMLElement | null;
+    // (undocumented)
+    owner: HTMLElement;
+    // (undocumented)
+    relatedEvent?: KeyboardEvent;
+}
+
+// @public (undocumented)
+type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement & SysOnElement & RestorerOnElement>;
+
+// @public (undocumented)
+interface TabsterPart<P> {
+    // (undocumented)
+    getElement(): HTMLElement | undefined;
+    // (undocumented)
+    getProps(): P;
+    // (undocumented)
+    readonly id: string;
+    // (undocumented)
+    setProps(props: P): void;
+}
+
+// @public (undocumented)
+interface TabsterPartWithAcceptElement {
+    // (undocumented)
+    acceptElement(element: HTMLElement, state: FocusableAcceptElementState): number | undefined;
+}
+
+// @public (undocumented)
+interface TabsterPartWithFindNextTabbable {
+    // (undocumented)
+    findNextTabbable(current?: HTMLElement, reference?: HTMLElement, isBackward?: boolean, ignoreAccessibility?: boolean): NextTabbable | null;
+}
+
+declare namespace TabsterTypes {
+    export {
+        TabsterAttributeName,
+        TabsterDummyInputAttributeName,
+        DeloserEventName,
+        ModalizerActiveEventName,
+        ModalizerInactiveEventName,
+        ModalizerFocusInEventName,
+        ModalizerFocusOutEventName,
+        ModalizerBeforeFocusOutEventName,
+        MoverEventName,
+        FocusInEventName,
+        FocusOutEventName,
+        MoveFocusEventName,
+        MoverMoveFocusEventName_2 as MoverMoveFocusEventName,
+        GroupperMoveFocusEventName_2 as GroupperMoveFocusEventName,
+        FocusableSelector,
+        MoverMoveFocusEvent_2 as MoverMoveFocusEvent,
+        GroupperMoveFocusActions_2 as GroupperMoveFocusActions,
+        GroupperMoveFocusAction,
+        GroupperMoveFocusEvent_2 as GroupperMoveFocusEvent,
+        TabsterEventWithDetails,
+        TabsterMoveFocusEventDetails,
+        TabsterMoveFocusEvent,
+        TabsterDOMAttribute_2 as TabsterDOMAttribute,
+        TabsterCoreProps,
+        DOMAPI,
+        GetTabster,
+        GetWindow,
+        SubscribableCallback,
+        Disposable,
+        Subscribable,
+        KeyboardNavigationState,
+        FocusedElementDetails,
+        FocusedElementState,
+        WeakHTMLElement,
+        TabsterPart,
+        TabsterPartWithFindNextTabbable,
+        TabsterPartWithAcceptElement,
+        ObservedElementProps,
+        ObservedElementDetails,
+        ObservedElementAccesibilities,
+        ObservedElementAccesibility,
+        ObservedElementAsyncRequest,
+        ObservedElementAPI,
+        CrossOriginElement,
+        CrossOriginSentTo,
+        CrossOriginTransactionTypes,
+        CrossOriginTransactionType,
+        CrossOriginTransactionData,
+        CrossOriginTransactionSend,
+        CrossOriginMessage,
+        CrossOriginFocusedElementState,
+        CrossOriginObservedElementState,
+        CrossOriginAPI,
+        OutlineProps,
+        OutlinedElementProps,
+        OutlineAPI,
+        DeloserElementActions,
+        RestoreFocusOrders,
+        RestoreFocusOrder,
+        DeloserProps,
+        Deloser,
+        DeloserConstructor,
+        DeloserAPI,
+        FocusableProps,
+        FocusableAcceptElementState,
+        FindFocusableProps,
+        FindFocusableOutputProps,
+        FindFirstProps,
+        FindNextProps,
+        FindDefaultProps,
+        FindAllProps,
+        FindElementCallback,
+        FocusableAPI,
+        DummyInputManager,
+        Visibilities,
+        Visibility,
+        MoverElementState,
+        MoverDirections,
+        RestorerTypes,
+        RestorerType,
+        MoverDirection,
+        NextTabbable,
+        MoverProps,
+        MoverEvent,
+        Mover,
+        MoverConstructor,
+        MoverKeys_2 as MoverKeys,
+        MoverKey,
+        MoverAPI,
+        GroupperTabbabilities,
+        GroupperTabbability,
+        GroupperProps,
+        Groupper,
+        GroupperConstructor,
+        GroupperAPIInternal,
+        GroupperAPI,
+        ModalizerProps,
+        ModalizerEventName,
+        ModalizerEventDetails,
+        ModalizerEvent,
+        Modalizer,
+        ModalizerConstructor,
+        RootProps,
+        Root,
+        RootConstructor,
+        SysDummyInputsPositions,
+        SysDummyInputsPosition,
+        SysProps,
+        GetTabsterContextOptions,
+        TabsterContextMoverGroupper,
+        TabsterContext,
+        RootFocusEventDetails,
+        RootAPI,
+        UncontrolledAPI,
+        ModalizerAPI,
+        RestorerAPI,
+        Restorer,
+        ModalizerElementAccessibleCheck,
+        UncontrolledProps,
+        DeloserOnElement,
+        RootOnElement,
+        ModalizerOnElement,
+        RestorerOnElement,
+        FocusableOnElement,
+        MoverOnElement,
+        GroupperOnElement,
+        UncontrolledOnElement,
+        ObservedOnElement,
+        OutlineOnElement,
+        SysOnElement,
+        RestorerProps,
+        TabsterAttributeProps,
+        TabsterAttributeOnElement,
+        TabsterAugmentedAttributes,
+        TabsterOnElement,
+        OutlineElements,
+        TabsterElementStorageEntry,
+        TabsterElementStorage,
+        DisposeFunc,
+        InternalAPI,
+        DummyInputObserver,
+        Tabster,
+        TabsterCore,
+        TabsterCompat
+    }
+}
+export { TabsterTypes }
+
+// @public (undocumented)
+interface UncontrolledAPI {
+    // (undocumented)
+    isUncontrolledCompletely(element: HTMLElement, completely: boolean): boolean;
+}
+
+// @public (undocumented)
+interface UncontrolledOnElement {
+    // (undocumented)
+    uncontrolled: UncontrolledProps;
+}
+
+// @public (undocumented)
+interface UncontrolledProps {
+    // (undocumented)
+    completely?: boolean;
+}
+
+// @public
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
     circular?: boolean;
-    ignoreDefaultKeydown?: TabsterTypes.FocusableProps['ignoreKeydown'];
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
     unstable_hasDefault?: boolean;
 }
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions) => TabsterTypes.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
-    ignoreDefaultKeydown?: TabsterTypes.FocusableProps['ignoreKeydown'];
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
@@ -89,12 +1460,12 @@ export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<TabsterTypes.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<TabsterTypes.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public (undocumented)
-export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => TabsterTypes.ObservedElementAsyncRequest<boolean>;
+export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
 
 // @public (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
@@ -106,12 +1477,12 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): Re
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @internal
-export const useMergedTabsterAttributes_unstable: (...attributes: TabsterTypes.TabsterDOMAttribute[]) => TabsterTypes.TabsterDOMAttribute;
+export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
-    modalAttributes: TabsterTypes.TabsterDOMAttribute;
-    triggerAttributes: TabsterTypes.TabsterDOMAttribute;
+    modalAttributes: Types.TabsterDOMAttribute;
+    triggerAttributes: Types.TabsterDOMAttribute;
 };
 
 // @public (undocumented)
@@ -123,25 +1494,49 @@ export interface UseModalAttributesOptions {
 }
 
 // @public (undocumented)
-export function useObservedElement(name: string | string[]): TabsterTypes.TabsterDOMAttribute;
+export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
 
 // @public
 export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void): void;
 
 // @public
-export function useRestoreFocusSource(): TabsterTypes.TabsterDOMAttribute;
+export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
 
 // @public
-export function useRestoreFocusTarget(): TabsterTypes.TabsterDOMAttribute;
+export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export function useSetKeyboardNavigation(): (isNavigatingWithKeyboard: boolean) => void;
 
 // @internal
-export const useTabsterAttributes: (props: TabsterTypes.TabsterAttributeProps) => TabsterTypes.TabsterDOMAttribute;
+export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 // @public
-export function useUncontrolledFocus(): TabsterTypes.TabsterDOMAttribute;
+export function useUncontrolledFocus(): Types.TabsterDOMAttribute;
+
+// @public (undocumented)
+interface Visibilities {
+    // (undocumented)
+    Invisible: 0;
+    // (undocumented)
+    PartiallyVisible: 1;
+    // (undocumented)
+    Visible: 2;
+}
+
+// @public (undocumented)
+const Visibilities: Visibilities;
+
+// @public (undocumented)
+type Visibility = Visibilities[keyof Visibilities];
+
+// @public (undocumented)
+interface WeakHTMLElement<D = undefined> {
+    // (undocumented)
+    get(): HTMLElement | undefined;
+    // (undocumented)
+    getData(): D | undefined;
+}
 
 // (No @packageDocumentation comment for this package)
 

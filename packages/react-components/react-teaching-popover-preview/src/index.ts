@@ -18,27 +18,47 @@ export {
   useTeachingPopoverBody_unstable,
 } from './TeachingPopoverBody';
 export type {
-  TeachingPopoverBodyMediaLength,
   TeachingPopoverBodyProps,
   TeachingPopoverBodySlots,
   TeachingPopoverBodyState,
 } from './TeachingPopoverBody';
+export {
+  TeachingPopoverCarouselCard,
+  teachingPopoverCarouselCardClassNames,
+  renderTeachingPopoverCarouselCard_unstable,
+  useTeachingPopoverCarouselCardStyles_unstable,
+  useTeachingPopoverCarouselCard_unstable,
+} from './TeachingPopoverCarouselCard';
+export type {
+  TeachingPopoverCarouselCardProps,
+  TeachingPopoverCarouselCardSlots,
+  TeachingPopoverCarouselCardState,
+} from './TeachingPopoverCarouselCard';
 export {
   TeachingPopoverCarousel,
   teachingPopoverCarouselClassNames,
   renderTeachingPopoverCarousel_unstable,
   useTeachingPopoverCarouselStyles_unstable,
   useTeachingPopoverCarousel_unstable,
-  TeachingPopoverCarouselProvider,
-  useTeachingPopoverCarouselContext_unstable,
   useTeachingPopoverCarouselContextValues_unstable,
 } from './TeachingPopoverCarousel';
 export type {
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselSlots,
   TeachingPopoverCarouselState,
-  TeachingPopoverCarouselContextValue,
 } from './TeachingPopoverCarousel';
+export {
+  TeachingPopoverCarouselFooter,
+  teachingPopoverCarouselFooterClassNames,
+  renderTeachingPopoverCarouselFooter_unstable,
+  useTeachingPopoverCarouselFooterStyles_unstable,
+  useTeachingPopoverCarouselFooter_unstable,
+} from './TeachingPopoverCarouselFooter';
+export type {
+  TeachingPopoverCarouselFooterProps,
+  TeachingPopoverCarouselFooterSlots,
+  TeachingPopoverCarouselFooterState,
+} from './TeachingPopoverCarouselFooter';
 export {
   TeachingPopoverCarouselNav,
   teachingPopoverCarouselNavClassNames,
@@ -106,3 +126,5 @@ export {
   useTeachingPopoverFooter_unstable,
 } from './TeachingPopoverFooter';
 export type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter';
+export * from './TeachingPopoverCarouselPageCount';
+export * from './TeachingPopoverCarouselFooterButton';
