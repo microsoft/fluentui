@@ -37,10 +37,16 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
   subtle?: boolean;
 
   /**
-   * Completely hides the selection cell visually but takes up the same space
-   * @default false
+   * Completely hides the selection cell
+   * @deprecated cells should never use hidden, since doing so breaks table structure and screen reader navigation. Use `invisible` instead.
    */
   hidden?: boolean;
+
+  /**
+   * Hides the selection cell visually but takes up the same space
+   * @default false
+   */
+  invisible?: boolean;
 };
 
 /**
