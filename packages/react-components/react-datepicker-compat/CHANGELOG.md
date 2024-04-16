@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 12:08:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.31)
+
+Thu, 04 Apr 2024 12:08:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.4.30..@fluentui/react-datepicker-compat_v0.4.31)
+
+### Patches
+
+- fix: Align arrow down behavior with Combobox. ([PR #30954](https://github.com/microsoft/fluentui/pull/30954) by estebanmu@microsoft.com)
 
 ## [0.4.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.30)
 

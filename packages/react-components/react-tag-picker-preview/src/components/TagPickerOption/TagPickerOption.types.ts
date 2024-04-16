@@ -12,12 +12,10 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
  */
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
   children: React.ReactNode;
-  text?: string;
   value: string;
 };
 
 /**
  * State used in rendering TagPickerOption
  */
-export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> &
-  Pick<OptionState, 'components' | 'multiselect' | 'root' | 'selected'>;
+export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'root'>;

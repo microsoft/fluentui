@@ -11,6 +11,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     value,
     triggerRef,
     secondaryActionRef,
+    tagPickerGroupRef,
     targetRef,
     size,
     setValue,
@@ -23,6 +24,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     open,
     popoverId,
     disabled,
+    freeform,
   } = state;
   return {
     activeDescendant: React.useMemo(
@@ -44,6 +46,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       triggerRef,
       targetRef,
       secondaryActionRef,
+      tagPickerGroupRef,
       size,
       setValue,
       setOpen,
@@ -57,6 +60,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
       open,
       popoverId,
       disabled,
+      freeform,
     },
   };
 }

@@ -2,6 +2,88 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 05 Apr 2024 14:17:26 GMT",
+      "tag": "@fluentui/react-components_v9.47.5",
+      "version": "9.47.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "ramyrafik@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "6b335a82332ade486a4c3bb5360cc1a0f2250165",
+            "comment": "Avoid re-inserting Style Element to HEAD when re-rendering FluentProvider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Apr 2024 12:08:06 GMT",
+      "tag": "@fluentui/react-components_v9.47.4",
+      "version": "9.47.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "3150bfa1b9200d7f24be2ba791ba6fa32e835eae",
+            "comment": "chore: migrate to monosize 0.5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "16266eaeaa2d4187090d0b8d7aee2d8d9f8a2dff",
+            "comment": "fix: remove border from high contrast mode to match styles and make focus more visible"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8afa3612153320a278065a7799e4b5ca5b5073a0",
+            "comment": "chore: move freeform and disabled to ComboboxBase types"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "04641e4e75d54000414b4778f8814865eaef5c4f",
+            "comment": "fix: Align arrow down behavior with Combobox."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "fd38bbcbb31e230c19a9c552fa03017945089b9d",
+            "comment": "feat: adds TagPickerOptionGroup component"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "0efb5211010f21904cfe4522e30dc3eb9b38cb3b",
+            "comment": "feat: Release preview package"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09",
+            "comment": "export SearchBoxChangeEvent type."
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "fdc1773ee8ab3c45ae449ea3a297d26b63e37523",
+            "comment": "add resizableColumnsOptions with option to allowContainerOverflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "8afa3612153320a278065a7799e4b5ca5b5073a0",
+            "comment": "feature: adds freeform support for TagPicker"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:47:59 GMT",
       "tag": "@fluentui/react-components_v9.47.3",
       "version": "9.47.3",

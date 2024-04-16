@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tag-picker-preview
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2024 12:08:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.2.0)
+
+Thu, 04 Apr 2024 12:08:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.1.1..@fluentui/react-tag-picker-preview_v0.2.0)
+
+### Minor changes
+
+- feature: adds freeform support for TagPicker ([PR #30947](https://github.com/microsoft/fluentui/pull/30947) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-combobox to v9.9.6 ([PR #30947](https://github.com/microsoft/fluentui/pull/30947) by beachball)
+
+### Patches
+
+- feat: adds TagPickerOptionGroup component ([PR #30934](https://github.com/microsoft/fluentui/pull/30934) by bernardo.sunderhus@gmail.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.1.1)
 

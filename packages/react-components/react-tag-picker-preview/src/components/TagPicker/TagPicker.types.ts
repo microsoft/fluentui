@@ -34,7 +34,7 @@ export type TagPickerOnOpenChangeData = { open: boolean } & (
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
   Pick<
     ComboboxProps,
-    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'
+    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'
   > &
   Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
@@ -44,6 +44,13 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
      * Can contain two children including a trigger and a popover
      */
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    /**
+     * TagPickers are rendered out of DOM order on `document.body` by default,
+     * use this to render the popover in DOM order
+     *
+     * @default false
+     */
+    inline?: boolean;
   };
 
 /**
@@ -67,13 +74,16 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'appearance'
     | 'clearSelection'
     | 'getOptionById'
+    | 'freeform'
+    | 'disabled'
   > &
   Pick<
     TagPickerContextValue,
-    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size' | 'disabled'
+    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'
   > & {
     trigger: React.ReactNode;
     popover?: React.ReactNode;
+    inline: boolean;
   };
 
 export type TagPickerContextValues = {
