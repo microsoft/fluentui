@@ -51,7 +51,9 @@ export function useActiveDescendantGridFocusable(
     if (!currentRow) {
       return undefined;
     }
-    const currentRowCells = Array.from(currentRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
+    const currentRowCells = Array.from(
+      currentRow.querySelectorAll<HTMLElement>('[role="gridcell"], [role="rowheader"]'),
+    );
     const currentCellIndex = currentRowCells.findIndex(siblingCell => siblingCell === currentCell);
     if (currentCellIndex < 0) {
       return undefined;
@@ -60,7 +62,9 @@ export function useActiveDescendantGridFocusable(
     if (!siblingRow) {
       return undefined;
     }
-    const siblingRowCells = Array.from(siblingRow.querySelectorAll<HTMLElement>('[role="gridcell"]'));
+    const siblingRowCells = Array.from(
+      siblingRow.querySelectorAll<HTMLElement>('[role="gridcell"], [role="rowheader"]'),
+    );
     const siblingRowCellIndex = Math.min(siblingRowCells.length - 1, currentCellIndex);
     const siblingRowCellFirstFocusable = getFirstFocusableOrSelf(siblingRowCells[siblingRowCellIndex]);
     return siblingRowCellFirstFocusable;

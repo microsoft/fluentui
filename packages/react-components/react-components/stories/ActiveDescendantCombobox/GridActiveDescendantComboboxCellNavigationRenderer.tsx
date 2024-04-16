@@ -413,7 +413,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
                   // aria-labelledby={contentId}
                 >
                   <div role="rowheader" id={rowHeaderId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
-                    <Avatar color="colorful" name={option.text} />
+                    <Avatar color="colorful" name={option.text} aria-hidden="true" />
                     <span id={contentId}>{option.text}</span>
                   </div>
 
@@ -472,7 +472,7 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
                   // aria-labelledby={contentId}
                 >
                   <div role="rowheader" id={rowHeaderId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
-                    <Avatar color="colorful" name={option.text} />
+                    <Avatar color="colorful" name={option.text} aria-hidden="true" />
                     <span id={contentId}>{option.text}</span>
                   </div>
 
