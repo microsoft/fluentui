@@ -14,7 +14,9 @@ describe('ImageSwatch', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
+          aria-checked="false"
           class="fui-ImageSwatch"
+          role="radio"
           style="background-image: url(path/img.png);"
         />
       </div>
