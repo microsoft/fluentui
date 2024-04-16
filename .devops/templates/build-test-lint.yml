@@ -42,7 +42,8 @@ steps:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
   - script: |
-      yarn buildci $(sinceArg)
-    displayName: build, test, lint, test-ssr
+      yarn lage build --verbose $(sinceArg)
+      yarn lage type-check --verbose $(sinceArg)
+    displayName: type-check
 
   - template: cleanup.yml
