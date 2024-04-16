@@ -79,12 +79,13 @@ jobs:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           arguments: '$(azureStorage) $(deployBasePath)'
-          inlineScript: az storage blob upload-batch \
-            --destination '$web' \
-            --source packages/fluentui/perf-test-northstar/dist \
-            --account-name $1 \
-            --destination-path $2/perf-test-northstar \
-            --auth-mode login
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source packages/fluentui/perf-test-northstar/dist \
+              --account-name $1 \
+              --destination-path $2/perf-test-northstar \
+              --auth-mode login
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
