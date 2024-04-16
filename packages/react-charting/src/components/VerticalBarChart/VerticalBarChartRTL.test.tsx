@@ -388,7 +388,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the given width',
     VerticalBarChart,
-    { data: chartPointsVBC, barWidth: 100 },
+    { data: chartPointsVBC, barWidth: 100, maxBarWidth: 200 },
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);

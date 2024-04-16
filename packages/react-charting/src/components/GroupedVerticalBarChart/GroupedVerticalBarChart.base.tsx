@@ -65,6 +65,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
   IGroupedVerticalBarChartProps,
   IGroupedVerticalBarChartState
 > {
+  public static defaultProps: Partial<IGroupedVerticalBarChartProps> = {
+    maxBarWidth: 24,
+  };
+
   private _createSet: (
     data: IGroupedVerticalBarChartData[],
   ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any

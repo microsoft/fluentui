@@ -66,6 +66,10 @@ export interface IVerticalBarChartState extends IBasestate {
 type ColorScale = (_p?: number) => string;
 
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
+  public static defaultProps: Partial<IVerticalBarChartProps> = {
+    maxBarWidth: 24,
+  };
+
   private _points: IVerticalBarChartDataPoint[];
   private _barWidth: number;
   private _colors: string[];
@@ -532,19 +536,17 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
-        .range([
-          this.margins.left! + this._domainMargin - this._barWidth / 2,
-          containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-        ]);
+        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       xBarScale = d3ScaleUtc()
-        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
-        .range([
-          this.margins.left! + this._domainMargin - this._barWidth / 2,
-          containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-        ]);
+        .domain([sDate, lDate])
+        .range(
+          this._isRtl
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+        );
     } else {
       xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
@@ -580,7 +582,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       } else {
         adjustedBarHeight = barHeight;
       }
-      const xPoint = xBarScale(point.x as number);
+      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x as string}>
@@ -724,7 +726,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       } else {
         adjustedBarHeight = barHeight;
       }
-      const xPoint = xBarScale(point.x as number);
+      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x instanceof Date ? point.x.getTime() : point.x}>

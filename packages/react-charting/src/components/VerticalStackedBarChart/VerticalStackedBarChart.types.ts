@@ -126,6 +126,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
 
   /**
    * Maximum width of a bar, in pixels.
+   * @default 24
    */
   maxBarWidth?: number;
 
