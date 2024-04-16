@@ -154,6 +154,7 @@ export {
   Spinner,
   SpinnerAppearance,
   SpinnerSize,
+  SpinnerOptions,
   SpinnerTemplate,
   SpinnerStyles,
   SpinnerDefinition,
@@ -242,4 +243,6 @@ export {
 
 export { FluentDesignSystem } from './fluent-design-system.js';
 export { setTheme, setThemeFor } from './theme/index.js';
-export * as tokens from './theme/design-tokens.js';
+
+import * as tokens from './theme/design-tokens.js';
+export { tokens };
