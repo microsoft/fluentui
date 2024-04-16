@@ -4,7 +4,6 @@ import type {
   TeachingPopoverCarouselFooterState,
 } from './TeachingPopoverCarouselFooter.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 
 export const teachingPopoverCarouselFooterClassNames: SlotClassNames<TeachingPopoverCarouselFooterSlots> = {
   root: 'fui-TeachingPopoverCarouselFooter',
