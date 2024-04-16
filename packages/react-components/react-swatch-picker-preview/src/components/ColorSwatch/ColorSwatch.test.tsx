@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ColorSwatch } from './ColorSwatch';
 import { colorSwatchClassNames } from './useColorSwatchStyles.styles';
+import { SwatchPickerProvider, swatchPickerContextDefaultValue } from '../../contexts/swatchPicker';
+import { on } from 'events';
 
 describe('ColorSwatch', () => {
   isConformant({
@@ -33,5 +35,49 @@ describe('ColorSwatch', () => {
         />
       </div>
     `);
+  });
+
+  it('selected when clicked', () => {
+    const onSelect = jest.fn();
+    const contextValue = {
+      ...swatchPickerContextDefaultValue,
+      requestSelectionChange: onSelect,
+    };
+
+    const result = render(
+      <SwatchPickerProvider value={contextValue}>
+        <ColorSwatch color="#f09" value="f09" />
+      </SwatchPickerProvider>,
+    );
+
+    const swatch = result.getByRole('radio');
+    fireEvent.click(swatch);
+    expect(onSelect).toHaveBeenCalledWith(expect.anything(), { selectedSwatch: '#f09', selectedValue: 'f09' });
+  });
+
+  it('has correct a11y attributes in a row layout', () => {
+    const result = render(
+      <SwatchPickerProvider value={swatchPickerContextDefaultValue}>
+        <ColorSwatch color="#f09" value="f09" />
+      </SwatchPickerProvider>,
+    );
+
+    const swatch = result.getByRole('radio');
+    expect(swatch.getAttribute('aria-checked')).toBe('false');
+  });
+
+  it('has correct a11y attributes in a grid layout', () => {
+    const contextValue = {
+      ...swatchPickerContextDefaultValue,
+      isGrid: true,
+    };
+    const result = render(
+      <SwatchPickerProvider value={contextValue}>
+        <ColorSwatch color="#f09" value="f09" />
+      </SwatchPickerProvider>,
+    );
+
+    const swatch = result.getByRole('gridcell');
+    expect(swatch.getAttribute('aria-selected')).toBe('false');
   });
 });
