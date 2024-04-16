@@ -27,7 +27,7 @@ export const EmptySwatchExample = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [items, setItems] = React.useState<Array<{ color: string; value: string; 'aria-label': string }>>([
     { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
-    { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
+    { color: '#FF7A00', value: 'FF7A00', 'aria-label': 'dark orange' },
     { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
     { color: '#00B053', value: '00B053', 'aria-label': 'green' },
   ]);

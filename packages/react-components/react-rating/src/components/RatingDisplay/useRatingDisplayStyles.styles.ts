@@ -21,7 +21,7 @@ const useRootClassName = makeResetStyles({
 
 const useLabelClassName = makeResetStyles({
   color: tokens.colorNeutralForeground1,
-  marginLeft: tokens.spacingHorizontalXXS,
+  marginLeft: tokens.spacingHorizontalXS,
   ...typographyStyles.caption1,
 });
 
@@ -29,10 +29,12 @@ const useLabelStyles = makeStyles({
   large: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
+    marginLeft: tokens.spacingHorizontalSNudge,
   },
   extraLarge: {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
+    marginLeft: tokens.spacingHorizontalS,
   },
   strong: {
     fontWeight: tokens.fontWeightSemibold,
