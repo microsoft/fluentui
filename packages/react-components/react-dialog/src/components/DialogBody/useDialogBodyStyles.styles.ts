@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR, SURFACE_PADDING } from '../../contexts';
@@ -11,8 +11,8 @@ export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
  * Styles for the root slot
  */
 const useResetStyles = makeResetStyles({
-  ...shorthands.overflow('unset'),
-  ...shorthands.gap(DIALOG_GAP),
+  overflow: 'unset',
+  gap: DIALOG_GAP,
   display: 'grid',
   maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
   boxSizing: 'border-box',
