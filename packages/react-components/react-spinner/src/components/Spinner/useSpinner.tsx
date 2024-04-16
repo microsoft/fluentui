@@ -19,7 +19,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
-  const { role = 'progressbar', tabIndex, ...rest } = props;
+  const { role = 'progressbar', ...rest } = props;
   const nativeRoot = slot.always(
     getIntrinsicElementProps(
       'div',
@@ -29,7 +29,6 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: ref as React.Ref<HTMLDivElement>,
         role,
-        tabIndex,
         ...rest,
       },
       ['size'],
