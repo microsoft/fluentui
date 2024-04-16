@@ -13,7 +13,8 @@ export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopov
     const state = useTeachingPopoverCarouselNavButton_unstable(props, ref);
 
     useTeachingPopoverCarouselNavButtonStyles_unstable(state);
+
     return renderTeachingPopoverCarouselNavButton_unstable(state);
-  });
+  }) as ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
 
 TeachingPopoverCarouselNavButton.displayName = 'TeachingPopoverCarouselNavButton';
