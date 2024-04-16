@@ -31,4 +31,5 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
 export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
   Required<Pick<TagGroupProps, 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
+    isInsideTagPicker?: boolean;
   };

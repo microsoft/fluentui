@@ -53,6 +53,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
 
   return {
     handleTagDismiss,
+    isInsideTagPicker: false,
     size,
     appearance,
     dismissible,

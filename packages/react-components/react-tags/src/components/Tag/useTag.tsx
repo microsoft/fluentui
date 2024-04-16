@@ -31,6 +31,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     size: contextSize,
     appearance: contextAppearance,
     dismissible: contextDismissible,
+    isInsideTagPicker = false,
   } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
@@ -81,6 +82,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     root: slot.always(
       getIntrinsicElementProps(elementType, {
         ref,
+        role: isInsideTagPicker ? 'option' : undefined,
         ...props,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
