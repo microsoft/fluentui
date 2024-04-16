@@ -146,7 +146,7 @@ const peopleFilterId = 'people-filter';
 const filesFilterId = 'files-filter';
 const noResultsRowId = 'noResults-row';
 
-export const GridActiveDescendantComboboxCompositeNavigationRenderer = () => {
+export const GridActiveDescendantComboboxCompositeNavigationRowNarrationRenderer = () => {
   const { targetDocument } = useFluent();
   const [filter, setFilter] = React.useState<'none' | 'files' | 'people'>('none');
   const styles = useStyles();
@@ -413,8 +413,8 @@ export const GridActiveDescendantComboboxCompositeNavigationRenderer = () => {
                   tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
-                  aria-labelledby={contentId}
-                  aria-description={HAS_ACTIONS_HINT}
+                  // aria-labelledby={contentId}
+                  // aria-description={HAS_ACTIONS_HINT}
                 >
                   <div role="gridcell">
                     <Avatar color="colorful" name={option.text} aria-hidden="true" />
@@ -472,8 +472,8 @@ export const GridActiveDescendantComboboxCompositeNavigationRenderer = () => {
                   tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
-                  aria-labelledby={contentId}
-                  aria-description={HAS_ACTIONS_HINT}
+                  // aria-labelledby={contentId}
+                  // aria-description={HAS_ACTIONS_HINT}
                 >
                   <div role="gridcell">
                     <Avatar color="colorful" name={option.text} aria-hidden="true" />

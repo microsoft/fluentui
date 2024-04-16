@@ -4,8 +4,8 @@ import { GridActiveDescendantComboboxCellNavigationRenderer } from './GridActive
 
 export const GridActiveDescendantComboboxCellNavigation: React.FC = () => {
   return (
-    <Prototype pageTitle="Grid with cell navigation (Variant B)">
-      <h1>Combobox opening grid with cell navigation (Variant B)</h1>
+    <Prototype pageTitle="Grid with cell navigation (Variant C)">
+      <h1>Combobox opening grid with cell navigation (Variant C)</h1>
       <GridActiveDescendantComboboxCellNavigationRenderer />
     </Prototype>
   );
