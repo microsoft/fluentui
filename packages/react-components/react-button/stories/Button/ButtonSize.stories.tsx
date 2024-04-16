@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     rowGap: '15px',
+    minWidth: 'min-content',
   },
 });
 

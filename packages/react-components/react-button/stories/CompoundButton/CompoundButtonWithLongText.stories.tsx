@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     columnGap: '15px',
     display: 'flex',
+    minWidth: 'min-content',
   },
 });
 

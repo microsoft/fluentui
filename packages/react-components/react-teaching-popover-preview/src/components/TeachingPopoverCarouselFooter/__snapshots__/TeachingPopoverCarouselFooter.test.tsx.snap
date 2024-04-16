@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarouselFooter renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarouselFooter"
+  >
+    <button
+      class="fui-TeachingPopoverCarouselFooterButton fui-Button fui-TeachingPopoverCarouselFooter__previous"
+    >
+      Previous
+    </button>
+    Default TeachingPopoverCarouselFooter
+    <button
+      class="fui-TeachingPopoverCarouselFooterButton fui-Button fui-TeachingPopoverCarouselFooter__next"
+    >
+      Next
+    </button>
+  </div>
+</div>
+`;

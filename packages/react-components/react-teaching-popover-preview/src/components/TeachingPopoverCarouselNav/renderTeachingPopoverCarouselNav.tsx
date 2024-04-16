@@ -3,6 +3,7 @@
 import type { TeachingPopoverCarouselNavState } from './TeachingPopoverCarouselNav.types';
 import { assertSlots } from '@fluentui/react-utilities';
 import { TeachingPopoverCarouselNavSlots } from './TeachingPopoverCarouselNav.types';
+import { ValueIdContextProvider } from './valueIdContext';
 
 /**
  * Render the final JSX of TeachingPopoverCarouselNav
@@ -10,5 +11,15 @@ import { TeachingPopoverCarouselNavSlots } from './TeachingPopoverCarouselNav.ty
 export const renderTeachingPopoverCarouselNav_unstable = (state: TeachingPopoverCarouselNavState) => {
   assertSlots<TeachingPopoverCarouselNavSlots>(state);
 
-  return <state.root />;
+  const { values, renderNavButton } = state;
+
+  return (
+    <state.root>
+      {values.map(value => (
+        <ValueIdContextProvider value={value} key={value}>
+          {renderNavButton(value)}
+        </ValueIdContextProvider>
+      ))}
+    </state.root>
+  );
 };

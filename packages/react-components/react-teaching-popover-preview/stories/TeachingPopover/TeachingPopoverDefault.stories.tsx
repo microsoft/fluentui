@@ -10,30 +10,21 @@ import {
   TeachingPopoverTrigger,
   TeachingPopoverFooter,
 } from '@fluentui/react-teaching-popover-preview';
-import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 
-const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
-const ExampleContent = (index: number) => {
-  return (
-    <>
-      <div>{`This is page: ${index}`}</div>
-    </>
-  );
-};
-
-export const Default = (props: TeachingPopoverProps) => (
-  <TeachingPopover withArrow={true} {...props}>
+export const Default = () => (
+  <TeachingPopover>
     <TeachingPopoverTrigger>
       <Button>TeachingPopover trigger</Button>
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
-      <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-        <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-        {ExampleContent(1)}
+      <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
+      <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
+        <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+        <div>This is a teaching popover body</div>
       </TeachingPopoverBody>
-      <TeachingPopoverFooter strings={{ primary: 'Learn more', secondary: 'Got it' }} />
+      <TeachingPopoverFooter primary="Learn more" secondary="Got it" />
     </TeachingPopoverSurface>
   </TeachingPopover>
 );
