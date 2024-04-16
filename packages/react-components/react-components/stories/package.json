@@ -6,10 +6,12 @@
     "start": "yarn storybook",
     "storybook": "start-storybook",
     "type-check": "just-scripts type-check",
+    "test": "jest --passWithNoTests",
     "lint": "eslint src/",
     "format": "just-scripts prettier"
   },
   "devDependencies": {
+    "react-hook-form": "^5.7.2",
     "@fluentui/react-components": "*",
     "@fluentui/react": "*",
     "@fluentui/react-storybook-addon": "*",

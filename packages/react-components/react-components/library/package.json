@@ -27,7 +27,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "react-hook-form": "^5.7.2",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },

@@ -70,6 +70,7 @@ const tabs: SettingsTab[] = [
 
 type OverflowMenuItemProps = {
   tab: SettingsTab;
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onClick: React.MouseEventHandler<HTMLDivElement>;
 };
 
@@ -89,6 +90,7 @@ const OverflowMenuItem = (props: OverflowMenuItemProps) => {
 };
 
 type OverflowMenuProps = {
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onTabSelect?: (tabId: string) => void;
 };
 
