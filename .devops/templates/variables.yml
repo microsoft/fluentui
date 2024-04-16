@@ -24,7 +24,7 @@ variables:
 
   # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
   azureSubscription: Azure PR deploy - NEW
-  azureStorage: fluentuipr
+  azureStorage: fluentuipullrequest
 
   ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
     isPR: true
