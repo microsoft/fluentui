@@ -39,7 +39,7 @@ export const Filtering = () => {
         <TagPickerOption
           secondaryContent="Microsoft FTE"
           key={option.value}
-          media={<Avatar name={option.children} color="colorful" />}
+          media={<Avatar aria-hidden name={option.children} color="colorful" />}
           value={option.value}
         >
           {option.children}
@@ -58,12 +58,17 @@ export const Filtering = () => {
         <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput value={query} onChange={e => setQuery(e.target.value)} />
+          <TagPickerInput aria-label="Select Employees" value={query} onChange={e => setQuery(e.target.value)} />
         </TagPickerControl>
 
         <TagPickerList>{children}</TagPickerList>
