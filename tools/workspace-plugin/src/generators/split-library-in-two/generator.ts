@@ -33,6 +33,10 @@ interface Options extends SplitLibraryInTwoGeneratorSchema {
   };
 }
 
+const noop = () => {
+  return;
+};
+
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
   if (options.project && options.all) {
     throw new Error('Cannot specify both project and all');
@@ -43,8 +47,17 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 
   if (options.all) {
     const projects = getProjects(tree);
-    for (const [projectName] of projects) {
-      splitLibraryInTwoInternal(tree, { projectName });
+    const projectsToSplit = Array.from(projects).filter(([_, project]) =>
+      assertProject(tree, project, { warn: noop } as unknown as typeof output),
+    );
+
+    output.log({
+      title: `Splitting ${projectsToSplit.length} libraries in two...`,
+      bodyLines: projectsToSplit.map(([name]) => name),
+    });
+
+    for (const [projectName, project] of projectsToSplit) {
+      splitLibraryInTwoInternal(tree, { projectName, project });
     }
   }
   if (options.project) {
@@ -60,15 +73,18 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   };
 }
 
-function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string }) {
-  const projectConfig = readProjectConfiguration(tree, options.projectName);
+function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string; project?: ProjectConfiguration }) {
+  const { projectName, project } = options;
+  const projectConfig = project ?? readProjectConfiguration(tree, options.projectName);
 
-  if (!assertProject(tree, projectConfig)) {
+  output.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
+
+  if (!assertProject(tree, projectConfig, output)) {
     return;
   }
 
   const normalizedOptions = {
-    ...options,
+    projectName,
     projectConfig,
     projectOffsetFromRoot: {
       old: offsetFromRoot(projectConfig.root),
@@ -357,26 +373,26 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
   });
 }
 
-function assertProject(tree: Tree, projectConfig: ProjectConfiguration) {
+function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: typeof output) {
   const tags = projectConfig.tags ?? [];
 
   if (projectConfig.projectType !== 'library') {
-    output.warn({ title: 'This generator is only for libraries' });
+    logger.warn({ title: 'This generator is only for libraries' });
     return;
   }
 
   if (projectConfig.name?.endsWith('-preview')) {
-    output.warn({ title: 'preview projects are not supported YET, skipping...' });
+    logger.warn({ title: 'preview projects are not supported YET, skipping...' });
     return;
   }
 
   if (tags.includes('compat')) {
-    output.warn({ title: 'compat projects are not supported YET, skipping...' });
+    logger.warn({ title: 'compat projects are not supported YET, skipping...' });
     return;
   }
 
   if (projectConfig.root?.endsWith('/stories') || projectConfig.root?.endsWith('/library')) {
-    output.warn({ title: 'attempting to migrate already migrated projects, skipping...' });
+    logger.warn({ title: 'attempting to migrate already migrated projects, skipping...' });
     return;
   }
 
@@ -386,12 +402,12 @@ function assertProject(tree: Tree, projectConfig: ProjectConfiguration) {
     !(tags.includes('v8') || tags.includes('react-northstar'));
 
   if (!isV9Stable) {
-    output.warn({ title: 'This generator is only for v9 stable web libraries' });
+    logger.warn({ title: 'This generator is only for v9 stable web libraries' });
     return;
   }
 
   if (!tree.exists(joinPathFragments(projectConfig.root, 'stories'))) {
-    output.warn({ title: '/stories directory does not exist within project, skipping...' });
+    logger.warn({ title: '/stories directory does not exist within project, skipping...' });
     return;
   }
 
