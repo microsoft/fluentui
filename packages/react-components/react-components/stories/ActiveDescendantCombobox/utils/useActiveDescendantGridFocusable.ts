@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { ACTIVEDESCENDANT_ATTRIBUTE, FOCUSABLES_SELECTOR } from './constants';
+import { A } from '@storybook/components';
+import { Accept } from '@fluentui/keyboard-keys';
 
 export interface ActiveDescendantGridFocusableImperativeRef {
   first: () => void;
@@ -29,7 +31,6 @@ export function useActiveDescendantGridFocusable(
         if (!isHTMLElement(node)) {
           return NodeFilter.FILTER_SKIP;
         }
-
         return node.role === 'row' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       });
     }
@@ -40,22 +41,58 @@ export function useActiveDescendantGridFocusable(
     [${ACTIVEDESCENDANT_ATTRIBUTE}]`);
   };
 
-  const getParentGrid = (el: HTMLElement) => {
-    let cur: HTMLElement | null = el;
-    while (cur && cur.role !== 'grid') {
-      cur = cur.parentElement;
+  const getNearestParentWithRole = (element: HTMLElement, role: string) => {
+    let current: HTMLElement | null = element;
+    while (current && current.role !== role) {
+      current = current.parentElement;
     }
-
-    return cur;
+    return current;
   };
 
-  const getParentRow = (el: HTMLElement) => {
-    let cur: HTMLElement | null = el;
-    while (cur && cur.role !== 'row') {
-      cur = cur.parentElement;
+  const getSiblingRowCellFirstFocusable = (active: HTMLElement, direction: string) => {
+    const currentCell = getNearestParentWithRole(active, 'gridcell');
+    if (!currentCell) {
+      return undefined;
     }
+    const currentRow = getNearestParentWithRole(currentCell, 'row');
+    if (!currentRow) {
+      return undefined;
+    }
+    const currentRowCells = Array.from(currentRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
+    const currentCellIndex = currentRowCells.findIndex(siblingCell => siblingCell === currentCell);
+    if (currentCellIndex < 0) {
+      return undefined;
+    }
+    const siblingRow = getSiblingRow(currentRow, direction);
+    if (!siblingRow) {
+      return undefined;
+    }
+    const siblingRowCells = Array.from(siblingRow.querySelectorAll<HTMLElement>('[role="gridcell"]'));
+    const siblingRowCellIndex = Math.min(siblingRowCells.length - 1, currentCellIndex);
+    const siblingRowCellFirstFocusable = getFirstFocusableOrSelf(siblingRowCells[siblingRowCellIndex]);
+    return siblingRowCellFirstFocusable;
+  };
 
-    return cur;
+  const getSiblingRow = (row: HTMLElement, direction: string) => {
+    const currentGrid = getNearestParentWithRole(row, 'grid');
+    if (!currentGrid) {
+      return undefined;
+    }
+    const currentGridRows = Array.from(currentGrid.querySelectorAll<HTMLElement>('[role="row"]'));
+    const currentRowIndex = currentGridRows.findIndex(siblingRow => siblingRow === row);
+    if (currentRowIndex < 0) {
+      return undefined;
+    }
+    let siblingRowIndex;
+    if (direction === 'next') {
+      siblingRowIndex = Math.min(currentGridRows.length - 1, currentRowIndex + 1);
+    } else if (direction === 'prev') {
+      siblingRowIndex = Math.max(0, currentRowIndex - 1);
+    }
+    if (!siblingRowIndex) {
+      return undefined;
+    }
+    return currentGridRows[siblingRowIndex];
   };
 
   const getFocusables = (parent: HTMLElement) => {
@@ -147,140 +184,64 @@ export function useActiveDescendantGridFocusable(
       if (!listboxRef.current) {
         return false;
       }
-
       const active = getActiveDescendant();
       if (!active) {
         return false;
       }
-
-      const activeRow = getParentRow(active);
-      if (!activeRow) {
+      const currentRow = getNearestParentWithRole(active, 'row');
+      if (!currentRow) {
         return false;
       }
-
-      const grid = getParentGrid(activeRow);
-      if (!grid) {
+      const nextRow = getSiblingRow(currentRow, 'next');
+      if (!nextRow) {
         return false;
       }
-
-      const rows = Array.from(grid.querySelectorAll<HTMLElement>(`[role="row"]`));
-      const activeRowIndex = rows.findIndex(x => x === activeRow);
-      if (activeRowIndex < 0) {
-        return false;
-      }
-
-      const nextActiveRowIndex = Math.min(rows.length - 1, activeRowIndex + 1);
-      const nextActiveRow = rows[nextActiveRowIndex];
-      setActiveDescendant(getNextActiveRowOrFocusable(nextActiveRow));
-
+      setActiveDescendant(getNextActiveRowOrFocusable(nextRow));
       return true;
     },
     prevRow() {
       if (!listboxRef.current) {
         return false;
       }
-
       const active = getActiveDescendant();
       if (!active) {
         return false;
       }
-
-      const activeRow = getParentRow(active);
-      if (!activeRow) {
+      const currentRow = getNearestParentWithRole(active, 'row');
+      if (!currentRow) {
         return false;
       }
-
-      const grid = getParentGrid(activeRow);
-      if (!grid) {
-        return false;
-      }
-
-      const rows = Array.from(grid.querySelectorAll<HTMLElement>(`[role="row"]`));
-      const activeRowIndex = rows.findIndex(x => x === activeRow);
-      if (activeRowIndex < 0) {
-        return false;
-      }
-
-      const nextActiveRowIndex = Math.max(0, activeRowIndex - 1);
-      const nextActiveRow = rows[nextActiveRowIndex];
-      setActiveDescendant(getNextActiveRowOrFocusable(nextActiveRow));
-
-      return true;
-    },
-    focusableBelow() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
-        return;
-      }
-
-      const active = getActiveDescendant();
-      if (!active) {
-        return false;
-      }
-
-      const row = getParentRow(active);
-      if (!row) {
-        return false;
-      }
-
-      const rowCells = Array.from(row.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const cellIndex = rowCells.findIndex(x => x === active);
-      if (cellIndex < 0) {
-        return false;
-      }
-
-      treeWalkerRef.current.currentNode = active;
-      const nextRow = treeWalkerRef.current.nextNode() as HTMLElement | null;
-      if (!nextRow) {
-        return false;
-      }
-
-      const nextRowCells = Array.from(nextRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const nextCellIndex = Math.min(nextRowCells.length - 1, cellIndex);
-      const nextCellFirstFocusable = getFirstFocusableOrSelf(nextRowCells[nextCellIndex]);
-      if (!nextCellFirstFocusable) {
-        return false;
-      }
-
-      setActiveDescendant(nextCellFirstFocusable);
-
-      return true;
-    },
-    focusableAbove() {
-      if (!listboxRef.current || !treeWalkerRef.current) {
-        return;
-      }
-
-      const active = getActiveDescendant();
-      if (!active) {
-        return false;
-      }
-
-      const row = getParentRow(active);
-      if (!row) {
-        return false;
-      }
-
-      const rowCells = Array.from(row.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const cellIndex = rowCells.findIndex(x => x === active);
-      if (cellIndex < 0) {
-        return false;
-      }
-
-      treeWalkerRef.current.currentNode = active;
-      const prevRow = treeWalkerRef.current.previousNode() as HTMLElement | null;
+      const prevRow = getSiblingRow(currentRow, 'prev');
       if (!prevRow) {
         return false;
       }
-
-      const prevRowCells = Array.from(prevRow.querySelectorAll<HTMLElement>(`[role="gridcell"]`));
-      const prevCellIndex = Math.min(prevRowCells.length - 1, cellIndex);
-      const prevCellFirstFocusable = getFirstFocusableOrSelf(prevRowCells[prevCellIndex]);
-      if (!prevCellFirstFocusable) {
+      setActiveDescendant(getNextActiveRowOrFocusable(prevRow));
+      return true;
+    },
+    focusableBelow() {
+      if (!listboxRef.current) {
         return false;
       }
-
-      setActiveDescendant(prevCellFirstFocusable);
-
+      const active = getActiveDescendant();
+      if (!active) {
+        return false;
+      }
+      const nextRowCellFirstFocusable = getSiblingRowCellFirstFocusable(active, 'next');
+      setActiveDescendant(nextRowCellFirstFocusable);
+      console.log('text: ' + nextRowCellFirstFocusable?.innerText);
+      console.log('role: ' + nextRowCellFirstFocusable?.role);
+      return true;
+    },
+    focusableAbove() {
+      if (!listboxRef.current) {
+        return false;
+      }
+      const active = getActiveDescendant();
+      if (!active) {
+        return false;
+      }
+      const prevRowCellFirstFocusable = getSiblingRowCellFirstFocusable(active, 'prev');
+      setActiveDescendant(prevRowCellFirstFocusable);
       return true;
     },
     nextFocusable() {
@@ -293,7 +254,7 @@ export function useActiveDescendantGridFocusable(
         return false;
       }
 
-      const activeRow = getParentRow(active);
+      const activeRow = getNearestParentWithRole(active, 'row');
       if (!activeRow) {
         return false;
       }
@@ -324,7 +285,7 @@ export function useActiveDescendantGridFocusable(
         return false;
       }
 
-      const activeRow = getParentRow(active);
+      const activeRow = getNearestParentWithRole(active, 'row');
       if (!activeRow) {
         return false;
       }

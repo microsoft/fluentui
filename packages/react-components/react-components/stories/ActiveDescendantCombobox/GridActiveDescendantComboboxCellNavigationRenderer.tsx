@@ -401,20 +401,21 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
             ) : null}
             {displayOptions.map(option => {
               const rowId = `${option.id}-row`;
+              const cellId = `${option.id}-firstCell`;
               const callActionId = `${option.id}-call`;
               const sendActionId = `${option.id}-send`;
               const contentId = `${option.id}-content`;
               return (
                 <div
                   key={option.id}
-                  id={rowId}
                   role="row"
+                  id={rowId}
                   // tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
                   // aria-labelledby={contentId}
                 >
-                  <div role="gridcell" tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
+                  <div role="gridcell" id={cellId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
                     <Avatar color="colorful" name={option.text} />
                     <span id={contentId}>{option.text}</span>
                   </div>
@@ -459,20 +460,21 @@ export const GridActiveDescendantComboboxCellNavigationRenderer = () => {
             ) : null}
             {displayFiles.map(option => {
               const rowId = `${option.id}-row`;
+              const cellId = `${option.id}-firstCell`;
               const shareActionId = `${option.id}-share`;
               const openActionId = `${option.id}-open`;
               const contentId = `${option.id}-content`;
               return (
                 <div
                   key={option.id}
-                  id={rowId}
                   role="row"
+                  id={rowId}
                   // tabIndex={0}
                   aria-selected={selected === option.id ? true : undefined}
                   className={styles.option}
                   // aria-labelledby={contentId}
                 >
-                  <div role="gridcell" tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
+                  <div role="gridcell" id={cellId} tabIndex={0} aria-description={HAS_ACTIONS_HINT}>
                     <Avatar color="colorful" name={option.text} />
                     <span id={contentId}>{option.text}</span>
                   </div>
