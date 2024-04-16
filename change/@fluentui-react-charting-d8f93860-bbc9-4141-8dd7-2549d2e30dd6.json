@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Update d3 dependency versions to latest",
+  "comment": "Update d3 dependencies to latest ES5 versions and fix only the major version of the dependency",
   "packageName": "@fluentui/react-charting",
   "email": "98592573+AtishayMsft@users.noreply.github.com",
   "dependentChangeType": "patch"
