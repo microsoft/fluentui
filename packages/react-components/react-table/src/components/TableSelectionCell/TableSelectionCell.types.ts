@@ -53,5 +53,8 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
  * State used in rendering TableSelectionCell
  */
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> &
-  Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> &
-  Pick<TableContextValue, 'noNativeElements'>;
+  Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle'> &
+  Pick<TableContextValue, 'noNativeElements'> & {
+    /* Visually hides the selection cell; not deprecated on state */
+    hidden: boolean;
+  };
