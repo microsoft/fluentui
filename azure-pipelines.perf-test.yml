@@ -154,7 +154,13 @@ jobs:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           arguments: '$(azureStorage) $(deployBasePath)'
-          inlineScript: "az storage blob upload-batch -d ''$web'' --source apps/perf-test/dist --account-name $1 --destination-path $2/perf-test --auth-mode login"
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source apps/perf-test/dist \
+              --account-name $1 \
+              --destination-path $2/perf-test \
+              --auth-mode login
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -205,7 +211,13 @@ jobs:
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
           arguments: '$(azureStorage) $(deployBasePath)'
-          inlineScript: "az storage blob upload-batch -d ''$web'' --source apps/perf-test-react-components/dist --account-name $1 --destination-path $2/perf-test-react-components --auth-mode login"
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source apps/perf-test-react-components/dist \
+              --account-name $1 \
+              --destination-path $2/perf-test-react-components \
+              --auth-mode login
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)

@@ -41,7 +41,13 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       arguments: '$(azureStorage) $(deployBasePath)'
-      inlineScript: az storage blob upload-batch -d "$web" --source apps/pr-deploy-site/dist --account-name $1 --destination-path $2 --auth-mode login
+      inlineScript: |
+        az storage blob upload-batch \
+          --destination '$web' \
+          --source apps/pr-deploy-site/dist \
+          --account-name $1 \
+          --destination-path $2 \
+          --auth-mode login
 
   - task: GithubPRStatus@0
     displayName: 'Update PR deploy site github status'
