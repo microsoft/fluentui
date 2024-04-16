@@ -525,6 +525,7 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
     checked?: CheckboxProps['checked'];
     subtle?: boolean;
     hidden?: boolean;
+    invisible?: boolean;
 };
 
 // @public (undocumented)
