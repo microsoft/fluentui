@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-tree",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-tree/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": []
+}

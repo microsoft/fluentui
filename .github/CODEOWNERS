@@ -144,7 +144,8 @@ packages/merge-styles @dzearing @microsoft/cxe-red
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/react-components/priority-overflow @microsoft/teams-prg
-packages/react-components/react-aria @microsoft/teams-prg
+packages/react-components/react-aria/library @microsoft/teams-prg
+packages/react-components/react-aria/stories @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
@@ -159,11 +160,15 @@ packages/react-icons-mdl2 @microsoft/cxe-red
 packages/react-icons-mdl2-branded @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
-packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-components/react-shared-contexts @microsoft/teams-prg @microsoft/cxe-red
+packages/react-components/react-overflow/library @microsoft/teams-prg
+packages/react-components/react-overflow/stories @microsoft/teams-prg
+packages/react-components/react-shared-contexts/library @microsoft/teams-prg @microsoft/cxe-red
+packages/react-components/react-shared-contexts/stories @microsoft/teams-prg @microsoft/cxe-red
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
-packages/react-components/react-tabster @microsoft/teams-prg
-packages/react-components/react-theme @microsoft/teams-prg
+packages/react-components/react-tabs/libraryter @microsoft/teams-prg
+packages/react-components/react-tabs/storiester @microsoft/teams-prg
+packages/react-components/react-theme/library @microsoft/teams-prg
+packages/react-components/react-theme/stories @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/style-utilities @dzearing @microsoft/cxe-red
@@ -181,71 +186,115 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
 packages/react-components/keyboard-keys @microsoft/teams-prg
-packages/react-components/react-accordion @microsoft/cxe-red
-packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto @sopranopillow
-packages/react-components/react-badge @microsoft/cxe-red @behowell
-packages/react-components/react-button @microsoft/cxe-red @khmakoto
-packages/react-components/react-card @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
-packages/react-components/react-combobox @microsoft/cxe-red @microsoft/teams-prg @smhigley
-packages/react-components/react-components @microsoft/fluentui-react
-packages/react-components/react-dialog @microsoft/teams-prg
-packages/react-components/react-divider @microsoft/cxe-red
-packages/react-components/react-field @microsoft/cxe-red @behowell
+packages/react-components/react-accordion/library @microsoft/cxe-red
+packages/react-components/react-accordion/stories @microsoft/cxe-red
+packages/react-components/react-avatar/library @microsoft/cxe-red @behowell @khmakoto @sopranopillow
+packages/react-components/react-avatar/stories @microsoft/cxe-red @behowell @khmakoto @sopranopillow
+packages/react-components/react-badge/library @microsoft/cxe-red @behowell
+packages/react-components/react-badge/stories @microsoft/cxe-red @behowell
+packages/react-components/react-button/library @microsoft/cxe-red @khmakoto
+packages/react-components/react-button/stories @microsoft/cxe-red @khmakoto
+packages/react-components/react-card/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-card/stories @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-checkbox/library @microsoft/cxe-red @khmakoto
+packages/react-components/react-checkbox/stories @microsoft/cxe-red @khmakoto
+packages/react-components/react-combobox/library @microsoft/cxe-red @microsoft/teams-prg @smhigley
+packages/react-components/react-combobox/stories @microsoft/cxe-red @microsoft/teams-prg @smhigley
+packages/react-components/react-components/library @microsoft/fluentui-react
+packages/react-components/react-components/stories @microsoft/fluentui-react
+packages/react-components/react-dialog/library @microsoft/teams-prg
+packages/react-components/react-dialog/stories @microsoft/teams-prg
+packages/react-components/react-divider/library @microsoft/cxe-red
+packages/react-components/react-divider/stories @microsoft/cxe-red
+packages/react-components/react-field/library @microsoft/cxe-red @behowell
+packages/react-components/react-field/stories @microsoft/cxe-red @behowell
 packages/react-focus @microsoft/cxe-red @khmakoto
-packages/react-components/react-image @microsoft/cxe-prg
-packages/react-components/react-input @microsoft/cxe-red @spmonahan
-packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
-packages/react-components/react-link @microsoft/cxe-red @khmakoto
-packages/react-components/react-menu @microsoft/teams-prg
-packages/react-components/react-popover @microsoft/teams-prg
-packages/react-components/react-portal @microsoft/teams-prg
-packages/react-components/react-provider @microsoft/teams-prg
-packages/react-components/react-radio @microsoft/cxe-red @behowell @spmonahan
-packages/react-components/react-select @microsoft/cxe-red @smhigley
-packages/react-components/react-slider @microsoft/cxe-red @micahgodbolt
-packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
-packages/react-components/react-spinner @microsoft/cxe-red @tomi-msft
-packages/react-components/react-switch @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-image/library @microsoft/cxe-prg
+packages/react-components/react-image/stories @microsoft/cxe-prg
+packages/react-components/react-input/library @microsoft/cxe-red @spmonahan
+packages/react-components/react-input/stories @microsoft/cxe-red @spmonahan
+packages/react-components/react-label/library @microsoft/cxe-red @sopranopillow @micahgodbolt
+packages/react-components/react-label/stories @microsoft/cxe-red @sopranopillow @micahgodbolt
+packages/react-components/react-link/library @microsoft/cxe-red @khmakoto
+packages/react-components/react-link/stories @microsoft/cxe-red @khmakoto
+packages/react-components/react-menu/library @microsoft/teams-prg
+packages/react-components/react-menu/stories @microsoft/teams-prg
+packages/react-components/react-popover/library @microsoft/teams-prg
+packages/react-components/react-popover/stories @microsoft/teams-prg
+packages/react-components/react-portal/library @microsoft/teams-prg
+packages/react-components/react-portal/stories @microsoft/teams-prg
+packages/react-components/react-provider/library @microsoft/teams-prg
+packages/react-components/react-provider/stories @microsoft/teams-prg
+packages/react-components/react-radio/library @microsoft/cxe-red @behowell @spmonahan
+packages/react-components/react-radio/stories @microsoft/cxe-red @behowell @spmonahan
+packages/react-components/react-select/library @microsoft/cxe-red @smhigley
+packages/react-components/react-select/stories @microsoft/cxe-red @smhigley
+packages/react-components/react-slider/library @microsoft/cxe-red @micahgodbolt
+packages/react-components/react-slider/stories @microsoft/cxe-red @micahgodbolt
+packages/react-components/react-spinbutton/library @microsoft/cxe-red @spmonahan
+packages/react-components/react-spinbutton/stories @microsoft/cxe-red @spmonahan
+packages/react-components/react-spinner/library @microsoft/cxe-red @tomi-msft
+packages/react-components/react-spinner/stories @microsoft/cxe-red @tomi-msft
+packages/react-components/react-switch/library @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-switch/stories @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-red @geoffcoxmsft
-packages/react-components/react-text @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-textarea @microsoft/cxe-red @sopranopillow
-packages/react-components/react-tooltip @microsoft/cxe-red @behowell @khmakoto
-packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
+packages/react-components/react-text/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-text/stories @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-textarea/library @microsoft/cxe-red @sopranopillow
+packages/react-components/react-textarea/stories @microsoft/cxe-red @sopranopillow
+packages/react-components/react-tooltip/library @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-tooltip/stories @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-toolbar/library @microsoft/teams-prg @chpalac @ling1726
+packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac @ling1726
 packages/react-components/react-portal-compat @microsoft/teams-prg
-packages/react-components/react-alert @microsoft/teams-prg
+packages/react-components/react-alert/library @microsoft/teams-prg
+packages/react-components/react-alert/stories @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
 packages/react-components/theme-designer @microsoft/cxe-red @ms-acalzaretto
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
-packages/react-components/react-table @microsoft/teams-prg
-packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
-packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
+packages/react-components/react-table/library @microsoft/teams-prg
+packages/react-components/react-table/stories @microsoft/teams-prg
+packages/react-components/react-progress/library @microsoft/cxe-red @tomi-msft
+packages/react-components/react-progress/stories @microsoft/cxe-red @tomi-msft
+packages/react-components/react-persona/library @microsoft/cxe-red @sopranopillow
+packages/react-components/react-persona/stories @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
-packages/react-components/react-tree @microsoft/teams-prg
-packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
-packages/react-components/react-skeleton @microsoft/cxe-red
+packages/react-components/react-tree/library @microsoft/teams-prg
+packages/react-components/react-tree/stories @microsoft/teams-prg
+packages/react-components/react-virtualizer/library @microsoft/xc-uxe @Mitch-At-Work
+packages/react-components/react-virtualizer/stories @microsoft/xc-uxe @Mitch-At-Work
+packages/react-components/react-skeleton/library @microsoft/cxe-red
+packages/react-components/react-skeleton/stories @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
+packages/react-components/react-tags/library @microsoft/cxe-red @microsoft/teams-prg
+packages/react-components/react-tags/stories @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
-packages/react-components/react-breadcrumb @microsoft/cxe-prg
-packages/react-components/react-drawer @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-breadcrumb/library @microsoft/cxe-prg
+packages/react-components/react-breadcrumb/stories @microsoft/cxe-prg
+packages/react-components/react-drawer/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-drawer/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
-packages/react-components/react-toast @microsoft/teams-prg
-packages/react-components/react-search @microsoft/cxe-red @smhigley
+packages/react-components/react-toast/library @microsoft/teams-prg
+packages/react-components/react-toast/stories @microsoft/teams-prg
+packages/react-components/react-search/library @microsoft/cxe-red @smhigley
+packages/react-components/react-search/stories @microsoft/cxe-red @smhigley
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-message-bar @microsoft/teams-prg
-packages/react-components/react-rating @microsoft/cxe-red @tomi-msft
+packages/react-components/react-message-bar/library @microsoft/teams-prg
+packages/react-components/react-message-bar/stories @microsoft/teams-prg
+packages/react-components/react-rating/library @microsoft/cxe-red @tomi-msft
+packages/react-components/react-rating/stories @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
-packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
+packages/react-components/react-infolabel/library @microsoft/cxe-red @sopranopillow
+packages/react-components/react-infolabel/stories @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
 packages/react-components/react-motions-preview @microsoft/teams-prg
 packages/react-components/react-teaching-popover-preview @microsoft/xc-uxe @Mitch-At-Work
