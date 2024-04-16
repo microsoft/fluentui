@@ -26,30 +26,28 @@ export const Carousel = () => (
       <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
       <TeachingPopoverCarousel defaultValue="test-0">
         <TeachingPopoverCarouselCard value="test-0">
-          <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+          <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
             <div>This is page: 1</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
         <TeachingPopoverCarouselCard value="test-1">
-          <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+          <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
             <div>This is page: 2</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
         <TeachingPopoverCarouselCard value="test-3">
-          <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={swapImage} />}>
+          <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
             <div>This is page: 3</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
         <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
-          <TeachingPopoverCarouselNav>
-            {(value: string) => <TeachingPopoverCarouselNavButton />}
-          </TeachingPopoverCarouselNav>
+          <TeachingPopoverCarouselNav>{() => <TeachingPopoverCarouselNavButton />}</TeachingPopoverCarouselNav>
         </TeachingPopoverCarouselFooter>
       </TeachingPopoverCarousel>
     </TeachingPopoverSurface>

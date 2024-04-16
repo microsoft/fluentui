@@ -47,9 +47,7 @@ export const CarouselBrand = () => (
         </TeachingPopoverCarouselCard>
 
         <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
-          <TeachingPopoverCarouselNav>
-            {(value: string) => <TeachingPopoverCarouselNavButton />}
-          </TeachingPopoverCarouselNav>
+          <TeachingPopoverCarouselNav>{() => <TeachingPopoverCarouselNavButton />}</TeachingPopoverCarouselNav>
         </TeachingPopoverCarouselFooter>
       </TeachingPopoverCarousel>
     </TeachingPopoverSurface>

@@ -12,7 +12,7 @@ export type TeachingPopoverCarouselNavButtonSlots = {
 /**
  * TeachingPopoverCarouselNavButton Props
  */
-export type TeachingPopoverCarouselNavButtonProps = ComponentProps<TeachingPopoverCarouselNavButtonSlots> & {};
+export type TeachingPopoverCarouselNavButtonProps = ComponentProps<TeachingPopoverCarouselNavButtonSlots>;
 
 /**
  * TeachingPopoverCarouselNavButton State

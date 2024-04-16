@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { PopoverContextValue } from '@fluentui/react-popover';
-import { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -50,5 +49,4 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
  * TeachingPopoverCarouselFooter State and Context Hooks
  */
 export type TeachingPopoverCarouselFooterState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>> &
-  Partial<Pick<PopoverContextValue, 'appearance'>> &
   Pick<TeachingPopoverCarouselFooterProps, 'layout'>;

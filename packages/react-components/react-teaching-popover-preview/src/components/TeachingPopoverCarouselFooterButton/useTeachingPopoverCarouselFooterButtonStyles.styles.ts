@@ -9,8 +9,6 @@ import { useButtonStyles_unstable } from '@fluentui/react-button';
 
 export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<TeachingPopoverCarouselFooterButtonSlots> = {
   root: 'fui-TeachingPopoverCarouselFooterButton',
-  // TODO: add class names for all slots on TeachingPopoverCarouselFooterButtonSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverCarouselFooterButton__<slotName>`
 };
 
 const useStyles = makeStyles({

@@ -1,5 +1,5 @@
-import { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import { PopoverContextValue } from '@fluentui/react-popover';
+import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
+import { type PopoverContextValue } from '@fluentui/react-popover';
 
 import { type CarouselContextValue } from './Carousel/CarouselContext';
 import type { CarouselValueChangeData } from './Carousel/Carousel.types';

@@ -30,7 +30,7 @@ export const useTeachingPopoverCarouselFooterButton_unstable = (
   const values = useCarouselValues_unstable(snapshot => snapshot);
   const activeValue = useCarouselContext_unstable(c => c.value);
 
-  const _onClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
       return;
     }
@@ -38,7 +38,7 @@ export const useTeachingPopoverCarouselFooterButton_unstable = (
     selectPageByDirection(event, navType);
   };
 
-  const handleButtonClick = useEventCallback(mergeCallbacks(_onClick, props.onClick));
+  const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
 
   const isTrailing = React.useMemo(() => {
     if (!activeValue) {

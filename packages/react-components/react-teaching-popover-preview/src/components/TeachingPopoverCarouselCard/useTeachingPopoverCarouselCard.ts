@@ -1,10 +1,12 @@
-import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+
 import type {
   TeachingPopoverCarouselCardProps,
   TeachingPopoverCarouselCardState,
 } from './TeachingPopoverCarouselCard.types';
 import { CarouselItem } from '../TeachingPopoverCarousel/Carousel/CarouselItem/Carouseltem';
+
 /**
  * Returns the props and state required to render the component
  * @param props - TeachingPopoverCarouselCard properties

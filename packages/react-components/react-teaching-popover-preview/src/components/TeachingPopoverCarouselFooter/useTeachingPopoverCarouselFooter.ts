@@ -1,4 +1,3 @@
-import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -13,8 +12,6 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselFooterState => {
   const { layout = 'centered', initialStepText, finalStepText } = props;
-
-  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const previous = slot.optional(props.previous, {
     defaultProps: {
@@ -34,7 +31,6 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   });
 
   return {
-    appearance,
     layout,
     components: {
       root: 'div',

@@ -15,13 +15,11 @@ export const renderTeachingPopoverCarouselNav_unstable = (state: TeachingPopover
 
   return (
     <state.root>
-      {values.map(value => {
-        return (
-          <ValueIdContextProvider value={value} key={value}>
-            {renderNavButton(value)}
-          </ValueIdContextProvider>
-        );
-      })}
+      {values.map(value => (
+        <ValueIdContextProvider value={value} key={value}>
+          {renderNavButton(value)}
+        </ValueIdContextProvider>
+      ))}
     </state.root>
   );
 };

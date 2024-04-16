@@ -7,8 +7,6 @@ import type {
 
 export const teachingPopoverCarouselPageCountClassNames: SlotClassNames<TeachingPopoverCarouselPageCountSlots> = {
   root: 'fui-TeachingPopoverCarouselPageCount',
-  // TODO: add class names for all slots on TeachingPopoverCarouselPageCountSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverCarouselPageCount__<slotName>`
 };
 
 /**
