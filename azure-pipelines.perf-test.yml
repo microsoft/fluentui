@@ -74,7 +74,7 @@ jobs:
               --account-name $(azureStorage) \
               --destination-path $(deployBasePath)/perf-test-northstar \
               --auth-mode login
-              --overwrite true
+              --overwrite
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -138,7 +138,7 @@ jobs:
               --account-name $(azureStorage) \
               --destination-path $(deployBasePath)/perf-test \
               --auth-mode login
-              --overwrite true
+              --overwrite
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -184,7 +184,7 @@ jobs:
               --account-name $(azureStorage) \
               --destination-path $(deployBasePath)/perf-test-react-components \
               --auth-mode login
-              --overwrite true
+              --overwrite
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
