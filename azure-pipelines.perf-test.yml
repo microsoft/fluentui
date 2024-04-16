@@ -78,7 +78,7 @@ jobs:
           azureSubscription: $(azureSubscription)
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az storage blob upload-batch -d $web --source packages/fluentui/perf-test-northstar/dist --account-name $(azureStorage) --destination-path $(deployBasePath)/perf-test-northstar'
+          inlineScript: az storage blob upload-batch -d "$web" --source packages/fluentui/perf-test-northstar/dist --account-name $(azureStorage) --destination-path $(deployBasePath)/perf-test-northstar
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -146,7 +146,7 @@ jobs:
           azureSubscription: $(azureSubscription)
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az storage blob upload-batch -d $web --source apps/perf-test/dist --account-name $(azureStorage) --destination-path $(deployBasePath)/perf-test'
+          inlineScript: az storage blob upload-batch -d "$web" --source apps/perf-test/dist --account-name $(azureStorage) --destination-path $(deployBasePath)/perf-test
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -196,7 +196,7 @@ jobs:
           azureSubscription: $(azureSubscription)
           scriptType: 'bash'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az storage blob upload-batch -d $web --source apps/perf-test-react-components/dist --account-name $(azureStorage) --destination-path $(deployBasePath)/perf-test-react-components'
+          inlineScript: az storage blob upload-batch -d "$web" --source apps/perf-test-react-components/dist --account-name $(azureStorage) --destination-path $(deployBasePath)/perf-test-react-components
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)

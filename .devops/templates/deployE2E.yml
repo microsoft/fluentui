@@ -40,7 +40,7 @@ steps:
       azureSubscription: $(azureSubscription)
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
-      inlineScript: 'az storage blob upload-batch -d $web --source apps/pr-deploy-site/dist --account-name $(azureStorage) --destination-path $(deployBasePath)'
+      inlineScript: az storage blob upload-batch -d "$web" --source apps/pr-deploy-site/dist --account-name $(azureStorage) --destination-path $(deployBasePath)
 
   - task: GithubPRStatus@0
     displayName: 'Update PR deploy site github status'
