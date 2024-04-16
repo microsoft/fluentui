@@ -151,7 +151,7 @@ The original PopoverContext provider is preserved, this ensures that popover fun
 
 TeachingPopoverTrigger has no additional functionality over PopoverTrigger, and is used to wrap the launch button or connected UI component. Internally, TeachingPopoverButtons provide primary/secondary action functionality and additional styling based on state over tge trigger wrapper.
 
-Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onPageChange and onFinish for external use or control.
+Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onValueChange and onFinish for external use or control.
 
 ## Behaviors
 
@@ -183,7 +183,7 @@ TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody
 
 #### TeachingPopoverBody
 
-This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop (TeachingPopoverBodyMediaLength type). It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
+This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop. It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
 
 ## Accessibility
 

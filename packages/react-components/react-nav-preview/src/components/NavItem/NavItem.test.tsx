@@ -12,7 +12,6 @@ describe('NavItem', () => {
           props: { icon: 'Test Icon', content: 'Some Content' },
           expectedClassNames: {
             root: navItemClassNames.root,
-            content: navItemClassNames.content,
             icon: navItemClassNames.icon,
           },
         },

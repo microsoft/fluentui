@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverCarouselNavSlots = {
@@ -8,15 +9,17 @@ export type TeachingPopoverCarouselNavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
+export type NavButtonRenderFunction = (value: string) => React.ReactNode;
+
 export type TeachingPopoverCarouselNavState = ComponentState<TeachingPopoverCarouselNavSlots> & {
-  /**
-   * The current carousel page.
-   */
-  currentPage: number;
-  /**
-   * The total number of carousel pages, controlled by children within carousel itself.
-   */
-  totalPages: number;
+  values: string[];
+
+  renderNavButton: NavButtonRenderFunction;
 };
 
-export type TeachingPopoverCarouselNavProps = ComponentProps<Partial<TeachingPopoverCarouselNavSlots>>;
+export type TeachingPopoverCarouselNavProps = Omit<
+  ComponentProps<Partial<TeachingPopoverCarouselNavSlots>>,
+  'children'
+> & {
+  children: NavButtonRenderFunction;
+};

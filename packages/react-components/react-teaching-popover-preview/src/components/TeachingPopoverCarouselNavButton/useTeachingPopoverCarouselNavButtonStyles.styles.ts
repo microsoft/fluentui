@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     ...shorthands.border(0),
     ...shorthands.borderRadius('50%'),
     ...shorthands.padding('0px'),
+    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
     ...createCustomFocusIndicatorStyle({
       ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
       ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -40,6 +41,7 @@ const useStyles = makeStyles({
     },
   },
   rootSelected: {
+    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
     width: '16px',
     ...shorthands.border(0),
     ...shorthands.borderRadius('4px'),
