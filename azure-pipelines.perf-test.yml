@@ -73,7 +73,7 @@ jobs:
               --source packages/fluentui/perf-test-northstar/dist \
               --account-name $(azureStorage) \
               --destination-path $(deployBasePath)/perf-test-northstar \
-              --auth-mode login
+              --auth-mode login \
               --overwrite
 
       - task: GithubPRComment@0
@@ -137,7 +137,7 @@ jobs:
               --source apps/perf-test/dist \
               --account-name $(azureStorage) \
               --destination-path $(deployBasePath)/perf-test \
-              --auth-mode login
+              --auth-mode login \
               --overwrite
 
       - task: GithubPRComment@0
@@ -183,7 +183,7 @@ jobs:
               --source apps/perf-test-react-components/dist \
               --account-name $(azureStorage) \
               --destination-path $(deployBasePath)/perf-test-react-components \
-              --auth-mode login
+              --auth-mode login \
               --overwrite
 
       - task: GithubPRComment@0

@@ -36,7 +36,7 @@ steps:
           --source apps/pr-deploy-site/dist \
           --account-name $(azureStorage) \
           --destination-path $(deployBasePath) \
-          --auth-mode login
+          --auth-mode login \
           --overwrite
 
   - task: GithubPRStatus@0

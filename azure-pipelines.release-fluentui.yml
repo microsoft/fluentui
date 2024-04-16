@@ -170,7 +170,7 @@ extends:
                       --source packages/fluentui/docs/dist \
                       --account-name fluentsite \
                       --destination-path $(deployBasePath) \
-                      --auth-mode login
+                      --auth-mode login \
                       --overwrite
 
               - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
