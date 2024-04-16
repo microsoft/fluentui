@@ -141,7 +141,7 @@ export type TeachingPopoverCarouselFooterButtonSlots = {
 };
 
 // @public
-export type TeachingPopoverCarouselFooterButtonState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> & ButtonState & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
+export type TeachingPopoverCarouselFooterButtonState = ButtonState & ComponentState<TeachingPopoverCarouselFooterButtonSlots> & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
     popoverAppearance: PopoverContextValue['appearance'];
 };
 
