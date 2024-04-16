@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use colorBrandForeground2 for brand InteractionTag foreground color",
+  "packageName": "@fluentui/react-tags",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

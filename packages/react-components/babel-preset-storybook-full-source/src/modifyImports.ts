@@ -49,7 +49,24 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration(path, pluginState) {
         let importSource = path.node.source;
-        if (importSource.value.startsWith('.')) {
+        const isRelativeImport = importSource.value.startsWith('.');
+        const isRelativeImportToIndexBarrel = importSource.value.endsWith('./index');
+
+        if (isRelativeImport && !isRelativeImportToIndexBarrel) {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn(
+              [
+                `🚨 Relative import '${importSource.value}' found in ${pluginState.filename} - removing from output - this might create invalid code.`,
+                `Relative imports not pointing to index barrel files are NOT ALLOWED in order to be able to generate valid 1 file code examples.`,
+              ].join('\n'),
+            );
+          }
+
+          path.remove();
+          return;
+        }
+
+        if (isRelativeImportToIndexBarrel) {
           const pkgJsonPath = pkgUp.sync({ cwd: pluginState.filename });
           if (pkgJsonPath) {
             const pkgJsonRaw = fs.readFileSync(pkgJsonPath);

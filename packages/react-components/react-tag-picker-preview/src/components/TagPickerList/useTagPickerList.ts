@@ -3,7 +3,7 @@ import type { TagPickerListProps, TagPickerListState } from './TagPickerList.typ
 import { Listbox } from '@fluentui/react-combobox';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useMergedRefs } from '@fluentui/react-utilities';
-import { useListboxSlot } from '../../utils/useListboxSlot';
+import { useListboxSlot } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render TagPickerList.
@@ -19,7 +19,9 @@ export const useTagPickerList_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerListState => {
   const multiselect = useTagPickerContext_unstable(ctx => ctx.multiselect);
-  const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef) as
+    | React.RefObject<HTMLInputElement>
+    | React.RefObject<HTMLButtonElement>;
   const popoverRef = useTagPickerContext_unstable(ctx => ctx.popoverRef);
   const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const open = useTagPickerContext_unstable(ctx => ctx.open);

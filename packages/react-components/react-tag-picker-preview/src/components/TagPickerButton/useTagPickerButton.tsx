@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import type { TagPickerButtonProps, TagPickerButtonState } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { useButtonTriggerSlot } from '../../utils/useButtonTriggerSlot';
+import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 
 /**
  * Create the state required to render PickerButton.
@@ -30,6 +30,8 @@ export const useTagPickerButton_unstable = (
     popoverId,
     hasSelectedOption,
   } = usePickerContext();
+  // casting is required here as triggerRef can either be button or input,
+  // but in this case we can assure it's a button
   const root = useButtonTriggerSlot(props, triggerRef as React.RefObject<HTMLButtonElement>, {
     activeDescendantController,
     defaultProps: {

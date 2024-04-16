@@ -1,4 +1,4 @@
-import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -30,7 +30,7 @@ const useBaseStyles = makeResetStyles({
   // This adds the focus outline for the TreeItemLayout element
   ...createCustomFocusIndicatorStyle(
     {
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      borderRadius: tokens.borderRadiusMedium,
       outlineColor: tokens.colorStrokeFocus2,
       outlineRadius: tokens.borderRadiusMedium,
       // FIXME: tokens.strokeWidthThick causes some weird bugs

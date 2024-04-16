@@ -30,8 +30,6 @@ export const useTagPickerOption_unstable = (
       elementType: 'span',
     }),
     root: optionState.root,
-    selected: optionState.selected,
-    multiselect: optionState.multiselect,
   };
 
   return state;

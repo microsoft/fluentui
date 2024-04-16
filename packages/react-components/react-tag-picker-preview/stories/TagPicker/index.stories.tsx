@@ -21,9 +21,10 @@ export { ExpandIcon } from './TagPickerExpandIcon.stories';
 export { SecondaryAction } from './TagPickerSecondaryAction.stories';
 export { Grouped } from './TagPickerGrouped.stories';
 export { Freeform } from './TagPickerFreeform.stories';
+export { InteractionTagExample as InteractionTag } from './TagPickerInteractionTag.stories';
 
 export default {
-  title: 'Preview Components/Tag Picker',
+  title: 'Preview Components/TagPicker',
   component: TagPicker,
   subcomponents: { TagPickerControl, TagPickerGroup, TagPickerButton, TagPickerInput, TagPickerList, TagPickerOption },
   parameters: {

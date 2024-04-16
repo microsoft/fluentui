@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: TagPickerInput input positioning",
+  "packageName": "@fluentui/react-tag-picker-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

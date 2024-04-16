@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -12,10 +12,10 @@ export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  ...shorthands.margin('-1px', 0),
-  ...shorthands.padding('1px', tokens.spacingHorizontalXXL),
-  ...shorthands.overflow('auto'),
-  ...shorthands.flex(1),
+  margin: '-1px 0',
+  padding: `1px ${tokens.spacingHorizontalXXL}`,
+  overflow: 'auto',
+  flex: 1,
 
   alignSelf: 'stretch',
 
