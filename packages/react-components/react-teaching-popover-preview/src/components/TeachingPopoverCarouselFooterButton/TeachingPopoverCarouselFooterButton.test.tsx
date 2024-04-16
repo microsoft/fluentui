@@ -14,7 +14,7 @@ describe('TeachingPopoverCarouselFooterButton', () => {
 
   it('renders a default state', () => {
     const result = render(
-      <TeachingPopoverCarouselFooterButton navType="next">
+      <TeachingPopoverCarouselFooterButton navType="next" altText="altText">
         Default TeachingPopoverCarouselFooterButton
       </TeachingPopoverCarouselFooterButton>,
     );

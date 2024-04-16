@@ -27,8 +27,8 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
 /**
  * State used in rendering TeachingPopoverCarouselFooterButton
  */
-export type TeachingPopoverCarouselFooterButtonState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
-  ButtonState &
+export type TeachingPopoverCarouselFooterButtonState = ButtonState &
+  ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
   Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
     /* Rename popover appearance to prevent conflict with button appearance */
     popoverAppearance: PopoverContextValue['appearance'];
