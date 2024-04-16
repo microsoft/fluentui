@@ -43,7 +43,17 @@ steps:
 
   - script: |
       yarn lage build --verbose $(sinceArg)
+    displayName: build
+  - script: |
       yarn lage type-check --verbose $(sinceArg)
     displayName: type-check
+
+  - script: |
+      yarn nx run-many -t build -p 'packages/react-components/*' --parallel 8
+    displayName: nx:build
+
+  - script: |
+      yarn nx run-many -t type-check -p 'packages/react-components/*' --parallel 8
+    displayName: nx:type-check
 
   - template: cleanup.yml
