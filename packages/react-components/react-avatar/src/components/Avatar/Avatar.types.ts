@@ -144,7 +144,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    *
    * Note: At size 16, if initials are displayed, only the first initial will be rendered.
    *
-   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
+   * If a non-supported size is needed, set `size` to the next-smaller supported size, and set `width` and `height`
    * to override the rendered size.
    *
    * For example, to set the avatar to 45px in size:
