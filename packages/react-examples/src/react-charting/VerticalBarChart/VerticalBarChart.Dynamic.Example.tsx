@@ -1,13 +1,23 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IDataPoint } from '@fluentui/react-charting';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 
 export interface IExampleState {
-  dynamicData: IDataPoint[];
+  dynamicData: IVerticalBarChartDataPoint[];
   colors: string[];
   statusKey: number;
   statusMessage: string;
+  xAxisInnerPaddingEnabled: boolean;
+  xAxisOuterPaddingEnabled: boolean;
+  barWidth: number | 'default' | 'auto';
+  maxBarWidth: number;
+  xAxisInnerPadding: number;
+  xAxisOuterPadding: number;
+  width: number;
+  xAxisType: string;
+  enableReflow: boolean;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -22,6 +32,14 @@ const screenReaderOnlyStyle: React.CSSProperties = {
   border: 0,
 };
 
+const xAxisTypeOptions: IChoiceGroupOption[] = [
+  { key: 'number', text: 'Number' },
+  { key: 'date', text: 'Date' },
+  { key: 'string', text: 'String' },
+];
+
+const dataSizes = [3, 10, 20];
+
 export class VerticalBarChartDynamicExample extends React.Component<IVerticalBarChartProps, IExampleState> {
   private _colors = [
     [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
@@ -30,26 +48,28 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
     [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
   ];
   private _colorIndex = 0;
+  private _dataSizeIndex = 0;
+  private _prevBarWidth = 16;
 
   constructor(props: IVerticalBarChartProps) {
     super(props);
+
+    const initialXAxisType = xAxisTypeOptions[0].key;
+
     this.state = {
-      dynamicData: [
-        { x: 0, y: 10 },
-        { x: 12, y: 36 },
-        { x: 21, y: 20 },
-        { x: 29, y: 46 },
-        { x: 40, y: 13 },
-        { x: 50, y: 43 },
-        { x: 57, y: 30 },
-        { x: 64, y: 45 },
-        { x: 78, y: 50 },
-        { x: 90, y: 43 },
-        { x: 100, y: 19 },
-      ],
+      dynamicData: this._getData(this._dataSizeIndex, initialXAxisType),
       colors: this._colors[0],
       statusKey: 0,
       statusMessage: '',
+      xAxisInnerPaddingEnabled: false,
+      xAxisOuterPaddingEnabled: false,
+      barWidth: 'default',
+      maxBarWidth: 24,
+      xAxisInnerPadding: 0.67,
+      xAxisOuterPadding: 0,
+      width: 650,
+      xAxisType: initialXAxisType,
+      enableReflow: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -58,47 +78,138 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
 
   public render(): JSX.Element {
     return (
-      <div style={{ width: '650px', height: '400px' }}>
-        <VerticalBarChart
-          chartTitle="Vertical bar chart dynamic example "
-          data={this.state.dynamicData}
-          colors={this.state.colors}
-          hideLegend={true}
-          hideTooltip={false}
-          yMaxValue={50}
-          yAxisTickCount={5}
-          height={400}
-          width={650}
-          enableReflow={true}
-        />
-
-        <DefaultButton text="Change data" onClick={this._changeData} />
-        <DefaultButton text="Change colors" onClick={this._changeColors} />
-        <div aria-live="polite" aria-atomic="true">
-          {/* Change the key so that React treats it as an update even if the message is same */}
-          <p key={this.state.statusKey} style={screenReaderOnlyStyle}>
-            {this.state.statusMessage}
-          </p>
+      <>
+        <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
+          <Stack horizontal verticalAlign="center">
+            <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
+              width:&nbsp;
+            </Label>
+            <input
+              type="range"
+              value={this.state.width}
+              min={200}
+              max={1000}
+              onChange={this._onWidthChange}
+              id="input-width"
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="barWidth:&nbsp;"
+              checked={typeof this.state.barWidth === 'number'}
+              onChange={this._onBarWidthCheckChange}
+              indeterminate={this.state.barWidth === 'auto'}
+            />
+            {typeof this.state.barWidth === 'number' ? (
+              <TextField
+                type="number"
+                value={this.state.barWidth.toString()}
+                min={1}
+                max={300}
+                onChange={this._onBarWidthChange}
+              />
+            ) : (
+              <code>{this.state.barWidth}</code>
+            )}
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
+              maxBarWidth:&nbsp;
+            </Label>
+            <TextField
+              type="number"
+              value={this.state.maxBarWidth.toString()}
+              min={1}
+              max={300}
+              id="input-maxbarwidth"
+              onChange={this._onMaxBarWidthChange}
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="xAxisInnerPadding:&nbsp;"
+              checked={this.state.xAxisInnerPaddingEnabled}
+              onChange={this._onInnerPaddingCheckChange}
+              disabled={this.state.xAxisType !== 'string'}
+            />
+            <input
+              type="range"
+              value={this.state.xAxisInnerPadding}
+              min={0}
+              max={1}
+              step={0.01}
+              onChange={this._onInnerPaddingChange}
+              disabled={!this.state.xAxisInnerPaddingEnabled}
+            />
+            <span>&nbsp;{this.state.xAxisInnerPadding}</span>
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="xAxisOuterPadding:&nbsp;"
+              checked={this.state.xAxisOuterPaddingEnabled}
+              onChange={this._onOuterPaddingCheckChange}
+              disabled={this.state.xAxisType !== 'string'}
+            />
+            <input
+              type="range"
+              value={this.state.xAxisOuterPadding}
+              min={0}
+              max={1}
+              step={0.01}
+              onChange={this._onOuterPaddingChange}
+              disabled={!this.state.xAxisOuterPaddingEnabled}
+            />
+            <span>&nbsp;{this.state.xAxisOuterPadding}</span>
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="enableReflow"
+              checked={this.state.enableReflow}
+              onChange={this._onEnableReflowCheckChange}
+            />
+          </Stack>
+        </Stack>
+        <div style={{ marginTop: '20px' }}>
+          <ChoiceGroup
+            options={xAxisTypeOptions}
+            selectedKey={this.state.xAxisType}
+            onChange={this._onAxisTypeChange}
+            label="X-Axis type:"
+          />
         </div>
-      </div>
+        <div style={{ width: `${this.state.width}px`, height: '350px' }}>
+          <VerticalBarChart
+            key={this.state.xAxisType}
+            chartTitle="Vertical bar chart dynamic example"
+            data={this.state.dynamicData}
+            colors={this.state.colors}
+            hideLegend={true}
+            yMaxValue={100}
+            width={this.state.width}
+            enableReflow={this.state.enableReflow}
+            barWidth={this.state.barWidth}
+            maxBarWidth={this.state.maxBarWidth}
+            xAxisInnerPadding={this.state.xAxisInnerPaddingEnabled ? this.state.xAxisInnerPadding : undefined}
+            xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
+          />
+        </div>
+        <div>
+          <DefaultButton text="Change data" onClick={this._changeData} />
+          <DefaultButton text="Change colors" onClick={this._changeColors} />
+          <div aria-live="polite" aria-atomic="true">
+            {/* Change the key so that React treats it as an update even if the message is same */}
+            <p key={this.state.statusKey} style={screenReaderOnlyStyle}>
+              {this.state.statusMessage}
+            </p>
+          </div>
+        </div>
+      </>
     );
   }
 
   private _changeData(): void {
     this.setState(prevState => ({
-      dynamicData: [
-        { x: 0, y: this._randomY() },
-        { x: 12, y: this._randomY() },
-        { x: 21, y: this._randomY() },
-        { x: 29, y: this._randomY() },
-        { x: 40, y: this._randomY() },
-        { x: 48, y: this._randomY() },
-        { x: 57, y: this._randomY() },
-        { x: 64, y: this._randomY() },
-        { x: 78, y: this._randomY() },
-        { x: 90, y: this._randomY() },
-        { x: 100, y: this._randomY() },
-      ],
+      dynamicData: this._getData(this._dataSizeIndex + 1, this.state.xAxisType),
       statusKey: prevState.statusKey + 1,
       statusMessage: 'Vertical bar chart data changed',
     }));
@@ -114,6 +225,67 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
   }
 
   private _randomY(): number {
-    return Math.random() * 45 + 5;
+    return Math.floor(Math.random() * 90) + 1;
   }
+
+  private _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    if (this.state.barWidth === 'default') {
+      this.setState({ barWidth: 'auto' });
+    } else if (this.state.barWidth === 'auto') {
+      this.setState({ barWidth: this._prevBarWidth });
+    } else {
+      this._prevBarWidth = this.state.barWidth as number;
+      this.setState({ barWidth: 'default' });
+    }
+  };
+  private _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+    this.setState({ barWidth: Number(newValue) });
+  };
+  private _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+    this.setState({ maxBarWidth: Number(newValue) });
+  };
+  private _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ xAxisInnerPaddingEnabled: checked });
+  };
+  private _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ xAxisInnerPadding: Number(e.target.value) });
+  };
+  private _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ xAxisOuterPaddingEnabled: checked });
+  };
+  private _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ xAxisOuterPadding: Number(e.target.value) });
+  };
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ width: Number(e.target.value) });
+  };
+  private _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
+    this.setState({ xAxisType: option.key, dynamicData: this._getData(this._dataSizeIndex, option.key) });
+  };
+  private _onEnableReflowCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ enableReflow: checked });
+  };
+
+  private _getData = (dataSizeIndex: number, xAxisType: string) => {
+    this._dataSizeIndex = dataSizeIndex % dataSizes.length;
+    const data: IVerticalBarChartDataPoint[] = [];
+    if (xAxisType === 'string') {
+      for (let i = 0; i < dataSizes[this._dataSizeIndex]; i++) {
+        data.push({ x: `Label ${i + 1}`, y: this._randomY() });
+      }
+    } else {
+      const xPoints = new Set<number>();
+      const date = new Date('2020-01-01');
+      while (xPoints.size !== dataSizes[this._dataSizeIndex]) {
+        const x = Math.floor(Math.random() * 100) + 1;
+        if (!xPoints.has(x)) {
+          xPoints.add(x);
+          const newDate = new Date(date);
+          newDate.setDate(date.getDate() + x);
+          data.push({ x: xAxisType === 'date' ? newDate : x, y: this._randomY() });
+        }
+      }
+    }
+    return data;
+  };
 }
