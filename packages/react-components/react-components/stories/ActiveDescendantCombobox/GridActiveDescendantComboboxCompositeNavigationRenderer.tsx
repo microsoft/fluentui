@@ -318,10 +318,7 @@ export const GridActiveDescendantComboboxCompositeNavigationRenderer = () => {
     }
   }, [value]);
 
-  React.useEffect(() => {
-    // eslint-disable-next-line
-    console.log('selected', selected);
-  }, [selected]);
+  React.useEffect(() => {}, [selected]);
 
   const handleInputChange = React.useCallback(
     e => {

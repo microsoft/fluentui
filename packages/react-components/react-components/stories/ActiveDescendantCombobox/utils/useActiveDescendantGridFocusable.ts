@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { isHTMLElement } from '@fluentui/react-utilities';
 import { ACTIVEDESCENDANT_ATTRIBUTE, FOCUSABLES_SELECTOR } from './constants';
-import { A } from '@storybook/components';
-import { Accept } from '@fluentui/keyboard-keys';
 
 export interface ActiveDescendantGridFocusableImperativeRef {
   first: () => void;
@@ -21,18 +18,11 @@ export function useActiveDescendantGridFocusable(
   imperativeRef: React.RefObject<ActiveDescendantGridFocusableImperativeRef>,
 ) {
   const activeParentRef = React.useRef<HTMLInputElement>(null);
-  const treeWalkerRef = React.useRef<TreeWalker>();
   const listboxRef = React.useRef<HTMLDivElement | null>(null);
 
   const listboxCbRef = React.useCallback((el: HTMLDivElement | null) => {
     if (el) {
       listboxRef.current = el;
-      treeWalkerRef.current = el.ownerDocument.createTreeWalker(listboxRef.current, NodeFilter.SHOW_ELEMENT, node => {
-        if (!isHTMLElement(node)) {
-          return NodeFilter.FILTER_SKIP;
-        }
-        return node.role === 'row' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-      });
     }
   }, []);
 
@@ -110,7 +100,7 @@ export function useActiveDescendantGridFocusable(
     if (focusable) {
       return focusable;
     }
-    return element.tabIndex === 0 ? element : undefined;
+    return element.getAttribute('tabindex') === '0' ? element : undefined;
   };
 
   const getNextActiveRowOrFocusable = (nextActiveRow: HTMLElement) => {
@@ -172,12 +162,10 @@ export function useActiveDescendantGridFocusable(
       if (!listboxRef.current) {
         return false;
       }
-
       const firstRow = listboxRef.current?.querySelector<HTMLElement>('[role="row"]');
       if (!firstRow) {
         return false;
       }
-
       setActiveDescendant(getNextActiveRowOrFocusable(firstRow));
     },
     nextRow() {
@@ -228,8 +216,6 @@ export function useActiveDescendantGridFocusable(
       }
       const nextRowCellFirstFocusable = getSiblingRowCellFirstFocusable(active, 'next');
       setActiveDescendant(nextRowCellFirstFocusable);
-      console.log('text: ' + nextRowCellFirstFocusable?.innerText);
-      console.log('role: ' + nextRowCellFirstFocusable?.role);
       return true;
     },
     focusableAbove() {
@@ -248,63 +234,54 @@ export function useActiveDescendantGridFocusable(
       if (!listboxRef.current) {
         return false;
       }
-
       const active = getActiveDescendant();
       if (!active) {
         return false;
       }
-
-      const activeRow = getNearestParentWithRole(active, 'row');
-      if (!activeRow) {
+      const currentRow = getNearestParentWithRole(active, 'row');
+      if (!currentRow) {
         return false;
       }
-
-      const activeRowFocusables = getFocusables(activeRow);
-      if (activeRow.getAttribute('tabindex') === '0') {
-        activeRowFocusables.unshift(activeRow);
+      const currentRowFocusables = getFocusables(currentRow);
+      if (currentRow.getAttribute('tabindex') === '0') {
+        currentRowFocusables.unshift(currentRow);
       }
-      const activeFocusableIndex = activeRowFocusables.findIndex(x => x === active);
+      const activeFocusableIndex = currentRowFocusables.findIndex(focusable => focusable === active);
       if (activeFocusableIndex < 0) {
         return false;
       }
-
-      const nextActiveFocusableIndex = Math.min(activeFocusableIndex + 1, activeRowFocusables.length - 1);
-      if (nextActiveFocusableIndex === activeFocusableIndex) {
+      const nextFocusableIndex = Math.min(activeFocusableIndex + 1, currentRowFocusables.length - 1);
+      if (nextFocusableIndex === activeFocusableIndex) {
         return false;
       }
-      setActiveDescendant(activeRowFocusables[nextActiveFocusableIndex]);
+      setActiveDescendant(currentRowFocusables[nextFocusableIndex]);
       return true;
     },
     prevFocusable() {
       if (!listboxRef.current) {
         return false;
       }
-
       const active = getActiveDescendant();
       if (!active) {
         return false;
       }
-
-      const activeRow = getNearestParentWithRole(active, 'row');
-      if (!activeRow) {
+      const currentRow = getNearestParentWithRole(active, 'row');
+      if (!currentRow) {
         return false;
       }
-
-      const activeRowFocusables = Array.from(activeRow.querySelectorAll<HTMLElement>(FOCUSABLES_SELECTOR));
-      if (activeRow.getAttribute('tabindex') === '0') {
-        activeRowFocusables.unshift(activeRow);
+      const currentRowFocusables = Array.from(currentRow.querySelectorAll<HTMLElement>(FOCUSABLES_SELECTOR));
+      if (currentRow.getAttribute('tabindex') === '0') {
+        currentRowFocusables.unshift(currentRow);
       }
-
-      const activeFocusableIndex = activeRowFocusables.findIndex(x => x === active);
+      const activeFocusableIndex = currentRowFocusables.findIndex(focusable => focusable === active);
       if (activeFocusableIndex < 0) {
         return false;
       }
-
-      const nextActiveFocusableIndex = Math.max(activeFocusableIndex - 1, 0);
-      if (nextActiveFocusableIndex === activeFocusableIndex) {
+      const prevFocusableIndex = Math.max(activeFocusableIndex - 1, 0);
+      if (prevFocusableIndex === activeFocusableIndex) {
         return false;
       }
-      setActiveDescendant(activeRowFocusables[nextActiveFocusableIndex]);
+      setActiveDescendant(currentRowFocusables[prevFocusableIndex]);
       return true;
     },
     blur() {
