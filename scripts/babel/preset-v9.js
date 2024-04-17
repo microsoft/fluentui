@@ -56,6 +56,7 @@ const preset = (api, options) => {
             ],
           ],
         },
+        modules: [{ moduleSource: '@griffel/core', importName: 'makeStyles' }],
       },
     ],
   ];
