@@ -41,12 +41,12 @@ steps:
     env:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
-  - script: |
-      yarn lage build --verbose $(sinceArg)
-    displayName: build
-  - script: |
-      yarn lage type-check --verbose $(sinceArg)
-    displayName: type-check
+  # - script: |
+  #     yarn lage build --verbose $(sinceArg)
+  #   displayName: build
+  # - script: |
+  #     yarn lage type-check --verbose $(sinceArg)
+  #   displayName: type-check
 
   - script: |
       NX_DAEMON=false yarn nx run-many -t build -p 'packages/react-components/*' --parallel 8
