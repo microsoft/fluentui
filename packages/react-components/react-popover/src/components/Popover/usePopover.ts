@@ -36,7 +36,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     ...props,
   } as const;
 
-  const { targetDocument } = useFluent();
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   if (process.env.NODE_ENV !== 'production') {
@@ -90,6 +89,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   );
 
   const positioningRefs = usePopoverRefs(initialState);
+  const { targetDocument } = useFluent();
 
   useOnClickOutside({
     contains: elementContains,

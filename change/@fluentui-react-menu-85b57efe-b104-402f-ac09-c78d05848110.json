@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: use setTimeout and clearTimeout from Fluent context.",
+  "comment": "chore: disable eslint rule.",
   "packageName": "@fluentui/react-menu",
   "email": "seanmonahan@microsoft.com",
   "dependentChangeType": "patch"
