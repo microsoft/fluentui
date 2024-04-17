@@ -1055,6 +1055,8 @@ export class VerticalStackedBarChartBase extends React.Component<
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         /** Rate at which the space between the bars changes wrt the bar width */
         const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        // Update the bar width so that when CartesianChart rerenders,
+        // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
         const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
@@ -1095,8 +1097,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       return 16;
     }
     const [closestPairDiff, range] = result;
+    /** Total width available to render the bars */
     const totalWidth =
       containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    // Refer to https://microsoft.github.io/fluentui-charting-contrib/docs/rfcs/fix-overlapping-bars-on-continuous-axes
+    // for the derivation of the following formula.
     const barWidth = Math.ceil((totalWidth * closestPairDiff) / (2 * range + closestPairDiff));
     return barWidth;
   };

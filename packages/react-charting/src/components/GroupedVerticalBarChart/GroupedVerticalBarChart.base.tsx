@@ -604,6 +604,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
         /** Total width available to render the bars */
         const totalWidth =
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+        // Update the bar width so that when CartesianChart rerenders,
+        // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth);
         const groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * this._barWidth;
         /** Rate at which the space between the groups changes wrt the group width */
