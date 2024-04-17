@@ -4,7 +4,8 @@ import type { Button } from './button.js';
 import { ButtonOptions } from './button.options.js';
 
 /**
- * The template for the Button component.
+ * Generates a template for the Button component.
+ *
  * @public
  */
 export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): ElementViewTemplate<T> {
@@ -23,4 +24,9 @@ export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): E
   `;
 }
 
+/**
+ * The template for the Button component.
+ *
+ * @public
+ */
 export const template: ElementViewTemplate<Button> = buttonTemplate();

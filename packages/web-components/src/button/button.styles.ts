@@ -57,7 +57,11 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
-// Need to support icon hover styles
+/**
+ * The styles for the Button component.
+ *
+ * @public
+ */
 export const styles = css`
   ${display('inline-flex')}
 

@@ -300,7 +300,7 @@ export class Button extends FASTElement {
    *
    * @internal
    * @privateRemarks
-   * This is a workaround until {@link https://github.com/WICG/webcomponents/issues/814 \ WICG/webcomponents/issues/814} is resolved.
+   * This is a workaround until {@link https://github.com/WICG/webcomponents/issues/814 | WICG/webcomponents/issues/814} is resolved.
    */
   private createAndInsertFormSubmissionFallbackControl(): void {
     const internalSlot = this.formSubmissionFallbackControlSlot ?? document.createElement('slot');
