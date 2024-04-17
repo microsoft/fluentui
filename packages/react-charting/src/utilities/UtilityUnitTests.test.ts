@@ -1332,3 +1332,23 @@ test('formatValueWithSIPrefix should format a numeric value with appropriate SI 
   expect(utils.formatValueWithSIPrefix(9801)).toBe('9.8k');
   expect(utils.formatValueWithSIPrefix(100990000)).toBe('101.0M');
 });
+
+describe('getClosestPairDiffAndRange', () => {
+  it('should return undefined if data length is less than 2', () => {
+    const data: number[] = [1];
+    const result = utils.getClosestPairDiffAndRange(data);
+    expect(result).toBeUndefined();
+  });
+
+  it('should return the minimum difference and range for number data', () => {
+    const data: number[] = [1, 5, 3, 9, 2];
+    const result = utils.getClosestPairDiffAndRange(data);
+    expect(result).toEqual([1, 8]);
+  });
+
+  it('should return the minimum difference and range for date data', () => {
+    const data: Date[] = [new Date('2022-01-01'), new Date('2022-01-05'), new Date('2022-01-03')];
+    const result = utils.getClosestPairDiffAndRange(data);
+    expect(result).toEqual([2 * 24 * 60 * 60 * 1000, 4 * 24 * 60 * 60 * 1000]);
+  });
+});
