@@ -55,7 +55,7 @@ export class Button extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  public disabled: boolean = false;
+  disabled?: boolean;
 
   /**
    * Indicates that the button is focusable while disabled.
@@ -65,7 +65,20 @@ export class Button extends FASTElement {
    * HTML Attribute: `disabled-focusable`
    */
   @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
-  public disabledFocusable?: boolean = false;
+  public disabledFocusable: boolean = false;
+
+  /**
+   * Sets the element's internal disabled state when the element is focusable while disabled.
+   *
+   * @param previous - the previous disabledFocusable value
+   * @param next - the current disabledFocusable value
+   * @internal
+   */
+  public disabledFocusableChanged(previous: boolean, next: boolean): void {
+    if (this.$fastController.isConnected) {
+      this.elementInternals.ariaDisabled = `${!!next}`;
+    }
+  }
 
   /**
    * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -182,6 +195,15 @@ export class Button extends FASTElement {
   public iconOnly: boolean = false;
 
   /**
+   * A reference to all associated label elements.
+   *
+   * @public
+   */
+  public get labels(): ReadonlyArray<Node> {
+    return Object.freeze(Array.from(this.elementInternals.labels));
+  }
+
+  /**
    * The name of the element. This element's value will be surfaced during form submission under the provided name.
    * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#name | `name`} attribute
    *
@@ -250,15 +272,6 @@ export class Button extends FASTElement {
   public value?: string;
 
   /**
-   * A reference to all associated label elements.
-   *
-   * @public
-   */
-  public get labels(): ReadonlyArray<Node> {
-    return Object.freeze(Array.from(this.elementInternals.labels));
-  }
-
-  /**
    * Handles the button click event.
    *
    * @param e - The event object
@@ -267,10 +280,6 @@ export class Button extends FASTElement {
   public clickHandler(e: Event): boolean | void {
     if (e && this.disabledFocusable) {
       e.stopImmediatePropagation();
-      return;
-    }
-
-    if (this.disabled) {
       return;
     }
 
@@ -284,9 +293,16 @@ export class Button extends FASTElement {
         this.elementInternals.form?.reset();
         break;
       }
-    }
 
-    return true;
+      default: {
+        return true;
+      }
+    }
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
   }
 
   constructor() {
@@ -362,16 +378,18 @@ export class Button extends FASTElement {
   }
 
   /**
-   * Handles keyup events for the button.
+   * Handles keypress events for the button.
    *
    * @param e - the keyboard event
    * @returns - the return value of the click handler
    * @public
    */
-  public keyupHandler(e: KeyboardEvent): boolean | void {
+  public keypressHandler(e: KeyboardEvent): boolean | void {
     if (e.key === keyEnter || e.key === keySpace) {
       this.clickHandler(e);
+      return;
     }
+
     return true;
   }
 

@@ -13,7 +13,7 @@ export function buttonTemplate<T extends Button>(options: ButtonOptions = {}): E
     <template
       tabindex="${x => (x.disabled ? -1 : 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @keyup="${(x, c) => x.keyupHandler(c.event as KeyboardEvent)}"
+      @keypress="${(x, c) => x.keypressHandler(c.event as KeyboardEvent)}"
     >
       ${startSlotTemplate(options)}
       <span class="content" part="content">
