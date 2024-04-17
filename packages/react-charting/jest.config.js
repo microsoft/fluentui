@@ -13,7 +13,7 @@ function getEsmOnlyPackagesToCjsMapping() {
    * So we need to map these packages to their CommonJS versions.
    */
   const cjsPathsToEsmOnlyPackages = {
-    '^d3-scale$': prefix + '../../node_modules/d3-scale/dist/d3-scale.js',
+    '^d3-scale$': prefix + '../../node_modules/d3-scale/build/d3-scale.js',
     '^d3-shape$': prefix + 'node_modules/d3-shape/dist/d3-shape.js',
     '^d3-path$': prefix + 'node_modules/d3-path/dist/d3-path.js',
   };
