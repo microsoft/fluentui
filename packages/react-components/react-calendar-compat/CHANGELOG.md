@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.2)
+
+Wed, 17 Apr 2024 21:53:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.1.1..@fluentui/react-calendar-compat_v0.1.2)
+
+### Patches
+
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.1)
 

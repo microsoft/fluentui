@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.20)
+
+Wed, 17 Apr 2024 21:53:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.4.19..@fluentui/react-portal_v9.4.20)
+
+### Patches
+
+- chore: add "data-portal-node" attr in usePortalMountNode() ([PR #31002](https://github.com/microsoft/fluentui/pull/31002) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.4.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.19)
 

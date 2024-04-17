@@ -1,8 +1,22 @@
-# Change Log - @fluentui/react-search-preview
+# Change Log - @fluentui/react-search
 
-This log was last generated on Thu, 04 Apr 2024 12:08:08 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.0)
+
+Wed, 17 Apr 2024 21:53:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.2.0..@fluentui/react-search_v9.0.0)
+
+### Minor changes
+
+- feat: release stable ([PR #30553](https://github.com/microsoft/fluentui/pull/30553) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-input to v9.4.71 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+
+### Patches
+
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.2.0)
 

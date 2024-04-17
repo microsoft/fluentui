@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-persona",
-  "version": "9.2.79",
+  "version": "9.2.80",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,8 +33,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.6.20",
-    "@fluentui/react-badge": "^9.2.30",
+    "@fluentui/react-avatar": "^9.6.21",
+    "@fluentui/react-badge": "^9.2.31",
     "@fluentui/react-shared-contexts": "^9.16.0",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.6",

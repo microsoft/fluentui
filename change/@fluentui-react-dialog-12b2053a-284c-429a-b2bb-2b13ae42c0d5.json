@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: refactor styles defined in makeResetStyles() to avoid shorthands.*()",
-  "packageName": "@fluentui/react-dialog",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

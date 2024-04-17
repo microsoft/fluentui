@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update project tags to proper platform type",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
