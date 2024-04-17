@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, TreeItemValue } from '@fluentui/react-components';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from '@fluentui/react-components';
 import { AddSquare16Regular, SubtractSquare16Regular } from '@fluentui/react-icons';
-import { TreeOpenChangeData, TreeOpenChangeEvent } from './../../src/Tree';
 
 export const ExpandIcon = () => {
   const [openItems, setOpenItems] = React.useState<TreeItemValue[]>([]);
