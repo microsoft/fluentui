@@ -18,6 +18,7 @@ export interface IExampleState {
   width: number;
   xAxisType: string;
   enableReflow: boolean;
+  dataSize: number;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -38,8 +39,6 @@ const xAxisTypeOptions: IChoiceGroupOption[] = [
   { key: 'string', text: 'String' },
 ];
 
-const dataSizes = [3, 10, 20];
-
 export class VerticalBarChartDynamicExample extends React.Component<IVerticalBarChartProps, IExampleState> {
   private _colors = [
     [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
@@ -48,16 +47,16 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
     [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
   ];
   private _colorIndex = 0;
-  private _dataSizeIndex = 0;
   private _prevBarWidth = 16;
 
   constructor(props: IVerticalBarChartProps) {
     super(props);
 
     const initialXAxisType = xAxisTypeOptions[0].key;
+    const initialDataSize = 5;
 
     this.state = {
-      dynamicData: this._getData(this._dataSizeIndex, initialXAxisType),
+      dynamicData: this._getData(initialDataSize, initialXAxisType),
       colors: this._colors[0],
       statusKey: 0,
       statusMessage: '',
@@ -70,6 +69,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
       width: 650,
       xAxisType: initialXAxisType,
       enableReflow: false,
+      dataSize: initialDataSize,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -168,6 +168,19 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
               onChange={this._onEnableReflowCheckChange}
             />
           </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
+              Data Size:&nbsp;
+            </Label>
+            <input
+              type="range"
+              value={this.state.dataSize}
+              min={0}
+              max={50}
+              onChange={this._onDataSizeChange}
+              id="input-datasize"
+            />
+          </Stack>
         </Stack>
         <div style={{ marginTop: '20px' }}>
           <ChoiceGroup
@@ -179,7 +192,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
         </div>
         <div style={{ width: `${this.state.width}px`, height: '350px' }}>
           <VerticalBarChart
-            key={this.state.xAxisType}
+            // Force rerender when any of the following states change
+            key={`${this.state.xAxisType}-${this.state.enableReflow}`}
             chartTitle="Vertical bar chart dynamic example"
             data={this.state.dynamicData}
             colors={this.state.colors}
@@ -209,7 +223,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
 
   private _changeData(): void {
     this.setState(prevState => ({
-      dynamicData: this._getData(this._dataSizeIndex + 1, this.state.xAxisType),
+      dynamicData: this._getData(this.state.dataSize, this.state.xAxisType),
       statusKey: prevState.statusKey + 1,
       statusMessage: 'Vertical bar chart data changed',
     }));
@@ -260,23 +274,26 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
     this.setState({ width: Number(e.target.value) });
   };
   private _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
-    this.setState({ xAxisType: option.key, dynamicData: this._getData(this._dataSizeIndex, option.key) });
+    this.setState({ xAxisType: option.key, dynamicData: this._getData(this.state.dataSize, option.key) });
   };
   private _onEnableReflowCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     this.setState({ enableReflow: checked });
   };
+  private _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const dataSize = Number(e.target.value);
+    this.setState({ dataSize, dynamicData: this._getData(dataSize, this.state.xAxisType) });
+  };
 
-  private _getData = (dataSizeIndex: number, xAxisType: string) => {
-    this._dataSizeIndex = dataSizeIndex % dataSizes.length;
+  private _getData = (dataSize: number, xAxisType: string) => {
     const data: IVerticalBarChartDataPoint[] = [];
     if (xAxisType === 'string') {
-      for (let i = 0; i < dataSizes[this._dataSizeIndex]; i++) {
+      for (let i = 0; i < dataSize; i++) {
         data.push({ x: `Label ${i + 1}`, y: this._randomY() });
       }
     } else {
       const xPoints = new Set<number>();
       const date = new Date('2020-01-01');
-      while (xPoints.size !== dataSizes[this._dataSizeIndex]) {
+      while (xPoints.size !== dataSize) {
         const x = Math.floor(Math.random() * 100) + 1;
         if (!xPoints.has(x)) {
           xPoints.add(x);
