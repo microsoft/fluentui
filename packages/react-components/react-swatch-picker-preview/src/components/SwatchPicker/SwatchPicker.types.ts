@@ -41,7 +41,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
    * Swatch size
    * @defaultvalue 'medium'
    */
-  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+  size?: 'extra-small' | 'small' | 'medium' | 'large';
 
   /**
    * Swatch shape

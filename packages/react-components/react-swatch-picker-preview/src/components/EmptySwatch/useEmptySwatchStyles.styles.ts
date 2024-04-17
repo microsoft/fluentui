@@ -17,7 +17,7 @@ const useStyles = makeResetStyles({
 });
 
 const useSizeStyles = makeStyles({
-  extraSmall: {
+  'extra-small': {
     width: '20px',
     height: '20px',
   },
