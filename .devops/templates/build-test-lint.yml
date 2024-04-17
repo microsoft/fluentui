@@ -49,11 +49,11 @@ steps:
     displayName: type-check
 
   - script: |
-      yarn nx run-many -t build -p 'packages/react-components/*' --parallel 8
+      NX_DAEMON=false yarn nx run-many -t build -p 'packages/react-components/*' --parallel 8
     displayName: nx:build
 
   - script: |
-      yarn nx run-many -t type-check -p 'packages/react-components/*' --parallel 8
+      NX_DAEMON=false yarn nx run-many -t type-check -p 'packages/react-components/*' --parallel 8
     displayName: nx:type-check
 
   - template: cleanup.yml
