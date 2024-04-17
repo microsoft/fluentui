@@ -28,6 +28,8 @@
     "bundle-size": "monosize measure"
   },
   "devDependencies": {
+    "@fluentui/react-menu": "*",
+    "@fluentui/react-overflow": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
