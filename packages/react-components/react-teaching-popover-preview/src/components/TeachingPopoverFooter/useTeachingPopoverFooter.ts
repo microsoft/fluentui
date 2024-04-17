@@ -14,7 +14,6 @@ export const useTeachingPopoverFooter_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterState => {
   const appearance = usePopoverContext_unstable(context => context.appearance);
-  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
 
   const handleButtonClick = useEventCallback(
@@ -23,9 +22,6 @@ export const useTeachingPopoverFooter_unstable = (
         return;
       }
 
-      if (triggerRef.current) {
-        triggerRef.current.focus();
-      }
       toggleOpen(event);
     },
   );
@@ -33,9 +29,8 @@ export const useTeachingPopoverFooter_unstable = (
   const secondary = slot.optional(props.secondary, {
     defaultProps: {
       appearance: appearance === 'brand' ? 'primary' : undefined,
-      children: props.strings.secondary,
     },
-    renderByDefault: true,
+    renderByDefault: props.secondary !== undefined,
     elementType: Button,
   });
 
@@ -47,10 +42,14 @@ export const useTeachingPopoverFooter_unstable = (
   const primary = slot.always(props.primary, {
     defaultProps: {
       appearance: appearance === 'brand' ? undefined : 'primary',
-      children: props.strings.primary,
     },
     elementType: Button,
   });
+
+  // Primary button will close the popover if no secondary action is available.
+  if (!secondary) {
+    primary.onClick = mergeCallbacks(handleButtonClick, primary?.onClick);
+  }
 
   return {
     footerLayout: props.footerLayout ?? 'horizontal',

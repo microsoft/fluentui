@@ -1,7 +1,7 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
-import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
+import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
@@ -833,12 +833,13 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     d3Select(d1)
-      .on('mouseover', d => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
           .html(originalDataArray[i])
-          .style('left', d3Event.pageX + 'px')
-          .style('top', d3Event.pageY - 28 + 'px');
+          .style('left', event.pageX + 'px')
+          .style('top', event.pageY - 28 + 'px');
       })
       .on('mouseout', d => {
         div.style('opacity', 0);

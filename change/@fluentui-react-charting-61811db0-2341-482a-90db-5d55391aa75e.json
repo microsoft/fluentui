@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix wrong aria label placement in SparklineChart",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}

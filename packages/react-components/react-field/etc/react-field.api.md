@@ -21,7 +21,7 @@ export const Field: ForwardRefComponent<FieldProps>;
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
-export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
+export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
     labelFor?: string | undefined;
     labelId?: string | undefined;
     validationMessageId?: string | undefined;
@@ -81,7 +81,7 @@ export const renderField_unstable: (state: FieldState, contextValues: FieldConte
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public (undocumented)
-export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
+export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
     labelFor?: string | undefined;
     labelId?: string | undefined;
     validationMessageId?: string | undefined;

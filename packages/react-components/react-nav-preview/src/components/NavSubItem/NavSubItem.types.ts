@@ -4,12 +4,6 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type NavSubItemSlots = {
   root: Slot<'a'>;
-
-  /**
-   * Component children are placed in this slot
-   * Avoid using the `children` property in this slot in favour of Component children whenever possible.
-   */
-  content: NonNullable<Slot<'span'>>;
 };
 
 /**

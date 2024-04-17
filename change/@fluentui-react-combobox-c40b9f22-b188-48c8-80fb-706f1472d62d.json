@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: fix useListBoxSlot signature to accept more triggerRef types",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

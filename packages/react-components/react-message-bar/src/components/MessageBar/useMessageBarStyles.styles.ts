@@ -16,8 +16,8 @@ const useRootBaseStyles = makeResetStyles({
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
   paddingLeft: tokens.spacingHorizontalM,
-  ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
-  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  borderRadius: tokens.borderRadiusMedium,
   alignItems: 'center',
   minHeight: '36px',
   boxSizing: 'border-box',
@@ -25,7 +25,7 @@ const useRootBaseStyles = makeResetStyles({
 });
 
 const useIconBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('icon'),
+  gridArea: 'icon',
   fontSize: tokens.fontSizeBase500,
   marginRight: tokens.spacingHorizontalS,
   color: tokens.colorNeutralForeground3,

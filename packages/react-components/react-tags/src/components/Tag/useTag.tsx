@@ -31,6 +31,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     size: contextSize,
     appearance: contextAppearance,
     dismissible: contextDismissible,
+    role: tagGroupRole,
   } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
@@ -81,6 +82,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     root: slot.always(
       getIntrinsicElementProps(elementType, {
         ref,
+        role: tagGroupRole === 'listbox' ? 'option' : undefined,
         ...props,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),

@@ -143,15 +143,11 @@ exports[`TagItem accepts title override 1`] = `
           border-color: Highlight;
           color: Highlight;
         }
-        &:focus {
-          background: #0078d4;
-          color: #ffffff;
-        }
         &:active {
           background-color: #005a9e;
           color: #ffffff;
         }
-        .is-selected & {
+        .is-selected &:focus {
           background: #0078d4;
           color: #ffffff;
         }
@@ -393,15 +389,11 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           border-color: Highlight;
           color: Highlight;
         }
-        &:focus {
-          background: #0078d4;
-          color: #ffffff;
-        }
         &:active {
           background-color: #005a9e;
           color: #ffffff;
         }
-        .is-selected & {
+        .is-selected &:focus {
           background: #0078d4;
           color: #ffffff;
         }
@@ -619,15 +611,11 @@ exports[`TagItem renders correctly 1`] = `
           border-color: Highlight;
           color: Highlight;
         }
-        &:focus {
-          background: #0078d4;
-          color: #ffffff;
-        }
         &:active {
           background-color: #005a9e;
           color: #ffffff;
         }
-        .is-selected & {
+        .is-selected &:focus {
           background: #0078d4;
           color: #ffffff;
         }

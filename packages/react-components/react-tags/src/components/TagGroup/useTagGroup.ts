@@ -15,7 +15,7 @@ import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/us
  * @param ref - reference to root HTMLDivElement of TagGroup
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
-  const { onDismiss, size = 'medium', appearance = 'filled', dismissible = false } = props;
+  const { onDismiss, size = 'medium', appearance = 'filled', dismissible = false, role = 'toolbar' } = props;
 
   const innerRef = React.useRef<HTMLElement>();
   const { targetDocument } = useFluent();
@@ -53,6 +53,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
 
   return {
     handleTagDismiss,
+    role,
     size,
     appearance,
     dismissible,
@@ -66,7 +67,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
-        role: 'toolbar',
+        role,
         ...arrowNavigationProps,
         ...props,
       }),

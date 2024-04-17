@@ -13,7 +13,7 @@ export const renderTeachingPopoverFooter_unstable = (state: TeachingPopoverFoote
   return (
     <state.root>
       <state.primary />
-      <state.secondary />
+      {state.secondary && <state.secondary />}
     </state.root>
   );
 };
