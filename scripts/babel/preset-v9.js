@@ -56,7 +56,14 @@ const preset = (api, options) => {
             ],
           ],
         },
-        modules: [{ moduleSource: '@griffel/core', importName: 'makeStyles' }],
+        /**
+         * https://github.com/microsoft/griffel/tree/main/packages/babel-preset#importing-griffel-from-custom-packages
+         * "By default, preset handles imports from @griffel/react & @fluentui/react-components" - under the hood griffel preset wont merge rather override thus we need to provide the default modules explicitly
+         */
+        modules: [
+          { moduleSource: '@griffel/core', importName: 'makeStyles' },
+          { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
+        ],
       },
     ],
   ];
