@@ -78,6 +78,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const resizeCallback = React.useCallback(
     (
       _entries: ResizeObserverEntry[],
+      // eslint-disable-next-line no-restricted-globals
       _observer: ResizeObserver,
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {

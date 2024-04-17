@@ -37,8 +37,6 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   } as const;
 
   const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
-
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   if (process.env.NODE_ENV !== 'production') {

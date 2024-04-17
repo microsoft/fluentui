@@ -15,6 +15,7 @@ export function observeResize(elementToObserve: HTMLElement, callback: ResizeObs
     return () => null;
   }
 
+  // eslint-disable-next-line no-restricted-globals
   let resizeObserver: ResizeObserver | undefined = new GlobalResizeObsever(callback);
   resizeObserver.observe(elementToObserve);
 

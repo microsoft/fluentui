@@ -16,9 +16,6 @@ export const useDynamicVirtualizerPagination = (
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
   const [setScrollTimer, clearScrollTimer] = useTimeout();
-  const lastScrollPos = useRef<number>(-1);
-  const lastIndexScrolled = useRef<number>(-1);
-
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
   const clearListeners = () => {

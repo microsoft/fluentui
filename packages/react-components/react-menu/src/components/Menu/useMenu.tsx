@@ -174,7 +174,6 @@ const useMenuOpenState = (
     Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
   const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 

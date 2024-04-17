@@ -6,6 +6,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
   const { targetDocument } = useFluent();
   const forceUpdate = React.useReducer(() => ({}), {})[1];
   const reflowingRef = React.useRef(false);
+  // eslint-disable-next-line no-restricted-globals
   const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
   const prevInlineSizeRef = React.useRef(-1);
 

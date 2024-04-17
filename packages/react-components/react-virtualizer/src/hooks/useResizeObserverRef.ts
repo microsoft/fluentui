@@ -11,6 +11,7 @@ export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWith
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
   // the handler for resize observer
+  // eslint-disable-next-line no-restricted-globals
   const handleResize = debounce((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
     resizeCallback(entries, observer, container);
   });

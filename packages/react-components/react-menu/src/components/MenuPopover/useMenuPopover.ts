@@ -28,8 +28,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const throttleDispatchTimerRef = React.useRef(0);
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 
-  const { dir, targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
+  const { dir } = useFluent();
   const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
 
   // use DOM listener since react events propagate up the react tree
@@ -46,17 +45,19 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
             dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore #16889 Node setTimeout type leaking
-            throttleDispatchTimerRef.current = win?.setTimeout(() => (canDispatchCustomEventRef.current = true), 250);
+            // eslint-disable-next-line no-restricted-globals
+            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 250);
           }
         });
       }
     },
-    [popoverRef, throttleDispatchTimerRef, win],
+    [popoverRef, throttleDispatchTimerRef],
   );
 
   React.useEffect(() => {
-    () => win?.clearTimeout(throttleDispatchTimerRef.current);
-  }, [win]);
+    // eslint-disable-next-line no-restricted-globals
+    () => clearTimeout(throttleDispatchTimerRef.current);
+  }, []);
 
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
   const mountNode = useMenuContext_unstable(context => context.mountNode);

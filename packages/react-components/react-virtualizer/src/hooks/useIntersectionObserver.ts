@@ -56,8 +56,10 @@ export const useIntersectionObserver = (
 ): {
   setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
+  // eslint-disable-next-line no-restricted-globals
   observer: MutableRefObject<IntersectionObserver | undefined>;
 } => {
+  // eslint-disable-next-line no-restricted-globals
   const observer = useRef<IntersectionObserver>();
   const [observerList, setObserverList] = useState<Element[]>();
   const { targetDocument } = useFluent();

@@ -46,5 +46,10 @@ export type VirtualizerDynamicPaginationProps = {
  * Backwards compatible with ResizeObserverCallback if preferred
  */
 export interface ResizeCallbackWithRef {
-  (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: MutableRefObject<HTMLElement | null>): void;
+  (
+    entries: ResizeObserverEntry[],
+    // eslint-disable-next-line no-restricted-globals
+    observer: ResizeObserver,
+    scrollRef?: MutableRefObject<HTMLElement | null>,
+  ): void;
 }
