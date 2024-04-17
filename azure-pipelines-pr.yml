@@ -17,11 +17,23 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
-  - job: BuildTestLint
+  - job: BuildTestLintOld
     workspace:
       clean: all
     steps:
-      - template: .devops/templates/build-test-lint.yml
+      - template: .devops/templates/build-test-lint-lage.yml
+
+  - job: BuildTestLintNew
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/build-test-lint-nx.yml
+
+  - job: BuildTestLintNewIncremental
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/build-test-lint-nx-incremental.yml
 
   - job: DeployE2E
     displayName: Deploy and E2E

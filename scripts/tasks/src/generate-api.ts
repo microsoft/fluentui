@@ -3,6 +3,7 @@ import { execSync } from 'child_process';
 import { series } from 'just-scripts';
 
 import { apiExtractor } from './api-extractor';
+import { getJustArgv } from './argv';
 import { getTsPathAliasesConfigUsedOnlyForDx } from './utils';
 
 export function generateApi() {
@@ -10,6 +11,8 @@ export function generateApi() {
 }
 
 function generateTypeDeclarations() {
+  const args = getJustArgv();
+
   const { tsConfigFileForCompilation } = getTsPathAliasesConfigUsedOnlyForDx();
   const cmd = [
     'tsc',
@@ -17,7 +20,7 @@ function generateTypeDeclarations() {
     '--emitDeclarationOnly',
     // turn off path aliases.
     '--baseUrl .',
-    '--incremental',
+    args.incremental ? '--incremental' : undefined,
   ]
     .filter(Boolean)
     .join(' ');

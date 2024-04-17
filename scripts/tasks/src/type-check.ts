@@ -7,6 +7,7 @@ import { logger } from 'just-scripts';
 import { exec } from 'just-scripts-utils';
 
 import { type TsConfig, getTsPathAliasesConfig } from './utils';
+import { getJustArgv } from './argv';
 
 export function typeCheck() {
   const { isUsingTsSolutionConfigs, tsConfigFileContents, tsConfigs, tsConfigFilePaths } = getTsPathAliasesConfig();
@@ -66,6 +67,8 @@ export async function typeCheckV2() {
 
   const tsConfigsRefs = getTsConfigs(config, output, { spec: false, e2e: false });
 
+  console.log({ tsConfigsRefs });
+
   const asyncQueue = [];
 
   for (const ref of tsConfigsRefs) {
@@ -80,6 +83,7 @@ export async function typeCheckV2() {
 }
 
 function getTsConfigs(solutionConfig: TsConfig, buildOutput: string, exclude: { spec: boolean; e2e: boolean }) {
+  const args = getJustArgv();
   const refs = solutionConfig.references ?? [];
   const refsPaths: string[] = [];
 
@@ -92,7 +96,7 @@ function getTsConfigs(solutionConfig: TsConfig, buildOutput: string, exclude: { 
     if (exclude.e2e && ref.path.includes('cy')) {
       continue;
     }
-    if (ref.path.includes('tsconfig.lib.json') && fs.existsSync(tsBuildInfoPath)) {
+    if (args.incremental && ref.path.includes('tsconfig.lib.json') && fs.existsSync(tsBuildInfoPath)) {
       logger.info('skipping tsconfig.lib.json type-check which happened within generate-api task...');
       continue;
     }
