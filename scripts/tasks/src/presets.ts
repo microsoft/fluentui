@@ -20,7 +20,7 @@ import { sass } from './sass';
 import { buildStorybookTask, startStorybookTask } from './storybook';
 import { swc } from './swc';
 import { ts } from './ts';
-import { typeCheck } from './type-check';
+import { /* typeCheck,  */ typeCheckV2 } from './type-check';
 import { verifyPackaging } from './verify-packaging';
 import { webpack, webpackDevServer } from './webpack';
 
@@ -75,7 +75,8 @@ export function preset() {
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
   task('generate-api', generateApi);
-  task('type-check', typeCheck);
+  // task('type-check', typeCheck);
+  task('type-check', typeCheckV2);
   task('verify-packaging', () => verifyPackaging(args));
 
   task('ts:compile', () => {

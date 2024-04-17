@@ -17,6 +17,7 @@ function generateTypeDeclarations() {
     '--emitDeclarationOnly',
     // turn off path aliases.
     '--baseUrl .',
+    '--incremental',
   ]
     .filter(Boolean)
     .join(' ');
