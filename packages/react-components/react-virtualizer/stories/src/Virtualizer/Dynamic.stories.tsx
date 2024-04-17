@@ -37,7 +37,7 @@ export const Dynamic = () => {
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   React.useEffect(() => {
     updateTimeout();

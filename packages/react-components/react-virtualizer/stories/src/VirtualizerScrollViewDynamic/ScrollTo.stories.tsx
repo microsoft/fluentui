@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic, ScrollToInterface } from '@fluentui/react-components/unstable';
 import { Button, Input, makeStyles, Text } from '@fluentui/react-components';
 import { useEffect } from 'react';
-import { ScrollToInterface } from '../../src/Utilities';
-import { VirtualizerDataRef } from '../../src/Virtualizer';
+import { VirtualizerDataRef } from '@fluentui/react-virtualizer';
 
 const useStyles = makeStyles({
   child: {
