@@ -4,7 +4,6 @@ import { isConformant } from '../../testing/isConformant';
 import { ColorSwatch } from './ColorSwatch';
 import { colorSwatchClassNames } from './useColorSwatchStyles.styles';
 import { SwatchPickerProvider, swatchPickerContextDefaultValue } from '../../contexts/swatchPicker';
-import { on } from 'events';
 
 describe('ColorSwatch', () => {
   isConformant({
