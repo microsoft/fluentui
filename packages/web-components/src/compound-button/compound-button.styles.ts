@@ -23,8 +23,8 @@ import {
 export const styles = css`
   ${ButtonStyles}
 
-  :host .control,
-  :host(:is([size])) .control {
+  :host,
+  :host(:is([size])) {
     gap: 12px;
     height: auto;
     padding-top: 14px;
@@ -86,30 +86,30 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([size='small']) .control {
+  :host([size='small']) {
     padding: 8px;
     padding-bottom: 10px;
   }
 
-  :host([icon-only]) .control {
+  :host([icon-only]) {
     min-width: 52px;
     max-width: 52px;
     padding: ${spacingHorizontalSNudge};
   }
 
-  :host([icon-only][size='small']) .control {
+  :host([icon-only][size='small']) {
     min-width: 48px;
     max-width: 48px;
     padding: ${spacingHorizontalXS};
   }
 
-  :host([icon-only][size='large']) .control {
+  :host([icon-only][size='large']) {
     min-width: 56px;
     max-width: 56px;
     padding: ${spacingHorizontalS};
   }
 
-  :host([size='large']) .control {
+  :host([size='large']) {
     padding-top: 18px;
     padding-inline: 16px;
     padding-bottom: 20px;
