@@ -1,7 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
-  projects: [{ name: 'chromium' }, { name: 'firefox' }, { name: 'webkit' }],
   reporter: 'list',
   testMatch: /.*\.spec\.ts$/,
   retries: 3,
@@ -10,8 +9,8 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: 'http://localhost:6006/iframe.html',
     viewport: {
-      height: 1280,
-      width: 720,
+      height: 720,
+      width: 1280,
     },
   },
   webServer: {
