@@ -8,7 +8,7 @@ const useClasses = makeStyles({
     display: 'flex',
   },
   card: {
-    ...shorthands.border('3px', 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     ...shorthands.padding('20px'),
@@ -16,7 +16,7 @@ const useClasses = makeStyles({
   },
   item: {
     backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.border('3px', 'solid', tokens.colorTransparentStroke),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorTransparentStroke),
     ...shorthands.borderRadius('50%'),
 
     width: '100px',
