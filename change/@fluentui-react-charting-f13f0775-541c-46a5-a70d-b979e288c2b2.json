@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add shape prop to ILegendsProps to pass to Overflow items",
-  "packageName": "@fluentui/react-charting",
-  "email": "167121109+skyfong@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

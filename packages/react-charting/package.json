@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.19.44",
+  "version": "5.19.45",
   "description": "React web charting controls for Microsoft fluentui system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

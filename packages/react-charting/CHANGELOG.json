@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 07:25:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.45",
+      "version": "5.19.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "167121109+skyfong@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0ffac2e4ef87e4c2f7b9ac7e60aae6f3efe7264",
+            "comment": "Add shape prop to ILegendsProps to pass to Overflow items"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Apr 2024 07:29:11 GMT",
       "tag": "@fluentui/react-charting_v5.19.44",
       "version": "5.19.44",
