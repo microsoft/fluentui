@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds isInsideTagPicker exception case to TagGroupContextValue",
+  "packageName": "@fluentui/react-tags",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
