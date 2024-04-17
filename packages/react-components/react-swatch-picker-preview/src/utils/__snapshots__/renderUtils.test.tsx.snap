@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render utils of SwatchPicker renders custom row 1`] = `
+<div>
+  <div
+    aria-label="SwatchPicker grid layout"
+    class="fui-SwatchPicker"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
+    role="grid"
+    style="--fui-SwatchPicker--gridGap: 4px;"
+  >
+    <div
+      class="fui-SwatchPickerRow custom-row"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="red"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #FF1921;"
+        type="button"
+      />
+      <button
+        aria-label="orange"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #FF7A00;"
+        type="button"
+      />
+      <button
+        aria-label="light green"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #90D057;"
+        type="button"
+      />
+    </div>
+    <div
+      class="fui-SwatchPickerRow custom-row"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="green"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #00B053;"
+        type="button"
+      />
+      <button
+        aria-label="light blue"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #00AFED;"
+        type="button"
+      />
+      <button
+        aria-label="blue"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #006EBD;"
+        type="button"
+      />
+    </div>
+    <div
+      class="fui-SwatchPickerRow custom-row"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="sea"
+        class="fui-ImageSwatch"
+        style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg);"
+      />
+      <button
+        aria-label="bridge"
+        class="fui-ImageSwatch"
+        style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg);"
+      />
+      <button
+        aria-label="park"
+        class="fui-ImageSwatch"
+        style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg);"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
+<div>
+  <div
+    aria-label="SwatchPicker grid layout"
+    class="fui-SwatchPicker"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
+    role="grid"
+    style="--fui-SwatchPicker--gridGap: 4px;"
+  >
+    <div
+      class="fui-SwatchPickerRow"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="red"
+        aria-selected="false"
+        class="fui-ColorSwatch custom-swatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #FF1921;"
+        type="button"
+      />
+      <button
+        aria-label="orange"
+        aria-selected="false"
+        class="fui-ColorSwatch custom-swatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #FF7A00;"
+        type="button"
+      />
+      <button
+        aria-label="light green"
+        aria-selected="false"
+        class="fui-ColorSwatch custom-swatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #90D057;"
+        type="button"
+      />
+    </div>
+    <div
+      class="fui-SwatchPickerRow"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="green"
+        aria-selected="false"
+        class="fui-ColorSwatch custom-swatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #00B053;"
+        type="button"
+      />
+      <button
+        aria-label="light blue"
+        aria-selected="false"
+        class="fui-ColorSwatch custom-swatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #00AFED;"
+        type="button"
+      />
+      <button
+        aria-label="blue"
+        aria-selected="false"
+        class="fui-ColorSwatch custom-swatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #006EBD;"
+        type="button"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
+<div>
+  <div
+    aria-label="SwatchPicker grid layout"
+    class="fui-SwatchPicker"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
+    role="grid"
+    style="--fui-SwatchPicker--gridGap: 4px;"
+  >
+    <div
+      class="fui-SwatchPickerRow"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="red"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #FF1921;"
+        type="button"
+      />
+      <button
+        aria-label="orange"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #FF7A00;"
+        type="button"
+      />
+      <button
+        aria-label="light green"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #90D057;"
+        type="button"
+      />
+    </div>
+    <div
+      class="fui-SwatchPickerRow"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="green"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #00B053;"
+        type="button"
+      />
+      <button
+        aria-label="light blue"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #00AFED;"
+        type="button"
+      />
+      <button
+        aria-label="blue"
+        aria-selected="false"
+        class="fui-ColorSwatch"
+        role="gridcell"
+        style="--fui-SwatchPicker--color: #006EBD;"
+        type="button"
+      />
+    </div>
+    <div
+      class="fui-SwatchPickerRow"
+      role="row"
+      style="--fui-SwatchPicker--rowGap: 4px;"
+    >
+      <button
+        aria-label="sea"
+        class="fui-ImageSwatch"
+        style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg);"
+      />
+      <button
+        aria-label="bridge"
+        class="fui-ImageSwatch"
+        style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg);"
+      />
+      <button
+        aria-label="park"
+        class="fui-ImageSwatch"
+        style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg);"
+      />
+    </div>
+  </div>
+</div>
+`;

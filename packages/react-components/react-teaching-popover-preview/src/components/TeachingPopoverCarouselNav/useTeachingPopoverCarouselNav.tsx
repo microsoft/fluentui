@@ -1,13 +1,12 @@
-import * as React from 'react';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+
 import type {
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
-
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
-import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
+import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
  * Returns the props and state required to render the component
@@ -25,18 +24,11 @@ export const useTeachingPopoverCarouselNav_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_hasDefault: true,
   });
-
-  const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
-  const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
-
-  // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
-  const rootChildren = React.useMemo(() => {
-    return Array.from(Array(totalPages), (_, i) => <TeachingPopoverCarouselNavButton key={i} index={i} />);
-  }, [totalPages]);
+  const values = useCarouselValues_unstable(snapshot => snapshot);
 
   return {
-    totalPages,
-    currentPage,
+    values,
+    renderNavButton: props.children,
     components: {
       root: 'div',
     },
@@ -46,8 +38,8 @@ export const useTeachingPopoverCarouselNav_unstable = (
         role: 'tablist',
         tabIndex: 0,
         ...props,
-        children: rootChildren,
         ...focusableGroupAttr,
+        children: null,
       }),
       { elementType: 'div' },
     ),

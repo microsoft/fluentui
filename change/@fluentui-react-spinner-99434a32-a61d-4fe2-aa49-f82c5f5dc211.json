@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: move tabindex to the root slot of Spinner.",
+  "packageName": "@fluentui/react-spinner",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

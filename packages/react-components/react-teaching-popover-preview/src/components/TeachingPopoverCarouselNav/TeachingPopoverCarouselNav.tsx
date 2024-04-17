@@ -15,9 +15,6 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
 
     useTeachingPopoverCarouselNavStyles_unstable(state);
 
-    // ToDo: Re-add once out of preview
-    // useCustomStyleHook_unstable('useTeachingPopoverCarouselNavStyles_unstable')(state);
-
     return renderTeachingPopoverCarouselNav_unstable(state);
   },
 );

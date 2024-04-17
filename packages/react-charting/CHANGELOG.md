@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 07:25:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.45)
+
+Wed, 17 Apr 2024 07:25:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.44..@fluentui/react-charting_v5.19.45)
+
+### Patches
+
+- Add shape prop to ILegendsProps to pass to Overflow items ([PR #31057](https://github.com/microsoft/fluentui/pull/31057) by 167121109+skyfong@users.noreply.github.com)
 
 ## [5.19.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.44)
 
