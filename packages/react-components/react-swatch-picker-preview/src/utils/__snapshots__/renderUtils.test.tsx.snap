@@ -76,17 +76,23 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
     >
       <button
         aria-label="sea"
+        aria-selected="false"
         class="fui-ImageSwatch"
+        role="gridcell"
         style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg);"
       />
       <button
         aria-label="bridge"
+        aria-selected="false"
         class="fui-ImageSwatch"
+        role="gridcell"
         style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg);"
       />
       <button
         aria-label="park"
+        aria-selected="false"
         class="fui-ImageSwatch"
+        role="gridcell"
         style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg);"
       />
     </div>
@@ -243,17 +249,23 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
     >
       <button
         aria-label="sea"
+        aria-selected="false"
         class="fui-ImageSwatch"
+        role="gridcell"
         style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg);"
       />
       <button
         aria-label="bridge"
+        aria-selected="false"
         class="fui-ImageSwatch"
+        role="gridcell"
         style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg);"
       />
       <button
         aria-label="park"
+        aria-selected="false"
         class="fui-ImageSwatch"
+        role="gridcell"
         style="background-image: url(https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg);"
       />
     </div>
