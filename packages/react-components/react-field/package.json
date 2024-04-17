@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.57",
-    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-icons": "^2.0.235",
     "@fluentui/react-jsx-runtime": "^9.0.35",
     "@fluentui/react-label": "^9.1.67",
     "@fluentui/react-theme": "^9.1.19",
