@@ -146,7 +146,7 @@ export type TagGroupSlots = {
 // @public
 export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
-    isInsideTagPicker?: boolean;
+    role?: React_2.AriaRole;
 };
 
 // @public
