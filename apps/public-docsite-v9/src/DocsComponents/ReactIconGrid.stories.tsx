@@ -20,6 +20,7 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 import { FixedSizeGrid, type GridChildComponentProps } from 'react-window';
+import { iconMetadata } from './iconMetadata.stories';
 
 const ICON_CELL_WIDTH = 250;
 const UNSIZED_ICON_SIZE = 48;
@@ -137,6 +138,15 @@ const renderIconCell = (itemProps: GridChildComponentProps & { data: IconCellDat
   );
 };
 
+const nameMatch = (iconDisplayName: string, searchQuery: string) => {
+  const metaphors = iconMetadata[iconDisplayName.replace(/(Filled|Regular)$/, '')];
+
+  return (
+    iconDisplayName?.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 ||
+    metaphors?.some(metaphor => metaphor.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
+  );
+};
+
 const ReactIconGrid = () => {
   const classes = useClasses();
   const scrollBarWidth = useScrollbarWidth({ targetDocument: document }) ?? 0;
@@ -155,14 +165,13 @@ const ReactIconGrid = () => {
       ICONS_LIST.filter(icon => {
         if (size === 'Unsized') {
           return (
-            icon.displayName! &&
-            !/\d/.test(icon.displayName.toLowerCase()) &&
-            icon.displayName?.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
+            icon.displayName! && !/\d/.test(icon.displayName.toLowerCase()) && nameMatch(icon.displayName, searchQuery)
           );
         }
 
         return (
-          icon.displayName?.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1 &&
+          icon.displayName! &&
+          nameMatch(icon.displayName, searchQuery) &&
           icon.displayName?.indexOf(String(size)) !== -1
         );
       }),
