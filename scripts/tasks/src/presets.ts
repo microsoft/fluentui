@@ -151,7 +151,6 @@ export function preset() {
       'copy',
       condition('sass', () => metadata.hasSass()),
       parallel('swc:compile', 'generate-api'),
-      'swc:compile',
     );
   }).cached!();
 
