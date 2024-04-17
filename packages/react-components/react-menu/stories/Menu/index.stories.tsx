@@ -26,6 +26,7 @@ export { ControllingOpenAndClose } from './MenuControllingOpenAndClose.stories';
 export { GroupingItems } from './MenuGroupingItems.stories';
 export { VisualDividerOnly } from './MenuVisualDividerOnly.stories';
 export { CheckboxItems } from './MenuCheckboxItems.stories';
+export { SwitchItem } from './MenuSwitchItem.stories';
 export { RadioItems } from './MenuRadioItems.stories';
 export { ControlledCheckboxItems } from './MenuControlledCheckboxItems.stories';
 export { ControlledRadioItems } from './MenuControlledRadioItems.stories';
