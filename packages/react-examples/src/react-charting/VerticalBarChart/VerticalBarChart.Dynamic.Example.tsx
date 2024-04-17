@@ -11,7 +11,7 @@ export interface IExampleState {
   statusMessage: string;
   xAxisInnerPaddingEnabled: boolean;
   xAxisOuterPaddingEnabled: boolean;
-  barWidth: number | 'default' | 'auto';
+  barWidth: number | 'auto' | undefined;
   maxBarWidth: number;
   xAxisInnerPadding: number;
   xAxisOuterPadding: number;
@@ -63,7 +63,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
       statusMessage: '',
       xAxisInnerPaddingEnabled: false,
       xAxisOuterPaddingEnabled: false,
-      barWidth: 'default',
+      barWidth: undefined,
       maxBarWidth: 24,
       xAxisInnerPadding: 0.67,
       xAxisOuterPadding: 0,
@@ -109,7 +109,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
                 onChange={this._onBarWidthChange}
               />
             ) : (
-              <code>{this.state.barWidth}</code>
+              <code>{`${this.state.barWidth}`}</code>
             )}
           </Stack>
           <Stack horizontal verticalAlign="center">
@@ -229,13 +229,13 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
   }
 
   private _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    if (this.state.barWidth === 'default') {
+    if (typeof this.state.barWidth === 'undefined') {
       this.setState({ barWidth: 'auto' });
     } else if (this.state.barWidth === 'auto') {
       this.setState({ barWidth: this._prevBarWidth });
     } else {
       this._prevBarWidth = this.state.barWidth as number;
-      this.setState({ barWidth: 'default' });
+      this.setState({ barWidth: undefined });
     }
   };
   private _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
