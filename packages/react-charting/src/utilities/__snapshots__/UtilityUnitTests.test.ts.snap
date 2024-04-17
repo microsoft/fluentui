@@ -555,7 +555,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -563,13 +563,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(0.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       0
@@ -581,13 +581,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(20.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       20
@@ -599,13 +599,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(40.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       40
@@ -617,13 +617,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(60.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       60
@@ -635,13 +635,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(80.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       80
@@ -653,13 +653,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(100.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       100
@@ -678,7 +678,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -686,13 +686,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
     transform="translate(0.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="10"
     >
       0
@@ -704,13 +704,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
     transform="translate(20.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="10"
     >
       20
@@ -722,13 +722,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
     transform="translate(40.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="10"
     >
       40
@@ -740,13 +740,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
     transform="translate(60.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="10"
     >
       60
@@ -758,13 +758,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
     transform="translate(80.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="10"
     >
       80
@@ -776,13 +776,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for horizo
     transform="translate(100.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="10"
     >
       100
@@ -801,7 +801,7 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
   <path
     class="domain"
     d="M0.5,10V0.5H100.5V10"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -809,13 +809,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
     transform="translate(0.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       0
@@ -827,13 +827,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
     transform="translate(20.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       20
@@ -845,13 +845,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
     transform="translate(40.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       40
@@ -863,13 +863,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
     transform="translate(60.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       60
@@ -881,13 +881,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
     transform="translate(80.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       80
@@ -899,13 +899,13 @@ exports[`createNumericXAxis should render the x-axis labels correctly for specif
     transform="translate(100.5,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       100
@@ -958,7 +958,7 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -966,13 +966,13 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(17.741935483870968,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       X-axis label 1
@@ -984,13 +984,13 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(50,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       X-axis label 2
@@ -1002,13 +1002,13 @@ exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
     transform="translate(82.25806451612904,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       X-axis label 3
@@ -1027,7 +1027,7 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
   <path
     class="domain"
     d="M0.5,10V0.5H100.5V10"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1035,13 +1035,13 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
     transform="translate(17.741935483870968,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       X-axis label 1
@@ -1053,13 +1053,13 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
     transform="translate(50,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       X-axis label 2
@@ -1071,13 +1071,13 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
     transform="translate(82.25806451612904,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="10"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="15"
     >
       X-axis label 3
@@ -1096,7 +1096,7 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
   <path
     class="domain"
     d="M-6,92.5H0.5V8.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1104,12 +1104,12 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
     transform="translate(0,78)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       Y-axis label 1
@@ -1121,12 +1121,12 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       Y-axis label 2
@@ -1138,12 +1138,12 @@ exports[`createStringYAxis should render y-axis labels correctly for horizontal 
     transform="translate(0,22)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       Y-axis label 3
@@ -1161,8 +1161,8 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
 >
   <path
     class="domain"
-    d="M0,100.5H0.5V0.5H0"
-    stroke="#000"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1170,12 +1170,12 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
     transform="translate(0,83.33333333333334)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       Y-axis label 1
@@ -1187,12 +1187,12 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       Y-axis label 2
@@ -1204,12 +1204,12 @@ exports[`createStringYAxis should render y-axis labels correctly for other chart
     transform="translate(0,16.666666666666668)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       Y-axis label 3
@@ -1228,7 +1228,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <path
     class="domain"
     d="M6,92.5H0.5V8.5H6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1236,12 +1236,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,78)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       label 1
@@ -1253,12 +1253,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       label 2
@@ -1270,12 +1270,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,22)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       label 3
@@ -1294,7 +1294,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <path
     class="domain"
     d="M-6,92.5H0.5V8.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1302,12 +1302,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,78)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       Y-axis label 1
@@ -1319,12 +1319,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       Y-axis label 2
@@ -1336,12 +1336,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,22)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       Y-axis label 3
@@ -1360,7 +1360,7 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
   <path
     class="domain"
     d="M-6,92.5H0.5V8.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1368,12 +1368,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,78)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       label 1
@@ -1385,12 +1385,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       label 2
@@ -1402,12 +1402,12 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
     transform="translate(0,22)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       label 3
@@ -1425,8 +1425,8 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly f
 >
   <path
     class="domain"
-    d="M0,100.5H0.5V0.5H0"
-    stroke="#000"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1434,12 +1434,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly f
     transform="translate(0,78.57142857142857)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       label 1
@@ -1451,12 +1451,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly f
     transform="translate(0,50.00000000000001)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       label 2
@@ -1468,12 +1468,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly f
     transform="translate(0,21.428571428571427)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       label 3
@@ -1491,8 +1491,8 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
 >
   <path
     class="domain"
-    d="M0,100.5H0.5V0.5H0"
-    stroke="#000"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1500,12 +1500,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,83.33333333333334)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       label 1
@@ -1517,12 +1517,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       label 2
@@ -1534,12 +1534,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,16.666666666666668)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       label 3
@@ -1557,8 +1557,8 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
 >
   <path
     class="domain"
-    d="M0,100.5H0.5V0.5H0"
-    stroke="#000"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1566,12 +1566,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,83.33333333333334)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       Y-axis label 1
@@ -1583,12 +1583,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       Y-axis label 2
@@ -1600,12 +1600,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,16.666666666666668)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       Y-axis label 3
@@ -1623,8 +1623,8 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
 >
   <path
     class="domain"
-    d="M0,100.5H0.5V0.5H0"
-    stroke="#000"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1632,12 +1632,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,83.33333333333334)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       label 1
@@ -1649,12 +1649,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       label 2
@@ -1666,12 +1666,12 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
     transform="translate(0,16.666666666666668)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="0"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       label 3
@@ -1691,7 +1691,7 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1699,13 +1699,13 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     transform="translate(17.741935483870968,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1731,13 +1731,13 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     transform="translate(50,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1763,13 +1763,13 @@ exports[`createWrapOfXLabels should retain full x-axis labels when their length 
     transform="translate(82.25806451612904,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1803,7 +1803,7 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1811,13 +1811,13 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     transform="translate(17.741935483870968,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1843,13 +1843,13 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     transform="translate(50,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1875,13 +1875,13 @@ exports[`createWrapOfXLabels should truncate x-axis labels when their length exc
     transform="translate(82.25806451612904,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1914,7 +1914,7 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -1922,13 +1922,13 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
     transform="translate(17.741935483870968,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1956,13 +1956,13 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
     transform="translate(50,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -1990,13 +1990,13 @@ exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds 
     transform="translate(82.25806451612904,0)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       <tspan
@@ -2031,7 +2031,7 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2039,13 +2039,13 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       0
@@ -2057,13 +2057,13 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
     transform="translate(0,80.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       20
@@ -2075,13 +2075,13 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
     transform="translate(0,60.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       40
@@ -2093,13 +2093,13 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
     transform="translate(0,40.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       60
@@ -2111,13 +2111,13 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
     transform="translate(0,20.499999999999996)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       80
@@ -2129,13 +2129,13 @@ exports[`createYAxis should render y-axis labels correctly for horizontal bar ch
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       100
@@ -2154,7 +2154,7 @@ exports[`createYAxis should render y-axis labels correctly for other charts 1`] 
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2162,13 +2162,13 @@ exports[`createYAxis should render y-axis labels correctly for other charts 1`] 
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       0
@@ -2180,13 +2180,13 @@ exports[`createYAxis should render y-axis labels correctly for other charts 1`] 
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       25
@@ -2198,13 +2198,13 @@ exports[`createYAxis should render y-axis labels correctly for other charts 1`] 
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       50
@@ -2216,13 +2216,13 @@ exports[`createYAxis should render y-axis labels correctly for other charts 1`] 
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       75
@@ -2234,13 +2234,13 @@ exports[`createYAxis should render y-axis labels correctly for other charts 1`] 
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       100
@@ -2259,7 +2259,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <path
     class="domain"
     d="M6,100.5H0.5V0.5H6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2267,13 +2267,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       0
@@ -2285,13 +2285,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,80.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       20
@@ -2303,13 +2303,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,60.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       40
@@ -2321,13 +2321,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,40.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       60
@@ -2339,13 +2339,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,20.499999999999996)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       80
@@ -2357,13 +2357,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="18"
     >
       100
@@ -2382,7 +2382,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2390,13 +2390,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       ₹0
@@ -2408,13 +2408,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,80.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       ₹20
@@ -2426,13 +2426,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,60.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       ₹40
@@ -2444,13 +2444,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,40.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       ₹60
@@ -2462,13 +2462,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,20.499999999999996)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       ₹80
@@ -2480,13 +2480,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       ₹100
@@ -2505,7 +2505,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2513,13 +2513,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       0
@@ -2531,13 +2531,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       50
@@ -2549,13 +2549,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       100
@@ -2574,7 +2574,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2582,13 +2582,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       0
@@ -2600,13 +2600,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,80.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       2
@@ -2618,13 +2618,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,60.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       4
@@ -2636,13 +2636,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,40.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       6
@@ -2654,13 +2654,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,20.499999999999996)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       8
@@ -2672,13 +2672,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       10
@@ -2697,7 +2697,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2705,13 +2705,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       0
@@ -2723,13 +2723,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,80.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       20
@@ -2741,13 +2741,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,60.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       40
@@ -2759,13 +2759,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,40.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       60
@@ -2777,13 +2777,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,20.499999999999996)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       80
@@ -2795,13 +2795,13 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-11"
     >
       100
@@ -2820,7 +2820,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for cha
   <path
     class="domain"
     d="M-6,100.5H0.5V20.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2828,13 +2828,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for cha
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       0
@@ -2846,13 +2846,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for cha
     transform="translate(0,80.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       25
@@ -2864,13 +2864,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for cha
     transform="translate(0,60.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       50
@@ -2882,13 +2882,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for cha
     transform="translate(0,40.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       75
@@ -2900,13 +2900,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for cha
     transform="translate(0,20.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       100
@@ -2925,7 +2925,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
   <path
     class="domain"
     d="M6,100.5H0.5V0.5H6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -2933,13 +2933,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       0
@@ -2951,13 +2951,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       25
@@ -2969,13 +2969,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       50
@@ -2987,13 +2987,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       75
@@ -3005,13 +3005,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       100
@@ -3030,7 +3030,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3038,13 +3038,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       0
@@ -3056,13 +3056,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       25
@@ -3074,13 +3074,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       50
@@ -3092,13 +3092,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       75
@@ -3110,13 +3110,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       100
@@ -3135,7 +3135,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly when la
   <path
     class="domain"
     d="M6,100.5H0.5V0.5H6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3143,13 +3143,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly when la
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       0
@@ -3161,13 +3161,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly when la
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       25
@@ -3179,13 +3179,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly when la
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       50
@@ -3197,13 +3197,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly when la
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       75
@@ -3215,13 +3215,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly when la
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="12"
     >
       100
@@ -3240,7 +3240,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3248,13 +3248,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       $0
@@ -3266,13 +3266,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       $25
@@ -3284,13 +3284,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       $50
@@ -3302,13 +3302,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       $75
@@ -3320,13 +3320,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       $100
@@ -3345,7 +3345,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3353,13 +3353,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       0
@@ -3371,13 +3371,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,67.16666666666667)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       34
@@ -3389,13 +3389,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,33.833333333333336)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       68
@@ -3407,13 +3407,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       100
@@ -3432,7 +3432,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3440,13 +3440,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       0
@@ -3458,13 +3458,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       3
@@ -3476,13 +3476,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       6
@@ -3494,13 +3494,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       9
@@ -3512,13 +3512,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-12"
     >
       12
@@ -3537,7 +3537,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
   <path
     class="domain"
     d="M-6,100.5H0.5V0.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3545,13 +3545,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,100.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       0
@@ -3563,13 +3563,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,75.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       25
@@ -3581,13 +3581,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,50.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       50
@@ -3599,13 +3599,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,25.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       75
@@ -3617,13 +3617,13 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
     transform="translate(0,0.5)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="100"
     />
     <text
       aria-hidden="true"
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-5"
     >
       100
@@ -3747,7 +3747,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
   <path
     class="domain"
     d="M-6,92.5H0.5V8.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3755,12 +3755,12 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     transform="translate(0,78)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       text-align="start"
       x="-18"
     >
@@ -3785,12 +3785,12 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       text-align="start"
       x="-18"
     >
@@ -3815,12 +3815,12 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     transform="translate(0,22)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       text-align="start"
       x="-18"
     >
@@ -3853,7 +3853,7 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
   <path
     class="domain"
     d="M-6,92.5H0.5V8.5H-6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -3861,12 +3861,12 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
     transform="translate(0,78)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       <tspan
@@ -3891,12 +3891,12 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
     transform="translate(0,50)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       <tspan
@@ -3921,12 +3921,12 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
     transform="translate(0,22)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       x2="-6"
     />
     <text
       dy="0.32em"
-      fill="#000"
+      fill="currentColor"
       x="-18"
     >
       <tspan
@@ -4296,7 +4296,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
   <path
     class="domain"
     d="M0.5,6V0.5H100.5V6"
-    stroke="#000"
+    stroke="currentColor"
   />
   <g
     class="tick"
@@ -4304,13 +4304,13 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
     transform="translate(17.741935483870968,7.5)rotate(-45)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       X-axis label 1
@@ -4322,13 +4322,13 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
     transform="translate(50,7.5)rotate(-45)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       X-axis label 2
@@ -4340,13 +4340,13 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
     transform="translate(82.25806451612904,7.5)rotate(-45)"
   >
     <line
-      stroke="#000"
+      stroke="currentColor"
       y2="6"
     />
     <text
       aria-hidden="true"
       dy="0.71em"
-      fill="#000"
+      fill="currentColor"
       y="16"
     >
       X-axis label 3
