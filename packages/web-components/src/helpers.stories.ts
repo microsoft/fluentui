@@ -7,14 +7,12 @@ import type { AnnotatedStoryFn, Args, ComponentAnnotations, StoryAnnotations } f
  * @param template - The ViewTemplate to render
  * @returns - a function to bind a Storybook story
  */
-export function renderComponent<TArgs = Args>(
-  template: ViewTemplate,
-): (args: TArgs) => Element | DocumentFragment | null {
+export function renderComponent<TArgs = Args>(template: ViewTemplate): (args: TArgs) => Element | DocumentFragment {
   return function (args) {
     const storyFragment = new DocumentFragment();
     template.render(args, storyFragment);
     if (storyFragment.childElementCount === 1) {
-      return storyFragment.firstElementChild;
+      return storyFragment.firstElementChild!;
     }
     return storyFragment;
   };
