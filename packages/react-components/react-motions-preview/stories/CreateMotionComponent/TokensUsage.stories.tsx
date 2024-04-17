@@ -25,6 +25,7 @@ const useClasses = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     width: '100px',
     height: '100px',
+    forcedColorAdjust: 'none',
   },
   description: {
     ...shorthands.margin('5px'),

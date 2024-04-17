@@ -23,6 +23,7 @@ const useClasses = makeStyles({
   },
   item: {
     backgroundColor: tokens.colorBrandBackground,
+    ...shorthands.border('3px', 'solid', tokens.colorTransparentStroke),
     width: '100px',
     height: '100px',
   },
