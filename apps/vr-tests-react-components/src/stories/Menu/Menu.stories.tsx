@@ -186,24 +186,28 @@ storiesOf('Menu Converged - selection', module)
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
-  .addStory('switch', () => (
-    <Menu open checkedValues={{ demo: ['checked'] }}>
-      <MenuTrigger>
-        <button>Toggle menu</button>
-      </MenuTrigger>
+  .addStory(
+    'switch',
+    () => (
+      <Menu open checkedValues={{ demo: ['checked'] }}>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItemSwitch icon={<CutRegular />} name="demo" value="unchecked">
-            Unchecked
-          </MenuItemSwitch>
-          <MenuItemSwitch icon={<ClipboardPasteRegular />} name="demo" value="checked">
-            Checked
-          </MenuItemSwitch>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  ));
+        <MenuPopover>
+          <MenuList>
+            <MenuItemSwitch icon={<CutRegular />} name="demo" value="unchecked">
+              Unchecked
+            </MenuItemSwitch>
+            <MenuItemSwitch icon={<ClipboardPasteRegular />} name="demo" value="checked">
+              Checked
+            </MenuItemSwitch>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
+  );
 
 storiesOf('Menu Converged - selection groups', module)
   .addDecorator(story => (

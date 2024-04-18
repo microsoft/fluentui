@@ -7,6 +7,7 @@ import {
   MenuItemCheckbox,
   MenuItemLink,
   MenuItemRadio,
+  MenuItemSwitch,
   MenuList,
   MenuPopover,
   MenuSplitGroup,
@@ -56,6 +57,7 @@ export default {
     MenuPopover,
     MenuSplitGroup,
     MenuTrigger,
+    MenuItemSwitch,
   },
   parameters: {
     docs: {
