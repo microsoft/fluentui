@@ -4,7 +4,7 @@ import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { InfoLabel } from '@fluentui/react-infobutton';
+import { InfoLabel } from './InfoLabel';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);

@@ -28,6 +28,8 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
