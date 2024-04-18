@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update react-icons to 2.0.235",
-  "packageName": "@fluentui/react-toast",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

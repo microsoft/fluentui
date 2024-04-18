@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: Space and Enter should close TagPicker when selecting",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

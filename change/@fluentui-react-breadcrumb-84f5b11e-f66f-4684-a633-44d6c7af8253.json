@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update react-icons version to 2.0.235",
-  "packageName": "@fluentui/react-breadcrumb",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

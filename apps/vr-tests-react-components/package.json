@@ -77,6 +77,6 @@
     "tslib": "^2.1.0",
     "@fluentui/react-breadcrumb": "*",
     "@fluentui/react-rating": "*",
-    "@fluentui/react-search": ">=9.0.0-alpha"
+    "@fluentui/react-search": "*"
   }
 }

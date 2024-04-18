@@ -2,6 +2,27 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:53:49 GMT",
+      "tag": "@fluentui/react-card_v9.0.74",
+      "version": "9.0.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "82d336dbc8fa0185e3e069b5d690f6b5b3b3d529",
+            "comment": "fix: Card actions adopt custom high contrast mode colors"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-card_v9.0.73",
       "version": "9.0.73",
