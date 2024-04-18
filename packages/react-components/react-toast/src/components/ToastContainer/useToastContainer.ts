@@ -214,10 +214,7 @@ export const useToastContainer_unstable = (
       timer: Timer,
       root: 'div',
     },
-    timer: slot.always<TimerProps>(
-      { key: updateId, onTimeout: close, running, timeout: timerTimeout ?? -1 },
-      { elementType: Timer },
-    ),
+    timer: slot.always<TimerProps>({ onTimeout: close, running, timeout: timerTimeout ?? -1 }, { elementType: Timer }),
     root: slot.always(
       getIntrinsicElementProps('div', {
         // FIXME:

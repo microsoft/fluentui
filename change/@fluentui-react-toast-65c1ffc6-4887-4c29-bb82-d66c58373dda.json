@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use \"key\" properly in ToastContainer",
+  "packageName": "@fluentui/react-toast",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
