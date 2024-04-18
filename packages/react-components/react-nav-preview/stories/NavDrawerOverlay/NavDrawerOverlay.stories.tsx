@@ -3,35 +3,23 @@ import {
   NavCategory,
   NavCategoryItem,
   NavDrawer,
-  NavDrawerProps,
   NavItem,
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
-import { Button } from '../../../react-button/src/Button';
 
 const Folder = bundleIcon(Folder20Filled, Folder20Regular);
 
-export const NavDrawerOverlay = (props: Partial<NavDrawerProps>) => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-
+export const NavDrawerOverlay = () => {
   const someClickHandler = () => {
     console.log('someClickHandler');
   };
 
-  console.log(isOpen);
-
   return (
     <>
-      <NavDrawer
-        defaultSelectedValue={'10'}
-        defaultSelectedCategoryValue={'8'}
-        type={'overlay'}
-        open={isOpen}
-        onOpenChange={(_, { open }) => setIsOpen(open)}
-      >
+      <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} type={'overlay'} open={true}>
         <DrawerBody>
           <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
             First
@@ -72,9 +60,6 @@ export const NavDrawerOverlay = (props: Partial<NavDrawerProps>) => {
           </NavCategory>
         </DrawerBody>
       </NavDrawer>
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
-        Open
-      </Button>
     </>
   );
 };
