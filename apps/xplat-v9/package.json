@@ -24,13 +24,13 @@
     "@fluentui/react-platform-adapter-preview": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-theme": "*",
-    "@stylexjs/babel-plugin": "^0.5.1",
+    "@stylexjs/babel-plugin": "^0.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "^0.73.6",
     "react-native-macos": "^0.73.21",
     "react-native-windows": "^0.73.11",
-    "react-strict-dom": "0.0.3"
+    "react-strict-dom": "0.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
