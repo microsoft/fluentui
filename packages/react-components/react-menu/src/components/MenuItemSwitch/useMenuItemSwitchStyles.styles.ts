@@ -22,7 +22,7 @@ const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useSwitchIndicatorBaseClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusCircular,
-  border: '1px solid',
+  border: `${tokens.strokeWidthThin} solid`,
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',

@@ -11,7 +11,7 @@ export const SwitchItem = () => (
 
     <MenuPopover>
       <MenuList>
-        <MenuItem>New </MenuItem>
+        <MenuItem>New</MenuItem>
         <MenuItem>New Window</MenuItem>
         <MenuItem disabled>Open File</MenuItem>
         <MenuItem>Open Folder</MenuItem>
@@ -29,7 +29,7 @@ SwitchItem.parameters = {
       story: [
         'A variant of `MenuItemCheckbox` that displays selection using a switch design.',
         "This is commonly used for menus that dont't really have strong selection function but needs",
-        'to support and exceptional selected option.',
+        'to support an exceptional selected option.',
       ].join('\n'),
     },
   },
