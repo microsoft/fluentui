@@ -22,7 +22,7 @@
     "clean": "node ./build/clean.js dist",
     "doc": "api-extractor run --local",
     "doc:ci": "api-extractor run --local",
-    "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
+    "build": "node ./build/build",
     "dev": "tsc -p ./tsconfig.json -w",
     "tdd": "yarn dev & yarn test-chrome:watch",
     "prepare": "yarn clean && yarn build",
