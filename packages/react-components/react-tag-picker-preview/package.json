@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tag-picker-preview",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "FluentUI TagPicker component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

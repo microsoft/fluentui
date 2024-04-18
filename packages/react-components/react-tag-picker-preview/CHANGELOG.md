@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tag-picker-preview
 
-This log was last generated on Wed, 17 Apr 2024 21:54:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Apr 2024 12:43:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.3.1)
+
+Thu, 18 Apr 2024 12:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.3.0..@fluentui/react-tag-picker-preview_v0.3.1)
+
+### Patches
+
+- chore: ensure navigation between TagPickerGroup and TagPickerInput ([PR #31085](https://github.com/microsoft/fluentui/pull/31085) by bernardo.sunderhus@gmail.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.3.0)
 

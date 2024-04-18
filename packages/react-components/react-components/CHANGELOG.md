@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 17 Apr 2024 21:53:46 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Apr 2024 12:43:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.48.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.48.0)
+
+Thu, 18 Apr 2024 12:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.48.0..@fluentui/react-components_v9.48.0)
+
+### Patches
+
+- `@fluentui/react-tag-picker-preview`
+  - chore: ensure navigation between TagPickerGroup and TagPickerInput ([PR #31085](https://github.com/microsoft/fluentui/pull/31085) by bernardo.sunderhus@gmail.com)
 
 ## [9.48.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.48.0)
 
