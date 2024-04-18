@@ -13,7 +13,7 @@ const storyTemplate = html<ToggleButtonStoryArgs>`
     appearance="${x => x.appearance}"
     shape="${x => x.shape}"
     size="${x => x.size}"
-    ?checked="${x => x.checked}"
+    ?pressed="${x => x.pressed}"
     ?disabled="${x => x.disabled}"
     ?disabled-focusable="${x => x.disabledFocusable}"
     ?icon-only="${x => x.iconOnly}"
@@ -48,11 +48,11 @@ export default {
         type: 'select',
       },
     },
-    checked: {
+    pressed: {
       control: 'boolean',
       table: {
         type: {
-          summary: 'Sets the checked state of the component',
+          summary: 'Sets the pressed state of the component',
         },
         defaultValue: {
           summary: 'false',
@@ -97,12 +97,12 @@ export const Appearance = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button appearance="transparent">Transparent</fluent-toggle-button>
 `);
 
-export const Checked = renderComponent(html<ToggleButtonStoryArgs>`
-  <fluent-toggle-button checked>Default checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="primary">Primary checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="outline">Outline checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="subtle">Subtle checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="transparent">Transparent checked</fluent-toggle-button>
+export const Pressed = renderComponent(html<ToggleButtonStoryArgs>`
+  <fluent-toggle-button pressed>Default pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="primary">Primary pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="outline">Outline pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="subtle">Subtle pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="transparent">Transparent pressed</fluent-toggle-button>
 `);
 
 export const Shape = renderComponent(html<ToggleButtonStoryArgs>`

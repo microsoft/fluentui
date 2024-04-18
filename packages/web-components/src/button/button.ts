@@ -85,7 +85,7 @@ export class Button extends FASTElement {
    *
    * @internal
    */
-  private elementInternals: ElementInternals = this.attachInternals();
+  protected elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The associated form element.
@@ -283,21 +283,8 @@ export class Button extends FASTElement {
       return;
     }
 
-    switch (this.type) {
-      case ButtonType.submit: {
-        this.submitForm();
-        break;
-      }
-
-      case ButtonType.reset: {
-        this.elementInternals.form?.reset();
-        break;
-      }
-
-      default: {
-        return true;
-      }
-    }
+    this.press();
+    return true;
   }
 
   connectedCallback(): void {
@@ -385,12 +372,45 @@ export class Button extends FASTElement {
    * @public
    */
   public keypressHandler(e: KeyboardEvent): boolean | void {
+    if (e && this.disabledFocusable) {
+      e.stopImmediatePropagation();
+      return;
+    }
+
     if (e.key === keyEnter || e.key === keySpace) {
-      this.clickHandler(e);
+      this.press();
       return;
     }
 
     return true;
+  }
+
+  /**
+   * Presses the button.
+   *
+   * @public
+   */
+  protected press(): void {
+    switch (this.type) {
+      case ButtonType.reset: {
+        this.resetForm();
+        break;
+      }
+
+      case ButtonType.submit: {
+        this.submitForm();
+        break;
+      }
+    }
+  }
+
+  /**
+   * Resets the associated form.
+   *
+   * @public
+   */
+  public resetForm(): void {
+    this.elementInternals.form?.reset();
   }
 
   /**
