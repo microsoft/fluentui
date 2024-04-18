@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: modify arrow styles to create a proper triangle",
+  "packageName": "@fluentui/react-popover",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,5 +1,5 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { createArrowHeightStyles, createArrowStyles, createSlideStyles } from '@fluentui/react-positioning';
+import { createArrowStyles, createSlideStyles } from '@fluentui/react-positioning';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
@@ -57,9 +57,14 @@ const useStyles = makeStyles({
     ...shorthands.padding('20px'),
   },
 
-  smallArrow: createArrowHeightStyles(arrowHeights.small),
-  mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
-  arrow: createArrowStyles({ arrowHeight: undefined }),
+  smallArrow: createArrowStyles({
+    arrowHeight: arrowHeights.small,
+    backgroundColor: tokens.colorNeutralBackground1,
+  }),
+  mediumLargeArrow: createArrowStyles({
+    arrowHeight: arrowHeights.medium,
+    backgroundColor: tokens.colorNeutralBackground1,
+  }),
 });
 
 /**
@@ -79,10 +84,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
     state.root.className,
   );
 
-  state.arrowClassName = mergeClasses(
-    styles.arrow,
-    state.size === 'small' ? styles.smallArrow : styles.mediumLargeArrow,
-  );
+  state.arrowClassName = mergeClasses(state.size === 'small' ? styles.smallArrow : styles.mediumLargeArrow);
 
   return state;
 };

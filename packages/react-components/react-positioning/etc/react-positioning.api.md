@@ -17,20 +17,13 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
 // @internal
-export function createArrowHeightStyles(arrowHeight: number): {
-    width: string;
-    height: string;
-};
-
-// @internal
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
 
 // @internal
 export type CreateArrowStylesOptions = {
     arrowHeight: number | undefined;
     borderWidth?: GriffelStyle['borderBottomWidth'];
-    borderStyle?: GriffelStyle['borderBottomStyle'];
-    borderColor?: GriffelStyle['borderBottomColor'];
+    backgroundColor?: React_2.CSSProperties['backgroundColor'];
 };
 
 // @public
