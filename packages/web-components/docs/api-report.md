@@ -465,53 +465,50 @@ export const borderRadiusSmall = "var(--borderRadiusSmall)";
 // @public (undocumented)
 export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedButton" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
 //
 // @public
-export class Button extends FormAssociatedButton {
-    appearance?: ButtonAppearance | undefined;
+export class Button extends FASTElement {
+    constructor();
+    appearance?: ButtonAppearance;
     autofocus: boolean;
-    // @internal (undocumented)
+    // @internal
+    clickHandler(e: Event): boolean | void;
+    // (undocumented)
     connectedCallback(): void;
-    // (undocumented)
-    control: HTMLButtonElement;
     defaultSlottedContent: HTMLElement[];
-    disabledFocusable?: boolean;
-    // (undocumented)
-    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    formaction: string;
-    // (undocumented)
-    protected formactionChanged(): void;
-    formenctype: string;
-    // (undocumented)
-    protected formenctypeChanged(): void;
-    formId: string;
-    formmethod: string;
-    // (undocumented)
-    protected formmethodChanged(): void;
-    formnovalidate: boolean;
-    // (undocumented)
-    protected formnovalidateChanged(): void;
-    formtarget: '_self' | '_blank' | '_parent' | '_top';
-    // (undocumented)
-    protected formtargetChanged(): void;
+    disabled?: boolean;
+    disabledFocusable: boolean;
+    // @internal
+    disabledFocusableChanged(previous: boolean, next: boolean): void;
+    // @internal
+    protected elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    formAction?: string;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    formEnctype?: string;
+    formMethod?: string;
+    formNoValidate?: boolean;
+    formTarget?: ButtonFormTarget;
     iconOnly: boolean;
-    shape?: ButtonShape | undefined;
+    keypressHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<Node>;
+    name?: string;
+    protected press(): void;
+    resetForm(): void;
+    shape?: ButtonShape;
     size?: ButtonSize;
     type: ButtonType;
-    // (undocumented)
-    protected typeChanged(previous: ButtonType | undefined, next: ButtonType): void;
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@fluentui/web-components" does not have an export "FormAssociated"
-    //
-    // (undocumented)
-    validate(): void;
+    // @internal
+    typeChanged(previous: ButtonType, next: ButtonType): void;
+    value?: string;
 }
 
-// @internal
-export interface Button extends StartEnd, DelegatesARIAButton {
+// @internal (undocumented)
+export interface Button extends StartEnd {
 }
 
 // @public
@@ -526,8 +523,19 @@ export const ButtonAppearance: {
 // @public
 export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
 
-// @public (undocumented)
+// @public
 export const ButtonDefinition: FASTElementDefinition<typeof Button>;
+
+// @public
+export const ButtonFormTarget: {
+    readonly blank: "_blank";
+    readonly self: "_self";
+    readonly parent: "_parent";
+    readonly top: "_top";
+};
+
+// @public
+export type ButtonFormTarget = ValuesOf<typeof ButtonFormTarget>;
 
 // @public
 type ButtonOptions = StartEndOptions<Button>;
@@ -556,7 +564,7 @@ export const ButtonSize: {
 // @public
 export type ButtonSize = ValuesOf<typeof ButtonSize>;
 
-// @public (undocumented)
+// @public
 export const ButtonTemplate: ElementViewTemplate<Button>;
 
 // @public
@@ -1683,20 +1691,6 @@ export const curveLinear = "var(--curveLinear)";
 // @public
 export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "DelegatesARIAButton" because one of its declarations is marked as @internal
-//
-// @public
-export class DelegatesARIAButton {
-    ariaExpanded: 'true' | 'false' | string | null;
-    ariaPressed: 'true' | 'false' | 'mixed' | string | null;
-}
-
-// Warning: (ae-forgotten-export) The symbol "ARIAGlobalStatesAndProperties" needs to be exported by the entry point index.d.ts
-//
-// @internal
-export interface DelegatesARIAButton extends ARIAGlobalStatesAndProperties {
-}
-
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "DelegatesARIALink" because one of its declarations is marked as @internal
 //
 // @public
@@ -1704,6 +1698,8 @@ export class DelegatesARIALink {
     ariaExpanded: 'true' | 'false' | string | null;
 }
 
+// Warning: (ae-forgotten-export) The symbol "ARIAGlobalStatesAndProperties" needs to be exported by the entry point index.d.ts
+//
 // @internal
 export interface DelegatesARIALink extends ARIAGlobalStatesAndProperties {
 }
@@ -2209,15 +2205,14 @@ export const MenuTemplate: ElementViewTemplate<Menu>;
 // Warning: (ae-forgotten-export) The symbol "BaseProgress" needs to be exported by the entry point index.d.ts
 //
 // @public
-class ProgressBar_2 extends BaseProgress {
+export class ProgressBar extends BaseProgress {
     shape?: ProgressBarShape;
     thickness?: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
 }
-export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
 
 // @public
 export const ProgressBarShape: {
@@ -2232,7 +2227,7 @@ export type ProgressBarShape = ValuesOf<typeof ProgressBarShape>;
 export const ProgressBarStyles: ElementStyles;
 
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
 
 // @public
 export const ProgressBarThickness: {
@@ -2255,8 +2250,8 @@ export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationSt
 
 // @public
 export type ProgressOptions = {
-    indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar_2>;
-    indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar_2>;
+    indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
+    indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
 };
 
 // Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
@@ -2624,7 +2619,7 @@ export const strokeWidthThickest = "var(--strokeWidthThickest)";
 // @public (undocumented)
 export const strokeWidthThin = "var(--strokeWidthThin)";
 
-// @public (undocumented)
+// @public
 const styles: ElementStyles;
 export { styles as ButtonStyles }
 export { styles as MenuButtonStyles }
@@ -2942,27 +2937,16 @@ export type TextWeight = ValuesOf<typeof TextWeight>;
 
 // @public
 export class ToggleButton extends Button {
-    constructor();
-    checked: boolean;
-    checkedAttribute: boolean;
-    // (undocumented)
-    protected checkedAttributeChanged(): void;
-    // (undocumented)
-    protected checkedChanged(prev: boolean | undefined, next: boolean): void;
     // (undocumented)
     connectedCallback(): void;
-    currentChecked: boolean;
-    // (undocumented)
-    currentCheckedChanged(prev: boolean | undefined, next: boolean): void;
-    // (undocumented)
-    defaultChecked: boolean;
-    // (undocumented)
-    protected defaultCheckedChanged(): void;
-    protected dirtyChecked: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal (undocumented)
-    protected handleToggleButtonClick: (e: MouseEvent) => void;
+    indeterminate?: boolean;
+    // @internal
+    protected indeterminateChanged(): void;
+    // @override
+    protected press(): void;
+    pressed: boolean;
+    // @internal
+    protected pressedChanged(): void;
 }
 
 // @public
@@ -3000,7 +2984,7 @@ export const ToggleButtonSize: {
 // @public
 export type ToggleButtonSize = ValuesOf<typeof ToggleButtonSize>;
 
-// @public (undocumented)
+// @public
 export const ToggleButtonStyles: ElementStyles;
 
 // @public
