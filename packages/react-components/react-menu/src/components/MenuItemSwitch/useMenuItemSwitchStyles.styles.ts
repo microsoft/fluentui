@@ -29,7 +29,6 @@ const useSwitchIndicatorBaseClassName = makeResetStyles({
   flexShrink: 0,
   fontSize: `${thumbSize}px`,
   height: `${trackHeight}px`,
-  pointerEvents: 'none',
   transitionDuration: tokens.durationNormal,
   transitionTimingFunction: tokens.curveEasyEase,
   transitionProperty: 'background, border, color',
