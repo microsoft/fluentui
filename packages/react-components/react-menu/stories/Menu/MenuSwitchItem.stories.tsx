@@ -27,7 +27,7 @@ SwitchItem.parameters = {
     description: {
       story: [
         'A variant of `MenuItemCheckbox` that displays selection using a switch design.',
-        "This is commonly used for menus that dont't really have strong selection function but needs",
+        "This is commonly used for menus that don't really have strong selection function but needs",
         'to support an exceptional selected option.',
       ].join('\n'),
     },

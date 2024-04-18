@@ -22,8 +22,6 @@ describe('MenuItemSwitch', () => {
         {
           props: {
             icon: 'Test Icon',
-            checkmark: 'Test Checkmark',
-            submenuIndicator: 'Test Submenu Indicator',
             content: 'Test Content',
             secondaryContent: 'Test Secondary Content',
           },

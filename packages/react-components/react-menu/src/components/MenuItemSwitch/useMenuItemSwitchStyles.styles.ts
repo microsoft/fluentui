@@ -22,7 +22,7 @@ const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useSwitchIndicatorBaseClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusCircular,
-  border: `${tokens.strokeWidthThin} solid`,
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',
@@ -41,15 +41,14 @@ const useSwitchIndicatorBaseClassName = makeResetStyles({
   },
 
   color: tokens.colorNeutralStrokeAccessible,
-  ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
   ':hover': {
     color: tokens.colorNeutralStrokeAccessibleHover,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
+    borderColor: tokens.colorNeutralStrokeAccessibleHover,
   },
 
   ':hover:active': {
     color: tokens.colorNeutralStrokeAccessiblePressed,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
+    borderColor: tokens.colorNeutralStrokeAccessiblePressed,
   },
   [`& .${circleFilledClassName}`]: {
     transitionDuration: tokens.durationNormal,

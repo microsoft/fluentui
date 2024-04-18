@@ -11,7 +11,7 @@ export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'seco
  * MenuItemSwitch Props
  */
 export type MenuItemSwitchProps = ComponentProps<MenuItemSwitchSlots> &
-  Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'> & {};
+  Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'>;
 
 /**
  * State used in rendering MenuItemSwitch
