@@ -38,7 +38,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
         }),
         onNavigation: useEventCallback((event, data) => {
           props.onNavigation?.(event, data);
-          if (!event.isDefaultPrevented()) {
+          if (!event.defaultPrevented) {
             navigation.navigate(data);
           }
         }),

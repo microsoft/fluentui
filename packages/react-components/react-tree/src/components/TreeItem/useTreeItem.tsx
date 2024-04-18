@@ -9,10 +9,11 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
-import { Space } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowUp, Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
 import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
+import { createSyntheticKeyboardEvent } from '../../utils/createSyntheticKeyboardEvent';
 
 /**
  * Create the state required to render TreeItem.
@@ -59,6 +60,50 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const getNextOpen = () => (itemType === 'branch' ? !open : open);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
+
+  // This callback ref should be called before the element is removed from the document
+  // If the component is unmounted while it is the active element - do not lose focus
+  const handleFocusedUnmountRef = React.useMemo(() => {
+    let el: HTMLDivElement | null = null;
+
+    return (e: HTMLDivElement | null) => {
+      if (e) {
+        el = e;
+      } else {
+        const containsActiveElement = () => {
+          return el?.ownerDocument.activeElement && elementContains(el, el.ownerDocument.activeElement);
+        };
+
+        if (el && containsActiveElement()) {
+          // Attempt 1 - move focus to next tree item
+          requestTreeResponse({
+            requestType: 'navigate',
+            type: ArrowDown,
+            target: el,
+            itemType,
+            parentValue,
+            value,
+            event: createSyntheticKeyboardEvent(ArrowDown, el),
+          });
+
+          if (containsActiveElement()) {
+            // Attempt 2 - move focus to previous tree item
+            requestTreeResponse({
+              requestType: 'navigate',
+              type: ArrowUp,
+              target: el,
+              itemType,
+              parentValue,
+              value,
+              event: createSyntheticKeyboardEvent(ArrowDown, el),
+            });
+          }
+        }
+
+        el = null;
+      }
+    };
+  }, [itemType, parentValue, value, requestTreeResponse]);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -236,7 +281,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
         ...rest,
-        ref: useMergedRefs(ref, treeItemRef),
+        ref: useMergedRefs(ref, treeItemRef, handleFocusedUnmountRef),
         role: 'treeitem',
         'aria-level': level,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
