@@ -776,6 +776,7 @@ import { renderTeachingPopoverCarouselCard_unstable } from '@fluentui/react-teac
 import { renderTeachingPopoverCarouselFooter_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNav_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselPageCount_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverFooter_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverHeader_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverSurface_unstable } from '@fluentui/react-teaching-popover';
@@ -1016,6 +1017,12 @@ import { teachingPopoverCarouselNavClassNames } from '@fluentui/react-teaching-p
 import { TeachingPopoverCarouselNavProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselNavSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselNavState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselPageCountClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountRenderFunction } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountState } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselState } from '@fluentui/react-teaching-popover';
@@ -1505,6 +1512,8 @@ import { useTeachingPopoverCarouselNav_unstable } from '@fluentui/react-teaching
 import { useTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselNavButtonStyles_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselNavStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselPageCount_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselPageCountStyles_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselStyles_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverFooter_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverHeader_unstable } from '@fluentui/react-teaching-popover';
@@ -3110,6 +3119,8 @@ export { renderTeachingPopoverCarouselNav_unstable }
 
 export { renderTeachingPopoverCarouselNavButton_unstable }
 
+export { renderTeachingPopoverCarouselPageCount_unstable }
+
 export { renderTeachingPopoverFooter_unstable }
 
 export { renderTeachingPopoverHeader_unstable }
@@ -3589,6 +3600,18 @@ export { TeachingPopoverCarouselNavProps }
 export { TeachingPopoverCarouselNavSlots }
 
 export { TeachingPopoverCarouselNavState }
+
+export { TeachingPopoverCarouselPageCount }
+
+export { teachingPopoverCarouselPageCountClassNames }
+
+export { TeachingPopoverCarouselPageCountProps }
+
+export { TeachingPopoverCarouselPageCountRenderFunction }
+
+export { TeachingPopoverCarouselPageCountSlots }
+
+export { TeachingPopoverCarouselPageCountState }
 
 export { TeachingPopoverCarouselProps }
 
@@ -4567,6 +4590,10 @@ export { useTeachingPopoverCarouselNavButton_unstable }
 export { useTeachingPopoverCarouselNavButtonStyles_unstable }
 
 export { useTeachingPopoverCarouselNavStyles_unstable }
+
+export { useTeachingPopoverCarouselPageCount_unstable }
+
+export { useTeachingPopoverCarouselPageCountStyles_unstable }
 
 export { useTeachingPopoverCarouselStyles_unstable }
 
