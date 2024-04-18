@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 17 Apr 2024 07:25:41 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Apr 2024 07:27:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.20.0)
+
+Thu, 18 Apr 2024 07:27:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.45..@fluentui/react-charting_v5.20.0)
+
+### Minor changes
+
+- Update d3 dependencies to latest ES5 versions and fix only the major version of the dependency ([PR #30913](https://github.com/microsoft/fluentui/pull/30913) by 98592573+AtishayMsft@users.noreply.github.com)
+
+### Patches
+
+- Fix wrong aria label placement in SparklineChart ([PR #30952](https://github.com/microsoft/fluentui/pull/30952) by shubhabrata08@gmail.com)
 
 ## [5.19.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.45)
 
