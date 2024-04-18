@@ -29,11 +29,11 @@ steps:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
   - script: |
-      NX_DAEMON=false yarn nx run-many -t build -p 'packages/react-components/*' --incremental --parallel 8
+      FLUENT_USE_INCREMENTAL=true NX_DAEMON=false yarn nx run-many -t build -p 'packages/react-components/*' --incremental --parallel 8
     displayName: nx:build
 
   - script: |
-      NX_DAEMON=false yarn nx run-many -t type-check -p 'packages/react-components/*' --incremental --parallel 8
+      FLUENT_USE_INCREMENTAL=true NX_DAEMON=false yarn nx run-many -t type-check -p 'packages/react-components/*' --incremental --parallel 8
     displayName: nx:type-check
 
   - template: cleanup.yml
