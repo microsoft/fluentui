@@ -14,6 +14,7 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
+  const { type = 'inline' } = props;
   const focusAttributes = useArrowNavigationGroup({ axis: 'vertical', circular: true });
   const baseDrawerState = useInlineDrawer_unstable(props, ref);
   const navState = useNav_unstable(
@@ -26,6 +27,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
   );
 
   return {
+    type,
     ...baseDrawerState,
     ...navState,
   };

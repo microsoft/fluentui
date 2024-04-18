@@ -1,12 +1,16 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { InlineDrawerSlots, useInlineDrawerStyles_unstable } from '@fluentui/react-drawer';
+import {
+  InlineDrawerSlots,
+  InlineDrawerState,
+  useInlineDrawerStyles_unstable,
+  useOverlayDrawerStyles_unstable,
+} from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerState } from './NavDrawer.types';
+import { OverlayDrawerState } from '@fluentui/react-drawer';
 
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
   root: 'fui-NavDrawer',
-  // TODO: add class names for all slots on NavDrawerSlots.
-  // Should be of the form `<slotName>: 'fui-NavDrawer__<slotName>`
 };
 
 /**
@@ -25,9 +29,14 @@ export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerSta
   const styles = useStyles();
   state.root.className = mergeClasses(navDrawerClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  switch (state.type) {
+    case 'overlay':
+      useOverlayDrawerStyles_unstable(state as unknown as OverlayDrawerState);
+      break;
+    case 'inline':
+      useInlineDrawerStyles_unstable(state as unknown as InlineDrawerState);
+      break;
+  }
 
-  useInlineDrawerStyles_unstable(state);
   return state;
 };
