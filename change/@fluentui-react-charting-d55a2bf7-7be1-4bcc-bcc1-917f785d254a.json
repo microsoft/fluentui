@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add data-is-focusable to root node text component",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
