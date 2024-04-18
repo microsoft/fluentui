@@ -200,14 +200,14 @@ export type MenuItemSlots = {
 // @public (undocumented)
 export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
 
-// @public
+// @public (undocumented)
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
 
 // @public (undocumented)
 export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots>;
 
 // @public
-export type MenuItemSwitchProps = ComponentProps<MenuItemSwitchSlots> & Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'> & {};
+export type MenuItemSwitchProps = ComponentProps<MenuItemSwitchSlots> & Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'>;
 
 // @public (undocumented)
 export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon'> & {
