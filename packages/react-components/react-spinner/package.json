@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-spinner",
-  "version": "9.4.3",
+  "version": "9.4.4",
   "description": "Spinner component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

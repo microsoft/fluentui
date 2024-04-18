@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Dialog scrolls the whole surface on small screens",
-  "packageName": "@fluentui/react-dialog",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

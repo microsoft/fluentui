@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: adds e2e tests",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

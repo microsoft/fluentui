@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-rating
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.3)
+
+Wed, 17 Apr 2024 21:53:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.2..@fluentui/react-rating_v9.0.3)
+
+### Patches
+
+- chore: Update RatingDisplay value margin-left tokens. ([PR #31034](https://github.com/microsoft/fluentui/pull/31034) by ololubek@microsoft.com)
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.2)
 

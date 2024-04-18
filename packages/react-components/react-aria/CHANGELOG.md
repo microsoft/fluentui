@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.4)
+
+Wed, 17 Apr 2024 21:53:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.3..@fluentui/react-aria_v9.10.4)
+
+### Patches
+
+- fix: End key should move activeOption  ([PR #30864](https://github.com/microsoft/fluentui/pull/30864) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.3)
 

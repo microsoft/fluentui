@@ -2,6 +2,33 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:53:56 GMT",
+      "tag": "@fluentui/react-rating_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "4f964dd8cc941caa781079ec29e39804f2d7cd7b",
+            "comment": "chore: Update RatingDisplay value margin-left tokens."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-rating_v9.0.2",
       "version": "9.0.2",

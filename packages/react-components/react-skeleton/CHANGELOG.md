@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-skeleton
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:54:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.59)
+
+Wed, 17 Apr 2024 21:54:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.58..@fluentui/react-skeleton_v9.0.59)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.61 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.0.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.58)
 

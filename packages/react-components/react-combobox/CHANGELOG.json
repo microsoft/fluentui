@@ -2,6 +2,77 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:53:49 GMT",
+      "tag": "@fluentui/react-combobox_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67",
+            "comment": "fix: Inline Listbox should render on top of relatively positioned elements."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "5ea7d939f4ad658b3bceb64fbfad02921c07ca53",
+            "comment": "bugfix: removes freeform prop that was wrongly introduced by PR #30947 "
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ce3b2fceb9e600aa9a69f5688821461fb73070be",
+            "comment": "fix: End key should move activeOption"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3b74cf279cd96156c9d280a103d199c99bc46887",
+            "comment": "chore: fix useListBoxSlot signature to accept more triggerRef types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bcdf0efb4a6f111faab4ecb09cfab89878069727",
+            "comment": "feature: export internal hooks into API"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-aria to v9.10.4",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.61",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.4.20",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Apr 2024 12:08:07 GMT",
       "tag": "@fluentui/react-combobox_v9.9.6",
       "version": "9.9.6",

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 04 Apr 2024 12:08:07 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.49)
+
+Wed, 17 Apr 2024 21:53:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.48..@fluentui/react-accordion_v9.3.49)
+
+### Patches
+
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
+- Bump @fluentui/react-aria to v9.10.4 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.48)
 

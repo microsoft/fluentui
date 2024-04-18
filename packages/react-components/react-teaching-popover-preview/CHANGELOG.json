@@ -2,6 +2,53 @@
   "name": "@fluentui/react-teaching-popover-preview",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:54:04 GMT",
+      "tag": "@fluentui/react-teaching-popover-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "6441cd2b0654e1b1404c5c3bcea59c7c66d9617a",
+            "comment": "feat: Ensure all sub components are overridable and enable better string pass through via slots"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "comment": "Bump @fluentui/react-popover to v9.9.4",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.75",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "comment": "Bump @fluentui/react-aria to v9.10.4",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-teaching-popover-preview_v0.2.5",
       "version": "0.2.5",

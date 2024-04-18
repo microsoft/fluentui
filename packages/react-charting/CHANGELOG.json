@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 18 Apr 2024 07:27:08 GMT",
+      "tag": "@fluentui/react-charting_v5.20.0",
+      "version": "5.20.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d4bd6428dc2f52948e668f1f1410972b6c5cf62",
+            "comment": "Fix wrong aria label placement in SparklineChart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9f623be6d4a4551725206a78764f7b0df87df98b",
+            "comment": "Update d3 dependencies to latest ES5 versions and fix only the major version of the dependency"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Apr 2024 07:25:41 GMT",
       "tag": "@fluentui/react-charting_v5.19.45",
       "version": "5.19.45",

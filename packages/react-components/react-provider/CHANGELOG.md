@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Fri, 05 Apr 2024 14:17:26 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.19)
+
+Wed, 17 Apr 2024 21:53:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.13.18..@fluentui/react-provider_v9.13.19)
+
+### Patches
+
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.13.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.18)
 

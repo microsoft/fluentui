@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:54:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.78)
+
+Wed, 17 Apr 2024 21:54:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.77..@fluentui/react-toolbar_v9.1.78)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.75 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-radio to v9.2.15 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.1.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.77)
 
