@@ -35,7 +35,10 @@
       "@fluentui/react-breadcrumb-stories": ["packages/react-components/react-breadcrumb/stories/src/index.ts"],
       "@fluentui/react-button": ["packages/react-components/react-button/library/src/index.ts"],
       "@fluentui/react-button-stories": ["packages/react-components/react-button/stories/src/index.ts"],
-      "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/src/index.ts"],
+      "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/library/src/index.ts"],
+      "@fluentui/react-calendar-compat-stories": [
+        "packages/react-components/react-calendar-compat/stories/src/index.ts"
+      ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/library/src/index.ts"],
@@ -83,7 +86,8 @@
       "@fluentui/react-message-bar-stories": ["packages/react-components/react-message-bar/stories/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
-      "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"],
+      "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/library/src/index.ts"],
+      "@fluentui/react-motion-preview-stories": ["packages/react-components/react-motion-preview/stories/src/index.ts"],
       "@fluentui/react-motions-preview": ["packages/react-components/react-motions-preview/src/index.ts"],
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/library/src/index.ts"],

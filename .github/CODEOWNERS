@@ -286,13 +286,15 @@ packages/react-components/react-search/library @microsoft/cxe-red @smhigley
 packages/react-components/react-search/stories @microsoft/cxe-red @smhigley
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
-packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-motion-preview/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-motion-preview/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar/library @microsoft/teams-prg
 packages/react-components/react-message-bar/stories @microsoft/teams-prg
 packages/react-components/react-rating/library @microsoft/cxe-red @tomi-msft
 packages/react-components/react-rating/stories @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
-packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
+packages/react-components/react-calendar-compat/library @microsoft/cxe-red @sopranopillow
+packages/react-components/react-calendar-compat/stories @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel/library @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel/stories @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
