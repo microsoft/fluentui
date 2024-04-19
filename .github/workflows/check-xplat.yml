@@ -13,7 +13,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4.0.1
         with:
-          node-version: '18'
+          # TODO: Temporarily downgrade until tooling correctly handles
+          # the security fixes in 18.20.2
+          node-version: '18.20.1'
           cache: yarn
       - name: Install npm dependencies
         run: yarn --frozen-lockfile --ignore-platform
