@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/keyboard-key",
-  "version": "0.4.13",
+  "version": "0.4.16",
   "description": "A simple utility for determining the KeyboardEvent.key property from a keyboard event.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "bundle-size": "monosize measure",
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

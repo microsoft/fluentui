@@ -177,9 +177,9 @@ describe(`utils`, () => {
         "// @ts-nocheck
 
         function registerInMemoryTsTranspilation(){
-        const { registerTsProject } = require('nx/src/utils/register');
+        const { registerTsProject } = require('@nx/js/src/internal');
         const { joinPathFragments } = require('@nx/devkit');
-        registerTsProject(joinPathFragments(__dirname, '..'), 'tsconfig.lib.json');
+        registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
         }
 
         registerInMemoryTsTranspilation();
@@ -224,6 +224,16 @@ describe(`utils`, () => {
       expect(first.startsWith('../../packages/react-')).toBeTruthy();
 
       expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
+    });
+
+    it(`should generate storybook stories string array of glob based on package.json#dependencies field without packages specified within 'excludeStoriesInsertionFromPackages'`, () => {
+      const actual = getPackageStoriesGlob({
+        packageName: '@fluentui/react-components',
+        callerPath: path.dirname(__dirname),
+        excludeStoriesInsertionFromPackages: ['@fluentui/react-text'],
+      });
+
+      expect(actual).not.toContain(expect.stringContaining('/react-text/stories/'));
     });
   });
 

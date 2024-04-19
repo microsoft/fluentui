@@ -21,7 +21,9 @@ export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Re
     ctx => (ctx.focusMode === 'cell' || ctx.focusMode === 'composite') && focusMode !== 'none',
   );
   const resizableColumns = useDataGridContext_unstable(ctx => ctx.resizableColumns);
-  const columnSizing = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable);
+  const getTableCellProps = useDataGridContext_unstable(ctx => {
+    return ctx.columnSizing_unstable.getTableCellProps;
+  });
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
   return useTableCell_unstable(
     {
@@ -29,7 +31,7 @@ export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Re
       role: 'gridcell',
       ...(focusMode === 'group' && focusableGroupAttr),
       tabIndex: tabbable ? 0 : undefined,
-      ...(resizableColumns ? columnSizing.getTableCellProps(columnId) : {}),
+      ...(resizableColumns ? getTableCellProps(columnId) : {}),
       ...props,
     },
     ref,

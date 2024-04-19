@@ -1,0 +1,272 @@
+{
+  "name": "@fluentui/react-tag-picker-preview",
+  "entries": [
+    {
+      "date": "Thu, 18 Apr 2024 12:43:14 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "5c4fa80c89e0b397d4564f98d98001119a520943",
+            "comment": "chore: ensure navigation between TagPickerGroup and TagPickerInput"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 21:54:00 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "4d2318810f29c604f690d9b2c4e7d20ef895e603",
+            "comment": "chore: adds README file"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "68181d142465f8f9cbac158f211efec818d44f19",
+            "comment": "chore: adds e2e tests"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "a66d31f1528f0f0cb5163d4b6332b0a51855d231",
+            "comment": "chore: adds bundle-size"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "0b3f2855a1536582330be1c707685e7b6b021f6d",
+            "comment": "chore: adds minimal Spec.md"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "5ea7d939f4ad658b3bceb64fbfad02921c07ca53",
+            "comment": "chore: removes disabled property from ComboboxBaseProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "1281fb465494edbdaaf0bf13df4d311f215e8b20",
+            "comment": "bugfix: Space and Enter should close TagPicker when selecting"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "bcdf0efb4a6f111faab4ecb09cfab89878069727",
+            "comment": "chore: adopt internal hooks provided by @fluentui/react-combobox"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "889bb44b63dc2910882aee8648cbf8a9a14c9d7e",
+            "comment": "chore: ensure Click and Enter open/close popover properly"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "a622cf20a40a1472ef4d5f797c1191ba8c871a9c",
+            "comment": "chore: removes unused props"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "b25f71517974aa5df51b783dd245d1ed58f00346",
+            "comment": "feature:adds support for Field component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "8968b58b9ee3ba4b27355ad75608b6768c7f28c2",
+            "comment": "feat: adds inline property"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "4d91639b4fedcc3f09105192be6ef2d2f1e131cd",
+            "comment": "feature: adds support for InteractionTag"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "effdc424a992cc7d9882ce3bb947f8054e10b0e1",
+            "comment": "feat: TagPickerInput input positioning"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-portal to v9.4.20",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-aria to v9.10.4",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-combobox to v9.10.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-tags to v9.3.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-field to v9.1.61",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Apr 2024 12:08:08 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "8afa3612153320a278065a7799e4b5ca5b5073a0",
+            "comment": "feature: adds freeform support for TagPicker"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-combobox to v9.9.6",
+            "commit": "8afa3612153320a278065a7799e4b5ca5b5073a0"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "fd38bbcbb31e230c19a9c552fa03017945089b9d",
+            "comment": "feat: adds TagPickerOptionGroup component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Apr 2024 09:48:01 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "39be3880226fd063eaeb69574bf2f646fbb785c9",
+            "comment": "bugfix: removes errouneous combobox imports"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.35",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.16.0",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-portal to v9.4.19",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.19.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-aria to v9.10.3",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-combobox to v9.9.5",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-tags to v9.2.1",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.57",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-positioning to v9.14.3",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Mar 2024 10:43:54 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "a697cff7f93952d4c31fb135812a7fa3a19e2aee",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    }
+  ]
+}

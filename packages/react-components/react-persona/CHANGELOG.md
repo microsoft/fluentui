@@ -1,8 +1,216 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:54:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.80)
+
+Wed, 17 Apr 2024 21:54:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.79..@fluentui/react-persona_v9.2.80)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.21 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-badge to v9.2.31 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+
+## [9.2.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.79)
+
+Tue, 02 Apr 2024 09:48:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.78..@fluentui/react-persona_v9.2.79)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.20 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-badge to v9.2.30 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.16.0 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.35 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+
+## [9.2.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.78)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.77..@fluentui/react-persona_v9.2.78)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-badge to v9.2.29 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.34 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.2.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.77)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.76..@fluentui/react-persona_v9.2.77)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-badge to v9.2.28 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.33 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.2.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.76)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.75..@fluentui/react-persona_v9.2.76)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-badge to v9.2.27 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.32 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.2.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.75)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.74..@fluentui/react-persona_v9.2.75)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.16 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-badge to v9.2.26 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [9.2.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.74)
+
+Tue, 20 Feb 2024 14:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.73..@fluentui/react-persona_v9.2.74)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.15 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-badge to v9.2.25 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+## [9.2.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.73)
+
+Tue, 06 Feb 2024 17:55:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.72..@fluentui/react-persona_v9.2.73)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.14 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+
+## [9.2.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.72)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.71..@fluentui/react-persona_v9.2.72)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.13 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-badge to v9.2.24 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.29 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+
+## [9.2.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.71)
+
+Mon, 29 Jan 2024 13:56:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.70..@fluentui/react-persona_v9.2.71)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.12 ([PR #30383](https://github.com/microsoft/fluentui/pull/30383) by beachball)
+
+## [9.2.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.70)
+
+Fri, 26 Jan 2024 10:40:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.69..@fluentui/react-persona_v9.2.70)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.11 ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by beachball)
+
+## [9.2.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.69)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.68..@fluentui/react-persona_v9.2.69)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.10 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-badge to v9.2.23 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.2.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.68)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.67..@fluentui/react-persona_v9.2.68)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.9 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-badge to v9.2.22 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+
+## [9.2.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.67)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.66..@fluentui/react-persona_v9.2.67)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.8 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-badge to v9.2.21 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.26 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+
+## [9.2.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.66)
+
+Tue, 16 Jan 2024 13:14:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.65..@fluentui/react-persona_v9.2.66)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.7 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-badge to v9.2.20 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+
+## [9.2.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.65)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.64..@fluentui/react-persona_v9.2.65)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.6 ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by beachball)
+
+## [9.2.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.64)
+
+Tue, 09 Jan 2024 10:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.63..@fluentui/react-persona_v9.2.64)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.5 ([PR #30217](https://github.com/microsoft/fluentui/pull/30217) by beachball)
+
+## [9.2.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.63)
+
+Mon, 08 Jan 2024 16:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.62..@fluentui/react-persona_v9.2.63)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.6.4 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-badge to v9.2.19 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.24 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
 
 ## [9.2.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.62)
 

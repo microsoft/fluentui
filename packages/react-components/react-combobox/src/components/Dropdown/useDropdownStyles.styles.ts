@@ -1,12 +1,14 @@
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
 import type { DropdownSlots, DropdownState } from './Dropdown.types';
 
 export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
   root: 'fui-Dropdown',
   button: 'fui-Dropdown__button',
+  clearButton: 'fui-Dropdown__clearButton',
   expandIcon: 'fui-Dropdown__expandIcon',
   listbox: 'fui-Dropdown__listbox',
 };
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
-    display: 'inline-block',
+    display: 'inline-flex',
     minWidth: '250px',
     position: 'relative',
 
@@ -66,6 +68,13 @@ const useStyles = makeStyles({
     ':focus-within:active::after': {
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
     },
+
+    '@supports selector(:has(*))': {
+      [`:has(.${dropdownClassNames.clearButton}:focus)::after`]: {
+        borderBottomColor: 'initial',
+        transform: 'scaleX(0)',
+      },
+    },
   },
 
   listbox: {
@@ -77,6 +86,12 @@ const useStyles = makeStyles({
 
   listboxCollapsed: {
     display: 'none',
+  },
+
+  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+  inlineListbox: {
+    zIndex: 1,
   },
 
   button: {
@@ -186,6 +201,10 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
   },
+
+  hidden: {
+    display: 'none',
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -223,15 +242,30 @@ const useIconStyles = makeStyles({
   },
 });
 
+const useBaseClearButtonStyle = makeResetStyles({
+  alignSelf: 'center',
+  backgroundColor: tokens.colorTransparentBackground,
+  border: 'none',
+  cursor: 'pointer',
+  height: 'fit-content',
+  margin: 0,
+  marginRight: tokens.spacingHorizontalMNudge,
+  padding: 0,
+  position: 'relative',
+
+  ...createFocusOutlineStyle(),
+});
+
 /**
  * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
-  const { appearance, open, placeholderVisible, size } = state;
+  const { appearance, open, placeholderVisible, showClearButton, size } = state;
   const invalid = `${state.button['aria-invalid']}` === 'true';
   const disabled = state.button.disabled;
   const styles = useStyles();
   const iconStyles = useIconStyles();
+  const clearButtonStyle = useBaseClearButtonStyle();
 
   state.root.className = mergeClasses(
     dropdownClassNames.root,
@@ -257,6 +291,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     state.listbox.className = mergeClasses(
       dropdownClassNames.listbox,
       styles.listbox,
+      state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
       state.listbox.className,
     );
@@ -268,7 +303,20 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
       iconStyles.icon,
       iconStyles[size],
       disabled && iconStyles.disabled,
+      showClearButton && styles.hidden,
       state.expandIcon.className,
+    );
+  }
+
+  if (state.clearButton) {
+    state.clearButton.className = mergeClasses(
+      dropdownClassNames.clearButton,
+      clearButtonStyle,
+      iconStyles.icon,
+      iconStyles[size],
+      disabled && iconStyles.disabled,
+      !showClearButton && styles.hidden,
+      state.clearButton.className,
     );
   }
 

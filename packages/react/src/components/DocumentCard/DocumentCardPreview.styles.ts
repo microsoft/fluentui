@@ -84,7 +84,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
           ':hover': {
             color: palette.themePrimary,
           },
-          [`.${IsFocusVisibleClassName} &:focus`]: {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             selectors: {
               [HighContrastSelector]: {
                 outline: 'none',

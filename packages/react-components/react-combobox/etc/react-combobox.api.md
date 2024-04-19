@@ -6,8 +6,12 @@
 
 /// <reference types="react" />
 
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PortalProps } from '@fluentui/react-portal';
@@ -17,15 +21,50 @@ import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
 
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
+
+// @public
+export type ComboboxBaseProps = SelectionProps & Pick<PortalProps, 'mountNode'> & {
+    appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
+    clearable?: boolean;
+    defaultOpen?: boolean;
+    defaultValue?: string;
+    inlinePopup?: boolean;
+    onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
+    open?: boolean;
+    placeholder?: string;
+    positioning?: PositioningShorthand;
+    size?: 'small' | 'medium' | 'large';
+    value?: string;
+};
+
+// @public
+export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>> & Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> & OptionCollectionState & SelectionState & {
+    activeOption?: OptionValue;
+    focusVisible: boolean;
+    ignoreNextBlur: React_2.MutableRefObject<boolean>;
+    setActiveOption: React_2.Dispatch<React_2.SetStateAction<OptionValue | undefined>>;
+    setFocusVisible(focusVisible: boolean): void;
+    hasFocus: boolean;
+    setHasFocus(hasFocus: boolean): void;
+    setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
+    setValue(newValue: string | undefined): void;
+    onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
+    disabled: boolean;
+    freeform: boolean;
+};
 
 // @public (undocumented)
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
 // @public
-export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption' | 'setOpen' | 'size'>;
+export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'setActiveOption' | 'setOpen' | 'size'> & {
+    selectedOptions: ComboboxState['selectedOptions'];
+    selectOption: ComboboxState['selectOption'];
+};
 
 // @public (undocumented)
 export type ComboboxContextValues = ComboboxBaseContextValues;
@@ -42,19 +81,23 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
     children?: React_2.ReactNode;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps<ComboboxContextValue>>;
 
 // @public (undocumented)
 export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
     expandIcon: Slot<'span'>;
+    clearIcon?: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
+    showClearIcon?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
+};
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -77,14 +120,17 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 // @public (undocumented)
 export type DropdownSlots = {
     root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
+    clearButton?: Slot<'button'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
 };
 
 // @public
-export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
+export type DropdownState = ComponentState<DropdownSlots> & Omit<ComboboxBaseState, 'freeform'> & {
     placeholderVisible: boolean;
+    showClearButton?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -94,18 +140,21 @@ export const Listbox: ForwardRefComponent<ListboxProps>;
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
 
 // @public
-export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'>;
+export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
+    onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
+};
 
 // @public (undocumented)
 export type ListboxContextValues = {
     listbox: ListboxContextValue;
+    activeDescendant: ActiveDescendantContextValue;
 };
 
 // @public
 export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 
 // @public (undocumented)
-export const ListboxProvider: Provider<ListboxContextValue> & FC<ProviderProps<ListboxContextValue>>;
+export const ListboxProvider: React_2.Provider<ListboxContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListboxContextValue | undefined>>;
 
 // @public (undocumented)
 export type ListboxSlots = {
@@ -116,8 +165,9 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & Pick<SelectionProps, 'multiselect'> & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    selectOption(event: SelectionEvents, option: OptionValue): void;
     setActiveOption(option?: OptionValue): void;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -196,11 +246,29 @@ export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Elemen
 // @public (undocumented)
 export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
+// @internal
+export function useButtonTriggerSlot(triggerFromProps: NonNullable<Slot<'button'>>, ref: React_2.Ref<HTMLButtonElement>, options: UseButtonTriggerSlotOptions): SlotComponentType<ExtractSlotProps<Slot<'button'>>>;
+
 // @public
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
+// @internal
+export const useComboboxBaseState: (props: ComboboxBaseProps & {
+    children?: React_2.ReactNode;
+    editable?: boolean;
+    disabled?: boolean;
+    freeform?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
+}) => ComboboxBaseState;
+
 // @public (undocumented)
-export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues;
+export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freeform'> & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
+
+// @internal (undocumented)
+export function useComboboxFilter<T extends {
+    children: React_2.ReactNode;
+    value: string;
+} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSX.Element[];
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;
@@ -211,11 +279,20 @@ export const useDropdown_unstable: (props: DropdownProps, ref: React_2.Ref<HTMLB
 // @public
 export const useDropdownStyles_unstable: (state: DropdownState) => DropdownState;
 
+// @internal
+export function useInputTriggerSlot(triggerFromProps: NonNullable<Slot<'input'>>, ref: React_2.Ref<HTMLInputElement>, options: UseInputTriggerSlotOptions): SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
+
 // @public
 export const useListbox_unstable: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
 
 // @public (undocumented)
+export const useListboxContext_unstable: <T>(selector: ContextSelector<ListboxContextValue, T>) => T;
+
+// @public (undocumented)
 export function useListboxContextValues(state: ListboxState): ListboxContextValues;
+
+// @internal (undocumented)
+export function useListboxSlot(listboxSlotFromProp: Slot<typeof Listbox> | undefined, ref: React_2.Ref<HTMLDivElement>, options: UseListboxSlotOptions): SlotComponentType<ExtractSlotProps<Slot<typeof Listbox>>> | undefined;
 
 // @public
 export const useListboxStyles_unstable: (state: ListboxState) => ListboxState;

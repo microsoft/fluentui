@@ -29,6 +29,8 @@ import type {
 import type { IBasePicker, IBasePickerProps, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import type { IAutofill } from '../Autofill/index';
 import type { IPickerItemProps } from './PickerItem.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 const legacyStyles: any = stylesImport;
 
@@ -91,10 +93,12 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
 /**
  * {@docCategory Pickers}
  */
-export class BasePicker<T, P extends IBasePickerProps<T>>
+export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   extends React.Component<P, IBasePickerState<T>>
   implements IBasePicker<T>
 {
+  public static contextType = WindowContext;
+
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
@@ -505,7 +509,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement,
+          suggestionsVisible:
+            this.input.current! && this.input.current!.inputElement === getDocumentEx(this.context)?.activeElement,
         });
       }
 
@@ -599,7 +604,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         // even when it's not. Using document.activeElement is another way
         // for us to be able to get what the relatedTarget without relying
         // on the event
-        relatedTarget = document.activeElement;
+        relatedTarget = getDocumentEx(this.context)!.activeElement;
       }
       if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
         this.setState({ isFocused: false });
@@ -1032,7 +1037,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     const areSuggestionsVisible =
       this.input.current !== undefined &&
       this.input.current !== null &&
-      this.input.current.inputElement === document.activeElement &&
+      this.input.current.inputElement === getDocumentEx(this.context)?.activeElement &&
       this.input.current.value !== '';
 
     return areSuggestionsVisible;
@@ -1093,7 +1098,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   };
 }
 
-export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
+export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;

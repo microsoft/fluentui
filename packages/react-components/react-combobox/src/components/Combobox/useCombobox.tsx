@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useActiveDescendant } from '@fluentui/react-aria';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
+import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
@@ -12,11 +13,10 @@ import {
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
-import type { SelectionEvents } from '../../utils/Selection.types';
-import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
+import { optionClassNames } from '../Option/useOptionStyles.styles';
 
 /**
  * Create the state required to render Combobox.
@@ -30,11 +30,18 @@ import { useInputTriggerSlot } from './useInputTriggerSlot';
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+  const {
+    listboxRef: activeDescendantListboxRef,
+    activeParentRef,
+    controller: activeDescendantController,
+  } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
+    matchOption: el => el.classList.contains(optionClassNames.root),
+  });
+  const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
 
-  const baseState = useComboboxBaseState({ ...props, editable: true });
-  const { open, selectOption, setOpen, setValue, value, hasFocus } = baseState;
+  const { clearable, clearSelection, multiselect, open, selectedOptions, value, hasFocus } = baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
-  const { disabled, freeform, inlinePopup } = props;
+  const { freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -43,27 +50,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     excludedPropNames: ['children', 'size'],
   });
 
-  // reset any typed value when an option is selected
-  baseState.selectOption = (ev: SelectionEvents, option: OptionValue) => {
-    setValue(undefined);
-    selectOption(ev, option);
-  };
-
-  baseState.setOpen = (ev, newState: boolean) => {
-    if (disabled) {
-      return;
-    }
-
-    if (!newState && !freeform) {
-      setValue(undefined);
-    }
-
-    setOpen(ev, newState);
-  };
-
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
-  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+  const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
     state: baseState,
     triggerRef,
     defaultProps: {
@@ -71,14 +60,16 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     },
   });
 
-  const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, ref), {
+  const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: baseState,
     freeform,
     defaultProps: {
       type: 'text',
       value: value ?? '',
+      'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
     },
+    activeDescendantController,
   });
 
   const rootSlot = slot.always(props.root, {
@@ -90,11 +81,20 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
+  const showClearIcon = selectedOptions.length > 0 && clearable && !multiselect;
   const state: ComboboxState = {
-    components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
+    components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,
     input: triggerSlot,
     listbox: open || hasFocus ? listbox : undefined,
+    clearIcon: slot.optional(props.clearIcon, {
+      defaultProps: {
+        'aria-hidden': 'true',
+        children: <DismissIcon />,
+      },
+      elementType: 'span',
+      renderByDefault: true,
+    }),
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {
@@ -104,6 +104,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
       elementType: 'span',
     }),
+    showClearIcon,
+    activeDescendantController,
     ...baseState,
   };
 
@@ -143,6 +145,37 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
         state.expandIcon['aria-label'] = defaultOpenString;
       }
     }
+  }
+
+  const onClearIconMouseDown = useEventCallback(
+    mergeCallbacks(state.clearIcon?.onMouseDown, (ev: React.MouseEvent<HTMLSpanElement>) => {
+      ev.preventDefault();
+    }),
+  );
+  const onClearIconClick = useEventCallback(
+    mergeCallbacks(state.clearIcon?.onClick, (ev: React.MouseEvent<HTMLSpanElement>) => {
+      clearSelection(ev);
+    }),
+  );
+
+  if (state.clearIcon) {
+    state.clearIcon.onMouseDown = onClearIconMouseDown;
+    state.clearIcon.onClick = onClearIconClick;
+  }
+
+  // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
+  if (multiselect) {
+    state.clearIcon = undefined;
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- "process.env" does not change in runtime
+    React.useEffect(() => {
+      if (clearable && multiselect) {
+        // eslint-disable-next-line no-console
+        console.error(`[@fluentui/react-combobox] "clearable" prop is not supported in multiselect mode.`);
+      }
+    }, [clearable, multiselect]);
   }
 
   return state;

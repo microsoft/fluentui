@@ -286,6 +286,8 @@ import { mergeScopedSettings } from '@fluentui/utilities';
 import { mergeSettings } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/style-utilities';
 import { mergeStyleSets } from '@fluentui/style-utilities';
+import { MergeStylesRootProvider } from '@fluentui/utilities';
+import { MergeStylesShadowRootProvider } from '@fluentui/utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities';
@@ -354,6 +356,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
+import type { ShadowConfig } from '@fluentui/style-utilities';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -372,9 +375,17 @@ import { toMatrix } from '@fluentui/utilities';
 import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
 import { unregisterIcons } from '@fluentui/style-utilities';
+import { useAdoptedStylesheet } from '@fluentui/utilities';
+import { useAdoptedStylesheetEx } from '@fluentui/utilities';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { useFocusRects } from '@fluentui/utilities';
+import { useHasMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useMergeStylesHooks } from '@fluentui/utilities';
+import { useMergeStylesRootStylesheets } from '@fluentui/utilities';
+import { useMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useShadowConfig } from '@fluentui/utilities';
+import { useStyled } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { values } from '@fluentui/utilities';
 import { videoProperties } from '@fluentui/utilities';
@@ -536,7 +547,7 @@ export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends React_2.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
+export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps<T>> extends React_2.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected canAddItems(): boolean;
@@ -597,7 +608,7 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends React_2.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
+export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps<T>> extends React_2.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
     constructor(basePickerProps: P);
     // (undocumented)
     completeSuggestion: () => void;
@@ -670,7 +681,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
+export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends React_2.Component<P, IBasePickerState<T>> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -690,6 +701,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
     // (undocumented)
@@ -780,7 +793,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
 }
 
 // @public (undocumented)
-export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
+export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
     // (undocumented)
     protected onBackspace(ev: React_2.KeyboardEvent<HTMLElement>): void;
     // (undocumented)
@@ -788,7 +801,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 }
 
 // @public (undocumented)
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React_2.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
+export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsListProps<T>> extends React_2.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     addItems: (items: T[]) => void;
@@ -796,6 +809,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected copyItems(items: T[]): void;
     // (undocumented)
@@ -972,7 +987,7 @@ export function clamp(value: number, max: number, min?: number): number;
 export { classNamesFunction }
 
 // @public
-export function cleanupDefaultLayerHost(doc: Document): void;
+export function cleanupDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): void;
 
 // @public (undocumented)
 export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
@@ -1152,7 +1167,7 @@ export function correctRGB(color: IRGB): IRGB;
 export { createArray }
 
 // @public
-export function createDefaultLayerHost(doc: Document): Node | null;
+export function createDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): Node | null;
 
 export { createFontStyles }
 
@@ -1173,7 +1188,7 @@ export { createTheme }
 export { css }
 
 // @public
-export function cssColor(color?: string): IRGB | undefined;
+export function cssColor(color?: string, doc?: Document): IRGB | undefined;
 
 export { customizable }
 
@@ -1305,6 +1320,8 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         layoutMode: DetailsListLayoutMode;
@@ -1746,7 +1763,7 @@ export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 export function getColorFromRGBA(rgba: IRGB): IColor;
 
 // @public
-export function getColorFromString(inputColor: string): IColor | undefined;
+export function getColorFromString(inputColor: string, doc?: Document): IColor | undefined;
 
 // @public (undocumented)
 export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
@@ -1856,7 +1873,7 @@ export function getLayerHostSelector(): string | undefined;
 export const getLayerStyles: (props: ILayerStyleProps) => ILayerStyles;
 
 // @public
-export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
+export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean, win?: Window): number;
 
 // @public
 export const getMeasurementCache: () => {
@@ -2166,7 +2183,7 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
 }
 
 // @public (undocumented)
-export interface IActivityItemStyles {
+export interface IActivityItemStyles extends IShadowDomStyle {
     activityContent?: IStyle;
     activityPersona?: IStyle;
     activityText?: IStyle;
@@ -2721,7 +2738,7 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
 }
 
 // @public (undocumented)
-export interface IButtonStyles {
+export interface IButtonStyles extends IShadowDomStyle {
     description?: IStyle;
     descriptionChecked?: IStyle;
     descriptionDisabled?: IStyle;
@@ -3957,7 +3974,7 @@ export interface IComboBoxState {
 }
 
 // @public (undocumented)
-export interface IComboBoxStyles {
+export interface IComboBoxStyles extends IShadowDomStyle {
     callout: IStyle;
     container: IStyle;
     divider: IStyle;
@@ -7001,6 +7018,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement | BaseButton | Button>) => any;
+    onExpandButtonToggled?: (expandSingleLine: boolean) => void;
     // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
@@ -8126,6 +8144,8 @@ export interface IScrollablePaneContext {
         notifySubscribers: (sort?: boolean) => void;
         syncScrollSticky: (sticky: Sticky) => void;
     };
+    // (undocumented)
+    window: Window | undefined;
 }
 
 // @public (undocumented)
@@ -8399,6 +8419,11 @@ export { ISettingsFunction }
 export { ISettingsMap }
 
 export { IsFocusVisibleClassName }
+
+// @public (undocumented)
+export interface IShadowDomStyle {
+    __shadowConfig__?: ShadowConfig;
+}
 
 // @public (undocumented)
 export interface IShimmerCircle {
@@ -8724,7 +8749,7 @@ export interface ISpinButtonStyleProps {
 }
 
 // @public (undocumented)
-export interface ISpinButtonStyles {
+export interface ISpinButtonStyles extends IShadowDomStyle {
     arrowButtonsContainer: IStyle;
     icon: IStyle;
     input: IStyle;
@@ -9360,7 +9385,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
 };
 
 // @public (undocumented)
-export interface ITextFieldStyles {
+export interface ITextFieldStyles extends IShadowDomStyle {
     description: IStyle;
     errorMessage: IStyle;
     field: IStyle;
@@ -9772,6 +9797,8 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
+    // (undocumented)
     static defaultProps: IKeytipLayerProps;
     // (undocumented)
     getCurrentSequence(): string;
@@ -9879,6 +9906,8 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         startIndex: number;
@@ -9990,6 +10019,10 @@ export { mergeStyles }
 
 export { mergeStyleSets }
 
+export { MergeStylesRootProvider }
+
+export { MergeStylesShadowRootProvider }
+
 export { mergeThemes }
 
 // @public (undocumented)
@@ -10042,6 +10075,8 @@ export const Nav: React_2.FunctionComponent<INavProps>;
 // @public (undocumented)
 export class NavBase extends React_2.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: INavProps;
     focus(forceIntoFirstElement?: boolean): boolean;
@@ -10134,6 +10169,8 @@ export class PanelBase extends React_2.Component<IPanelProps, IPanelState> imple
     componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: IPanelProps;
     // (undocumented)
@@ -10398,13 +10435,13 @@ export enum Position {
 }
 
 // @public (undocumented)
-export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, shouldScroll?: boolean, minimumScrollResizeHeight?: number): ICalloutPositionedInfo;
+export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, shouldScroll?: boolean, minimumScrollResizeHeight?: number, win?: Window): ICalloutPositionedInfo;
 
 // @public (undocumented)
-export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, win?: Window): ICalloutPositionedInfo;
 
 // @public
-export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData): IPositionedData;
+export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData, win?: Window): IPositionedData;
 
 // @public (undocumented)
 export const PositioningContainer: React_2.FunctionComponent<IPositioningContainerProps>;
@@ -10584,6 +10621,8 @@ export class ScrollablePaneBase extends React_2.Component<IScrollablePaneProps, 
     componentWillUnmount(): void;
     // (undocumented)
     get contentContainer(): HTMLDivElement | null;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     forceLayoutUpdate(): void;
     // (undocumented)
@@ -11029,7 +11068,7 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
 }
 
 // @public
-export class SuggestionsControl<T> extends React_2.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
+export class SuggestionsControl<T extends {}> extends React_2.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
     constructor(suggestionsProps: ISuggestionsControlProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -11111,7 +11150,7 @@ export class SuggestionsController<T> {
 }
 
 // @public
-export class SuggestionsCore<T> extends React_2.Component<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T extends {}> extends React_2.Component<ISuggestionsCoreProps<T>, {}> {
     constructor(suggestionsProps: ISuggestionsCoreProps<T>);
     // (undocumented)
     componentDidUpdate(): void;
@@ -11349,7 +11388,11 @@ export const TooltipHost: React_2.FunctionComponent<ITooltipHostProps>;
 export class TooltipHostBase extends React_2.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
     constructor(props: ITooltipHostProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         delay: TooltipDelay;
@@ -11401,11 +11444,17 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 // @public
 export function updateT(color: IColor, t: number): IColor;
 
+export { useAdoptedStylesheet }
+
+export { useAdoptedStylesheetEx }
+
 export { useCustomizationSettings }
 
 export { useDocument }
 
 export { useFocusRects }
+
+export { useHasMergeStylesShadowRootContext }
 
 // @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React_2.RefObject<HTMLDivElement | null>): number;
@@ -11413,8 +11462,18 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React_2.Ref<TElement>;
 
+export { useMergeStylesHooks }
+
+export { useMergeStylesRootStylesheets }
+
+export { useMergeStylesShadowRootContext }
+
 // @public
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode) => ResponsiveMode;
+
+export { useShadowConfig }
+
+export { useStyled }
 
 // @public @deprecated
 export type UseStylesOptions = {

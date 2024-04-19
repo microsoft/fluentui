@@ -150,13 +150,15 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       background: 'none',
 
       opacity: 0,
-      [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-        outline: '1px solid ' + theme.palette.neutralSecondary,
-        outlineOffset: '2px',
-        [HighContrastSelector]: {
-          outline: '1px solid WindowText',
+      // eslint-disable-next-line @fluentui/max-len
+      [`.${IsFocusVisibleClassName} &:focus + label::before, :host(.${IsFocusVisibleClassName}) &:focus + label::before`]:
+        {
+          outline: '1px solid ' + theme.palette.neutralSecondary,
+          outlineOffset: '2px',
+          [HighContrastSelector]: {
+            outline: '1px solid WindowText',
+          },
         },
-      },
     },
     label: [
       classNames.label,

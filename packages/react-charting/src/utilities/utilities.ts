@@ -1,7 +1,7 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
-import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
+import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
+import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
@@ -24,6 +24,7 @@ import {
   ILineChartPoints,
   ILineChartDataPoint,
   IDataPoint,
+  IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
@@ -221,7 +222,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
-  const xAxisScale = d3ScaleTime()
+  const xAxisScale = d3ScaleUtc()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
@@ -832,12 +833,13 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     d3Select(d1)
-      .on('mouseover', d => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
           .html(originalDataArray[i])
-          .style('left', d3Event.pageX + 'px')
-          .style('top', d3Event.pageY - 28 + 'px');
+          .style('left', event.pageX + 'px')
+          .style('top', event.pageY - 28 + 'px');
       })
       .on('mouseout', d => {
         div.style('opacity', 0);
@@ -860,49 +862,6 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
     });
   }
   return isXAxisDateType;
-}
-
-/**
- * Calculates Domain and range values for Date X axis.
- * This method calculates Area chart and line chart.
- * @export
- * @param {ILineChartPoints[]} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {boolean} isRTL
- * @param {Date[] | number[]} tickValues
- * @returns {IDomainNRange}
- */
-export function domainRangeOfDateForAreaChart(
-  points: ILineChartPoints[],
-  margins: IMargins,
-  width: number,
-  isRTL: boolean,
-  tickValues: Date[] = [],
-): IDomainNRange {
-  const sDate = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => {
-      return item.x as Date;
-    });
-  })!;
-  const lDate = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => {
-      return item.x as Date;
-    });
-  })!;
-
-  // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
-  // That may be Either from given graph data or from prop 'tickValues' date values.
-  // So, Finding smallest and largest dates
-  const smallestDate = d3Min([...tickValues, sDate])!;
-  const largestDate = d3Max([...tickValues, lDate])!;
-
-  const rStartValue = margins.left!;
-  const rEndValue = width - margins.right!;
-
-  return isRTL
-    ? { dStartValue: largestDate, dEndValue: smallestDate, rStartValue, rEndValue }
-    : { dStartValue: smallestDate, dEndValue: largestDate, rStartValue, rEndValue };
 }
 
 /**
@@ -1012,6 +971,61 @@ export function domainRangeOfVSBCNumeric(
 }
 
 /**
+ * Calculates Domain and range values for Date X axis.
+ * This method calculates Bar chart.
+ * @export
+ * @param {IVerticalBarChartDataPoint[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @param {Date[] | number[]} tickValues
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfDateForAreaLineVerticalBarChart(
+  points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+  tickValues: Date[] = [],
+  chartType: ChartTypes,
+  barWidth?: number,
+): IDomainNRange {
+  let sDate: Date;
+  let lDate: Date;
+  if (chartType === ChartTypes.AreaChart || chartType === ChartTypes.LineChart) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sDate = d3Min(points, (point: any) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => {
+        return item.x as Date;
+      });
+    })!;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    lDate = d3Max(points, (point: any) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
+        return item.x as Date;
+      });
+    })!;
+    // Need to draw graph with given small and large date
+    // (Which Involves customization of date axis tick values)
+    // That may be Either from given graph data or from prop 'tickValues' date values.
+    // So, Finding smallest and largest dates
+    sDate = d3Min([...tickValues, sDate])!;
+    lDate = d3Max([...tickValues, lDate])!;
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sDate = d3Min(points as any[], point => point.x as Date)!;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    lDate = d3Max(points as any[], point => point.x as Date)!;
+  }
+
+  const rStartValue = margins.left! + (barWidth ? barWidth / 2 : 0);
+  const rEndValue = width - margins.right! - (barWidth ? barWidth / 2 : 0);
+
+  return isRTL
+    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
+    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+}
+/**
  * Calculate domain and range values to the Vertical bar chart - For Numeric axis
  * @export
  * @param {IDataPoint[]} points
@@ -1087,7 +1101,17 @@ export function getDomainNRangeValues(
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfDateForAreaChart(points, margins, width, isRTL, tickValues! as Date[]);
+      case ChartTypes.VerticalBarChart:
+      case ChartTypes.VerticalStackedBarChart:
+        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+          points,
+          margins,
+          width,
+          isRTL,
+          tickValues! as Date[],
+          chartType,
+          barWidth,
+        );
         break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
@@ -1240,8 +1264,8 @@ export function getMinMaxOfYAxis(
  * This function takes the single data point of the x-aixs
  * and decides what is the x-axis
  */
-export const getTypeOfAxis = (p: string | number | Date, isXAsix: boolean): XAxisTypes | YAxisType => {
-  if (isXAsix) {
+export const getTypeOfAxis = (p: string | number | Date, isXAxis: boolean): XAxisTypes | YAxisType => {
+  if (isXAxis) {
     switch (typeof p) {
       case 'string':
         return XAxisTypes.StringAxis;
@@ -1351,16 +1375,17 @@ export const getAccessibleDataObject = (
 
 type LocaleStringDataProps = number | string | Date | undefined;
 export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (!data) {
+  if (data === undefined || data === null || Number.isNaN(data)) {
     return data;
   }
   culture = culture || undefined;
   if (typeof data === 'number') {
     return data.toLocaleString(culture);
-  }
-  if (typeof data === 'string' && !window.isNaN(Number(data))) {
+  } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
     const num = Number(data);
     return num.toLocaleString(culture);
+  } else if (data instanceof Date) {
+    return data.toLocaleDateString(culture);
   }
   return data;
 };
@@ -1461,3 +1486,36 @@ export function formatValueWithSIPrefix(value: number) {
 
   return d3FormatPrefix(specifier, value)(value);
 }
+
+const DEFAULT_BAR_WIDTH = 16;
+const MIN_BAR_WIDTH = 1;
+
+export const getBarWidth = (
+  barWidthProp: number | 'default' | 'auto' | undefined,
+  maxBarWidthProp: number | undefined,
+  defaultValue = DEFAULT_BAR_WIDTH,
+): number => {
+  let barWidth: number;
+  if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
+    barWidth = DEFAULT_BAR_WIDTH;
+  } else {
+    barWidth = defaultValue;
+  }
+  if (typeof maxBarWidthProp === 'number') {
+    barWidth = Math.min(barWidth, maxBarWidthProp);
+  }
+  barWidth = Math.max(barWidth, MIN_BAR_WIDTH);
+  return barWidth;
+};
+
+export const getScalePadding = (prop: number | undefined, shorthandProp?: number, defaultValue = 0): number => {
+  let padding = typeof prop === 'number' ? prop : typeof shorthandProp === 'number' ? shorthandProp : defaultValue;
+  padding = Math.max(0, Math.min(padding, 1));
+  return padding;
+};
+
+export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
+  return typeof prop === 'number' || typeof shorthandProp === 'number';
+};

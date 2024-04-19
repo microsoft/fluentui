@@ -6,7 +6,7 @@ import { defaultTableState } from '../hooks';
 
 const dataGridContext = createContext<DataGridContextValue | undefined>(undefined);
 
-const dataGridContextDefaultValue: DataGridContextValue = {
+export const dataGridContextDefaultValue: DataGridContextValue = {
   ...defaultTableState,
   subtleSelection: false,
   selectableRows: false,

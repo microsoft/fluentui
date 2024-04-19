@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import * as React_2 from 'react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -115,6 +117,7 @@ export interface CalendarDayProps extends CalendarDayGridProps {
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
+    navigationIcons: CalendarNavigationIcons;
     onDismiss?: () => void;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
@@ -157,6 +160,7 @@ export interface CalendarMonthProps {
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
+    navigationIcons: CalendarNavigationIcons;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
@@ -309,6 +313,7 @@ export interface CalendarYearProps {
     maxYear?: number;
     minYear?: number;
     navigatedYear?: number;
+    navigationIcons: CalendarNavigationIcons;
     onHeaderSelect?: (focus: boolean) => void;
     onRenderTitle?: (props: CalendarYearHeaderProps) => React_2.ReactNode;
     onRenderYear?: (year: number) => React_2.ReactNode;
@@ -352,7 +357,7 @@ export interface CalendarYearStyles extends CalendarPickerStyles {
 }
 
 // @public
-export function compareDatePart(date1: Date, date2: Date): Number;
+export function compareDatePart(date1: Date, date2: Date): number;
 
 // @public
 export function compareDates(date1: Date, date2: Date): boolean;

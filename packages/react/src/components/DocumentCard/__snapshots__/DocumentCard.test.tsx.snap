@@ -33,6 +33,23 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         border-color: Highlight;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        border-color: #605e5c;
+      }
+      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+        border-radius: 2px;
+        border: 2px solid #605e5c;
+        bottom: -1px;
+        content: '';
+        left: -1px;
+        pointer-events: none;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+        border-color: Highlight;
+      }
       & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
         padding-top: 4px;
       }
@@ -92,6 +109,23 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           top: -1px;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border-color: Highlight;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus {
+          border-color: #605e5c;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border-radius: 2px;
+          border: 2px solid #605e5c;
+          bottom: -1px;
+          content: '';
+          left: -1px;
+          pointer-events: none;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+        }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
           border-color: Highlight;
         }
     title=""

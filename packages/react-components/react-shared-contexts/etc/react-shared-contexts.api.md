@@ -7,13 +7,25 @@
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
-// @internal (undocumented)
-export type AnnounceContextValue_unstable = {
+// @public (undocumented)
+type AnnounceContextValue = {
     announce: (message: string, options?: AnnounceOptions) => void;
 };
+export { AnnounceContextValue }
+export { AnnounceContextValue as AnnounceContextValue_unstable }
 
-// @internal (undocumented)
-export const AnnounceProvider_unstable: React_2.Provider<AnnounceContextValue_unstable | undefined>;
+// @public
+export type AnnounceOptions = {
+    alert?: boolean;
+    batchId?: string;
+    polite?: boolean;
+    priority?: number;
+};
+
+// @public (undocumented)
+const AnnounceProvider: React_2.Provider<AnnounceContextValue | undefined>;
+export { AnnounceProvider }
+export { AnnounceProvider as AnnounceProvider_unstable }
 
 // @internal (undocumented)
 export type BackgroundAppearanceContextValue = 'inverted' | undefined;
@@ -61,6 +73,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemSwitchStyles_unstable: CustomStyleHook;
     useMenuItemRadioStyles_unstable: CustomStyleHook;
     useMenuItemStyles_unstable: CustomStyleHook;
     useMenuListStyles_unstable: CustomStyleHook;
@@ -186,6 +199,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemSwitchStyles_unstable: CustomStyleHook;
     useMenuItemRadioStyles_unstable: CustomStyleHook;
     useMenuItemStyles_unstable: CustomStyleHook;
     useMenuListStyles_unstable: CustomStyleHook;
@@ -311,6 +325,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemSwitchStyles_unstable: CustomStyleHook;
     useMenuItemRadioStyles_unstable: CustomStyleHook;
     useMenuItemStyles_unstable: CustomStyleHook;
     useMenuListStyles_unstable: CustomStyleHook;
@@ -441,10 +456,10 @@ export type TooltipVisibilityContextValue_unstable = {
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useAnnounce" is marked as @public, but its signature references "AnnounceContextValue_unstable" which is marked as @internal
-//
-// @public (undocumented)
-export function useAnnounce_unstable(): AnnounceContextValue_unstable;
+// @public
+function useAnnounce(): AnnounceContextValue;
+export { useAnnounce }
+export { useAnnounce as useAnnounce_unstable }
 
 // Warning: (ae-incompatible-release-tags) The symbol "useBackgroundAppearance" is marked as @public, but its signature references "BackgroundAppearanceContextValue" which is marked as @internal
 //

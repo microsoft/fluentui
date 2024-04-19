@@ -2,7 +2,8 @@ import * as React from 'react';
 import { mount } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { DrawerProps } from '@fluentui/react-components';
+
+import type { DrawerProps } from '../Drawer';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -95,6 +96,7 @@ export function testDrawerBaseScenarios(Component: React.ComponentType<DrawerPro
     const positions = {
       start: 'left',
       end: 'right',
+      bottom: 'bottom',
     };
 
     Object.entries(positions).forEach(([position, side]) => {

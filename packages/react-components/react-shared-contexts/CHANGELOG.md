@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.16.0)
+
+Tue, 02 Apr 2024 09:48:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.15.2..@fluentui/react-shared-contexts_v9.16.0)
+
+### Minor changes
+
+- deprecate unused ListItemButton exports ([PR #29760](https://github.com/microsoft/fluentui/pull/29760) by jirivyhnalek@microsoft.com)
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.2)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.15.1..@fluentui/react-shared-contexts_v9.15.2)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.1)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.15.0..@fluentui/react-shared-contexts_v9.15.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.0)
+
+Thu, 07 Mar 2024 19:33:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.14.1..@fluentui/react-shared-contexts_v9.15.0)
+
+### Minor changes
+
+- feat: Deprecate legacy TeachingPopoverCarousel style hooks ([PR #30423](https://github.com/microsoft/fluentui/pull/30423) by mifraser@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.1)
+
+Wed, 28 Feb 2024 02:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.14.0..@fluentui/react-shared-contexts_v9.14.1)
+
+### Patches
+
+- feat(swatch-picker): Added plain ColorSwatch sub component. ([PR #30544](https://github.com/microsoft/fluentui/pull/30544) by vkozlova@microsoft.com)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.0)
+
+Thu, 18 Jan 2024 14:25:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.2..@fluentui/react-shared-contexts_v9.14.0)
+
+### Minor changes
+
+- feat: export AnnounceProvider & useAnnounce() ([PR #30328](https://github.com/microsoft/fluentui/pull/30328) by olfedias@microsoft.com)
 
 ## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.2)
 

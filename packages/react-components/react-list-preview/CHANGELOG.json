@@ -1,0 +1,47 @@
+{
+  "name": "@fluentui/react-list-preview",
+  "entries": [
+    {
+      "date": "Wed, 17 Apr 2024 21:53:54 GMT",
+      "tag": "@fluentui/react-list-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "ab6bf7a7f152c0ad6c43732c7b3145a977973782",
+            "comment": "Tabster 7.1.0."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list-preview",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.20",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Apr 2024 12:08:07 GMT",
+      "tag": "@fluentui/react-list-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "0efb5211010f21904cfe4522e30dc3eb9b38cb3b",
+            "comment": "feat: Release preview package"
+          }
+        ]
+      }
+    }
+  ]
+}

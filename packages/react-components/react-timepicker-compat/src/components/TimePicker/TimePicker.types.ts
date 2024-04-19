@@ -99,6 +99,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
   Pick<
     ComboboxProps,
     | 'appearance'
+    | 'clearable'
     | 'defaultOpen'
     | 'defaultValue'
     | 'inlinePopup'
@@ -145,6 +146,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
     /**
      * Callback for when a time selection is made.
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**

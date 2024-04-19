@@ -8,15 +8,15 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
   input: 'fui-Combobox__input',
   expandIcon: 'fui-Combobox__expandIcon',
+  clearIcon: 'fui-Combobox__clearIcon',
   listbox: 'fui-Combobox__listbox',
 };
 
 // Matches internal heights for Select and Input, but there are no theme variables for these
-// field heights are 2px less than other controls, since the border is on the parent element.
 const fieldHeights = {
-  small: '22px',
-  medium: '30px',
-  large: '38px',
+  small: '24px',
+  medium: '32px',
+  large: '40px',
 };
 
 /**
@@ -91,15 +91,24 @@ const useStyles = makeStyles({
     display: 'none',
   },
 
+  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+  inlineListbox: {
+    zIndex: 1,
+  },
+
   // size variants
   small: {
+    height: fieldHeights.small,
     paddingRight: tokens.spacingHorizontalSNudge,
   },
   medium: {
+    height: fieldHeights.medium,
     paddingRight: tokens.spacingHorizontalMNudge,
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
+    height: fieldHeights.large,
     paddingRight: tokens.spacingHorizontalM,
   },
 
@@ -157,6 +166,7 @@ const useStyles = makeStyles({
 
 const useInputStyles = makeStyles({
   input: {
+    alignSelf: 'stretch',
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     color: tokens.colorNeutralForeground1,
@@ -174,17 +184,14 @@ const useInputStyles = makeStyles({
 
   // size variants
   small: {
-    height: fieldHeights.small,
     ...typographyStyles.caption1,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   medium: {
-    height: fieldHeights.medium,
     ...typographyStyles.body1,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   large: {
-    height: fieldHeights.large,
     ...typographyStyles.body2,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
   },
@@ -212,6 +219,18 @@ const useIconStyles = makeStyles({
       display: 'block',
     },
   },
+  hidden: {
+    display: 'none',
+  },
+  visuallyHidden: {
+    clip: 'rect(0px, 0px, 0px, 0px)',
+    height: '1px',
+    ...shorthands.margin('-1px'),
+    ...shorthands.overflow('hidden'),
+    ...shorthands.padding('0px'),
+    width: '1px',
+    position: 'absolute',
+  },
 
   // icon size variants
   small: {
@@ -236,7 +255,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, open, size } = state;
+  const { appearance, open, size, showClearIcon } = state;
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const disabled = state.input.disabled;
   const styles = useStyles();
@@ -267,6 +286,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     state.listbox.className = mergeClasses(
       comboboxClassNames.listbox,
       styles.listbox,
+      state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
       state.listbox.className,
     );
@@ -278,7 +298,19 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
       iconStyles.icon,
       iconStyles[size],
       disabled && iconStyles.disabled,
+      showClearIcon && iconStyles.visuallyHidden,
       state.expandIcon.className,
+    );
+  }
+
+  if (state.clearIcon) {
+    state.clearIcon.className = mergeClasses(
+      comboboxClassNames.clearIcon,
+      iconStyles.icon,
+      iconStyles[size],
+      disabled && iconStyles.disabled,
+      !showClearIcon && iconStyles.hidden,
+      state.clearIcon.className,
     );
   }
 

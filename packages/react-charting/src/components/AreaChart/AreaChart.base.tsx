@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { max as d3Max, bisector } from 'd3-array';
-import { clientPoint } from 'd3-selection';
+import { pointer } from 'd3-selection';
 import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
@@ -242,7 +242,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { data } = this.props;
     const { lineChartData } = data;
     // This will get the value of the X when mouse is on the chart
-    const xOffset = this._xAxisRectScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
+    const xOffset = this._xAxisRectScale.invert(pointer(mouseEvent)[0], document.getElementById(this._rectId)!);
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![0].data[i] as ILineChartDataPoint;
@@ -615,7 +615,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
       this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
-        fillColor = this.props.theme!.palette.white;
+        fillColor = this.props.theme!.semanticColors.bodyBackground;
       }
     }
 
@@ -647,6 +647,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0" stopColor={this._colors[index]} />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+            </defs>
+          )}
           <path
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
@@ -678,7 +686,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             <path
               id={`${index}-graph-${this._uniqueIdForGraph}`}
               d={area(singleStackedData)!}
-              fill={this._colors[index]}
+              fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
               opacity={this._opacity[index]}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}

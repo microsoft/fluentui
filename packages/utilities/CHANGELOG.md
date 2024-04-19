@@ -1,8 +1,70 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.2)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.1..@fluentui/utilities_v8.15.2)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/merge-styles to v8.6.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.1)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.0..@fluentui/utilities_v8.15.1)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/merge-styles to v8.6.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.0)
+
+Fri, 22 Mar 2024 07:28:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.14.0..@fluentui/utilities_v8.15.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30814](https://github.com/microsoft/fluentui/pull/30814) by behowell@microsoft.com)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.14.0)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.24..@fluentui/utilities_v8.14.0)
+
+### Minor changes
+
+- fix: Update IStyleSet type to fix error when using TypeScript 5.3+ ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by behowell@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+
+## [8.13.24](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.24)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.23..@fluentui/utilities_v8.13.24)
+
+### Patches
+
+- fix(Utilities): Account for column reversed scrollable elements in allowScrollOnElement. ([PR #30175](https://github.com/microsoft/fluentui/pull/30175) by estebanmu@microsoft.com)
+
+## [8.13.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.23)
+
+Wed, 10 Jan 2024 07:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.22..@fluentui/utilities_v8.13.23)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/merge-styles to v8.5.15 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
 
 ## [8.13.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.22)
 

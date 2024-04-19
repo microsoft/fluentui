@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
-import { DefaultSvg } from './DefaultSvg';
 import { useSpinnerContext } from '../../contexts/SpinnerContext';
 
 /**
@@ -20,7 +19,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
-  const { role = 'progressbar', tabIndex, ...rest } = props;
+  const { role = 'progressbar', ...rest } = props;
   const nativeRoot = slot.always(
     getIntrinsicElementProps(
       'div',
@@ -38,15 +37,14 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
       elementType: 'div',
     },
   );
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isShownAfterDelay, setIsShownAfterDelay] = React.useState(false);
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
   React.useEffect(() => {
     if (delay <= 0) {
       return;
     }
-    setIsVisible(false);
     setDelayTimeout(() => {
-      setIsVisible(true);
+      setIsShownAfterDelay(true);
     }, delay);
     return () => {
       clearDelayTimeout();
@@ -59,7 +57,6 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   });
   const spinnerShortHand = slot.optional(props.spinner, {
     renderByDefault: true,
-    defaultProps: { children: <DefaultSvg />, tabIndex },
     elementType: 'span',
   });
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
@@ -70,10 +67,11 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     delay,
     labelPosition,
     size,
-    shouldRenderSpinner: isVisible,
-    components: { root: 'div', spinner: 'span', label: Label },
+    shouldRenderSpinner: !delay || isShownAfterDelay,
+    components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: Label },
     root: nativeRoot,
     spinner: spinnerShortHand,
+    spinnerTail: slot.always(props.spinnerTail, { elementType: 'span' }),
     label: labelShorthand,
   };
   return state;

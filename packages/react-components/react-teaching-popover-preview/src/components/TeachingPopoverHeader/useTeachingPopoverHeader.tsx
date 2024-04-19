@@ -2,9 +2,8 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
 
-import { Dismiss16Regular, Lightbulb16Regular } from '@fluentui/react-icons';
+import { Dismiss12Regular, Lightbulb16Regular } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 /**
  * Returns the props and state required to render the component
@@ -19,7 +18,7 @@ export const useTeachingPopoverHeader_unstable = (
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     if (!ev.defaultPrevented) {
@@ -46,7 +45,7 @@ export const useTeachingPopoverHeader_unstable = (
       { elementType: 'h3' },
     ),
     icon: slot.optional(icon, {
-      renderByDefault: props.icon !== null, // Users may want to null out icon
+      renderByDefault: true,
       defaultProps: {
         children: <Lightbulb16Regular />,
         'aria-hidden': true,
@@ -56,8 +55,9 @@ export const useTeachingPopoverHeader_unstable = (
     dismissButton: slot.optional(dismissButton, {
       renderByDefault: true,
       defaultProps: {
-        children: <Dismiss16Regular />,
-        role: 'img',
+        children: <Dismiss12Regular />,
+        role: 'button',
+        'aria-label': 'dismiss',
         onClick: onDismissButtonClick,
       },
       elementType: 'button',

@@ -28,6 +28,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               outline: none;
             }
         data-focuszone-id="FocusZone2"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -113,6 +114,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               padding-right: 0px;
             }
         data-focuszone-id="FocusZone4"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -189,6 +191,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               outline: none;
             }
         data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -274,6 +277,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               padding-right: 0px;
             }
         data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -458,6 +462,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                     margin-top: unset;
                     padding-left: 8px;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <div
                 className=
@@ -470,6 +477,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      color: rgb(255, 255, 255);
                     }
               >
                 2020/04/30
@@ -485,6 +495,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                       font-size: 28px;
                       font-weight: bold;
                       line-height: 36px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      color: rgb(255, 255, 255);
                     }
               >
                 19%
@@ -526,6 +539,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               outline: none;
             }
         data-focuszone-id="FocusZone2"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -611,6 +625,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               padding-right: 0px;
             }
         data-focuszone-id="FocusZone4"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -687,6 +702,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               outline: none;
             }
         data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -772,6 +788,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               padding-right: 0px;
             }
         data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -943,7 +960,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone2"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -987,7 +1005,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip11"
+              id="tooltip3"
               style={
                 Object {
                   "border": 0,
@@ -1015,7 +1033,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone4"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1072,7 +1091,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1116,7 +1136,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip14"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -1144,7 +1164,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone15"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1219,6 +1240,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               outline: none;
             }
         data-focuszone-id="FocusZone2"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1291,6 +1313,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               padding-right: 40px;
             }
         data-focuszone-id="FocusZone4"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1366,6 +1389,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               outline: none;
             }
         data-focuszone-id="FocusZone5"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1438,6 +1462,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               padding-right: 40px;
             }
         data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

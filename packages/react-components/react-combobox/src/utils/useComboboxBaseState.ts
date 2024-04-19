@@ -1,31 +1,70 @@
 import * as React from 'react';
-import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
+import * as ReactDOM from 'react-dom';
+import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
+import { SelectionEvents } from './Selection.types';
 
 /**
+ * @internal
  * State shared between Combobox and Dropdown components
  */
 export const useComboboxBaseState = (
-  props: ComboboxBaseProps & { children?: React.ReactNode; editable?: boolean },
+  props: ComboboxBaseProps & {
+    children?: React.ReactNode;
+    editable?: boolean;
+    disabled?: boolean;
+    freeform?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
+  },
 ): ComboboxBaseState => {
   const {
     appearance = 'outline',
     children,
+    clearable = false,
     editable = false,
     inlinePopup = false,
     mountNode = undefined,
     multiselect,
     onOpenChange,
     size = 'medium',
+    activeDescendantController,
+    freeform = false,
+    disabled = false,
   } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
+  const { getOptionsMatchingValue } = optionCollection;
 
-  const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
+  const { getOptionById } = optionCollection;
+  const getActiveOption = React.useCallback(() => {
+    const activeOptionId = activeDescendantController.active();
+    return activeOptionId ? getOptionById(activeOptionId) : undefined;
+  }, [activeDescendantController, getOptionById]);
+
+  // Keeping some kind of backwards compatible functionality here
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const UNSAFE_activeOption = getActiveOption();
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const UNSAFE_setActiveOption = React.useCallback(
+    (option: OptionValue | undefined | ((prev: OptionValue | undefined) => OptionValue | undefined)) => {
+      let nextOption: OptionValue | undefined = undefined;
+      if (typeof option === 'function') {
+        const activeOption = getActiveOption();
+        nextOption = option(activeOption);
+      }
+
+      if (nextOption) {
+        activeDescendantController.focus(nextOption.id);
+      } else {
+        activeDescendantController.blur();
+      }
+    },
+    [activeDescendantController, getActiveOption],
+  );
 
   // track whether keyboard focus outline should be shown
   // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
@@ -37,15 +76,25 @@ export const useComboboxBaseState = (
 
   const ignoreNextBlur = React.useRef(false);
 
-  const selectionState = useSelection(props);
-  const { selectedOptions } = selectionState;
-
   // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
   const [controllableValue, setValue] = useControllableState({
     state: props.value,
     initialState: undefined,
   });
+
+  const { selectedOptions, selectOption: baseSelectOption, clearSelection } = useSelection(props);
+
+  // reset any typed value when an option is selected
+  const selectOption = React.useCallback(
+    (ev: SelectionEvents, option: OptionValue) => {
+      ReactDOM.unstable_batchedUpdates(() => {
+        setValue(undefined);
+        baseSelectOption(ev, option);
+      });
+    },
+    [setValue, baseSelectOption],
+  );
 
   const value = React.useMemo(() => {
     // don't compute the value if it is defined through props or setValue,
@@ -84,44 +133,64 @@ export const useComboboxBaseState = (
 
   const setOpen = React.useCallback(
     (event: ComboboxBaseOpenEvents, newState: boolean) => {
+      if (disabled) {
+        return;
+      }
       onOpenChange?.(event, { open: newState });
-      setOpenState(newState);
+      ReactDOM.unstable_batchedUpdates(() => {
+        if (!newState && !freeform) {
+          setValue(undefined);
+        }
+        setOpenState(newState);
+      });
     },
-    [onOpenChange, setOpenState],
+    [onOpenChange, setOpenState, setValue, freeform, disabled],
   );
 
-  // update active option based on change in open state or children
+  // update active option based on change in open state
   React.useEffect(() => {
-    if (open && !activeOption) {
+    if (open) {
       // if it is single-select and there is a selected option, start at the selected option
       if (!multiselect && selectedOptions.length > 0) {
         const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
-        selectedOption && setActiveOption(selectedOption);
+        if (selectedOption?.id) {
+          activeDescendantController.focus(selectedOption.id);
+        }
       }
-      // default to starting at the first option
-      else {
-        setActiveOption(getOptionAtIndex(0));
-      }
-    } else if (!open) {
-      // reset the active option when closing
-      setActiveOption(undefined);
+    } else {
+      activeDescendantController.blur();
     }
     // this should only be run in response to changes in the open state or children
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, children]);
+  }, [open, activeDescendantController]);
+
+  // Fallback focus when children are updated in an open popover results in no item being focused
+  React.useEffect(() => {
+    if (open) {
+      if (!activeDescendantController.active()) {
+        activeDescendantController.first();
+      }
+    }
+    // this should only be run in response to changes in the open state or children
+  }, [open, children, activeDescendantController]);
 
   return {
     ...optionCollection,
-    ...selectionState,
-    activeOption,
+    freeform,
+    disabled,
+    selectOption,
+    clearSelection,
+    selectedOptions,
+    activeOption: UNSAFE_activeOption,
     appearance,
+    clearable,
     focusVisible,
-    hasFocus,
     ignoreNextBlur,
     inlinePopup,
     mountNode,
     open,
-    setActiveOption,
+    hasFocus,
+    setActiveOption: UNSAFE_setActiveOption,
     setFocusVisible,
     setHasFocus,
     setOpen,
@@ -129,5 +198,10 @@ export const useComboboxBaseState = (
     size,
     value,
     multiselect,
+    onOptionClick: useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+      if (!multiselect) {
+        setOpen(e, false);
+      }
+    }),
   };
 };

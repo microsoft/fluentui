@@ -6,6 +6,8 @@ import { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSe
 import { getStyleOptions } from './StyleOptionsState';
 import { applyRegistration, styleToRegistration } from './styleToClassName';
 import { ObjectOnly } from './ObjectOnly';
+import { isShadowConfig, ShadowConfig } from './shadowConfig';
+import { Stylesheet } from './Stylesheet';
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -77,7 +79,14 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(
+  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
+): IProcessedStyleSet<any>;
+
+export function mergeStyleSets(
+  shadowConfig: ShadowConfig,
+  ...styleSets: Array<IStyleSet | undefined | false | null>
+): IProcessedStyleSet<any>;
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -87,7 +96,9 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
+export function mergeStyleSets(
+  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
+): IProcessedStyleSet<any> {
   return mergeCssSets(styleSets as any, getStyleOptions());
 }
 
@@ -103,7 +114,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
 export function mergeCssSets<TStyleSet>(
   styleSets: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -115,9 +126,9 @@ export function mergeCssSets<TStyleSet>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2>(
-  styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined],
+  styleSets: [TStyleSet1 | false | null | undefined | ShadowConfig, TStyleSet2 | false | null | undefined],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -130,12 +141,12 @@ export function mergeCssSets<TStyleSet1, TStyleSet2>(
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
   styleSets: [
-    TStyleSet1 | false | null | undefined,
+    TStyleSet1 | false | null | undefined | ShadowConfig,
     TStyleSet2 | false | null | undefined,
     TStyleSet3 | false | null | undefined,
   ],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -148,7 +159,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
   styleSets: [
-    TStyleSet1 | false | null | undefined,
+    TStyleSet1 | false | null | undefined | ShadowConfig,
     TStyleSet2 | false | null | undefined,
     TStyleSet3 | false | null | undefined,
     TStyleSet4 | false | null | undefined,
@@ -170,7 +181,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
 export function mergeCssSets<TStyleSet>(
   styleSet: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -182,17 +193,30 @@ export function mergeCssSets<TStyleSet>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets(
-  styleSets: Array<IStyleSet | undefined | false | null>,
+  styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>,
   options?: IStyleOptions,
 ): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
-  const styleSet = styleSets[0];
+  let shadowConfig: ShadowConfig | undefined = undefined;
+  let styleSet;
+  if (isShadowConfig(styleSets[0])) {
+    shadowConfig = styleSets[0] as ShadowConfig;
+    styleSet = styleSets[1];
+  } else {
+    styleSet = styleSets[0];
+  }
+
+  shadowConfig ??= options?.shadowConfig;
+
+  const opts = { ...options, shadowConfig };
 
   if (!styleSet && styleSets.length <= 1) {
     return { subComponentStyles: {} } as any;
   }
 
+  const sheet = Stylesheet.getInstance(shadowConfig);
+  opts.stylesheet = sheet;
   const concatenatedStyleSet = concatStyleSets(...styleSets);
 
   const registrations = [];
@@ -202,14 +226,16 @@ export function mergeCssSets(
       if (styleSetArea === 'subComponentStyles') {
         classNameSet.subComponentStyles = (concatenatedStyleSet as IConcatenatedStyleSet<any>).subComponentStyles || {};
         continue;
+      } else if (styleSetArea === '__shadowConfig__') {
+        continue;
       }
 
       const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
 
-      const { classes, objects } = extractStyleParts(styles);
+      const { classes, objects } = extractStyleParts(sheet, styles);
 
       if (objects?.length) {
-        const registration = styleToRegistration(options || {}, { displayName: styleSetArea }, objects);
+        const registration = styleToRegistration(opts || {}, { displayName: styleSetArea }, objects);
 
         if (registration) {
           registrations.push(registration);
@@ -225,7 +251,7 @@ export function mergeCssSets(
 
   for (const registration of registrations) {
     if (registration) {
-      applyRegistration(registration, options?.specificityMultiplier);
+      applyRegistration(registration, options?.specificityMultiplier, shadowConfig);
     }
   }
 

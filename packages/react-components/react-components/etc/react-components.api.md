@@ -43,6 +43,11 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
+import { AnnounceProvider } from '@fluentui/react-shared-contexts';
+import { AriaLiveAnnouncer } from '@fluentui/react-aria';
+import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
+import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
@@ -470,6 +475,8 @@ import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemSwitch } from '@fluentui/react-menu';
+import { menuItemSwitchClassNames } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
@@ -628,11 +635,31 @@ import { RadioOnChangeData } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import { RadioSlots } from '@fluentui/react-radio';
 import { RadioState } from '@fluentui/react-radio';
+import { Rating } from '@fluentui/react-rating';
+import { ratingClassNames } from '@fluentui/react-rating';
+import { RatingContextValues } from '@fluentui/react-rating';
+import { RatingDisplay } from '@fluentui/react-rating';
+import { ratingDisplayClassNames } from '@fluentui/react-rating';
+import { RatingDisplayContextValues } from '@fluentui/react-rating';
+import { RatingDisplayProps } from '@fluentui/react-rating';
+import { RatingDisplaySlots } from '@fluentui/react-rating';
+import { RatingDisplayState } from '@fluentui/react-rating';
+import { RatingItem } from '@fluentui/react-rating';
+import { ratingItemClassNames } from '@fluentui/react-rating';
+import { RatingItemProps } from '@fluentui/react-rating';
+import { RatingItemProvider } from '@fluentui/react-rating';
+import { RatingItemSlots } from '@fluentui/react-rating';
+import { RatingItemState } from '@fluentui/react-rating';
+import { RatingOnChangeEventData } from '@fluentui/react-rating';
+import { RatingProps } from '@fluentui/react-rating';
+import { RatingSlots } from '@fluentui/react-rating';
+import { RatingState } from '@fluentui/react-rating';
 import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
@@ -695,6 +722,7 @@ import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuItemSwitch_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
@@ -715,6 +743,10 @@ import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { renderRating_unstable } from '@fluentui/react-rating';
+import { renderRatingDisplay_unstable } from '@fluentui/react-rating';
+import { renderRatingItem_unstable } from '@fluentui/react-rating';
+import { renderSearchBox_unstable } from '@fluentui/react-search';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
@@ -759,6 +791,12 @@ import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import { SearchBox } from '@fluentui/react-search';
+import { SearchBoxChangeEvent } from '@fluentui/react-search';
+import { searchBoxClassNames } from '@fluentui/react-search';
+import { SearchBoxProps } from '@fluentui/react-search';
+import { SearchBoxSlots } from '@fluentui/react-search';
+import { SearchBoxState } from '@fluentui/react-search';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
@@ -1088,6 +1126,9 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAnnounce } from '@fluentui/react-shared-contexts';
+import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
+import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
@@ -1128,6 +1169,7 @@ import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
+import { useComboboxFilter } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -1252,6 +1294,8 @@ import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitch_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitchStyles_unstable } from '@fluentui/react-menu';
 import { useMenuList_unstable } from '@fluentui/react-menu';
 import { useMenuListContext_unstable } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
@@ -1306,9 +1350,20 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRating_unstable } from '@fluentui/react-rating';
+import { useRatingContextValues } from '@fluentui/react-rating';
+import { useRatingDisplay_unstable } from '@fluentui/react-rating';
+import { useRatingDisplayContextValues } from '@fluentui/react-rating';
+import { useRatingDisplayStyles_unstable } from '@fluentui/react-rating';
+import { useRatingItem_unstable } from '@fluentui/react-rating';
+import { useRatingItemContextValue_unstable } from '@fluentui/react-rating';
+import { useRatingItemStyles_unstable } from '@fluentui/react-rating';
+import { useRatingStyles_unstable } from '@fluentui/react-rating';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
+import { useSearchBox_unstable } from '@fluentui/react-search';
+import { useSearchBoxStyles_unstable } from '@fluentui/react-search';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -1498,6 +1553,16 @@ export { AccordionToggleData }
 export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
+
+export { AnnounceContextValue }
+
+export { AnnounceProvider }
+
+export { AriaLiveAnnouncer }
+
+export { AriaLiveAnnouncerProps }
+
+export { AriaLiveAnnouncerState }
 
 export { arrowHeights }
 
@@ -2353,6 +2418,10 @@ export { MenuItemSlots }
 
 export { MenuItemState }
 
+export { MenuItemSwitch }
+
+export { menuItemSwitchClassNames }
+
 export { MenuList }
 
 export { menuListClassNames }
@@ -2669,6 +2738,44 @@ export { RadioSlots }
 
 export { RadioState }
 
+export { Rating }
+
+export { ratingClassNames }
+
+export { RatingContextValues }
+
+export { RatingDisplay }
+
+export { ratingDisplayClassNames }
+
+export { RatingDisplayContextValues }
+
+export { RatingDisplayProps }
+
+export { RatingDisplaySlots }
+
+export { RatingDisplayState }
+
+export { RatingItem }
+
+export { ratingItemClassNames }
+
+export { RatingItemProps }
+
+export { RatingItemProvider }
+
+export { RatingItemSlots }
+
+export { RatingItemState }
+
+export { RatingOnChangeEventData }
+
+export { RatingProps }
+
+export { RatingSlots }
+
+export { RatingState }
+
 export { RegisterTabEventHandler }
 
 export { renderAccordion_unstable }
@@ -2678,6 +2785,8 @@ export { renderAccordionHeader_unstable }
 export { renderAccordionItem_unstable }
 
 export { renderAccordionPanel_unstable }
+
+export { renderAriaLiveAnnouncer_unstable }
 
 export { renderAvatar_unstable }
 
@@ -2803,6 +2912,8 @@ export { renderMenuItemLink_unstable }
 
 export { renderMenuItemRadio_unstable }
 
+export { renderMenuItemSwitch_unstable }
+
 export { renderMenuList_unstable }
 
 export { renderMenuPopover_unstable }
@@ -2842,6 +2953,14 @@ export { renderProgressBar_unstable }
 export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
+
+export { renderRating_unstable }
+
+export { renderRatingDisplay_unstable }
+
+export { renderRatingItem_unstable }
+
+export { renderSearchBox_unstable }
 
 export { renderSelect_unstable }
 
@@ -2930,6 +3049,18 @@ export { resolveShorthand }
 export { ResolveShorthandFunction }
 
 export { ResolveShorthandOptions }
+
+export { SearchBox }
+
+export { SearchBoxChangeEvent }
+
+export { searchBoxClassNames }
+
+export { SearchBoxProps }
+
+export { SearchBoxSlots }
+
+export { SearchBoxState }
 
 export { Select }
 
@@ -3589,6 +3720,12 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAnnounce }
+
+export { useAriaLiveAnnouncer_unstable }
+
+export { useAriaLiveAnnouncerContextValues_unstable }
+
 export { useArrowNavigationGroup }
 
 export { UseArrowNavigationGroupOptions }
@@ -3668,6 +3805,8 @@ export { useColumnIdContext }
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
+
+export { useComboboxFilter }
 
 export { useComboboxStyles_unstable }
 
@@ -3917,6 +4056,10 @@ export { useMenuItemRadioStyles_unstable }
 
 export { useMenuItemStyles_unstable }
 
+export { useMenuItemSwitch_unstable }
+
+export { useMenuItemSwitchStyles_unstable }
+
 export { useMenuList_unstable }
 
 export { useMenuListContext_unstable }
@@ -4025,11 +4168,33 @@ export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
 
+export { useRating_unstable }
+
+export { useRatingContextValues }
+
+export { useRatingDisplay_unstable }
+
+export { useRatingDisplayContextValues }
+
+export { useRatingDisplayStyles_unstable }
+
+export { useRatingItem_unstable }
+
+export { useRatingItemContextValue_unstable }
+
+export { useRatingItemStyles_unstable }
+
+export { useRatingStyles_unstable }
+
 export { useRestoreFocusSource }
 
 export { useRestoreFocusTarget }
 
 export { useScrollbarWidth }
+
+export { useSearchBox_unstable }
+
+export { useSearchBoxStyles_unstable }
 
 export { useSelect_unstable }
 

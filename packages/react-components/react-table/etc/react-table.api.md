@@ -154,6 +154,9 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
         width: number;
     }) => void;
     containerWidthOffset?: number;
+    resizableColumnsOptions?: {
+        autoFitColumns?: boolean;
+    };
 };
 
 // @public
@@ -320,7 +323,7 @@ export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
 
 // @public
-export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
+export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> & Pick<Partial<TableCellLayoutSlots>, 'content'> & {
     appearance?: 'primary';
     truncate?: boolean;
 };
@@ -374,6 +377,7 @@ export type TableColumnId = string | number;
 // @public (undocumented)
 export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
     defaultWidth?: number;
+    autoFitColumns?: boolean;
 }>;
 
 // @public (undocumented)

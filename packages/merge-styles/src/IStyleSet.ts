@@ -1,5 +1,6 @@
 import { IStyle } from './IStyle';
 import { IStyleFunctionOrObject, IStyleFunction } from './IStyleFunction';
+import { ShadowConfig } from './shadowConfig';
 
 /**
  * @deprecated Use `Exclude` provided by TypeScript instead.
@@ -24,32 +25,40 @@ export type __MapToFunctionType<T> = Extract<T, Function> extends never
   : Extract<T, Function>;
 
 /**
+ * Used for 'extends IStyleSetBase' type constraints when an IStyleSet type argument is needed.
+ */
+export interface IStyleSetBase {
+  [key: string]: any;
+  subComponentStyles?: any;
+}
+
+/**
  * A style set is a dictionary of display areas to IStyle objects.
  * It may optionally contain style functions for sub components in the special `subComponentStyles`
  * property.
  */
-export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: any }> = {
+export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> = {
   // eslint-disable-next-line deprecation/deprecation
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
-};
+} & IShadowConfig;
 
 /**
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
  */
-export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
   // eslint-disable-next-line deprecation/deprecation
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
-};
+} & IShadowConfig;
 
 /**
  * A processed style set is one which the set of styles associated with each area has been converted
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
-export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
   // eslint-disable-next-line deprecation/deprecation
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
@@ -58,4 +67,8 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
       TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
     >;
   };
+} & IShadowConfig;
+
+type IShadowConfig = {
+  __shadowConfig__?: ShadowConfig;
 };

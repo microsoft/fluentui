@@ -77,6 +77,7 @@ export type InputProps = Omit<
   /**
    * Called when the user changes the input's value.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
 
   /**

@@ -60,15 +60,21 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
-      - task: AzureUpload@2
+      - task: AzureCLI@2
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (Fluent N*)
         inputs:
-          SourcePath: 'packages/fluentui/perf-test-northstar/dist'
           azureSubscription: $(azureSubscription)
-          storage: $(azureStorage)
-          ContainerName: '$web'
-          BlobPrefix: '$(deployBasePath)/perf-test-northstar'
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source packages/fluentui/perf-test-northstar/dist \
+              --account-name $(azureStorage) \
+              --destination-path $(deployBasePath)/perf-test-northstar \
+              --auth-mode login \
+              --overwrite
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -81,18 +87,18 @@ jobs:
           uniqueId: 'perfComment9424'
 
       - script: |
-          yarn stats:build
+          yarn northstar:stats:build
         condition: eq(variables.isPR, false)
         displayName: Bundle Statistics (master only)
 
       - script: |
-          yarn perf
+          yarn northstar:perf
         condition: eq(variables.isPR, false)
         displayName: Performance Tests (master only)
 
       # HEADS UP: also see tag-version-prefix in fluentui-publish.js
       - script: |
-          yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
+          yarn northstar:stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
         condition: eq(variables.isPR, false)
         displayName: Save Statistics to DB (master only)
         env:
@@ -118,15 +124,21 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureUpload@2
+      - task: AzureCLI@2
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (V8)
         inputs:
-          SourcePath: 'apps/perf-test/dist'
           azureSubscription: $(azureSubscription)
-          storage: $(azureStorage)
-          ContainerName: '$web'
-          BlobPrefix: '$(deployBasePath)/perf-test'
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source apps/perf-test/dist \
+              --account-name $(azureStorage) \
+              --destination-path $(deployBasePath)/perf-test \
+              --auth-mode login \
+              --overwrite
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)
@@ -158,15 +170,21 @@ jobs:
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
-      - task: AzureUpload@2
+      - task: AzureCLI@2
         condition: eq(variables.isPR, true)
         displayName: Upload Perf Test Result to PR deploy site (React Components)
         inputs:
-          SourcePath: 'apps/perf-test-react-components/dist'
           azureSubscription: $(azureSubscription)
-          storage: $(azureStorage)
-          ContainerName: '$web'
-          BlobPrefix: '$(deployBasePath)/perf-test-react-components'
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            az storage blob upload-batch \
+              --destination '$web' \
+              --source apps/perf-test-react-components/dist \
+              --account-name $(azureStorage) \
+              --destination-path $(deployBasePath)/perf-test-react-components \
+              --auth-mode login \
+              --overwrite
 
       - task: GithubPRComment@0
         condition: eq(variables.isPR, true)

@@ -39,6 +39,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     components: {
       root: 'div',
       icon: 'div',
+      bottomReflowSpacer: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -54,6 +55,10 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       renderByDefault: true,
       elementType: 'div',
       defaultProps: { children: getIntentIcon(intent) },
+    }),
+    bottomReflowSpacer: slot.optional(props.bottomReflowSpacer, {
+      renderByDefault: computedLayout === 'multiline',
+      elementType: 'div',
     }),
     layout: computedLayout,
     intent,

@@ -3,7 +3,6 @@ import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/reac
 import type { TeachingPopoverTitleProps, TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 import { DismissFilled, DismissRegular, bundleIcon } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 /**
@@ -15,11 +14,11 @@ export const useTeachingPopoverTitle_unstable = (
   props: TeachingPopoverTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverTitleState => {
-  const { dismissButton, showDismiss } = props;
+  const { dismissButton } = props;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     if (!ev.defaultPrevented) {
@@ -33,7 +32,6 @@ export const useTeachingPopoverTitle_unstable = (
 
   return {
     appearance,
-    showDismiss,
     components: {
       root: 'h2',
       dismissButton: 'button',
@@ -46,10 +44,11 @@ export const useTeachingPopoverTitle_unstable = (
       { elementType: 'h2' },
     ),
     dismissButton: slot.optional(dismissButton, {
-      renderByDefault: showDismiss, // Users may want to null out icon
+      renderByDefault: false,
       defaultProps: {
         children: <DismissIcon />,
         onClick: onDismissButtonClick,
+        'aria-label': 'dismiss',
         'aria-hidden': true,
       },
       elementType: 'button',

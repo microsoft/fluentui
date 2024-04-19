@@ -1,45 +1,39 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
+import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { useCarousel_unstable, type UseCarouselOptions } from './Carousel/Carousel';
 
 export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselState => {
-  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
-  const setTotalPages = useTeachingPopoverContext_unstable(context => context.setTotalPages);
-  const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
-  const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
+  const toggleOpen = usePopoverContext_unstable(c => c.toggleOpen);
+  const handleFinish: UseCarouselOptions['onFinish'] = useEventCallback((event, data) => {
+    props.onFinish?.(event, data);
+    toggleOpen(event as React.MouseEvent<HTMLElement>);
+  });
 
-  const reactChildArray = React.Children.toArray(props.children);
+  const { carousel, carouselRef } = useCarousel_unstable({
+    defaultValue: props.defaultValue,
+    value: props.value,
+    onValueChange: props.onValueChange,
+    onFinish: handleFinish,
+  });
 
-  React.useEffect(() => {
-    // Update total pages if child length changes.
-    if (totalPages !== reactChildArray.length) {
-      setTotalPages(reactChildArray.length);
-    }
-  }, [reactChildArray.length, totalPages, setTotalPages]);
-
-  // Get current pagination child (w/ array safety)
-  const currentPageElement =
-    currentPage < reactChildArray.length ? reactChildArray[currentPage] : reactChildArray[reactChildArray.length - 1];
-
+  const appearance = usePopoverContext_unstable(context => context.appearance);
   return {
-    currentPage,
-    setCurrentPage,
-    totalPages,
-    setTotalPages,
+    appearance,
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, carouselRef),
         ...props,
-        children: currentPageElement,
       }),
       { elementType: 'div' },
     ),
+    ...carousel,
   };
 };

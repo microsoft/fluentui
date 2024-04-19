@@ -151,7 +151,7 @@ The original PopoverContext provider is preserved, this ensures that popover fun
 
 TeachingPopoverTrigger has no additional functionality over PopoverTrigger, and is used to wrap the launch button or connected UI component. Internally, TeachingPopoverButtons provide primary/secondary action functionality and additional styling based on state over tge trigger wrapper.
 
-Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onPageChange and onFinish for external use or control.
+Carousel logic, such as page change can be accessed via the TeachingPopoverCarousel's onValueChange and onFinish for external use or control.
 
 ## Behaviors
 
@@ -179,11 +179,11 @@ Info tip subtitle located at the top of the popover, provides a dismiss button b
 
 TBD: Replace as slots inside TeachingPopoverBody?
 
-TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody, it does not provide a dismiss by default, but is available via 'showDismiss' - there should only ever be one 'dismiss' icon, so this option is intended for when no TeachingPopoverHeader is provided.
+TeachingPopoverTitle is intended to provide a sub-header for TeachingPopoverBody, it does not provide a dismiss by default' - there should only ever be one 'dismiss' icon, so this option is intended for when no TeachingPopoverHeader is provided.
 
 #### TeachingPopoverBody
 
-This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop (TeachingPopoverBodyMediaLength type). It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
+This body section encapsulates a standardized media slot, with short/medium/tall size settings via mediaLength prop. It also acts as a boundary for pages within a TeachingPopoverCarousel, and will be paginated based on this encapsulation.
 
 ## Accessibility
 

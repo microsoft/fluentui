@@ -1,4 +1,4 @@
-import { GriffelStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { type GriffelResetStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 import { DrawerBaseState } from './DrawerBase.types';
@@ -13,8 +13,8 @@ export const drawerCSSVars = {
 /**
  * Default shared styles for the Drawer component
  */
-export const drawerDefaultStyles: GriffelStyle = {
-  ...shorthands.overflow('hidden'),
+export const drawerDefaultStyles: GriffelResetStyle = {
+  overflow: 'hidden',
 
   width: `var(${drawerCSSVars.drawerSizeVar})`,
   maxWidth: '100vw',
@@ -59,6 +59,10 @@ const useDrawerStyles = makeStyles({
     right: 0,
     left: 'auto',
   },
+  bottom: {
+    bottom: 0,
+    top: 'auto',
+  },
 
   /* Sizes */
   small: {
@@ -72,6 +76,22 @@ const useDrawerStyles = makeStyles({
   },
   full: {
     [drawerCSSVars.drawerSizeVar]: '100vw',
+  },
+});
+
+export const useDrawerBottomBaseStyles = makeStyles({
+  /* Sizes for position bottom */
+  small: {
+    [drawerCSSVars.drawerSizeVar]: '320px',
+  },
+  medium: {
+    [drawerCSSVars.drawerSizeVar]: '592px',
+  },
+  large: {
+    [drawerCSSVars.drawerSizeVar]: '940px',
+  },
+  full: {
+    [drawerCSSVars.drawerSizeVar]: '100vh',
   },
 });
 
@@ -92,12 +112,14 @@ export const useDrawerDurationStyles = makeStyles({
 
 export const useDrawerBaseClassNames = ({ position, size, motion }: DrawerBaseState) => {
   const baseStyles = useDrawerStyles();
+  const bottomBaseStyles = useDrawerBottomBaseStyles();
   const durationStyles = useDrawerDurationStyles();
 
   return mergeClasses(
     baseStyles[position],
+    position === 'bottom' && bottomBaseStyles[size],
     durationStyles[size],
-    baseStyles[size],
+    position !== 'bottom' && baseStyles[size],
     baseStyles.reducedMotion,
     motion.type === 'entering' && baseStyles.entering,
     motion.type === 'exiting' && baseStyles.exiting,

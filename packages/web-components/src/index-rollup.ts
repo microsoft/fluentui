@@ -1,8 +1,10 @@
 // TODO: Is exporting Foundation still necessary with the updated API's?
 // export * from "@microsoft/fast-element";
+import { DesignToken } from '@microsoft/fast-foundation';
 import { allComponents } from './custom-elements';
 import { provideFluentDesignSystem } from './fluent-design-system';
 
+export { DesignToken };
 export * from './index';
 
 /**

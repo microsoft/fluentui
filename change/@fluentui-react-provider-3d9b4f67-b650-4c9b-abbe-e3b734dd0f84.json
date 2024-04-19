@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "feat: unify v9 babel preset in all packages",
+  "packageName": "@fluentui/react-provider",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
