@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-button-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-button/stories/src",
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "implicitDependencies": []
+}

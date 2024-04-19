@@ -134,8 +134,8 @@ function createNormalizedTsPaths(options: { definitionsRootPath: string; pathAli
 export function getTsPathAliasesApiExtractorConfig(options: {
   tsConfig: TsConfig;
   packageJson: PackageJson;
-  definitionsRootPath: string;
-  pathAliasesTsConfigPath?: string;
+  // definitionsRootPath: string;
+  // pathAliasesTsConfigPath?: string;
 }) {
   const { packageJson, tsConfig /* , pathAliasesTsConfigPath, definitionsRootPath */ } = options;
   /**
@@ -178,7 +178,8 @@ export function getTsPathAliasesApiExtractorConfig(options: {
        * - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
        *
        */
-      paths: undefined,
+      // FIXME: overriding baseUrl effectively turns-off path aliases resolution, so probably this can be removed
+      // paths: undefined,
       baseUrl: '.',
     },
   };

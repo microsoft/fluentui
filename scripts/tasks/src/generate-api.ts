@@ -10,6 +10,8 @@ export function generateApi() {
 }
 
 function generateTypeDeclarations() {
+  const useIncremental = process.env.FLUENT_USE_INCREMENTAL;
+
   const { tsConfigFileForCompilation } = getTsPathAliasesConfigUsedOnlyForDx();
   const cmd = [
     'tsc',
@@ -17,6 +19,7 @@ function generateTypeDeclarations() {
     '--emitDeclarationOnly',
     // turn off path aliases.
     '--baseUrl .',
+    useIncremental ? '--incremental' : undefined,
   ]
     .filter(Boolean)
     .join(' ');

@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-button",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-button/library/src",
+  "tags": ["vNext", "platform:web"],
+  "implicitDependencies": []
+}

@@ -1,8 +1,0 @@
-{
-  "name": "@fluentui/react-badge",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "library",
-  "sourceRoot": "packages/react-components/react-badge/src",
-  "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
-}

@@ -1,8 +1,0 @@
-{
-  "name": "@fluentui/react-avatar",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "library",
-  "sourceRoot": "packages/react-components/react-avatar/src",
-  "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
-}

@@ -20,7 +20,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "generate-api": "just-scripts generate-api",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "storybook": "start-storybook",
     "start": "yarn storybook",
     "e2e": "cypress run --component",
@@ -28,6 +28,8 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",

@@ -1,0 +1,38 @@
+steps:
+  - template: tools.yml
+
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn (install packages)
+
+  - script: |
+      yarn nx run @fluentui/workspace-plugin:check-graph
+      yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+      yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+    displayName: Workspace lint
+
+  - script: |
+      if [[ -n "$(targetBranch)" ]]; then
+        yarn format --since $(targetBranch) --check
+      else
+        yarn format --all --check
+      fi
+    displayName: check formatting
+
+  ## Danger.js checks for Fluent UI N*
+  - script: |
+      DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
+    displayName: danger
+    condition: eq(variables.isPR, true)
+    env:
+      DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+
+  - script: |
+      yarn lage build --verbose --incremental $(sinceArg)
+    displayName: build
+  - script: |
+      yarn lage type-check --verbose --incremental $(sinceArg)
+    displayName: type-check
+
+  - template: cleanup.yml

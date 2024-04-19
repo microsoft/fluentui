@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-select",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-select/library/src",
+  "tags": ["vNext", "platform:web"],
+  "implicitDependencies": []
+}

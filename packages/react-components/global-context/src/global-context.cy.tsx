@@ -1,6 +1,8 @@
-import { createContext, createContextSelector } from '@fluentui/global-context';
-import { SYMBOL_NAMESPACE } from './global-context';
-import { SYMBOL_NAMESPACE as CONTEXT_SELECTOR_SYMBOL_NAMESPACE } from './global-context-selector';
+import { SYMBOL_NAMESPACE, createContext } from './global-context';
+import {
+  SYMBOL_NAMESPACE as CONTEXT_SELECTOR_SYMBOL_NAMESPACE,
+  createContext as createContextSelector,
+} from './global-context-selector';
 
 function cleanWindowSymbols(namespace: string) {
   getGlobalContextSymbols(namespace).forEach(sym => {
