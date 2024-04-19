@@ -475,6 +475,8 @@ import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemSwitch } from '@fluentui/react-menu';
+import { menuItemSwitchClassNames } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
@@ -720,6 +722,7 @@ import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuItemSwitch_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
@@ -1291,6 +1294,8 @@ import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitch_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitchStyles_unstable } from '@fluentui/react-menu';
 import { useMenuList_unstable } from '@fluentui/react-menu';
 import { useMenuListContext_unstable } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
@@ -2413,6 +2418,10 @@ export { MenuItemSlots }
 
 export { MenuItemState }
 
+export { MenuItemSwitch }
+
+export { menuItemSwitchClassNames }
+
 export { MenuList }
 
 export { menuListClassNames }
@@ -2902,6 +2911,8 @@ export { renderMenuItemCheckbox_unstable }
 export { renderMenuItemLink_unstable }
 
 export { renderMenuItemRadio_unstable }
+
+export { renderMenuItemSwitch_unstable }
 
 export { renderMenuList_unstable }
 
@@ -4044,6 +4055,10 @@ export { useMenuItemRadio_unstable }
 export { useMenuItemRadioStyles_unstable }
 
 export { useMenuItemStyles_unstable }
+
+export { useMenuItemSwitch_unstable }
+
+export { useMenuItemSwitchStyles_unstable }
 
 export { useMenuList_unstable }
 

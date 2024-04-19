@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 19 Apr 2024 07:26:09 GMT",
+      "tag": "@fluentui/react-charting_v5.20.1",
+      "version": "5.20.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9550c4cd2ffbcfdc4fc0f0ed66866e5cf11bd2c9",
+            "comment": "Add data-is-focusable to root node text component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Apr 2024 07:27:08 GMT",
       "tag": "@fluentui/react-charting_v5.20.0",
       "version": "5.20.0",
