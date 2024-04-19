@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "'feat:",
+  "comment": "'feat: Release TeachingPopover to stable",
   "packageName": "@fluentui/react-components",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"
