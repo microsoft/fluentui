@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Improving user experience by fixing a hoverDelay + click race condition on MenuTrigger",
   "packageName": "@fluentui/react-menu",
   "email": "stevenco@microsoft.com",
