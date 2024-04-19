@@ -6,12 +6,6 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
 };
 
-export const swatchPickerCSSVars = {
-  gridGap: `--fui-SwatchPicker--gridGap`,
-};
-
-const { gridGap } = swatchPickerCSSVars;
-
 /**
  * Styles for the root slot
  */
@@ -22,11 +16,15 @@ const useStyles = makeStyles({
   },
   row: {
     flexDirection: 'row',
-    columnGap: `var(${gridGap})`,
   },
   grid: {
     flexDirection: 'column',
-    rowGap: `var(${gridGap})`,
+  },
+  spacingSmall: {
+    ...shorthands.gap('2px'),
+  },
+  spacingMedium: {
+    ...shorthands.gap('4px'),
   },
 });
 
@@ -36,7 +34,15 @@ const useStyles = makeStyles({
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
   const layoutStyle = state.isGrid ? styles.grid : styles.row;
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, layoutStyle, state.root.className);
+
+  const spacingStyle = state.spacing === 'small' ? styles.spacingSmall : styles.spacingMedium;
+  state.root.className = mergeClasses(
+    swatchPickerClassNames.root,
+    styles.root,
+    layoutStyle,
+    spacingStyle,
+    state.root.className,
+  );
 
   return state;
 };

@@ -44,7 +44,7 @@ export const SwatchPickerSize = () => {
         })}
       </SwatchPicker>
       <h3>Extra small</h3>
-      <SwatchPicker aria-label="SwatchPicker extra small size" size="extraSmall">
+      <SwatchPicker aria-label="SwatchPicker extra small size" size="extra-small">
         {colors.map(color => {
           return <ColorSwatch key={color.value} {...color} />;
         })}
