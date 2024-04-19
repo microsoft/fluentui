@@ -55,8 +55,6 @@ const useStyles = makeStyles({
   arrow: {
     ...createArrowStyles({
       arrowHeight: 12,
-      borderStyle: 'solid',
-      borderColor: 'blue',
       borderWidth: '3px',
     }),
   },
