@@ -395,11 +395,7 @@ export class ActionButton extends React_2.Component<IButtonProps, {}> {
 }
 
 // @public (undocumented)
-export class ActivityItem extends React_2.Component<IActivityItemProps, {}> {
-    constructor(props: IActivityItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ActivityItem: React_2.FunctionComponent<IActivityItemProps>;
 
 export { addDays }
 
@@ -1717,9 +1713,9 @@ export { format }
 export { formProperties }
 
 // @public (undocumented)
-export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean) => IActivityItemClassNames;
+export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean, animateBeaconSignal?: boolean, beaconColorOne?: string, beaconColorTwo?: string, theme?: ITheme | undefined) => IActivityItemClassNames;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles, animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'], beaconColorOne?: IActivityItemProps['beaconColorOne'], beaconColorTwo?: IActivityItemProps['beaconColorTwo'], isCompact?: IActivityItemProps['isCompact']) => IActivityItemStyles;
 
 // @public (undocumented)
@@ -2168,8 +2164,12 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
     onRenderIcon?: IRenderFunction<IActivityItemProps>;
     onRenderTimeStamp?: IRenderFunction<IActivityItemProps>;
     styles?: IActivityItemStyles;
+    theme?: ITheme;
     timeStamp?: string | React_2.ReactNode[] | React_2.ReactNode;
 }
+
+// @public (undocumented)
+export type IActivityItemStyleProps = Required<Pick<IActivityItemProps, 'theme'>> & Pick<IActivityItemProps, 'animateBeaconSignal' | 'beaconColorOne' | 'beaconColorTwo' | 'className' | 'isCompact'>;
 
 // @public (undocumented)
 export interface IActivityItemStyles {

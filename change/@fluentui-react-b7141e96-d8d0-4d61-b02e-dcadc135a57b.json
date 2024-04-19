@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: migrate ActivityItem to styled() component",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
