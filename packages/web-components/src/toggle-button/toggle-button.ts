@@ -15,7 +15,7 @@ export class ToggleButton extends Button {
    * HTML Attribute: `pressed`
    */
   @attr({ mode: 'boolean' })
-  public pressed: boolean = false;
+  public pressed!: boolean;
 
   /**
    * Updates the pressed state when the `pressed` property changes.
@@ -27,23 +27,23 @@ export class ToggleButton extends Button {
   }
 
   /**
-   * Indicates the indeterminate state of the control. This property takes precedence over `pressed`.
+   * Indicates the mixed state of the control. This property takes precedence over `pressed`.
    *
    * @public
    * @remarks
-   * HTML Attribute: `indeterminate`
+   * HTML Attribute: `mixed`
    */
   @attr({ mode: 'boolean' })
-  public indeterminate?: boolean;
+  public mixed?: boolean;
 
   /**
-   * Updates the pressed state when the `indeterminate` property changes.
+   * Updates the pressed state when the `mixed` property changes.
    *
-   * @param previous - the previous indeterminate state
-   * @param next - the current indeterminate state
+   * @param previous - the previous mixed state
+   * @param next - the current mixed state
    * @internal
    */
-  protected indeterminateChanged(): void {
+  protected mixedChanged(): void {
     this.setPressedState();
   }
 
@@ -62,13 +62,15 @@ export class ToggleButton extends Button {
   }
 
   /**
-   * Sets the `aria-pressed` attribute based on the `pressed` and `indeterminate` properties.
+   * Sets the `aria-pressed` attribute based on the `pressed` and `mixed` properties.
    *
    * @internal
    */
   private setPressedState(): void {
-    const ariaPressed = `${this.indeterminate ? 'mixed' : !!this.pressed}`;
-    this.elementInternals.ariaPressed = ariaPressed;
-    this.setAttribute('aria-pressed', ariaPressed);
+    if (this.$fastController.isConnected) {
+      const ariaPressed = `${this.mixed ? 'mixed' : !!this.pressed}`;
+      this.elementInternals.ariaPressed = ariaPressed;
+      this.setAttribute('aria-pressed', ariaPressed);
+    }
   }
 }

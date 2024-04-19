@@ -2939,9 +2939,9 @@ export type TextWeight = ValuesOf<typeof TextWeight>;
 export class ToggleButton extends Button {
     // (undocumented)
     connectedCallback(): void;
-    indeterminate?: boolean;
+    mixed?: boolean;
     // @internal
-    protected indeterminateChanged(): void;
+    protected mixedChanged(): void;
     // @override
     protected press(): void;
     pressed: boolean;
