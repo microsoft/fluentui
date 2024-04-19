@@ -1,4 +1,13 @@
-// TODO #30642 A doc explaining common snags and trip hazards.
+### Cleaning your repo
 
-Assignee - Mason
-Reviewer - Sean
+Every once in a while you'll get build errors in node modules unrelated to your work.
+
+First try running:
+
+`yarn`
+
+If the issues still persist, clean your repo:
+
+`git clean -fdx`
+`yarn cache clean`
+`yarn`
