@@ -1121,6 +1121,7 @@ export interface ISankeyChartProps {
     className?: string;
     colorsForNodes?: string[];
     data: IChartProps;
+    formatNumber?: NumberFormatter;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;
@@ -1505,6 +1506,9 @@ export enum NodesComposition {
     compact = 0,
     long = 1
 }
+
+// @public (undocumented)
+export type NumberFormatter = (num: number | undefined) => string;
 
 // @public
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
