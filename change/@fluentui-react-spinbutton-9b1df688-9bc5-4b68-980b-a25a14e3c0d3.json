@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: SpinButton buttons now display correct visuals at bounds",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
