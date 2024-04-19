@@ -52,8 +52,9 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const child = getTriggerChild(children);
 
-  // set openingWithHoverRef on a timeout equal to the hoverDelay.
-  // this value can be used to prevent closing the menu on a click
+  // set openingWithHoverRef on a timeout to prevent closing the menu on a click
+  // while the hover open is running non-visually.
+  // then timeout is equal to the hoverDelay + half of the menu popover animation duration
   const onHoverOpen = () => {
     clearTimeout(openingWithHoverTimeout.current);
 
@@ -61,7 +62,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    openingWithHoverTimeout.current = setTimeout(() => (openingWithHoverRef.current = false), hoverDelay);
+    openingWithHoverTimeout.current = setTimeout(() => (openingWithHoverRef.current = false), hoverDelay + 200);
   };
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {

@@ -218,7 +218,8 @@ describe('MenuTrigger', () => {
     jest.useFakeTimers();
 
     const mockSetOpen = jest.fn();
-    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay: 500 });
+    const hoverDelay = 500;
+    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay });
 
     const { getByRole } = render(
       <MenuTrigger disableButtonEnhancement>
@@ -233,9 +234,19 @@ describe('MenuTrigger', () => {
       expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
     );
 
-    jest.advanceTimersByTime(499);
+    jest.advanceTimersByTime(hoverDelay - 1);
 
-    const clickEvent = createEvent.click(getByRole('button'));
+    let clickEvent = createEvent.click(getByRole('button'));
+    fireEvent(getByRole('button'), clickEvent);
+
+    expect(mockSetOpen).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerClick' }),
+    );
+
+    jest.advanceTimersByTime(200);
+
+    clickEvent = createEvent.click(getByRole('button'));
     fireEvent(getByRole('button'), clickEvent);
 
     expect(mockSetOpen).toBeCalledWith(
@@ -250,7 +261,8 @@ describe('MenuTrigger', () => {
     jest.useFakeTimers();
 
     const mockSetOpen = jest.fn();
-    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay: 500 });
+    const hoverDelay = 500;
+    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay });
 
     const { getByRole } = render(
       <MenuTrigger disableButtonEnhancement>
@@ -265,7 +277,7 @@ describe('MenuTrigger', () => {
       expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
     );
 
-    jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(hoverDelay + 200);
 
     const clickEvent = createEvent.click(getByRole('button'));
     fireEvent(getByRole('button'), clickEvent);
