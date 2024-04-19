@@ -195,4 +195,86 @@ describe('MenuTrigger', () => {
 
     expect(onClick).toBeCalledTimes(0);
   });
+
+  it('should open menu on hover', () => {
+    const mockSetOpen = jest.fn();
+    mockUseMenuContext({ setOpen: mockSetOpen, openOnHover: true, hoverDelay: 500 });
+
+    const { getByRole } = render(
+      <MenuTrigger disableButtonEnhancement>
+        <div role="button">trigger</div>
+      </MenuTrigger>,
+    );
+    const hoverEvent = createEvent.mouseMove(getByRole('button'));
+    fireEvent(getByRole('button'), hoverEvent);
+
+    expect(mockSetOpen).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
+    );
+  });
+
+  it('should prevent closing menu on click after hover with delay', () => {
+    jest.useFakeTimers();
+
+    const mockSetOpen = jest.fn();
+    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay: 500 });
+
+    const { getByRole } = render(
+      <MenuTrigger disableButtonEnhancement>
+        <div role="button">trigger</div>
+      </MenuTrigger>,
+    );
+    const hoverEvent = createEvent.mouseMove(getByRole('button'));
+    fireEvent(getByRole('button'), hoverEvent);
+
+    expect(mockSetOpen).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
+    );
+
+    jest.advanceTimersByTime(499);
+
+    const clickEvent = createEvent.click(getByRole('button'));
+    fireEvent(getByRole('button'), clickEvent);
+
+    expect(mockSetOpen).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerClick' }),
+    );
+
+    jest.useRealTimers();
+  });
+
+  it('should close menu on click after hover with delay', () => {
+    jest.useFakeTimers();
+
+    const mockSetOpen = jest.fn();
+    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay: 500 });
+
+    const { getByRole } = render(
+      <MenuTrigger disableButtonEnhancement>
+        <div role="button">trigger</div>
+      </MenuTrigger>,
+    );
+    const hoverEvent = createEvent.mouseMove(getByRole('button'));
+    fireEvent(getByRole('button'), hoverEvent);
+
+    expect(mockSetOpen).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
+    );
+
+    jest.advanceTimersByTime(500);
+
+    const clickEvent = createEvent.click(getByRole('button'));
+    fireEvent(getByRole('button'), clickEvent);
+
+    expect(mockSetOpen).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({ open: false, keyboard: false, type: 'menuTriggerClick' }),
+    );
+
+    jest.useRealTimers();
+  });
 });

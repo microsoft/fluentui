@@ -27,6 +27,7 @@ describe('useMenuContextValues_unstable', () => {
         "open": false,
         "openOnContext": false,
         "openOnHover": false,
+        "hoverDelay": 500,
         "persistOnItemClick": false,
         "setOpen": [Function],
         "triggerId": "menu1",
