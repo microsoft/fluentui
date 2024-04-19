@@ -58,6 +58,9 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     clearTimeout(openingWithHoverTimeout.current);
 
     openingWithHoverRef.current = true;
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     openingWithHoverTimeout.current = setTimeout(() => (openingWithHoverRef.current = false), hoverDelay);
   };
 
