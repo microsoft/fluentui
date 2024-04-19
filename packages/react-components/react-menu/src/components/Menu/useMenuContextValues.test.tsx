@@ -17,6 +17,7 @@ describe('useMenuContextValues_unstable', () => {
         "checkedValues": Object {},
         "hasCheckmarks": false,
         "hasIcons": false,
+        "hoverDelay": 500,
         "inline": false,
         "isSubmenu": false,
         "menuPopoverRef": Object {
@@ -27,7 +28,6 @@ describe('useMenuContextValues_unstable', () => {
         "open": false,
         "openOnContext": false,
         "openOnHover": false,
-        "hoverDelay": 500,
         "persistOnItemClick": false,
         "setOpen": [Function],
         "triggerId": "menu1",
