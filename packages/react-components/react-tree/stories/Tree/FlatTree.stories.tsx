@@ -33,13 +33,37 @@ export const FlatTreeStory = () => {
       </FlatTreeItem>
       {openItems.has('2') && (
         <>
-          <FlatTreeItem parentValue="2" value="2-1" aria-level={2} aria-setsize={3} aria-posinset={1} itemType="leaf">
+          <FlatTreeItem
+            aria-selected={true}
+            parentValue="2"
+            value="2-1"
+            aria-level={2}
+            aria-setsize={3}
+            aria-posinset={1}
+            itemType="leaf"
+          >
             <TreeItemLayout>Item 1, level 2</TreeItemLayout>
           </FlatTreeItem>
-          <FlatTreeItem parentValue="2" value="2-2" aria-level={2} aria-setsize={3} aria-posinset={2} itemType="leaf">
+          <FlatTreeItem
+            aria-selected={true}
+            parentValue="2"
+            value="2-2"
+            aria-level={2}
+            aria-setsize={3}
+            aria-posinset={2}
+            itemType="leaf"
+          >
             <TreeItemLayout>Item 2, level 2</TreeItemLayout>
           </FlatTreeItem>
-          <FlatTreeItem parentValue="2" value="2-3" aria-level={2} aria-setsize={3} aria-posinset={3} itemType="leaf">
+          <FlatTreeItem
+            aria-selected={true}
+            parentValue="2"
+            value="2-3"
+            aria-level={2}
+            aria-setsize={3}
+            aria-posinset={3}
+            itemType="leaf"
+          >
             <TreeItemLayout>Item 3, level 2</TreeItemLayout>
           </FlatTreeItem>
         </>
