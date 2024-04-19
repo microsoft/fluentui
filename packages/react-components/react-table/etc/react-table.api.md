@@ -525,6 +525,7 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
     checked?: CheckboxProps['checked'];
     subtle?: boolean;
     hidden?: boolean;
+    invisible?: boolean;
 };
 
 // @public (undocumented)
@@ -534,7 +535,9 @@ export type TableSelectionCellSlots = {
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle'> & Pick<TableContextValue, 'noNativeElements'> & {
+    hidden: boolean;
+};
 
 // @public (undocumented)
 export interface TableSelectionState {
