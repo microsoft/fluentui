@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.20.0)
+
+Wed, 17 Apr 2024 21:53:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.6..@fluentui/react-tabster_v9.20.0)
+
+### Minor changes
+
+- Tabster 7.1.0. ([PR #30969](https://github.com/microsoft/fluentui/pull/30969) by marata@microsoft.com)
 
 ## [9.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.6)
 

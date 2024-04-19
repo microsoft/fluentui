@@ -2,14 +2,6 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
-
-const { gridGap } = swatchPickerCSSVars;
-
-export const spacingMap = {
-  small: '2px',
-  medium: '4px',
-};
 
 /**
  * Create the state required to render SwatchPicker.
@@ -61,10 +53,6 @@ export const useSwatchPicker_unstable = (
         role,
         ...focusAttributes,
         ...rest,
-        style: {
-          [gridGap]: spacingMap[spacing],
-          ...style,
-        },
       }),
       { elementType: 'div' },
     ),

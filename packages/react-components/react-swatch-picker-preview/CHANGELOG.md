@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-swatch-picker-preview
 
-This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.3.0)
+
+Wed, 17 Apr 2024 21:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.2.1..@fluentui/react-swatch-picker-preview_v0.3.0)
+
+### Minor changes
+
+- feat(react-swatch-picker): Added EmptySwatch component ([PR #30953](https://github.com/microsoft/fluentui/pull/30953) by vkozlova@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+
+### Patches
+
+- fix(react-swatch-picker): colors in HC mode ([PR #31014](https://github.com/microsoft/fluentui/pull/31014) by vkozlova@microsoft.com)
+- fix(react-swatch-picker): a11y attrs for ImageSwatch ([PR #31060](https://github.com/microsoft/fluentui/pull/31060) by vkozlova@microsoft.com)
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.2.1)
 

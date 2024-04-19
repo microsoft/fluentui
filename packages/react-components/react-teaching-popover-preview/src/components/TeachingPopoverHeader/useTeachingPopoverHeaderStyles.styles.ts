@@ -64,7 +64,7 @@ const useStyles = makeStyles({
     position: 'relative',
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForeground2,
-    marginRight: tokens.spacingHorizontalXS,
+    marginInlineEnd: tokens.spacingHorizontalXS,
   },
   iconBrand: {
     color: tokens.colorNeutralForegroundOnBrand,

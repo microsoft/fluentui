@@ -3,9 +3,8 @@
 exports[`TeachingPopoverCarouselNavButton renders a default state 1`] = `
 <div>
   <button
-    aria-label="1 of 1"
     class="fui-TeachingPopoverCarouselNavButton"
-    data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
+    data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
     role="tab"
     type="button"
   />

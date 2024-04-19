@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: add \"data-portal-node\" attr in usePortalMountNode()",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

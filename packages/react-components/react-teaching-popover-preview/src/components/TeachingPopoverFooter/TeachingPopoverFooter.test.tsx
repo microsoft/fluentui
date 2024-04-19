@@ -9,10 +9,8 @@ describe('TeachingPopoverFooter', () => {
     displayName: 'TeachingPopoverFooter',
 
     requiredProps: {
-      strings: {
-        primary: 'Primary',
-        secondary: 'Secondary',
-      },
+      primary: 'Primary',
+      secondary: 'Secondary',
     },
   });
 
@@ -20,12 +18,7 @@ describe('TeachingPopoverFooter', () => {
 
   it('renders a default state', () => {
     const result = render(
-      <TeachingPopoverFooter
-        strings={{
-          primary: 'Primary',
-          secondary: 'Secondary',
-        }}
-      >
+      <TeachingPopoverFooter primary="Primary" secondary="Secondary">
         Default TeachingPopoverFooter
       </TeachingPopoverFooter>,
     );

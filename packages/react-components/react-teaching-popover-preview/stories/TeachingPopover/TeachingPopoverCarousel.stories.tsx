@@ -9,51 +9,46 @@ import {
   TeachingPopoverTitle,
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
+  TeachingPopoverCarouselCard,
+  TeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselNav,
+  TeachingPopoverCarouselNavButton,
 } from '@fluentui/react-teaching-popover-preview';
-import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 
-const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
-const ExampleContent = (index: number) => {
-  return (
-    <>
-      <div>{`This is page: ${index}`}</div>
-    </>
-  );
-};
-
-export const Carousel = (props: TeachingPopoverProps) => (
-  <TeachingPopover withArrow={true} {...props}>
+export const Carousel = () => (
+  <TeachingPopover>
     <TeachingPopoverTrigger>
       <Button>TeachingPopover trigger</Button>
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
-      <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverCarousel
-        strings={{
-          next: 'Next',
-          previous: 'Previous',
-          initialStepText: 'Close',
-          finalStepText: 'Finish',
-        }}
-      >
-        {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(1)}
-        </TeachingPopoverBody>
+      <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
+      <TeachingPopoverCarousel defaultValue="test-0">
+        <TeachingPopoverCarouselCard value="test-0">
+          <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 1</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
 
-        {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(2)}
-        </TeachingPopoverBody>
+        <TeachingPopoverCarouselCard value="test-1">
+          <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 2</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
 
-        {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<Image alt={'test image'} fit={'cover'} src={SwapImage} />}>
-          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
-          {ExampleContent(3)}
-        </TeachingPopoverBody>
+        <TeachingPopoverCarouselCard value="test-3">
+          <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
+            <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
+            <div>This is page: 3</div>
+          </TeachingPopoverBody>
+        </TeachingPopoverCarouselCard>
+
+        <TeachingPopoverCarouselFooter next="Next" previous="Previous" initialStepText="Close" finalStepText="Finish">
+          <TeachingPopoverCarouselNav>{() => <TeachingPopoverCarouselNavButton />}</TeachingPopoverCarouselNav>
+        </TeachingPopoverCarouselFooter>
       </TeachingPopoverCarousel>
     </TeachingPopoverSurface>
   </TeachingPopover>

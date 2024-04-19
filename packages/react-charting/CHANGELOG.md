@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 10 Apr 2024 07:28:55 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Apr 2024 07:26:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.20.1)
+
+Fri, 19 Apr 2024 07:26:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.20.0..@fluentui/react-charting_v5.20.1)
+
+### Patches
+
+- Add data-is-focusable to root node text component ([PR #31098](https://github.com/microsoft/fluentui/pull/31098) by shubhabrata08@gmail.com)
+
+## [5.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.20.0)
+
+Thu, 18 Apr 2024 07:27:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.45..@fluentui/react-charting_v5.20.0)
+
+### Minor changes
+
+- Update d3 dependencies to latest ES5 versions and fix only the major version of the dependency ([PR #30913](https://github.com/microsoft/fluentui/pull/30913) by 98592573+AtishayMsft@users.noreply.github.com)
+
+### Patches
+
+- Fix wrong aria label placement in SparklineChart ([PR #30952](https://github.com/microsoft/fluentui/pull/30952) by shubhabrata08@gmail.com)
+
+## [5.19.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.45)
+
+Wed, 17 Apr 2024 07:25:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.44..@fluentui/react-charting_v5.19.45)
+
+### Patches
+
+- Add shape prop to ILegendsProps to pass to Overflow items ([PR #31057](https://github.com/microsoft/fluentui/pull/31057) by 167121109+skyfong@users.noreply.github.com)
+
+## [5.19.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.44)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.43..@fluentui/react-charting_v5.19.44)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.44 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/theme-samples to v8.7.145 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/react to v8.117.5 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
 
 ## [5.19.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.43)
 

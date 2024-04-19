@@ -19,7 +19,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
-  const { role = 'progressbar', tabIndex, ...rest } = props;
+  const { role = 'progressbar', ...rest } = props;
   const nativeRoot = slot.always(
     getIntrinsicElementProps(
       'div',
@@ -57,7 +57,6 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   });
   const spinnerShortHand = slot.optional(props.spinner, {
     renderByDefault: true,
-    defaultProps: { tabIndex },
     elementType: 'span',
   });
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {

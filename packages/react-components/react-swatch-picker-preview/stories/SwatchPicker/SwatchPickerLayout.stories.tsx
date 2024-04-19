@@ -14,12 +14,15 @@ const useStyles = makeStyles({
     height: '100px',
     ...shorthands.border('1px', 'solid', '#ccc'),
     ...shorthands.margin('20px', '0'),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
 });
 
 const colors: ColorSwatchProps[] = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
-  { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
+  { color: '#FF7A00', value: '#FF7A00', 'aria-label': 'orange' },
   { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
   { color: '#00B053', value: '00B053', 'aria-label': 'green' },
   { color: '#00AFED', value: '00AFED', 'aria-label': 'light blue' },

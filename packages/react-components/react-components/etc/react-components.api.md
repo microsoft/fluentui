@@ -475,6 +475,8 @@ import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemSwitch } from '@fluentui/react-menu';
+import { menuItemSwitchClassNames } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
@@ -720,6 +722,7 @@ import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuItemSwitch_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
@@ -743,6 +746,7 @@ import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderRating_unstable } from '@fluentui/react-rating';
 import { renderRatingDisplay_unstable } from '@fluentui/react-rating';
 import { renderRatingItem_unstable } from '@fluentui/react-rating';
+import { renderSearchBox_unstable } from '@fluentui/react-search';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
@@ -787,6 +791,12 @@ import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import { SearchBox } from '@fluentui/react-search';
+import { SearchBoxChangeEvent } from '@fluentui/react-search';
+import { searchBoxClassNames } from '@fluentui/react-search';
+import { SearchBoxProps } from '@fluentui/react-search';
+import { SearchBoxSlots } from '@fluentui/react-search';
+import { SearchBoxState } from '@fluentui/react-search';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
@@ -1284,6 +1294,8 @@ import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitch_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitchStyles_unstable } from '@fluentui/react-menu';
 import { useMenuList_unstable } from '@fluentui/react-menu';
 import { useMenuListContext_unstable } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
@@ -1350,6 +1362,8 @@ import { useRatingStyles_unstable } from '@fluentui/react-rating';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
+import { useSearchBox_unstable } from '@fluentui/react-search';
+import { useSearchBoxStyles_unstable } from '@fluentui/react-search';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -2404,6 +2418,10 @@ export { MenuItemSlots }
 
 export { MenuItemState }
 
+export { MenuItemSwitch }
+
+export { menuItemSwitchClassNames }
+
 export { MenuList }
 
 export { menuListClassNames }
@@ -2894,6 +2912,8 @@ export { renderMenuItemLink_unstable }
 
 export { renderMenuItemRadio_unstable }
 
+export { renderMenuItemSwitch_unstable }
+
 export { renderMenuList_unstable }
 
 export { renderMenuPopover_unstable }
@@ -2939,6 +2959,8 @@ export { renderRating_unstable }
 export { renderRatingDisplay_unstable }
 
 export { renderRatingItem_unstable }
+
+export { renderSearchBox_unstable }
 
 export { renderSelect_unstable }
 
@@ -3027,6 +3049,18 @@ export { resolveShorthand }
 export { ResolveShorthandFunction }
 
 export { ResolveShorthandOptions }
+
+export { SearchBox }
+
+export { SearchBoxChangeEvent }
+
+export { searchBoxClassNames }
+
+export { SearchBoxProps }
+
+export { SearchBoxSlots }
+
+export { SearchBoxState }
 
 export { Select }
 
@@ -4022,6 +4056,10 @@ export { useMenuItemRadioStyles_unstable }
 
 export { useMenuItemStyles_unstable }
 
+export { useMenuItemSwitch_unstable }
+
+export { useMenuItemSwitchStyles_unstable }
+
 export { useMenuList_unstable }
 
 export { useMenuListContext_unstable }
@@ -4153,6 +4191,10 @@ export { useRestoreFocusSource }
 export { useRestoreFocusTarget }
 
 export { useScrollbarWidth }
+
+export { useSearchBox_unstable }
+
+export { useSearchBoxStyles_unstable }
 
 export { useSelect_unstable }
 

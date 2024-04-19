@@ -14,6 +14,7 @@ import {
   MenuDivider,
   MenuSplitGroup,
   MenuItemLink,
+  MenuItemSwitch,
 } from '@fluentui/react-menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
@@ -179,6 +180,28 @@ storiesOf('Menu Converged - selection', module)
             <MenuItemCheckbox icon={<EditRegular />} name="edit" value="edit">
               Edit
             </MenuItemCheckbox>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
+  )
+  .addStory(
+    'switch',
+    () => (
+      <Menu open checkedValues={{ demo: ['checked'] }}>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItemSwitch icon={<CutRegular />} name="demo" value="unchecked">
+              Unchecked
+            </MenuItemSwitch>
+            <MenuItemSwitch icon={<ClipboardPasteRegular />} name="demo" value="checked">
+              Checked
+            </MenuItemSwitch>
           </MenuList>
         </MenuPopover>
       </Menu>

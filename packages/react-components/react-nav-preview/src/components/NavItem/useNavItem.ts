@@ -14,7 +14,7 @@ import type { NavItemProps, NavItemState } from './NavItem.types';
  * @param ref - reference to root HTMLAnchorElement of NavItem
  */
 export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
-  const { content, onClick, value, icon } = props;
+  const { onClick, value, icon } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
@@ -36,13 +36,8 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
-
   return {
-    components: { root: 'a', content: 'span', icon: 'span' },
+    components: { root: 'a', icon: 'span' },
     root: slot.always(
       getIntrinsicElementProps('a', {
         ref,
@@ -56,7 +51,6 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    content: contentSlot,
     selected,
     value,
   };

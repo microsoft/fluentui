@@ -91,6 +91,12 @@ const useStyles = makeStyles({
     display: 'none',
   },
 
+  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+  inlineListbox: {
+    zIndex: 1,
+  },
+
   // size variants
   small: {
     height: fieldHeights.small,
@@ -280,6 +286,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     state.listbox.className = mergeClasses(
       comboboxClassNames.listbox,
       styles.listbox,
+      state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
       state.listbox.className,
     );

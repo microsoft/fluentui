@@ -1,4 +1,4 @@
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.
@@ -17,8 +17,7 @@ export function getConfig({ version }: { version: 'vNext' }): {
   };
 };
 export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
-  const allPackageInfo = getAllPackageInfo();
-  const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
+  const vNextPackagePaths = getVNextPackagePaths();
 
   if (version === 'vNext') {
     return {
@@ -32,7 +31,7 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
   }
 
   if (version === 'v8') {
-    const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
+    const ignoreVNextScope = vNextPackagePaths.map(pkgPath => `!${pkgPath}`);
 
     return { scope: [...ignoreVNextScope] };
   }
@@ -40,14 +39,9 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
   throw new Error('Unsupported version scopes acquisition');
 }
 
-function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
-  return Object.values(allPackageInfo)
-    .map(packageInfo => {
-      if (isConvergedPackage({ packagePathOrJson: packageInfo.packageJson })) {
-        return packageInfo.packagePath;
-      }
+function getVNextPackagePaths() {
+  const allProjects = getAllPackageInfo(isConvergedPackage);
+  const values = Object.values(allProjects);
 
-      return false;
-    })
-    .filter(Boolean) as string[];
+  return values.map(project => project.packagePath);
 }

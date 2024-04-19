@@ -16,12 +16,7 @@ export type TeachingPopoverFooterSlots = {
   /**
    * The secondary button slot.
    */
-  secondary: Slot<typeof Button>;
-};
-
-export type TeachingPopoverFooterStrings = {
-  primary: string;
-  secondary: string;
+  secondary?: Slot<typeof Button>;
 };
 
 export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlots> &
@@ -33,6 +28,5 @@ export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlo
     footerLayout?: 'horizontal' | 'vertical';
   };
 
-export type TeachingPopoverFooterProps = ComponentProps<Partial<TeachingPopoverFooterSlots>> & {
-  strings: TeachingPopoverFooterStrings;
-} & Pick<TeachingPopoverFooterState, 'footerLayout'>;
+export type TeachingPopoverFooterProps = ComponentProps<TeachingPopoverFooterSlots> &
+  Pick<TeachingPopoverFooterState, 'footerLayout'>;

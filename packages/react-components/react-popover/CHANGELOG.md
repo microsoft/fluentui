@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:54:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.4)
+
+Wed, 17 Apr 2024 21:54:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.9.3..@fluentui/react-popover_v9.9.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.10.4 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-portal to v9.4.20 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.3)
 

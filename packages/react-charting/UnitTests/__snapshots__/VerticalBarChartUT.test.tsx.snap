@@ -77,7 +77,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -85,13 +85,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -103,13 +103,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(163.80769230769232,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5,000
@@ -121,13 +121,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(271.11538461538464,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10,000
@@ -139,13 +139,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(378.4230769230769,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15,000
@@ -157,13 +157,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(485.7307692307692,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20,000
@@ -175,13 +175,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(593.0384615384615,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               25,000
@@ -223,7 +223,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -231,13 +231,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -249,13 +249,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -267,13 +267,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -285,13 +285,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -303,13 +303,13 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
