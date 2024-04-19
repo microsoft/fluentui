@@ -274,12 +274,17 @@ function lintImports(
 
     if (isExample) {
       const isScss = importPath.endsWith('.scss');
+      // Shadow DOM stories are just for manual review/testing
+      // and not published to the doc site.
+      const isShadowDomExample = filePath.includes('ShadowDOM/ShadowDOM.');
 
-      if (pathIsRelative && !isScss) {
+      const isExcluded = isScss || isShadowDomExample;
+
+      if (pathIsRelative && !isExcluded) {
         _addError(importErrors.pathRelative, relativePath, importPath);
       }
 
-      if (pathIsDeep && !isScss && !allowedDeepImports.includes(importPath)) {
+      if (pathIsDeep && !isExcluded && !allowedDeepImports.includes(importPath)) {
         _addError(importErrors.pathDeep, relativePath, importPath);
       }
 
@@ -295,7 +300,7 @@ function lintImports(
         );
       }
 
-      if (importMatch.startsWith('import * from') && !isScss) {
+      if (importMatch.startsWith('import * from') && !isExcluded) {
         _addError(importErrors.importStar, relativePath, importPath);
       }
     }

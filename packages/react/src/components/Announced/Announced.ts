@@ -7,4 +7,6 @@ import type { IAnnouncedProps, IAnnouncedStyles } from './Announced.types';
 export const Announced: React.FunctionComponent<IAnnouncedProps> = styled<IAnnouncedProps, {}, IAnnouncedStyles>(
   AnnouncedBase,
   getStyles,
+  undefined,
+  { scope: 'Announced' },
 );

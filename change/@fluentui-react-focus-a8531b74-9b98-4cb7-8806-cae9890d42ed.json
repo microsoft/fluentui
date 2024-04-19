@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add shadow DOM support when traversing the DOM",
+  "packageName": "@fluentui/react-focus",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
