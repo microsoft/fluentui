@@ -30,6 +30,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const open = useMenuContext_unstable(context => context.open);
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
+  const hoverDelay = useMenuContext_unstable(context => context.hoverDelay);
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
@@ -41,6 +42,8 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     firstFocusable?.focus();
   }, [findFirstFocusable, menuPopoverRef]);
 
+  const openingWithHoverRef = React.useRef(false);
+  const openingWithHoverTimeout = React.useRef(0);
   const openedWithKeyboardRef = React.useRef(false);
   const hasMouseMoved = React.useRef(false);
 
@@ -48,6 +51,15 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
   const child = getTriggerChild(children);
+
+  // set openingWithHoverRef on a timeout equal to the hoverDelay.
+  // this value can be used to prevent closing the menu on a click
+  const onHoverOpen = () => {
+    clearTimeout(openingWithHoverTimeout.current);
+
+    openingWithHoverRef.current = true;
+    openingWithHoverTimeout.current = setTimeout(() => (openingWithHoverRef.current = false), hoverDelay);
+  };
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(event) || event.isDefaultPrevented()) {
@@ -66,7 +78,14 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
 
     if (!openOnContext) {
-      setOpen(event, { open: !open, keyboard: openedWithKeyboardRef.current, type: 'menuTriggerClick', event });
+      // if openingWithHoverRef is still true,
+      // fire a new open event from click rather than toggling to close
+      setOpen(event, {
+        open: !open || openingWithHoverRef.current,
+        keyboard: openedWithKeyboardRef.current,
+        type: 'menuTriggerClick',
+        event,
+      });
       openedWithKeyboardRef.current = false;
     }
   };
@@ -98,6 +117,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
     if (openOnHover && hasMouseMoved.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
+      onHoverOpen();
     }
   };
 
@@ -111,6 +131,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (openOnHover && !hasMouseMoved.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
       hasMouseMoved.current = true;
+      onHoverOpen();
     }
   };
 
@@ -146,6 +167,14 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
     triggerChildProps,
   );
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(openingWithHoverTimeout.current);
+    };
+  }, []);
 
   return {
     isSubmenu,

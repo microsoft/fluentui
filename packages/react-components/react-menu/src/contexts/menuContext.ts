@@ -19,6 +19,7 @@ const menuContextDefaultValue: MenuContextValue = {
   triggerId: '',
   openOnContext: false,
   openOnHover: false,
+  hoverDelay: 0,
   hasIcons: false,
   hasCheckmarks: false,
   inline: false,
@@ -33,6 +34,7 @@ const menuContextDefaultValue: MenuContextValue = {
 export type MenuContextValue = Pick<
   MenuState,
   | 'openOnHover'
+  | 'hoverDelay'
   | 'openOnContext'
   | 'triggerRef'
   | 'menuPopoverRef'
