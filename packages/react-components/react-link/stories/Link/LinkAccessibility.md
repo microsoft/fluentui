@@ -1,6 +1,6 @@
 ## Accessibility
 
-A Link can be rendered with or without an underline, controlled by the `inline` prop. This has notable accessibility implications since without an underline, Link is relying on contextual clues to differentiate itself from static text. This is because the color of the link does not have 3:1 contrast against the color of static text, so some other visual indicator is necessary to mark it as a link. It is the responsibility of the authoring team to choose the underline or no-underline variant based on their use case.
+A Link can be rendered with or without an underline, controlled by the `inline` prop. This has notable [accessibility implications](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html), since Link relies on either an underline or contextual clues to differentiate itself from static text. It is the responsibility of the authoring team to choose the underline or no-underline variant based on their use case.
 
 Links _must_ use underlines to be accessible except for the following use cases:
 
