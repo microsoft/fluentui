@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from
 import { useNavContext_unstable } from '../NavContext';
 
 import type { NavItemProps, NavItemState } from './NavItem.types';
+import { useARIAButtonProps } from '../../../../react-aria/src/index';
 
 /**
  * Create the state required to render NavItem.
@@ -43,6 +44,7 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
         ref,
         role: 'nav',
         type: 'navigation',
+        tabIndex: 0, // makes items focusable
         ...props,
         onClick: onNavItemClick,
       }),
