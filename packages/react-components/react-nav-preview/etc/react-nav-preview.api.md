@@ -88,9 +88,7 @@ export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
 export type NavDrawerProps = DrawerProps & NavProps;
 
 // @public
-export type NavDrawerState = DrawerState & NavContextValue & {
-    type: 'inline' | 'overlay';
-};
+export type NavDrawerState = DrawerState & NavContextValue;
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;

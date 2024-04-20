@@ -3,7 +3,6 @@ import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from
 import { useNavContext_unstable } from '../NavContext';
 
 import type { NavItemProps, NavItemState } from './NavItem.types';
-import { useARIAButtonProps } from '../../../../react-aria/src/index';
 
 /**
  * Create the state required to render NavItem.
