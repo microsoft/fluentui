@@ -10,4 +10,4 @@ export type NavDrawerProps = DrawerProps & NavProps;
 /**
  * State used in rendering NavDrawer
  */
-export type NavDrawerState = DrawerState & NavContextValue & { type: 'inline' | 'overlay' };
+export type NavDrawerState = DrawerState & NavContextValue;
