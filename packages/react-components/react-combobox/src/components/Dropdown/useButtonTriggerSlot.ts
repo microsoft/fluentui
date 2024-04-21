@@ -4,13 +4,12 @@ import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
-import { HighlightedOptionProps } from '../../utils/ComboboxBase.types';
 
 type UseButtonTriggerSlotOptions = {
   state: UseTriggerSlotState;
   defaultProps: unknown;
   activeDescendantController: ActiveDescendantImperativeRef;
-} & HighlightedOptionProps;
+};
 
 /**
  * @internal
@@ -34,13 +33,11 @@ export function useButtonTriggerSlot(
   const [setKeyTimeout, clearKeyTimeout] = useTimeout();
 
   const moveToNextMatchingOption = (
-    ev: React.KeyboardEvent<HTMLButtonElement>,
     matcher: (optionText: string) => boolean,
     opt: { startFromNext: boolean } = { startFromNext: false },
   ) => {
     const { startFromNext } = opt;
     const activeOptionId = activeDescendantController.active();
-    const activeOption = activeOptionId ? getOptionById(activeOptionId) : undefined;
 
     const nextInOrder = activeDescendantController.find(
       id => {
@@ -50,21 +47,20 @@ export function useButtonTriggerSlot(
       { startFrom: startFromNext ? activeDescendantController.next({ passive: true }) : activeOptionId },
     );
 
-    // Cycle back to first match
-    const highlightedOptionId =
-      nextInOrder ||
-      activeDescendantController.find(id => {
-        const option = getOptionById(id);
-        return !!option && matcher(option.text);
-      });
+    if (nextInOrder) {
+      return nextInOrder;
+    }
 
-    return highlightedOptionId;
+    // Cycle back to first match
+    return activeDescendantController.find(id => {
+      const option = getOptionById(id);
+      return !!option && matcher(option.text);
+    });
   };
 
-  const moveToNextMatchingOptionWithSameCharacterHandling = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+  const moveToNextMatchingOptionWithSameCharacterHandling = () => {
     if (
       moveToNextMatchingOption(
-        ev,
         optionText => {
           return optionText.toLocaleLowerCase().indexOf(searchString.current) === 0;
         },
@@ -81,7 +77,6 @@ export function useButtonTriggerSlot(
     if (
       allCharactersSame(searchString.current) &&
       moveToNextMatchingOption(
-        ev,
         optionText => {
           return optionText.toLocaleLowerCase().indexOf(searchString.current[0]) === 0;
         },
@@ -111,7 +106,7 @@ export function useButtonTriggerSlot(
 
       // update state
       !open && setOpen(ev, true);
-      moveToNextMatchingOptionWithSameCharacterHandling(ev);
+      moveToNextMatchingOptionWithSameCharacterHandling();
     }
   };
 

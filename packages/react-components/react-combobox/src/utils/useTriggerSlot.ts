@@ -4,7 +4,7 @@ import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
-import type { ComboboxBaseState, HighlightedOptionProps } from './ComboboxBase.types';
+import type { ComboboxBaseState } from './ComboboxBase.types';
 import { OptionValue } from './OptionCollection.types';
 
 export type UseTriggerSlotState = Pick<
@@ -37,7 +37,7 @@ export function useTriggerSlot(
 export function useTriggerSlot(
   triggerSlotFromProp: NonNullable<Slot<'input'>> | NonNullable<Slot<'button'>>,
   ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement>,
-  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' } & HighlightedOptionProps,
+  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
     state: { open, setOpen, setHasFocus },
@@ -93,8 +93,7 @@ export function useTriggerSlot(
 function useTriggerKeydown(
   options: {
     activeDescendantController: ActiveDescendantImperativeRef;
-  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'> &
-    HighlightedOptionProps,
+  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'>
 ) {
   const {
     activeDescendantController,

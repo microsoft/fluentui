@@ -15,6 +15,7 @@ export function useComboboxContextValues(
     size,
     activeDescendantController,
     onOptionClick,
+
   } = state;
 
   const combobox = {
@@ -38,6 +39,7 @@ export function useComboboxContextValues(
     selectOption,
     setActiveOption: () => null,
     onOptionClick,
+    onActiveDescendantChange:
   };
 
   const activeDescendant = React.useMemo(
