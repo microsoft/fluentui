@@ -156,11 +156,6 @@ export const useComboboxBaseState = (
         const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
         if (selectedOption?.id) {
           activeDescendantController.focus(selectedOption.id);
-          if (onHighlightedOptionChange) {
-            onHighlightedOptionChange(undefined, {
-              highlightedOption: getOptionById(selectedOption.id),
-            });
-          }
         }
       }
     } else {
@@ -175,16 +170,10 @@ export const useComboboxBaseState = (
     if (open) {
       if (!activeDescendantController.active()) {
         activeDescendantController.first();
-        if (onHighlightedOptionChange) {
-          const highlightedOptionId = activeDescendantController.active();
-          onHighlightedOptionChange(undefined, {
-            highlightedOption: highlightedOptionId ? getOptionById(highlightedOptionId) : undefined,
-          });
-        }
       }
     }
     // this should only be run in response to changes in the open state or children
-  }, [open, children, activeDescendantController, onHighlightedOptionChange, getOptionById]);
+  }, [open, children, activeDescendantController, getOptionById]);
 
   return {
     ...optionCollection,
@@ -215,5 +204,6 @@ export const useComboboxBaseState = (
         setOpen(e, false);
       }
     }),
+    onActiveDescendantChange: onHighlightedOptionChange
   };
 };

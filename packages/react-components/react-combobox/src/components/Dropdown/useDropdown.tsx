@@ -39,7 +39,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
   const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions } = baseState;
-  const { onHighlightedOptionChange } = props;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -68,7 +67,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       ...triggerNativeProps,
     },
     activeDescendantController,
-    onHighlightedOptionChange,
   });
 
   const rootSlot = slot.always(props.root, {

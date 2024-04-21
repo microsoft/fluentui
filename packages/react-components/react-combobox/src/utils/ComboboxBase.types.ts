@@ -1,11 +1,11 @@
 import * as React from 'react';
-import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import type { ActiveDescendantChangeEvent, ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
-import { ListboxContextValue } from '../contexts/ListboxContext';
+import { ActiveDescendantChangeData, ListboxContextValue } from '../contexts/ListboxContext';
 
 /**
  * ComboboxBase Props
@@ -129,6 +129,8 @@ export type ComboboxBaseState = Required<
     onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
     disabled: boolean;
     freeform: boolean;
+
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent, data: ActiveDescendantChangeData) => void;
   };
 
 /**
@@ -144,21 +146,12 @@ export type ComboboxBaseOpenEvents =
   | React.KeyboardEvent<HTMLElement>
   | React.FocusEvent<HTMLElement>;
 
-export type ComboboxBaseHighlightChangeEvents = React.KeyboardEvent<HTMLElement> | React.ChangeEvent<HTMLInputElement>;
-
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
   activeDescendant: ActiveDescendantContextValue;
   listbox: ListboxContextValue;
 };
 
-/**
- * Data for the Listbox onHighlightedValueChange event.
- */
-export type HighlightedOptionChangeData = {
-  highlightedOption: OptionValue | null | undefined;
-};
-
 export type HighlightedOptionProps = {
-  onHighlightedOptionChange?: (event?: ComboboxBaseHighlightChangeEvents, data?: HighlightedOptionChangeData) => void;
+  onHighlightedOptionChange?: (event: ActiveDescendantChangeEvent, data: ActiveDescendantChangeData) => void;
 };

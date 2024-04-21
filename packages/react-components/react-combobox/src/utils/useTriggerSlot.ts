@@ -44,7 +44,6 @@ export function useTriggerSlot(
     defaultProps,
     elementType,
     activeDescendantController,
-    onHighlightedOptionChange,
   } = options;
 
   const trigger = slot.always(triggerSlotFromProp, {
@@ -84,7 +83,7 @@ export function useTriggerSlot(
 
   // handle combobox keyboard interaction
   trigger.onKeyDown = mergeCallbacks(
-    useTriggerKeydown({ activeDescendantController, onHighlightedOptionChange, ...options.state }),
+    useTriggerKeydown({ activeDescendantController, ...options.state }),
     trigger.onKeyDown,
   );
 
@@ -104,7 +103,6 @@ function useTriggerKeydown(
     selectOption,
     multiselect,
     open,
-    onHighlightedOptionChange,
   } = options;
 
   const getActiveOption = React.useCallback(() => {
@@ -206,11 +204,6 @@ function useTriggerKeydown(
       case 'Tab':
         !multiselect && activeOption && selectOption(e, activeOption);
         break;
-    }
-
-    const highlightedOption = getActiveOption();
-    if (onHighlightedOptionChange && highlightedOption !== activeOption) {
-      onHighlightedOptionChange(e, { highlightedOption });
     }
   });
 }

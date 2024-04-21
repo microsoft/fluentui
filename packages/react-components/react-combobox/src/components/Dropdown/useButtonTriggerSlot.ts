@@ -27,7 +27,6 @@ export function useButtonTriggerSlot(
     state: { open, setOpen, getOptionById },
     defaultProps,
     activeDescendantController,
-    onHighlightedOptionChange,
   } = options;
 
   // jump to matching option based on typing
@@ -58,10 +57,6 @@ export function useButtonTriggerSlot(
         const option = getOptionById(id);
         return !!option && matcher(option.text);
       });
-
-    if (onHighlightedOptionChange && activeOption !== highlightedOptionId) {
-      onHighlightedOptionChange(ev, { highlightedOption: getOptionById(highlightedOptionId) });
-    }
 
     return highlightedOptionId;
   };
@@ -125,7 +120,6 @@ export function useButtonTriggerSlot(
     defaultProps,
     elementType: 'button',
     activeDescendantController,
-    onHighlightedOptionChange,
   });
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 

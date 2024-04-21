@@ -49,6 +49,10 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
+  // get state from parent combobox, if it exists
+  const hasListboxContext = useHasParentContext(ListboxContext);
+  const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
+
   const listenerRef = React.useCallback((el: HTMLDivElement | null) => {
     if (!el) {
       return;
@@ -58,13 +62,11 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       // Typescript doesn't support custom event types on handler
       const event = untypedEvent as ActiveDescendantChangeEvent;
 
-      // TODO - you will need to get these values from the optionCollection of the the parent combobox/dropdown/tagpicker
       const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
       const nextOption = optionCollection.getOptionById(event.detail.id);
+      // TODO - remove
       console.log(event.detail, previousOption, nextOption);
-      // TODO pass onActiveDescendantChange from ListboxContext so that combobox/dropdown/tagpicker can all use it
-      // ctx.onActiveDescendantChange(event, { previousOption, nextOption });
-      // detail: {id: string: previousId: string}
+      onActiveDescendantChange(event, { previousOption, nextOption })
     });
   }, []);
 
@@ -110,8 +112,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
-  // get state from parent combobox, if it exists
-  const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
   const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 

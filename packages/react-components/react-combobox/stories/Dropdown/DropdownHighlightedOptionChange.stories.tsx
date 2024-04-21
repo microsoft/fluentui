@@ -24,7 +24,7 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
     (e, data) => {
       eventCount.current++;
       setActiveOptionText(
-        `HighlightedOptionChange: ${data?.highlightedOption?.text} Called ${eventCount.current} times.`,
+        `HighlightedOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
       );
     },
     [setActiveOptionText],
