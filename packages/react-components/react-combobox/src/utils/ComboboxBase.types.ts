@@ -5,7 +5,7 @@ import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
-import { ActiveDescendantChangeData, ListboxContextValue } from '../contexts/ListboxContext';
+import { ListboxContextValue } from '../contexts/ListboxContext';
 
 /**
  * ComboboxBase Props
@@ -130,7 +130,7 @@ export type ComboboxBaseState = Required<
     disabled: boolean;
     freeform: boolean;
 
-    onActiveDescendantChange: (event: ActiveDescendantChangeEvent, data: ActiveDescendantChangeData) => void;
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
   };
 
 /**
@@ -152,6 +152,11 @@ export type ComboboxBaseContextValues = {
   listbox: ListboxContextValue;
 };
 
+export type HighlightedOptionChangeData = {
+  previousOption: OptionValue | null | undefined;
+  nextOption: OptionValue | null | undefined;
+};
+
 export type HighlightedOptionProps = {
-  onHighlightedOptionChange?: (event: ActiveDescendantChangeEvent, data: ActiveDescendantChangeData) => void;
+  onHighlightedOptionChange?: (event: ActiveDescendantChangeEvent, data: HighlightedOptionChangeData) => void;
 };

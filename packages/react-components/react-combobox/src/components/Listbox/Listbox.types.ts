@@ -1,8 +1,12 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ActiveDescendantChangeEvent, ActiveDescendantContextValue, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type {
+  ActiveDescendantChangeEvent,
+  ActiveDescendantContextValue,
+  ActiveDescendantImperativeRef,
+} from '@fluentui/react-aria';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionState } from '../../utils/Selection.types';
-import type { ActiveDescendantChangeData, ListboxContextValue } from '../../contexts/ListboxContext';
+import type { ListboxContextValue } from '../../contexts/ListboxContext';
 
 export type ListboxSlots = {
   /* The root slot, a `<div>` with `role="listbox"` */
@@ -42,7 +46,7 @@ export type ListboxState = ComponentState<ListboxSlots> &
 
     activeDescendantController: ActiveDescendantImperativeRef;
 
-    onActiveDescendantChange: (event: ActiveDescendantChangeEvent, data: ActiveDescendantChangeData);
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
   };
 
 export type ListboxContextValues = {

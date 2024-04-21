@@ -53,22 +53,20 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const hasListboxContext = useHasParentContext(ListboxContext);
   const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
 
-  const listenerRef = React.useCallback((el: HTMLDivElement | null) => {
-    if (!el) {
-      return;
-    }
+  const listenerRef = React.useCallback(
+    (el: HTMLDivElement | null) => {
+      if (!el) {
+        return;
+      }
 
-    el.addEventListener('activedescendantchange', (untypedEvent: Event) => {
-      // Typescript doesn't support custom event types on handler
-      const event = untypedEvent as ActiveDescendantChangeEvent;
-
-      const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
-      const nextOption = optionCollection.getOptionById(event.detail.id);
-      // TODO - remove
-      console.log(event.detail, previousOption, nextOption);
-      onActiveDescendantChange(event, { previousOption, nextOption })
-    });
-  }, []);
+      el.addEventListener('activedescendantchange', (untypedEvent: Event) => {
+        // Typescript doesn't support custom event types on handler
+        const event = untypedEvent as ActiveDescendantChangeEvent;
+        onActiveDescendantChange(event);
+      });
+    },
+    [onActiveDescendantChange],
+  );
 
   const activeDescendantContext = useActiveDescendantContext();
   const activeDescendantController = useHasParentActiveDescendantContext()

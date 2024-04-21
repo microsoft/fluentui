@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { ListboxState } from '../components/Listbox/Listbox.types';
-import { OptionValue } from '../utils/OptionCollection.types';
 import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
-
-export type ActiveDescendantChangeData = {
-  previousOption: OptionValue | null | undefined;
-  nextOption: OptionValue | null | undefined;
-};
+import { ListboxState } from '../components/Listbox/Listbox.types';
 
 /**
  * Context shared with all Listbox Options
@@ -23,7 +17,7 @@ export type ListboxContextValue = Pick<
   | 'setActiveOption'
 > & {
   onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
-  onActiveDescendantChange (e:  ActiveDescendantChangeEvent, data: ActiveDescendantChangeData) => void;
+  onActiveDescendantChange: (e: ActiveDescendantChangeEvent) => void;
 };
 
 const listboxContextDefaultValue = {

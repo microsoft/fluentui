@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import { ActiveDescendantChangeEvent, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
@@ -175,6 +175,15 @@ export const useComboboxBaseState = (
     // this should only be run in response to changes in the open state or children
   }, [open, children, activeDescendantController, getOptionById]);
 
+  const onActiveDescendantChange = React.useCallback(
+    (event: ActiveDescendantChangeEvent) => {
+      const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
+      const nextOption = optionCollection.getOptionById(event.detail.id);
+      onHighlightedOptionChange?.(event, { previousOption, nextOption });
+    },
+    [onHighlightedOptionChange, optionCollection],
+  );
+
   return {
     ...optionCollection,
     freeform,
@@ -204,6 +213,6 @@ export const useComboboxBaseState = (
         setOpen(e, false);
       }
     }),
-    onActiveDescendantChange: onHighlightedOptionChange
+    onActiveDescendantChange,
   };
 };
