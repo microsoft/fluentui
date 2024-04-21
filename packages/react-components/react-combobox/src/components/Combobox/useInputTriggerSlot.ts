@@ -5,7 +5,7 @@ import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ComboboxProps } from '../Combobox/Combobox.types';
 import { UseTriggerSlotState, useTriggerSlot } from '../../utils/useTriggerSlot';
-import { ComboboxBaseState } from '../../utils/ComboboxBase.types';
+import { ComboboxBaseState, HighlightedOptionProps } from '../../utils/ComboboxBase.types';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
@@ -17,7 +17,7 @@ type UseInputTriggerSlotOptions = {
   freeform: boolean | undefined;
   defaultProps?: Partial<ComboboxProps>;
   activeDescendantController: ActiveDescendantImperativeRef;
-};
+} & HighlightedOptionProps;
 
 /**
  * @internal
@@ -45,6 +45,7 @@ export function useInputTriggerSlot(
     freeform,
     defaultProps,
     activeDescendantController,
+    onHighlightedOptionChange,
   } = options;
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -93,6 +94,10 @@ export function useInputTriggerSlot(
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
 
+    if (onHighlightedOptionChange) {
+      onHighlightedOptionChange(event, { highlightedOption: matchingOption });
+    }
+
     // clear selection for single-select if the input value no longer matches the selection
     if (!multiselect && selectedOptions.length === 1 && (inputValue.length < 1 || !matchingOption)) {
       clearSelection(event);
@@ -104,6 +109,7 @@ export function useInputTriggerSlot(
     defaultProps,
     elementType: 'input',
     activeDescendantController,
+    onHighlightedOptionChange,
   });
 
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);

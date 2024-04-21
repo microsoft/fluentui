@@ -12,6 +12,7 @@ import { ListboxContextValue } from '../contexts/ListboxContext';
  * Shared types between Combobox and Dropdown components
  */
 export type ComboboxBaseProps = SelectionProps &
+  HighlightedOptionProps &
   Pick<PortalProps, 'mountNode'> & {
     /**
      * Controls the colors and borders of the combobox trigger.
@@ -143,8 +144,21 @@ export type ComboboxBaseOpenEvents =
   | React.KeyboardEvent<HTMLElement>
   | React.FocusEvent<HTMLElement>;
 
+export type ComboboxBaseHighlightChangeEvents = React.KeyboardEvent<HTMLElement> | React.ChangeEvent<HTMLInputElement>;
+
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
   activeDescendant: ActiveDescendantContextValue;
   listbox: ListboxContextValue;
+};
+
+/**
+ * Data for the Listbox onHighlightedValueChange event.
+ */
+export type HighlightedOptionChangeData = {
+  highlightedOption: OptionValue | null | undefined;
+};
+
+export type HighlightedOptionProps = {
+  onHighlightedOptionChange?: (event?: ComboboxBaseHighlightChangeEvents, data?: HighlightedOptionChangeData) => void;
 };

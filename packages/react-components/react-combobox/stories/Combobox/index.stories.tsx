@@ -19,6 +19,7 @@ export { Appearance } from './ComboboxAppearance.stories';
 export { Size } from './ComboboxSize.stories';
 export { Disabled } from './ComboboxDisabled.stories';
 export { ComboboxVirtualizer as Virtualizer } from './ComboboxVirtualizer.stories';
+export { HighlightedOptionChange } from './ComboboxHighlightedOptionChange';
 
 export default {
   title: 'Components/Combobox',
