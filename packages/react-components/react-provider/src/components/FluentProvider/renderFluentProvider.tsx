@@ -12,7 +12,7 @@ import {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
-import { IconDirectionContextProvider } from '@fluentui/react-icons/providers';
+import { IconDirectionContextProvider } from '@fluentui/react-icons/lib/providers';
 
 /**
  * Render the final JSX of FluentProvider
