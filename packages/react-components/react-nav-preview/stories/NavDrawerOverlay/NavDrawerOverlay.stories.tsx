@@ -18,48 +18,46 @@ export const NavDrawerOverlay = () => {
   };
 
   return (
-    <>
-      <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} type={'overlay'} open={true}>
-        <DrawerBody>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
-            First
-          </NavItem>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="2">
-            Second
-          </NavItem>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="3">
-            Third
-          </NavItem>
-          <NavCategory value="4">
-            <NavCategoryItem icon={<Folder />}>NavCategoryItem 1</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="5">
-                Five
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="6">
-                Six
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="7">
-                Seven
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-          <NavCategory value="8">
-            <NavCategoryItem icon={<Folder />}>NavCategoryItem2</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="9">
-                Nine
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="10">
-                Ten
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="11">
-                Eleven
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-        </DrawerBody>
-      </NavDrawer>
-    </>
+    <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} type={'overlay'} open={true}>
+      <DrawerBody>
+        <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
+          First
+        </NavItem>
+        <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="2">
+          Second
+        </NavItem>
+        <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="3">
+          Third
+        </NavItem>
+        <NavCategory value="4">
+          <NavCategoryItem icon={<Folder />}>NavCategoryItem 1</NavCategoryItem>
+          <NavSubItemGroup>
+            <NavSubItem target="_blank" onClick={someClickHandler} value="5">
+              Five
+            </NavSubItem>
+            <NavSubItem target="_blank" onClick={someClickHandler} value="6">
+              Six
+            </NavSubItem>
+            <NavSubItem target="_blank" onClick={someClickHandler} value="7">
+              Seven
+            </NavSubItem>
+          </NavSubItemGroup>
+        </NavCategory>
+        <NavCategory value="8">
+          <NavCategoryItem icon={<Folder />}>NavCategoryItem2</NavCategoryItem>
+          <NavSubItemGroup>
+            <NavSubItem target="_blank" onClick={someClickHandler} value="9">
+              Nine
+            </NavSubItem>
+            <NavSubItem target="_blank" onClick={someClickHandler} value="10">
+              Ten
+            </NavSubItem>
+            <NavSubItem target="_blank" onClick={someClickHandler} value="11">
+              Eleven
+            </NavSubItem>
+          </NavSubItemGroup>
+        </NavCategory>
+      </DrawerBody>
+    </NavDrawer>
   );
 };
