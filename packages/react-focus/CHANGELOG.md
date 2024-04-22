@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.0)
+
+Mon, 22 Apr 2024 07:28:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.8.44..@fluentui/react-focus_v8.9.0)
+
+### Minor changes
+
+- feat: add shadow DOM support when traversing the DOM ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/style-utilities to v8.10.8 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/utilities to v8.15.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
 
 ## [8.8.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.8.44)
 

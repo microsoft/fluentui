@@ -2,6 +2,27 @@
   "name": "@fluentui/jest-serializer-merge-styles",
   "entries": [
     {
+      "date": "Mon, 22 Apr 2024 07:28:25 GMT",
+      "tag": "@fluentui/jest-serializer-merge-styles_v8.0.36",
+      "version": "8.0.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/jest-serializer-merge-styles",
+            "commit": "7181c431a13178dafbf09ad3cbc4ab7c9740bbcf",
+            "comment": "chore: add typescript types"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/jest-serializer-merge-styles",
+            "comment": "Bump @fluentui/merge-styles to v8.6.3",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Apr 2024 07:29:11 GMT",
       "tag": "@fluentui/jest-serializer-merge-styles_v8.0.35",
       "version": "8.0.35",
