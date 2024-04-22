@@ -9,18 +9,27 @@ import {
 } from '@fluentui/react-nav-preview';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
+import { useIsSSR } from '@fluentui/react-utilities';
 
 const Folder = bundleIcon(Folder20Filled, Folder20Regular);
 
 export const NavDrawerOverlay = () => {
+  const isSSR = useIsSSR();
+  const [open, setOpen] = React.useState(true);
+  React.useEffect(() => {
+    if (!isSSR) {
+      setOpen(true);
+    }
+  }, [isSSR]);
   const someClickHandler = () => {
     console.log('someClickHandler');
   };
 
   return (
     <div>
-      <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} type={'overlay'} open={true}>
+      <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} type={'overlay'} open={open}>
         <DrawerBody>
+          some text
           <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
             First
           </NavItem>
