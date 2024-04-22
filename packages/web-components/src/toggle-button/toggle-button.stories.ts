@@ -13,7 +13,8 @@ const storyTemplate = html<ToggleButtonStoryArgs>`
     appearance="${x => x.appearance}"
     shape="${x => x.shape}"
     size="${x => x.size}"
-    ?checked="${x => x.checked}"
+    ?pressed="${x => x.pressed}"
+    ?mixed="${x => x.mixed}"
     ?disabled="${x => x.disabled}"
     ?disabled-focusable="${x => x.disabledFocusable}"
     ?icon-only="${x => x.iconOnly}"
@@ -48,11 +49,22 @@ export default {
         type: 'select',
       },
     },
-    checked: {
+    mixed: {
       control: 'boolean',
       table: {
         type: {
-          summary: 'Sets the checked state of the component',
+          summary: 'Sets the mixed state of the component',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    pressed: {
+      control: 'boolean',
+      table: {
+        type: {
+          summary: 'Sets the pressed state of the component',
         },
         defaultValue: {
           summary: 'false',
@@ -97,12 +109,12 @@ export const Appearance = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button appearance="transparent">Transparent</fluent-toggle-button>
 `);
 
-export const Checked = renderComponent(html<ToggleButtonStoryArgs>`
-  <fluent-toggle-button checked>Default checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="primary">Primary checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="outline">Outline checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="subtle">Subtle checked</fluent-toggle-button>
-  <fluent-toggle-button checked appearance="transparent">Transparent checked</fluent-toggle-button>
+export const Pressed = renderComponent(html<ToggleButtonStoryArgs>`
+  <fluent-toggle-button pressed>Default pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="primary">Primary pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="outline">Outline pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="subtle">Subtle pressed</fluent-toggle-button>
+  <fluent-toggle-button pressed appearance="transparent">Transparent pressed</fluent-toggle-button>
 `);
 
 export const Shape = renderComponent(html<ToggleButtonStoryArgs>`
@@ -113,8 +125,8 @@ export const Shape = renderComponent(html<ToggleButtonStoryArgs>`
 
 export const Size = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button size="small">Small</fluent-toggle-button>
-  <fluent-toggle-button size="small"
-    ><svg
+  <fluent-toggle-button size="small">
+    <svg
       fill="currentColor"
       slot="start"
       aria-hidden="true"
@@ -126,11 +138,12 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-    >Small with calendar icon</fluent-toggle-button
-  >
-  <fluent-toggle-button size="small" icon-only aria-label="Small icon only button"
-    ><svg
+      ></path>
+    </svg>
+    Small with calendar icon
+  </fluent-toggle-button>
+  <fluent-toggle-button size="small" icon-only aria-label="Small icon only button">
+    <svg
       fill="currentColor"
       aria-hidden="true"
       width="1em"
@@ -141,11 +154,12 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-  ></fluent-toggle-button>
+      ></path>
+    </svg>
+  </fluent-toggle-button>
   <fluent-toggle-button size="medium">Medium</fluent-toggle-button>
-  <fluent-toggle-button size="medium"
-    ><svg
+  <fluent-toggle-button size="medium">
+    <svg
       fill="currentColor"
       slot="start"
       aria-hidden="true"
@@ -157,11 +171,12 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-    >Medium with calendar icon</fluent-toggle-button
-  >
-  <fluent-toggle-button size="medium" icon-only aria-label="Medium icon only button"
-    ><svg
+      ></path>
+    </svg>
+    Medium with calendar icon
+  </fluent-toggle-button>
+  <fluent-toggle-button size="medium" icon-only aria-label="Medium icon only button">
+    <svg
       fill="currentColor"
       aria-hidden="true"
       width="1em"
@@ -172,11 +187,12 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-  ></fluent-toggle-button>
+      ></path>
+    </svg>
+  </fluent-toggle-button>
   <fluent-toggle-button size="large">Large</fluent-toggle-button>
-  <fluent-toggle-button size="large"
-    ><svg
+  <fluent-toggle-button size="large">
+    <svg
       fill="currentColor"
       slot="start"
       aria-hidden="true"
@@ -188,11 +204,12 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-    >Large with calendar icon</fluent-toggle-button
-  >
-  <fluent-toggle-button size="large" icon-only aria-label="Large icon only button"
-    ><svg
+      ></path>
+    </svg>
+    Large with calendar icon
+  </fluent-toggle-button>
+  <fluent-toggle-button size="large" icon-only aria-label="Large icon only button">
+    <svg
       fill="currentColor"
       aria-hidden="true"
       width="1em"
@@ -203,8 +220,9 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-  ></fluent-toggle-button>
+      ></path>
+    </svg>
+  </fluent-toggle-button>
 `);
 
 export const Disabled = renderComponent(html<ToggleButtonStoryArgs>`
@@ -223,7 +241,7 @@ export const WithLongText = renderComponent(html<ToggleButtonStoryArgs>`
     }
   </style>
   <fluent-toggle-button>Short text</fluent-toggle-button>
-  <fluent-toggle-button class="max-width"
-    >Long text wraps after it hits the max width of the component</fluent-toggle-button
-  >
+  <fluent-toggle-button class="max-width">
+    Long text wraps after it hits the max width of the component
+  </fluent-toggle-button>
 `);

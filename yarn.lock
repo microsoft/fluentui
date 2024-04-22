@@ -6186,6 +6186,11 @@
     "@types/expect" "^1.20.4"
     "@types/node" "*"
 
+"@types/web@^0.0.142":
+  version "0.0.142"
+  resolved "https://registry.yarnpkg.com/@types/web/-/web-0.0.142.tgz#62eff3c6b24e2429d084a5a9d4061021cfe7c648"
+  integrity sha512-QWDvMW+P3sdq8rhiw3dNyBR64O5adSY80gBjRd2xI3BADGsAFpAglblWucsGUjKVKyPm4EbYZkvFs7BRxPsBOg==
+
 "@types/webpack-bundle-analyzer@4.4.3":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@types/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.4.3.tgz#1f8eba759677a3bf094166572fc7debf68161f61"
