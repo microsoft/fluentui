@@ -49,9 +49,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   });
 
   const activeDescendantContext = useActiveDescendantContext();
-  const activeDescendantController = useHasParentActiveDescendantContext()
-    ? activeDescendantContext.controller
-    : controller;
+  const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
+  const activeDescendantController = hasParentActiveDescendantContext ? activeDescendantContext.controller : controller;
 
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
@@ -87,6 +86,20 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       case 'CloseSelect':
         activeOption && selectOption(event, activeOption);
         break;
+    }
+  };
+
+  const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+    const action = getDropdownActionFromKey(event, { open: true });
+
+    // set initial active descendent, upon keyboard focus, in the absence of a parent context controlling the state
+    if (action === 'Tab' && !hasParentActiveDescendantContext) {
+      const activeDescendent = activeDescendantController.active();
+      if (activeDescendent) {
+        activeDescendantController.focus(activeDescendent);
+      } else {
+        activeDescendantController.first();
+      }
     }
   };
 
@@ -132,6 +145,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
+  state.root.onKeyUp = useEventCallback(mergeCallbacks(state.root.onKeyUp, onKeyUp));
 
   return state;
 };

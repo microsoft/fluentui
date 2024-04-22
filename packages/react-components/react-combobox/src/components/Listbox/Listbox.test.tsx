@@ -77,6 +77,24 @@ describe('Listbox', () => {
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(option.id);
   });
 
+  /* Moving activeOption */
+  it('should set active option on tab focus', () => {
+    const { getByTestId } = render(
+      <Listbox data-testid="listbox">
+        <Option data-testid="firstOption">Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+
+    const firstOption = getByTestId('firstOption');
+    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
+
+    fireEvent.keyUp(getByTestId('listbox'), { key: 'Tab' });
+
+    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(firstOption.id);
+  });
+
   it('should move active option with arrow down', () => {
     const { getByTestId, getByText } = render(
       <Listbox data-testid="listbox">
