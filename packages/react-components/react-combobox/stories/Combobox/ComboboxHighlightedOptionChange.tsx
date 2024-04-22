@@ -64,8 +64,8 @@ HighlightedOptionChange.parameters = {
   docs: {
     description: {
       story:
-        'OnHighlightedOptionChange event handler allows reacting on changing the active option from Combobox ' +
-        'triggered by keyboard. To react on mouse hover events, use onMouseEnter event handler on the invididual options.',
+        'OnHighlightedOptionChange notifies the user when the active option in the Combobox was changed ' +
+        'by keyboard. To react on mouse hover events, use onMouseEnter on the invididual options.',
     },
   },
 };
