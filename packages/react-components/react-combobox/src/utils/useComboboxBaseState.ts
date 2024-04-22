@@ -175,14 +175,11 @@ export const useComboboxBaseState = (
     // this should only be run in response to changes in the open state or children
   }, [open, children, activeDescendantController, getOptionById]);
 
-  const onActiveDescendantChange = React.useCallback(
-    (event: ActiveDescendantChangeEvent) => {
-      const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
-      const nextOption = optionCollection.getOptionById(event.detail.id);
-      onHighlightedOptionChange?.(event, { previousOption, nextOption });
-    },
-    [onHighlightedOptionChange, optionCollection],
-  );
+  const onActiveDescendantChange = useEventCallback((event: ActiveDescendantChangeEvent) => {
+    const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
+    const nextOption = optionCollection.getOptionById(event.detail.id);
+    onHighlightedOptionChange?.(event, { previousOption, nextOption });
+  });
 
   return {
     ...optionCollection,
