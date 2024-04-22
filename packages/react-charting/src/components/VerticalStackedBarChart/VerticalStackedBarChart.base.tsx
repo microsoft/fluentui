@@ -40,7 +40,7 @@ import {
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
-  getClosestPairDiffAndRange,
+  calculateAppropriateBarWidth,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -1044,15 +1044,16 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
+    /** Total width available to render the bars */
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
       } else if (this.props.barWidth !== 'auto') {
-        /** Total width available to render the bars */
-        const totalWidth =
-          containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         /** Rate at which the space between the bars changes wrt the bar width */
         const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
         // Update the bar width so that when CartesianChart rerenders,
@@ -1067,10 +1068,11 @@ export class VerticalStackedBarChartBase extends React.Component<
         }
       }
     } else {
+      const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
-        this._calculateAppropriateBarWidth(containerWidth),
+        calculateAppropriateBarWidth(data, totalWidth),
       );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
@@ -1089,20 +1091,4 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.data.filter(item => item.chartData.length === 0).length === 0
     );
   }
-
-  private _calculateAppropriateBarWidth = (containerWidth: number) => {
-    const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
-    const result = getClosestPairDiffAndRange(data);
-    if (!result || result[1] === 0) {
-      return 16;
-    }
-    const [closestPairDiff, range] = result;
-    /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    // Refer to https://microsoft.github.io/fluentui-charting-contrib/docs/rfcs/fix-overlapping-bars-on-continuous-axes
-    // for the derivation of the following formula.
-    const barWidth = Math.ceil((totalWidth * closestPairDiff) / (2 * range + closestPairDiff));
-    return barWidth;
-  };
 }

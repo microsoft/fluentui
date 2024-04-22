@@ -294,7 +294,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
       const xPoints = new Set<number>();
       const date = new Date('2020-01-01');
       while (xPoints.size !== dataSize) {
-        const x = Math.floor(Math.random() * 100) + 1;
+        const x = Math.floor(Math.random() * 75) + 1;
         if (!xPoints.has(x)) {
           xPoints.add(x);
           const newDate = new Date(date);
