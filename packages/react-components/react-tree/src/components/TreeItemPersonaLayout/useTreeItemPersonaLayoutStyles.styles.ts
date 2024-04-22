@@ -64,18 +64,13 @@ const useMediaBaseStyles = makeResetStyles({
   alignItems: 'center',
   width: '32px',
   height: '32px',
-  ...shorthands.gridArea('media'),
-  ...shorthands.padding(0, tokens.spacingHorizontalXS, 0, tokens.spacingHorizontalXXS),
+  gridArea: 'media',
+  padding: `0 ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalXXS}`,
 });
 
 const useMainBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('main'),
-  ...shorthands.padding(
-    tokens.spacingVerticalMNudge,
-    tokens.spacingHorizontalXS,
-    tokens.spacingVerticalMNudge,
-    tokens.spacingHorizontalS,
-  ),
+  gridArea: 'main',
+  padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS}`,
 });
 
 const useMainStyles = makeStyles({
@@ -85,9 +80,9 @@ const useMainStyles = makeStyles({
 });
 
 const useDescriptionBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('description'),
+  gridArea: 'description',
   ...typographyStyles.caption1,
-  ...shorthands.padding(0, tokens.spacingHorizontalXS, tokens.spacingVerticalMNudge, tokens.spacingHorizontalS),
+  padding: `0 ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS}`,
 });
 
 /**
@@ -98,8 +93,8 @@ const useActionsBaseStyles = makeResetStyles({
   marginLeft: 'auto',
   position: 'relative',
   zIndex: 1,
-  ...shorthands.gridArea('aside'),
-  ...shorthands.padding(0, tokens.spacingHorizontalS),
+  gridArea: 'aside',
+  padding: `0 ${tokens.spacingHorizontalS}`,
 });
 /**
  * Styles for the action icon slot
@@ -109,9 +104,9 @@ const useAsideBaseStyles = makeResetStyles({
   marginLeft: 'auto',
   alignItems: 'center',
   zIndex: 0,
-  ...shorthands.gridArea('aside'),
-  ...shorthands.padding(0, tokens.spacingHorizontalM),
-  ...shorthands.gap(tokens.spacingHorizontalXS),
+  gridArea: 'aside',
+  padding: `0 ${tokens.spacingHorizontalM}`,
+  gap: tokens.spacingHorizontalXS,
 });
 
 /**
@@ -124,9 +119,9 @@ const useExpandIconBaseStyles = makeResetStyles({
   minWidth: '24px',
   boxSizing: 'border-box',
   color: tokens.colorNeutralForeground3,
-  ...shorthands.gridArea('expandIcon'),
-  ...shorthands.flex(0, 0, 'auto'),
-  ...shorthands.padding(tokens.spacingVerticalXS, 0),
+  gridArea: 'expandIcon',
+  flex: `0 0 auto`,
+  padding: `${tokens.spacingVerticalXS} 0`,
 });
 
 /**

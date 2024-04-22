@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
-import { DefaultSvg } from './DefaultSvg';
 import { useSpinnerContext } from '../../contexts/SpinnerContext';
 
 /**
@@ -20,7 +19,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
-  const { role = 'progressbar', tabIndex, ...rest } = props;
+  const { role = 'progressbar', ...rest } = props;
   const nativeRoot = slot.always(
     getIntrinsicElementProps(
       'div',
@@ -58,7 +57,6 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   });
   const spinnerShortHand = slot.optional(props.spinner, {
     renderByDefault: true,
-    defaultProps: { children: <DefaultSvg />, tabIndex },
     elementType: 'span',
   });
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
@@ -70,9 +68,10 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     labelPosition,
     size,
     shouldRenderSpinner: !delay || isShownAfterDelay,
-    components: { root: 'div', spinner: 'span', label: Label },
+    components: { root: 'div', spinner: 'span', spinnerTail: 'span', label: Label },
     root: nativeRoot,
     spinner: spinnerShortHand,
+    spinnerTail: slot.always(props.spinnerTail, { elementType: 'span' }),
     label: labelShorthand,
   };
   return state;

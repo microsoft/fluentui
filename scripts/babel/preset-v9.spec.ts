@@ -25,6 +25,11 @@ describe(`babel preset v9`, () => {
           ],
         ],
       },
+      modules: [
+        { moduleSource: '@griffel/core', importName: 'makeStyles' },
+        { moduleSource: '@griffel/react', importName: 'makeStyles' },
+        { moduleSource: '@fluentui/react-components', importName: 'makeStyles' },
+      ],
     });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

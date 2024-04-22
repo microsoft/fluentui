@@ -372,6 +372,7 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
@@ -456,6 +457,7 @@ export {
   MenuItem,
   MenuItemLink,
   MenuItemCheckbox,
+  MenuItemSwitch,
   MenuItemRadio,
   MenuList,
   MenuListProvider,
@@ -468,6 +470,7 @@ export {
   menuGroupClassNames,
   menuGroupHeaderClassNames,
   menuItemCheckboxClassNames,
+  menuItemSwitchClassNames,
   menuItemClassNames,
   menuItemLinkClassNames,
   menuItemRadioClassNames,
@@ -481,6 +484,7 @@ export {
   renderMenuItem_unstable,
   renderMenuItemLink_unstable,
   renderMenuItemCheckbox_unstable,
+  renderMenuItemSwitch_unstable,
   renderMenuItemRadio_unstable,
   renderMenuList_unstable,
   renderMenuPopover_unstable,
@@ -502,6 +506,8 @@ export {
   useMenuItemLink_unstable,
   useMenuItemCheckbox_unstable,
   useMenuItemCheckboxStyles_unstable,
+  useMenuItemSwitch_unstable,
+  useMenuItemSwitchStyles_unstable,
   useMenuItemRadio_unstable,
   useMenuItemRadioStyles_unstable,
   useMenuItemStyles_unstable,
@@ -1571,3 +1577,48 @@ export {
   useAriaLiveAnnouncerContextValues_unstable,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
+
+export {
+  Rating,
+  ratingClassNames,
+  renderRating_unstable,
+  useRatingStyles_unstable,
+  useRating_unstable,
+  useRatingContextValues,
+  RatingItem,
+  ratingItemClassNames,
+  renderRatingItem_unstable,
+  useRatingItemStyles_unstable,
+  useRatingItem_unstable,
+  RatingItemProvider,
+  useRatingItemContextValue_unstable,
+  RatingDisplay,
+  ratingDisplayClassNames,
+  renderRatingDisplay_unstable,
+  useRatingDisplayStyles_unstable,
+  useRatingDisplay_unstable,
+  useRatingDisplayContextValues,
+} from '@fluentui/react-rating';
+export type {
+  RatingProps,
+  RatingSlots,
+  RatingState,
+  RatingOnChangeEventData,
+  RatingContextValues,
+  RatingItemProps,
+  RatingItemSlots,
+  RatingItemState,
+  RatingDisplayProps,
+  RatingDisplaySlots,
+  RatingDisplayState,
+  RatingDisplayContextValues,
+} from '@fluentui/react-rating';
+
+export {
+  SearchBox,
+  renderSearchBox_unstable,
+  searchBoxClassNames,
+  useSearchBoxStyles_unstable,
+  useSearchBox_unstable,
+} from '@fluentui/react-search';
+export type { SearchBoxChangeEvent, SearchBoxProps, SearchBoxSlots, SearchBoxState } from '@fluentui/react-search';

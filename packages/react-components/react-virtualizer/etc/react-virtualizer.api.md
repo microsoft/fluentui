@@ -175,6 +175,7 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
+    enablePagination?: boolean;
 };
 
 // @public (undocumented)
@@ -189,6 +190,7 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
+    enablePagination?: boolean;
 };
 
 // @public (undocumented)

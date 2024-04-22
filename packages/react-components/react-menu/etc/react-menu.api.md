@@ -200,6 +200,23 @@ export type MenuItemSlots = {
 // @public (undocumented)
 export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
 
+// @public (undocumented)
+export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
+
+// @public (undocumented)
+export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots>;
+
+// @public
+export type MenuItemSwitchProps = ComponentProps<MenuItemSwitchSlots> & Pick<MenuItemCheckboxProps, 'disabled' | 'persistOnClick' | 'name' | 'value'>;
+
+// @public (undocumented)
+export type MenuItemSwitchSlots = Pick<MenuItemSlots, 'root' | 'content' | 'secondaryContent' | 'icon'> & {
+    switchIndicator?: Slot<'span'>;
+};
+
+// @public
+export type MenuItemSwitchState = ComponentState<MenuItemSwitchSlots> & MenuItemSelectableState & Required<Pick<MenuItemSwitchProps, 'disabled'>>;
+
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
 
@@ -419,6 +436,9 @@ export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSX.Elem
 export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
 
 // @public
+export const renderMenuItemSwitch_unstable: (state: MenuItemSwitchState) => JSX.Element;
+
+// @public
 export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
 
 // @public
@@ -479,7 +499,7 @@ export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAB
 export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemCheckboxState;
 
 // @public (undocumented)
-export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
+export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
 
 // @public
 export const useMenuItemLink_unstable: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
@@ -494,7 +514,13 @@ export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2
 export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;
 
 // @public
-export const useMenuItemStyles_unstable: (state: MenuItemState) => void;
+export const useMenuItemStyles_unstable: (state: MenuItemState) => MenuItemState;
+
+// @public
+export const useMenuItemSwitch_unstable: (props: MenuItemSwitchProps, ref: React_2.Ref<HTMLDivElement>) => MenuItemSwitchState;
+
+// @public
+export const useMenuItemSwitchStyles_unstable: (state: MenuItemSwitchState) => MenuItemSwitchState;
 
 // @public
 export const useMenuList_unstable: (props: MenuListProps, ref: React_2.Ref<HTMLElement>) => MenuListState;

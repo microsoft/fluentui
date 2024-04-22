@@ -1,8 +1,150 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 05 Feb 2024 07:27:39 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.117.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.6)
+
+Mon, 22 Apr 2024 07:28:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.5..@fluentui/react_v8.117.6)
+
+### Patches
+
+- feat: update some components to optionally support shadow dom ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.4.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.37 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/merge-styles to v8.6.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/react-focus to v8.9.0 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/react-hooks to v8.8.0 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/style-utilities to v8.10.8 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/theme to v2.6.46 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/utilities to v8.15.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+
+## [8.117.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.5)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.4..@fluentui/react_v8.117.5)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.6.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.36 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/merge-styles to v8.6.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/react-focus to v8.8.44 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/react-hooks to v8.7.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.20 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/style-utilities to v8.10.7 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/theme to v2.6.45 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/utilities to v8.15.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [8.117.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.4)
+
+Wed, 10 Apr 2024 07:28:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.3..@fluentui/react_v8.117.4)
+
+### Patches
+
+- fix: picker tags only show focus styling when focused ([PR #30710](https://github.com/microsoft/fluentui/pull/30710) by sarah.higley@microsoft.com)
+
+## [8.117.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.3)
+
+Tue, 09 Apr 2024 07:26:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.2..@fluentui/react_v8.117.3)
+
+### Patches
+
+- fix: selected option focus outline has contrast against bg ([PR #30979](https://github.com/microsoft/fluentui/pull/30979) by sarah.higley@microsoft.com)
+
+## [8.117.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.2)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.1..@fluentui/react_v8.117.2)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.6.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.35 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/merge-styles to v8.6.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/react-focus to v8.8.43 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/react-hooks to v8.7.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.19 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/style-utilities to v8.10.6 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/theme to v2.6.44 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/utilities to v8.15.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [8.117.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.1)
+
+Fri, 29 Mar 2024 07:28:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.0..@fluentui/react_v8.117.1)
+
+### Patches
+
+- fix: GroupedList initiates FocusRects ([PR #30458](https://github.com/microsoft/fluentui/pull/30458) by sarah.higley@microsoft.com)
+
+## [8.117.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.0)
+
+Fri, 22 Mar 2024 07:28:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.116.0..@fluentui/react_v8.117.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30809](https://github.com/microsoft/fluentui/pull/30809) by behowell@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.6.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.34 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/react-focus to v8.8.42 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/react-hooks to v8.7.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/style-utilities to v8.10.5 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/theme to v2.6.43 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+- Bump @fluentui/utilities to v8.15.0 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+
+## [8.116.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.116.0)
+
+Wed, 20 Mar 2024 07:27:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.7..@fluentui/react_v8.116.0)
+
+### Minor changes
+
+- Recreate async helper in tooltiphost on remount ([PR #28232](https://github.com/microsoft/fluentui/pull/28232) by 420834+andyrooger@users.noreply.github.com)
+
+## [8.115.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.7)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.6..@fluentui/react_v8.115.7)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.3.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.33 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/merge-styles to v8.6.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/react-focus to v8.8.41 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/react-hooks to v8.6.37 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/style-utilities to v8.10.4 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/theme to v2.6.42 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+- Bump @fluentui/utilities to v8.14.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+
+## [8.115.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.6)
+
+Mon, 12 Feb 2024 07:25:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.5..@fluentui/react_v8.115.6)
+
+### Patches
+
+- fix: Datepicker with input renders semantic button for voice control ([PR #30499](https://github.com/microsoft/fluentui/pull/30499) by sarah.higley@microsoft.com)
+
+## [8.115.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.5)
+
+Wed, 07 Feb 2024 07:26:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.4..@fluentui/react_v8.115.5)
+
+### Patches
+
+- Fix: Enable click events on coachmark for mobile & additional entry points on desktop (currently requires mouse movement only) ([PR #30492](https://github.com/microsoft/fluentui/pull/30492) by mifraser@microsoft.com)
 
 ## [8.115.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.4)
 

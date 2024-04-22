@@ -1,8 +1,81 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 06 Feb 2024 17:55:20 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.20.0)
+
+Wed, 17 Apr 2024 21:53:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.6..@fluentui/react-tabster_v9.20.0)
+
+### Minor changes
+
+- Tabster 7.1.0. ([PR #30969](https://github.com/microsoft/fluentui/pull/30969) by marata@microsoft.com)
+
+## [9.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.6)
+
+Tue, 02 Apr 2024 09:48:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.5..@fluentui/react-tabster_v9.19.6)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.16.0 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+
+## [9.19.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.5)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.4..@fluentui/react-tabster_v9.19.5)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.19.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.4)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.3..@fluentui/react-tabster_v9.19.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.19.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.3)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.2..@fluentui/react-tabster_v9.19.3)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.19.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.2)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.1..@fluentui/react-tabster_v9.19.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [9.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.1)
+
+Tue, 20 Feb 2024 14:22:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.0..@fluentui/react-tabster_v9.19.1)
+
+### Patches
+
+- fix: focus-visible polyfill should only register in scope ([PR #30517](https://github.com/microsoft/fluentui/pull/30517) by lingfangao@hotmail.com)
+- Active modal checks if an element outside of it is a virtual child of a modal before setting aria-hidden.' ([PR #30501](https://github.com/microsoft/fluentui/pull/30501) by marata@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
 
 ## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.0)
 

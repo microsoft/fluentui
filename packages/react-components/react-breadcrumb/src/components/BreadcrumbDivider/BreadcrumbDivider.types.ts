@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
 export type BreadcrumbDividerSlots = {
   root: Slot<'li'>;
@@ -12,4 +13,4 @@ export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {}
 /**
  * State used in rendering BreadcrumbDivider
  */
-export type BreadcrumbDividerState = ComponentState<BreadcrumbDividerSlots>;
+export type BreadcrumbDividerState = ComponentState<BreadcrumbDividerSlots> & Pick<BreadcrumbProps, 'size'>;

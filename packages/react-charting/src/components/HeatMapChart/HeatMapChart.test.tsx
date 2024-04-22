@@ -9,6 +9,9 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { act } from 'react-dom/test-utils';
+import { conditionalDescribe, conditionalTest, isTimezoneSet } from '../../utilities/TestUtility.test';
+const { Timezone } = require('../../../scripts/constants');
+const env = require('../../../config/tests');
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
@@ -97,11 +100,11 @@ const HeatMapStringDateData: IHeatMapChartProps['data'] = [
   },
 ];
 
-// FIXME - non deterministic snapshots causing master pipeline breaks
-describe.skip('HeatMapChart snapShot testing', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('HeatMapChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
+
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
@@ -293,6 +296,10 @@ describe('HeatMapChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HeatMapChartBase.prototype, 'render');
     const props = {
@@ -326,28 +333,34 @@ describe('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout correctly on mouseover', async () => {
-    await act(async () => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-          calloutProps={{ doNotLayer: true }}
-        />,
-      );
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-      wrapper.find('rect').at(1).simulate('mouseover');
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
+  conditionalTest(isTimezoneSet(Timezone.UTC) && env === 'TEST')(
+    'Should render callout correctly on mouseover',
+    async () => {
+      await act(async () => {
+        wrapper = mount(
+          <HeatMapChart
+            data={HeatMapDateStringData}
+            domainValuesForColorScale={[0, 600]}
+            rangeValuesForColorScale={['lightblue', 'darkblue']}
+            calloutProps={{ doNotLayer: true }}
+          />,
+        );
+        await new Promise(resolve => setTimeout(resolve));
+        wrapper.update();
+        wrapper.find('rect').at(1).simulate('mouseover');
+        await new Promise(resolve => setTimeout(resolve));
+        wrapper.update();
+      });
+      const tree = toJson(wrapper!, { mode: 'deep' });
+      expect(tree).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(

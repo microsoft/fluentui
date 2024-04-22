@@ -37,12 +37,14 @@ import { ISemanticTextColors } from '@fluentui/theme';
 import { ISpacing } from '@fluentui/theme';
 import { IStyle } from '@fluentui/merge-styles';
 import { IStyleSet } from '@fluentui/merge-styles';
+import { IStyleSetBase } from '@fluentui/merge-styles';
 import { IStyleSheetConfig } from '@fluentui/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
 import { registerDefaultFontFaces } from '@fluentui/theme';
+import { ShadowConfig } from '@fluentui/merge-styles';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public (undocumented)
@@ -248,6 +250,8 @@ export { IStyle }
 
 export { IStyleSet }
 
+export { IStyleSetBase }
+
 export { IStyleSheetConfig }
 
 export { ITheme }
@@ -326,6 +330,8 @@ export const ScreenWidthMinXXXLarge = 1920;
 
 // @public
 export function setIconOptions(options: Partial<IIconOptions>): void;
+
+export { ShadowConfig }
 
 export { Stylesheet }
 

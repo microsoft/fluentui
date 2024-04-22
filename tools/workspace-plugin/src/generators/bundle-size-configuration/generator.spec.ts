@@ -71,14 +71,16 @@ describe('bundle-size-configuration generator', () => {
     expect(tree.read(joinPathFragments(config.root, 'monosize.config.mjs'), 'utf-8')).toMatchInlineSnapshot(`
       "// @ts-check
 
+      import webpackBundler from 'monosize-bundler-webpack';
+
       import baseConfig from '../../../monosize.config.mjs';
 
       /** @type {import('monosize').MonoSizeConfig} */
       const monosizeConfig = {
         ...baseConfig,
-        webpack: (config) => {
+        bundler: webpackBundler((config) => {
           return config;
-        },
+        }),
       };
 
       export default monosizeConfig;

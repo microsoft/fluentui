@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VerticalBarChart unit tests Get scales Should render the vertical bar chart with numeric x-axis data - RTL 1`] = `
+exports[`vertical bar chart with numeric x-axis data Should render the vertical bar chart with numeric x-axis data - RTL 1`] = `
 <div>
   <div
     class=
@@ -17,11 +17,11 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
           overflow: hidden;
           width: 100%;
         }
-    id="chart_15"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_16"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -32,13 +32,14 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone17"
+      data-focuszone-id="FocusZone5"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
-        height="0"
+        height="292"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class=
@@ -66,9 +67,127 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_15"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(163.80769230769232,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              5,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(271.11538461538464,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(378.4230769230769,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(485.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(593.0384615384615,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -94,13 +213,212 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_15"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
-           
-           
-           
+          <g>
+            <rect
+              aria-label="2020/04/30. First, 10%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="47.400000000000006"
+              id="_VBC_bar_7"
+              role="img"
+              tabindex="0"
+              width="16"
+              x="48"
+              y="209.6"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="56"
+              y="203.6"
+            >
+              10.0k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Second, 20%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#002050"
+              height="237"
+              id="_VBC_bar_8"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="262.61538461538464"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="270.61538461538464"
+              y="14"
+            >
+              50.0k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Third, 37%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#00188f"
+              height="142.2"
+              id="_VBC_bar_9"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="584.5384615384615"
+              y="114.80000000000001"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="592.5384615384615"
+              y="108.80000000000001"
+            >
+              30.0k
+            </text>
+          </g>
         </g>
       </svg>
     </div>
@@ -131,7 +449,7 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
           >
             <div
               data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              style=""
             >
               <div
                 aria-label="Legends"
@@ -141,7 +459,8 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone18"
+                data-focuszone-id="FocusZone6"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -200,6 +519,20 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -288,6 +621,20 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -372,6 +719,20 @@ exports[`VerticalBarChart unit tests Get scales Should render the vertical bar c
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"

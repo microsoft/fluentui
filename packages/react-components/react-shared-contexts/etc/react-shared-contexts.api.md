@@ -73,6 +73,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemSwitchStyles_unstable: CustomStyleHook;
     useMenuItemRadioStyles_unstable: CustomStyleHook;
     useMenuItemStyles_unstable: CustomStyleHook;
     useMenuListStyles_unstable: CustomStyleHook;
@@ -198,6 +199,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemSwitchStyles_unstable: CustomStyleHook;
     useMenuItemRadioStyles_unstable: CustomStyleHook;
     useMenuItemStyles_unstable: CustomStyleHook;
     useMenuListStyles_unstable: CustomStyleHook;
@@ -323,6 +325,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
     useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+    useMenuItemSwitchStyles_unstable: CustomStyleHook;
     useMenuItemRadioStyles_unstable: CustomStyleHook;
     useMenuItemStyles_unstable: CustomStyleHook;
     useMenuListStyles_unstable: CustomStyleHook;

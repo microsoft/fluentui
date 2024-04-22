@@ -132,8 +132,12 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' },
+                // eslint-disable-next-line @fluentui/max-len
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover, :host(.${IsFocusVisibleClassName}) &:focus, :host(.${IsFocusVisibleClassName}) &:focus:hover`]:
+                  styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover, :host(.${IsFocusVisibleClassName}) &:hover`]: {
+                  background: 'inherit;',
+                },
               },
             },
           ],
@@ -154,8 +158,12 @@ export const getItemClassNames = memoizeFunction(
                 // when hovering over the splitPrimary also affect the splitMenu
                 [`:hover ~ .${classNames.splitMenu}`]: styles.rootHovered,
                 ':active': styles.rootPressed,
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' },
+                // eslint-disable-next-line @fluentui/max-len
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover, :host(.${IsFocusVisibleClassName}) &:focus, :host(.${IsFocusVisibleClassName}) &:focus:hover`]:
+                  styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover, :host(.${IsFocusVisibleClassName}) &:hover`]: {
+                  background: 'inherit;',
+                },
               },
             },
           ],
@@ -176,8 +184,12 @@ export const getItemClassNames = memoizeFunction(
               selectors: {
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' },
+                // eslint-disable-next-line @fluentui/max-len
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover, :host(.${IsFocusVisibleClassName}) &:focus, :host(.${IsFocusVisibleClassName}) &:focus:hover`]:
+                  styles.rootFocused,
+                [`.${IsFocusVisibleClassName} &:hover, :host(.${IsFocusVisibleClassName}) &:hover`]: {
+                  background: 'inherit;',
+                },
               },
             },
           ],
@@ -215,7 +227,9 @@ export const getItemClassNames = memoizeFunction(
           !checked && [
             {
               selectors: {
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+                // eslint-disable-next-line @fluentui/max-len
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover, :host(.${IsFocusVisibleClassName}) &:focus, :host(.${IsFocusVisibleClassName}) &:focus:hover`]:
+                  styles.rootFocused,
               },
             },
           ],

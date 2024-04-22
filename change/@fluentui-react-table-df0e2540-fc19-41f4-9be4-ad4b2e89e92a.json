@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Table and DataGrid should not remove cells from the accessibility tree",
+  "packageName": "@fluentui/react-table",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

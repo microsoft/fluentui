@@ -1,14 +1,26 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
-import type { TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
-import { TeachingPopoverCarouselSlots } from './TeachingPopoverCarousel.types';
+
 import { assertSlots } from '@fluentui/react-utilities';
+import type {
+  TeachingPopoverCarouselState,
+  TeachingPopoverCarouselSlots,
+  TeachingPopoverCarouselContextValues,
+} from './TeachingPopoverCarousel.types';
+import { CarouselProvider } from './Carousel/CarouselContext';
 
 /**
  * Render the final JSX of TeachingPopoverCarousel
  */
-export const renderTeachingPopoverCarousel_unstable = (state: TeachingPopoverCarouselState) => {
+export const renderTeachingPopoverCarousel_unstable = (
+  state: TeachingPopoverCarouselState,
+  contextValues: TeachingPopoverCarouselContextValues,
+) => {
   assertSlots<TeachingPopoverCarouselSlots>(state);
 
-  return <state.root />;
+  return (
+    <CarouselProvider value={contextValues.carousel}>
+      <state.root />
+    </CarouselProvider>
+  );
 };

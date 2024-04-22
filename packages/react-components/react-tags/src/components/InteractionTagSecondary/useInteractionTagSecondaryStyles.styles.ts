@@ -26,7 +26,9 @@ const useRootBaseClassName = makeResetStyles({
   height: '100%',
   alignItems: 'center',
 
-  ...createCustomFocusIndicatorStyle(shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2)),
+  ...createCustomFocusIndicatorStyle({
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+  }),
 
   border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
@@ -82,7 +84,7 @@ const useRootStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground1,
+    color: tokens.colorBrandForeground2,
     borderLeftColor: tokens.colorBrandStroke2, // divider
     ':hover': {
       cursor: 'pointer',

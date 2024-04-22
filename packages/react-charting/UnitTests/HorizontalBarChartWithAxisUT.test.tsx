@@ -6,6 +6,8 @@ import { DefaultPalette } from '@fluentui/react';
 import { render } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import * as utils from '@fluentui/react/lib/Utilities';
+import { resetIds } from '@fluentui/react';
+
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -69,7 +71,13 @@ const margins = {
   bottom: 10,
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_renderContentForOnlyBars', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper bar data', () => {
     render(<HorizontalBarChartWithAxis data={chartPoints} />);
     const instance = new HorizontalBarChartWithAxisBase({
@@ -147,6 +155,8 @@ runTest('_renderContentForOnlyBars', () => {
 });
 
 runTest('Get scales', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return scales for numeric axis', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -226,6 +236,8 @@ runTest('Get scales', () => {
 });
 
 runTest('_createNumericBars', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper bar data with numeric axis data', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -258,6 +270,8 @@ runTest('_createNumericBars', () => {
 });
 
 runTest('_getCalloutContentForBar', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper callout data for respective bar', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -276,6 +290,8 @@ runTest('_getCalloutContentForBar', () => {
 });
 
 runTest('create colors', () => {
+  beforeEach(sharedBeforeEach);
+
   test('should return the color scale - using single color', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -311,6 +327,8 @@ runTest('create colors', () => {
 });
 
 runTest('_getLegendData', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return empty legends data when there is no chart data', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,
@@ -355,6 +373,8 @@ runTest('_getLegendData', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper aria label', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,

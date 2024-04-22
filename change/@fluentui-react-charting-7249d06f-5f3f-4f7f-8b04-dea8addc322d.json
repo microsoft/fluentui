@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix bugs in gauge chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -39,12 +39,13 @@ const useStyles = makeStyles({
     borderTopRightRadius: tokens.borderRadiusNone,
     borderBottomRightRadius: tokens.borderRadiusNone,
     borderRightStyle: 'none',
-    ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
-    }),
     marginInlineStart: 'auto',
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.borderColor('transparent'),
+    }),
   },
   dismissBrand: {
     color: tokens.colorNeutralForegroundOnBrand,
@@ -63,7 +64,7 @@ const useStyles = makeStyles({
     position: 'relative',
     backgroundColor: tokens.colorTransparentBackground,
     color: tokens.colorNeutralForeground2,
-    marginRight: tokens.spacingHorizontalXS,
+    marginInlineEnd: tokens.spacingHorizontalXS,
   },
   iconBrand: {
     color: tokens.colorNeutralForegroundOnBrand,

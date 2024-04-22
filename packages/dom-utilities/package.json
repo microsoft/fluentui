@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/dom-utilities",
-  "version": "2.2.14",
+  "version": "2.3.0",
   "description": "DOM utilities for use within Fluent web components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.14",
+    "@fluentui/set-version": "^8.2.16",
     "tslib": "^2.1.0"
   },
   "exports": {

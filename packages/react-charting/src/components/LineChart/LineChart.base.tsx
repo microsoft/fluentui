@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
-import { select as d3Select, clientPoint } from 'd3-selection';
+import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
@@ -564,6 +564,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
         const circleId = `${this._circleId}_${i}`;
+        const isLegendSelected: boolean =
+          this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
         pointsForLine.push(
           <circle
             id={circleId}
@@ -572,6 +574,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
+            opacity={isLegendSelected ? 1 : 0.1}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
@@ -1074,7 +1077,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { lineChartData } = data;
 
     // This will get the value of the X when mouse is on the chart
-    const xOffset = this._xAxisScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
+    const xOffset = this._xAxisScale.invert(pointer(mouseEvent)[0], document.getElementById(this._rectId)!);
     const i = bisect(lineChartData![linenumber].data, xOffset);
     const d0 = lineChartData![linenumber].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![linenumber].data[i] as ILineChartDataPoint;
@@ -1211,9 +1214,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     x: number | Date,
     y: number | Date,
     lineHeight: number,
-    xAxisCalloutData: string,
+    xAxisCalloutData: string | undefined,
     circleId: string,
-    xAxisCalloutAccessibilityData: IAccessibilityProps,
+    xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();

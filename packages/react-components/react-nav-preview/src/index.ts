@@ -1,14 +1,8 @@
 export { Nav, renderNav_unstable, useNav_unstable, useNavStyles_unstable, navClassNames } from './components/Nav/index';
 export type { NavProps, NavSlots, NavState } from './components/Nav/index';
 
-export {
-  NavCategory,
-  renderNavCategory_unstable,
-  useNavCategory_unstable,
-  useNavCategoryStyles_unstable,
-  navCategoryClassNames,
-} from './components/NavCategory/index';
-export type { NavCategorySlots, NavCategoryProps, NavCategoryState } from './components/NavCategory/index';
+export { NavCategory, renderNavCategory_unstable, useNavCategory_unstable } from './components/NavCategory/index';
+export type { NavCategoryProps, NavCategoryState } from './components/NavCategory/index';
 
 export {
   NavCategoryItem,
@@ -62,3 +56,4 @@ export type {
   NavSubItemGroupProps,
   NavSubItemGroupState,
 } from './components/NavSubItemGroup/index';
+export * from './NavDrawer';

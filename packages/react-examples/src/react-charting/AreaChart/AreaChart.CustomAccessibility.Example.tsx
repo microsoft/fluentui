@@ -18,7 +18,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -17,7 +17,7 @@ export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
 }
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
+export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps<T>>
   extends React.Component<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T>
 {
