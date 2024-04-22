@@ -12,7 +12,4 @@ export const definition = CompoundButton.compose({
   name: `${FluentDesignSystem.prefix}-compound-button`,
   template,
   styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
 });

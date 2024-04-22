@@ -12,7 +12,4 @@ export const definition = MenuButton.compose({
   name: `${FluentDesignSystem.prefix}-menu-button`,
   template,
   styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
 });

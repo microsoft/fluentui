@@ -71,7 +71,24 @@ export const ButtonType = {
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
 /**
- * Button configuration options
+ * Button configuration options.
  * @public
  */
 export type ButtonOptions = StartEndOptions<Button>;
+
+/**
+ * Button `formtarget` attribute values.
+ * @public
+ */
+export const ButtonFormTarget = {
+  blank: '_blank',
+  self: '_self',
+  parent: '_parent',
+  top: '_top',
+} as const;
+
+/**
+ * Types for the `formtarget` attribute values.
+ * @public
+ */
+export type ButtonFormTarget = ValuesOf<typeof ButtonFormTarget>;

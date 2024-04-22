@@ -8,7 +8,7 @@
     "declarationDir": "dist/dts",
     "outDir": "dist/esm",
     "importHelpers": true,
-    "types": []
+    "types": ["web"]
   },
   "include": ["src"],
   "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
