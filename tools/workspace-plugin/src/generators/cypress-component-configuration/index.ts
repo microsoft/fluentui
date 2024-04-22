@@ -1,4 +1,4 @@
-import { Tree, formatFiles, names } from '@nx/devkit';
+import { Tree, formatFiles, names, joinPathFragments } from '@nx/devkit';
 
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 
@@ -10,12 +10,13 @@ import { addFiles } from './lib/add-files';
 interface _NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: CypressComponentConfigurationGeneratorSchema) {
-  const userLog: UserLog = [];
   const normalizedOptions = normalizeOptions(tree, schema);
 
-  if (normalizedOptions.projectConfig.projectType === 'application') {
-    userLog.push({ type: 'warn', message: 'we dont support cypress component tests for applications' });
-    printUserLogs(userLog);
+  const isSplitProject = tree.exists(
+    joinPathFragments(normalizedOptions.projectConfig.root, '../stories/project.json'),
+  );
+
+  if (!assertOptions(tree, { isSplitProject, ...normalizedOptions })) {
     return;
   }
 
@@ -32,4 +33,25 @@ function normalizeOptions(tree: Tree, options: CypressComponentConfigurationGene
     ...project,
     ...names(options.project),
   };
+}
+
+function assertOptions(tree: Tree, options: ReturnType<typeof normalizeOptions> & { isSplitProject: boolean }) {
+  if (options.projectConfig.projectType === 'application') {
+    const userLog: UserLog = [];
+    userLog.push({ type: 'warn', message: `We don't support cypress component tests for applications` });
+    printUserLogs(userLog);
+
+    return false;
+  }
+
+  if (options.isSplitProject && options.name.endsWith('-stories')) {
+    throw new Error(
+      `This generator can be invoked only against library project. Please run it against "${options.name.replace(
+        '-stories',
+        '',
+      )}" library project.`,
+    );
+  }
+
+  return true;
 }
