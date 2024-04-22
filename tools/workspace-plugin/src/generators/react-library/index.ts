@@ -12,6 +12,8 @@ import {
   readJson,
 } from '@nx/devkit';
 
+import { splitLibraryInTwoGenerator } from '../split-library-in-two/generator';
+
 import { getProjectConfig, getWorkspaceConfig } from '../../utils';
 
 import { ReactLibraryGeneratorSchema } from './schema';
@@ -31,6 +33,8 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
   await tsConfigBaseAllGenerator(tree, {});
 
   addCodeowner(tree, { packageName: options.projectConfig.name as string, owner: schema.owner });
+
+  await splitLibraryInTwoGenerator(tree, { project: options.projectConfig.name });
 
   await formatFiles(tree);
 

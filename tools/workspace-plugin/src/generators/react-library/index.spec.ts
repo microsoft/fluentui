@@ -46,15 +46,16 @@ describe('react-library generator', () => {
     setup(tree);
 
     await generator(tree, { name: 'react-one', owner: '@org/chosen-one' });
-    const config = readProjectConfiguration(tree, '@proj/react-one-preview');
-    const rootPath = 'packages/react-components/react-one-preview';
 
-    expect(tree.children(rootPath)).toMatchInlineSnapshot(`
+    const library = readProjectConfiguration(tree, '@proj/react-one-preview');
+    const stories = readProjectConfiguration(tree, '@proj/react-one-preview-stories');
+
+    // library
+    expect(tree.children(library.root)).toMatchInlineSnapshot(`
       Array [
         "project.json",
         ".babelrc.json",
         ".eslintrc.json",
-        ".storybook",
         ".swcrc",
         "LICENSE",
         "README.md",
@@ -65,31 +66,25 @@ describe('react-library generator', () => {
         "just.config.ts",
         "package.json",
         "src",
-        "stories",
         "tsconfig.json",
         "tsconfig.lib.json",
         "tsconfig.spec.json",
       ]
     `);
-    expect(tree.children(joinPathFragments(rootPath, '.storybook'))).toEqual([
-      'main.js',
-      'preview.js',
-      'tsconfig.json',
-    ]);
-    expect(tree.children(joinPathFragments(rootPath, 'docs'))).toEqual(['Spec.md']);
-    expect(tree.children(joinPathFragments(rootPath, 'src'))).toEqual(['index.ts', 'testing']);
-    expect(tree.exists(joinPathFragments(rootPath, 'src', 'testing', 'isConformant.ts'))).toEqual(true);
-    expect(tree.children(joinPathFragments(rootPath, 'config'))).toEqual(['api-extractor.json', 'tests.js']);
-    expect(tree.children(joinPathFragments(rootPath, 'etc'))).toEqual(['react-one-preview.api.md']);
+    expect(tree.children(joinPathFragments(library.root, 'docs'))).toEqual(['Spec.md']);
+    expect(tree.children(joinPathFragments(library.root, 'src'))).toEqual(['index.ts', 'testing']);
+    expect(tree.exists(joinPathFragments(library.root, 'src', 'testing', 'isConformant.ts'))).toEqual(true);
+    expect(tree.children(joinPathFragments(library.root, 'config'))).toEqual(['api-extractor.json', 'tests.js']);
+    expect(tree.children(joinPathFragments(library.root, 'etc'))).toEqual(['react-one-preview.api.md']);
 
-    expect(config).toMatchInlineSnapshot(`
+    expect(library).toMatchInlineSnapshot(`
       Object {
-        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
         "implicitDependencies": Array [],
         "name": "@proj/react-one-preview",
         "projectType": "library",
-        "root": "packages/react-components/react-one-preview",
-        "sourceRoot": "packages/react-components/react-one-preview/src",
+        "root": "packages/react-components/react-one-preview/library",
+        "sourceRoot": "packages/react-components/react-one-preview/library/src",
         "tags": Array [
           "platform:web",
           "vNext",
@@ -97,7 +92,13 @@ describe('react-library generator', () => {
       }
     `);
 
-    expect(readJson(tree, `${rootPath}/package.json`)).toEqual(
+    expect(readJson(tree, `${library.root}/config/api-extractor.json`)).toEqual({
+      $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+      extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
+      mainEntryPointFilePath:
+        '<projectRoot>/../../../../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts',
+    });
+    expect(readJson(tree, `${library.root}/package.json`)).toEqual(
       expect.objectContaining({
         name: '@proj/react-one-preview',
         private: true,
@@ -113,21 +114,21 @@ describe('react-library generator', () => {
         },
       }),
     );
-    expect(readJson(tree, `${rootPath}/tsconfig.json`)).toEqual(
-      expect.objectContaining({ extends: '../../../tsconfig.base.json' }),
+    expect(readJson(tree, `${library.root}/tsconfig.json`)).toEqual(
+      expect.objectContaining({ extends: '../../../../tsconfig.base.json' }),
     );
-    expect(readJson(tree, `${rootPath}/tsconfig.lib.json`)).toMatchInlineSnapshot(`
+    expect(readJson(tree, `${library.root}/tsconfig.lib.json`)).toMatchInlineSnapshot(`
       Object {
         "compilerOptions": Object {
           "declaration": true,
-          "declarationDir": "../../../dist/out-tsc/types",
+          "declarationDir": "../../../../dist/out-tsc/types",
           "inlineSources": true,
           "lib": Array [
             "ES2019",
             "dom",
           ],
           "noEmit": false,
-          "outDir": "../../../dist/out-tsc",
+          "outDir": "../../../../dist/out-tsc",
           "types": Array [
             "static-assets",
             "environment",
@@ -149,13 +150,13 @@ describe('react-library generator', () => {
         ],
       }
     `);
-    expect(readJson(tree, `${rootPath}/.babelrc.json`)).toEqual(
-      expect.objectContaining({ extends: '../../../.babelrc-v9.json' }),
+    expect(readJson(tree, `${library.root}/.babelrc.json`)).toEqual(
+      expect.objectContaining({ extends: '../../../../.babelrc-v9.json' }),
     );
-    expect(tree.read(`${rootPath}/jest.config.js`, 'utf-8')).toEqual(
+    expect(tree.read(`${library.root}/jest.config.js`, 'utf-8')).toEqual(
       expect.stringContaining(`displayName: 'react-one-preview',`),
     );
-    expect(tree.read(`${rootPath}/README.md`, 'utf-8')).toEqual(
+    expect(tree.read(`${library.root}/README.md`, 'utf-8')).toEqual(
       expect.stringContaining(stripIndents`
       # @proj/react-one-preview
 
@@ -163,10 +164,68 @@ describe('react-library generator', () => {
     `),
     );
 
-    // global udtpates
+    // stories
+
+    expect(tree.children(stories.root)).toMatchInlineSnapshot(`
+      Array [
+        "src",
+        ".storybook",
+        "README.md",
+        "just.config.ts",
+        ".eslintrc.json",
+        "tsconfig.json",
+        "tsconfig.lib.json",
+        "package.json",
+        "project.json",
+      ]
+    `);
+
+    expect(readJson(tree, `${stories.root}/package.json`)).toEqual({
+      name: '@proj/react-one-preview-stories',
+      version: '0.0.0',
+      private: true,
+      devDependencies: {
+        '@fluentui/eslint-plugin': '*',
+        '@fluentui/react-storybook-addon': '*',
+        '@fluentui/react-storybook-addon-export-to-sandbox': '*',
+        '@fluentui/scripts-storybook': '*',
+        '@fluentui/scripts-tasks': '*',
+      },
+      scripts: {
+        format: 'just-scripts prettier',
+        lint: 'eslint src/',
+        start: 'yarn storybook',
+        storybook: 'start-storybook',
+        'type-check': 'just-scripts type-check',
+      },
+    });
+
+    expect(stories).toMatchInlineSnapshot(`
+      Object {
+        "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+        "implicitDependencies": Array [],
+        "name": "@proj/react-one-preview-stories",
+        "projectType": "library",
+        "root": "packages/react-components/react-one-preview/stories",
+        "sourceRoot": "packages/react-components/react-one-preview/stories/src",
+        "tags": Array [
+          "vNext",
+          "platform:web",
+          "type:stories",
+        ],
+      }
+    `);
+
+    expect(tree.read(`${stories.root}/src/index.ts`, 'utf-8')).toMatchInlineSnapshot(`
+      "export {};
+      "
+    `);
+
+    // global updates
 
     const expectedPathAlias = {
-      ['@proj/react-one-preview']: ['packages/react-components/react-one-preview/src/index.ts'],
+      ['@proj/react-one-preview']: ['packages/react-components/react-one-preview/library/src/index.ts'],
+      ['@proj/react-one-preview-stories']: ['packages/react-components/react-one-preview/stories/src/index.ts'],
     };
     expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(
       expect.objectContaining(expectedPathAlias),
@@ -176,7 +235,10 @@ describe('react-library generator', () => {
     );
 
     expect(tree.read('.github/CODEOWNERS', 'utf-8')).toEqual(
-      expect.stringContaining(`packages/react-components/react-one-preview @org/chosen-one`),
+      expect.stringContaining(stripIndents`
+        packages/react-components/react-one-preview/library @org/chosen-one
+        packages/react-components/react-one-preview/stories @org/chosen-one
+      `),
     );
   });
 
@@ -185,13 +247,12 @@ describe('react-library generator', () => {
 
     await generator(tree, { name: 'react-one', owner: '@org/chosen-one', kind: 'compat' });
     const config = readProjectConfiguration(tree, '@proj/react-one-compat');
-    const rootPath = 'packages/react-components/react-one-compat';
-    expect(tree.children(rootPath)).toMatchInlineSnapshot(`
+
+    expect(tree.children(config.root)).toMatchInlineSnapshot(`
       Array [
         "project.json",
         ".babelrc.json",
         ".eslintrc.json",
-        ".storybook",
         ".swcrc",
         "LICENSE",
         "README.md",
@@ -202,7 +263,6 @@ describe('react-library generator', () => {
         "just.config.ts",
         "package.json",
         "src",
-        "stories",
         "tsconfig.json",
         "tsconfig.lib.json",
         "tsconfig.spec.json",
@@ -210,8 +270,8 @@ describe('react-library generator', () => {
     `);
     expect(config).toEqual(
       expect.objectContaining({
-        root: 'packages/react-components/react-one-compat',
-        sourceRoot: 'packages/react-components/react-one-compat/src',
+        root: 'packages/react-components/react-one-compat/library',
+        sourceRoot: 'packages/react-components/react-one-compat/library/src',
         tags: ['platform:web', 'vNext', 'compat'],
       }),
     );
