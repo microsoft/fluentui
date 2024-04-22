@@ -39,12 +39,7 @@ export const Filtering = () => {
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox
-        aria-labelledby={comboId}
-        placeholder="Select an animal"
-        onChange={ev => setQuery(ev.target.value)}
-        value={query}
-      >
+      <Combobox aria-labelledby={comboId} placeholder="Select an animal" onChange={ev => setQuery(ev.target.value)}>
         {children}
       </Combobox>
     </div>
@@ -55,9 +50,9 @@ Filtering.parameters = {
   docs: {
     description: {
       story: `
-We provide "useComboboxFilter()" hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.           
+We provide "useComboboxFilter()" hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.
 
-We recommend using filtering when creating a freeform Combobox.      
+We recommend using filtering when creating a freeform Combobox.
       `.trim(),
     },
   },
