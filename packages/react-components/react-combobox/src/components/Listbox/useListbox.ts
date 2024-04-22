@@ -89,11 +89,9 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
-  const onKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
-    const action = getDropdownActionFromKey(event, { open: true });
-
-    // set initial active descendent, upon keyboard focus, in the absence of a parent context controlling the state
-    if (action === 'Tab' && !hasParentActiveDescendantContext) {
+  const onFocus = (event: React.FocusEventHandler<HTMLElement>) => {
+    // set initial active descendent upon focus, in the absence of a parent context controlling the state
+    if (!hasParentActiveDescendantContext) {
       const activeDescendent = activeDescendantController.active();
       if (activeDescendent) {
         activeDescendantController.focus(activeDescendent);
@@ -145,7 +143,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
-  state.root.onKeyUp = useEventCallback(mergeCallbacks(state.root.onKeyUp, onKeyUp));
+  state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
 
   return state;
 };

@@ -77,8 +77,7 @@ describe('Listbox', () => {
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(option.id);
   });
 
-  /* Moving activeOption */
-  it('should set active option on tab focus', () => {
+  it('should set active option on focus', () => {
     const { getByTestId } = render(
       <Listbox data-testid="listbox">
         <Option data-testid="firstOption">Red</Option>
@@ -90,7 +89,7 @@ describe('Listbox', () => {
     const firstOption = getByTestId('firstOption');
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
 
-    fireEvent.keyUp(getByTestId('listbox'), { key: 'Tab' });
+    fireEvent.focus(getByTestId('listbox'));
 
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(firstOption.id);
   });
