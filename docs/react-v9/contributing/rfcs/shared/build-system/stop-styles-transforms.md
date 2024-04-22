@@ -1,0 +1,162 @@
+# RFC: Stop pre-processing styles with Griffel in `@fluentui/react-components`
+
+[@layershifter](https://github.com/layershifter)
+
+## Background
+
+We've begun noticing a pattern where apps are bundled into multiple separate bundles. For example, there's the main bundle for the app itself and a separate bundle for a first UI piece fetched from a CDN. This problem is described in the following issues:
+
+- [microsoft/griffel#453](https://github.com/microsoft/griffel/issues/453) (_check this issue for more details_)
+- [microsoft/griffel#526](https://github.com/microsoft/griffel/issues/526)
+
+_TL;DR_: Griffel relies on the order of CSS classes, which can lead to clashes when multiple bundles are involved. See the simple example below:
+
+```html
+<!-- CURRENT STATE -->
+
+<!-- main bundle -->
+<style>
+  .order0 {
+    padding: 10px;
+  }
+  .order1 {
+    padding-left: 5px;
+  }
+</style>
+
+<!-- CDN bundle -->
+<style>
+  .order0 {
+    padding: 10px;
+  }
+</style>
+
+<!-- HTML -->
+
+<!--
+  🔴 We expect that a "div" below will have "padding-left: 5px", but instead, it has "padding: 10px".
+
+     The issue appears because the CDN bundle loads after the main bundle, resulting in style overrides. This occurs because ".order0" appears in both bundles, and CSS prioritizes the order of appearance. 
+  -->
+
+<div class="order0 order1"></div>
+```
+
+The single reliable solution is to prefix styles with a unique identifier. This prevents CSS rules from colliding, for example:
+
+```html
+<!-- PROPOSAL -->
+
+<!-- main bundle -->
+<style>
+  .main-order0 {
+    padding: 10px;
+  }
+  .main-order1 {
+    padding-left: 5px;
+  }
+</style>
+
+<!-- CDN bundle -->
+<style>
+  .order0 {
+    padding: 10px;
+  }
+</style>
+
+<!-- HTML -->
+
+<!--
+  ✅ Now the "div" below will have "padding-left: 5px" as CSS rules don't clash anymore.
+  -->
+
+<div class="main-order0 main-order1"></div>
+```
+
+## Problem statement
+
+Integrating prefixing into Griffel is relatively straightforward. However, we currently undergo a pre-processing step in `@fluentui/react-components` that modifies JavaScript code.
+
+<details>
+  <summary>Original code</summary>
+
+```ts
+// packages/react-components/react-menu/src/components/MenuDivider/useMenuDividerStyles.styles.ts
+// 📝 output is simpfied
+
+const useStyles = makeStyles({
+  root: {
+    ...shorthands.margin('4px', '-5px', '4px', '-5px'),
+  },
+});
+```
+
+</details>
+
+<details>
+  <summary>Pre-processed code</summary>
+
+```ts
+// @fluentui/react-menu/lib/components/MenuDivider/useMenuDividerStyles.styles.js
+// 📝 output is simpfied
+
+const useStyles = /*#__PURE__*/ __styles(
+  {
+    root: {
+      B6of3ja: 'fvjh0tl',
+      t21cq0: ['f1rnx978', 'f1q7jvqi'],
+    },
+  },
+  {
+    d: ['.fvjh0tl{margin-top:4px;}', '.f1rnx978{margin-right:-5px;}', '.f1q7jvqi{margin-left:-5px;}'],
+  },
+);
+```
+
+</details>
+
+Addressing prefixing for pre-processed styles presents a challenge, as they have already been transformed into CSS rules and classes.
+
+## Proposal
+
+The long-term solution is to discontinue the pre-processing of styles in `@fluentui/react-components` and transfer this responsibility to the consuming application.
+
+> Note: Applications already undertake this responsibility, as first and third-party packages do not include pre-processed styles.
+
+### Option A: Stop pre-processing styles
+
+This option involves eliminating the pre-processing step from `@fluentui/react-components`, shifting the responsibility to the consuming application.
+
+This is the simplest option, albeit it necessitates adjustments in the consuming app and is not backward compatible. Consequently, apps not utilizing [AOT in Griffel](https://griffel.js.org/react/ahead-of-time-compilation/introduction) will experience noticeable slowdowns during initial loading.
+
+## Pros and Cons
+
+- 👍 Simple & easy
+- 👍 Not backward compatible
+
+### Option B: Ship ESM output with unprocessed styles
+
+This option is more complex to maintain but ensures backward compatibility and avoids breaking changes.
+
+We will offer three outputs for each package under the following `exports` in `package.json`:
+
+- `"import": "./lib/index.js"` (as is) - ESM output with pre-processed styles (default for bundlers)
+- `"require": "./lib-commonjs/index.js"` (as is) - CJS output with pre-processed styles (default for Node.js)
+- `"import-raw": "./lib-raw/index.js"` (🆕)- ESM output with unprocessed styles
+
+Consumers desiring to use the class prefixing feature will need to configure their bundler to use the `"import-raw"` output. For example, in Webpack:
+
+```js
+// webpack.config.js
+
+module.exports = {
+  resolve: {
+    conditionNames: ['import-raw', '...'],
+  },
+};
+```
+
+- 👍 Backward compatible
+- 👍 No changes required in consuming apps
+- 👎 Harder to maintain; adds complexity to the build system
+- 👎 Increased install size (NPM package will be larger)
