@@ -95,9 +95,18 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       const activeDescendent = activeDescendantController.active();
       if (activeDescendent) {
         activeDescendantController.focus(activeDescendent);
+        return;
       } else {
-        activeDescendantController.first();
+        const selectedOptionValues = selectedOptions ?? [];
+        const firstSelectedOption = optionCollection.getOptionsMatchingValue(value =>
+          selectedOptionValues.includes(value),
+        )[0];
+        if (firstSelectedOption) {
+          activeDescendantController.focus(firstSelectedOption.id);
+          return;
+        }
       }
+      activeDescendantController.first();
     }
   };
 
