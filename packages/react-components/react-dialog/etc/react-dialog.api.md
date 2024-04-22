@@ -167,6 +167,7 @@ export type DialogSurfaceSlots = {
 
 // @public
 export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
+    open?: boolean;
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 };
 
