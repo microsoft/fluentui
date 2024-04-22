@@ -7,12 +7,10 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
     class="fui-SwatchPicker"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
     role="grid"
-    style="--fui-SwatchPicker--gridGap: 4px;"
   >
     <div
       class="fui-SwatchPickerRow custom-row"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="red"
@@ -42,7 +40,6 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
     <div
       class="fui-SwatchPickerRow custom-row"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="green"
@@ -72,7 +69,6 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
     <div
       class="fui-SwatchPickerRow custom-row"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="sea"
@@ -107,12 +103,10 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
     class="fui-SwatchPicker"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
     role="grid"
-    style="--fui-SwatchPicker--gridGap: 4px;"
   >
     <div
       class="fui-SwatchPickerRow"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="red"
@@ -142,7 +136,6 @@ exports[`Render utils of SwatchPicker renders custom swatch 1`] = `
     <div
       class="fui-SwatchPickerRow"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="green"
@@ -180,12 +173,10 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
     class="fui-SwatchPicker"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":4,\\"memorizeCurrent\\":true}}"
     role="grid"
-    style="--fui-SwatchPicker--gridGap: 4px;"
   >
     <div
       class="fui-SwatchPickerRow"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="red"
@@ -215,7 +206,6 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
     <div
       class="fui-SwatchPickerRow"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="green"
@@ -245,7 +235,6 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
     <div
       class="fui-SwatchPickerRow"
       role="row"
-      style="--fui-SwatchPicker--rowGap: 4px;"
     >
       <button
         aria-label="sea"

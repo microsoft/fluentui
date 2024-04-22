@@ -2,6 +2,8 @@
 // globals in stylesheets will be addressed as part of shadow DOM work.
 // See: https://github.com/microsoft/fluentui/issues/28058
 import { IStyle } from './IStyle';
+import { GLOBAL_STYLESHEET_KEY, SHADOW_DOM_STYLESHEET_SETTING } from './shadowConfig';
+import type { ShadowConfig } from './shadowConfig';
 
 export const InjectionMode = {
   /**
@@ -77,6 +79,12 @@ export interface IStyleSheetConfig {
    * Initial value for classnames cache. Key is serialized css rules associated with a classname.
    */
   classNameCache?: { [key: string]: string };
+
+  window?: Window;
+
+  inShadow?: boolean;
+
+  stylesheetKey?: string;
 }
 
 /**
@@ -90,32 +98,56 @@ export interface ISerializedStylesheet {
   rules: Stylesheet['_rules'];
 }
 
-const STYLESHEET_SETTING = '__stylesheet__';
+export const STYLESHEET_SETTING = '__stylesheet__';
+
 /**
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
  * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-let _global: (Window | {}) & {
+declare global {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  interface Document {
+    adoptedStyleSheets: CSSStyleSheet[];
+  }
+}
+
+export type WindowWithMergeStyles = (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
+  [SHADOW_DOM_STYLESHEET_SETTING]?: typeof Stylesheet;
   FabricConfig?: {
     mergeStyles?: IStyleSheetConfig;
     serializedStylesheet?: ISerializedStylesheet;
   };
-} = {};
+};
+
+let _global: WindowWithMergeStyles = {};
 
 // Grab window.
 try {
   // Why the cast?
   // if compiled/type checked in same program with `@fluentui/font-icons-mdl2` which extends `Window` on global
   // ( check packages/font-icons-mdl2/src/index.ts ) the definitions don't match! Thus the need of this extra assertion
-  _global = (window || {}) as typeof _global;
+  _global = (window || {}) as WindowWithMergeStyles;
 } catch {
   /* leave as blank object */
 }
 
 let _stylesheet: Stylesheet | undefined;
+
+export type ExtendedCSSStyleSheet = CSSStyleSheet & {
+  bucketName: string;
+  metadata: Record<string, unknown>;
+};
+
+type InsertRuleArgs = {
+  key?: string;
+  sheet?: ExtendedCSSStyleSheet | null;
+  rule?: string;
+};
+
+export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
 
 /**
  * Represents the state of styles registered in the page. Abstracts
@@ -125,22 +157,28 @@ let _stylesheet: Stylesheet | undefined;
  * @public
  */
 export class Stylesheet {
-  private _lastStyleElement?: HTMLStyleElement;
+  protected _lastStyleElement?: HTMLStyleElement;
+  protected _config: IStyleSheetConfig;
+
   private _styleElement?: HTMLStyleElement;
+
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
-  private _config: IStyleSheetConfig;
   private _counter = 0;
   private _keyToClassName: { [key: string]: string } = {};
-  private _onInsertRuleCallbacks: Function[] = [];
+  private _onInsertRuleCallbacks: (Function | InsertRuleCallback)[] = [];
   private _onResetCallbacks: Function[] = [];
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
 
   /**
    * Gets the singleton instance.
    */
-  public static getInstance(): Stylesheet {
+  public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
+
+    if (_global[SHADOW_DOM_STYLESHEET_SETTING]) {
+      return _global[SHADOW_DOM_STYLESHEET_SETTING].getInstance(shadowConfig);
+    }
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       const fabricConfig = _global?.FabricConfig || {};
@@ -154,8 +192,8 @@ export class Stylesheet {
   }
 
   constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet) {
+    // If there is no document we won't have an element to inject into.
     this._config = {
-      // If there is no document we won't have an element to inject into.
       injectionMode: typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode,
       defaultPrefix: 'css',
       namespace: undefined,
@@ -214,7 +252,7 @@ export class Stylesheet {
    * @param callback - A callback which will be called when a rule is inserted.
    * @returns function which when called un-registers provided callback.
    */
-  public onInsertRule(callback: Function): Function {
+  public onInsertRule(callback: Function | InsertRuleCallback): Function {
     this._onInsertRuleCallbacks.push(callback);
 
     return () => {
@@ -239,7 +277,7 @@ export class Stylesheet {
    * registered with the stylesheet.
    */
   public cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void {
-    this._keyToClassName[key] = className;
+    this._keyToClassName[this._getCacheKey(key)] = className;
     this._classNameToArgs[className] = {
       args,
       rules,
@@ -251,7 +289,7 @@ export class Stylesheet {
    * registered using cacheClassName.
    */
   public classNameFromKey(key: string): string | undefined {
-    return this._keyToClassName[key];
+    return this._keyToClassName[this._getCacheKey(key)];
   }
 
   /**
@@ -285,9 +323,11 @@ export class Stylesheet {
    * Inserts a css rule into the stylesheet.
    * @param preserve - Preserves the rule beyond a reset boundary.
    */
-  public insertRule(rule: string, preserve?: boolean): void {
+  public insertRule(rule: string, preserve?: boolean, stylesheetKey: string = GLOBAL_STYLESHEET_KEY): void {
     const { injectionMode } = this._config;
-    const element = injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
+
+    const element: HTMLStyleElement | undefined =
+      injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
 
     if (preserve) {
       this._preservedRules.push(rule);
@@ -296,19 +336,11 @@ export class Stylesheet {
     if (element) {
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          const { sheet } = element!;
-
-          try {
-            (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
-          } catch (e) {
-            // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
-            // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
-            // which could be slower and bulkier.
-          }
+          this._insertRuleIntoSheet(element.sheet, rule);
           break;
 
         case InjectionMode.appendChild:
-          element.appendChild(document.createTextNode(rule));
+          (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
           break;
       }
     } else {
@@ -321,7 +353,9 @@ export class Stylesheet {
       this._config.onInsertRule(rule);
     }
 
-    this._onInsertRuleCallbacks.forEach(callback => callback());
+    this._onInsertRuleCallbacks.forEach(callback =>
+      callback({ key: stylesheetKey, sheet: (element ? element.sheet : undefined) as ExtendedCSSStyleSheet, rule }),
+    );
   }
 
   /**
@@ -350,23 +384,10 @@ export class Stylesheet {
     this._keyToClassName = {};
   }
 
-  private _getStyleElement(): HTMLStyleElement | undefined {
-    if (!this._styleElement && typeof document !== 'undefined') {
-      this._styleElement = this._createStyleElement();
-
-      if (!REUSE_STYLE_NODE) {
-        // Reset the style element on the next frame.
-        window.requestAnimationFrame(() => {
-          this._styleElement = undefined;
-        });
-      }
-    }
-    return this._styleElement;
-  }
-
-  private _createStyleElement(): HTMLStyleElement {
-    const head: HTMLHeadElement = document.head;
-    const styleElement = document.createElement('style');
+  protected _createStyleElement(): HTMLStyleElement {
+    const doc = this._config.window?.document || document;
+    const head: HTMLHeadElement = doc.head;
+    const styleElement = doc.createElement('style');
     let nodeToInsertBefore: Node | null = null;
 
     styleElement.setAttribute('data-merge-styles', 'true');
@@ -395,6 +416,42 @@ export class Stylesheet {
     this._lastStyleElement = styleElement;
 
     return styleElement;
+  }
+
+  protected _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean {
+    if (!sheet) {
+      return false;
+    }
+
+    try {
+      sheet!.insertRule(rule, sheet!.cssRules.length);
+      return true;
+    } catch (e) {
+      // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
+      // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
+      // which could be slower and bulkier.
+    }
+
+    return false;
+  }
+
+  protected _getCacheKey(key: string): string {
+    return key;
+  }
+
+  private _getStyleElement(): HTMLStyleElement | undefined {
+    if (!this._styleElement) {
+      this._styleElement = this._createStyleElement();
+
+      if (!REUSE_STYLE_NODE) {
+        // Reset the style element on the next frame.
+        const win = this._config.window || window;
+        win.requestAnimationFrame(() => {
+          this._styleElement = undefined;
+        });
+      }
+    }
+    return this._styleElement;
   }
 
   private _findPlaceholderStyleTag(): Element | null {

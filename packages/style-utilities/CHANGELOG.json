@@ -2,6 +2,39 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Mon, 22 Apr 2024 07:28:26 GMT",
+      "tag": "@fluentui/style-utilities_v8.10.8",
+      "version": "8.10.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "7181c431a13178dafbf09ad3cbc4ab7c9740bbcf",
+            "comment": "feat: add support for shadow dom and constructable stylesheets"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.46",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.3",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.15.3",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Apr 2024 07:29:11 GMT",
       "tag": "@fluentui/style-utilities_v8.10.7",
       "version": "8.10.7",

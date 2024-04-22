@@ -27,7 +27,6 @@ describe('SwatchPicker', () => {
           class="fui-SwatchPicker"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
           role="radiogroup"
-          style="--fui-SwatchPicker--gridGap: 4px;"
         >
           <button
             aria-checked="false"
@@ -70,6 +69,7 @@ describe('SwatchPicker', () => {
             style="background-image: url(path/img.png);"
           />
           <button
+            aria-checked="false"
             class="fui-EmptySwatch"
             role="radio"
           />
