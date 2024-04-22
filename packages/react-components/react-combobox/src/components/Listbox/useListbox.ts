@@ -89,7 +89,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
-  const onFocus = (event: React.FocusEventHandler<HTMLElement>) => {
+  const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
     // set initial active descendent upon focus, in the absence of a parent context controlling the state
     if (!hasParentActiveDescendantContext) {
       const activeDescendent = activeDescendantController.active();
