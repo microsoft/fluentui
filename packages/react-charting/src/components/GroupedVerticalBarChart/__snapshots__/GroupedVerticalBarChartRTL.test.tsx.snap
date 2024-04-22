@@ -88,7 +88,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           <path
             class="domain"
             d="M252.83333333333331,6V0.5H418.1666666666667V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -96,13 +96,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(269.22222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -114,13 +114,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Meta Data2
@@ -132,13 +132,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(400.7777777777778,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Single line text 
@@ -180,7 +180,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -188,13 +188,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -206,13 +206,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -224,13 +224,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -242,13 +242,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -260,13 +260,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -580,6 +580,20 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -664,6 +678,20 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -793,7 +821,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           <path
             class="domain"
             d="M252.83333333333331,6V0.5H418.1666666666667V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -801,13 +829,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(269.22222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -819,13 +847,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Meta Data2
@@ -837,13 +865,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(400.7777777777778,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Single line text 
@@ -885,7 +913,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -893,13 +921,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -911,13 +939,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -929,13 +957,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -947,13 +975,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -965,13 +993,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -1285,6 +1313,20 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1369,6 +1411,20 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1498,7 +1554,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           <path
             class="domain"
             d="M252.83333333333331,6V0.5H418.1666666666667V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1506,13 +1562,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(269.22222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -1524,13 +1580,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Meta Data2
@@ -1542,13 +1598,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(400.7777777777778,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Single line text 
@@ -1590,7 +1646,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1598,13 +1654,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -1616,13 +1672,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -1634,13 +1690,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -1652,13 +1708,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -1670,13 +1726,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -1990,6 +2046,20 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -2074,6 +2144,20 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2203,7 +2287,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M252.83333333333331,6V0.5H418.1666666666667V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2211,13 +2295,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(269.22222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -2229,13 +2313,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Meta Data2
@@ -2247,13 +2331,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(400.7777777777778,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Single line text 
@@ -2295,7 +2379,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2303,13 +2387,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -2321,13 +2405,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -2339,13 +2423,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -2357,13 +2441,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -2375,13 +2459,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -2695,6 +2779,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -2779,6 +2877,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2908,7 +3020,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M252.83333333333331,6V0.5H418.1666666666667V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2916,13 +3028,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(269.22222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Metadata info multi lines text Completed
@@ -2934,13 +3046,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Meta Data2
@@ -2952,13 +3064,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(400.7777777777778,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="11"
             >
               Single line text 
@@ -3000,7 +3112,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -3008,13 +3120,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -3026,13 +3138,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13k
@@ -3044,13 +3156,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25k
@@ -3062,13 +3174,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               38k
@@ -3080,13 +3192,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50k
@@ -3400,6 +3512,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -3484,6 +3610,20 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3988,6 +4128,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4079,6 +4233,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4168,6 +4336,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4858,6 +5040,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4949,6 +5145,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5038,6 +5248,20 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -5547,6 +5771,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5638,6 +5876,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5727,6 +5979,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -6223,6 +6489,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -6314,6 +6594,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -6403,6 +6697,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    outline-color: #605e5c;
+                  }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
               data-is-focusable={true}
@@ -7164,6 +7472,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -7255,6 +7577,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -7344,6 +7680,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -7759,6 +8109,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -7850,6 +8214,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -7939,6 +8317,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -8354,6 +8746,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -8445,6 +8851,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -8534,6 +8954,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -8949,6 +9383,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -9040,6 +9488,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -9129,6 +9591,20 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -9274,7 +9750,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M252.83333333333331,6V0.5H418.1666666666667V6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -9282,13 +9758,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(269.22222222222223,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="11"
               >
                 Metadata info multi lines text Completed
@@ -9300,13 +9776,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(335,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="11"
               >
                 Meta Data2
@@ -9318,13 +9794,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(400.7777777777778,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="11"
               >
                 Single line text 
@@ -9366,7 +9842,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M-6,257.5H0.5V20.5H-6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -9374,13 +9850,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,257.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 0
@@ -9392,13 +9868,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,198.25)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 13k
@@ -9410,13 +9886,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,139)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 25k
@@ -9428,13 +9904,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,79.75)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 38k
@@ -9446,13 +9922,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,20.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 50k
@@ -9766,6 +10242,20 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="0"
@@ -9850,6 +10340,20 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"

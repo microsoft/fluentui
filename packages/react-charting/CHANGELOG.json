@@ -2,6 +2,161 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 22 Apr 2024 07:28:27 GMT",
+      "tag": "@fluentui/react-charting_v5.20.2",
+      "version": "5.20.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.0",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.146",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.6",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Apr 2024 07:26:09 GMT",
+      "tag": "@fluentui/react-charting_v5.20.1",
+      "version": "5.20.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9550c4cd2ffbcfdc4fc0f0ed66866e5cf11bd2c9",
+            "comment": "Add data-is-focusable to root node text component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Apr 2024 07:27:08 GMT",
+      "tag": "@fluentui/react-charting_v5.20.0",
+      "version": "5.20.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d4bd6428dc2f52948e668f1f1410972b6c5cf62",
+            "comment": "Fix wrong aria label placement in SparklineChart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9f623be6d4a4551725206a78764f7b0df87df98b",
+            "comment": "Update d3 dependencies to latest ES5 versions and fix only the major version of the dependency"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 07:25:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.45",
+      "version": "5.19.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "167121109+skyfong@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0ffac2e4ef87e4c2f7b9ac7e60aae6f3efe7264",
+            "comment": "Add shape prop to ILegendsProps to pass to Overflow items"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Apr 2024 07:29:11 GMT",
+      "tag": "@fluentui/react-charting_v5.19.44",
+      "version": "5.19.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.44",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.145",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.16",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.5",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Apr 2024 07:28:55 GMT",
+      "tag": "@fluentui/react-charting_v5.19.43",
+      "version": "5.19.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.144",
+            "commit": "b6e9fdefdfe32bd6e23c1ea0d854c5977b730ed8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.4",
+            "commit": "b6e9fdefdfe32bd6e23c1ea0d854c5977b730ed8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Apr 2024 07:26:50 GMT",
+      "tag": "@fluentui/react-charting_v5.19.42",
+      "version": "5.19.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.143",
+            "commit": "b86224057900c35648743a8bb80104d0c0c28f2c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.3",
+            "commit": "b86224057900c35648743a8bb80104d0c0c28f2c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Apr 2024 07:25:53 GMT",
       "tag": "@fluentui/react-charting_v5.19.41",
       "version": "5.19.41",

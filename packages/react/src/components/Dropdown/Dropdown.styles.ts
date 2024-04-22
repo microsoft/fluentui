@@ -47,6 +47,10 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
+
+      [`.${IsFocusVisibleClassName} &:focus:after`]: {
+        borderColor: 'HighlightText',
+      },
     },
     ['.ms-Checkbox-checkbox']: {
       [HighContrastSelector]: {
@@ -176,7 +180,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           },
           highContrastItemAndTitleStateMixin,
         ],
-        [`.${IsFocusVisibleClassName} &:focus:after`]: {
+        [`.${IsFocusVisibleClassName} &:focus:after, :host(.${IsFocusVisibleClassName}) &:focus:after`]: {
           left: 0,
           top: 0,
           bottom: 0,
@@ -427,9 +431,11 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         },
         input: {
           selectors: {
-            [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-              outlineOffset: '0px',
-            },
+            // eslint-disable-next-line @fluentui/max-len
+            [`.${IsFocusVisibleClassName} &:focus + label::before, :host(.${IsFocusVisibleClassName}) &:focus + label::before`]:
+              {
+                outlineOffset: '0px',
+              },
           },
         },
       },

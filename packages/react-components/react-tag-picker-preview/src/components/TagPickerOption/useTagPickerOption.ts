@@ -29,9 +29,12 @@ export const useTagPickerOption_unstable = (
     secondaryContent: slot.optional(props.secondaryContent, {
       elementType: 'span',
     }),
-    root: optionState.root,
-    selected: optionState.selected,
-    multiselect: optionState.multiselect,
+    root: slot.always(
+      { ...optionState.root, role: 'option' },
+      {
+        elementType: 'div',
+      },
+    ),
   };
 
   return state;

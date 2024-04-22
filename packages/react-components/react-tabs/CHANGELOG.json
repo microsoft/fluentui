@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:54:06 GMT",
+      "tag": "@fluentui/react-tabs_v9.4.16",
+      "version": "9.4.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-tabs_v9.4.15",
       "version": "9.4.15",

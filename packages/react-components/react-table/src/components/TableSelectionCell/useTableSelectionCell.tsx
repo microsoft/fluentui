@@ -21,7 +21,14 @@ export const useTableSelectionCell_unstable = (
 ): TableSelectionCellState => {
   const tableCellState = useTableCell_unstable(props, ref);
   const { noNativeElements } = useTableContext();
-  const { type = 'checkbox', checked = false, subtle = false, hidden = false } = props;
+  const {
+    type = 'checkbox',
+    checked = false,
+    subtle = false,
+    // eslint-disable-next-line deprecation/deprecation
+    hidden = false,
+    invisible = false,
+  } = props;
 
   return {
     ...tableCellState,
@@ -31,12 +38,12 @@ export const useTableSelectionCell_unstable = (
       radioIndicator: Radio,
     },
     checkboxIndicator: slot.optional(props.checkboxIndicator, {
-      renderByDefault: type === 'checkbox',
+      renderByDefault: type === 'checkbox' && !invisible,
       defaultProps: { checked: props.checked },
       elementType: Checkbox,
     }),
     radioIndicator: slot.optional(props.radioIndicator, {
-      renderByDefault: type === 'radio',
+      renderByDefault: type === 'radio' && !invisible,
       defaultProps: { checked: !!checked, input: { name: useId('table-selection-radio') } },
       elementType: Radio,
     }),
@@ -44,6 +51,6 @@ export const useTableSelectionCell_unstable = (
     checked,
     noNativeElements,
     subtle,
-    hidden,
+    hidden: invisible || hidden,
   };
 };

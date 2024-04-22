@@ -34,6 +34,8 @@ export function typeCheck() {
   return exec(program)
     .catch(err => {
       console.error(err.stdout);
+      // restore original tsconfig.json
+      fs.writeFileSync(configPath, content, 'utf-8');
       process.exit(1);
     })
     .finally(() => {

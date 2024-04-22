@@ -7,8 +7,11 @@
 import { DATA_PORTAL_ATTRIBUTE } from '@fluentui/dom-utilities';
 import { elementContains } from '@fluentui/dom-utilities';
 import { elementContainsAttribute } from '@fluentui/dom-utilities';
+import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import { findElementRecursive } from '@fluentui/dom-utilities';
+import { getActiveElement } from '@fluentui/dom-utilities';
 import { getChildren } from '@fluentui/dom-utilities';
+import { getEventTarget } from '@fluentui/dom-utilities';
 import { getParent } from '@fluentui/dom-utilities';
 import { getVirtualParent } from '@fluentui/dom-utilities';
 import type { IProcessedStyleSet } from '@fluentui/merge-styles';
@@ -22,12 +25,19 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
 
 // @public
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
+
+// @public (undocumented)
+export type AdoptedStylesheetExHook = (stylesheetKey: string, shadowCtx: MergeStylesShadowRootContextValue | undefined, rootMergeStyles: Map<string, ExtendedCSSStyleSheet>, win: Window | undefined) => boolean;
+
+// @public (undocumented)
+export type AdoptedStylesheetHook = (stylesheetKey: string) => boolean;
 
 // @public
 export const allowOverscrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
@@ -294,7 +304,7 @@ export function focusAsync(element: HTMLElement | {
 } | undefined | null): void;
 
 // @public
-export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean;
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean, includeShadowRoots?: boolean): boolean;
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
@@ -319,6 +329,8 @@ export function format(s: string, ...values: any[]): string;
 // @public
 export const formProperties: Record<string, number>;
 
+export { getActiveElement }
+
 export { getChildren }
 
 // @public
@@ -330,11 +342,13 @@ export function getDocument(rootElement?: HTMLElement | null): Document | undefi
 // @public
 export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
 
-// @public
-export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export { getEventTarget }
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
+
+// @public
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
 export function getFirstVisibleElementFromSelector(selector: string): Element | undefined;
@@ -352,10 +366,10 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 export function getLanguage(persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): string | null;
 
 // @public
-export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -364,12 +378,12 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 export { getParent }
 
 // @public
-export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
 export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
@@ -412,6 +426,9 @@ export class GlobalSettings {
 
 // @public
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
+
+// @public (undocumented)
+export type HasMergeStylesShadowRootContextHook = () => boolean;
 
 // @public
 export function hasOverflow(element: HTMLElement): boolean;
@@ -805,7 +822,7 @@ export function isElementFocusSubZone(element?: HTMLElement): boolean;
 export function isElementFocusZone(element?: HTMLElement): boolean;
 
 // @public
-export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean;
+export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean, checkShadowRoot?: boolean): boolean;
 
 // @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
@@ -1013,6 +1030,59 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 
 // @public
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
+
+// @public (undocumented)
+export type MergeStylesContextConsumerProps = {
+    stylesheetKey: string;
+    children: (inShadow: boolean) => React_2.ReactElement<any, any>;
+};
+
+// @public (undocumented)
+export type MergeStylesRootContextValue = {
+    stylesheets: Map<string, ExtendedCSSStyleSheet>;
+    useAdoptedStylesheetEx: AdoptedStylesheetExHook;
+    useAdoptedStylesheet: AdoptedStylesheetHook;
+    useShadowConfig: ShadowConfigHook;
+    useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
+    useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+    useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
+    useWindow: UseWindowHook;
+    useStyled: UseStyledHook;
+};
+
+// @public
+export const MergeStylesRootProvider: React_2.FC<MergeStylesRootProviderProps>;
+
+// @public (undocumented)
+export type MergeStylesRootProviderProps = {
+    stylesheets?: Map<string, ExtendedCSSStyleSheet>;
+    window?: Window;
+    useAdoptedStylesheetEx?: AdoptedStylesheetExHook;
+    useAdoptedStylesheet?: AdoptedStylesheetHook;
+    useShadowConfig?: ShadowConfigHook;
+    useMergeStylesShadowRootContext?: MergeStylesShadowRootContetHook;
+    useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
+    useMergeStylesRootStylesheets?: MergeStylesRootStylesheetsHook;
+    useWindow?: UseWindowHook;
+    useStyled?: UseStyledHook;
+};
+
+// @public (undocumented)
+export const MergeStylesShadowRootContext: React_2.Context<MergeStylesShadowRootContextValue | undefined>;
+
+// @public (undocumented)
+export type MergeStylesShadowRootContextValue = {
+    stylesheets: Map<string, CSSStyleSheet>;
+    shadowRoot?: ShadowRoot | null;
+};
+
+// @public
+export const MergeStylesShadowRootProvider: React_2.FC<MergeStylesShadowRootProviderProps>;
+
+// @public (undocumented)
+export type MergeStylesShadowRootProviderProps = {
+    shadowRoot?: ShadowRoot | null;
+};
 
 // @public
 export function modalize(target: HTMLElement): () => void;
@@ -1224,6 +1294,9 @@ export { setVirtualParent }
 // @public
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
+// @public (undocumented)
+export type ShadowConfigHook = (stylesheetKey: string, inShadow: boolean, win?: Window) => ShadowConfig;
+
 // @public
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
@@ -1240,6 +1313,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
     __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
     __noStyleOverride__: boolean;
+    __shadowConfig__?: ShadowConfig;
 };
 
 // @public
@@ -1264,13 +1338,49 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
+export const useAdoptedStylesheet: AdoptedStylesheetHook;
+
+// @public
+export const useAdoptedStylesheetEx: AdoptedStylesheetExHook;
+
+// @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
 
 // @public
 export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement>): void;
 
 // @public
+export const useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+
+// @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
+
+// @public (undocumented)
+export const useMergeStylesHooks: () => {
+    useAdoptedStylesheet: AdoptedStylesheetHook;
+    useAdoptedStylesheetEx: AdoptedStylesheetExHook;
+    useShadowConfig: ShadowConfigHook;
+    useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
+    useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+    useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
+    useWindow: () => Window | undefined;
+    useStyled: UseStyledHook;
+};
+
+// @public
+export const useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
+
+// @public
+export const useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
+
+// @public
+export const useShadowConfig: ShadowConfigHook;
+
+// @public (undocumented)
+export const useStyled: UseStyledHook;
+
+// @public (undocumented)
+export type UseStyledHook = (scope: string) => ShadowConfig | undefined;
 
 // @public
 export function values<T>(obj: any): T[];
@@ -1292,6 +1402,12 @@ export function warnDeprecations<P extends {}>(componentName: string, props: P, 
 
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
+
+// Warnings were encountered during analysis:
+//
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:23:5 - (ae-forgotten-export) The symbol "MergeStylesShadowRootContetHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:25:5 - (ae-forgotten-export) The symbol "MergeStylesRootStylesheetsHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:26:5 - (ae-forgotten-export) The symbol "UseWindowHook" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

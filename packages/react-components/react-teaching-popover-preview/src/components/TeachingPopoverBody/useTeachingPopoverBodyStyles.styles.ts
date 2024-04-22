@@ -18,27 +18,21 @@ export const useMediaStyles = makeStyles({
     display: 'flex',
   },
   short: {
+    aspectRatio: 288 / 117,
     '@supports not (aspect-ratio)': {
       height: '117px',
     },
-    '@supports (aspect-ratio)': {
-      aspectRatio: 288 / 117,
-    },
   },
   medium: {
+    aspectRatio: 288 / 176,
     '@supports not (aspect-ratio)': {
       height: '176px',
     },
-    '@supports (aspect-ratio)': {
-      aspectRatio: 288 / 176,
-    },
   },
   tall: {
+    aspectRatio: 288 / 288,
     '@supports not (aspect-ratio)': {
       height: '288px',
-    },
-    '@supports (aspect-ratio)': {
-      aspectRatio: 288 / 288,
     },
   },
 });
@@ -53,7 +47,7 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState) => {
-  const { mediaLength = 'medium' } = state;
+  const { mediaLength } = state;
   const styles = useStyles();
   const mediaStyles = useMediaStyles();
 

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:54:06 GMT",
+      "tag": "@fluentui/react-toolbar_v9.1.78",
+      "version": "9.1.78",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-button to v9.3.75",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.2.15",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-toolbar_v9.1.77",
       "version": "9.1.77",

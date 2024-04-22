@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2024 21:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.4)
+
+Wed, 17 Apr 2024 21:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.3..@fluentui/react-spinner_v9.4.4)
+
+### Patches
+
+- chore: move tabindex to the root slot of Spinner. ([PR #31056](https://github.com/microsoft/fluentui/pull/31056) by ololubek@microsoft.com)
 
 ## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.3)
 

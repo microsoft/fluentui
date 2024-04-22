@@ -77,7 +77,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -85,13 +85,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               0
@@ -103,13 +103,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(114.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               5,000
@@ -121,13 +121,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(188,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               10,000
@@ -139,13 +139,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(261.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               15,000
@@ -157,13 +157,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               20,000
@@ -175,13 +175,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(409.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               25,000
@@ -193,13 +193,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(483,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               30,000
@@ -211,13 +211,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(556.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               35,000
@@ -229,13 +229,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               40,000
@@ -277,7 +277,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -285,13 +285,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -316,13 +316,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,210.10000000000002)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -347,13 +347,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,162.7)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -378,13 +378,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,115.30000000000001)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -409,13 +409,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,67.89999999999999)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -440,13 +440,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -637,6 +637,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -721,6 +735,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -809,6 +837,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -893,6 +935,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1022,7 +1078,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1030,13 +1086,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               0
@@ -1048,13 +1104,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(114.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               5,000
@@ -1066,13 +1122,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(188,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               10,000
@@ -1084,13 +1140,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(261.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               15,000
@@ -1102,13 +1158,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               20,000
@@ -1120,13 +1176,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(409.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               25,000
@@ -1138,13 +1194,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(483,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               30,000
@@ -1156,13 +1212,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(556.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               35,000
@@ -1174,13 +1230,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               40,000
@@ -1222,7 +1278,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1230,13 +1286,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -1261,13 +1317,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,210.10000000000002)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -1292,13 +1348,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,162.7)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -1323,13 +1379,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,115.30000000000001)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -1354,13 +1410,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,67.89999999999999)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -1385,13 +1441,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -1582,6 +1638,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1666,6 +1736,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1754,6 +1838,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -1838,6 +1936,20 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1980,7 +2092,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             <path
               class="domain"
               d="M40.5,6V0.5H630.5V6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -1988,13 +2100,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(40.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 0
@@ -2006,13 +2118,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(114.25,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 5,000
@@ -2024,13 +2136,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(188,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 10,000
@@ -2042,13 +2154,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(261.75,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 15,000
@@ -2060,13 +2172,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(335.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 20,000
@@ -2078,13 +2190,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(409.25,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 25,000
@@ -2096,13 +2208,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(483,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 30,000
@@ -2114,13 +2226,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(556.75,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 35,000
@@ -2132,13 +2244,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(630.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="-272"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="10"
               >
                 40,000
@@ -2180,7 +2292,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             <path
               class="domain"
               d="M-6,257.5H0.5V20.5H-6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -2188,13 +2300,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(0,257.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="-6"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 text-align="start"
                 x="-16"
               >
@@ -2219,13 +2331,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(0,210.10000000000002)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="-6"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 text-align="start"
                 x="-16"
               >
@@ -2250,13 +2362,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(0,162.7)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="-6"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 text-align="start"
                 x="-16"
               >
@@ -2281,13 +2393,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(0,115.30000000000001)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="-6"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 text-align="start"
                 x="-16"
               >
@@ -2312,13 +2424,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(0,67.89999999999999)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="-6"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 text-align="start"
                 x="-16"
               >
@@ -2343,13 +2455,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               transform="translate(0,20.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="-6"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 text-align="start"
                 x="-16"
               >
@@ -2540,6 +2652,20 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="0"
@@ -2624,6 +2750,20 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -2712,6 +2852,20 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="-1"
@@ -2796,6 +2950,20 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -2926,7 +3094,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2934,13 +3102,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               0
@@ -2952,13 +3120,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(114.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               5,000
@@ -2970,13 +3138,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(188,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               10,000
@@ -2988,13 +3156,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(261.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               15,000
@@ -3006,13 +3174,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               20,000
@@ -3024,13 +3192,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(409.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               25,000
@@ -3042,13 +3210,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(483,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               30,000
@@ -3060,13 +3228,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(556.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               35,000
@@ -3078,13 +3246,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               40,000
@@ -3126,7 +3294,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -3134,13 +3302,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -3165,13 +3333,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,210.10000000000002)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -3196,13 +3364,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,162.7)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -3227,13 +3395,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,115.30000000000001)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -3258,13 +3426,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,67.89999999999999)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -3289,13 +3457,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -3486,6 +3654,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -3570,6 +3752,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3658,6 +3854,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -3742,6 +3952,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3871,7 +4095,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -3879,13 +4103,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               0
@@ -3897,13 +4121,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(158.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               1,000
@@ -3915,13 +4139,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(276.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               2,000
@@ -3933,13 +4157,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(394.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               3,000
@@ -3951,13 +4175,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(512.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               4,000
@@ -3969,13 +4193,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               5,000
@@ -4017,7 +4241,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <path
             class="domain"
             d="M-6,241.5H0.5V36.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -4025,12 +4249,12 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,215.375)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4055,12 +4279,12 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,164.125)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4085,12 +4309,12 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,112.875)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4115,12 +4339,12 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,61.625)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4295,6 +4519,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -4377,6 +4615,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4463,6 +4715,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -4545,6 +4811,20 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4672,7 +4952,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -4680,13 +4960,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               0
@@ -4698,13 +4978,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(114.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               5,000
@@ -4716,13 +4996,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(188,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               10,000
@@ -4734,13 +5014,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(261.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               15,000
@@ -4752,13 +5032,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               20,000
@@ -4770,13 +5050,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(409.25,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               25,000
@@ -4788,13 +5068,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(483,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               30,000
@@ -4806,13 +5086,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(556.75,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               35,000
@@ -4824,13 +5104,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(630.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="-272"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               40,000
@@ -4872,7 +5152,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -4880,13 +5160,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4911,13 +5191,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(0,210.10000000000002)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4942,13 +5222,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(0,162.7)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -4973,13 +5253,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(0,115.30000000000001)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -5004,13 +5284,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(0,67.89999999999999)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -5035,13 +5315,13 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="-6"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               text-align="start"
               x="-16"
             >
@@ -5232,6 +5512,20 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -5316,6 +5610,20 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5404,6 +5712,20 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -5488,6 +5810,20 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"

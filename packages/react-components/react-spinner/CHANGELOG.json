@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinner",
   "entries": [
     {
+      "date": "Wed, 17 Apr 2024 21:53:58 GMT",
+      "tag": "@fluentui/react-spinner_v9.4.4",
+      "version": "9.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "d38059f39e5293826ce63ca3903de7a3fbe0249d",
+            "comment": "chore: move tabindex to the root slot of Spinner."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:00 GMT",
       "tag": "@fluentui/react-spinner_v9.4.3",
       "version": "9.4.3",

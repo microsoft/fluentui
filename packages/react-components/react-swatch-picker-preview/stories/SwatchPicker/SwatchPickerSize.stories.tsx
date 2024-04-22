@@ -12,8 +12,7 @@ const useStyles = makeStyles({
 
 const colors = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
-  { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
-  { color: '#FEFF37', value: 'FEFF37', 'aria-label': 'yellow' },
+  { color: '#FF7A00', value: 'FF7A00', 'aria-label': 'orange' },
   { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
   { color: '#00B053', value: '00B053', 'aria-label': 'green' },
   { color: '#00AFED', value: '00AFED', 'aria-label': 'light blue' },
@@ -45,7 +44,7 @@ export const SwatchPickerSize = () => {
         })}
       </SwatchPicker>
       <h3>Extra small</h3>
-      <SwatchPicker aria-label="SwatchPicker extra small size" size="extraSmall">
+      <SwatchPicker aria-label="SwatchPicker extra small size" size="extra-small">
         {colors.map(color => {
           return <ColorSwatch key={color.value} {...color} />;
         })}
