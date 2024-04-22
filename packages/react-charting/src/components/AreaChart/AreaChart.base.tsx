@@ -248,7 +248,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const d1 = lineChartData![0].data[i] as ILineChartDataPoint;
     let pointToHighlight: string | Date | number | null = null;
     let index: null | number = null;
-    const axisType = getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes;
+    const axisType =
+      lineChartData![0].data.length > 0 ? (getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes) : null;
     if (d0 === undefined && d1 !== undefined) {
       pointToHighlight = d1.x;
       index = i;
