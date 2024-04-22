@@ -15,15 +15,20 @@ import { BundleSizeConfigurationGeneratorSchema } from './schema';
 export async function bundleSizeConfigurationGenerator(tree: Tree, schema: BundleSizeConfigurationGeneratorSchema) {
   const options = normalizeOptions(tree, schema);
 
-  const config = readProjectConfiguration(tree, options.name);
+  const project = readProjectConfiguration(tree, options.name);
+
+  const isSplitProject = tree.exists(joinPathFragments(project.root, '../stories/project.json'));
+
+  assertOptions(tree, { isSplitProject, ...options });
+
   const configPaths = {
-    bundleSizeRoot: joinPathFragments(config.root, 'bundle-size'),
-    bundleSizeConfig: joinPathFragments(config.root, 'monosize.config.mjs'),
+    bundleSizeRoot: joinPathFragments(project.root, 'bundle-size'),
+    bundleSizeConfig: joinPathFragments(project.root, 'monosize.config.mjs'),
   };
 
-  generateFiles(tree, path.join(__dirname, 'files'), config.root, {
+  generateFiles(tree, path.join(__dirname, 'files'), project.root, {
     packageName: options.name,
-    rootOffset: offsetFromRoot(config.root),
+    rootOffset: offsetFromRoot(project.root),
   });
 
   let hasFixtures = false;
@@ -41,7 +46,7 @@ export async function bundleSizeConfigurationGenerator(tree: Tree, schema: Bundl
     tree.delete(configPaths.bundleSizeConfig);
   }
 
-  updateJson(tree, joinPathFragments(config.root, 'package.json'), (json: PackageJson) => {
+  updateJson(tree, joinPathFragments(project.root, 'package.json'), (json: PackageJson) => {
     json.scripts = json.scripts ?? {};
     json.scripts['bundle-size'] = 'monosize measure';
     return json;
@@ -55,6 +60,17 @@ function normalizeOptions(tree: Tree, schema: BundleSizeConfigurationGeneratorSc
     overrideBaseConfig: false,
     ...schema,
   };
+}
+
+function assertOptions(tree: Tree, options: ReturnType<typeof normalizeOptions> & { isSplitProject: boolean }) {
+  if (options.isSplitProject && options.name.endsWith('-stories')) {
+    throw new Error(
+      `This generator can be invoked only against library project. Please run it against "${options.name.replace(
+        '-stories',
+        '',
+      )}" library project.`,
+    );
+  }
 }
 
 export default bundleSizeConfigurationGenerator;
