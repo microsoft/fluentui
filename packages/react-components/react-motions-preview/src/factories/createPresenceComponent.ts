@@ -6,6 +6,7 @@ import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
+import { animate } from '../utils/animate';
 import { getChildElement } from '../utils/getChildElement';
 import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
@@ -83,12 +84,16 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
         const presenceDefinition = typeof motion === 'function' ? motion(elementRef.current) : motion;
         const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
 
-        const animation = elementRef.current.animate(keyframes, {
+        const animation = animate(elementRef.current, keyframes, {
           fill: 'forwards',
 
           ...options,
           ...(isReducedMotion() && { duration: 1 }),
         });
+
+        if (!animation) {
+          return;
+        }
 
         if (!visible && isFirstMount) {
           // Heads up!
