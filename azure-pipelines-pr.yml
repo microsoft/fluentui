@@ -30,6 +30,10 @@ jobs:
         displayName: yarn (install packages)
 
       - script: |
+          yarn playwright install --with-deps
+        displayName: Install Playwright dependencies
+
+      - script: |
           yarn nx workspace-lint
           yarn nx run @fluentui/nx-workspace-tools:check-graph
         displayName: NX workspace lint

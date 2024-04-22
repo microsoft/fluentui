@@ -22,6 +22,10 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
+      yarn playwright install --with-deps
+    displayName: Install Playwright dependencies
+
+  - script: |
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
       if [[ $isPR == true ]]; then
