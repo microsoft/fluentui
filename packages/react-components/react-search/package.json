@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.235",
+    "@fluentui/react-icons": "^2.0.237",
     "@fluentui/react-input": "^9.4.71",
     "@fluentui/react-jsx-runtime": "^9.0.35",
     "@fluentui/react-theme": "^9.1.19",
