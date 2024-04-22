@@ -16,7 +16,7 @@ import {
 
 import * as tsquery from '@phenomnomnominal/tsquery';
 
-import { getProjectConfig, workspacePaths } from '../../utils';
+import { getProjectConfig, getProjectNameWithoutScope, workspacePaths } from '../../utils';
 
 import { PackageJson, TsConfig } from '../../types';
 
@@ -30,7 +30,9 @@ interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema) {
   const options = normalizeOptions(tree, schema);
 
-  assertProject(tree, options);
+  const isSplitProject = tree.exists(joinPathFragments(options.projectConfig.root, '../stories/project.json'));
+
+  assertProject(tree, { isSplitProject, ...options });
 
   const tasks: Array<(tree: Tree) => void> = [];
 
@@ -38,7 +40,7 @@ export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema
     tasks.push(initialRelease(tree, options));
   }
   if (options.phase === 'stable') {
-    tasks.push(await stableRelease(tree, options));
+    tasks.push(await stableRelease(tree, { isSplitProject, ...options }));
   }
 
   await formatFiles(tree);
@@ -89,15 +91,25 @@ function initialRelease(tree: Tree, options: NormalizedSchema) {
   };
 }
 
-async function stableRelease(tree: Tree, options: NormalizedSchema) {
+async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitProject: boolean }) {
   const suitePackageName = '@' + options.workspaceConfig.npmScope + '/react-components';
   const currentPackageName = options.projectConfig.name as string;
+
   const newPackage = {
     name: currentPackageName.replace('-preview', ''),
     normalizedName: options.normalizedPkgName.replace('-preview', ''),
     version: '9.0.0-alpha.0',
     root: options.projectConfig.root.replace('-preview', ''),
     sourceRoot: options.projectConfig.sourceRoot?.replace('-preview', '') as string,
+  };
+
+  const contentNameUpdater = (content: string) => {
+    const regexp = new RegExp(options.normalizedPkgName, 'g');
+    return content.replace(regexp, newPackage.normalizedName);
+  };
+  const contentNameToSuiteUpdater = (content: string) => {
+    const regexp = new RegExp(options.normalizedPkgName, 'g');
+    return content.replace(regexp, 'react-components');
   };
 
   updateJson<PackageJson>(tree, options.paths.packageJson, json => {
@@ -112,15 +124,6 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
 
     return json;
   });
-
-  const contentNameUpdater = (content: string) => {
-    const regexp = new RegExp(options.normalizedPkgName, 'g');
-    return content.replace(regexp, newPackage.normalizedName);
-  };
-  const contentNameToSuiteUpdater = (content: string) => {
-    const regexp = new RegExp(options.normalizedPkgName, 'g');
-    return content.replace(regexp, 'react-components');
-  };
 
   updateFileContent(tree, { filePath: options.paths.jestConfig, updater: contentNameUpdater });
 
@@ -146,21 +149,12 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   });
   updateFileContent(tree, { filePath: mdFilePath.api, newFilePath: mdFilePath.apiNew, updater: contentNameUpdater });
 
-  // update stories
-  visitNotIgnoredFiles(tree, options.paths.stories, filePath => {
-    updateFileContent(tree, {
-      filePath,
-      updater: content => {
-        let newContent = contentNameToSuiteUpdater(content);
-
-        if (filePath.indexOf('index.stories.tsx') !== -1) {
-          newContent = newContent.replace(`'Preview `, `'`);
-        }
-
-        return newContent;
-      },
-    });
-  });
+  if (options.isSplitProject) {
+    const { storiesProjectPaths } = stableReleaseForSplitProject(tree, options);
+    updateStories(tree, { storiesSourcePath: storiesProjectPaths.sourceRoot, contentNameToSuiteUpdater });
+  } else {
+    updateStories(tree, { storiesSourcePath: options.paths.stories, contentNameToSuiteUpdater });
+  }
 
   // global updates
   updateJson<TsConfig>(tree, options.paths.rootTsconfig, json => {
@@ -256,7 +250,12 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   });
 
   // AFTER updates are done - rename project folder
-  tree.rename(options.projectConfig.root, newPackage.root);
+  if (options.isSplitProject) {
+    const hostFolder = joinPathFragments(options.projectConfig.root, '..');
+    tree.rename(hostFolder, hostFolder.replace('-preview', ''));
+  } else {
+    tree.rename(options.projectConfig.root, newPackage.root);
+  }
 
   return (_tree: Tree) => {
     installPackagesTask(tree, true);
@@ -267,6 +266,65 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
     });
     generateApiMarkdownTask(tree, suitePackageName);
   };
+}
+
+function stableReleaseForSplitProject(tree: Tree, options: NormalizedSchema) {
+  const storiesProjectRoot = joinPathFragments(options.projectConfig.root, '../stories');
+  const currentStoriesPackageName = options.projectConfig.name + '-stories';
+  const currentStoriesNormalizedPackageName = getProjectNameWithoutScope(currentStoriesPackageName);
+  const storiesProjectPaths = {
+    root: storiesProjectRoot,
+    sourceRoot: joinPathFragments(storiesProjectRoot, 'src'),
+    packageJson: joinPathFragments(storiesProjectRoot, 'package.json'),
+    projectJson: joinPathFragments(storiesProjectRoot, 'project.json'),
+    readme: joinPathFragments(storiesProjectRoot, 'README.md'),
+  };
+  const newStoriesProject = {
+    name: currentStoriesPackageName.replace('-preview', ''),
+    normalizedName: currentStoriesNormalizedPackageName.replace('-preview', ''),
+    root: storiesProjectPaths.root.replace('-preview', ''),
+    sourceRoot: storiesProjectPaths.sourceRoot.replace('-preview', ''),
+  };
+
+  const contentNameUpdaterStories = (content: string) => {
+    const regexp = new RegExp(currentStoriesNormalizedPackageName, 'g');
+    return content.replace(regexp, newStoriesProject.normalizedName);
+  };
+
+  updateJson<PackageJson>(tree, storiesProjectPaths.packageJson, json => {
+    json.name = newStoriesProject.name;
+
+    return json;
+  });
+
+  updateJson<ProjectConfiguration>(tree, storiesProjectPaths.projectJson, json => {
+    json.name = newStoriesProject.name;
+    json.sourceRoot = newStoriesProject.sourceRoot;
+
+    return json;
+  });
+
+  updateFileContent(tree, {
+    filePath: storiesProjectPaths.readme,
+    updater: contentNameUpdaterStories,
+  });
+
+  // global updates
+  updateJson<TsConfig>(tree, options.paths.rootTsconfig, json => {
+    json.compilerOptions.paths = json.compilerOptions.paths ?? {};
+
+    delete json.compilerOptions.paths[currentStoriesPackageName];
+    json.compilerOptions.paths[newStoriesProject.name] = [joinPathFragments(newStoriesProject.sourceRoot, 'index.ts')];
+
+    return json;
+  });
+
+  updateFileContent(tree, {
+    filePath: workspacePaths.github.codeowners,
+    updater: contentNameUpdaterStories,
+  });
+
+  return { storiesProjectPaths };
 }
 
 function updateFileContent(
@@ -319,7 +377,7 @@ function generateApiMarkdownTask(tree: Tree, projectName: string) {
   return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 
-function assertProject(tree: Tree, options: NormalizedSchema) {
+function assertProject(tree: Tree, options: NormalizedSchema & { isSplitProject: boolean }) {
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
 
   const isVnextPackage = options.projectConfig.tags?.includes('vNext');
@@ -351,6 +409,15 @@ function assertProject(tree: Tree, options: NormalizedSchema) {
   if (isStableAlready) {
     throw new Error(`${options.project} is already released as stable.`);
   }
+
+  if (options.isSplitProject && options.name.endsWith('-stories')) {
+    throw new Error(
+      `This generator can be invoked only against library project. Please run it against "${options.name.replace(
+        '-stories',
+        '',
+      )}" library project.`,
+    );
+  }
 }
 
 function createExportsInSuite(content: string, packageName: string) {
@@ -373,4 +440,24 @@ function createExportsInSuite(content: string, packageName: string) {
      export { ${exportExpression} } from '${packageName}';
      export type { ${exportTypeExpression} } from '${packageName}';
     `;
+}
+
+function updateStories(
+  tree: Tree,
+  options: { storiesSourcePath: string; contentNameToSuiteUpdater: (content: string) => string },
+) {
+  visitNotIgnoredFiles(tree, options.storiesSourcePath, filePath => {
+    updateFileContent(tree, {
+      filePath,
+      updater: content => {
+        let newContent = options.contentNameToSuiteUpdater(content);
+
+        if (filePath.indexOf('index.stories.tsx') !== -1) {
+          newContent = newContent.replace(`'Preview `, `'`);
+        }
+
+        return newContent;
+      },
+    });
+  });
 }
