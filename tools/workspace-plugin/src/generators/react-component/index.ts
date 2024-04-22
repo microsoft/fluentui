@@ -43,6 +43,7 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
   const project = getProjectConfig(tree, { packageName: options.project });
   const nameCasings = names(options.name);
+  const isSplitProject = tree.exists(joinPathFragments(project.projectConfig.root, '../stories/project.json'));
 
   return {
     ...options,
@@ -51,6 +52,7 @@ function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
     directory: 'components',
     componentName: nameCasings.className,
     npmPackageName: project.projectConfig.name as string,
+    isSplitProject,
   };
 }
 
@@ -98,16 +100,16 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 
   // story
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files', 'story'),
-    path.join(options.paths.stories, options.componentName),
-    templateOptions,
-  );
+  const storiesPath = options.isSplitProject
+    ? path.join(options.projectConfig.root, '../stories/src', options.componentName)
+    : path.join(options.paths.stories, options.componentName);
+  generateFiles(tree, path.join(__dirname, 'files', 'story'), storiesPath, templateOptions);
 
-  const storiesGitkeep = path.join(options.paths.stories, '.gitkeep');
-  if (tree.exists(storiesGitkeep)) {
-    tree.delete(storiesGitkeep);
+  if (!options.isSplitProject) {
+    const storiesGitkeep = path.join(options.paths.stories, '.gitkeep');
+    if (tree.exists(storiesGitkeep)) {
+      tree.delete(storiesGitkeep);
+    }
   }
 }
 
@@ -128,6 +130,14 @@ function assertComponent(tree: Tree, options: NormalizedSchema) {
   }
   if (tree.exists(componentDirPath)) {
     throw new Error(`The component "${options.componentName}" already exists`);
+  }
+  if (options.isSplitProject && options.projectConfig.name?.endsWith('-stories')) {
+    throw new Error(
+      `This generator can be invoked only against library project. Please run it against "${options.projectConfig.name.replace(
+        '-stories',
+        '',
+      )}" library project.`,
+    );
   }
   return;
 }
