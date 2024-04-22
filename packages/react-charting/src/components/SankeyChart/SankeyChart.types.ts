@@ -77,10 +77,8 @@ export interface ISankeyChartProps {
   /**
    * Format node and link values.
    */
-  formatNumber?: NumberFormatter;
+  formatNumberOptions?: Intl.NumberFormatOptions;
 }
-
-export type NumberFormatter = (num: number | undefined) => string;
 
 /**
  * Sankey Chart style properties

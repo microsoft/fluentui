@@ -188,16 +188,6 @@ describe('Sankey Chart snapShot testing', () => {
         linkAriaLabel: '{2} items moved from {0} to {1}',
         nodeAriaLabel: 'element {0} with size {1}',
       };
-      const formatNumber = (num: number | undefined) => {
-        if (num === undefined || num === null) {
-          return '';
-        }
-        return num.toLocaleString('en-US', {
-          maximumFractionDigits: 2,
-          notation: 'compact',
-          compactDisplay: 'short',
-        });
-      };
       // ACT
       const component = renderer.create(
         <SankeyChart
@@ -206,7 +196,11 @@ describe('Sankey Chart snapShot testing', () => {
           width={800}
           strings={strings}
           accessibility={accessibilityStrings}
-          formatNumber={formatNumber}
+          formatNumberOptions={{
+            maximumFractionDigits: 2,
+            notation: 'compact',
+            compactDisplay: 'short',
+          }}
         />,
       );
       // ASSERT
@@ -242,14 +236,6 @@ describe('Sankey Chart snapShot testing', () => {
         linkAriaLabel: '{2} items moved from {0} to {1}',
         nodeAriaLabel: 'element {0} with size {1}',
       };
-      const formatNumber = (num: number | undefined) => {
-        if (num === undefined || num === null) {
-          return '';
-        }
-        return num.toLocaleString('en-US', {
-          style: 'percent',
-        });
-      };
       // ACT
       const component = renderer.create(
         <SankeyChart
@@ -258,7 +244,9 @@ describe('Sankey Chart snapShot testing', () => {
           width={800}
           strings={strings}
           accessibility={accessibilityStrings}
-          formatNumber={formatNumber}
+          formatNumberOptions={{
+            style: 'percent',
+          }}
         />,
       );
       // ASSERT
