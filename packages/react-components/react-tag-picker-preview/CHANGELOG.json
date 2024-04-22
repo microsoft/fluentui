@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tag-picker-preview",
   "entries": [
     {
+      "date": "Thu, 18 Apr 2024 12:43:14 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "5c4fa80c89e0b397d4564f98d98001119a520943",
+            "comment": "chore: ensure navigation between TagPickerGroup and TagPickerInput"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Apr 2024 21:54:00 GMT",
       "tag": "@fluentui/react-tag-picker-preview_v0.3.0",
       "version": "0.3.0",

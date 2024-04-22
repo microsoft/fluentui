@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/font-icons-mdl2",
-  "version": "8.5.36",
+  "version": "8.5.37",
   "description": "Fluent UI React icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.16",
-    "@fluentui/style-utilities": "^8.10.7",
-    "@fluentui/utilities": "^8.15.2",
+    "@fluentui/style-utilities": "^8.10.8",
+    "@fluentui/utilities": "^8.15.3",
     "tslib": "^2.1.0"
   },
   "exports": {

@@ -2,13 +2,11 @@ import { DOMSelectorTreeComponentRenderer } from '../../../shared/vanilla/types'
 
 declare global {
   interface Document {
-    // eslint-disable-next-line
-    adoptedStyleSheets: any[];
+    adoptedStyleSheets: CSSStyleSheet[];
   }
 
   interface ShadowRoot {
-    // eslint-disable-next-line
-    adoptedStyleSheets: any[];
+    adoptedStyleSheets: CSSStyleSheet[];
   }
 
   interface CSSStyleSheet {

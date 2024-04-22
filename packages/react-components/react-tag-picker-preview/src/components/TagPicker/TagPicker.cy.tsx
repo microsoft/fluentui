@@ -219,14 +219,26 @@ describe('TagPicker', () => {
         cy.get('[data-testid="tag-picker-input"]').focus().realPress(['Shift', 'Tab']);
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('be.focused');
       });
-      it('should navigate circularly between tags with Arrow key press', () => {
+      it('should not navigate circularly between tags with Arrow key press', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);
         cy.get(`[data-testid="tag--${options[0]}"]`).focus().realPress('ArrowRight');
         cy.get(`[data-testid="tag--${options[1]}"]`).should('be.focused').realPress('ArrowDown');
         cy.get(`[data-testid="tag--${options[2]}"]`).should('be.focused').realPress('ArrowLeft');
         cy.get(`[data-testid="tag--${options[1]}"]`).should('be.focused').realPress('ArrowUp');
         cy.get(`[data-testid="tag--${options[0]}"]`).should('be.focused').realPress('ArrowUp');
-        cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('be.focused');
+        cy.get(`[data-testid="tag--${options[0]}"]`).should('be.focused');
+        cy.get(`[data-testid="tag--${options[options.length - 1]}"]`)
+          .focus()
+          .realPress('ArrowRight');
+        cy.get(`[data-testid="tag--${options[0]}"]`).should('not.be.focused');
+      });
+      it('should navigate from tags to input and back with Arrow key press', () => {
+        mount(<TagPickerControlled defaultSelectedOptions={options} />);
+        cy.get(`[data-testid="tag-picker-input"]`).focus().realPress('ArrowLeft');
+        cy.get(`[data-testid="tag--${options[options.length - 1]}"]`)
+          .should('be.focused')
+          .realPress('ArrowRight');
+        cy.get(`[data-testid="tag-picker-input"]`).should('be.focused');
       });
       it('should memorize last focused tag while switching focus between tags and input', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);

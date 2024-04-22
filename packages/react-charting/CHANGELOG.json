@@ -2,6 +2,48 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 22 Apr 2024 07:28:27 GMT",
+      "tag": "@fluentui/react-charting_v5.20.2",
+      "version": "5.20.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.0",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.146",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.6",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Apr 2024 07:26:09 GMT",
+      "tag": "@fluentui/react-charting_v5.20.1",
+      "version": "5.20.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9550c4cd2ffbcfdc4fc0f0ed66866e5cf11bd2c9",
+            "comment": "Add data-is-focusable to root node text component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Apr 2024 07:27:08 GMT",
       "tag": "@fluentui/react-charting_v5.20.0",
       "version": "5.20.0",

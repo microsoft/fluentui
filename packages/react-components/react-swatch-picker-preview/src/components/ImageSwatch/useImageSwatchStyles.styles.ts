@@ -72,7 +72,7 @@ const useStylesSelected = makeStyles({
 });
 
 const useSizeStyles = makeStyles({
-  extraSmall: {
+  'extra-small': {
     width: '20px',
     height: '20px',
   },
@@ -120,11 +120,13 @@ export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwa
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
 
+  const { size = 'medium', shape = 'square' } = state;
+
   state.root.className = mergeClasses(
     imageSwatchClassNames.root,
     styles,
-    sizeStyles[state.size ?? 'medium'],
-    shapeStyles[state.shape ?? 'square'],
+    sizeStyles[size],
+    shapeStyles[shape],
     state.selected && selectedStyles.selected,
     state.root.className,
   );

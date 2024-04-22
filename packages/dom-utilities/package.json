@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/dom-utilities",
-  "version": "2.2.16",
+  "version": "2.3.0",
   "description": "DOM utilities for use within Fluent web components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

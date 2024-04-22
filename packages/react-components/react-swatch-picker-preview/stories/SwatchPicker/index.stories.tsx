@@ -8,7 +8,6 @@ import {
 } from '@fluentui/react-swatch-picker-preview';
 
 import descriptionMd from './SwatchPickerDescription.md';
-import bestPracticesMd from './SwatchPickerBestPractices.md';
 
 export { Default } from './SwatchPickerDefault.stories';
 export { SwatchPickerImage } from './SwatchPickerImage.stories';
@@ -33,7 +32,7 @@ const metadata: ComponentMeta<typeof SwatchPicker> = {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd].join('\n'),
       },
     },
   },

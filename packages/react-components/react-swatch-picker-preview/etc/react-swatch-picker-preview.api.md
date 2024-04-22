@@ -109,11 +109,6 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
 
 // @public (undocumented)
-export const swatchPickerCSSVars: {
-    gridGap: string;
-};
-
-// @public (undocumented)
 export type SwatchPickerGridProps = {
     items: SwatchProps[];
     columnCount: number;
@@ -139,7 +134,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     layout?: 'row' | 'grid';
     onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
     selectedValue?: string;
-    size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    size?: 'extra-small' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
     spacing?: 'small' | 'medium';
 };
@@ -159,7 +154,7 @@ export type SwatchPickerRowSlots = {
 };
 
 // @public
-export type SwatchPickerRowState = ComponentState<SwatchPickerRowSlots>;
+export type SwatchPickerRowState = ComponentState<SwatchPickerRowSlots> & Pick<SwatchPickerProps, 'spacing'>;
 
 // @public (undocumented)
 export type SwatchPickerSlots = {
