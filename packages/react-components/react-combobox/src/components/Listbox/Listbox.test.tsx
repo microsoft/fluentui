@@ -77,7 +77,7 @@ describe('Listbox', () => {
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(option.id);
   });
 
-  it('should set active option on focus', () => {
+  it('should set active option to first option on focus if nothing is selected', () => {
     const { getByTestId } = render(
       <Listbox data-testid="listbox">
         <Option data-testid="firstOption">Red</Option>
@@ -92,6 +92,23 @@ describe('Listbox', () => {
     fireEvent.focus(getByTestId('listbox'));
 
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(firstOption.id);
+  });
+
+  it('should set active option to first selected option on focus', () => {
+    const { getByTestId } = render(
+      <Listbox data-testid="listbox" selectedOptions={['Blue', 'Green']}>
+        <Option>Red</Option>
+        <Option data-testid="firstSelectedOption">Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+
+    const selectedOption = getByTestId('firstSelectedOption');
+    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
+
+    fireEvent.focus(getByTestId('listbox'));
+
+    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(selectedOption.id);
   });
 
   it('should move active option with arrow down', () => {
