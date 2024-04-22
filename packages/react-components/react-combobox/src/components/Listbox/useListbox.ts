@@ -49,8 +49,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
-  // get state from parent combobox, if it exists
-  const hasListboxContext = useHasParentContext(ListboxContext);
   const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
 
   const listenerRef = React.useCallback(
@@ -111,6 +109,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
+  // get state from parent combobox, if it exists
+  const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
   const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 
