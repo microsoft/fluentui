@@ -13,7 +13,4 @@ export const definition = ToggleButton.compose({
   name: `${FluentDesignSystem.prefix}-toggle-button`,
   template,
   styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
 });
