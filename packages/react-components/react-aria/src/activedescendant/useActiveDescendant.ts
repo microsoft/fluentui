@@ -67,7 +67,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
       blurActiveDescendant();
 
-      scrollIntoView(nextActive, listboxRef.current);
+      scrollIntoView(nextActive);
       setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
@@ -75,7 +75,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
     },
-    [listboxRef, blurActiveDescendant, setAttribute],
+    [blurActiveDescendant, setAttribute],
   );
 
   const controller: ActiveDescendantImperativeRef = React.useMemo(
