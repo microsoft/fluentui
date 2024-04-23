@@ -12,12 +12,6 @@ describe('List', () => {
     // Disabled because this should be ItemLayout's responsibility, but it doesn't render those.
     // Adding them there now might not be safe.
     disabledTests: ['component-has-static-classnames-object', 'has-docblock', 'has-top-level-file'],
-    testOptions: {
-      'consistent-callback-args': {
-        // onSelectionChange has an eventArgument which is React.SyntheticEvent. This throws an error during testing
-        ignoreProps: ['onSelectionChange'],
-      },
-    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

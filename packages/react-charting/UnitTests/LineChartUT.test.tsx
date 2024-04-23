@@ -5,6 +5,7 @@ import { IChartProps, ILineChartGap } from '../src/index';
 import { LineChartBase } from '../src/components/LineChart/LineChart.base';
 import { getById, testWithWait, testWithoutWait } from '../src/utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
+import { resetIds } from '@fluentui/react';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -228,7 +229,13 @@ const data: IChartProps = {
   ],
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('Unit tests for _getPath function', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should return correct path when multiple point shapes are not allowed, widthRatio and width of shape equal to 1',
     LineChart,
@@ -378,6 +385,8 @@ runTest('Unit tests for _getPath function', () => {
 });
 
 runTest('Unit tests for __checkInGap function', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return false if pointIndex is not in any gap', () => {
     const gaps: ILineChartGap[] = [
       { startIndex: 3, endIndex: 5 },
@@ -457,6 +466,8 @@ runTest('Unit tests for __checkInGap function', () => {
 });
 
 runTest('Unit tests for _getPointFill function', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should return white if the point is active and allowMultipleShapesForPoints is false',
     LineChart,
@@ -507,6 +518,8 @@ runTest('Unit tests for _getPointFill function', () => {
 });
 
 runTest('Unit tests for __injectIndexPropertyInLineChartData function', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return an empty array if lineChartData is undefined', () => {
     const instance = new LineChartBase({ data: emptyData });
     const result = instance._injectIndexPropertyInLineChartData(emptyData.lineChartData);

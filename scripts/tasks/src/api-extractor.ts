@@ -60,7 +60,7 @@ export function apiExtractor(): TaskFunction {
   const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
 
   if (configsToExecute.length === 0) {
-    return noop;
+    return task('api-extractor-noop', noop);
   }
 
   /**

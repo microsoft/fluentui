@@ -6,6 +6,7 @@ import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
   icon: 'fui-MessageBar__icon',
+  bottomReflowSpacer: 'fui-MessageBar__bottomReflowSpacer',
 };
 
 const useRootBaseStyles = makeResetStyles({
@@ -15,8 +16,8 @@ const useRootBaseStyles = makeResetStyles({
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
   paddingLeft: tokens.spacingHorizontalM,
-  ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
-  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  borderRadius: tokens.borderRadiusMedium,
   alignItems: 'center',
   minHeight: '36px',
   boxSizing: 'border-box',
@@ -24,12 +25,17 @@ const useRootBaseStyles = makeResetStyles({
 });
 
 const useIconBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('icon'),
+  gridArea: 'icon',
   fontSize: tokens.fontSizeBase500,
   marginRight: tokens.spacingHorizontalS,
   color: tokens.colorNeutralForeground3,
   display: 'flex',
   alignItems: 'center',
+});
+
+const useReflowSpacerBaseStyles = makeResetStyles({
+  marginBottom: tokens.spacingVerticalS,
+  gridArea: 'secondaryActions',
 });
 
 const useStyles = makeStyles({
@@ -97,6 +103,7 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   const iconBaseStyles = useIconBaseStyles();
   const iconIntentStyles = useIconIntentStyles();
   const rootIntentStyles = useRootIntentStyles();
+  const reflowSpacerStyles = useReflowSpacerBaseStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
@@ -116,6 +123,10 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
       iconIntentStyles[state.intent],
       state.icon.className,
     );
+  }
+
+  if (state.bottomReflowSpacer) {
+    state.bottomReflowSpacer.className = mergeClasses(messageBarClassNames.bottomReflowSpacer, reflowSpacerStyles);
   }
 
   return state;

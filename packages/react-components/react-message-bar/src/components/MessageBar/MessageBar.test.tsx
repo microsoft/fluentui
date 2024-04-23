@@ -7,6 +7,7 @@ import { MessageBarBody } from '../MessageBarBody/MessageBarBody';
 import { MessageBarTitle } from '../MessageBarTitle/MessageBarTitle';
 import { MessageBarActions } from '../MessageBarActions/MessageBarActions';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { MessageBarProps } from './MessageBar.types';
 
 describe('MessageBar', () => {
   beforeAll(() => {
@@ -28,7 +29,7 @@ describe('MessageBar', () => {
     resetIdsForTests();
   });
 
-  isConformant({
+  isConformant<MessageBarProps>({
     Component: MessageBar,
     displayName: 'MessageBar',
     testOptions: {
@@ -36,6 +37,7 @@ describe('MessageBar', () => {
         {
           props: {
             icon: 'Icon',
+            layout: 'multiline',
           },
         },
       ],

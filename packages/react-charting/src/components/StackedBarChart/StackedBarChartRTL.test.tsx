@@ -9,13 +9,17 @@ import {
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { StackedBarChart } from './StackedBarChart';
-import { DefaultPalette, ThemeProvider } from '@fluentui/react';
+import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { StackedBarChartBase } from './StackedBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
+
+function sharedBeforeEach() {
+  resetIds();
+}
 
 const points: IChartDataPoint[] = [
   {
@@ -85,6 +89,8 @@ const emptyData: IChartProps = {
 };
 
 describe('Stacked bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait('Should render the stacked bar chart with non-empty data', StackedBarChart, { data }, container => {
     // Assert
     expect(container).toMatchSnapshot();
@@ -102,6 +108,8 @@ describe('Stacked bar chart rendering', () => {
 });
 
 describe('Stacked bar chart - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the stacked bar with the given bar height',
     StackedBarChart,
@@ -197,6 +205,8 @@ describe('Stacked bar chart - Subcomponent bar', () => {
 });
 
 describe('Stacked bar chart - Subcomponent benchmark', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the benchmark triangle',
     StackedBarChart,
@@ -209,6 +219,8 @@ describe('Stacked bar chart - Subcomponent benchmark', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait('Should show any rendered legends when hideLegend is not set', StackedBarChart, { data }, container => {
     // Arrange
     const legends = getByClass(container, /^legend-/i);
@@ -306,6 +318,8 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Stacked bar chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should call the handler on mouse over bar',
     StackedBarChart,
@@ -368,6 +382,8 @@ describe('Stacked bar chart - Subcomponent callout', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
+
   testScreenResolutionChanges(() => {
     // Arrange
     const { container } = render(<StackedBarChart data={data} />);
@@ -376,18 +392,24 @@ describe('Screen resolution', () => {
   });
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <StackedBarChart culture={window.navigator.language} data={data} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
+describe('Stacked Bar Chart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <StackedBarChart culture={window.navigator.language} data={data} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
 });
 
 describe('Stacked Bar Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<StackedBarChart data={data} />);
     let axeResults;

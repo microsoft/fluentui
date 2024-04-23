@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "SplitLibraryInTwo",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Which project would you like to split?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-dropdown": "projects"
+    },
+    "all": {
+      "type": "boolean",
+      "description": "Run generator on all vNext packages"
+    }
+  },
+  "required": []
+}

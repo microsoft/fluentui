@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { ArrowDown, ArrowRight, Escape, keyCodes, ArrowUp } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowRight, ArrowUp } from '@fluentui/keyboard-keys';
 import {
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
   TabsterDOMAttribute,
   useFocusFinders,
+  GroupperMoveFocusEvent,
+  MoverMoveFocusEvent,
+  GroupperMoveFocusActions,
+  MoverKeys,
 } from '@fluentui/react-tabster';
 import { isHTMLElement } from '@fluentui/react-utilities';
 
@@ -29,7 +33,7 @@ export function useTableCompositeNavigation(): {
         return;
       }
 
-      const activeElement = targetDocument.activeElement;
+      let activeElement = targetDocument.activeElement;
       if (!activeElement || !e.currentTarget.contains(activeElement)) {
         return;
       }
@@ -60,10 +64,13 @@ export function useTableCompositeNavigation(): {
 
       // Escape groupper focus trap before arrow down
       if ((e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
-        activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: Escape, keyCode: keyCodes.Escape }));
-        // Tabster uses keycodes
-        // eslint-disable-next-line deprecation/deprecation
-        activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, keyCode: e.keyCode }));
+        activeElement.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
+
+        activeElement = targetDocument.activeElement;
+
+        if (activeElement) {
+          activeElement.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys[e.key] }));
+        }
       }
     },
     [targetDocument, findFirstFocusable],

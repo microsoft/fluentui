@@ -1,11 +1,5 @@
-import {
-  IAccessibilityProps,
-  CartesianChart,
-  IChildProps,
-  IModifiedCartesianChartProps,
-  IHeatMapChartData,
-  IHeatMapChartDataPoint,
-} from '../../index';
+import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
+import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -14,14 +8,8 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import {
-  ChartTypes,
-  convertToLocaleString,
-  getAccessibleDataObject,
-  XAxisTypes,
-  YAxisType,
-  getTypeOfAxis,
-} from '../../utilities/utilities';
+import { convertToLocaleString } from '../../utilities/locale-util';
+import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
@@ -356,28 +344,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * and un-highlight the rest of them
    * @param legendTitle
    */
-  private _onLegendHover = (legendTitle: string): void => {
+  private _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
     });
-  };
+  }
 
   /**
    * when the mouse is out from the legend , we need
    * to show the graph in initial mode.
    */
-  private _onLegendLeave = (): void => {
+  private _onLegendLeave(): void {
     this.setState({
       activeLegend: '',
     });
-  };
+  }
   /**
    * @param legendTitle
    * when the legend is clicked we need to highlight
    * all the rectangles which fall under that category
    * and un highlight the rest of them
    */
-  private _onLegendClick = (legendTitle: string): void => {
+  private _onLegendClick(legendTitle: string): void {
     /**
      * check if the legend is already selceted,
      * if yes, un-select the legend, else
@@ -392,7 +380,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         selectedLegend: legendTitle,
       });
     }
-  };
+  }
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];

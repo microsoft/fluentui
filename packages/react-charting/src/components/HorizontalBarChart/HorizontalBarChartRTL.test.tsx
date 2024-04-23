@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
@@ -10,6 +10,10 @@ import { HorizontalBarChartVariant, IChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
+
+function sharedBeforeEach() {
+  resetIds();
+}
 
 const chartPoints: IChartProps[] = [
   {
@@ -67,6 +71,7 @@ const chartPointsWithBenchMark: IChartProps[] = [
 
 describe('Horizontal bar chart rendering', () => {
   beforeEach(() => {
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -85,6 +90,8 @@ describe('Horizontal bar chart rendering', () => {
 });
 
 describe('Horizontal bar chart - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the bars with the specified colors',
     HorizontalBarChart,
@@ -200,6 +207,8 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
 });
 
 describe('Horizontal bar chart - Subcomponent Benchmark', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the bar with branchmark',
     HorizontalBarChart,
@@ -212,6 +221,8 @@ describe('Horizontal bar chart - Subcomponent Benchmark', () => {
 });
 
 describe('Horizontal bar chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should call the handler on mouse over bar and on mouse leave from bar',
     HorizontalBarChart,
@@ -265,6 +276,7 @@ describe('Horizontal bar chart - Subcomponent callout', () => {
 
 describe('Horizontal bar chart - Screen resolution', () => {
   beforeEach(() => {
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
 
@@ -312,6 +324,7 @@ describe('Horizontal bar chart - Screen resolution', () => {
 
 describe('Horizontal bar chart - Theme', () => {
   beforeEach(() => {
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -331,6 +344,7 @@ describe('Horizontal bar chart - Theme', () => {
 
 describe('Horizontal bar chart re-rendering', () => {
   beforeEach(() => {
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -353,6 +367,8 @@ describe('Horizontal bar chart re-rendering', () => {
 });
 
 describe('Horizontal Bar Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<HorizontalBarChart data={chartPoints} />);
     let axeResults;

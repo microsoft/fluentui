@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 09 Nov 2023 17:29:33 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.19.0)
+
+Tue, 20 Feb 2024 14:22:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.18.3..@fluentui/react-conformance_v0.19.0)
+
+### Minor changes
+
+- Deprecate consistent-callback-args test ([PR #30301](https://github.com/microsoft/fluentui/pull/30301) by yuanboxue@microsoft.com)
+- BREAKING CHANGE: change `consistent-callback-args` test option to test selected props instead of ignoring props ([PR #30376](https://github.com/microsoft/fluentui/pull/30376) by yuanboxue@microsoft.com)
 
 ## [0.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.3)
 

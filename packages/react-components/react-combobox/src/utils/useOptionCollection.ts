@@ -5,21 +5,31 @@ import type { OptionCollectionState, OptionValue } from './OptionCollection.type
  * A hook for managing a collection of child Options
  */
 export const useOptionCollection = (): OptionCollectionState => {
-  const nodes = React.useRef<{ option: OptionValue; element: HTMLElement }[]>([]);
+  const optionsById = React.useRef(new Map<string, OptionValue>());
 
   const collectionAPI = React.useMemo(() => {
-    const getCount = () => nodes.current.length;
-    const getOptionAtIndex = (index: number) => nodes.current[index]?.option;
-    const getIndexOfId = (id: string) => nodes.current.findIndex(node => node.option.id === id);
+    const getCount = () => optionsById.current.size;
+
+    // index searches are no longer used
+    const getOptionAtIndex = () => undefined;
+    const getIndexOfId = () => -1;
+
     const getOptionById = (id: string) => {
-      const item = nodes.current.find(node => node.option.id === id);
-      return item?.option;
+      return optionsById.current.get(id);
     };
     const getOptionsMatchingText = (matcher: (text: string) => boolean) => {
-      return nodes.current.filter(node => matcher(node.option.text)).map(node => node.option);
+      return Array.from(optionsById.current.values()).filter(({ text }) => matcher(text));
     };
+
     const getOptionsMatchingValue = (matcher: (value: string) => boolean) => {
-      return nodes.current.filter(node => matcher(node.option.value)).map(node => node.option);
+      const matches: OptionValue[] = [];
+      for (const option of optionsById.current.values()) {
+        if (matcher(option.value)) {
+          matches.push(option);
+        }
+      }
+
+      return matches;
     };
 
     return {
@@ -32,45 +42,15 @@ export const useOptionCollection = (): OptionCollectionState => {
     };
   }, []);
 
-  const registerOption = React.useCallback((option: OptionValue, element: HTMLElement) => {
-    const index = nodes.current.findIndex(node => {
-      if (!node.element || !element) {
-        return false;
-      }
+  const registerOption = React.useCallback((option: OptionValue) => {
+    optionsById.current.set(option.id, option);
 
-      if (node.option.id === option.id) {
-        return true;
-      }
-
-      // use the DOM method compareDocumentPosition to order the current node against registered nodes
-      // eslint-disable-next-line no-bitwise
-      return node.element.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_PRECEDING;
-    });
-
-    // do not register the option if it already exists
-    if (nodes.current[index]?.option.id !== option.id) {
-      const newItem = {
-        element,
-        option,
-      };
-
-      // If an index is not found we will push the element to the end.
-      if (index === -1) {
-        nodes.current = [...nodes.current, newItem];
-      } else {
-        nodes.current.splice(index, 0, newItem);
-      }
-    }
-
-    // return the unregister function
-    return () => {
-      nodes.current = nodes.current.filter(node => node.option.id !== option.id);
-    };
+    return () => optionsById.current.delete(option.id);
   }, []);
 
   return {
     ...collectionAPI,
-    options: nodes.current.map(node => node.option),
+    options: Array.from(optionsById.current.values()),
     registerOption,
   };
 };

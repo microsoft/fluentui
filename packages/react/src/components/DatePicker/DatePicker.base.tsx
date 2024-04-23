@@ -478,6 +478,17 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const dataIsFocusable = (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
+  // Props to create a semantic but non-focusable button when the datepicker has a text input
+  // Used for voice control and touch screen reader accessibility
+  const iconA11yProps: React.HTMLAttributes<HTMLSpanElement> = allowTextInput
+    ? {
+        role: 'button',
+        'aria-expanded': isCalendarShown,
+        'aria-label': ariaLabel ?? label,
+        'aria-labelledby': textFieldProps && textFieldProps['aria-labelledby'],
+      }
+    : {};
+
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
@@ -504,6 +515,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           className={css(classNames.textField, textFieldProps && textFieldProps.className)}
           iconProps={{
             iconName: 'Calendar',
+            ...iconA11yProps,
             ...iconProps,
             className: css(classNames.icon, iconProps && iconProps.className),
             onClick: onIconClick,

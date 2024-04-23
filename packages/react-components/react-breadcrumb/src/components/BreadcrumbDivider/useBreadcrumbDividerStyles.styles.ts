@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import type { BreadcrumbDividerSlots, BreadcrumbDividerState } from './BreadcrumbDivider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -9,9 +9,19 @@ export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
+const useStyles = makeResetStyles({
+  display: 'flex',
+});
+
+const useIconStyles = makeStyles({
+  small: {
+    fontSize: '12px',
+  },
+  medium: {
+    fontSize: '16px',
+  },
+  large: {
+    fontSize: '20px',
   },
 });
 
@@ -20,7 +30,10 @@ const useStyles = makeStyles({
  */
 export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerState): BreadcrumbDividerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(breadcrumbDividerClassNames.root, styles.root, state.root.className);
+  const iconStyles = useIconStyles();
+  const { size = 'medium' } = state;
+
+  state.root.className = mergeClasses(breadcrumbDividerClassNames.root, styles, iconStyles[size], state.root.className);
 
   return state;
 };

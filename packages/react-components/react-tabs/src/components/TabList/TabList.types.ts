@@ -71,6 +71,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   /**
    * Raised when a tab is selected.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onTabSelect?: SelectTabEventHandler;
 
   /**

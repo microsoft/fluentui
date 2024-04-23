@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -12,7 +12,7 @@ export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNaviga
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  ...shorthands.margin(`calc(${tokens.spacingVerticalS} * -1)`, `calc(${tokens.spacingHorizontalL} * -1)`),
+  margin: `calc(${tokens.spacingVerticalS} * -1) calc(${tokens.spacingHorizontalL} * -1)`,
 });
 
 /**

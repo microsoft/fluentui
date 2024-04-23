@@ -1,0 +1,203 @@
+import { Meta } from '@storybook/addon-docs';
+import {
+  ActionAvoidBad,
+  ActionAvoidGood,
+  ComponentTypeAvoidBad,
+  ComponentTypeAvoidGood,
+  StateAvoidBad,
+  StateAvoidGood,
+  CustomPositionAvoidBad,
+  CustomPositionAvoidGood,
+  TextRepeatAvoidBad,
+  TextRepeatAvoidGood,
+  FocusTextAvoidBad,
+  FocusTextAvoidGood,
+  ReuseVisibleTextBad,
+  ReuseVisibleTextGood,
+} from './LabellingExamples/Examples.stories';
+
+import { FormErrorLabelBad, FormErrorLabelGood } from './LabellingExamples/ExampleFormErrorsMessages.stories';
+import { Link } from '@fluentui/react-components';
+
+<Meta title="Concepts/Developer/Accessibility/Component labelling" />
+
+# Component labelling
+
+Label should be clear and sufficiently explain the purpose of the component. It should not contain component type, role, action, state, position and repeating text.
+To understand more right labelling please see examples below.
+
+## Prefer reusing visible text for labels
+
+| Type of example | Code                                                                                                                                                                                                                                                                   | Screen reader narration (JAWS)                             | Example                  |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------ |
+| Bad             | <code>aria-label="Remove Robert Tolbert"</code> applied on button                                                                                                                                                                                                      | "Remove Robert Tolbert Button To activate press spacebar." | <ReuseVisibleTextBad />  |
+| Good            | <ul><li>The <code> id="userNameId" </code> applied on the span element with user name.</li><li>The <code> id="removeButtonId"</code> applied on the "Remove" button.</li><li>The<code> aria-labelledby="removeButtonId userNameId"</code> applied on button.</li></ul> | "Remove Robert Tolbert Button To activate press spacebar." | <ReuseVisibleTextGood /> |
+
+Explanation
+
+<ul>
+  <li>Even though the screen reader narration is the same for both examples, implementation is different.</li>
+  <li>In general, for labelling we should reuse information that is visible/displayed in the UI.</li>
+  <li>
+    In this particular example, the aria-label attribute was added to the "Remove" button, and then, using the
+    aria-labelledby attribute on the same button, we can refer to the "Remove" button itself.
+  </li>
+  <li>
+    {' '}
+    The approach when a component refers to itself with the aria-labelledby attribute was taken from <Link
+      href="https://www.w3.org/TR/accname-1.1/#terminology"
+      inline
+    >
+      Accessible Name and Description Computation 1.1 page.
+    </Link> To find the example on that page, go to "4.3.1 Terminology{'>'} 2B {'>'} Example"
+  </li>
+</ul>
+
+## Form fields labelling
+
+| Type of example | Code                                                                                                       | Screen reader narration (JAWS)                                                                                                                                                                                                                        | Example                |
+| --------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Bad             | Each form field is not connected to its corresponding error message.                                       | Full name field with invalid content (type only mumbers): <br/> "Full name, Edit, Required, invalid entry, [field-content], Type in text."                                                                                                            | <FormErrorLabelBad />  |
+| Good            | The "aria-describedby" applied on each input field and references the corresponding error message element. | Full name field with invalid content (type only mumbers): <br/> "Full name, Edit, Required, invalid entry, [field-content], Full name is invalid. It must: Contain only lowercase or uppercase letters, spaces or hyphens. Start and end wit letter." | <FormErrorLabelGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    Each form field should be referencing the corresponding error message element using the "aria-describedby"
+    attribute. This ensures that whenever the form field is focused, the error message is narrated by the screen reader.
+  </li>
+</ul>
+
+## Avoid action in accessibility name
+
+| Type of example | Code                                                     | Screen reader narration (JAWS)          | Example             |
+| --------------- | -------------------------------------------------------- | --------------------------------------- | ------------------- |
+| Bad             | <code>aria-label="**Click here** to send message"</code> | "**Click here** to send message button" | <ActionAvoidBad />  |
+| Good            | <code>aria-label="Send message "</code>                  | "Send message button"                   | <ActionAvoidGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    Adding the action instruction (such as "Click here to...") to the component accessible name prolongs the name
+    narration by the screen reader when the component is focused. This information is already known to the screen reader
+    user based on the type of component beeing used, i.e. a button in this case.
+  </li>
+  <li>
+    Verify the component uses the proper HTML element or the proper ARIA role, so that the component type can be
+    recognized by the screen reader.
+  </li>
+</ul>
+
+## Avoid component type in accessibility name
+
+| Type of example | Code                                                 | Screen reader narration (JAWS)      | Example                    |
+| --------------- | ---------------------------------------------------- | ----------------------------------- | -------------------------- |
+| Bad             | <code>aria-label="Mute microphone **button**"</code> | "Mute microphone **button** button" | <ComponentTypeAvoidBad />  |
+| Good            | <code>aria-label="Mute microphone"</code>            | "Mute microphone button"            | <ComponentTypeAvoidGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    Adding the component type (such as "button") to the component accessible name duplicates information that is already
+    automatically narrated by the screen reader when the component is focused.
+  </li>
+  <li>
+    Verify the component uses the proper HTML element or the proper ARIA role, so that the component type can be
+    recognized and automatically narrated by the screen reader.
+  </li>
+</ul>
+
+## Avoid state in accessibility name
+
+| Type of example | Code                                                                         | Screen reader narration (JAWS)                | Example            |
+| --------------- | ---------------------------------------------------------------------------- | --------------------------------------------- | ------------------ |
+| Bad             | <code>aria-label="Files tab **is active**"</code> applied on the "Files" tab | "Files tab **is active** tab selected 2 of 3" | <StateAvoidBad />  |
+| Good            | no aria-label attribute is needed for the "Files" tab                        | "Files tab selected 2 of 3"                   | <StateAvoidGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    Adding a custom hard-coded state to the accessible name of the component is not required, because this information
+    will be provided by the screen reader if the component has the proper state attribute.
+  </li>
+  <li>
+    If the state of component is not narrated by the screen reader, verify the proper ARIA state attribute is used, such
+    as `aria-checked`, `aria-selected`, `aria-pressed`, `aria-current`, ... See latest*
+    <Link href="https://www.w3.org/TR/wai-aria/" inline>
+      aria documentation
+    </Link> for these attributes.
+  </li>
+</ul>
+
+\*In time
+
+## Avoid position in accessibility name
+
+| Type of example | Code                                                                                                                                                                                                                                           | Screen reader narration (JAWS)                                                                                                                                                                                                                                                | Example                     |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| Bad             | A custom "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label" attribute value.                                                                                                                    | <ul><li>"Profile menu Account settings..., **first item of four.** To move through items press up or down arrow." </li> <li>"Change status message..., **second item of four**"</li><li>"Help, **third item of four**"</li> <li>"Sign out, **fourth item of four**"</li></ul> | <CustomPositionAvoidBad />  |
+| Good            | The "X of Y" position information is added automatically by the screen reader for each menu item because the correct ARIA role is used both for all individual menu item elements (role="menuitem") and the parent menu element (role="menu"). | <ul><li>"Profile menu Account settings..., 1 of 4. To move through items press up or down arrow." </li><li>"Change status message..., 2 of 4"</li><li>"Help, 3 of 4"</li><li>"Sign out, 4 of 4"</li></ul>                                                                     | <CustomPositionAvoidGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    Even though the screen reader narration might seem similar, don't hard-code a custom "X of Y" position information
+    manually as the part of the accessible name of each individual item, but instead use proper ARIA roles and let the
+    screen reader add the "X of Y" information for you.
+  </li>
+  <li>
+    The JAWS screen reader currently supports the "X of Y" information for the following roles: "listbox", "menu",
+    "tablist", "tree", "radiogroup", "grid", "treegrid", ... See the{' '}
+    <a href="https://www.w3.org/TR/wai-aria/">ARIA specification</a> to learn which required owned elements (such as
+    "option", "menuitem", "tab", "treeitem", etc.) should be used with these roles.
+  </li>
+</ul>
+
+## Avoid repeating text for component inner items
+
+| Type of example | Code                                                                                                                                                         | Screen reader narration (JAWS)                                                                                                                                                                                                                | Example                 |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| Bad             | <code>aria-label="**Meeting participant** [user name]"</code> applied on each menu item element.                                                             | <ul><li>"Participants menu **Meeting participant** Robert Tolbert 1 of 3 To move through items press up or down arrow."</li><li>"**Meeting participant** Celeste Burton 2 of 3"</li><li>"**Meeting participant** Cecil Folk 3 of 3"</li></ul> | <TextRepeatAvoidBad />  |
+| Good            | <ul><li>No "aria-label" attribute is needed for each menu item element.</li><li>The aria-label="Meeting participants" applied on the menu element.</li></ul> | <ul><li>"Meeting participants menu Robert Tolbert 1 of 3 To move through items press up or down arrow."</li><li>"Celeste Burton 2 of 3"</li><li>"Cecil Folk 3 of 3"</li></ul>                                                                 | <TextRepeatAvoidGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    Adding a repeating text as a part of the accessible name of each item in the component prolongs the name narration
+    by the screen reader so the user needs to wait for the important content to be narrated.
+  </li>
+  <li> Recommendation would be to label the component (menu in our example) with appropriate name.</li>
+  <li> This general principle is valid as well for other components like Tree, List, Listbox, Toolbar, etc.</li>
+</ul>
+
+## Avoid making text focusable
+
+| Type of example | Code                                                                                                                                                                                                                                                                                                                                                                                                                     | Screen reader narration                                                                                                                                                                                                                                                                         | Example                |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Bad             | <code>tabindex="0"</code> applied on the text element. When the user presses the TAB key, the text receives focus.                                                                                                                                                                                                                                                                                                       | <ul><li>the text is focused: "With this option, notifications won’t be displayed anymore. You can miss information about latest news." </li> <li>the button is focused: "Submit Button To activate press Enter. "</li></ul>                                                                     | <FocusTextAvoidBad/>   |
+| Good            | <ul> <li>The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.</li> <strong>Example 1:</strong> <li>The text element has a unique id, like "notificationText".</li> <li>The `button` has the aria-describedby="notificationText" attribute.</li> <strong>Example 2:</strong> <li>`Button` is wrapped with the `div` element. It has role="group" and label.</li> </ul> | <ul><li> Example No. 1: "Submit Button <br /> Display notification check box not checked <br />With this option, notifications won’t be displayed anymore. You can miss information about latest news."<br /></li> <li>Example No. 2: "Summary of your order group <br /> Buy Button"</li></ul> | <FocusTextAvoidGood /> |
+
+Explanation
+
+<ul>
+  <li>
+    In general, elements (like text) that are not actionable should not receive focus, because it adds an additional TAB
+    stop in the TAB order.
+  </li>
+  <li>
+    {' '}
+    Refer to the text element via the "aria-describedby" attribute, which ensures the text would be read by the screen reader
+    whenever the actionable element which has the "aria-describedby" attribute is focused.
+  </li>
+  <li>
+    Wrap the component with an element which has role="group" and use aria-label or aria-labelledby to set or reference
+    the text you want to narrate. Then the element label will be narrated when the component is focused using the Tab
+    key.
+  </li>
+</ul>

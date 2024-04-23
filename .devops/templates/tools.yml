@@ -35,5 +35,6 @@ steps:
       echo 'deployUrl "$(deployUrl)"'
       echo 'isPR "$(isPR)"'
       echo 'targetBranch "$(targetBranch)"'
+      echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
     displayName: Log environment variables (Linux)
     condition: eq(variables['Agent.OS'], 'Linux')

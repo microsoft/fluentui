@@ -47,6 +47,9 @@ describe('AvatarGroupPopover', () => {
           getPortalElement: getPopoverSurfaceElement,
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange'],
+      },
     },
     requiredProps: {
       children: (

@@ -12,9 +12,11 @@ const useBaseStyles = makeStyles({
 /**
  * Apply styling to the ToolbarToggleButton slots based on the state
  */
-export const useToolbarToggleButtonStyles_unstable = (state: ToolbarToggleButtonState) => {
+export const useToolbarToggleButtonStyles_unstable = (state: ToolbarToggleButtonState): ToolbarToggleButtonState => {
   useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(state.root.className, state.checked && toggleButtonStyles.selected);
+
+  return state;
 };

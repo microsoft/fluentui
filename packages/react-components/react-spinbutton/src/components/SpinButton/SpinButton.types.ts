@@ -80,6 +80,7 @@ export type SpinButtonProps = Omit<
    * - User *commits* edits to the input text by focusing away (blurring) or pressing enter.
    *   Note that this is NOT called for every key press while the user is editing.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
 
   /**

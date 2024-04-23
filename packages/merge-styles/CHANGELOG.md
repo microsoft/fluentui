@@ -1,8 +1,44 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Wed, 10 Jan 2024 07:28:48 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.3)
+
+Mon, 22 Apr 2024 07:28:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.2..@fluentui/merge-styles_v8.6.3)
+
+### Patches
+
+- feat: add support for shadow dom and constructable stylesheets ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+
+## [8.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.2)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.1..@fluentui/merge-styles_v8.6.2)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.1)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.0..@fluentui/merge-styles_v8.6.1)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.0)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.15..@fluentui/merge-styles_v8.6.0)
+
+### Minor changes
+
+- fix: Update IStyleSet type to fix error when using TypeScript 5.3+ ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by behowell@microsoft.com)
 
 ## [8.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.15)
 

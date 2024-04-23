@@ -25,12 +25,9 @@ export function useRootTree(
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
 
   const requestOpenChange = (request: Extract<TreeItemRequest, { requestType: 'open' }>) => {
-    const open = request.itemType === 'branch' && !openItems.has(request.value);
-    const nextOpenItems = createNextOpenItems({ value: request.value, open }, openItems);
     props.onOpenChange?.(request.event, {
       ...request,
-      open,
-      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+      openItems: createNextOpenItems(request, openItems).dangerouslyGetInternalSet_unstable(),
     });
   };
 

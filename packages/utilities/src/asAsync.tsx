@@ -49,7 +49,7 @@ const _syncModuleCache =
  *
  * This overload accepts a module with a default export for the component.
  */
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>) {
+export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>) {
   class Async extends React.Component<
     TProps & {
       asyncPlaceholder?: React.ElementType;

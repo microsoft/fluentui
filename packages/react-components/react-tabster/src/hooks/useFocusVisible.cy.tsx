@@ -19,7 +19,7 @@ describe('useFocusVisible', () => {
     };
 
     mount(<Example />);
-    cy.get('#start').focus().realPress('Tab').pause();
+    cy.get('#start').focus().realPress('Tab');
     cy.get('#shadow-host').shadow().find('#end').should('have.attr', FOCUS_VISIBLE_ATTR);
   });
 
@@ -44,5 +44,44 @@ describe('useFocusVisible', () => {
       .shadow()
       .find('#end')
       .should('not.have.attr', FOCUS_VISIBLE_ATTR);
+  });
+
+  it('should not register activeElement if it is outside of scope', () => {
+    const FocusVisible = () => {
+      const ref = useFocusVisible<HTMLDivElement>();
+
+      return (
+        <div ref={ref}>
+          <button>Within scope</button>
+        </div>
+      );
+    };
+
+    const Example = () => {
+      const [mounted, setMounted] = React.useState(false);
+      const ref = useFocusVisible<HTMLDivElement>();
+
+      return (
+        <>
+          <div ref={ref}>
+            <button id="toggle" onClick={() => setMounted(s => !s)}>
+              Toggle mount
+            </button>
+          </div>
+          {mounted && (
+            <div id="portal">
+              <FocusVisible />
+            </div>
+          )}
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#toggle').focus().realPress('Tab');
+    cy.get('#toggle').focus().realPress('Enter');
+    cy.get('#toggle').should('have.attr', FOCUS_VISIBLE_ATTR).realPress('Enter');
+    cy.get('#portal').should('not.exist');
+    cy.get('#toggle').should('have.attr', FOCUS_VISIBLE_ATTR);
   });
 });

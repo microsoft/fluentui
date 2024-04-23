@@ -1,28 +1,29 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { select as d3Select, event as d3Event } from 'd3-selection';
+import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { ILegend } from '../../components/Legends/Legends.types';
+import { Legends } from '../../components/Legends/Legends';
 import {
   IAccessibilityProps,
-  CartesianChart,
-  ChartHoverCard,
   IBasestate,
-  IMargins,
-  ILegend,
+  IHorizontalBarChartWithAxisDataPoint,
   IRefArrayData,
+  IMargins,
+} from '../../types/IDataPoint';
+import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
+import {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,
   IHorizontalBarChartWithAxisStyles,
-  IHorizontalBarChartWithAxisDataPoint,
-  Legends,
-  IChildProps,
-  IYValueHover,
-} from '../../index';
+} from './HorizontalBarChartWithAxis.types';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
+  ChartHoverCard,
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
@@ -490,13 +491,14 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     for (let i = 0; i < tickObjectLength; i++) {
       const d1 = tickObject[i];
       d3Select(d1)
-        .on('mouseover', d => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .on('mouseover', (event: any, d) => {
           if (!this.state.tooltipElement) {
             div.style('opacity', 0.9);
             div
               .html(originalDataArray[i])
-              .style('left', d3Event.pageX + 'px')
-              .style('top', d3Event.pageY - 28 + 'px');
+              .style('left', event.pageX + 'px')
+              .style('top', event.pageY - 28 + 'px');
           }
         })
         .on('mouseout', d => {

@@ -357,7 +357,7 @@ export interface CalendarYearStyles extends CalendarPickerStyles {
 }
 
 // @public
-export function compareDatePart(date1: Date, date2: Date): Number;
+export function compareDatePart(date1: Date, date2: Date): number;
 
 // @public
 export function compareDates(date1: Date, date2: Date): boolean;

@@ -14,7 +14,9 @@ export type {
   IRawStyle,
   IStyle,
   IStyleSet,
+  IStyleSetBase,
   IProcessedStyleSet,
   IStyleSheetConfig,
   ICSPSettings,
+  ShadowConfig,
 } from '@fluentui/merge-styles';

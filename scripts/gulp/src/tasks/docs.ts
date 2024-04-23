@@ -193,7 +193,7 @@ task('serve:docs:hot', async () => {
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
         stats: 'errors-warnings',
-      } as WebpackDevMiddleware.Options),
+      } as WebpackDevMiddleware.Options<any, any>),
     );
 
     if (process.env.NODE_ENV !== 'production') {

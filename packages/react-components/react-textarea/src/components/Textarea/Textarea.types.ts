@@ -40,6 +40,7 @@ export type TextareaProps = Omit<
   /**
    * Callback for when the user changes the value.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
 
   /**

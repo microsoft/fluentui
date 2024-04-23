@@ -19,15 +19,14 @@ const useStyles = makeStyles({
 
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+    },
   },
 
   required: {
     color: tokens.colorPaletteRedForeground3,
-    paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
-  },
-
-  requiredDisabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    paddingLeft: tokens.spacingHorizontalXS,
   },
 
   small: {
@@ -69,7 +68,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
     state.required.className = mergeClasses(
       labelClassNames.required,
       styles.required,
-      state.disabled && styles.requiredDisabled,
+      state.disabled && styles.disabled,
       state.required.className,
     );
   }

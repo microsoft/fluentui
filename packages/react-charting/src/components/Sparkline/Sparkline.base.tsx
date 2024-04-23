@@ -101,7 +101,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           fillOpacity={0.2}
           fill={this.props.data!.lineChartData![0].color!}
           role="img"
-          aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
+          aria-hidden
         />
       </>
     );
@@ -119,7 +119,12 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       >
         <div className={classNames.inlineBlock}>
           {this.state._width >= 50 && this.state._height >= 16 ? (
-            <svg width={this.state._width} height={this.state._height} data-is-focusable={true}>
+            <svg
+              width={this.state._width}
+              height={this.state._height}
+              data-is-focusable={true}
+              aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
+            >
               {this.state._points ? this.drawSparkline() : null}
             </svg>
           ) : (

@@ -7,6 +7,7 @@ export const timePickerClassNames: SlotClassNames<TimePickerSlots> = {
   root: 'fui-TimePicker',
   input: 'fui-TimePicker__input',
   expandIcon: 'fui-TimePicker__expandIcon',
+  clearIcon: 'fui-TimePicker__clearIcon',
   listbox: 'fui-TimePicker__listbox',
 };
 
@@ -28,6 +29,10 @@ export const useTimePickerStyles_unstable = (state: TimePickerState): TimePicker
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(timePickerClassNames.expandIcon, state.expandIcon.className);
+  }
+
+  if (state.clearIcon) {
+    state.clearIcon.className = mergeClasses(timePickerClassNames.clearIcon, state.clearIcon.className);
   }
 
   if (state.listbox) {

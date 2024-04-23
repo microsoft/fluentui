@@ -66,4 +66,31 @@ describe('getParent', () => {
     // Assert
     expect(getParent(child)).toBeNull();
   });
+
+  it('should return virtual parent in ShadowDOM', () => {
+    // Arrange
+    const child = document.createElement('div');
+    const virtualParent = document.createElement('div');
+    const realParent = document.createElement('div');
+
+    const shadowRoot = realParent.attachShadow({ mode: 'open' });
+    shadowRoot.appendChild(child);
+
+    setVirtualParent(child, virtualParent);
+
+    // Assert
+    expect(getParent(child)).toBe(virtualParent);
+  });
+
+  it('should return parent in ShadowDOM', () => {
+    // Arrange
+    const child = document.createElement('div');
+    const parent = document.createElement('div');
+
+    const shadowRoot = parent.attachShadow({ mode: 'open' });
+    shadowRoot.appendChild(child);
+
+    // Assert
+    expect(getParent(child)).toBe(parent);
+  });
 });

@@ -20,10 +20,12 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     'aria-expanded'?: boolean;
     id: string;
     ref: React.Ref<never>;
+    /* eslint-disable @nx/workspace-consistent-callback-type -- can't change type of existing callback */
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    /* eslint-enable @nx/workspace-consistent-callback-type */
   }
 >;
 

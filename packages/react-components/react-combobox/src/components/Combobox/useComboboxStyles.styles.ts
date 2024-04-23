@@ -13,11 +13,10 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
 };
 
 // Matches internal heights for Select and Input, but there are no theme variables for these
-// field heights are 2px less than other controls, since the border is on the parent element.
 const fieldHeights = {
-  small: '22px',
-  medium: '30px',
-  large: '38px',
+  small: '24px',
+  medium: '32px',
+  large: '40px',
 };
 
 /**
@@ -92,15 +91,24 @@ const useStyles = makeStyles({
     display: 'none',
   },
 
+  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+  inlineListbox: {
+    zIndex: 1,
+  },
+
   // size variants
   small: {
+    height: fieldHeights.small,
     paddingRight: tokens.spacingHorizontalSNudge,
   },
   medium: {
+    height: fieldHeights.medium,
     paddingRight: tokens.spacingHorizontalMNudge,
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
+    height: fieldHeights.large,
     paddingRight: tokens.spacingHorizontalM,
   },
 
@@ -158,6 +166,7 @@ const useStyles = makeStyles({
 
 const useInputStyles = makeStyles({
   input: {
+    alignSelf: 'stretch',
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     color: tokens.colorNeutralForeground1,
@@ -175,17 +184,14 @@ const useInputStyles = makeStyles({
 
   // size variants
   small: {
-    height: fieldHeights.small,
     ...typographyStyles.caption1,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   medium: {
-    height: fieldHeights.medium,
     ...typographyStyles.body1,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   large: {
-    height: fieldHeights.large,
     ...typographyStyles.body2,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
   },
@@ -280,6 +286,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     state.listbox.className = mergeClasses(
       comboboxClassNames.listbox,
       styles.listbox,
+      state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
       state.listbox.className,
     );

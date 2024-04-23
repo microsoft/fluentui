@@ -8,6 +8,11 @@ describe('TabList', () => {
   isConformant({
     Component: TabList,
     displayName: 'TabList',
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onTabSelect'],
+      },
+    },
   });
 
   it('renders with tabs', () => {

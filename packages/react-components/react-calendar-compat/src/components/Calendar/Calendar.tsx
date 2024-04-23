@@ -173,10 +173,14 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       showSixWeeksByDefault = false,
       showWeekNumbers = false,
       strings = DEFAULT_CALENDAR_STRINGS,
-      today = new Date(),
+      today: todayProp,
       value,
       workWeekDays = defaultWorkWeekDays,
     } = props;
+
+    const today = React.useMemo(() => {
+      return todayProp ?? new Date();
+    }, [todayProp]);
 
     const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState({
       onSelectDate,
@@ -259,6 +263,9 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
 
     const onGotoToday = (): void => {
       navigateDay(today!);
+      if (showMonthPickerAsOverlay && isMonthPickerVisible) {
+        toggleDayMonthPickerVisibility();
+      }
       focusOnNextUpdate();
     };
 

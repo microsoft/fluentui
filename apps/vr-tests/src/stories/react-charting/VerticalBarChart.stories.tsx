@@ -136,6 +136,59 @@ storiesOf('react-charting/VerticalBarChart', module)
     },
     { includeDarkMode: true, includeRtl: true },
   )
+
+  .addStory(
+    'Date Axis- VBC',
+    () => {
+      const points: IVerticalBarChartDataPoint[] = [
+        {
+          x: new Date('2018/10/01'),
+          y: 3500,
+          color: '#627CEF',
+        },
+        {
+          x: new Date('2019/02/01'),
+          y: 2500,
+          color: '#C19C00',
+        },
+        {
+          x: new Date('2019/05/01'),
+          y: 1900,
+          color: '#E650AF',
+        },
+        {
+          x: new Date('2019/07/01'),
+          y: 2800,
+          color: '#0E7878',
+        },
+      ];
+      const timeFormat = '%m/%d';
+      const tickValues: Date[] = [
+        new Date('10-01-2018'),
+        new Date('02-01-2019'),
+        new Date('05-01-2019'),
+        new Date('07-01-2019'),
+      ];
+
+      const rootStyle = { width: '650px', height: '500px' };
+      return (
+        <>
+          <div style={rootStyle}>
+            <VerticalBarChart
+              chartTitle="Vertical bar chart Date Axis example "
+              data={points}
+              height={350}
+              tickFormat={timeFormat}
+              tickValues={tickValues}
+              width={650}
+              hideLegend={true}
+            />
+          </div>
+        </>
+      );
+    },
+    { includeDarkMode: true, includeRtl: true },
+  )
   .addStory(
     'Dynamic - Wrap Labels',
     () => {
@@ -222,6 +275,200 @@ storiesOf('react-charting/VerticalBarChart', module)
     },
     { includeDarkMode: true, includeRtl: true },
   )
+
+  .addStory(
+    'Stacked - Date Axis',
+    () => {
+      const showLine = true;
+
+      const firstChartPoints: IVSChartDataPoint[] = [
+        {
+          legend: 'Metadata1',
+          data: 40,
+          color: '#0078d4',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '40%',
+        },
+        {
+          legend: 'Metadata2',
+          data: 5,
+          color: '#00188f',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '5%',
+        },
+        {
+          legend: 'Metadata3',
+          data: 20,
+          color: '#00bcf2',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '20%',
+        },
+      ];
+
+      const secondChartPoints: IVSChartDataPoint[] = [
+        {
+          legend: 'Metadata1',
+          data: 30,
+          color: '#0078d4',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '30%',
+        },
+        {
+          legend: 'Metadata2',
+          data: 20,
+          color: '#00188f',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '20%',
+        },
+        {
+          legend: 'Metadata3',
+          data: 40,
+          color: '#00bcf2',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '40%',
+        },
+      ];
+
+      const thirdChartPoints: IVSChartDataPoint[] = [
+        {
+          legend: 'Metadata1',
+          data: 44,
+          color: '#0078d4',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '44%',
+        },
+        {
+          legend: 'Metadata2',
+          data: 28,
+          color: '#00188f',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '28%',
+        },
+        {
+          legend: 'Metadata3',
+          data: 30,
+          color: '#00bcf2',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '30%',
+        },
+      ];
+
+      const fourthChartPoints: IVSChartDataPoint[] = [
+        {
+          legend: 'Metadata1',
+          data: 88,
+          color: '#0078d4',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '88%',
+        },
+        {
+          legend: 'Metadata2',
+          data: 22,
+          color: '#00188f',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '22%',
+        },
+        {
+          legend: 'Metadata3',
+          data: 30,
+          color: '#00bcf2',
+          xAxisCalloutData: '2020/04/30',
+          yAxisCalloutData: '30%',
+        },
+      ];
+
+      const data: IVerticalStackedChartProps[] = [
+        {
+          chartData: firstChartPoints,
+          xAxisPoint: new Date('2021/07/01'),
+
+          ...(showLine && {
+            lineData: [
+              { y: 42, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 10, legend: 'Recommended Builds', color: '#a4262c' },
+            ],
+          }),
+        },
+        {
+          chartData: secondChartPoints,
+          xAxisPoint: new Date('2021/10/01'),
+          ...(showLine && {
+            lineData: [{ y: 33, legend: 'Supported Builds', color: '#e3008c' }],
+          }),
+        },
+        {
+          chartData: thirdChartPoints,
+          xAxisPoint: new Date('2022/01/01'),
+          ...(showLine && {
+            lineData: [
+              { y: 60, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 20, legend: 'Recommended Builds', color: '#a4262c' },
+            ],
+          }),
+        },
+        {
+          chartData: firstChartPoints,
+          xAxisPoint: new Date('2022/04/01'),
+          ...(showLine && {
+            lineData: [
+              { y: 41, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 10, legend: 'Recommended Builds', color: '#a4262c' },
+            ],
+          }),
+        },
+        {
+          chartData: fourthChartPoints,
+          xAxisPoint: new Date('2022/07/01'),
+          ...(showLine && {
+            lineData: [
+              { y: 100, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 70, legend: 'Recommended Builds', color: '#a4262c' },
+            ],
+          }),
+        },
+        {
+          chartData: firstChartPoints,
+          xAxisPoint: new Date('2022/11/01'),
+        },
+      ];
+
+      const timeFormat = '%m/%d';
+      const tickValues = [
+        new Date('2021/07/01'),
+        new Date('2021/10/01'),
+        new Date('2022/01/01'),
+        new Date('2022/04/01'),
+        new Date('2022/07/01'),
+        new Date('2022/11/01'),
+      ];
+
+      const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
+      const rootStyle = { width: `${650}px`, height: `${350}px` };
+
+      return (
+        <div style={rootStyle}>
+          <VerticalStackedBarChart
+            culture={window.navigator.language}
+            chartTitle="Vertical stacked bar chart Date X Axis example"
+            barGapMax={2}
+            data={data}
+            height={350}
+            width={650}
+            tickFormat={timeFormat}
+            tickValues={tickValues}
+            lineOptions={lineOptions}
+            legendProps={{
+              allowFocusOnLegends: true,
+            }}
+            hideLabels={false}
+          />
+        </div>
+      );
+    },
+    { includeDarkMode: true, includeRtl: true },
+  )
+
   .addStory(
     'Stacked',
     () => {

@@ -39,6 +39,7 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
 export type SpinnerSlots = {
     root: NonNullable<Slot<'div'>>;
     spinner?: Slot<'span'>;
+    spinnerTail?: NonNullable<Slot<'span'>>;
     label?: Slot<typeof Label>;
 };
 

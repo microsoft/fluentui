@@ -36,6 +36,9 @@ describe('TimePicker', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange', 'onTimeChange'],
+      },
     },
   });
 
@@ -205,5 +208,18 @@ describe('TimePicker', () => {
         expect.objectContaining({ selectedTimeText: '111' }),
       );
     });
+  });
+
+  it('supports clearing its value', () => {
+    const { getByRole, getByText } = render(<TimePicker clearable clearIcon={{ children: 'CLEAR BUTTON' }} />);
+
+    const combobox = getByRole('combobox');
+    const clearButton = getByText('CLEAR BUTTON');
+
+    userEvent.type(combobox, '11:{enter}');
+    expect(combobox.getAttribute('value')).toBe('11:00 AM');
+
+    userEvent.click(clearButton);
+    expect(combobox.getAttribute('value')).toBe('');
   });
 });

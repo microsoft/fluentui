@@ -12,7 +12,11 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.@(ts|tsx)',
     ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
-    ...getPackageStoriesGlob({ packageName: '@fluentui/public-docsite-v9', callerPath: __dirname }),
+    ...getPackageStoriesGlob({
+      packageName: '@fluentui/public-docsite-v9',
+      callerPath: __dirname,
+      excludeStoriesInsertionFromPackages: ['@fluentui/react-storybook-addon', '@fluentui/theme-designer'],
+    }),
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],

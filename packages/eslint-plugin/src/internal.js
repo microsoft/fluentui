@@ -21,6 +21,17 @@ const __internal = {
    * `@nx/eslint-plugin` is necessary in order to register custom lint rules that live within tools/eslint-rules
    */
   plugins: shouldRegister ? ['@nx'] : [],
+  // extend this object with your rule overrides
+  overrides: {
+    react: shouldRegister
+      ? {
+          files: ['**/src/**/*.{ts,tsx}'],
+          rules: {
+            '@nx/workspace-consistent-callback-type': 'error',
+          },
+        }
+      : null,
+  },
 };
 
 exports.__internal = __internal;

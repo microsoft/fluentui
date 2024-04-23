@@ -207,7 +207,7 @@ const useLabelStyles = makeStyles({
 /**
  * Apply styling to the Radio slots based on the state
  */
-export const useRadioStyles_unstable = (state: RadioState) => {
+export const useRadioStyles_unstable = (state: RadioState): RadioState => {
   const { labelPosition } = state;
 
   const rootBaseClassName = useRootBaseClassName();
@@ -245,4 +245,6 @@ export const useRadioStyles_unstable = (state: RadioState) => {
       state.label.className,
     );
   }
+
+  return state;
 };

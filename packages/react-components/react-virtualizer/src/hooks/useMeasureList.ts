@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRef } from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export interface IndexedResizeCallbackElement {
@@ -20,17 +21,32 @@ export function useMeasureList<
   const refArray = React.useRef<Array<TElement | undefined | null>>([]);
   const { targetDocument } = useFluent();
 
+  // This lets us trigger updates when a size change occurs.
+  const sizeUpdateCount = useRef(0);
+
   // the handler for resize observer
   const handleIndexUpdate = React.useCallback(
     (index: number) => {
+      let isChanged = false;
       const boundClientRect = refArray.current[index]?.getBoundingClientRect();
       const containerWidth = boundClientRect?.width;
+      if (containerWidth !== widthArray.current[currentIndex + index]) {
+        isChanged = true;
+      }
       widthArray.current[currentIndex + index] = containerWidth || defaultItemSize;
 
       const containerHeight = boundClientRect?.height;
+
+      if (containerHeight !== heightArray.current[currentIndex + index]) {
+        isChanged = true;
+      }
       heightArray.current[currentIndex + index] = containerHeight || defaultItemSize;
+
+      if (isChanged) {
+        sizeUpdateCount.current = sizeUpdateCount.current + 1;
+      }
     },
-    [currentIndex, defaultItemSize],
+    [currentIndex, defaultItemSize, sizeUpdateCount],
   );
 
   const handleElementResizeCallback = (entries: ResizeObserverEntry[]) => {
@@ -90,7 +106,7 @@ export function useMeasureList<
     return () => _resizeObserver.current?.disconnect();
   }, [resizeObserver]);
 
-  return { widthArray, heightArray, createIndexedRef, refArray };
+  return { widthArray, heightArray, createIndexedRef, refArray, sizeUpdateCount: sizeUpdateCount.current };
 }
 
 /**

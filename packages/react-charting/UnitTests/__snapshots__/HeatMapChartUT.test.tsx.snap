@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`_createNewDataSet Should return proper data set for default axis type 1`] = `
+Object {
+  "dataSet": Object {
+    "": Array [
+      Object {
+        "descriptionMessage": "a good day to start with in Texas with best air quality",
+        "legend": "Execllent (0-200)",
+        "ratio": Array [
+          50,
+          2391,
+        ],
+        "rectText": 50,
+        "value": 50,
+        "x": "Test1",
+        "y": "p1",
+      },
+      Object {
+        "descriptionMessage": "Due to unexpected heavy rain",
+        "legend": "Execllent (0-200)",
+        "ratio": Array [
+          25,
+          2479,
+        ],
+        "rectText": 25,
+        "value": 25,
+        "x": "test2",
+        "y": "p2",
+      },
+    ],
+  },
+  "xAxisPoints": Array [
+    "",
+  ],
+  "yAxisPoints": Array [
+    "",
+  ],
+}
+`;
+
+exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint in IST timezone 1`] = `2020-04-03T15:00:00.000Z`;
+
+exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint in IST timezone 2`] = `2020-03-03T15:00:00.000Z`;
+
+exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint in Pacific timezone 1`] = `2020-04-03T15:00:00.000Z`;
+
+exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint in Pacific timezone 2`] = `2020-03-03T15:00:00.000Z`;
+
+exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint in UTC timezone 1`] = `2020-04-03T15:00:00.000Z`;
+
+exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint in UTC timezone 2`] = `2020-03-03T15:00:00.000Z`;
+
+exports[`Timezone related test cases Should return proper aria-label for date xPoint and yPoint in IST timezone 1`] = `"Tue Mar 03 2020 20:30:00 GMT+0530 (India Standard Time), Fri Apr 03 2020 20:30:00 GMT+0530 (India Standard Time). legend1, 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for date xPoint and yPoint in Pacific timezone 1`] = `"Tue Mar 03 2020 07:00:00 GMT-0800 (Pacific Standard Time), Fri Apr 03 2020 08:00:00 GMT-0700 (Pacific Daylight Time). legend1, 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for date xPoint and yPoint in UTC timezone 1`] = `"Tue Mar 03 2020 15:00:00 GMT+0000 (Coordinated Universal Time), Fri Apr 03 2020 15:00:00 GMT+0000 (Coordinated Universal Time). legend1, 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for date xPoint and yPoint without legend in IST timezone 1`] = `"Tue Mar 03 2020 20:30:00 GMT+0530 (India Standard Time), Fri Apr 03 2020 20:30:00 GMT+0530 (India Standard Time). , 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for date xPoint and yPoint without legend in Pacific timezone 1`] = `"Tue Mar 03 2020 07:00:00 GMT-0800 (Pacific Standard Time), Fri Apr 03 2020 08:00:00 GMT-0700 (Pacific Daylight Time). , 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for date xPoint and yPoint without legend in UTC timezone 1`] = `"Tue Mar 03 2020 15:00:00 GMT+0000 (Coordinated Universal Time), Fri Apr 03 2020 15:00:00 GMT+0000 (Coordinated Universal Time). , 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for numeric xPoint and date yPoint in IST timezone 1`] = `"100, Fri Apr 03 2020 20:30:00 GMT+0530 (India Standard Time). , 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for numeric xPoint and date yPoint in Pacific timezone 1`] = `"100, Fri Apr 03 2020 08:00:00 GMT-0700 (Pacific Daylight Time). , 100."`;
+
+exports[`Timezone related test cases Should return proper aria-label for numeric xPoint and date yPoint in UTC timezone 1`] = `"100, Fri Apr 03 2020 15:00:00 GMT+0000 (Coordinated Universal Time). , 100."`;
+
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type in IST timezone 1`] = `"Apr/03"`;
+
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type in IST timezone 2`] = `"Mar/03"`;
+
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type in Pacific timezone 1`] = `"Apr/03"`;
+
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type in Pacific timezone 2`] = `"Mar/03"`;
+
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type in UTC timezone 1`] = `"Apr/03"`;
+
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type in UTC timezone 2`] = `"Mar/03"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for date point in IST timezone 1`] = `"Jan/02"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for date point in IST timezone 2`] = `"Jan/02/1970"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for date point in Pacific timezone 1`] = `"Jan/01"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for date point in Pacific timezone 2`] = `"Jan/01/1970"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for date point in UTC timezone 1`] = `"Jan/02"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for date point in UTC timezone 2`] = `"Jan/02/1970"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for empty point in IST timezone 1`] = `"Jan/01"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for empty point in Pacific timezone 1`] = `"Dec/31"`;
+
+exports[`Timezone related test cases Should return proper string formatted date for empty point in UTC timezone 1`] = `"Jan/01"`;
+
+exports[`Timezone related test cases Should return proper xAxis data points for date points in IST timezone 1`] = `"Jan/01"`;
+
+exports[`Timezone related test cases Should return proper xAxis data points for date points in Pacific timezone 1`] = `"Dec/31"`;
+
+exports[`Timezone related test cases Should return proper xAxis data points for date points in UTC timezone 1`] = `"Jan/01"`;
+
+exports[`Timezone related test cases Should return proper xIndex for date xPoint in IST timezone 1`] = `"1585926000000"`;
+
+exports[`Timezone related test cases Should return proper xIndex for date xPoint in IST timezone 2`] = `"1583247600000"`;
+
+exports[`Timezone related test cases Should return proper xIndex for date xPoint in Pacific timezone 1`] = `"1585926000000"`;
+
+exports[`Timezone related test cases Should return proper xIndex for date xPoint in Pacific timezone 2`] = `"1583247600000"`;
+
+exports[`Timezone related test cases Should return proper xIndex for date xPoint in UTC timezone 1`] = `"1585926000000"`;
+
+exports[`Timezone related test cases Should return proper xIndex for date xPoint in UTC timezone 2`] = `"1583247600000"`;
+
+exports[`Timezone related test cases Should return proper yAxis data points for date points in IST timezone 1`] = `"Jan/02"`;
+
+exports[`Timezone related test cases Should return proper yAxis data points for date points in Pacific timezone 1`] = `"Jan/01"`;
+
+exports[`Timezone related test cases Should return proper yAxis data points for date points in UTC timezone 1`] = `"Jan/02"`;

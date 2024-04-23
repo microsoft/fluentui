@@ -279,7 +279,6 @@ const useActiveIndicatorStyles = makeStyles({
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       content: '""',
       position: 'absolute',
-      zIndex: 1,
     },
   },
   selected: {

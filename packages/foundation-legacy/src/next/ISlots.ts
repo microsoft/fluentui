@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleSet } from '@fluentui/style-utilities';
+import { IStyleSetBase } from '@fluentui/style-utilities';
 import { ISlottableProps, ValidProps } from '../ISlots';
 import { IComponentOptions } from './IComponent';
 
@@ -9,7 +9,7 @@ import { IComponentOptions } from './IComponent';
 export interface IFoundationComponent<
   TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
   TTokens,
-  TStyleSet extends IStyleSet<TStyleSet>,
+  TStyleSet extends IStyleSetBase,
   TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
   TStatics = {},

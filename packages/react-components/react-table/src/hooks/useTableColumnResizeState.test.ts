@@ -167,6 +167,78 @@ describe('useTableColumnResizeState', () => {
     });
   });
 
+  describe('autoFitColumns: false', () => {
+    const init = (targetWidth: number) => {
+      const columnDefinition = [
+        createTableColumn({ columnId: 1 }),
+        createTableColumn({ columnId: 2 }),
+        createTableColumn({ columnId: 3 }),
+      ];
+      const { result } = renderHook(() =>
+        useTableColumnResizeState(columnDefinition, targetWidth, { autoFitColumns: false }),
+      );
+      return result;
+    };
+
+    it("doesn't shrink", () => {
+      const state = init(300);
+      expect(state.current.getColumns()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "columnId": 1,
+            "idealWidth": 150,
+            "minWidth": 100,
+            "padding": 16,
+            "width": 150,
+          },
+          Object {
+            "columnId": 2,
+            "idealWidth": 150,
+            "minWidth": 100,
+            "padding": 16,
+            "width": 150,
+          },
+          Object {
+            "columnId": 3,
+            "idealWidth": 150,
+            "minWidth": 100,
+            "padding": 16,
+            "width": 150,
+          },
+        ]
+      `);
+    });
+
+    it("doesn't expand", () => {
+      const state = init(800);
+      expect(state.current.getColumns()).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "columnId": 1,
+            "idealWidth": 150,
+            "minWidth": 100,
+            "padding": 16,
+            "width": 150,
+          },
+          Object {
+            "columnId": 2,
+            "idealWidth": 150,
+            "minWidth": 100,
+            "padding": 16,
+            "width": 150,
+          },
+          Object {
+            "columnId": 3,
+            "idealWidth": 150,
+            "minWidth": 100,
+            "padding": 16,
+            "width": 150,
+          },
+        ]
+      `);
+    });
+  });
+
   describe('controlled state - columnSizingOptions', () => {
     const columnSizingOptions: TableColumnSizingOptions = {
       1: {

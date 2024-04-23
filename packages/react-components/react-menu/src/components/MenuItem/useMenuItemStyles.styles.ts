@@ -55,6 +55,16 @@ const useRootBaseStyles = makeResetStyles({
     color: tokens.colorNeutralForeground2Pressed,
   },
 
+  // High contrast styles
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'Canvas',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+    },
+    ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
+  },
+
   userSelect: 'none',
   ...createFocusOutlineStyle(),
 });
@@ -137,6 +147,11 @@ const useStyles = makeStyles({
       },
     },
 
+    ':hover:active': {
+      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackground1,
+    },
+
     ':focus': {
       color: tokens.colorNeutralForegroundDisabled,
     },
@@ -145,19 +160,22 @@ const useStyles = makeStyles({
       color: 'GrayText',
       ':hover': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.icon}`]: {
           color: 'GrayText',
+          backgroundColor: 'Canvas',
         },
       },
       ':focus': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
       },
     },
   },
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles_unstable = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();
@@ -198,5 +216,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
       state.submenuIndicator.className,
     );
   }
+
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
+
+  return state;
 };

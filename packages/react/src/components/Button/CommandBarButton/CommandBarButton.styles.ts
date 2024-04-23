@@ -237,9 +237,6 @@ export const getStyles = memoizeFunction(
 
       menuIcon: {
         color: p.neutralSecondary,
-        [HighContrastSelector]: {
-          color: 'GrayText',
-        },
       },
     };
 

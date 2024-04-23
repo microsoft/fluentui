@@ -12,15 +12,19 @@ import type { ComboboxBaseState } from './ComboboxBase.types';
 import { Listbox } from '../Listbox';
 import { ListboxProps } from '../Listbox';
 
-export type UseTriggerSlotState = Pick<ComboboxBaseState, 'multiselect'>;
+export type UseListboxSlotState = Pick<ComboboxBaseState, 'multiselect'>;
 
 type UseListboxSlotOptions = {
-  state: ComboboxBaseState;
-  triggerRef: React.RefObject<HTMLInputElement> | React.RefObject<HTMLButtonElement>;
+  state: UseListboxSlotState;
+  triggerRef:
+    | React.RefObject<HTMLInputElement>
+    | React.RefObject<HTMLButtonElement>
+    | React.RefObject<HTMLButtonElement | HTMLInputElement>;
   defaultProps?: Partial<ListboxProps>;
 };
 
 /**
+ * @internal
  * @returns  listbox slot with desired behaviour and props
  */
 export function useListboxSlot(
