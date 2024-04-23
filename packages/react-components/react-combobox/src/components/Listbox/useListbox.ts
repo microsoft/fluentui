@@ -90,24 +90,29 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
-    // set initial active descendent upon focus, in the absence of a parent context controlling the state
-    if (!hasParentActiveDescendantContext) {
-      const activeDescendent = activeDescendantController.active();
-      if (activeDescendent) {
-        activeDescendantController.focus(activeDescendent);
-        return;
-      } else {
-        const selectedOptionValues = selectedOptions ?? [];
-        const firstSelectedOption = optionCollection.getOptionsMatchingValue(value =>
-          selectedOptionValues.includes(value),
-        )[0];
-        if (firstSelectedOption) {
-          activeDescendantController.focus(firstSelectedOption.id);
-          return;
-        }
-      }
-      activeDescendantController.first();
+    if (hasParentActiveDescendantContext) {
+      return;
     }
+
+    // set initial active descendent upon focus, in the absence of a parent context controlling the state
+    const activeDescendent = activeDescendantController.active();
+    if (activeDescendent) {
+      activeDescendantController.focus(activeDescendent);
+      return;
+    }
+
+    // if there is a selected option, focus it and make it active
+    const selectedOptionValues = selectedOptions ?? [];
+    const firstSelectedOption = optionCollection.getOptionsMatchingValue(value =>
+      selectedOptionValues.includes(value),
+    )[0];
+    if (firstSelectedOption) {
+      activeDescendantController.focus(firstSelectedOption.id);
+      return;
+    }
+
+    // if there is no active descendent and no selected options, set the first option as active
+    activeDescendantController.first();
   };
 
   // get state from parent combobox, if it exists
