@@ -1,5 +1,5 @@
 export const scrollIntoView = (target: HTMLElement | null | undefined) => {
-  if (!target || !parent) {
+  if (!target) {
     return;
   }
 
