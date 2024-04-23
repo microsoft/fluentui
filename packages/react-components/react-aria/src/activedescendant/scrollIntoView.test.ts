@@ -15,6 +15,7 @@ describe('scrollIntoView', () => {
       scrollTop: 0,
       offsetParent: null,
       scrollTo: mockAncestorScrollTo,
+      contains: jest.fn().mockReturnValue(false),
     };
     listboxParent = {
       offsetTop: 20,
@@ -22,6 +23,7 @@ describe('scrollIntoView', () => {
       scrollHeight: 150,
       offsetParent: listboxGrandParent as Element,
       parentElement: listboxGrandParent as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
     listbox = {
       offsetTop: 40,
@@ -31,6 +33,7 @@ describe('scrollIntoView', () => {
       offsetParent: listboxGrandParent as Element,
       parentElement: listboxParent as HTMLElement,
       scrollTo: mockListboxScrollTo,
+      contains: jest.fn().mockReturnValue(false),
     };
     mockListboxScrollTo.mockClear();
     mockAncestorScrollTo.mockClear();
@@ -51,6 +54,7 @@ describe('scrollIntoView', () => {
       offsetTop: 0,
       offsetParent: listbox as HTMLElement,
       parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
 
     scrollIntoView(option as HTMLElement);
@@ -70,6 +74,7 @@ describe('scrollIntoView', () => {
       offsetTop: 0,
       offsetParent: listbox as HTMLElement,
       parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
 
     jest
@@ -92,6 +97,7 @@ describe('scrollIntoView', () => {
       offsetTop: 90,
       offsetParent: listbox as HTMLElement,
       parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
 
     scrollIntoView(option as HTMLElement);
@@ -111,6 +117,7 @@ describe('scrollIntoView', () => {
       offsetTop: 90,
       offsetParent: listbox as HTMLElement,
       parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
 
     jest
@@ -143,6 +150,7 @@ describe('scrollIntoView', () => {
       offsetTop: 0,
       offsetParent: listboxGrandParent as HTMLElement,
       parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
 
     scrollIntoView(option as HTMLElement);
@@ -172,6 +180,7 @@ describe('scrollIntoView', () => {
       offsetTop: 160,
       offsetParent: listboxGrandParent as HTMLElement,
       parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
     };
 
     scrollIntoView(option as HTMLElement);
