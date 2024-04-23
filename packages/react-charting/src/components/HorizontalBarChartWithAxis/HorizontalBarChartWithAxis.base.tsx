@@ -448,7 +448,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
           y={yBarScale(point.y) - this._barHeight / 2}
-          data-is-focusable={true}
+          data-is-focusable={shouldHighlight}
           width={
             this._isRtl
               ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)

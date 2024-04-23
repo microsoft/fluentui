@@ -821,7 +821,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
-          'data-is-focusable': !this.props.hideTooltip,
+          'data-is-focusable': !this.props.hideTooltip && shouldHighlight,
           'aria-label': this._getAriaLabel(singleChartData, point),
           onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),

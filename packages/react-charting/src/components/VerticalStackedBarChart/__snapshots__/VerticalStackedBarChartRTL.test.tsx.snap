@@ -612,20 +612,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -710,20 +696,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -812,20 +784,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -910,20 +868,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1588,20 +1532,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1686,20 +1616,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1788,20 +1704,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -1886,20 +1788,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2564,20 +2452,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -2662,20 +2536,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2764,20 +2624,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -2862,20 +2708,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3461,20 +3293,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="0"
@@ -3559,20 +3377,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -10234,20 +10038,6 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -10332,20 +10122,6 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -10910,20 +10686,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      outline-color: #605e5c;
-                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="0"
@@ -11008,20 +10770,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      outline-color: #605e5c;
-                    }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       outline-color: #605e5c;
                     }
                 data-is-focusable="true"
@@ -11583,20 +11331,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      outline-color: #605e5c;
-                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="0"
@@ -11681,20 +11415,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      outline-color: #605e5c;
-                    }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       outline-color: #605e5c;
                     }
                 data-is-focusable="true"
@@ -12280,20 +12000,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      outline-color: #605e5c;
-                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="0"
@@ -12380,20 +12086,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      outline-color: #605e5c;
-                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="-1"
@@ -12478,20 +12170,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                      outline-color: #605e5c;
-                    }
-                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                      border: 1px solid transparent;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
-                      outline: 1px solid #605e5c;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       outline-color: #605e5c;
                     }
                 data-is-focusable="true"

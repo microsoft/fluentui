@@ -366,7 +366,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
             width={this._barWidth}
             x={xPoint}
             y={yPoint}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={
+              !this.props.hideTooltip && (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
+            }
             opacity={this._getOpacity(pointData.legend)}
             ref={(e: SVGRectElement | null) => {
               this._refCallback(e!, pointData.legend, refIndexNumber);

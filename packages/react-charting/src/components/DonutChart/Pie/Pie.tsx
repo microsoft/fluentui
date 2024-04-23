@@ -76,13 +76,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       <g transform={translate}>
         {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], this.props.href))}
         {this.props.valueInsideDonut && (
-          <text
-            y={5}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className={classNames.insideDonutString}
-            data-is-focusable={true}
-          >
+          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classNames.insideDonutString}>
             {this.props.valueInsideDonut}
           </text>
         )}

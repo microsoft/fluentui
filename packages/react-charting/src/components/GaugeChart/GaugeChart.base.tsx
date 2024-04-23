@@ -254,6 +254,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     onBlur={this._handleBlur}
                     onMouseEnter={e => this._handleMouseOver(e, segment.legend)}
                     onMouseMove={e => this._handleMouseOver(e, segment.legend)}
+                    data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
                   />
                 );
               })}

@@ -306,7 +306,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
             key={id}
             role="img"
             aria-label={this._getAriaLabel(dataPointObject)}
-            data-is-focusable={true}
+            data-is-focusable={this._legendHighlighted(dataPointObject.legend) || this._noLegendHighlighted()}
             fillOpacity={this._getOpacity(dataPointObject.legend)}
             transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
             ref={(gElement: SVGGElement) => {
