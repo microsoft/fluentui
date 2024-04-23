@@ -16,6 +16,7 @@ import {
   mergeClasses,
   Option,
   shorthands,
+  tokens,
 } from '@fluentui/react-components';
 import type { ListboxProps } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
@@ -32,12 +33,28 @@ const useStyles = makeStyles({
   menuButton: {
     justifyContent: 'space-between',
   },
+  listboxWrapper: {
+    maxHeight: '200px',
+    ...shorthands.overflow('hidden', 'auto'),
+  },
+  inputWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'sticky',
+    top: '-4px',
+    backgroundColor: tokens.colorNeutralBackground1,
+    zIndex: 1,
+    ...shorthands.margin('-4px', '-4px', '0px'),
+    ...shorthands.padding('4px', '4px', '8px'),
+  },
   input: {
     width: '100%',
-    marginBottom: '8px',
   },
   listbox: {
     width: '100%',
+  },
+  option: {
+    scrollMarginBlockStart: '48px',
   },
 });
 
@@ -51,7 +68,7 @@ export const InDialog = (props: Partial<ListboxProps>) => {
   const [filter, setFilter] = React.useState('');
 
   const filteredOptions = React.useMemo(() => {
-    return ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'].filter(
+    return ['Bear', 'Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Monkey', 'Parrot', 'Snake', 'Zebra'].filter(
       o => o.toLowerCase().includes(filter.toLowerCase()) || filter.toLowerCase().includes(o.toLowerCase()),
     );
   }, [filter]);
@@ -87,26 +104,28 @@ export const InDialog = (props: Partial<ListboxProps>) => {
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Select a pet</DialogTitle>
-            <DialogContent>
-              <Input
-                ref={inputRef}
-                className={styles.input}
-                placeholder="Filter pets"
-                aria-label="Filter pets"
-                autoFocus
-                value={filter}
-                onChange={(_, data) => setFilter(data.value)}
-                contentAfter={
-                  filter.length > 0 ? (
-                    <Button
-                      appearance="transparent"
-                      icon={<DismissRegular />}
-                      title="Clear filter"
-                      onClick={() => setFilter('')}
-                    />
-                  ) : undefined
-                }
-              />
+            <DialogContent className={styles.listboxWrapper}>
+              <div className={styles.inputWrapper}>
+                <Input
+                  ref={inputRef}
+                  className={styles.input}
+                  placeholder="Filter pets"
+                  aria-label="Filter pets"
+                  autoFocus
+                  value={filter}
+                  onChange={(_, data) => setFilter(data.value)}
+                  contentAfter={
+                    filter.length > 0 ? (
+                      <Button
+                        appearance="transparent"
+                        icon={<DismissRegular />}
+                        title="Clear filter"
+                        onClick={() => setFilter('')}
+                      />
+                    ) : undefined
+                  }
+                />
+              </div>
               <Listbox
                 {...props}
                 aria-label="Select a pet"
@@ -118,7 +137,7 @@ export const InDialog = (props: Partial<ListboxProps>) => {
                 }}
               >
                 {filteredOptions.map(option => (
-                  <Option key={option} disabled={option === 'Ferret'}>
+                  <Option key={option} className={styles.option} disabled={option === 'Ferret'}>
                     {option}
                   </Option>
                 ))}
