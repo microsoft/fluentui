@@ -34,7 +34,7 @@ export const useComboboxBaseState = (
     activeDescendantController,
     freeform = false,
     disabled = false,
-    onHighlightedOptionChange = null,
+    onActiveOptionChange = null,
   } = props;
 
   const optionCollection = useOptionCollection();
@@ -178,7 +178,7 @@ export const useComboboxBaseState = (
   const onActiveDescendantChange = useEventCallback((event: ActiveDescendantChangeEvent) => {
     const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
     const nextOption = optionCollection.getOptionById(event.detail.id);
-    onHighlightedOptionChange?.(event, { previousOption, nextOption });
+    onActiveOptionChange?.(event, { previousOption, nextOption });
   });
 
   return {

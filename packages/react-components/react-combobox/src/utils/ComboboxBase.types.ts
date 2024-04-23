@@ -158,5 +158,5 @@ export type HighlightedOptionChangeData = {
 };
 
 export type HighlightedOptionProps = {
-  onHighlightedOptionChange?: (event: ActiveDescendantChangeEvent, data: HighlightedOptionChangeData) => void;
+  onActiveOptionChange?: (event: ActiveDescendantChangeEvent, data: ActiveOptionChangeData) => void;
 };

@@ -13,8 +13,8 @@ const useStyles = makeStyles({
   },
 });
 
-export const HighlightedOptionChange = (props: Partial<ComboboxProps>) => {
-  const comboId = useId('combo-highlighted-option-change');
+export const ActiveOptionChange = (props: Partial<ComboboxProps>) => {
+  const comboId = useId('combo-active-option-change');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
 
@@ -22,11 +22,11 @@ export const HighlightedOptionChange = (props: Partial<ComboboxProps>) => {
 
   const eventCount = React.useRef(0);
 
-  const onHighlightedOptionChange = React.useCallback(
+  const onActiveOptionChange = React.useCallback(
     (e, data) => {
       eventCount.current++;
       setActiveOptionText(
-        `HighlightedOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
+        `ActiveOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
       );
     },
     [setActiveOptionText],
@@ -47,7 +47,7 @@ export const HighlightedOptionChange = (props: Partial<ComboboxProps>) => {
       <Combobox
         aria-labelledby={comboId}
         placeholder="Select an animal"
-        onHighlightedOptionChange={onHighlightedOptionChange}
+        onActiveOptionChange={onActiveOptionChange}
         {...props}
       >
         {options.map(option => (
@@ -60,11 +60,11 @@ export const HighlightedOptionChange = (props: Partial<ComboboxProps>) => {
   );
 };
 
-HighlightedOptionChange.parameters = {
+ActiveOptionChange.parameters = {
   docs: {
     description: {
       story:
-        'OnHighlightedOptionChange notifies the user when the active option in the Combobox was changed ' +
+        'OnActiveOptionChange notifies the user when the active option in the Combobox was changed ' +
         'by keyboard. To react on mouse hover events, use onMouseEnter on the invididual options.',
     },
   },

@@ -13,18 +13,18 @@ const useStyles = makeStyles({
   },
 });
 
-export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
+export const ActiveOptionChange = (props: Partial<DropdownProps>) => {
   const dropdownId = useId('dropdown');
   const styles = useStyles();
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
   const eventCount = React.useRef(0);
 
-  const onHighlightedOptionChange = React.useCallback(
+  const onActiveOptionChange = React.useCallback(
     (e, data) => {
       eventCount.current++;
       setActiveOptionText(
-        `HighlightedOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
+        `ActiveOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
       );
     },
     [setActiveOptionText],
@@ -41,7 +41,7 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
     <div className={styles.root}>
       {activeOptionText}
       <label id={dropdownId}>Schedule a meeting</label>
-      <Dropdown aria-labelledby={dropdownId} onHighlightedOptionChange={onHighlightedOptionChange} {...props}>
+      <Dropdown aria-labelledby={dropdownId} onActiveOptionChange={onActiveOptionChange} {...props}>
         <Option text="Katri Athokas" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}
@@ -87,12 +87,12 @@ export const HighlightedOptionChange = (props: Partial<DropdownProps>) => {
   );
 };
 
-HighlightedOptionChange.parameters = {
+ActiveOptionChange.parameters = {
   docs: {
     description: {
       story:
-        'OnHighlightedOptionChange event handler allows reacting on changing the active option from Dropdown Listbox ' +
-        'triggered by keyboard. To react on mouse hover events, use onMouseEnter event handler on the invididual options.',
-    },
+      'OnActiveOptionChange notifies the user when the active option in the Dropdown was changed ' +
+      'by keyboard. To react on mouse hover events, use onMouseEnter on the invididual options.',
+  },
   },
 };

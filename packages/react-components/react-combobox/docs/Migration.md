@@ -153,7 +153,7 @@ The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with
 | `onActiveSelectedIndexChange` |                                     |
 | `onBlur`                      | `onBlur`                            |
 | `onChange`                    | `onOptionSelect`\*                  |
-| `onHighlightedIndexChange`    |                                     |
+| `onHighlightedIndexChange`    |  `onActiveOptionChange`             |
 | `onOpenChange`                | `onOpenChange`                      |
 | `onSearchQueryChange`         | `onChange`\*                        |
 | `open`                        | `open`                              |
