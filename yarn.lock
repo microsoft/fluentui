@@ -24549,19 +24549,7 @@ webpack-cli@5.1.4:
     rechoir "^0.8.0"
     webpack-merge "^5.7.3"
 
-webpack-dev-middleware@*:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-7.2.1.tgz#2af00538b6e4eda05f5afdd5d711dbebc05958f7"
-  integrity sha512-hRLz+jPQXo999Nx9fXVdKlg/aehsw1ajA9skAneGmT03xwmyuhvF93p6HUKKbWhXdcERtGTzUCtIQr+2IQegrA==
-  dependencies:
-    colorette "^2.0.10"
-    memfs "^4.6.0"
-    mime-types "^2.1.31"
-    on-finished "^2.4.1"
-    range-parser "^1.2.1"
-    schema-utils "^4.0.0"
-
-webpack-dev-middleware@7.1.0:
+webpack-dev-middleware@*, webpack-dev-middleware@7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-7.1.0.tgz#7255e24924d4abda607a6ed76941ae35e6051a9f"
   integrity sha512-+RYhGOyviHkKdMi1aaT8WZBQW033YgyBgtQHF2kMWo3mYA9z7W2AjsyY/DIzvp2Bhzys4UgHXFsIyTiL5qRBVw==
