@@ -1660,27 +1660,6 @@ const curveLinear = "var(--curveLinear)";
 // @public
 export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "DelegatesARIALink" because one of its declarations is marked as @internal
-//
-// @public
-export class DelegatesARIALink {
-    ariaExpanded: 'true' | 'false' | string | null;
-}
-
-// Warning: (ae-forgotten-export) The symbol "ARIAGlobalStatesAndProperties" needs to be exported by the entry point index.d.ts
-//
-// @internal
-export interface DelegatesARIALink extends ARIAGlobalStatesAndProperties {
-}
-
-// @public
-export class DelegatesARIATextbox {
-}
-
-// @public (undocumented)
-export interface DelegatesARIATextbox extends ARIAGlobalStatesAndProperties {
-}
-
 // @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;

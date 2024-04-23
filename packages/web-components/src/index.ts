@@ -49,6 +49,7 @@ export {
 export {
   Button,
   ButtonAppearance,
+  ButtonFormTarget,
   ButtonShape,
   ButtonSize,
   ButtonType,
