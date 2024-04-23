@@ -1,14 +1,3 @@
-const getScrollContainerAndOffset = (
-  element: HTMLElement | null,
-  offsetTop: number = 0,
-): { scrollParent: HTMLElement | null; cumulativeOffsetTop: number } => {
-  if (element && element.offsetHeight >= element.scrollHeight) {
-    return getScrollContainerAndOffset(element.parentElement, offsetTop + element.offsetTop);
-  }
-
-  return { scrollParent: element, cumulativeOffsetTop: offsetTop - (element?.offsetTop ?? 0) };
-};
-
 const getIntValueOfComputedStyle = (computedStyle: string) => {
   return computedStyle ? parseInt(computedStyle, 10) : 0;
 };
@@ -27,18 +16,38 @@ const getScrollMargins = (element: HTMLElement) => {
   };
 };
 
-export const scrollIntoView = (target: HTMLElement | null | undefined, parent: HTMLElement | null | undefined) => {
+const findScrollableParent = (element: HTMLElement | null): HTMLElement | null => {
+  if (!element) {
+    return null;
+  }
+
+  if (element.scrollHeight > element.offsetHeight) {
+    return element;
+  }
+
+  return findScrollableParent(element.parentElement);
+};
+
+const getTotalOffsetTop = (element: HTMLElement, scrollParent: HTMLElement): number => {
+  if (!element || element === scrollParent) {
+    return 0;
+  }
+
+  return element.offsetTop + getTotalOffsetTop(element.offsetParent as HTMLElement, scrollParent);
+};
+
+export const scrollIntoView = (target: HTMLElement | null | undefined) => {
   if (!target || !parent) {
     return;
   }
 
-  const { scrollParent, cumulativeOffsetTop } = getScrollContainerAndOffset(parent);
-  if (scrollParent === null) {
+  const scrollParent = findScrollableParent(target.parentElement as HTMLElement);
+  if (!scrollParent) {
     return;
   }
 
-  const { offsetHeight, offsetTop: targetOffsetTop } = target;
-  const offsetTop = targetOffsetTop - cumulativeOffsetTop;
+  const { offsetHeight } = target;
+  const offsetTop = getTotalOffsetTop(target, scrollParent);
 
   const { scrollMarginTop, scrollMarginBottom } = getScrollMargins(target);
 
