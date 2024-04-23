@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "visual bug fix",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "edwardwang.94@gmail.com",
+  "dependentChangeType": "patch"
+}
