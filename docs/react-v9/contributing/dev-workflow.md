@@ -104,7 +104,7 @@ If you're not using a Microsoft linked account, someone from the team will have 
 
 ### Pulling someone elses branch
 
-Sometimes you might have to pull down someone else's branch to test or work on something. The process is similair to the initial upstream master:
+Sometimes you might have to pull down someone else's branch to test or work on something. Working with forks makes this process a little different than a standard git set up. The process is similar to the initial upstream master:
 
 ```
 git remote add yourFriendsRepo https://github.com/yourFriendsUserName/fluentui.git // creates a remote of your friends fork on your local machine
