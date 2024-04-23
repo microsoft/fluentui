@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.1)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.10.0..@fluentui/react-dialog_v9.10.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.58 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-aria to v9.10.5 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-portal to v9.4.21 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.0)
+
+Wed, 17 Apr 2024 21:53:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.9.16..@fluentui/react-dialog_v9.10.0)
+
+### Minor changes
+
+- fix: Dialog scrolls the whole surface on small screens ([PR #31026](https://github.com/microsoft/fluentui/pull/31026) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-aria to v9.10.4 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-portal to v9.4.20 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+
+### Patches
+
+- chore: refactor styles defined in makeResetStyles() to avoid shorthands.*() ([PR #30996](https://github.com/microsoft/fluentui/pull/30996) by olfedias@microsoft.com)
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
 
 ## [9.9.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.9.16)
 

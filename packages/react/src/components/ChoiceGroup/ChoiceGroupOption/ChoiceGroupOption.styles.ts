@@ -29,7 +29,7 @@ function getChoiceGroupFocusStyle(focusBorderColor: string, hasIconOrImage?: boo
     'is-inFocus',
     {
       selectors: {
-        [`.${IsFocusVisibleClassName} &`]: {
+        [`.${IsFocusVisibleClassName} &, :host(.${IsFocusVisibleClassName}) &`]: {
           position: 'relative',
           outline: 'transparent',
           selectors: {

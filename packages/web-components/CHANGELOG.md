@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 27 Mar 2024 07:26:49 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Apr 2024 07:28:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.6.1)
+
+Wed, 10 Apr 2024 07:28:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.6.0..@fluentui/web-components_v2.6.1)
+
+### Patches
+
+- fix(web-components): fix toolbar stealing focus when document has moved focus to another element ([PR #30997](https://github.com/microsoft/fluentui/pull/30997) by =)
 
 ## [2.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.6.0)
 

@@ -28,7 +28,12 @@ export const Grouped = () => {
         <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
                 {option}
               </Tag>
             ))}
@@ -41,7 +46,7 @@ export const Grouped = () => {
               {unSelectedManagers.map(option => (
                 <TagPickerOption
                   secondaryContent="Microsoft FTE"
-                  media={<Avatar name={option} color="colorful" />}
+                  media={<Avatar aria-hidden name={option} color="colorful" />}
                   value={option}
                   key={option}
                 >
@@ -55,7 +60,7 @@ export const Grouped = () => {
               {unSelectedDevs.map(option => (
                 <TagPickerOption
                   secondaryContent="Microsoft FTE"
-                  media={<Avatar name={option} color="colorful" />}
+                  media={<Avatar aria-hidden name={option} color="colorful" />}
                   value={option}
                   key={option}
                 >

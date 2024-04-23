@@ -133,6 +133,16 @@ storiesOf('Combobox Converged', module)
       </Combobox>
     </div>
   ))
+  .addStory('When rendering inline, it should render on top of relatively positioned elements', () => (
+    <div style={{ paddingBottom: '120px' }}>
+      <Combobox open inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>
+      <button style={{ position: 'relative' }}>sample button</button>
+    </div>
+  ))
   .addStory('Option with long content', () => (
     <div style={{ paddingBottom: '240px' }}>
       <Combobox open>

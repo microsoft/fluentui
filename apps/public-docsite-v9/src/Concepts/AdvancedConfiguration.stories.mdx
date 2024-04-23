@@ -34,7 +34,7 @@ You can check complete example at [CodeSandbox](https://codesandbox.io/s/fluentu
 
 ### Media Queries Sorting
 
-Fluent UI React v9 uses Griffel as CSS-in-JS to apply styles. To provide deterministic behavior, styles applied by Griffel [are sorted]((https://griffel.js.org/react/guides/atomic-css#lvfha-order-of-pseudo-classes), the same applies to media queries. Fluent UI does not provide an opinionated default to sort media queries as the order may vary depending on the specific needs of the application.
+Fluent UI React v9 uses Griffel as CSS-in-JS to apply styles. To provide deterministic behavior, styles applied by Griffel [are sorted](https://griffel.js.org/react/guides/atomic-css#lvfha-order-of-pseudo-classes), the same applies to media queries. Fluent UI does not provide an opinionated default to sort media queries as the order may vary depending on the specific needs of the application.
 
 To configure the sorting behavior, please pass `compareMediaQueries` function with the same signature as sort functions in e.g. `Array.prototype.sort`.
 
@@ -42,7 +42,7 @@ To configure the sorting behavior, please pass `compareMediaQueries` function wi
 import { createDOMRenderer } from '@griffel/react';
 
 const mediaQueryOrder = [
-  'only screen and (min-width: 1366px)',
+  'only screen and (min-width: 1024px)',
   'only screen and (min-width: 1366px)',
   'only screen and (min-width: 1920px)',
 ];
@@ -52,7 +52,7 @@ function sortMediaQueries(a, b) {
 }
 
 const renderer = createDOMRenderer(document, {
-  compareMediaQueries,
+  compareMediaQueries: sortMediaQueries,
 });
 ```
 

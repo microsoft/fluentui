@@ -15,7 +15,7 @@ import type { NavSubItemProps, NavSubItemState } from './NavSubItem.types';
  * @param ref - reference to root HTMLButtonElement of NavSubItem
  */
 export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HTMLAnchorElement>): NavSubItemState => {
-  const { content, onClick, value: subItemValue } = props;
+  const { onClick, value: subItemValue } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
@@ -42,15 +42,9 @@ export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HT
     };
   }, [onRegister, onUnregister, innerRef, subItemValue]);
 
-  const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
-
   return {
     components: {
       root: 'a',
-      content: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('a', {
@@ -62,7 +56,6 @@ export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HT
       }),
       { elementType: 'a' },
     ),
-    content: contentSlot,
     selected,
     value: subItemValue,
   };

@@ -43,8 +43,18 @@ export const Default = () => {
       {!feedbackSent ? (
         <div {...restoreFocusSourceAttribute} className={styles.feedback}>
           How was your experience completing this task?
-          <Button appearance="subtle" onClick={() => setFeedbackSent(true)} icon={<ThumbLikeRegular />} />
-          <Button appearance="subtle" onClick={() => setFeedbackSent(true)} icon={<ThumbDislikeRegular />} />
+          <Button
+            appearance="subtle"
+            onClick={() => setFeedbackSent(true)}
+            icon={<ThumbLikeRegular />}
+            aria-label="Like"
+          />
+          <Button
+            appearance="subtle"
+            onClick={() => setFeedbackSent(true)}
+            icon={<ThumbDislikeRegular />}
+            aria-label="Dislike"
+          />
         </div>
       ) : (
         <div>Thanks for submitting feedback!</div>

@@ -1,36 +1,44 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { typographyStyles, tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerInputSlots, TagPickerInputState } from './TagPickerInput.types';
-
-// TODO reuse input and icon styles from root
+import { tagPickerInputTokens } from '../../utils/tokens';
 
 export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots> = {
   root: 'fui-TagPickerInput',
 };
 
+const useBaseStyle = makeResetStyles({
+  backgroundColor: tokens.colorTransparentBackground,
+  color: tokens.colorNeutralForeground1,
+  fontFamily: tokens.fontFamilyBase,
+  boxSizing: 'border-box',
+
+  '&:focus': {
+    outlineStyle: 'none',
+  },
+  '&::placeholder': {
+    color: tokens.colorNeutralForeground4,
+    opacity: 1,
+  },
+  '&::after': {
+    visibility: 'hidden',
+    whiteSpace: 'pre-wrap',
+  },
+  ...shorthands.border('0'),
+  minWidth: '24px',
+  maxWidth: '100%',
+  // by default width is 0,
+  // it will be calculated based on the requirement of stretching the component to 100% width
+  // see setTagPickerInputStretchStyle method for more details
+  width: tagPickerInputTokens.width,
+  flexGrow: 1,
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
-    flexGrow: 1,
-    boxSizing: 'border-box',
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-
-    '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
-      opacity: 1,
-    },
-  },
-
   // size variants
   medium: {
     ...typographyStyles.body1,
@@ -58,10 +66,11 @@ const useStyles = makeStyles({
  * Apply styling to the TagPickerInput slots based on the state
  */
 export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): TagPickerInputState => {
+  const baseStyle = useBaseStyle();
   const styles = useStyles();
   state.root.className = mergeClasses(
     tagPickerInputClassNames.root,
-    styles.root,
+    baseStyle,
     styles[state.size],
     state.disabled && styles.disabled,
     state.root.className,

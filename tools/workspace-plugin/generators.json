@@ -89,6 +89,11 @@
       "factory": "./src/generators/bundle-size-configuration/generator",
       "schema": "./src/generators/bundle-size-configuration/schema.json",
       "description": "bundle-size-configuration generator"
+    },
+    "split-library-in-two": {
+      "factory": "./src/generators/split-library-in-two/generator",
+      "schema": "./src/generators/split-library-in-two/schema.json",
+      "description": "split-library-in-two generator"
     }
   }
 }

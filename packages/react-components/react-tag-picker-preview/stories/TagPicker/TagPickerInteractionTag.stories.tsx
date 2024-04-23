@@ -34,7 +34,7 @@ export const InteractionTagExample = () => {
           <TagPickerGroup>
             {selectedOptions.map(option => (
               <InteractionTag value={option} key={option}>
-                <InteractionTagPrimary media={<Avatar name={option} color="colorful" />} hasSecondaryAction>
+                <InteractionTagPrimary media={<Avatar aria-hidden name={option} color="colorful" />} hasSecondaryAction>
                   {option}
                 </InteractionTagPrimary>
                 <InteractionTagSecondary aria-label="remove" />
@@ -49,7 +49,7 @@ export const InteractionTagExample = () => {
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
-                media={<Avatar name={option} color="colorful" />}
+                media={<Avatar aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}
               >

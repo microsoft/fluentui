@@ -237,6 +237,11 @@ export interface ILegendsProps {
    * This prop is used for singleSelect scenarios.
    */
   defaultSelectedLegend?: string;
+
+  /**
+   * The shape for the legend.
+   */
+  shape?: LegendShape;
 }
 
 /**

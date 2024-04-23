@@ -23,7 +23,7 @@ variables:
   deployUrl: 'https://$(deployHost)/$(deployBasePath)'
 
   # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  azureSubscription: Azure PR deploy
+  azureSubscription: Azure PR deploy - NEW
   azureStorage: fluentuipr
 
   ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:

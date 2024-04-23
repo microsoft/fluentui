@@ -34,12 +34,17 @@ export const ExpandIcon = () => {
         <TagPickerControl expandIcon={<ArrowDownFilled />}>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput />
+          <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
           {options
@@ -47,7 +52,7 @@ export const ExpandIcon = () => {
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
-                media={<Avatar name={option} color="colorful" />}
+                media={<Avatar aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}
               >

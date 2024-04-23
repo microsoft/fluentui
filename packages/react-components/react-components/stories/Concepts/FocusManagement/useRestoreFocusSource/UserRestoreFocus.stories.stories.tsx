@@ -63,11 +63,13 @@ export const UserRestoreFocus = () => {
               appearance="subtle"
               onClick={() => setExperienceFeedbackSent(true)}
               icon={<ThumbLikeRegular />}
+              aria-label="Like"
             />
             <Button
               appearance="subtle"
               onClick={() => setExperienceFeedbackSent(true)}
               icon={<ThumbDislikeRegular />}
+              aria-label="Dislike"
             />
           </div>
         </>
@@ -78,8 +80,18 @@ export const UserRestoreFocus = () => {
         <>
           <div {...restoreFocusSourceAttribute} className={styles.feedback}>
             Was your message delivered successfully?
-            <Button appearance="subtle" onClick={() => setDeliveryFeedbackSent(true)} icon={<ThumbLikeRegular />} />
-            <Button appearance="subtle" onClick={() => setDeliveryFeedbackSent(true)} icon={<ThumbDislikeRegular />} />
+            <Button
+              appearance="subtle"
+              onClick={() => setDeliveryFeedbackSent(true)}
+              icon={<ThumbLikeRegular />}
+              aria-label="Like"
+            />
+            <Button
+              appearance="subtle"
+              onClick={() => setDeliveryFeedbackSent(true)}
+              icon={<ThumbDislikeRegular />}
+              aria-label="Dislike"
+            />
           </div>
         </>
       ) : (

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {
-  dispatchGroupperMoveFocusEvent,
-  dispatchMoverMoveFocusEvent,
+  GroupperMoveFocusEvent,
+  MoverMoveFocusEvent,
+  GroupperMoveFocusActions,
+  MoverKeys,
   TabsterDOMAttribute,
-  TabsterTypes,
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
@@ -115,16 +116,16 @@ export const useListItem_unstable = (
           // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
           // arrowNavigationAttributes handles it and prevents it from bubbling here.
           case ArrowLeft:
-            dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
+            e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
             break;
 
           case ArrowDown:
           case ArrowUp:
             e.preventDefault();
             // Press ESC on the original target to get focus to the parent group (List)
-            dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
+            e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape }));
             // Now dispatch the original key to move up or down in the list
-            dispatchMoverMoveFocusEvent(e.currentTarget as HTMLElement, TabsterTypes.MoverKeys[e.key]);
+            e.currentTarget.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys[e.key] }));
         }
         return;
       }
@@ -151,7 +152,7 @@ export const useListItem_unstable = (
 
       case ArrowRight:
         if (navigationMode === 'composite') {
-          dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Enter);
+          e.target.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Enter }));
         }
 
         break;

@@ -12,7 +12,7 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
 
-    ...shorthands.border('3px', 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.padding('10px'),
 
@@ -20,6 +20,7 @@ const useClasses = makeStyles({
   },
   item: {
     backgroundColor: tokens.colorBrandBackground,
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorTransparentStroke),
     ...shorthands.borderRadius('50%'),
 
     width: '100px',
@@ -34,7 +35,7 @@ const useClasses = makeStyles({
 
     marginTop: '20px',
 
-    ...shorthands.border('3px', 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.padding('10px'),
   },

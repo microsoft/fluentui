@@ -56,6 +56,8 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
       element.classList.add(...classesToApply);
       element.setAttribute('dir', dir);
+      element.setAttribute('data-portal-node', 'true');
+
       focusVisibleRef.current = element;
 
       return () => {
@@ -77,6 +79,8 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
       // Force replace all classes
       element.className = className;
       element.setAttribute('dir', dir);
+      element.setAttribute('data-portal-node', 'true');
+
       focusVisibleRef.current = element;
     }, [className, dir, element, focusVisibleRef]);
   }

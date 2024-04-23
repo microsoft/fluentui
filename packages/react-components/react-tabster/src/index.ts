@@ -32,12 +32,38 @@ export type {
 } from './focus/index';
 
 export { applyFocusVisiblePolyfill } from './focus/index';
-import { Types as TabsterTypes, dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent } from 'tabster';
+import { Types, Events, dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent } from 'tabster';
 
-export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
+export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
 
 export type { KeyborgFocusInEvent } from 'keyborg';
 export { KEYBORG_FOCUSIN } from 'keyborg';
 
-// @internal (undocumented)
-export { TabsterTypes, dispatchGroupperMoveFocusEvent, dispatchMoverMoveFocusEvent };
+// WARNING! ATTENTION! Tabster.Types was exported from here by mistake. To avoid breaking changes,
+// we are putting a snapshot of Tabster.Types@6.0.1 and marking the entire export as deprecated.
+import * as TabsterTypes6_0_1_DoNotUse from './tabster-types-6.0.1-do-not-use';
+export {
+  /** @deprecated (Do not use! Exposed by mistake and will be removed in the next major version.)  */
+  TabsterTypes6_0_1_DoNotUse as TabsterTypes,
+  /** @deprecated Use element.dispatchEvent(new GroupperMoveFocusEvent({ action: GroupperMoveFocusActions.Escape })) */
+  // eslint-disable-next-line deprecation/deprecation
+  dispatchGroupperMoveFocusEvent,
+  /** @deprecated Use element.dispatchEvent(new MoverMoveFocusEvent({ key: MoverKeys.ArrowDown })) */
+  // eslint-disable-next-line deprecation/deprecation
+  dispatchMoverMoveFocusEvent,
+};
+
+/**
+ * For all exports below, we don't do wildcard exports to keep Tabster API flexible. We export only required
+ * parts when they are needed.
+ */
+
+export const MoverMoveFocusEventName = Events.MoverMoveFocusEventName;
+export const MoverMoveFocusEvent: typeof Events.MoverMoveFocusEvent = Events.MoverMoveFocusEvent;
+export type MoverMoveFocusEventDetail = Events.MoverMoveFocusEventDetail;
+export const MoverKeys = Types.MoverKeys;
+
+export const GroupperMoveFocusEventName = Events.GroupperMoveFocusEventName;
+export const GroupperMoveFocusEvent: typeof Events.GroupperMoveFocusEvent = Events.GroupperMoveFocusEvent;
+export type GroupperMoveFocusEventDetail = Events.GroupperMoveFocusEventDetail;
+export const GroupperMoveFocusActions = Types.GroupperMoveFocusActions;

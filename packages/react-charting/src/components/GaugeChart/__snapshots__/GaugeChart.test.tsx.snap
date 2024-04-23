@@ -264,6 +264,20 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -350,6 +364,20 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -434,6 +462,20 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1045,6 +1087,20 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1136,6 +1192,20 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1225,6 +1295,20 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1772,6 +1856,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1863,6 +1961,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -1952,6 +2064,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2320,6 +2446,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #a19f9d;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #a19f9d;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #a19f9d;
+                          }
                       data-is-focusable={true}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -2411,6 +2551,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #a19f9d;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #a19f9d;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #a19f9d;
+                          }
                       data-is-focusable={true}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -2500,6 +2654,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #a19f9d;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #a19f9d;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #a19f9d;
                           }
                       data-is-focusable={true}
@@ -2856,6 +3024,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -2947,6 +3129,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3036,6 +3232,20 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -3371,6 +3581,20 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3460,6 +3684,20 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -3796,6 +4034,20 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3885,6 +4137,20 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4253,6 +4519,20 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4344,6 +4624,20 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4433,6 +4727,20 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4788,6 +5096,20 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4879,6 +5201,20 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4968,6 +5304,20 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -5347,6 +5697,20 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5438,6 +5802,20 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -5527,6 +5905,20 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}

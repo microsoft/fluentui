@@ -3,6 +3,7 @@ import {
   ExtractSlotProps,
   Slot,
   getIntrinsicElementProps,
+  isResolvedShorthand,
   slot,
   useEventCallback,
   useMergedRefs,
@@ -27,9 +28,10 @@ export const useTagPickerControl_unstable = (
   props: TagPickerControlProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerControlState => {
-  const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef) as React.RefObject<HTMLDivElement>;
-  const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
@@ -38,11 +40,6 @@ export const useTagPickerControl_unstable = (
 
   const innerRef = React.useRef<HTMLDivElement>(null);
 
-  const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target !== triggerRef.current) {
-      event.preventDefault();
-    }
-  });
   const secondaryAction = slot.optional(props.secondaryAction, {
     elementType: 'span',
   });
@@ -50,6 +47,7 @@ export const useTagPickerControl_unstable = (
   if (secondaryAction) {
     secondaryAction.ref = secondaryActionRef;
   }
+
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: true,
     defaultProps: {
@@ -59,6 +57,24 @@ export const useTagPickerControl_unstable = (
     },
     elementType: 'span',
   });
+
+  // mousedown instead of click as by preventing default of mousedown we're
+  // avoiding losing focus on trigger
+  const handleExpandIconMouseDown: React.MouseEventHandler<HTMLSpanElement> = useEventCallback(event => {
+    if (isResolvedShorthand(props.expandIcon)) {
+      props.expandIcon.onMouseDown?.(event);
+    }
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+    event.preventDefault();
+    setOpen(event, !open);
+    triggerRef.current?.focus();
+  });
+  if (expandIcon) {
+    expandIcon.onMouseDown = handleExpandIconMouseDown;
+  }
+
   const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
     innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
   });
@@ -77,7 +93,6 @@ export const useTagPickerControl_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef, innerRef),
-        onMouseDown: handleMouseDown,
         ...props,
       }),
       { elementType: 'div' },

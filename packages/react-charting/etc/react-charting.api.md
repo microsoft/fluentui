@@ -810,6 +810,7 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    shape?: LegendShape;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
@@ -1120,6 +1121,7 @@ export interface ISankeyChartProps {
     className?: string;
     colorsForNodes?: string[];
     data: IChartProps;
+    formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;

@@ -2,6 +2,27 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 12 Apr 2024 07:29:11 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.6",
+      "version": "1.17.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4cf3b0387e900bf49cdd84b906f34fb76456d2fa",
+            "comment": "fix(eslint-plugin): ignore bundle-size package directory"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "43033b4839709be888b86c0ad48b517ce1988b1c",
+            "comment": "feat(eslint-plugin): add triple-slash-reference rule to  ban TS '///' within source code"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Apr 2024 07:29:30 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.5",
       "version": "1.17.5",

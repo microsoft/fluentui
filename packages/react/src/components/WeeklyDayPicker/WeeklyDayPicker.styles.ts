@@ -50,18 +50,21 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         fontSize: FontSizes.small,
         fontFamily: 'inherit',
         selectors: {
-          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, ` +
-          `.${IsFocusVisibleClassName} &:focus`]: {
+          // eslint-disable-next-line @fluentui/max-len
+          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, :host(.${IsFocusVisibleClassName}) .${classNames.root}:focus &, ` +
+          `.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             height: 53,
             minHeight: 12,
             overflow: 'initial',
           },
-          [`.${IsFocusVisibleClassName} .${classNames.root}:focus-within &`]: {
-            // edge does not recognize focus-within, so separate it out
-            height: 53,
-            minHeight: 12,
-            overflow: 'initial',
-          },
+          // eslint-disable-next-line @fluentui/max-len
+          [`.${IsFocusVisibleClassName} .${classNames.root}:focus-within &, :host(.${IsFocusVisibleClassName}) .${classNames.root}:focus-within &`]:
+            {
+              // edge does not recognize focus-within, so separate it out
+              height: 53,
+              minHeight: 12,
+              overflow: 'initial',
+            },
           '&:hover': {
             cursor: 'pointer',
             backgroundColor: palette.neutralLight,
