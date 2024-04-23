@@ -2,6 +2,45 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Tue, 23 Apr 2024 08:17:48 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.2.72",
+      "version": "9.2.72",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8",
+            "comment": "fix: SpinButton buttons now display correct visuals at bounds"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.1.62",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.36",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.17.0",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Apr 2024 21:53:57 GMT",
       "tag": "@fluentui/react-spinbutton_v9.2.71",
       "version": "9.2.71",

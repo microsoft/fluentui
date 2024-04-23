@@ -3089,9 +3089,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="182.30769230769232"
                   role="img"
                   tabindex="0"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="48"
+                  x="56"
                   y="74.69230769230768"
                 />
                 <rect
@@ -3107,9 +3107,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="22.78846153846154"
                   role="img"
                   tabindex="-1"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="48"
+                  x="56"
                   y="51.90384615384614"
                 />
               </g>
@@ -3124,8 +3124,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 role="img"
                 text-anchor="middle"
-                transform="translate(0, 0)"
-                x="56"
+                transform="translate(-8, 0)"
+                x="64"
                 y="45.90384615384614"
               >
                 45
@@ -3148,9 +3148,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="136.73076923076923"
                   role="img"
                   tabindex="-1"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="606"
+                  x="614"
                   y="120.26923076923077"
                 />
                 <rect
@@ -3166,9 +3166,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="91.15384615384615"
                   role="img"
                   tabindex="-1"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="606"
+                  x="614"
                   y="29.115384615384627"
                 />
               </g>
@@ -3183,8 +3183,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 role="img"
                 text-anchor="middle"
-                transform="translate(0, 0)"
-                x="614"
+                transform="translate(-8, 0)"
+                x="622"
                 y="23.115384615384627"
               >
                 50
@@ -9834,9 +9834,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="182.30769230769232"
                 role="img"
                 tabindex="0"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -9852,9 +9852,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="22.78846153846154"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -9869,8 +9869,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -9893,9 +9893,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="136.73076923076923"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -9911,9 +9911,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="91.15384615384615"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -9928,8 +9928,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -10490,9 +10490,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="182.30769230769232"
                 role="img"
                 tabindex="0"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -10508,9 +10508,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="22.78846153846154"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -10525,8 +10525,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -10549,9 +10549,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="136.73076923076923"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -10567,9 +10567,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="91.15384615384615"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -10584,8 +10584,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -11135,9 +11135,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="182.30769230769232"
                 role="img"
                 tabindex="0"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -11153,9 +11153,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="22.78846153846154"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -11170,8 +11170,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -11194,9 +11194,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="136.73076923076923"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -11212,9 +11212,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="91.15384615384615"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -11229,8 +11229,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -11780,9 +11780,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#0078d4"
                 height="182.30769230769232"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -11794,9 +11794,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#00188f"
                 height="22.78846153846154"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -11811,8 +11811,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -11835,9 +11835,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#0078d4"
                 height="136.73076923076923"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -11849,9 +11849,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#00188f"
                 height="91.15384615384615"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -11866,8 +11866,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50

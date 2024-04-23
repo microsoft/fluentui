@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement MenuItemSwitch component",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
