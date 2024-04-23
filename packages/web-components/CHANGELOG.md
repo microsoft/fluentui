@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 15 Apr 2024 04:09:34 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 04:09:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.12)
+
+Tue, 23 Apr 2024 04:09:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.11..@fluentui/web-components_v3.0.0-beta.12)
+
+### Changes
+
+- Use ElementInternals for Button components ([PR #30999](https://github.com/microsoft/fluentui/pull/30999) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.11)
 

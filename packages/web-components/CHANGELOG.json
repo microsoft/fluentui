@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 23 Apr 2024 04:09:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.12",
+      "version": "3.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2eab460e1fbb6dbc68008bcd5963279761c64460",
+            "comment": "Use ElementInternals for Button components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Apr 2024 04:09:34 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.11",
       "version": "3.0.0-beta.11",

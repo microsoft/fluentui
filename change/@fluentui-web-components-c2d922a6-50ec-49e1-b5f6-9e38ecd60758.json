@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use ElementInternals for Button components",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
