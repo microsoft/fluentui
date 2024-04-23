@@ -28,6 +28,10 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
+    "@fluentui/react-popover": "*",
+    "@fluentui/react-tooltip": "*",
+    "@fluentui/react-menu": "*",
+    "@fluentui/react-button": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
