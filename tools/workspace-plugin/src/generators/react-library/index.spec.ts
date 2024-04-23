@@ -221,6 +221,26 @@ describe('react-library generator', () => {
       "
     `);
 
+    expect(readJson(tree, `${stories.root}/.eslintrc.json`)).toMatchInlineSnapshot(`
+      Object {
+        "extends": Array [
+          "plugin:@fluentui/eslint-plugin/react",
+        ],
+        "root": true,
+        "rules": Object {
+          "import/no-extraneous-dependencies": Array [
+            "error",
+            Object {
+              "packageDir": Array [
+                ".",
+                "../../../../",
+              ],
+            },
+          ],
+        },
+      }
+    `);
+
     // global updates
 
     const expectedPathAlias = {
@@ -246,9 +266,12 @@ describe('react-library generator', () => {
     setup(tree);
 
     await generator(tree, { name: 'react-one', owner: '@org/chosen-one', kind: 'compat' });
-    const config = readProjectConfiguration(tree, '@proj/react-one-compat');
+    const library = readProjectConfiguration(tree, '@proj/react-one-compat');
+    const stories = readProjectConfiguration(tree, '@proj/react-one-compat-stories');
 
-    expect(tree.children(config.root)).toMatchInlineSnapshot(`
+    // library
+
+    expect(tree.children(library.root)).toMatchInlineSnapshot(`
       Array [
         "project.json",
         ".babelrc.json",
@@ -268,11 +291,35 @@ describe('react-library generator', () => {
         "tsconfig.spec.json",
       ]
     `);
-    expect(config).toEqual(
+    expect(library).toEqual(
       expect.objectContaining({
         root: 'packages/react-components/react-one-compat/library',
         sourceRoot: 'packages/react-components/react-one-compat/library/src',
         tags: ['platform:web', 'vNext', 'compat'],
+      }),
+    );
+
+    // stories
+
+    expect(tree.children(stories.root)).toMatchInlineSnapshot(`
+      Array [
+        "src",
+        ".storybook",
+        "README.md",
+        "just.config.ts",
+        ".eslintrc.json",
+        "tsconfig.json",
+        "tsconfig.lib.json",
+        "package.json",
+        "project.json",
+      ]
+    `);
+
+    expect(stories).toEqual(
+      expect.objectContaining({
+        root: 'packages/react-components/react-one-compat/stories',
+        sourceRoot: 'packages/react-components/react-one-compat/stories/src',
+        tags: ['vNext', 'platform:web', 'compat', 'type:stories'],
       }),
     );
   });

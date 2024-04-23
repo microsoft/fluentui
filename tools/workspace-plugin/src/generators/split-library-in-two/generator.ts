@@ -395,7 +395,12 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
     root: newProjectRoot,
     sourceRoot: newProjectSourceRoot,
     name: `${options.projectConfig.name}-stories`,
-    tags: ['vNext', 'platform:web', 'type:stories'],
+    tags: [
+      'vNext',
+      'platform:web',
+      options.projectConfig.tags?.includes('compat') ? 'compat' : null,
+      'type:stories',
+    ].filter(Boolean) as string[],
   });
 
   updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
