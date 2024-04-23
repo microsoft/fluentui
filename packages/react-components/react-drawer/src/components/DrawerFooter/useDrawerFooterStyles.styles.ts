@@ -1,6 +1,8 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import { drawerSeparatorStyles } from '../../shared/drawerSeparatorStyles';
 
 import type { DrawerFooterSlots, DrawerFooterState } from './DrawerFooter.types';
 
@@ -21,6 +23,23 @@ const useStyles = makeResetStyles({
   alignItems: 'center',
   columnGap: tokens.spacingHorizontalS,
   boxSizing: 'border-box',
+  position: 'relative',
+  zIndex: 2,
+});
+
+const useDrawerFooterStyles = makeStyles({
+  separator: {
+    ':before': {
+      ...drawerSeparatorStyles,
+      top: 0,
+    },
+  },
+
+  separatorVisible: {
+    ':before': {
+      opacity: 1,
+    },
+  },
 });
 
 /**
@@ -28,8 +47,15 @@ const useStyles = makeResetStyles({
  */
 export const useDrawerFooterStyles_unstable = (state: DrawerFooterState): DrawerFooterState => {
   const styles = useStyles();
+  const rootStyles = useDrawerFooterStyles();
 
-  state.root.className = mergeClasses(drawerFooterClassNames.root, styles, state.root.className);
+  state.root.className = mergeClasses(
+    drawerFooterClassNames.root,
+    styles,
+    state.scrollState !== 'none' && rootStyles.separator,
+    ['middle', 'top'].includes(state.scrollState) && rootStyles.separatorVisible,
+    state.root.className,
+  );
 
   return state;
 };
