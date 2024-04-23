@@ -17,18 +17,10 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 
 // @internal (undocumented)
 export type ContextValue<Value> = {
-    listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
-    value: React_2.MutableRefObject<Value>;
-    version: React_2.MutableRefObject<ContextVersion>;
+    value: Value;
+    subscribe: (listener: () => void) => () => void;
+    notify?: () => void;
 };
-
-// @internal (undocumented)
-export type ContextValues<Value> = ContextValue<Value> & {
-    listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
-};
-
-// @internal (undocumented)
-export type ContextVersion = number;
 
 // @internal (undocumented)
 export const createContext: <Value>(defaultValue: Value) => Context<Value>;
