@@ -93,16 +93,9 @@ export function useTriggerSlot(
 function useTriggerKeydown(
   options: {
     activeDescendantController: ActiveDescendantImperativeRef;
-  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'>
+  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'>,
 ) {
-  const {
-    activeDescendantController,
-    getOptionById,
-    setOpen,
-    selectOption,
-    multiselect,
-    open,
-  } = options;
+  const { activeDescendantController, getOptionById, setOpen, selectOption, multiselect, open } = options;
 
   const getActiveOption = React.useCallback(() => {
     const activeOptionId = activeDescendantController.active();
