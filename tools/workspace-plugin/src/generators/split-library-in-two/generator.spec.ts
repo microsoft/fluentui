@@ -23,7 +23,7 @@ const noop = () => {
 
 describe('split-library-in-two generator', () => {
   let tree: Tree;
-  const options = { project: '@proj/react-hello' };
+  const options = { project: '@proj/react-hello', logs: true };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();

@@ -16,6 +16,12 @@
     "all": {
       "type": "boolean",
       "description": "Run generator on all vNext packages"
+    },
+    "logs": {
+      "type": "boolean",
+      "default": true,
+      "visible": false,
+      "x-priority": "internal"
     }
   },
   "required": []

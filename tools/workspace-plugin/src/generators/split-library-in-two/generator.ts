@@ -37,6 +37,19 @@ const noop = () => {
   return;
 };
 
+function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema) {
+  if (options.logs) {
+    return output;
+  }
+
+  return {
+    log: noop,
+    note: noop,
+    warn: noop,
+    error: noop,
+  } as unknown as typeof output;
+}
+
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
   if (options.project && options.all) {
     throw new Error('Cannot specify both project and all');
@@ -45,24 +58,26 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
     throw new Error('missing `project` or `all` option');
   }
 
+  const cliOutput = createOutputLogger(options);
+
   if (options.all) {
     const projects = getProjects(tree);
     const projectsToSplit = Array.from(projects).filter(([_, project]) =>
       assertProject(tree, project, { warn: noop } as unknown as typeof output),
     );
 
-    output.log({
+    cliOutput.log({
       title: `Splitting ${projectsToSplit.length} libraries in two...`,
       bodyLines: projectsToSplit.map(([name]) => name),
     });
 
     for (const [projectName, project] of projectsToSplit) {
-      splitLibraryInTwoInternal(tree, { projectName, project });
+      splitLibraryInTwoInternal(tree, { projectName, project }, cliOutput);
     }
   }
 
   if (options.project) {
-    splitLibraryInTwoInternal(tree, { projectName: options.project });
+    splitLibraryInTwoInternal(tree, { projectName: options.project }, cliOutput);
   }
 
   await tsConfigBaseAllGenerator(tree, { verify: false, skipFormat: true });
@@ -80,11 +95,15 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   };
 }
 
-function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string; project?: ProjectConfiguration }) {
+function splitLibraryInTwoInternal(
+  tree: Tree,
+  options: { projectName: string; project?: ProjectConfiguration },
+  logger: typeof output,
+) {
   const { projectName, project } = options;
   const projectConfig = project ?? readProjectConfiguration(tree, options.projectName);
 
-  output.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
+  logger.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
 
   if (!assertProject(tree, projectConfig, output)) {
     return;
@@ -102,16 +121,16 @@ function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string; p
     },
   };
 
-  cleanup(tree, normalizedOptions);
+  cleanup(tree, normalizedOptions, logger);
 
-  makeSrcLibrary(tree, normalizedOptions);
-  makeStoriesLibrary(tree, normalizedOptions);
+  makeSrcLibrary(tree, normalizedOptions, logger);
+  makeStoriesLibrary(tree, normalizedOptions, logger);
 }
 
 export default splitLibraryInTwoGenerator;
 
-function cleanup(tree: Tree, options: Options) {
-  output.log({ title: 'Cleaning up build assets...' });
+function cleanup(tree: Tree, options: Options, logger: typeof output) {
+  logger.log({ title: 'Cleaning up build assets...' });
   const oldProjectRoot = options.projectConfig.root;
   tree.delete(joinPathFragments(oldProjectRoot, 'dist'));
   tree.delete(joinPathFragments(oldProjectRoot, 'lib'));
@@ -122,8 +141,8 @@ function cleanup(tree: Tree, options: Options) {
   tree.delete(joinPathFragments(oldProjectRoot, 'node_modules'));
 }
 
-function makeSrcLibrary(tree: Tree, options: Options) {
-  output.log({ title: 'creating library/ project' });
+function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
+  logger.log({ title: 'creating library/ project' });
 
   const oldProjectRoot = options.projectConfig.root;
   const newProjectRoot = joinPathFragments(oldProjectRoot, 'library');
@@ -165,11 +184,15 @@ function makeSrcLibrary(tree: Tree, options: Options) {
       json.scripts['test-ssr'] = `test-ssr \"../stories/src/**/*.stories.tsx\"`;
     }
 
-    const deps = getMissingDevDependenciesFromCypressAndJestFiles(tree, {
-      sourceRoot: newProjectSourceRoot,
-      projectName: options.projectConfig.name!,
-      dependencies: json.dependencies,
-    });
+    const deps = getMissingDevDependenciesFromCypressAndJestFiles(
+      tree,
+      {
+        sourceRoot: newProjectSourceRoot,
+        projectName: options.projectConfig.name!,
+        dependencies: json.dependencies,
+      },
+      logger,
+    );
 
     json.devDependencies ??= {};
     json.devDependencies = { ...deps, ...json.devDependencies };
@@ -230,8 +253,8 @@ function makeSrcLibrary(tree: Tree, options: Options) {
   updateCodeowners(tree, options);
 }
 
-function makeStoriesLibrary(tree: Tree, options: Options) {
-  output.log({ title: 'creating stories/ project' });
+function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output) {
+  logger.log({ title: 'creating stories/ project' });
   const oldProjectRoot = options.projectConfig.root;
   const newProjectRoot = joinPathFragments(oldProjectRoot, 'stories');
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
@@ -487,6 +510,7 @@ function getWorkspaceDependencies(tree: Tree, imports: string[]) {
 function getMissingDevDependenciesFromCypressAndJestFiles(
   tree: Tree,
   options: { sourceRoot: string; projectName: string; dependencies: Record<string, string> },
+  logger: typeof output,
 ) {
   const { projectName, sourceRoot, dependencies } = options;
 
@@ -518,7 +542,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
     // don't add self to deps
     delete deps[projectName];
 
-    output.warn({
+    logger.warn({
       title: 'Not adding self to dependencies',
       bodyLines: ['You should not import from you package absolute path within test files. Prefer relative imports.'],
     });
@@ -535,7 +559,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
     });
 
     if (log.length > 0) {
-      output.warn({
+      logger.warn({
         title: 'Not adding dependencies that are already present in package.json',
         bodyLines: log,
       });
@@ -543,7 +567,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
   }
 
   if (deps['@fluentui/react-components']) {
-    output.error({
+    logger.error({
       title: 'react-components cannot be used within cypress or jest test files as it creates circular dependency.',
       bodyLines: [
         'Please remove/replace problematic imports from the test files and remove the dependency from "package.json#devDependencies".',
@@ -551,7 +575,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
     });
   }
 
-  output.log({ title: 'Adding missing dependencies', bodyLines: Object.keys(deps) });
+  logger.log({ title: 'Adding missing dependencies', bodyLines: Object.keys(deps) });
 
   return deps;
 }
