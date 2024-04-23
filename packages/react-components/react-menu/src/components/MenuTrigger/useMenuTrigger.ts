@@ -84,7 +84,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
       return;
     }
 
-    if (openingWithHoverTimeout.current) {
+    if (openingWithHoverRef.current) {
       // if openingWithHoverRef is still true, fire a new open event from click rather than toggling the open state
       clearTimeout(openingWithHoverTimeout.current);
       openingWithHoverRef.current = false;

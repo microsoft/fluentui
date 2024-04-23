@@ -226,7 +226,7 @@ describe('MenuTrigger', () => {
         <div role="button">trigger</div>
       </MenuTrigger>,
     );
-    const hoverEvent = createEvent.mouseMove(getByRole('button'));
+    let hoverEvent = createEvent.mouseMove(getByRole('button'));
     fireEvent(getByRole('button'), hoverEvent);
 
     expect(mockSetOpen).toBeCalledWith(
@@ -234,7 +234,8 @@ describe('MenuTrigger', () => {
       expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
     );
 
-    jest.advanceTimersByTime(hoverDelay - 1);
+    mockSetOpen.mockClear();
+    jest.advanceTimersByTime(hoverDelay + 200 - 1);
 
     let clickEvent = createEvent.click(getByRole('button'));
     fireEvent(getByRole('button'), clickEvent);
@@ -243,18 +244,6 @@ describe('MenuTrigger', () => {
       expect.anything(),
       expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerClick' }),
     );
-
-    jest.advanceTimersByTime(200);
-
-    clickEvent = createEvent.click(getByRole('button'));
-    fireEvent(getByRole('button'), clickEvent);
-
-    expect(mockSetOpen).toBeCalledWith(
-      expect.anything(),
-      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerClick' }),
-    );
-
-    jest.useRealTimers();
   });
 
   it('should close menu on click after hover with delay', () => {
@@ -277,6 +266,7 @@ describe('MenuTrigger', () => {
       expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerMouseMove' }),
     );
 
+    mockSetOpen.mockClear();
     jest.advanceTimersByTime(hoverDelay + 200);
 
     const clickEvent = createEvent.click(getByRole('button'));
