@@ -226,7 +226,7 @@ describe('MenuTrigger', () => {
         <div role="button">trigger</div>
       </MenuTrigger>,
     );
-    let hoverEvent = createEvent.mouseMove(getByRole('button'));
+    const hoverEvent = createEvent.mouseMove(getByRole('button'));
     fireEvent(getByRole('button'), hoverEvent);
 
     expect(mockSetOpen).toBeCalledWith(
@@ -237,7 +237,7 @@ describe('MenuTrigger', () => {
     mockSetOpen.mockClear();
     jest.advanceTimersByTime(hoverDelay + 200 - 1);
 
-    let clickEvent = createEvent.click(getByRole('button'));
+    const clickEvent = createEvent.click(getByRole('button'));
     fireEvent(getByRole('button'), clickEvent);
 
     expect(mockSetOpen).toBeCalledWith(
