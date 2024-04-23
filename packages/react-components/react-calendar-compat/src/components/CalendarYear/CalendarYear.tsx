@@ -168,19 +168,17 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     }
   }
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'both' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <div {...arrowNavigationAttributes}>
-      <div className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
-        {cells.map((cellRow: React.ReactNode[], index: number) => {
-          return (
-            <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
-              {cellRow}
-            </div>
-          );
-        })}
-      </div>
+    <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
+      {cells.map((cellRow: React.ReactNode[], index: number) => {
+        return (
+          <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
+            {cellRow}
+          </div>
+        );
+      })}
     </div>
   );
 };

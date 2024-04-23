@@ -190,7 +190,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone1"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -212,7 +212,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="piechart_arc14"
+          id="piechart_arc3"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -235,7 +235,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host15"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -256,7 +256,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="piechart_arc17"
+          id="piechart_arc6"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -279,7 +279,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
-            id="tooltip-host18"
+            id="tooltip-host7"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -300,7 +300,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="piechart_arc20"
+          id="piechart_arc9"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -323,7 +323,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host21"
+            id="tooltip-host10"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}

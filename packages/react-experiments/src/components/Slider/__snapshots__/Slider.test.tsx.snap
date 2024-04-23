@@ -123,6 +123,17 @@ exports[`Slider renders correctly 1`] = `
             top: 1px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
           &:active .ms-Slider-active {
             background-color: #005a9e;
           }

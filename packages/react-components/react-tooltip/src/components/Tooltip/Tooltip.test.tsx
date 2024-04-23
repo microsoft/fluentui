@@ -39,6 +39,11 @@ describe('Tooltip', () => {
       'component-has-root-ref',
       'component-handles-classname',
     ],
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onVisibleChange'],
+      },
+    },
   });
 
   afterEach(() => {

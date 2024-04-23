@@ -7,7 +7,7 @@
     "outDir": "lib",
     "jsx": "react",
     "sourceMap": true,
-    "types": ["webpack-env"]
+    "types": ["static-assets", "webpack-env"]
   },
   "include": ["src"]
 }

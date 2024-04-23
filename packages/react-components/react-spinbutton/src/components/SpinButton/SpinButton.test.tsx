@@ -15,6 +15,11 @@ describe('SpinButton', () => {
     Component: SpinButton,
     displayName: 'SpinButton',
     primarySlot: 'input',
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
+    },
   });
 
   it('renders a default uncontrolled state', () => {

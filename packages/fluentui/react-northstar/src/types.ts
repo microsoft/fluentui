@@ -27,7 +27,7 @@ export type FluentComponentStaticProps<P = {}> = {
 // Props
 // ========================================================
 
-export type Props<T = {}> = T & ObjectOf<any>;
+export type Props<T extends {} = {}> = T & ObjectOf<any>;
 export type ReactChildren = React.ReactNode[] | React.ReactNode;
 
 export type ComponentEventHandler<TProps> = (event: React.SyntheticEvent<HTMLElement>, data?: TProps) => void;

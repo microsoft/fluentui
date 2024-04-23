@@ -170,6 +170,7 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                         {
                           background-color: red;
                           border-radius: 32px;
+                          cursor: pointer;
                           outline: none;
                           overflow: hidden;
                           position: relative;
@@ -405,6 +406,7 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                         {
                           background-color: #0078d4;
                           border-radius: 32px;
+                          cursor: pointer;
                           outline: none;
                           overflow: hidden;
                           position: relative;

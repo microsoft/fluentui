@@ -24,9 +24,11 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
 
   /**
-   * Width of each bar in the chart.
+   * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px,
+   * which may decrease to prevent overlap. When set to `'auto'`, the bar width is calculated from padding values.
+   * @default 16
    */
-  barWidth?: number;
+  barWidth?: number | 'default' | 'auto';
 
   /**
    * Colors from which to select the color of each bar.
@@ -83,6 +85,26 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * Maximum width of a bar, in pixels.
+   * @default 24
+   */
+  maxBarWidth?: number;
+
+  /**
+   * Padding between bars as a fraction of the [step](https://d3js.org/d3-scale/band#band_step).
+   * Takes a number in the range [0, 1]. Only applicable to string x-axis.
+   * @default 2/3
+   */
+  xAxisInnerPadding?: number;
+
+  /**
+   * Padding before the first bar and after the last bar as a fraction of
+   * the [step](https://d3js.org/d3-scale/band#band_step). Takes a number in the range [0, 1].
+   * Only applicable to string x-axis.
+   */
+  xAxisOuterPadding?: number;
 }
 
 /**

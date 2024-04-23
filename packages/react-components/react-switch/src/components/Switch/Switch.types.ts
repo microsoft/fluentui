@@ -68,6 +68,7 @@ export type SwitchProps = Omit<
   /**
    * Callback to be called when the checked state value changes.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
 

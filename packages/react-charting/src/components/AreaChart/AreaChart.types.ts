@@ -64,6 +64,12 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Optimize area chart rendering for large data set.
    */
   optimizeLargeData?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
 }
 
 /**

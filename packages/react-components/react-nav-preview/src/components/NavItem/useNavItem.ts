@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-import type { NavItemProps, NavItemState } from './NavItem.types';
 import { useNavContext_unstable } from '../NavContext';
+
+import type { NavItemProps, NavItemState } from './NavItem.types';
 
 /**
  * Create the state required to render NavItem.
@@ -10,17 +11,17 @@ import { useNavContext_unstable } from '../NavContext';
  * before being passed to renderNavItem_unstable.
  *
  * @param props - props from this instance of NavItem
- * @param ref - reference to root HTMLDivElement of NavItem
+ * @param ref - reference to root HTMLAnchorElement of NavItem
  */
-export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButtonElement>): NavItemState => {
-  const { content, onClick, value } = props;
+export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
+  const { onClick, value, icon } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
   const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onNavCategoryItemClick = useEventCallback(
+  const onNavItemClick = useEventCallback(
     mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
   );
 
@@ -35,24 +36,21 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButt
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
-
   return {
-    components: { root: 'button', content: 'span' },
+    components: { root: 'a', icon: 'span' },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      getIntrinsicElementProps('a', {
         ref,
         role: 'nav',
         type: 'navigation',
         ...props,
-        onClick: onNavCategoryItemClick,
+        onClick: onNavItemClick,
       }),
-      { elementType: 'button' },
+      { elementType: 'a' },
     ),
-    content: contentSlot,
+    icon: slot.optional(icon, {
+      elementType: 'span',
+    }),
     selected,
     value,
   };

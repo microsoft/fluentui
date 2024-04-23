@@ -1,6 +1,6 @@
+import { SankeyLink, SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-import { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface IBasestate {
   _width?: number;
@@ -490,7 +490,13 @@ export interface ISankeyChartData {
 }
 
 interface ISNodeExtra {
+  /**
+   * A unique identifier for this node.
+   */
   nodeId: number | string;
+  /**
+   * The display name for this node in the UX.
+   */
   name: string;
   color?: string;
   borderColor?: string;
@@ -499,8 +505,17 @@ interface ISNodeExtra {
 }
 
 interface ISLinkExtra {
+  /**
+   * The index within `ISankeyChartData.nodes` of the source node.
+   */
   source: number;
+  /**
+   * The index within `ISankeyChartData.nodes` of the target node.
+   */
   target: number;
+  /**
+   * The weight of this link between the two nodes.
+   */
   value: number;
   unnormalizedValue?: number;
 }

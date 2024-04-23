@@ -1,6 +1,7 @@
+// eslint-disable-next-line deprecation/deprecation
 export { ComboboxProvider } from './contexts/ComboboxContext';
 export type { ComboboxContextValue } from './contexts/ComboboxContext';
-export { ListboxProvider } from './contexts/ListboxContext';
+export { ListboxProvider, useListboxContext_unstable } from './contexts/ListboxContext';
 export type { ListboxContextValue } from './contexts/ListboxContext';
 export { useComboboxContextValues } from './contexts/useComboboxContextValues';
 export { useListboxContextValues } from './contexts/useListboxContextValues';
@@ -61,3 +62,10 @@ export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './Opt
 export type { OptionOnSelectData, SelectionEvents } from './Selection';
 
 export { useComboboxFilter } from './hooks/useComboboxFilter';
+
+// internals splitting the combobox logic into state hook and slot hooks
+export { useComboboxBaseState } from './utils/useComboboxBaseState';
+export { useButtonTriggerSlot } from './components/Dropdown/useButtonTriggerSlot';
+export { useInputTriggerSlot } from './components/Combobox/useInputTriggerSlot';
+export { useListboxSlot } from './utils/useListboxSlot';
+export type { ComboboxBaseState, ComboboxBaseProps } from './utils/ComboboxBase.types';

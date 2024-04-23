@@ -28,7 +28,7 @@ class MB<T> implements MaybeChain<T> {
   public flatten() {
     if (this.something) {
       const val = this.value;
-      if (typeof val === 'object' && '__isMaybe' in val) {
+      if (typeof val === 'object' && val !== null && '__isMaybe' in val) {
         return val as Flattened<T, Maybe<T>>;
       }
     }
@@ -65,7 +65,7 @@ export const Something = <T>(value: NonNullable<T>): Something<T> => {
   });
 };
 
-export const MaybeDictionary = <T>(dictionary: { [key: string]: T }): { [key: string]: Maybe<T> } => {
+export const MaybeDictionary = <T extends {}>(dictionary: { [key: string]: T }): { [key: string]: Maybe<T> } => {
   return new Proxy<{ [key: string]: Maybe<T> }>(dictionary as unknown as { [key: string]: Maybe<T> }, {
     get: (target: { [key: string]: Maybe<T> | T }, name: string): Maybe<T> => {
       const value = target[name];

@@ -23,6 +23,9 @@ describe('Checkbox', () => {
           props: { label: 'Test Label' },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
     },
   });
 

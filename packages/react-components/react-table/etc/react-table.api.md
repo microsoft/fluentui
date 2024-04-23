@@ -154,6 +154,9 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
         width: number;
     }) => void;
     containerWidthOffset?: number;
+    resizableColumnsOptions?: {
+        autoFitColumns?: boolean;
+    };
 };
 
 // @public
@@ -374,6 +377,7 @@ export type TableColumnId = string | number;
 // @public (undocumented)
 export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
     defaultWidth?: number;
+    autoFitColumns?: boolean;
 }>;
 
 // @public (undocumented)
@@ -521,6 +525,7 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
     checked?: CheckboxProps['checked'];
     subtle?: boolean;
     hidden?: boolean;
+    invisible?: boolean;
 };
 
 // @public (undocumented)
@@ -530,7 +535,9 @@ export type TableSelectionCellSlots = {
 } & Pick<TableCellSlots, 'root'>;
 
 // @public
-export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> & Pick<TableContextValue, 'noNativeElements'>;
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle'> & Pick<TableContextValue, 'noNativeElements'> & {
+    hidden: boolean;
+};
 
 // @public (undocumented)
 export interface TableSelectionState {

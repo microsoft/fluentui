@@ -207,7 +207,10 @@ export type ColumnResizeState = {
 
 export type TableColumnSizingOptions = Record<
   TableColumnId,
-  Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
+  Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
+    defaultWidth?: number;
+    autoFitColumns?: boolean;
+  }
 >;
 
 export type UseTableColumnSizingParams = {
@@ -217,4 +220,5 @@ export type UseTableColumnSizingParams = {
     data: { columnId: TableColumnId; width: number },
   ) => void;
   containerWidthOffset?: number;
+  autoFitColumns?: boolean;
 };

@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarBodySlots, MessageBarBodyState } from './MessageBarBody.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -9,7 +9,7 @@ export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots> = {
 
 const useRootBaseStyles = makeResetStyles({
   ...typographyStyles.body1,
-  ...shorthands.gridArea('body'),
+  gridArea: 'body',
   paddingRight: tokens.spacingHorizontalM,
 });
 

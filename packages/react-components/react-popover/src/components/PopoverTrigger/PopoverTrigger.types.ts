@@ -28,8 +28,10 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
   Props & {
     'aria-expanded'?: 'true' | 'false';
     ref: React.Ref<unknown>;
+    /* eslint-disable @nx/workspace-consistent-callback-type -- can't change type of existing callback */
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    /* eslint-enable @nx/workspace-consistent-callback-type */
   }
 >;

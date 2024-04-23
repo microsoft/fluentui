@@ -1,3 +1,7 @@
+import {
+  RULE_NAME as consistentCallbackTypeName,
+  rule as consistentCallbackType,
+} from './rules/consistent-callback-type';
 /**
  * Import your custom workspace rules at the top of this file.
  *
@@ -23,5 +27,5 @@ module.exports = {
    *  [myCustomRuleName]: myCustomRule
    * }
    */
-  rules: {},
+  rules: { [consistentCallbackTypeName]: consistentCallbackType },
 };

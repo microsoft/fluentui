@@ -444,16 +444,30 @@ export const defaultTests: DefaultTestObject = {
     });
   },
 
-  /** Ensures that components have consistent callback arguments (ev, data) */
+  /**
+   * Ensures that components have consistent callback arguments (ev, data)
+   * @deprecated this test is for existing callbacks. The newly added callbacks' type will be guarded by eslint rule consistent-callback-type
+   */
   'consistent-callback-args': (testInfo, componentInfo, tsProgram) => {
     it('has consistent custom callback arguments (consistent-callback-args)', () => {
       const { testOptions = {} } = testInfo;
 
       const propNames = Object.keys(componentInfo.props);
-      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+      const legacyCallbacks = testOptions['consistent-callback-args']?.legacyCallbacks || [];
+
+      // verify that legacyCallbacks option contains real props:
+      const legacyCallbacksNotInProp = legacyCallbacks.filter(legacyCallback => !propNames.includes(legacyCallback));
+      if (legacyCallbacksNotInProp.length) {
+        throw new Error(
+          [
+            `Option "consistent-callback-args.legacyCallbacks" contains "${legacyCallbacksNotInProp.join(', ')}" prop,`,
+            'which is not present in component props.',
+          ].join(' '),
+        );
+      }
 
       const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
-        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+        if (legacyCallbacks.includes(propName)) {
           const propInfo = componentInfo.props[propName];
 
           if (!propInfo.declarations) {

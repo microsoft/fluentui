@@ -17,6 +17,7 @@ export interface PackageInfo {
   packagePath: string;
   /** package.json contents */
   packageJson: PackageJson;
+  projectConfig: import('@nx/devkit').ProjectConfiguration;
 }
 
 /**

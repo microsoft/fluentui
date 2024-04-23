@@ -7,6 +7,7 @@ import {
   shorthands,
   tokens,
   createFocusOutlineStyle,
+  useId,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -40,25 +41,31 @@ const useStyles = makeStyles({
 export const Limited = () => {
   const styles = useStyles();
   const attributes = useFocusableGroup({ tabBehavior: 'limited' });
+  const labelId1 = useId('chat1');
+  const labelId2 = useId('chat2');
 
   return (
-    <div className={styles.pane}>
-      <div tabIndex={0} aria-label="A chat message" {...attributes} className={styles.container}>
-        <div className={styles.body}>Hello world!</div>
+    <ul className={styles.pane}>
+      <li tabIndex={0} aria-labelledby={labelId1} {...attributes} className={styles.container}>
+        <div className={styles.body} id={labelId1}>
+          Hello world!
+        </div>
         <div className={styles.actions}>
           <Button aria-label="Copy message" icon={<CopyRegular />} size="small" />
           <Button aria-label="Delete message" icon={<DeleteRegular />} size="small" />
         </div>
-      </div>
+      </li>
 
-      <div tabIndex={0} aria-label="A chat message" {...attributes} className={styles.container}>
-        <div className={styles.body}>How are you doing?</div>
+      <li tabIndex={0} aria-labelledby={labelId2} {...attributes} className={styles.container}>
+        <div className={styles.body} id={labelId2}>
+          How are you doing?
+        </div>
         <div className={styles.actions}>
           <Button aria-label="Copy message" icon={<CopyRegular />} size="small" />
           <Button aria-label="Delete message" icon={<DeleteRegular />} size="small" />
         </div>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 };
 

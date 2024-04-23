@@ -1,7 +1,12 @@
 import * as React from 'react';
-import type { EventHandler, NavProps, OnNavItemSelectData } from './Nav/Nav.types';
+import { EventHandler } from '@fluentui/react-utilities';
 
-export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'reserveSelectedNavItemSpace'> & {
+import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
+
+export type NavContextValue = Pick<
+  NavProps,
+  'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace'
+> & {
   /** A callback to allow a navItem to register itself with the navItem list. */
   onRegister: RegisterNavItemEventHandler;
 
@@ -16,9 +21,26 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
    */
   getRegisteredNavItems: () => {
     selectedValue?: NavItemValue;
+    selectedCategoryValue?: NavItemValue;
     previousSelectedValue?: NavItemValue;
     registeredNavItems: Record<string, NavItemRegisterData>;
   };
+  /**
+   * Callback used by NavCategoryItem to request a change on it's own opened state
+   * Should be used to toggle NavCategoryItem's open state
+   */
+  onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData>;
+
+  /**
+   * The list of opened panels by index
+   */
+  openCategories: NavItemValue[];
+
+  /**
+   * Indicates if Nav supports multiple open Categories at the same time.
+   * @default true, indicating that multiple categories can be open at the same time.
+   */
+  multiple: boolean;
 };
 
 /**

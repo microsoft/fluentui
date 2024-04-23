@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 20 Feb 2024 14:22:19 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.0",
+      "version": "0.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "d9a773933d1e6c6c6cc22a671764cfe66b979ddd",
+            "comment": "Deprecate consistent-callback-args test"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "239dedf0af4e79d8510f8ba692756c3ae3c5e701",
+            "comment": "BREAKING CHANGE: change `consistent-callback-args` test option to test selected props instead of ignoring props"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:33 GMT",
       "tag": "@fluentui/react-conformance_v0.18.3",
       "version": "0.18.3",

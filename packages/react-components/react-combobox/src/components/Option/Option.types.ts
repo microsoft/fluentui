@@ -52,10 +52,14 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
  */
 export type OptionState = ComponentState<OptionSlots> &
   Pick<OptionProps, 'disabled'> & {
-    /* If true, this is the currently highlighted option */
+    /**
+     * @deprecated - no longer used internally
+     */
     active: boolean;
 
-    // Whether the keyboard focus outline style should be visible
+    /**
+     * @deprecated - no longer used internally
+     */
     focusVisible: boolean;
 
     /* If true, the option is part of a multiselect combobox or listbox */

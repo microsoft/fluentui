@@ -278,9 +278,8 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      (appearance === 'subtle' || appearance === 'transparent') &&
-        iconCheckedStyles.subtleOrTransparent &&
-        iconCheckedStyles.highContrast,
+      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
+      iconCheckedStyles.highContrast,
       state.icon.className,
     );
   }

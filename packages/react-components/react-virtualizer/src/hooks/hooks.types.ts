@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { MutableRefObject, RefObject } from 'react';
 
 export type VirtualizerMeasureProps = {
   defaultItemSize: number;
@@ -11,6 +11,34 @@ export type VirtualizerMeasureDynamicProps = {
   numItems: number;
   getItemSize: (index: number) => number;
   direction?: 'vertical' | 'horizontal';
+};
+
+export type VirtualizerStaticPaginationProps = {
+  itemSize: number;
+  axis?: 'vertical' | 'horizontal';
+};
+
+/**
+ * Props to be passed into dynamic virtualization hooks
+ * All props can be acquired from useVirtualizer hooks themselves and passed in
+ */
+export type VirtualizerDynamicPaginationProps = {
+  /**
+   * An array that tracks the sizing of each item in virtualizer cumulatively
+   */
+  progressiveItemSizes: RefObject<number[]> | undefined;
+  /**
+   * The current starting index of the virtualizer's DOM elements
+   */
+  currentIndex: number;
+  /**
+   * The axis we should paginate on (should match virtualizer's axis)
+   */
+  axis?: 'vertical' | 'horizontal';
+  /**
+   * The current length of Virtualizer's actual DOM elements
+   */
+  virtualizerLength: number;
 };
 
 /**

@@ -1,5 +1,5 @@
 import { IChartHoverCardStyles, IChartHoverCardStyleProps } from './ChartHoverCard.types';
-import { FontWeights } from '@fluentui/react/lib/Styling';
+import { FontWeights, HighContrastSelector, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
 
 export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChartHoverCardStyles => {
   const { color, XValue, theme, isRatioPresent = false } = props;
@@ -34,6 +34,11 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
         lineHeight: '22px',
         color: theme.semanticColors.bodyText,
         borderLeft: `4px solid ${color}`,
+        selectors: {
+          [HighContrastSelector]: {
+            forcedColorAdjust: 'none',
+          },
+        },
       },
     ],
     calloutlegendText: [
@@ -41,6 +46,11 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       {
         lineHeight: '16px',
         color: theme.semanticColors.bodyText,
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: 'rgb(255, 255, 255)',
+          },
+        },
       },
     ],
     calloutContentY: [
@@ -49,6 +59,11 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
         color: color ? color : theme.semanticColors.bodyText,
         fontWeight: 'bold',
         lineHeight: '36px',
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: 'rgb(255, 255, 255)',
+          },
+        },
       },
     ],
     calloutInfoContainer: [

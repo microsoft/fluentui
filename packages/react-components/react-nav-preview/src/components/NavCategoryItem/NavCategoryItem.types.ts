@@ -1,36 +1,40 @@
+import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavItemValue } from '../NavContext.types';
+
+export type NavCategoryItemContextValues = {
+  navCategoryItem: NavCategoryItemContextValue;
+};
 
 export type NavCategoryItemSlots = {
   /**
-   * Root of the component.
+   * The root element
    */
-  root: Slot<'div'>;
-
-  // TODO - light this up when we get design spec
-  // /**
-  //  * Icon that renders before the content.
-  //  */
-  // icon?: Slot<'span'>;
+  root: NonNullable<Slot<'button'>>;
 
   /**
-   * Component children are placed in this slot
-   * Avoid using the `children` property in this slot in favour of Component children whenever possible.
+   * Icon that renders before the content.
+   * Should be specific to each Category
    */
-  content: NonNullable<Slot<'span'>>;
+  icon?: Slot<'span'>;
+
+  /**
+   * Expand icon slot rendered after the content to indicate an open and closed state.
+   */
+  expandIcon: NonNullable<Slot<'span'>>;
 };
 
 /**
  * navCategoryItem Props
  */
-export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>> & {
-  /**
-   * The value that identifies this navCategoryItem when selected.
-   */
-  value: NavItemValue;
-};
+export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>;
 
 /**
  * State used in rendering NavCategoryItem
  */
-export type NavCategoryItemState = ComponentState<NavCategoryItemSlots>;
+export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
+  NavCategoryItemContextValue & {
+    /**
+     * If this navCategoryItem is selected
+     */
+    selected: boolean;
+  };

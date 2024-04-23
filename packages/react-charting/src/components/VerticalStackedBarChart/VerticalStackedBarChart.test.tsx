@@ -38,6 +38,8 @@ function sharedAfterEach() {
 }
 
 describe('VerticalStackedBarChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders VerticalStackedBarChart correctly', () => {
     let component: any;
     renderer.act(() => {
@@ -213,6 +215,8 @@ describe('VerticalStackedBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalStackedBarChartBase.prototype, 'render');
     const props = {
@@ -261,6 +265,14 @@ describe('Render empty chart aria label div when chart is empty', () => {
   it('Empty chart aria label div rendered', () => {
     domAct(() => {
       wrapper = mount(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
+    });
+    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
+  });
+
+  test('should render empty chart div when data array is empty', () => {
+    domAct(() => {
+      wrapper = mount(<VerticalStackedBarChart data={[]} />);
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(1);

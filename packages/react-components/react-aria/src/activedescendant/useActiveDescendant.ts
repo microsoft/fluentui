@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
@@ -13,6 +13,19 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const focusVisibleRef = React.useRef(false);
   const activeIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
+  const attributeVisibilityRef = React.useRef(true);
+
+  const removeAttribute = React.useCallback(() => {
+    activeParentRef.current?.removeAttribute('aria-activedescendant');
+  }, []);
+  const setAttribute = React.useCallback((id?: string) => {
+    if (id) {
+      activeIdRef.current = id;
+    }
+    if (attributeVisibilityRef.current && activeIdRef.current) {
+      activeParentRef.current?.setAttribute('aria-activedescendant', activeIdRef.current);
+    }
+  }, []);
 
   useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
     focusVisibleRef.current = isNavigatingWithKeyboard;
@@ -29,7 +42,8 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   });
 
   const matchOption = useEventCallback(matchOptionUnstable);
-  const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
+  const listboxRef = React.useRef<TListboxElement>(null);
+  const { optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
   const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
   }, [listboxRef]);
@@ -41,9 +55,9 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
 
-    activeParentRef.current?.removeAttribute('aria-activedescendant');
+    removeAttribute();
     activeIdRef.current = null;
-  }, [activeParentRef, getActiveDescendant]);
+  }, [getActiveDescendant, removeAttribute]);
 
   const focusActiveDescendant = React.useCallback(
     (nextActive: HTMLElement | null) => {
@@ -54,15 +68,14 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       blurActiveDescendant();
 
       scrollIntoView(nextActive, listboxRef.current);
-      activeParentRef.current?.setAttribute('aria-activedescendant', nextActive.id);
-      activeIdRef.current = nextActive.id;
+      setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
       if (focusVisibleRef.current) {
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
     },
-    [activeParentRef, listboxRef, blurActiveDescendant],
+    [listboxRef, blurActiveDescendant, setAttribute],
   );
 
   const controller: ActiveDescendantImperativeRef = React.useMemo(
@@ -130,19 +143,35 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         }
       },
 
-      find(predicate, { passive } = {}) {
-        const target = optionWalker.find(predicate);
+      find(predicate, { passive, startFrom } = {}) {
+        const target = optionWalker.find(predicate, startFrom);
         if (!passive) {
           focusActiveDescendant(target);
         }
 
         return target?.id;
       },
+      showAttributes() {
+        attributeVisibilityRef.current = true;
+        setAttribute();
+      },
+      hideAttributes() {
+        attributeVisibilityRef.current = false;
+        removeAttribute();
+      },
     }),
-    [optionWalker, listboxRef, focusActiveDescendant, blurActiveDescendant, getActiveDescendant],
+    [
+      optionWalker,
+      listboxRef,
+      setAttribute,
+      removeAttribute,
+      focusActiveDescendant,
+      blurActiveDescendant,
+      getActiveDescendant,
+    ],
   );
 
   React.useImperativeHandle(imperativeRef, () => controller);
 
-  return { listboxRef, activeParentRef, controller };
+  return { listboxRef: useMergedRefs(listboxRef, listboxCallbackRef), activeParentRef, controller };
 }

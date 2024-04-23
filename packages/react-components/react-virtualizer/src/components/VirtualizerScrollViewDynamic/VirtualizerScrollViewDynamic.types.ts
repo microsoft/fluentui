@@ -39,6 +39,10 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
      * Imperative ref contains our scrollTo index functionality for user control.
      */
     imperativeRef?: RefObject<ScrollToInterface>;
+    /**
+     * Imperative ref contains our scrollTo index functionality for user control.
+     */
+    enablePagination?: boolean;
   };
 
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> &

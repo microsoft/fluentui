@@ -10,6 +10,5 @@ import type { NavSubItemGroupState, NavSubItemGroupSlots } from './NavSubItemGro
 export const renderNavSubItemGroup_unstable = (state: NavSubItemGroupState) => {
   assertSlots<NavSubItemGroupSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return state.open ? <state.root>{state.root.children}</state.root> : null;
 };

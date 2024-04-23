@@ -64,6 +64,27 @@ export const Multiline = () => (
   </div>
 );
 
+export const MultilineNoActions = () => (
+  <div
+    style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 500, padding: 10 }}
+    className="testWrapper"
+  >
+    {intents.map(intent => (
+      <MessageBar layout="multiline" key={intent} intent={intent}>
+        <MessageBarBody>
+          <MessageBarTitle>{intent}</MessageBarTitle>
+          Message providing information to the user with actionable insights. <Link>Link</Link>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum."
+        </MessageBarBody>
+      </MessageBar>
+    ))}
+  </div>
+);
+
 export const Auto = () => {
   return (
     <div

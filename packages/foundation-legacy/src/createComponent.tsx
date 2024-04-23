@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { concatStyleSets, IStyleSet, ITheme } from '@fluentui/style-utilities';
+import { concatStyleSets, IStyleSetBase, ITheme } from '@fluentui/style-utilities';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@fluentui/utilities';
 import { createFactory } from './slots';
 import { assign } from './utilities';
@@ -37,7 +37,7 @@ import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 export function createComponent<
   TComponentProps extends ValidProps,
   TTokens,
-  TStyleSet extends IStyleSet<TStyleSet>,
+  TStyleSet extends IStyleSetBase,
   TViewProps extends TComponentProps = TComponentProps,
   TStatics = {},
 >(
@@ -107,7 +107,7 @@ export function createComponent<
 /**
  * Resolve all styles functions with both props and tokens and flatten results along with all styles objects.
  */
-function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
+function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSetBase>(
   props: TProps,
   theme: ITheme,
   tokens: TTokens,
@@ -156,7 +156,7 @@ function _resolveTokens<TViewProps, TTokens>(
  * @param context React context passed to component containing contextual settings.
  * @param fields Optional list of properties to grab from global store and context.
  */
-function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
+function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSetBase>(
   displayName: string | undefined,
   context: ICustomizerContext,
   fields?: string[],

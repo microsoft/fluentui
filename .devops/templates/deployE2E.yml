@@ -6,6 +6,10 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
+  - script: |
+      yarn cypress verify
+    displayName: verify cypress install
+
   # this also builds FUI N* docs if appropriate
   - script: |
       yarn bundle  $(sinceArg)
@@ -20,14 +24,20 @@ steps:
       yarn workspace @fluentui/pr-deploy-site generate:site
     displayName: generate PR Deploy Site
 
-  - task: AzureUpload@2
+  - task: AzureCLI@2
     displayName: Upload PR deploy site
     inputs:
       azureSubscription: $(azureSubscription)
-      BlobPrefix: $(deployBasePath)
-      ContainerName: '$web'
-      SourcePath: 'apps/pr-deploy-site/dist'
-      storage: $(azureStorage)
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az storage blob upload-batch \
+          --destination '$web' \
+          --source apps/pr-deploy-site/dist \
+          --account-name $(azureStorage) \
+          --destination-path $(deployBasePath) \
+          --auth-mode login \
+          --overwrite
 
   - task: GithubPRStatus@0
     displayName: 'Update PR deploy site github status'

@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { IChartDataPoint, IChartProps, MultiStackedBarChart } from '../src/index';
 import { MultiStackedBarChartBase } from '../src/components/StackedBarChart/MultiStackedBarChart.base';
+import { resetIds } from '@fluentui/react';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -85,7 +86,13 @@ const data: IChartProps[] = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_createBarsAndLegends', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return bars count correctly', () => {
     render(<MultiStackedBarChart data={data} />);
     const instance = new MultiStackedBarChartBase({
@@ -170,6 +177,8 @@ runTest('_createBarsAndLegends', () => {
 });
 
 runTest('_getLegendData', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper legend data when we have proper data', () => {
     const instance = new MultiStackedBarChartBase({
       data: data,
@@ -213,6 +222,8 @@ runTest('_getLegendData', () => {
 });
 
 runTest('_isChartEmpty', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return true when chart data is empty ', () => {
     const emptyData: IChartProps[] = [];
     const instance = new MultiStackedBarChartBase({
@@ -234,6 +245,8 @@ runTest('_isChartEmpty', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return correct aria label for a bar where we have aria label in callOutAccessibilityData', () => {
     const instance = new MultiStackedBarChartBase({
       data: data,
@@ -264,6 +277,8 @@ runTest('_getAriaLabel', () => {
 });
 
 runTest('_computeLongestBarTotalValue', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the length of the longest Bar value correctly', () => {
     const instance = new MultiStackedBarChartBase({
       data: data,

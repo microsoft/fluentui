@@ -12,13 +12,17 @@ Object {
           aria-expanded="false"
           aria-haspopup="dialog"
           class="fui-Input__input"
+          id="datePicker-input1"
           readonly=""
           role="combobox"
           type="text"
           value=""
         />
         <span
+          aria-expanded="false"
+          aria-labelledby="datePicker-input1"
           class="fui-Input__contentAfter"
+          role="button"
         >
           <svg
             aria-hidden="true"
@@ -46,13 +50,17 @@ Object {
         aria-expanded="false"
         aria-haspopup="dialog"
         class="fui-Input__input"
+        id="datePicker-input1"
         readonly=""
         role="combobox"
         type="text"
         value=""
       />
       <span
+        aria-expanded="false"
+        aria-labelledby="datePicker-input1"
         class="fui-Input__contentAfter"
+        role="button"
       >
         <svg
           aria-hidden="true"

@@ -219,6 +219,14 @@ describe('useTableSelectionState', () => {
     });
 
     describe('allRowsSelected', () => {
+      it('should return false if there are no selectable rows', () => {
+        const { result } = renderHook(() =>
+          useTableSelectionState(mockTableState({ items: [] }), { selectionMode: 'multiselect' }),
+        );
+
+        expect(result.current.selection.allRowsSelected).toBe(false);
+      });
+
       it('should return true after items updated if all selectable rows are selected', () => {
         const getRowId = (item: { value: string }) => item.value;
         let tableState = mockTableState({ items, getRowId });

@@ -9,6 +9,7 @@ export { Appearance } from './ButtonAppearance.stories';
 export { Icon } from './ButtonIcon.stories';
 export { Size } from './ButtonSize.stories';
 export { Disabled } from './ButtonDisabled.stories';
+export { Loading } from './ButtonLoading.stories';
 export { WithLongText } from './ButtonWithLongText.stories';
 
 export default {

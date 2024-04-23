@@ -4,6 +4,7 @@ import { useBaseAnimationStyles } from './useTimerStyles.styles';
 export type TimerProps = {
   running: boolean;
   timeout: number;
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onTimeout: () => void;
   as?: 'span';
 };

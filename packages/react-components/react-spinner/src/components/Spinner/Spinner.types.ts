@@ -7,15 +7,19 @@ export type SpinnerSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Spinner>`.
    */
   root: NonNullable<Slot<'div'>>;
+
   /**
-   * The slot for the animated svg.
-   * The spinner slot receives the `className` and `style` that handles the spinning animation.
-   * An svg is also rendered as a child of this slot
+   * The animated spinning ring.
    */
   spinner?: Slot<'span'>;
+
   /**
-   * The label of the Slider.
-   * The label slot receives the styling related to the text associated with the Spinner.
+   * The part of the spinner that rotates.
+   */
+  spinnerTail?: NonNullable<Slot<'span'>>;
+
+  /**
+   * An optional label for the Spinner.
    */
   label?: Slot<typeof Label>;
 };

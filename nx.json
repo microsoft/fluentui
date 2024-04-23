@@ -13,9 +13,25 @@
     }
   },
   "targetDefaults": {
+    "bundle-size": {
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "bundle": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
+      "cache": true
+    },
+    "generate-api": {
+      "dependsOn": ["^generate-api"],
+      "cache": true
+    },
+    "type-check": {
+      "dependsOn": ["^build"],
       "cache": true
     },
     "prepare": {
@@ -23,10 +39,25 @@
       "cache": true
     },
     "test": {
+      "dependsOn": ["^build"],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
+    "test-ssr": {
+      "cache": true
+    },
     "lint": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.js"
+      ]
+    },
+    "verify-packaging": {
+      "dependsOn": ["^build"],
       "cache": true
     },
     "@nx/jest:jest": {
@@ -54,6 +85,15 @@
       "!{projectRoot}/src/test-setup.[jt]s"
     ]
   },
-  "useDaemonProcess": false,
-  "parallel": 1
+  "release": {
+    "projectsRelationship": "independent",
+    "groups": {
+      "northstar": {
+        "releaseTagPattern": "@fluentui/react-northstar_v{version}",
+        "projectsRelationship": "fixed",
+        "projects": ["packages/fluentui/*"]
+      }
+    }
+  },
+  "parallel": 3
 }

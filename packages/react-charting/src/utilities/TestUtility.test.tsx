@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
+const env = require('../../config/tests');
+
+const { Timezone } = require('../../scripts/constants');
 
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
@@ -13,8 +16,9 @@ export const testWithoutWait = (
   testFunction: (container: HTMLElement) => void,
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
+  skip?: boolean,
 ) => {
-  test(description, () => {
+  conditionalTest(!skip)(description, () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionAfterRender !== undefined && testFunctionAfterRender();
@@ -30,8 +34,9 @@ export const testWithWait = (
   testFunction: (container: HTMLElement) => void,
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
+  skip?: boolean,
 ) => {
-  test(description, async () => {
+  conditionalTest(!skip)(description, async () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionAfterRender !== undefined && testFunctionAfterRender();
@@ -74,3 +79,24 @@ it('getById and getByClass should be defined', () => {
   expect(getById).toBeDefined();
   expect(getByClass).toBeDefined();
 });
+
+const TIMEZONES: [string, string][] = Object.entries(Timezone);
+export const forEachTimezone = (callback: (tzName: string, tzIdentifier: string) => void) => {
+  TIMEZONES.forEach(([tzName, tzIdentifier]) => {
+    callback(tzName, tzIdentifier);
+  });
+};
+export const isTimezoneSet = (timezone: string) => {
+  return timezone === process.env.TZ;
+};
+
+export const conditionalDescribe = (shouldExecute: boolean) => {
+  return shouldExecute ? describe : describe.skip;
+};
+export const conditionalTest = (shouldExecute: boolean) => {
+  return shouldExecute ? test : test.skip;
+};
+
+export const isTestEnv = () => {
+  return env === 'TEST' ? true : false;
+};

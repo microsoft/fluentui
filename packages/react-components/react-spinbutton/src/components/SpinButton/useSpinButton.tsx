@@ -245,6 +245,24 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     setTextValue(undefined);
   };
 
+  let valueToDisplay;
+  if (textValue !== undefined) {
+    valueToDisplay = textValue;
+  } else if (value === null || currentValue === null) {
+    valueToDisplay = displayValue ?? '';
+    internalState.current.value = null;
+    internalState.current.atBound = 'none';
+  } else {
+    const roundedValue = precisionRound(currentValue, precision);
+    internalState.current.value = roundedValue;
+    internalState.current.atBound = getBound(roundedValue, min, max);
+    if (isControlled) {
+      valueToDisplay = displayValue ?? String(roundedValue);
+    } else {
+      valueToDisplay = String(roundedValue);
+    }
+  }
+
   const state: SpinButtonState = {
     size,
     appearance,
@@ -293,24 +311,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       elementType: 'button',
     }),
   };
-
-  let valueToDisplay;
-  if (textValue !== undefined) {
-    valueToDisplay = textValue;
-  } else if (value === null || currentValue === null) {
-    valueToDisplay = displayValue ?? '';
-    internalState.current.value = null;
-    internalState.current.atBound = 'none';
-  } else {
-    const roundedValue = precisionRound(currentValue, precision);
-    internalState.current.value = roundedValue;
-    internalState.current.atBound = getBound(roundedValue, min, max);
-    if (isControlled) {
-      valueToDisplay = displayValue ?? String(roundedValue);
-    } else {
-      valueToDisplay = String(roundedValue);
-    }
-  }
 
   state.input.value = valueToDisplay;
   state.input['aria-valuemin'] = min;

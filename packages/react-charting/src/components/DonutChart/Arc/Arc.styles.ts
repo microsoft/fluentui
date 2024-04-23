@@ -1,5 +1,5 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette, FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IArcProps): IArcStyles => {
   const { color, href, theme } = props;
@@ -7,7 +7,7 @@ export const getStyles = (props: IArcProps): IArcStyles => {
     root: {
       fill: color,
       cursor: href ? 'pointer' : 'default',
-      stroke: DefaultPalette.white,
+      stroke: theme.semanticColors.bodyBackground,
       outline: 'transparent',
       selectors: {
         '::-moz-focus-inner': {

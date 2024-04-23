@@ -10,6 +10,11 @@ describe('Slider', () => {
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
+    },
   });
 
   afterEach(() => {

@@ -15,23 +15,35 @@ import type { UnionToIntersection } from '@fluentui/react-utilities';
 export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";
 
 // @public (undocumented)
+export const ActiveDescendantContextProvider: React_2.Provider<ActiveDescendantContextValue | undefined>;
+
+// @public (undocumented)
+export type ActiveDescendantContextValue = {
+    controller: ActiveDescendantImperativeRef;
+};
+
+// @public (undocumented)
 export interface ActiveDescendantImperativeRef {
     // (undocumented)
     active: () => string | undefined;
     // (undocumented)
     blur: () => void;
     // (undocumented)
-    find: (predicate: (id: string) => boolean, options?: IteratorOptions) => string | undefined;
+    find: (predicate: (id: string) => boolean, options?: IteratorOptions & FindOptions) => string | undefined;
     // (undocumented)
     first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     focus: (id: string) => void;
+    // (undocumented)
+    hideAttributes: () => void;
     // (undocumented)
     last: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     next: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     prev: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    showAttributes: () => void;
 }
 
 // @public (undocumented)
@@ -85,6 +97,9 @@ export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, c
 // @public (undocumented)
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;
 
+// @public (undocumented)
+export const useActiveDescendantContext: () => ActiveDescendantContextValue;
+
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
@@ -96,6 +111,9 @@ export const useAriaLiveAnnouncer_unstable: (props: AriaLiveAnnouncerProps) => A
 
 // @public (undocumented)
 export function useAriaLiveAnnouncerContextValues_unstable(state: AriaLiveAnnouncerState): AriaLiveAnnouncerContextValues;
+
+// @public (undocumented)
+export const useHasParentActiveDescendantContext: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 

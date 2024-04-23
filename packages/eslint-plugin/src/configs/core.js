@@ -63,6 +63,7 @@ const config = {
     'lib-commonjs',
     'node_modules',
     'temp',
+    'bundle-size',
     '**/__snapshots__',
     '**/*.scss.ts',
   ],
