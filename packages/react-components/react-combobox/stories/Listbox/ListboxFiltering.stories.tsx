@@ -36,6 +36,7 @@ export const Filtering = (props: Partial<ListboxProps>) => {
       <Input
         className={styles.input}
         placeholder="Filter pets"
+        aria-label="Filter pets"
         value={filter}
         onChange={(_, data) => setFilter(data.value)}
         contentAfter={
@@ -49,7 +50,7 @@ export const Filtering = (props: Partial<ListboxProps>) => {
           ) : undefined
         }
       />
-      <Listbox {...props} className={mergeClasses(styles.listbox, props.className)}>
+      <Listbox {...props} aria-label="Select a pet" className={mergeClasses(styles.listbox, props.className)}>
         {filteredOptions.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

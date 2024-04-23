@@ -13,13 +13,13 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<ListboxProps>) => {
+export const Multiselect = (props: Partial<ListboxProps>) => {
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
 
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Listbox {...props} aria-label="Select a pet">
+      <Listbox {...props} multiselect aria-label="Select pets">
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}
