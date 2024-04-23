@@ -1,5 +1,1349 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sankey Chart snapShot testing number formatting renders Sankey correctly by formatting large numbers 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone27"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={436}
+      id="sankeyChart2"
+      width={864}
+    >
+      <g
+        className=
+
+            {
+              fill: #ffffff;
+              stroke-width: 3px;
+              stroke: #000000;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+        strokeOpacity={1}
+      >
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#77004D"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="1.23B items moved from First to Second"
+            d="M172,36.552C282.75,36.552,282.75,36,393.5,36L393.5,393.077C282.75,393.077,282.75,393.629,172,393.629Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link19"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-1"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#4F6BED"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="100M items moved from First to Third"
+            d="M172,393.629C282.75,393.629,282.75,401.077,393.5,401.077L393.5,430C282.75,430,282.75,422.552,172,422.552Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link20"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-2"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#A43FB1"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="1.23K items moved from First to Six"
+            d="M172,422.552C455.5,422.552,455.5,414.942,739,414.942L739,418.471C455.5,418.471,455.5,426.081,172,426.081Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link21"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-3"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#CC3595"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="100 items moved from First to Seven"
+            d="M172,426.081C455.5,426.081,455.5,426.471,739,426.471L739,430C455.5,430,455.5,429.61,172,429.61Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link22"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-4"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#77004D"
+              />
+              <stop
+                offset="100%"
+                stopColor="#937600"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="1B items moved from Second to Fourth"
+            d="M517.5,36C628.25,36,628.25,36,739,36L739,325.232C628.25,325.232,628.25,325.232,517.5,325.232Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link23"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-5"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#77004D"
+              />
+              <stop
+                offset="100%"
+                stopColor="#286EA8"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="234.57M items moved from Second to Five"
+            d="M517.5,325.232C628.25,325.232,628.25,333.232,739,333.232L739,401.077C628.25,401.077,628.25,393.077,517.5,393.077Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link24"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-6"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#4F6BED"
+              />
+              <stop
+                offset="100%"
+                stopColor="#937600"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="1K items moved from Third to Fourth"
+            d="M517.5,401.077C628.25,401.077,628.25,325.232,739,325.232L739,325.232C628.25,325.232,628.25,401.077,517.5,401.077Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link25"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-7"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#4F6BED"
+              />
+              <stop
+                offset="100%"
+                stopColor="#286EA8"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="10M items moved from Third to Five"
+            d="M517.5,401.077C628.25,401.077,628.25,401.077,739,401.077L739,403.969C628.25,403.969,628.25,403.969,517.5,403.969Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link26"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+      </g>
+      <g
+        className=
+
+            {
+              fill: #F5F5F5;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+      >
+        <g
+          id="nodeGElement6"
+        >
+          <rect
+            aria-label="element First with size 1.33B"
+            data-is-focusable={true}
+            fill="#00758F"
+            height={393.0582326778442}
+            id="nodeBar5"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#002E39"
+            strokeWidth="2"
+            width={124}
+            x={48}
+            y={36.55209219392178}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar5-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={48}
+                y={36.55209219392178}
+              >
+                First
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={48}
+              y={36.55209219392178}
+            >
+              1.33B
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement8"
+        >
+          <rect
+            aria-label="element Second with size 1.23B"
+            data-is-focusable={true}
+            fill="#77004D"
+            height={357.0767805150773}
+            id="nodeBar7"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#43002C"
+            strokeWidth="2"
+            width={124}
+            x={393.5}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar7-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={393.5}
+                y={36}
+              >
+                Second
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={393.5}
+              y={36}
+            >
+              1.23B
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement10"
+        >
+          <rect
+            aria-label="element Third with size 100M"
+            data-is-focusable={true}
+            fill="#4F6BED"
+            height={28.923219484922583}
+            id="nodeBar9"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#3B52B4"
+            strokeWidth="2"
+            width={124}
+            x={393.5}
+            y={401.0767805150773}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar9-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={393.5}
+                y={401.0767805150773}
+              >
+                Third
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0em"
+              dy="1em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={509.5}
+              y={401.0767805150773}
+            >
+              100M
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement12"
+        >
+          <rect
+            aria-label="element Fourth with size 1B"
+            data-is-focusable={true}
+            fill="#937600"
+            height={289.2324840814205}
+            id="nodeBar11"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#6D5700"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar11-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={739}
+                y={36}
+              >
+                Fourth
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={739}
+              y={36}
+            >
+              1B
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement14"
+        >
+          <rect
+            aria-label="element Five with size 244.57M"
+            data-is-focusable={true}
+            fill="#286EA8"
+            height={70.73661838214912}
+            id="nodeBar13"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#00457E"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={333.2324840814205}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar13-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={739}
+                y={333.2324840814205}
+              >
+                Five
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={739}
+              y={333.2324840814205}
+            >
+              244.57M
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement16"
+        >
+          <rect
+            aria-label="element Six with size 1.23K"
+            data-is-focusable={true}
+            fill="#A43FB1"
+            height={3.5291163389221083}
+            id="nodeBar15"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#7C158A"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={414.9417673221558}
+          />
+        </g>
+        <g
+          id="nodeGElement18"
+        >
+          <rect
+            aria-label="element Seven with size 100"
+            data-is-focusable={true}
+            fill="#CC3595"
+            height={3.5291163389221083}
+            id="nodeBar17"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#7F215D"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={426.4708836610779}
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Sankey Chart snapShot testing number formatting renders Sankey correctly by styling numbers as percentages 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone21"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={436}
+      id="sankeyChart2"
+      width={864}
+    >
+      <g
+        className=
+
+            {
+              fill: #ffffff;
+              stroke-width: 3px;
+              stroke: #000000;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+        strokeOpacity={1}
+      >
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#77004D"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="60% items moved from First to Second"
+            d="M172,38.957C282.75,38.957,282.75,36,393.5,36L393.5,267.6C282.75,267.6,282.75,270.557,172,270.557Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link15"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-1"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#4F6BED"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="40% items moved from First to Third"
+            d="M172,270.557C282.75,270.557,282.75,275.6,393.5,275.6L393.5,430C282.75,430,282.75,424.957,172,424.957Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link16"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-2"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#77004D"
+              />
+              <stop
+                offset="100%"
+                stopColor="#937600"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="25% items moved from Second to Fourth"
+            d="M517.5,36C628.25,36,628.25,36,739,36L739,132.5C628.25,132.5,628.25,132.5,517.5,132.5Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link17"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-3"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#77004D"
+              />
+              <stop
+                offset="100%"
+                stopColor="#286EA8"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="35% items moved from Second to Five"
+            d="M517.5,132.5C628.25,132.5,628.25,198.4,739,198.4L739,333.5C628.25,333.5,628.25,267.6,517.5,267.6Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link18"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-4"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#4F6BED"
+              />
+              <stop
+                offset="100%"
+                stopColor="#937600"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="15% items moved from Third to Fourth"
+            d="M517.5,275.6C628.25,275.6,628.25,132.5,739,132.5L739,190.4C628.25,190.4,628.25,333.5,517.5,333.5Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link19"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-5"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#4F6BED"
+              />
+              <stop
+                offset="100%"
+                stopColor="#286EA8"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="25% items moved from Third to Five"
+            d="M517.5,333.5C628.25,333.5,628.25,333.5,739,333.5L739,430C628.25,430,628.25,430,517.5,430Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link20"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+      </g>
+      <g
+        className=
+
+            {
+              fill: #F5F5F5;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+      >
+        <g
+          id="nodeGElement6"
+        >
+          <rect
+            aria-label="element First with size 100%"
+            data-is-focusable={true}
+            fill="#00758F"
+            height={386}
+            id="nodeBar5"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#002E39"
+            strokeWidth="2"
+            width={124}
+            x={48}
+            y={38.95748850602045}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar5-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={48}
+                y={38.95748850602045}
+              >
+                First
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={48}
+              y={38.95748850602045}
+            >
+              100%
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement8"
+        >
+          <rect
+            aria-label="element Second with size 60%"
+            data-is-focusable={true}
+            fill="#77004D"
+            height={231.5999999999999}
+            id="nodeBar7"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#43002C"
+            strokeWidth="2"
+            width={124}
+            x={393.5}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar7-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={393.5}
+                y={36}
+              >
+                Second
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={393.5}
+              y={36}
+            >
+              60%
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement10"
+        >
+          <rect
+            aria-label="element Third with size 40%"
+            data-is-focusable={true}
+            fill="#4F6BED"
+            height={154.4000000000001}
+            id="nodeBar9"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#3B52B4"
+            strokeWidth="2"
+            width={124}
+            x={393.5}
+            y={275.5999999999999}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar9-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={393.5}
+                y={275.5999999999999}
+              >
+                Third
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={393.5}
+              y={275.5999999999999}
+            >
+              40%
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement12"
+        >
+          <rect
+            aria-label="element Fourth with size 40%"
+            data-is-focusable={true}
+            fill="#937600"
+            height={154.39999999999995}
+            id="nodeBar11"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#6D5700"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar11-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={739}
+                y={36}
+              >
+                Fourth
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={739}
+              y={36}
+            >
+              40%
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement14"
+        >
+          <rect
+            aria-label="element Five with size 60%"
+            data-is-focusable={true}
+            fill="#286EA8"
+            height={231.60000000000005}
+            id="nodeBar13"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#00457E"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={198.39999999999995}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar13-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={739}
+                y={198.39999999999995}
+              >
+                Five
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={739}
+              y={198.39999999999995}
+            >
+              60%
+            </text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
 <div
   className=
