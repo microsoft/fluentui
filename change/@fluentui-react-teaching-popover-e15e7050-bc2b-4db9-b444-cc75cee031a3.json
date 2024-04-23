@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: fix TeachingPopover package name in LICENSE file and import path in bundle size",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
