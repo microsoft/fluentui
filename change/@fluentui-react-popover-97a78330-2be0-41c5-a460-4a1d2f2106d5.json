@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add usePopoverContextValues_unstable hook for simplified context",
-  "packageName": "@fluentui/react-popover",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

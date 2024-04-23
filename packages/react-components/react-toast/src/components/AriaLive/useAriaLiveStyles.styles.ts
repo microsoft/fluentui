@@ -1,4 +1,4 @@
-import { mergeClasses, shorthands, makeResetStyles } from '@griffel/react';
+import { mergeClasses, makeResetStyles } from '@griffel/react';
 import type { AriaLiveSlots, AriaLiveState } from './AriaLive.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -13,9 +13,9 @@ export const ariaLiveClassNames: SlotClassNames<AriaLiveSlots> = {
 const useResetStyles = makeResetStyles({
   clip: 'rect(0px, 0px, 0px, 0px)',
   height: '1px',
-  ...shorthands.margin('-1px'),
-  ...shorthands.overflow('hidden'),
-  ...shorthands.padding('0px'),
+  margin: '-1px',
+  overflow: 'hidden',
+  padding: '0px',
   width: '1px',
   position: 'absolute',
 });

@@ -1,8 +1,55 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Fri, 19 Jan 2024 07:29:32 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.47](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.47)
+
+Mon, 22 Apr 2024 07:28:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.46..@fluentui/scheme-utilities_v8.3.47)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.46 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+
+## [8.3.46](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.46)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.45..@fluentui/scheme-utilities_v8.3.46)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.45 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [8.3.45](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.45)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.44..@fluentui/scheme-utilities_v8.3.45)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.44 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [8.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.44)
+
+Fri, 22 Mar 2024 07:28:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.43..@fluentui/scheme-utilities_v8.3.44)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.43 ([PR #30817](https://github.com/microsoft/fluentui/pull/30817) by beachball)
+
+## [8.3.43](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.43)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.42..@fluentui/scheme-utilities_v8.3.43)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.42 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
 
 ## [8.3.42](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.42)
 

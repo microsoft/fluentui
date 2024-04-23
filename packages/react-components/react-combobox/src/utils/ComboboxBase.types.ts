@@ -126,6 +126,8 @@ export type ComboboxBaseState = Required<
     setValue(newValue: string | undefined): void;
 
     onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
+    disabled: boolean;
+    freeform: boolean;
   };
 
 /**

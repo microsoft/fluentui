@@ -119,6 +119,8 @@ const focusZonePropsInHoverCard = {
 };
 
 describe('Legends snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders Legends correctly', () => {
     const component = renderer.create(<Legends legends={legends} />);
     const tree = component.toJSON();
@@ -189,6 +191,8 @@ describe('Legends - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(LegendsBase.prototype, 'render');
     const props = {

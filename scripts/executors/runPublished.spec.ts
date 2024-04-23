@@ -21,18 +21,26 @@ describe(`#runPublished`, () => {
       '@fluentui/web-components': {
         packagePath: 'packages/web-components',
         packageJson: { name: '@fluentui/web-components', version: '1.0.0', main: 'lib/index.js', private: false },
+        projectConfig: { name: '@fluentui/web-components', root: 'packages/web-components', tags: [] },
       },
       '@fluentui/react': {
         packagePath: 'packages/react',
         packageJson: { name: '@fluentui/react', version: '8.0.0', main: 'lib/index.js', private: false },
+        projectConfig: { name: '@fluentui/react', root: 'packages/react', tags: [] },
       },
       '@fluentui/react-northstar': {
         packagePath: 'packages/fluentui/react-northstar',
         packageJson: { name: '@fluentui/react-northstar', version: '0.1.0', main: 'lib/index.js', private: false },
+        projectConfig: { name: '@fluentui/react-northstar', root: 'packages/fluentui/react-northstar', tags: [] },
       },
       '@fluentui/react-components': {
         packagePath: 'packages/react-components/react-components',
         packageJson: { name: '@fluentui/react-components', version: '9.0.0', main: 'lib/index.js', private: false },
+        projectConfig: {
+          name: '@fluentui/react-components',
+          root: 'packages/react-components/react-components',
+          tags: [],
+        },
       },
     };
 

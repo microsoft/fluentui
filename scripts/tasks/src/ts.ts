@@ -26,7 +26,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
   const { isUsingPathAliasesForDx, tsConfigFileForCompilation } = getTsPathAliasesConfigUsedOnlyForDx();
 
-  if (isUsingPathAliasesForDx) {
+  if (isUsingPathAliasesForDx()) {
     logger.info(`📣 TSC: Project is using TS path aliases for DX. Disabling aliases for build.`);
     options.baseUrl = '.';
     options.rootDir = './src';

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { DonutChart, IChartDataPoint, IChartProps } from '../src/components/DonutChart/index';
 import { render } from '@testing-library/react';
 import { DonutChartBase } from '../src/components/DonutChart/DonutChart.base';
+import { resetIds } from '@fluentui/react';
+
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -31,7 +33,13 @@ export const noColorsChartPoints: IChartProps = {
   chartData: pointsNoColors,
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_createLegends', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper legends data', () => {
     render(<DonutChart data={noColorsChartPoints} />);
     const instance = new DonutChartBase({
@@ -56,6 +64,8 @@ runTest('_createLegends', () => {
 });
 
 runTest('_addDefaultColors', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return default colors when color is not defined input data', () => {
     const instance = new DonutChartBase({
       data: emptyChartPoints,
@@ -82,6 +92,8 @@ runTest('_addDefaultColors', () => {
 });
 
 runTest('_toLocaleString', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper string when input is a string', () => {
     const instance = new DonutChartBase({
       data: emptyChartPoints,

@@ -434,6 +434,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             border-color: Highlight;
                             color: HighlightText;
                           }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border-color: HighlightText;
+                            bottom: 0px;
+                            left: 0px;
+                            right: 0px;
+                            top: 0px;
+                          }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
@@ -469,13 +476,16 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
-                          .ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            inset: 2px;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
                             bottom: 0px;
                             left: 0px;
                             right: 0px;
                             top: 0px;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             inset: 2px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-Checkbox-checkbox {
@@ -504,6 +514,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                               outline: 1px solid #605e5c;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                              outline: 1px solid WindowText;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+                              outline-offset: 0px;
+                              outline: 1px solid #605e5c;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
                               outline: 1px solid WindowText;
                             }
                         data-index="1"
@@ -701,6 +718,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           border-color: Highlight;
                           color: HighlightText;
                         }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border-color: HighlightText;
+                          bottom: 0px;
+                          left: 0px;
+                          right: 0px;
+                          top: 0px;
+                        }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
@@ -736,13 +760,16 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
-                        .ms-Fabric--isFocusVisible &:focus:after {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          inset: 2px;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                           bottom: 0px;
                           left: 0px;
                           right: 0px;
                           top: 0px;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           inset: 2px;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -767,6 +794,13 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             outline: 1px solid #605e5c;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                            outline: 1px solid WindowText;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+                            outline-offset: 0px;
+                            outline: 1px solid #605e5c;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
                             outline: 1px solid WindowText;
                           }
                       data-index="3"
@@ -1643,6 +1677,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             border: 0;
                           }
                           .ms-Fabric--isFocusVisible &:focus:after {
+                            border-color: HighlightText;
                             border: 1px solid transparent;
                             bottom: 0px;
                             content: "";
@@ -1654,6 +1689,25 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            bottom: -2px;
+                            inset: 2px;
+                            left: -2px;
+                            outline-color: ButtonText;
+                            right: -2px;
+                            top: -2px;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 0px;
+                            content: "";
+                            left: 0px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             bottom: -2px;
                             inset: 2px;
                             left: -2px;
@@ -1831,6 +1885,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
+                          border-color: HighlightText;
                           border: 1px solid transparent;
                           bottom: 0px;
                           content: "";
@@ -1842,6 +1897,25 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          bottom: -2px;
+                          inset: 2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           bottom: -2px;
                           inset: 2px;
                           left: -2px;

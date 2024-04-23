@@ -39,6 +39,7 @@ const testFiles = [
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
+const storyFiles = ['**/*.stories.tsx', '**/*.stories.ts'];
 
 const configFiles = [
   './just.config.ts',
@@ -84,7 +85,7 @@ module.exports = {
    *   - may need to reconsider for converged components depending on website approach
    *   - the stories suffix is also used for storywright stories in `vr-tests`
    */
-  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, '**/*.stories.tsx'],
+  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, ...storyFiles],
 
   /**
    * Whether linting is running in context of lint-staged (which should disable rules requiring

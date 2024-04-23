@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: active descendants imperative handle to toggle attribute",
-  "packageName": "@fluentui/react-aria",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

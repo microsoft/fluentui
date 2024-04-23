@@ -55,6 +55,16 @@ const useRootBaseStyles = makeResetStyles({
     color: tokens.colorNeutralForeground2Pressed,
   },
 
+  // High contrast styles
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'Canvas',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+    },
+    ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
+  },
+
   userSelect: 'none',
   ...createFocusOutlineStyle(),
 });
@@ -150,12 +160,15 @@ const useStyles = makeStyles({
       color: 'GrayText',
       ':hover': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
         [`& .${menuItemClassNames.icon}`]: {
           color: 'GrayText',
+          backgroundColor: 'Canvas',
         },
       },
       ':focus': {
         color: 'GrayText',
+        backgroundColor: 'Canvas',
       },
     },
   },

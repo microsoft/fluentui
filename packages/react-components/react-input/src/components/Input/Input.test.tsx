@@ -12,6 +12,7 @@ describe('Input', () => {
   let renderedComponent: RenderResult | undefined;
 
   afterEach(() => {
+    jest.clearAllMocks();
     if (renderedComponent) {
       renderedComponent.unmount();
       renderedComponent = undefined;
@@ -115,5 +116,16 @@ describe('Input', () => {
     expect(input.getAttribute('aria-describedby')).toEqual(message.id);
     expect(input.getAttribute('aria-invalid')).toEqual('true');
     expect(input.required).toBe(true);
+  });
+
+  it('does not emit error when uncontrolled', () => {
+    const spy = jest.spyOn(console, 'error');
+    renderedComponent = render(<Input />);
+
+    const input = renderedComponent.getByRole('textbox') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 'foo' } });
+    expect(input.value).toBe('foo');
+    expect(spy).not.toHaveBeenCalled();
   });
 });

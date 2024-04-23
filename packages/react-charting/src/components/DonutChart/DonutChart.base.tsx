@@ -109,7 +109,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = points.filter((d: IChartDataPoint) => d.data! >= 0);
+    const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return !this._isChartEmpty() ? (
       <div
@@ -191,6 +191,27 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
   };
 
+  private _elevateToMinimums(data: IChartDataPoint[]) {
+    let sumOfData = 0;
+    const minPercent = 0.01;
+    const elevatedData: IChartDataPoint[] = [];
+    data.forEach(item => {
+      sumOfData += item.data!;
+    });
+    data.forEach(item => {
+      elevatedData.push(
+        minPercent * sumOfData > item.data! && item.data! > 0
+          ? {
+              ...item,
+              data: minPercent * sumOfData,
+              yAxisCalloutData:
+                item.yAxisCalloutData === undefined ? item.data!.toLocaleString() : item.yAxisCalloutData,
+            }
+          : item,
+      );
+    });
+    return elevatedData;
+  }
   private _setViewBox(node: SVGElement | null): void {
     if (node === null) {
       return;

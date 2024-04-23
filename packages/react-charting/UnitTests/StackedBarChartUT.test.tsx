@@ -2,6 +2,7 @@ import { StackedBarChartBase } from '../src/components/StackedBarChart/StackedBa
 import { IChartDataPoint, IChartProps } from '../src/components/StackedBarChart';
 import { DefaultPalette } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
+import { resetIds } from '@fluentui/react';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -41,7 +42,13 @@ const data: IChartProps = {
   chartData: points,
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_createBarsAndLegends', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return bars and legends which includes benchmark and target data', () => {
     const instance = new StackedBarChartBase({
       data: {},
@@ -120,6 +127,8 @@ runTest('_createBarsAndLegends', () => {
 });
 
 runTest('_isChartEmpty', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return true when chart data is empty ', () => {
     const emptyData: IChartProps = {};
     const instance = new StackedBarChartBase({
@@ -139,6 +148,8 @@ runTest('_isChartEmpty', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return correct aria label for a point with xAxisCalloutData and yAxisCalloutData', () => {
     const emptyData: IChartProps = {};
     const instance = new StackedBarChartBase({

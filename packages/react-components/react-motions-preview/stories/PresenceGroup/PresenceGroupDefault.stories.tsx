@@ -23,7 +23,7 @@ const useClasses = makeStyles({
 
     ...shorthands.gap('10px'),
 
-    ...shorthands.border('3px', 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     borderTopRightRadius: 0,
     ...shorthands.padding('10px'),
@@ -33,7 +33,7 @@ const useClasses = makeStyles({
 
     ...shorthands.gap('10px'),
 
-    ...shorthands.border('3px', 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
     ...shorthands.borderBottom('none'),
     borderTopLeftRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: tokens.borderRadiusMedium,

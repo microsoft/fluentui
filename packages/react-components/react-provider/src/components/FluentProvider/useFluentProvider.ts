@@ -16,8 +16,9 @@ import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
-// Fixes a bug where returning a new object each time would cause unnecessary rerenders.
-const EMPTY_OBJECT = {};
+// Meomizing empty objects to avoid unnecessary rerenders.
+const DEFAULT_STYLE_HOOKS = {};
+const DEFAULT_RENDERER_ATTRIBUTES = {};
 
 /**
  * Create the state required to render FluentProvider.
@@ -36,7 +37,7 @@ export const useFluentProvider_unstable = (
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
   const parentCustomStyleHooks: CustomStyleHooksContextValue =
-    React.useContext(CustomStyleHooksContext) || EMPTY_OBJECT;
+    React.useContext(CustomStyleHooksContext) || DEFAULT_STYLE_HOOKS;
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -65,7 +66,7 @@ export const useFluentProvider_unstable = (
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
     theme: mergedTheme,
     targetDocument,
-    rendererAttributes: renderer.styleElementAttributes ?? {},
+    rendererAttributes: renderer.styleElementAttributes ?? DEFAULT_RENDERER_ATTRIBUTES,
   });
 
   if (process.env.NODE_ENV !== 'production') {

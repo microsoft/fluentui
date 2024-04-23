@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarouselNav renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarouselNav"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":false,\\"hasDefault\\":true}}"
+    role="tablist"
+    tabindex="0"
+  />
+</div>
+`;

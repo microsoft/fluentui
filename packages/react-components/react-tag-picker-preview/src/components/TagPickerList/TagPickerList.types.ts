@@ -9,11 +9,9 @@ export type TagPickerListSlots = {
 /**
  * TagPickerList Props
  */
-export type TagPickerListProps = ComponentProps<TagPickerListSlots> & {};
+export type TagPickerListProps = ComponentProps<TagPickerListSlots>;
 
 /**
  * State used in rendering TagPickerList
  */
 export type TagPickerListState = ComponentState<TagPickerListSlots> & Pick<TagPickerContextValue, 'open'>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TagPickerListProps.
-// & Required<Pick<TagPickerListProps, 'propName'>>

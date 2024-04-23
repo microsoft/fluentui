@@ -12,7 +12,9 @@ export const renderColorSwatch_unstable = (state: ColorSwatchState) => {
 
   return (
     <state.root>
-      <state.button />
+      {state.root.children}
+      {state.icon && <state.icon />}
+      {state.disabled && state.disabledIcon && <state.disabledIcon />}
     </state.root>
   );
 };

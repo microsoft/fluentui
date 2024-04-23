@@ -13,8 +13,6 @@ import {
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
-import type { SelectionEvents } from '../../utils/Selection.types';
-import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
@@ -41,20 +39,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
 
-  const {
-    clearable,
-    clearSelection,
-    multiselect,
-    open,
-    selectedOptions,
-    selectOption,
-    setOpen,
-    setValue,
-    value,
-    hasFocus,
-  } = baseState;
+  const { clearable, clearSelection, multiselect, open, selectedOptions, value, hasFocus } = baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
-  const { disabled, freeform, inlinePopup } = props;
+  const { freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -62,24 +49,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     primarySlotTagName: 'input',
     excludedPropNames: ['children', 'size'],
   });
-
-  // reset any typed value when an option is selected
-  baseState.selectOption = (ev: SelectionEvents, option: OptionValue) => {
-    setValue(undefined);
-    selectOption(ev, option);
-  };
-
-  baseState.setOpen = (ev, newState: boolean) => {
-    if (disabled) {
-      return;
-    }
-
-    if (!newState && !freeform) {
-      setValue(undefined);
-    }
-
-    setOpen(ev, newState);
-  };
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Fri, 22 Mar 2024 07:28:52 GMT",
+      "tag": "@fluentui/codemods_v8.4.16",
+      "version": "8.4.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "9237b8c77a00da7995e31e130f60f563544079e6",
+            "comment": "fix: Build errors in TypeScript 5.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:31 GMT",
       "tag": "@fluentui/codemods_v8.4.12",
       "version": "8.4.12",

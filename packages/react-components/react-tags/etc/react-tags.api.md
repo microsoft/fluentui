@@ -134,6 +134,8 @@ export type TagGroupContextValues = {
 export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
     onDismiss?: TagDismissHandler<Value>;
     size?: TagSize;
+    appearance?: TagAppearance;
+    dismissible?: boolean;
 };
 
 // @public (undocumented)
@@ -142,8 +144,9 @@ export type TagGroupSlots = {
 };
 
 // @public
-export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
+export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size' | 'appearance' | 'dismissible'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
+    role?: React_2.AriaRole;
 };
 
 // @public

@@ -9,7 +9,7 @@ import { warn } from './warn';
  * @param conditionalPropName - The name of the prop that the condition is based on.
  * @param condition - Whether the condition is met.
  */
-export function warnConditionallyRequiredProps<P>(
+export function warnConditionallyRequiredProps<P extends {}>(
   componentName: string,
   props: P,
   requiredProps: string[],

@@ -13,18 +13,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@fluentui/react-dialog';
-import {
-  Button,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  Popover,
-  PopoverSurface,
-  PopoverTrigger,
-  Tooltip,
-} from '@fluentui/react-components';
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
+import { Tooltip } from '@fluentui/react-tooltip';
+import { Button } from '@fluentui/react-button';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import {
   dialogSurfaceSelector,
   dialogTriggerCloseId,

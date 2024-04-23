@@ -17,7 +17,7 @@ export interface IBaseFloatingPickerState {
   didBind: boolean;
 }
 
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
+export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps<T>>
   extends React.Component<P, IBaseFloatingPickerState>
   implements IBaseFloatingPicker
 {

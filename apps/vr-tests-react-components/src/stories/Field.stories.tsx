@@ -118,6 +118,19 @@ storiesOf('Field', module)
       <Checkbox label="Checkbox in a horizontal field" />
     </Field>
   ))
+  .addStory('Input+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Small Field" size="small" orientation="horizontal">
+        <Input placeholder="Input" />
+      </Field>
+      <Field label="Medium Field" size="medium" orientation="horizontal">
+        <Input placeholder="Input" />
+      </Field>
+      <Field label="Large Field" size="large" orientation="horizontal">
+        <Input placeholder="Input" />
+      </Field>
+    </div>
+  ))
   .addStory('Checkbox', () => (
     <div style={{ display: 'grid', gap: '10px' }}>
       <Field label="Checkbox in a Field with a label">
@@ -144,6 +157,19 @@ storiesOf('Field', module)
       </Field>
     </div>
   ))
+  .addStory('Combobox+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Small Field" size="small" orientation="horizontal">
+        <Combobox placeholder="Combobox" />
+      </Field>
+      <Field label="Medium Field" size="medium" orientation="horizontal">
+        <Combobox placeholder="Combobox" />
+      </Field>
+      <Field label="Large Field" size="large" orientation="horizontal">
+        <Combobox placeholder="Combobox" />
+      </Field>
+    </div>
+  ))
   .addStory('Dropdown', () => (
     <div style={{ display: 'grid', gap: '10px' }}>
       <Field label="Dropdown in a small Field" size="small">
@@ -157,6 +183,19 @@ storiesOf('Field', module)
       </Field>
       <Field label="Dropdown in a Field with an error" validationMessage="Error message">
         <Dropdown />
+      </Field>
+    </div>
+  ))
+  .addStory('Dropdown+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Small Field" size="small" orientation="horizontal">
+        <Dropdown placeholder="Dropdown" />
+      </Field>
+      <Field label="Medium Field" size="medium" orientation="horizontal">
+        <Dropdown placeholder="Dropdown" />
+      </Field>
+      <Field label="Large Field" size="large" orientation="horizontal">
+        <Dropdown placeholder="Dropdown" />
       </Field>
     </div>
   ))
@@ -198,6 +237,16 @@ storiesOf('Field', module)
       </Field>
     </div>
   ))
+  .addStory('RadioGroup+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Horizontal Field" orientation="horizontal">
+        <RadioGroup layout="horizontal">
+          <Radio label="Option one" />
+          <Radio label="Option two" />
+        </RadioGroup>
+      </Field>
+    </div>
+  ))
   .addStory('Select', () => (
     <div style={{ display: 'grid', gap: '10px' }}>
       <Field label="Select in a small Field" size="small">
@@ -211,6 +260,25 @@ storiesOf('Field', module)
       </Field>
       <Field label="Select in a Field with an error" validationMessage="Error message">
         <Select />
+      </Field>
+    </div>
+  ))
+  .addStory('Select+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Small Field" size="small" orientation="horizontal">
+        <Select value="Select">
+          <option>Select</option>
+        </Select>
+      </Field>
+      <Field label="Medium Field" size="medium" orientation="horizontal">
+        <Select value="Select">
+          <option>Select</option>
+        </Select>
+      </Field>
+      <Field label="Large Field" size="large" orientation="horizontal">
+        <Select value="Select">
+          <option>Select</option>
+        </Select>
       </Field>
     </div>
   ))
@@ -240,6 +308,13 @@ storiesOf('Field', module)
       </Field>
     </div>
   ))
+  .addStory('SpinButton+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Horizontal Field" size="medium" orientation="horizontal">
+        <SpinButton />
+      </Field>
+    </div>
+  ))
   .addStory('Switch', () => (
     <div style={{ display: 'grid', gap: '10px' }}>
       <Field label="Switch in a Field">
@@ -263,6 +338,19 @@ storiesOf('Field', module)
       </Field>
       <Field label="Textarea in a Field with an error" validationMessage="Error message">
         <Textarea />
+      </Field>
+    </div>
+  ))
+  .addStory('Textarea+horizontal', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Small Field" size="small" orientation="horizontal">
+        <Textarea placeholder="Textarea" />
+      </Field>
+      <Field label="Medium Field" size="medium" orientation="horizontal">
+        <Textarea placeholder="Textarea" />
+      </Field>
+      <Field label="Large Field" size="large" orientation="horizontal">
+        <Textarea placeholder="Textarea" />
       </Field>
     </div>
   ));

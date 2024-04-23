@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Wed, 31 May 2023 07:38:38 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2024 07:28:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.16)
+
+Fri, 22 Mar 2024 07:28:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.12..@fluentui/codemods_v8.4.16)
+
+### Patches
+
+- fix: Build errors in TypeScript 5.3 ([PR #30806](https://github.com/microsoft/fluentui/pull/30806) by behowell@microsoft.com)
 
 ## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.12)
 

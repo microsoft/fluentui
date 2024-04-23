@@ -24,6 +24,7 @@ const useRootBaseClassName = makeResetStyles({
   justifyContent: 'center',
   lineHeight: '0',
   gap: '8px',
+  overflow: 'hidden', // prevents height changes from rotating children
 });
 
 const useRootStyles = makeStyles({

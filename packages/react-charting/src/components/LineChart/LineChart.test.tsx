@@ -221,6 +221,10 @@ describe('LineChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(LineChartBase.prototype, 'render');
     const props = {
@@ -344,6 +348,10 @@ describe('LineChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(<LineChart data={chartPoints} />);

@@ -20,6 +20,7 @@ describe('TagPickerList', () => {
     Component: TagPickerList,
     displayName: 'TagPickerList',
     renderOptions: { wrapper: Wrapper },
+    requiredProps: { children: 'Default TagPickerList' },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

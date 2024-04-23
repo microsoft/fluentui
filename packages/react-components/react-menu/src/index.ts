@@ -118,3 +118,12 @@ export {
 export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink';
 
 export { MENU_ENTER_EVENT, dispatchMenuEnterEvent, useOnMenuMouseEnter } from './utils';
+export {
+  MenuItemSwitch,
+  useMenuItemSwitch_unstable,
+  useMenuItemSwitchStyles_unstable,
+  renderMenuItemSwitch_unstable,
+  menuItemSwitchClassNames,
+} from './MenuItemSwitch';
+
+export type { MenuItemSwitchProps, MenuItemSwitchState, MenuItemSwitchSlots } from './MenuItemSwitch';

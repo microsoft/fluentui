@@ -1,10 +1,10 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagPickerControlContextValue } from '../../contexts/TagPickerControlContext';
-import { ComboboxSlots, ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
+import { TagPickerContextValue } from '../../contexts/TagPickerContext';
 
 export type TagPickerInputSlots = {
-  root: Slot<'input'>;
-} & Pick<ComboboxSlots, 'clearIcon' | 'expandIcon'>;
+  root: NonNullable<Slot<'input'>>;
+};
 
 /**
  * TagPickerInput Props
@@ -13,8 +13,7 @@ export type TagPickerInputProps = Omit<
   ComponentProps<Partial<TagPickerInputSlots>>,
   'children' | 'size' | 'defaultValue'
 > &
-  Pick<ComboboxProps, 'clearable' | 'size' | 'appearance'> & {
-    freeform?: boolean;
+  Pick<ComboboxProps, 'clearable' | 'appearance'> & {
     disabled?: boolean;
     value?: string;
   };
@@ -23,6 +22,4 @@ export type TagPickerInputProps = Omit<
  * State used in rendering TagPickerInput
  */
 export type TagPickerInputState = ComponentState<TagPickerInputSlots> &
-  Pick<TagPickerControlContextValue, 'size' | 'clearable' | 'disabled'> & {
-    showClearIcon: boolean;
-  };
+  Pick<TagPickerContextValue, 'size' | 'disabled'>;

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
 
 /**
@@ -12,20 +14,20 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+  const focusAttributes = useArrowNavigationGroup({ axis: 'vertical', circular: true });
+  const baseDrawerState = useInlineDrawer_unstable(props, ref);
+  const navState = useNav_unstable(
+    {
+      role: 'navigation',
+      ...focusAttributes,
+      ...props,
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+    ref,
+  );
+
+  return {
+    ...baseDrawerState,
+    ...navState,
   };
 };
+3;

@@ -1,8 +1,9 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { InlineDrawerSlots, useInlineDrawerStyles_unstable } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { NavDrawerSlots, NavDrawerState } from './NavDrawer.types';
+import type { NavDrawerState } from './NavDrawer.types';
 
-export const navDrawerClassNames: SlotClassNames<NavDrawerSlots> = {
+export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
   root: 'fui-NavDrawer',
   // TODO: add class names for all slots on NavDrawerSlots.
   // Should be of the form `<slotName>: 'fui-NavDrawer__<slotName>`
@@ -13,10 +14,8 @@ export const navDrawerClassNames: SlotClassNames<NavDrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    width: '260px', // per spec
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -29,5 +28,6 @@ export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerSta
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
+  useInlineDrawerStyles_unstable(state);
   return state;
 };

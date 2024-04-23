@@ -9,10 +9,5 @@ import type { TagPickerListState, TagPickerListSlots } from './TagPickerList.typ
  */
 export const renderTagPickerList_unstable = (state: TagPickerListState) => {
   assertSlots<TagPickerListSlots>(state);
-
-  if (!state.open) {
-    return null;
-  }
-
   return <state.root />;
 };

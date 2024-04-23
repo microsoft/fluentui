@@ -2,7 +2,10 @@ import * as React from 'react';
 import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.types';
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { isHTMLElement, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { tagPickerAppearanceToTagAppearance, tagPickerSizeToTagSize } from '../../utils/tagPicker2Tag';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { ArrowRight } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render TagPickerGroup.
@@ -17,52 +20,51 @@ export const useTagPickerGroup_unstable = (
   props: TagPickerGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerGroupState => {
-  const selectedOptions = useTagPickerContext_unstable(ctx => ctx.selectedOptions);
+  const hasSelectedOptions = useTagPickerContext_unstable(ctx => ctx.selectedOptions.length > 0);
   const hasOneSelectedOption = useTagPickerContext_unstable(ctx => ctx.selectedOptions.length === 1);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
-  const tagSize = useTagPickerContext_unstable(ctx => {
-    switch (ctx.size) {
-      case 'medium':
-        return 'extra-small';
-      case 'large':
-        return 'small';
-      case 'extra-large':
-        return 'medium';
-      default:
-        return 'extra-small';
-    }
+  const size = useTagPickerContext_unstable(ctx => tagPickerSizeToTagSize(ctx.size));
+  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
+
+  const arrowNavigationProps = useArrowNavigationGroup({
+    circular: false,
+    axis: 'both',
+    memorizeCurrent: true,
   });
 
   const state = useTagGroup_unstable(
     {
+      role: 'listbox',
       ...props,
-      size: tagSize,
-      onClick: e => {
-        // Prevent default so that open/close state is not affected
-        // target check is to make sure that this only applies to white space in this control and not to tags
-        if (e.target !== e.currentTarget) {
-          e.preventDefault();
-        }
-      },
-      onDismiss: useEventCallback((e, data) => {
-        if (hasOneSelectedOption) {
+      ...arrowNavigationProps,
+      size,
+      appearance: tagPickerAppearanceToTagAppearance(appearance),
+      dismissible: true,
+      onKeyDown: useEventCallback(event => {
+        if (isHTMLElement(event.target) && event.key === ArrowRight) {
           triggerRef.current?.focus();
         }
-        selectOption(e as React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, {
+      }),
+      onDismiss: useEventCallback((event, data) => {
+        selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
           value: data.value,
           // These values no longer exist because the option has unregistered itself
           // for the purposes of selection - these values aren't actually used
           id: 'ERROR_DO_NOT_USE',
           text: 'ERROR_DO_NOT_USE',
         });
+        if (hasOneSelectedOption && !event.isDefaultPrevented()) {
+          triggerRef.current?.focus();
+        }
       }),
     },
-    ref,
+    useMergedRefs(ref, tagPickerGroupRef),
   );
 
   return {
     ...state,
-    hasSelectedOptions: !!selectedOptions.length,
+    hasSelectedOptions,
   };
 };
