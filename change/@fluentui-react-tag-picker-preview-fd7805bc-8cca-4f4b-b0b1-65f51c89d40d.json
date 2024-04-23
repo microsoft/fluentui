@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: removes unused props",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

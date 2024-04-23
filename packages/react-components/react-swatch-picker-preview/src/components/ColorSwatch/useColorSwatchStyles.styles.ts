@@ -89,7 +89,7 @@ const useStyles = makeStyles({
 });
 
 const useSizeStyles = makeStyles({
-  extraSmall: {
+  'extra-small': {
     width: '20px',
     height: '20px',
   },
@@ -136,7 +136,7 @@ const useIconStyles = makeStyles({
     display: 'flex',
     alignSelf: 'center',
   },
-  extraSmall: {
+  'extra-small': {
     fontSize: '16px',
   },
   small: {
@@ -160,13 +160,13 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   const shapeStyles = useShapeStyles();
   const iconStyles = useIconStyles();
 
-  const size = state.size ?? 'medium';
+  const { size = 'medium', shape = 'square' } = state;
 
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
     resetStyles,
     sizeStyles[size],
-    shapeStyles[state.shape ?? 'square'],
+    shapeStyles[shape],
     state.selected && styles.selected,
     state.disabled && styles.disabled,
     state.root.className,

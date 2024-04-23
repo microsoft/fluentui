@@ -36,7 +36,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
       },
       suggested && {
         selectors: {
-          [`.${IsFocusVisibleClassName} &`]: {
+          [`.${IsFocusVisibleClassName} &, :host(.${IsFocusVisibleClassName}) &`]: {
             selectors: {
               [`.${classNames.closeButton}`]: {
                 display: 'block',
@@ -122,7 +122,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         },
       },
       suggested && {
-        [`.${IsFocusVisibleClassName} &`]: {
+        [`.${IsFocusVisibleClassName} &, :host(.${IsFocusVisibleClassName}) &`]: {
           selectors: {
             ':hover, :active': {
               background: palette.neutralTertiary,

@@ -22,6 +22,7 @@ export const useEmptySwatch_unstable = (
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
 
   const role = isGrid ? 'gridcell' : 'radio';
+  const a11yProps = isGrid ? {} : { 'aria-checked': false };
   return {
     components: {
       root: 'button',
@@ -30,6 +31,7 @@ export const useEmptySwatch_unstable = (
       getIntrinsicElementProps('button', {
         ref,
         role,
+        ...a11yProps,
         ...rest,
       }),
       { elementType: 'button' },

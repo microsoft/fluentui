@@ -21,6 +21,13 @@ exports[`Link renders Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 1px solid WindowText;
+      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: auto;
         border-bottom: none;
@@ -100,6 +107,13 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 1px solid WindowText;
+      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border-bottom: none;
         color: LinkText;
@@ -158,6 +172,13 @@ exports[`Link renders Link with a custom class name 1`] = `
         outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -238,6 +259,13 @@ exports[`Link renders Link with no href as a button 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 1px solid WindowText;
+      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border-bottom: none;
         color: LinkText;
@@ -301,6 +329,13 @@ exports[`Link renders disabled Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 1px solid WindowText;
+      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: auto;
         border-bottom: none;
@@ -360,6 +395,13 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid WindowText;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 1px solid WindowText;
+      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border-bottom: none;
         color: GrayText;
@@ -417,6 +459,13 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         outline: 1px auto #605e5c;
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        box-shadow: 0 0 0 1px #605e5c inset;
+        outline: 1px auto #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {

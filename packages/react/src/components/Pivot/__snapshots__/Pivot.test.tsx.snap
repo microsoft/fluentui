@@ -91,6 +91,24 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -122,6 +140,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -260,6 +281,24 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -290,6 +329,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -489,6 +531,24 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -520,6 +580,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -658,6 +721,24 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -688,6 +769,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -875,6 +959,24 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -906,6 +1008,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -1044,6 +1149,24 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -1074,6 +1197,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -1217,6 +1343,24 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -1247,6 +1391,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -1453,6 +1600,24 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -1484,6 +1649,9 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -1622,6 +1790,24 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -1652,6 +1838,9 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -1789,6 +1978,24 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -1819,6 +2026,9 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -2019,6 +2229,24 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -2050,6 +2278,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -2188,6 +2419,24 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -2218,6 +2467,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -2406,6 +2658,24 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -2441,6 +2711,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -2462,6 +2735,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             visibility: hidden;
           }
           .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
@@ -2498,6 +2776,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             forced-color-adjust: none;
           }
           .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
+          }
+          :host(.ms-Fabric--isFocusVisible) &.is-selected:focus {
             outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
@@ -2617,6 +2898,24 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -2651,6 +2950,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -2672,6 +2974,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             visibility: hidden;
           }
           .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
@@ -2708,6 +3015,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             forced-color-adjust: none;
           }
           .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
+          }
+          :host(.ms-Fabric--isFocusVisible) &.is-selected:focus {
             outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
@@ -2873,6 +3183,24 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -2904,6 +3232,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -3042,6 +3373,24 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -3072,6 +3421,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -3259,6 +3611,24 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -3294,6 +3664,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: #0078d4;
             bottom: 0px;
@@ -3315,6 +3688,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             visibility: hidden;
           }
           .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
@@ -3351,6 +3729,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             forced-color-adjust: none;
           }
           .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
+          }
+          :host(.ms-Fabric--isFocusVisible) &.is-selected:focus {
             outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
@@ -3470,6 +3851,24 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -3504,6 +3903,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
+            outline: 1px solid #605e5c;
+          }
           &:before {
             background-color: transparent;
             bottom: 0px;
@@ -3525,6 +3927,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             visibility: hidden;
           }
           .ms-Fabric--isFocusVisible &:focus::before {
+            background: transparent;
+            height: auto;
+            transition: none;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus::before {
             background: transparent;
             height: auto;
             transition: none;
@@ -3561,6 +3968,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             forced-color-adjust: none;
           }
           .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
+          }
+          :host(.ms-Fabric--isFocusVisible) &.is-selected:focus {
             outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
@@ -3725,6 +4135,24 @@ exports[`Pivot supports JSX expressions 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -3755,6 +4183,9 @@ exports[`Pivot supports JSX expressions 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -3887,6 +4318,24 @@ exports[`Pivot supports JSX expressions 1`] = `
             right: -2px;
             top: -2px;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 0px;
+            bottom: 2px;
+            content: attr(data-content);
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: relative;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
           &:active > span {
             left: 0px;
             position: relative;
@@ -3918,6 +4367,9 @@ exports[`Pivot supports JSX expressions 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {

@@ -14,10 +14,8 @@ export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    width: '260px', // per spec
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**

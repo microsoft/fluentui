@@ -2,6 +2,27 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Mon, 22 Apr 2024 07:28:26 GMT",
+      "tag": "@fluentui/react-hooks_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "7181c431a13178dafbf09ad3cbc4ab7c9740bbcf",
+            "comment": "feat: add support for shadow roots"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/utilities to v8.15.3",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Apr 2024 07:29:11 GMT",
       "tag": "@fluentui/react-hooks_v8.7.2",
       "version": "8.7.2",

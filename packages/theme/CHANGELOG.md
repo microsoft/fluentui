@@ -1,8 +1,18 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.46](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.46)
+
+Mon, 22 Apr 2024 07:28:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.45..@fluentui/theme_v2.6.46)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/utilities to v8.15.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
 
 ## [2.6.45](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.45)
 

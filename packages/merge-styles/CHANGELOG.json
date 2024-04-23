@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Mon, 22 Apr 2024 07:28:25 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.3",
+      "version": "8.6.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "7181c431a13178dafbf09ad3cbc4ab7c9740bbcf",
+            "comment": "feat: add support for shadow dom and constructable stylesheets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Apr 2024 07:29:11 GMT",
       "tag": "@fluentui/merge-styles_v8.6.2",
       "version": "8.6.2",

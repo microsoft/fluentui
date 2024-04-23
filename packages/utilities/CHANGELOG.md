@@ -1,8 +1,19 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.3)
+
+Mon, 22 Apr 2024 07:28:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.2..@fluentui/utilities_v8.15.3)
+
+### Patches
+
+- feat: add support for shadow dom and constructable stylesheets ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.3.0 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/merge-styles to v8.6.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
 
 ## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.2)
 

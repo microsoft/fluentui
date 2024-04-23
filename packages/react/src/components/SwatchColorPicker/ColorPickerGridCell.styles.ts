@@ -63,7 +63,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       },
       !circle && {
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+          [`.${IsFocusVisibleClassName} &:focus::after, :host(.${IsFocusVisibleClassName}) &:focus::after`]: {
             // -1px so that we don't increase visually the size of the cell.
             outlineOffset: `${calculatedBorderWidth - 1}px`,
           },
@@ -73,7 +73,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       circle && {
         borderRadius: '50%',
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+          [`.${IsFocusVisibleClassName} &:focus::after, :host(.${IsFocusVisibleClassName}) &:focus::after`]: {
             outline: 'none',
             borderColor: semanticColors.focusBorder,
             borderRadius: '50%',

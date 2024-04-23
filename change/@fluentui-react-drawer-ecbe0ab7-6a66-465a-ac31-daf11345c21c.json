@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "perf: speed up tsc by not running on cypress files during .d.ts generation and type-checking",
-  "packageName": "@fluentui/react-drawer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -475,6 +475,8 @@ import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemSwitch } from '@fluentui/react-menu';
+import { menuItemSwitchClassNames } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
@@ -720,6 +722,7 @@ import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuItemSwitch_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
@@ -766,6 +769,19 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderTag_unstable } from '@fluentui/react-tags';
 import { renderTagGroup_unstable } from '@fluentui/react-tags';
+import { renderTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselCard_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselFooter_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselNav_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselPageCount_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverFooter_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverHeader_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverSurface_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverTitle_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverTrigger_unstable } from '@fluentui/react-teaching-popover';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToast_unstable } from '@fluentui/react-toast';
@@ -973,6 +989,68 @@ import { TagSize } from '@fluentui/react-tags';
 import { TagSlots } from '@fluentui/react-tags';
 import { TagState } from '@fluentui/react-tags';
 import { TagValue } from '@fluentui/react-tags';
+import { TeachingPopover } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBody } from '@fluentui/react-teaching-popover';
+import { teachingPopoverBodyClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBodyProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBodySlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBodyState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarousel } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselCardClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardState } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooter } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselFooterClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButton } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselNavButtonClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonState } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselNavClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselPageCountClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountRenderFunction } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooter } from '@fluentui/react-teaching-popover';
+import { teachingPopoverFooterClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeader } from '@fluentui/react-teaching-popover';
+import { teachingPopoverHeaderClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurface } from '@fluentui/react-teaching-popover';
+import { teachingPopoverSurfaceClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitle } from '@fluentui/react-teaching-popover';
+import { teachingPopoverTitleClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTrigger } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTriggerChildProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTriggerProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTriggerState } from '@fluentui/react-teaching-popover';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -1291,6 +1369,8 @@ import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitch_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitchStyles_unstable } from '@fluentui/react-menu';
 import { useMenuList_unstable } from '@fluentui/react-menu';
 import { useMenuListContext_unstable } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
@@ -1419,6 +1499,30 @@ import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagGroupContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
 import { useTagStyles_unstable } from '@fluentui/react-tags';
+import { useTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverBodyStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselCard_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselCardStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselContextValues_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselFooter_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselFooterStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNav_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNavButtonStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNavStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselPageCount_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselPageCountStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverFooter_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverHeader_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverHeaderStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverSurface_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverSurfaceStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverTitle_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverTitleStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverTrigger_unstable } from '@fluentui/react-teaching-popover';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
@@ -2413,6 +2517,10 @@ export { MenuItemSlots }
 
 export { MenuItemState }
 
+export { MenuItemSwitch }
+
+export { menuItemSwitchClassNames }
+
 export { MenuList }
 
 export { menuListClassNames }
@@ -2903,6 +3011,8 @@ export { renderMenuItemLink_unstable }
 
 export { renderMenuItemRadio_unstable }
 
+export { renderMenuItemSwitch_unstable }
+
 export { renderMenuList_unstable }
 
 export { renderMenuPopover_unstable }
@@ -2994,6 +3104,32 @@ export { renderTabList_unstable }
 export { renderTag_unstable }
 
 export { renderTagGroup_unstable }
+
+export { renderTeachingPopover_unstable }
+
+export { renderTeachingPopoverBody_unstable }
+
+export { renderTeachingPopoverCarousel_unstable }
+
+export { renderTeachingPopoverCarouselCard_unstable }
+
+export { renderTeachingPopoverCarouselFooter_unstable }
+
+export { renderTeachingPopoverCarouselNav_unstable }
+
+export { renderTeachingPopoverCarouselNavButton_unstable }
+
+export { renderTeachingPopoverCarouselPageCount_unstable }
+
+export { renderTeachingPopoverFooter_unstable }
+
+export { renderTeachingPopoverHeader_unstable }
+
+export { renderTeachingPopoverSurface_unstable }
+
+export { renderTeachingPopoverTitle_unstable }
+
+export { renderTeachingPopoverTrigger_unstable }
 
 export { renderText_unstable }
 
@@ -3408,6 +3544,130 @@ export { TagSlots }
 export { TagState }
 
 export { TagValue }
+
+export { TeachingPopover }
+
+export { TeachingPopoverBody }
+
+export { teachingPopoverBodyClassNames }
+
+export { TeachingPopoverBodyProps }
+
+export { TeachingPopoverBodySlots }
+
+export { TeachingPopoverBodyState }
+
+export { TeachingPopoverCarousel }
+
+export { TeachingPopoverCarouselCard }
+
+export { teachingPopoverCarouselCardClassNames }
+
+export { TeachingPopoverCarouselCardProps }
+
+export { TeachingPopoverCarouselCardSlots }
+
+export { TeachingPopoverCarouselCardState }
+
+export { teachingPopoverCarouselClassNames }
+
+export { TeachingPopoverCarouselFooter }
+
+export { teachingPopoverCarouselFooterClassNames }
+
+export { TeachingPopoverCarouselFooterProps }
+
+export { TeachingPopoverCarouselFooterSlots }
+
+export { TeachingPopoverCarouselFooterState }
+
+export { TeachingPopoverCarouselNav }
+
+export { TeachingPopoverCarouselNavButton }
+
+export { teachingPopoverCarouselNavButtonClassNames }
+
+export { TeachingPopoverCarouselNavButtonProps }
+
+export { TeachingPopoverCarouselNavButtonSlots }
+
+export { TeachingPopoverCarouselNavButtonState }
+
+export { teachingPopoverCarouselNavClassNames }
+
+export { TeachingPopoverCarouselNavProps }
+
+export { TeachingPopoverCarouselNavSlots }
+
+export { TeachingPopoverCarouselNavState }
+
+export { TeachingPopoverCarouselPageCount }
+
+export { teachingPopoverCarouselPageCountClassNames }
+
+export { TeachingPopoverCarouselPageCountProps }
+
+export { TeachingPopoverCarouselPageCountRenderFunction }
+
+export { TeachingPopoverCarouselPageCountSlots }
+
+export { TeachingPopoverCarouselPageCountState }
+
+export { TeachingPopoverCarouselProps }
+
+export { TeachingPopoverCarouselSlots }
+
+export { TeachingPopoverCarouselState }
+
+export { TeachingPopoverFooter }
+
+export { teachingPopoverFooterClassNames }
+
+export { TeachingPopoverFooterProps }
+
+export { TeachingPopoverFooterState }
+
+export { TeachingPopoverHeader }
+
+export { teachingPopoverHeaderClassNames }
+
+export { TeachingPopoverHeaderProps }
+
+export { TeachingPopoverHeaderSlots }
+
+export { TeachingPopoverHeaderState }
+
+export { TeachingPopoverProps }
+
+export { TeachingPopoverState }
+
+export { TeachingPopoverSurface }
+
+export { teachingPopoverSurfaceClassNames }
+
+export { TeachingPopoverSurfaceProps }
+
+export { TeachingPopoverSurfaceSlots }
+
+export { TeachingPopoverSurfaceState }
+
+export { TeachingPopoverTitle }
+
+export { teachingPopoverTitleClassNames }
+
+export { TeachingPopoverTitleProps }
+
+export { TeachingPopoverTitleSlots }
+
+export { TeachingPopoverTitleState }
+
+export { TeachingPopoverTrigger }
+
+export { TeachingPopoverTriggerChildProps }
+
+export { TeachingPopoverTriggerProps }
+
+export { TeachingPopoverTriggerState }
 
 export { teamsDarkTheme }
 
@@ -4045,6 +4305,10 @@ export { useMenuItemRadioStyles_unstable }
 
 export { useMenuItemStyles_unstable }
 
+export { useMenuItemSwitch_unstable }
+
+export { useMenuItemSwitchStyles_unstable }
+
 export { useMenuList_unstable }
 
 export { useMenuListContext_unstable }
@@ -4300,6 +4564,54 @@ export { useTagGroupContextValues_unstable }
 export { useTagGroupStyles_unstable }
 
 export { useTagStyles_unstable }
+
+export { useTeachingPopover_unstable }
+
+export { useTeachingPopoverBody_unstable }
+
+export { useTeachingPopoverBodyStyles_unstable }
+
+export { useTeachingPopoverCarousel_unstable }
+
+export { useTeachingPopoverCarouselCard_unstable }
+
+export { useTeachingPopoverCarouselCardStyles_unstable }
+
+export { useTeachingPopoverCarouselContextValues_unstable }
+
+export { useTeachingPopoverCarouselFooter_unstable }
+
+export { useTeachingPopoverCarouselFooterStyles_unstable }
+
+export { useTeachingPopoverCarouselNav_unstable }
+
+export { useTeachingPopoverCarouselNavButton_unstable }
+
+export { useTeachingPopoverCarouselNavButtonStyles_unstable }
+
+export { useTeachingPopoverCarouselNavStyles_unstable }
+
+export { useTeachingPopoverCarouselPageCount_unstable }
+
+export { useTeachingPopoverCarouselPageCountStyles_unstable }
+
+export { useTeachingPopoverCarouselStyles_unstable }
+
+export { useTeachingPopoverFooter_unstable }
+
+export { useTeachingPopoverHeader_unstable }
+
+export { useTeachingPopoverHeaderStyles_unstable }
+
+export { useTeachingPopoverSurface_unstable }
+
+export { useTeachingPopoverSurfaceStyles_unstable }
+
+export { useTeachingPopoverTitle_unstable }
+
+export { useTeachingPopoverTitleStyles_unstable }
+
+export { useTeachingPopoverTrigger_unstable }
 
 export { useText_unstable }
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release stable",
-  "packageName": "@fluentui/react-search",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
