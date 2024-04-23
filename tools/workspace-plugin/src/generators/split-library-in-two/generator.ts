@@ -388,16 +388,6 @@ function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: 
     return;
   }
 
-  if (projectConfig.name?.endsWith('-preview')) {
-    logger.warn({ title: 'preview projects are not supported YET, skipping...' });
-    return;
-  }
-
-  if (tags.includes('compat')) {
-    logger.warn({ title: 'compat projects are not supported YET, skipping...' });
-    return;
-  }
-
   if (projectConfig.root?.endsWith('/stories') || projectConfig.root?.endsWith('/library')) {
     logger.warn({ title: 'attempting to migrate already migrated projects, skipping...' });
     return;
