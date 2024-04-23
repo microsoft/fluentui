@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
+import { MOTION_FINISH_EVENT } from '@fluentui/react-motions-preview';
 
 const enterKeyframes = [{ opacity: 0 }, { opacity: 1 }];
 const exitKeyframes = [{ opacity: 1 }, { opacity: 0 }];
@@ -19,13 +20,15 @@ function createElementMock() {
     cancel: jest.fn(),
     finish: finishMock,
     set onfinish(callback: Function) {
-      callback();
+      callback(new CustomEvent('animation-event-mock-finish'));
       return;
     },
   }));
+  const dispatchEventMock = jest.fn();
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
       animate: animateMock,
+      dispatchEvent: dispatchEventMock,
     }));
 
     props.onRender?.();
@@ -35,12 +38,20 @@ function createElementMock() {
 
   return {
     animateMock,
+    dispatchEventMock,
     ElementMock,
     finishMock,
   };
 }
 
 describe('createPresenceComponent', () => {
+  beforeAll(() => {
+    window.CustomEvent = jest.fn().mockImplementation((type, options = {}) => ({
+      type,
+      ...options,
+    }));
+  });
+
   describe('appear', () => {
     it('does not animate by default', () => {
       const TestAtom = createPresenceComponent(motion);
@@ -178,7 +189,7 @@ describe('createPresenceComponent', () => {
     it('supports functions as motion definitions', () => {
       const fnMotion = jest.fn().mockImplementation(() => motion);
       const TestAtom = createPresenceComponent(fnMotion);
-      const { animateMock, ElementMock } = createElementMock();
+      const { animateMock, ElementMock, dispatchEventMock } = createElementMock();
 
       const { rerender } = render(
         <TestAtom visible>
@@ -199,9 +210,58 @@ describe('createPresenceComponent', () => {
       );
 
       expect(fnMotion).toHaveBeenCalledTimes(1);
-      expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+      expect(fnMotion).toHaveBeenCalledWith(
+        // mock of html element
+        { animate: animateMock, dispatchEvent: dispatchEventMock },
+      );
 
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
+    });
+  });
+
+  describe('events', () => {
+    it('calls "finish" event when motion finishes', () => {
+      const TestAtom = createPresenceComponent(motion);
+      const { ElementMock, dispatchEventMock } = createElementMock();
+
+      const { rerender } = render(
+        <TestAtom appear visible>
+          <ElementMock />
+        </TestAtom>,
+      );
+
+      expect(dispatchEventMock).toHaveBeenCalledTimes(1);
+      expect(dispatchEventMock).toHaveBeenCalledWith({
+        bubbles: true,
+        detail: {
+          animationEvent: {
+            type: 'animation-event-mock-finish',
+          },
+          direction: 'enter',
+        },
+        type: MOTION_FINISH_EVENT,
+      });
+
+      // ---
+
+      jest.clearAllMocks();
+      rerender(
+        <TestAtom visible={false}>
+          <ElementMock />
+        </TestAtom>,
+      );
+
+      expect(dispatchEventMock).toHaveBeenCalledTimes(1);
+      expect(dispatchEventMock).toHaveBeenCalledWith({
+        bubbles: true,
+        detail: {
+          animationEvent: {
+            type: 'animation-event-mock-finish',
+          },
+          direction: 'exit',
+        },
+        type: MOTION_FINISH_EVENT,
+      });
     });
   });
 });

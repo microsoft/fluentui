@@ -1,9 +1,13 @@
-import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox, Text } from '@fluentui/react-components';
-import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
-import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
+import { makeStyles, shorthands, tokens, useId, Checkbox, Text } from '@fluentui/react-components';
+import {
+  createPresenceComponent,
+  motionTokens,
+  MOTION_FINISH_EVENT,
+  type MotionFinishEvent,
+} from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './PresenceOnMotionFinish.stories.md';
+import description from './PresenceMotionEvents.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -79,35 +83,33 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const PresenceOnMotionFinish = () => {
+export const PresenceMotionEvents = () => {
   const classes = useClasses();
-  const sliderId = useId();
   const logLabelId = useId();
 
-  const motionRef = React.useRef<MotionImperativeRef>();
-  const [statusLog, setStatusLog] = React.useState<[number, string][]>([]);
+  const elementRef = React.useRef<HTMLDivElement>(null);
 
-  const [playbackRate, setPlaybackRate] = React.useState<number>(30);
+  const [statusLog, setStatusLog] = React.useState<[number, string, string][]>([]);
   const [visible, setVisible] = React.useState<boolean>(true);
 
-  // Heads up!
-  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
-    motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate, visible]);
+    const listener = (ev: MotionFinishEvent) => {
+      setStatusLog(entries => [[Date.now(), MOTION_FINISH_EVENT, ev.detail.direction], ...entries]);
+    };
+
+    elementRef.current?.addEventListener(MOTION_FINISH_EVENT, listener as () => void);
+
+    return () => {
+      elementRef.current?.removeEventListener(MOTION_FINISH_EVENT, listener as () => void);
+    };
+  }, []);
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          <Fade
-            imperativeRef={motionRef}
-            onMotionFinish={(ev, data) => {
-              setStatusLog(entries => [[Date.now(), data.direction], ...entries]);
-            }}
-            visible={visible}
-          >
-            <div className={classes.item} />
+          <Fade visible={visible}>
+            <div className={classes.item} ref={elementRef} />
           </Fade>
 
           <code className={classes.description}>fade</code>
@@ -118,9 +120,9 @@ export const PresenceOnMotionFinish = () => {
             Status log
           </div>
           <div role="log" aria-labelledby={logLabelId} className={classes.log}>
-            {statusLog.map(([time, direction], i) => (
+            {statusLog.map(([time, event, direction], i) => (
               <div key={i}>
-                {new Date(time).toLocaleTimeString()} <Text weight="bold">onMotionFinish</Text> (direction: {direction})
+                {new Date(time).toLocaleTimeString()} <Text weight="bold">{event}</Text> (direction: {direction})
               </div>
             ))}
           </div>
@@ -131,26 +133,12 @@ export const PresenceOnMotionFinish = () => {
         <div>
           <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
         </div>
-        <div>
-          <Label htmlFor={sliderId}>
-            <code>playbackRate</code>: {playbackRate}%
-          </Label>
-          <Slider
-            aria-valuetext={`Value is ${playbackRate}%`}
-            value={playbackRate}
-            onChange={(ev, data) => setPlaybackRate(data.value)}
-            min={0}
-            id={sliderId}
-            max={100}
-            step={10}
-          />
-        </div>
       </div>
     </>
   );
 };
 
-PresenceOnMotionFinish.parameters = {
+PresenceMotionEvents.parameters = {
   docs: {
     description: {
       story: description,

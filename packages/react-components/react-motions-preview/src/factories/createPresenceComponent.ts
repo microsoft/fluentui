@@ -1,17 +1,13 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
-import type { EventData, EventHandler } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
+import { MOTION_FINISH_EVENT, MotionFinishEventDetail } from '../events';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { getChildElement } from '../utils/getChildElement';
 import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
-
-type PresenceMotionEventData = EventData<'animation', AnimationPlaybackEvent> & {
-  direction: 'enter' | 'exit';
-};
 
 export type PresenceComponentProps = {
   /**
@@ -25,8 +21,6 @@ export type PresenceComponentProps = {
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
-
-  onMotionFinish?: EventHandler<PresenceMotionEventData>;
 
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
@@ -45,7 +39,7 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
 export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
+    const { appear, children, imperativeRef, visible, unmountOnExit } = { ...itemContext, ...props };
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
@@ -57,17 +51,6 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
 
     const isFirstMount = React.useRef<boolean>(true);
     const isReducedMotion = useIsReducedMotion();
-
-    const onEnterFinish = useEventCallback((event: AnimationPlaybackEvent) => {
-      onMotionFinish?.(event, { event, type: 'animation', direction: 'enter' });
-    });
-    const onExitFinish = useEventCallback((event: AnimationPlaybackEvent) => {
-      onMotionFinish?.(event, { event, type: 'animation', direction: 'exit' });
-
-      if (unmountOnExit) {
-        setMounted(false);
-      }
-    });
 
     useIsomorphicLayoutEffect(() => {
       optionsRef.current = { appear };
@@ -96,12 +79,26 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
       }
 
       animationRef.current = animation;
-      animation.onfinish = visible ? onEnterFinish : onExitFinish;
+      animation.onfinish = animationEvent => {
+        elementRef.current?.dispatchEvent(
+          new CustomEvent<MotionFinishEventDetail>(MOTION_FINISH_EVENT, {
+            bubbles: true,
+            detail: {
+              direction: visible ? 'enter' : 'exit',
+              animationEvent,
+            },
+          }),
+        );
+
+        if (!visible && unmountOnExit) {
+          setMounted(false);
+        }
+      };
 
       return () => {
         animation.cancel();
       };
-    }, [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible]);
+    }, [animationRef, isReducedMotion, visible]);
 
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;

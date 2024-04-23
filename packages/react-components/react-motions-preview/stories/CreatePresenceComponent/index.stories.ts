@@ -6,7 +6,7 @@ export { CreatePresenceComponent as createPresenceComponent } from './CreatePres
 
 export { PresenceAppear as appear } from './PresenceAppear.stories';
 export { PresenceUnmountOnExit as unmountOnExit } from './PresenceUnmountOnExit.stories';
-export { PresenceOnMotionFinish as onMotionFinish } from './PresenceOnMotionFinish.stories';
+export { PresenceMotionEvents as MotionEvents } from './PresenceMotionEvents.stories';
 
 export { MotionFunctions as functions } from './MotionFunctions.stories';
 
