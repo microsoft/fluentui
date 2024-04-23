@@ -7,6 +7,7 @@ export { Default } from './ListboxDefault.stories';
 export { Multiselect } from './ListboxMultiselect.stories';
 export { Filtering } from './ListboxFiltering.stories';
 export { InDialog } from './ListboxInDialog.stories';
+export { FilteringInDialog } from './ListboxFilteringInDialog.stories';
 
 export default {
   title: 'Components/Listbox',
