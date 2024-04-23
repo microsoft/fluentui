@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Disable focus on non-highlighted elements",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
