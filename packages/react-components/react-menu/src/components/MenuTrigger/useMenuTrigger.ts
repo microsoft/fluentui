@@ -80,17 +80,29 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
       return;
     }
 
-    if (!openOnContext) {
-      // if openingWithHoverRef is still true,
-      // fire a new open event from click rather than toggling to close
+    if (openOnContext) {
+      return;
+    }
+
+    if (openingWithHoverTimeout.current) {
+      // if openingWithHoverRef is still true, fire a new open event from click rather than toggling the open state
+      clearTimeout(openingWithHoverTimeout.current);
+      openingWithHoverRef.current = false;
       setOpen(event, {
-        open: !open || openingWithHoverRef.current,
+        open: true,
         keyboard: openedWithKeyboardRef.current,
         type: 'menuTriggerClick',
         event,
       });
-      openedWithKeyboardRef.current = false;
+    } else {
+      setOpen(event, {
+        open: !open,
+        keyboard: openedWithKeyboardRef.current,
+        type: 'menuTriggerClick',
+        event,
+      });
     }
+    openedWithKeyboardRef.current = false;
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
