@@ -56,6 +56,7 @@ exports[`Rating renders correctly 1`] = `
           height: 32px;
         }
     data-focuszone-id="FocusZone2"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -906,6 +907,7 @@ exports[`Rating renders correctly with half star 1`] = `
           height: 32px;
         }
     data-focuszone-id="FocusZone5"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

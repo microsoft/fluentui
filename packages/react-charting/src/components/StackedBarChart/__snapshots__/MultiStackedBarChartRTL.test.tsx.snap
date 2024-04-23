@@ -49,6 +49,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone8"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -100,6 +101,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone10"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -270,6 +272,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone11"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -321,6 +324,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone13"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -491,6 +495,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone14"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -569,6 +574,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone16"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
               class=
@@ -684,6 +690,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone17"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div
@@ -1178,6 +1185,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1229,6 +1237,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1399,6 +1408,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1450,6 +1460,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1620,6 +1631,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone11"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1698,6 +1710,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 outline: none;
               }
           data-focuszone-id="FocusZone13"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -1813,6 +1826,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       outline: none;
                     }
                 data-focuszone-id="FocusZone14"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2306,6 +2320,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2357,6 +2372,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2527,6 +2543,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2578,6 +2595,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2748,6 +2766,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone11"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2826,6 +2845,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone13"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -2941,6 +2961,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone14"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -3434,6 +3455,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone5"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -3485,6 +3507,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone7"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -3655,6 +3678,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone8"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -3706,6 +3730,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -3876,6 +3901,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone11"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -3954,6 +3980,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone13"
+          data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
             class=
@@ -4069,6 +4096,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone14"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div

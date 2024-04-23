@@ -30,6 +30,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -427,6 +428,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -812,6 +814,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1389,6 +1392,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1954,6 +1958,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2339,6 +2344,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2806,6 +2812,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3190,6 +3197,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3657,6 +3665,7 @@ exports[`Pivot supports JSX expressions 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

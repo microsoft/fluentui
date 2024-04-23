@@ -14,6 +14,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         min-width: 180px;
       }
   data-focuszone-id="FocusZone1"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}

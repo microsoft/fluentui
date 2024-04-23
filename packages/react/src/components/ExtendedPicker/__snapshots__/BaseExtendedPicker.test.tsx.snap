@@ -13,6 +13,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -80,6 +81,7 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
           outline: none;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

@@ -599,6 +599,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             overflow: auto;
           }
       data-focuszone-id="FocusZone3"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -913,6 +914,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                       outline: none;
                     }
                 data-focuszone-id="FocusZone4"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1142,6 +1144,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             overflow: auto;
           }
       data-focuszone-id="FocusZone3"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -1464,6 +1467,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                       outline: none;
                     }
                 data-focuszone-id="FocusZone4"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div

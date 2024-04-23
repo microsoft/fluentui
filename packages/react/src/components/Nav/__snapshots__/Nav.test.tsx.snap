@@ -8,6 +8,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
         outline: none;
       }
   data-focuszone-id="FocusZone4"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -471,6 +472,7 @@ exports[`Nav renders Nav correctly 1`] = `
         outline: none;
       }
   data-focuszone-id="FocusZone0"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
