@@ -2,6 +2,85 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 23 Apr 2024 08:17:46 GMT",
+      "tag": "@fluentui/react-components_v9.49.0",
+      "version": "9.49.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "87704d50109b0f1c514fffd825e7b662850ff6b0",
+            "comment": "'feat: Release TeachingPopover to stable"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "87704d50109b0f1c514fffd825e7b662850ff6b0",
+            "comment": "'feat: Release TeachingPopover to stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "f7ab06d5315980bcb575cecc384aded8729137db",
+            "comment": "feat: Implement MenuItemSwitch component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f7ab06d5315980bcb575cecc384aded8729137db",
+            "comment": "feat: Implement MenuItemSwitch component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f7ab06d5315980bcb575cecc384aded8729137db",
+            "comment": "feat: Implement MenuItemSwitch component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "f7ab06d5315980bcb575cecc384aded8729137db",
+            "comment": "feat: Implement MenuItemSwitch component"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "c3536e2bca834a1ca7570335c2b4bd905f7e8fcc",
+            "comment": "chore: deprecate the width prop."
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "ab8aee0dc432cd501af1d921126c9fa4c306738e",
+            "comment": "fix: BREAKING CHANGE - api changes and fixes"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e9fcf5b8fda83780d9e6a21840b65ab618c9f344",
+            "comment": "fix: Table and DataGrid should not remove cells from the accessibility tree"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "6c94822d2877f8ca31b2fbdf7b63ceaf42815397",
+            "comment": "feat: unify v9 babel preset in all packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8",
+            "comment": "fix: SpinButton buttons now display correct visuals at bounds"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Apr 2024 12:43:14 GMT",
       "tag": "@fluentui/react-components_v9.48.0",
       "version": "9.48.0",

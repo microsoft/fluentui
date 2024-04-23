@@ -4,15 +4,19 @@
   "title": "",
   "type": "object",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
-      "description": "",
+      "description": "Which project would you like to split?",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-dropdown": "projects"
+    },
+    "all": {
+      "type": "boolean",
+      "description": "Run generator on all vNext packages"
     }
   },
-  "required": ["name"]
+  "required": []
 }
