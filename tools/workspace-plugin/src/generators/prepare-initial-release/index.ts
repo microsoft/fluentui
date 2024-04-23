@@ -1,3 +1,5 @@
+import { execSync } from 'child_process';
+
 import {
   Tree,
   formatFiles,
@@ -13,7 +15,6 @@ import {
   stripIndents,
   workspaceRoot,
 } from '@nrwl/devkit';
-
 import * as tsquery from '@phenomnomnominal/tsquery';
 
 import { getProjectConfig, getProjectNameWithoutScope, workspacePaths } from '../../utils';
@@ -22,15 +23,16 @@ import { PackageJson, TsConfig } from '../../types';
 
 import tsConfigBaseAll from '../tsconfig-base-all';
 
+import { assertStoriesProject, isSplitProject as isSplitProjectFn } from '../split-library-in-two/shared';
+
 import { ReleasePackageGeneratorSchema } from './schema';
-import { execSync } from 'child_process';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema) {
   const options = normalizeOptions(tree, schema);
 
-  const isSplitProject = tree.exists(joinPathFragments(options.projectConfig.root, '../stories/project.json'));
+  const isSplitProject = isSplitProjectFn(tree, options.projectConfig);
 
   assertProject(tree, { isSplitProject, ...options });
 
@@ -410,14 +412,7 @@ function assertProject(tree: Tree, options: NormalizedSchema & { isSplitProject:
     throw new Error(`${options.project} is already released as stable.`);
   }
 
-  if (options.isSplitProject && options.name.endsWith('-stories')) {
-    throw new Error(
-      `This generator can be invoked only against library project. Please run it against "${options.name.replace(
-        '-stories',
-        '',
-      )}" library project.`,
-    );
-  }
+  assertStoriesProject(tree, { isSplitProject: options.isSplitProject, project: options.projectConfig });
 }
 
 function createExportsInSuite(content: string, packageName: string) {

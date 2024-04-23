@@ -1,10 +1,11 @@
 import path from 'path';
+import { execSync } from 'child_process';
 import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nx/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';
+import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
 
 import { ReactComponentGeneratorSchema } from './schema';
-import { execSync } from 'child_process';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -43,7 +44,6 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
   const project = getProjectConfig(tree, { packageName: options.project });
   const nameCasings = names(options.name);
-  const isSplitProject = tree.exists(joinPathFragments(project.projectConfig.root, '../stories/project.json'));
 
   return {
     ...options,
@@ -52,7 +52,7 @@ function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
     directory: 'components',
     componentName: nameCasings.className,
     npmPackageName: project.projectConfig.name as string,
-    isSplitProject,
+    isSplitProject: isSplitProject(tree, project.projectConfig),
   };
 }
 
@@ -131,13 +131,8 @@ function assertComponent(tree: Tree, options: NormalizedSchema) {
   if (tree.exists(componentDirPath)) {
     throw new Error(`The component "${options.componentName}" already exists`);
   }
-  if (options.isSplitProject && options.projectConfig.name?.endsWith('-stories')) {
-    throw new Error(
-      `This generator can be invoked only against library project. Please run it against "${options.projectConfig.name.replace(
-        '-stories',
-        '',
-      )}" library project.`,
-    );
-  }
+
+  assertStoriesProject(tree, { isSplitProject: options.isSplitProject, project: options.projectConfig });
+
   return;
 }

@@ -4,6 +4,8 @@ import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 
 import type { CypressComponentConfigurationGeneratorSchema } from './schema';
 
+import { assertStoriesProject } from '../split-library-in-two/shared';
+
 import { addFiles } from './lib/add-files';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -44,14 +46,7 @@ function assertOptions(tree: Tree, options: ReturnType<typeof normalizeOptions> 
     return false;
   }
 
-  if (options.isSplitProject && options.name.endsWith('-stories')) {
-    throw new Error(
-      `This generator can be invoked only against library project. Please run it against "${options.name.replace(
-        '-stories',
-        '',
-      )}" library project.`,
-    );
-  }
+  assertStoriesProject(tree, { isSplitProject: options.isSplitProject, project: options.projectConfig });
 
   return true;
 }

@@ -3,13 +3,18 @@ import {
   generateFiles,
   joinPathFragments,
   offsetFromRoot,
+  ProjectConfiguration,
   readProjectConfiguration,
   Tree,
   updateJson,
   visitNotIgnoredFiles,
 } from '@nx/devkit';
+
 import * as path from 'path';
+
 import { PackageJson } from '../../types';
+import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
+
 import { BundleSizeConfigurationGeneratorSchema } from './schema';
 
 export async function bundleSizeConfigurationGenerator(tree: Tree, schema: BundleSizeConfigurationGeneratorSchema) {
@@ -17,9 +22,7 @@ export async function bundleSizeConfigurationGenerator(tree: Tree, schema: Bundl
 
   const project = readProjectConfiguration(tree, options.name);
 
-  const isSplitProject = tree.exists(joinPathFragments(project.root, '../stories/project.json'));
-
-  assertOptions(tree, { isSplitProject, ...options });
+  assertOptions(tree, { isSplitProject: isSplitProject(tree, project), project });
 
   const configPaths = {
     bundleSizeRoot: joinPathFragments(project.root, 'bundle-size'),
@@ -62,15 +65,8 @@ function normalizeOptions(tree: Tree, schema: BundleSizeConfigurationGeneratorSc
   };
 }
 
-function assertOptions(tree: Tree, options: ReturnType<typeof normalizeOptions> & { isSplitProject: boolean }) {
-  if (options.isSplitProject && options.name.endsWith('-stories')) {
-    throw new Error(
-      `This generator can be invoked only against library project. Please run it against "${options.name.replace(
-        '-stories',
-        '',
-      )}" library project.`,
-    );
-  }
+function assertOptions(tree: Tree, options: { project: ProjectConfiguration; isSplitProject: boolean }) {
+  assertStoriesProject(tree, options);
 }
 
 export default bundleSizeConfigurationGenerator;

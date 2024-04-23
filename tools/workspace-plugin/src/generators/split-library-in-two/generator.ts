@@ -25,6 +25,8 @@ import { TsConfig } from '../../types';
 import { workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
+export { isSplitProject, assertStoriesProject } from './shared';
+
 interface Options extends SplitLibraryInTwoGeneratorSchema {
   projectConfig: ReturnType<typeof readProjectConfiguration>;
   projectOffsetFromRoot: { old: string; updated: string };
