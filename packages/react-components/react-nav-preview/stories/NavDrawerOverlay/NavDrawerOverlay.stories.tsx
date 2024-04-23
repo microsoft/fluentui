@@ -9,6 +9,7 @@ import {
 } from '@fluentui/react-nav-preview';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
+// eslint-disable-next-line @fluentui/no-restricted-imports
 import { useIsSSR } from '@fluentui/react-utilities';
 
 const Folder = bundleIcon(Folder20Filled, Folder20Regular);
