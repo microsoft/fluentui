@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {
   Button,
+  Checkbox,
   Dialog,
+  DialogActions,
   DialogBody,
   DialogContent,
   DialogSurface,
+  DialogTitle,
   DialogTrigger,
   Input,
   Listbox,
@@ -40,7 +43,9 @@ const useStyles = makeStyles({
 
 export const InDialog = (props: Partial<ListboxProps>) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [selectedOption, setSelectedOption] = React.useState(props.selectedOptions?.[0]);
+  const [isMultiselect, setIsMultiselect] = React.useState(props.multiselect);
+  const [selectedOptions, setSelectedOptions] = React.useState(props.selectedOptions ?? []);
+  const [dialogSelectedOptions, setDialogSelectedOptions] = React.useState(props.selectedOptions ?? []);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [filter, setFilter] = React.useState('');
@@ -52,7 +57,7 @@ export const InDialog = (props: Partial<ListboxProps>) => {
   }, [filter]);
 
   React.useEffect(() => {
-    setSelectedOption(props.selectedOptions?.[0]);
+    setSelectedOptions(props.selectedOptions ?? []);
   }, [props.selectedOptions]);
 
   React.useEffect(() => {
@@ -64,19 +69,30 @@ export const InDialog = (props: Partial<ListboxProps>) => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
+      <Checkbox
+        label="Multiselect"
+        checked={isMultiselect}
+        onChange={(_, data) => setIsMultiselect(data.checked !== false)}
+      />
       <Dialog open={dialogOpen} onOpenChange={(_, data) => setDialogOpen(data.open)}>
         <DialogTrigger disableButtonEnhancement>
-          <MenuButton appearance="outline" className={styles.menuButton} onClick={() => setDialogOpen(!dialogOpen)}>
-            {selectedOption ?? 'Select a pet'}
+          <MenuButton
+            appearance="outline"
+            className={styles.menuButton}
+            onClick={() => setDialogSelectedOptions(selectedOptions)}
+          >
+            {selectedOptions.length > 0 ? selectedOptions.join(', ') : 'Select a pet'}
           </MenuButton>
         </DialogTrigger>
         <DialogSurface>
           <DialogBody>
+            <DialogTitle>Select a pet</DialogTitle>
             <DialogContent>
               <Input
                 ref={inputRef}
                 className={styles.input}
                 placeholder="Filter pets"
+                aria-label="Filter pets"
                 autoFocus
                 value={filter}
                 onChange={(_, data) => setFilter(data.value)}
@@ -93,12 +109,12 @@ export const InDialog = (props: Partial<ListboxProps>) => {
               />
               <Listbox
                 {...props}
+                aria-label="Select a pet"
                 className={mergeClasses(styles.listbox, props.className)}
-                selectedOptions={selectedOption ? [selectedOption] : []}
+                multiselect={isMultiselect}
+                selectedOptions={dialogSelectedOptions}
                 onOptionSelect={(e, data) => {
-                  props.onOptionSelect?.(e, data);
-                  setSelectedOption(data.selectedOptions[0]);
-                  setDialogOpen(false);
+                  setDialogSelectedOptions(data.selectedOptions);
                 }}
               >
                 {filteredOptions.map(option => (
@@ -108,6 +124,20 @@ export const InDialog = (props: Partial<ListboxProps>) => {
                 ))}
               </Listbox>
             </DialogContent>
+            <DialogActions>
+              <DialogTrigger>
+                <Button>Cancel</Button>
+              </DialogTrigger>
+              <Button
+                onClick={() => {
+                  setSelectedOptions(dialogSelectedOptions);
+                  setDialogOpen(false);
+                }}
+                disabled={!isMultiselect && dialogSelectedOptions.length === 0}
+              >
+                Done
+              </Button>
+            </DialogActions>
           </DialogBody>
         </DialogSurface>
       </Dialog>
