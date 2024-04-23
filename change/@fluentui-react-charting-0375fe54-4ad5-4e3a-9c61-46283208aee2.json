@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Sankey Diagram: Support number formatting",
+  "packageName": "@fluentui/react-charting",
+  "email": "lamalkar@microsoft.com",
+  "dependentChangeType": "patch"
+}

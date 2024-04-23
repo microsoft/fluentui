@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-hooks",
-  "version": "8.7.1",
+  "version": "8.8.0",
   "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,9 +32,9 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react-window-provider": "^2.2.19",
-    "@fluentui/set-version": "^8.2.15",
-    "@fluentui/utilities": "^8.15.1",
+    "@fluentui/react-window-provider": "^2.2.20",
+    "@fluentui/set-version": "^8.2.16",
+    "@fluentui/utilities": "^8.15.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

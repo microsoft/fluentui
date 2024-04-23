@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 08:17:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.72)
+
+Tue, 23 Apr 2024 08:17:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.71..@fluentui/react-spinbutton_v9.2.72)
+
+### Patches
+
+- fix: SpinButton buttons now display correct visuals at bounds ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-field to v9.1.62 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.2.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.71)
+
+Wed, 17 Apr 2024 21:53:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.70..@fluentui/react-spinbutton_v9.2.71)
+
+### Patches
+
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.1.61 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.2.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.70)
 

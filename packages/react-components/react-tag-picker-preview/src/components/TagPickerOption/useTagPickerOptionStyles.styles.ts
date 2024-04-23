@@ -39,6 +39,7 @@ export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): 
     disabled: false,
     focusVisible: false,
     checkIcon: undefined,
+    selected: false,
   });
   const styles = useStyles();
 

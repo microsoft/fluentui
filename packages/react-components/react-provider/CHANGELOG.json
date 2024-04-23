@@ -2,6 +2,89 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 23 Apr 2024 08:17:47 GMT",
+      "tag": "@fluentui/react-provider_v9.14.0",
+      "version": "9.14.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "6c94822d2877f8ca31b2fbdf7b63ceaf42815397",
+            "comment": "feat: unify v9 babel preset in all packages"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f7ab06d5315980bcb575cecc384aded8729137db",
+            "comment": "feat: Implement MenuItemSwitch component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.17.0",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.20.1",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.36",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 21:53:56 GMT",
+      "tag": "@fluentui/react-provider_v9.13.19",
+      "version": "9.13.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Apr 2024 14:17:26 GMT",
+      "tag": "@fluentui/react-provider_v9.13.18",
+      "version": "9.13.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "ramyrafik@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "6b335a82332ade486a4c3bb5360cc1a0f2250165",
+            "comment": "Avoid re-inserting Style Element to HEAD when re-rendering FluentProvider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-provider_v9.13.17",
       "version": "9.13.17",

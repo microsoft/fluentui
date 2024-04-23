@@ -338,7 +338,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
           <br />
           <br />
         </div>
-        <table>
+        <table role="grid">
           <tbody>
             <tr>
               <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>

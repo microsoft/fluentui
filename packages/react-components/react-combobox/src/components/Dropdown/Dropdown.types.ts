@@ -35,7 +35,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
  * State used in rendering Dropdown
  */
 export type DropdownState = ComponentState<DropdownSlots> &
-  ComboboxBaseState & {
+  Omit<ComboboxBaseState, 'freeform'> & {
     /* Whether the placeholder is currently displayed */
     placeholderVisible: boolean;
 

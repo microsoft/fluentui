@@ -1,21 +1,25 @@
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { Stylesheet } from './Stylesheet';
+import { isShadowConfig } from './shadowConfig';
 
 /**
  * Separates the classes and style objects. Any classes that are pre-registered
  * args are auto expanded into objects.
  */
-export function extractStyleParts(...args: (IStyle | IStyle[] | false | null | undefined)[]): {
+export function extractStyleParts(
+  sheet: Stylesheet,
+  ...args: (IStyle | IStyle[] | false | null | undefined)[]
+): {
   classes: string[];
   objects: IStyleBaseArray;
 } {
   const classes: string[] = [];
   const objects: {}[] = [];
-  const stylesheet = Stylesheet.getInstance();
+  const stylesheet = sheet;
 
   function _processArgs(argsList: (IStyle | IStyle[])[]): void {
     for (const arg of argsList) {
-      if (arg) {
+      if (arg && !isShadowConfig(arg)) {
         if (typeof arg === 'string') {
           if (arg.indexOf(' ') >= 0) {
             _processArgs(arg.split(' '));

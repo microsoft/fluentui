@@ -10,7 +10,7 @@ export type TagPickerButtonSlots = {
  * PickerButton Props
  */
 export type TagPickerButtonProps = ComponentProps<TagPickerButtonSlots> &
-  Pick<DropdownProps, 'clearable' | 'size' | 'appearance'> & {
+  Pick<DropdownProps, 'size' | 'appearance'> & {
     disabled?: boolean;
   };
 

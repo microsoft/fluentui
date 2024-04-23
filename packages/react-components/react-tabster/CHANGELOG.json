@@ -2,6 +2,42 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 23 Apr 2024 08:17:49 GMT",
+      "tag": "@fluentui/react-tabster_v9.20.1",
+      "version": "9.20.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.17.0",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 21:53:59 GMT",
+      "tag": "@fluentui/react-tabster_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ab6bf7a7f152c0ad6c43732c7b3145a977973782",
+            "comment": "Tabster 7.1.0."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-tabster_v9.19.6",
       "version": "9.19.6",

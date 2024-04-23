@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.75)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.74..@fluentui/react-card_v9.0.75)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.0.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.74)
+
+Wed, 17 Apr 2024 21:53:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.73..@fluentui/react-card_v9.0.74)
+
+### Patches
+
+- fix: Card actions adopt custom high contrast mode colors ([PR #30941](https://github.com/microsoft/fluentui/pull/30941) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.0.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.73)
 

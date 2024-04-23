@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarouselCard renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarouselCard"
+    data-carousel-active-item="false"
+    data-carousel-item="test"
+    hidden=""
+  />
+</div>
+`;

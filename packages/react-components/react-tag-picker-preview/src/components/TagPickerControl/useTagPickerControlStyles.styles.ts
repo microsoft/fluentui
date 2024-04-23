@@ -225,6 +225,8 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
     styles[state.size],
     styles[state.appearance],
     !state.disabled && state.appearance === 'outline' && styles.outlineInteractive,
+    state.invalid && state.appearance !== 'underline' && styles.invalid,
+    state.invalid && state.appearance === 'underline' && styles.invalidUnderline,
     state.disabled && styles.disabled,
     state.root.className,
   );

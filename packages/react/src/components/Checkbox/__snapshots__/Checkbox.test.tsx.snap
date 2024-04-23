@@ -64,6 +64,13 @@ exports[`Checkbox renders checked correctly 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid WindowText;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+            outline: 1px solid WindowText;
+          }
       data-ktp-execute-target="true"
       id="checkbox-0"
       type="checkbox"
@@ -230,6 +237,13 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target="true"
@@ -408,6 +422,13 @@ exports[`Checkbox renders unchecked correctly 1`] = `
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
             outline: 1px solid WindowText;
           }
       data-ktp-execute-target="true"

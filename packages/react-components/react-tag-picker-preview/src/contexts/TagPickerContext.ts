@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import type { ComboboxBaseState } from '../utils/ComboboxBase.types';
 import type { TagPickerSize } from '../components/TagPicker/TagPicker.types';
+import { ComboboxBaseState } from '@fluentui/react-combobox';
 
 export interface TagPickerContextValue
   extends Pick<
@@ -21,11 +21,12 @@ export interface TagPickerContextValue
     | 'disabled'
     | 'freeform'
   > {
-  triggerRef: React.RefObject<HTMLInputElement>;
+  triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement>;
   popoverRef: React.RefObject<HTMLDivElement>;
   popoverId: string;
-  targetRef: React.RefObject<HTMLElement>;
+  targetRef: React.RefObject<HTMLDivElement>;
   secondaryActionRef: React.RefObject<HTMLSpanElement>;
+  tagPickerGroupRef: React.RefObject<HTMLDivElement>;
   size: TagPickerSize;
 }
 
@@ -36,7 +37,8 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   multiselect: false,
   triggerRef: React.createRef<HTMLInputElement>(),
   popoverRef: React.createRef<HTMLDivElement>(),
-  targetRef: React.createRef<HTMLElement>(),
+  targetRef: React.createRef<HTMLDivElement>(),
+  tagPickerGroupRef: React.createRef<HTMLDivElement>(),
   secondaryActionRef: React.createRef<HTMLDivElement>(),
   open: false,
   clearSelection: () => null,

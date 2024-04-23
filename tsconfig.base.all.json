@@ -139,7 +139,8 @@
       "@fluentui/react-progress": ["packages/react-components/react-progress/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/src/index.ts"],
-      "@fluentui/react-search-preview": ["packages/react-components/react-search-preview/src/index.ts"],
+      "@fluentui/react-rating": ["packages/react-components/react-rating/src/index.ts"],
+      "@fluentui/react-search": ["packages/react-components/react-search/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-components/react-shared-contexts/src/index.ts"],
       "@fluentui/react-skeleton": ["packages/react-components/react-skeleton/src/index.ts"],
@@ -157,9 +158,6 @@
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
       "@fluentui/react-tag-picker-preview": ["packages/react-components/react-tag-picker-preview/src/index.ts"],
       "@fluentui/react-tags": ["packages/react-components/react-tags/src/index.ts"],
-      "@fluentui/react-teaching-popover-preview": [
-        "packages/react-components/react-teaching-popover-preview/src/index.ts"
-      ],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
@@ -174,7 +172,7 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-rating": ["packages/react-components/react-rating/src/index.ts"]
+      "@fluentui/react-teaching-popover": ["packages/react-components/react-teaching-popover/src/index.ts"]
     }
   }
 }

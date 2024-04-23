@@ -430,6 +430,20 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -514,6 +528,20 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -642,8 +670,8 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
         >
           <path
             class="domain"
-            d="M40.5,0V0.5H630.5V0"
-            stroke="#000"
+            d="M40.5,0.5H630.5"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -651,13 +679,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             transform="translate(188.96039603960392,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="0"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               30
@@ -669,13 +697,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             transform="translate(481.039603960396,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="0"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               40
@@ -716,8 +744,8 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
         >
           <path
             class="domain"
-            d="M0,257.5H0.5V20.5H0"
-            stroke="#000"
+            d="M0.5,257.5V20.5"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -725,12 +753,12 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             transform="translate(0,197.16336633663366)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="0"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               10
@@ -742,12 +770,12 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             transform="translate(0,79.83663366336633)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="0"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               20
@@ -975,6 +1003,20 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1059,6 +1101,20 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1187,8 +1243,8 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
         >
           <path
             class="domain"
-            d="M40.5,0V0.5H630.5V0"
-            stroke="#000"
+            d="M40.5,0.5H630.5"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1196,13 +1252,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             transform="translate(188.96039603960392,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="0"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               xPoint p3
@@ -1214,13 +1270,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             transform="translate(481.039603960396,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="0"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="10"
             >
               xPoint p4
@@ -1261,8 +1317,8 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
         >
           <path
             class="domain"
-            d="M0,257.5H0.5V20.5H0"
-            stroke="#000"
+            d="M0.5,257.5V20.5"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1270,12 +1326,12 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             transform="translate(0,197.16336633663366)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="0"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               yPoint p1
@@ -1287,12 +1343,12 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             transform="translate(0,79.83663366336633)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="0"
             />
             <text
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               yPoint p2
@@ -1528,6 +1584,20 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1612,6 +1682,20 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"

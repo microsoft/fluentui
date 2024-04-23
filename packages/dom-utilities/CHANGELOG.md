@@ -1,8 +1,26 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Wed, 03 Apr 2024 07:29:31 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2024 07:28:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.0)
+
+Mon, 22 Apr 2024 07:28:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.16..@fluentui/dom-utilities_v2.3.0)
+
+### Minor changes
+
+- feat: add shadow DOM support for DOM APIs ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+
+## [2.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.16)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.15..@fluentui/dom-utilities_v2.2.16)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
 
 ## [2.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.15)
 

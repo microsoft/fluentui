@@ -77,7 +77,7 @@ function getLageArgs(options) {
   // (which must be built and uploaded with each release). This is similar to "--scope \"!packages/fluentui/*\""
   // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
   const beachballPackageScopes = Object.values(workspacePackagesMetadata)
-    .filter(({ packageJson, packagePath }) => {
+    .filter(({ packageJson, projectConfig, packagePath }) => {
       const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
       const isWebComponents = packageJson.name === '@fluentui/web-components';
 
@@ -85,7 +85,7 @@ function getLageArgs(options) {
         return false;
       }
 
-      const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
+      const isConverged = isConvergedPackage({ packageJson, project: projectConfig });
       if (releaseScope === 'v9' && isConverged) {
         return packageJson.private !== true;
       }
