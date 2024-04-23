@@ -360,6 +360,7 @@
       "packages/*",
       "packages/fluentui/*",
       "packages/react-components/*",
+      "packages/react-components/*/*",
       "scripts/*",
       "tools/*",
       "typings"
