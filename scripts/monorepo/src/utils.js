@@ -1,19 +1,8 @@
 const { execSync } = require('child_process');
 
-const { workspaceRoot, readProjectConfiguration } = require('@nx/devkit');
-
-const { tree } = require('./tree');
+const { workspaceRoot } = require('@nx/devkit');
 
 const TEN_MEGABYTES = 1024 * 10000;
-
-/**
- * Gets nx project metadata
- * @param {string} projectName - package name
- * @returns {import('@nx/devkit').ProjectConfiguration}
- */
-function getProjectMetadata(projectName) {
-  return readProjectConfiguration(tree, projectName);
-}
 
 /**
  *
@@ -46,5 +35,4 @@ function getUntrackedFiles() {
 
 exports.getUncommittedFiles = getUncommittedFiles;
 exports.getUntrackedFiles = getUntrackedFiles;
-exports.getProjectMetadata = getProjectMetadata;
 exports.workspaceRoot = workspaceRoot;

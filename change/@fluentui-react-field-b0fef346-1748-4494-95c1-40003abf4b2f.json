@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: re-genearate api.md as result of perf improvements to generate-api task",
-  "packageName": "@fluentui/react-field",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

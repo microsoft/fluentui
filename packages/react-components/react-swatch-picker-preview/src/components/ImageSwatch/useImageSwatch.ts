@@ -19,9 +19,17 @@ export const useImageSwatch_unstable = (
   const { src, value, onClick, style, ...rest } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+  const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
+
+  const role = isGrid ? 'gridcell' : 'radio';
+  const ariaSelected = isGrid
+    ? {
+        'aria-selected': selected,
+      }
+    : { 'aria-checked': selected };
 
   const onImageSwatchClick = useEventCallback(
     mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -39,6 +47,8 @@ export const useImageSwatch_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
+        role,
+        ...ariaSelected,
         onClick: onImageSwatchClick,
         ...rest,
         style: {

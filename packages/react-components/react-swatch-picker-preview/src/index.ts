@@ -4,7 +4,6 @@ export {
   useSwatchPickerStyles_unstable,
   useSwatchPicker_unstable,
   swatchPickerClassNames,
-  swatchPickerCSSVars,
 } from './SwatchPicker';
 export type {
   SwatchPickerProps,

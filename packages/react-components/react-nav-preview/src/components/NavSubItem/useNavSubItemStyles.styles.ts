@@ -1,49 +1,50 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { typographyStyles } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import {
+  navItemTokens,
+  useContentStyles,
+  useIndicatorStyles,
+  useRootDefaultClassName,
+} from '../sharedNavStyles.styles';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
 
 export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
   root: 'fui-NavSubItem',
-  content: 'fui-NavSubItem__content',
 };
-
-/**
- * Styles for the root slot
- */
-const useStyles = makeResetStyles({
-  display: 'flex',
-  ...typographyStyles.body1,
-});
-
 /**
  * Styles for the content slot (children)
  */
-const useContentStyles = makeStyles({
-  selected: typographyStyles.body1Strong,
+const useNavSubItemSpecificStyles = makeStyles({
+  base: {
+    paddingInlineStart: '36px',
+  },
+  selectedIndicator: {
+    '::after': {
+      marginInlineStart: `-${navItemTokens.indicatorOffset + 24}px`,
+    },
+  },
 });
 
 /**
  * Apply styling to the NavSubItem slots based on the state
  */
 export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItemState => {
-  const rootStyles = useStyles();
+  const rootDefaultClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
+  const indicatorStyles = useIndicatorStyles();
+  const navSubItemSpecificStyles = useNavSubItemSpecificStyles();
 
   const { selected } = state;
 
   state.root.className = mergeClasses(
     navSubItemClassNames.root,
-    rootStyles,
-
-    state.root.className,
-  );
-
-  state.content.className = mergeClasses(
-    navSubItemClassNames.content,
+    rootDefaultClassName,
+    navSubItemSpecificStyles.base,
+    selected && indicatorStyles.base,
     selected && contentStyles.selected,
-    state.content.className,
+    selected && navSubItemSpecificStyles.selectedIndicator,
+    state.root.className,
   );
 
   return state;

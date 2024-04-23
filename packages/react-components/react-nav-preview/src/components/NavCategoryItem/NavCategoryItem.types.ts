@@ -1,5 +1,4 @@
 import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
-
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavCategoryItemContextValues = {
@@ -10,20 +9,18 @@ export type NavCategoryItemSlots = {
   /**
    * The root element
    */
-  root: Slot<'button'>;
+  root: NonNullable<Slot<'button'>>;
 
   /**
-   * The component to be used as button in heading
+   * Icon that renders before the content.
+   * Should be specific to each Category
    */
-  // button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+  icon?: Slot<'span'>;
+
   /**
-   * Expand icon slot rendered before (or after) children content in heading.
+   * Expand icon slot rendered after the content to indicate an open and closed state.
    */
   expandIcon: NonNullable<Slot<'span'>>;
-  // /**
-  //  * Expand icon slot rendered before (or after) children content in heading.
-  //  */
-  // icon?: Slot<'div'>;
 };
 
 /**

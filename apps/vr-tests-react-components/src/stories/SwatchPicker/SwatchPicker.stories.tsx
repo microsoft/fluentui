@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SwatchPicker } from '@fluentui/react-swatch-picker-preview';
-import { SampleSwatchPickerColors, SampleSwatchPickerImages, steps } from './utils';
+import { SampleSwatchPickerColors, SampleSwatchPickerImages, SampleSwatchPickerGrid, steps } from './utils';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
 
@@ -15,6 +15,8 @@ export const Default = () => (
     <SampleSwatchPickerColors />
     <h3>Images</h3>
     <SampleSwatchPickerImages />
+    <h3>Grid layout</h3>
+    <SampleSwatchPickerGrid />
   </>
 );
 
@@ -27,15 +29,20 @@ export const DefaultRTL = getStoryVariant(Default, RTL);
 export const Size = () => (
   <>
     <h3>Colors</h3>
-    <SampleSwatchPickerColors size="extraSmall" />
+    <SampleSwatchPickerColors size="extra-small" />
     <SampleSwatchPickerColors size="small" />
     <SampleSwatchPickerColors size="medium" />
     <SampleSwatchPickerColors size="large" />
     <h3>Images</h3>
-    <SampleSwatchPickerImages size="extraSmall" />
+    <SampleSwatchPickerImages size="extra-small" />
     <SampleSwatchPickerImages size="small" />
     <SampleSwatchPickerImages size="medium" />
     <SampleSwatchPickerImages size="large" />
+    <h3>Grid layout</h3>
+    <SampleSwatchPickerGrid size="extra-small" />
+    <SampleSwatchPickerGrid size="small" />
+    <SampleSwatchPickerGrid size="medium" />
+    <SampleSwatchPickerGrid size="large" />
   </>
 );
 
@@ -51,6 +58,9 @@ export const Shape = () => (
     <SampleSwatchPickerImages shape="square" />
     <SampleSwatchPickerImages shape="circular" />
     <SampleSwatchPickerImages shape="rounded" />
+    <h3>Grid layout</h3>
+    <SampleSwatchPickerGrid shape="square" />
+    <SampleSwatchPickerGrid shape="circular" />
   </>
 );
 
@@ -64,6 +74,9 @@ export const Spacing = () => (
     <h3>Images</h3>
     <SampleSwatchPickerImages spacing="medium" />
     <SampleSwatchPickerImages spacing="small" />
+    <h3>Grid layout</h3>
+    <SampleSwatchPickerGrid spacing="medium" />
+    <SampleSwatchPickerGrid spacing="small" />
   </>
 );
 

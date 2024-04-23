@@ -38,7 +38,6 @@
     "@fluentui/react-swatch-picker-preview": "*",
     "@fluentui/react-motions-preview": "*",
     "@fluentui/react-tag-picker-preview": "*",
-    "@fluentui/react-teaching-popover-preview": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@griffel/react": "^1.5.14",
     "@microsoft/applicationinsights-web": "^3",

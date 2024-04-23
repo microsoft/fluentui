@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(eslint-plugin): add triple-slash-reference rule to  ban TS '///' within source code",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -33,7 +33,12 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
         <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
                 {option}
               </Tag>
             ))}
@@ -46,7 +51,7 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
-                media={<Avatar name={option} color="colorful" />}
+                media={<Avatar aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}
               >
@@ -62,15 +67,15 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
 export const Size = () => (
   <>
     <div>
-      <h1>Extra Large</h1>
+      <h4>Extra Large</h4>
       <Example size="extra-large" />
     </div>
     <div>
-      <h1>Large</h1>
+      <h4>Large</h4>
       <Example size="large" />
     </div>
     <div>
-      <h1>Medium</h1>
+      <h4>Medium</h4>
       <Example size="medium" />
     </div>
   </>

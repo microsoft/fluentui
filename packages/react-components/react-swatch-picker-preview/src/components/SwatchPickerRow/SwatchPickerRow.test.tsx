@@ -16,7 +16,6 @@ describe('SwatchPickerRow', () => {
         <div
           class="fui-SwatchPickerRow"
           role="row"
-          style="--fui-SwatchPicker--rowGap: 4px;"
         >
           Default SwatchPickerRow
         </div>

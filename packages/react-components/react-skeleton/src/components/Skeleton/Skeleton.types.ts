@@ -28,6 +28,7 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
   /**
    * Sets the width value of the skeleton wrapper.
    * @defaultValue 100%
+   * @deprecated Use `className` prop to set width
    */
   width?: number | string;
 };

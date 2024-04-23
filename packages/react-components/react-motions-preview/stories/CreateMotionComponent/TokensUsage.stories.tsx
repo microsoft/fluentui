@@ -14,7 +14,7 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
 
-    ...shorthands.border('3px', 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.padding('10px'),
 
@@ -25,6 +25,7 @@ const useClasses = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     width: '100px',
     height: '100px',
+    forcedColorAdjust: 'none',
   },
   description: {
     ...shorthands.margin('5px'),

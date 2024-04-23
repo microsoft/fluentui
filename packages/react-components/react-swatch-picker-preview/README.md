@@ -58,4 +58,4 @@ See the [Spec.md](./docs/Spec.md) file for background information on the design/
 
 ## API
 
-For information about the components, please refer to the API documentation.
+For information about the components, please refer to the [API documentation](https://react.fluentui.dev/?path=/docs/preview-components-swatchpicker--default).

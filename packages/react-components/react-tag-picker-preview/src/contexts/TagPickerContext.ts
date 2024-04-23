@@ -21,7 +21,7 @@ export interface TagPickerContextValue
     | 'disabled'
     | 'freeform'
   > {
-  triggerRef: React.RefObject<HTMLInputElement>;
+  triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement>;
   popoverRef: React.RefObject<HTMLDivElement>;
   popoverId: string;
   targetRef: React.RefObject<HTMLDivElement>;

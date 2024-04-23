@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(eslint-plugin): ignore bundle-size package directory",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

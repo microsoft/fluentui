@@ -42,7 +42,12 @@ export const SecondaryAction = () => {
         >
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
                 {option}
               </Tag>
             ))}
@@ -55,7 +60,7 @@ export const SecondaryAction = () => {
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
-                media={<Avatar name={option} color="colorful" />}
+                media={<Avatar aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}
               >

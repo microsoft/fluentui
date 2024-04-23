@@ -158,9 +158,6 @@
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
       "@fluentui/react-tag-picker-preview": ["packages/react-components/react-tag-picker-preview/src/index.ts"],
       "@fluentui/react-tags": ["packages/react-components/react-tags/src/index.ts"],
-      "@fluentui/react-teaching-popover-preview": [
-        "packages/react-components/react-teaching-popover-preview/src/index.ts"
-      ],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
@@ -174,7 +171,8 @@
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-teaching-popover": ["packages/react-components/react-teaching-popover/src/index.ts"]
     }
   }
 }

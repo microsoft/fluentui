@@ -21,7 +21,7 @@ import { useComboboxBaseState, ComboboxBaseState } from '@fluentui/react-combobo
  */
 export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => {
   const popoverId = useId('picker-listbox');
-  const triggerInnerRef = React.useRef<HTMLInputElement>(null);
+  const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
   const { positioning, size = 'medium', inline = false } = props;

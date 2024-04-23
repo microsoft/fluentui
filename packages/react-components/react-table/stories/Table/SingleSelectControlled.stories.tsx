@@ -146,7 +146,7 @@ export const SingleSelectControlled = () => {
     <Table aria-label="Table with controlled single selection">
       <TableHeader>
         <TableRow>
-          <TableSelectionCell type="radio" hidden />
+          <TableSelectionCell type="radio" invisible />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>

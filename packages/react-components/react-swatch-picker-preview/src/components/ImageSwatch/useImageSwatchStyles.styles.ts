@@ -42,22 +42,12 @@ const useStyles = makeResetStyles({
   // High contrast styles
 
   '@media (forced-colors: active)': {
-    ':focus': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
-    },
-
+    forcedColorAdjust: 'none',
     ':hover': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke2Hover}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
     },
-
     ':hover:active': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
     },
   },
 });
@@ -66,7 +56,6 @@ const useStylesSelected = makeStyles({
   selected: {
     ...shorthands.border('none'),
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
-    ...shorthands.borderColor(tokens.colorBrandStroke1),
     ':hover': {
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
     },
@@ -76,11 +65,14 @@ const useStylesSelected = makeStyles({
     ...createCustomFocusIndicatorStyle({
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus2}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
     }),
+    '@media (forced-colors: active)': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    },
   },
 });
 
 const useSizeStyles = makeStyles({
-  extraSmall: {
+  'extra-small': {
     width: '20px',
     height: '20px',
   },
@@ -128,11 +120,13 @@ export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwa
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
 
+  const { size = 'medium', shape = 'square' } = state;
+
   state.root.className = mergeClasses(
     imageSwatchClassNames.root,
     styles,
-    sizeStyles[state.size ?? 'medium'],
-    shapeStyles[state.shape ?? 'square'],
+    sizeStyles[size],
+    shapeStyles[shape],
     state.selected && selectedStyles.selected,
     state.root.className,
   );

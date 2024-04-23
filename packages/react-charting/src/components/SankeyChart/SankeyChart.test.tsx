@@ -153,6 +153,107 @@ describe('Sankey Chart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  describe('number formatting', () => {
+    it('renders Sankey correctly by formatting large numbers', () => {
+      // ARRANGE
+      const data2 = {
+        chartTitle: 'Sankey Chart',
+        SankeyChartData: {
+          nodes: [
+            { nodeId: 0, name: 'First' },
+            { nodeId: 1, name: 'Second' },
+            { nodeId: 2, name: 'Third' },
+            { nodeId: 3, name: 'Fourth' },
+            { nodeId: 4, name: 'Five' },
+            { nodeId: 5, name: 'Six' },
+            { nodeId: 6, name: 'Seven' },
+          ],
+          links: [
+            { source: 0, target: 1, value: 1234567890 },
+            { source: 0, target: 2, value: 100000000 },
+            { source: 0, target: 5, value: 1234 },
+            { source: 0, target: 6, value: 100 },
+            { source: 1, target: 3, value: 1000000000 },
+            { source: 1, target: 4, value: 234567890 },
+            { source: 2, target: 3, value: 1000 },
+            { source: 2, target: 4, value: 9999000 },
+          ],
+        },
+      };
+      const strings: ISankeyChartStrings = {
+        linkFrom: 'source {0}',
+      };
+      const accessibilityStrings: ISankeyChartAccessibilityProps = {
+        linkAriaLabel: '{2} items moved from {0} to {1}',
+        nodeAriaLabel: 'element {0} with size {1}',
+      };
+      // ACT
+      const component = renderer.create(
+        <SankeyChart
+          data={data2}
+          height={500}
+          width={800}
+          strings={strings}
+          accessibility={accessibilityStrings}
+          formatNumberOptions={{
+            maximumFractionDigits: 2,
+            notation: 'compact',
+            compactDisplay: 'short',
+          }}
+        />,
+      );
+      // ASSERT
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it('renders Sankey correctly by styling numbers as percentages', () => {
+      // ARRANGE
+      const data2 = {
+        chartTitle: 'Sankey Chart',
+        SankeyChartData: {
+          nodes: [
+            { nodeId: 0, name: 'First' },
+            { nodeId: 1, name: 'Second' },
+            { nodeId: 2, name: 'Third' },
+            { nodeId: 3, name: 'Fourth' },
+            { nodeId: 4, name: 'Five' },
+          ],
+          links: [
+            { source: 0, target: 1, value: 0.6 },
+            { source: 0, target: 2, value: 0.4 },
+            { source: 1, target: 3, value: 0.25 },
+            { source: 1, target: 4, value: 0.35 },
+            { source: 2, target: 3, value: 0.15 },
+            { source: 2, target: 4, value: 0.25 },
+          ],
+        },
+      };
+      const strings: ISankeyChartStrings = {
+        linkFrom: 'source {0}',
+      };
+      const accessibilityStrings: ISankeyChartAccessibilityProps = {
+        linkAriaLabel: '{2} items moved from {0} to {1}',
+        nodeAriaLabel: 'element {0} with size {1}',
+      };
+      // ACT
+      const component = renderer.create(
+        <SankeyChart
+          data={data2}
+          height={500}
+          width={800}
+          strings={strings}
+          accessibility={accessibilityStrings}
+          formatNumberOptions={{
+            style: 'percent',
+          }}
+        />,
+      );
+      // ASSERT
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+  });
 });
 
 describe('Render calling with respective to props', () => {

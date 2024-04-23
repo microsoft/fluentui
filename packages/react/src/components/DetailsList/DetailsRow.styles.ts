@@ -330,9 +330,11 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
             opacity: 1,
           },
 
-          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
-            opacity: 1,
-          },
+          // eslint-disable-next-line @fluentui/max-len
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}, :host(.${IsFocusVisibleClassName}) &:focus .${classNames.check}`]:
+            {
+              opacity: 1,
+            },
 
           '.ms-GroupSpacer': {
             flexShrink: 0,

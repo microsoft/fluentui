@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-radio",
-  "version": "9.2.14",
+  "version": "9.2.16",
   "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,13 +33,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.60",
-    "@fluentui/react-jsx-runtime": "^9.0.35",
-    "@fluentui/react-label": "^9.1.67",
-    "@fluentui/react-shared-contexts": "^9.16.0",
-    "@fluentui/react-tabster": "^9.19.6",
+    "@fluentui/react-field": "^9.1.62",
+    "@fluentui/react-jsx-runtime": "^9.0.36",
+    "@fluentui/react-label": "^9.1.68",
+    "@fluentui/react-shared-contexts": "^9.17.0",
+    "@fluentui/react-tabster": "^9.20.1",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.6",
+    "@fluentui/react-utilities": "^9.18.7",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

@@ -12,6 +12,7 @@ export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' 
   isGrid: boolean;
 
   /**
+   * @internal
    * Callback used by ColorSwatch to request a change on it's selected state
    * Should be used to select ColorSwatch
    */
