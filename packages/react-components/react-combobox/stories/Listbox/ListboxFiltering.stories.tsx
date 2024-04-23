@@ -22,12 +22,10 @@ const useStyles = makeStyles({
 });
 
 export const Filtering = (props: Partial<ListboxProps>) => {
-  const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
-
   const [filter, setFilter] = React.useState('');
 
   const filteredOptions = React.useMemo(() => {
-    return options.filter(
+    return ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'].filter(
       o => o.toLowerCase().includes(filter.toLowerCase()) || filter.toLowerCase().includes(o.toLowerCase()),
     );
   }, [filter]);

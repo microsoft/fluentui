@@ -40,14 +40,13 @@ const useStyles = makeStyles({
 
 export const InDialog = (props: Partial<ListboxProps>) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const [selectedOption, setSelectedOption] = React.useState(props.selectedOptions?.[0]);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [filter, setFilter] = React.useState('');
 
   const filteredOptions = React.useMemo(() => {
-    return options.filter(
+    return ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'].filter(
       o => o.toLowerCase().includes(filter.toLowerCase()) || filter.toLowerCase().includes(o.toLowerCase()),
     );
   }, [filter]);
