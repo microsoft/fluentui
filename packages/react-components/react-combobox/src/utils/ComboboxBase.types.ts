@@ -152,7 +152,7 @@ export type ComboboxBaseContextValues = {
   listbox: ListboxContextValue;
 };
 
-export type HighlightedOptionChangeData = {
+export type ActiveOptionChangeData = {
   previousOption: OptionValue | null | undefined;
   nextOption: OptionValue | null | undefined;
 };

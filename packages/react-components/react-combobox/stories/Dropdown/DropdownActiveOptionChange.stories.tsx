@@ -18,25 +18,20 @@ export const ActiveOptionChange = (props: Partial<DropdownProps>) => {
   const styles = useStyles();
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
-  const eventCount = React.useRef(0);
-
   const onActiveOptionChange = React.useCallback(
     (e, data) => {
-      eventCount.current++;
-      setActiveOptionText(
-        `ActiveOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
-      );
+      setActiveOptionText(data?.nextOption?.text);
     },
     [setActiveOptionText],
   );
 
   const onMouseEnter = React.useCallback(
     e => {
-      eventCount.current++;
-      setActiveOptionText(`Mouse enter: ${e.target.textContent} Called ${eventCount.current} times.`);
+      setActiveOptionText(`${e.target.textContent} (Mouse enter)`);
     },
     [setActiveOptionText],
   );
+
   return (
     <div className={styles.root}>
       {activeOptionText}
@@ -91,8 +86,8 @@ ActiveOptionChange.parameters = {
   docs: {
     description: {
       story:
-      'OnActiveOptionChange notifies the user when the active option in the Dropdown was changed ' +
-      'by keyboard. To react on mouse hover events, use onMouseEnter on the invididual options.',
-  },
+        'OnActiveOptionChange notifies the user when the active option in the Dropdown was changed ' +
+        'by keyboard. To react on mouse hover events, use onMouseEnter on the invididual options.',
+    },
   },
 };

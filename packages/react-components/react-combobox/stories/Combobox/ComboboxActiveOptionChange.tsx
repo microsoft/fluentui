@@ -20,22 +20,16 @@ export const ActiveOptionChange = (props: Partial<ComboboxProps>) => {
 
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
-  const eventCount = React.useRef(0);
-
   const onActiveOptionChange = React.useCallback(
     (e, data) => {
-      eventCount.current++;
-      setActiveOptionText(
-        `ActiveOptionChange: ${data?.nextOption?.text} Called ${eventCount.current} times.`,
-      );
+      setActiveOptionText(data?.nextOption?.text);
     },
     [setActiveOptionText],
   );
 
   const onMouseEnter = React.useCallback(
     e => {
-      eventCount.current++;
-      setActiveOptionText(`Mouse enter: ${e.target.textContent} Called ${eventCount.current} times.`);
+      setActiveOptionText(`${e.target.textContent} (Mouse enter)`);
     },
     [setActiveOptionText],
   );
