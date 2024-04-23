@@ -115,6 +115,15 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     activeDescendantController.first();
   };
 
+  const onBlur = (_event: React.FocusEvent<HTMLElement>) => {
+    if (hasParentActiveDescendantContext) {
+      return;
+    }
+
+    // blur active descendent styles on blur, in the absence of a parent context controlling the state
+    activeDescendantController.blur();
+  };
+
   // get state from parent combobox, if it exists
   const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
@@ -158,6 +167,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
   state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
+  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlur));
 
   return state;
 };
