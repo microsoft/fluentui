@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: deprecate the width prop.",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

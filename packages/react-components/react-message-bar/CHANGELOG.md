@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Wed, 17 Apr 2024 21:53:54 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.0.27)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.0.26..@fluentui/react-message-bar_v9.0.27)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.76 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
 
 ## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.0.26)
 

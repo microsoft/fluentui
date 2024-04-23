@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 17 Apr 2024 21:53:56 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 08:17:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.14.0)
+
+Tue, 23 Apr 2024 08:17:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.13.19..@fluentui/react-provider_v9.14.0)
+
+### Minor changes
+
+- feat: Implement MenuItemSwitch component ([PR #31099](https://github.com/microsoft/fluentui/pull/31099) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
 
 ## [9.13.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.19)
 
