@@ -33,6 +33,10 @@ const getTotalOffsetTop = (element: HTMLElement, scrollParent: HTMLElement): num
     return 0;
   }
 
+  if (element.contains(scrollParent)) {
+    return scrollParent.offsetTop * -1;
+  }
+
   return element.offsetTop + getTotalOffsetTop(element.offsetParent as HTMLElement, scrollParent);
 };
 
