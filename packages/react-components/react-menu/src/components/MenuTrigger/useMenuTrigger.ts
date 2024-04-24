@@ -55,13 +55,14 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   // set openingWithHoverRef on a timeout to prevent closing the menu on a click while the hover open is running non-visually.
   // the timeout is equal to the real-time menu popover animation duration
   const onHoverOpen = () => {
-    clearTimeout(openingWithHoverTimeout.current);
+    if (!hoverDelay) {
+      return;
+    }
 
+    clearTimeout(openingWithHoverTimeout.current);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     openingWithHoverTimeout.current = setTimeout(() => {
-      openingWithHoverRef.current = true;
-
       // when popover starts to mount, get it's animationDuration and wait for it to be completed
       requestAnimationFrame(() => {
         if (!menuPopoverRef.current) {
@@ -80,6 +81,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
           return;
         }
 
+        openingWithHoverRef.current = true;
         setTimeout(() => {
           openingWithHoverRef.current = false;
         }, animationDurationMs);
