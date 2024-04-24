@@ -10,7 +10,14 @@ import { Enter } from '@fluentui/keyboard-keys';
 jest.mock('../../contexts/menuContext.ts');
 
 describe('MenuTrigger', () => {
-  beforeEach(() => mockUseMenuContext());
+  let popoverAnimationDurationMs = 400;
+  beforeEach(() => {
+    mockUseMenuContext();
+
+    jest
+      .spyOn(window, 'getComputedStyle')
+      .mockReturnValue({ animationDuration: `${popoverAnimationDurationMs}ms` } as CSSStyleDeclaration);
+  });
 
   isConformant({
     disabledTests: [
@@ -214,12 +221,22 @@ describe('MenuTrigger', () => {
     );
   });
 
-  it('should prevent closing menu on click after hover with delay', () => {
-    jest.useFakeTimers();
+  it('should prevent closing menu on click after hover with delay', async () => {
+    jest.useFakeTimers({ doNotFake: ['requestAnimationFrame'] });
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      cb(1);
+      return 1;
+    });
 
     const mockSetOpen = jest.fn();
     const hoverDelay = 500;
-    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay });
+    mockUseMenuContext({
+      open: true,
+      setOpen: mockSetOpen,
+      openOnHover: true,
+      hoverDelay,
+      menuPopoverRef: { current: {} } as React.MutableRefObject<HTMLElement>,
+    });
 
     const { getByRole } = render(
       <MenuTrigger disableButtonEnhancement>
@@ -235,23 +252,30 @@ describe('MenuTrigger', () => {
     );
 
     mockSetOpen.mockClear();
-    jest.advanceTimersByTime(hoverDelay + 200 - 1);
+    jest.advanceTimersByTime(hoverDelay);
 
     const clickEvent = createEvent.click(getByRole('button'));
     fireEvent(getByRole('button'), clickEvent);
 
-    expect(mockSetOpen).toBeCalledWith(
-      expect.anything(),
-      expect.objectContaining({ open: true, keyboard: false, type: 'menuTriggerClick' }),
-    );
+    expect(mockSetOpen).not.toBeCalled();
   });
 
   it('should close menu on click after hover with delay', () => {
-    jest.useFakeTimers();
+    jest.useFakeTimers({ doNotFake: ['requestAnimationFrame'] });
+    jest.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      cb(1);
+      return 1;
+    });
 
     const mockSetOpen = jest.fn();
     const hoverDelay = 500;
-    mockUseMenuContext({ open: true, setOpen: mockSetOpen, openOnHover: true, hoverDelay });
+    mockUseMenuContext({
+      open: true,
+      setOpen: mockSetOpen,
+      openOnHover: true,
+      hoverDelay,
+      menuPopoverRef: { current: {} } as React.MutableRefObject<HTMLElement>,
+    });
 
     const { getByRole } = render(
       <MenuTrigger disableButtonEnhancement>
@@ -267,7 +291,8 @@ describe('MenuTrigger', () => {
     );
 
     mockSetOpen.mockClear();
-    jest.advanceTimersByTime(hoverDelay + 200);
+    jest.advanceTimersByTime(hoverDelay);
+    jest.advanceTimersByTime(popoverAnimationDurationMs);
 
     const clickEvent = createEvent.click(getByRole('button'));
     fireEvent(getByRole('button'), clickEvent);
