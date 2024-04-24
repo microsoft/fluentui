@@ -12,6 +12,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
   const focusVisibleRef = React.useRef(false);
   const activeIdRef = React.useRef<string | null>(null);
+  const lastActiveIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const attributeVisibilityRef = React.useRef(true);
 
@@ -56,6 +57,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
 
     removeAttribute();
+    lastActiveIdRef.current = activeIdRef.current;
     activeIdRef.current = null;
   }, [getActiveDescendant, removeAttribute]);
 
@@ -140,6 +142,18 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         const target = listboxRef.current.querySelector<HTMLElement>(`#${id}`);
         if (target) {
           focusActiveDescendant(target);
+        }
+      },
+
+      focusLastActive: () => {
+        if (!listboxRef.current || !lastActiveIdRef.current) {
+          return;
+        }
+
+        const target = listboxRef.current.querySelector<HTMLElement>(`#${lastActiveIdRef.current}`);
+        if (target) {
+          focusActiveDescendant(target);
+          return true;
         }
       },
 

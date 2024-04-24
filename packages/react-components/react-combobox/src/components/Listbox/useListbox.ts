@@ -51,7 +51,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const activeDescendantContext = useActiveDescendantContext();
   const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
   const activeDescendantController = hasParentActiveDescendantContext ? activeDescendantContext.controller : controller;
-  const lastActiveDescendentId = React.useRef<string>();
 
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
@@ -96,11 +95,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
 
     // restore focus to last active option (if it still exists) - similar to memorizeCurrent in useArrowNavigationGroup
-    const lastActiveDescendent = lastActiveDescendentId.current
-      ? optionCollection.getOptionById(lastActiveDescendentId.current)
-      : null;
-    if (lastActiveDescendent) {
-      activeDescendantController.focus(lastActiveDescendent.id);
+    if (activeDescendantController.focusLastActive()) {
       return;
     }
 
@@ -124,7 +119,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
 
     // blur active descendent styles on blur, in the absence of a parent context controlling the state
-    lastActiveDescendentId.current = activeDescendantController.active();
     activeDescendantController.blur();
   };
 
