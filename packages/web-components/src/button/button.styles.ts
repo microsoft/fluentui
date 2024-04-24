@@ -72,6 +72,7 @@ export const styles = css`
     align-items: center;
     box-sizing: border-box;
     justify-content: center;
+    text-align: center;
     text-decoration-line: none;
     margin: 0;
     min-height: 32px;
