@@ -26,6 +26,10 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
   );
 };
 
+/**
+ * Renders nested fixed + relative containers to account and offset the existence of a scrollbar using pure CSS
+ * to prevent animation jutter when the Dialog surface is mounting and unmounting
+ */
 const DialogSurfacePortalPositioning: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const portalStyles = useDialogSurfacePortalStyles_unstable();
 

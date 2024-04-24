@@ -126,10 +126,10 @@ const useBackdropStyles = makeStyles({
 export const useDialogSurfacePortalStyles_unstable = makeStyles({
   outerPositioningContainer: {
     position: 'fixed',
-    width: 'calc(100% + (100vw - 100%))',
-    height: 'calc(100% + (100vh - 100%))',
     top: 0,
     left: 0,
+    width: 'calc(100% + (100vw - 100%))', // calculates the full width of the viewport including the scrollbar (if applicable)
+    height: 'calc(100% + (100vh - 100%))', // calculates the full height of the viewport including the scrollbar (if applicable)
   },
   innerPositioningContainer: {
     position: 'relative',
