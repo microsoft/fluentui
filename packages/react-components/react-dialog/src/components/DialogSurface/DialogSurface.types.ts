@@ -19,13 +19,6 @@ export type DialogSurfaceSlots = {
  */
 export type DialogSurfaceElement = HTMLElement;
 
-export type DialogSurfacePortalProps = {
-  dialogSurfacePortalClassName: {
-    outerPositioningContainerClassName: string;
-    innerPositioningContainerClassName: string;
-  };
-};
-
 /**
  * DialogSurface Props
  */
@@ -41,8 +34,7 @@ export type DialogSurfaceContextValues = {
 export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
   // This is only partial to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
   Pick<DialogContextValue, 'isNestedDialog'> &
-  Pick<PortalProps, 'mountNode'> &
-  DialogSurfacePortalProps & {
+  Pick<PortalProps, 'mountNode'> & {
     /**
      * Transition status for animation.
      * In test environment, this is always `undefined`.

@@ -76,7 +76,6 @@ export const useDialogSurface_unstable = (
     isNestedDialog,
     transitionStatus,
     mountNode: props.mountNode,
-    dialogSurfacePortalClassName: { outerPositioningContainerClassName: '', innerPositioningContainerClassName: '' },
     root: slot.always(
       getIntrinsicElementProps('div', {
         tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150

@@ -1,10 +1,12 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { DialogSurfaceState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
 import { DialogSurfaceProvider } from '../../contexts';
 import { Portal } from '@fluentui/react-portal';
+import { useDialogSurfacePortalStyles_unstable } from './useDialogSurfaceStyles.styles';
 
 /**
  * Render the final JSX of DialogSurface
@@ -14,14 +16,22 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
 
   return (
     <Portal mountNode={state.mountNode}>
-      <div className={state.dialogSurfacePortalClassName?.outerPositioningContainerClassName}>
-        <div className={state.dialogSurfacePortalClassName?.innerPositioningContainerClassName}>
-          {state.backdrop && <state.backdrop />}
-          <DialogSurfaceProvider value={contextValues.dialogSurface}>
-            <state.root />
-          </DialogSurfaceProvider>
-        </div>
-      </div>
+      <DialogSurfacePortalPositioning>
+        {state.backdrop && <state.backdrop />}
+        <DialogSurfaceProvider value={contextValues.dialogSurface}>
+          <state.root />
+        </DialogSurfaceProvider>
+      </DialogSurfacePortalPositioning>
     </Portal>
+  );
+};
+
+const DialogSurfacePortalPositioning: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const portalStyles = useDialogSurfacePortalStyles_unstable();
+
+  return (
+    <div className={portalStyles.outerPositioningContainer}>
+      <div className={portalStyles.innerPositioningContainer}>{children}</div>
+    </div>
   );
 };
