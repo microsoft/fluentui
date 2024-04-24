@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Added a script to check that components are exported",
+  "packageName": "@fluentui/web-components",
+  "email": "7559015+janechu@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
