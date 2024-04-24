@@ -51,7 +51,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
 
-    const listenerRef = React.useMemo(() => {
+  const listenerRef = React.useMemo(() => {
     let element: HTMLDivElement | null = null;
 
     const listener = (untypedEvent: Event) => {
