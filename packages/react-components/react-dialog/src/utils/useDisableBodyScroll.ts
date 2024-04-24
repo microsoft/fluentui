@@ -29,7 +29,7 @@ export function useDisableBodyScroll() {
  * @returns a method for enabling scrolling again
  */
 export function disableScroll(target: HTMLElement) {
-  const browserSupportsClip = 'supports' in CSS && CSS.supports('overflow', 'clip');
+  const browserSupportsClip = 'CSS' in globalThis.window && 'supports' in CSS && CSS.supports('overflow', 'clip');
 
   const { clientWidth } = target.ownerDocument.documentElement;
   const innerWidth = target.ownerDocument.defaultView?.innerWidth ?? 0;
