@@ -62,7 +62,7 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isMultiselect, setIsMultiselect] = React.useState(props.multiselect);
   const [selectedOptions, setSelectedOptions] = React.useState(props.selectedOptions ?? []);
-  const [dialogSelectedOptions, setDialogSelectedOptions] = React.useState(props.selectedOptions ?? []);
+  const [pendingSelectedOptions, setPendingSelectedOptions] = React.useState(props.selectedOptions ?? []);
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [filter, setFilter] = React.useState('');
@@ -96,7 +96,7 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
           <MenuButton
             appearance="outline"
             className={styles.menuButton}
-            onClick={() => setDialogSelectedOptions(selectedOptions)}
+            onClick={() => setPendingSelectedOptions(selectedOptions)}
           >
             {selectedOptions.length > 0 ? selectedOptions.join(', ') : 'Select a pet'}
           </MenuButton>
@@ -131,9 +131,9 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
                 aria-label="Select a pet"
                 className={mergeClasses(styles.listbox, props.className)}
                 multiselect={isMultiselect}
-                selectedOptions={dialogSelectedOptions}
+                selectedOptions={pendingSelectedOptions}
                 onOptionSelect={(e, data) => {
-                  setDialogSelectedOptions(data.selectedOptions);
+                  setPendingSelectedOptions(data.selectedOptions);
                 }}
               >
                 {filteredOptions.map(option => (
@@ -148,11 +148,12 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
                 <Button>Cancel</Button>
               </DialogTrigger>
               <Button
+                appearance="primary"
                 onClick={() => {
-                  setSelectedOptions(dialogSelectedOptions);
+                  setSelectedOptions(pendingSelectedOptions);
                   setDialogOpen(false);
                 }}
-                disabled={!isMultiselect && dialogSelectedOptions.length === 0}
+                disabled={!isMultiselect && pendingSelectedOptions.length === 0}
               >
                 Done
               </Button>
