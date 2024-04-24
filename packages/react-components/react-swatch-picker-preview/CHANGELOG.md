@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-swatch-picker-preview
 
-This log was last generated on Wed, 17 Apr 2024 21:53:58 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2024 08:17:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.0)
+
+Tue, 23 Apr 2024 08:17:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.3.0..@fluentui/react-swatch-picker-preview_v0.4.0)
+
+### Minor changes
+
+- fix: BREAKING CHANGE - api changes and fixes ([PR #31097](https://github.com/microsoft/fluentui/pull/31097) by vkozlova@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.58 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.3.0)
 

@@ -617,27 +617,6 @@ type AccessibilityRenderer = {
   linkAriaLabel: (link: SLink) => string;
 };
 
-function linkCalloutAttributes(
-  singleLink: SLink,
-  from: string,
-): IChartHoverCardProps & {
-  selectedLink: SLink;
-  isCalloutVisible: boolean;
-  color: string;
-  xCalloutValue: string;
-  yCalloutValue: string;
-  descriptionMessage: string;
-} {
-  return {
-    selectedLink: singleLink,
-    isCalloutVisible: true,
-    color: (singleLink.source as SNode).color!,
-    xCalloutValue: (singleLink.target as SNode).name,
-    yCalloutValue: singleLink.unnormalizedValue!.toString(),
-    descriptionMessage: from,
-  };
-}
-
 // NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
@@ -758,8 +737,13 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       return {
         emptyAriaLabel: accessibility?.emptyAriaLabel || 'Graph has no data to display',
         linkAriaLabel: (link: SLink) =>
-          format(linkString, (link.source as SNode).name, (link.target as SNode).name, link.unnormalizedValue),
-        nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, weight),
+          format(
+            linkString,
+            (link.source as SNode).name,
+            (link.target as SNode).name,
+            link.unnormalizedValue ? this._formatNumber(link.unnormalizedValue) : link.unnormalizedValue,
+          ),
+        nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, this._formatNumber(weight)),
       };
     })(props.accessibility);
     // NOTE: Memoizing the `_createNodes` and `_createLinks` methods would break the hoverability of the chart
@@ -889,6 +873,27 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         aria-label={this._accessibility.emptyAriaLabel}
       />
     );
+  }
+
+  private _linkCalloutAttributes(
+    singleLink: SLink,
+    from: string,
+  ): IChartHoverCardProps & {
+    selectedLink: SLink;
+    isCalloutVisible: boolean;
+    color: string;
+    xCalloutValue: string;
+    yCalloutValue: string;
+    descriptionMessage: string;
+  } {
+    return {
+      selectedLink: singleLink,
+      isCalloutVisible: true,
+      color: (singleLink.source as SNode).color!,
+      xCalloutValue: (singleLink.target as SNode).name,
+      yCalloutValue: this._formatNumber(singleLink.unnormalizedValue!),
+      descriptionMessage: from,
+    };
   }
 
   private _normalizeSankeyData(
@@ -1076,7 +1081,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                   fill={textColor}
                   fontSize={14}
                 >
-                  {actualValue}
+                  {actualValue ? this._formatNumber(actualValue) : actualValue}
                 </text>
               </g>
             )}
@@ -1113,10 +1118,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         isCalloutVisible: singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE,
         color: singleNode.color,
         xCalloutValue: singleNode.name,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        yCalloutValue: singleNode.actualValue! as any as string,
+        yCalloutValue: this._formatNumber(singleNode.actualValue!),
       });
     }
+  }
+
+  private _formatNumber(value: number): string {
+    return this.props.formatNumberOptions
+      ? value.toLocaleString(undefined, this.props.formatNumberOptions)
+      : value.toString();
   }
 
   private _onStreamHover(mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) {
@@ -1129,7 +1139,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: new Set<number>(Array.from(selectedNodes).map(node => node.index!)),
         selectedLinks: new Set<number>(Array.from(selectedLinks).map(link => link.index!)),
         refSelected: mouseEvent,
-        ...linkCalloutAttributes(singleLink, from),
+        ...this._linkCalloutAttributes(singleLink, from),
       });
     }
   }
@@ -1153,7 +1163,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._onCloseCallout();
     this.setState({
       refSelected: element.currentTarget,
-      ...linkCalloutAttributes(singleLink, from),
+      ...this._linkCalloutAttributes(singleLink, from),
     });
   }
 

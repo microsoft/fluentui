@@ -73,6 +73,11 @@ export interface ISankeyChartProps {
    * Localized strings to use for the chart's accessibility features.
    */
   accessibility?: ISankeyChartAccessibilityProps;
+
+  /**
+   * Format node and link values.
+   */
+  formatNumberOptions?: Intl.NumberFormatOptions;
 }
 
 /**

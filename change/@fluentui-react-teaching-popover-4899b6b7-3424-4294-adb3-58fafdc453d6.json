@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "'feat: Release TeachingPopover to stable",
-  "packageName": "@fluentui/react-teaching-popover",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

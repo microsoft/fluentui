@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: remove circular dependencies from cypress files",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

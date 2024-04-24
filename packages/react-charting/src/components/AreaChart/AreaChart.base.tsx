@@ -246,9 +246,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![0].data[i] as ILineChartDataPoint;
-    let axisType: XAxisTypes | null = null;
     let pointToHighlight: string | Date | number | null = null;
     let index: null | number = null;
+    const axisType =
+      lineChartData![0].data.length > 0 ? (getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes) : null;
     if (d0 === undefined && d1 !== undefined) {
       pointToHighlight = d1.x;
       index = i;
@@ -256,7 +257,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       pointToHighlight = d0.x;
       index = i - 1;
     } else {
-      axisType = getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes;
       let x0;
       let point0;
       let point1;
