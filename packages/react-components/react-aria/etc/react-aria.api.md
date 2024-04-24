@@ -15,6 +15,11 @@ import type { UnionToIntersection } from '@fluentui/react-utilities';
 export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";
 
 // @public (undocumented)
+export class ActiveDescendantChangeEvent extends CustomEvent<ActiveDescendantChangeEventDetail> {
+    constructor(detail: ActiveDescendantChangeEventDetail);
+}
+
+// @public (undocumented)
 export const ActiveDescendantContextProvider: React_2.Provider<ActiveDescendantContextValue | undefined>;
 
 // @public (undocumented)
