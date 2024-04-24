@@ -1121,6 +1121,7 @@ export interface ISankeyChartProps {
     className?: string;
     colorsForNodes?: string[];
     data: IChartProps;
+    formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;

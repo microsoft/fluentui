@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 19 Apr 2024 07:26:09 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.0)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.20.2..@fluentui/react-charting_v5.21.0)
+
+### Minor changes
+
+- Sankey Diagram: Support number formatting ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by lamalkar@microsoft.com)
+- Bump @fluentui/react-focus to v8.9.1 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/theme-samples to v8.7.147 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/set-version to v8.2.17 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/react to v8.117.7 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+
+### Patches
+
+- Set axisType for single data point in case of AreaChart ([PR #30256](https://github.com/microsoft/fluentui/pull/30256) by shubhabrata08@gmail.com)
+- Fix overlapping bars on continuous axes ([PR #31035](https://github.com/microsoft/fluentui/pull/31035) by kumarkshitij@microsoft.com)
+
+## [5.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.20.2)
+
+Mon, 22 Apr 2024 07:28:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.20.1..@fluentui/react-charting_v5.20.2)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.9.0 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/theme-samples to v8.7.146 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/react to v8.117.6 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
 
 ## [5.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.20.1)
 

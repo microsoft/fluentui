@@ -40,6 +40,7 @@ import {
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
+  calculateAppropriateBarWidth,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -65,6 +66,10 @@ export interface IVerticalBarChartState extends IBasestate {
 type ColorScale = (_p?: number) => string;
 
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
+  public static defaultProps: Partial<IVerticalBarChartProps> = {
+    maxBarWidth: 24,
+  };
+
   private _points: IVerticalBarChartDataPoint[];
   private _barWidth: number;
   private _colors: string[];
@@ -531,10 +536,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
-        .range([
-          this.margins.left! + this._domainMargin,
-          containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
-        ]);
+        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
@@ -542,14 +544,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         .domain([sDate, lDate])
         .range(
           this._isRtl
-            ? [
-                containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-                this.margins.left! + this._domainMargin + this._barWidth / 2,
-              ]
-            : [
-                this.margins.left! + this._domainMargin + this._barWidth / 2,
-                containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-              ],
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
         );
     } else {
       xBarScale = d3ScaleBand()
@@ -586,7 +582,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       } else {
         adjustedBarHeight = barHeight;
       }
-      const xPoint = xBarScale(point.x as number);
+      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x as string}>
@@ -596,7 +592,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -653,11 +649,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }
       const xPoint = xBarScale(point.x);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
-      if (this.props.barWidth === 'auto') {
-        // Setting the bar width here is safe because there are no dependencies earlier in the code
-        // that rely on the width of bars in vertical bar charts with string x-axis.
-        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
-      }
+      // Setting the bar width here is safe because there are no dependencies earlier in the code
+      // that rely on the width of bars in vertical bar charts with string x-axis.
+      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
       return (
         <g
           key={point.x instanceof Date ? point.x.getTime() : point.x}
@@ -742,7 +736,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -939,25 +933,37 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
+    /** Total width available to render the bars */
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
       } else if (this.props.barWidth !== 'auto') {
-        /** Total width available to render the bars */
-        const totalWidth =
-          containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         /** Rate at which the space between the bars changes wrt the bar width */
         const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        // Update the bar width so that when CartesianChart rerenders,
+        // the following calculations don't use the previous bar width.
+        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
         const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
-          this._domainMargin += (totalWidth - reqWidth) / 2;
+          this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
       }
+    } else {
+      const data = (this.props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
+      this._barWidth = getBarWidth(
+        this.props.barWidth,
+        this.props.maxBarWidth,
+        calculateAppropriateBarWidth(data, totalWidth),
+      );
+      this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
 
     return {

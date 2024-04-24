@@ -8,7 +8,7 @@ export type PresenceGroupChildContextValue = {
   visible: boolean;
   unmountOnExit: boolean;
 
-  onExit: (childKey: string) => void;
+  onExit: () => void;
 };
 
 /**
