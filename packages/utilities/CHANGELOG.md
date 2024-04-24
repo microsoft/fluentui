@@ -1,8 +1,20 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Mon, 22 Apr 2024 07:28:27 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.4)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.3..@fluentui/utilities_v8.15.4)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.1 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/merge-styles to v8.6.4 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/set-version to v8.2.17 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.21 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
 
 ## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.3)
 
