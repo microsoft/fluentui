@@ -767,6 +767,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 circleId,
                 xAxisCalloutAccessibilityData,
               )}
+              ref={(e: SVGCircleElement | null) => {
+                this._refCallback(e!, circleId);
+              }}
               onMouseOut={this._handleMouseOut}
               onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
               onBlur={this._handleMouseOut}
@@ -803,6 +806,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   key={lastCircleId}
                   d={path}
                   data-is-focusable={true}
+                  ref={(e: SVGCircleElement | null) => {
+                    this._refCallback(e!, lastCircleId);
+                  }}
                   onMouseOver={this._handleHover.bind(
                     this,
                     x2,
@@ -1190,7 +1196,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         .attr('transform', () => `translate(${_this._xAxisScale(x)}, 0)`)
         .attr('visibility', 'visibility');
       this._refArray.forEach((obj: IRefArrayData) => {
-        if (obj.index === lineId) {
+        if (obj.index === lineId || obj.index === circleId) {
           this.setState({
             isCalloutVisible: true,
             refSelected: obj.refElement,
