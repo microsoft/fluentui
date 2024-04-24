@@ -16,6 +16,7 @@ const useBackdropResetStyles = makeResetStyles({
   inset: '0px',
   position: 'fixed',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  pointerEvents: 'auto',
 });
 
 const useBackdropStyles = makeStyles({

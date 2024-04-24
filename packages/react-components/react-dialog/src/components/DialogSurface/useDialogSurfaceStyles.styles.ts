@@ -37,7 +37,7 @@ const useRootBaseStyle = makeResetStyles({
   maxWidth: '600px',
   maxHeight: '100vh',
   boxSizing: 'border-box',
-  pointerEvents: 'all',
+  pointerEvents: 'auto',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
 
