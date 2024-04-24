@@ -2,10 +2,10 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { NavDrawerState } from './NavDrawer.types';
+import { DrawerSlots } from '@fluentui/react-drawer';
 import { NavContextValues } from '../NavContext.types';
 import { NavProvider } from '../NavContext';
-import { DrawerSlots } from '@fluentui/react-drawer';
+import type { NavDrawerState } from './NavDrawer.types';
 
 /**
  * Render the final JSX of NavDrawer
