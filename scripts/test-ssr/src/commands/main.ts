@@ -23,7 +23,6 @@ const EXCLUDED_STORIES = [
   '**/react-table/stories/DataGrid/Virtualization.stories.tsx',
   '**/react-table/stories/Table/Virtualization.stories.tsx',
   '**/react-table/stories/Table/Virtualization.stories.tsx',
-  '**/react-nav-preview/stories/NavDrawerOverlay/NavDrawerOverlay.stories.tsx',
 ];
 
 type MainParams = {
