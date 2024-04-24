@@ -319,7 +319,7 @@ describe('Dialog', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('body').should('have.css', 'overflow', 'hidden');
+      cy.get('body').should('have.css', 'overflow', 'clip');
     });
 
     it('should focus trap by default', () => {
@@ -443,7 +443,7 @@ describe('Dialog', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('body').should('not.have.css', 'overflow', 'hidden');
+      cy.get('body').should('not.have.css', 'overflow', 'clip');
     });
     it('should be able to focus inside non-modal dialog after navigating outside', () => {
       mount(
@@ -535,7 +535,7 @@ describe('Dialog', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('body').should('have.css', 'overflow', 'hidden');
+      cy.get('body').should('have.css', 'overflow', 'clip');
     });
     it('should focus trap by default', () => {
       mount(
