@@ -37,6 +37,7 @@ const useRootBaseStyle = makeResetStyles({
   maxWidth: '600px',
   maxHeight: '100vh',
   boxSizing: 'border-box',
+  pointerEvents: 'all',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
 
@@ -100,6 +101,7 @@ const useBackdropBaseStyle = makeResetStyles({
   inset: '0px',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
   position: 'absolute',
+  pointerEvents: 'all',
 
   // initial style before animation:
   transitionDuration: tokens.durationGentle,
@@ -130,11 +132,13 @@ export const useDialogSurfacePortalStyles_unstable = makeStyles({
     left: 0,
     width: 'calc(100% + (100vw - 100%))', // calculates the full width of the viewport including the scrollbar (if applicable)
     height: 'calc(100% + (100vh - 100%))', // calculates the full height of the viewport including the scrollbar (if applicable)
+    pointerEvents: 'none',
   },
   innerPositioningContainer: {
     position: 'relative',
     width: '100%',
     height: '100%',
+    pointerEvents: 'none',
   },
 });
 
