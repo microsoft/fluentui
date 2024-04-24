@@ -10,7 +10,8 @@ import { Enter } from '@fluentui/keyboard-keys';
 jest.mock('../../contexts/menuContext.ts');
 
 describe('MenuTrigger', () => {
-  let popoverAnimationDurationMs = 400;
+  const popoverAnimationDurationMs = 400;
+
   beforeEach(() => {
     mockUseMenuContext();
 
