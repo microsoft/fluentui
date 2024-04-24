@@ -7,6 +7,7 @@ import {
   getEventClientCoords,
   isMouseEvent,
   isTouchEvent,
+  useAnimationFrame,
 } from '@fluentui/react-utilities';
 
 export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
@@ -16,7 +17,6 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const [dragging, setDragging] = React.useState<boolean>(false);
 
   const { targetDocument } = useFluent();
-  const globalWin = targetDocument?.defaultView;
 
   const { getColumnWidth, setColumnWidth } = columnResizeState;
 
@@ -33,16 +33,14 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
     [setColumnWidth],
   );
 
+  const [requestRecalcFrame] = useAnimationFrame();
+
   const onDrag = React.useCallback(
     (e: NativeTouchOrMouseEvent) => {
       // Using requestAnimationFrame here drastically improves resizing experience on slower CPUs
-      if (typeof globalWin?.requestAnimationFrame === 'function') {
-        requestAnimationFrame(() => recalculatePosition(e));
-      } else {
-        recalculatePosition(e);
-      }
+      requestRecalcFrame(() => recalculatePosition(e));
     },
-    [globalWin?.requestAnimationFrame, recalculatePosition],
+    [requestRecalcFrame, recalculatePosition],
   );
 
   const onDragEnd = React.useCallback(

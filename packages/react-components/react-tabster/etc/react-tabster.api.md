@@ -817,6 +817,15 @@ interface MoverKeys_2 {
 const MoverKeys_2: MoverKeys_2;
 
 // @public (undocumented)
+export const MoverMemorizedElementEvent: typeof Events.MoverMemorizedElementEvent;
+
+// @public (undocumented)
+export type MoverMemorizedElementEventDetail = Events.MoverMemorizedElementEventDetail;
+
+// @public (undocumented)
+export const MoverMemorizedElementEventName: "tabster:mover:memorized-element";
+
+// @public (undocumented)
 export const MoverMoveFocusEvent: typeof Events.MoverMoveFocusEvent;
 
 // @public (undocumented)
