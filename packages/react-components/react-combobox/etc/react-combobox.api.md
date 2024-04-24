@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -27,7 +28,7 @@ import type { SlotComponentType } from '@fluentui/react-utilities';
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public
-export type ComboboxBaseProps = SelectionProps & Pick<PortalProps, 'mountNode'> & {
+export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<PortalProps, 'mountNode'> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
     clearable?: boolean;
     defaultOpen?: boolean;
@@ -55,6 +56,7 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
     disabled: boolean;
     freeform: boolean;
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
 };
 
 // @public (undocumented)
@@ -142,6 +144,7 @@ export const listboxClassNames: SlotClassNames<ListboxSlots>;
 // @public
 export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
+    onActiveDescendantChange: (e: ActiveDescendantChangeEvent) => void;
 };
 
 // @public (undocumented)
@@ -168,6 +171,7 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
     setActiveOption(option?: OptionValue): void;
     selectOption(event: SelectionEvents, option: OptionValue): void;
     activeDescendantController: ActiveDescendantImperativeRef;
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
 };
 
 // @public
