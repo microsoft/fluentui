@@ -196,7 +196,7 @@ export const renderNavCategory_unstable: (state: NavCategoryState, contextValues
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
 
-// @public
+// @public (undocumented)
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
