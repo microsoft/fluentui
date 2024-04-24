@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.11",
+  "version": "3.0.0-beta.12",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -184,7 +184,7 @@
     "clean": "node ./scripts/clean dist",
     "exports:check": "node --no-warnings=ExperimentalWarning ./scripts/check-export-paths.js",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && rollup -c && yarn generate-api",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
@@ -198,6 +198,7 @@
     "test:dev": "playwright test"
   },
   "devDependencies": {
+    "@types/web": "^0.0.142",
     "@microsoft/api-extractor": "7.31.2",
     "@storybook/html": "6.5.15",
     "@tensile-perf/web-components": "~0.1.13",

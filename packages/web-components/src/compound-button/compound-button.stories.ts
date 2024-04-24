@@ -18,6 +18,7 @@ const storyTemplate = html<CompoundButtonStoryArgs>`
     ?icon-only="${x => x.iconOnly}"
   >
     ${x => x.content}
+
     <span slot="description">${x => x.description}</span>
   </fluent-compound-button>
 `;
@@ -80,37 +81,44 @@ export default {
 export const Button = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<CompoundButtonStoryArgs>`
-  <fluent-compound-button>Default<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button appearance="primary"
-    >Primary<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button appearance="outline"
-    >Outline<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button appearance="subtle"
-    >Subtle<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button appearance="transparent"
-    >Transparent<span slot="description">Description content</span></fluent-compound-button
-  >
+  <fluent-compound-button>Default <span slot="description">Description content</span></fluent-compound-button>
+  <fluent-compound-button appearance="primary">
+    Primary
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button appearance="outline">
+    Outline
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button appearance="subtle">
+    Subtle
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button appearance="transparent">
+    Transparent
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
 `);
 
 export const Shape = renderComponent(html<CompoundButtonStoryArgs>`
-  <fluent-compound-button shape="rounded"
-    >Rounded<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button shape="circular"
-    >Circular<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button shape="square"
-    >Square<span slot="description">Description content</span></fluent-compound-button
-  >
+  <fluent-compound-button shape="rounded">
+    Rounded
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button shape="circular">
+    Circular
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button shape="square">
+    Square
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
 `);
 
 export const Size = renderComponent(html<CompoundButtonStoryArgs>`
   <fluent-compound-button size="small">Small<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button size="small"
-    ><svg
+  <fluent-compound-button size="small">
+    <svg
       fill="currentColor"
       slot="start"
       aria-hidden="true"
@@ -122,11 +130,12 @@ export const Size = renderComponent(html<CompoundButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-    >Small with calendar icon<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button size="small" icon-only aria-label="Small icon only button"
-    ><svg
+      ></path>
+    </svg>
+    Small with calendar icon<span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button size="small" icon-only aria-label="Small icon only button">
+    <svg
       fill="currentColor"
       aria-hidden="true"
       width="1em"
@@ -137,44 +146,15 @@ export const Size = renderComponent(html<CompoundButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-  ></fluent-compound-button>
-  <fluent-compound-button size="medium"
-    >Medium<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button size="medium"
-    ><svg
-      fill="currentColor"
-      slot="start"
-      aria-hidden="true"
-      width="1em"
-      height="1em"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
-        fill="currentColor"
-      ></path></svg
-    >Medium with calendar icon</fluent-compound-button
-  >
-  <fluent-compound-button size="medium" icon-only aria-label="Medium icon only button"
-    ><svg
-      fill="currentColor"
-      aria-hidden="true"
-      width="1em"
-      height="1em"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
-        fill="currentColor"
-      ></path></svg
-  ></fluent-compound-button>
-  <fluent-compound-button size="large">Large<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button size="large"
-    ><svg
+      ></path>
+    </svg>
+  </fluent-compound-button>
+  <fluent-compound-button size="medium">
+    Medium
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button size="medium">
+    <svg
       fill="currentColor"
       slot="start"
       aria-hidden="true"
@@ -186,11 +166,12 @@ export const Size = renderComponent(html<CompoundButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-    >Large with calendar icon<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button size="large" icon-only aria-label="Large icon only button"
-    ><svg
+      ></path>
+    </svg>
+    Medium with calendar icon
+  </fluent-compound-button>
+  <fluent-compound-button size="medium" icon-only aria-label="Medium icon only button">
+    <svg
       fill="currentColor"
       aria-hidden="true"
       width="1em"
@@ -201,27 +182,69 @@ export const Size = renderComponent(html<CompoundButtonStoryArgs>`
       <path
         d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
         fill="currentColor"
-      ></path></svg
-  ></fluent-compound-button>
+      ></path>
+    </svg>
+  </fluent-compound-button>
+  <fluent-compound-button size="large">
+    Large
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button size="large">
+    <svg
+      fill="currentColor"
+      slot="start"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+    Large with calendar icon<span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button size="large" icon-only aria-label="Large icon only button">
+    <svg
+      fill="currentColor"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </fluent-compound-button>
 `);
 
 export const Disabled = renderComponent(html<CompoundButtonStoryArgs>`
   <fluent-compound-button>Enabled state<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button disabled
-    >Disabled state<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button disabled-focusable
-    >Disabled focusable state<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button appearance="primary"
-    >Enabled state<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button appearance="primary" disabled
-    >Disabled state<span slot="description">Description content</span></fluent-compound-button
-  >
-  <fluent-compound-button appearance="primary" disabled-focusable
-    >Disabled focusable state<span slot="description">Description content</span></fluent-compound-button
-  >
+  <fluent-compound-button disabled>
+    Disabled state
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button disabled-focusable>
+    Disabled focusable state
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button appearance="primary">
+    Enabled state
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button appearance="primary" disabled>
+    Disabled state
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button appearance="primary" disabled-focusable>
+    Disabled focusable state
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
 `);
 
 export const WithLongText = renderComponent(html<CompoundButtonStoryArgs>`
@@ -230,10 +253,12 @@ export const WithLongText = renderComponent(html<CompoundButtonStoryArgs>`
       width: 280px;
     }
   </style>
-  <fluent-compound-button>Short text<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button class="max-width"
-    >Long text wraps after it hits the max width of the component<span slot="description"
-      >Description content</span
-    ></fluent-compound-button
-  >
+  <fluent-compound-button>
+    Short text
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
+  <fluent-compound-button class="max-width">
+    Long text wraps after it hits the max width of the component
+    <span slot="description">Description content</span>
+  </fluent-compound-button>
 `);
