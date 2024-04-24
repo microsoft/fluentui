@@ -133,7 +133,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active: () => {
         return getActiveDescendant()?.id;
       },
-
       focus: (id: string) => {
         if (!listboxRef.current) {
           return;
@@ -144,7 +143,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
           focusActiveDescendant(target);
         }
       },
-
       focusLastActive: () => {
         if (!listboxRef.current || !lastActiveIdRef.current) {
           return;
@@ -156,7 +154,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
           return true;
         }
       },
-
       find(predicate, { passive, startFrom } = {}) {
         const target = optionWalker.find(predicate, startFrom);
         if (!passive) {

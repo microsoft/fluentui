@@ -109,7 +109,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       return;
     }
 
-    // if there is no active descendent and no selected options, set the first option as active
+    // if there is no active descendant and no selected options, set the first option as active
     activeDescendantController.first();
   };
 
@@ -118,7 +118,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       return;
     }
 
-    // blur active descendent styles on blur, in the absence of a parent context controlling the state
+    // blur active descendant styles on blur, in the absence of a parent context controlling the state
     activeDescendantController.blur();
   };
 
