@@ -117,6 +117,38 @@ const useStyles = /*#__PURE__*/ __styles(
 
 Addressing prefixing for pre-processed styles presents a challenge, as they have already been transformed into CSS rules and classes.
 
+## Current workaround
+
+We have proposed a temporary workaround in [microsoft/griffel#453](https://github.com/microsoft/griffel/issues/453#issuecomment-1850115159). The workaround involves increasing the specificity of the CSS rules in the consuming app. This is achieved by adding a unique class to the root element of the app, for example:
+
+```css
+.color-red {
+}
+/* becomes ⬇️ */
+.PREFIX .color-red {
+}
+```
+
+As a result, the CSS rules will have a higher specificity and will override any conflicting rules from the application. This approach is not ideal, as it affects performance (makes CSS rules less efficient).
+
+> Note: We cannot prefix classes as Fluent components have pre-processed styles:
+>
+> ```js
+> const useStyles = /*#__PURE__*/ __styles(
+>   // Part 1: CSS classes mapping
+>   { root: { B6of3ja: 'fvjh0tl' } },
+>   // Part 2: CSS rules
+>   { d: ['.fvjh0tl{margin-top:4px;}'] },
+> );
+> ```
+>
+> - We cannot prefix classes in the mapping with current APIs (part 1)
+> - We can prefix CSS classes (part 2)
+
+> Note: `__styles()` is a result of AOT compilation in Griffel, adding additional responsibilities to it makes the idea of AOT compilation obsolete.
+
+A [StackBlitz example](https://stackblitz.com/edit/vitejs-vite-d11ccd) demonstrates this workaround.
+
 ## Proposal
 
 The long-term solution is to discontinue the pre-processing of styles in `@fluentui/react-components` and transfer this responsibility to the consuming application.
