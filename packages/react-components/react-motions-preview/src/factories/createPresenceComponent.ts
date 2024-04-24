@@ -66,6 +66,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
 
       if (unmountOnExit) {
         setMounted(false);
+        itemContext?.onExit();
       }
     });
 
