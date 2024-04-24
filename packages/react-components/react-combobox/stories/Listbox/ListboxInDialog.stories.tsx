@@ -54,6 +54,10 @@ export const InDialog = (props: Partial<ListboxProps>) => {
     setSelectedOptions(props.selectedOptions ?? []);
   }, [props.selectedOptions]);
 
+  React.useEffect(() => {
+    setSelectedOptions(selection => (selection[0] ? [selection[0]] : []));
+  }, [isMultiselect]);
+
   const styles = useStyles();
   return (
     <div className={styles.root}>

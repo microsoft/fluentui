@@ -78,6 +78,10 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
   }, [props.selectedOptions]);
 
   React.useEffect(() => {
+    setSelectedOptions(selection => (selection[0] ? [selection[0]] : []));
+  }, [isMultiselect]);
+
+  React.useEffect(() => {
     if (dialogOpen) {
       inputRef.current?.focus();
     }
