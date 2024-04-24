@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix combobox empty string and zero value",
+  "packageName": "@fluentui/react-combobox",
+  "email": "mingyuanyu@microsoft.com",
+  "dependentChangeType": "patch"
+}
