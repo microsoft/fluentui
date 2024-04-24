@@ -53,15 +53,38 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const child = getTriggerChild(children);
 
   // set openingWithHoverRef on a timeout to prevent closing the menu on a click while the hover open is running non-visually.
-  // the timeout is equal to the hoverDelay + half of the menu popover animation duration
+  // the timeout is equal to the real-time menu popover animation duration
   const onHoverOpen = () => {
     clearTimeout(openingWithHoverTimeout.current);
 
-    openingWithHoverRef.current = true;
-
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    openingWithHoverTimeout.current = setTimeout(() => (openingWithHoverRef.current = false), hoverDelay + 200);
+    openingWithHoverTimeout.current = setTimeout(() => {
+      openingWithHoverRef.current = true;
+
+      // when popover starts to mount, get it's animationDuration and wait for it to be completed
+      requestAnimationFrame(() => {
+        if (!menuPopoverRef.current) {
+          return;
+        }
+
+        const { animationDuration } = getComputedStyle(menuPopoverRef.current);
+        let animationDurationMs = 0;
+        if (animationDuration.endsWith('ms')) {
+          animationDurationMs = Number(animationDuration.slice(0, -2));
+        } else if (animationDuration.endsWith('s')) {
+          animationDurationMs = Number(animationDuration.slice(0, -1)) * 1000;
+        }
+
+        if (!animationDuration) {
+          return;
+        }
+
+        setTimeout(() => {
+          openingWithHoverRef.current = false;
+        }, animationDurationMs);
+      });
+    }, hoverDelay - 1);
   };
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
