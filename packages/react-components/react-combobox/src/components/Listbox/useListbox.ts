@@ -150,6 +150,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     multiselect,
     clearSelection,
     activeDescendantController,
+    onActiveDescendantChange,
     ...optionCollection,
     ...optionContextValues,
   };
