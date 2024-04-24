@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: use timeout and animation frame utilities",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
