@@ -43,7 +43,6 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
         ref,
         role: 'nav',
         type: 'navigation',
-        tabIndex: 0, // makes items focusable
         ...props,
         onClick: onNavItemClick,
       }),
