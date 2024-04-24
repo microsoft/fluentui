@@ -11,16 +11,17 @@ interface ActiveDescendantChangeEventDetail {
   previousId: string | null;
 }
 
-export class ActiveDescendantChangeEvent extends CustomEvent<ActiveDescendantChangeEventDetail> {
-  constructor(detail: ActiveDescendantChangeEventDetail) {
-    super('activedescendantchange', {
-      bubbles: true,
-      cancelable: false,
-      composed: true,
-      detail,
-    });
-  }
-}
+export type ActiveDescendantChangeEvent = CustomEvent<ActiveDescendantChangeEventDetail>;
+
+export const createActiveDescendantChangeEvent = (
+  detail: ActiveDescendantChangeEventDetail,
+): ActiveDescendantChangeEvent =>
+  new CustomEvent<ActiveDescendantChangeEventDetail>('activedescendantchange', {
+    bubbles: true,
+    cancelable: false,
+    composed: true,
+    detail,
+  });
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
@@ -92,7 +93,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
 
-      const event = new ActiveDescendantChangeEvent({ id: nextActive.id, previousId: previousActiveId });
+      const event = createActiveDescendantChangeEvent({ id: nextActive.id, previousId: previousActiveId });
       nextActive.dispatchEvent(event);
     },
     [blurActiveDescendant, setAttribute],

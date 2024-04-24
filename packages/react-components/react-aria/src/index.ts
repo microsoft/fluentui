@@ -9,12 +9,12 @@ export {
   ActiveDescendantContextProvider,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
-  ActiveDescendantChangeEvent,
 } from './activedescendant';
 export type {
   ActiveDescendantImperativeRef,
   ActiveDescendantOptions,
   ActiveDescendantContextValue,
+  ActiveDescendantChangeEvent,
 } from './activedescendant';
 export type {
   ARIAButtonSlotProps,
