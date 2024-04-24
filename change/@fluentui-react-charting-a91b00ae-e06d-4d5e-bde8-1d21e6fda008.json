@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix overlapping bars on continuous axes",
+  "comment": "Disable focus on non-highlighted elements",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"

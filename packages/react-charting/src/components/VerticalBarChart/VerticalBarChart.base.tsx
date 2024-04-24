@@ -592,7 +592,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -736,7 +736,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
