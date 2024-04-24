@@ -51,7 +51,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           d={arc(this.props.data)}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
-          data-is-focusable={true}
+          data-is-focusable={this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === ''}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}

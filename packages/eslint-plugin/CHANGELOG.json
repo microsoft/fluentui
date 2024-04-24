@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 24 Apr 2024 07:27:48 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.7",
+      "version": "1.17.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "ff79ac88545c9cbc7966f75f61a9d506f3ebb963",
+            "comment": "fix: dont apply import/no-extraneous-dependencies rule on stories"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Apr 2024 07:29:11 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.6",
       "version": "1.17.6",
