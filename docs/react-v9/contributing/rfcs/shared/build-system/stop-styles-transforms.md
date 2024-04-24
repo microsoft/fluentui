@@ -131,7 +131,8 @@ This is the simplest option, albeit it necessitates adjustments in the consuming
 
 ## Pros and Cons
 
-- 👍 Simple & easy
+- 👍 (DX) drastically simplified Fluent build flow
+  👍 (DX/CI) significantly faster transpilation of Fluent libraries ([microsoft/griffel#534](https://github.com/microsoft/griffel/issues/534))
 - 👎 Not backward compatible
 
 ### Option B: Ship ESM output with unprocessed styles
