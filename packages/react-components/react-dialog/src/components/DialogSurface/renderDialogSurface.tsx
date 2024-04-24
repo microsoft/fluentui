@@ -14,10 +14,14 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
 
   return (
     <Portal mountNode={state.mountNode}>
-      {state.backdrop && <state.backdrop />}
-      <DialogSurfaceProvider value={contextValues.dialogSurface}>
-        <state.root />
-      </DialogSurfaceProvider>
+      <div className={state.dialogSurfacePortalClassName?.outerPositioningContainerClassName}>
+        <div className={state.dialogSurfacePortalClassName?.innerPositioningContainerClassName}>
+          {state.backdrop && <state.backdrop />}
+          <DialogSurfaceProvider value={contextValues.dialogSurface}>
+            <state.root />
+          </DialogSurfaceProvider>
+        </div>
+      </div>
     </Portal>
   );
 };

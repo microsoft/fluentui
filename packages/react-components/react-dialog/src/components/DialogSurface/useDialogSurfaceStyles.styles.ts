@@ -11,10 +11,30 @@ import {
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
+const dialogSurfacePortalClassNames = {
+  outerPositioningContainer: 'fui-DialogOuterPositioningContainer',
+  innerPositioningContainer: 'fui-DialogInnerPositioningContainer',
+};
+
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
   root: 'fui-DialogSurface',
   backdrop: 'fui-DialogSurface__backdrop',
 };
+
+const useDialogContainerStyles = makeStyles({
+  outerPositioningContainer: {
+    position: 'fixed',
+    width: 'calc(100% + (100vw - 100%))',
+    height: 'calc(100% + (100vh - 100%))',
+    top: 0,
+    left: 0,
+  },
+  innerPositioningContainer: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+  },
+});
 
 /**
  * Styles for the root slot
@@ -32,7 +52,7 @@ const useRootBaseStyle = makeResetStyles({
   display: 'block',
   userSelect: 'unset',
   visibility: 'unset',
-  position: 'fixed',
+  position: 'absolute',
   height: 'fit-content',
   maxWidth: '600px',
   maxHeight: '100vh',
@@ -99,7 +119,7 @@ const backdropVisible = {
 const useBackdropBaseStyle = makeResetStyles({
   inset: '0px',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  position: 'fixed',
+  position: 'absolute',
 
   // initial style before animation:
   transitionDuration: tokens.durationGentle,
@@ -127,13 +147,24 @@ const useBackdropStyles = makeStyles({
  * Apply styling to the DialogSurface slots based on the state
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
-  const { isNestedDialog, root, backdrop, transitionStatus } = state;
+  const { isNestedDialog, dialogSurfacePortalClassName, root, backdrop, transitionStatus } = state;
+
+  const containerStyles = useDialogContainerStyles();
 
   const rootBaseStyle = useRootBaseStyle();
   const rootStyles = useRootStyles();
 
   const backdropBaseStyle = useBackdropBaseStyle();
   const backdropStyles = useBackdropStyles();
+
+  dialogSurfacePortalClassName.outerPositioningContainerClassName = mergeClasses(
+    dialogSurfacePortalClassNames.outerPositioningContainer,
+    containerStyles.outerPositioningContainer,
+  );
+  dialogSurfacePortalClassName.innerPositioningContainerClassName = mergeClasses(
+    dialogSurfacePortalClassNames.innerPositioningContainer,
+    containerStyles.innerPositioningContainer,
+  );
 
   root.className = mergeClasses(
     dialogSurfaceClassNames.root,
