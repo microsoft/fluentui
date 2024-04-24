@@ -1,3 +1,4 @@
+/** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { DrawerState, renderDrawer_unstable } from '@fluentui/react-drawer';
