@@ -182,6 +182,7 @@
     "compile": "node ./scripts/compile",
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
+    "exports:check": "node --no-warnings=ExperimentalWarning ./scripts/check-export-paths.js",
     "generate-api": "api-extractor run --local",
     "build": "yarn compile && rollup -c && yarn generate-api",
     "lint": "eslint . --ext .ts",
@@ -193,7 +194,7 @@
     "start-storybook": "node node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
     "pretest": "yarn build-storybook --quiet",
-    "test": "npx playwright test",
+    "test": "npx playwright test && npm run exports:check",
     "test:dev": "playwright test"
   },
   "devDependencies": {
