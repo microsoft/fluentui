@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Combobox, makeStyles, shorthands, useComboboxFilter, useId } from '@fluentui/react-components';
+import { Combobox, ComboboxProps, makeStyles, shorthands, useComboboxFilter, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -35,11 +35,20 @@ export const Filtering = () => {
   const children = useComboboxFilter(query, options, {
     noOptionsMessage: 'No animals match your search.',
   });
+  const onOptionSelect: ComboboxProps['onOptionSelect'] = (e, data) => {
+    setQuery(data.optionText ?? '');
+  };
 
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} placeholder="Select an animal" onChange={ev => setQuery(ev.target.value)}>
+      <Combobox
+        onOptionSelect={onOptionSelect}
+        aria-labelledby={comboId}
+        placeholder="Select an animal"
+        onChange={ev => setQuery(ev.target.value)}
+        value={query}
+      >
         {children}
       </Combobox>
     </div>
