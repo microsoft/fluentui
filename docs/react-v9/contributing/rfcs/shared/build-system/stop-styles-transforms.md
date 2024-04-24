@@ -132,7 +132,7 @@ This is the simplest option, albeit it necessitates adjustments in the consuming
 ## Pros and Cons
 
 - 👍 Simple & easy
-- 👍 Not backward compatible
+- 👎 Not backward compatible
 
 ### Option B: Ship ESM output with unprocessed styles
 
