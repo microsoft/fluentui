@@ -101,7 +101,7 @@ const useBackdropBaseStyle = makeResetStyles({
   inset: '0px',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
   position: 'absolute',
-  pointerEvents: 'all',
+  pointerEvents: 'auto',
 
   // initial style before animation:
   transitionDuration: tokens.durationGentle,
