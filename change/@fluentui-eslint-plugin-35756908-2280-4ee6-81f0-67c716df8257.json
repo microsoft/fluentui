@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: dont apply import/no-extraneous-dependencies rule on stories",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
