@@ -112,7 +112,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     setHasFocus: comboboxState.setHasFocus,
     setOpen,
     setValue: comboboxState.setValue,
-    multiselect: comboboxState.multiselect,
     value: comboboxState.value,
     freeform: comboboxState.freeform,
   };
