@@ -159,4 +159,5 @@ module.exports = {
 - 👍 Backward compatible
 - 👍 No changes required in consuming apps
 - 👎 Harder to maintain; adds complexity to the build system
+- 👎 Another public API that is tightly coupled only for limited set of files including Griffel
 - 👎 Increased install size (NPM package will be larger)
