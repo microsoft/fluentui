@@ -6,7 +6,10 @@ import { useCarouselAutoplayButtonStyles_unstable } from './useCarouselAutoplayB
 import type { CarouselAutoplayButtonProps } from './CarouselAutoplayButton.types';
 
 /**
- * CarouselAutoplayButton component - TODO: add more docs
+ * If the Carousel is on auto-play, the user may opt into pausing the auto-play feature via the
+ * CarouselAutoplayButton which must be present for auto-play to be enabled.
+ *
+ * If CarouselAutoplayButton is present, auto-play will default to true on mount.
  */
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps> = React.forwardRef(
   (props, ref) => {

@@ -2,62 +2,101 @@
 
 ## Background
 
-_Description and use cases of this component_
+Carousel enables users to wrap content in 'cards' that can then be paginated via previous/next or page index navigation buttons.
 
 ## Prior Art
 
 _Include background research done for this component_
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- [OpenUI Research - Carousel](https://open-ui.org/components/carousel.research/)
+- [Fluent V9 - Task: Carousel](https://github.com/microsoft/fluentui/issues/26647)
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```jsx
+<Carousel defaultValue="test-0">
+  <CarouselCard value="test-0">
+    <div>This is card: 1</div>
+  </CarouselCard>
+
+  <CarouselCard value="test-1">
+    <div>This is card: 2</div>
+  </CarouselCard>
+
+  <CarouselCard value="test-3">
+    <div>This is card: 3</div>
+  </CarouselCard>
+
+  <CarouselFooter showAutoplay>
+    <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
+  </CarouselFooter>
+</Carousel>
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+### Card Peeking
+
+When peeking is enabled, the previous and next card will be partially displayed on either side of the current active card.
+
+### Condensed Navigation
+
+The CarouselFooter can be condensed, this will center all controls with minimal padding.
+
+### Inline vs Composed Navigation
+
+The CarouselFooter contains all navigation components in an inline horizontal container, however we have multiple valid layouts of the CarouselNavigation. If disconnected variants are required (such as prev/next buttons being overlaid in a different place than footer), then the individual navigation components can be placed within the Carousel wrapper in a variety of layouts.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+The core driver of the API will be context provided via the Carousel component, CarouselCards will register themselves via this context, and the Navigation components will subscribe to any updates that occur. The Carousel itself will only re-render on active index change.
 
-## Structure
+Since the navigation has multiple valid layout formats, navigation components will be available individually to move around, or combined into slots via CarouselFooter within a single horizontal container.
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+Carousel provides callbacks on navigation changes, as well as the ability to drive pagination externally via a controlled index.
 
-## Migration
+Users **must** provide a value on each carouselCard, and a defaultValue that the carousel will initiate on.
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+Motion can be enabled for next/previous button shift.
 
-- _Migration from v8_
-- _Migration from v0_
+A gap prop will be provided to place spacing between cards.
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### Carousel
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Carousel is the context wrapper and container for all carousel content/controls, it has no direct style or slot opinions. Carousel also provides API interfaces for callbacks that will occur on navigation events.
 
-## Accessibility
+### CarouselAutoplayButton
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+If the carousel is on auto-play, the user may opt into pausing the auto-play feature via the CarouselAutoplayButton which must be present for auto-play to be enabled (if CarouselAutoplayButton present, auto-play will default to true on mount).
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+### CarouselButton
+
+A default navigation button that will set value to the next/previous page, driven by it's type 'next' or 'previous'.
+
+### CarouselCard
+
+The defining wrapper of a carousel's indexed content, they will take up the full viewport of Carousel wrapper (with consideration for gap and peeking variants), users may place multiple items within this Card if desired, with consideration of viewport width.
+
+Clickable actions within the content area are available via mouse and tab as expected, non-active index content will be set to inert until moved to active card.
+
+### CarouselFooter
+
+A unified navigation footer with all Carousel navigation components as slots, with the CarouselNav intended to be placed within the root children. The footer will have variant layouts that are condensed or extended, as well as options to null out slots if not required or placed externally.
+
+### CarouselNav
+
+Used to jump to a card based on index, using arrow navigation via Tabster. The children of this component will be wrapped in a context to provide the appropriate value based on their index position.
+
+### CarouselNavButton
+
+The child element of CarouselNav, a singular button that will set the carousels active index on click.
+
+### CarouselNavImageButton
+
+A variant child element of CarouselNav, a singular image button that displays a preview of card content and will set the carousels active index on click.
+
+### Other
+
+Interactive content is expected to be available in logical tab order within DOM, including when a user may place navigation components via absolute positioning (i.e. when overlaid on Carousel content).

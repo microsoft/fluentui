@@ -6,7 +6,12 @@ import { useCarouselCardStyles_unstable } from './useCarouselCardStyles.styles';
 import type { CarouselCardProps } from './CarouselCard.types';
 
 /**
- * CarouselCard component - TODO: add more docs
+ * The defining wrapper of a carousel's indexed content, they will take up the full
+ * viewport of Carousel wrapper (with consideration for gap and peeking variants),
+ * users may place multiple items within this Card if desired, with consideration of viewport width.
+ *
+ * Clickable actions within the content area are available via mouse and tab as expected,
+ * non-active card content will be set to inert until moved to active card.
  */
 export const CarouselCard: ForwardRefComponent<CarouselCardProps> = React.forwardRef((props, ref) => {
   const state = useCarouselCard_unstable(props, ref);

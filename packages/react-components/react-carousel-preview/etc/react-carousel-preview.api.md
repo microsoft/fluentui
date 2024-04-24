@@ -109,6 +109,23 @@ export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots>;
 export const carouselNavClassNames: SlotClassNames<CarouselNavSlots>;
 
 // @public
+export const CarouselNavImageButton: ForwardRefComponent<CarouselNavImageButtonProps>;
+
+// @public (undocumented)
+export const carouselNavImageButtonClassNames: SlotClassNames<CarouselNavImageButtonSlots>;
+
+// @public
+export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonSlots> & {};
+
+// @public (undocumented)
+export type CarouselNavImageButtonSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonSlots>;
+
+// @public
 export type CarouselNavProps = ComponentProps<CarouselNavSlots> & {};
 
 // @public (undocumented)
@@ -152,6 +169,9 @@ export const renderCarouselNav_unstable: (state: CarouselNavState) => JSX.Elemen
 export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) => JSX.Element;
 
 // @public
+export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
+
+// @public
 export const useCarousel_unstable: (props: CarouselProps, ref: React_2.Ref<HTMLDivElement>) => CarouselState;
 
 // @public
@@ -186,6 +206,12 @@ export const useCarouselNavButton_unstable: (props: CarouselNavButtonProps, ref:
 
 // @public
 export const useCarouselNavButtonStyles_unstable: (state: CarouselNavButtonState) => CarouselNavButtonState;
+
+// @public
+export const useCarouselNavImageButton_unstable: (props: CarouselNavImageButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselNavImageButtonState;
+
+// @public
+export const useCarouselNavImageButtonStyles_unstable: (state: CarouselNavImageButtonState) => CarouselNavImageButtonState;
 
 // @public
 export const useCarouselNavStyles_unstable: (state: CarouselNavState) => CarouselNavState;

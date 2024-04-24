@@ -5,3 +5,4 @@ export * from './Carousel';
 export * from './CarouselCard';
 export * from './CarouselFooter';
 export * from './CarouselAutoplayButton';
+export * from './CarouselNavImageButton';

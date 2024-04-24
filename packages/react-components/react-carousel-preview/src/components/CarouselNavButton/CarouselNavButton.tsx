@@ -6,7 +6,7 @@ import { useCarouselNavButtonStyles_unstable } from './useCarouselNavButtonStyle
 import type { CarouselNavButtonProps } from './CarouselNavButton.types';
 
 /**
- * CarouselNavButton component - TODO: add more docs
+ * The child element of CarouselNav, a singular button that will set the carousels active value on click.
  */
 export const CarouselNavButton: ForwardRefComponent<CarouselNavButtonProps> = React.forwardRef((props, ref) => {
   const state = useCarouselNavButton_unstable(props, ref);

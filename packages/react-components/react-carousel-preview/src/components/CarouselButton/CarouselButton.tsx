@@ -6,7 +6,8 @@ import { useCarouselButtonStyles_unstable } from './useCarouselButtonStyles.styl
 import type { CarouselButtonProps } from './CarouselButton.types';
 
 /**
- * CarouselButton component - TODO: add more docs
+ * A default navigation button that will set value to the next/previous page,
+ * driven by it's type 'next' or 'previous'.
  */
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps> = React.forwardRef((props, ref) => {
   const state = useCarouselButton_unstable(props, ref);

@@ -6,7 +6,11 @@ import { useCarouselFooterStyles_unstable } from './useCarouselFooterStyles.styl
 import type { CarouselFooterProps } from './CarouselFooter.types';
 
 /**
- * CarouselFooter component - TODO: add more docs
+ * A unified navigation footer with all Carousel navigation components as slots,
+ * with the CarouselNav intended to be placed within the root children.
+ *
+ * The footer will have variant layouts that are condensed or extended,
+ * as well as options to null out slots if not required or placed externally.
  */
 export const CarouselFooter: ForwardRefComponent<CarouselFooterProps> = React.forwardRef((props, ref) => {
   const state = useCarouselFooter_unstable(props, ref);
