@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Apply aria-selected prop to aria-selected instead of aria-expanded.",
+  "packageName": "@fluentui/react-tree",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
