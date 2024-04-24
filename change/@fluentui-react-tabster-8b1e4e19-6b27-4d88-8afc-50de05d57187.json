@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Exposing MoverMemorizedElementEvent for the applications to be able to force forget or alter memorized elements.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
