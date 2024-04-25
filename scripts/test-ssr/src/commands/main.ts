@@ -22,7 +22,6 @@ const EXCLUDED_STORIES = [
   // https://github.com/microsoft/fluentui/issues/27338
   '**/react-table/stories/DataGrid/Virtualization.stories.tsx',
   '**/react-table/stories/Table/Virtualization.stories.tsx',
-  '**/react-table/stories/Table/Virtualization.stories.tsx',
 ];
 
 type MainParams = {

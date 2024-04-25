@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { InlineDrawerSlots } from '@fluentui/react-drawer';
+import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerState } from './NavDrawer.types';
 
