@@ -83,7 +83,7 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
 
   React.useEffect(() => {
     if (dialogOpen) {
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     }
   }, [dialogOpen]);
 
@@ -115,7 +115,7 @@ export const FilteringInDialog = (props: Partial<ListboxProps>) => {
                   className={styles.input}
                   placeholder="Filter pets"
                   aria-label="Filter pets"
-                  autoFocus
+                  autoFocus={false}
                   value={filter}
                   onChange={(_, data) => setFilter(data.value)}
                   contentAfter={

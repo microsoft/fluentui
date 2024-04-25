@@ -83,7 +83,7 @@ export const FilteringInPopover = (props: Partial<ListboxProps>) => {
 
   React.useEffect(() => {
     if (popoverOpen) {
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     }
   }, [popoverOpen]);
 
@@ -98,7 +98,7 @@ export const FilteringInPopover = (props: Partial<ListboxProps>) => {
       <Popover
         open={popoverOpen}
         onOpenChange={(_, data) => setPopoverOpen(data.open)}
-        positioning={{ align: 'start', position: 'below' }}
+        positioning={{ align: 'start' }}
       >
         <PopoverTrigger disableButtonEnhancement>
           <MenuButton
@@ -117,7 +117,7 @@ export const FilteringInPopover = (props: Partial<ListboxProps>) => {
                 className={styles.input}
                 placeholder="Filter pets"
                 aria-label="Filter pets"
-                autoFocus
+                autoFocus={false}
                 value={filter}
                 onChange={(_, data) => setFilter(data.value)}
                 contentAfter={
