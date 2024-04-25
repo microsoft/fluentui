@@ -66,3 +66,5 @@ export type DrawerBaseProps = {
 export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
   motion: MotionState<HTMLDivElement>;
 };
+
+export type DrawerScrollState = 'none' | 'top' | 'middle' | 'bottom';
