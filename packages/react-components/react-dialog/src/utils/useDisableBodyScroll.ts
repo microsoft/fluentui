@@ -45,7 +45,7 @@ export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLE
   const { clientWidth, clientHeight } = target.ownerDocument.documentElement;
   const innerWidth = window?.innerWidth ?? 0;
   const innerHeight = window?.innerHeight ?? 0;
-  const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
+  const browserSupportsClip = window?.CSS && 'supports' in window.CSS && window.CSS.supports('overflow', 'clip');
   const verticalScrollbarGutter = `${innerWidth - clientWidth}px`;
   const horizontalScrollbarGutter = `${innerHeight - clientHeight}px`;
 
