@@ -48,36 +48,29 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
 export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HTMLElement>): DrawerBodyState => {
   const { setScrollState } = useDrawerContext_unstable();
 
-  const [currentElement, setCurrentElement] = React.useState<HTMLElement | null>(null);
-  const scrollRef: React.RefCallback<HTMLDivElement> = React.useCallback(node => {
-    if (!node) {
-      return;
-    }
-
-    setCurrentElement(node);
-  }, []);
+  const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   const onScroll = React.useCallback(() => {
     cancelAnimationFrame();
     setAnimationFrame(() => {
-      if (!currentElement) {
+      if (!scrollRef.current) {
         return;
       }
 
-      setScrollState(getScrollState(currentElement));
+      setScrollState(getScrollState(scrollRef.current));
     });
-  }, [setAnimationFrame, cancelAnimationFrame, currentElement, setScrollState]);
+  }, [cancelAnimationFrame, setAnimationFrame, setScrollState]);
 
   useIsomorphicLayoutEffect(() => {
-    if (!currentElement) {
+    if (!scrollRef.current) {
       return;
     }
 
-    setScrollState(getScrollState(currentElement));
+    setScrollState(getScrollState(scrollRef.current));
 
     return () => cancelAnimationFrame();
-  }, [currentElement, cancelAnimationFrame, setScrollState]);
+  }, [cancelAnimationFrame, setScrollState]);
 
   return {
     components: {
