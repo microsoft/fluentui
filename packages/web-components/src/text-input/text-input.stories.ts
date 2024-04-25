@@ -1,38 +1,52 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
+import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
-import { TextInputAppearance, TextInputControlSize } from './text-input.options.js';
-import { TextInputType } from './index.js';
-import './define.js';
+import { TextInputAppearance, TextInputControlSize, TextInputType } from './text-input.options.js';
+
 import '../text/define.js';
+import './define.js';
 
-type TextInputStoryArgs = Args & FluentTextInput;
-type TextInputStoryMeta = Meta<TextInputStoryArgs>;
-
-const Person20Regular = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="1em"
-  height="1em"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M10 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM7 6a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm-2 5a2 2 0 0 0-2 2c0 1.7.83 2.97 2.13 3.8A9.14 9.14 0 0 0 10 18c1.85 0 3.58-.39 4.87-1.2A4.35 4.35 0 0 0 17 13a2 2 0 0 0-2-2H5Zm-1 2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1c0 1.3-.62 2.28-1.67 2.95A8.16 8.16 0 0 1 10 17a8.16 8.16 0 0 1-4.33-1.05A3.36 3.36 0 0 1 4 13Z"
+const Person20Regular = html<StoryArgs<FluentTextInput>>`
+  <svg
     fill="currentColor"
-  ></path>
-</svg>`;
+    aria-hidden="true"
+    width="1em"
+    height="1em"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM7 6a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm-2 5a2 2 0 0 0-2 2c0 1.7.83 2.97 2.13 3.8A9.14 9.14 0 0 0 10 18c1.85 0 3.58-.39 4.87-1.2A4.35 4.35 0 0 0 17 13a2 2 0 0 0-2-2H5Zm-1 2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1c0 1.3-.62 2.28-1.67 2.95A8.16 8.16 0 0 1 10 17a8.16 8.16 0 0 1-4.33-1.05A3.36 3.36 0 0 1 4 13Z"
+      fill="currentColor"
+    ></path>
+  </svg>
+`;
 
-const storyTemplate = html<TextInputStoryArgs>`
+const storyTemplate = html<StoryArgs<FluentTextInput>>`
   <div style="display: flex; flex-direction: column;">
     <fluent-text-input
-      type=${x => x.type}
-      ?disabled=${x => x.disabled}
-      placeholder="${x => x.placeholder}"
-      control-size="${x => x.controlSize}"
       appearance="${x => x.appearance}"
+      autocomplete="${x => x.autocomplete}"
+      ?autofocus="${x => x.autofocus}"
+      control-size="${x => x.controlSize}"
+      dirname="${x => x.dirname}"
+      ?disabled="${x => x.disabled}"
+      form="${x => x.form}"
+      list="${x => x.list}"
+      maxlength="${x => x.maxlength}"
+      minlength="${x => x.minlength}"
+      ?multiple="${x => x.multiple}"
+      name="${x => x.name}"
+      pattern="${x => x.pattern}"
+      placeholder="${x => x.placeholder}"
+      ?readonly="${x => x.readonly}"
+      ?required="${x => x.required}"
+      size="${x => x.size}"
+      spellcheck="${x => x.spellcheck}"
+      type="${x => x.type}"
+      value="${x => x.value}"
     >
       <fluent-label>Sample Input</fluent-label>
     </fluent-text-input>
@@ -41,65 +55,92 @@ const storyTemplate = html<TextInputStoryArgs>`
 
 export default {
   title: 'Components/TextInput',
-  args: {
-    type: TextInputType.text,
-    controlSize: TextInputControlSize.medium,
-    appearance: TextInputAppearance.outline,
-    disabled: false,
-    placeholder: undefined,
-  },
   argTypes: {
-    type: {
-      description: 'Sets the input type',
+    appearance: {
+      description: 'Sets the visual appearance of the control',
       table: {
-        defaultValue: { summary: `${TextInputType.text}` },
+        defaultValue: { summary: `${TextInputAppearance.outline}` },
       },
-      options: Object.values(TextInputType),
-      control: {
-        type: 'select',
-      },
+      control: 'select',
+      options: Object.values(TextInputAppearance),
+    },
+    autocomplete: {
+      description: "Indicates the element's autocomplete state.",
+      control: 'text',
+    },
+    autofocus: {
+      description: 'Indicates that this element should get focus after the page finishes loading.',
+      control: 'boolean',
     },
     controlSize: {
       description: 'Sets the size of the control',
       table: {
         defaultValue: { summary: `${TextInputControlSize.medium}` },
       },
-      control: {
-        type: 'select',
-        options: Object.values(TextInputControlSize),
-      },
+      control: 'select',
+      options: Object.values(TextInputControlSize),
     },
-    appearance: {
-      description: 'Sets the visual appearance of the control',
-      table: {
-        defaultValue: { summary: `${TextInputAppearance.outline}` },
-      },
-      control: {
-        type: 'select',
-        options: Object.values(TextInputAppearance),
-      },
+    dirname: {
+      description: 'Sets the directionality of the element to be submitted with form data.',
+      control: 'text',
     },
     disabled: {
       description: 'Sets the disabled state',
       table: {
         defaultValue: { summary: 'false' },
       },
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
+    },
+    form: {
+      description: 'The id of a form to associate the element to.',
+      control: 'text',
+    },
+    list: {
+      description: 'The id of a datalist element that provides a list of suggested values.',
+      control: 'text',
+    },
+    maxlength: {
+      description: 'Sets the maximum number of characters allowed in the input',
+      control: 'number',
+    },
+    minlength: {
+      description: 'Sets the minimum number of characters allowed in the input',
+      control: 'number',
+    },
+    multiple: {
+      description: 'Indicates whether the user can enter multiple values.',
+      control: 'boolean',
+    },
+    name: {
+      description: 'Sets the name of the input',
+      control: 'text',
+    },
+    pattern: {
+      description: 'Sets the regular expression pattern that the input’s value is checked against.',
+      control: 'text',
     },
     placeholder: {
       description: 'Sets the placeholder text',
-      control: {
-        type: 'text',
+      control: 'text',
+    },
+    type: {
+      description: 'Sets the input type',
+      table: {
+        defaultValue: { summary: `${TextInputType.text}` },
       },
+      options: Object.values(TextInputType),
+      control: 'select',
+    },
+    value: {
+      description: 'The initial value of the input.',
+      control: 'text',
     },
   },
-} as TextInputStoryMeta;
+} as Meta<FluentTextInput>;
 
-export const TextInput = renderComponent(storyTemplate).bind({});
+export const TextInput: Story<FluentTextInput> = renderComponent(storyTemplate).bind({});
 
-export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
+export const ContentStartAfter: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
@@ -117,14 +158,14 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
   </div>
 `);
 
-export const Placeholder = renderComponent(html<TextInputStoryArgs>`
+export const Placeholder: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <fluent-text-input placeholder="This is a placeholder">
     <span slot="end">${Person20Regular}</span>
     <fluent-label>Input with a placeholder</fluent-label>
   </fluent-text-input>
 `);
 
-export const Appearance = renderComponent(html<TextInputStoryArgs>`
+export const Appearance: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <div style="display: flex; flex-direction: column; gap: 30px; width: 400px;">
     <div style="padding: 10px;">
       <fluent-text-input>
@@ -153,7 +194,7 @@ export const Appearance = renderComponent(html<TextInputStoryArgs>`
   </div>
 `);
 
-export const Size = renderComponent(html<TextInputStoryArgs>`
+export const Size: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <fluent-text-input control-size="small">
       <span slot="end">${Person20Regular}</span>
@@ -172,7 +213,7 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
   </div>
 `);
 
-export const Inline = renderComponent(html<TextInputStoryArgs>`
+export const Inline: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <div>
     <fluent-text-input style="display: inline-flex; align-items: center; margin-bottom: 22px;">
       <span slot="end">${Person20Regular}</span>
@@ -185,28 +226,31 @@ export const Inline = renderComponent(html<TextInputStoryArgs>`
       weight="regular"
       style="display: flex; align-items: center; gap: 4px;"
     >
-      <span
-        >This input is an
+      <span>
+        This input is an
         <fluent-text-input
           style="display: inline-flex; align-items: center;"
           placeholder="inline text input"
         ></fluent-text-input>
-        with a paragraph of text.</span
-      >
+        with a paragraph of text.
+      </span>
     </fluent-text>
   </div>
 `);
 
-export const Disabled = renderComponent(html<TextInputStoryArgs>`
+export const Disabled: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <fluent-text-input disabled>
     <span slot="end">${Person20Regular}</span>
     <fluent-label>Disabled Input</fluent-label>
   </fluent-text-input>
 `);
 
-export const Required = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input required>
-    <span slot="end">${Person20Regular}</span>
-    <fluent-label>Required Input</fluent-label>
-  </fluent-text-input>
+export const Required: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
+  <form id="form" action="#">
+    <fluent-text-input name="required-input" required>
+      <span slot="end">${Person20Regular}</span>
+      <fluent-label>Required Input</fluent-label>
+    </fluent-text-input>
+    <button type="submit">Submit</button>
+  </form>
 `);

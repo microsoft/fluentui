@@ -1,5 +1,5 @@
+import type { ElementStyles } from '@microsoft/fast-element';
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandStroke,
@@ -46,11 +46,14 @@ import {
   spacingVerticalXS,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { display } from '../utils/display.js';
 
-/** TextInput styles
+/**
+ * Styles for the TextInput component.
+ *
  * @public
  */
-export const styles = css`
+export const styles: ElementStyles = css`
   ${display('block')}
 
   :host {
