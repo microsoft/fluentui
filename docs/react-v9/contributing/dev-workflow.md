@@ -4,11 +4,11 @@
 
 Create a branch from your forked repo for your code changes:
 
-\```
+```
 git checkout master
 git pull upstream master
 git checkout -b my-branch-name
-\```
+```
 
 We strongly recommend using the CLI as your primary interface with git. GUIs are useful for viewing diffs, creating branches and making quick commits. However they often do not correctly merge and sync working branches with master. Mistakes in this step are time consuming to fix.
 
