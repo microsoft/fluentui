@@ -276,11 +276,11 @@ const useRootStyles = makeStyles({
         color: 'Highlight',
       },
     },
-    inactive: {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2,
-    },
+  },
+  inactive: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2,
   },
 
   // Shape variations
@@ -455,6 +455,10 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },
+  },
+  inactive: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
   },
 });
 

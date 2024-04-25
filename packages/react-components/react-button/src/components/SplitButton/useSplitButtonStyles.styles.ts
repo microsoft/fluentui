@@ -120,6 +120,11 @@ const useRootStyles = makeStyles({
       },
     },
   },
+  inactive: {
+    [`& .${splitButtonClassNames.primaryActionButton}`]: {
+      borderRightColor: tokens.colorNeutralStroke1,
+    },
+  },
 
   // Shape variations
   circular: {},

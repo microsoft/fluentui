@@ -43,6 +43,10 @@ const useRootExpandedStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackgroundSelected,
     color: tokens.colorNeutralForeground2BrandSelected,
   },
+  inactive: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
 });
 
 const useIconExpandedStyles = makeStyles({

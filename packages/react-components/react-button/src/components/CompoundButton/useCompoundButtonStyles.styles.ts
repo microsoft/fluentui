@@ -127,6 +127,11 @@ const useRootStyles = makeStyles({
       },
     },
   },
+  inactive: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: tokens.colorNeutralForeground2,
+    },
+  },
 
   // Size variations
   small: {

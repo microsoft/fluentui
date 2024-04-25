@@ -140,6 +140,11 @@ const useRootCheckedStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
+  inactive: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
 });
 
 const useRootDisabledStyles = makeStyles({
@@ -207,6 +212,10 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
+  },
+  inactive: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
   },
 });
 
