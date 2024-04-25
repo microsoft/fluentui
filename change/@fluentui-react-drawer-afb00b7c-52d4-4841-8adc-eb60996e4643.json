@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Applying styling to support dialog container changes",
-  "packageName": "@fluentui/react-drawer",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}
