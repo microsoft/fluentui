@@ -26,7 +26,7 @@ export function useDisableBodyScroll(componentRef: RefObject<HTMLElement>) {
   const { targetDocument } = useFluent_unstable();
   return useCallback(() => {
     if (targetDocument) {
-      return disableScroll(targetDocument, componentRef);
+      return disableScroll(targetDocument.body, componentRef);
     }
   }, [targetDocument, componentRef]);
 }
@@ -36,14 +36,13 @@ export function useDisableBodyScroll(componentRef: RefObject<HTMLElement>) {
  * @param target - element to disable scrolling from
  * @returns a method for enabling scrolling again
  */
-export function disableScroll(document: Document, componentRef: RefObject<HTMLElement>) {
+export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLElement>) {
   const componentEl = componentRef.current!;
-  const target = document.body;
-  const window = document.defaultView;
-  const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
+  const window = target.ownerDocument.defaultView;
 
   const { clientWidth } = target.ownerDocument.documentElement;
-  const innerWidth = target.ownerDocument.defaultView?.innerWidth ?? 0;
+  const innerWidth = window?.innerWidth ?? 0;
+  const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
   assertIsDisableScrollElement(target);
   assertIsOffsetScrollbarElement(componentEl);
   if (target[disableScrollElementProp].count === 0) {
