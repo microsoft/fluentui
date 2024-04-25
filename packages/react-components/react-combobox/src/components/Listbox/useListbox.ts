@@ -72,9 +72,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   }, [onActiveDescendantChange]);
 
   const activeDescendantContext = useActiveDescendantContext();
-  const activeDescendantController = useHasParentActiveDescendantContext()
-    ? activeDescendantContext.controller
-    : controller;
+  const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
+  const activeDescendantController = hasParentActiveDescendantContext ? activeDescendantContext.controller : controller;
 
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
@@ -111,6 +110,39 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         activeOption && selectOption(event, activeOption);
         break;
     }
+  };
+
+  const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
+    if (hasParentActiveDescendantContext || activeDescendantController.active()) {
+      return;
+    }
+
+    // restore focus to last active option (if it still exists) - similar to memorizeCurrent in useArrowNavigationGroup
+    if (activeDescendantController.focusLastActive()) {
+      return;
+    }
+
+    // if there is a selected option, focus it and make it active
+    const selectedOptionValues = selectedOptions ?? [];
+    const firstSelectedOption = optionCollection.getOptionsMatchingValue(value =>
+      selectedOptionValues.includes(value),
+    )[0];
+    if (firstSelectedOption) {
+      activeDescendantController.focus(firstSelectedOption.id);
+      return;
+    }
+
+    // if there is no active descendant and no selected options, set the first option as active
+    activeDescendantController.first();
+  };
+
+  const onBlur = (_event: React.FocusEvent<HTMLElement>) => {
+    if (hasParentActiveDescendantContext) {
+      return;
+    }
+
+    // blur active descendant styles on blur, in the absence of a parent context controlling the state
+    activeDescendantController.blur();
   };
 
   // get state from parent combobox, if it exists
@@ -156,6 +188,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
+  state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
+  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlur));
 
   return state;
 };

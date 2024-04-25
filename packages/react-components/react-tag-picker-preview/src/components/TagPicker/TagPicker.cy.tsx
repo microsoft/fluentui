@@ -13,6 +13,18 @@ import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 
+/**
+ * This error means that ResizeObserver
+ * was not able to deliver all observations within a single animation frame.
+ * https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
+ */
+const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+Cypress.on('uncaught:exception', err => {
+  if (resizeObserverLoopErrRe.test(err.message)) {
+    return false;
+  }
+});
+
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };

@@ -156,11 +156,15 @@ const useStyles = makeStyles({
 
 const useAsideStyles = makeStyles({
   root: {
-    display: 'flex',
+    display: 'grid',
     alignItems: 'center',
     position: 'absolute',
     top: '0',
     right: tokens.spacingHorizontalM,
+    gridTemplateColumns: 'repeat(2, auto)',
+    gridTemplateRows: 'minmax(32px, auto) 1fr',
+    height: '100%',
+    cursor: 'text',
   },
   // size variants
   medium: {

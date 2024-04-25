@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
+import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 
 const enterKeyframes = [{ opacity: 0 }, { opacity: 1 }];
 const exitKeyframes = [{ opacity: 1 }, { opacity: 0 }];
@@ -203,5 +204,43 @@ describe('createPresenceComponent', () => {
 
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
     });
+  });
+});
+
+describe('PresenceGroupChildContext', () => {
+  it('calls "onExit" when "visible" changes to "false"', () => {
+    const onExit = jest.fn();
+    const TestAtom = createPresenceComponent(motion);
+    const { ElementMock } = createElementMock();
+
+    const Wrapper: React.FC<{ visible: boolean }> = ({ children, visible }) => (
+      <PresenceGroupChildContext.Provider value={{ appear: false, onExit, visible, unmountOnExit: true }}>
+        {children}
+      </PresenceGroupChildContext.Provider>
+    );
+
+    const { queryByText, rerender } = render(
+      <Wrapper visible>
+        <TestAtom>
+          <ElementMock />
+        </TestAtom>
+      </Wrapper>,
+    );
+
+    expect(queryByText('ElementMock')).toBeTruthy();
+    expect(onExit).toHaveBeenCalledTimes(0);
+
+    // ---
+
+    rerender(
+      <Wrapper visible={false}>
+        <TestAtom>
+          <ElementMock />
+        </TestAtom>
+      </Wrapper>,
+    );
+
+    expect(queryByText('ElementMock')).toBe(null);
+    expect(onExit).toHaveBeenCalledTimes(1);
   });
 });
