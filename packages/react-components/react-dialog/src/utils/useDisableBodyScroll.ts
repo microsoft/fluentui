@@ -9,6 +9,7 @@ type FluentDisableScrollElement = HTMLElement & {
     count: number;
     previousOverflowStyle: string;
     previousPaddingRightStyle: string;
+    computedPaddingRight: string;
   };
 };
 
@@ -46,11 +47,10 @@ export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLE
   assertIsDisableScrollElement(target);
   assertIsOffsetScrollbarElement(componentEl);
   if (target[disableScrollElementProp].count === 0) {
+    const computedPaddingRight = getComputedStyle(target).paddingRight;
     target.style.overflow = browserSupportsClip ? 'clip' : 'hidden';
     const scrollbarGutter = `${innerWidth - clientWidth}px`;
-    if (!browserSupportsClip) {
-      target.style.paddingRight = scrollbarGutter;
-    }
+    target.style.paddingRight = `calc(${computedPaddingRight} + ${scrollbarGutter})`;
     componentEl.style.right = scrollbarGutter;
   }
   target[disableScrollElementProp].count++;
@@ -60,9 +60,7 @@ export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLE
     componentEl[offsetScrollbarElementProp].count--;
     if (target[disableScrollElementProp].count === 0) {
       target.style.overflow = target[disableScrollElementProp].previousOverflowStyle;
-      if (!browserSupportsClip) {
-        target.style.paddingRight = target[disableScrollElementProp].previousPaddingRightStyle;
-      }
+      target.style.paddingRight = target[disableScrollElementProp].previousPaddingRightStyle;
     }
     if (componentEl[offsetScrollbarElementProp].count === 0) {
       componentEl.style.right = componentEl[offsetScrollbarElementProp].right;
@@ -75,6 +73,7 @@ function assertIsDisableScrollElement(element: HTMLElement): asserts element is 
     count: 0,
     previousOverflowStyle: element.style.overflow,
     previousPaddingRightStyle: element.style.paddingRight,
+    computedPaddingRight: getComputedStyle(element).paddingRight,
   };
 }
 
