@@ -31,6 +31,26 @@ export * from './toggle-button/index.js';
 export * from './fluent-design-system.js';
 export * from './theme/index.js';
 
+export {
+  typographyBody1Styles,
+  typographyBody1StrongStyles,
+  typographyBody1StrongerStyles,
+  typographyBody2Styles,
+  typographyCaption1StrongStyles,
+  typographyCaption1StrongerStyles,
+  typographyCaption1Styles,
+  typographyCaption2StrongStyles,
+  typographyCaption2Styles,
+  typographyDisplayStyles,
+  typographyLargeTitleStyles,
+  typographySubtitle1Styles,
+  typographySubtitle2StrongerStyles,
+  typographySubtitle2Styles,
+  typographyTitle1Styles,
+  typographyTitle2Styles,
+  typographyTitle3Styles,
+} from './styles/partials/typography.partials.js';
+
 export * from './utils/direction.js';
 export * from './utils/display.js';
 export * from './utils/behaviors/match-media-stylesheet-behavior.js';
