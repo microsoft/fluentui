@@ -5,6 +5,7 @@ import {
   useAnimationFrame,
   useMergedRefs,
   useIsomorphicLayoutEffect,
+  getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
 
 import { useDrawerContext_unstable } from '../../contexts/drawerContext';
@@ -84,14 +85,14 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
     },
 
     root: slot.always(
-      {
+      getIntrinsicElementProps<DrawerBodyProps>('div', {
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs<HTMLDivElement>(ref as React.Ref<HTMLDivElement>, scrollRef),
         ...props,
         onScroll: mergeCallbacks(props.onScroll, onScroll),
-      },
+      }),
       { elementType: 'div' },
     ),
   };
