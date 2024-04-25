@@ -14,6 +14,7 @@ const activeDescendantContextDefaultValue: ActiveDescendantContextValue = {
     find: noop,
     first: noop,
     focus: noop,
+    focusLastActive: noop,
     last: noop,
     next: noop,
     prev: noop,
