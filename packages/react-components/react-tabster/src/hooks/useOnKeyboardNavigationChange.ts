@@ -18,6 +18,7 @@ export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboar
         eventCallback(next);
       };
       keyborg.subscribe(cb);
+      cb(keyborg.isNavigatingWithKeyboard());
       return () => keyborg.unsubscribe(cb);
     }
   }, [keyborg, eventCallback]);

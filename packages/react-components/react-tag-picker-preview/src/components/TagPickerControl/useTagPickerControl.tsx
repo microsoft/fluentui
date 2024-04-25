@@ -81,7 +81,15 @@ export const useTagPickerControl_unstable = (
   const aside = slot.optional<ExtractSlotProps<Slot<'span'>>>(undefined, {
     elementType: 'span',
     renderByDefault: Boolean(secondaryAction || expandIcon),
-    defaultProps: { ref: observerRef },
+    defaultProps: {
+      ref: observerRef,
+      onClick: useEventCallback(event => {
+        // if it's a click on the aside itself, we want to focus the trigger
+        if (event.target === event.currentTarget) {
+          triggerRef.current?.focus();
+        }
+      }),
+    },
   });
   return {
     components: {
