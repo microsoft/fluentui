@@ -42,7 +42,15 @@ export const useTagPickerGroup_unstable = (
       size,
       appearance: tagPickerAppearanceToTagAppearance(appearance),
       dismissible: true,
+      onClick: useEventCallback(event => {
+        props.onClick?.(event);
+        // if it's a click on the group itself, we want to focus the trigger
+        if (event.target === event.currentTarget) {
+          triggerRef.current?.focus();
+        }
+      }),
       onKeyDown: useEventCallback(event => {
+        props.onKeyDown?.(event);
         if (isHTMLElement(event.target) && event.key === ArrowRight) {
           triggerRef.current?.focus();
         }
