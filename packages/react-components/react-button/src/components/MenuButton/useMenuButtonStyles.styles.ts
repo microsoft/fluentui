@@ -66,6 +66,9 @@ const useIconExpandedStyles = makeStyles({
   transparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
   },
+  inactive: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
   highContrast: {
     // High contrast styles
     '@media (forced-colors: active)': {
