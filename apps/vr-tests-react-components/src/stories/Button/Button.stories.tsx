@@ -66,6 +66,12 @@ export const Transparent = () => (
 export const TransparentHighContrast = getStoryVariant(Transparent, HIGH_CONTRAST);
 export const TransparentDarkMode = getStoryVariant(Transparent, DARK_MODE);
 
+export const Inactive = () => (
+  <Button id={buttonId} appearance="inactive">
+    Hello, world
+  </Button>
+);
+
 export const Disabled = () => (
   <Button id={buttonId} disabled>
     Hello, world
