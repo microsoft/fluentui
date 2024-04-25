@@ -19,7 +19,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
@@ -41,7 +41,6 @@
   },
   "exports": {
     ".": {
-      "style": "./sass/tokens.scss",
       "types": "./dist/index.d.ts",
       "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",

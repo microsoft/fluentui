@@ -21,7 +21,7 @@
     "storybook": "start-storybook",
     "start": "yarn storybook",
     "generate-api": "just-scripts generate-api",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {

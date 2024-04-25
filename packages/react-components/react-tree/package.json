@@ -20,7 +20,7 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component"
   },

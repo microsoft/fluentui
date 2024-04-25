@@ -2,6 +2,7 @@
 module.exports = {
   pipeline: {
     build: ['^build'],
+    'generate-api': ['^generate-api'],
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
