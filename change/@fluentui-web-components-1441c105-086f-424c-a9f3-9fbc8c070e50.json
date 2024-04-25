@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "ensure buttons with long text maintain center alignment",
-  "packageName": "@fluentui/web-components",
-  "email": "=",
-  "dependentChangeType": "patch"
-}
