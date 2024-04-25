@@ -29,7 +29,7 @@ export function useDisableBodyScroll() {
  */
 export function disableScroll(target: HTMLElement) {
   const window = target.ownerDocument.defaultView;
-  const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
+  const browserSupportsClip = window?.CSS && 'supports' in window.CSS && window.CSS.supports('overflow', 'clip');
 
   assertIsDisableScrollElement(target);
   if (target[disableScrollElementProp].count === 0) {
