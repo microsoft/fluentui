@@ -8,24 +8,48 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerBody } from '@fluentui/react-drawer';
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { DrawerBody, DrawerProps } from '@fluentui/react-drawer';
+import { Button, Label, Radio, RadioGroup, makeStyles, shorthands, tokens, useId } from '@fluentui/react-components';
 import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
+
 const useStyles = makeStyles({
   root: {
+    ...shorthands.border('2px', 'solid', '#ccc'),
     ...shorthands.overflow('hidden'),
+
     display: 'flex',
-    height: '480px', // arbitrary value, for demo purposes only
-    // arbitrary value, for dramatic effect only
-    // I know this is ugly and wrong, but styling is coming, I promise.
-    backgroundColor: tokens.colorBackgroundOverlay,
+    height: '480px',
+    backgroundColor: '#fff',
+  },
+
+  content: {
+    ...shorthands.flex(1),
+    ...shorthands.padding('16px'),
+
+    display: 'grid',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    gridRowGap: tokens.spacingVerticalXXL,
+    gridAutoRows: 'max-content',
+  },
+
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalS,
   },
 });
 
 const Folder = bundleIcon(Folder20Filled, Folder20Regular);
 
-export const Default = (props: Partial<NavDrawerProps>) => {
+type DrawerType = Required<DrawerProps>['type'];
+
+export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
+
+  const labelId = useId('type-label');
+
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [type, setType] = React.useState<DrawerType>('overlay');
 
   const someClickHandler = () => {
     console.log('someClickHandler');
@@ -33,7 +57,14 @@ export const Default = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} size="small" open={true}>
+      <NavDrawer
+        defaultSelectedValue={'10'}
+        defaultSelectedCategoryValue={'8'}
+        open={isOpen}
+        type={type}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+        size="small"
+      >
         <DrawerBody>
           <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
             First
@@ -73,7 +104,20 @@ export const Default = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
         </DrawerBody>
-      </NavDrawer>
+      </NavDrawer>{' '}
+      <div className={styles.content}>
+        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+          {type === 'inline' ? 'Toggle' : 'Open'}
+        </Button>
+
+        <div className={styles.field}>
+          <Label id={labelId}>Type</Label>
+          <RadioGroup value={type} onChange={(_, data) => setType(data.value as DrawerType)} aria-labelledby={labelId}>
+            <Radio value="overlay" label="Overlay (Default)" />
+            <Radio value="inline" label="Inline" />
+          </RadioGroup>
+        </div>
+      </div>
     </div>
   );
 };
