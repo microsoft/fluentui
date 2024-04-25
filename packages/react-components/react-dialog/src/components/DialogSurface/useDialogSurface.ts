@@ -5,11 +5,13 @@ import {
   isResolvedShorthand,
   slot,
   getIntrinsicElementProps,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { useDialogTransitionContext_unstable } from '../../contexts/dialogTransitionContext';
+import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 
 /**
  * Create the state required to render DialogSurface.
@@ -24,6 +26,7 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
+  const open = useDialogContext_unstable(ctx => ctx.open);
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
   const transitionStatus = useDialogTransitionContext_unstable();
@@ -31,6 +34,15 @@ export const useDialogSurface_unstable = (
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+
+  const disableBodyScroll = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean((open || transitionStatus !== 'unmounted') && modalType !== 'non-modal');
+
+  useIsomorphicLayoutEffect(() => {
+    if (isBodyScrollLocked) {
+      return disableBodyScroll();
+    }
+  }, [disableBodyScroll, isBodyScrollLocked]);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
