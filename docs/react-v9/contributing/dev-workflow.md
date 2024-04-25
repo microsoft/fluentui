@@ -4,11 +4,12 @@
 
 Create a branch from your forked repo for your code changes:
 
-\```
+```
 git checkout master
-git pull upstream master
-git checkout -b my-branch-name
-\```
+git pull upstream master // pulls from the main repo
+git push // syncs your fork's master and your local master
+git checkout -b my-branch-name // creates your branch
+```
 
 We strongly recommend using the CLI as your primary interface with git. GUIs are useful for viewing diffs, creating branches and making quick commits. However they often do not correctly merge and sync working branches with master. Mistakes in this step are time consuming to fix.
 
@@ -49,20 +50,20 @@ git commit -m "Your brief message." // Makes the commits. You may notice a sligh
 git push --force// Pushes your changes to your forked branch.
 ```
 
-### Syncing with master
+### Syncing your branch with master
 
 It is strongly recommended that you rebase your branch onto (rather than merging with) master.
 
 ```
 git checkout master // Switches to master
 git pull upstream master // Syncs your local master with the latest version of master at the origin
-git checkout your-fancy-branch // Switches to your branch
+git checkout your-fancy-branch // Switches back to your branch
 git rebase -i master // Tacks your commits onto the end of master. Force is necessary since rebase changes history.
 ```
 
 Resolve any conflicts in your editor.
 
-`git push upstream --force` // Pushes your changes to your forked branch. Include `upstream` if you have an open pull request, otherwise do not include it.
+`git push --force` // Pushes your changes to your forked branch.
 
 Creating _draft_ pull requests is often an easy way to keep track of your work without it being actively reviewed by others.
 
@@ -100,3 +101,13 @@ Common checklist for PR's
 
 If you're using an internal Microsoft linked account, feel free to squash that big green button. 🎉
 If you're not using a Microsoft linked account, someone from the team will have to merge it for you. Thanks for the contribution! 🙏
+
+### Pulling someone elses branch
+
+Sometimes you might have to pull down someone else's branch to test or work on something. Working with forks makes this process a little different than a standard git set up. The process is similar to the initial upstream master:
+
+```
+git remote add yourFriendsRepo https://github.com/yourFriendsUserName/fluentui.git // creates a remote of your friends fork on your local machine
+git fetch yourFriendsRepo yourFriends/fancy/branch // grabs the branch you want to work on
+git checkout feat/react-drawer/move-scroll-logic-to-context // switches to the branch
+```
