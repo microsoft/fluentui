@@ -51,7 +51,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const activeDescendantContext = useActiveDescendantContext();
   const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
   const activeDescendantController = hasParentActiveDescendantContext ? activeDescendantContext.controller : controller;
-  const lastActiveDescendentId = React.useRef<string>();
 
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
