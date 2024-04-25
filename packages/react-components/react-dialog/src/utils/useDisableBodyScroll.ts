@@ -16,7 +16,8 @@ type FluentDisableScrollElement = HTMLElement & {
 type FluentOffsetScrollbarElement = HTMLElement & {
   [offsetScrollbarElementProp]: {
     count: number;
-    right: string;
+    previousRightStyle: string;
+    previousBottomStyle: string;
   };
 };
 
@@ -41,17 +42,20 @@ export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLE
   const componentEl = componentRef.current!;
   const window = target.ownerDocument.defaultView;
 
-  const { clientWidth } = target.ownerDocument.documentElement;
+  const { clientWidth, clientHeight } = target.ownerDocument.documentElement;
   const innerWidth = window?.innerWidth ?? 0;
+  const innerHeight = window?.innerHeight ?? 0;
   const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
   assertIsDisableScrollElement(target);
   assertIsOffsetScrollbarElement(componentEl);
   if (target[disableScrollElementProp].count === 0) {
     const computedPaddingRight = getComputedStyle(target).paddingRight;
     target.style.overflow = browserSupportsClip ? 'clip' : 'hidden';
-    const scrollbarGutter = `${innerWidth - clientWidth}px`;
-    target.style.paddingRight = `calc(${computedPaddingRight} + ${scrollbarGutter})`;
-    componentEl.style.right = scrollbarGutter;
+    const verticalScrollbarGutter = `${innerWidth - clientWidth}px`;
+    const horizontalScrollbarGutter = `${innerHeight - clientHeight}px`;
+    target.style.paddingRight = `calc(${computedPaddingRight} + ${verticalScrollbarGutter})`;
+    componentEl.style.right = verticalScrollbarGutter;
+    componentEl.style.bottom = horizontalScrollbarGutter;
   }
   target[disableScrollElementProp].count++;
   componentEl[offsetScrollbarElementProp].count++;
@@ -63,7 +67,8 @@ export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLE
       target.style.paddingRight = target[disableScrollElementProp].previousPaddingRightStyle;
     }
     if (componentEl[offsetScrollbarElementProp].count === 0) {
-      componentEl.style.right = componentEl[offsetScrollbarElementProp].right;
+      componentEl.style.right = componentEl[offsetScrollbarElementProp].previousRightStyle;
+      componentEl.style.bottom = componentEl[offsetScrollbarElementProp].previousBottomStyle;
     }
   };
 }
@@ -80,6 +85,7 @@ function assertIsDisableScrollElement(element: HTMLElement): asserts element is 
 function assertIsOffsetScrollbarElement(element: HTMLElement): asserts element is FluentOffsetScrollbarElement {
   (element as FluentOffsetScrollbarElement)[offsetScrollbarElementProp] ??= {
     count: 0,
-    right: element.style.right,
+    previousRightStyle: element.style.right,
+    previousBottomStyle: element.style.bottom,
   };
 }
