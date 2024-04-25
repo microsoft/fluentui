@@ -1,6 +1,4 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
+import * as React from 'react';
 import { renderDrawer_unstable } from '@fluentui/react-drawer';
 import { NavProvider } from '../NavContext';
 import type { NavContextValues } from '../NavContext.types';
