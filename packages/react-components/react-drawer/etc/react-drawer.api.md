@@ -51,7 +51,9 @@ export type DrawerFooterSlots = {
 };
 
 // @public
-export type DrawerFooterState = ComponentState<DrawerFooterSlots>;
+export type DrawerFooterState = ComponentState<DrawerFooterSlots> & {
+    scrollState: DrawerScrollState;
+};
 
 // @public
 export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
@@ -85,7 +87,9 @@ export type DrawerHeaderSlots = {
 };
 
 // @public
-export type DrawerHeaderState = ComponentState<DrawerHeaderSlots>;
+export type DrawerHeaderState = ComponentState<DrawerHeaderSlots> & {
+    scrollState: DrawerScrollState;
+};
 
 // @public
 export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
@@ -156,7 +160,7 @@ export type OverlayDrawerSlots = {
 export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> & Required<DrawerBaseState>;
 
 // @public
-export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
+export const renderDrawer_unstable: (state: DrawerState, contextValue: DrawerContextValue) => JSX.Element;
 
 // @public
 export const renderDrawerBody_unstable: (state: DrawerBodyState) => JSX.Element;
@@ -174,10 +178,10 @@ export const renderDrawerHeaderNavigation_unstable: (state: DrawerHeaderNavigati
 export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) => JSX.Element;
 
 // @public
-export const renderInlineDrawer_unstable: (state: InlineDrawerState) => JSX.Element | null;
+export const renderInlineDrawer_unstable: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSX.Element | null;
 
 // @public
-export const renderOverlayDrawer_unstable: (state: OverlayDrawerState) => JSX.Element | null;
+export const renderOverlayDrawer_unstable: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSX.Element | null;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;

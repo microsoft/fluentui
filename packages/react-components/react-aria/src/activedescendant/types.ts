@@ -9,6 +9,11 @@ export interface ActiveDescendantImperativeRef {
   blur: () => void;
   active: () => string | undefined;
   focus: (id: string) => void;
+  /**
+   * Focuses the last active descendant, if it still exists
+   * @returns true if the last active descendant was focused
+   */
+  focusLastActive: () => boolean | undefined;
   hideAttributes: () => void;
   showAttributes: () => void;
 }
