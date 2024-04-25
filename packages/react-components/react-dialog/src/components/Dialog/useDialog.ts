@@ -37,7 +37,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const focusRef = useFocusFirstElement(open, modalType);
-  const disableBodyScroll = useDisableBodyScroll();
+  const disableBodyScroll = useDisableBodyScroll(focusRef);
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
   useIsomorphicLayoutEffect(() => {

@@ -1,7 +1,8 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useCallback } from 'react';
+import { useCallback, RefObject } from 'react';
 
 const disableScrollElementProp = '__fluentDisableScrollElement' as const;
+const offsetScrollbarElementProp = '__fluentOffsetScrollbarElement' as const;
 
 type FluentDisableScrollElement = HTMLElement & {
   [disableScrollElementProp]: {
@@ -11,16 +12,23 @@ type FluentDisableScrollElement = HTMLElement & {
   };
 };
 
+type FluentOffsetScrollbarElement = HTMLElement & {
+  [offsetScrollbarElementProp]: {
+    count: number;
+    right: string;
+  };
+};
+
 /**
  * hook that disables body scrolling through `overflow: hidden` CSS property
  */
-export function useDisableBodyScroll() {
+export function useDisableBodyScroll(componentRef: RefObject<HTMLElement>) {
   const { targetDocument } = useFluent_unstable();
   return useCallback(() => {
     if (targetDocument) {
-      return disableScroll(targetDocument.body);
+      return disableScroll(targetDocument, componentRef);
     }
-  }, [targetDocument]);
+  }, [targetDocument, componentRef]);
 }
 
 /**
@@ -28,26 +36,37 @@ export function useDisableBodyScroll() {
  * @param target - element to disable scrolling from
  * @returns a method for enabling scrolling again
  */
-export function disableScroll(target: HTMLElement) {
-  const browserSupportsClip = 'CSS' in globalThis.window && 'supports' in CSS && CSS.supports('overflow', 'clip');
+export function disableScroll(document: Document, componentRef: RefObject<HTMLElement>) {
+  const componentEl = componentRef.current!;
+  const target = document.body;
+  const window = document.defaultView;
+  const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
 
   const { clientWidth } = target.ownerDocument.documentElement;
   const innerWidth = target.ownerDocument.defaultView?.innerWidth ?? 0;
   assertIsDisableScrollElement(target);
+  assertIsOffsetScrollbarElement(componentEl);
   if (target[disableScrollElementProp].count === 0) {
     target.style.overflow = browserSupportsClip ? 'clip' : 'hidden';
+    const scrollbarGutter = `${innerWidth - clientWidth}px`;
     if (!browserSupportsClip) {
-      target.style.paddingRight = `${innerWidth - clientWidth}px`;
+      target.style.paddingRight = scrollbarGutter;
     }
+    componentEl.style.right = scrollbarGutter;
   }
   target[disableScrollElementProp].count++;
+  componentEl[offsetScrollbarElementProp].count++;
   return () => {
     target[disableScrollElementProp].count--;
+    componentEl[offsetScrollbarElementProp].count--;
     if (target[disableScrollElementProp].count === 0) {
       target.style.overflow = target[disableScrollElementProp].previousOverflowStyle;
       if (!browserSupportsClip) {
         target.style.paddingRight = target[disableScrollElementProp].previousPaddingRightStyle;
       }
+    }
+    if (componentEl[offsetScrollbarElementProp].count === 0) {
+      componentEl.style.right = componentEl[offsetScrollbarElementProp].right;
     }
   };
 }
@@ -57,5 +76,12 @@ function assertIsDisableScrollElement(element: HTMLElement): asserts element is 
     count: 0,
     previousOverflowStyle: element.style.overflow,
     previousPaddingRightStyle: element.style.paddingRight,
+  };
+}
+
+function assertIsOffsetScrollbarElement(element: HTMLElement): asserts element is FluentOffsetScrollbarElement {
+  (element as FluentOffsetScrollbarElement)[offsetScrollbarElementProp] ??= {
+    count: 0,
+    right: element.style.right,
   };
 }

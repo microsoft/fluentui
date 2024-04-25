@@ -28,7 +28,6 @@ const useDrawerResetStyles = makeResetStyles({
   position: 'fixed',
   top: 0,
   bottom: 0,
-  pointerEvents: 'auto',
 });
 
 const useDrawerRootStyles = makeStyles({

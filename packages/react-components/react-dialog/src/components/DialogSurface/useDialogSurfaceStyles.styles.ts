@@ -32,12 +32,11 @@ const useRootBaseStyle = makeResetStyles({
   display: 'block',
   userSelect: 'unset',
   visibility: 'unset',
-  position: 'absolute',
+  position: 'fixed',
   height: 'fit-content',
   maxWidth: '600px',
   maxHeight: '100vh',
   boxSizing: 'border-box',
-  pointerEvents: 'auto',
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
 
@@ -100,8 +99,7 @@ const backdropVisible = {
 const useBackdropBaseStyle = makeResetStyles({
   inset: '0px',
   backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  position: 'absolute',
-  pointerEvents: 'auto',
+  position: 'fixed',
 
   // initial style before animation:
   transitionDuration: tokens.durationGentle,
@@ -123,23 +121,6 @@ const useBackdropStyles = makeStyles({
     transitionTimingFunction: tokens.curveAccelerateMin,
   },
   exited: {},
-});
-
-export const useDialogSurfacePortalStyles_unstable = makeStyles({
-  outerPositioningContainer: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: 'calc(100% + (100vw - 100%))', // calculates the full width of the viewport including the scrollbar (if applicable)
-    height: 'calc(100% + (100vh - 100%))', // calculates the full height of the viewport including the scrollbar (if applicable)
-    pointerEvents: 'none',
-  },
-  innerPositioningContainer: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none',
-  },
 });
 
 /**
