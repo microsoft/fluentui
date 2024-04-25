@@ -2,6 +2,6 @@
   "type": "prerelease",
   "comment": "create CSS partials for named typography styles",
   "packageName": "@fluentui/web-components",
-  "email": "=",
+  "email": "13071055+chrisdholt@users.noreply.github.com",
   "dependentChangeType": "patch"
 }
