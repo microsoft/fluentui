@@ -245,5 +245,4 @@ export {
 export { FluentDesignSystem } from './fluent-design-system.js';
 export { setTheme, setThemeFor } from './theme/index.js';
 
-import * as tokens from './theme/design-tokens.js';
-export { tokens };
+export * from './theme/design-tokens.js';
