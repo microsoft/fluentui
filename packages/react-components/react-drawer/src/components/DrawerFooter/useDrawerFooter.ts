@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 import type { DrawerFooterProps, DrawerFooterState } from './DrawerFooter.types';
+import { useDrawerContext_unstable } from '../../contexts/drawerContext';
 
 /**
  * Create the state required to render DrawerFooter.
@@ -13,6 +14,8 @@ import type { DrawerFooterProps, DrawerFooterState } from './DrawerFooter.types'
  * @param ref - reference to root HTMLElement of DrawerFooter
  */
 export const useDrawerFooter_unstable = (props: DrawerFooterProps, ref: React.Ref<HTMLElement>): DrawerFooterState => {
+  const { scrollState } = useDrawerContext_unstable();
+
   return {
     components: {
       root: 'footer',
@@ -25,5 +28,7 @@ export const useDrawerFooter_unstable = (props: DrawerFooterProps, ref: React.Re
       }),
       { elementType: 'footer' },
     ),
+
+    scrollState,
   };
 };
