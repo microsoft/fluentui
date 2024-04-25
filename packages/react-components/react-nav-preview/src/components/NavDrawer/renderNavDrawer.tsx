@@ -1,10 +1,17 @@
-import * as React from 'react';
-import { renderDrawer_unstable } from '@fluentui/react-drawer';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
+import { NavContextValues } from '../NavContext.types';
 import { NavProvider } from '../NavContext';
-import type { NavContextValues } from '../NavContext.types';
-import type { DrawerState } from '@fluentui/react-drawer';
+import { assertSlots } from '@fluentui/react-utilities';
+import type { DrawerSlots } from '@fluentui/react-drawer';
 import type { NavDrawerState } from './NavDrawer.types';
 
 export const renderNavDrawer_unstable = (state: NavDrawerState, contextValues: NavContextValues) => {
-  return <NavProvider value={contextValues.nav}>{renderDrawer_unstable(state as DrawerState)}</NavProvider>;
+  assertSlots<DrawerSlots>(state);
+  return (
+    <NavProvider value={contextValues.nav}>
+      <state.root />
+    </NavProvider>
+  );
 };
