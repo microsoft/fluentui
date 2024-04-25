@@ -39,36 +39,45 @@ export function useDisableBodyScroll(componentRef: RefObject<HTMLElement>) {
  * @returns a method for enabling scrolling again
  */
 export function disableScroll(target: HTMLElement, componentRef: RefObject<HTMLElement>) {
-  const componentEl = componentRef.current!;
+  const componentEl = componentRef.current;
   const window = target.ownerDocument.defaultView;
 
   const { clientWidth, clientHeight } = target.ownerDocument.documentElement;
   const innerWidth = window?.innerWidth ?? 0;
   const innerHeight = window?.innerHeight ?? 0;
   const browserSupportsClip = window && 'CSS' in window && 'supports' in CSS && CSS.supports('overflow', 'clip');
+  const verticalScrollbarGutter = `${innerWidth - clientWidth}px`;
+  const horizontalScrollbarGutter = `${innerHeight - clientHeight}px`;
+
   assertIsDisableScrollElement(target);
-  assertIsOffsetScrollbarElement(componentEl);
   if (target[disableScrollElementProp].count === 0) {
     const computedPaddingRight = getComputedStyle(target).paddingRight;
     target.style.overflow = browserSupportsClip ? 'clip' : 'hidden';
-    const verticalScrollbarGutter = `${innerWidth - clientWidth}px`;
-    const horizontalScrollbarGutter = `${innerHeight - clientHeight}px`;
     target.style.paddingRight = `calc(${computedPaddingRight} + ${verticalScrollbarGutter})`;
-    componentEl.style.right = verticalScrollbarGutter;
-    componentEl.style.bottom = horizontalScrollbarGutter;
   }
   target[disableScrollElementProp].count++;
-  componentEl[offsetScrollbarElementProp].count++;
+
+  if (componentEl) {
+    assertIsOffsetScrollbarElement(componentEl);
+    if (componentEl[offsetScrollbarElementProp].count === 0) {
+      componentEl.style.right = verticalScrollbarGutter;
+      componentEl.style.bottom = horizontalScrollbarGutter;
+    }
+    componentEl[offsetScrollbarElementProp].count++;
+  }
   return () => {
     target[disableScrollElementProp].count--;
-    componentEl[offsetScrollbarElementProp].count--;
     if (target[disableScrollElementProp].count === 0) {
       target.style.overflow = target[disableScrollElementProp].previousOverflowStyle;
       target.style.paddingRight = target[disableScrollElementProp].previousPaddingRightStyle;
     }
-    if (componentEl[offsetScrollbarElementProp].count === 0) {
-      componentEl.style.right = componentEl[offsetScrollbarElementProp].previousRightStyle;
-      componentEl.style.bottom = componentEl[offsetScrollbarElementProp].previousBottomStyle;
+
+    if (componentEl) {
+      componentEl[offsetScrollbarElementProp].count--;
+      if (componentEl[offsetScrollbarElementProp].count === 0) {
+        componentEl.style.right = componentEl[offsetScrollbarElementProp].previousRightStyle;
+        componentEl.style.bottom = componentEl[offsetScrollbarElementProp].previousBottomStyle;
+      }
     }
   };
 }
