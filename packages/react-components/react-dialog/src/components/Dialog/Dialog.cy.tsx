@@ -296,30 +296,33 @@ describe('Dialog', () => {
     });
     it('should lock body scroll when dialog open', () => {
       mount(
-        <Dialog modalType="modal">
-          <DialogTrigger disableButtonEnhancement>
-            <Button id={dialogTriggerOpenId}>Open dialog</Button>
-          </DialogTrigger>
-          <DialogSurface>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogBody>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogBody>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
-          </DialogSurface>
-        </Dialog>,
+        <>
+          <Dialog modalType="modal">
+            <DialogTrigger disableButtonEnhancement>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogTitle>Dialog title</DialogTitle>
+              <DialogBody>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
+              </DialogBody>
+              <DialogActions>
+                <DialogTrigger disableButtonEnhancement>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
+            </DialogSurface>
+          </Dialog>
+          {lorem}
+        </>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('body').should('have.css', 'overflow', 'clip');
+      cy.get('html').should('have.css', 'overflow', 'visible clip');
     });
 
     it('should focus trap by default', () => {
@@ -418,32 +421,35 @@ describe('Dialog', () => {
     });
     it('should not lock body scroll when dialog open', () => {
       mount(
-        <Dialog modalType="non-modal">
-          <DialogTrigger disableButtonEnhancement>
-            <Button id={dialogTriggerOpenId}>Open dialog</Button>
-          </DialogTrigger>
-          <DialogSurface>
-            <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id={dialogTriggerCloseId} appearance="secondary">
-                    Close
-                  </Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
-            </DialogBody>
-          </DialogSurface>
-        </Dialog>,
+        <>
+          <Dialog modalType="non-modal">
+            <DialogTrigger disableButtonEnhancement>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogBody>
+                <DialogTitle>Dialog title</DialogTitle>
+                <DialogContent>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                  eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                  natus iure cumque eaque?
+                </DialogContent>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button id={dialogTriggerCloseId} appearance="secondary">
+                      Close
+                    </Button>
+                  </DialogTrigger>
+                  <Button appearance="primary">Do Something</Button>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+          {lorem}
+        </>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('body').should('not.have.css', 'overflow', 'clip');
+      cy.get('html').should('not.have.css', 'overflow', 'visible clip');
     });
     it('should be able to focus inside non-modal dialog after navigating outside', () => {
       mount(
@@ -510,32 +516,35 @@ describe('Dialog', () => {
     });
     it('should lock body scroll when dialog open', () => {
       mount(
-        <Dialog modalType="alert">
-          <DialogTrigger disableButtonEnhancement>
-            <Button id={dialogTriggerOpenId}>Open dialog</Button>
-          </DialogTrigger>
-          <DialogSurface>
-            <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id={dialogTriggerCloseId} appearance="secondary">
-                    Close
-                  </Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
-            </DialogBody>
-          </DialogSurface>
-        </Dialog>,
+        <>
+          <Dialog modalType="alert">
+            <DialogTrigger disableButtonEnhancement>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogBody>
+                <DialogTitle>Dialog title</DialogTitle>
+                <DialogContent>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                  eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                  natus iure cumque eaque?
+                </DialogContent>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button id={dialogTriggerCloseId} appearance="secondary">
+                      Close
+                    </Button>
+                  </DialogTrigger>
+                  <Button appearance="primary">Do Something</Button>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+          {lorem}
+        </>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get('body').should('have.css', 'overflow', 'clip');
+      cy.get('html').should('have.css', 'overflow', 'visible clip');
     });
     it('should focus trap by default', () => {
       mount(
@@ -654,3 +663,15 @@ describe('Dialog', () => {
     cy.get('#first-dialog').should('not.exist');
   });
 });
+
+const lorem = (
+  <>
+    {Array.from({ length: 10 }, (_, i) => (
+      <p key={i}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque est
+        dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure cumque
+        eaque?
+      </p>
+    ))}
+  </>
+);
