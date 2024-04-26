@@ -6,7 +6,6 @@ import { ComboboxBaseState } from '@fluentui/react-combobox';
 export interface TagPickerContextValue
   extends Pick<
     ComboboxBaseState,
-    | 'multiselect'
     | 'open'
     | 'clearSelection'
     | 'getOptionById'
@@ -34,7 +33,6 @@ export interface TagPickerContextValue
  * @internal
  */
 export const tagPickerContextDefaultValue: TagPickerContextValue = {
-  multiselect: false,
   triggerRef: React.createRef<HTMLInputElement>(),
   popoverRef: React.createRef<HTMLDivElement>(),
   targetRef: React.createRef<HTMLDivElement>(),
