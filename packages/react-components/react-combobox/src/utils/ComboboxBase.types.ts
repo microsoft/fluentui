@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { ActiveDescendantChangeEvent, ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import { EventData, EventHandler } from '@fluentui/react-utilities';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
@@ -152,11 +153,11 @@ export type ComboboxBaseContextValues = {
   listbox: ListboxContextValue;
 };
 
-export type ActiveOptionChangeData = {
+export type ActiveOptionChangeData = EventData<'change', ActiveDescendantChangeEvent> & {
   previousOption: OptionValue | null | undefined;
   nextOption: OptionValue | null | undefined;
 };
 
 export type HighlightedOptionProps = {
-  onActiveOptionChange?: (event: ActiveDescendantChangeEvent, data: ActiveOptionChangeData) => void;
+  onActiveOptionChange?: EventHandler<ActiveOptionChangeData>;
 };

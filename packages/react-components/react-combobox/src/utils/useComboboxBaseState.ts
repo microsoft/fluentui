@@ -178,7 +178,7 @@ export const useComboboxBaseState = (
   const onActiveDescendantChange = useEventCallback((event: ActiveDescendantChangeEvent) => {
     const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;
     const nextOption = optionCollection.getOptionById(event.detail.id);
-    onActiveOptionChange?.(event, { previousOption, nextOption });
+    onActiveOptionChange?.(event, { event, type: 'change', previousOption, nextOption });
   });
 
   return {

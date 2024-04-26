@@ -46,7 +46,7 @@ export type ListboxState = ComponentState<ListboxSlots> &
 
     activeDescendantController: ActiveDescendantImperativeRef;
 
-    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
+    onActiveDescendantChange?: (event: ActiveDescendantChangeEvent) => void;
   };
 
 export type ListboxContextValues = {
