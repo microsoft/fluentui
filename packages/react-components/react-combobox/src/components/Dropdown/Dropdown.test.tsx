@@ -2,13 +2,11 @@ import * as React from 'react';
 import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
-import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { dropdownClassNames } from './useDropdownStyles.styles';
-import { ActiveOptionChangeData } from './Dropdown.types';
 
 describe('Dropdown', () => {
   beforeEach(() => {
@@ -752,9 +750,9 @@ describe('Dropdown', () => {
   describe('Active item change', () => {
     it('should call onActiveOptionChange with arrow down', () => {
       let activeOptionText = '';
-      const onActiveOptionChange = (_: ActiveDescendantChangeEvent, data: ActiveOptionChangeData) => {
+      const onActiveOptionChange = React.useCallback((_, data) => {
         activeOptionText = data.nextOption?.text ?? '';
-      };
+      }, []);
       render(
         <Dropdown onActiveOptionChange={onActiveOptionChange}>
           <Option>Red</Option>

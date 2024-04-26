@@ -7,8 +7,6 @@ import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { comboboxClassNames } from './useComboboxStyles.styles';
-import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
-import { ActiveOptionChangeData } from './Combobox.types';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -1125,9 +1123,9 @@ describe('Combobox', () => {
   describe('Active item change', () => {
     it('should call onActiveOptionChange with arrow down', () => {
       let activeOptionText = '';
-      const onActiveOptionChange = (_: ActiveDescendantChangeEvent, data: ActiveOptionChangeData) => {
+      const onActiveOptionChange = React.useCallback((_, data) => {
         activeOptionText = data.nextOption?.text ?? '';
-      };
+      }, []);
       render(
         <Combobox onActiveOptionChange={onActiveOptionChange}>
           <Option>Red</Option>

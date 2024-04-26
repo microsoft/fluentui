@@ -21,7 +21,7 @@ export const ActiveOptionChange = (props: Partial<ComboboxProps>) => {
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
   const onActiveOptionChange = React.useCallback(
-    (e, data) => {
+    (_, data) => {
       setActiveOptionText(data?.nextOption?.text);
     },
     [setActiveOptionText],
