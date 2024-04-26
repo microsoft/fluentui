@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 26 Apr 2024 04:07:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.14",
+      "version": "3.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8eb247555918987d33171c6a932cc4218d36727d",
+            "comment": "create CSS partials for named typography styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Apr 2024 04:09:24 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.13",
       "version": "3.0.0-beta.13",
