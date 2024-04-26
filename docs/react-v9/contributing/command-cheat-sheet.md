@@ -1,4 +1,4 @@
-This is a helpful list of commands.
+This is a list of helpful commands.
 
 ```
 yarn // installs everything. It fixes many things.
