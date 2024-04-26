@@ -5,7 +5,6 @@ import {
   isResolvedShorthand,
   slot,
   getIntrinsicElementProps,
-  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
@@ -26,7 +25,6 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
-  const open = useDialogContext_unstable(ctx => ctx.open);
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
   const transitionStatus = useDialogTransitionContext_unstable();
@@ -34,15 +32,7 @@ export const useDialogSurface_unstable = (
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
-
-  const disableBodyScroll = useDisableBodyScroll();
-  const isBodyScrollLocked = Boolean((open || transitionStatus !== 'unmounted') && modalType !== 'non-modal');
-
-  useIsomorphicLayoutEffect(() => {
-    if (isBodyScrollLocked) {
-      return disableBodyScroll();
-    }
-  }, [disableBodyScroll, isBodyScrollLocked]);
+  const open = useDialogContext_unstable(ctx => ctx.open);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -82,6 +72,21 @@ export const useDialogSurface_unstable = (
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
   }
+
+  // FIXME: this whole body scroll logic should be in useDialog hook,
+  // but it's not possible as it requires transitionStatus at the moment
+  const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
+  React.useEffect(() => {
+    if (isBodyScrollLocked && !isNestedDialog && transitionStatus === 'entering') {
+      disableBodyScroll();
+    }
+    if (transitionStatus === 'exited' && !isNestedDialog) {
+      enableBodyScroll();
+    }
+  }, [disableBodyScroll, enableBodyScroll, isBodyScrollLocked, isNestedDialog, transitionStatus]);
+  // FIXME: ---------------------------
+
   return {
     components: { backdrop: 'div', root: 'div' },
     backdrop,
