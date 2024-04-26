@@ -13,6 +13,7 @@ yarn update-snapshots // updates snapshot tests
 yarn run dedupe // dedupes dependencies - necessary to run after any kind of package bump/changes
 yarn nx run <package-name>:generate-api // updates API files
 yarn nx run <package-name>:<target-name> // runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
+yarn lage build --to react // build v8 so intellisense works.
 ```
 
 ```
@@ -30,8 +31,4 @@ git branch // lists all the branches on your local machine
 git push // pushes things to your forked repo, not the main repo.
 git push upstream // pushes your branch to the main repo.
 git push upstream --force // force is needed after a rebase.
-```
-
-```
-lage build --to react // build v8 so intellisense works.
 ```
