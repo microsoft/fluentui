@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 25 Apr 2024 04:09:24 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2024 04:07:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.14)
+
+Fri, 26 Apr 2024 04:07:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.13..@fluentui/web-components_v3.0.0-beta.14)
+
+### Changes
+
+- create CSS partials for named typography styles ([PR #31164](https://github.com/microsoft/fluentui/pull/31164) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.13)
 
