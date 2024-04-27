@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { useFocusFirstElement } from '../../utils';
+import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
 import { useModalAttributes } from '@fluentui/react-tabster';
+import { DialogTransitionContextValue } from '../../contexts/dialogTransitionContext';
 
 /**
  * Create the state required to render Dialog.
@@ -25,6 +26,22 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     defaultState: props.defaultOpen,
     initialState: false,
   });
+  const [dialogTransitionStatus, setDialogTransitionStatus] = React.useState<DialogTransitionContextValue>();
+
+  const isNestedDialog = useHasParentContext(DialogContext);
+
+  const { enableBodyScroll, disableBodyScroll } = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
+  React.useEffect(() => {
+    if (isBodyScrollLocked && !isNestedDialog) {
+      disableBodyScroll();
+    }
+  }, [disableBodyScroll, isBodyScrollLocked, isNestedDialog]);
+  React.useEffect(() => {
+    if (!isBodyScrollLocked && dialogTransitionStatus === 'exited' && !isNestedDialog) {
+      enableBodyScroll();
+    }
+  }, [enableBodyScroll, isBodyScrollLocked, isNestedDialog, dialogTransitionStatus]);
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     onOpenChange?.(data.event, data);
@@ -53,8 +70,9 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     content,
     trigger,
     requestOpenChange,
+    onTransitionStatusChange: setDialogTransitionStatus,
     dialogTitleId: useId('dialog-title-'),
-    isNestedDialog: useHasParentContext(DialogContext),
+    isNestedDialog,
     dialogRef: focusRef,
     modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
     triggerAttributes,

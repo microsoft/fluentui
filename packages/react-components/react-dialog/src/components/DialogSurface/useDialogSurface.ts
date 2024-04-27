@@ -10,7 +10,6 @@ import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } fro
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { useDialogTransitionContext_unstable } from '../../contexts/dialogTransitionContext';
-import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 
 /**
  * Create the state required to render DialogSurface.
@@ -31,8 +30,8 @@ export const useDialogSurface_unstable = (
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
+  const onTransitionStatusChange = useDialogContext_unstable(ctx => ctx.onTransitionStatusChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
-  const open = useDialogContext_unstable(ctx => ctx.open);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -73,19 +72,9 @@ export const useDialogSurface_unstable = (
     backdrop.onClick = handledBackdropClick;
   }
 
-  // FIXME: this whole body scroll logic should be in useDialog hook,
-  // but it's not possible as it requires transitionStatus at the moment
-  const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
-  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
   React.useEffect(() => {
-    if (isBodyScrollLocked && !isNestedDialog && transitionStatus === 'entering') {
-      disableBodyScroll();
-    }
-    if (transitionStatus === 'exited' && !isNestedDialog) {
-      enableBodyScroll();
-    }
-  }, [disableBodyScroll, enableBodyScroll, isBodyScrollLocked, isNestedDialog, transitionStatus]);
-  // FIXME: ---------------------------
+    onTransitionStatusChange(transitionStatus);
+  }, [transitionStatus, onTransitionStatusChange]);
 
   return {
     components: { backdrop: 'div', root: 'div' },

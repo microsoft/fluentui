@@ -23,15 +23,16 @@ export function useDisableBodyScroll(): {
       return;
     }
 
-    targetDocument.documentElement.classList.add(htmlNoScrollStyle);
-
     const window = targetDocument.defaultView;
     const { clientWidth } = targetDocument.documentElement;
     const innerWidth = window?.innerWidth ?? 0;
 
     const verticalScrollbarGutter = `${innerWidth - clientWidth}px`;
-    originalPaddingRight.current = getComputedStyle(targetDocument.body).paddingRight;
-    targetDocument.body.style.paddingRight = `calc(${originalPaddingRight.current} + ${verticalScrollbarGutter})`;
+    originalPaddingRight.current = targetDocument.documentElement.style.marginRight;
+    const calculatedMarginRight = getComputedStyle(targetDocument.documentElement).marginRight;
+
+    targetDocument.documentElement.classList.add(htmlNoScrollStyle);
+    targetDocument.documentElement.style.marginRight = `calc(${calculatedMarginRight} + ${verticalScrollbarGutter})`;
     return;
   }, [targetDocument, htmlNoScrollStyle]);
 
@@ -42,7 +43,7 @@ export function useDisableBodyScroll(): {
 
     targetDocument.documentElement.classList.remove(htmlNoScrollStyle);
 
-    targetDocument.body.style.paddingRight = originalPaddingRight.current;
+    targetDocument.documentElement.style.marginRight = originalPaddingRight.current;
   }, [targetDocument, htmlNoScrollStyle]);
 
   return {
