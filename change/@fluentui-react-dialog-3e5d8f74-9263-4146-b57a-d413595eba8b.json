@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Changing useDisableBodyScroll strategy to fix Dialog open/close animation jutter and give apps more control over the scrollbar hiding offset logic",
-  "packageName": "@fluentui/react-dialog",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}

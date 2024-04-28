@@ -130,9 +130,6 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 // @public (undocumented)
 export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & React_2.FC<React_2.ProviderProps<DialogContextValue | undefined>>;
 
-// @public
-export type DialogScrollbarOffsetStrategy = 'scrollbar-gutter' | 'getComputedStyles';
-
 // @public (undocumented)
 export type DialogSlots = {};
 

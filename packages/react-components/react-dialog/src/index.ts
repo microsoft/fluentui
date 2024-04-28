@@ -6,7 +6,6 @@ export type {
   DialogOpenChangeData,
   DialogOpenChangeEvent,
   DialogOpenChangeEventHandler,
-  DialogScrollbarOffsetStrategy,
 } from './Dialog';
 
 export { DialogTrigger, useDialogTrigger_unstable, renderDialogTrigger_unstable } from './DialogTrigger';

@@ -258,7 +258,6 @@ import { DialogContextValue } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
-import { DialogScrollbarOffsetStrategy } from '@fluentui/react-dialog';
 import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
@@ -2083,8 +2082,6 @@ export { DialogOpenChangeData }
 export { DialogOpenChangeEvent }
 
 export { DialogProps }
-
-export { DialogScrollbarOffsetStrategy }
 
 export { DialogSlots }
 

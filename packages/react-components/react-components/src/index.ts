@@ -866,7 +866,6 @@ export type {
   DialogProps,
   DialogOpenChangeData,
   DialogOpenChangeEvent,
-  DialogScrollbarOffsetStrategy,
   DialogSlots,
   DialogState,
   DialogTriggerProps,
