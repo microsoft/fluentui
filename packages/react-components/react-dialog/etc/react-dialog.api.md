@@ -114,6 +114,12 @@ export type DialogOpenChangeData = {
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 // @public
+export type DialogScrollbarOffsetStrategy = 'scrollbar-gutter' | 'getComputedStyles';
+
+// @public
+export type DialogScrollbarHideOffsetConfig = { strategy: DialogScrollbarOffsetStrategy };
+
+// @public
 export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
 // @public (undocumented)
@@ -124,9 +130,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
     inertTrapFocus?: boolean;
-    scrollbarHideOffset?: {
-        strategy: DialogScrollbarHideStrategy;
-    } | string;
+    scrollbarHideOffset?: DialogScrollbarHideOffsetConfig | string;
 };
 
 // @public (undocumented)
