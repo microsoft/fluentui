@@ -73,7 +73,7 @@ export const useDialogSurface_unstable = (
   }
 
   React.useEffect(() => {
-    onTransitionStatusChange(transitionStatus);
+    onTransitionStatusChange?.(transitionStatus);
   }, [transitionStatus, onTransitionStatusChange]);
 
   return {
