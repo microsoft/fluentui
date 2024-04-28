@@ -124,6 +124,9 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
     inertTrapFocus?: boolean;
+    scrollbarHideOffset?: {
+        strategy: DialogScrollbarHideStrategy;
+    } | string;
 };
 
 // @public (undocumented)
