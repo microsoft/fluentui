@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding prop API definitions for new types added to Dialog to support new scrollbar offset strategy",
+  "packageName": "@fluentui/react-components",
+  "email": "stevenco@microsoft.com",
+  "dependentChangeType": "patch"
+}
