@@ -16,6 +16,9 @@ export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) 
     requestOpenChange() {
       /* noop */
     },
+    onTransitionStatusChange() {
+      /* noop */
+    },
     modalAttributes: undefined,
     triggerAttributes: { 'data-tabster': '{"deloser":{}}' },
     ...options,

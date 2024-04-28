@@ -12,7 +12,7 @@ describe('DialogSurface', () => {
   const testid = 'test';
   beforeEach(() => {
     resetIdsForTests();
-    mockUseDialogContext({ open: true, onTransitionStatusChange: jest.fn() });
+    mockUseDialogContext({ open: true });
   });
 
   isConformant<DialogSurfaceProps>({
@@ -30,6 +30,7 @@ describe('DialogSurface', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
+    mockUseDialogContext({ open: true });
     const result = render(<DialogSurface>Default DialogSurface</DialogSurface>);
     expect(result.container).toMatchSnapshot();
   });

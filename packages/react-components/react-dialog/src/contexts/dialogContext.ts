@@ -17,7 +17,9 @@ export type DialogContextValue = {
    * Requests dialog main component to update it's internal open state
    */
   requestOpenChange: (data: DialogOpenChangeData) => void;
-  // Updates when the Dialog open/close transition status changes
+  /**
+   * Updates when the Dialog open/close transition status changes
+   */
   onTransitionStatusChange: (status: DialogTransitionContextValue) => void;
 } & Partial<ReturnType<typeof useModalAttributes>>;
 
