@@ -114,12 +114,6 @@ export type DialogOpenChangeData = {
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 // @public
-export type DialogScrollbarOffsetStrategy = 'scrollbar-gutter' | 'getComputedStyles';
-
-// @public
-export type DialogScrollbarHideOffsetConfig = { strategy: DialogScrollbarOffsetStrategy };
-
-// @public
 export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
 
 // @public (undocumented)
@@ -135,6 +129,14 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 
 // @public (undocumented)
 export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & React_2.FC<React_2.ProviderProps<DialogContextValue | undefined>>;
+
+// @public
+export type DialogScrollbarHideOffsetConfig = {
+    strategy: DialogScrollbarOffsetStrategy;
+};
+
+// @public
+export type DialogScrollbarOffsetStrategy = 'scrollbar-gutter' | 'getComputedStyles';
 
 // @public (undocumented)
 export type DialogSlots = {};
