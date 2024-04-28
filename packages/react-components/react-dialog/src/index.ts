@@ -6,7 +6,6 @@ export type {
   DialogOpenChangeData,
   DialogOpenChangeEvent,
   DialogOpenChangeEventHandler,
-  DialogScrollbarHideOffsetConfig,
   DialogScrollbarOffsetStrategy,
 } from './Dialog';
 
