@@ -26,6 +26,8 @@ export type DialogOpenChangeData =
 
 export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
+export type DialogScrollbarHideStrategy = 'scrollbar-gutter' | 'getComputedStyles';
+
 /**
  * Callback fired when the component changes value from open state.
  *
@@ -95,6 +97,14 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   inertTrapFocus?: boolean;
+  /**
+   * Affects how the scrollbar is handled when a dialog is open and the document is set to overflow: hidden
+   * @example { strategy: 'scrollbar-gutter' } // uses the CSS scrollbar-gutter property to reserve the scrollbar width.
+   * @example { strategy: 'getComputedStyles' } // computes the width of the scrollbar at runtime and adjusts margin to account for it.
+   * @example "16px" // declare a static width that is used at runtime to adjust margin to account for the scrollbar.
+   * @default "{ strategy: 'scrollbar-gutter' }"
+   */
+  scrollbarHideOffset?: { strategy: DialogScrollbarHideStrategy } | string;
 };
 
 export type DialogState = ComponentState<DialogSlots> &

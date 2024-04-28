@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing dialog open animation jutter caused by layout shift when body scrollbar is hidden",
-  "packageName": "@fluentui/react-dialog",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}

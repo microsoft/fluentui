@@ -34,9 +34,9 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
   React.useEffect(() => {
     if (isBodyScrollLocked && !isNestedDialog) {
-      disableBodyScroll();
+      disableBodyScroll(props.scrollbarHideOffset);
     }
-  }, [disableBodyScroll, isBodyScrollLocked, isNestedDialog]);
+  }, [disableBodyScroll, isBodyScrollLocked, isNestedDialog, props.scrollbarHideOffset]);
   React.useEffect(() => {
     if (!isBodyScrollLocked && dialogTransitionStatus === 'exited' && !isNestedDialog) {
       enableBodyScroll();
