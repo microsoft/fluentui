@@ -1,5 +1,5 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, addProjectConfiguration, writeJson, joinPathFragments, updateProjectConfiguration } from '@nx/devkit';
+import { Tree, addProjectConfiguration, writeJson, joinPathFragments } from '@nx/devkit';
 
 import generator from './index';
 
