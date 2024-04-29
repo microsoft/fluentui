@@ -26,7 +26,7 @@ import type {
 } from './List.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getWindowEx } from '../../utilities/dom';
-import { ListDebugRenderer } from './utils/ListDebugRenderer';
+// import { ListDebugRenderer } from './utils/ListDebugRenderer';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -156,8 +156,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
 
-  private _debugRenderer: ListDebugRenderer;
-  private _debugRafId: number | undefined = undefined;
+  // private _debugRenderer: ListDebugRenderer;
+  // private _debugRafId: number | undefined = undefined;
 
   public static getDerivedStateFromProps<U = any>(
     nextProps: IListProps<U>,
@@ -368,24 +368,24 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       this._events.on(this._scrollElement, 'scroll', this._onAsyncScrollDebounced);
     }
 
-    this._debugRenderer = new ListDebugRenderer();
+    // this._debugRenderer = new ListDebugRenderer();
 
-    const debugRender = () => {
-      this._debugRenderer.render({
-        visibleRect: this._visibleRect,
-        allowedRect: this._allowedRect,
-        requiredRect: this._requiredRect,
-        materializedRect: this._materializedRect,
-        surfaceRect: this._surfaceRect,
-        totalListHeight: this.getTotalListHeight(),
-        pages: this.state.pages,
-        scrollTop: Math.abs(this._scrollTop - getScrollYPosition(this._scrollElement)),
-        estimatedLine: this._estimatedPageHeight * SCROLL_RATIO,
-        scrollY: getScrollYPosition(this._scrollElement),
-      });
-      this._debugRafId = requestAnimationFrame(debugRender);
-    };
-    debugRender();
+    // const debugRender = () => {
+    //   this._debugRenderer.render({
+    //     visibleRect: this._visibleRect,
+    //     allowedRect: this._allowedRect,
+    //     requiredRect: this._requiredRect,
+    //     materializedRect: this._materializedRect,
+    //     surfaceRect: this._surfaceRect,
+    //     totalListHeight: this.getTotalListHeight(),
+    //     pages: this.state.pages,
+    //     scrollTop: Math.abs(this._scrollTop - getScrollYPosition(this._scrollElement)),
+    //     estimatedLine: this._estimatedPageHeight * SCROLL_RATIO,
+    //     scrollY: getScrollYPosition(this._scrollElement),
+    //   });
+    //   this._debugRafId = requestAnimationFrame(debugRender);
+    // };
+    // debugRender();
   }
 
   public componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void {
@@ -431,11 +431,11 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
     delete this._scrollElement;
 
-    this._debugRenderer.dispose();
-    if (this._debugRafId) {
-      cancelAnimationFrame(this._debugRafId);
-      this._debugRafId = undefined;
-    }
+    // this._debugRenderer.dispose();
+    // if (this._debugRafId) {
+    //   cancelAnimationFrame(this._debugRafId);
+    //   this._debugRafId = undefined;
+    // }
   }
 
   public shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean {
@@ -763,7 +763,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _onScrollingDone(): void {
     if (!this.props.ignoreScrollingState) {
       this.setState({ isScrolling: false });
-      // this._onAsyncIdle();
+      this._onAsyncIdle();
     }
   }
 
