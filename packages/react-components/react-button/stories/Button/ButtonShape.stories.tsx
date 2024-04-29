@@ -12,11 +12,18 @@ const useStyles = makeStyles({
 export const Shape = () => {
   const styles = useStyles();
   return (
-    <div className={styles.wrapper}>
-      <Button>Rounded</Button>
-      <Button shape="circular">Circular</Button>
-      <Button shape="square">Square</Button>
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <Button>Rounded</Button>
+        <Button shape="circular">Circular</Button>
+        <Button shape="square">Square</Button>
+      </div>
+      <div className={styles.wrapper}>
+        <Button>Rounded</Button>
+        <Button shape="circular">Circular</Button>
+        <Button shape="square">Square</Button>
+      </div>
+    </>
   );
 };
 

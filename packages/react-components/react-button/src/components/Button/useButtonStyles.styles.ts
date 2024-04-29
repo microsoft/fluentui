@@ -4,6 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
+import { buttonTokens } from './Button.tokens';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
@@ -35,25 +36,25 @@ const useRootBaseClassName = makeResetStyles({
   margin: 0,
   overflow: 'hidden',
 
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  backgroundColor: buttonTokens.ctrlButtonBackgroundColorRest,
+  color: buttonTokens.ctrlButtonForegroundColorRest,
+  border: `${tokens.strokeWidthThin} solid ${buttonTokens.ctrlButtonBorderColorRest}`,
 
-  fontFamily: tokens.fontFamilyBase,
+  fontFamily: buttonTokens.ctrlButtonFontFamily,
   outlineStyle: 'none',
 
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
-    color: tokens.colorNeutralForeground1Hover,
+    backgroundColor: buttonTokens.ctrlButtonBackgroundColorHover,
+    borderColor: buttonTokens.ctrlButtonBorderColorHover,
+    color: buttonTokens.ctrlButtonForegroundColorHover,
 
     cursor: 'pointer',
   },
 
   ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    borderColor: tokens.colorNeutralStroke1Pressed,
-    color: tokens.colorNeutralForeground1Pressed,
+    backgroundColor: buttonTokens.ctrlButtonBackgroundColorPressed,
+    borderColor: buttonTokens.ctrlButtonBorderColorPressed,
+    color: buttonTokens.ctrlButtonForegroundColorPressed,
 
     outlineStyle: 'none',
   },
