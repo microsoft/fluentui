@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Sankey diagram bug fix - Use the formatted node value instead of the raw value, to calculate text measurement.",
+  "packageName": "@fluentui/react-charting",
+  "email": "lamalkar@microsoft.com",
+  "dependentChangeType": "patch"
+}
