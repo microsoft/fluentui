@@ -10,7 +10,9 @@
     {
       "files": "*.json",
       "parser": "jsonc-eslint-parser",
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/naming-convention": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -28,6 +30,7 @@
       "files": ["./package.json", "./generators.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
+        "@typescript-eslint/naming-convention": "off",
         "@nx/nx-plugin-checks": "error"
       }
     }

@@ -47,7 +47,7 @@
       }
     },
     "lint-old": {
-      "command": "eslint tools/workspace-plugin/**/*.ts"
+      "command": "eslint --ext .ts,.js,.json tools/workspace-plugin"
     },
     "test": {
       "executor": "@nx/jest:jest",
