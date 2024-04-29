@@ -6,6 +6,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -55,7 +57,9 @@ export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
-export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {};
+export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
+    value: string;
+};
 
 // @public (undocumented)
 export type CarouselCardSlots = {
@@ -63,7 +67,9 @@ export type CarouselCardSlots = {
 };
 
 // @public
-export type CarouselCardState = ComponentState<CarouselCardSlots>;
+export type CarouselCardState = ComponentState<CarouselCardSlots> & {
+    visible: boolean;
+} & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
 export const carouselClassNames: SlotClassNames<CarouselSlots>;
@@ -137,7 +143,11 @@ export type CarouselNavSlots = {
 export type CarouselNavState = ComponentState<CarouselNavSlots>;
 
 // @public
-export type CarouselProps = ComponentProps<CarouselSlots> & {};
+export type CarouselProps = ComponentProps<CarouselSlots> & {
+    defaultValue?: string;
+    value?: string;
+    onValueChange?: EventHandler<CarouselValueChangeData>;
+};
 
 // @public (undocumented)
 export type CarouselSlots = {
@@ -145,10 +155,10 @@ export type CarouselSlots = {
 };
 
 // @public
-export type CarouselState = ComponentState<CarouselSlots>;
+export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
 
 // @public
-export const renderCarousel_unstable: (state: CarouselState) => JSX.Element;
+export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;
 
 // @public
 export const renderCarouselAutoplayButton_unstable: (state: CarouselAutoplayButtonState) => JSX.Element;
@@ -172,7 +182,7 @@ export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) =
 export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
 
 // @public
-export const useCarousel_unstable: (props: CarouselProps, ref: React_2.Ref<HTMLDivElement>) => CarouselState;
+export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
 
 // @public
 export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselAutoplayButtonState;
