@@ -58,7 +58,7 @@ const generateStyles = (theme: ITheme) => {
 };
 
 export const ListBasicExample: React.FunctionComponent = () => {
-  const originalItems = useConst(() => createListItems(61));
+  const originalItems = useConst(() => createListItems(5000));
   const [items, setItems] = React.useState(originalItems);
   const theme = useTheme();
   const classNames = React.useMemo(() => generateStyles(theme), [theme]);
