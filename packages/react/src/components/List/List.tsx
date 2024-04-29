@@ -953,12 +953,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       const isPageInRequiredRange =
         !this._requiredRect || (pageBottom >= this._requiredRect.top && pageTop <= this._requiredRect.bottom!);
 
-      const isPagePartiallyInRequiredRange =
-        !isPageInRequiredRange &&
-        this._requiredRect &&
-        ((pageTop < this._requiredRect.top && pageBottom > this._requiredRect.top) ||
-          (pageTop < this._requiredRect.bottom! && pageBottom > this._requiredRect.bottom!));
-
       const isPageVisible =
         (!isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered))) || !shouldVirtualize;
       const isPageFocused = focusedIndex >= itemIndex && focusedIndex < itemIndex + itemsPerPage;
@@ -990,7 +984,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
         pages.push(newPage);
 
-        if ((isPageInRequiredRange || isPagePartiallyInRequiredRange) && this._allowedRect) {
+        if (isPageInRequiredRange && this._allowedRect) {
           _mergeRect(materializedRect, {
             top: pageTop,
             bottom: pageBottom,
