@@ -44,7 +44,6 @@ export const useTagPickerInput_unstable = (
     setHasFocus,
     setOpen,
     setValue,
-    multiselect,
     popoverId,
     value: contextValue,
   } = useTagPickerContexts();
@@ -124,7 +123,7 @@ export const useTagPickerInput_unstable = (
         setHasFocus,
         setOpen,
         setValue,
-        multiselect,
+        multiselect: true,
         value: props.value,
       },
     },
@@ -153,7 +152,6 @@ function useTagPickerContexts() {
     setHasFocus: useTagPickerContext_unstable(ctx => ctx.setHasFocus),
     setOpen: useTagPickerContext_unstable(ctx => ctx.setOpen),
     setValue: useTagPickerContext_unstable(ctx => ctx.setValue),
-    multiselect: useTagPickerContext_unstable(ctx => ctx.multiselect),
     value: useTagPickerContext_unstable(ctx => ctx.value),
     popoverId: useTagPickerContext_unstable(ctx => ctx.popoverId),
   };
