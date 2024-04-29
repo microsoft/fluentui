@@ -229,13 +229,19 @@ function getPackageStoriesGlob(options) {
   const packages = Object.keys(dependencies);
 
   const result = packages
-    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))
+    .filter(pkgName => projects.has(pkgName) && !excludeStoriesInsertionFromPackages.includes(pkgName))
     .map(pkgName => {
       const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
       const pkgMetadata = getMetadata(pkgName, projects);
 
       if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
         return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
+      }
+
+      // if defined package has stories project use that
+      const pkgMetadataStories = projects.get(`${pkgName}-stories`);
+      if (pkgMetadataStories) {
+        return `${rootOffset}${pkgMetadataStories.root}/src/${storiesGlob}`;
       }
 
       return `${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`;
