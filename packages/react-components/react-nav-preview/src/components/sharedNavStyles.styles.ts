@@ -8,6 +8,9 @@ export const navItemTokens = {
   indicatorOffset: 18,
   indicatorWidth: 4,
   indicatorHeight: 20,
+  backgroundColor: tokens.colorNeutralBackground4,
+  backgroundColorHover: tokens.colorNeutralBackground4Hover,
+  backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
 };
 
 /**
@@ -21,17 +24,17 @@ export const useRootDefaultClassName = makeResetStyles({
   justifyContent: 'start',
   gap: tokens.spacingVerticalL,
   padding: tokens.spacingVerticalMNudge,
-  backgroundColor: tokens.colorNeutralBackground4,
+  backgroundColor: navItemTokens.backgroundColor,
   borderRadius: tokens.borderRadiusMedium,
   color: tokens.colorNeutralForeground2,
   textDecorationLine: 'none',
   border: 'none',
   ...typographyStyles.body1,
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground4Hover,
+    backgroundColor: navItemTokens.backgroundColorHover,
   },
   ':active': {
-    backgroundColor: tokens.colorNeutralBackground4Pressed,
+    backgroundColor: navItemTokens.backgroundColorPressed,
   },
 });
 
