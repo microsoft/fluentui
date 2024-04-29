@@ -4,7 +4,6 @@ import { DialogSurfaceElement } from '../DialogSurface';
 import type { Context } from '@fluentui/react-context-selector';
 import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { DialogTransitionContextValue } from './dialogTransitionContext';
 
 export type DialogContextValue = {
   open: boolean;
@@ -17,10 +16,6 @@ export type DialogContextValue = {
    * Requests dialog main component to update it's internal open state
    */
   requestOpenChange: (data: DialogOpenChangeData) => void;
-  /**
-   * Updates when the Dialog open/close transition status changes
-   */
-  onTransitionStatusChange: (status: DialogTransitionContextValue) => void;
 } & Partial<ReturnType<typeof useModalAttributes>>;
 
 const defaultContextValue: DialogContextValue = {
@@ -30,9 +25,6 @@ const defaultContextValue: DialogContextValue = {
   isNestedDialog: false,
   dialogRef: { current: null },
   requestOpenChange() {
-    /* noop */
-  },
-  onTransitionStatusChange() {
     /* noop */
   },
 };

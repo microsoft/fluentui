@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing Dialog open/close animation jutter by aligning open/close scrollbar offset with animation transition and altering offset calculation logic",
+  "packageName": "@fluentui/react-dialog",
+  "email": "stevenco@microsoft.com",
+  "dependentChangeType": "patch"
+}

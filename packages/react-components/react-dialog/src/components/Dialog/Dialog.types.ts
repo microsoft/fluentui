@@ -27,25 +27,6 @@ export type DialogOpenChangeData =
 export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
 /**
- * Scrollbar offset strategy variations.
- *
- * `scrollbar-gutter`: If supported by the browser, uses the CSS property 'scrollbar-gutter' to automatically
- * reserve the width of the scrollbar when document scrolling is disabled. If not supported by the browser, falls
- * back to `getComputedStyles`.
- *
- * `getComputedStyles`: Manually calculates the width of the scrollbar at runtime and adds the value to the body
- * as padding-right to offset the scrollbar width when document scrolling is disabled.
- */
-export type DialogScrollbarOffsetStrategy = 'scrollbar-gutter' | 'getComputedStyles';
-
-/**
- * Configure the scrollbar hiding offset strategy used when document scrolling is disabled by the Dialog.
- *
- * @param strategy - strategy to use for offsetting the width of the scrollbar
- */
-export type DialogScrollbarHideOffsetConfig = { strategy: DialogScrollbarOffsetStrategy };
-
-/**
  * Callback fired when the component changes value from open state.
  *
  * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
@@ -114,13 +95,6 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   inertTrapFocus?: boolean;
-  /**
-   * Affects how the scrollbar is handled when a dialog is open and document scrolling is disabled.
-   * Can set to a static CSS padding-right value, eg. "16px", or declare a strategy with {@link DialogScrollbarHideOffsetConfig}
-   *
-   * @default DialogScrollbarHideOffsetConfig with strategy="scrollbar-gutter"
-   */
-  scrollbarHideOffset?: DialogScrollbarHideOffsetConfig | string;
 };
 
 export type DialogState = ComponentState<DialogSlots> &

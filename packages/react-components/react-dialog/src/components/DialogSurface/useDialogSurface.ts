@@ -10,6 +10,7 @@ import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } fro
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { useDialogTransitionContext_unstable } from '../../contexts/dialogTransitionContext';
+import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 
 /**
  * Create the state required to render DialogSurface.
@@ -29,9 +30,26 @@ export const useDialogSurface_unstable = (
   const transitionStatus = useDialogTransitionContext_unstable();
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
+  const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
-  const onTransitionStatusChange = useDialogContext_unstable(ctx => ctx.onTransitionStatusChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+
+  const { enableBodyScroll, disableBodyScroll } = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
+
+  // FIXME: this whole body scroll logic should be in useDialog hook,
+  // but it's not possible as it requires transitionStatus at the moment
+  React.useEffect(() => {
+    if (isBodyScrollLocked && !isNestedDialog) {
+      disableBodyScroll();
+    }
+  }, [disableBodyScroll, isBodyScrollLocked, isNestedDialog]);
+  React.useEffect(() => {
+    if (!isBodyScrollLocked && transitionStatus === 'exited' && !isNestedDialog) {
+      enableBodyScroll();
+    }
+  }, [enableBodyScroll, isBodyScrollLocked, isNestedDialog, transitionStatus]);
+  // FIXME: ---------------------------
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -71,10 +89,6 @@ export const useDialogSurface_unstable = (
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
   }
-
-  React.useEffect(() => {
-    onTransitionStatusChange?.(transitionStatus);
-  }, [transitionStatus, onTransitionStatusChange]);
 
   return {
     components: { backdrop: 'div', root: 'div' },

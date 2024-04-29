@@ -10,7 +10,6 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     isNestedDialog,
     inertTrapFocus,
     requestOpenChange,
-    onTransitionStatusChange,
     modalAttributes,
     triggerAttributes,
   } = state;
@@ -29,7 +28,6 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     modalAttributes,
     triggerAttributes,
     requestOpenChange,
-    onTransitionStatusChange,
   };
 
   const dialogSurface: DialogSurfaceContextValue = false;

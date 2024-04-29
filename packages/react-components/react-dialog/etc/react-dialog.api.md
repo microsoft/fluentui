@@ -19,7 +19,6 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TransitionStatus } from 'react-transition-group';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 
@@ -92,7 +91,6 @@ export type DialogContextValue = {
     dialogRef: React_2.Ref<DialogSurfaceElement>;
     modalType: DialogModalType;
     requestOpenChange: (data: DialogOpenChangeData) => void;
-    onTransitionStatusChange: (status: DialogTransitionContextValue) => void;
 } & Partial<ReturnType<typeof useModalAttributes>>;
 
 // @public (undocumented)
@@ -124,7 +122,6 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
     inertTrapFocus?: boolean;
-    scrollbarHideOffset?: DialogScrollbarHideOffsetConfig | string;
 };
 
 // @public (undocumented)
