@@ -13,7 +13,7 @@ import {
 import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities/getStoryVariant';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, StoryWright } from 'storywright';
 import { ArrowDownFilled } from '@fluentui/react-icons';
@@ -41,7 +41,7 @@ export const Default = (props: Pick<TagPickerProps, 'appearance' | 'size'>) => {
   };
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <div style={{ maxWidth: 400, padding: 20 }}>
       <TagPicker {...props} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
@@ -140,10 +140,12 @@ export const DefaultOpenHighContrast = getStoryVariant(DefaultOpen, HIGH_CONTRAS
 export const DefaultOpenRTL = getStoryVariant(DefaultOpen, RTL);
 
 const useStyles = makeStyles({
+  padding: {
+    ...shorthands.padding('20px'),
+  },
   darkBG: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
     color: tokens.colorNeutralForegroundInverted2,
-    ...shorthands.padding('20px'),
     ...shorthands.marginBlock('10px'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
@@ -153,19 +155,19 @@ export const Appearance = () => {
   const styles = useStyles();
   return (
     <>
-      <div>
+      <div className={styles.padding}>
         <h1>Outline</h1>
         <Default appearance="outline" />
       </div>
-      <div>
+      <div className={styles.padding}>
         <h1>Underline</h1>
         <Default appearance="underline" />
       </div>
-      <div className={styles.darkBG}>
+      <div className={mergeClasses(styles.darkBG, styles.padding)}>
         <h1>Filled Darker</h1>
         <Default appearance="filled-darker" />
       </div>
-      <div className={styles.darkBG}>
+      <div className={mergeClasses(styles.darkBG, styles.padding)}>
         <h1>Filled Lighter</h1>
         <Default appearance="filled-lighter" />
       </div>
