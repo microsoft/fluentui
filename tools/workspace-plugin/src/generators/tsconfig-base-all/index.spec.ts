@@ -5,6 +5,7 @@ import generator from './index';
 import { TsconfigBaseAllGeneratorSchema } from './schema';
 
 describe('tsconfig-base-all generator', () => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
   let tree: Tree;
   const options: TsconfigBaseAllGeneratorSchema = {};
