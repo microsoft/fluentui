@@ -1144,10 +1144,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const scrollHeight = getScrollHeight(this._scrollElement);
     const scrollTop = getScrollYPosition(this._scrollElement);
 
-    const doUpdate =
-      Math.abs((this._visibleRect?.bottom ?? 0) - (this._materializedRect?.bottom ?? 0)) <
-      this._estimatedPageHeight / 5;
-
     // WARNING: EXPENSIVE CALL! We need to know the surface top relative to the window.
     // This needs to be called to recalculate when new pages should be loaded.
     // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
@@ -1158,7 +1154,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         !this._surfaceRect ||
         !scrollHeight ||
         scrollHeight !== this._scrollHeight ||
-        // doUpdate ||
         Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight * SCROLL_RATIO)
     ) {
       surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.current);
