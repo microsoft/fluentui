@@ -11,7 +11,11 @@ function stripComments(content: string): string {
 
 describe('buildAssets', () => {
   it('compiles code to CJS & ESM', async () => {
-    const template = `export const Foo = 'foo'`;
+    const template = `
+      import { hello } from '@proj/hello';
+
+      export const Foo = 'foo' + hello
+      `;
 
     const filesDir = tmp.dirSync({ unsafeCleanup: true }).name;
 
@@ -21,10 +25,30 @@ describe('buildAssets', () => {
     const cjsOutfile = path.resolve(filesDir, 'cjs-out.js');
     const esmOutfile = path.resolve(filesDir, 'esm-out.js');
 
+    await fs.promises.writeFile(
+      path.resolve(filesDir, 'tsconfig.json'),
+      JSON.stringify({
+        compilerOptions: {
+          baseUrl: '.',
+          paths: {
+            '@proj/hello': ['packages/hello/index.ts'],
+          },
+        },
+      }),
+    );
+    await fs.promises.mkdir(path.resolve(filesDir, 'packages/hello'), { recursive: true });
+    await fs.promises.writeFile(path.resolve(filesDir, 'packages/hello/index.ts'), `export const hello = 'hello';`);
     await fs.promises.writeFile(cjsEntryPoint, template);
     await fs.promises.writeFile(esmEntryPoint, template);
 
-    await buildAssets({ chromeVersion: 100, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile });
+    await buildAssets({
+      chromeVersion: 100,
+      cjsEntryPoint,
+      cjsOutfile,
+      esmEntryPoint,
+      esmOutfile,
+      distDirectory: filesDir,
+    });
 
     const cjsContent = stripComments(await fs.promises.readFile(cjsOutfile, { encoding: 'utf8' }));
     const esmContent = stripComments(await fs.promises.readFile(esmOutfile, { encoding: 'utf8' }));
@@ -32,19 +56,22 @@ describe('buildAssets', () => {
     const cjsContentWithoutHelpers = cjsContent.split('\n').slice(-8).join('\n');
 
     expect(cjsContentWithoutHelpers).toMatchInlineSnapshot(`
-      "
-      var cjs_exports = {};
-      __export(cjs_exports, {
-        Foo: () => Foo
-      });
-      module.exports = __toCommonJS(cjs_exports);
-      var Foo = \\"foo\\";
+      "module.exports = __toCommonJS(cjs_exports);
+
+
+      var hello = \\"hello\\";
+
+
+      var Foo = \\"foo\\" + hello;
       "
     `);
     expect(esmContent).toMatchInlineSnapshot(`
       "(() => {
         
-        var Foo = \\"foo\\";
+        var hello = \\"hello\\";
+
+        
+        var Foo = \\"foo\\" + hello;
       })();
       "
     `);
