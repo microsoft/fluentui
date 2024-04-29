@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch, renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -12,8 +12,8 @@ const useStyles = makeStyles({
 
 const colors = [
   { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
+  { color: '#FF7A00', value: 'FF7A00', 'aria-label': 'dark orange' },
   { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
-  { color: '#FEFF37', value: 'FEFF37', 'aria-label': 'yellow' },
   { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
   { color: '#00B053', value: '00B053', 'aria-label': 'green' },
   { color: '#00AFED', value: '00AFED', 'aria-label': 'light blue' },
@@ -26,20 +26,25 @@ export const SwatchPickerShape = () => {
   const styles = useStyles();
   return (
     <div className={styles.example}>
-      <SwatchPicker aria-label="SwatchPicker square shape">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+      <h3>Square</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker square shape">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
         })}
       </SwatchPicker>
-      <SwatchPicker aria-label="SwatchPicker circular shape" shape="circular">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+      <h3>Circular</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker circular shape" shape="circular">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
         })}
       </SwatchPicker>
+      <h3>Rounded</h3>
       <SwatchPicker aria-label="SwatchPicker rounded shape" shape="rounded">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
-        })}
+        {colors.map(color => (
+          <ColorSwatch key={color.value} {...color} />
+        ))}
       </SwatchPicker>
     </div>
   );

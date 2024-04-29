@@ -3,6 +3,8 @@ import { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
 
 export type ColorSwatchSlots = {
   root: NonNullable<Slot<'button'>>;
+  icon?: Slot<'span'>;
+  disabledIcon?: Slot<'span'>;
 };
 
 /**
@@ -16,6 +18,11 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
     color: string;
 
     /**
+     * Whether the swatch is disabled
+     */
+    disabled?: boolean;
+
+    /**
      * Swatch value
      */
     value: string;
@@ -25,6 +32,6 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
  * State used in rendering ColorSwatch
  */
 export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
-  Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
+  Pick<ColorSwatchProps, 'color' | 'disabled' | 'size' | 'shape' | 'value'> & {
     selected: boolean;
   };

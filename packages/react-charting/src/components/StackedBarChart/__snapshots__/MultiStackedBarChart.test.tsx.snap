@@ -627,6 +627,9 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                     margin-top: unset;
                     padding-left: 8px;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <div
                 className=
@@ -639,6 +642,9 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      color: rgb(255, 255, 255);
                     }
               >
                 2020/04/30
@@ -654,6 +660,9 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                       font-size: 28px;
                       font-weight: bold;
                       line-height: 36px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      color: rgb(255, 255, 255);
                     }
               >
                 40%
@@ -4090,6 +4099,20 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4178,6 +4201,20 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}

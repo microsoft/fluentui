@@ -1,43 +1,44 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { typographyStyles, tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerInputSlots, TagPickerInputState } from './TagPickerInput.types';
-
-// TODO reuse input and icon styles from root
+import { tagPickerInputTokens } from '../../utils/tokens';
 
 export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots> = {
   root: 'fui-TagPickerInput',
-  expandIcon: 'fui-TagPickerInput__expandIcon',
 };
 
-export const iconSizes = {
-  small: '16px',
-  medium: '20px',
-  large: '24px',
-};
+const useBaseStyle = makeResetStyles({
+  backgroundColor: tokens.colorTransparentBackground,
+  color: tokens.colorNeutralForeground1,
+  fontFamily: tokens.fontFamilyBase,
+  boxSizing: 'border-box',
+
+  '&:focus': {
+    outlineStyle: 'none',
+  },
+  '&::placeholder': {
+    color: tokens.colorNeutralForeground4,
+    opacity: 1,
+  },
+  '&::after': {
+    visibility: 'hidden',
+    whiteSpace: 'pre-wrap',
+  },
+  ...shorthands.border('0'),
+  minWidth: '24px',
+  maxWidth: '100%',
+  // by default width is 0,
+  // it will be calculated based on the requirement of stretching the component to 100% width
+  // see setTagPickerInputStretchStyle method for more details
+  width: tagPickerInputTokens.width,
+  flexGrow: 1,
+});
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
-    flexGrow: 1,
-    boxSizing: 'border-box',
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-
-    '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
-      opacity: 1,
-    },
-  },
-
   // size variants
   medium: {
     ...typographyStyles.body1,
@@ -59,82 +60,20 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-
-  // TODO add additional classes for different states and/or slots
-});
-
-const useIconStyles = makeStyles({
-  icon: {
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
-    cursor: 'pointer',
-    display: 'block',
-    fontSize: tokens.fontSizeBase500,
-    position: 'absolute',
-    right: '10px',
-    top: '5px',
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
-      display: 'block',
-    },
-  },
-  hidden: {
-    display: 'none',
-  },
-  visuallyHidden: {
-    clip: 'rect(0px, 0px, 0px, 0px)',
-    height: '1px',
-    ...shorthands.margin('-1px'),
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('0px'),
-    width: '1px',
-    position: 'absolute',
-  },
-
-  // icon size variants
-  medium: {
-    fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  large: {
-    fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  'extra-large': {
-    fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
-  },
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    cursor: 'not-allowed',
-  },
 });
 
 /**
  * Apply styling to the TagPickerInput slots based on the state
  */
 export const useTagPickerInputStyles_unstable = (state: TagPickerInputState): TagPickerInputState => {
+  const baseStyle = useBaseStyle();
   const styles = useStyles();
-  const iconStyles = useIconStyles();
   state.root.className = mergeClasses(
     tagPickerInputClassNames.root,
-    styles.root,
+    baseStyle,
     styles[state.size],
     state.disabled && styles.disabled,
     state.root.className,
   );
-
-  if (state.expandIcon) {
-    state.expandIcon.className = mergeClasses(
-      tagPickerInputClassNames.expandIcon,
-      iconStyles.icon,
-      iconStyles[state.size],
-      state.disabled && iconStyles.disabled,
-      // state.showClearIcon && iconStyles.visuallyHidden,
-      state.expandIcon.className,
-    );
-  }
-
   return state;
 };

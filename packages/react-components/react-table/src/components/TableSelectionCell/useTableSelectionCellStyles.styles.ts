@@ -64,7 +64,7 @@ const useStyles = makeStyles({
   },
 
   hidden: {
-    visibility: 'hidden',
+    opacity: 0,
   },
 });
 

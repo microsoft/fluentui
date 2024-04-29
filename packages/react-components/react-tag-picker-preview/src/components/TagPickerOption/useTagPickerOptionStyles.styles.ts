@@ -33,7 +33,14 @@ const useStyles = makeStyles({
  * Apply styling to the TagPickerOption slots based on the state
  */
 export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): TagPickerOptionState => {
-  useOptionStyles_unstable({ ...state, checkIcon: undefined });
+  useOptionStyles_unstable({
+    ...state,
+    active: false,
+    disabled: false,
+    focusVisible: false,
+    checkIcon: undefined,
+    selected: false,
+  });
   const styles = useStyles();
 
   state.root.className = mergeClasses(tagPickerOptionClassNames.root, styles.root, state.root.className);

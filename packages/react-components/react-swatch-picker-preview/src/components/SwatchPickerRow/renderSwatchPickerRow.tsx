@@ -9,7 +9,5 @@ import type { SwatchPickerRowState, SwatchPickerRowSlots } from './SwatchPickerR
  */
 export const renderSwatchPickerRow_unstable = (state: SwatchPickerRowState) => {
   assertSlots<SwatchPickerRowSlots>(state);
-
-  // TODO Add additional slots in the appropriate place
   return <state.root />;
 };

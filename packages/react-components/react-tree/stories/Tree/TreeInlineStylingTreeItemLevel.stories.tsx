@@ -4,30 +4,24 @@ import {
   TreeItem,
   TreeItemLayout,
   treeItemLevelToken,
-  useTreeItemContext_unstable,
   useSubtreeContext_unstable,
 } from '@fluentui/react-components';
 
-const RecursiveTreeItem: React.FC = () => {
+export const InlineStylingTreeItemLevel = () => {
   const { level } = useSubtreeContext_unstable();
-  const open = useTreeItemContext_unstable(ctx => ctx.open || level === 1);
-  return (
+  return level === 0 ? (
+    <Tree aria-label="Inline Styling Tree Item Level">
+      <InlineStylingTreeItemLevel />
+    </Tree>
+  ) : (
     <TreeItem value={level} itemType="branch" style={{ [treeItemLevelToken]: level }}>
       <TreeItemLayout>{`level ${level}, item 1`}</TreeItemLayout>
-      {open && (
-        <Tree>
-          <RecursiveTreeItem />
-        </Tree>
-      )}
+      <Tree>
+        <InlineStylingTreeItemLevel />
+      </Tree>
     </TreeItem>
   );
 };
-
-export const InlineStylingTreeItemLevel = () => (
-  <Tree aria-label="Inline Styling Tree Item Level">
-    <RecursiveTreeItem />
-  </Tree>
-);
 
 InlineStylingTreeItemLevel.parameters = {
   docs: {

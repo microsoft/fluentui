@@ -10,7 +10,7 @@ export type SwatchPickerOnSelectEventHandler = EventHandler<SwatchPickerOnSelect
 
 export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   selectedValue: string;
-  selectedColor: string;
+  selectedSwatch: string;
 };
 
 /**
@@ -25,7 +25,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   /**
    * Whether SwatchPicker is row or grid
    */
-  grid?: boolean;
+  layout?: 'row' | 'grid';
 
   /**
    * Triggers a callback when the value has been changed
@@ -41,7 +41,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
    * Swatch size
    * @defaultvalue 'medium'
    */
-  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+  size?: 'extra-small' | 'small' | 'medium' | 'large';
 
   /**
    * Swatch shape
@@ -61,4 +61,6 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'grid' | 'size' | 'shape' | 'spacing'>;
+  Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'> & {
+    isGrid: boolean;
+  };

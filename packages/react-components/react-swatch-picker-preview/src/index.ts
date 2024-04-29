@@ -4,7 +4,6 @@ export {
   useSwatchPickerStyles_unstable,
   useSwatchPicker_unstable,
   swatchPickerClassNames,
-  swatchPickerCSSVars,
 } from './SwatchPicker';
 export type {
   SwatchPickerProps,
@@ -28,7 +27,6 @@ export {
   useImageSwatchStyles_unstable,
   useImageSwatch_unstable,
   imageSwatchClassNames,
-  imageSwatchCSSVars,
 } from './ImageSwatch';
 export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './ImageSwatch';
 export type { SwatchPickerRowProps, SwatchPickerRowSlots, SwatchPickerRowState } from './SwatchPickerRow';
@@ -39,4 +37,13 @@ export {
   useSwatchPickerRow_unstable,
   swatchPickerRowClassNames,
 } from './SwatchPickerRow';
-export { renderSwatchPickerRow, renderSwatchPickerGrid } from './utils/renderUtils';
+export { renderSwatchPickerGrid } from './utils/renderUtils';
+export type { SwatchProps, SwatchPickerGridProps } from './utils/renderUtils';
+export {
+  EmptySwatch,
+  renderEmptySwatch_unstable,
+  useEmptySwatchStyles_unstable,
+  useEmptySwatch_unstable,
+  emptySwatchClassNames,
+} from './EmptySwatch';
+export type { EmptySwatchProps, EmptySwatchSlots, EmptySwatchState } from './EmptySwatch';

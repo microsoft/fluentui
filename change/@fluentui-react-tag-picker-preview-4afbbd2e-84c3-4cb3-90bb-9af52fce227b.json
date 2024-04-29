@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: removes multiselect from TagPicker signatures",
+  "packageName": "@fluentui/react-tag-picker-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

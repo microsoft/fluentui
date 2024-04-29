@@ -258,7 +258,7 @@ describe('Vertical stacked bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the given width',
     VerticalStackedBarChart,
-    { data: simplePointsWithLine, barWidth: 100 },
+    { data: simplePointsWithLine, barWidth: 100, maxBarWidth: 200 },
     container => {
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');

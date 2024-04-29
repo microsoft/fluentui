@@ -39,7 +39,7 @@ const baseStyles: GriffelResetStyle = {
 
   border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   ...createCustomFocusIndicatorStyle({
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
     zIndex: 1,
   }),
 };
@@ -56,7 +56,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',
@@ -80,8 +80,8 @@ const useRootCircularBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
-      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
+      borderLeft: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',
@@ -171,7 +171,7 @@ const useRootStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground1,
+    color: tokens.colorBrandForeground2,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,

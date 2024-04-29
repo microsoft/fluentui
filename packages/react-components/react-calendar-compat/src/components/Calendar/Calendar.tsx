@@ -263,6 +263,9 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
 
     const onGotoToday = (): void => {
       navigateDay(today!);
+      if (showMonthPickerAsOverlay && isMonthPickerVisible) {
+        toggleDayMonthPickerVisibility();
+      }
       focusOnNextUpdate();
     };
 

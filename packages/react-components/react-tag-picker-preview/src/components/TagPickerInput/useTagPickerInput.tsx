@@ -1,12 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
-import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { slot, useMergedRefs, getIntrinsicElementProps, useEventCallback } from '@fluentui/react-utilities';
-import { useInputTriggerSlot } from '../../utils/useInputTriggerSlot';
-import { Backspace, Enter } from '@fluentui/keyboard-keys';
+import {
+  useMergedRefs,
+  getIntrinsicElementProps,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
+import { ArrowLeft, Backspace, Enter, Space } from '@fluentui/keyboard-keys';
+import { useInputTriggerSlot } from '@fluentui/react-combobox';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { tagPickerInputCSSRules } from '../../utils/tokens';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render TagPickerInput.
@@ -21,9 +28,12 @@ export const useTagPickerInput_unstable = (
   props: TagPickerInputProps,
   ref: React.Ref<HTMLInputElement>,
 ): TagPickerInputState => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
+  const freeform = useTagPickerContext_unstable(ctx => ctx.freeform);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
+  const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const {
     triggerRef,
     clearSelection,
@@ -34,12 +44,30 @@ export const useTagPickerInput_unstable = (
     setHasFocus,
     setOpen,
     setValue,
-    multiselect,
     popoverId,
     value: contextValue,
-  } = usePickerContext();
+  } = useTagPickerContexts();
+
+  useIsomorphicLayoutEffect(() => {
+    if (!triggerRef.current) {
+      return;
+    }
+    setTagPickerInputStretchStyle(triggerRef.current);
+  }, [selectedOptions, triggerRef]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (triggerRef.current) {
+      const input = triggerRef.current;
+      const cb = () => setTagPickerInputStretchStyle(input);
+      input.addEventListener('input', cb);
+      return () => {
+        input.removeEventListener('input', cb);
+      };
+    }
+  }, [triggerRef]);
 
   const { value = contextValue, disabled = contextDisabled } = props;
+  const { findLastFocusable } = useFocusFinders();
 
   const root = useInputTriggerSlot(
     {
@@ -50,13 +78,25 @@ export const useTagPickerInput_unstable = (
       ...getIntrinsicElementProps('input', props),
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         props.onKeyDown?.(event);
-        if (event.key === Enter) {
-          ReactDOM.unstable_batchedUpdates(() => {
-            setValue(undefined);
-            setOpen(event, false);
-          });
+        if (event.key === ArrowLeft && event.currentTarget.selectionStart === 0 && tagPickerGroupRef.current) {
+          findLastFocusable(tagPickerGroupRef.current)?.focus();
+          return;
         }
-
+        if (event.key === Space && open) {
+          setOpen(event, false);
+          return;
+        }
+        if (event.key === Enter) {
+          if (open) {
+            ReactDOM.unstable_batchedUpdates(() => {
+              setValue(undefined);
+              setOpen(event, false);
+            });
+          } else {
+            setOpen(event, true);
+          }
+          return;
+        }
         if (event.key === Backspace && value?.length === 0 && selectedOptions.length) {
           const toDismiss = selectedOptions[selectedOptions.length - 1];
           selectOption(event, {
@@ -66,13 +106,14 @@ export const useTagPickerInput_unstable = (
             id: 'ERROR_DO_NOT_USE',
             text: 'ERROR_DO_NOT_USE',
           });
+          return;
         }
       }),
     },
     useMergedRefs(triggerRef, ref),
     {
       activeDescendantController,
-      freeform: props.freeform,
+      freeform,
       state: {
         clearSelection,
         getOptionById,
@@ -82,7 +123,7 @@ export const useTagPickerInput_unstable = (
         setHasFocus,
         setOpen,
         setValue,
-        multiselect,
+        multiselect: true,
         value: props.value,
       },
     },
@@ -91,18 +132,8 @@ export const useTagPickerInput_unstable = (
   const state: TagPickerInputState = {
     components: {
       root: 'input',
-      expandIcon: 'span',
     },
     root,
-    expandIcon: slot.optional(props.expandIcon, {
-      renderByDefault: true,
-      defaultProps: {
-        'aria-expanded': open,
-        children: <ChevronDownIcon />,
-        role: 'button',
-      },
-      elementType: 'span',
-    }),
     disabled,
     size,
   };
@@ -110,9 +141,9 @@ export const useTagPickerInput_unstable = (
   return state;
 };
 
-function usePickerContext() {
+function useTagPickerContexts() {
   return {
-    triggerRef: useTagPickerContext_unstable(ctx => ctx.triggerRef),
+    triggerRef: useTagPickerContext_unstable(ctx => ctx.triggerRef) as React.RefObject<HTMLInputElement>,
     clearSelection: useTagPickerContext_unstable(ctx => ctx.clearSelection),
     getOptionById: useTagPickerContext_unstable(ctx => ctx.getOptionById),
     open: useTagPickerContext_unstable(ctx => ctx.open),
@@ -121,8 +152,29 @@ function usePickerContext() {
     setHasFocus: useTagPickerContext_unstable(ctx => ctx.setHasFocus),
     setOpen: useTagPickerContext_unstable(ctx => ctx.setOpen),
     setValue: useTagPickerContext_unstable(ctx => ctx.setValue),
-    multiselect: useTagPickerContext_unstable(ctx => ctx.multiselect),
     value: useTagPickerContext_unstable(ctx => ctx.value),
     popoverId: useTagPickerContext_unstable(ctx => ctx.popoverId),
   };
 }
+
+/**
+ * while typing the user might need a bit more of space to see the text,
+ * which means the input should stretch to 100% width
+ * occupying a whole new line.
+ *
+ * This function will set the CSS variable `--width` to `100%` if the scrollWidth is greater than the offsetWidth,
+ * meaning the text is overflowing the input.
+ *
+ * @param input - input element to apply the style
+ * @returns void
+ */
+const setTagPickerInputStretchStyle = (input: HTMLInputElement) => {
+  // first we need to remove the CSS variable
+  // to properly calculate the difference between scrollWidth and offsetWidth
+  input.style.removeProperty(tagPickerInputCSSRules.width);
+  if (input.scrollWidth > input.offsetWidth + 1) {
+    input.style.setProperty(tagPickerInputCSSRules.width, '100%');
+  } else {
+    input.style.removeProperty(tagPickerInputCSSRules.width);
+  }
+};

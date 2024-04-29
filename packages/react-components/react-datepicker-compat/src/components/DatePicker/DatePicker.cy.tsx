@@ -39,4 +39,9 @@ describe('DatePicker', () => {
     cy.get(inputSelector).focus().realPress('Enter').realPress('Escape');
     cy.focused().should('have.attr', 'role', 'combobox');
   });
+
+  it('should open on keydown', () => {
+    mount(<DatePicker inlinePopup />);
+    cy.get(inputSelector).focus().realPress('ArrowDown').get(popoverSelector).should('be.visible');
+  });
 });

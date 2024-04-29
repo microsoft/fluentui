@@ -138,6 +138,16 @@ storiesOf('Dropdown Converged', module)
       <Option>Blue</Option>
     </Dropdown>
   ))
+  .addStory('When rendering inline, it should render on top of relatively positioned elements', () => (
+    <>
+      <Dropdown open inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>
+      <button style={{ position: 'relative' }}>sample button</button>
+    </>
+  ))
   .addStory('Option with long content', () => (
     <Dropdown open>
       <Option>

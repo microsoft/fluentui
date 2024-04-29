@@ -33,12 +33,17 @@ export const Button = () => {
         <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
+              <Tag
+                key={option}
+                shape="rounded"
+                media={<Avatar aria-hidden name={option} color="colorful" />}
+                value={option}
+              >
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerButton />
+          <TagPickerButton aria-label="Select Employees" />
         </TagPickerControl>
 
         <TagPickerList>
@@ -47,7 +52,7 @@ export const Button = () => {
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
-                media={<Avatar name={option} color="colorful" />}
+                media={<Avatar aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}
               >
@@ -58,4 +63,14 @@ export const Button = () => {
       </TagPicker>
     </div>
   );
+};
+
+Button.parameters = {
+  docs: {
+    description: {
+      story: `
+The component \`TagPickerButton\` renders an "invisible" button that can be used instead of \`TagPickerInput\` to opt-out of a text field and to provide something similar to a [\`Dropdown\`](https://react.fluentui.dev/?path=/docs/components-dropdown--default) behavior.
+      `,
+    },
+  },
 };

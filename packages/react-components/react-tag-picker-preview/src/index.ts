@@ -7,7 +7,6 @@ export type {
 } from './TagPicker';
 export {
   TagPickerInput,
-  iconSizes,
   tagPickerInputClassNames,
   renderTagPickerInput_unstable,
   useTagPickerInputStyles_unstable,
@@ -54,3 +53,16 @@ export {
   useTagPickerGroup_unstable,
 } from './TagPickerGroup';
 export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup';
+
+export {
+  TagPickerOptionGroup,
+  tagPickerOptionGroupClassNames,
+  renderTagPickerOptionGroup,
+  useTagPickerOptionGroupStyles,
+  useTagPickerOptionGroup,
+} from './TagPickerOptionGroup';
+export type {
+  TagPickerOptionGroupProps,
+  TagPickerOptionGroupSlots,
+  TagPickerOptionGroupState,
+} from './TagPickerOptionGroup';

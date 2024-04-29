@@ -1,5 +1,5 @@
-## Best practices
+<!-- ## Best practices
 
 ### Do
 
-### Don't
+### Don't -->

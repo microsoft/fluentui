@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
 /**
@@ -47,6 +47,16 @@ const useStyles = makeStyles({
     marginLeft: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
     gridColumnStart: '3',
     gridRowStart: 'span 2',
+
+    // when the card is selected or hovered, it has custom high contrast color and background styles
+    // setting this ensures action buttons adopt those colors and are still visible in forced-colors mode
+    '@media (forced-colors: active)': {
+      '& .fui-Button, & .fui-Link': {
+        ...shorthands.borderColor('currentColor'),
+        color: 'currentColor',
+        outlineColor: 'currentColor',
+      },
+    },
   },
 });
 

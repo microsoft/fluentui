@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import type { MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions.types';
@@ -12,14 +12,14 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
  * Styles for the root slot
  */
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('secondaryActions'),
+  gridArea: 'secondaryActions',
   display: 'flex',
   columnGap: tokens.spacingHorizontalM,
   paddingRight: tokens.spacingHorizontalM,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('actions'),
+  gridArea: 'actions',
   paddingRight: tokens.spacingHorizontalM,
 });
 

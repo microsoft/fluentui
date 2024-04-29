@@ -6,7 +6,7 @@ import { useColorSwatchStyles_unstable } from './useColorSwatchStyles.styles';
 import type { ColorSwatchProps } from './ColorSwatch.types';
 
 /**
- * ColorSwatch component - TODO: add more docs
+ * ColorSwatch component is used to render a colors, icons and gradients.
  */
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps> = React.forwardRef((props, ref) => {
   const state = useColorSwatch_unstable(props, ref);

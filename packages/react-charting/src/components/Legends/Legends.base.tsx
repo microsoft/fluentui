@@ -88,7 +88,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _generateData(): ILegendOverflowData {
-    const { allowFocusOnLegends = true } = this.props;
+    const { allowFocusOnLegends = true, shape } = this.props;
     const dataItems: ILegendItem[] = this.props.legends.map((legend: ILegend, index: number) => {
       return {
         ...(allowFocusOnLegends && {
@@ -103,7 +103,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         hoverAction: legend.hoverAction!,
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
-        shape: legend.shape,
+        shape: shape ? shape : legend.shape,
         stripePattern: legend.stripePattern,
         isLineLegendInBarChart: legend.isLineLegendInBarChart,
         opacity: legend.opacity,

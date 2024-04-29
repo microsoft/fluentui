@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -22,7 +22,7 @@ const useRootBaseStyles = makeResetStyles({
   alignItems: 'center',
   minHeight: '32px',
   boxSizing: 'border-box',
-  ...shorthands.gridArea('layout'),
+  gridArea: 'layout',
   ':active': {
     color: tokens.colorNeutralForeground2Pressed,
     backgroundColor: tokens.colorSubtleBackgroundPressed,
@@ -87,8 +87,8 @@ const useActionsBaseStyles = makeResetStyles({
   marginLeft: 'auto',
   position: 'relative',
   zIndex: 1,
-  ...shorthands.gridArea('aside'),
-  ...shorthands.padding(0, tokens.spacingHorizontalS),
+  gridArea: 'aside',
+  padding: `0 ${tokens.spacingHorizontalS}`,
 });
 /**
  * Styles for the action icon slot
@@ -98,9 +98,9 @@ const useAsideBaseStyles = makeResetStyles({
   marginLeft: 'auto',
   alignItems: 'center',
   zIndex: 0,
-  ...shorthands.gridArea('aside'),
-  ...shorthands.padding(0, tokens.spacingHorizontalM),
-  ...shorthands.gap(tokens.spacingHorizontalXS),
+  gridArea: 'aside',
+  padding: `0 ${tokens.spacingHorizontalM}`,
+  gap: tokens.spacingHorizontalXS,
 });
 
 /**
@@ -113,15 +113,15 @@ const useExpandIconBaseStyles = makeResetStyles({
   minWidth: '24px',
   boxSizing: 'border-box',
   color: tokens.colorNeutralForeground3,
-  ...shorthands.flex(0, 0, 'auto'),
-  ...shorthands.padding(tokens.spacingVerticalXS, 0),
+  flex: `0 0 auto`,
+  padding: `${tokens.spacingVerticalXS} 0`,
 });
 
 /**
  * Styles for the content slot
  */
 const useMainBaseStyles = makeResetStyles({
-  ...shorthands.padding(0, tokens.spacingHorizontalXXS),
+  padding: `0 ${tokens.spacingHorizontalXXS}`,
 });
 
 /**

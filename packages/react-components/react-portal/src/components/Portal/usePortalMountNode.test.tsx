@@ -9,6 +9,7 @@ describe('usePortalMountNode', () => {
     const { result } = renderHook(() => usePortalMountNode({}));
 
     expect(result.current).toBeInstanceOf(HTMLDivElement);
+    expect(result.current).toHaveAttribute('data-portal-node', 'true');
     expect(document.body.contains(result.current)).toBeTruthy();
   });
 

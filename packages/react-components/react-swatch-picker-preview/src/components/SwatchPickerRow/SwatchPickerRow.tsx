@@ -6,7 +6,7 @@ import { useSwatchPickerRowStyles_unstable } from './useSwatchPickerRowStyles.st
 import type { SwatchPickerRowProps } from './SwatchPickerRow.types';
 
 /**
- * SwatchPickerRow component - TODO: add more docs
+ * SwatchPickerRow component is used to render a row of swatches.
  */
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps> = React.forwardRef((props, ref) => {
   const state = useSwatchPickerRow_unstable(props, ref);

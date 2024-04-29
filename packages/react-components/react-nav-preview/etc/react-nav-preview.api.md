@@ -8,12 +8,12 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { InlineDrawerProps } from '@fluentui/react-drawer';
-import { InlineDrawerSlots } from '@fluentui/react-drawer';
-import { InlineDrawerState } from '@fluentui/react-drawer';
+import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -35,7 +35,8 @@ export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>
 
 // @public (undocumented)
 export type NavCategoryItemSlots = {
-    root: Slot<'button'>;
+    root: NonNullable<Slot<'button'>>;
+    icon?: Slot<'span'>;
     expandIcon: NonNullable<Slot<'span'>>;
 };
 
@@ -84,10 +85,10 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
 
 // @public
-export type NavDrawerProps = InlineDrawerProps & NavProps;
+export type NavDrawerProps = DrawerProps & NavProps;
 
 // @public
-export type NavDrawerState = InlineDrawerState & NavContextValue;
+export type NavDrawerState = DrawerState & NavContextValue;
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
@@ -108,8 +109,8 @@ export type NavItemRegisterData = {
 
 // @public (undocumented)
 export type NavItemSlots = {
-    root: Slot<'a'>;
-    content: NonNullable<Slot<'span'>>;
+    root: NonNullable<Slot<'a'>>;
+    icon?: Slot<'span'>;
 };
 
 // @public
@@ -176,7 +177,6 @@ export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
 // @public (undocumented)
 export type NavSubItemSlots = {
     root: Slot<'a'>;
-    content: NonNullable<Slot<'span'>>;
 };
 
 // @public
@@ -196,7 +196,7 @@ export const renderNavCategory_unstable: (state: NavCategoryState, contextValues
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
 
-// @public
+// @public (undocumented)
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
 
 // @public

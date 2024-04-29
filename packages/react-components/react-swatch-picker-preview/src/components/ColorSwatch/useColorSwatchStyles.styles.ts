@@ -6,6 +6,8 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
+  icon: 'fui-ColorSwatch__icon',
+  disabledIcon: 'fui-ColorSwatch__disabledIcon',
 };
 
 export const swatchCSSVars = {
@@ -17,11 +19,15 @@ const { color } = swatchCSSVars;
 /**
  * Styles for the root slot
  */
-const useStyles = makeResetStyles({
+const useResetStyles = makeResetStyles({
   display: 'inline-flex',
+  flexShrink: 0,
+  alignItems: 'center',
+  justifyContent: 'center',
   boxSizing: 'border-box',
   border: `1px solid ${tokens.colorTransparentStroke}`,
   background: `var(${color})`,
+  overflow: 'hidden',
   padding: '0',
   ':hover': {
     cursor: 'pointer',
@@ -47,31 +53,26 @@ const useStyles = makeResetStyles({
   // High contrast styles
 
   '@media (forced-colors: active)': {
-    ':focus': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
-    },
-
+    forcedColorAdjust: 'none',
     ':hover': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke2Hover}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
     },
-
     ':hover:active': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
     },
   },
 });
 
-const useStylesSelected = makeStyles({
+const useStyles = makeStyles({
+  disabled: {
+    ':hover': {
+      cursor: 'not-allowed',
+      boxShadow: 'none',
+    },
+  },
   selected: {
     ...shorthands.border('none'),
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
-    ...shorthands.borderColor(tokens.colorBrandStroke1),
     ':hover': {
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
     },
@@ -81,11 +82,14 @@ const useStylesSelected = makeStyles({
     ...createCustomFocusIndicatorStyle({
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus2}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
     }),
+    '@media (forced-colors: active)': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    },
   },
 });
 
 const useSizeStyles = makeStyles({
-  extraSmall: {
+  'extra-small': {
     width: '20px',
     height: '20px',
   },
@@ -124,23 +128,62 @@ const useShapeStyles = makeStyles({
   },
 });
 
+const useIconStyles = makeStyles({
+  disabledIcon: {
+    color: tokens.colorNeutralForegroundInverted,
+  },
+  icon: {
+    display: 'flex',
+    alignSelf: 'center',
+  },
+  'extra-small': {
+    fontSize: '16px',
+  },
+  small: {
+    fontSize: '16px',
+  },
+  medium: {
+    fontSize: '20px',
+  },
+  large: {
+    fontSize: '24px',
+  },
+});
+
 /**
  * Apply styling to the ColorSwatch slots based on the state
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
+  const resetStyles = useResetStyles();
   const styles = useStyles();
-  const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
+  const iconStyles = useIconStyles();
+
+  const { size = 'medium', shape = 'square' } = state;
 
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
-    styles,
-    sizeStyles[state.size ?? 'medium'],
-    shapeStyles[state.shape ?? 'square'],
-    state.selected && selectedStyles.selected,
+    resetStyles,
+    sizeStyles[size],
+    shapeStyles[shape],
+    state.selected && styles.selected,
+    state.disabled && styles.disabled,
     state.root.className,
   );
+
+  if (state.disabled && state.disabledIcon) {
+    state.disabledIcon.className = mergeClasses(
+      iconStyles.icon,
+      iconStyles[size],
+      iconStyles.disabledIcon,
+      state.disabledIcon.className,
+    );
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles.icon, iconStyles[size], state.icon.className);
+  }
 
   return state;
 };

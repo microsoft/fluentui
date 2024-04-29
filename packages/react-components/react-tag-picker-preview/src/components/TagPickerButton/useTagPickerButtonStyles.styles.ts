@@ -5,13 +5,6 @@ import type { TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButt
 
 export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots> = {
   root: 'fui-TagPickerButton',
-  expandIcon: 'fui-TagPickerButton__expandIcon',
-};
-
-export const iconSizes = {
-  small: '16px',
-  medium: '20px',
-  large: '24px',
 };
 
 /**
@@ -138,50 +131,11 @@ const useStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
-  icon: {
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
-    display: 'block',
-    fontSize: tokens.fontSizeBase500,
-    gridColumnStart: 'icon',
-    gridColumnEnd: 'end',
-    position: 'absolute',
-    right: '10px',
-    top: '5px',
-
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
-      display: 'block',
-    },
-  },
-
-  // icon size variants
-  medium: {
-    fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  large: {
-    fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
-  },
-  'extra-large': {
-    fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
-  },
-
-  disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-  },
-});
-
 /**
  * Apply styling to the PickerButton slots based on the state
  */
 export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): TagPickerButtonState => {
   const styles = useStyles();
-  const iconStyles = useIconStyles();
   state.root.className = mergeClasses(
     tagPickerButtonClassNames.root,
     styles.button,
@@ -189,20 +143,6 @@ export const useTagPickerButtonStyles_unstable = (state: TagPickerButtonState): 
     state.hasSelectedOption && styles.visuallyHidden,
     state.root.className,
   );
-
-  if (state.expandIcon) {
-    state.expandIcon.className = mergeClasses(
-      tagPickerButtonClassNames.expandIcon,
-      iconStyles.icon,
-      iconStyles[state.size],
-      // state.disabled && iconStyles.disabled,
-      // state.showClearIcon && styles.hidden,
-      state.expandIcon.className,
-    );
-  }
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

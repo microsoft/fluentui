@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -12,23 +12,12 @@ export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  ...shorthands.margin('-1px', 0),
-  ...shorthands.padding('1px', tokens.spacingHorizontalXXL),
-  ...shorthands.overflow('auto'),
-  ...shorthands.flex(1),
-
+  padding: `0 ${tokens.spacingHorizontalXXL}`,
+  flex: 1,
   alignSelf: 'stretch',
-
-  // A "good hack" to display top and bottom borders based on the scroll position
-  backgroundImage: `linear-gradient(to top, ${tokens.colorNeutralBackground1}, ${tokens.colorNeutralBackground1}),
-    linear-gradient(to top, ${tokens.colorNeutralBackground1}, ${tokens.colorNeutralBackground1}),
-    linear-gradient(to top, ${tokens.colorNeutralStroke1}, ${tokens.colorNeutralBackground1}),
-    linear-gradient(to bottom, ${tokens.colorNeutralStroke1}, ${tokens.colorNeutralBackground1})`,
-  'background-position': 'bottom center, top center, bottom center, top center',
-  backgroundRepeat: 'no-repeat',
-  backgroundColor: tokens.colorNeutralBackground1,
-  backgroundSize: '100% 2px, 100% 2px, 100% 1px, 100% 1px',
-  backgroundAttachment: 'local, local, scroll, scroll',
+  position: 'relative',
+  zIndex: 1,
+  overflow: 'auto',
 
   ':last-child': {
     paddingBottom: `calc(${tokens.spacingHorizontalXXL} + 1px)`,

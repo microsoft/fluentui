@@ -1,4 +1,4 @@
-import { GriffelStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { type GriffelResetStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 import { DrawerBaseState } from './DrawerBase.types';
@@ -13,8 +13,8 @@ export const drawerCSSVars = {
 /**
  * Default shared styles for the Drawer component
  */
-export const drawerDefaultStyles: GriffelStyle = {
-  ...shorthands.overflow('hidden'),
+export const drawerDefaultStyles: GriffelResetStyle = {
+  overflow: 'hidden',
 
   width: `var(${drawerCSSVars.drawerSizeVar})`,
   maxWidth: '100vw',
