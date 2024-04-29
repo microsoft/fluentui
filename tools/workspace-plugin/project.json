@@ -36,14 +36,10 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "tools/workspace-plugin/**/*.ts",
-          "tools/workspace-plugin/package.json",
-          "tools/workspace-plugin/generators.json"
-        ]
+        "lintFilePatterns": ["{projectRoot}/src/**/*.ts", "{projectRoot}/package.json", "{projectRoot}/generators.json"]
       }
     },
     "lint-old": {
