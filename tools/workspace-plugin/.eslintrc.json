@@ -20,7 +20,11 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/await-thenable": "error",
+        "@typescript-eslint/no-misused-promises": "error",
+        "@typescript-eslint/no-floating-promises": "error"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
@@ -30,7 +34,6 @@
       "files": ["./package.json", "./generators.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
-        "@typescript-eslint/naming-convention": "off",
         "@nx/nx-plugin-checks": "error"
       }
     }
