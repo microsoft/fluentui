@@ -66,3 +66,5 @@ export type {
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
 } from './TagPickerOptionGroup';
+
+export { useTagPickerFilter } from './utils/useTagPickerFilter';
