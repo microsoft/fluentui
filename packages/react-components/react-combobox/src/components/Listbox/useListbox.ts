@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import {
+  ActiveDescendantChangeEvent,
   useActiveDescendant,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
@@ -47,6 +48,28 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
+
+  const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
+
+  const listenerRef = React.useMemo(() => {
+    let element: HTMLDivElement | null = null;
+
+    const listener = (untypedEvent: Event) => {
+      // Typescript doesn't support custom event types on handler
+      const event = untypedEvent as ActiveDescendantChangeEvent;
+      onActiveDescendantChange?.(event);
+    };
+
+    return (el: HTMLDivElement | null) => {
+      if (!el) {
+        element?.removeEventListener('activedescendantchange', listener);
+        return;
+      }
+
+      element = el;
+      element.addEventListener('activedescendantchange', listener);
+    };
+  }, [onActiveDescendantChange]);
 
   const activeDescendantContext = useActiveDescendantContext();
   const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
@@ -149,7 +172,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef),
+        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef, listenerRef),
         role: multiselect ? 'menu' : 'listbox',
         tabIndex: 0,
         ...props,
@@ -159,6 +182,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     multiselect,
     clearSelection,
     activeDescendantController,
+    onActiveDescendantChange,
     ...optionCollection,
     ...optionContextValues,
   };
