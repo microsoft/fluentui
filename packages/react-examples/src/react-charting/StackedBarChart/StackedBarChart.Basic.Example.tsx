@@ -39,7 +39,6 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
           data={data1}
           href={'https://developer.microsoft.com/en-us/'}
           ignoreFixStyle={true}
-          hideTooltip={true}
         />
       </>
     );
