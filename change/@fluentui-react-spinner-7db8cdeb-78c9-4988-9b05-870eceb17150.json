@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix spinner embedded in button animation",
+  "packageName": "@fluentui/react-spinner",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}

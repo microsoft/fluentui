@@ -7,32 +7,34 @@ export const teachingPopoverBodyClassNames: SlotClassNames<TeachingPopoverBodySl
   media: 'fui-TeachingPopoverBody__media',
 };
 
+const popoverBodyDimension = 288;
+
 export const useMediaStyles = makeStyles({
   base: {
     ...shorthands.gridArea('media'),
     ...shorthands.overflow('hidden'),
-    width: '288px',
+    width: `${popoverBodyDimension}px`,
     marginBottom: '12px',
     verticalAlign: 'middle',
     justifyContent: 'center',
     display: 'flex',
   },
   short: {
-    aspectRatio: 288 / 117,
+    aspectRatio: popoverBodyDimension / 117,
     '@supports not (aspect-ratio)': {
       height: '117px',
     },
   },
   medium: {
-    aspectRatio: 288 / 176,
+    aspectRatio: popoverBodyDimension / 176,
     '@supports not (aspect-ratio)': {
       height: '176px',
     },
   },
   tall: {
-    aspectRatio: 288 / 288,
+    aspectRatio: popoverBodyDimension / popoverBodyDimension,
     '@supports not (aspect-ratio)': {
-      height: '288px',
+      height: `${popoverBodyDimension}px`,
     },
   },
 });

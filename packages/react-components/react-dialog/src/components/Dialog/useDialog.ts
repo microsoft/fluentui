@@ -37,19 +37,26 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const focusRef = useFocusFirstElement(open, modalType);
-  const disableBodyScroll = useDisableBodyScroll();
-  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
-
-  useIsomorphicLayoutEffect(() => {
-    if (isBodyScrollLocked) {
-      return disableBodyScroll();
-    }
-  }, [disableBodyScroll, isBodyScrollLocked]);
 
   const { modalAttributes, triggerAttributes } = useModalAttributes({
     trapFocus: modalType !== 'non-modal',
     legacyTrapFocus: !inertTrapFocus,
   });
+
+  const isNestedDialog = useHasParentContext(DialogContext);
+
+  const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
+  useIsomorphicLayoutEffect(() => {
+    if (isNestedDialog) {
+      return;
+    }
+    if (open && isBodyScrollLocked) {
+      disableBodyScroll();
+    } else {
+      enableBodyScroll();
+    }
+  }, [disableBodyScroll, enableBodyScroll, isBodyScrollLocked, isNestedDialog, open]);
 
   return {
     components: {
@@ -62,9 +69,9 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),
-    isNestedDialog: useHasParentContext(DialogContext),
+    isNestedDialog,
     dialogRef: focusRef,
-    modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
+    modalAttributes,
     triggerAttributes,
   };
 };

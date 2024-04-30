@@ -66,6 +66,7 @@
     "@fluentui/react-textarea": "*",
     "@fluentui/react-theme": "*",
     "@fluentui/react-timepicker-compat": "*",
+    "@fluentui/react-tag-picker-preview": "*",
     "@fluentui/react-toast": "*",
     "@fluentui/react-tooltip": "*",
     "@fluentui/react-toolbar": "*",
