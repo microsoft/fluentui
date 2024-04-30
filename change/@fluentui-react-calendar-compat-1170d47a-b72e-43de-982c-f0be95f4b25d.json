@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": " chore: upgrade @fluentui/react-icons to 2.0.237.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
