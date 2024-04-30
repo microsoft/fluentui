@@ -1,16 +1,9 @@
-// @ts-check
-const path = require('node:path');
+import * as path from 'node:path';
 
-const { loadConfig } = require('tsconfig-paths');
+import type { Plugin } from 'esbuild';
+import { loadConfig } from 'tsconfig-paths';
 
-exports.tsConfigPathsPlugin = tsConfigPathsPlugin;
-
-/**
- *
- * @param {{cwd:string}} options
- * @returns {import('esbuild').Plugin}
- */
-function tsConfigPathsPlugin(options) {
+export function tsConfigPathsPlugin(options: { cwd: string }): Plugin {
   const tsConfig = loadConfig(options.cwd);
 
   if (tsConfig.resultType === 'failed') {
@@ -19,8 +12,7 @@ function tsConfigPathsPlugin(options) {
 
   const pathAliases = tsConfig.paths;
 
-  /** @type {import('esbuild').Plugin} */
-  const pluginConfig = {
+  const pluginConfig: Plugin = {
     name: 'tsconfig-paths',
     setup({ onResolve }) {
       onResolve({ filter: /.*/ }, args => {

@@ -1,7 +1,7 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
 
-import { tsConfigPathsPlugin } from '../esbuild-plugin';
+import { tsConfigPathsPlugin } from './esbuild-plugin';
 
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 
