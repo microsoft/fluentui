@@ -21,34 +21,34 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Default = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+export const SingleSelect = () => {
+  const [selectedOption, setSelectedOption] = React.useState<string | undefined>();
+  const selectedOptions = React.useMemo(() => (selectedOption ? [selectedOption] : []), [selectedOption]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
-    console.log(data.type);
-    setSelectedOptions(data.selectedOptions);
+    setSelectedOption(selectedOption === data.value ? undefined : data.value);
   };
 
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
-            {selectedOptions.map(option => (
+          {selectedOption && (
+            <TagPickerGroup>
               <Tag
-                key={option}
+                key={selectedOption}
                 shape="rounded"
-                media={<Avatar aria-hidden name={option} color="colorful" />}
-                value={option}
+                media={<Avatar aria-hidden name={selectedOption} color="colorful" />}
+                value={selectedOption}
               >
-                {option}
+                {selectedOption}
               </Tag>
-            ))}
-          </TagPickerGroup>
+            </TagPickerGroup>
+          )}
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
           {options
-            .filter(option => !selectedOptions.includes(option))
+            .filter(option => selectedOption !== option)
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
@@ -63,4 +63,14 @@ export const Default = () => {
       </TagPicker>
     </div>
   );
+};
+
+SingleSelect.parameters = {
+  docs: {
+    description: {
+      story: `
+By default, the \`TagPicker\` allows multiple selections. To enable single selection, you can manage the selected options state yourself and pass only one selected option to the \`TagPicker\` component.
+      `,
+    },
+  },
 };
