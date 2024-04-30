@@ -1,5 +1,4 @@
 import commonJS from 'rollup-plugin-commonjs';
-import filesize from 'rollup-plugin-filesize';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
@@ -39,10 +38,6 @@ export default [
         tagsToProcess: ['html'],
         transformer: transformHTMLFragment,
         parserOptions,
-      }),
-      filesize({
-        showMinifiedSize: false,
-        showBrotliSize: true,
       }),
     ],
   },
