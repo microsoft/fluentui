@@ -65,11 +65,15 @@ const useStyles = makeStyles({
     paddingInlineStart: '8px',
     paddingBlockStart: '0px',
   },
+  drawerHeaderNavOverrides: {
+    ...shorthands.margin('unset'),
+    paddingInlineStart: '2px',
+    paddingBlockStart: '0px',
+  },
   drawerBodyOverrides: {
     ...shorthands.padding(0, tokens.spacingVerticalMNudge),
   },
-  buttonStyles: {
-    marginInlineStart: '-8px',
+  hamburger: {
     backgroundColor: navItemTokens.backgroundColor,
     color: tokens.colorNeutralForeground2,
     textDecorationLine: 'none',
@@ -112,13 +116,8 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
       >
         <DrawerBody className={styles.drawerBodyOverrides}>
           <DrawerHeader className={styles.drawerHeaderOverrides}>
-            <DrawerHeaderNavigation>
-              <Button
-                appearance={'transparent'}
-                icon={<NavigationFilled />}
-                value={'10000'}
-                className={styles.buttonStyles}
-              />
+            <DrawerHeaderNavigation className={styles.drawerHeaderNavOverrides}>
+              <Button appearance={'transparent'} icon={<NavigationFilled />} className={styles.hamburger} />
             </DrawerHeaderNavigation>
           </DrawerHeader>
           <NavCategory value="1">
