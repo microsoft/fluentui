@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing bug where click or tap focusing an item in an unfocused listbox would result in the listbox scrolling all the way to the top due to unrestrained initial focus logic",
+  "packageName": "@fluentui/react-combobox",
+  "email": "stevenco@microsoft.com",
+  "dependentChangeType": "patch"
+}
