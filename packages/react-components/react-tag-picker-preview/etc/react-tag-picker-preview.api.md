@@ -232,6 +232,9 @@ export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: R
 // @public
 export const useTagPickerControlStyles_unstable: (state: TagPickerControlState) => TagPickerControlState;
 
+// @public (undocumented)
+export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSX.Element[];
+
 // @public
 export const useTagPickerGroup_unstable: (props: TagPickerGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupState;
 

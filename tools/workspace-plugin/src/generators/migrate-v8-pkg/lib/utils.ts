@@ -43,6 +43,7 @@ export function getASTconfigObjectProp(object: ts.ObjectLiteralExpression, propN
     if (value.name.escapedText === propName) {
       return true;
     }
+    return;
   });
 
   return extendsProperty ? (extendsProperty as ts.PropertyAssignment).initializer.getText() : undefined;

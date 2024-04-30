@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 30 Apr 2024 07:25:30 GMT",
+      "tag": "@fluentui/react-charting_v5.21.2",
+      "version": "5.21.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "lamalkar@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1af5dc3e3a8087d255f60f79f8cae2e4b13fc748",
+            "comment": "Sankey diagram bug fix - Use the formatted node value instead of the raw value, to calculate text measurement."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Apr 2024 07:25:20 GMT",
       "tag": "@fluentui/react-charting_v5.21.1",
       "version": "5.21.1",
