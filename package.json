@@ -306,7 +306,6 @@
     "rollup": "2.71.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-esbuild": "4.10.3",
-    "rollup-plugin-filesize": "8.0.2",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-terser": "5.3.1",
     "rollup-plugin-transform-tagged-template": "0.0.3",
