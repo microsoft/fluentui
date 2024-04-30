@@ -14,9 +14,6 @@ export class Drawer extends FASTElement {
    */
   public connectedCallback(): void {
     super.connectedCallback();
-    Updates.enqueue(() => {
-      this.setComponent();
-    });
   }
 
   /**
@@ -111,8 +108,8 @@ export class Drawer extends FASTElement {
    * Emits a 'cancel' event.
    * @internal
    */
-  public cancel(): void {
-    this.$emit('cancel');
+  public dismiss(): void {
+    this.$emit('dismiss');
   }
 
   /**
@@ -120,14 +117,13 @@ export class Drawer extends FASTElement {
    * @public
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
-    if (this.$fastController.isConnected) {
+    if (this.$fastController.isConnected && newValue !== oldValue) {
       if (newValue) {
         this.show();
       } else {
         this.hide();
       }
     }
-    this.$emit('onOpenChange', { open: this.open });
   }
 
   /**
@@ -139,16 +135,6 @@ export class Drawer extends FASTElement {
       if (newValue == DrawerType.inline) {
         this.modalType = DrawerModalType.nonModal;
       }
-    }
-  }
-
-  /**
-   * Sets the component state based on the `open` property.
-   * @public
-   */
-  public setComponent(): void {
-    if (this.open) {
-      this.show();
     }
   }
 
@@ -193,7 +179,7 @@ export class Drawer extends FASTElement {
     event.preventDefault();
     if (this.open && this.modalType !== DrawerModalType.alert && event.target === this.dialog) {
       this.hide();
-      this.cancel();
+      this.dismiss();
     }
     return true;
   }
@@ -214,7 +200,7 @@ export class Drawer extends FASTElement {
 
         if (this.modalType !== DrawerModalType.alert) {
           this.hide();
-          this.cancel();
+          this.dismiss();
         }
         break;
       default:
