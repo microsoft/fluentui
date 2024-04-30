@@ -4,16 +4,17 @@ import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawe
 
 export class Drawer extends FASTElement {
   /**
-   * This method is called when the custom element is connected to the document's DOM.
-   * It overrides the connectedCallback method from the base class.
-   *
    * @remarks
-   * The connectedCallback method is necessary to ensure that the component is properly initialized and rendered when it is connected to the DOM.
-   * Although the `open` property is initialized to `false` and `openChanged` already calls `show()`, there may be cases where the initial `openChanged` event occurs before the dialog reference (`dialogRef`) is set.
-   * By using the `connectedCallback` method, we can ensure that the component is fully set up before any further actions are taken.
+   * The addition of the Updates.enqueue() method within connectedCallback addresses a specific timing issue: On initial page load, properties set via attributes (like 'open') need to reflect in the internal dialog element.
+   * However, these property changes might occur before the internal elements, such as the dialog, are fully initialized and ready to display.
+   * By placing the syncDialogOpenState() inside Updates.enqueue(), we ensure that any actions to synchronize the component's state based on initial attributes are deferred until after all other pending DOM updates are processed.
+   * This ensures that the internal state of the dialog element aligns with the initial attributes specified on the <fluent-drawer>, such as automatically opening the dialog when the 'open' attribute is present at the time of connection to the DOM.
    */
   public connectedCallback(): void {
     super.connectedCallback();
+    Updates.enqueue(() => {
+      this.syncDialogOpenState();
+    });
   }
 
   /**
@@ -105,6 +106,17 @@ export class Drawer extends FASTElement {
   private closing: boolean = false;
 
   /**
+   * Ensures the dialog's visibility aligns with the `open` property.
+   */
+  private syncDialogOpenState(): void {
+    if (this.open) {
+      this.show();
+    } else {
+      this.hide();
+    }
+  }
+
+  /**
    * Emits a 'cancel' event.
    * @internal
    */
@@ -117,7 +129,7 @@ export class Drawer extends FASTElement {
    * @public
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
-    if (this.$fastController.isConnected && newValue !== oldValue) {
+    if (this.$fastController.isConnected) {
       if (newValue) {
         this.show();
       } else {
@@ -219,9 +231,9 @@ export class Drawer extends FASTElement {
    * @private
    */
   private triggerAnimation(): void {
-    this.classList.add('animating');
+    this.setAttribute('data-animating', '');
     if (this.closing) {
-      this.classList.add('closing');
+      this.setAttribute('data-closing', '');
     }
     this.dialog.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
   }
@@ -233,9 +245,9 @@ export class Drawer extends FASTElement {
    */
   private animationEndHandler(): void {
     this.dialog.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
-    this.classList.remove('animating');
+    this.removeAttribute('data-animating');
     if (this.closing) {
-      this.classList.remove('closing');
+      this.removeAttribute('data-closing');
       this.dialog.close();
       this.open = false;
       this.closing = false;

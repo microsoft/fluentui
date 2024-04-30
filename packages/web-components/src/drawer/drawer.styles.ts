@@ -1,6 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  colorBackgroundOverlay,
   colorNeutralBackground1,
   colorNeutralForeground1,
   colorStrokeFocus1,
@@ -8,22 +9,14 @@ import {
   colorTransparentStroke,
   curveAccelerateMin,
   curveDecelerateMid,
+  curveEasyEase,
   durationNormal,
+  durationSlow,
   fontFamilyBase,
   fontSizeBase300,
-  fontSizeBase500,
   fontWeightRegular,
-  fontWeightSemibold,
   lineHeightBase300,
-  lineHeightBase500,
   shadow64,
-  spacingHorizontalL,
-  spacingHorizontalS,
-  spacingHorizontalXXL,
-  spacingVerticalL,
-  spacingVerticalS,
-  spacingVerticalXL,
-  spacingVerticalXXL,
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
@@ -56,8 +49,8 @@ export const styles = css`
   }
 
   :host([position='end']) {
-    right: 0;
-    left: unset;
+    inset-inline-start: unset;
+    inset-inline-end: 0;
   }
 
   :host([type='inline']) dialog,
@@ -93,42 +86,40 @@ export const styles = css`
   }
 
   :host([position='end']) dialog {
-    margin-right: 0;
-    margin-left: auto;
+    margin-inline-start: auto;
+    margin-inline-end: 0;
   }
 
   :host([position='end']) dialog {
-    right: 0px;
-  }
-
-  dialog::backdrop {
-    background: rgba(0, 0, 0, 0.4);
+    inset-inline-end: 0px;
   }
 
   dialog {
-    color: inherit;
-    font: inherit;
     background-color: transparent;
-    border: 1px solid ${colorTransparentStroke};
-    border-right-color: var(--drawer-separator, ${colorTransparentStroke});
-    border-left-color: ${colorTransparentStroke};
     top: 0;
     bottom: 0;
     border-radius: 0;
     height: 100%;
-    margin-left: 0;
-    margin-right: auto;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
     padding: 0;
     max-width: 100%;
     max-height: 100vh;
     overflow: hidden;
     width: var(--drawer-width, 592px);
     box-shadow: ${shadow64};
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    background: ${colorNeutralBackground1};
+    position: absolute;
   }
 
   :host([position='end']) dialog {
-    border-right-color: ${colorTransparentStroke};
-    border-left-color: var(--drawer-separator, ${colorTransparentStroke});
+    border-inline-end-color: ${colorTransparentStroke};
+    border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
   }
 
   :host([open][type='inline']),
@@ -145,44 +136,6 @@ export const styles = css`
   }
 
   .drawer {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    font-family: ${fontFamilyBase};
-    font-weight: ${fontWeightRegular};
-    color: ${colorNeutralForeground1};
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    display: grid;
-    grid-template-rows: min-content 1fr min-content;
-    background: ${colorNeutralBackground1};
-    width: inherit;
-    padding: ${spacingVerticalXL} ${spacingHorizontalXXL};
-    position: absolute;
-    width: inherit;
-  }
-
-  .header {
-    font-size: ${fontSizeBase500};
-    line-height: ${lineHeightBase500};
-    font-weight: ${fontWeightSemibold};
-    padding-bottom: ${spacingVerticalS};
-  }
-
-  .content {
-    flex-grow: 1;
-    position: relative;
-    overflow-y: auto;
-  }
-
-  ::slotted([slot='footer']) {
-    display: flex;
-    flex-direction: row;
-    column-gap: ${spacingHorizontalS};
-    padding-top: ${spacingVerticalL};
-    border-top: ${strokeWidthThin} solid var(--drawer-overflow-border, ${colorTransparentStroke});
   }
 
   dialog:focus-visible:after {
@@ -200,39 +153,39 @@ export const styles = css`
   }
 
   dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.4);
+    background: ${colorBackgroundOverlay};
     inset: 0;
   }
 
-  :host(.animating) dialog::backdrop {
+  :host([data-animating]) dialog::backdrop {
     animation: drawer-fade;
-    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
-    animation-duration: 250ms;
+    animation-timing-function: ${curveEasyEase};
+    animation-duration: ${durationSlow};
   }
 
-  :host(.animating.closing) dialog::backdrop {
+  :host([data-animating][data-closing]) dialog::backdrop {
     animation-direction: reverse;
   }
 
-  :host(.animating) dialog {
+  :host([data-animating]) dialog {
     animation: drawer-slide-in-start;
     animation-timing-function: ${curveDecelerateMid};
     animation-duration: ${durationNormal};
   }
 
-  :host(.animating.closing) dialog {
+  :host([data-animating][data-closing]) dialog {
     animation-direction: reverse;
     animation-timing-function: ${curveAccelerateMin};
     animation-duration: ${durationNormal};
   }
 
-  :host([position='end'].animating) dialog {
+  :host([position='end'][data-animating]) dialog {
     animation: drawer-slide-in-end;
     animation-timing-function: ${curveDecelerateMid};
     animation-duration: ${durationNormal};
   }
 
-  :host([position='end'].closing) dialog {
+  :host([position='end'][data-closing]) dialog {
     animation-direction: reverse;
     animation-timing-function: ${curveAccelerateMin};
     animation-duration: ${durationNormal};

@@ -24,17 +24,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       ${ref('dialog')}
     >
-      <div class="drawer" part="drawer">
-        <div class="header" part="header">
-          <slot name="header"></slot>
-        </div>
-        <div class="content" part="content">
-          <slot></slot>
-        </div>
-        <div class="footer" part="footer">
-          <slot name="footer"></slot>
-        </div>
-      </div>
+      <slot></slot>
     </dialog>
   `;
 }
