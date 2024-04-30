@@ -2,12 +2,12 @@ import { attr, nullableNumberConverter, observable, Updates } from '@microsoft/f
 import { ARIAGlobalStatesAndProperties, StartEnd, StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { TextInputAppearance, TextInputControlSize } from './text-input.options.js';
-import { TextFieldType } from './text-input.options.js';
+import { TextInputType } from './text-input.options.js';
 import { FormAssociatedTextField } from './text-field.form-associated.js';
 
-export { TextFieldType };
+export { TextInputType };
 
-export type TextFieldOptions = StartEndOptions<TextInput>;
+export type TextInputOptions = StartEndOptions<TextInput>;
 
 export class TextInput extends FormAssociatedTextField {
   /**
@@ -84,7 +84,7 @@ export class TextInput extends FormAssociatedTextField {
    * HTML Attribute: type
    */
   @attr
-  public type: TextFieldType = TextFieldType.text;
+  public type: TextInputType = TextInputType.text;
   private typeChanged(): void {
     if (this.proxy instanceof HTMLInputElement) {
       this.proxy.type = this.type;

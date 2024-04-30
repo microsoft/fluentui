@@ -37,29 +37,29 @@ export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
  * Text field sub-types
  * @public
  */
-export const TextFieldType = {
+export const TextInputType = {
   /**
-   * An email TextField
+   * An email TextInput
    */
   email: 'email',
 
   /**
-   * A password TextField
+   * A password TextInput
    */
   password: 'password',
 
   /**
-   * A telephone TextField
+   * A telephone TextInput
    */
   tel: 'tel',
 
   /**
-   * A text TextField
+   * A text TextInput
    */
   text: 'text',
 
   /**
-   * A URL TextField
+   * A URL TextInput
    */
   url: 'url',
 } as const;
@@ -68,4 +68,4 @@ export const TextFieldType = {
  * Types for the text field sub-types
  * @public
  */
-export type TextFieldType = ValuesOf<typeof TextFieldType>;
+export type TextInputType = ValuesOf<typeof TextInputType>;
