@@ -18,6 +18,7 @@ import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
+import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UNSAFE_noLongerUsed = {
@@ -47,6 +48,11 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
+
+  const isNavigatingWithKeyboardRef = React.useRef(false);
+  useOnKeyboardNavigationChange(
+    _isNavigatingWithKeyboard => (isNavigatingWithKeyboardRef.current = _isNavigatingWithKeyboard),
+  );
 
   const activeDescendantContext = useActiveDescendantContext();
   const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
@@ -90,7 +96,11 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
-    if (hasParentActiveDescendantContext || activeDescendantController.active()) {
+    if (
+      hasParentActiveDescendantContext ||
+      activeDescendantController.active() ||
+      !isNavigatingWithKeyboardRef.current
+    ) {
       return;
     }
 
