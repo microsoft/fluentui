@@ -1,8 +1,7 @@
-import commonJS from 'rollup-plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import commonJS from 'rollup-plugin-commonjs';
+import esbuild, { minify } from 'rollup-plugin-esbuild';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
-import esbuild from 'rollup-plugin-esbuild';
 import { transformCSSFragment, transformHTMLFragment } from './scripts/transform-fragments';
 
 const parserOptions = {
@@ -20,7 +19,7 @@ export default [
       {
         file: 'dist/web-components.min.js',
         format: 'esm',
-        plugins: [terser()],
+        plugins: [minify()],
       },
     ],
     plugins: [
