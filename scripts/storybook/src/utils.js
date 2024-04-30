@@ -243,7 +243,8 @@ function getPackageStoriesGlob(options) {
 
     const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
 
-    // if defined package has stories project use that
+    // if defined package(project) has stories sibling project, that means we need to look for stories in sibling project as the original project doesn't have stories anymore
+    // @see https://github.com/microsoft/fluentui/issues/30516
     const pkgMetadataStories = projects.get(`${pkgName}-stories`);
     if (pkgMetadataStories) {
       acc.push(`${rootOffset}${pkgMetadataStories.root}/src/${storiesGlob}`);
