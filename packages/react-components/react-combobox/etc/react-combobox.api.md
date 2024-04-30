@@ -146,7 +146,7 @@ export const listboxClassNames: SlotClassNames<ListboxSlots>;
 // @public
 export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
-    onActiveDescendantChange: (e: ActiveDescendantChangeEvent) => void;
+    onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
 
 // @public (undocumented)

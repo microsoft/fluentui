@@ -57,7 +57,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     const listener = (untypedEvent: Event) => {
       // Typescript doesn't support custom event types on handler
       const event = untypedEvent as ActiveDescendantChangeEvent;
-      onActiveDescendantChange(event);
+      onActiveDescendantChange?.(event);
     };
 
     return (el: HTMLDivElement | null) => {

@@ -17,7 +17,7 @@ export type ListboxContextValue = Pick<
   | 'setActiveOption'
 > & {
   onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
-  onActiveDescendantChange: (e: ActiveDescendantChangeEvent) => void;
+  onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
 
 const listboxContextDefaultValue = {
