@@ -59,35 +59,20 @@ export const styles = css`
     width: 0;
   }
 
-  :host([open][type='inline']) dialog,
-  :host([open][modal-type='non-modal']) {
-    width: 522px;
+  :host([type='inline']) dialog[open],
+  :host dialog[open] {
+    width: var(--drawer-width, 592px);
   }
 
-  :host([size='small']) dialog {
+  :host([size='small']) dialog[open] {
     width: 320px;
   }
 
-  :host([open][size='small'][type='inline']),
-  :host([open][size='small'][modal-type='non-modal']) {
-    width: 320px;
-  }
-
-  :host([size='large']) dialog {
+  :host([size='large']) dialog[open] {
     width: 940px;
   }
 
-  :host([open][size='large'][type='inline']),
-  :host([open][size='large'][modal-type='non-modal']) {
-    width: 940px;
-  }
-
-  :host([size='full']) dialog {
-    width: 100%;
-  }
-
-  :host([open][size='large'][type='inline']),
-  :host([open][size='large'][modal-type='non-modal']) {
+  :host([size='full']) dialog[open] {
     width: 100%;
   }
 
@@ -128,20 +113,12 @@ export const styles = css`
     border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
   }
 
-  :host([open][type='inline']),
-  :host([open][modal-type='non-modal']) {
-    width: var(--drawer-width, 592px);
-  }
-
   :host([type='inline']) dialog {
     box-shadow: none;
   }
 
   :host([modal-type='non-modal']) dialog::backdrop {
     display: none;
-  }
-
-  .drawer {
   }
 
   dialog:focus-visible:after {
