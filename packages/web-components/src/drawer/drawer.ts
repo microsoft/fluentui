@@ -3,15 +3,12 @@ import { eventAnimationEnd, keyEscape } from '@microsoft/fast-web-utilities';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 export class Drawer extends FASTElement {
-  /**
-   * @remarks
-   * The addition of the Updates.enqueue() method within connectedCallback addresses a specific timing issue: On initial page load, properties set via attributes (like 'open') need to reflect in the internal dialog element.
-   * However, these property changes might occur before the internal elements, such as the dialog, are fully initialized and ready to display.
-   * By placing the syncDialogOpenState() inside Updates.enqueue(), we ensure that any actions to synchronize the component's state based on initial attributes are deferred until after all other pending DOM updates are processed.
-   * This ensures that the internal state of the dialog element aligns with the initial attributes specified on the <fluent-drawer>, such as automatically opening the dialog when the 'open' attribute is present at the time of connection to the DOM.
-   */
   public connectedCallback(): void {
     super.connectedCallback();
+    /**
+     * By placing the syncDialogOpenState() inside Updates.enqueue(), we ensure that any actions to synchronize the component's state based on initial attributes are deferred until after all other pending DOM updates are processed.
+     * This ensures that the internal state of the dialog element aligns with the initial attributes specified on the <fluent-drawer>, such as automatically opening the dialog when the 'open' attribute is present at the time of connection to the DOM.
+     */
     Updates.enqueue(() => {
       this.syncDialogOpenState();
     });
