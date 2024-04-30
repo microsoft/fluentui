@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(web-components): remove all barrell exports with exception of design tokens",
+  "packageName": "@fluentui/web-components",
+  "email": "=",
+  "dependentChangeType": "patch"
+}

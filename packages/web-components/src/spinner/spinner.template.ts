@@ -1,12 +1,11 @@
 import { html, when } from '@microsoft/fast-element';
 import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { ProgressRingOptions } from '../progress-ring/progress-ring.options.js';
 import { staticallyCompose } from '../utils/index.js';
-import { Spinner } from './spinner.js';
+import { Spinner, SpinnerOptions } from './spinner.js';
 
 const progressSegments: number = 44;
 
-export function progressRingTemplate<T extends Spinner>(options: ProgressRingOptions = {}): ElementViewTemplate<T> {
+export function progressRingTemplate<T extends Spinner>(options: SpinnerOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
       role="progressbar"
