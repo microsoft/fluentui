@@ -1,9 +1,9 @@
 import { ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import { whitespaceFilter } from '../utils/index.js';
-import type { TextFieldOptions, TextInput } from './text-input.js';
+import type { TextInput, TextInputOptions } from './text-input.js';
 
-export function textFieldTemplate<T extends TextInput>(options: TextFieldOptions = {}): ElementViewTemplate<T> {
+export function textFieldTemplate<T extends TextInput>(options: TextInputOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <label
       part="label"
