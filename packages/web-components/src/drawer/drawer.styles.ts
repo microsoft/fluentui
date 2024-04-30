@@ -56,6 +56,7 @@ export const styles = css`
   :host([type='inline']) dialog,
   :host([type='inline']) {
     position: relative;
+    width: 0;
   }
 
   :host([size='small']) dialog {
