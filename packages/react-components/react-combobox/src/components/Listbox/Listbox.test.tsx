@@ -86,6 +86,9 @@ describe('Listbox', () => {
       </Listbox>,
     );
 
+    // set initial keyboard navigating
+    fireEvent.keyDown(getByTestId('listbox'), { key: 'Tab' });
+
     const firstOption = getByTestId('firstOption');
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
 
@@ -103,6 +106,9 @@ describe('Listbox', () => {
       </Listbox>,
     );
 
+    // set initial keyboard navigating
+    fireEvent.keyDown(getByTestId('listbox'), { key: 'Tab' });
+
     const selectedOption = getByTestId('firstSelectedOption');
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
 
@@ -119,6 +125,9 @@ describe('Listbox', () => {
         <Option data-testid="blueOption">Blue</Option>
       </Listbox>,
     );
+
+    // set initial keyboard navigating
+    fireEvent.keyDown(getByTestId('listbox'), { key: 'Tab' });
 
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
 
