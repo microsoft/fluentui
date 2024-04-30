@@ -384,6 +384,21 @@ export class Tabs extends BaseTabs {
   public size?: TabsSize;
 
   /**
+   * Iterates over each tab element and sets its `disabled` attribute based on the `disabled` property of the `Tabs` component.
+   * If the `disabled` property is `true`, the `disabled` attribute of the tab element will be set to `'true'`; otherwise, it will be set to `'false'`.
+   */
+  protected setTabs(): void {
+    super.setTabs();
+
+    this.tabs.forEach((tab: HTMLElement) => {
+      // Only set the 'disabled' attribute if it's not already set on the individual tab
+      if (!tab.hasAttribute('aria-disabled')) {
+        tab.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+      }
+    });
+  }
+
+  /**
    * calculateAnimationProperties
    *
    * Recalculates the active tab offset and scale.
