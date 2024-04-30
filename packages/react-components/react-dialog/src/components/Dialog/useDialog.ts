@@ -71,7 +71,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     dialogTitleId: useId('dialog-title-'),
     isNestedDialog,
     dialogRef: focusRef,
-    modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
+    modalAttributes,
     triggerAttributes,
   };
 };
