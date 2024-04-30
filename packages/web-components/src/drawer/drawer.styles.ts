@@ -59,6 +59,11 @@ export const styles = css`
     width: 0;
   }
 
+  :host([open][type='inline']) dialog,
+  :host([open][modal-type='non-modal']) {
+    width: 522px;
+  }
+
   :host([size='small']) dialog {
     width: 320px;
   }
