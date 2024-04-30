@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing issues where current keyborg status is not known to late subscribers",
+  "packageName": "@fluentui/react-tabster",
+  "email": "stevenco@microsoft.com",
+  "dependentChangeType": "patch"
+}

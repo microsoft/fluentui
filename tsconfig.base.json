@@ -30,6 +30,7 @@
       "@fluentui/react-button": ["packages/react-components/react-button/src/index.ts"],
       "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/src/index.ts"],
       "@fluentui/react-card": ["packages/react-components/react-card/src/index.ts"],
+      "@fluentui/react-carousel-preview": ["packages/react-components/react-carousel-preview/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/src/index.ts"],
       "@fluentui/react-colorpicker-compat": ["packages/react-components/react-colorpicker-compat/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-components/react-combobox/src/index.ts"],
@@ -96,9 +97,7 @@
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
       "@fluentui/react-tag-picker-preview": ["packages/react-components/react-tag-picker-preview/src/index.ts"],
       "@fluentui/react-tags": ["packages/react-components/react-tags/src/index.ts"],
-      "@fluentui/react-teaching-popover-preview": [
-        "packages/react-components/react-teaching-popover-preview/src/index.ts"
-      ],
+      "@fluentui/react-teaching-popover": ["packages/react-components/react-teaching-popover/src/index.ts"],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],

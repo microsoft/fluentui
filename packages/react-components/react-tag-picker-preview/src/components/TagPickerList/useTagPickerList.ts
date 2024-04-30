@@ -18,7 +18,6 @@ export const useTagPickerList_unstable = (
   props: TagPickerListProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerListState => {
-  const multiselect = useTagPickerContext_unstable(ctx => ctx.multiselect);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef) as
     | React.RefObject<HTMLInputElement>
     | React.RefObject<HTMLButtonElement>;
@@ -34,7 +33,7 @@ export const useTagPickerList_unstable = (
     root: slot.always(
       {
         ...useListboxSlot(props, useMergedRefs(popoverRef, ref), {
-          state: { multiselect },
+          state: { multiselect: true },
           triggerRef,
           defaultProps: { id: popoverId },
         }),

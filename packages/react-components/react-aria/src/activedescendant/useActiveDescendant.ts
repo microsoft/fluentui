@@ -12,6 +12,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
   const focusVisibleRef = React.useRef(false);
   const activeIdRef = React.useRef<string | null>(null);
+  const lastActiveIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const attributeVisibilityRef = React.useRef(true);
 
@@ -56,6 +57,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
 
     removeAttribute();
+    lastActiveIdRef.current = activeIdRef.current;
     activeIdRef.current = null;
   }, [getActiveDescendant, removeAttribute]);
 
@@ -67,7 +69,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
       blurActiveDescendant();
 
-      scrollIntoView(nextActive, listboxRef.current);
+      scrollIntoView(nextActive);
       setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
@@ -75,7 +77,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
     },
-    [listboxRef, blurActiveDescendant, setAttribute],
+    [blurActiveDescendant, setAttribute],
   );
 
   const controller: ActiveDescendantImperativeRef = React.useMemo(
@@ -131,7 +133,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active: () => {
         return getActiveDescendant()?.id;
       },
-
       focus: (id: string) => {
         if (!listboxRef.current) {
           return;
@@ -142,7 +143,17 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
           focusActiveDescendant(target);
         }
       },
+      focusLastActive: () => {
+        if (!listboxRef.current || !lastActiveIdRef.current) {
+          return;
+        }
 
+        const target = listboxRef.current.querySelector<HTMLElement>(`#${lastActiveIdRef.current}`);
+        if (target) {
+          focusActiveDescendant(target);
+          return true;
+        }
+      },
       find(predicate, { passive, startFrom } = {}) {
         const target = optionWalker.find(predicate, startFrom);
         if (!passive) {

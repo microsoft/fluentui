@@ -598,7 +598,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             stroke={activePoint === circleId ? lineColor : ''}
             role="img"
             aria-label={this._getAriaLabel(i, 0)}
-            data-is-focusable={true}
+            data-is-focusable={isLegendSelected}
             ref={(e: SVGCircleElement | null) => {
               this._refCallback(e!, circleId);
             }}
@@ -686,7 +686,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               key={lineId}
               d={line(lineData)!}
               fill="transparent"
-              data-is-focusable={true}
+              data-is-focusable={false}
               stroke={lineColor}
               strokeWidth={strokeWidth}
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
@@ -748,7 +748,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               id={circleId}
               key={circleId}
               d={path}
-              data-is-focusable={true}
+              data-is-focusable={isLegendSelected}
               onMouseOver={this._handleHover.bind(
                 this,
                 x1,
@@ -802,7 +802,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   id={lastCircleId}
                   key={lastCircleId}
                   d={path}
-                  data-is-focusable={true}
+                  data-is-focusable={isLegendSelected}
                   onMouseOver={this._handleHover.bind(
                     this,
                     x2,

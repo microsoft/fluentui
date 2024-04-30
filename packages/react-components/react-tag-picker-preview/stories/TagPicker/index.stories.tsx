@@ -21,7 +21,7 @@ export { ExpandIcon } from './TagPickerExpandIcon.stories';
 export { SecondaryAction } from './TagPickerSecondaryAction.stories';
 export { Grouped } from './TagPickerGrouped.stories';
 export { Freeform } from './TagPickerFreeform.stories';
-export { InteractionTagExample as InteractionTag } from './TagPickerInteractionTag.stories';
+export { TruncatedText } from './TagPickerTruncatedText.stories';
 
 export default {
   title: 'Preview Components/TagPicker',
