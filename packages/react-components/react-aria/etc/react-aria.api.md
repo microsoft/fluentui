@@ -34,6 +34,7 @@ export interface ActiveDescendantImperativeRef {
     first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     focus: (id: string) => void;
+    focusLastActive: () => boolean | undefined;
     // (undocumented)
     hideAttributes: () => void;
     // (undocumented)

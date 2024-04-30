@@ -211,7 +211,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'multiselect' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
     inline: boolean;
@@ -231,6 +231,9 @@ export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: R
 
 // @public
 export const useTagPickerControlStyles_unstable: (state: TagPickerControlState) => TagPickerControlState;
+
+// @public (undocumented)
+export function useTagPickerFilter({ filter: filterOverride, noOptionsElement, renderOption, query, options, }: UseTagPickerFilterConfig): JSX.Element[];
 
 // @public
 export const useTagPickerGroup_unstable: (props: TagPickerGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerGroupState;

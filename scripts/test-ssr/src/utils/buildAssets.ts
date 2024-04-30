@@ -1,6 +1,8 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
 
+import { tsConfigPathsPlugin } from './esbuild-plugin';
+
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 
 const commonOptions: BuildOptions = {
@@ -21,10 +23,14 @@ type BuildConfig = {
   esmOutfile: string;
 
   chromeVersion: number;
+
+  distDirectory: string;
 };
 
 export async function buildAssets(config: BuildConfig): Promise<void> {
-  const { chromeVersion, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile } = config;
+  const { chromeVersion, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile, distDirectory } = config;
+
+  const pluginInstance = tsConfigPathsPlugin({ cwd: distDirectory });
 
   try {
     // Used for SSR rendering, see renderToHTML.js
@@ -38,6 +44,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       external: ['@griffel/core', '@griffel/react', 'react', 'react-dom', 'scheduler'],
       format: 'cjs',
       target: `node${NODE_MAJOR_VERSION}`,
+      plugins: [pluginInstance],
     });
 
     // Used in generated bundle that will be server by a browser
@@ -54,6 +61,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       ],
       format: 'iife',
       target: `chrome${chromeVersion}`,
+      plugins: [pluginInstance],
     });
   } catch (err) {
     throw new Error(

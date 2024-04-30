@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createPriorityQueue, useEventCallback, slot } from '@fluentui/react-utilities';
+import { createPriorityQueue, useEventCallback, slot, useTimeout } from '@fluentui/react-utilities';
 import type { AnnounceOptions, AriaLiveProps, AriaLiveState, LiveMessage } from './AriaLive.types';
 
 /** The duration the message needs to be in present in DOM for screen readers to register a change and announce */
@@ -46,8 +46,10 @@ export const useAriaLive_unstable = (props: AriaLiveProps): AriaLiveState => {
     }
   });
 
+  const [setMessageTimeout, clearMessageTimeout] = useTimeout();
+
   React.useEffect(() => {
-    const timeout = setTimeout(() => {
+    setMessageTimeout(() => {
       if (messageQueue.peek()) {
         setCurrentMessage(messageQueue.dequeue());
       } else {
@@ -55,8 +57,8 @@ export const useAriaLive_unstable = (props: AriaLiveProps): AriaLiveState => {
       }
     }, MESSAGE_DURATION);
 
-    return () => clearTimeout(timeout);
-  }, [currentMessage, messageQueue]);
+    return () => clearMessageTimeout();
+  }, [currentMessage, messageQueue, setMessageTimeout, clearMessageTimeout]);
 
   React.useImperativeHandle(props.announceRef, () => announce);
 

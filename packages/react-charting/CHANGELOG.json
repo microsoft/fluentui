@@ -2,6 +2,89 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 30 Apr 2024 07:25:30 GMT",
+      "tag": "@fluentui/react-charting_v5.21.2",
+      "version": "5.21.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "lamalkar@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1af5dc3e3a8087d255f60f79f8cae2e4b13fc748",
+            "comment": "Sankey diagram bug fix - Use the formatted node value instead of the raw value, to calculate text measurement."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Apr 2024 07:25:20 GMT",
+      "tag": "@fluentui/react-charting_v5.21.1",
+      "version": "5.21.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0000d27b3c519ecd4abb232cdbb21f19da315aa6",
+            "comment": "Disable focus on non-highlighted elements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Apr 2024 07:27:48 GMT",
+      "tag": "@fluentui/react-charting_v5.21.0",
+      "version": "5.21.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lamalkar@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf",
+            "comment": "Sankey Diagram: Support number formatting"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.1",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.147",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.17",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.7",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          }
+        ],
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "21ae4f9435448776fa6c79ad2a3d44630241dac6",
+            "comment": "Set axisType for single data point in case of AreaChart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "03a90793df87040d0a72b49ea00cc332f3980e11",
+            "comment": "Fix overlapping bars on continuous axes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Apr 2024 07:28:27 GMT",
       "tag": "@fluentui/react-charting_v5.20.2",
       "version": "5.20.2",

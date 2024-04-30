@@ -12,6 +12,7 @@ import {
   useEventCallback,
   useOnScrollOutside,
   elementContains,
+  useTimeout,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -176,7 +177,6 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
   const [open, setOpenState] = useControllableState({
@@ -203,8 +203,10 @@ const useMenuOpenState = (
     setOpenState(data.open);
   });
 
+  const [setOpenTimeout, clearOpenTimeout] = useTimeout();
+
   const setOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
-    clearTimeout(setOpenTimeout.current);
+    clearOpenTimeout();
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
       e.persist();
@@ -215,10 +217,7 @@ const useMenuOpenState = (
         enteringTriggerRef.current = e.type === 'mouseenter' || e.type === 'mousemove';
       }
 
-      // FIXME leaking Node timeout type
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      setOpenTimeout.current = setTimeout(() => trySetOpen(e, data), state.hoverDelay);
+      setOpenTimeout(() => trySetOpen(e, data), state.hoverDelay);
     } else {
       trySetOpen(e, data);
     }
@@ -258,14 +257,6 @@ const useMenuOpenState = (
     disabled: !open,
     refs: [state.menuPopoverRef],
   });
-
-  // Clear timeout on unmount
-  // Setting state after a component unmounts can cause memory leaks
-  React.useEffect(() => {
-    return () => {
-      clearTimeout(setOpenTimeout.current);
-    };
-  }, []);
 
   // Manage focus for open state
   const { findFirstFocusable } = useFocusFinders();

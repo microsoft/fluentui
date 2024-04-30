@@ -66,7 +66,6 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'registerOption'
     | 'selectedOptions'
     | 'selectOption'
-    | 'multiselect'
     | 'value'
     | 'setValue'
     | 'setOpen'
