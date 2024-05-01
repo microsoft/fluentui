@@ -1,4 +1,5 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import type { AnnounceOptions } from '@fluentui/react-shared-contexts';
 import { createPriorityQueue, useTimeout } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -86,9 +87,9 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
     runCycle();
   }, [clearAnnounceTimeout, messageQueue, setAnnounceTimeout, targetDocument]);
 
-  const announce: AriaLiveAnnounceFn = React.useMemo(
+  const announce: AriaLiveAnnounceFn = React.useCallback(
     () =>
-      (message, options = {}) => {
+      (message: string, options: AnnounceOptions = {}) => {
         const { alert = false, priority = 0, batchId } = options;
 
         // check if message is an alert

@@ -11,9 +11,10 @@ export const useAriaLiveAnnouncer_unstable = (props: AriaLiveAnnouncerProps): Ar
   const ariaNotifyAnnounce = useAriaNotifyAnnounce_unstable();
 
   const announce = React.useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const supportsAriaNotify = typeof (targetDocument as any)?.ariaNotify === 'function';
     return supportsAriaNotify ? ariaNotifyAnnounce : domAnnounce;
-  }, [targetDocument]);
+  }, [targetDocument, ariaNotifyAnnounce, domAnnounce]);
 
   return {
     announce,

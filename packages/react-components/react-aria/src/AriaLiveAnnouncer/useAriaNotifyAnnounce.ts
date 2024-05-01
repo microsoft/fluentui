@@ -1,4 +1,5 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import type { AnnounceOptions } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
 import type { AriaLiveAnnounceFn } from './AriaLiveAnnouncer.types';
@@ -17,18 +18,19 @@ type DocumentWithAriaNotify = Document & {
 export const useAriaNotifyAnnounce_unstable = (): AriaLiveAnnounceFn => {
   const { targetDocument } = useFluent();
 
-  const announce: AriaLiveAnnounceFn = React.useMemo(
+  const announce: AriaLiveAnnounceFn = React.useCallback(
     () =>
-      (message, options = {}) => {
-        if (!targetDocument) return;
+      (message: string, options: AnnounceOptions = {}) => {
+        if (!targetDocument) {
+          return;
+        }
 
-        let { alert = false, polite, priority, batchId } = options;
+        const { alert = false, polite, batchId } = options;
 
         // default priority to 0 if polite, 2 if alert, and 1 by default
         // used to set both ariaNotify's priority and interrupt
-        if (typeof priority !== 'number') {
-          priority = polite ? 0 : alert ? 2 : 1;
-        }
+        const defaultPriority = polite ? 0 : alert ? 2 : 1;
+        const priority = options.priority ?? defaultPriority;
 
         // map fluent announce options to ariaNotify options
         const ariaNotifyOptions: AriaNotifyOptions = {
