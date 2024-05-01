@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update List to render after scrolling finishes.",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

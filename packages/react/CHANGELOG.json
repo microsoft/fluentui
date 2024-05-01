@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 01 May 2024 07:26:38 GMT",
+      "tag": "@fluentui/react_v8.117.8",
+      "version": "8.117.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f52fe2b3d16c12ae036cd08a50e0e15b8483c6cf",
+            "comment": "fix: update List to render after scrolling finishes."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041",
+            "comment": "Making sure V9 dialog doesn't set aria-hidden on a host element that is used as a container for V8 popups, dropdowns and menus."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Apr 2024 07:27:48 GMT",
       "tag": "@fluentui/react_v8.117.7",
       "version": "8.117.7",

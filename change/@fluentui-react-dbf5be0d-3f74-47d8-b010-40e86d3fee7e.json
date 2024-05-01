@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Making sure V9 dialog doesn't set aria-hidden on a host element that is used as a container for V8 popups, dropdowns and menus.",
-  "packageName": "@fluentui/react",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}
