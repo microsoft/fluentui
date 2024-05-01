@@ -86,30 +86,30 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const [setScrollTimer, clearScrollTimer] = useTimeout();
   const scrollCounter = useRef<number>(0);
 
+  const initializeScrollingTimer = useCallback(() => {
+    /*
+     * This can be considered the 'velocity' required to start 'isScrolling'
+     * INIT_SCROLL_FLAG_REQ: Number of renders required to activate isScrolling
+     * INIT_SCROLL_FLAG_DELAY: Amount of time (ms) before current number of renders is reset
+     *  - Maybe we should let users customize these in the future.
+     */
+    const INIT_SCROLL_FLAG_REQ = 10;
+    const INIT_SCROLL_FLAG_DELAY = 100;
+
+    scrollCounter.current++;
+    if (scrollCounter.current >= INIT_SCROLL_FLAG_REQ) {
+      setIsScrolling(true);
+    }
+    clearScrollTimer();
+    setScrollTimer(() => {
+      setIsScrolling(false);
+      scrollCounter.current = 0;
+    }, INIT_SCROLL_FLAG_DELAY);
+  }, [clearScrollTimer, setScrollTimer]);
+
   useEffect(() => {
-    const initializeScrollingTimer = () => {
-      /*
-       * This can be considered the 'velocity' required to start 'isScrolling'
-       * INIT_SCROLL_FLAG_REQ: Number of renders required to activate isScrolling
-       * INIT_SCROLL_FLAG_DELAY: Amount of time (ms) before current number of renders is reset
-       *  - Maybe we should let users customize these in the future.
-       */
-      const INIT_SCROLL_FLAG_REQ = 10;
-      const INIT_SCROLL_FLAG_DELAY = 100;
-
-      scrollCounter.current++;
-      if (scrollCounter.current >= INIT_SCROLL_FLAG_REQ) {
-        setIsScrolling(true);
-      }
-      clearScrollTimer();
-      setScrollTimer(() => {
-        setIsScrolling(false);
-        scrollCounter.current = 0;
-      }, INIT_SCROLL_FLAG_DELAY);
-    };
-
     initializeScrollingTimer();
-  }, [actualIndex]);
+  }, [actualIndex, initializeScrollingTimer]);
 
   const batchUpdateNewIndex = (index: number) => {
     // Local updates
