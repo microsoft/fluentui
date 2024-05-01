@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add caseSensitive prop to Combobox.",
+  "packageName": "@fluentui/react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}
