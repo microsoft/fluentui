@@ -3,7 +3,6 @@ import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerState } from './NavDrawer.types';
 import { navItemTokens } from '../sharedNavStyles.styles';
-import { tokens } from '@fluentui/react-theme';
 
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
   root: 'fui-NavDrawer',
