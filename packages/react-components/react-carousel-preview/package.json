@@ -44,6 +44,7 @@
     "@fluentui/react-button": "^9.3.76",
     "@fluentui/react-tabster": "^9.20.1",
     "@fluentui/react-aria": "^9.10.5",
+    "@fluentui/react-context-selector": "^9.1.58",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
