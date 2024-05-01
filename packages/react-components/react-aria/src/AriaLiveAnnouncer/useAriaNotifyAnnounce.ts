@@ -39,7 +39,7 @@ export const useAriaNotifyAnnounce_unstable = (): AriaLiveAnnounceFn => {
 
         (targetDocument as DocumentWithAriaNotify).ariaNotify(message, ariaNotifyOptions);
       },
-    [],
+    [targetDocument],
   );
 
   return announce;
