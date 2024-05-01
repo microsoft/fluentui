@@ -1964,10 +1964,10 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-icons@^2.0.235":
-  version "2.0.235"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.235.tgz#1b0ee5556244c119bf9497fbc7d59f1d6a2d485a"
-  integrity sha512-8uZPBncO+dTHuZyke+KXv4bSF4ZtHyniVOVWXnbFClqMmarb4qRul06qCqq2bbqz/7xFtP5YujypKn+d2i+vEg==
+"@fluentui/react-icons@^2.0.237":
+  version "2.0.237"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.237.tgz#0053f1dccfe50e94692f6508ce5b0c4e1d1867f4"
+  integrity sha512-J+6XDB/Y3G3nfNWvKKI6xhUXDN6/xvhksnV+zfXiGb6tqtK7QiihAzvRRgPnKuS3BH/H1TM7k3KC19V0AJrTDg==
   dependencies:
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
@@ -22863,10 +22863,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.0.tgz#30110aa56ed7d90db468577ab891a609c8c5db62"
-  integrity sha512-/saGl9AYqgjAe5yZWQsnbtBwXTK+tDXm93ipxAARxhX0jP2xiQbPgykybzU7li6H4mJtTw0GnK51w6A0mMvx3Q==
+tabster@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.1.tgz#8d1ed706a6af08c140c60127e29714b03a520331"
+  integrity sha512-3VsXUb0XxVcFq9NmzTieAJAlruMiaj/dvXIHm7RgjsUrMGkEcq9KbBdai05NAGp2D2d/CxHc6j1mbuUzGofWBA==
   dependencies:
     keyborg "2.5.0"
     tslib "^2.3.1"
