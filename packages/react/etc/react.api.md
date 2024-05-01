@@ -3933,6 +3933,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     autofill?: IAutofillProps;
     buttonIconProps?: IIconProps;
     caretDownButtonStyles?: Partial<IButtonStyles>;
+    caseSensitive?: boolean;
     comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
