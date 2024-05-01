@@ -27,92 +27,128 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
       getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus, inset: 2, pointerEvents: 'none' }),
       {
         display: 'inline-flex',
-        selectors: {
-          '.ms-Button--default': {
-            borderTopRightRadius: '0',
-            borderBottomRightRadius: '0',
-            borderRight: 'none',
-            flexGrow: '1',
-          },
-          '.ms-Button--primary': {
-            borderTopRightRadius: '0',
-            borderBottomRightRadius: '0',
-            border: 'none',
-            flexGrow: '1',
+        '.ms-Button--default': {
+          borderTopRightRadius: '0',
+          borderBottomRightRadius: '0',
+          borderRight: 'none',
+          flexGrow: '1',
+        },
+        '.ms-Button--primary': {
+          borderTopRightRadius: '0',
+          borderBottomRightRadius: '0',
+          border: 'none',
+          flexGrow: '1',
 
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'WindowText',
-                backgroundColor: 'Window',
-                border: '1px solid WindowText',
-                borderRightWidth: '0',
-                ...getHighContrastNoAdjustStyle(),
-              },
-              ':hover': {
-                border: 'none',
-              },
-              ':active': {
-                border: 'none',
+          [HighContrastSelector]: {
+            color: 'WindowText',
+            backgroundColor: 'Window',
+            border: '1px solid WindowText',
+            borderRightWidth: '0',
+            ...getHighContrastNoAdjustStyle(),
+          },
+          ':hover': {
+            backgroundColor: 'Highlight',
+            borderColor: 'Highlight',
+            borderRightWidth: '0',
+            color: 'Window',
+          },
+          ':active': {
+            borderColor: 'Highlight',
+          },
+        },
+        '.ms-Button--default + .ms-Button': {
+          [HighContrastSelector]: {
+            border: '1px solid WindowText',
+            borderLeftWidth: '0',
+            ':hover': {
+              borderColor: 'Highlight',
+              color: 'Highlight',
+              '.ms-Button-menuIcon': {
+                color: 'Highlight',
               },
             },
           },
-          '.ms-Button--primary + .ms-Button': {
-            border: 'none',
-            selectors: {
-              [HighContrastSelector]: {
-                border: '1px solid WindowText',
-                borderLeftWidth: '0',
+        },
+        '.ms-Button--default + .ms-Button[aria-expanded="true"]': {
+          [HighContrastSelector]: {
+            borderColor: 'Highlight',
+            color: 'Highlight',
+            '.ms-Button-menuIcon': {
+              color: 'Highlight',
+            },
+          },
+        },
+        '.ms-Button--primary + .ms-Button': {
+          border: 'none',
+
+          [HighContrastSelector]: {
+            border: '1px solid WindowText',
+            borderLeftWidth: '0',
+            ':hover': {
+              borderLeftWidth: '0',
+              backgroundColor: 'Highlight',
+              borderColor: 'Highlight',
+              color: 'Window',
+              ...getHighContrastNoAdjustStyle(),
+              '.ms-Button-menuIcon': {
+                color: 'Window',
               },
             },
+          },
+        },
+        '.ms-Button--primary + .ms-Button[aria-expanded="true"]': {
+          backgroundColor: 'Highlight',
+          borderColor: 'Highlight',
+          color: 'Window',
+          ...getHighContrastNoAdjustStyle(),
+          '.ms-Button-menuIcon': {
+            color: 'Window',
+          },
+        },
+        '.ms-Button.is-disabled': {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            borderColor: 'GrayText',
+            backgroundColor: 'Window',
           },
         },
       },
     ],
     splitButtonContainerHovered: {
-      selectors: {
-        '.ms-Button--primary': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'Window',
-              backgroundColor: 'Highlight',
-            },
-          },
+      '.ms-Button--default.is-disabled': {
+        backgroundColor: semanticColors.buttonBackgroundDisabled,
+        color: semanticColors.buttonTextDisabled,
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window',
         },
-        '.ms-Button.is-disabled': {
-          color: semanticColors.buttonTextDisabled,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'GrayText',
-              borderColor: 'GrayText',
-              backgroundColor: 'Window',
-            },
-          },
+      },
+      '.ms-Button--primary.is-disabled': {
+        backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+        color: semanticColors.primaryButtonTextDisabled,
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window',
         },
       },
     },
     splitButtonContainerChecked: {
-      selectors: {
-        '.ms-Button--primary': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'Window',
-              backgroundColor: 'WindowText',
-              ...getHighContrastNoAdjustStyle(),
-            },
-          },
+      '.ms-Button--primary': {
+        [HighContrastSelector]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },
     splitButtonContainerCheckedHovered: {
-      selectors: {
-        '.ms-Button--primary': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'Window',
-              backgroundColor: 'WindowText',
-              ...getHighContrastNoAdjustStyle(),
-            },
-          },
+      '.ms-Button--primary': {
+        [HighContrastSelector]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },
@@ -148,49 +184,42 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
     },
     splitButtonDivider: {
       ...splitButtonDividerBaseStyles,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'WindowText',
-        },
+
+      [HighContrastSelector]: {
+        backgroundColor: 'WindowText',
       },
     },
     splitButtonDividerDisabled: {
       ...splitButtonDividerBaseStyles,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'GrayText',
-        },
+
+      [HighContrastSelector]: {
+        backgroundColor: 'GrayText',
       },
     },
     splitButtonMenuButtonDisabled: {
       pointerEvents: 'none',
       border: 'none',
-      selectors: {
-        ':hover': {
-          cursor: 'default',
-        },
 
-        '.ms-Button--primary': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'GrayText',
-              borderColor: 'GrayText',
-              backgroundColor: 'Window',
-            },
-          },
-        },
-        '.ms-Button-menuIcon': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'GrayText',
-            },
-          },
-        },
+      ':hover': {
+        cursor: 'default',
+      },
+
+      '.ms-Button--primary': {
         [HighContrastSelector]: {
           color: 'GrayText',
-          border: '1px solid GrayText',
+          borderColor: 'GrayText',
           backgroundColor: 'Window',
         },
+      },
+      '.ms-Button-menuIcon': {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+        },
+      },
+      [HighContrastSelector]: {
+        color: 'GrayText',
+        border: '1px solid GrayText',
+        backgroundColor: 'Window',
       },
     },
 
@@ -205,13 +234,11 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
     splitButtonContainerDisabled: {
       outline: 'none',
       border: 'none',
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText',
-          borderColor: 'GrayText',
-          backgroundColor: 'Window',
-          ...getHighContrastNoAdjustStyle(),
-        },
+      [HighContrastSelector]: {
+        color: 'GrayText',
+        borderColor: 'GrayText',
+        backgroundColor: 'Window',
+        ...getHighContrastNoAdjustStyle(),
       },
     },
     splitButtonMenuFocused: {
