@@ -1,6 +1,6 @@
 ### Cleaning your repo
 
-Every once in a while you'll get build errors in node modules unrelated to your work. This usually happens when changes get checked into packages not related to your repo.
+Every once in a while you'll get build errors in node modules unrelated to your work. This usually happens when changes get checked into packages not related to the package you're working on.
 
 First, file an issue [here](https://github.com/microsoft/fluentui/issues/new/choose) to ensure the team can track this issue.
 
