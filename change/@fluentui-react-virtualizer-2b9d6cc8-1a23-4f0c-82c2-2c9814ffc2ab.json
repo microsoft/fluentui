@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix: Use Fluent hooks for IO and timeout functionality",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
