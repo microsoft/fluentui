@@ -27,7 +27,6 @@ export const useCarouselContext_unstable = <T>(selector: ContextSelector<Carouse
 export function useCarouselContextValues_unstable(state: CarouselState): CarouselContextValues {
   const { store, value, selectPageByDirection, selectPageByValue } = state;
 
-  // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
   const carousel = {
     store,
     value,
