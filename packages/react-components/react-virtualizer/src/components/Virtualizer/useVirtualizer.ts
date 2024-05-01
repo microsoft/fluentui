@@ -5,7 +5,7 @@ import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useSta
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { flushSync } from 'react-dom';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
-import { slot } from '@fluentui/react-utilities';
+import { slot, useTimeout } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
   const {
@@ -83,7 +83,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   };
 
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
-  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>();
+  const [setScrollTimer, clearScrollTimer] = useTimeout();
   const scrollCounter = useRef<number>(0);
 
   const initializeScrollingTimer = () => {
@@ -100,10 +100,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     if (scrollCounter.current >= INIT_SCROLL_FLAG_REQ) {
       setIsScrolling(true);
     }
-    if (scrollTimer.current) {
-      clearTimeout(scrollTimer.current);
-    }
-    scrollTimer.current = setTimeout(() => {
+    clearScrollTimer();
+    setScrollTimer(() => {
       setIsScrolling(false);
       scrollCounter.current = 0;
     }, INIT_SCROLL_FLAG_DELAY);

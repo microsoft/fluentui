@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VirtualizerStaticPaginationProps } from './hooks.types';
 import { useRef } from 'react';
+import { useTimeout } from '@fluentui/react-utilities';
 
 /**
  * Optional hook that will enable pagination on the virtualizer so that it 'autoscrolls' to an items exact position
@@ -14,7 +15,7 @@ export const useStaticVirtualizerPagination = (
 ) => {
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [setScrollTimer, clearScrollTimer] = useTimeout();
   const lastScrollPos = useRef<number>(0);
   const lastIndexScrolled = useRef<number>(0);
 
@@ -25,9 +26,7 @@ export const useStaticVirtualizerPagination = (
       scrollContainer.current.removeEventListener('scroll', onScroll);
 
       scrollContainer.current = null;
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      clearScrollTimer();
     }
   };
 
@@ -83,10 +82,8 @@ export const useStaticVirtualizerPagination = (
    */
   const onScroll = React.useCallback(
     event => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(onScrollEnd, 100);
+      clearScrollTimer();
+      setScrollTimer(onScrollEnd, 100);
     },
     [onScrollEnd],
   );

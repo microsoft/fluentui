@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VirtualizerDynamicPaginationProps } from './hooks.types';
 import { useRef } from 'react';
+import { useTimeout } from '@fluentui/react-utilities';
 
 /**
  * Optional hook that will enable pagination on the virtualizer so that it 'autoscrolls' to an items exact position
@@ -14,7 +15,7 @@ export const useDynamicVirtualizerPagination = (
 ) => {
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [setScrollTimer, clearScrollTimer] = useTimeout();
   const lastScrollPos = useRef<number>(-1);
   const lastIndexScrolled = useRef<number>(-1);
 
@@ -24,9 +25,7 @@ export const useDynamicVirtualizerPagination = (
     if (scrollContainer.current) {
       scrollContainer.current.removeEventListener('scroll', onScroll);
       scrollContainer.current = null;
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      clearScrollTimer();
     }
   };
 
@@ -106,10 +105,8 @@ export const useDynamicVirtualizerPagination = (
    */
   const onScroll = React.useCallback(
     event => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(onScrollEnd, 100);
+      clearScrollTimer();
+      setScrollTimer(onScrollEnd, 100);
     },
     [onScrollEnd],
   );
