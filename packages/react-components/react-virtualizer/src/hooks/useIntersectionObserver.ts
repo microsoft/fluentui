@@ -123,7 +123,7 @@ export const useIntersectionObserver = (
         observer.current.disconnect();
       }
     };
-  }, [observerList, observerInit, callback]);
+  }, [observerList, observerInit, callback, targetDocument?.defaultView]);
 
   // Do not use internally, we need to track external settings only here
   const setObserverInitExternal = useCallback(

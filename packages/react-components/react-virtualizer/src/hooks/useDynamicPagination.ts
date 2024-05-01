@@ -108,7 +108,7 @@ export const useDynamicVirtualizerPagination = (
       clearScrollTimer();
       setScrollTimer(onScrollEnd, 100);
     },
-    [onScrollEnd],
+    [onScrollEnd, clearScrollTimer, setScrollTimer],
   );
 
   /**

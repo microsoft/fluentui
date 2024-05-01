@@ -85,7 +85,7 @@ export const useStaticVirtualizerPagination = (
       clearScrollTimer();
       setScrollTimer(onScrollEnd, 100);
     },
-    [onScrollEnd],
+    [onScrollEnd, clearScrollTimer, setScrollTimer],
   );
 
   /**

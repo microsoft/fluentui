@@ -109,7 +109,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   useEffect(() => {
     initializeScrollingTimer();
-  }, [actualIndex]);
+  }, [actualIndex, initializeScrollingTimer]);
 
   const batchUpdateNewIndex = (index: number) => {
     // Local updates

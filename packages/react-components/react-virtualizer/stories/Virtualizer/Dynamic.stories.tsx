@@ -5,8 +5,7 @@ import {
   VirtualizerContextProvider,
 } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { useCallback } from 'react';
-import { useTimeout } from '@fluentui/react-utilities';
+import { useCallback, useRef } from 'react';
 
 const smallSize = 100;
 const largeSize = 200;
@@ -38,7 +37,7 @@ export const Dynamic = () => {
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
-  const [setScrollTimer, clearScrollTimer] = useTimeout();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   React.useEffect(() => {
     updateTimeout();
@@ -46,8 +45,8 @@ export const Dynamic = () => {
   }, []);
 
   const updateTimeout = () => {
-    clearScrollTimer();
-    setScrollTimer(() => {
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
       toggleFlag(iFlag => !iFlag);
       updateTimeout();
     }, 2000);
