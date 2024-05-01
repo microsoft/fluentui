@@ -64,6 +64,7 @@ const useStyles = makeStyles({
     ...shorthands.margin('unset'),
     paddingInlineStart: '2px',
     paddingBlockStart: '0px',
+    paddingBlockEnd: '0px',
   },
   drawerHeaderNavOverrides: {
     ...shorthands.margin('unset'),
@@ -121,7 +122,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             </DrawerHeaderNavigation>
           </DrawerHeader>
           <NavCategory value="1">
-            {/* <Caption1Strong className={styles.headingContent}>Groceries</Caption1Strong> */}
+            <Caption1Strong className={styles.headingContent}>Groceries</Caption1Strong>
             <NavCategoryItem icon={<Folder />}>Produce</NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem target="_blank" onClick={someClickHandler} value="2">
