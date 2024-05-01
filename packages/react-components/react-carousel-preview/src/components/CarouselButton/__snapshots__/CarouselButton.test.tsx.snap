@@ -2,10 +2,11 @@
 
 exports[`CarouselButton renders a default state 1`] = `
 <div>
-  <div
-    class="fui-CarouselButton"
+  <button
+    class="fui-CarouselButton fui-Button"
+    type="button"
   >
-    Default CarouselButton
-  </div>
+    next
+  </button>
 </div>
 `;
