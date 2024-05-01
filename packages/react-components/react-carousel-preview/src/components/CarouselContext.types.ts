@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { EventData } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
