@@ -39,21 +39,28 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
           border: 'none',
           flexGrow: '1',
 
+          ':hover': {
+            border: 'none',
+          },
+          ':active': {
+            border: 'none',
+          },
+
           [HighContrastSelector]: {
             color: 'WindowText',
             backgroundColor: 'Window',
             border: '1px solid WindowText',
             borderRightWidth: '0',
             ...getHighContrastNoAdjustStyle(),
-          },
-          ':hover': {
-            backgroundColor: 'Highlight',
-            borderColor: 'Highlight',
-            borderRightWidth: '0',
-            color: 'Window',
-          },
-          ':active': {
-            borderColor: 'Highlight',
+            ':hover': {
+              backgroundColor: 'Highlight',
+              border: '1px solid Highlight',
+              borderRightWidth: '0',
+              color: 'HighlightText',
+            },
+            ':active': {
+              border: '1px solid Highlight',
+            },
           },
         },
         '.ms-Button--default + .ms-Button': {
@@ -61,20 +68,26 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
             border: '1px solid WindowText',
             borderLeftWidth: '0',
             ':hover': {
+              backgroundColor: 'HighlightText',
               borderColor: 'Highlight',
               color: 'Highlight',
               '.ms-Button-menuIcon': {
+                backgroundColor: 'HighlightText',
                 color: 'Highlight',
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
         },
         '.ms-Button--default + .ms-Button[aria-expanded="true"]': {
           [HighContrastSelector]: {
+            backgroundColor: 'HighlightText',
             borderColor: 'Highlight',
             color: 'Highlight',
             '.ms-Button-menuIcon': {
+              backgroundColor: 'HighlightText',
               color: 'Highlight',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },
@@ -88,10 +101,10 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
               borderLeftWidth: '0',
               backgroundColor: 'Highlight',
               borderColor: 'Highlight',
-              color: 'Window',
-              ...getHighContrastNoAdjustStyle(),
+              color: 'HighlightText',
               '.ms-Button-menuIcon': {
-                color: 'Window',
+                ...getHighContrastNoAdjustStyle(),
+                color: 'HighlightText',
               },
             },
           },
@@ -99,10 +112,10 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
         '.ms-Button--primary + .ms-Button[aria-expanded="true"]': {
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
-          color: 'Window',
+          color: 'HighlightText',
           ...getHighContrastNoAdjustStyle(),
           '.ms-Button-menuIcon': {
-            color: 'Window',
+            color: 'HighlightText',
           },
         },
         '.ms-Button.is-disabled': {
