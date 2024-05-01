@@ -27,6 +27,10 @@ import {
   tooltipOfXAxislabels,
   getNextColor,
   getColorFromToken,
+  findNumericMinMaxOfY,
+  createYAxisForOtherCharts,
+  IYAxisParams,
+  IAxisData,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -187,12 +191,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
+          createYAxis={this._createYAxis}
           isCalloutForStack
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
           maxOfYVal={stackedInfo.maxOfYVal}
           getGraphData={this._getGraphData}
           getmargins={this._getMargins}
+          getMinMaxOfYAxis={findNumericMinMaxOfY(points)}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
@@ -235,6 +241,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;
+  };
+
+  private _createYAxis = (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean = false,
+    useSecondaryYScale: boolean = true,
+  ) => {
+    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _onRectMouseMove = (mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>) => {

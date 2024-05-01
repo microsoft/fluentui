@@ -975,6 +975,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     // Warning: (ae-forgotten-export) The symbol "ChartTypes" needs to be exported by the entry point index.d.ts
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
+    // (undocumented)
+    createYAxis?: any;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -985,6 +987,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainMargins?: (containerWidth: number) => IMargins;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
+    // (undocumented)
+    getMinMaxOfYAxis?: any;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;

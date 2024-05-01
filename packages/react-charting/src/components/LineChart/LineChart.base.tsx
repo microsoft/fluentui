@@ -31,10 +31,13 @@ import {
   tooltipOfXAxislabels,
   Points,
   pointTypes,
-  getMinMaxOfYAxis,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  findNumericMinMaxOfY,
+  IAxisData,
+  IYAxisParams,
+  createYAxisForOtherCharts,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -276,7 +279,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        createYAxis={this._createYAxis}
         getmargins={this._getMargins}
+        getMinMaxOfYAxis={findNumericMinMaxOfY(this._points)}
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
@@ -337,6 +342,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     );
   }
+
+  private _createYAxis = (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean = false,
+    useSecondaryYScale: boolean = true,
+  ) => {
+    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
+  };
 
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
@@ -994,7 +1009,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._colorFillBars = this.props.colorFillBars!;
     }
 
-    const yMinMaxValues = getMinMaxOfYAxis(this._points, ChartTypes.LineChart);
+    const yMinMaxValues = findNumericMinMaxOfY(this._points);
     const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];

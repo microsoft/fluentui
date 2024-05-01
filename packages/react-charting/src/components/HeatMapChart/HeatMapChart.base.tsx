@@ -9,7 +9,16 @@ import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import {
+  ChartTypes,
+  IAxisData,
+  IYAxisParams,
+  createYAxisForOtherCharts,
+  getAccessibleDataObject,
+  XAxisTypes,
+  YAxisType,
+  getTypeOfAxis,
+} from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
@@ -184,6 +193,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         xAxisType={XAxisTypes.StringAxis}
         yAxisType={YAxisType.StringAxis}
         calloutProps={calloutProps}
+        createYAxis={this._createYAxis}
         chartHoverProps={chartHoverProps}
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
@@ -214,6 +224,16 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     );
   }
+
+  private _createYAxis = (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean = false,
+    useSecondaryYScale: boolean = true,
+  ) => {
+    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
+  };
 
   private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
     let x: string | Date | number = '';

@@ -18,6 +18,8 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  IYAxisParams,
+  createYAxisForOtherCharts,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -173,6 +175,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         calloutProps={calloutProps}
         legendBars={legends}
         xAxisType={this._xAxisType}
+        createYAxis={this._createYAxis}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         tickPadding={this.props.tickPadding || 5}
@@ -206,6 +209,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
       />
     );
   }
+
+  private _createYAxis = (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean = false,
+    useSecondaryYScale: boolean = true,
+  ) => {
+    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
+  };
 
   private _getGraphData = (
     xScale: StringAxis | NumericAxis,

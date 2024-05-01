@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @fluentui/max-len */
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
@@ -328,35 +331,7 @@ export function prepareDatapoints(
   return dataPointsArray;
 }
 
-/**
- * Creating Numeric Y axis of the chart
- * @export
- * @param {IYAxisParams} yAxisParams
- * @param {boolean} isRtl
- */
-export function createYAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  chartType: ChartTypes,
-  barWidth: number,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-) {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
-    default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
-  }
-}
-
-export function createYAxisForHorizontalBarChartWithAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  barWidth: number,
-) {
+export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -1157,9 +1132,9 @@ export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: 
  * @param {IDataPoint[]} dataset
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
-  const yMin = d3Min(dataset, (point: IDataPoint) => point.y)!;
+export function findVSBCNumericMinMaxOfY(dataset: any[]): { startValue: number; endValue: number } {
+  const yMax = d3Max(dataset, (point: any) => point.y)!;
+  const yMin = d3Min(dataset, (point: any) => point.y)!;
 
   return { startValue: yMin, endValue: yMax };
 }
@@ -1216,45 +1191,6 @@ export function findHBCWANumericMinMaxOfY(
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
-}
-
-/**
- * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
- * So, this method will define which method need to call based on chart type to find out min and max values(For Domain).
- * For grouped vertical bar chart, Calculating yMax value in the base file and sending as MaxOfYVal to cartesian.
- * @export
- * @param {*} points
- * @param {ChartTypes} chartType
- * @returns {{ startValue: number; endValue: number }}
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getMinMaxOfYAxis(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  chartType: ChartTypes,
-  yAxisType: YAxisType | undefined = YAxisType.NumericAxis,
-): { startValue: number; endValue: number } {
-  let minMaxValues: { startValue: number; endValue: number };
-
-  switch (chartType) {
-    case ChartTypes.AreaChart:
-    case ChartTypes.LineChart:
-      minMaxValues = findNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.VerticalStackedBarChart:
-      minMaxValues = findVSBCNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.VerticalBarChart:
-      minMaxValues = findVerticalNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.HorizontalBarChartWithAxis:
-      minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
-      break;
-    default:
-      minMaxValues = { startValue: 0, endValue: 0 };
-  }
-
-  return minMaxValues;
 }
 
 /**

@@ -41,6 +41,9 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  findVSBCNumericMinMaxOfY,
+  IYAxisParams,
+  createYAxisForOtherCharts,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -202,8 +205,10 @@ export class VerticalStackedBarChartBase extends React.Component<
           chartType={ChartTypes.VerticalStackedBarChart}
           xAxisType={this._xAxisType}
           calloutProps={calloutProps}
+          createYAxis={this._createYAxis}
           tickParams={tickParams}
           legendBars={legendBars}
+          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY(this._dataset)}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
           barwidth={this._barWidth}
@@ -273,6 +278,16 @@ export class VerticalStackedBarChartBase extends React.Component<
       shouldFocusStackOnly = isCalloutForStack;
     }
     return shouldFocusStackOnly;
+  };
+
+  private _createYAxis = (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean = false,
+    useSecondaryYScale: boolean = true,
+  ) => {
+    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {

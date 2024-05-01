@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
@@ -6,8 +7,9 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
-import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
+import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
+import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/utilities';
 
 /**
  * Cartesian Chart style properties
@@ -614,4 +616,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  getMinMaxOfYAxis?: any;
+
+  createYAxis?: any;
 }

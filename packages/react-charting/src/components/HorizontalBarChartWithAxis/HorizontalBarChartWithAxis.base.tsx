@@ -33,6 +33,8 @@ import {
   StringAxis,
   getTypeOfAxis,
   getNextColor,
+  findHBCWANumericMinMaxOfY,
+  createYAxisForHorizontalBarChartWithAxis,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -145,6 +147,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        createYAxis={createYAxisForHorizontalBarChartWithAxis}
+        getMinMaxOfYAxis={findHBCWANumericMinMaxOfY(this._points, this._yAxisType)}
         barwidth={this._barHeight}
         focusZoneDirection={FocusZoneDirection.vertical}
         customizedCallout={this._getCustomizedCallout()}

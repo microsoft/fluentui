@@ -41,6 +41,9 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  findVerticalNumericMinMaxOfY,
+  IYAxisParams,
+  createYAxisForOtherCharts,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -159,6 +162,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         points={this._points}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
+        createYAxis={this._createYAxis}
         calloutProps={calloutProps}
         tickParams={tickParams}
         {...(this._isHavingLine && { isCalloutForStack: true })}
@@ -168,6 +172,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
+        getMinMaxOfYAxis={findVerticalNumericMinMaxOfY(this._points)}
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
@@ -206,6 +211,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       />
     );
   }
+
+  private _createYAxis = (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean = false,
+    useSecondaryYScale: boolean = true,
+  ) => {
+    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
+  };
 
   private _createLine = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

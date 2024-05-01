@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -19,10 +20,8 @@ import {
   getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
-  createYAxis,
   createStringYAxis,
   IMargins,
-  getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
@@ -292,7 +291,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         yMaxValue: this.props.yMaxValue || 0,
         tickPadding: 10,
         maxOfYVal: this.props.maxOfYVal,
-        yMinMaxValues: getMinMaxOfYAxis(points, chartType, this.props.yAxisType),
+        yMinMaxValues: this.props.getMinMaxOfYAxis ? this.props.getMinMaxOfYAxis() : { startValue: 0, endValue: 0 },
         // please note these padding default values must be consistent in here
         // and the parent chart(HBWA/Vertical etc..) for more details refer example
         // http://using-d3js.com/04_07_ordinal_scales.html
@@ -388,28 +387,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
             tickPadding: 10,
             maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-            yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+            yMinMaxValues: this.props.getMinMaxOfYAxis ? this.props.getMinMaxOfYAxis() : { startValue: 0, endValue: 0 },
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = createYAxis(
-            YAxisParamsSecondary,
-            this._isRtl,
-            axisData,
-            chartType,
-            this.props.barwidth!,
-            this.isIntegralDataset,
-            true,
-          );
+          yScaleSecondary = this.props.createYAxis(YAxisParamsSecondary, this._isRtl, axisData, this.isIntegralDataset);
         }
-        yScale = createYAxis(
-          YAxisParams,
-          this._isRtl,
-          axisData,
-          chartType,
-          this.props.barwidth!,
-          this.isIntegralDataset,
-        );
+        yScale = this.props.createYAxis(YAxisParams, this._isRtl, axisData, this.isIntegralDataset);
       }
 
       /*
