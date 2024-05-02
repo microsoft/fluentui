@@ -1992,13 +1992,6 @@
     "@griffel/react" "^1.5.14"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/tokens@1.0.0-alpha.2":
-  version "1.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/tokens/-/tokens-1.0.0-alpha.2.tgz#890d8617ff40caa327f2c6810d7354f87c392555"
-  integrity sha512-Rd3xFE+ynAjpTgXwOWQnbw1jLqRrRvCgFTPtlqFlXK31lkNOz28f4HAHkNSXsFF95r/pM6EvJ+GtEoBhzfkdSw==
-  dependencies:
-    tslib "^2.1.0"
-
 "@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
   version "1.4.20"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"
@@ -11099,12 +11092,7 @@ es-abstract@^1.13.0, es-abstract@^1.19.0, es-abstract@^1.19.1, es-abstract@^1.4.
     string.prototype.trimstart "^1.0.4"
     unbox-primitive "^1.0.1"
 
-es-module-lexer@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-1.2.1.tgz#ba303831f63e6a394983fde2f97ad77b22324527"
-  integrity sha512-9978wrXM50Y4rTMmW5kXIC09ZdXQZqkE4mxhwkd8VbzsGkXGPgV4zWuqQJgCEzYngdo2dYDa0l8xhX4fkSwJSg==
-
-es-module-lexer@^1.3.1:
+es-module-lexer@^1.2.1, es-module-lexer@^1.3.1:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-1.5.2.tgz#00b423304f2500ac59359cc9b6844951f372d497"
   integrity sha512-l60ETUTmLqbVbVHv1J4/qj+M8nq7AwMzEcg3kmJDt9dCNrTk+yHcYFf/Kw75pMDwd9mPcIGCG5LcS20SxYRzFA==
