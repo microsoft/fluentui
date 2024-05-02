@@ -80,7 +80,7 @@
     "@fluentui/react-text": "^9.4.17",
     "@fluentui/react-virtualizer": "9.0.0-alpha.77",
     "@fluentui/react-tree": "^9.4.43",
-    "@griffel/react": "^1.5.14",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-message-bar": "^9.1.1",
     "@fluentui/react-breadcrumb": "^9.0.26",

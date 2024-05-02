@@ -19,7 +19,9 @@ export const useStyles = makeStyles({
     display: 'inline',
     paddingLeft: '5px',
     paddingRight: '5px',
+    /* eslint-disable deprecation/deprecation */
     ...shorthands.borderRadius('10px'),
+    /* eslint-enable deprecation/deprecation */
   },
   menu: {
     marginTop: tokens.spacingVerticalXS,

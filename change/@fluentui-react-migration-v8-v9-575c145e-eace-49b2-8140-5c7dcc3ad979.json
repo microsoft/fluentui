@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bump @griffel/react",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -38,7 +38,7 @@
     "@fluentui/react-drawer": "^9.3.1",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-utilities": "^9.18.8",
-    "@griffel/react": "^1.5.14",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
