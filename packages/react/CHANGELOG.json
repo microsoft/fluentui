@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 02 May 2024 07:27:45 GMT",
+      "tag": "@fluentui/react_v8.118.0",
+      "version": "8.118.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c03c973c7ae9ac2ce7314d6054e9a175bb0c0fd7",
+            "comment": "feat: Add caseSensitive prop to Combobox."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 May 2024 07:26:38 GMT",
       "tag": "@fluentui/react_v8.117.8",
       "version": "8.117.8",
