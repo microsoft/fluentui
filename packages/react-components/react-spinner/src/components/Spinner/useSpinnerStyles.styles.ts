@@ -71,6 +71,7 @@ const useSpinnerBaseClassName = makeResetStyles({
 // The tail and spinner itself also have 360deg rotation animations for the spin.
 const useSpinnerTailBaseClassName = makeResetStyles({
   position: 'absolute',
+  display: 'block',
   width: '100%',
   height: '100%',
   maskImage: 'conic-gradient(transparent 105deg, white 105deg)',
@@ -78,6 +79,7 @@ const useSpinnerTailBaseClassName = makeResetStyles({
   '&::before, &::after': {
     content: '""',
     position: 'absolute',
+    display: 'block',
     width: '100%',
     height: '100%',
     animation: 'inherit',

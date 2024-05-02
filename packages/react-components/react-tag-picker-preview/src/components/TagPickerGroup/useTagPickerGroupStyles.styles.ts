@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   root: {
     flexWrap: 'wrap',
     boxSizing: 'border-box',
+    cursor: 'text',
   },
   // size variants
   medium: {

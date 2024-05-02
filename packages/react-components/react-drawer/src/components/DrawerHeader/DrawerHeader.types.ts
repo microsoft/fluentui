@@ -1,5 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+import { DrawerScrollState } from '../../shared/DrawerBase.types';
+
 export type DrawerHeaderSlots = {
   /**
    * The root of the DrawerHeader.
@@ -15,4 +17,6 @@ export type DrawerHeaderProps = ComponentProps<DrawerHeaderSlots>;
 /**
  * State used in rendering DrawerHeader
  */
-export type DrawerHeaderState = ComponentState<DrawerHeaderSlots>;
+export type DrawerHeaderState = ComponentState<DrawerHeaderSlots> & {
+  scrollState: DrawerScrollState;
+};

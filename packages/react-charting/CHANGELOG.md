@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 22 Apr 2024 07:28:27 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2024 07:27:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.4)
+
+Thu, 02 May 2024 07:27:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.3..@fluentui/react-charting_v5.21.4)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.149 ([PR #31232](https://github.com/microsoft/fluentui/pull/31232) by beachball)
+- Bump @fluentui/react to v8.118.0 ([PR #31232](https://github.com/microsoft/fluentui/pull/31232) by beachball)
+
+## [5.21.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.3)
+
+Wed, 01 May 2024 07:26:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.2..@fluentui/react-charting_v5.21.3)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.148 ([PR #31181](https://github.com/microsoft/fluentui/pull/31181) by beachball)
+- Bump @fluentui/react to v8.117.8 ([PR #31181](https://github.com/microsoft/fluentui/pull/31181) by beachball)
+
+## [5.21.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.2)
+
+Tue, 30 Apr 2024 07:25:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.1..@fluentui/react-charting_v5.21.2)
+
+### Patches
+
+- Sankey diagram bug fix - Use the formatted node value instead of the raw value, to calculate text measurement. ([PR #31215](https://github.com/microsoft/fluentui/pull/31215) by lamalkar@microsoft.com)
+
+## [5.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.1)
+
+Thu, 25 Apr 2024 07:25:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.0..@fluentui/react-charting_v5.21.1)
+
+### Patches
+
+- Disable focus on non-highlighted elements ([PR #31144](https://github.com/microsoft/fluentui/pull/31144) by kumarkshitij@microsoft.com)
+
+## [5.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.0)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.20.2..@fluentui/react-charting_v5.21.0)
+
+### Minor changes
+
+- Sankey Diagram: Support number formatting ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by lamalkar@microsoft.com)
+- Bump @fluentui/react-focus to v8.9.1 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/theme-samples to v8.7.147 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/set-version to v8.2.17 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/react to v8.117.7 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+
+### Patches
+
+- Set axisType for single data point in case of AreaChart ([PR #30256](https://github.com/microsoft/fluentui/pull/30256) by shubhabrata08@gmail.com)
+- Fix overlapping bars on continuous axes ([PR #31035](https://github.com/microsoft/fluentui/pull/31035) by kumarkshitij@microsoft.com)
 
 ## [5.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.20.2)
 

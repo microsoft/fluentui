@@ -7,8 +7,9 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
+  useTagPickerFilter,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, useComboboxFilter } from '@fluentui/react-components';
+import { Tag, Avatar } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -25,33 +26,29 @@ export const Filtering = () => {
   const [query, setQuery] = React.useState<string>('');
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-matches') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions);
     setQuery('');
   };
 
-  const children = useComboboxFilter(
+  const children = useTagPickerFilter({
     query,
-    options.map(option => ({ children: option, value: option })),
-    {
-      // TODO add renderer for noOptionsMessage
-      noOptionsMessage: "We couldn't find any matches",
-      renderOption: option => (
-        <TagPickerOption
-          secondaryContent="Microsoft FTE"
-          key={option.value}
-          media={<Avatar aria-hidden name={option.children} color="colorful" />}
-          value={option.value}
-        >
-          {option.children}
-        </TagPickerOption>
-      ),
-      filter(optionText, queryText) {
-        // TODO make this filter provide value too
-        // In this example optionText is the same as value
-        return !selectedOptions.includes(optionText) && optionText.toLowerCase().includes(queryText.toLowerCase());
-      },
-    },
-  );
+    options,
+    noOptionsElement: <TagPickerOption value="no-matches">We couldn't find any matches</TagPickerOption>,
+    renderOption: option => (
+      <TagPickerOption
+        secondaryContent="Microsoft FTE"
+        key={option}
+        media={<Avatar aria-hidden name={option} color="colorful" />}
+        value={option}
+      >
+        {option}
+      </TagPickerOption>
+    ),
+    filter: option => !selectedOptions.includes(option) && option.toLowerCase().includes(query.toLowerCase()),
+  });
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
@@ -81,7 +78,7 @@ Filtering.parameters = {
   docs: {
     description: {
       story: `
-\`TagPicker\` can take advantage of the provided [\`useComboboxFilter\`](https://react.fluentui.dev/?path=/docs/components-combobox--default#filtering) hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.
+\`TagPicker\` can take advantage of the provided \`useTagPickerFilter\` hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.
 `,
     },
   },

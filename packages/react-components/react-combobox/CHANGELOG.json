@@ -2,6 +2,59 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 02 May 2024 11:36:31 GMT",
+      "tag": "@fluentui/react-combobox_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "stevenco@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f561ced7e85f67bd04ccaffec6a6903efe157057",
+            "comment": "Fixing initial keyboard focus issues with unparented listbox"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "84b899c818b77c889b514460c92c32bc9f20385d",
+            "comment": "Add onActiveOptionChange to Dropdown and Combobox"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-aria to v9.11.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.63",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.4.22",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-combobox_v9.10.1",
       "version": "9.10.1",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.7)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.6..@fluentui/eslint-plugin_v1.17.7)
+
+### Patches
+
+- fix: dont apply import/no-extraneous-dependencies rule on stories ([PR #31087](https://github.com/microsoft/fluentui/pull/31087) by martinhochel@microsoft.com)
 
 ## [1.17.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.6)
 

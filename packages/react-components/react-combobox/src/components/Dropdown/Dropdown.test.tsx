@@ -7,6 +7,7 @@ import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { dropdownClassNames } from './useDropdownStyles.styles';
+import { DropdownProps } from '@fluentui/react-combobox';
 
 describe('Dropdown', () => {
   beforeEach(() => {
@@ -745,6 +746,29 @@ describe('Dropdown', () => {
       const clearButton = getByLabelText('Clear selection');
 
       expect(clearButton).toHaveStyle({ display: 'none' });
+    });
+  });
+  describe('Active item change', () => {
+    it('should call onActiveOptionChange with arrow down', () => {
+      let activeOptionText = '';
+      const onActiveOptionChange: DropdownProps['onActiveOptionChange'] = (_, data) => {
+        activeOptionText = data.nextOption?.text ?? '';
+      };
+      render(
+        <Dropdown onActiveOptionChange={onActiveOptionChange}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Dropdown>,
+      );
+
+      userEvent.tab();
+      userEvent.keyboard('{ArrowDown}');
+      expect(activeOptionText).toBe('Red');
+      userEvent.keyboard('{ArrowDown}');
+      expect(activeOptionText).toBe('Green');
+      userEvent.keyboard('{ArrowUp}');
+      expect(activeOptionText).toBe('Red');
     });
   });
 });
