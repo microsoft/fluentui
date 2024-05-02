@@ -173,7 +173,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem target="_blank" icon={<PerformanceReviews />} onClick={someClickHandler} value="5">
             Performance Reviews
           </NavItem>
-          <Caption1Strong className={styles.headingContent}>Recruitment</Caption1Strong>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
