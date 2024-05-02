@@ -19,28 +19,27 @@ export const useAriaNotifyAnnounce_unstable = (): AriaLiveAnnounceFn => {
   const { targetDocument } = useFluent();
 
   const announce: AriaLiveAnnounceFn = React.useCallback(
-    () =>
-      (message: string, options: AnnounceOptions = {}) => {
-        if (!targetDocument) {
-          return;
-        }
+    (message: string, options: AnnounceOptions = {}) => {
+      if (!targetDocument) {
+        return;
+      }
 
-        const { alert = false, polite, batchId } = options;
+      const { alert = false, polite, batchId } = options;
 
-        // default priority to 0 if polite, 2 if alert, and 1 by default
-        // used to set both ariaNotify's priority and interrupt
-        const defaultPriority = polite ? 0 : alert ? 2 : 1;
-        const priority = options.priority ?? defaultPriority;
+      // default priority to 0 if polite, 2 if alert, and 1 by default
+      // used to set both ariaNotify's priority and interrupt
+      const defaultPriority = polite ? 0 : alert ? 2 : 1;
+      const priority = options.priority ?? defaultPriority;
 
-        // map fluent announce options to ariaNotify options
-        const ariaNotifyOptions: AriaNotifyOptions = {
-          notificationID: batchId,
-          priority: priority > 1 ? 'important' : 'none',
-          interrupt: batchId ? (priority > 0 ? 'all' : 'pending') : 'none',
-        };
+      // map fluent announce options to ariaNotify options
+      const ariaNotifyOptions: AriaNotifyOptions = {
+        notificationID: batchId,
+        priority: priority > 1 ? 'important' : 'none',
+        interrupt: batchId ? (priority > 0 ? 'all' : 'pending') : 'none',
+      };
 
-        (targetDocument as DocumentWithAriaNotify).ariaNotify(message, ariaNotifyOptions);
-      },
+      (targetDocument as DocumentWithAriaNotify).ariaNotify(message, ariaNotifyOptions);
+    },
     [targetDocument],
   );
 

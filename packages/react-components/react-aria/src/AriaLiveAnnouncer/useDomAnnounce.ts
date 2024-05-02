@@ -88,44 +88,43 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
   }, [clearAnnounceTimeout, messageQueue, setAnnounceTimeout, targetDocument]);
 
   const announce: AriaLiveAnnounceFn = React.useCallback(
-    () =>
-      (message: string, options: AnnounceOptions = {}) => {
-        const { alert = false, priority = 0, batchId } = options;
+    (message: string, options: AnnounceOptions = {}) => {
+      const { alert = false, priority = 0, batchId } = options;
 
-        // check if message is an alert
-        if (alert) {
-          // TODO: alert implementation
-          // setAlertList([...alertList, message]);
+      // check if message is an alert
+      if (alert) {
+        // TODO: alert implementation
+        // setAlertList([...alertList, message]);
+      }
+
+      const liveMessage: AriaLiveMessage = {
+        message,
+        createdAt: order.current++,
+        priority,
+        batchId,
+      };
+
+      // check if batchId exists
+      if (batchId) {
+        // update associated msg if it does
+        const batchMessage = batchMessages.current.find(msg => msg.batchId === batchId);
+
+        if (batchMessage) {
+          // replace existing message in queue
+          messageQueue.remove(batchMessage.message);
+
+          // update list of existing batchIds w/ most recent message
+          batchMessage.message = liveMessage;
+        } else {
+          // update list of existing batchIds, add new if doesn't already exist
+          batchMessages.current = [...batchMessages.current, { batchId, message: liveMessage }];
         }
+      }
 
-        const liveMessage: AriaLiveMessage = {
-          message,
-          createdAt: order.current++,
-          priority,
-          batchId,
-        };
-
-        // check if batchId exists
-        if (batchId) {
-          // update associated msg if it does
-          const batchMessage = batchMessages.current.find(msg => msg.batchId === batchId);
-
-          if (batchMessage) {
-            // replace existing message in queue
-            messageQueue.remove(batchMessage.message);
-
-            // update list of existing batchIds w/ most recent message
-            batchMessage.message = liveMessage;
-          } else {
-            // update list of existing batchIds, add new if doesn't already exist
-            batchMessages.current = [...batchMessages.current, { batchId, message: liveMessage }];
-          }
-        }
-
-        // add new message
-        messageQueue.enqueue(liveMessage);
-        queueMessage();
-      },
+      // add new message
+      messageQueue.enqueue(liveMessage);
+      queueMessage();
+    },
     [messageQueue, queueMessage],
   );
 
