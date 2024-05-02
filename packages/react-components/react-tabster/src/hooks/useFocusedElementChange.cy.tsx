@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useListenFocusedElement } from './useListenFocusedElement';
+import { useFocusedElementChange } from './useFocusedElementChange';
 import { mount } from '@cypress/react';
 
 const Example = (props: { callback: () => void }) => {
-  useListenFocusedElement(props.callback);
+  useFocusedElementChange(props.callback);
   return (
     <>
       <div tabIndex={0}>before</div>
@@ -13,7 +13,7 @@ const Example = (props: { callback: () => void }) => {
   );
 };
 
-describe('useListenFocusedElement', () => {
+describe('useFocusedElementChange', () => {
   it('should call the callback when the focused element changes', () => {
     const callback = cy.stub().as('callback');
     mount(<Example callback={callback} />);

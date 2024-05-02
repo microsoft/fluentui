@@ -15,7 +15,7 @@ export {
   useUncontrolledFocus,
   useOnKeyboardNavigationChange,
   useSetKeyboardNavigation,
-  useListenFocusedElement,
+  useFocusedElementChange,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

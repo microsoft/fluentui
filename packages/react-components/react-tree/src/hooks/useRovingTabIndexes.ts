@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
-import { useListenFocusedElement } from '@fluentui/react-tabster';
+import { useFocusedElementChange } from '@fluentui/react-tabster';
 import { elementContains } from '@fluentui/react-utilities';
 
 /**
@@ -9,7 +9,7 @@ import { elementContains } from '@fluentui/react-utilities';
 export function useRovingTabIndex() {
   const currentElementRef = React.useRef<HTMLElement>();
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
-  useListenFocusedElement(element => {
+  useFocusedElementChange(element => {
     if (
       element?.getAttribute('role') === 'treeitem' &&
       walkerRef.current &&

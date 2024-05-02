@@ -1465,6 +1465,9 @@ export interface UseFocusableGroupOptions {
 }
 
 // @public
+export function useFocusedElementChange(callback: Types.SubscribableCallback<HTMLElement | undefined, Types.FocusedElementDetail>): void;
+
+// @public
 export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
@@ -1484,9 +1487,6 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): Re
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
-
-// @public
-export function useListenFocusedElement(callback: Types.SubscribableCallback<HTMLElement | undefined, Types.FocusedElementDetail>): void;
 
 // @internal
 export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
