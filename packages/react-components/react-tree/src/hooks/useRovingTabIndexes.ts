@@ -11,10 +11,9 @@ export function useRovingTabIndex() {
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
   useListenFocusedElement(element => {
     if (
+      element?.getAttribute('role') === 'treeitem' &&
       walkerRef.current &&
-      element &&
-      elementContains(walkerRef.current.root, element) &&
-      element.getAttribute('role') === 'treeitem'
+      elementContains(walkerRef.current.root, element)
     ) {
       rove(element);
     }
