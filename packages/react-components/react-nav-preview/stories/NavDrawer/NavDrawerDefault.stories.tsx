@@ -21,8 +21,6 @@ import {
   useId,
 } from '@fluentui/react-components';
 import {
-  AppsSettings20Filled,
-  AppsSettings20Regular,
   Board20Filled,
   Board20Regular,
   BoxMultiple20Filled,
@@ -50,6 +48,8 @@ import {
   PersonSearch20Regular,
   PreviewLink20Filled,
   PreviewLink20Regular,
+  Settings20Filled,
+  Settings20Regular,
   bundleIcon,
 } from '@fluentui/react-icons';
 import { navItemTokens } from '../../src/components/sharedNavStyles.styles';
@@ -124,7 +124,7 @@ const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
 const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
-const AppSettings = bundleIcon(AppsSettings20Filled, AppsSettings20Regular);
+const Settings = bundleIcon(Settings20Filled, Settings20Regular);
 
 type DrawerType = Required<DrawerProps>['type'];
 
@@ -222,27 +222,19 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           </NavCategory>
 
           <Caption1Strong className={styles.headingContent}>Analytics</Caption1Strong>
-          <NavItem icon={<Analytics />} value="19">
+          <NavItem target="_blank" onClick={someClickHandler} icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
-          <NavItem icon={<Reports />} value="20">
+          <NavItem target="_blank" onClick={someClickHandler} icon={<Reports />} value="20">
             Reports
           </NavItem>
         </DrawerBody>
 
         <DrawerFooter className={styles.drawerFooterOverrides}>
-          <NavCategory value="21">
-            <NavCategoryItem icon={<Person />}>Profile</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="22">
-                Account Management
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="23">
-                Security
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-          <NavItem icon={<AppSettings />} target="_blank" onClick={someClickHandler} value="24">
+          <NavItem value="21" target="_blank" onClick={someClickHandler} icon={<Person />}>
+            Profile
+          </NavItem>
+          <NavItem icon={<Settings />} target="_blank" onClick={someClickHandler} value="24">
             App Settings
           </NavItem>
         </DrawerFooter>
