@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Accessibility issue fixes: Added bench mark data and tooltip value in aria label",
+  "comment": "Accessibility issue fixes: Added bench mark data and tooltip data to aria label in HorizontalBarChart and VerticalStackedBarChart",
   "packageName": "@fluentui/react-charting",
   "email": "132879294+v-baambati@users.noreply.github.com",
   "dependentChangeType": "patch"
