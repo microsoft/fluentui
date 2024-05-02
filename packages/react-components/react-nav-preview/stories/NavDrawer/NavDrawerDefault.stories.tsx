@@ -108,8 +108,8 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
   return (
     <div className={styles.root}>
       <NavDrawer
-        defaultSelectedValue={'2'}
-        defaultSelectedCategoryValue={'1'}
+        defaultSelectedValue="2"
+        defaultSelectedCategoryValue="1"
         open={isOpen}
         type={type}
         onOpenChange={(_, { open }) => setIsOpen(open)}
@@ -118,7 +118,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         <DrawerBody className={styles.drawerBodyOverrides}>
           <DrawerHeader className={styles.drawerHeaderOverrides}>
             <DrawerHeaderNavigation className={styles.drawerHeaderNavOverrides}>
-              <Button appearance={'transparent'} icon={<NavigationFilled />} className={styles.hamburger} />
+              <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
             </DrawerHeaderNavigation>
           </DrawerHeader>
           <NavCategory value="1">
