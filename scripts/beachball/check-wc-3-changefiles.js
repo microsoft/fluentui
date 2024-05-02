@@ -1,5 +1,5 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
 /**
  * @typedef {{
@@ -34,21 +34,25 @@ function main(/** @type {string} */ root) {
 
   const changeFiles = fs.readdirSync(root, 'utf8');
 
-  const invalidChangeFiles = /** @type string [] */ (changeFiles
-    .map(changeFilePath => {
-      const filePath = path.join(root, changeFilePath);
-      /** @type {ChangeFile} */
-      const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const invalidChangeFiles = /** @type string [] */ (
+    changeFiles
+      .map(changeFilePath => {
+        const filePath = path.join(root, changeFilePath);
+        /** @type {ChangeFile} */
+        const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-      if (content.packageName === '@fluentui/web-components') {
+        if (content.packageName === '@fluentui/web-components') {
+          return;
+        }
+
+        if (content.type !== 'none' || content.dependentChangeType !== 'none') {
+          return changeFilePath;
+        }
+
         return;
-      }
-
-      if (content.type !== 'none' || content.dependentChangeType !== 'none') {
-        return changeFilePath;
-      }
-    })
-    .filter(Boolean));
+      })
+      .filter(Boolean)
+  );
 
   if (invalidChangeFiles.length > 0) {
     console.error('================');

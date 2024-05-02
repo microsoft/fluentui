@@ -1,4 +1,4 @@
-import { WCThemeDecorator } from '../src/utilities/WCThemeDecorator'
+import { WCThemeDecorator } from '../src/utilities/WCThemeDecorator';
 
 export const parameters = {
   layout: 'fullscreen',

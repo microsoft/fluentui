@@ -21,10 +21,9 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-componen
   const vNextPackagePaths = getVNextPackagePaths();
 
   if (version === 'web-components') {
-    const allPackageInfo = getAllPackageInfo();
     const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
     return {
-      scope: [allPackageInfo['@fluentui/web-components'].packagePath, '!apps/*', ...ignoreVNextScope],
+      scope: ['packages/web-components', '!apps/*', ...ignoreVNextScope],
     };
   }
 
