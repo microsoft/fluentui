@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: open/close animation jumps when body is scrollable",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
