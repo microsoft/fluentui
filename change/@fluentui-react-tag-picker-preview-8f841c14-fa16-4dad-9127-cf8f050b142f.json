@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: make expandIcon aria-hidden by default",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": " chore: upgrade @fluentui/react-icons to 2.0.237.",
-  "packageName": "@fluentui/react-provider",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

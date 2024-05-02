@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add onActiveOptionChange to Dropdown and Combobox",
-  "packageName": "@fluentui/react-combobox",
-  "email": "jurokapsiar@gmail.com",
-  "dependentChangeType": "patch"
-}

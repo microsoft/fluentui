@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: useListenFocusedElement hook",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

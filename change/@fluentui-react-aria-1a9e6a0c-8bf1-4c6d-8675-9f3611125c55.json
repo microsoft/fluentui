@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "ActiveDescendantChangeEvent for tracking active item",
-  "packageName": "@fluentui/react-aria",
-  "email": "jurokapsiar@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: updates roving tab indexes to ensure Tree is focusable",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
