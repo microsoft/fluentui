@@ -165,11 +165,11 @@ export class AnchorButton extends FASTElement {
   public disabled?: boolean = false;
   protected disabledChanged(prev: boolean, next: boolean): void {
     if (this.disabled) {
-      ((this as unknown) as HTMLElement).setAttribute('aria-disabled', 'true');
-      ((this as unknown) as HTMLElement).setAttribute('tabindex', '-1');
+      (this as unknown as HTMLElement).setAttribute('aria-disabled', 'true');
+      (this as unknown as HTMLElement).setAttribute('tabindex', '-1');
     } else {
-      ((this as unknown) as HTMLElement).removeAttribute('aria-disabled');
-      ((this as unknown) as HTMLElement).removeAttribute('tabindex');
+      (this as unknown as HTMLElement).removeAttribute('aria-disabled');
+      (this as unknown as HTMLElement).removeAttribute('tabindex');
     }
   }
 
@@ -188,9 +188,9 @@ export class AnchorButton extends FASTElement {
     }
 
     if (this.disabledFocusable) {
-      ((this as unknown) as HTMLElement).setAttribute('aria-disabled', 'true');
+      (this as unknown as HTMLElement).setAttribute('aria-disabled', 'true');
     } else {
-      ((this as unknown) as HTMLElement).removeAttribute('aria-disabled');
+      (this as unknown as HTMLElement).removeAttribute('aria-disabled');
     }
   }
 
@@ -207,13 +207,13 @@ export class AnchorButton extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    ((this as unknown) as HTMLElement).addEventListener('click', this.handleDisabledFocusableClick);
+    (this as unknown as HTMLElement).addEventListener('click', this.handleDisabledFocusableClick);
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    ((this as unknown) as HTMLElement).removeEventListener('click', this.handleDisabledFocusableClick);
+    (this as unknown as HTMLElement).removeEventListener('click', this.handleDisabledFocusableClick);
   }
 }
 

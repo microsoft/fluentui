@@ -133,7 +133,7 @@ export class Avatar extends FASTElement {
 
     return (
       this.initials ??
-      getInitials(this.name, window.getComputedStyle((this as unknown) as HTMLElement).direction === 'rtl', {
+      getInitials(this.name, window.getComputedStyle(this as unknown as HTMLElement).direction === 'rtl', {
         firstInitialOnly: size <= 16,
       })
     );

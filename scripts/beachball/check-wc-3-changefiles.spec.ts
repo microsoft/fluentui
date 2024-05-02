@@ -1,8 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
+
 import tmp from 'tmp';
-import { main } from './check-wc-3-changefiles';
+
 import type { ChangeFile } from './check-wc-3-changefiles';
+import { main } from './check-wc-3-changefiles';
 
 tmp.setGracefulCleanup();
 
@@ -18,8 +20,8 @@ function setup(changefiles: Array<ChangeFile>) {
     fs.writeFileSync(changeFilePath, JSON.stringify(change, null, 2), 'utf-8');
   });
 
-  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-  const processExitSpy = jest.spyOn(process, 'exit').mockImplementation((() => {}) as any);
+  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+  const processExitSpy = jest.spyOn(process, 'exit').mockImplementation();
 
   return { root: changesRoot, consoleErrorSpy, processExitSpy };
 }

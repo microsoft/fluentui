@@ -31,7 +31,7 @@ export type MenuItemRole = ValuesOf<typeof MenuItemRole>;
  * @internal
  */
 export const roleForMenuItem: {
-  [value in keyof typeof MenuItemRole]: typeof MenuItemRole[value];
+  [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
 } = {
   [MenuItemRole.menuitem]: 'menuitem',
   [MenuItemRole.menuitemcheckbox]: 'menuitemcheckbox',
