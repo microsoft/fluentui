@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Accessibility issue fix",
+  "comment": "Accessibility issue fixes: Added bench mark data and tooltip value in aria label",
   "packageName": "@fluentui/react-charting",
   "email": "132879294+v-baambati@users.noreply.github.com",
   "dependentChangeType": "patch"
