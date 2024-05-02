@@ -10,17 +10,17 @@ TabPanelDefinition.define(FluentDesignSystem.registry);
 
 const secondTabId = 'second-tab-id';
 
-const createDecorator = (steps: unknown[], wrapperStyle: React.CSSProperties = { width: '380px' }) => (
-  story: () => React.ReactElement,
-) => {
-  return (
-    <StoryWright steps={steps}>
-      <div className="testWrapper" style={wrapperStyle}>
-        {story()}
-      </div>
-    </StoryWright>
-  );
-};
+const createDecorator =
+  (steps: unknown[], wrapperStyle: React.CSSProperties = { width: '380px' }) =>
+  (story: () => React.ReactElement) => {
+    return (
+      <StoryWright steps={steps}>
+        <div className="testWrapper" style={wrapperStyle}>
+          {story()}
+        </div>
+      </StoryWright>
+    );
+  };
 
 const horizontalSteps = new Steps()
   .snapshot('normal', { cropTo: '.testWrapper' })

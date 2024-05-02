@@ -227,34 +227,22 @@ test.describe('Radio', () => {
     const expectedSecond = await secondRadio.evaluate<boolean, Radio>(node => node.hasAttribute('disabled'));
     const expectedThird = await thirdRadio.evaluate<boolean, Radio>(node => node.hasAttribute('disabled'));
 
-    expect(
-      await firstRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled')),
-    ).toEqual(expectedFirst);
+    expect(await firstRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedFirst);
 
-    expect(
-      await secondRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled')),
-    ).toEqual(expectedSecond);
+    expect(await secondRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedSecond);
 
-    expect(
-      await thirdRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled')),
-    ).toEqual(expectedThird);
+    expect(await thirdRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedThird);
 
     element.evaluate<void, RadioGroup>(node => node.setAttribute('disabled', ''));
 
     const hasDisabledAttributeAfter = await element.evaluate((node: Element) => node.hasAttribute('disabled'));
     expect(hasDisabledAttributeAfter).toBe(true);
 
-    expect(
-      await firstRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled')),
-    ).toEqual(expectedFirst);
+    expect(await firstRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedFirst);
 
-    expect(
-      await secondRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled')),
-    ).toEqual(expectedSecond);
+    expect(await secondRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedSecond);
 
-    expect(
-      await thirdRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled')),
-    ).toEqual(expectedThird);
+    expect(await thirdRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedThird);
   });
 
   test('should NOT be focusable when disabled', async () => {

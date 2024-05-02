@@ -7,17 +7,17 @@ import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorato
 MenuListDefinition.define(FluentDesignSystem.registry);
 MenuItemDefinition.define(FluentDesignSystem.registry);
 
-const createDecorator = (steps: unknown[], wrapperStyle: React.CSSProperties = { width: '320px' }) => (
-  story: () => React.ReactElement,
-) => {
-  return (
-    <StoryWright steps={steps}>
-      <div className="testWrapper" style={wrapperStyle}>
-        {story()}
-      </div>
-    </StoryWright>
-  );
-};
+const createDecorator =
+  (steps: unknown[], wrapperStyle: React.CSSProperties = { width: '320px' }) =>
+  (story: () => React.ReactElement) => {
+    return (
+      <StoryWright steps={steps}>
+        <div className="testWrapper" style={wrapperStyle}>
+          {story()}
+        </div>
+      </StoryWright>
+    );
+  };
 
 const defaultSteps = new Steps()
   .snapshot('normal', { cropTo: '.testWrapper' })

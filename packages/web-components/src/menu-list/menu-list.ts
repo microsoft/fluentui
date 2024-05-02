@@ -163,7 +163,7 @@ export class MenuList extends FASTElement {
     }
 
     e.preventDefault();
-    const changedItem: MenuItem = (e.target as any) as MenuItem;
+    const changedItem: MenuItem = e.target as any as MenuItem;
 
     // closing an expanded item without opening another
     if (this.expandedItem !== null && changedItem === this.expandedItem && changedItem.expanded === false) {

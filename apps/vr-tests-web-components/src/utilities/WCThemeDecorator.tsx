@@ -14,7 +14,7 @@ const themes = [
 
 const defaultTheme = themes[0];
 
-type ThemeId = typeof themes[number]['id'];
+type ThemeId = (typeof themes)[number]['id'];
 
 interface WCStoryContext extends StoryContext {
   parameters: {
