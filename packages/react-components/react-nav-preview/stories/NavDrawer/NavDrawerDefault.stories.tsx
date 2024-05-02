@@ -21,11 +21,35 @@ import {
   useId,
 } from '@fluentui/react-components';
 import {
-  Folder20Filled,
-  Folder20Regular,
+  AppsSettings20Filled,
+  AppsSettings20Regular,
+  Board20Filled,
+  Board20Regular,
+  BoxMultiple20Filled,
+  BoxMultiple20Regular,
+  DataArea20Filled,
+  DataArea20Regular,
+  DocumentBulletListMultiple20Filled,
+  DocumentBulletListMultiple20Regular,
+  HeartPulse20Filled,
+  HeartPulse20Regular,
+  MegaphoneLoud20Filled,
+  MegaphoneLoud20Regular,
   NavigationFilled,
+  NotePin20Filled,
+  NotePin20Regular,
+  People20Filled,
+  People20Regular,
+  PeopleStar20Filled,
+  PeopleStar20Regular,
   PersonFilled,
+  PersonLightbulb20Filled,
+  PersonLightbulb20Regular,
   PersonRegular,
+  PersonSearch20Filled,
+  PersonSearch20Regular,
+  PreviewLink20Filled,
+  PreviewLink20Regular,
   bundleIcon,
 } from '@fluentui/react-icons';
 import { navItemTokens } from '../../src/components/sharedNavStyles.styles';
@@ -35,7 +59,7 @@ const useStyles = makeStyles({
     ...shorthands.border('2px', 'solid', '#ccc'),
     ...shorthands.overflow('hidden'),
     display: 'flex',
-    height: '480px',
+    height: '500px',
     backgroundColor: '#fff',
   },
   content: {
@@ -87,9 +111,20 @@ const useStyles = makeStyles({
   },
 });
 
-const Folder = bundleIcon(Folder20Filled, Folder20Regular);
-
 const Person = bundleIcon(PersonFilled, PersonRegular);
+const Dashboard = bundleIcon(Board20Filled, Board20Regular);
+const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
+const EmployeeSpotlight = bundleIcon(PersonLightbulb20Filled, PersonLightbulb20Regular);
+const Search = bundleIcon(PersonSearch20Filled, PersonSearch20Regular);
+const PerformanceReviews = bundleIcon(PreviewLink20Filled, PreviewLink20Regular);
+const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
+const Interviews = bundleIcon(People20Filled, People20Regular);
+const HealthPlans = bundleIcon(HeartPulse20Filled, HeartPulse20Regular);
+const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
+const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
+const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
+const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
+const AppSettings = bundleIcon(AppsSettings20Filled, AppsSettings20Regular);
 
 type DrawerType = Required<DrawerProps>['type'];
 
@@ -121,55 +156,96 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
             </DrawerHeaderNavigation>
           </DrawerHeader>
-          <NavCategory value="1">
-            <Caption1Strong className={styles.headingContent}>Groceries</Caption1Strong>
-            <NavCategoryItem icon={<Folder />}>Produce</NavCategoryItem>
+          <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
+          <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
+            Dashboard
+          </NavItem>
+          <NavItem target="_blank" icon={<Announcements />} onClick={someClickHandler} value="2">
+            Announcements
+          </NavItem>
+          <NavItem target="_blank" icon={<EmployeeSpotlight />} onClick={someClickHandler} value="3">
+            Employee Spotlight
+          </NavItem>
+          <Caption1Strong className={styles.headingContent}>Employee Management</Caption1Strong>
+          <NavItem target="_blank" icon={<Search />} onClick={someClickHandler} value="4">
+            Profile Search
+          </NavItem>
+          <NavItem target="_blank" icon={<PerformanceReviews />} onClick={someClickHandler} value="5">
+            Performance Reviews
+          </NavItem>
+          <Caption1Strong className={styles.headingContent}>Recruitment</Caption1Strong>
+          <NavCategory value="6">
+            <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="2">
-                Carrot
+              <NavSubItem target="_blank" onClick={someClickHandler} value="7">
+                Openings
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="3">
-                Lettuce
+              <NavSubItem target="_blank" onClick={someClickHandler} value="8">
+                Submissions
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-          <NavCategory value="4">
-            <NavCategoryItem icon={<Folder />}>Meat</NavCategoryItem>
+          <NavItem icon={<Interviews />} value="9">
+            Interviews
+          </NavItem>
+          <Caption1Strong className={styles.headingContent}>Benefits</Caption1Strong>
+          <NavItem icon={<HealthPlans />} value="10">
+            Health Plans
+          </NavItem>
+          <NavCategory value="11">
+            <NavCategoryItem icon={<Person />} value="12">
+              Retirement
+            </NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="9">
-                Beef
+              <NavSubItem target="_blank" onClick={someClickHandler} value="13">
+                Plan Information
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="10">
-                Pork
+              <NavSubItem target="_blank" onClick={someClickHandler} value="14">
+                Fund Performance
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="5">
-            Bakery
+
+          <Caption1Strong className={styles.headingContent}>Learning</Caption1Strong>
+          <NavItem icon={<TrainingPrograms />} value="15">
+            Training Programs
           </NavItem>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="6">
-            Dairy
+          <NavCategory value="16">
+            <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem target="_blank" onClick={someClickHandler} value="17">
+                Career Paths
+              </NavSubItem>
+              <NavSubItem target="_blank" onClick={someClickHandler} value="18">
+                Planning
+              </NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+
+          <Caption1Strong className={styles.headingContent}>Analytics</Caption1Strong>
+          <NavItem icon={<Analytics />} value="19">
+            Workforce Data
           </NavItem>
-          <Caption1Strong className={styles.headingContent}>Home Improvement</Caption1Strong>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="7">
-            Lumber
-          </NavItem>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="8">
-            Garden
+          <NavItem icon={<Reports />} value="20">
+            Reports
           </NavItem>
         </DrawerBody>
+
         <DrawerFooter className={styles.drawerFooterOverrides}>
-          <NavCategory value="9">
+          <NavCategory value="21">
             <NavCategoryItem icon={<Person />}>Profile</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="9">
-                Settings
+              <NavSubItem target="_blank" onClick={someClickHandler} value="22">
+                Account Management
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="10">
-                Support
+              <NavSubItem target="_blank" onClick={someClickHandler} value="23">
+                Security
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
+          <NavItem icon={<AppSettings />} target="_blank" onClick={someClickHandler} value="24">
+            App Settings
+          </NavItem>
         </DrawerFooter>
       </NavDrawer>
       <div className={styles.content}>
