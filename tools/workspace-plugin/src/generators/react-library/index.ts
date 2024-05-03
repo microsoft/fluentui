@@ -34,7 +34,7 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
 
   addCodeowner(tree, { packageName: options.projectConfig.name as string, owner: schema.owner });
 
-  await splitLibraryInTwoGenerator(tree, { project: options.projectConfig.name });
+  await splitLibraryInTwoGenerator(tree, { project: options.projectConfig.name, skipFormat: true });
 
   await formatFiles(tree);
 
