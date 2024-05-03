@@ -32,6 +32,11 @@ interface Options extends SplitLibraryInTwoGeneratorSchema {
   projectOffsetFromRoot: { old: string; updated: string };
   oldContent: {
     tsConfig: Record<string, unknown>;
+    packageJSON: Record<string, unknown>;
+  };
+
+  oldPackageMetadata: {
+    ssrTestsScript: string | undefined;
   };
 }
 
@@ -113,6 +118,7 @@ function splitLibraryInTwoInternal(
     return;
   }
 
+  const packageJSON = readJson(tree, joinPathFragments(projectConfig.root, 'package.json'));
   const normalizedOptions = {
     projectName,
     projectConfig,
@@ -122,6 +128,10 @@ function splitLibraryInTwoInternal(
     },
     oldContent: {
       tsConfig: readJson(tree, joinPathFragments(projectConfig.root, 'tsconfig.json')),
+      packageJSON,
+    },
+    oldPackageMetadata: {
+      ssrTestsScript: packageJSON?.scripts?.['test-ssr'],
     },
   };
 
@@ -184,9 +194,7 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
     json.scripts ??= {};
     json.scripts.storybook = 'yarn --cwd ../stories storybook';
     json.scripts['type-check'] = 'just-scripts type-check';
-    if (json.scripts['test-ssr']) {
-      json.scripts['test-ssr'] = `test-ssr \"../stories/src/**/*.stories.tsx\"`;
-    }
+    delete json.scripts['test-ssr'];
 
     const deps = getMissingDevDependenciesFromCypressAndJestFiles(
       tree,
@@ -315,6 +323,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
         'type-check': 'just-scripts type-check',
         lint: 'eslint src/',
         format: 'just-scripts prettier',
+        ...(options.oldPackageMetadata.ssrTestsScript ? { 'test-ssr': `test-ssr "./src/**/*.stories.tsx"` } : null),
       },
       devDependencies: {
         ...storiesWorkspaceDeps,

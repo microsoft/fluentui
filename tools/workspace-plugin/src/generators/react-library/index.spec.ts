@@ -98,7 +98,9 @@ describe('react-library generator', () => {
       mainEntryPointFilePath:
         '<projectRoot>/../../../../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/library/src/index.d.ts',
     });
-    expect(readJson(tree, `${library.root}/package.json`)).toEqual(
+    const libPackageJson = readJson(tree, `${library.root}/package.json`);
+    expect(libPackageJson.scripts['test-ssr']).toEqual(undefined);
+    expect(libPackageJson).toEqual(
       expect.objectContaining({
         name: '@proj/react-one-preview',
         private: true,
@@ -197,6 +199,7 @@ describe('react-library generator', () => {
         start: 'yarn storybook',
         storybook: 'start-storybook',
         'type-check': 'just-scripts type-check',
+        'test-ssr': 'test-ssr "./src/**/*.stories.tsx"',
       },
     });
 
