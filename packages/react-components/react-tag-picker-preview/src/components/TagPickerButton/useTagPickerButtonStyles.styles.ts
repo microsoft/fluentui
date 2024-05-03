@@ -13,7 +13,7 @@ export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots> = {
 const useStyles = makeStyles({
   button: {
     alignItems: 'center',
-    minHeight: '30px',
+    minHeight: '32px',
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     boxSizing: 'border-box',

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds TagPicker to custom style hooks",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

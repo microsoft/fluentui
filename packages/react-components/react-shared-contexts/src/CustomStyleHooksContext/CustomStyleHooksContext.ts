@@ -135,6 +135,13 @@ export type CustomStyleHooksContextValue = Partial<{
   useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
   useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
+  useTagPickerInputStyles_unstable: CustomStyleHook;
+  useTagPickerButtonStyles_unstable: CustomStyleHook;
+  useTagPickerControlStyles_unstable: CustomStyleHook;
+  useTagPickerGroupStyles_unstable: CustomStyleHook;
+  useTagPickerListStyles_unstable: CustomStyleHook;
+  useTagPickerOptionStyles_unstable: CustomStyleHook;
+  useTagPickerOptionGroupStyles_unstable: CustomStyleHook;
 }>;
 
 /**

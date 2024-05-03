@@ -31,6 +31,7 @@ export const useTagPickerControl_unstable = (
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
@@ -51,7 +52,7 @@ export const useTagPickerControl_unstable = (
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: true,
     defaultProps: {
-      'aria-hidden': true,
+      'aria-expanded': open,
       children: <ChevronDownRegular />,
       role: 'button',
     },
@@ -101,6 +102,7 @@ export const useTagPickerControl_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef, innerRef),
+        'aria-owns': open ? popoverId : undefined,
         ...props,
       }),
       { elementType: 'div' },

@@ -42,15 +42,15 @@ const useStyles = makeStyles({
   // size variants
   medium: {
     ...typographyStyles.body1,
-    ...shorthands.paddingBlock(tokens.spacingVerticalSNudge),
+    ...shorthands.padding(tokens.spacingVerticalSNudge, 0, tokens.spacingVerticalSNudge, 0),
   },
   large: {
     ...typographyStyles.body1,
-    ...shorthands.paddingBlock(tokens.spacingVerticalMNudge),
+    ...shorthands.padding(tokens.spacingVerticalMNudge, 0, tokens.spacingVerticalMNudge, 0),
   },
   'extra-large': {
     ...typographyStyles.body1,
-    ...shorthands.paddingBlock(tokens.spacingVerticalM),
+    ...shorthands.padding(tokens.spacingVerticalM, 0, tokens.spacingVerticalM, 0),
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,

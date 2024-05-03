@@ -9,7 +9,6 @@ export interface TagPickerContextValue
     | 'open'
     | 'clearSelection'
     | 'getOptionById'
-    | 'open'
     | 'selectedOptions'
     | 'selectOption'
     | 'setHasFocus'
