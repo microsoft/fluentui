@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
 import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
@@ -18,6 +19,10 @@ import {
   XAxisTypes,
   YAxisType,
   getTypeOfAxis,
+  IMargins,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxisForOtherCharts,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
@@ -198,6 +203,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
         stringDatasetForYAxisDomain={this._stringYAxisDataPoints}
+        createStringYAxis={createStringYAxisForOtherCharts}
+        getDomainNRangeValues={this._getDomainNRangeValues}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
         xAxisPadding={0.02}
@@ -224,6 +231,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: any,
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _createYAxis = (
     yAxisParams: IYAxisParams,

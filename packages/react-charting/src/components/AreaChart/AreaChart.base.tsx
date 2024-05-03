@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
@@ -31,6 +32,10 @@ import {
   createYAxisForOtherCharts,
   IYAxisParams,
   IAxisData,
+  IDomainNRange,
+  domainRangeOfNumericForAreaChart,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  createStringYAxisForOtherCharts,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -197,6 +202,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           tickParams={tickParams}
           maxOfYVal={stackedInfo.maxOfYVal}
           getGraphData={this._getGraphData}
+          getDomainNRangeValues={this._getDomainNRangeValues}
+          createStringYAxis={createStringYAxisForOtherCharts}
           getmargins={this._getMargins}
           getMinMaxOfYAxis={findNumericMinMaxOfY(points)}
           customizedCallout={this._getCustomizedCallout()}
@@ -238,6 +245,36 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: any,
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  };
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;

@@ -620,4 +620,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   getMinMaxOfYAxis?: any;
 
   createYAxis?: any;
+
+  getDomainNRangeValues?: any;
+
+  createStringYAxis?: any;
 }

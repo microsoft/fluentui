@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
@@ -35,6 +36,9 @@ import {
   getNextColor,
   findHBCWANumericMinMaxOfY,
   createYAxisForHorizontalBarChartWithAxis,
+  IDomainNRange,
+  domainRangeOfNumericForHorizontalBarChartWithAxis,
+  createStringYAxisForHorizontalBarChartWithAxis,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -148,6 +152,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         tickParams={tickParams}
         legendBars={legendBars}
         createYAxis={createYAxisForHorizontalBarChartWithAxis}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
         getMinMaxOfYAxis={findHBCWANumericMinMaxOfY(this._points, this._yAxisType)}
         barwidth={this._barHeight}
         focusZoneDirection={FocusZoneDirection.vertical}
@@ -168,6 +174,26 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: any,
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  };
 
   private _adjustProps(): void {
     this._points = this.props.data || [];

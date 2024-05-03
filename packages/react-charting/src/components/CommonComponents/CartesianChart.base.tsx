@@ -18,9 +18,7 @@ import {
   createStringXAxis,
   IAxisData,
   getAccessibleDataObject,
-  getDomainNRangeValues,
   createDateXAxis,
-  createStringYAxis,
   IMargins,
   XAxisTypes,
   YAxisType,
@@ -256,7 +254,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     ) {
       this._isFirstRender = false;
       const XAxisParams = {
-        domainNRangeValues: getDomainNRangeValues(
+        domainNRangeValues: this.props.getDomainNRangeValues(
           points,
           this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
           this.state.containerWidth,
@@ -366,11 +364,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       let yScaleSecondary: any;
       const axisData: IAxisData = { yAxisDomainValues: [] };
       if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
-        yScale = createStringYAxis(
+        yScale = this.props.createStringYAxis(
           YAxisParams,
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
-          this.props.chartType,
           this.props.barwidth,
           culture,
         );

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
@@ -44,6 +45,11 @@ import {
   findVerticalNumericMinMaxOfY,
   IYAxisParams,
   createYAxisForOtherCharts,
+  IDomainNRange,
+  domainRageOfVerticalNumeric,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfXStringAxis,
+  createStringYAxisForOtherCharts,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -171,9 +177,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
+        createStringYAxis={createStringYAxisForOtherCharts}
         getmargins={this._getMargins}
         getMinMaxOfYAxis={findVerticalNumericMinMaxOfY(this._points)}
         getGraphData={this._getGraphData}
+        getDomainNRangeValues={this._getDomainNRangeValues}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         getDomainMargins={this._getDomainMargins}
@@ -211,6 +219,36 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: any,
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _createYAxis = (
     yAxisParams: IYAxisParams,

@@ -403,22 +403,6 @@ export function createYAxisForOtherCharts(
   return yAxisScale;
 }
 
-export const createStringYAxis = (
-  yAxisParams: IYAxisParams,
-  dataPoints: string[],
-  isRtl: boolean,
-  chartType: ChartTypes,
-  barWidth: number | undefined,
-  culture?: string,
-) => {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, isRtl, barWidth!, culture);
-    default:
-      return createStringYAxisForOtherCharts(yAxisParams, dataPoints, isRtl);
-  }
-};
-
 /**
  * Creating String Y axis of the chart for Horizontal Bar Chart With Axis
  * @param yAxisParams
@@ -1024,86 +1008,6 @@ export function domainRageOfVerticalNumeric(
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMin, rEndValue: rMax }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
-}
-
-/**
- * For creating X axis, need to calculate x axis domain and range values from given points.
- * This may vary based on chart type and type of x axis
- * So, this method will define which method need to call based on chart type and axis type.
- * @export
- * @param {*} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {ChartTypes} chartType
- * @param {boolean} isRTL
- * @param {XAxisTypes} xAxisType
- * @param {number} [barWidth]
- * @returns {IDomainNRange}
- */
-export function getDomainNRangeValues(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  margins: IMargins,
-  width: number,
-  chartType: ChartTypes,
-  isRTL: boolean,
-  xAxisType: XAxisTypes,
-  barWidth: number,
-  tickValues: Date[] | number[] | undefined,
-  shiftX: number,
-): IDomainNRange {
-  let domainNRangeValue: IDomainNRange;
-  if (xAxisType === XAxisTypes.NumericAxis) {
-    switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
-        break;
-      case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
-        break;
-      case ChartTypes.VerticalBarChart:
-        domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
-        break;
-      case ChartTypes.HorizontalBarChartWithAxis:
-        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  } else if (xAxisType === XAxisTypes.DateAxis) {
-    switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-      case ChartTypes.VerticalBarChart:
-      case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
-          points,
-          margins,
-          width,
-          isRTL,
-          tickValues! as Date[],
-          chartType,
-          barWidth,
-        );
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  } else {
-    // String Axis type
-    switch (chartType) {
-      case ChartTypes.VerticalStackedBarChart:
-      case ChartTypes.GroupedVerticalBarChart:
-      case ChartTypes.VerticalBarChart:
-      case ChartTypes.HeatMapChart:
-        domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  }
-  return domainNRangeValue;
 }
 
 /**

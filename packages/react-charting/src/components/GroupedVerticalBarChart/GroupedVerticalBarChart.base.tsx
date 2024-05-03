@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
@@ -20,6 +21,9 @@ import {
   isScalePaddingDefined,
   IYAxisParams,
   createYAxisForOtherCharts,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxisForOtherCharts,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -178,6 +182,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
         createYAxis={this._createYAxis}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        createStringYAxis={createStringYAxisForOtherCharts}
         tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{
@@ -209,6 +215,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: any,
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _createYAxis = (
     yAxisParams: IYAxisParams,
