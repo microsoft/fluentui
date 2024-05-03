@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update version of keyborg to fix iOS touch bug",
+  "packageName": "@fluentui/react-tabster",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
