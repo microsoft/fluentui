@@ -6,4 +6,9 @@ export interface SplitLibraryInTwoGeneratorSchema {
    * @internal
    */
   logs?: boolean;
+
+  /**
+   * @internal
+   */
+  skipFormat?: boolean;
 }

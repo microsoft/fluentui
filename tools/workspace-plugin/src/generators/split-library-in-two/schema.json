@@ -22,6 +22,12 @@
       "default": true,
       "visible": false,
       "x-priority": "internal"
+    },
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false,
+      "x-priority": "internal"
     }
   },
   "required": []
