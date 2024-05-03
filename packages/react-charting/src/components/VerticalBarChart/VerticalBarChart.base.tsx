@@ -305,6 +305,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             strokeWidth={3}
             visibility={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
             onClick={item.point.lineData?.onClick}
+            // When no legend is highlighted: Line points are automatically displayed along with the bars
+            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
+            // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={this._legendHighlighted(lineLegendText!)}
             ref={e => (circleRef.refElement = e)}
             onFocus={this._lineFocus.bind(this, item.point, circleRef)}

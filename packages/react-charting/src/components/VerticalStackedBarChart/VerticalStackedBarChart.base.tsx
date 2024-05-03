@@ -404,6 +404,9 @@ export class VerticalStackedBarChartBase extends React.Component<
             strokeWidth={3}
             visibility={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            // When no legend is highlighted: Line points are automatically displayed along with the bars
+            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
+            // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={this._legendHighlighted(item)}
             ref={e => (circleRef.refElement = e)}
             onFocus={this._lineFocus.bind(this, circlePoint, circleRef)}
