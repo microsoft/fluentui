@@ -30,7 +30,7 @@ export type TagPickerOnOpenChangeData = { open: boolean } & (
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
   Pick<
     ComboboxProps,
-    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'
+    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'
   > &
   Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
@@ -69,7 +69,6 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'appearance'
     | 'clearSelection'
     | 'getOptionById'
-    | 'freeform'
     | 'disabled'
   > &
   Pick<
