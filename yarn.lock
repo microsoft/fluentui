@@ -1972,6 +1972,21 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
+"@fluentui/react-infobutton@9.0.0-beta.102":
+  version "9.0.0-beta.102"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-infobutton/-/react-infobutton-9.0.0-beta.102.tgz#c0473275141999455fae4388f47d4f77b98c0f89"
+  integrity sha512-3kA4F0Vga8Ds6JGlBajLCCDOo/LmPuS786Wg7ui4ZTDYVIMzy1yp2XuVcZniifBFvEp0HQCUoDPWUV0VI3FfzQ==
+  dependencies:
+    "@fluentui/react-icons" "^2.0.237"
+    "@fluentui/react-jsx-runtime" "^9.0.36"
+    "@fluentui/react-label" "^9.1.68"
+    "@fluentui/react-popover" "^9.9.6"
+    "@fluentui/react-tabster" "^9.21.0"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.7"
+    "@griffel/react" "^1.5.14"
+    "@swc/helpers" "^0.5.1"
+
 "@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
   version "1.4.20"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"
