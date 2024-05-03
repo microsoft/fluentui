@@ -8,7 +8,7 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar } from '@fluentui/react-components';
+import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -26,9 +26,10 @@ export const Button = () => {
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
+  const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
@@ -47,21 +48,21 @@ export const Button = () => {
         </TagPickerControl>
 
         <TagPickerList>
-          {options
-            .filter(option => selectedOptions.indexOf(option) < 0)
-            .map(option => (
-              <TagPickerOption
-                secondaryContent="Microsoft FTE"
-                media={<Avatar aria-hidden name={option} color="colorful" />}
-                value={option}
-                key={option}
-              >
-                {option}
-              </TagPickerOption>
-            ))}
+          {tagPickerOptions.length > 0
+            ? tagPickerOptions.map(option => (
+                <TagPickerOption
+                  secondaryContent="Microsoft FTE"
+                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))
+            : 'No options available'}
         </TagPickerList>
       </TagPicker>
-    </div>
+    </Field>
   );
 };
 
