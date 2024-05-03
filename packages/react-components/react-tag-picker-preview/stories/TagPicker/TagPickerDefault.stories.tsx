@@ -24,7 +24,6 @@ const options = [
 export const Default = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
-    console.log(data.type);
     setSelectedOptions(data.selectedOptions);
   };
 

@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   ExtractSlotProps,
   Slot,
+  elementContains,
   getIntrinsicElementProps,
-  isResolvedShorthand,
   slot,
   useEventCallback,
   useMergedRefs,
@@ -30,6 +30,7 @@ export const useTagPickerControl_unstable = (
 ): TagPickerControlState => {
   const targetRef = useTagPickerContext_unstable(ctx => ctx.targetRef);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
   const secondaryInnerActionRef = useTagPickerContext_unstable(ctx => ctx.secondaryActionRef);
@@ -39,6 +40,8 @@ export const useTagPickerControl_unstable = (
   const invalid = useFieldContext_unstable()?.validationState === 'error';
 
   const innerRef = React.useRef<HTMLDivElement>(null);
+  const expandIconRef = React.useRef<HTMLSpanElement>(null);
+  const asideRef = React.useRef<HTMLSpanElement>(null);
 
   const secondaryAction = slot.optional(props.secondaryAction, {
     elementType: 'span',
@@ -58,21 +61,9 @@ export const useTagPickerControl_unstable = (
     elementType: 'span',
   });
 
-  // mousedown instead of click as by preventing default of mousedown we're
-  // avoiding losing focus on trigger
-  const handleExpandIconMouseDown: React.MouseEventHandler<HTMLSpanElement> = useEventCallback(event => {
-    if (isResolvedShorthand(props.expandIcon)) {
-      props.expandIcon.onMouseDown?.(event);
-    }
-    if (event.isDefaultPrevented()) {
-      return;
-    }
-    event.preventDefault();
-    setOpen(event, !open);
-    triggerRef.current?.focus();
-  });
+  const expandIconMergeRef = useMergedRefs(expandIcon?.ref, expandIconRef);
   if (expandIcon) {
-    expandIcon.onMouseDown = handleExpandIconMouseDown;
+    expandIcon.ref = expandIconMergeRef;
   }
 
   const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
@@ -83,13 +74,27 @@ export const useTagPickerControl_unstable = (
     renderByDefault: Boolean(secondaryAction || expandIcon),
     defaultProps: {
       ref: observerRef,
-      onClick: useEventCallback(event => {
-        // if it's a click on the aside itself, we want to focus the trigger
-        if (event.target === event.currentTarget) {
-          triggerRef.current?.focus();
-        }
-      }),
     },
+  });
+  const mergedAsideRefs = useMergedRefs(asideRef, aside?.ref);
+  if (aside) {
+    aside.ref = mergedAsideRefs;
+  }
+
+  const handleMouseDown = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+    if (
+      elementContains(expandIconRef.current, event.target as Node) ||
+      event.target === innerRef.current ||
+      event.target === tagPickerGroupRef.current ||
+      event.target === asideRef.current
+    ) {
+      event.preventDefault();
+      setOpen(event, !open);
+      triggerRef.current?.focus();
+    }
   });
   return {
     components: {
@@ -102,6 +107,7 @@ export const useTagPickerControl_unstable = (
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef, innerRef),
         ...props,
+        onMouseDown: handleMouseDown,
       }),
       { elementType: 'div' },
     ),
