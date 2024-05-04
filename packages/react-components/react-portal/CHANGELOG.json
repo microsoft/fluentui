@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 02 May 2024 11:36:44 GMT",
+      "tag": "@fluentui/react-portal_v9.4.22",
+      "version": "9.4.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-portal_v9.4.21",
       "version": "9.4.21",

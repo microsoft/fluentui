@@ -51,7 +51,7 @@ export const useTagPickerControl_unstable = (
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: true,
     defaultProps: {
-      'aria-expanded': open,
+      'aria-hidden': true,
       children: <ChevronDownRegular />,
       role: 'button',
     },

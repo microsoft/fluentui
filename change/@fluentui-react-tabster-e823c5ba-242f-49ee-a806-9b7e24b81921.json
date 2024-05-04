@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pulling Tabster 7.1.1 that supports more granular configuration of the aria-hidden handling for modal dialogs.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

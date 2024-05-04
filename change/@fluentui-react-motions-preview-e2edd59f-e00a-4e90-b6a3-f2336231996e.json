@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: improve state handling in createPresenceComponent()",
-  "packageName": "@fluentui/react-motions-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

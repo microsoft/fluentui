@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: bump keyborg to 2.6.0 nad tabster to 7.1.2 in order to fix iOS touch bug",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -26,7 +26,7 @@ export const Filtering = () => {
   const [query, setQuery] = React.useState<string>('');
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
-    if (data.optionValue === 'no-matches') {
+    if (data.value === 'no-matches') {
       return;
     }
     setSelectedOptions(data.selectedOptions);

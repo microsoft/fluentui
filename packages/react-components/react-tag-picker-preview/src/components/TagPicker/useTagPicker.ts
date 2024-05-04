@@ -50,7 +50,8 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     ...props,
     onOptionSelect: useEventCallback((event, data) =>
       props.onOptionSelect?.(event, {
-        ...data,
+        selectedOptions: data.selectedOptions,
+        value: data.optionValue,
         type: event.type,
         event,
       } as TagPickerOnOptionSelectData),

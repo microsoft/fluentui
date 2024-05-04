@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2024 11:36:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.2.0)
+
+Thu, 02 May 2024 11:36:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.1.12..@fluentui/react-drawer_v9.2.0)
+
+### Minor changes
+
+- feat: move scroll detector to a dedicated react context ([PR #31156](https://github.com/microsoft/fluentui/pull/31156) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.10.2 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
 
 ## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.1.12)
 

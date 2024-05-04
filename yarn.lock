@@ -1972,6 +1972,21 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
+"@fluentui/react-infobutton@9.0.0-beta.102":
+  version "9.0.0-beta.102"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-infobutton/-/react-infobutton-9.0.0-beta.102.tgz#c0473275141999455fae4388f47d4f77b98c0f89"
+  integrity sha512-3kA4F0Vga8Ds6JGlBajLCCDOo/LmPuS786Wg7ui4ZTDYVIMzy1yp2XuVcZniifBFvEp0HQCUoDPWUV0VI3FfzQ==
+  dependencies:
+    "@fluentui/react-icons" "^2.0.237"
+    "@fluentui/react-jsx-runtime" "^9.0.36"
+    "@fluentui/react-label" "^9.1.68"
+    "@fluentui/react-popover" "^9.9.6"
+    "@fluentui/react-tabster" "^9.21.0"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.7"
+    "@griffel/react" "^1.5.14"
+    "@swc/helpers" "^0.5.1"
+
 "@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
   version "1.4.20"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"
@@ -10921,10 +10936,10 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-ejs@3.1.9, ejs@^3.1.7:
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/ejs/-/ejs-3.1.9.tgz#03c9e8777fe12686a9effcef22303ca3d8eeb361"
-  integrity sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ==
+ejs@3.1.10, ejs@^3.1.7:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-3.1.10.tgz#69ab8358b14e896f80cc39e62087b88500c3ac3b"
+  integrity sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==
   dependencies:
     jake "^10.8.5"
 
@@ -16318,10 +16333,10 @@ karma@6.4.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
-keyborg@2.5.0, keyborg@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.5.0.tgz#0690136ecfa75e2f245b67f65bdb2be296f5735a"
-  integrity sha512-nb4Ji1suqWqj6VXb61Jrs4ab/UWgtGph4wDch2NIZDfLBUObmLcZE0aiDjZY49ghtu03fvwxDNvS9ZB0XMz6/g==
+keyborg@2.6.0, keyborg@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.6.0.tgz#ebfcaaed2f517f9295058ff5d57d14e71958ab5a"
+  integrity sha512-o5kvLbuTF+o326CMVYpjlaykxqYP9DphFQZ2ZpgrvBouyvOxyEB7oqe8nOLFpiV5VCtz0D3pt8gXQYWpLpBnmA==
 
 keygrip@~1.1.0:
   version "1.1.0"
@@ -22863,12 +22878,12 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.1.tgz#8d1ed706a6af08c140c60127e29714b03a520331"
-  integrity sha512-3VsXUb0XxVcFq9NmzTieAJAlruMiaj/dvXIHm7RgjsUrMGkEcq9KbBdai05NAGp2D2d/CxHc6j1mbuUzGofWBA==
+tabster@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.2.tgz#ab2fb2bc67b78059e1406b2afc35aec69eb824a5"
+  integrity sha512-wYG9ddAeSUxBrcPCZ+hQV5IcsyM089nTGkQ53G9/2pPDdUa3pBC4sP3qmdbvu+IoFpy62CMDxMgxQmegtCiLKg==
   dependencies:
-    keyborg "2.5.0"
+    keyborg "2.6.0"
     tslib "^2.3.1"
 
 tachometer@0.7.0:

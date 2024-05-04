@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2024 11:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.33)
+
+Thu, 02 May 2024 11:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.32..@fluentui/react-badge_v9.2.33)
+
+### Patches
+
+-  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
 
 ## [9.2.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.32)
 
