@@ -59,7 +59,7 @@ const useStyles = makeStyles({
     ...shorthands.border('2px', 'solid', '#ccc'),
     ...shorthands.overflow('hidden'),
     display: 'flex',
-    height: '500px',
+    //height: '500px',
     backgroundColor: '#fff',
   },
   content: {
@@ -86,7 +86,7 @@ const useStyles = makeStyles({
   },
   drawerHeaderOverrides: {
     ...shorthands.margin('unset'),
-    paddingInlineStart: '2px',
+    paddingInlineStart: '12px',
     paddingBlockStart: '0px',
     paddingBlockEnd: '0px',
   },
@@ -150,12 +150,12 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         onOpenChange={(_, { open }) => setIsOpen(open)}
         size="small"
       >
+        <DrawerHeader className={styles.drawerHeaderOverrides}>
+          <DrawerHeaderNavigation className={styles.drawerHeaderNavOverrides}>
+            <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
+          </DrawerHeaderNavigation>
+        </DrawerHeader>
         <DrawerBody className={styles.drawerBodyOverrides}>
-          <DrawerHeader className={styles.drawerHeaderOverrides}>
-            <DrawerHeaderNavigation className={styles.drawerHeaderNavOverrides}>
-              <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
-            </DrawerHeaderNavigation>
-          </DrawerHeader>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
           <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
             Dashboard
@@ -229,7 +229,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             Reports
           </NavItem>
         </DrawerBody>
-
         <DrawerFooter className={styles.drawerFooterOverrides}>
           <NavItem value="21" target="_blank" onClick={someClickHandler} icon={<Person />}>
             Profile
