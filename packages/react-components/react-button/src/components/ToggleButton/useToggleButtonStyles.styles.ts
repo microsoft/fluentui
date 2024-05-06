@@ -3,6 +3,8 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
+import { buttonTokens } from '../Button/Button.tokens';
+import { toggleButtonTokens } from './ToggleButton.tokens';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';
@@ -15,9 +17,9 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
 const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    color: tokens.colorNeutralForeground1Selected,
+    backgroundColor: toggleButtonTokens.ctrlButtonSecondaryBackgroundColorSelected,
+    ...shorthands.borderColor(toggleButtonTokens.ctrlButtonSecondaryBorderColorSelected),
+    color: toggleButtonTokens.ctrlButtonSecondaryForegroundColorSelected,
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
 
@@ -29,15 +31,15 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: buttonTokens.ctrlButtonSecondaryBackgroundColorHover,
+      ...shorthands.borderColor(buttonTokens.ctrlButtonSecondaryBorderColorHover),
+      color: buttonTokens.ctrlButtonSecondaryForegroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1Pressed,
+      backgroundColor: buttonTokens.ctrlButtonSecondaryBackgroundColorPressed,
+      ...shorthands.borderColor(buttonTokens.ctrlButtonSecondaryBorderColorPressed),
+      color: buttonTokens.ctrlButtonSecondaryBackgroundColorPressed,
     },
   },
 
@@ -70,16 +72,16 @@ const useRootCheckedStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    backgroundColor: toggleButtonTokens.ctrlButtonOutlineBackgroundColorSelected,
+    ...shorthands.borderColor(toggleButtonTokens.ctrlButtonOutlineBorderColorSelected),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonOutlineBackgroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonOutlineBackgroundColorPressed,
     },
 
     ...createCustomFocusIndicatorStyle({
@@ -87,57 +89,57 @@ const useRootCheckedStyles = makeStyles({
     }),
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
+    backgroundColor: toggleButtonTokens.ctrlButtonPrimaryBackgroundColorSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: toggleButtonTokens.ctrlButtonPrimaryForegroundColorSelected,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: buttonTokens.ctrlButtonPrimaryForegroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: buttonTokens.ctrlButtonPrimaryForegroundColorPressed,
     },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    backgroundColor: toggleButtonTokens.ctrlButtonSubtleBackgroundColorSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2Selected,
+    color: toggleButtonTokens.ctrlButtonSubtleForegroundColorSelected,
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonSubtleBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+      color: buttonTokens.ctrlButtonSubtleBackgroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonSubtleBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
+      color: buttonTokens.ctrlButtonSubtleBackgroundColorPressed,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    backgroundColor: toggleButtonTokens.ctrlButtonTransparentBackgroundColorSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: toggleButtonTokens.ctrlButtonTransparentForegroundColorSelected,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonTransparentBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: buttonTokens.ctrlButtonTransparentBackgroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonTransparentBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: buttonTokens.ctrlButtonTransparentBackgroundColorPressed,
     },
   },
 });

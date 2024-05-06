@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, ToggleButton } from '@fluentui/react-components';
+import { makeStyles, ToggleButton, webLightTheme, Theme, FluentProvider } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -11,6 +11,25 @@ const useStyles = makeStyles({
     minWidth: 'min-content',
   },
 });
+
+const customSemanticTokensTheme: Theme = {
+  ...webLightTheme,
+  ctrlButtonSecondaryBackgroundColorSelected: 'green',
+  ctrlButtonSecondaryBorderColorSelected: 'blue',
+  ctrlButtonSecondaryForegroundColorSelected: 'red',
+
+  ctrlButtonOutlineBackgroundColorSelected: 'yellow',
+  ctrlButtonOutlineBorderColorSelected: 'purple',
+
+  ctrlButtonPrimaryBackgroundColorSelected: 'orange',
+  ctrlButtonPrimaryForegroundColorSelected: 'pink',
+
+  ctrlButtonSubtleBackgroundColorSelected: 'cyan',
+  ctrlButtonSubtleForegroundColorSelected: 'magenta',
+
+  ctrlButtonTransparentBackgroundColorSelected: 'lime',
+  ctrlButtonTransparentForegroundColorSelected: 'teal',
+};
 
 export const Appearance = () => {
   const [checked1, setChecked1] = React.useState(false);
@@ -32,32 +51,61 @@ export const Appearance = () => {
   );
 
   return (
-    <div className={styles.wrapper}>
-      <ToggleButton
-        checked={checked1}
-        icon={checked1 ? <CalendarMonth /> : <CalendarMonthRegular />}
-        onClick={() => toggleChecked(1)}
-      >
-        Default
-      </ToggleButton>
-      <ToggleButton
-        appearance="primary"
-        checked={checked2}
-        icon={checked2 ? <CalendarMonth /> : <CalendarMonthRegular />}
-        onClick={() => toggleChecked(2)}
-      >
-        Primary
-      </ToggleButton>
-      <ToggleButton appearance="outline" icon={<CalendarMonth />} onClick={() => toggleChecked(3)}>
-        Outline
-      </ToggleButton>
-      <ToggleButton appearance="subtle" icon={<CalendarMonth />}>
-        Subtle
-      </ToggleButton>
-      <ToggleButton appearance="transparent" icon={<CalendarMonth />}>
-        Transparent
-      </ToggleButton>
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <ToggleButton
+          checked={checked1}
+          icon={checked1 ? <CalendarMonth /> : <CalendarMonthRegular />}
+          onClick={() => toggleChecked(1)}
+        >
+          Default
+        </ToggleButton>
+        <ToggleButton
+          appearance="primary"
+          checked={checked2}
+          icon={checked2 ? <CalendarMonth /> : <CalendarMonthRegular />}
+          onClick={() => toggleChecked(2)}
+        >
+          Primary
+        </ToggleButton>
+        <ToggleButton appearance="outline" icon={<CalendarMonth />} onClick={() => toggleChecked(3)}>
+          Outline
+        </ToggleButton>
+        <ToggleButton appearance="subtle" icon={<CalendarMonth />}>
+          Subtle
+        </ToggleButton>
+        <ToggleButton appearance="transparent" icon={<CalendarMonth />}>
+          Transparent
+        </ToggleButton>
+      </div>
+
+      <FluentProvider className={styles.wrapper} theme={customSemanticTokensTheme}>
+        <ToggleButton
+          checked={checked1}
+          icon={checked1 ? <CalendarMonth /> : <CalendarMonthRegular />}
+          onClick={() => toggleChecked(1)}
+        >
+          Default
+        </ToggleButton>
+        <ToggleButton
+          appearance="primary"
+          checked={checked2}
+          icon={checked2 ? <CalendarMonth /> : <CalendarMonthRegular />}
+          onClick={() => toggleChecked(2)}
+        >
+          Primary
+        </ToggleButton>
+        <ToggleButton appearance="outline" icon={<CalendarMonth />} onClick={() => toggleChecked(3)}>
+          Outline
+        </ToggleButton>
+        <ToggleButton appearance="subtle" icon={<CalendarMonth />}>
+          Subtle
+        </ToggleButton>
+        <ToggleButton appearance="transparent" icon={<CalendarMonth />}>
+          Transparent
+        </ToggleButton>
+      </FluentProvider>
+    </>
   );
 };
 

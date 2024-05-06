@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
+import { switchTokens } from './Switch.tokens';
 
 export const switchClassNames: SlotClassNames<SwitchSlots> = {
   root: 'fui-Switch',
@@ -112,8 +113,8 @@ const useInputBaseClassName = makeResetStyles({
   // Enabled and unchecked
   ':enabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralStrokeAccessible,
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      color: switchTokens.ctrlSwitchIndicatorForegroundColorRest,
+      borderColor: switchTokens.ctrlSwitchBorderColorRest,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
@@ -122,15 +123,15 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessibleHover,
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        color: switchTokens.ctrlSwitchIndicatorForegroundColorHover,
+        borderColor: switchTokens.ctrlSwitchBorderColorHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessiblePressed,
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        color: switchTokens.ctrlSwitchIndicatorForegroundColorPressed,
+        borderColor: switchTokens.ctrlSwitchBorderColorPressed,
       },
     },
   },
@@ -138,22 +139,22 @@ const useInputBaseClassName = makeResetStyles({
   // Enabled and checked
   ':enabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorTransparentStroke,
+      backgroundColor: switchTokens.ctrlSwitchIndicatorBackgroundColorCheckedRest,
+      color: switchTokens.ctrlSwitchIndicatorForegroundColorCheckedRest,
+      borderColor: switchTokens.ctrlSwitchBorderColorCheckedRest,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: switchTokens.ctrlSwitchIndicatorBackgroundColorCheckedHover,
+        borderColor: switchTokens.ctrlSwitchBorderColorCheckedHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: switchTokens.ctrlSwitchIndicatorBackgroundColorCheckedPressed,
+        borderColor: switchTokens.ctrlSwitchBorderColorCheckedPressed,
       },
     },
   },

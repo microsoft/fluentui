@@ -1,5 +1,27 @@
 import * as React from 'react';
-import { Switch } from '@fluentui/react-components';
+import { Switch, webLightTheme, Theme, FluentProvider } from '@fluentui/react-components';
+
+const customTheme: Theme = {
+  ...webLightTheme,
+  ctrlSwitchBorderColorRest: 'red',
+  ctrlSwitchBorderColorHover: 'green',
+  ctrlSwitchBorderColorPressed: 'teal',
+
+  ctrlSwitchBorderColorCheckedRest: 'blue',
+  ctrlSwitchBorderColorCheckedHover: 'purple',
+  ctrlSwitchBorderColorCheckedPressed: 'orange',
+
+  ctrlSwitchIndicatorForegroundColorRest: 'cyan',
+  ctrlSwitchIndicatorForegroundColorHover: 'yellow',
+  ctrlSwitchIndicatorForegroundColorPressed: 'magenta',
+
+  ctrlSwitchIndicatorForegroundColorCheckedRest: 'red',
+  ctrlSwitchIndicatorBackgroundColorCheckedRest: 'blue',
+
+  ctrlSwitchIndicatorBackgroundColorCheckedHover: 'green',
+
+  ctrlSwitchIndicatorBackgroundColorCheckedPressed: 'pink',
+};
 
 export const Checked = () => {
   const [checked, setChecked] = React.useState(true);
@@ -10,7 +32,14 @@ export const Checked = () => {
     [setChecked],
   );
 
-  return <Switch checked={checked} onChange={onChange} label={checked ? 'Checked' : 'Unchecked'} />;
+  return (
+    <>
+      <Switch checked={checked} onChange={onChange} label={checked ? 'Checked' : 'Unchecked'} />
+      <FluentProvider theme={customTheme}>
+        <Switch checked={checked} onChange={onChange} label="custom" />
+      </FluentProvider>
+    </>
+  );
 };
 
 Checked.parameters = {

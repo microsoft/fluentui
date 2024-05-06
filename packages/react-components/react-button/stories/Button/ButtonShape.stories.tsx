@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
+import { makeStyles, Button, webLightTheme, Theme, FluentProvider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -9,20 +9,25 @@ const useStyles = makeStyles({
   },
 });
 
+const customSemanticTokensTheme: Theme = {
+  ...webLightTheme,
+  ctrlButtonBorderRadius: '8px',
+};
+
 export const Shape = () => {
   const styles = useStyles();
   return (
     <>
       <div className={styles.wrapper}>
-        <Button>Rounded</Button>
+        <Button appearance="primary">Fluent</Button>
         <Button shape="circular">Circular</Button>
         <Button shape="square">Square</Button>
       </div>
-      <div className={styles.wrapper}>
-        <Button>Rounded</Button>
+      <FluentProvider className={styles.wrapper} theme={customSemanticTokensTheme}>
+        <Button appearance="primary">8 px border radius</Button>
         <Button shape="circular">Circular</Button>
         <Button shape="square">Square</Button>
-      </div>
+      </FluentProvider>
     </>
   );
 };

@@ -36,32 +36,32 @@ const useRootBaseClassName = makeResetStyles({
   margin: 0,
   overflow: 'hidden',
 
-  backgroundColor: buttonTokens.ctrlButtonBackgroundColorRest,
-  color: buttonTokens.ctrlButtonForegroundColorRest,
-  border: `${tokens.strokeWidthThin} solid ${buttonTokens.ctrlButtonBorderColorRest}`,
+  backgroundColor: buttonTokens.ctrlButtonSecondaryBackgroundColorRest,
+  color: buttonTokens.ctrlButtonSecondaryForegroundColorRest,
+  border: `${tokens.strokeWidthThin} solid ${buttonTokens.ctrlButtonSecondaryBorderColorRest}`,
 
   fontFamily: buttonTokens.ctrlButtonFontFamily,
   outlineStyle: 'none',
 
   ':hover': {
-    backgroundColor: buttonTokens.ctrlButtonBackgroundColorHover,
-    borderColor: buttonTokens.ctrlButtonBorderColorHover,
-    color: buttonTokens.ctrlButtonForegroundColorHover,
+    backgroundColor: buttonTokens.ctrlButtonSecondaryBackgroundColorHover,
+    borderColor: buttonTokens.ctrlButtonSecondaryBorderColorHover,
+    color: buttonTokens.ctrlButtonSecondaryForegroundColorHover,
 
     cursor: 'pointer',
   },
 
   ':hover:active': {
-    backgroundColor: buttonTokens.ctrlButtonBackgroundColorPressed,
-    borderColor: buttonTokens.ctrlButtonBorderColorPressed,
-    color: buttonTokens.ctrlButtonForegroundColorPressed,
+    backgroundColor: buttonTokens.ctrlButtonSecondaryBackgroundColorPressed,
+    borderColor: buttonTokens.ctrlButtonSecondaryBorderColorPressed,
+    color: buttonTokens.ctrlButtonSecondaryForegroundColorPressed,
 
     outlineStyle: 'none',
   },
 
   padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
   minWidth: '96px',
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: buttonTokens.ctrlButtonBorderRadius,
 
   fontSize: tokens.fontSizeBase300,
   fontWeight: tokens.fontWeightSemibold,
@@ -103,7 +103,7 @@ const useRootBaseClassName = makeResetStyles({
 
   ...createCustomFocusIndicatorStyle({
     borderColor: tokens.colorStrokeFocus2,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: buttonTokens.ctrlButtonBorderRadius,
     borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
@@ -137,31 +137,31 @@ const useIconBaseClassName = makeResetStyles({
 const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: buttonTokens.ctrlButtonOutlineBackgroundColorRest,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonOutlineBackgroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonOutlineBackgroundColorPressed,
     },
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorRest,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: buttonTokens.ctrlButtonPrimaryForegroundColorRest,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: buttonTokens.ctrlButtonPrimaryForegroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: buttonTokens.ctrlButtonPrimaryForegroundColorPressed,
     },
 
     '@media (forced-colors: active)': {
@@ -187,14 +187,14 @@ const useRootStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: buttonTokens.ctrlButtonSubtleBackgroundColorRest,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
+    color: buttonTokens.ctrlButtonSubtleForegroundColorRest,
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonSubtleBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+      color: buttonTokens.ctrlButtonSubtleForegroundColorHover,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -207,9 +207,9 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonSubtleBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
+      color: buttonTokens.ctrlButtonSubtleForegroundColorPressed,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -239,14 +239,14 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: buttonTokens.ctrlButtonTransparentBackgroundColorRest,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
+    color: buttonTokens.ctrlButtonTransparentForegroundColorRest,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonTransparentBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: buttonTokens.ctrlButtonTransparentForegroundColorHover,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -256,9 +256,9 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonTransparentBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: buttonTokens.ctrlButtonTransparentForegroundColorPressed,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -295,7 +295,7 @@ const useRootStyles = makeStyles({
     minWidth: '64px',
     ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(buttonTokens.ctrlButtonBorderRadius),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
@@ -312,7 +312,7 @@ const useRootStyles = makeStyles({
     minWidth: '96px',
     ...shorthands.padding(buttonSpacingLarge, tokens.spacingHorizontalL),
 
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(buttonTokens.ctrlButtonBorderRadius),
 
     fontSize: tokens.fontSizeBase400,
     fontWeight: tokens.fontWeightSemibold,

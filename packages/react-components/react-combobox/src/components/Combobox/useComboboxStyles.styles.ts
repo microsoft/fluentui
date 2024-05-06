@@ -2,6 +2,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
+import { comboboxTokens } from './Combobox.tokens';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
 
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
@@ -25,7 +26,7 @@ const fieldHeights = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(comboboxTokens.ctrlComboboxBorderRadius),
     boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
     display: 'inline-grid',
@@ -49,10 +50,10 @@ const useStyles = makeStyles({
       left: '-1px',
       bottom: '-1px',
       right: '-1px',
-      height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
+      height: `max(2px, ${comboboxTokens.ctrlComboboxBorderRadius})`,
+      borderBottomLeftRadius: comboboxTokens.ctrlComboboxBorderRadius,
+      borderBottomRightRadius: comboboxTokens.ctrlComboboxBorderRadius,
+      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', comboboxTokens.ctrlComboboxBottomBorderColorRest),
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
@@ -76,13 +77,13 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: comboboxTokens.ctrlComboboxBottomBorderColorPressed,
     },
   },
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderRadius(comboboxTokens.ctrlComboboxBorderRadius),
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -114,25 +115,25 @@ const useStyles = makeStyles({
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    backgroundColor: comboboxTokens.ctrlComboboxOutlineBackgroundColorRest,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', comboboxTokens.ctrlComboboxOutlineBorderColorRest),
+    borderBottomColor: comboboxTokens.ctrlComboboxOutlineBottomBorderColor,
   },
 
   outlineInteractive: {
     '&:hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      ...shorthands.borderColor(comboboxTokens.ctrlComboboxOutlineBorderColorHover),
+      borderBottomColor: comboboxTokens.ctrlComboboxOutlineBottomBorderColor,
     },
 
     '&:active': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      ...shorthands.borderColor(comboboxTokens.ctrlComboboxOutlineBorderColorPressed),
+      borderBottomColor: comboboxTokens.ctrlComboboxOutlineBottomBorderColor,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
+    backgroundColor: comboboxTokens.ctrlComboboxUnderlineBackgroundColor,
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', comboboxTokens.ctrlComboboxUnderlineBottomBorderColor),
     ...shorthands.borderRadius(0),
   },
   'filled-lighter': {
@@ -169,7 +170,7 @@ const useInputStyles = makeStyles({
     alignSelf: 'stretch',
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
-    color: tokens.colorNeutralForeground1,
+    color: comboboxTokens.ctrlComboboxForegroundColor,
     fontFamily: tokens.fontFamilyBase,
 
     '&:focus': {
@@ -177,7 +178,7 @@ const useInputStyles = makeStyles({
     },
 
     '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
+      color: comboboxTokens.ctrlComboboxPlaceholderForegroundColor,
       opacity: 1,
     },
   },
