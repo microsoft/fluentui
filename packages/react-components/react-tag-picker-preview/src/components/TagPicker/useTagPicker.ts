@@ -114,7 +114,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     setOpen,
     setValue: comboboxState.setValue,
     value: comboboxState.value,
-    freeform: comboboxState.freeform,
   };
 };
 

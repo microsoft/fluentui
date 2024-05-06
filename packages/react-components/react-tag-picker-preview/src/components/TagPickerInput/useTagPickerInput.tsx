@@ -31,7 +31,6 @@ export const useTagPickerInput_unstable = (
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const freeform = useTagPickerContext_unstable(ctx => ctx.freeform);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const {
@@ -113,7 +112,7 @@ export const useTagPickerInput_unstable = (
     useMergedRefs(triggerRef, ref),
     {
       activeDescendantController,
-      freeform,
+      freeform: false,
       state: {
         clearSelection,
         getOptionById,
