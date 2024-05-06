@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 import { useOptionWalker } from './useOptionWalker';
@@ -32,6 +33,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const lastActiveIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const attributeVisibilityRef = React.useRef(true);
+  const { targetDocument } = useFluent();
 
   const removeAttribute = React.useCallback(() => {
     activeParentRef.current?.removeAttribute('aria-activedescendant');
@@ -87,7 +89,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
       const previousActiveId = blurActiveDescendant();
 
-      scrollIntoView(nextActive);
+      scrollIntoView(nextActive, targetDocument?.defaultView);
       setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
