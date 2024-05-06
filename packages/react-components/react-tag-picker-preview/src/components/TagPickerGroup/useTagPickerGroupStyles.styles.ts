@@ -20,15 +20,15 @@ const useStyles = makeStyles({
   },
   // size variants
   medium: {
-    ...shorthands.paddingBlock(tokens.spacingVerticalSNudge),
+    ...shorthands.padding(tokens.spacingVerticalSNudge, 0, tokens.spacingVerticalSNudge, 0),
     ...shorthands.gap(tokens.spacingHorizontalXS),
   },
   large: {
-    ...shorthands.paddingBlock(tokens.spacingVerticalS),
+    ...shorthands.padding(tokens.spacingVerticalS, 0, tokens.spacingVerticalS, 0),
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
   'extra-large': {
-    ...shorthands.paddingBlock(tokens.spacingVerticalS),
+    ...shorthands.padding(tokens.spacingVerticalS, 0, tokens.spacingVerticalS, 0),
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
 });

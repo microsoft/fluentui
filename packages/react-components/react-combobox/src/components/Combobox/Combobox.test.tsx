@@ -7,6 +7,7 @@ import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { comboboxClassNames } from './useComboboxStyles.styles';
+import { ComboboxProps } from '@fluentui/react-combobox';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -1117,6 +1118,30 @@ describe('Combobox', () => {
 
       expect(clearButton).toHaveStyle({ display: 'none' });
       expect(clearButton).toHaveAttribute('aria-hidden', 'true');
+    });
+  });
+
+  describe('Active item change', () => {
+    it('should call onActiveOptionChange with arrow down', () => {
+      let activeOptionText = '';
+      const onActiveOptionChange: ComboboxProps['onActiveOptionChange'] = (_, data) => {
+        activeOptionText = data.nextOption?.text ?? '';
+      };
+      render(
+        <Combobox onActiveOptionChange={onActiveOptionChange}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      userEvent.tab();
+      userEvent.keyboard('{ArrowDown}');
+      expect(activeOptionText).toBe('Red');
+      userEvent.keyboard('{ArrowDown}');
+      expect(activeOptionText).toBe('Green');
+      userEvent.keyboard('{ArrowUp}');
+      expect(activeOptionText).toBe('Red');
     });
   });
 });

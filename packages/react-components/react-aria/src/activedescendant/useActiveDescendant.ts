@@ -6,6 +6,23 @@ import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveD
 import { ACTIVEDESCENDANT_ATTRIBUTE, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 import { scrollIntoView } from './scrollIntoView';
 
+interface ActiveDescendantChangeEventDetail {
+  id: string;
+  previousId: string | null;
+}
+
+export type ActiveDescendantChangeEvent = CustomEvent<ActiveDescendantChangeEventDetail>;
+
+export const createActiveDescendantChangeEvent = (
+  detail: ActiveDescendantChangeEventDetail,
+): ActiveDescendantChangeEvent =>
+  new CustomEvent<ActiveDescendantChangeEventDetail>('activedescendantchange', {
+    bubbles: true,
+    cancelable: false,
+    composed: true,
+    detail,
+  });
+
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
 ): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
@@ -59,6 +76,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     removeAttribute();
     lastActiveIdRef.current = activeIdRef.current;
     activeIdRef.current = null;
+    return active?.id ?? null;
   }, [getActiveDescendant, removeAttribute]);
 
   const focusActiveDescendant = React.useCallback(
@@ -67,7 +85,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         return;
       }
 
-      blurActiveDescendant();
+      const previousActiveId = blurActiveDescendant();
 
       scrollIntoView(nextActive);
       setAttribute(nextActive.id);
@@ -76,6 +94,9 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       if (focusVisibleRef.current) {
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
+
+      const event = createActiveDescendantChangeEvent({ id: nextActive.id, previousId: previousActiveId });
+      nextActive.dispatchEvent(event);
     },
     [blurActiveDescendant, setAttribute],
   );

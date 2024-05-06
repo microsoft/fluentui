@@ -8,23 +8,19 @@ export type TagPickerSlots = {};
 
 export type TagPickerSize = 'medium' | 'large' | 'extra-large';
 
-/*
- * Data for the onOptionSelect callback.
- * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
+/**
+ * Event data for the `onOptionSelect` event.
+ *
+ * * value - The value of the selected option that triggered the event
+ * * selectedOptions - The list of selected options
  */
 export type TagPickerOnOptionSelectData = {
-  optionValue: string | undefined;
-  optionText: string | undefined;
+  value: string;
   selectedOptions: string[];
-} & (
-  | EventData<'click', React.MouseEvent<HTMLDivElement>>
-  | EventData<'change', React.ChangeEvent<HTMLDivElement>>
-  | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
-);
+} & (EventData<'click', React.MouseEvent<HTMLDivElement>> | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>);
 
 export type TagPickerOnOpenChangeData = { open: boolean } & (
   | EventData<'click', React.MouseEvent<HTMLDivElement>>
-  | EventData<'change', React.ChangeEvent<HTMLDivElement>>
   | EventData<'keydown', React.KeyboardEvent<HTMLDivElement>>
 );
 
@@ -34,7 +30,7 @@ export type TagPickerOnOpenChangeData = { open: boolean } & (
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
   Pick<
     ComboboxProps,
-    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'
+    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'
   > &
   Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
@@ -73,7 +69,6 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'appearance'
     | 'clearSelection'
     | 'getOptionById'
-    | 'freeform'
     | 'disabled'
   > &
   Pick<

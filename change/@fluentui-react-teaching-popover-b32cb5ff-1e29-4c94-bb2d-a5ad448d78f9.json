@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Arrow was 1px offset and incorrect box-sizing",
-  "packageName": "@fluentui/react-teaching-popover",
-  "email": "edwardwang.94@gmail.com",
-  "dependentChangeType": "patch"
-}

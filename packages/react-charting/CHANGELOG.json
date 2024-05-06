@@ -2,6 +2,81 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 07:25:44 GMT",
+      "tag": "@fluentui/react-charting_v5.21.5",
+      "version": "5.21.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1fbc1fe2e0b29bbec27e9d6670fb985da6cf5c1d",
+            "comment": "Enable focus on line points in vertical bar charts when the line legend is selected"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bd9a5d65dd0626cf3d83fc2c3195c04acc2aeb81",
+            "comment": "Make blank cells in heatmap chart accessible"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.150",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.1",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 07:27:45 GMT",
+      "tag": "@fluentui/react-charting_v5.21.4",
+      "version": "5.21.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.149",
+            "commit": "119baa34c2f8d77cf013fb4eb0dbe59d82bfb16a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.0",
+            "commit": "119baa34c2f8d77cf013fb4eb0dbe59d82bfb16a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 May 2024 07:26:39 GMT",
+      "tag": "@fluentui/react-charting_v5.21.3",
+      "version": "5.21.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.148",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.8",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Apr 2024 07:25:30 GMT",
       "tag": "@fluentui/react-charting_v5.21.2",
       "version": "5.21.2",

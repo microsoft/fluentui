@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adds useTagPickerFilter hook (similar to useComboboxFilter, but with proper TagPicker related components)",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

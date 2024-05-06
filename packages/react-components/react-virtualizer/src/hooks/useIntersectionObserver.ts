@@ -100,12 +100,15 @@ export const useIntersectionObserver = (
   // Observer elements in passed in list and clean up previous list
   // This effect is only triggered when observerList is updated
   useIsomorphicLayoutEffect(() => {
-    observer.current = new IntersectionObserver(callback, {
+    const win = targetDocument?.defaultView;
+    if (!win) {
+      return;
+    }
+
+    observer.current = new win.IntersectionObserver(callback, {
       ...observerInit,
       rootMargin: getRTLRootMargin(ltrRootMargin.current, observerInit?.root),
     });
-
-    observer.current = new IntersectionObserver(callback, observerInit);
 
     // If we have an instance of IO and a list with elements, observer the elements
     if (observer.current && observerList && observerList.length > 0) {
@@ -120,7 +123,7 @@ export const useIntersectionObserver = (
         observer.current.disconnect();
       }
     };
-  }, [observerList, observerInit, callback]);
+  }, [observerList, observerInit, callback, targetDocument?.defaultView]);
 
   // Do not use internally, we need to track external settings only here
   const setObserverInitExternal = useCallback(

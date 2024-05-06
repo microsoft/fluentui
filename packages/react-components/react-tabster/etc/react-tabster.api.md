@@ -1465,6 +1465,9 @@ export interface UseFocusableGroupOptions {
 }
 
 // @public
+export function useFocusedElementChange(callback: Types.SubscribableCallback<HTMLElement | undefined, Types.FocusedElementDetail>): void;
+
+// @public
 export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;

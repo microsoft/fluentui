@@ -235,6 +235,11 @@ describe(`utils`, () => {
 
       expect(actual).not.toContain(expect.stringContaining('/react-text/stories/'));
     });
+
+    // @TODO: Once we will have at least 1 project migrated to the new structure we can enable/implement this test
+    it.todo(
+      `should generate storybook stories string array of glob based on package.json#dependencies field pointing to sibling /stories project if it exists`,
+    );
   });
 
   describe(`#processBabelLoaderOptions`, () => {

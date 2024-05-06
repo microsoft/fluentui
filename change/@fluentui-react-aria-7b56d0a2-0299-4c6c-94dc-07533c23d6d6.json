@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: use ariaNotify in AriaLiveAnnouncer when available",
+  "packageName": "@fluentui/react-aria",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
