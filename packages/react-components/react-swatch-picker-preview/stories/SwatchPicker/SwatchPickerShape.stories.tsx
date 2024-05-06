@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SwatchPicker, ColorSwatch, renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -27,18 +27,16 @@ export const SwatchPickerShape = () => {
   return (
     <div className={styles.example}>
       <h3>Square</h3>
-      <SwatchPicker layout="grid" aria-label="SwatchPicker square shape">
-        {renderSwatchPickerGrid({
-          items: colors,
-          columnCount: 3,
-        })}
+      <SwatchPicker aria-label="SwatchPicker square shape">
+        {colors.map(color => (
+          <ColorSwatch key={color.value} {...color} />
+        ))}
       </SwatchPicker>
       <h3>Circular</h3>
-      <SwatchPicker layout="grid" aria-label="SwatchPicker circular shape" shape="circular">
-        {renderSwatchPickerGrid({
-          items: colors,
-          columnCount: 3,
-        })}
+      <SwatchPicker aria-label="SwatchPicker circular shape" shape="circular">
+        {colors.map(color => (
+          <ColorSwatch key={color.value} {...color} />
+        ))}
       </SwatchPicker>
       <h3>Rounded</h3>
       <SwatchPicker aria-label="SwatchPicker rounded shape" shape="rounded">
@@ -48,4 +46,12 @@ export const SwatchPickerShape = () => {
       </SwatchPicker>
     </div>
   );
+};
+
+SwatchPickerShape.parameters = {
+  docs: {
+    description: {
+      story: 'The `shape` prop sets border-radius of the Swatch. The default is `square`.',
+    },
+  },
 };

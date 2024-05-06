@@ -25,3 +25,11 @@ export const ColorSwatchVariants = () => {
     </div>
   );
 };
+
+ColorSwatchVariants.parameters = {
+  docs: {
+    description: {
+      story: '`ColorSwatch` component can have color, gradient, icon and initials.',
+    },
+  },
+};

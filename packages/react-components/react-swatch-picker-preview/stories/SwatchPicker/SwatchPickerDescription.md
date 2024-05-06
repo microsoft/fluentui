@@ -1,1 +1,1 @@
-For detailed guidance on when and how to use this component, go to Fluent 2 SwatchPicker.
+A swatch picker lets people choose a color, image, or pattern and apply it to graphics or text.

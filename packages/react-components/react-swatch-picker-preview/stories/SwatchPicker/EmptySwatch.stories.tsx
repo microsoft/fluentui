@@ -89,3 +89,11 @@ export const EmptySwatchExample = () => {
     </>
   );
 };
+
+EmptySwatchExample.parameters = {
+  docs: {
+    description: {
+      story: 'Empty swatch is used for cases where new swatches can be added.',
+    },
+  },
+};
