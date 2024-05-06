@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Add HC hover active styling to Switch.",
+  "packageName": "@fluentui/react-switch",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
