@@ -111,7 +111,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     initializeScrollingTimer();
   }, [actualIndex, initializeScrollingTimer]);
 
+  const batchUpdateNewIndex = (index: number) => {
     // Local updates
+    updateChildRows(index);
+    updateCurrentItemSizes(index);
+
+    // Set before 'setActualIndex' call
     // If it changes before render, or injected via context, re-render will update ref.
     actualIndexRef.current = index;
 
@@ -121,7 +126,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
-    // eslint-disable-next-line no-restricted-globals
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       /* Sanity check - do we even need virtualization? */
       if (virtualizerLength > numItems) {
