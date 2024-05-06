@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
+import { switchTokens } from './Switch.tokens';
 
 export const switchClassNames: SlotClassNames<SwitchSlots> = {
   root: 'fui-Switch',
@@ -122,7 +123,7 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessibleHover,
+        color: switchTokens.ctrlSwitchForegroundColorHover,
         borderColor: tokens.colorNeutralStrokeAccessibleHover,
       },
     },

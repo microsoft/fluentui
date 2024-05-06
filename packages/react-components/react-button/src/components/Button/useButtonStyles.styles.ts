@@ -148,20 +148,20 @@ const useRootStyles = makeStyles({
     },
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorRest,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: buttonTokens.ctrlButtonPrimaryForegroundColorRest,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: buttonTokens.ctrlButtonPrimaryForegroundColorHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: buttonTokens.ctrlButtonPrimaryBackgroundColorPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: buttonTokens.ctrlButtonPrimaryForegroundColorPressed,
     },
 
     '@media (forced-colors: active)': {

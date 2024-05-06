@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Switch } from '@fluentui/react-components';
+import { Switch, webLightTheme, Theme, FluentProvider } from '@fluentui/react-components';
+
+const customWin11Theme: Theme = {
+  ...webLightTheme,
+  switchForegroundColorHover: '#0078D4',
+};
 
 export const Checked = () => {
   const [checked, setChecked] = React.useState(true);
@@ -10,7 +15,14 @@ export const Checked = () => {
     [setChecked],
   );
 
-  return <Switch checked={checked} onChange={onChange} label={checked ? 'Checked' : 'Unchecked'} />;
+  return (
+    <>
+      <Switch checked={checked} onChange={onChange} label={checked ? 'Checked' : 'Unchecked'} />
+      <FluentProvider theme={customWin11Theme}>
+        <Switch checked={checked} onChange={onChange} label={checked ? 'W11' : 'W11 checked'} />
+      </FluentProvider>
+    </>
+  );
 };
 
 Checked.parameters = {
