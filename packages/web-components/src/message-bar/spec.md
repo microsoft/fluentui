@@ -78,7 +78,7 @@ The Fluent WC3 MessageBar extends `FASTElement`
 
 - `aria-live`
 
-  - The `aria-live` attribute should be used to associate the MessageBar with the appropriate `aria-live` value to announce content changes to assistive technology devices. Corresponds to politeness attribute.
+  - The `aria-live` attribute should be used to associate the MessageBar with the appropriate `aria-live` value to announce content changes to assistive technology devices. Corresponds to `politeness` attribute.
 
 - `aria-labelledby`
 
