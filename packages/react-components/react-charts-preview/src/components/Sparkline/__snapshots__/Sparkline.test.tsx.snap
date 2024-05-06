@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+      {
+        display: inline;
+      }
+  data-focuszone-id="FocusZone1"
+  data-tabster="{\\"uncontrolled\\": {}}"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+
+        {
+          display: inline;
+        }
+  >
+    <svg
+      aria-label="Sparkline with label 19.64"
+      data-is-focusable={true}
+      height={20}
+      width={80}
+    >
+      <path
+        className="line"
+        d="M0,12.578L11.429,2L22.857,17.446L34.286,8.547L45.714,7.36L57.143,18.304L68.571,16.001L80,18.696"
+        fill="transparent"
+        opacity={1}
+        stroke="#00AA00"
+        strokeWidth={2}
+      />
+      <path
+        aria-hidden={true}
+        className="area"
+        d="M0,12.578L11.429,2L22.857,17.446L34.286,8.547L45.714,7.36L57.143,18.304L68.571,16.001L80,18.696L80,20L68.571,20L57.143,20L45.714,20L34.286,20L22.857,20L11.429,20L0,20Z"
+        fill="#00AA00"
+        fillOpacity={0.2}
+        opacity={1}
+        role="img"
+      />
+    </svg>
+    <svg
+      data-is-focusable={true}
+      height={20}
+      width={80}
+    >
+      <text
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+            }
+        dx={8}
+        dy={-5}
+        textAnchor="start"
+        x="0%"
+        y="100%"
+      >
+        19.64
+      </text>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+      {
+        display: inline;
+      }
+  data-focuszone-id="FocusZone1"
+  data-tabster="{\\"uncontrolled\\": {}}"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+
+        {
+          display: inline;
+        }
+  >
+    <svg
+      aria-label="Sparkline with label 131.33"
+      data-is-focusable={true}
+      height={20}
+      width={80}
+    >
+      <path
+        className="line"
+        d="M0,14.155L16,5.757L32,7.96L48,2L64,16.187L80,10.079"
+        fill="transparent"
+        opacity={1}
+        stroke="#E60000"
+        strokeWidth={2}
+      />
+      <path
+        aria-hidden={true}
+        className="area"
+        d="M0,14.155L16,5.757L32,7.96L48,2L64,16.187L80,10.079L80,20L64,20L48,20L32,20L16,20L0,20Z"
+        fill="#E60000"
+        fillOpacity={0.2}
+        opacity={1}
+        role="img"
+      />
+    </svg>
+  </div>
+</div>
+`;

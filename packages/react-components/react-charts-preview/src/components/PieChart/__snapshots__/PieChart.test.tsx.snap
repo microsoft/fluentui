@@ -1,0 +1,343 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
+<div
+  className=
+      ms-PieChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 670px;
+      }
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={350}
+      width={600}
+    >
+      <g
+        className="pie"
+        transform="translate(300, 175)"
+      >
+        <g
+          aria-label="A-50"
+          className=
+              arc
+              {
+                outline: none;
+              }
+          data-is-focusable={true}
+          id="piechart_arc3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="img"
+        >
+          <path
+            className=
+
+                {
+                  fill: #e81123;
+                }
+            d="M0.795,-158.998A159,159,0,0,1,1.59,158.992L0.798,0.603A1,1,0,0,0,0.795,-0.607Z"
+          />
+          <text
+            aria-label="A-50"
+            className=
+
+                {
+                  fill: #000000;
+                  outline: none;
+                }
+            data-is-focusable={false}
+            dominantBaseline="auto"
+            id="tooltip-host4"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="start"
+            x={158.9995031252588}
+            y={-0.3974995859376562}
+          >
+            A-50
+          </text>
+        </g>
+        <g
+          aria-label="B-25"
+          className=
+              arc
+              {
+                outline: none;
+              }
+          data-is-focusable={true}
+          id="piechart_arc6"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="img"
+        >
+          <path
+            className=
+
+                {
+                  fill: #0078d4;
+                }
+            d="M0,159A159,159,0,0,1,-158.996,1.193L-0.704,0.71Z"
+          />
+          <text
+            aria-label="B-25"
+            className=
+
+                {
+                  fill: #000000;
+                  outline: none;
+                }
+            data-is-focusable={false}
+            dominantBaseline="hanging"
+            id="tooltip-host7"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-112.00757625617408}
+            y={112.85079911643227}
+          >
+            B-25
+          </text>
+        </g>
+        <g
+          aria-label="C-25"
+          className=
+              arc
+              {
+                outline: none;
+              }
+          data-is-focusable={true}
+          id="piechart_arc9"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="img"
+        >
+          <path
+            className=
+
+                {
+                  fill: #107c10;
+                }
+            d="M-159,-0.398A159,159,0,0,1,-0.795,-158.998L-0.708,-0.706Z"
+          />
+          <text
+            aria-label="C-25"
+            className=
+
+                {
+                  fill: #000000;
+                  outline: none;
+                }
+            data-is-focusable={false}
+            dominantBaseline="auto"
+            id="tooltip-host10"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-112.57042780891464}
+            y={-112.2893529365894}
+          >
+            C-25
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`PieChart snapShot testing renders with colors, width and height data correctly 1`] = `
+<div
+  className=
+      ms-PieChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 670px;
+      }
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={300}
+      width={600}
+    >
+      <g
+        className="pie"
+        transform="translate(300, 150)"
+      >
+        <g
+          aria-label="A-50"
+          className=
+              arc
+              {
+                outline: none;
+              }
+          data-is-focusable={true}
+          id="piechart_arc3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="img"
+        >
+          <path
+            className=
+
+                {
+                  fill: #e81123;
+                }
+            d="M0.67,-133.998A134,134,0,0,1,1.34,133.993L0.674,0.739A1,1,0,0,0,0.67,-0.742Z"
+          />
+          <text
+            aria-label="A-50"
+            className=
+
+                {
+                  fill: #000000;
+                  outline: none;
+                }
+            data-is-focusable={false}
+            dominantBaseline="auto"
+            id="tooltip-host4"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="start"
+            x={133.99958125021809}
+            y={-0.3349996510417983}
+          >
+            A-50
+          </text>
+        </g>
+        <g
+          aria-label="B-25"
+          className=
+              arc
+              {
+                outline: none;
+              }
+          data-is-focusable={true}
+          id="piechart_arc6"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="img"
+        >
+          <path
+            className=
+
+                {
+                  fill: #0078d4;
+                }
+            d="M0,134A134,134,0,0,1,-133.996,1.005L-0.741,0.672A1,1,0,0,0,-0.666,0.746Z"
+          />
+          <text
+            aria-label="B-25"
+            className=
+
+                {
+                  fill: #000000;
+                  outline: none;
+                }
+            data-is-focusable={false}
+            dominantBaseline="hanging"
+            id="tooltip-host7"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-94.39632212784481}
+            y={95.1069627773706}
+          >
+            B-25
+          </text>
+        </g>
+        <g
+          aria-label="C-25"
+          className=
+              arc
+              {
+                outline: none;
+              }
+          data-is-focusable={true}
+          id="piechart_arc9"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="img"
+        >
+          <path
+            className=
+
+                {
+                  fill: #107c10;
+                }
+            d="M-134,-0.335A134,134,0,0,1,-0.67,-133.998L-0.67,-0.742A1,1,0,0,0,-0.744,-0.668Z"
+          />
+          <text
+            aria-label="C-25"
+            className=
+
+                {
+                  fill: #000000;
+                  outline: none;
+                }
+            data-is-focusable={false}
+            dominantBaseline="auto"
+            id="tooltip-host10"
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            textAnchor="end"
+            x={-94.87067500877083}
+            y={-94.63379429876088}
+          >
+            C-25
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;

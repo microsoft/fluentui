@@ -31,6 +31,7 @@
       "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/src/index.ts"],
       "@fluentui/react-card": ["packages/react-components/react-card/src/index.ts"],
       "@fluentui/react-carousel-preview": ["packages/react-components/react-carousel-preview/src/index.ts"],
+      "@fluentui/react-charts-preview": ["packages/react-components/react-charts-preview/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/src/index.ts"],
       "@fluentui/react-colorpicker-compat": ["packages/react-components/react-colorpicker-compat/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-components/react-combobox/src/index.ts"],
