@@ -5,6 +5,7 @@
 ```ts
 
 import type { Constructable } from '@microsoft/fast-element';
+import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
@@ -21,7 +22,6 @@ import type { Theme } from '@fluentui/tokens';
 export class Accordion extends FASTElement {
     // (undocumented)
     protected accordionItems: Element[];
-    // Warning: (ae-forgotten-export) The symbol "AccordionExpandMode" needs to be exported by the entry point index.d.ts
     expandmode: AccordionExpandMode;
     // (undocumented)
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
@@ -35,6 +35,17 @@ export class Accordion extends FASTElement {
 
 // @public (undocumented)
 export const accordionDefinition: FASTElementDefinition<typeof Accordion>;
+
+// @public
+export const AccordionExpandMode: {
+    readonly single: "single";
+    readonly multi: "multi";
+};
+
+// Warning: (ae-forgotten-export) The symbol "ValuesOf" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AccordionItem" because one of its declarations is marked as @internal
 //
@@ -68,8 +79,6 @@ export const AccordionItemExpandIconPosition: {
     readonly end: "end";
 };
 
-// Warning: (ae-forgotten-export) The symbol "ValuesOf" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
 
@@ -135,6 +144,8 @@ export class AnchorButton extends FASTElement {
     type: string;
 }
 
+// Warning: (ae-forgotten-export) The symbol "DelegatesARIALink" needs to be exported by the entry point index.d.ts
+//
 // @internal
 export interface AnchorButton extends StartEnd, DelegatesARIALink {
 }
@@ -153,6 +164,9 @@ export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
 // @public (undocumented)
 export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
+
+// @public
+export type AnchorButtonOptions = StartEndOptions<AnchorButton>;
 
 // @public
 export const AnchorButtonShape: {
@@ -176,11 +190,6 @@ export type AnchorButtonSize = ValuesOf<typeof AnchorButtonSize>;
 
 // @public
 export const AnchorButtonTemplate: ElementViewTemplate<AnchorButton>;
-
-// @public
-type AnchorOptions = StartEndOptions<AnchorButton>;
-export { AnchorOptions as AnchorButtonOptions }
-export { AnchorOptions }
 
 // @public
 export const AnchorTarget: {
@@ -388,13 +397,6 @@ export type BadgeColor = ValuesOf<typeof BadgeColor>;
 // @public (undocumented)
 export const BadgeDefinition: FASTElementDefinition<typeof Badge>;
 
-// Warning: (ae-internal-missing-underscore) The name "BadgeOptions" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export type BadgeOptions = StartEndOptions<Badge> & {
-    defaultContent?: StaticallyComposableHTML;
-};
-
 // @public
 export const BadgeShape: {
     readonly circular: "circular";
@@ -423,29 +425,6 @@ export const BadgeStyles: ElementStyles;
 
 // @public (undocumented)
 export const BadgeTemplate: ElementViewTemplate<Badge>;
-
-// @public
-export class BaseTabs extends FASTElement {
-    activeid: string;
-    // @internal (undocumented)
-    activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
-    adjust(adjustment: number): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    orientation: TabsOrientation;
-    // @internal (undocumented)
-    orientationChanged(): void;
-    protected setTabs(): void;
-    // @internal (undocumented)
-    tabpanels: HTMLElement[];
-    // @internal (undocumented)
-    tabpanelsChanged(): void;
-    // @internal (undocumented)
-    tabs: HTMLElement[];
-    // @internal (undocumented)
-    tabsChanged(): void;
-}
 
 // @public (undocumented)
 export const borderRadiusCircular = "var(--borderRadiusCircular)";
@@ -540,7 +519,6 @@ export type ButtonFormTarget = ValuesOf<typeof ButtonFormTarget>;
 // @public
 type ButtonOptions = StartEndOptions<Button>;
 export { ButtonOptions }
-export { ButtonOptions as CompoundButtonOptions }
 export { ButtonOptions as MenuButtonOptions }
 export { ButtonOptions as ToggleButtonOptions }
 
@@ -1625,11 +1603,6 @@ export type CounterBadgeColor = ValuesOf<typeof CounterBadgeColor>;
 // @public (undocumented)
 export const CounterBadgeDefinition: FASTElementDefinition<typeof CounterBadge>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "CounterBadgeOptions" is marked as @public, but its signature references "BadgeOptions" which is marked as @internal
-//
-// @public
-export type CounterBadgeOptions = BadgeOptions;
-
 // @public
 export const CounterBadgeShape: {
     readonly circular: "circular";
@@ -1657,9 +1630,6 @@ export const CounterBadgeStyles: ElementStyles;
 
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
-
-// @public
-export type CSSDisplayPropertyValue = 'block' | 'contents' | 'flex' | 'grid' | 'inherit' | 'initial' | 'inline' | 'inline-block' | 'inline-flex' | 'inline-grid' | 'inline-table' | 'list-item' | 'none' | 'run-in' | 'table' | 'table-caption' | 'table-cell' | 'table-column' | 'table-column-group' | 'table-footer-group' | 'table-header-group' | 'table-row' | 'table-row-group';
 
 // @public (undocumented)
 export const curveAccelerateMax = "var(--curveAccelerateMax)";
@@ -1691,27 +1661,6 @@ export const curveLinear = "var(--curveLinear)";
 // @public
 export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "DelegatesARIALink" because one of its declarations is marked as @internal
-//
-// @public
-export class DelegatesARIALink {
-    ariaExpanded: 'true' | 'false' | string | null;
-}
-
-// Warning: (ae-forgotten-export) The symbol "ARIAGlobalStatesAndProperties" needs to be exported by the entry point index.d.ts
-//
-// @internal
-export interface DelegatesARIALink extends ARIAGlobalStatesAndProperties {
-}
-
-// @public
-export class DelegatesARIATextbox {
-}
-
-// @public (undocumented)
-export interface DelegatesARIATextbox extends ARIAGlobalStatesAndProperties {
-}
-
 // @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
@@ -1724,7 +1673,6 @@ export class Dialog extends FASTElement {
     handleClick(event: Event): boolean;
     handleKeydown: (e: KeyboardEvent) => boolean | void;
     hide(dismissed?: boolean): void;
-    // Warning: (ae-forgotten-export) The symbol "DialogModalType" needs to be exported by the entry point index.d.ts
     modalType: DialogModalType;
     modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void;
     noTitleAction: boolean;
@@ -1740,11 +1688,23 @@ export class Dialog extends FASTElement {
 export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
 
 // @public
+export const DialogModalType: {
+    readonly modal: "modal";
+    readonly nonModal: "non-modal";
+    readonly alert: "alert";
+};
+
+// @public (undocumented)
+export type DialogModalType = ValuesOf<typeof DialogModalType>;
+
+// @public
 export const DialogStyles: ElementStyles;
 
 // @public
 export const DialogTemplate: ElementViewTemplate<Dialog>;
 
+// Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
+//
 // @public
 export function display(displayValue: CSSDisplayPropertyValue): string;
 
@@ -1894,9 +1854,6 @@ export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMed
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
-export const hidden = ":host([hidden]){display:none}";
-
-// @public
 class Image_2 extends FASTElement {
     block?: boolean;
     bordered?: boolean;
@@ -1941,9 +1898,7 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 export class Label extends FASTElement {
     disabled: boolean;
     required: boolean;
-    // Warning: (ae-forgotten-export) The symbol "LabelSize" needs to be exported by the entry point index.d.ts
     size?: LabelSize;
-    // Warning: (ae-forgotten-export) The symbol "LabelWeight" needs to be exported by the entry point index.d.ts
     weight?: LabelWeight;
 }
 
@@ -1951,10 +1906,29 @@ export class Label extends FASTElement {
 export const LabelDefinition: FASTElementDefinition<typeof Label>;
 
 // @public
+export const LabelSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type LabelSize = ValuesOf<typeof LabelSize>;
+
+// @public
 export const LabelStyles: ElementStyles;
 
 // @public (undocumented)
 export const LabelTemplate: ElementViewTemplate<Label>;
+
+// @public
+export const LabelWeight: {
+    readonly regular: "regular";
+    readonly semibold: "semibold";
+};
+
+// @public
+export type LabelWeight = ValuesOf<typeof LabelWeight>;
 
 // @public
 export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
@@ -2298,7 +2272,6 @@ export class RadioGroup extends FASTElement {
     name: string;
     // (undocumented)
     protected nameChanged(): void;
-    // Warning: (ae-forgotten-export) The symbol "RadioGroupOrientation" needs to be exported by the entry point index.d.ts
     orientation: RadioGroupOrientation;
     readOnly: boolean;
     // @internal (undocumented)
@@ -2313,6 +2286,18 @@ export class RadioGroup extends FASTElement {
 
 // @public
 export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
+
+// @public
+export const RadioGroupOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * Radio Group orientation
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type RadioGroupOrientation = ValuesOf<typeof RadioGroupOrientation>;
 
 // @public
 export const RadioGroupStyles: ElementStyles;
@@ -2567,10 +2552,8 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 // @public (undocumented)
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
-// Warning: (ae-forgotten-export) The symbol "ProgressRing" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Spinner extends ProgressRing {
+export class Spinner extends BaseProgress {
     appearance?: SpinnerAppearance;
     size?: SpinnerSize;
 }
@@ -2586,6 +2569,11 @@ export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
 
 // @public (undocumented)
 export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+
+// @public
+export type SpinnerOptions = {
+    indeterminateIndicator?: StaticallyComposableHTML<Spinner>;
+};
 
 // @public
 export const SpinnerSize: {
@@ -2697,6 +2685,8 @@ export const TabPanelStyles: ElementStyles;
 // @public (undocumented)
 export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 
+// Warning: (ae-forgotten-export) The symbol "BaseTabs" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export class Tabs extends BaseTabs {
     // (undocumented)
@@ -2787,21 +2777,6 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 // @public
 export const TextDefinition: FASTElementDefinition<typeof Text_2>;
 
-// @public (undocumented)
-export type TextFieldOptions = StartEndOptions<TextInput>;
-
-// @public
-export const TextFieldType: {
-    readonly email: "email";
-    readonly password: "password";
-    readonly tel: "tel";
-    readonly text: "text";
-    readonly url: "url";
-};
-
-// @public
-export type TextFieldType = ValuesOf<typeof TextFieldType>;
-
 // @public
 export const TextFont: {
     readonly base: "base";
@@ -2856,13 +2831,15 @@ export class TextInput extends FormAssociatedTextField {
     spellcheck: boolean;
     // (undocumented)
     protected spellcheckChanged(): void;
-    type: TextFieldType;
+    type: TextInputType;
     // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@fluentui/web-components" does not have an export "FormAssociated"
     //
     // (undocumented)
     validate(): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "DelegatesARIATextbox" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export interface TextInput extends StartEnd, DelegatesARIATextbox {
 }
@@ -2891,6 +2868,9 @@ export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 // @public
 export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
 
+// @public (undocumented)
+export type TextInputOptions = StartEndOptions<TextInput>;
+
 // @public
 export const TextInputStyles: ElementStyles;
 
@@ -2898,6 +2878,18 @@ export const TextInputStyles: ElementStyles;
 //
 // @internal (undocumented)
 export const TextInputTemplate: ElementViewTemplate<TextInput>;
+
+// @public
+export const TextInputType: {
+    readonly email: "email";
+    readonly password: "password";
+    readonly tel: "tel";
+    readonly text: "text";
+    readonly url: "url";
+};
+
+// @public
+export type TextInputType = ValuesOf<typeof TextInputType>;
 
 // @public
 export const TextSize: {
@@ -2989,6 +2981,57 @@ export const ToggleButtonStyles: ElementStyles;
 
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// @public (undocumented)
+export const typographyBody1StrongerStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographyBody1StrongStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographyBody1Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyBody2Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyCaption1StrongerStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographyCaption1StrongStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographyCaption1Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyCaption2StrongStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographyCaption2Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyDisplayStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographyLargeTitleStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographySubtitle1Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographySubtitle2StrongerStyles: CSSDirective;
+
+// @public (undocumented)
+export const typographySubtitle2Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyTitle1Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyTitle2Styles: CSSDirective;
+
+// @public (undocumented)
+export const typographyTitle3Styles: CSSDirective;
 
 // Warnings were encountered during analysis:
 //
