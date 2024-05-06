@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-tag-picker-preview
 
-This log was last generated on Thu, 02 May 2024 11:36:40 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.5.0)
+
+Mon, 06 May 2024 12:55:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.4.0..@fluentui/react-tag-picker-preview_v0.5.0)
+
+### Minor changes
+
+- chore: removes freeform prop ([PR #31273](https://github.com/microsoft/fluentui/pull/31273) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-portal to v9.4.23 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-aria to v9.11.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-combobox to v9.11.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tags to v9.3.3 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.59 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-positioning to v9.14.5 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-field to v9.1.64 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+### Patches
+
+- chore: ensure clicking on surface will toggle open state ([PR #31270](https://github.com/microsoft/fluentui/pull/31270) by bernardo.sunderhus@gmail.com)
+- chore: bug bash follow up ([PR #31272](https://github.com/microsoft/fluentui/pull/31272) by bernardo.sunderhus@gmail.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.4.0)
 

@@ -8,7 +8,7 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar } from '@fluentui/react-components';
+import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -29,7 +29,7 @@ export const SingleSelect = () => {
   };
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           {selectedOption && (
@@ -52,7 +52,7 @@ export const SingleSelect = () => {
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
-                media={<Avatar aria-hidden name={option} color="colorful" />}
+                media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}
               >
@@ -61,7 +61,7 @@ export const SingleSelect = () => {
             ))}
         </TagPickerList>
       </TagPicker>
-    </div>
+    </Field>
   );
 };
 
@@ -69,7 +69,7 @@ SingleSelect.parameters = {
   docs: {
     description: {
       story: `
-By default, the \`TagPicker\` allows multiple selections. To enable single selection, you can manage the selected options state yourself and pass only one selected option to the \`TagPicker\` component.
+By default, the \`TagPicker\` allows you to have multiple tags selected . To enable single selection, you can manage the selected options state yourself and pass only one selected option to the \`TagPicker\` component.
       `,
     },
   },

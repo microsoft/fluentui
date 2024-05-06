@@ -2,6 +2,101 @@
   "name": "@fluentui/react-tag-picker-preview",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 12:55:01 GMT",
+      "tag": "@fluentui/react-tag-picker-preview_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "8a3a1b6457fc47809fc64c040bb6c79d81c6571e",
+            "comment": "chore: removes freeform prop"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-portal to v9.4.23",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-aria to v9.11.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-combobox to v9.11.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-tags to v9.3.3",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.59",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-positioning to v9.14.5",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker-preview",
+            "comment": "Bump @fluentui/react-field to v9.1.64",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "64dc629dd0bcb44e559f120f76e93b182f43a5c7",
+            "comment": "chore: ensure clicking on surface will toggle open state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "0152e14e7e4bd7a2adc96057316a258acd3d0fe4",
+            "comment": "chore: bug bash follow up"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 May 2024 11:36:40 GMT",
       "tag": "@fluentui/react-tag-picker-preview_v0.4.0",
       "version": "0.4.0",

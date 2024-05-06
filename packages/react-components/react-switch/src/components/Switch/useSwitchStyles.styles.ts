@@ -57,6 +57,13 @@ const useIndicatorBaseClassName = makeResetStyles({
     transitionDuration: '0.01ms',
   },
 
+  '@media (forced-colors: active)': {
+    color: 'CanvasText',
+    '> i': {
+      forcedColorAdjust: 'none',
+    },
+  },
+
   '> *': {
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
@@ -184,7 +191,9 @@ const useInputBaseClassName = makeResetStyles({
         color: 'GrayText',
       },
     },
-
+    ':hover': {
+      color: 'CanvasText',
+    },
     ':enabled:checked': {
       ':hover': {
         [`& ~ .${switchClassNames.indicator}`]: {

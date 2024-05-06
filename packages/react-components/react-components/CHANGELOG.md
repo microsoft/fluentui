@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 02 May 2024 11:36:28 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.49.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.49.2)
+
+Mon, 06 May 2024 12:55:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.49.1..@fluentui/react-components_v9.49.2)
+
+### Minor changes
+
+- `@fluentui/react-provider`
+  - feat: adds TagPicker to custom style hooks ([PR #31272](https://github.com/microsoft/fluentui/pull/31272) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - feat: adds TagPicker to custom style hooks ([PR #31272](https://github.com/microsoft/fluentui/pull/31272) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tag-picker-preview`
+  - chore: removes freeform prop ([PR #31273](https://github.com/microsoft/fluentui/pull/31273) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - feat: use ariaNotify in AriaLiveAnnouncer when available ([PR #31251](https://github.com/microsoft/fluentui/pull/31251) by sarah.higley@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: Add HC styling for Switch font icon ([PR #31241](https://github.com/microsoft/fluentui/pull/31241) by ololubek@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: bump keyborg to 2.6.0 nad tabster to 7.1.2 in order to fix iOS touch bug ([PR #31268](https://github.com/microsoft/fluentui/pull/31268) by marata@microsoft.com)
+- `@fluentui/react-tag-picker-preview`
+  - chore: ensure clicking on surface will toggle open state ([PR #31270](https://github.com/microsoft/fluentui/pull/31270) by bernardo.sunderhus@gmail.com)
+  - chore: bug bash follow up ([PR #31272](https://github.com/microsoft/fluentui/pull/31272) by bernardo.sunderhus@gmail.com)
 
 ## [9.49.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.49.1)
 

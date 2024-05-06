@@ -9,7 +9,6 @@ export interface TagPickerContextValue
     | 'open'
     | 'clearSelection'
     | 'getOptionById'
-    | 'open'
     | 'selectedOptions'
     | 'selectOption'
     | 'setHasFocus'
@@ -18,7 +17,6 @@ export interface TagPickerContextValue
     | 'value'
     | 'appearance'
     | 'disabled'
-    | 'freeform'
   > {
   triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement>;
   popoverRef: React.RefObject<HTMLDivElement>;
@@ -51,7 +49,6 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   size: 'medium',
   appearance: 'outline',
   disabled: false,
-  freeform: false,
 };
 
 const TagPickerContext = createContext<TagPickerContextValue | undefined>(undefined);

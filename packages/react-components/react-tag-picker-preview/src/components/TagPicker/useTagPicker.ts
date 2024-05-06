@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isHTMLElement, elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
@@ -9,7 +9,10 @@ import type {
 import { optionClassNames } from '@fluentui/react-combobox';
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
-import { useComboboxBaseState, ComboboxBaseState } from '@fluentui/react-combobox';
+import { useComboboxBaseState } from '@fluentui/react-combobox';
+
+// Set a default set of fallback positions to try if the dropdown does not fit on screen
+const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
 
 /**
  * Create the state required to render Picker.
@@ -25,9 +28,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
   const { positioning, size = 'medium', inline = false } = props;
-
-  // Set a default set of fallback positions to try if the dropdown does not fit on screen
-  const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
 
   const { targetRef, containerRef } = usePositioning({
     position: 'below' as const,
@@ -71,19 +71,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children);
 
-  const setOpen: ComboboxBaseState['setOpen'] = useEventCallback((event, newValue) => {
-    // if event comes from secondary action, ignore it
-    // if event comes from tags, ignore it
-    if (
-      isHTMLElement(event.target) &&
-      (elementContains(secondaryActionRef.current, event.target) ||
-        elementContains(tagPickerGroupRef.current, event.target))
-    ) {
-      return;
-    }
-    comboboxState.setOpen(event, newValue);
-  });
-
   return {
     activeDescendantController,
     components: {},
@@ -102,7 +89,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     mountNode: comboboxState.mountNode,
     onOptionClick: useEventCallback(event => {
       comboboxState.onOptionClick(event);
-      setOpen(event, false);
+      comboboxState.setOpen(event, false);
     }),
     appearance: comboboxState.appearance,
     clearSelection: comboboxState.clearSelection,
@@ -111,10 +98,9 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     selectedOptions: comboboxState.selectedOptions,
     selectOption: comboboxState.selectOption,
     setHasFocus: comboboxState.setHasFocus,
-    setOpen,
+    setOpen: comboboxState.setOpen,
     setValue: comboboxState.setValue,
     value: comboboxState.value,
-    freeform: comboboxState.freeform,
   };
 };
 

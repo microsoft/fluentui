@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 02 May 2024 07:27:45 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 07:25:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.5)
+
+Mon, 06 May 2024 07:25:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.4..@fluentui/react-charting_v5.21.5)
+
+### Patches
+
+- Enable focus on line points in vertical bar charts when the line legend is selected ([PR #31197](https://github.com/microsoft/fluentui/pull/31197) by kumarkshitij@microsoft.com)
+- Make blank cells in heatmap chart accessible ([PR #31225](https://github.com/microsoft/fluentui/pull/31225) by kumarkshitij@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.150 ([PR #31253](https://github.com/microsoft/fluentui/pull/31253) by beachball)
+- Bump @fluentui/react to v8.118.1 ([PR #31253](https://github.com/microsoft/fluentui/pull/31253) by beachball)
 
 ## [5.21.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.4)
 

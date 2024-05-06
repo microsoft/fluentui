@@ -31,22 +31,20 @@ export const useTagPickerInput_unstable = (
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
-  const freeform = useTagPickerContext_unstable(ctx => ctx.freeform);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
-  const {
-    triggerRef,
-    clearSelection,
-    getOptionById,
-    open,
-    selectOption,
-    selectedOptions,
-    setHasFocus,
-    setOpen,
-    setValue,
-    popoverId,
-    value: contextValue,
-  } = useTagPickerContexts();
+
+  const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef as React.RefObject<HTMLInputElement>);
+  const selectedOptions = useTagPickerContext_unstable(ctx => ctx.selectedOptions);
+  const setValue = useTagPickerContext_unstable(ctx => ctx.setValue);
+  const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
+  const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
+  const clearSelection = useTagPickerContext_unstable(ctx => ctx.clearSelection);
+  const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
+  const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
+  const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
+  const contextValue = useTagPickerContext_unstable(ctx => ctx.value);
 
   useIsomorphicLayoutEffect(() => {
     if (!triggerRef.current) {
@@ -113,7 +111,7 @@ export const useTagPickerInput_unstable = (
     useMergedRefs(triggerRef, ref),
     {
       activeDescendantController,
-      freeform,
+      freeform: false,
       state: {
         clearSelection,
         getOptionById,
@@ -140,22 +138,6 @@ export const useTagPickerInput_unstable = (
 
   return state;
 };
-
-function useTagPickerContexts() {
-  return {
-    triggerRef: useTagPickerContext_unstable(ctx => ctx.triggerRef) as React.RefObject<HTMLInputElement>,
-    clearSelection: useTagPickerContext_unstable(ctx => ctx.clearSelection),
-    getOptionById: useTagPickerContext_unstable(ctx => ctx.getOptionById),
-    open: useTagPickerContext_unstable(ctx => ctx.open),
-    selectOption: useTagPickerContext_unstable(ctx => ctx.selectOption),
-    selectedOptions: useTagPickerContext_unstable(ctx => ctx.selectedOptions),
-    setHasFocus: useTagPickerContext_unstable(ctx => ctx.setHasFocus),
-    setOpen: useTagPickerContext_unstable(ctx => ctx.setOpen),
-    setValue: useTagPickerContext_unstable(ctx => ctx.setValue),
-    value: useTagPickerContext_unstable(ctx => ctx.value),
-    popoverId: useTagPickerContext_unstable(ctx => ctx.popoverId),
-  };
-}
 
 /**
  * while typing the user might need a bit more of space to see the text,

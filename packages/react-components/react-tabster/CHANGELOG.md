@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 02 May 2024 11:36:39 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.21.1)
+
+Mon, 06 May 2024 12:55:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.21.0..@fluentui/react-tabster_v9.21.1)
+
+### Patches
+
+- fix: bump keyborg to 2.6.0 nad tabster to 7.1.2 in order to fix iOS touch bug ([PR #31268](https://github.com/microsoft/fluentui/pull/31268) by marata@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
 
 ## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.21.0)
 
