@@ -35,7 +35,7 @@
     "@fluentui/react-alert": "9.0.0-beta.119",
     "@fluentui/react-components": "^9.49.2",
     "@fluentui/react-context-selector": "^9.1.59",
-    "@fluentui/react-icons": "^2.0.237",
+    "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.8",

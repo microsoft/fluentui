@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "^9.0.37",
-    "@fluentui/react-icons": "^2.0.237",
+    "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-tabster": "^9.21.1",
     "@fluentui/react-utilities": "^9.18.8",
