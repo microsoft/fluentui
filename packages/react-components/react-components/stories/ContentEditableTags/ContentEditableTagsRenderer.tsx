@@ -73,9 +73,9 @@ export const ContentEditableTagsRenderer = () => {
   );
 
   const onInputKeyDown = React.useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement>) => {
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
       let preventDefault: boolean | undefined | void = false;
-      switch (e.key) {
+      switch (event.key) {
         case 'Enter':
           selectActive();
           setOpen(false);
@@ -104,11 +104,11 @@ export const ContentEditableTagsRenderer = () => {
           setOpen(false);
           break;
         default:
-          setOpen(true);
+        // setOpen(true);
       }
 
       if (preventDefault) {
-        e.preventDefault();
+        event.preventDefault();
       }
     },
     [selectActive, setOpen],
@@ -130,7 +130,7 @@ export const ContentEditableTagsRenderer = () => {
   return (
     <>
       <Contenteditable
-        innerRef={inputRef as React.Ref<HTMLDivElement>}
+        inputRef={inputRef as React.Ref<HTMLDivElement>}
         value={value}
         onContentChange={onInputChange}
         onKeyDown={onInputKeyDown}
@@ -152,12 +152,13 @@ export const ContentEditableTagsRenderer = () => {
 };
 
 interface ContenteditableProps extends React.HTMLAttributes<HTMLDivElement> {
-  innerRef: React.Ref<HTMLDivElement>;
+  inputRef: React.Ref<HTMLDivElement>;
   value: string | null;
   onContentChange: (newValue: string | null) => void;
 }
-const Contenteditable: React.FC<ContenteditableProps> = ({ value, onContentChange, ...props }) => {
+const Contenteditable: React.FC<ContenteditableProps> = ({ inputRef, value, onContentChange, ...props }) => {
   const contentEditableRef = React.useRef<HTMLDivElement>(null);
+  const ref = useMergedRefs(inputRef, contentEditableRef);
 
   React.useEffect(() => {
     if (contentEditableRef.current && contentEditableRef.current.textContent !== value) {
@@ -168,7 +169,7 @@ const Contenteditable: React.FC<ContenteditableProps> = ({ value, onContentChang
   return (
     <div
       contentEditable="true"
-      ref={contentEditableRef}
+      ref={ref}
       onInput={event => {
         const newValue = (event.target as HTMLDivElement).textContent;
         onContentChange(newValue);
