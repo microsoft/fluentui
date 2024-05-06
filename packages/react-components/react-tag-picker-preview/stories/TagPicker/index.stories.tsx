@@ -10,6 +10,7 @@ import {
 
 import descriptionMd from './TagPickerDescription.md';
 import bestPracticesMd from './TagPickerBestPractices.md';
+import a11yMd from './TagPickerA11y.md';
 
 export { Default } from './TagPickerDefault.stories';
 export { Button } from './TagPickerButton.stories';
@@ -30,7 +31,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, a11yMd].join('\n'),
       },
     },
   },
