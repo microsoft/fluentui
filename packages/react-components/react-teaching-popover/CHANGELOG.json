@@ -2,6 +2,114 @@
   "name": "@fluentui/react-teaching-popover",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-teaching-popover_v9.1.2",
+      "version": "9.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-popover to v9.9.7",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-button to v9.3.78",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-aria to v9.11.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.59",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:42 GMT",
+      "tag": "@fluentui/react-teaching-popover_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "edwardwang.94@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "c4d020d3dbc8cfaeb3261b41022c0fcbf543d5f1",
+            "comment": "fix: Arrow was 1px offset and incorrect box-sizing"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "e3fd256145e82ae84f02c90480e46b8bcafdf9d3",
+            "comment": "chore: fix TeachingPopover package name in LICENSE file and import path in bundle size"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-popover to v9.9.6",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-button to v9.3.77",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-aria to v9.11.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:46 GMT",
       "tag": "@fluentui/react-teaching-popover_v9.1.0",
       "version": "9.1.0",

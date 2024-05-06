@@ -1,9 +1,12 @@
 export { TagPicker, renderTagPicker_unstable, useTagPicker_unstable } from './TagPicker';
 export type {
-  TagPickerContextValues as PickerContextValues,
+  TagPickerContextValues,
   TagPickerProps,
   TagPickerSlots,
   TagPickerState,
+  TagPickerOnOpenChangeData,
+  TagPickerOnOptionSelectData,
+  TagPickerSize,
 } from './TagPicker';
 export {
   TagPickerInput,

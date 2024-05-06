@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 07:25:44 GMT",
+      "tag": "@fluentui/react_v8.118.1",
+      "version": "8.118.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22",
+            "comment": "fix: Fixing SplitButton styles in High Contrast Mode."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 07:27:45 GMT",
+      "tag": "@fluentui/react_v8.118.0",
+      "version": "8.118.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c03c973c7ae9ac2ce7314d6054e9a175bb0c0fd7",
+            "comment": "feat: Add caseSensitive prop to Combobox."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 May 2024 07:26:38 GMT",
       "tag": "@fluentui/react_v8.117.8",
       "version": "8.117.8",

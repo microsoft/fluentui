@@ -2,6 +2,48 @@
   "name": "@fluentui/react-motions-preview",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:35 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "0be8dea7d1e2aa07fd2f95942ffd7b4020053a6a",
+            "comment": "fix(PresenceGroup): cleanup children properly"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "8c5af01305951a27bc5f0b549b67592269ceeed0",
+            "comment": "chore: improve state handling in createPresenceComponent()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-motions-preview_v0.2.6",
       "version": "0.2.6",

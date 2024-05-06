@@ -74,7 +74,7 @@ const TagPickerControlled = ({ open, defaultOpen, defaultSelectedOptions = [] }:
             </Button>
           }
         >
-          <TagPickerGroup>
+          <TagPickerGroup data-testid="tag-picker-group">
             {selectedOptions.map(option => (
               <Tag
                 data-testid={`tag--${option}`}
@@ -139,6 +139,30 @@ describe('TagPicker', () => {
       cy.get('[data-testid="tag-picker-input"]').should('be.focused');
       cy.get('[data-testid="tag-picker-control__expandIcon"]').realClick();
       cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
+    });
+    it('should open/close a listbox once surface (control) is clicked', () => {
+      mount(<TagPickerControlled />);
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('[data-testid="tag-picker-control"]').realClick();
+      cy.get('[data-testid="tag-picker-list"]').should('be.visible');
+      cy.get('[data-testid="tag-picker-input"]').should('be.focused');
+      cy.get('[data-testid="tag-picker-control"]').realClick();
+      cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
+    });
+    it('should open/close a listbox once surface (tag group) is clicked', () => {
+      mount(<TagPickerControlled defaultSelectedOptions={options} />);
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('[data-testid="tag-picker-group"]').realClick();
+      cy.get('[data-testid="tag-picker-list"]').should('be.visible');
+      cy.get('[data-testid="tag-picker-input"]').should('be.focused');
+      cy.get('[data-testid="tag-picker-group"]').realClick();
+      cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
+    });
+    it('should not open/close a listbox once secondary action is clicked', () => {
+      mount(<TagPickerControlled />);
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('[data-testid="tag-picker-control__secondaryAction"]').realClick();
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
     });
     it('should select a tag on option click', () => {
       mount(<TagPickerControlled defaultOpen />);

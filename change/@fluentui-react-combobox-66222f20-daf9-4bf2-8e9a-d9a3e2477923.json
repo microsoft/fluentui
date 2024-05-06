@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing initial keyboard focus issues with unparented listbox",
-  "packageName": "@fluentui/react-combobox",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -3,5 +3,8 @@
 exports[`TagPicker renders a default state 1`] = `
 <div>
   Default Picker
+  <span
+    hidden=""
+  />
 </div>
 `;

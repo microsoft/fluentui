@@ -8,7 +8,7 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, makeStyles, mergeClasses } from '@fluentui/react-components';
+import { Tag, Avatar, makeStyles, mergeClasses, Field } from '@fluentui/react-components';
 
 type Option = { value: string; fixedWidth?: boolean };
 const options: Option[] = [
@@ -53,10 +53,11 @@ export const TruncatedText = () => {
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions.map(option => options.find(o => o.value === option)!));
   };
+  const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
   const styles = useStyles();
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions.map(option => option.value)}>
         <TagPickerControl>
           <TagPickerGroup>
@@ -70,7 +71,7 @@ export const TruncatedText = () => {
                 primaryText={{
                   className: mergeClasses(
                     styles.tagTruncatedPrimaryText,
-                    option.fixedWidth ? styles.tagPrimaryTextFixedWidth : undefined,
+                    option.fixedWidth && styles.tagPrimaryTextFixedWidth,
                   ),
                 }}
               >
@@ -81,22 +82,22 @@ export const TruncatedText = () => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {options
-            .filter(option => !selectedOptions.includes(option))
-            .map(option => (
-              <TagPickerOption
-                secondaryContent={{ children: 'Microsoft FTE', className: styles.optionSecondaryContent }}
-                media={<Avatar aria-hidden name={option.value} color="colorful" />}
-                value={option.value}
-                key={option.value}
-                title={option.value}
-              >
-                <div className={styles.optionContent}>{option.value}</div>
-              </TagPickerOption>
-            ))}
+          {tagPickerOptions.length > 0
+            ? tagPickerOptions.map(option => (
+                <TagPickerOption
+                  secondaryContent={{ children: 'Microsoft FTE', className: styles.optionSecondaryContent }}
+                  media={<Avatar shape="square" aria-hidden name={option.value} color="colorful" />}
+                  value={option.value}
+                  key={option.value}
+                  title={option.value}
+                >
+                  <div className={styles.optionContent}>{option.value}</div>
+                </TagPickerOption>
+              ))
+            : 'No options available'}
         </TagPickerList>
       </TagPicker>
-    </div>
+    </Field>
   );
 };
 
@@ -104,7 +105,7 @@ TruncatedText.parameters = {
   docs: {
     description: {
       story: `
-Text truncation is a common pattern used to handle long texts that doesn't fit within the available space. There are all sorts of ways to truncate text, in this example we're show casing two ways to truncate text:
+Text truncation is a common pattern used to handle long text that doesn't fit within the available space. There are all sorts of ways to truncate text, in this example we're show casing two ways to truncate text:
 - Using CSS to truncate text with ellipsis when the element reaches the end of its container.
 - Using fixed width to truncate text with ellipsis when the text is longer than a certain width (50px in this case).
 

@@ -2,6 +2,110 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-dialog_v9.10.3",
+      "version": "9.10.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.59",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-aria to v9.11.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.4.23",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:32 GMT",
+      "tag": "@fluentui/react-dialog_v9.10.2",
+      "version": "9.10.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bcd0e3e8bb056022e8bdf24e03cb339dc8f94bec",
+            "comment": "bugfix: ensures non-modal Dialog returns focus to trigger when closed"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "232aea0d6cccc853f424c91fdaa80ef4c50dc503",
+            "comment": "bugfix: open/close animation jumps when body is scrollable"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-aria to v9.11.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.4.22",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ff79ac88545c9cbc7966f75f61a9d506f3ebb963",
+            "comment": "fix: remove circular dependencies from cypress files"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-dialog_v9.10.1",
       "version": "9.10.1",

@@ -2,6 +2,470 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 12:55:00 GMT",
+      "tag": "@fluentui/react-components_v9.49.2",
+      "version": "9.49.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "6eff065e7c743c9e151ef4574dd05b6e75721749",
+            "comment": "feat: use ariaNotify in AriaLiveAnnouncer when available"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "e4a3ec9bff2c7a22f6c7659d133c46ae93043fc6",
+            "comment": "fix: Add HC styling for Switch font icon"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "de1ebdc8c44ac61696ace95998503817f9e4bfca",
+            "comment": "fix: bump keyborg to 2.6.0 nad tabster to 7.1.2 in order to fix iOS touch bug"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "64dc629dd0bcb44e559f120f76e93b182f43a5c7",
+            "comment": "chore: ensure clicking on surface will toggle open state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "0152e14e7e4bd7a2adc96057316a258acd3d0fe4",
+            "comment": "chore: bug bash follow up"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0152e14e7e4bd7a2adc96057316a258acd3d0fe4",
+            "comment": "feat: adds TagPicker to custom style hooks"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "0152e14e7e4bd7a2adc96057316a258acd3d0fe4",
+            "comment": "feat: adds TagPicker to custom style hooks"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "8a3a1b6457fc47809fc64c040bb6c79d81c6571e",
+            "comment": "chore: removes freeform prop"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:28 GMT",
+      "tag": "@fluentui/react-components_v9.49.1",
+      "version": "9.49.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": "chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "stevenco@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "84ccf12b6bbb147e40cdbca01bdf007ee59d2f25",
+            "comment": "Updating ActiveDescendent scrollIntoView logic to work with ancester scroll containers and scroll margin styles"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "stevenco@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f561ced7e85f67bd04ccaffec6a6903efe157057",
+            "comment": "Fixing initial keyboard focus issues with unparented listbox"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bcd0e3e8bb056022e8bdf24e03cb339dc8f94bec",
+            "comment": "bugfix: ensures non-modal Dialog returns focus to trigger when closed"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "232aea0d6cccc853f424c91fdaa80ef4c50dc503",
+            "comment": "bugfix: open/close animation jumps when body is scrollable"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "00222e4dabf648894e4e2cbd08ae6120add2ee29",
+            "comment": "daniharo:fix-menu-split"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7cb987f8709bdcebfa7618c1135bf0503ff43155",
+            "comment": "refactor: use timeout and animation frame utilities"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "0be8dea7d1e2aa07fd2f95942ffd7b4020053a6a",
+            "comment": "fix(PresenceGroup): cleanup children properly"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "8c5af01305951a27bc5f0b549b67592269ceeed0",
+            "comment": "chore: improve state handling in createPresenceComponent()"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "7cb987f8709bdcebfa7618c1135bf0503ff43155",
+            "comment": "refactor: use timeout and animation frame utilities"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "2adedc56b1e4de9443285164c462df2ab896b3bb",
+            "comment": "Fix spinner embedded in button animation"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "7cb987f8709bdcebfa7618c1135bf0503ff43155",
+            "comment": "refactor: use timeout and animation frame utilities"
+          },
+          {
+            "author": "stevenco@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f561ced7e85f67bd04ccaffec6a6903efe157057",
+            "comment": "Fixing issues where current keyborg status is not known to late subscribers"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041",
+            "comment": "Pulling Tabster 7.1.1 that supports more granular configuration of the aria-hidden handling for modal dialogs."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "2bc6871ce391fc7c4dd4d735a644b723a0456569",
+            "comment": "chore: removes aria-checked from TagPickerOption"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "6eca2852f9ecc7fc5cad78020fa257e39b77a980",
+            "comment": "chore: removes multiselect from TagPicker signatures"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "bd1d6c0846502f416648776ad973dc5e9f28c318",
+            "comment": "chore: make expandIcon aria-hidden by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "258e98dc84d9f7fc581edf07df7aba7320f163d7",
+            "comment": "chore: ensures cursor looks like a text on whole control"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "edwardwang.94@gmail.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "c4d020d3dbc8cfaeb3261b41022c0fcbf543d5f1",
+            "comment": "fix: Arrow was 1px offset and incorrect box-sizing"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "e3fd256145e82ae84f02c90480e46b8bcafdf9d3",
+            "comment": "chore: fix TeachingPopover package name in LICENSE file and import path in bundle size"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "7cb987f8709bdcebfa7618c1135bf0503ff43155",
+            "comment": "refactor: use timeout and animation frame utilities"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "953cbc843d71242201a0561119203a590dbc606e",
+            "comment": "fix: use \"key\" properly in ToastContainer"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92",
+            "comment": "chore: updates roving tab indexes to ensure Tree is focusable"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4a61c3a4d5639a6e7a5e9fe3319d1ac9c0b26053",
+            "comment": "fix: Apply aria-selected prop to aria-selected instead of aria-expanded."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2939b63a57f70c5b3c77a4a9e9200bf0e8777596",
+            "comment": "Fix: Use Fluent hooks for IO and timeout functionality"
+          }
+        ],
+        "minor": [
+          {
+            "author": "stevenco@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f561ced7e85f67bd04ccaffec6a6903efe157057",
+            "comment": "Adding function to focus last active descendant if it exists"
+          },
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "84b899c818b77c889b514460c92c32bc9f20385d",
+            "comment": "ActiveDescendantChangeEvent for tracking active item"
+          },
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "84b899c818b77c889b514460c92c32bc9f20385d",
+            "comment": "Add onActiveOptionChange to Dropdown and Combobox"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "59b7a1f12ce09eb69e5888f74f2d88ef522f6f3b",
+            "comment": "feat: move scroll detector to a dedicated react context"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "07fd25b36efb62a2c277f3e7edcc48705345bc20",
+            "comment": "Exposing MoverMemorizedElementEvent for the applications to be able to force forget or alter memorized elements."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92",
+            "comment": "feat: useListenFocusedElement hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "ae98a64425b63dd8591952d990209367c447be11",
+            "comment": "feat: adds useTagPickerFilter hook (similar to useComboboxFilter, but with proper TagPicker related components)"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker-preview",
+            "commit": "119baa34c2f8d77cf013fb4eb0dbe59d82bfb16a",
+            "comment": "feature: exports TagPicker event handlers types"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "ff79ac88545c9cbc7966f75f61a9d506f3ebb963",
+            "comment": "fix: remove circular dependencies from cypress files"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ff79ac88545c9cbc7966f75f61a9d506f3ebb963",
+            "comment": "fix: remove circular dependencies from cypress files"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:46 GMT",
       "tag": "@fluentui/react-components_v9.49.0",
       "version": "9.49.0",

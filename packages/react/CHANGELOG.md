@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 01 May 2024 07:26:38 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 07:25:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.118.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.118.1)
+
+Mon, 06 May 2024 07:25:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.118.0..@fluentui/react_v8.118.1)
+
+### Patches
+
+- fix: Fixing SplitButton styles in High Contrast Mode. ([PR #31253](https://github.com/microsoft/fluentui/pull/31253) by Humberto.Morimoto@microsoft.com)
+
+## [8.118.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.118.0)
+
+Thu, 02 May 2024 07:27:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.8..@fluentui/react_v8.118.0)
+
+### Minor changes
+
+- feat: Add caseSensitive prop to Combobox. ([PR #31247](https://github.com/microsoft/fluentui/pull/31247) by humbertomakotomorimoto@gmail.com)
 
 ## [8.117.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.8)
 

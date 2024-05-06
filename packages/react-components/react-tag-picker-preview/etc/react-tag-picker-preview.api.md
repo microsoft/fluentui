@@ -32,15 +32,8 @@ import { TagGroupContextValues } from '@fluentui/react-tags';
 import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
 
-// @public (undocumented)
-export type PickerContextValues = {
-    picker: TagPickerContextValue;
-    activeDescendant: ActiveDescendantContextValue;
-    listbox: ListboxContextValue;
-};
-
 // @public
-export const renderTagPicker_unstable: (state: TagPickerState, contexts: PickerContextValues) => JSX.Element;
+export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSX.Element;
 
 // @public
 export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSX.Element;
@@ -85,6 +78,13 @@ export type TagPickerButtonSlots = {
 // @public
 export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> & Pick<TagPickerContextValue, 'size'> & {
     hasSelectedOption: boolean;
+};
+
+// @public (undocumented)
+export type TagPickerContextValues = {
+    picker: TagPickerContextValue;
+    activeDescendant: ActiveDescendantContextValue;
+    listbox: ListboxContextValue;
 };
 
 // @public
@@ -163,6 +163,17 @@ export type TagPickerListSlots = {
 // @public
 export type TagPickerListState = ComponentState<TagPickerListSlots> & Pick<TagPickerContextValue, 'open'>;
 
+// @public (undocumented)
+export type TagPickerOnOpenChangeData = {
+    open: boolean;
+} & (EventData<'click', React_2.MouseEvent<HTMLDivElement>> | EventData<'keydown', React_2.KeyboardEvent<HTMLDivElement>>);
+
+// @public
+export type TagPickerOnOptionSelectData = {
+    value: string;
+    selectedOptions: string[];
+} & (EventData<'click', React_2.MouseEvent<HTMLDivElement>> | EventData<'keydown', React_2.KeyboardEvent<HTMLDivElement>>);
+
 // @public
 export const TagPickerOption: ForwardRefComponent<TagPickerOptionProps>;
 
@@ -200,7 +211,7 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'root'>;
 
 // @public
-export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'freeform'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     children: [JSX.Element, JSX.Element] | JSX.Element;
@@ -208,10 +219,13 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps
 };
 
 // @public (undocumented)
+export type TagPickerSize = 'medium' | 'large' | 'extra-large';
+
+// @public (undocumented)
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'freeform' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
     inline: boolean;
