@@ -59,7 +59,6 @@ const useStyles = makeStyles({
     ...shorthands.border('2px', 'solid', '#ccc'),
     ...shorthands.overflow('hidden'),
     display: 'flex',
-    //height: '500px',
     backgroundColor: '#fff',
   },
   content: {
