@@ -16,8 +16,6 @@ The Fluent WC3 MessageBar extends `FASTElement`
 
 ```html
 <template
-  class="dialog"
-  part="dialog"
   role="status"
   layout="${x => x.layout}"
   shape="${x => x.shape}"
