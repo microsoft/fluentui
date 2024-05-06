@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 06 May 2024 07:25:44 GMT",
+      "tag": "@fluentui/react_v8.118.1",
+      "version": "8.118.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22",
+            "comment": "fix: Fixing SplitButton styles in High Contrast Mode."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 May 2024 07:27:45 GMT",
       "tag": "@fluentui/react_v8.118.0",
       "version": "8.118.0",
