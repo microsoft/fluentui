@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import {
+  makeStyles,
+  shorthands,
+  Button,
+  Popover,
+  PopoverSurface,
+  useRestoreFocusTarget,
+  useId,
+} from '@fluentui/react-components';
 import { SwatchPicker, SwatchPickerOnSelectEventHandler, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import type { PositioningImperativeRef } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
@@ -11,6 +20,9 @@ const useStyles = makeStyles({
     '@media (forced-colors: active)': {
       forcedColorAdjust: 'none',
     },
+  },
+  contentHeader: {
+    marginTop: '0',
   },
 });
 
@@ -48,29 +60,43 @@ const gradientColors = [
 export const SwatchPickerPopup = () => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
+  const [open, setOpen] = React.useState(false);
 
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedSwatch);
+    setOpen(!open);
   };
 
+  const headerId = useId();
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const styles = useStyles();
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
+  React.useEffect(() => {
+    if (buttonRef.current) {
+      positioningRef.current?.setTarget(buttonRef.current);
+    }
+  }, [buttonRef, positioningRef]);
 
   return (
     <>
-      <Popover trapFocus>
-        <PopoverTrigger disableButtonEnhancement>
-          <Button>Choose color</Button>
-        </PopoverTrigger>
-
-        <PopoverSurface>
-          <h3>Color set 1</h3>
+      <Button {...restoreFocusTargetAttribute} ref={buttonRef} onClick={() => setOpen(_open => !_open)}>
+        Choose color
+      </Button>
+      <Popover onOpenChange={(_, data) => setOpen(data.open)} trapFocus open={open} positioning={{ positioningRef }}>
+        <PopoverSurface aria-labelledby={headerId}>
+          <h3 id={headerId} className={styles.contentHeader}>
+            Color sets
+          </h3>
+          <h4>Color set 1</h4>
           <SwatchPicker aria-label="SwatchPicker set 1" selectedValue={selectedValue} onSelectionChange={handleSelect}>
             {colors.map((color, index) => {
               return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
             })}
           </SwatchPicker>
-          <h3>Color set 2</h3>
+          <h4>Color set 2</h4>
           <SwatchPicker aria-label="SwatchPicker set 2" selectedValue={selectedValue} onSelectionChange={handleSelect}>
             {gradientColors.map((color, index) => {
               return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
