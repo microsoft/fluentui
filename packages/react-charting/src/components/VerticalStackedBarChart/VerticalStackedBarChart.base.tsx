@@ -1048,16 +1048,16 @@ export class VerticalStackedBarChartBase extends React.Component<
           return `${legend}, ${yValue}.`;
         })
         .join(' ');
-
-      const ariaLabel = singleChartData.stackCallOutAccessibilityData?.ariaLabel;
-      return (ariaLabel ? `${ariaLabel}. ` : '') + `${xValue}. ${pointValues}` + (lineValues ? ` ${lineValues}` : '');
+      return (
+        singleChartData.stackCallOutAccessibilityData?.ariaLabel ||
+        `${xValue}. ${pointValues}` + (lineValues ? ` ${lineValues}` : '')
+      );
     }
     /** if shouldFocusWholeStack is false */
     const xValue = singleChartData.xAxisCalloutData || point.xAxisCalloutData || singleChartData.xAxisPoint;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.data;
-    const ariaLabel = point.callOutAccessibilityData?.ariaLabel;
-    return (ariaLabel ? `${ariaLabel}. ` : '') + `${xValue}. ${legend}, ${yValue}.`;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
