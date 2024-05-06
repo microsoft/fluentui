@@ -21,6 +21,7 @@ The Fluent WC3 MessageBar extends `FASTElement`
   shape="${x => x.shape}"
   politeness="${x => x.politeness}"
   intent="${x => x.intent}"
+  aria-live="${x => x.politeness}"
   aria-labelledby="${x => x.ariaLabelledby}"
 >
   <slot></slot>
@@ -57,7 +58,6 @@ The Fluent WC3 MessageBar extends `FASTElement`
 
 | Name      | Privacy | Description           |
 | --------- | ------- | --------------------- |
-| `show`    | public  | Shows the MessageBar. |
 | `dismiss` | public  | Hides the MessageBar. |
 
 ### **Slots**
@@ -78,11 +78,11 @@ The Fluent WC3 MessageBar extends `FASTElement`
 
 - `aria-live`
 
-  - The `aria-live` attribute should be used to associate the MessageBar with the appropriate `aria-live` value to announce content changes to assistive technology devices.
+  - The `aria-live` attribute should be used to associate the MessageBar with the appropriate `aria-live` value to announce content changes to assistive technology devices. Corresponds to politeness attribute.
 
 - `aria-labelledby`
 
-  - The `aria-labelledby` attribute should be used to associate the MessageBar with an element that serves as its accessible label or title, often the title of the content passed to the default slot
+  - The `aria-labelledby` attribute should be used to associate the MessageBar with an element that serves as its accessible label or title, often the title is within the content passed to the default slot.
 
 ### **Fluent Web Component v3 v.s Fluent React 9**
 
