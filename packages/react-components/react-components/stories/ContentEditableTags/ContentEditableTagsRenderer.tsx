@@ -3,6 +3,7 @@ import { useFluent } from '@fluentui/react-components';
 import { usePositioning } from '@fluentui/react-positioning';
 import { useId, useMergedRefs, useOnClickOutside } from '@fluentui/react-utilities';
 
+import { useCaretPosition } from './utils/selection';
 import { ActiveDescendantImperativeRef } from './utils/types';
 import { useActiveDescendant } from './utils/useActiveDescendant';
 
@@ -15,6 +16,7 @@ const options = people.map(person => ({
 
 export const ContentEditableTagsRenderer = () => {
   const { targetDocument } = useFluent();
+  const { getCaretPosition } = useCaretPosition();
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string | null>('');
@@ -56,14 +58,16 @@ export const ContentEditableTagsRenderer = () => {
     if (activeId) {
       const next = options.find(x => x.id === activeId);
       if (next) {
-        setValue(next.text);
+        const position = inputRef.current ? getCaretPosition(inputRef.current) : 0;
+        const newValue = value ? [value.slice(0, position), next.text, value.slice(position)].join('') : next.text;
+        setValue(newValue);
         setSelected(next.id);
       } else {
-        const selectedText = options.find(x => x.id === selected)?.text;
-        setValue(selectedText ?? '');
+        // const selectedText = options.find(x => x.id === selected)?.text;
+        // setValue(selectedText ?? '');
       }
     }
-  }, [selected]);
+  }, [selected, getCaretPosition, inputRef, value]);
 
   const onInputChange = React.useCallback(
     (newValue: string | null) => {
