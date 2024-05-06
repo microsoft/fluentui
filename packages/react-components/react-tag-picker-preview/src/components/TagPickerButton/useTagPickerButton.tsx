@@ -18,8 +18,16 @@ export const useTagPickerButton_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): TagPickerButtonState => {
   const { controller: activeDescendantController } = useActiveDescendantContext();
-  const { triggerRef, getOptionById, open, selectOption, setHasFocus, setOpen, value, popoverId, hasSelectedOption } =
-    usePickerContext();
+  const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
+  const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const value = useTagPickerContext_unstable(ctx => ctx.value);
+  const hasSelectedOption = useTagPickerContext_unstable(ctx => ctx.selectedOptions.length > 0);
+  const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
+  const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
+  const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
+  const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
+  const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
+
   // casting is required here as triggerRef can either be button or input,
   // but in this case we can assure it's a button
   const root = useButtonTriggerSlot(props, triggerRef as React.RefObject<HTMLButtonElement>, {
@@ -54,20 +62,3 @@ export const useTagPickerButton_unstable = (
 
   return state;
 };
-
-function usePickerContext() {
-  return {
-    triggerRef: useTagPickerContext_unstable(ctx => ctx.triggerRef),
-    clearSelection: useTagPickerContext_unstable(ctx => ctx.clearSelection),
-    getOptionById: useTagPickerContext_unstable(ctx => ctx.getOptionById),
-    open: useTagPickerContext_unstable(ctx => ctx.open),
-    selectOption: useTagPickerContext_unstable(ctx => ctx.selectOption),
-    selectedOptions: useTagPickerContext_unstable(ctx => ctx.selectedOptions),
-    setHasFocus: useTagPickerContext_unstable(ctx => ctx.setHasFocus),
-    setOpen: useTagPickerContext_unstable(ctx => ctx.setOpen),
-    setValue: useTagPickerContext_unstable(ctx => ctx.setValue),
-    value: useTagPickerContext_unstable(ctx => ctx.value),
-    popoverId: useTagPickerContext_unstable(ctx => ctx.popoverId),
-    hasSelectedOption: useTagPickerContext_unstable(ctx => ctx.selectedOptions.length > 0),
-  };
-}

@@ -5,7 +5,8 @@ import type { TagPickerProps } from './TagPicker.types';
 import { useTagPickerContextValues } from './useTagPickerContextValues';
 
 /**
- * TagPicker component - TODO: add more docs
+ * TagPicker component -
+ * A TagPicker is a composite component that allows users to pick tags from a list of options.
  */
 export const TagPicker: React.FC<TagPickerProps> = React.memo(props => {
   const state = useTagPicker_unstable(props);
