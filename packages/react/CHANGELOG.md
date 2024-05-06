@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2024 07:27:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.118.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.118.0)
+
+Thu, 02 May 2024 07:27:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.8..@fluentui/react_v8.118.0)
+
+### Minor changes
+
+- feat: Add caseSensitive prop to Combobox. ([PR #31247](https://github.com/microsoft/fluentui/pull/31247) by humbertomakotomorimoto@gmail.com)
+
+## [8.117.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.8)
+
+Wed, 01 May 2024 07:26:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.117.7..@fluentui/react_v8.117.8)
+
+### Patches
+
+- fix: update List to render after scrolling finishes. ([PR #29748](https://github.com/microsoft/fluentui/pull/29748) by seanmonahan@microsoft.com)
+- Making sure V9 dialog doesn't set aria-hidden on a host element that is used as a container for V8 popups, dropdowns and menus. ([PR #31181](https://github.com/microsoft/fluentui/pull/31181) by marata@microsoft.com)
 
 ## [8.117.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.117.7)
 

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2024 11:36:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.11.0)
+
+Thu, 02 May 2024 11:36:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.10.1..@fluentui/react-combobox_v9.11.0)
+
+### Minor changes
+
+- Add onActiveOptionChange to Dropdown and Combobox ([PR #31149](https://github.com/microsoft/fluentui/pull/31149) by jurokapsiar@gmail.com)
+- Bump @fluentui/react-aria to v9.11.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-field to v9.1.63 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-portal to v9.4.22 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+
+### Patches
+
+-  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- Fixing initial keyboard focus issues with unparented listbox ([PR #31140](https://github.com/microsoft/fluentui/pull/31140) by stevenco@microsoft.com)
 
 ## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.10.1)
 

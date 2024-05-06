@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Enable focus on line points in vertical bar charts when the line legend is selected",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

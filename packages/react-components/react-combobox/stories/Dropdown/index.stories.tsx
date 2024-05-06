@@ -16,6 +16,7 @@ export { Multiselect } from './DropdownMultiselect.stories';
 export { Size } from './DropdownSize.stories';
 export { Disabled } from './DropdownDisabled.stories';
 export { TruncatedValue } from './DropdownTruncation.stories';
+export { ActiveOptionChange } from './DropdownActiveOptionChange.stories';
 
 export default {
   title: 'Components/Dropdown',
