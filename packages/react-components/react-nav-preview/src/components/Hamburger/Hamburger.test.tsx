@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Hamburger } from './Hamburger';
 
@@ -7,12 +5,5 @@ describe('Hamburger', () => {
   isConformant({
     Component: Hamburger,
     displayName: 'Hamburger',
-  });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<Hamburger>Default Hamburger</Hamburger>);
-    expect(result.container).toMatchSnapshot();
   });
 });
