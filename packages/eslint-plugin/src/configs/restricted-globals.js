@@ -20,8 +20,9 @@ const restrictedGlobals = [
   'setInterval',
   'setTimeout',
 
-  'ResizeObserver',
   'IntersectionObserver',
+  'MutationObserver',
+  'ResizeObserver',
 ];
 
 const reactLegacy = [
