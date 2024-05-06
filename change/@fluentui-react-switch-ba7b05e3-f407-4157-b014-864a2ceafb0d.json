@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add HC styling for Switch font icon",
-  "packageName": "@fluentui/react-switch",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
