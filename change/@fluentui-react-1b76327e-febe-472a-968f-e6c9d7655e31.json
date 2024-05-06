@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix aria role for draggable columns in DetailsList DetailsHeader",
+  "packageName": "@fluentui/react",
+  "email": "ilmat@microsoft.com",
+  "dependentChangeType": "patch"
+}
