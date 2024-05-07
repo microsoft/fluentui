@@ -136,7 +136,8 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         }),
         stackCallOutAccessibilityData: {
           ariaLabel:
-            'Bar stack series 1 of 6, 0 MetaDate1 61% MetaData2 8% MetaDate3 31% Recommended Builds 10 Supported Builds 42',
+            'Bar stack series 1 of 6, 0 MetaDate1 61% MetaData2 8% MetaDate3 31% ' +
+            'Recommended Builds 10 Supported Builds 42',
         },
       },
       {
@@ -147,7 +148,8 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         }),
         stackCallOutAccessibilityData: {
           ariaLabel:
-            'Bar stack series 2 of 6, 0 MetaDate1 61% MetaData2 8% MetaDate3 31% Recommended Builds 10 Supported Builds 42',
+            'Bar stack series 2 of 6, 0 MetaDate1 61% MetaData2 8% MetaDate3 31% ' +
+            'Recommended Builds 10 Supported Builds 42',
         },
       },
       {
@@ -161,7 +163,8 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         }),
         stackCallOutAccessibilityData: {
           ariaLabel:
-            'Bar stack series 3 of 6, 40 MetaDate1 43% MetaData 27% MetaDate3 30% Recommended Builds 20 Supported Builds 60',
+            'Bar stack series 3 of 6, 40 MetaDate1 43% MetaData 27% MetaDate3 30% ' +
+            'Recommended Builds 20 Supported Builds 60',
         },
       },
     ];
