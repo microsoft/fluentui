@@ -442,57 +442,14 @@ const Arrow: React.FC = () => {
   );
 };
 
-const AutoSize = () => {
+const AutoSize = (extraProps: Partial<PositioningProps>) => {
   const styles = useStyles();
   const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
   const { containerRef, targetRef } = usePositioning({
     position: 'below',
     autoSize: true,
     overflowBoundary,
-  });
-
-  return (
-    <div
-      ref={setOverflowBoundary}
-      className={styles.boundary}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: 200,
-        padding: '10px 50px',
-        position: 'relative',
-      }}
-    >
-      <button ref={targetRef}>Target</button>
-      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
-        pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
-        nibh venenatis cras sed felis eget. Enim sed faucibus turpis in. Non blandit massa enim nec dui nunc mattis. Ut
-        eu sem integer vitae justo. Lacus vestibulum sed arcu non. Vivamus arcu felis bibendum ut. Sagittis vitae et leo
-        duis ut diam quam nulla porttitor. Amet est placerat in egestas erat imperdiet. Dapibus ultrices in iaculis nunc
-        sed augue. Risus sed vulputate odio ut enim blandit volutpat maecenas. Orci dapibus ultrices in iaculis nunc sed
-        augue lacus. Quam elementum pulvinar etiam non quam. Tempor commodo ullamcorper a lacus vestibulum sed arcu.
-        Nunc non blandit massa enim nec. Venenatis a condimentum vitae sapien. Sodales ut eu sem integer vitae justo
-        eget magna. In aliquam sem fringilla ut morbi tincidunt augue. Diam volutpat commodo sed egestas egestas
-        fringilla phasellus faucibus scelerisque. Semper eget duis at tellus. Diam donec adipiscing tristique risus nec
-        feugiat in fermentum posuere. Amet volutpat consequat mauris nunc congue nisi vitae. Hendrerit gravida rutrum
-        quisque non tellus. Aliquet eget sit amet tellus. Libero id faucibus nisl tincidunt. Amet nulla facilisi morbi
-        tempus iaculis urna id.
-      </Box>
-    </div>
-  );
-};
-
-const AutoSizeOverflowPadding = ({ shorthand = false }) => {
-  const styles = useStyles();
-  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
-  const overflowBoundaryPadding = shorthand ? 10 : { start: 10, end: 5 };
-  const { containerRef, targetRef } = usePositioning({
-    position: 'below',
-    autoSize: true,
-    overflowBoundary,
-    overflowBoundaryPadding,
+    ...extraProps,
   });
 
   return (
@@ -1291,8 +1248,10 @@ storiesOf('Positioning', module)
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
-  .addStory('auto size overflow padding', () => <AutoSizeOverflowPadding />, { includeRtl: true })
-  .addStory('auto size overflow padding shorthand', () => <AutoSizeOverflowPadding shorthand />)
+  .addStory('auto size overflow padding', () => <AutoSize overflowBoundaryPadding={{ start: 10, end: 5 }} />, {
+    includeRtl: true,
+  })
+  .addStory('auto size overflow padding shorthand', () => <AutoSize overflowBoundaryPadding={10} />)
   .addStory('auto size with async content', () => (
     <StoryWright
       steps={new Steps()
