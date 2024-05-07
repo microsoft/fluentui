@@ -1,7 +1,11 @@
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type CarouselNavButtonSlots = {
-  root: Slot<'div'>;
+  /**
+   * ARIA compliant nav buttons used to jump to pages
+   */
+  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 };
 
 /**
@@ -12,6 +16,9 @@ export type CarouselNavButtonProps = ComponentProps<CarouselNavButtonSlots> & {}
 /**
  * State used in rendering CarouselNavButton
  */
-export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from CarouselNavButtonProps.
-// & Required<Pick<CarouselNavButtonProps, 'propName'>>
+export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
+  /**
+   * Enables selection state control
+   */
+  isSelected?: boolean;
+};
