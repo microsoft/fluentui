@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "'feat:Launching Nav to preview",
-  "packageName": "@fluentui/react-nav-preview",
-  "email": "17346018+mltejera@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
