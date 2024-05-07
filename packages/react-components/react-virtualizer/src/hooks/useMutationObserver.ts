@@ -14,10 +14,12 @@ export const useMutationObserver = (
   // eslint-disable-next-line no-restricted-globals
   const observer = useRef<MutationObserver>();
   const { targetDocument } = useFluent();
-  // eslint-disable-next-line no-restricted-globals
-  const win = targetDocument?.defaultView ?? window;
+  const win = targetDocument?.defaultView;
 
   useEffect(() => {
+    if (!win) {
+      return;
+    }
     // Create an observer instance linked to the callback function
     observer.current = new win.MutationObserver(callback);
   }, [callback, win]);
