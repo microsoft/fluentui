@@ -198,11 +198,9 @@
   },
   "devDependencies": {
     "@types/web": "^0.0.142",
-    "@microsoft/api-extractor": "7.31.2",
     "@storybook/html": "6.5.15",
     "@tensile-perf/web-components": "~0.1.13",
-    "rimraf": "^3.0.2",
-    "typescript": "4.7.4"
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "@microsoft/fast-element": "2.0.0-beta.26",

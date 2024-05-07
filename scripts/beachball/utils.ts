@@ -20,13 +20,6 @@ export function getConfig({ version }: { version: 'vNext' }): {
 export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' }) {
   const vNextPackagePaths = getVNextPackagePaths();
 
-  if (version === 'web-components') {
-    const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
-    return {
-      scope: ['packages/web-components', '!apps/*', ...ignoreVNextScope],
-    };
-  }
-
   if (version === 'vNext') {
     return {
       scope: [...vNextPackagePaths],
@@ -38,9 +31,15 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-componen
     };
   }
 
-  if (version === 'v8') {
-    const ignoreVNextScope = vNextPackagePaths.map(pkgPath => `!${pkgPath}`);
+  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
 
+  if (version === 'web-components') {
+    return {
+      scope: ['packages/web-components', '!apps/*', ...ignoreVNextScope],
+    };
+  }
+
+  if (version === 'v8') {
     return { scope: [...ignoreVNextScope] };
   }
 

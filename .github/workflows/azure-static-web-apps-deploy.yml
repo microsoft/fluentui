@@ -3,7 +3,7 @@ name: Azure Static Web Apps web components
 on:
   push:
     branches:
-      - web-components-v3
+      - master
     paths:
       - packages/web-components/**
   workflow_dispatch:

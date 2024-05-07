@@ -1,10 +1,8 @@
 pr:
   - master
-  - web-components-v3 # Remove before merging to master
 
 trigger:
   - master
-  - web-components-v3 # Remove before merging to master
 
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
