@@ -1964,15 +1964,7 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-icons@^2.0.237":
-  version "2.0.237"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.237.tgz#0053f1dccfe50e94692f6508ce5b0c4e1d1867f4"
-  integrity sha512-J+6XDB/Y3G3nfNWvKKI6xhUXDN6/xvhksnV+zfXiGb6tqtK7QiihAzvRRgPnKuS3BH/H1TM7k3KC19V0AJrTDg==
-  dependencies:
-    "@griffel/react" "^1.0.0"
-    tslib "^2.1.0"
-
-"@fluentui/react-icons@^2.0.239":
+"@fluentui/react-icons@^2.0.237", "@fluentui/react-icons@^2.0.239":
   version "2.0.239"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.239.tgz#5d4298c20ea9913915a9dd6826a4d541e3d2fc45"
   integrity sha512-F2itXSvcJuHcacPGpp0M4wpH1/hldg3eVv4t4L3aOcKIjp7nECSWHwxgsy2HShB7kVV8LwwqiJAChiogMbnlLg==
