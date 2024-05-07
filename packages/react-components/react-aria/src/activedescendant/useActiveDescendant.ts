@@ -34,6 +34,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const attributeVisibilityRef = React.useRef(true);
   const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
 
   const removeAttribute = React.useCallback(() => {
     activeParentRef.current?.removeAttribute('aria-activedescendant');
@@ -89,7 +90,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
       const previousActiveId = blurActiveDescendant();
 
-      scrollIntoView(nextActive, targetDocument?.defaultView);
+      scrollIntoView(nextActive, win);
       setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
@@ -100,7 +101,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       const event = createActiveDescendantChangeEvent({ id: nextActive.id, previousId: previousActiveId });
       nextActive.dispatchEvent(event);
     },
-    [blurActiveDescendant, setAttribute],
+    [blurActiveDescendant, setAttribute, win],
   );
 
   const controller: ActiveDescendantImperativeRef = React.useMemo(
