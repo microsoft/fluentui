@@ -12,8 +12,6 @@ import { ILegend, Legends } from '../Legends/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartTypes,
-  IAxisData,
-  IYAxisParams,
   createYAxisForOtherCharts,
   getAccessibleDataObject,
   XAxisTypes,
@@ -198,7 +196,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         xAxisType={XAxisTypes.StringAxis}
         yAxisType={YAxisType.StringAxis}
         calloutProps={calloutProps}
-        createYAxis={this._createYAxis}
+        createYAxis={createYAxisForOtherCharts}
         chartHoverProps={chartHoverProps}
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
@@ -257,16 +255,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
     }
     return domainNRangeValue;
-  };
-
-  private _createYAxis = (
-    yAxisParams: IYAxisParams,
-    isRtl: boolean,
-    axisData: IAxisData,
-    isIntegralDataset: boolean = false,
-    useSecondaryYScale: boolean = true,
-  ) => {
-    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {

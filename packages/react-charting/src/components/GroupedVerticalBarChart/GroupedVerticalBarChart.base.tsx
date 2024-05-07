@@ -19,7 +19,6 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
-  IYAxisParams,
   createYAxisForOtherCharts,
   IDomainNRange,
   domainRangeOfXStringAxis,
@@ -179,7 +178,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         calloutProps={calloutProps}
         legendBars={legends}
         xAxisType={this._xAxisType}
-        createYAxis={this._createYAxis}
+        createYAxis={createYAxisForOtherCharts}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         getDomainNRangeValues={this._getDomainNRangeValues}
@@ -241,16 +240,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
     }
     return domainNRangeValue;
-  };
-
-  private _createYAxis = (
-    yAxisParams: IYAxisParams,
-    isRtl: boolean,
-    axisData: IAxisData,
-    isIntegralDataset: boolean = false,
-    useSecondaryYScale: boolean = true,
-  ) => {
-    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _getGraphData = (

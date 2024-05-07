@@ -217,12 +217,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -232,13 +232,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -250,13 +250,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               13k
             </text>
@@ -268,13 +268,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               25k
             </text>
@@ -286,13 +286,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               38k
             </text>
@@ -304,13 +304,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               50k
             </text>
@@ -1002,12 +1002,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -1017,13 +1017,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -1035,13 +1035,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               13k
             </text>
@@ -1053,13 +1053,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               25k
             </text>
@@ -1071,13 +1071,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               38k
             </text>
@@ -1089,13 +1089,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               50k
             </text>
@@ -1800,12 +1800,12 @@ exports[`Theme Change Should reflect theme change 1`] = `
             font-family="sans-serif"
             font-size="10"
             id="yAxisGElementchart_6"
-            text-anchor="start"
+            text-anchor="end"
             transform="translate(40, 0)"
           >
             <path
               class="domain"
-              d="M6,257.5H0.5V20.5H6"
+              d="M-6,257.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
@@ -1815,13 +1815,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 0
               </text>
@@ -1833,13 +1833,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 13k
               </text>
@@ -1851,13 +1851,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 25k
               </text>
@@ -1869,13 +1869,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 38k
               </text>
@@ -1887,13 +1887,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 50k
               </text>
@@ -2543,12 +2543,12 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -2558,13 +2558,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -2576,13 +2576,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               13k
             </text>
@@ -2594,13 +2594,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               25k
             </text>
@@ -2612,13 +2612,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               38k
             </text>
@@ -2630,13 +2630,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               50k
             </text>
@@ -11626,12 +11626,12 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -11641,13 +11641,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -11659,13 +11659,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               13k
             </text>
@@ -11677,13 +11677,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               25k
             </text>
@@ -11695,13 +11695,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               38k
             </text>
@@ -11713,13 +11713,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               50k
             </text>
@@ -12375,12 +12375,12 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -12390,13 +12390,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -12408,13 +12408,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               880
             </text>
@@ -12426,13 +12426,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               1.8k
             </text>
@@ -12444,13 +12444,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               2.6k
             </text>
@@ -12462,13 +12462,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               3.5k
             </text>
@@ -13274,12 +13274,12 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -13289,13 +13289,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -13307,13 +13307,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               13k
             </text>
@@ -13325,13 +13325,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               25k
             </text>
@@ -13343,13 +13343,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               38k
             </text>
@@ -13361,13 +13361,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               50k
             </text>
@@ -14105,12 +14105,12 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -14120,13 +14120,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -14138,13 +14138,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               13k
             </text>
@@ -14156,13 +14156,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               25k
             </text>
@@ -14174,13 +14174,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               38k
             </text>
@@ -14192,13 +14192,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               50k
             </text>

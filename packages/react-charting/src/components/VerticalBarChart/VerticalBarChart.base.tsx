@@ -43,7 +43,6 @@ import {
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
   findVerticalNumericMinMaxOfY,
-  IYAxisParams,
   createYAxisForOtherCharts,
   IDomainNRange,
   domainRageOfVerticalNumeric,
@@ -168,7 +167,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         points={this._points}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
-        createYAxis={this._createYAxis}
+        createYAxis={createYAxisForOtherCharts}
         calloutProps={calloutProps}
         tickParams={tickParams}
         {...(this._isHavingLine && { isCalloutForStack: true })}
@@ -248,16 +247,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
     }
     return domainNRangeValue;
-  };
-
-  private _createYAxis = (
-    yAxisParams: IYAxisParams,
-    isRtl: boolean,
-    axisData: IAxisData,
-    isIntegralDataset: boolean = false,
-    useSecondaryYScale: boolean = true,
-  ) => {
-    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _createLine = (

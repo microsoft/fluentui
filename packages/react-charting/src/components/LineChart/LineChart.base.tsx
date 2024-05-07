@@ -36,8 +36,6 @@ import {
   getNextColor,
   getColorFromToken,
   findNumericMinMaxOfY,
-  IAxisData,
-  IYAxisParams,
   createYAxisForOtherCharts,
   IDomainNRange,
   domainRangeOfDateForAreaLineVerticalBarChart,
@@ -284,7 +282,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        createYAxis={this._createYAxis}
+        createYAxis={createYAxisForOtherCharts}
         getmargins={this._getMargins}
         getMinMaxOfYAxis={findNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
@@ -378,15 +376,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
     return domainNRangeValue;
-  };
-  private _createYAxis = (
-    yAxisParams: IYAxisParams,
-    isRtl: boolean,
-    axisData: IAxisData,
-    isIntegralDataset: boolean = false,
-    useSecondaryYScale: boolean = true,
-  ) => {
-    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {

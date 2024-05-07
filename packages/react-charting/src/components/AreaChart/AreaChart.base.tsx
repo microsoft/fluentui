@@ -30,8 +30,6 @@ import {
   getColorFromToken,
   findNumericMinMaxOfY,
   createYAxisForOtherCharts,
-  IYAxisParams,
-  IAxisData,
   IDomainNRange,
   domainRangeOfNumericForAreaChart,
   domainRangeOfDateForAreaLineVerticalBarChart,
@@ -196,7 +194,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
-          createYAxis={this._createYAxis}
+          createYAxis={createYAxisForOtherCharts}
           isCalloutForStack
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
@@ -278,16 +276,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;
-  };
-
-  private _createYAxis = (
-    yAxisParams: IYAxisParams,
-    isRtl: boolean,
-    axisData: IAxisData,
-    isIntegralDataset: boolean = false,
-    useSecondaryYScale: boolean = true,
-  ) => {
-    return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   };
 
   private _onRectMouseMove = (mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>) => {

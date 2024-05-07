@@ -6398,12 +6398,12 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_6"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -6413,13 +6413,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -6431,13 +6431,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               37
             </text>
@@ -6449,13 +6449,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               74
             </text>
@@ -6467,13 +6467,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               110
             </text>
@@ -6485,13 +6485,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               150
             </text>
@@ -7547,12 +7547,12 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             font-family="sans-serif"
             font-size="10"
             id="yAxisGElementchart_9"
-            text-anchor="start"
+            text-anchor="end"
             transform="translate(40, 0)"
           >
             <path
               class="domain"
-              d="M6,257.5H0.5V20.5H6"
+              d="M-6,257.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
@@ -7562,13 +7562,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 0
               </text>
@@ -7580,13 +7580,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 37
               </text>
@@ -7598,13 +7598,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 74
               </text>
@@ -7616,13 +7616,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 110
               </text>
@@ -7634,13 +7634,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="-590"
+                x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="10"
+                x="-10"
               >
                 150
               </text>
@@ -8684,12 +8684,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_6"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -8699,13 +8699,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -8717,13 +8717,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               37
             </text>
@@ -8735,13 +8735,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               74
             </text>
@@ -8753,13 +8753,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               110
             </text>
@@ -8771,13 +8771,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               150
             </text>
@@ -9820,12 +9820,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_6"
-          text-anchor="start"
+          text-anchor="end"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M6,257.5H0.5V20.5H6"
+            d="M-6,257.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
@@ -9835,13 +9835,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               0
             </text>
@@ -9853,13 +9853,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               37
             </text>
@@ -9871,13 +9871,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               74
             </text>
@@ -9889,13 +9889,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               110
             </text>
@@ -9907,13 +9907,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           >
             <line
               stroke="currentColor"
-              x2="-590"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="10"
+              x="-10"
             >
               150
             </text>

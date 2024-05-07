@@ -414,7 +414,6 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   dataPoints: string[],
   isRtl: boolean,
   barWidth: number,
-  culture?: string,
 ) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
 
@@ -672,7 +671,6 @@ export function createYAxisLabels(
   yAxis: any,
   noOfCharsToTruncate: number,
   truncateLabel: boolean,
-  xValue: number,
   isRtl: boolean,
 ) {
   if (node === null) {

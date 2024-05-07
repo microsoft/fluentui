@@ -658,23 +658,23 @@ describe('createYAxisLabels', () => {
   });
 
   it('should terminate when no node is provided', () => {
-    expect(utils.createYAxisLabels(null, undefined, 20, false, 0, false)).toBeUndefined();
+    expect(utils.createYAxisLabels(null, undefined, 20, false, false)).toBeUndefined();
   });
 
   it('should retain full y-axis labels when truncateLabel is false', () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 0, false);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it(`should truncate y-axis labels when their length exceeds noOfCharsToTruncate
   and truncateLabel is true`, () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, 0, false);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('should offset y-axis labels when layout direction is RTL', () => {
-    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 15, true);
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });

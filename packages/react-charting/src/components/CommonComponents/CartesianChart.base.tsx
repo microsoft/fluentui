@@ -384,7 +384,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
             tickPadding: 10,
             maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-            yMinMaxValues: this.props.getMinMaxOfYAxis ? this.props.getMinMaxOfYAxis() : { startValue: 0, endValue: 0 },
+            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
             yAxisPadding: this.props.yAxisPadding,
           };
 
@@ -405,7 +405,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           yScale,
           this.props.noOfCharsToTruncate || 4,
           this.props.showYAxisLablesTooltip || false,
-          this.state.startFromX,
           this._isRtl,
         );
 
