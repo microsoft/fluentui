@@ -442,13 +442,14 @@ const Arrow: React.FC = () => {
   );
 };
 
-const AutoSize = () => {
+const AutoSize = (extraProps: Partial<PositioningProps>) => {
   const styles = useStyles();
   const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
   const { containerRef, targetRef } = usePositioning({
     position: 'below',
     autoSize: true,
     overflowBoundary,
+    ...extraProps,
   });
 
   return (
@@ -1247,6 +1248,10 @@ storiesOf('Positioning', module)
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
+  .addStory('auto size overflow padding', () => <AutoSize overflowBoundaryPadding={{ start: 10, end: 5 }} />, {
+    includeRtl: true,
+  })
+  .addStory('auto size overflow padding shorthand', () => <AutoSize overflowBoundaryPadding={10} />)
   .addStory('auto size with async content', () => (
     <StoryWright
       steps={new Steps()
