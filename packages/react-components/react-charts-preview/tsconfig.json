@@ -1,13 +1,21 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "es5",
+    "module": "commonjs",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
     "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "strictPropertyInitialization": false,
+    "strictBindCallApply": false,
+    "strictFunctionTypes": false,
+    "strictNullChecks": false,
+    "noImplicitReturns": false,
+    "noEmitOnError": false,
+    "lib": ["es5", "dom"]
   },
   "include": [],
   "files": [],
