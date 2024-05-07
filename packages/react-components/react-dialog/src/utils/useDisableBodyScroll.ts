@@ -1,12 +1,7 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { makeResetStyles } from '@griffel/react';
 import { useCallback } from 'react';
 
-// this style must be applied to the html element to disable scrolling
-const useHTMLNoScrollStyles = makeResetStyles({
-  overflowY: ['hidden', 'clip'],
-  scrollbarGutter: 'stable',
-});
+import { useHTMLNoScrollStyles } from './useDisableBodyScroll.styles';
 
 /**
  * hook that disables body scrolling through `overflowY: hidden` CSS property
