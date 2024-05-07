@@ -2,6 +2,6 @@
   "type": "prerelease",
   "comment": "Fix compound disabled selector in fluent-button and fluent-anchor-button",
   "packageName": "@fluentui/web-components",
-  "email": "rupato@gmail.com",
+  "email": "rupertdavid@microsoft.com",
   "dependentChangeType": "patch"
 }
