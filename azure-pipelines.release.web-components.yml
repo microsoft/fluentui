@@ -30,7 +30,7 @@ schedules:
     displayName: 'Daily release (M-F at 5am UTC+1)'
     branches:
       include:
-        - web-components-v3
+        - master
 
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
@@ -75,8 +75,8 @@ extends:
                 displayName: Build, [test], Lint
 
               - script: |
-                  yarn beachball publish -b origin/web-components-v3 --access public -y -n $(npmToken) --config scripts/beachball/release-web-components.config.js
-                  git reset --hard origin/web-components-v3
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-web-components.config.js
+                  git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions

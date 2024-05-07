@@ -21,7 +21,6 @@ type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
 const NORMALIZED_INNER_WORKSPACE_VERSION = '*';
 const NORMALIZED_PRERELEASE_RANGE_VERSION = '>=9.0.0-alpha';
-const NORMALIZED_WEB_COMPONENTS_PRERELEASE_RANGE_VERSION = '>=3.0.0-beta';
 const BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP = /<9.0.0$/;
 
 export default async function (tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
@@ -128,9 +127,6 @@ function getVersion(tree: Tree, deps: Record<string, string>, packageName: strin
     }
 
     if (semver.prerelease(current)) {
-      if (semver.satisfies(current, NORMALIZED_WEB_COMPONENTS_PRERELEASE_RANGE_VERSION)) {
-        return current;
-      }
       return NORMALIZED_PRERELEASE_RANGE_VERSION;
     }
 
