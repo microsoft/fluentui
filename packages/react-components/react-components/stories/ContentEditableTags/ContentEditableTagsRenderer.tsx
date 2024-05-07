@@ -16,10 +16,12 @@ const options = people.map(person => ({
 
 export const ContentEditableTagsRenderer = () => {
   const { targetDocument } = useFluent();
-  const { getCaretPosition } = useCaretPosition();
+  const { overrideSelection, getCaretPosition } = useCaretPosition();
 
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<string | null>('');
+  const [value, setValue] = React.useState<string | null>(
+    '<span class="pickedItem">Johnny</span>Somebody<span class="pickedItem">Mark</span>',
+  );
   const [selected, setSelected] = React.useState<string | null>(null);
   const listboxId = useId('listbox');
 
@@ -103,19 +105,25 @@ export const ContentEditableTagsRenderer = () => {
           activeDescendantImperativeRef.current?.prev();
           preventDefault = true;
           break;
+        case 'ArrowLeft':
+          preventDefault = overrideSelection(inputRef.current, 'Left');
+          break;
+        case 'ArrowRight':
+          preventDefault = overrideSelection(inputRef.current, 'Right');
+          break;
         case 'Tab':
           selectActive();
           setOpen(false);
           break;
         default:
-        // setOpen(true);
+          break;
       }
 
       if (preventDefault) {
         event.preventDefault();
       }
     },
-    [selectActive, setOpen],
+    [selectActive, setOpen, inputRef, overrideSelection],
   );
 
   React.useEffect(() => {
@@ -166,17 +174,18 @@ const Contenteditable: React.FC<ContenteditableProps> = ({ inputRef, value, onCo
   const ref = useMergedRefs(inputRef, contentEditableRef);
 
   React.useEffect(() => {
-    if (contentEditableRef.current && contentEditableRef.current.textContent !== value) {
-      contentEditableRef.current.textContent = value;
+    if (contentEditableRef.current && contentEditableRef.current.innerHTML !== value) {
+      contentEditableRef.current.innerHTML = value ?? '';
     }
-  });
+  }, [value]);
 
   return (
     <div
-      contentEditable="true"
       ref={ref}
+      contentEditable="true"
+      className="pickerInput"
       onInput={event => {
-        const newValue = (event.target as HTMLDivElement).textContent;
+        const newValue = (event.target as HTMLDivElement).innerHTML;
         onContentChange(newValue);
       }}
       {...props}
