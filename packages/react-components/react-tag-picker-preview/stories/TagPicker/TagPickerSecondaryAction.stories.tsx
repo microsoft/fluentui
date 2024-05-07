@@ -8,7 +8,7 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, Button } from '@fluentui/react-components';
+import { Tag, Avatar, Button, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -29,9 +29,10 @@ export const SecondaryAction = () => {
   const handleAllClear: React.MouseEventHandler = event => {
     setSelectedOptions([]);
   };
+  const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl
           secondaryAction={
@@ -52,24 +53,24 @@ export const SecondaryAction = () => {
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput />
+          <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {options
-            .filter(option => !selectedOptions.includes(option))
-            .map(option => (
-              <TagPickerOption
-                secondaryContent="Microsoft FTE"
-                media={<Avatar aria-hidden name={option} color="colorful" />}
-                value={option}
-                key={option}
-              >
-                {option}
-              </TagPickerOption>
-            ))}
+          {tagPickerOptions.length > 0
+            ? tagPickerOptions.map(option => (
+                <TagPickerOption
+                  secondaryContent="Microsoft FTE"
+                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))
+            : 'No options available'}
         </TagPickerList>
       </TagPicker>
-    </div>
+    </Field>
   );
 };
 

@@ -8,7 +8,7 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, tokens, shorthands, makeStyles } from '@fluentui/react-components';
+import { Tag, Avatar, tokens, shorthands, makeStyles, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -26,9 +26,10 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
+  const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker appearance={appearance} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
@@ -46,21 +47,21 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {options
-            .filter(option => !selectedOptions.includes(option))
-            .map(option => (
-              <TagPickerOption
-                secondaryContent="Microsoft FTE"
-                media={<Avatar aria-hidden name={option} color="colorful" />}
-                value={option}
-                key={option}
-              >
-                {option}
-              </TagPickerOption>
-            ))}
+          {tagPickerOptions.length > 0
+            ? tagPickerOptions.map(option => (
+                <TagPickerOption
+                  secondaryContent="Microsoft FTE"
+                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))
+            : 'No options available'}
         </TagPickerList>
       </TagPicker>
-    </div>
+    </Field>
   );
 };
 

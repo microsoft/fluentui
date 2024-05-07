@@ -9,7 +9,7 @@ import {
   TagPickerGroup,
   useTagPickerFilter,
 } from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar } from '@fluentui/react-components';
+import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -41,7 +41,7 @@ export const Filtering = () => {
       <TagPickerOption
         secondaryContent="Microsoft FTE"
         key={option}
-        media={<Avatar aria-hidden name={option} color="colorful" />}
+        media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
         value={option}
       >
         {option}
@@ -50,7 +50,7 @@ export const Filtering = () => {
     filter: option => !selectedOptions.includes(option) && option.toLowerCase().includes(query.toLowerCase()),
   });
   return (
-    <div style={{ maxWidth: 400 }}>
+    <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
@@ -70,7 +70,7 @@ export const Filtering = () => {
 
         <TagPickerList>{children}</TagPickerList>
       </TagPicker>
-    </div>
+    </Field>
   );
 };
 

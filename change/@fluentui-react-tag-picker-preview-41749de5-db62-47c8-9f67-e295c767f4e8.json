@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: removes freeform prop",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

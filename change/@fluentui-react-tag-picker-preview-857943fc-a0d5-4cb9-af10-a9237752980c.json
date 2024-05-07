@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: bug bash follow up",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
