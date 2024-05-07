@@ -67,7 +67,7 @@ export const ContentEditableTagsRenderer = () => {
         // setValue(selectedText ?? '');
       }
     }
-  }, [selected, getCaretPosition, inputRef, value]);
+  }, [getCaretPosition, inputRef, value]);
 
   const onInputChange = React.useCallback(
     (newValue: string | null) => {
