@@ -1,5 +1,6 @@
 import type { MutableRefObject } from 'react';
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 const { useRef, useEffect } = React;
 
@@ -8,14 +9,18 @@ export const useMutationObserver = (
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
-  observer: MutableRefObject<MutationObserver | undefined>;
+  observer: MutableRefObject<MutationObserver | undefined>; // eslint-disable-line no-restricted-globals
 } => {
+  // eslint-disable-next-line no-restricted-globals
   const observer = useRef<MutationObserver>();
+  const { targetDocument } = useFluent();
+  // eslint-disable-next-line no-restricted-globals
+  const win = targetDocument?.defaultView ?? window;
 
   useEffect(() => {
     // Create an observer instance linked to the callback function
-    observer.current = new MutationObserver(callback);
-  }, [callback]);
+    observer.current = new win.MutationObserver(callback);
+  }, [callback, win]);
 
   useEffect(() => {
     if (target) {

@@ -126,6 +126,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
+    // eslint-disable-next-line no-restricted-globals
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       /* Sanity check - do we even need virtualization? */
       if (virtualizerLength > numItems) {
