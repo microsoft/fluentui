@@ -11,6 +11,7 @@ import {
   IModifiedCartesianChartProps,
   IYValueHover,
   IHorizontalBarChartWithAxisDataPoint,
+  IGraphData,
 } from '../../index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
@@ -81,7 +82,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private titleMargin: number;
   private _isFirstRender: boolean = true;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
   private isIntegralDataset: boolean = true;
 
@@ -301,7 +301,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
        * 2. To draw the graph.
        * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
        */
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let xScale: any;
       let tickValues: (string | number)[];
       switch (this.props.xAxisType!) {
@@ -358,9 +357,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
        * 2. To draw the graph.
        * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
        */
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let yScale: any;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let yScaleSecondary: any;
       const axisData: IAxisData = { yAxisDomainValues: [] };
       if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
@@ -610,7 +607,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
    * @param chartHoverProps
    * @returns
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
     return (
       <Callout
@@ -639,7 +635,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (
@@ -825,17 +820,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   // Call back to the chart.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getData = (xScale: any, yScale: any) => {
-    this.props.getGraphData &&
-      this.props.getGraphData(
-        xScale,
-        yScale,
-        this.state.containerHeight - this.state._removalValueForTextTuncate!,
-        this.state.containerWidth,
-        this.xAxisElement,
-        this.yAxisElement,
-      );
+    const graphData: IGraphData = {
+      xScale,
+      yScale,
+      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+      containerWidth: this.state.containerWidth,
+      xAxisElement: this.xAxisElement,
+      yAxisElement: this.yAxisElement,
+    };
+    this.props.getGraphData && this.props.getGraphData(graphData);
   };
 
   private _onChartLeave = (): void => {

@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @fluentui/max-len */
-/* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
@@ -132,7 +130,6 @@ export interface IYAxisParams {
   containerWidth: number;
   containerHeight: number;
   yAxisElement?: SVGElement | null;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
   yAxisTickCount: number;
   yMaxValue?: number;
@@ -530,7 +527,6 @@ export function getUnique(
   comp: string | number,
 ) {
   const unique = arr
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((e: { [x: string]: any }) => e[comp])
     // store the keys of the unique objects
     .map((e: string, i: number, final: string[]) => final.indexOf(e) === i && i)
@@ -637,7 +633,6 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
       const maxDigit = Math.max(...arr);
       let maxHeight: number = 12; // intial value to render corretly first time
       axisNode.selectAll('text').each(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const outerHTMLElement = document.getElementById('WordBreakId') as any;
         const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
         const boxHeight = BoxCordinates && BoxCordinates.height;
@@ -664,10 +659,8 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
 /**
  * This method used for wrapping of y axis labels (tick values).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function createYAxisLabels(
   node: SVGElement | null,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxis: any,
   noOfCharsToTruncate: number,
   truncateLabel: boolean,
@@ -771,7 +764,6 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * when prop 'showXAxisLablesTooltip' enables to the respected chart.
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   const { tooltipCls, xAxis, id } = xAxistooltipProps;
   if (xAxis === null) {
@@ -790,7 +782,6 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     d3Select(d1)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
@@ -949,13 +940,11 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
   let sDate: Date;
   let lDate: Date;
   if (chartType === ChartTypes.AreaChart || chartType === ChartTypes.LineChart) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sDate = d3Min(points, (point: any) => {
       return d3Min(point.data, (item: ILineChartDataPoint) => {
         return item.x as Date;
       });
     })!;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     lDate = d3Max(points, (point: any) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.x as Date;
@@ -968,9 +957,7 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
     sDate = d3Min([...tickValues, sDate])!;
     lDate = d3Max([...tickValues, lDate])!;
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sDate = d3Min(points as any[], point => point.x as Date)!;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     lDate = d3Max(points as any[], point => point.x as Date)!;
   }
 

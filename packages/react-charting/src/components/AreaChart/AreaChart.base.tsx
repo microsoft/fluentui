@@ -17,6 +17,7 @@ import {
   IMargins,
   IAreaChartStyleProps,
   IAreaChartStyles,
+  IGraphData,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
 import {
@@ -40,7 +41,6 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
 
 const COMPONENT_NAME = 'AREA CHART';
@@ -82,14 +82,11 @@ export interface IAreaChartState extends IBasestate {
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _createSet: (data: ILineChartPoints[]) => {
     colors: string[];
     opacity: number[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     stackedInfo: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     calloutPoints: any;
   };
   private _colors: string[];
@@ -98,12 +95,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _verticalLineId: string;
   private _circleId: string;
   private _uniqueCallOutID: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _stackedData: any;
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
@@ -208,7 +203,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
           /* eslint-disable react/jsx-no-bind */
-          // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
             this._xAxisRectScale = props.xScale;
             const ticks = this._xAxisRectScale.ticks();
@@ -223,7 +217,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                     height={rectHeight}
                     fill={'transparent'}
                     onMouseMove={this._onRectMouseMove}
-                    onMouseOut={this._onRectMouseOut}
                     onMouseOver={this._onRectMouseMove}
                   />
                 </g>
@@ -324,7 +317,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleString() : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
       return element.x === modifiedXVal;
     });
@@ -334,7 +326,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         isCalloutVisible: false,
         isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
@@ -370,17 +362,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!found) {
       this.setState({
         isCalloutVisible: false,
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         displayOfLine: InterceptVisibility.hide,
         isCircleClicked: false,
       });
     }
-  };
-  /**
-   * just cleaning up the state which we have set in the mouse move event
-   */
-  private _onRectMouseOut = () => {
-    /**/
   };
 
   private _handleChartMouseLeave = () => {
@@ -398,15 +384,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getStackedData = (keys: string[], dataSet: any) => {
     const stackedValues = d3Stack().keys(keys)(dataSet);
     const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
     const stackedData: Array<IAreaChartDataSetPoint[]> = [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     stackedValues.forEach((layer: any) => {
       const currentStack: IAreaChartDataSetPoint[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       layer.forEach((d: any) => {
         currentStack.push({
           values: d,
@@ -451,8 +434,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
         const value: ILineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const singleDataset: any = {};
         value.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
           singleDataset.xVal = singleDataPoint.x;
@@ -500,7 +481,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
           (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
         );
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const singleDataset: any = {};
         filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
           singleDataset.xVal = singleDataPoint.x;
@@ -543,28 +523,19 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : null;
   };
 
-  private _getGraphData = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    xAxis: any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    yAxis: any,
-    containerHeight: number,
-    containerWidth: number,
-    xElement: SVGElement | null,
-  ) => {
-    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
+  private _getGraphData = (graphData: IGraphData) => {
+    this._chart = this._drawGraph(
+      graphData.containerHeight,
+      graphData.xScale,
+      graphData.yScale,
+      graphData.xAxisElement!,
+    );
   };
 
   private _onLegendClick(legend: string): void {
-    if (this.state.selectedLegend === legend) {
-      this.setState({
-        selectedLegend: '',
-      });
-    } else {
-      this.setState({
-        selectedLegend: legend,
-      });
-    }
+    this.setState({
+      selectedLegend: this.state.selectedLegend === legend ? '' : legend,
+    });
   }
 
   private _onLegendHover(legend: string): void {
@@ -594,7 +565,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const legend: ILegend = {
         title: singleChartData.legend,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(singleChartData.legend);
         },
@@ -663,28 +634,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return fillColor;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
     const area = d3Area()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y0((d: any) => yScale(d.values[0]))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y1((d: any) => yScale(d.values[1]))
       .curve(d3CurveBasis);
     const line = d3Line()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => yScale(d.values[1]))
       .curve(d3CurveBasis);
 
     const graph: JSX.Element[] = [];
     let lineColor: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
@@ -704,7 +668,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             stroke={this._colors[index]}
             opacity={this._getLineOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
-            onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
             {...points[index]!.lineOptions}
           />
@@ -720,7 +683,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               opacity={this._opacity[index]}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
-              onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
             />
           ) : (
@@ -731,7 +693,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               opacity={this._opacity[index]}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
-              onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
                 'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
@@ -747,7 +708,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
       if (points.length === index) {
         return;
@@ -771,7 +731,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   stroke={lineColor}
                   strokeWidth={3}
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
-                  onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
                   onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                   onFocus={() => this._handleFocus(index, pointIndex, circleId)}
@@ -801,7 +760,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 stroke={lineColor}
                 strokeWidth={3}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
-                onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                 {...pointOptions}
@@ -911,7 +869,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
     const formattedDate = x instanceof Date ? x.toLocaleString() : x;
     const modifiedXVal = x instanceof Date ? x.getTime() : x;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
     // Show details in the callout for the focused point only
     found.values = found.values.filter((e: { y: number }) => e.y === y);

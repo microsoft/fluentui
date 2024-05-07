@@ -15,7 +15,7 @@ import {
   IRefArrayData,
   IMargins,
 } from '../../types/IDataPoint';
-import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
+import { IChildProps, IGraphData, IYValueHover } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 import {
   IHorizontalBarChartWithAxisProps,
@@ -30,8 +30,6 @@ import {
   getAccessibleDataObject,
   YAxisType,
   XAxisTypes,
-  NumericAxis,
-  StringAxis,
   getTypeOfAxis,
   getNextColor,
   findHBCWANumericMinMaxOfY,
@@ -52,7 +50,6 @@ export interface IHorizontalBarChartWithAxisState extends IBasestate {
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tooltipElement?: any;
 }
 
@@ -163,7 +160,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           return (
             <>
@@ -249,18 +245,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       : null;
   };
 
-  private _getGraphData = (
-    xScale: NumericAxis,
-    yScale: NumericAxis | StringAxis,
-    containerHeight: number,
-    containerWidth: number,
-    xElement?: SVGElement | null,
-    yElement?: SVGElement | null,
-  ) => {
+  private _getGraphData = (graphData: IGraphData) => {
+    const { containerHeight, containerWidth, xAxisElement, yAxisElement } = graphData;
     return (this._bars =
       this._yAxisType === YAxisType.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!, yElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!, yElement!));
+        ? this._createNumericBars(containerHeight, containerWidth, xAxisElement!, yAxisElement!)
+        : this._createStringBars(containerHeight, containerWidth, xAxisElement!, yAxisElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -402,7 +392,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     containerHeight: number,
     containerWidth: number,
     isNumericScale: boolean,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } => {
     if (isNumericScale) {
       const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
@@ -433,7 +422,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -502,7 +490,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     });
     return bars;
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _tooltipOfYAxislabels(ytooltipProps: any) {
     const { tooltipCls, yAxis, id } = ytooltipProps;
     if (yAxis === null) {
@@ -521,7 +508,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     for (let i = 0; i < tickObjectLength; i++) {
       const d1 = tickObject[i];
       d3Select(d1)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .on('mouseover', (event: any, d) => {
           if (!this.state.tooltipElement) {
             div.style('opacity', 0.9);
@@ -537,7 +523,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createStringBars(
     containerHeight: number,
     containerWidth: number,

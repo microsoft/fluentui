@@ -100,11 +100,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     yNum: string | undefined,
   ) => DataSet;
   private _dataSet: RectanglesGraphData;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _colorScale: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _yAxisScale: any;
   /**
    * This array contains ref for all the rectangles
@@ -214,7 +211,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale;
           this._yAxisScale = props.yScale;
@@ -313,10 +309,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     }
   };
 
-  private _onRectBlurOrMouseOut = (): void => {
-    /**/
-  };
-
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;
     this.setState({
@@ -355,9 +347,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               this._rectRefCallback(gElement, id, dataPointObject);
             }}
             onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
-            onBlur={this._onRectBlurOrMouseOut}
             onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
-            onMouseOut={this._onRectBlurOrMouseOut}
           >
             <rect
               fill={this._colorScale(dataPointObject.value)}
@@ -413,15 +403,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * if yes, un-select the legend, else
      * set the selected legend state to legendTitle
      */
-    if (this.state.selectedLegend === legendTitle) {
-      this.setState({
-        selectedLegend: '',
-      });
-    } else {
-      this.setState({
-        selectedLegend: legendTitle,
-      });
-    }
+    this.setState({
+      selectedLegend: this.state.selectedLegend === legendTitle ? '' : legendTitle,
+    });
   }
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;

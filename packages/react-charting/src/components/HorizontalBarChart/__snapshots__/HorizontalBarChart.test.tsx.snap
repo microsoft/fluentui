@@ -144,9 +144,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               fill="#004b50"
               height={12}
               key="0"
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="10.286666666666665%"
@@ -162,8 +160,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               fill="#edebe9"
               height={12}
               key="1"
-              onBlur={[Function]}
-              onMouseLeave={[Function]}
               role="img"
               width="89.71333333333334%"
               x="10.286666666666665%"
@@ -307,9 +303,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               fill="#5c2d91"
               height={12}
               key="0"
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="5.333333333333334%"
@@ -325,8 +319,6 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               fill="#edebe9"
               height={12}
               key="1"
-              onBlur={[Function]}
-              onMouseLeave={[Function]}
               role="img"
               width="94.66666666666667%"
               x="5.333333333333334%"
@@ -655,9 +647,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               fill="#004b50"
               height={12}
               key="0"
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="10.286666666666665%"
@@ -673,8 +663,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               fill="#edebe9"
               height={12}
               key="1"
-              onBlur={[Function]}
-              onMouseLeave={[Function]}
               role="img"
               width="89.71333333333334%"
               x="10.286666666666665%"
@@ -818,9 +806,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               fill="#5c2d91"
               height={12}
               key="0"
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="5.333333333333334%"
@@ -836,8 +822,6 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               fill="#edebe9"
               height={12}
               key="1"
-              onBlur={[Function]}
-              onMouseLeave={[Function]}
               role="img"
               width="94.66666666666667%"
               x="5.333333333333334%"
@@ -1062,9 +1046,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               data-is-focusable={true}
               fill="#004b50"
               height={12}
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="10.286666666666665%"
@@ -1193,9 +1175,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="5.333333333333334%"
@@ -1341,9 +1321,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               data-is-focusable={true}
               fill="#004b50"
               height={12}
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="10.286666666666665%"
@@ -1490,9 +1468,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
-              onBlur={[Function]}
               onFocus={[Function]}
-              onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
               width="5.333333333333334%"

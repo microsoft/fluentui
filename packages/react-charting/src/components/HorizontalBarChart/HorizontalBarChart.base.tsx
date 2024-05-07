@@ -22,7 +22,6 @@ const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizon
 export interface IHorizontalBarChartState {
   isCalloutVisible: boolean;
   refSelected: SVGGElement | null | undefined;
-  color: string;
   hoverValue: string | number | Date | null;
   lineColor: string;
   legend: string | null;
@@ -52,15 +51,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       lineColor: '',
       legend: '',
       refSelected: null,
-      // eslint-disable-next-line react/no-unused-state
-      color: '',
       xCalloutValue: '',
       yCalloutValue: '',
       barSpacingInPercent: 0,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
-    this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
     this._emptyChartId = getId('_HBC_empty');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
@@ -199,7 +195,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
-        hoverValue: hoverValue,
+        hoverValue,
         lineColor: point.color!,
         legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
@@ -209,10 +205,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         callOutAccessibilityData: point.callOutAccessibilityData,
       });
     }
-  }
-
-  private _hoverOff(): void {
-    /**/
   }
 
   private _handleChartMouseLeave = () => {
@@ -405,8 +397,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
           role="img"
           aria-label={this._getAriaLabel(point)}
-          onBlur={this._hoverOff}
-          onMouseLeave={this._hoverOff}
           className={this._classNames.barWrapper}
         />
       );

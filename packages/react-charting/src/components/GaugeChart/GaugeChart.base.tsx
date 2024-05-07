@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
@@ -106,7 +107,6 @@ export interface IGaugeChartState {
   hoveredLegend: string;
   selectedLegend: string;
   focusedElement?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   calloutTarget: any;
   isCalloutVisible: boolean;
   hoverXValue: string | number;
@@ -514,7 +514,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this._hideCallout(false);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _showCallout = (target: any, legend: string, isFocusEvent: boolean) => {
     if (this._calloutAnchor === legend) {
       return;
@@ -575,7 +574,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (

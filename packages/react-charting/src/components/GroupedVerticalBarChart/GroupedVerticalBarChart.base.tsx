@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
-import { Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, memoizeFunction, warnDeprecations } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -37,12 +36,11 @@ import {
   IBasestate,
   IRefArrayData,
   Legends,
+  IGraphData,
 } from '../../index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
-type StringAxis = D3Axis<string>;
-type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
 const MIN_DOMAIN_MARGIN = 8;
 const X1_INNER_PADDING = 0.1;
@@ -74,14 +72,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
     maxBarWidth: 24,
   };
 
-  private _createSet: (
-    data: IGroupedVerticalBarChartData[],
-  ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  { keys: string[]; xAxisLabels: string[]; datasetForBars: any };
+  private _createSet: (data: IGroupedVerticalBarChartData[]) => {
+    keys: string[];
+    xAxisLabels: string[];
+    datasetForBars: any;
+  };
   private _dataset: IGVDataPoint[];
   private _keys: string[];
   private _xAxisLabels: string[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _datasetForBars: any;
   private margins: IMargins;
   private _groupedVerticalBarGraph: JSX.Element[];
@@ -139,7 +137,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
     this._adjustProps();
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yMax = d3Max(this._dataset, (point: any) => d3Max(this._keys, (key: string) => point[key]));
     this._yMax = Math.max(yMax, this.props.yMaxValue || 0);
     this._classNames = getClassNames(this.props.styles!, {
@@ -201,7 +198,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
         })}
         barwidth={this._barWidth}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
         }}
@@ -242,14 +238,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return domainNRangeValue;
   };
 
-  private _getGraphData = (
-    xScale: StringAxis | NumericAxis,
-    yScale: NumericAxis,
-    containerHeight: number,
-    containerWidth: number,
-    xElement?: SVGElement | null,
-  ) => {
-    const xScale0 = this._createX0Scale(containerWidth);
+  private _getGraphData = (graphData: IGraphData) => {
+    const xScale0 = this._createX0Scale(graphData.containerWidth);
 
     // Setting the bar width here is safe because there are no dependencies earlier in the code
     // that rely on the width of bars in vertical bar charts with string x-axis.
@@ -263,7 +253,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const xScale1 = this._createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
     this._datasetForBars.forEach((singleSet: IGVSingleDataPoint) => {
-      allGroupsBars.push(this._buildGraph(singleSet, xScale0, xScale1, containerHeight, xElement!));
+      allGroupsBars.push(
+        this._buildGraph(singleSet, xScale0, xScale1, graphData.containerHeight, graphData.xAxisElement!),
+      );
     });
     this._groupedVerticalBarGraph = allGroupsBars;
   };
@@ -297,7 +289,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   private _onBarHover = (
     pointData: IGVBarChartSeriesPoint,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groupData: any,
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void => {
@@ -323,21 +314,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
     }
   };
 
-  private _onBarLeave = (): void => {
-    /**/
-  };
-
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;
     this.setState({ isCalloutVisible: false });
   };
 
-  private _onBarFocus = (
-    pointData: IGVBarChartSeriesPoint,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    groupData: any,
-    refArrayIndexNumber: number,
-  ): void => {
+  private _onBarFocus = (pointData: IGVBarChartSeriesPoint, groupData: any, refArrayIndexNumber: number): void => {
     this._refArray.forEach((obj: IRefArrayData, index: number) => {
       if (obj.index === pointData.legend && refArrayIndexNumber === index) {
         this.setState({
@@ -369,11 +351,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
   }
 
   private _buildGraph = (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     singleSet: any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale0: any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale1: any,
     containerHeight: number,
     xElement: SVGElement,
@@ -413,9 +392,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             fill={pointData.color}
             onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
             onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
-            onMouseOut={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
-            onBlur={this._onBarLeave}
             onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
             aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
             role="img"
@@ -467,13 +444,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _createDataset = (points: IGroupedVerticalBarChartData[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
     const dataset: IGVDataPoint[] = [];
 
     points.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       const singleDatasetPoint: IGVDataPoint = {};
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const singleDatasetPointForBars: any = {};
       const singleDataSeries: IGVBarChartSeriesPoint[] = [];
 
@@ -511,7 +486,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return x0Axis;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createX1Scale = (): any => {
     return (
       d3ScaleBand()
@@ -531,15 +505,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _onLegendClick(legendTitle: string): void {
-    if (this.state.selectedLegend === legendTitle) {
-      this.setState({
-        selectedLegend: '',
-      });
-    } else {
-      this.setState({
-        selectedLegend: legendTitle,
-      });
-    }
+    this.setState({
+      selectedLegend: this.state.selectedLegend === legendTitle ? '' : legendTitle,
+    });
   }
 
   private _onLegendHover(legendTitle: string): void {
@@ -568,7 +536,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         }
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },

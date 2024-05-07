@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
@@ -21,6 +20,7 @@ import {
   ILineChartStyles,
   ILineChartGap,
   ILineChartDataPoint,
+  IGraphData,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -43,7 +43,6 @@ import {
   createStringYAxisForOtherCharts,
 } from '../../utilities/index';
 
-type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
 enum PointSize {
@@ -51,7 +50,6 @@ enum PointSize {
   invisibleSize = 1,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
 
 const DEFAULT_LINE_STROKE_SIZE = 4;
@@ -152,11 +150,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   private _points: LineChartDataWithIndex[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any = '';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _yAxisScale: any = '';
   private _circleId: string;
   private _lineId: string;
@@ -293,7 +288,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         onChartMouseLeave={this._handleChartMouseLeave}
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale!;
           this._yAxisScale = props.yScale!;
@@ -411,17 +405,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this.margins = margins;
   };
 
-  private _initializeLineChartData = (
-    xScale: NumericAxis,
-    yScale: NumericAxis,
-    containerHeight: number,
-    containerWidth: number,
-    xElement: SVGElement | null,
-  ) => {
+  private _initializeLineChartData = (graphData: IGraphData) => {
+    const { xScale, yScale, containerHeight, xAxisElement } = graphData;
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
-    this.lines = this._createLines(xElement!, containerHeight!);
+    this.lines = this._createLines(xAxisElement!, containerHeight!);
   };
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
@@ -655,9 +644,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       // Use path rendering technique for larger datasets to optimize performance.
       if (this.props.optimizeLargeData && this._points[i].data.length > 1) {
         const line = d3Line()
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .x((d: any) => this._xAxisScale(d[0]))
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .y((d: any) => this._yAxisScale(d[1]))
           .curve(d3curveLinear);
 
@@ -1158,7 +1145,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
     const formattedDate = xPointToHighlight instanceof Date ? xPointToHighlight.toLocaleString() : xPointToHighlight;
     const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
       return element.x === modifiedXVal;
     });
