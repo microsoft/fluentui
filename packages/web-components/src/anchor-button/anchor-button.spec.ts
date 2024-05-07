@@ -103,4 +103,22 @@ test.describe('Anchor Button - Boolean Attributes', () => {
       await expect(element).toHaveJSProperty(attribute, value);
     });
   }
+
+  test(`should have transparent border when the \`disabled\` or \`disabled-focus\` attribute is present`, async ({
+    page,
+  }) => {
+    await element.evaluate((node: any) => {
+      node.getAttribute('appearance', 'primary');
+      node.setAttribute('disabled', true);
+    });
+
+    await expect(element).toHaveCSS('border-color', 'rgb(0, 0, 0)');
+
+    await element.evaluate((node: any) => {
+      node.setAttribute('disabled', false); // Reset
+      node.setAttribute('disabled-focusable', true);
+    });
+
+    await expect(element).toHaveCSS('border-color', 'rgb(0, 0, 0)');
+  });
 });
