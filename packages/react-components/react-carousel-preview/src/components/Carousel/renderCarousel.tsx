@@ -4,7 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselState, CarouselSlots } from './Carousel.types';
 import { CarouselProvider } from '../CarouselContext';
-import { CarouselContextValues } from '../CarouselContext.types';
+import type { CarouselContextValues } from '../CarouselContext.types';
 
 /**
  * Render the final JSX of Carousel

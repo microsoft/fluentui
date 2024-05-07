@@ -11,7 +11,7 @@ import type { CarouselProps, CarouselState } from './Carousel.types';
 import { useCarouselWalker_unstable } from '../useCarouselWalker';
 import { createCarouselStore } from '../createCarouselStore';
 import { CAROUSEL_ITEM } from '../constants';
-import { CarouselContextValue } from '../CarouselContext.types';
+import type { CarouselContextValue } from '../CarouselContext.types';
 
 /**
  * Create the state required to render Carousel.

@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import { CarouselContextValue, CarouselValueChangeData } from '../CarouselContext.types';
+import type { CarouselContextValue, CarouselValueChangeData } from '../CarouselContext.types';
 
 export type CarouselSlots = {
   root: Slot<'div'>;
