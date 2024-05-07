@@ -108,7 +108,7 @@ test.describe('Anchor Button - Boolean Attributes', () => {
     page,
   }) => {
     await element.evaluate((node: any) => {
-      node.getAttribute('appearance', 'primary');
+      node.setAttribute('appearance', 'primary');
       node.setAttribute('disabled', true);
     });
 
