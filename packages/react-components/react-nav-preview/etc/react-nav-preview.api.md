@@ -19,6 +19,40 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export const Hamburger: ForwardRefComponent<HamburgerProps>;
+
+// @public (undocumented)
+export const hamburgerClassNames: SlotClassNames<HamburgerSlots>;
+
+// @public
+export const HamburgerInNav: ForwardRefComponent<HamburgerInNavProps>;
+
+// @public (undocumented)
+export const hamburgerInNavClassNames: SlotClassNames<HamburgerInNavSlots>;
+
+// @public
+export type HamburgerInNavProps = ComponentProps<HamburgerInNavSlots> & {};
+
+// @public (undocumented)
+export type HamburgerInNavSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type HamburgerInNavState = ComponentState<HamburgerInNavSlots>;
+
+// @public
+export type HamburgerProps = ComponentProps<HamburgerSlots> & {};
+
+// @public (undocumented)
+export type HamburgerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type HamburgerState = ComponentState<HamburgerSlots>;
+
+// @public
 export const Nav: ForwardRefComponent<NavProps>;
 
 // @public
@@ -81,8 +115,76 @@ export type NavContextValues = {
 // @public
 export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
 
+// @public
+export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps>;
+
+// @public (undocumented)
+export const navDrawerBodyClassNames: SlotClassNames<NavDrawerBodySlots>;
+
+// @public
+export type NavDrawerBodyProps = ComponentProps<NavDrawerBodySlots> & {};
+
+// @public (undocumented)
+export type NavDrawerBodySlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavDrawerBodyState = ComponentState<NavDrawerBodySlots>;
+
 // @public (undocumented)
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+
+// @public
+export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
+
+// @public (undocumented)
+export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots>;
+
+// @public
+export type NavDrawerFooterProps = ComponentProps<NavDrawerFooterSlots> & {};
+
+// @public (undocumented)
+export type NavDrawerFooterSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavDrawerFooterState = ComponentState<NavDrawerFooterSlots>;
+
+// @public
+export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps>;
+
+// @public (undocumented)
+export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots>;
+
+// @public
+export const NavDrawerHeaderNav: ForwardRefComponent<NavDrawerHeaderNavProps>;
+
+// @public (undocumented)
+export const navDrawerHeaderNavClassNames: SlotClassNames<NavDrawerHeaderNavSlots>;
+
+// @public
+export type NavDrawerHeaderNavProps = ComponentProps<NavDrawerHeaderNavSlots> & {};
+
+// @public (undocumented)
+export type NavDrawerHeaderNavSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavDrawerHeaderNavState = ComponentState<NavDrawerHeaderNavSlots>;
+
+// @public
+export type NavDrawerHeaderProps = ComponentProps<NavDrawerHeaderSlots> & {};
+
+// @public (undocumented)
+export type NavDrawerHeaderSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavDrawerHeaderState = ComponentState<NavDrawerHeaderSlots>;
 
 // @public
 export type NavDrawerProps = DrawerProps & NavProps;
@@ -136,6 +238,23 @@ export type NavProps = ComponentProps<NavSlots> & {
 // @public (undocumented)
 export const NavProvider: React_2.Provider<NavContextValue | undefined>;
 
+// @public
+export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps>;
+
+// @public (undocumented)
+export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots>;
+
+// @public
+export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots> & {};
+
+// @public (undocumented)
+export type NavSectionHeaderSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
+
 // @public (undocumented)
 export type NavSlots = {
     root: NonNullable<Slot<'div'>>;
@@ -187,6 +306,12 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
+// @public
+export const renderHamburger_unstable: (state: HamburgerState) => JSX.Element;
+
+// @public
+export const renderHamburgerInNav_unstable: (state: HamburgerInNavState) => JSX.Element;
+
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
@@ -200,13 +325,40 @@ export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, conte
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
+export const renderNavDrawerBody_unstable: (state: NavDrawerBodyState) => JSX.Element;
+
+// @public
+export const renderNavDrawerFooter_unstable: (state: NavDrawerFooterState) => JSX.Element;
+
+// @public
+export const renderNavDrawerHeader_unstable: (state: NavDrawerHeaderState) => JSX.Element;
+
+// @public
+export const renderNavDrawerHeaderNav_unstable: (state: NavDrawerHeaderNavState) => JSX.Element;
+
+// @public
 export const renderNavItem_unstable: (state: NavItemState) => JSX.Element;
+
+// @public
+export const renderNavSectionHeader_unstable: (state: NavSectionHeaderState) => JSX.Element;
 
 // @public
 export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
+
+// @public
+export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLDivElement>) => HamburgerState;
+
+// @public
+export const useHamburgerInNav_unstable: (props: HamburgerInNavProps, ref: React_2.Ref<HTMLDivElement>) => HamburgerInNavState;
+
+// @public
+export const useHamburgerInNavStyles_unstable: (state: HamburgerInNavState) => HamburgerInNavState;
+
+// @public
+export const useHamburgerStyles_unstable: (state: HamburgerState) => HamburgerState;
 
 // @public
 export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
@@ -227,6 +379,30 @@ export const useNavContext_unstable: () => NavContextValue;
 export const useNavDrawer_unstable: (props: NavDrawerProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerState;
 
 // @public
+export const useNavDrawerBody_unstable: (props: NavDrawerBodyProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerBodyState;
+
+// @public
+export const useNavDrawerBodyStyles_unstable: (state: NavDrawerBodyState) => NavDrawerBodyState;
+
+// @public
+export const useNavDrawerFooter_unstable: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerFooterState;
+
+// @public
+export const useNavDrawerFooterStyles_unstable: (state: NavDrawerFooterState) => NavDrawerFooterState;
+
+// @public
+export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerHeaderState;
+
+// @public
+export const useNavDrawerHeaderNav_unstable: (props: NavDrawerHeaderNavProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerHeaderNavState;
+
+// @public
+export const useNavDrawerHeaderNavStyles_unstable: (state: NavDrawerHeaderNavState) => NavDrawerHeaderNavState;
+
+// @public
+export const useNavDrawerHeaderStyles_unstable: (state: NavDrawerHeaderState) => NavDrawerHeaderState;
+
+// @public
 export const useNavDrawerStyles_unstable: (state: NavDrawerState) => NavDrawerState;
 
 // @public
@@ -234,6 +410,12 @@ export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLAnc
 
 // @public
 export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
+
+// @public
+export const useNavSectionHeader_unstable: (props: NavSectionHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavSectionHeaderState;
+
+// @public
+export const useNavSectionHeaderStyles_unstable: (state: NavSectionHeaderState) => NavSectionHeaderState;
 
 // @public
 export const useNavStyles_unstable: (state: NavState) => NavState;

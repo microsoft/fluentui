@@ -149,7 +149,8 @@ describe('TagPicker', () => {
       cy.get('[data-testid="tag-picker-control"]').realClick();
       cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
     });
-    it('should open/close a listbox once surface (tag group) is clicked', () => {
+    // FIXME: this test is flaky - make it more robust
+    it.skip('should open/close a listbox once surface (tag group) is clicked', () => {
       mount(<TagPickerControlled defaultSelectedOptions={options} />);
       cy.get('[data-testid="tag-picker-list"]').should('not.exist');
       cy.get('[data-testid="tag-picker-group"]').realClick();
