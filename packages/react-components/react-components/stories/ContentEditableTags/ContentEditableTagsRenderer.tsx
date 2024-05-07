@@ -139,6 +139,7 @@ export const ContentEditableTagsRenderer = () => {
         onContentChange={onInputChange}
         onKeyDown={onInputKeyDown}
         data-selected={selected}
+        aria-label="Choose person"
         aria-controls={open ? listboxId : undefined}
         aria-expanded={open}
       />
