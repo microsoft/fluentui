@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 06 May 2024 07:25:44 GMT and should not be manually modified.
+This log was last generated on Tue, 07 May 2024 07:26:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.118.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.118.2)
+
+Tue, 07 May 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.118.1..@fluentui/react_v8.118.2)
+
+### Patches
+
+- fix aria role for draggable columns in DetailsList DetailsHeader ([PR #31243](https://github.com/microsoft/fluentui/pull/31243) by ilmat@microsoft.com)
 
 ## [8.118.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.118.1)
 
