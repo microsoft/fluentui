@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: merge wc-3 to master - avoiding any library bumps",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

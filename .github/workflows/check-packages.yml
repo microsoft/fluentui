@@ -85,5 +85,4 @@ jobs:
             core.exportVariable('BEACHBALL_VERSION', beachballVersion);
 
       - run: |
-          npx beachball@$BEACHBALL_VERSION check -b web-components-v3
-          node ./scripts/beachball/check-wc-3-changefiles
+          npx beachball@$BEACHBALL_VERSION check
