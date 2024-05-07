@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { useKeyborg } from './hooks/useKeyborg';
+import { useKeyborgRef } from './hooks/useKeyborgRef';
 import { mount } from '@cypress/react';
 
 describe('Keyborg', () => {
   const Example = () => {
-    const keyborg = useKeyborg();
-    return <div id="result">{keyborg ? 'pass' : 'fail'}</div>;
+    const keyborgRef = useKeyborgRef();
+    const elementRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+      if (elementRef.current) {
+        elementRef.current.innerHTML = keyborgRef.current ? 'pass' : 'fail';
+      }
+    });
+
+    return <div id="result" ref={elementRef} />;
   };
 
   it('should create keyborg instance', () => {
