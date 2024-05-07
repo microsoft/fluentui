@@ -1,4 +1,7 @@
-## Best practices
+<details>
+  <summary>
+    Best practices
+  </summary>
 
 ### Do
 
@@ -22,3 +25,5 @@ _Known limitations:_
 - `radiogroup` role is not expected for the SwatchPicker because color selection must be confirmed by pressing enter/space unlike Radiogroup. But because `aria-checked` attribute is supported everywhere the role `radiogroup` will be used for the `row` layout.
 
 - For the `grid` layout role `grid` is used with rows inside and swatches with a role `gridcell`. But `aria-selected` attribute is not supported on Mac and there is no better alternative.
+
+</details>
