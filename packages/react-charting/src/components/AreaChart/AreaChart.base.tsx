@@ -205,7 +205,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           getDomainNRangeValues={this._getDomainNRangeValues}
           createStringYAxis={createStringYAxisForOtherCharts}
           getmargins={this._getMargins}
-          getMinMaxOfYAxis={findNumericMinMaxOfY(points)}
+          getMinMaxOfYAxis={findNumericMinMaxOfY}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}

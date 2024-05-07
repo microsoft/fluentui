@@ -214,7 +214,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           createYAxis={this._createYAxis}
           tickParams={tickParams}
           legendBars={legendBars}
-          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY(this._dataset)}
+          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
           getDomainNRangeValues={this._getDomainNRangeValues}

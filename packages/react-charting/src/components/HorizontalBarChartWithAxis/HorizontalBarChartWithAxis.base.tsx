@@ -154,7 +154,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         createYAxis={createYAxisForHorizontalBarChartWithAxis}
         getDomainNRangeValues={this._getDomainNRangeValues}
         createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
-        getMinMaxOfYAxis={findHBCWANumericMinMaxOfY(this._points, this._yAxisType)}
+        getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
         barwidth={this._barHeight}
         focusZoneDirection={FocusZoneDirection.vertical}
         customizedCallout={this._getCustomizedCallout()}

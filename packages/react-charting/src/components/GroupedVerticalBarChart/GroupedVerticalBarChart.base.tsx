@@ -183,6 +183,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         getDomainNRangeValues={this._getDomainNRangeValues}
+        getMinMaxOfYAxis={this._getMinMaxOfYAxis}
         createStringYAxis={createStringYAxisForOtherCharts}
         tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
@@ -215,6 +216,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
       />
     );
   }
+
+  private _getMinMaxOfYAxis = () => {
+    return { startValue: 0, endValue: 0 };
+  };
 
   private _getDomainNRangeValues = (
     points: any,

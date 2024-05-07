@@ -174,12 +174,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="end"
+          text-anchor="start"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M6,257.5H0.5V20.5H6"
             stroke="currentColor"
           />
           <g
@@ -189,13 +189,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               0
             </text>
@@ -207,13 +207,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               13k
             </text>
@@ -225,13 +225,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               25k
             </text>
@@ -243,13 +243,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               38k
             </text>
@@ -261,13 +261,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               50k
             </text>
@@ -907,12 +907,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="end"
+          text-anchor="start"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M6,257.5H0.5V20.5H6"
             stroke="currentColor"
           />
           <g
@@ -922,13 +922,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               0
             </text>
@@ -940,13 +940,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               13k
             </text>
@@ -958,13 +958,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               25k
             </text>
@@ -976,13 +976,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               38k
             </text>
@@ -994,13 +994,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               50k
             </text>
@@ -1640,12 +1640,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="end"
+          text-anchor="start"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M6,257.5H0.5V20.5H6"
             stroke="currentColor"
           />
           <g
@@ -1655,13 +1655,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               0
             </text>
@@ -1673,13 +1673,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               13k
             </text>
@@ -1691,13 +1691,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               25k
             </text>
@@ -1709,13 +1709,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               38k
             </text>
@@ -1727,13 +1727,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               50k
             </text>
@@ -2373,12 +2373,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="end"
+          text-anchor="start"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M6,257.5H0.5V20.5H6"
             stroke="currentColor"
           />
           <g
@@ -2388,13 +2388,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               0
             </text>
@@ -2406,13 +2406,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               13k
             </text>
@@ -2424,13 +2424,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               25k
             </text>
@@ -2442,13 +2442,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               38k
             </text>
@@ -2460,13 +2460,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               50k
             </text>
@@ -3106,12 +3106,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-family="sans-serif"
           font-size="10"
           id="yAxisGElementchart_3"
-          text-anchor="end"
+          text-anchor="start"
           transform="translate(40, 0)"
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M6,257.5H0.5V20.5H6"
             stroke="currentColor"
           />
           <g
@@ -3121,13 +3121,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               0
             </text>
@@ -3139,13 +3139,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               13k
             </text>
@@ -3157,13 +3157,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               25k
             </text>
@@ -3175,13 +3175,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               38k
             </text>
@@ -3193,13 +3193,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           >
             <line
               stroke="currentColor"
-              x2="590"
+              x2="-590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              x="-10"
+              x="10"
             >
               50k
             </text>
@@ -9452,12 +9452,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             font-family="sans-serif"
             font-size="10"
             id="yAxisGElementchart_6"
-            text-anchor="end"
+            text-anchor="start"
             transform="translate(40, 0)"
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M6,257.5H0.5V20.5H6"
               stroke="currentColor"
             />
             <g
@@ -9467,13 +9467,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 0
               </text>
@@ -9485,13 +9485,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 13k
               </text>
@@ -9503,13 +9503,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 25k
               </text>
@@ -9521,13 +9521,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 38k
               </text>
@@ -9539,13 +9539,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             >
               <line
                 stroke="currentColor"
-                x2="590"
+                x2="-590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                x="-10"
+                x="10"
               >
                 50k
               </text>

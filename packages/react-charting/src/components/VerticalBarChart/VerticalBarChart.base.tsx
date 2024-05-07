@@ -179,7 +179,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         customizedCallout={this._getCustomizedCallout()}
         createStringYAxis={createStringYAxisForOtherCharts}
         getmargins={this._getMargins}
-        getMinMaxOfYAxis={findVerticalNumericMinMaxOfY(this._points)}
+        getMinMaxOfYAxis={findVerticalNumericMinMaxOfY}
         getGraphData={this._getGraphData}
         getDomainNRangeValues={this._getDomainNRangeValues}
         getAxisData={this._getAxisData}

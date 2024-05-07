@@ -205,6 +205,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         stringDatasetForYAxisDomain={this._stringYAxisDataPoints}
         createStringYAxis={createStringYAxisForOtherCharts}
         getDomainNRangeValues={this._getDomainNRangeValues}
+        getMinMaxOfYAxis={this._getMinMaxOfYAxis}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
         xAxisPadding={0.02}
@@ -231,6 +232,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     );
   }
+
+  private _getMinMaxOfYAxis = () => {
+    return { startValue: 0, endValue: 0 };
+  };
 
   private _getDomainNRangeValues = (
     points: any,

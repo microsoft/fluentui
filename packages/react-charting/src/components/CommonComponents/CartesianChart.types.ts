@@ -617,11 +617,23 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   enableFirstRenderOptimization?: boolean;
 
-  getMinMaxOfYAxis?: any;
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis: any;
 
-  createYAxis?: any;
+  /**
+   * Create the y-axis
+   */
+  createYAxis: any;
 
-  getDomainNRangeValues?: any;
+  /**
+   * Get the domain and range values
+   */
+  getDomainNRangeValues: any;
 
-  createStringYAxis?: any;
+  /**
+   * Create the string y-axis
+   */
+  createStringYAxis: any;
 }

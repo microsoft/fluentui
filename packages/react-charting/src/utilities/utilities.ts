@@ -1036,9 +1036,9 @@ export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: 
  * @param {IDataPoint[]} dataset
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVSBCNumericMinMaxOfY(dataset: any[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(dataset, (point: any) => point.y)!;
-  const yMin = d3Min(dataset, (point: any) => point.y)!;
+export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: number; endValue: number } {
+  const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
+  const yMin = d3Min(dataset, (point: IDataPoint) => point.y)!;
 
   return { startValue: yMin, endValue: yMax };
 }

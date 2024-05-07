@@ -286,7 +286,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         legendBars={legendBars}
         createYAxis={this._createYAxis}
         getmargins={this._getMargins}
-        getMinMaxOfYAxis={findNumericMinMaxOfY(this._points)}
+        getMinMaxOfYAxis={findNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
