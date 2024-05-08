@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { NavDrawerBodyState } from './NavDrawerBody.types';
+import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 
 /**
  * Styles for the root slot
@@ -8,20 +9,16 @@ import type { NavDrawerBodyState } from './NavDrawerBody.types';
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding(0, tokens.spacingVerticalMNudge),
+    alignItems: 'unset',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
  * Apply styling to the NavDrawerBody slots based on the state
  */
 export const useNavDrawerBodyStyles_unstable = (state: NavDrawerBodyState): NavDrawerBodyState => {
+  useDrawerStyles_unstable(state);
   const styles = useStyles();
   state.root.className = mergeClasses(styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
   return state;
 };

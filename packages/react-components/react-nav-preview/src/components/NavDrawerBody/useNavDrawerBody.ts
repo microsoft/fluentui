@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavDrawerBodyProps, NavDrawerBodyState } from './NavDrawerBody.types';
+import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 
 /**
  * Create the state required to render NavDrawerBody.
@@ -15,20 +15,8 @@ export const useNavDrawerBody_unstable = (
   props: NavDrawerBodyProps,
   ref: React.Ref<HTMLDivElement>,
 ): NavDrawerBodyState => {
+  const state = useDrawerBody_unstable(props, ref);
   return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+    ...state,
   };
 };
