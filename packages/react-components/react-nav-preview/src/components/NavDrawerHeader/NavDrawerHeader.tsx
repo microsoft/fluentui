@@ -1,8 +1,9 @@
 import * as React from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useNavDrawerHeader_unstable } from './useNavDrawerHeader';
 import { useNavDrawerHeaderStyles_unstable } from './useNavDrawerHeaderStyles.styles';
 import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
+
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { NavDrawerHeaderProps } from './NavDrawerHeader.types';
 
 /**

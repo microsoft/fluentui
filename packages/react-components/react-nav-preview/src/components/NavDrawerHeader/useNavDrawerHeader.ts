@@ -1,6 +1,7 @@
 import * as React from 'react';
-import type { NavDrawerHeaderProps, NavDrawerHeaderState } from './NavDrawerHeader.types';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
+
+import type { NavDrawerHeaderProps, NavDrawerHeaderState } from './NavDrawerHeader.types';
 
 /**
  * Create the state required to render NavDrawerHeader.

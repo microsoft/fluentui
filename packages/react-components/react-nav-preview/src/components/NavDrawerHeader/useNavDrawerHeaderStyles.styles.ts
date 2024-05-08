@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { NavDrawerHeaderState } from './NavDrawerHeader.types';
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
+
+import type { NavDrawerHeaderState } from './NavDrawerHeader.types';
 
 /**
  * Styles for the root slot

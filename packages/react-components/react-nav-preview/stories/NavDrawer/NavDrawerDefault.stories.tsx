@@ -6,12 +6,13 @@ import {
   NavDrawerBody,
   NavDrawerFooter,
   NavDrawerHeader,
+  NavDrawerHeaderNav,
   NavDrawerProps,
   NavItem,
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerProps } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerProps } from '@fluentui/react-drawer';
 import {
   Button,
   Caption1Strong,
@@ -84,11 +85,6 @@ const useStyles = makeStyles({
   headingContent: {
     marginInlineStart: `10px`,
   },
-  drawerHeaderNavOverrides: {
-    ...shorthands.margin('unset'),
-    paddingInlineStart: '0px',
-    paddingBlockStart: '0px',
-  },
   hamburger: {
     backgroundColor: navItemTokens.backgroundColor,
     color: tokens.colorNeutralForeground2,
@@ -142,9 +138,9 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         size="small"
       >
         <NavDrawerHeader>
-          <DrawerHeaderNavigation className={styles.drawerHeaderNavOverrides}>
+          <NavDrawerHeaderNav>
             <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
-          </DrawerHeaderNavigation>
+          </NavDrawerHeaderNav>
         </NavDrawerHeader>
         <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>

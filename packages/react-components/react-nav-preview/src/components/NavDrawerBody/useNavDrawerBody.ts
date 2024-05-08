@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { NavDrawerBodyProps, NavDrawerBodyState } from './NavDrawerBody.types';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 
+import type { NavDrawerBodyProps, NavDrawerBodyState } from './NavDrawerBody.types';
 /**
  * Create the state required to render NavDrawerBody.
  *
