@@ -12,7 +12,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerProps } from '@fluentui/react-drawer';
+import { DrawerProps } from '@fluentui/react-drawer';
 import {
   Button,
   Caption1Strong,
