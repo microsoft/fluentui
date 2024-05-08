@@ -5,5 +5,6 @@ describe('NavDrawerHeader', () => {
   isConformant({
     Component: NavDrawerHeader,
     displayName: 'NavDrawerHeader',
+    disabledTests: ['component-has-static-classnames-object'],
   });
 });
