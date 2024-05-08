@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -369,7 +368,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
           this.props.barwidth,
-          culture,
         );
       } else {
         if (this.props?.secondaryYScaleOptions) {
