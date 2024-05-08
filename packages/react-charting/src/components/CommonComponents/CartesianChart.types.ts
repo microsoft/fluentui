@@ -637,12 +637,3 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   createStringYAxis: any;
 }
-
-export interface IGraphData {
-  xScale: any;
-  yScale: any;
-  containerHeight: number;
-  containerWidth: number;
-  xAxisElement?: any;
-  yAxisElement?: any;
-}

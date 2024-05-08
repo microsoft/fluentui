@@ -10,7 +10,7 @@ import {
   scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
   IAccessibilityProps,
@@ -27,7 +27,6 @@ import {
   Legends,
   IChildProps,
   IYValueHover,
-  IGraphData,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -35,6 +34,7 @@ import {
   IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
+  NumericAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
   formatValueWithSIPrefix,
@@ -132,7 +132,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMaxValue || 0,
     );
-    const legendBars: JSX.Element = this._getLegendData(this._points);
+    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -189,6 +189,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         /* eslint-disable react/jsx-no-bind */
+        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           return (
             <>
@@ -227,6 +228,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
+    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -248,10 +250,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _createLine = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yScale: any,
     containerHeight: number = 0,
     containerWidth: number = 0,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yScaleSecondary?: any,
   ): React.ReactNode => {
     const isStringAxis = this._xAxisType === XAxisTypes.StringAxis;
@@ -259,6 +264,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const colorScale = this._createColors();
     const { theme } = this.props;
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
     const line: JSX.Element[] = [];
     data &&
@@ -274,7 +280,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         }
       });
     const linePath = d3Line()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (isStringAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
     const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
     const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
@@ -326,6 +334,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
+            onMouseOut={this._onBarLeave}
             r={8}
             stroke={lineLegendColor}
             fill={this.props.theme!.semanticColors.bodyBackground}
@@ -346,7 +355,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _checkForLine = (): boolean => {
-    return this.props.data!.some((item: IVerticalBarChartDataPoint) => item?.lineData?.y !== undefined);
+    const { data } = this.props;
+    return data!.some((item: IVerticalBarChartDataPoint) => item?.lineData?.y !== undefined);
   };
 
   private _adjustProps(): void {
@@ -408,14 +418,20 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       : null;
   };
 
-  private _getGraphData = (graphData: IGraphData) => {
-    const { containerHeight, containerWidth, xAxisElement } = graphData;
+  private _getGraphData = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
+    yScale: NumericAxis,
+    containerHeight: number,
+    containerWidth: number,
+    xElement?: SVGElement | null,
+  ) => {
     return (this._bars =
       this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xAxisElement!)
+        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
         : this._xAxisType === XAxisTypes.DateAxis
-        ? this._createDateBars(containerHeight, containerWidth, xAxisElement!)
-        : this._createStringBars(containerHeight, containerWidth, xAxisElement!));
+        ? this._createDateBars(containerHeight, containerWidth, xElement!)
+        : this._createStringBars(containerHeight, containerWidth, xElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -506,6 +522,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
   }
 
+  private _onBarLeave = (): void => {
+    /**/
+  };
+
   private _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;
     this.setState({
@@ -540,8 +560,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   };
 
-  private _getScales = (containerHeight: number, containerWidth: number): { xBarScale: any; yBarScale: any } => {
+  private _getScales = (
+    containerHeight: number,
+    containerWidth: number,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): { xBarScale: any; yBarScale: any } => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let xBarScale: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yBarScale: any = d3ScaleLinear()
       .domain([0, this._yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -617,7 +643,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
             aria-label={this._getAriaLabel(point)}
             role="img"
+            onMouseLeave={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
+            onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
@@ -684,6 +712,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             }}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+            onMouseLeave={this._onBarLeave}
+            onBlur={this._onBarLeave}
             data-is-focusable={!this.props.hideTooltip}
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
@@ -727,7 +757,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight,
+        shouldHighlight: shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
@@ -757,7 +787,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
             aria-label={this._getAriaLabel(point)}
             role="img"
+            onMouseLeave={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
+            onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
@@ -795,9 +827,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _onLegendClick(legendTitle: string): void {
-    this.setState({
-      selectedLegend: this.state.selectedLegend === legendTitle ? '' : legendTitle,
-    });
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
+    } else {
+      this.setState({
+        selectedLegend: legendTitle,
+      });
+    }
   }
 
   private _onLegendHover(legendTitle: string): void {
@@ -812,7 +850,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   }
 
-  private _getLegendData = (data: IVerticalBarChartDataPoint[]): JSX.Element => {
+  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];

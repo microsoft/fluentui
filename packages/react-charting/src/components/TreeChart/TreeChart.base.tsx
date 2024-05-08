@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { hierarchy, tree } from 'd3-hierarchy';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
@@ -286,6 +285,7 @@ class LayeredTree extends StandardTree {
     const treeDataStructure: Array<ITreeDataStructure> = [];
     let TreeID: number = 0;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const createTreeDataStructure = (d: any) => {
       d.id = TreeID;
       treeDataStructure.push({
@@ -345,6 +345,7 @@ class LayeredTree extends StandardTree {
 
         // <------------------ Nodes section ------------------>
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const children: any = treeDataStructure[d.parentID]?.children;
 
         const compactNodeCenterX1: number = treeDataStructure[d.parentID]?.x - compactNodeWidth / 2 - gap / 2;
@@ -455,6 +456,7 @@ class LayeredTree extends StandardTree {
 
         // <------------------ Links section ------------------>
         if (d.id === 0 && d.children) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const children: any = treeDataStructure[d.id]?.children;
           const childXMin = d3Min(children, (child: ITreeDataStructure) => child.x as number)!;
           const childXMax = d3Max(children, (child: ITreeDataStructure) => child.x as number)!;

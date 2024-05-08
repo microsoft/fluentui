@@ -111,6 +111,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           height={290}
           id="rectangle3"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           width={-20}
         />
@@ -121,6 +122,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
           stroke="red"
@@ -132,6 +134,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
         />
@@ -151,6 +154,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={8}
             role="img"
@@ -168,6 +172,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={0}
             role="img"
@@ -675,6 +680,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           height={290}
           id="rectangle3"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           width={-20}
         />
@@ -685,6 +691,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
           stroke="red"
@@ -696,6 +703,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
         />
@@ -715,6 +723,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={8}
             role="img"
@@ -732,6 +741,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={0}
             role="img"
@@ -1136,6 +1146,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           height={290}
           id="rectangle3"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           width={-20}
         />
@@ -1146,6 +1157,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
           stroke="red"
@@ -1157,6 +1169,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
           onMouseMove={[Function]}
+          onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
         />
@@ -1176,6 +1189,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={8}
             role="img"
@@ -1193,6 +1207,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
+            onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={0}
             role="img"

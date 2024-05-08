@@ -544,22 +544,6 @@ export interface IGaugeChartStyles {
 }
 
 // @public (undocumented)
-export interface IGraphData {
-    // (undocumented)
-    containerHeight: number;
-    // (undocumented)
-    containerWidth: number;
-    // (undocumented)
-    xAxisElement?: any;
-    // (undocumented)
-    xScale: any;
-    // (undocumented)
-    yAxisElement?: any;
-    // (undocumented)
-    yScale: any;
-}
-
-// @public (undocumented)
 export interface IGroupedVerticalBarChartData {
     name: string;
     series: IGVBarChartSeriesPoint[];

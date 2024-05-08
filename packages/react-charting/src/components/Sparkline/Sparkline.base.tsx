@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
@@ -25,7 +24,10 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     left: 0,
   };
 
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private x: any;
+
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private y: any;
   private area: any;
   private line: any;
@@ -46,26 +48,32 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   public componentDidMount() {
     if (!this._isChartEmpty()) {
       const area = d3Area()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         .x((d: any) => this.x(d.x))
         .y0(this.state._height)
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         .y1((d: any) => this.y(d.y))
         .curve(d3curveLinear);
       this.area = area;
 
       const line = d3Line()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         .x((d: any) => this.x(d.x))
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         .y((d: any) => this.y(d.y))
         .curve(d3curveLinear);
       this.line = line;
 
       const points = this.props.data!.lineChartData![0].data;
 
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
 
       this.x = d3ScaleLinear()
         .domain([xMin, xMax])
         .range([this.margin.left!, this.state._width - this.margin.right!]);
       this.y = d3ScaleLinear()
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         .domain([0, d3Max(points, (d: any) => d.y)])
         .range([this.state._height - this.margin.bottom!, this.margin.top!]);
 

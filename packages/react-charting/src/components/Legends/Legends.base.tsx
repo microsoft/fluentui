@@ -374,6 +374,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
         data-is-focusable={allowFocusOnLegends}
+        /* eslint-enable react/jsx-no-bind */
       >
         {shape}
         <div className={classNames.text}>{legend.title}</div>

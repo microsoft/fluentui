@@ -10,8 +10,8 @@ export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}
     const { color, Legend, XValue, YValue, styles, theme, ratio, descriptionMessage, culture } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      color,
-      XValue,
+      color: color,
+      XValue: XValue,
       isRatioPresent: !!ratio,
     });
     return (

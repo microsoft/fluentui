@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
+import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import {
   scaleLinear as d3ScaleLinear,
@@ -27,7 +28,6 @@ import {
   IVSChartDataPoint,
   ILineDataInVerticalStackedBarChart,
   IModifiedCartesianChartProps,
-  IGraphData,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -52,6 +52,7 @@ import {
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
+type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
 const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
 
@@ -232,6 +233,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
           /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
             return (
               <>
@@ -355,6 +357,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _createLines = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
     yScale: NumericScale,
     containerHeight: number,
@@ -480,6 +483,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
     const { theme } = this.props;
     const { palette } = theme!;
+    // eslint-disable-next-line deprecation/deprecation
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
@@ -776,6 +780,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   private _createBar = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xBarScale: any,
     yBarScale: NumericScale,
     containerHeight: number,
@@ -1003,10 +1008,16 @@ export class VerticalStackedBarChartBase extends React.Component<
     return { xBarScale, yBarScale };
   };
 
-  private _getGraphData = (graphData: IGraphData) => {
-    const { containerHeight, containerWidth, xAxisElement } = graphData;
+  private _getGraphData = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
+    yScale: NumericAxis,
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement | null,
+  ) => {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
-    return (this._bars = this._createBar(xBarScale, yBarScale, containerHeight, xAxisElement!));
+    return (this._bars = this._createBar(xBarScale, yBarScale, containerHeight, xElement!));
   };
 
   private _closeCallout = () => {

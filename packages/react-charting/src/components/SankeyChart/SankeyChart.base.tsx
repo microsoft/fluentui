@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
@@ -61,6 +60,7 @@ export interface ISankeyChartState extends IBasestate, IChartHoverCardProps {
   selectedLinks: Set<Number>;
   selectedNodes: Set<Number>;
   selectedNode?: SNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected?: any;
   selectedLink?: SLink;
   shouldOverflow: boolean;
@@ -89,6 +89,7 @@ const NON_SELECTED_STREAM_BORDER_OPACITY: number = 0.5;
 const DEFAULT_TEXT_COLOR: string = '#323130';
 const NON_SELECTED_TEXT_COLOR: string = '#FFFFFF';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
   const nodes: SNode[] = [];
   selectedLinks.forEach(link => {
@@ -102,7 +103,8 @@ function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
 }
 
 function getSelectedLinks(singleNode: SNode): Set<SLink> {
-  const q: any = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
 
   singleNode.sourceLinks!.forEach((link: SLink) => {
@@ -146,7 +148,8 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
   selectedLinks: Set<SLink>;
   selectedNodes: Set<SNode>;
 } {
-  const q: any = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
+  const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
   const finalNodes: Set<SNode> = new Set<SNode>();
 
@@ -543,6 +546,7 @@ const linkArea = d3Area<AreaDataPoint>()
   .y1((p: AreaDataPoint) => p.y1)
   .curve(d3CurveBasis);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TooltipDiv = D3Selection<BaseType, unknown, HTMLElement, any>;
 
 function nodeTextColor(state: Readonly<ISankeyChartState>, singleNode: SNode): string {
@@ -962,6 +966,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           this._onStreamLeave(singleLink);
         };
         const { reactId, from, aria } = linkValue(linkAttributes, singleLink);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const dataPoints: Array<any> = linkToDataPoints(singleLink as unknown as SankeyLinkWithPositions);
         const key = `${linkId}-${index}`;
         const gradientId = `gradient-${key}`;
@@ -1260,6 +1265,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _showTooltip(text: string, checkTrcuncated: boolean, div: any, evt: any) {
     if (checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
@@ -1271,6 +1277,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _hideTooltip(div: any) {
     div.style('opacity', 0);
   }
