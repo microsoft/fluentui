@@ -8,7 +8,6 @@ import type { NavDrawerBodyState } from './NavDrawerBody.types';
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding(0, tokens.spacingVerticalMNudge),
-    backgroundColor: 'red',
   },
 
   // TODO add additional classes for different states and/or slots

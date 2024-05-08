@@ -3,6 +3,7 @@ import {
   NavCategory,
   NavCategoryItem,
   NavDrawer,
+  NavDrawerBody,
   NavDrawerProps,
   NavItem,
   NavSubItem,
@@ -95,9 +96,6 @@ const useStyles = makeStyles({
     paddingInlineStart: '0px',
     paddingBlockStart: '0px',
   },
-  drawerBodyOverrides: {
-    ...shorthands.padding(0, tokens.spacingVerticalMNudge),
-  },
   hamburger: {
     backgroundColor: navItemTokens.backgroundColor,
     color: tokens.colorNeutralForeground2,
@@ -155,7 +153,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
           </DrawerHeaderNavigation>
         </DrawerHeader>
-        <DrawerBody className={styles.drawerBodyOverrides}>
+        <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
           <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
             Dashboard
@@ -228,7 +226,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem target="_blank" onClick={someClickHandler} icon={<Reports />} value="20">
             Reports
           </NavItem>
-        </DrawerBody>
+        </NavDrawerBody>
         <DrawerFooter className={styles.drawerFooterOverrides}>
           <NavItem value="21" target="_blank" onClick={someClickHandler} icon={<Person />}>
             Profile
