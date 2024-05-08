@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING: fix motion token values and adjust structure to match original source",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}
