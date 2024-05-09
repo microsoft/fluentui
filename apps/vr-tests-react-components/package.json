@@ -79,6 +79,6 @@
     "@fluentui/react-rating": "*",
     "@fluentui/react-search": "*",
     "@fluentui/react-teaching-popover": "*",
-    "@fluentui/react-tag-picker": ">=9.0.0-alpha"
+    "@fluentui/react-tag-picker": "*"
   }
 }

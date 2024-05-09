@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 09 May 2024 19:35:11 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2f4006afba4bdb5a9ff136a5ee8079bfd1533268",
+            "comment": "fix overflowBoundaryPadding being ingored when autoSize was on"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:02 GMT",
       "tag": "@fluentui/react-positioning_v9.14.5",
       "version": "9.14.5",
