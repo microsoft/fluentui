@@ -1,6 +1,6 @@
 import { useFluent } from '@fluentui/react-components';
 
-export const useCaretPosition = () => {
+export const useCaretManipulation = () => {
   const { targetDocument } = useFluent();
 
   const overrideSelection = (element: HTMLElement | null, direction: string) => {

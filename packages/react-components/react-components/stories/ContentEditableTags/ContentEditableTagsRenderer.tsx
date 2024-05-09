@@ -3,7 +3,7 @@ import { useFluent } from '@fluentui/react-components';
 import { usePositioning } from '@fluentui/react-positioning';
 import { useId, useMergedRefs, useOnClickOutside } from '@fluentui/react-utilities';
 
-import { useCaretPosition } from './utils/selection';
+import { useCaretManipulation } from './utils/useCaretManipulation';
 import { ActiveDescendantImperativeRef } from './utils/types';
 import { useActiveDescendant } from './utils/useActiveDescendant';
 
@@ -16,7 +16,7 @@ const options = people.map(person => ({
 
 export const ContentEditableTagsRenderer = () => {
   const { targetDocument } = useFluent();
-  const { overrideSelection, getCaretPosition } = useCaretPosition();
+  const { overrideSelection, getCaretPosition } = useCaretManipulation();
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string | null>(
