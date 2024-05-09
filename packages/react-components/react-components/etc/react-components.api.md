@@ -290,6 +290,7 @@ import { drawerBodyClassNames } from '@fluentui/react-drawer';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
@@ -311,6 +312,7 @@ import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { Dropdown } from '@fluentui/react-combobox';
@@ -1286,6 +1288,8 @@ import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDrawer_unstable } from '@fluentui/react-drawer';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerContext_unstable } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
@@ -2147,6 +2151,8 @@ export { DrawerBodySlots }
 
 export { DrawerBodyState }
 
+export { DrawerContextValue }
+
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
@@ -2188,6 +2194,8 @@ export { DrawerHeaderTitleSlots }
 export { DrawerHeaderTitleState }
 
 export { DrawerProps }
+
+export { DrawerProvider }
 
 export { DrawerSlots }
 
@@ -4138,6 +4146,10 @@ export { useDrawer_unstable }
 export { useDrawerBody_unstable }
 
 export { useDrawerBodyStyles_unstable }
+
+export { useDrawerContext_unstable }
+
+export { useDrawerContextValue }
 
 export { useDrawerFooter_unstable }
 

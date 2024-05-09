@@ -1495,6 +1495,9 @@ export {
   renderDrawerFooter_unstable,
   useDrawerFooterStyles_unstable,
   useDrawerFooter_unstable,
+  DrawerProvider,
+  useDrawerContextValue,
+  useDrawerContext_unstable,
 } from '@fluentui/react-drawer';
 
 export type {
@@ -1510,6 +1513,7 @@ export type {
   DrawerBodyProps,
   DrawerBodySlots,
   DrawerBodyState,
+  DrawerContextValue,
   DrawerHeaderProps,
   DrawerHeaderSlots,
   DrawerHeaderState,
