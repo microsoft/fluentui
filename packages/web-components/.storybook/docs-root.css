@@ -1,3 +1,11 @@
+/*
+ * Heads Up!
+ * This file should be kept in sync with the `docs-root.css` file for the React v9 Storybook.
+ *
+ * DO NOT use design tokens in this file.
+ * This file styles the content outside of story previews where a Fluent theme is not expected to be set or change.
+ */
+
 #docs-root .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
@@ -10,7 +18,6 @@
   /* identical to box height, or 143% */
   letter-spacing: -0.04em;
   color: #000000;
-  margin-top: 49px;
 }
 
 #docs-root details {
@@ -26,11 +33,6 @@
   letter-spacing: -0.01em;
   color: #000000;
   margin-top: 24px;
-}
-
-#docs-root .sbdocs-wrapper {
-  background: white;
-  min-height: auto;
 }
 
 #docs-root .sbdocs-img.featured-image {
@@ -125,18 +127,25 @@
 
 #docs-root .sbdocs-preview {
   border-radius: 16px;
-  background: var(--colorBrandBackgroundInverted, #fff);
+  background: #fff; /* --colorBrandBackgroundInverted */
   padding: 0;
   box-shadow: none;
-  border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
+  border: 1px solid #d1d1d1; /* --colorNeutralStroke1 */
 }
 
-#docs-root .innerZoomElementWrapper {
+/* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
+#docs-root .innerZoomElementWrapper > div {
   padding: 30px;
+  box-sizing: border-box;
 }
 
+/* fix mouse interactions for toolbar on first story */
 #docs-root .sbdocs-preview > .os-host {
-  display: none;
+  /* The toolbar sits within the story content area and is position: absolute by default. */
+  /* The story content overlays the toolbar making it non-interactive */
+  /* We don't use z-index because the toolbar can still sometimes overlay story content (flyout menu) */
+  /* The best solution is to use a static toolbar that is always outside the story content and interactive */
+  position: static;
 }
 
 #docs-root span + .sbdocs .docblock-argstable tbody tr td button {
@@ -206,14 +215,6 @@
 
 #docs-root thead.docblock-argstable-head {
   border-bottom: 1px solid #edebe9;
-}
-
-#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
-  display: none;
-}
-
-#docs-root .docblock-argstable-head > tr > th:nth-child(4) {
-  display: none;
 }
 
 #docs-root .docblock-argstable tbody tr {
@@ -288,6 +289,7 @@
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
   border-radius: 2px;
+  width: fit-content; /* prevent wrapping kebab-case words when they'll fit on one line */
 }
 
 .os-content-glue {
@@ -337,45 +339,45 @@
 @font-face {
   font-family: 'Segoe UI';
   src: local('Segoe UI Light'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'Segoe UI';
   src: local('Segoe UI Semilight'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
   font-weight: 200;
 }
 
 @font-face {
   font-family: 'Segoe UI';
   src: local('Segoe UI'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Segoe UI';
   src: local('Segoe UI Semibold'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Segoe UI';
   src: local('Segoe UI Bold'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
-    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');
   font-weight: 700;
 }
 
@@ -407,4 +409,54 @@ h2.fluent {
   font-family: 'Segoe UI';
   line-height: 36px;
   letter-spacing: -0.16px;
+}
+
+/* Mimic React v9 Provider styles:
+ *   - apply font, background, and foreground colors
+ *   - apply padding for story content
+ */
+#docs-root .innerZoomElementWrapper > div > div {
+  padding: 48px 24px;
+  font-family: var(--fontFamilyBase);
+  background: var(--colorNeutralBackground2);
+  color: var(--colorNeutralForeground2);
+}
+
+/*
+ * Theme Switcher
+ */
+#switches-container {
+  position: sticky;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 12px;
+  width: 100%;
+  top: 0;
+  box-sizing: border-box; /* keep from overflowing body making x scroll bar*/
+  background: #fff;
+  box-shadow: 0 0 3px rgb(0 0 0 / 22%);
+  z-index: 10;
+}
+
+#switches-container select {
+  padding: 5px var(--spacingHorizontalM);
+  border: var(--strokeWidthThin) solid #d1d1d1 /* --colorNeutralStroke1, without theme switching */;
+  border-radius: var(--borderRadiusMedium);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+  width: 140px;
+}
+
+.custom-fullscreen #switches-container {
+  display: none;
+}
+
+.custom-fullscreen .sbdocs-wrapper {
+  padding: 20px;
+}
+
+.custom-fullscreen .sbdocs-content {
+  max-width: unset;
 }
