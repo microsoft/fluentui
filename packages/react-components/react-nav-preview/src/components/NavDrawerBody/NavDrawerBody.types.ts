@@ -1,14 +1,13 @@
-import { DrawerBodySlots, DrawerBodyState } from '@fluentui/react-drawer';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { DrawerBodyProps, DrawerBodySlots, DrawerBodyState } from '@fluentui/react-drawer';
 
-export type NavDrawerBodySlots = ComponentProps<DrawerBodySlots>;
+export type NavDrawerBodySlots = DrawerBodySlots;
 
 /**
  * NavDrawerBody Props
  */
-export type NavDrawerBodyProps = ComponentProps<DrawerBodySlots>;
+export type NavDrawerBodyProps = DrawerBodyProps;
 
 /**
  * State used in rendering NavDrawerBody
  */
-export type NavDrawerBodyState = ComponentState<Partial<DrawerBodySlots>> & DrawerBodyState;
+export type NavDrawerBodyState = DrawerBodyState;

@@ -16,8 +16,5 @@ export const useNavDrawerHeader_unstable = (
   props: NavDrawerHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): NavDrawerHeaderState => {
-  const state = useDrawerHeader_unstable(props, ref);
-  return {
-    ...state,
-  };
+  return useDrawerHeader_unstable(props, ref);
 };

@@ -1,15 +1,17 @@
-import { DrawerHeaderNavigationSlots, DrawerHeaderNavigationState } from '@fluentui/react-drawer';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import {
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from '@fluentui/react-drawer';
 
-export type NavDrawerHeaderNavSlots = ComponentProps<DrawerHeaderNavigationSlots>;
+export type NavDrawerHeaderNavSlots = DrawerHeaderNavigationSlots;
 
 /**
  * NavDrawerHeader Props
  */
-export type NavDrawerHeaderNavProps = ComponentProps<DrawerHeaderNavigationSlots>;
+export type NavDrawerHeaderNavProps = DrawerHeaderNavigationProps;
 
 /**
  * State used in rendering NavDrawerHeader
  */
-export type NavDrawerHeaderNavState = ComponentState<Partial<DrawerHeaderNavigationSlots>> &
-  DrawerHeaderNavigationState;
+export type NavDrawerHeaderNavState = DrawerHeaderNavigationState;

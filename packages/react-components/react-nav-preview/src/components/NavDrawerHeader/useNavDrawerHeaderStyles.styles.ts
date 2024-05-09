@@ -1,7 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
-import type { NavDrawerHeaderState } from './NavDrawerHeader.types';
+import type { NavDrawerHeaderSlots, NavDrawerHeaderState } from './NavDrawerHeader.types';
+
+export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots> = {
+  root: 'fui-NavDrawerHeader',
+};
 
 /**
  * Styles for the root slot
@@ -21,7 +26,7 @@ const useStyles = makeStyles({
 export const useNavDrawerHeaderStyles_unstable = (state: NavDrawerHeaderState): NavDrawerHeaderState => {
   useDrawerHeaderStyles_unstable(state);
   const styles = useStyles();
-  state.root.className = mergeClasses(styles.root, state.root.className);
+  state.root.className = mergeClasses(navDrawerHeaderClassNames.root, styles.root, state.root.className);
 
   return state;
 };

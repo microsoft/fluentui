@@ -15,8 +15,5 @@ export const useNavDrawerFooter_unstable = (
   props: NavDrawerFooterProps,
   ref: React.Ref<HTMLElement>,
 ): NavDrawerFooterState => {
-  const state = useDrawerFooter_unstable(props, ref);
-  return {
-    ...state,
-  };
+  return useDrawerFooter_unstable(props, ref);
 };
