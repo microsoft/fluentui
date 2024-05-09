@@ -7,7 +7,7 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-components';
 import { Tag, Avatar, tokens, shorthands, makeStyles, Field } from '@fluentui/react-components';
 
 const options = [

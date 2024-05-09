@@ -7,7 +7,7 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-components';
 import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 const options = [
@@ -21,8 +21,8 @@ const options = [
   'Maria Rossi',
 ];
 
-const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
+export const Disabled = () => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>(options.slice(0, 4));
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
@@ -30,11 +30,12 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
-      <TagPicker size={size} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker disabled onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
               <Tag
+                disabled
                 key={option}
                 shape="rounded"
                 media={<Avatar aria-hidden name={option} color="colorful" />}
@@ -65,27 +66,14 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
   );
 };
 
-export const Size = () => (
-  <>
-    <div>
-      <h4>Extra Large</h4>
-      <Example size="extra-large" />
-    </div>
-    <div>
-      <h4>Large</h4>
-      <Example size="large" />
-    </div>
-    <div>
-      <h4>Medium</h4>
-      <Example size="medium" />
-    </div>
-  </>
-);
-
-Size.parameters = {
+Disabled.parameters = {
   docs: {
     description: {
-      story: `A \`TagPicker\`'s size can be set to \`medium\` (default), \`large\` or \`extra-large\`.`,
+      story: `
+A \`TagPicker\` can be \`disabled\`. Disabling \`TagPicker\` will disable the access to the \`TagPickerList\`, but it'll still allow modifications to the \`selectedOptions\`.
+
+> The \`Tag\` component can also be disabled, in the case where that given tag should not be reachable
+      `,
     },
   },
 };

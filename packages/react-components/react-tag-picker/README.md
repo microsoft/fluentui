@@ -1,4 +1,4 @@
-# @fluentui/react-tag-picker-preview
+# @fluentui/react-tag-picker
 
 **React TagPicker components for [Fluent UI React](https://react.fluentui.dev)**
 
@@ -14,7 +14,7 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-tag-picker';
 import { Tag, Avatar } from '@fluentui/react-components';
 
 const options = [
