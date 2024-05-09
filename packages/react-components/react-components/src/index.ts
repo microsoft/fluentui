@@ -1425,6 +1425,8 @@ export {
   useMessageBarGroup_unstable,
   renderMessageBarGroup_unstable,
   messageBarGroupClassNames,
+  useMessageBarContextValue_unstable,
+  useMessageBarActionsContextValue_unstable,
 } from '@fluentui/react-message-bar';
 export type {
   MessageBarProps,

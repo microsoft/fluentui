@@ -1388,10 +1388,12 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMessageBar_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
@@ -4347,6 +4349,8 @@ export { useMessageBar_unstable }
 
 export { useMessageBarActions_unstable }
 
+export { useMessageBarActionsContextValue_unstable }
+
 export { useMessageBarActionsStyles_unstable }
 
 export { useMessageBarBody_unstable }
@@ -4354,6 +4358,8 @@ export { useMessageBarBody_unstable }
 export { useMessageBarBodyStyles_unstable }
 
 export { useMessageBarContext }
+
+export { useMessageBarContextValue_unstable }
 
 export { useMessageBarGroup_unstable }
 
