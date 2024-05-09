@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add missing context exports.",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
