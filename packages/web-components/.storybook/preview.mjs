@@ -2,7 +2,7 @@ import * as Fluent from '../src/index-rollup.js';
 import webcomponentsTheme from './theme.mjs';
 import { switchTheme } from '../public/theme-switch.js';
 import '../../../.storybook/docs-root.css';
-import './docs-root-web-compoents.css';
+import './docs-root-web-components.css';
 
 Fluent;
 
