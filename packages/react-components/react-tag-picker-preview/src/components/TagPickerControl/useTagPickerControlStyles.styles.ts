@@ -22,12 +22,8 @@ export const tagPickerControlAsideWidthToken = '--fui-TagPickerControl-aside-wid
 const useStyles = makeStyles({
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.padding(
-      0,
-      tokens.spacingHorizontalM,
-      0,
-      `calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`,
-    ),
+    paddingRight: `calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`,
+    paddingLeft: tokens.spacingHorizontalM,
     alignItems: 'center',
     columnGap: tokens.spacingHorizontalXXS,
     boxSizing: 'border-box',
