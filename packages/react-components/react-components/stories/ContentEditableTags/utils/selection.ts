@@ -28,15 +28,21 @@ export const useCaretPosition = () => {
       const endContainer = range.endContainer;
       const endOffset = range.endOffset;
       const endParent = endContainer.parentNode as HTMLElement;
-      // const prevSibling = endParent.previousSibling;
       const endContainerRange = range.cloneRange();
       endContainerRange.selectNodeContents(endContainer);
-      const nextSibling = endContainer.nextSibling;
-      if (nextSibling && endParent?.classList.contains('pickerInput') && endOffset === endContainerRange.endOffset) {
-        // alert(endOffset);
+      const nextSibling = endContainer.nextSibling as HTMLElement;
+      const isEndRightBeforeItem =
+        nextSibling && endParent?.classList.contains('pickerInput') && endOffset === endContainerRange.endOffset;
+      if (isEndRightBeforeItem) {
         const nextSiblingRange = range.cloneRange();
         nextSiblingRange.selectNodeContents(nextSibling);
         range.setEnd(nextSiblingRange.endContainer, nextSiblingRange.endOffset);
+        return true;
+      }
+      endContainerRange.selectNodeContents(endContainer);
+      const isEndInsideItem = endParent?.classList.contains('pickedItem') && endOffset < endContainerRange.endOffset;
+      if (isEndInsideItem) {
+        range.selectNodeContents(endContainer);
         return true;
       }
     }
