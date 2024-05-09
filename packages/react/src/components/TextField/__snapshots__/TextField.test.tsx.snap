@@ -75,6 +75,7 @@ exports[`TextField snapshots renders correctly 1`] = `
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -261,6 +262,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -512,6 +514,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -747,6 +750,7 @@ exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
               min-height: 60px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -920,6 +924,7 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
               min-height: 60px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -1091,6 +1096,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               margin-right: 0px;
               margin-top: 0px;
               min-height: 60px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -1232,6 +1238,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -1514,6 +1521,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              overflow: hidden;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
