@@ -3,6 +3,7 @@ import { useFluent } from '@fluentui/react-components';
 import { usePositioning } from '@fluentui/react-positioning';
 import { useId, useMergedRefs, useOnClickOutside } from '@fluentui/react-utilities';
 
+import { isKeyCharacter } from './utils/utils';
 import { useCaretManipulation } from './utils/useCaretManipulation';
 import { ActiveDescendantImperativeRef } from './utils/types';
 import { useActiveDescendant } from './utils/useActiveDescendant';
@@ -16,7 +17,7 @@ const options = people.map(person => ({
 
 export const ContentEditableTagsRenderer = () => {
   const { targetDocument } = useFluent();
-  const { overrideLeftArrow, overrideRightArrow, getCaretPosition } = useCaretManipulation();
+  const { overrideLeftArrow, overrideRightArrow, moveCaretFromItem, getCaretPosition } = useCaretManipulation();
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string | null>(
@@ -105,17 +106,21 @@ export const ContentEditableTagsRenderer = () => {
           activeDescendantImperativeRef.current?.prev();
           preventDefault = true;
           break;
+        case 'Tab':
+          selectActive();
+          setOpen(false);
+          break;
         case 'ArrowLeft':
           preventDefault = overrideLeftArrow(inputRef.current);
           break;
         case 'ArrowRight':
           preventDefault = overrideRightArrow(inputRef.current);
           break;
-        case 'Tab':
-          selectActive();
-          setOpen(false);
-          break;
         default:
+          if (isKeyCharacter(event)) {
+            preventDefault = moveCaretFromItem(inputRef.current, event.key);
+          }
+          // alert(preventDefault);
           break;
       }
 
@@ -123,7 +128,7 @@ export const ContentEditableTagsRenderer = () => {
         event.preventDefault();
       }
     },
-    [selectActive, setOpen, overrideLeftArrow, overrideRightArrow, inputRef],
+    [selectActive, setOpen, overrideLeftArrow, overrideRightArrow, moveCaretFromItem, inputRef],
   );
 
   React.useEffect(() => {
