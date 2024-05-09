@@ -86,7 +86,8 @@
     "@fluentui/react-aria": "^9.11.1",
     "@fluentui/react-rating": "^9.0.6",
     "@fluentui/react-search": "^9.0.3",
-    "@fluentui/react-teaching-popover": "^9.1.2"
+    "@fluentui/react-teaching-popover": "^9.1.2",
+    "@fluentui/react-tag-picker": "9.0.0-alpha.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",

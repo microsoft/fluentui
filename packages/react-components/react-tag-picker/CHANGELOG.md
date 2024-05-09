@@ -6,7 +6,7 @@ This log was last generated on Mon, 06 May 2024 12:55:01 GMT and should not be m
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.5.0)
 
-Mon, 06 May 2024 12:55:01 GMT 
+Mon, 06 May 2024 12:55:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.4.0..@fluentui/react-tag-picker-preview_v0.5.0)
 
 ### Minor changes
@@ -31,7 +31,7 @@ Mon, 06 May 2024 12:55:01 GMT
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.4.0)
 
-Thu, 02 May 2024 11:36:40 GMT 
+Thu, 02 May 2024 11:36:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.3.2..@fluentui/react-tag-picker-preview_v0.4.0)
 
 ### Minor changes
@@ -48,14 +48,14 @@ Thu, 02 May 2024 11:36:40 GMT
 ### Patches
 
 - chore: removes aria-checked from TagPickerOption ([PR #31172](https://github.com/microsoft/fluentui/pull/31172) by bernardo.sunderhus@gmail.com)
--  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
 - chore: removes multiselect from TagPicker signatures ([PR #31173](https://github.com/microsoft/fluentui/pull/31173) by bernardo.sunderhus@gmail.com)
 - chore: make expandIcon aria-hidden by default ([PR #31229](https://github.com/microsoft/fluentui/pull/31229) by bernardo.sunderhus@gmail.com)
 - chore: ensures cursor looks like a text on whole control ([PR #31152](https://github.com/microsoft/fluentui/pull/31152) by bernardo.sunderhus@gmail.com)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.3.2)
 
-Tue, 23 Apr 2024 08:17:49 GMT 
+Tue, 23 Apr 2024 08:17:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.3.1..@fluentui/react-tag-picker-preview_v0.3.2)
 
 ### Patches
@@ -74,7 +74,7 @@ Tue, 23 Apr 2024 08:17:49 GMT
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.3.1)
 
-Thu, 18 Apr 2024 12:43:14 GMT 
+Thu, 18 Apr 2024 12:43:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.3.0..@fluentui/react-tag-picker-preview_v0.3.1)
 
 ### Patches
@@ -83,7 +83,7 @@ Thu, 18 Apr 2024 12:43:14 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.3.0)
 
-Wed, 17 Apr 2024 21:54:00 GMT 
+Wed, 17 Apr 2024 21:54:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.2.0..@fluentui/react-tag-picker-preview_v0.3.0)
 
 ### Minor changes
@@ -110,7 +110,7 @@ Wed, 17 Apr 2024 21:54:00 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.2.0)
 
-Thu, 04 Apr 2024 12:08:08 GMT 
+Thu, 04 Apr 2024 12:08:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.1.1..@fluentui/react-tag-picker-preview_v0.2.0)
 
 ### Minor changes
@@ -124,7 +124,7 @@ Thu, 04 Apr 2024 12:08:08 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker-preview_v0.1.1)
 
-Tue, 02 Apr 2024 09:48:01 GMT 
+Tue, 02 Apr 2024 09:48:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker-preview_v0.1.0..@fluentui/react-tag-picker-preview_v0.1.1)
 
 ### Patches
