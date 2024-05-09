@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "'feat: Initial preview publication",
+  "comment": "feat: release preview package",
   "packageName": "@fluentui/react-nav-preview",
   "email": "17346018+mltejera@users.noreply.github.com",
   "dependentChangeType": "patch"
