@@ -11,7 +11,7 @@
 
 ### Don't
 
-- Avoid using rounded corners in a grid layout for the SwatchPicker, as it may cause the Hermann grid illusion.
+- Avoid using rounded corners in a grid layout for the SwatchPicker, as it may cause the [Hermann grid illusion](https://en.wikipedia.org/wiki/Grid_illusion).
 - When using `extra small` or smaller swatches spacing should be not less than 4px.
 
 ### Accessibility
