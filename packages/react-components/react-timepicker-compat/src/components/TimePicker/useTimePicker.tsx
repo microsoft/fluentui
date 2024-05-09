@@ -83,8 +83,13 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     return selectedOption ? [selectedOption.key] : [];
   }, [options, selectedTime]);
 
+  const clearIconRef = React.useRef<HTMLSpanElement>(null);
   const handleOptionSelect: ComboboxProps['onOptionSelect'] = useEventCallback((e, data) => {
-    if (freeform && data.optionValue === undefined) {
+    if (
+      freeform &&
+      data.optionValue === undefined &&
+      !(rest.clearable && e.type === 'click' && e.currentTarget === clearIconRef.current)
+    ) {
       // Combobox clears selection when input value not matching any option; but we allow this case in freeform TimePicker.
       return;
     }
@@ -119,6 +124,12 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 
   const state: TimePickerState = {
     ...baseState,
+    clearIcon: baseState.clearIcon
+      ? {
+          ...baseState.clearIcon,
+          ref: useMergedRefs(baseState.clearIcon.ref, clearIconRef),
+        }
+      : undefined,
     freeform,
     parseTimeStringToDate: parseTimeStringToDateInProps ?? defaultParseTimeStringToDate,
     submittedText,
