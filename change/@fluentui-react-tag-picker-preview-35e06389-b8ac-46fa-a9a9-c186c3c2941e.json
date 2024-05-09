@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: follow up on #31165",
+  "comment": "fix: move focus on backspace press; fix space key closing dropdown",
   "packageName": "@fluentui/react-tag-picker-preview",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
