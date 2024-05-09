@@ -9,7 +9,7 @@ import {
   useEventCallback,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
-import { ArrowLeft, Backspace, Enter } from '@fluentui/keyboard-keys';
+import { ArrowLeft, Backspace, Enter, Space } from '@fluentui/keyboard-keys';
 import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
@@ -67,6 +67,8 @@ export const useTagPickerInput_unstable = (
   const { value = contextValue, disabled = contextDisabled } = props;
   const { findLastFocusable } = useFocusFinders();
 
+  const isTypingRef = React.useRef(false);
+
   const root = useInputTriggerSlot(
     {
       type: 'text',
@@ -82,9 +84,11 @@ export const useTagPickerInput_unstable = (
           tagPickerGroupRef.current
         ) {
           findLastFocusable(tagPickerGroupRef.current)?.focus();
-          return;
-        }
-        if (event.key === Enter) {
+        } else if (event.key === Space) {
+          if (open && !isTypingRef.current) {
+            setOpen(event, false);
+          }
+        } else if (event.key === Enter) {
           if (open) {
             ReactDOM.unstable_batchedUpdates(() => {
               setValue(undefined);
@@ -93,8 +97,9 @@ export const useTagPickerInput_unstable = (
           } else {
             setOpen(event, true);
           }
-          return;
         }
+        isTypingRef.current =
+          event.key.length === 1 && event.code !== Space && !event.altKey && !event.ctrlKey && !event.metaKey;
       }),
     },
     useMergedRefs(triggerRef, ref),
