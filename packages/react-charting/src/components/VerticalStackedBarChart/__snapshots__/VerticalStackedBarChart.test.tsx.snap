@@ -16,12 +16,12 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         overflow: hidden;
         width: 100%;
       }
-  id="chart_58"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_59"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -32,7 +32,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone60"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -73,7 +73,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_58"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -101,7 +101,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_58"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -154,7 +154,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone61"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -217,6 +217,20 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -307,6 +321,20 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -581,6 +609,20 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -671,6 +713,20 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -740,12 +796,12 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         overflow: hidden;
         width: 100%;
       }
-  id="chart_23"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_24"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -756,7 +812,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -797,7 +853,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             & path {
               display: none;
             }
-        id="xAxisGElementchart_23"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -825,7 +881,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_23"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -861,7 +917,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -924,6 +980,20 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    outline-color: #605e5c;
+                  }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
               data-is-focusable={true}
@@ -1016,6 +1086,20 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     outline-color: #605e5c;
                   }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    outline-color: #605e5c;
+                  }
               data-is-focusable={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -1082,12 +1166,12 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         overflow: hidden;
         width: 100%;
       }
-  id="chart_10"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_11"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1098,7 +1182,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1139,7 +1223,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_10"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -1167,7 +1251,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_10"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -1193,12 +1277,12 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_17"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1209,7 +1293,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone18"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1250,7 +1334,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -1278,7 +1362,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -1331,7 +1415,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone19"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1394,6 +1478,20 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1484,6 +1582,20 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1555,12 +1667,12 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         overflow: hidden;
         width: 100%;
       }
-  id="chart_44"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_45"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1571,7 +1683,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone46"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1612,7 +1724,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
             & path {
               display: none;
             }
-        id="xAxisGElementchart_44"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -1640,7 +1752,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_44"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -1693,7 +1805,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone47"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1756,6 +1868,20 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1846,6 +1972,20 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1917,12 +2057,12 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         overflow: hidden;
         width: 100%;
       }
-  id="chart_30"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_31"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1933,7 +2073,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1974,7 +2114,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
             & path {
               display: none;
             }
-        id="xAxisGElementchart_30"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -2002,7 +2142,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_30"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -2055,7 +2195,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2118,6 +2258,20 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2208,6 +2362,20 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2279,12 +2447,12 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_37"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_38"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -2295,7 +2463,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2336,7 +2504,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_37"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -2364,7 +2532,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_37"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -2417,7 +2585,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone40"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2480,6 +2648,20 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2570,6 +2752,20 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2641,12 +2837,12 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_51"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_52"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -2657,7 +2853,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone53"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2698,7 +2894,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_51"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -2726,7 +2922,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_51"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g />
@@ -2779,7 +2975,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2842,6 +3038,20 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2932,6 +3142,20 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}

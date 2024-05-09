@@ -26,14 +26,20 @@ const tagAvatarShapeMap = {
  * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
-  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+  const {
+    handleTagDismiss,
+    size: contextSize,
+    appearance: contextAppearance,
+    dismissible: contextDismissible,
+    role: tagGroupRole,
+  } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
 
   const {
-    appearance = 'filled',
+    appearance = contextAppearance ?? 'filled',
     disabled = false,
-    dismissible = false,
+    dismissible = contextDismissible ?? false,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -76,6 +82,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     root: slot.always(
       getIntrinsicElementProps(elementType, {
         ref,
+        role: tagGroupRole === 'listbox' ? 'option' : undefined,
         ...props,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),

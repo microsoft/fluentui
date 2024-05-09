@@ -1,8 +1,88 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Tue, 20 Feb 2024 14:22:30 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.17)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.16..@fluentui/react-text_v9.4.17)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.16)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.15..@fluentui/react-text_v9.4.16)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.4.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.15)
+
+Tue, 02 Apr 2024 09:48:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.14..@fluentui/react-text_v9.4.15)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.16.0 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.35 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+
+## [9.4.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.14)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.13..@fluentui/react-text_v9.4.14)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.34 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.4.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.13)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.12..@fluentui/react-text_v9.4.13)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.33 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.12)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.11..@fluentui/react-text_v9.4.12)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.32 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.11)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.10..@fluentui/react-text_v9.4.11)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
 
 ## [9.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.10)
 

@@ -66,14 +66,15 @@ describe(`sabdbox-scaffold`, () => {
                   export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
                 ",
           "src/index.tsx": "import * as React from 'react';
-        import * as ReactDOM from 'react-dom';
+        import { createRoot } from 'react-dom/client';
         import App from './App';
 
-        ReactDOM.render(
+        const root = createRoot(document.getElementById('root') as HTMLElement);
+
+        root.render(
           <React.StrictMode>
             <App />
           </React.StrictMode>,
-          document.getElementById('root') as HTMLElement
         );",
           "tsconfig.json": "{
           \\"include\\": [
@@ -180,14 +181,15 @@ describe(`sabdbox-scaffold`, () => {
                   export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
                 ",
           "src/index.tsx": "import * as React from 'react';
-        import * as ReactDOM from 'react-dom';
+        import { createRoot } from 'react-dom/client';
         import App from './App';
 
-        ReactDOM.render(
+        const root = createRoot(document.getElementById('root') as HTMLElement);
+
+        root.render(
           <React.StrictMode>
             <App />
           </React.StrictMode>,
-          document.getElementById('root') as HTMLElement
         );",
           "tsconfig.json": "{
           \\"include\\": [
@@ -260,14 +262,15 @@ describe(`sabdbox-scaffold`, () => {
                   export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
                 ",
           "src/index.tsx": "import * as React from 'react';
-        import * as ReactDOM from 'react-dom';
+        import { createRoot } from 'react-dom/client';
         import App from './App';
 
-        ReactDOM.render(
+        const root = createRoot(document.getElementById('root') as HTMLElement);
+
+        root.render(
           <React.StrictMode>
             <App />
           </React.StrictMode>,
-          document.getElementById('root') as HTMLElement
         );",
           "tsconfig.json": "{
           \\"include\\": [
@@ -365,7 +368,6 @@ describe(`sabdbox-scaffold`, () => {
           \\"scripts\\": {
             \\"dev\\": \\"vite\\",
             \\"build\\": \\"tsc && vite build\\",
-            \\"lint\\": \\"eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0\\",
             \\"preview\\": \\"vite preview\\"
           },
           \\"dependencies\\": {},
@@ -373,8 +375,8 @@ describe(`sabdbox-scaffold`, () => {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
             \\"typescript\\": \\"~4.7.0\\",
-            \\"@vitejs/plugin-react\\": \\"^4.1.0\\",
-            \\"vite\\": \\"^4.0.0\\"
+            \\"@vitejs/plugin-react\\": \\"^4.2.0\\",
+            \\"vite\\": \\"^5.0.0\\"
           }
         }",
           "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
@@ -396,14 +398,15 @@ describe(`sabdbox-scaffold`, () => {
                   export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
                 ",
           "src/index.tsx": "import * as React from 'react';
-        import * as ReactDOM from 'react-dom';
+        import { createRoot } from 'react-dom/client';
         import App from './App';
 
-        ReactDOM.render(
+        const root = createRoot(document.getElementById('root') as HTMLElement);
+
+        root.render(
           <React.StrictMode>
             <App />
           </React.StrictMode>,
-          document.getElementById('root') as HTMLElement
         );",
           "tsconfig.json": "{
           \\"compilerOptions\\": {
@@ -490,7 +493,6 @@ describe(`sabdbox-scaffold`, () => {
           \\"scripts\\": {
             \\"dev\\": \\"vite\\",
             \\"build\\": \\"tsc && vite build\\",
-            \\"lint\\": \\"eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0\\",
             \\"preview\\": \\"vite preview\\"
           },
           \\"dependencies\\": {},
@@ -498,8 +500,8 @@ describe(`sabdbox-scaffold`, () => {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
             \\"typescript\\": \\"~4.7.0\\",
-            \\"@vitejs/plugin-react\\": \\"^4.1.0\\",
-            \\"vite\\": \\"^4.0.0\\"
+            \\"@vitejs/plugin-react\\": \\"^4.2.0\\",
+            \\"vite\\": \\"^5.0.0\\"
           }
         }",
           "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
@@ -521,14 +523,15 @@ describe(`sabdbox-scaffold`, () => {
                   export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
                 ",
           "src/index.tsx": "import * as React from 'react';
-        import * as ReactDOM from 'react-dom';
+        import { createRoot } from 'react-dom/client';
         import App from './App';
 
-        ReactDOM.render(
+        const root = createRoot(document.getElementById('root') as HTMLElement);
+
+        root.render(
           <React.StrictMode>
             <App />
           </React.StrictMode>,
-          document.getElementById('root') as HTMLElement
         );",
           "tsconfig.json": "{
           \\"compilerOptions\\": {

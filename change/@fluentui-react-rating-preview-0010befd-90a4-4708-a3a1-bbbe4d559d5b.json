@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add focus border styling to Rating",
-  "packageName": "@fluentui/react-rating-preview",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

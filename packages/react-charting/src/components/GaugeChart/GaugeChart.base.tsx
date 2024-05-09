@@ -10,9 +10,9 @@ import {
   GaugeChartVariant,
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   Points,
-  convertToLocaleString,
   formatValueWithSIPrefix,
   getAccessibleDataObject,
   getColorFromToken,
@@ -254,6 +254,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     onBlur={this._handleBlur}
                     onMouseEnter={e => this._handleMouseOver(e, segment.legend)}
                     onMouseMove={e => this._handleMouseOver(e, segment.legend)}
+                    data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
                   />
                 );
               })}

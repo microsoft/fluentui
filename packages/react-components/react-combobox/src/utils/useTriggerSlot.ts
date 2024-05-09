@@ -106,6 +106,10 @@ function useTriggerKeydown(
     activeDescendantController.first();
   };
 
+  const last = () => {
+    activeDescendantController.last();
+  };
+
   const next = (activeOption: OptionValue | undefined) => {
     if (activeOption) {
       activeDescendantController.next();
@@ -141,6 +145,7 @@ function useTriggerKeydown(
 
     switch (action) {
       case 'First':
+      case 'Last':
       case 'Next':
       case 'Previous':
       case 'PageDown':
@@ -158,6 +163,9 @@ function useTriggerKeydown(
     switch (action) {
       case 'First':
         first();
+        break;
+      case 'Last':
+        last();
         break;
       case 'Next':
         next(activeOption);

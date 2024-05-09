@@ -2,14 +2,18 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { ListState, ListSlots } from './List.types';
+import type { ListState, ListSlots, ListContextValues } from './List.types';
+import { ListContextProvider } from './listContext';
 
 /**
  * Render the final JSX of List
  */
-export const renderList_unstable = (state: ListState) => {
+export const renderList_unstable = (state: ListState, contextValues: ListContextValues) => {
   assertSlots<ListSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <ListContextProvider value={contextValues.listContext}>
+      <state.root />
+    </ListContextProvider>
+  );
 };

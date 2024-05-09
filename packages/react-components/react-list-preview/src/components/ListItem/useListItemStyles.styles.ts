@@ -1,33 +1,69 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
-  // TODO: add class names for all slots on ListItemSlots.
-  // Should be of the form `<slotName>: 'fui-ListItem__<slotName>`
+  checkmark: 'fui-ListItem__checkmark',
 };
 
+const useRootBaseStyles = makeResetStyles({
+  padding: 0,
+  margin: 0,
+  textIndent: 0,
+  listStyleType: 'none',
+  ...createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    },
+    { selector: 'focus' },
+  ),
+});
+
+const useCheckmarkBaseStyles = makeStyles({
+  root: {
+    alignSelf: 'center',
+    //eslint-disable-next-line
+    '& .fui-Checkbox__indicator': {
+      ...shorthands.margin('4px'),
+    },
+  },
+});
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  rootClickableOrSelectable: {
+    display: 'flex',
+    cursor: 'pointer',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
  * Apply styling to the ListItem slots based on the state
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
+  const rootBaseStyles = useRootBaseStyles();
+  const checkmarkBaseStyles = useCheckmarkBaseStyles();
   const styles = useStyles();
-  state.root.className = mergeClasses(listItemClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(
+    listItemClassNames.root,
+    rootBaseStyles,
+    (state.selectable || state.navigable) && styles.rootClickableOrSelectable,
+    state.root.className,
+  );
+
+  if (state.checkmark) {
+    state.checkmark.className = mergeClasses(
+      listItemClassNames.checkmark,
+      checkmarkBaseStyles.root,
+      state.checkmark.className,
+    );
+  }
 
   return state;
 };

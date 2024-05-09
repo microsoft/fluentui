@@ -11,7 +11,9 @@ import {
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
+import * as vbcUtils from './vbc-utils';
 const { Timezone } = require('../../scripts/constants');
+const env = require('../../config/tests');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -201,7 +203,7 @@ describe('createNumericXAxis', () => {
   });
 });
 
-conditionalDescribe(isTimezoneSet(Timezone.UTC))('createDateXAxis', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),
@@ -1330,4 +1332,24 @@ test('formatValueWithSIPrefix should format a numeric value with appropriate SI 
   expect(utils.formatValueWithSIPrefix(983)).toBe('983');
   expect(utils.formatValueWithSIPrefix(9801)).toBe('9.8k');
   expect(utils.formatValueWithSIPrefix(100990000)).toBe('101.0M');
+});
+
+describe('getClosestPairDiffAndRange', () => {
+  it('should return undefined if data length is less than 2', () => {
+    const data: number[] = [1];
+    const result = vbcUtils.getClosestPairDiffAndRange(data);
+    expect(result).toBeUndefined();
+  });
+
+  it('should return the minimum difference and range for number data', () => {
+    const data: number[] = [1, 5, 3, 9, 2];
+    const result = vbcUtils.getClosestPairDiffAndRange(data);
+    expect(result).toEqual([1, 8]);
+  });
+
+  it('should return the minimum difference and range for date data', () => {
+    const data: Date[] = [new Date('2022-01-01'), new Date('2022-01-05'), new Date('2022-01-03')];
+    const result = vbcUtils.getClosestPairDiffAndRange(data);
+    expect(result).toEqual([2 * 24 * 60 * 60 * 1000, 4 * 24 * 60 * 60 * 1000]);
+  });
 });

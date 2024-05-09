@@ -65,7 +65,6 @@ export function getTsPathAliasesConfig() {
 
 export function getTsPathAliasesConfigUsedOnlyForDx() {
   const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'];
-  const tsConfigBaseFilesForDx = ['tsconfig.base.v8.json', 'tsconfig.base.all.json'];
   const cwd = process.cwd();
   const tsConfigPath = path.join(cwd, `./tsconfig.json`);
 
@@ -73,15 +72,19 @@ export function getTsPathAliasesConfigUsedOnlyForDx() {
     throw new Error(`${tsConfigPath} doesn't exist`);
   }
 
-  const tsConfig = JSON.parse(stripJsonComments(fs.readFileSync(tsConfigPath, 'utf-8')));
-  const isUsingPathAliasesForDx =
-    tsConfig.extends && tsConfigBaseFilesForDx.some(relativeFilePath => tsConfig.extends.endsWith(relativeFilePath));
-
   const tsConfigFileForCompilation = tsConfigFilesWithAliases.find(fileName => fs.existsSync(path.join(cwd, fileName)));
 
   if (!tsConfigFileForCompilation) {
     throw new Error(`no tsconfig from one of [${tsConfigFilesWithAliases}] found!`);
   }
+
+  const isUsingPathAliasesForDx = () => {
+    const tsConfigBaseFilesForDx = ['tsconfig.base.v8.json', 'tsconfig.base.all.json'];
+    const tsConfig = JSON.parse(stripJsonComments(fs.readFileSync(tsConfigPath, 'utf-8')));
+    return Boolean(
+      tsConfig.extends && tsConfigBaseFilesForDx.some(relativeFilePath => tsConfig.extends.endsWith(relativeFilePath)),
+    );
+  };
 
   return { isUsingPathAliasesForDx, tsConfigFileForCompilation };
 }

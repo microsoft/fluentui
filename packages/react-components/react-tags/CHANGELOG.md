@@ -1,8 +1,157 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Tue, 20 Feb 2024 14:22:26 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.3)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.3.2..@fluentui/react-tags_v9.3.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.11.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-avatar to v9.6.24 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.2)
+
+Thu, 02 May 2024 11:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.3.1..@fluentui/react-tags_v9.3.2)
+
+### Patches
+
+-  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-avatar to v9.6.23 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.1)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.3.0..@fluentui/react-tags_v9.3.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.10.5 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-avatar to v9.6.22 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.0)
+
+Wed, 17 Apr 2024 21:54:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.2.1..@fluentui/react-tags_v9.3.0)
+
+### Minor changes
+
+- feat: adds isInsideTagPicker exception case to TagGroupContextValue ([PR #31064](https://github.com/microsoft/fluentui/pull/31064) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.10.4 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-avatar to v9.6.21 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+
+### Patches
+
+- chore: refactor styles defined in makeResetStyles() to avoid shorthands.*() ([PR #30996](https://github.com/microsoft/fluentui/pull/30996) by olfedias@microsoft.com)
+- chore: Update react-icons to 2.0.235 ([PR #31011](https://github.com/microsoft/fluentui/pull/31011) by ololubek@microsoft.com)
+- fix: use colorBrandForeground2 for brand InteractionTag foreground color ([PR #30973](https://github.com/microsoft/fluentui/pull/30973) by yuanboxue@microsoft.com)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.2.1)
+
+Tue, 02 Apr 2024 09:48:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.2.0..@fluentui/react-tags_v9.2.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.10.3 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-avatar to v9.6.20 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.35 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.16.0 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-tabster to v9.19.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.2.0)
+
+Mon, 25 Mar 2024 11:12:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.1.3..@fluentui/react-tags_v9.2.0)
+
+### Minor changes
+
+- feat: adds appearance and dismissible to TagGroupContext ([PR #30800](https://github.com/microsoft/fluentui/pull/30800) by bernardo.sunderhus@gmail.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.1.3)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.1.2..@fluentui/react-tags_v9.1.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.10.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-avatar to v9.6.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.34 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-tabster to v9.19.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-theme to v9.1.19 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.1.2)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.1.1..@fluentui/react-tags_v9.1.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.10.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-avatar to v9.6.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.33 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-tabster to v9.19.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.1.1)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.1.0..@fluentui/react-tags_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.10.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-avatar to v9.6.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.32 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-tabster to v9.19.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.1.0)
+
+Thu, 29 Feb 2024 14:44:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.0.29..@fluentui/react-tags_v9.1.0)
+
+### Minor changes
+
+- feat: export TagGroupContextValues type ([PR #30645](https://github.com/microsoft/fluentui/pull/30645) by bernardo.sunderhus@gmail.com)
+
+## [9.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.0.29)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.0.28..@fluentui/react-tags_v9.0.29)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.9.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-avatar to v9.6.16 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-tabster to v9.19.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
 
 ## [9.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.0.28)
 

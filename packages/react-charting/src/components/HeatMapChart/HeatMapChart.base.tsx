@@ -1,11 +1,5 @@
-import {
-  IAccessibilityProps,
-  CartesianChart,
-  IChildProps,
-  IModifiedCartesianChartProps,
-  IHeatMapChartData,
-  IHeatMapChartDataPoint,
-} from '../../index';
+import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
+import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -14,14 +8,8 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import {
-  ChartTypes,
-  convertToLocaleString,
-  getAccessibleDataObject,
-  XAxisTypes,
-  YAxisType,
-  getTypeOfAxis,
-} from '../../utilities/utilities';
+import { convertToLocaleString } from '../../utilities/locale-util';
+import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
@@ -255,7 +243,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
       isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
       calloutYValue: `${data.rectText}`,
-      calloutTextColor: this._colorScale(data.value),
+      calloutTextColor: Number.isNaN(data.value)
+        ? this.props.theme!.semanticColors.bodyText
+        : this._colorScale(data.value),
       calloutLegend: data.legend,
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
@@ -273,7 +263,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         calloutYValue: `${data.rectText}`,
-        calloutTextColor: this._colorScale(data.value),
+        calloutTextColor: Number.isNaN(data.value)
+          ? this.props.theme!.semanticColors.bodyText
+          : this._colorScale(data.value),
         calloutLegend: data.legend,
         ratio: data.ratio || null,
         descriptionMessage: data.descriptionMessage || '',
@@ -306,45 +298,81 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * yAxisDataPoint is noting but the DataPoint
      * which will be rendered on the y-axis
      */
-    yAxisDataPoints.forEach((yAxisDataPoint: string, index1: number) => {
-      /**
-       * dataPointObject is an object where it contains information on single
-       * data point such as x, y , value, rectText property of the rectangle
-       */
-      this._dataSet[yAxisDataPoint].forEach((dataPointObject: FlattenData, index2: number) => {
-        const id = `x${index1}y${index2}`;
-        const rectElement: JSX.Element = (
-          <g
-            key={id}
-            role="img"
-            aria-label={this._getAriaLabel(dataPointObject)}
-            data-is-focusable={true}
-            fillOpacity={this._getOpacity(dataPointObject.legend)}
-            transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
-            ref={(gElement: SVGGElement) => {
-              this._rectRefCallback(gElement, id, dataPointObject);
-            }}
-            onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
-            onBlur={this._onRectBlurOrMouseOut}
-            onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
-            onMouseOut={this._onRectBlurOrMouseOut}
-          >
-            <rect
-              fill={this._colorScale(dataPointObject.value)}
-              width={this._xAxisScale.bandwidth()}
-              height={this._yAxisScale.bandwidth()}
-              onClick={dataPointObject.onClick}
-            />
-            <text
-              dominantBaseline={'middle'}
-              textAnchor={'middle'}
-              className={this._classNames.text}
-              transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+    yAxisDataPoints.forEach((yAxisDataPoint: string) => {
+      let index = 0;
+      this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
+        let rectElement: JSX.Element;
+        const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
+        if (this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint) {
+          /**
+           * dataPointObject is an object where it contains information on single
+           * data point such as x, y , value, rectText property of the rectangle
+           */
+          const dataPointObject = this._dataSet[yAxisDataPoint][index];
+          rectElement = (
+            <g
+              key={id}
+              role="img"
+              aria-label={this._getAriaLabel(dataPointObject)}
+              data-is-focusable={this._legendHighlighted(dataPointObject.legend) || this._noLegendHighlighted()}
+              fillOpacity={this._getOpacity(dataPointObject.legend)}
+              transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
+              ref={(gElement: SVGGElement) => {
+                this._rectRefCallback(gElement, id, dataPointObject);
+              }}
+              onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
+              onBlur={this._onRectBlurOrMouseOut}
+              onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
+              onMouseOut={this._onRectBlurOrMouseOut}
             >
-              {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
-            </text>
-          </g>
-        );
+              <rect
+                fill={this._colorScale(dataPointObject.value)}
+                width={this._xAxisScale.bandwidth()}
+                height={this._yAxisScale.bandwidth()}
+                onClick={dataPointObject.onClick}
+              />
+              <text
+                dominantBaseline={'middle'}
+                textAnchor={'middle'}
+                className={this._classNames.text}
+                transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+              >
+                {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
+              </text>
+            </g>
+          );
+          index++;
+        } else {
+          const dataPointObject: FlattenData = {
+            x: xAxisDataPoint,
+            y: yAxisDataPoint,
+            value: NaN,
+            rectText: 'No data available',
+            legend: '',
+          };
+          rectElement = (
+            <g
+              key={id}
+              role="img"
+              aria-label={this._getAriaLabel(dataPointObject)}
+              data-is-focusable={this._noLegendHighlighted()}
+              transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
+              ref={(gElement: SVGGElement) => {
+                this._rectRefCallback(gElement, id, dataPointObject);
+              }}
+              onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
+              onBlur={this._onRectBlurOrMouseOut}
+              onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
+              onMouseOut={this._onRectBlurOrMouseOut}
+            >
+              <rect
+                fill={this.props.theme!.semanticColors.bodyBackground}
+                width={this._xAxisScale.bandwidth()}
+                height={this._yAxisScale.bandwidth()}
+              />
+            </g>
+          );
+        }
         rectangles.push(rectElement);
       });
     });

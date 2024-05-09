@@ -38,6 +38,8 @@ function sharedBeforeEach() {
 }
 
 describe('Sankey bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render the Sankey chart with string node data',
     SankeyChart,
@@ -50,6 +52,8 @@ describe('Sankey bar chart rendering', () => {
 });
 
 describe('Sankey chart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -63,6 +67,8 @@ describe('Sankey chart - Theme', () => {
 });
 
 describe('Sankey chart - Subcomponent Node', () => {
+  beforeEach(sharedBeforeEach);
+
   // Replace the original method with the mock implementation
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   Object.defineProperty(
@@ -90,6 +96,8 @@ describe('Sankey chart - Subcomponent Node', () => {
 });
 
 describe('Sankey chart - Subcomponent Label', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render sankey chart with node labels',
     SankeyChart,
@@ -103,6 +111,8 @@ describe('Sankey chart - Subcomponent Label', () => {
 });
 
 describe('Sankey chart - Mouse events', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should reset path on mouse leave from path',
     SankeyChart,

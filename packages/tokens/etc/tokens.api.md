@@ -244,10 +244,17 @@ export type ColorTokens = {
     colorBrandBackground2: string;
     colorBrandBackground2Hover: string;
     colorBrandBackground2Pressed: string;
+    colorBrandBackground3Static: string;
+    colorBrandBackground4Static: string;
     colorBrandBackgroundInverted: string;
     colorBrandBackgroundInvertedHover: string;
     colorBrandBackgroundInvertedPressed: string;
     colorBrandBackgroundInvertedSelected: string;
+    colorNeutralCardBackground: string;
+    colorNeutralCardBackgroundHover: string;
+    colorNeutralCardBackgroundPressed: string;
+    colorNeutralCardBackgroundSelected: string;
+    colorNeutralCardBackgroundDisabled: string;
     colorNeutralStrokeAccessible: string;
     colorNeutralStrokeAccessibleHover: string;
     colorNeutralStrokeAccessiblePressed: string;

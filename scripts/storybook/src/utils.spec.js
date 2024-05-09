@@ -225,6 +225,21 @@ describe(`utils`, () => {
 
       expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
     });
+
+    it(`should generate storybook stories string array of glob based on package.json#dependencies field without packages specified within 'excludeStoriesInsertionFromPackages'`, () => {
+      const actual = getPackageStoriesGlob({
+        packageName: '@fluentui/react-components',
+        callerPath: path.dirname(__dirname),
+        excludeStoriesInsertionFromPackages: ['@fluentui/react-text'],
+      });
+
+      expect(actual).not.toContain(expect.stringContaining('/react-text/stories/'));
+    });
+
+    // @TODO: Once we will have at least 1 project migrated to the new structure we can enable/implement this test
+    it.todo(
+      `should generate storybook stories string array of glob based on package.json#dependencies field pointing to sibling /stories project if it exists`,
+    );
   });
 
   describe(`#processBabelLoaderOptions`, () => {

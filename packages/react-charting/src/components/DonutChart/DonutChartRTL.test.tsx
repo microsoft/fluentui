@@ -10,9 +10,13 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 describe('Donut chart interactions', () => {
   beforeEach(() => {
-    resetIds();
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -183,6 +187,7 @@ describe('Donut chart interactions', () => {
 });
 
 describe('Donut Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
   test('Should pass accessibility tests', async () => {
     const { container } = render(<DonutChart data={chartPointsDC} />);
     let axeResults;

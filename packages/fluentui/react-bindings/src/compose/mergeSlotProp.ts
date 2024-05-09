@@ -7,7 +7,7 @@ import * as React from 'react';
  * @param slotProps - Props for the slot.
  * @param mappedProp - Optional mapped prop name for the slotProp after merging.
  */
-export function mergeSlotProp<TProps>(
+export function mergeSlotProp<TProps extends {}>(
   slotProp: SlotProp<TProps>,
   slotProps: TProps,
   mappedProp: string = 'children',

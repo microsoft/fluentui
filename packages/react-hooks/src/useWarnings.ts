@@ -65,7 +65,7 @@ let warningId = 0;
  * Note that all warnings except `controlledUsage` will only be shown on first render
  * (new `controlledUsage` warnings may be shown later due to prop changes).
  */
-export function useWarnings<P>(options: IWarningOptions<P>) {
+export function useWarnings<P extends {}>(options: IWarningOptions<P>) {
   if (process.env.NODE_ENV !== 'production') {
     const {
       name,

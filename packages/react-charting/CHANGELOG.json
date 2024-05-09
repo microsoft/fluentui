@@ -2,6 +2,621 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 08 May 2024 07:25:17 GMT",
+      "tag": "@fluentui/react-charting_v5.21.7",
+      "version": "5.21.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9f76194440113ae14b260dd1b3bb75e48ba63f8a",
+            "comment": "Accessibility issue fixes: Added bench mark data and tooltip data to aria label in HorizontalBarChart and VerticalStackedBarChart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 May 2024 07:26:47 GMT",
+      "tag": "@fluentui/react-charting_v5.21.6",
+      "version": "5.21.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.151",
+            "commit": "b8a626b76b30b92480cd15449f1d9f761458544c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.2",
+            "commit": "b8a626b76b30b92480cd15449f1d9f761458544c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 07:25:44 GMT",
+      "tag": "@fluentui/react-charting_v5.21.5",
+      "version": "5.21.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1fbc1fe2e0b29bbec27e9d6670fb985da6cf5c1d",
+            "comment": "Enable focus on line points in vertical bar charts when the line legend is selected"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bd9a5d65dd0626cf3d83fc2c3195c04acc2aeb81",
+            "comment": "Make blank cells in heatmap chart accessible"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.150",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.1",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 07:27:45 GMT",
+      "tag": "@fluentui/react-charting_v5.21.4",
+      "version": "5.21.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.149",
+            "commit": "119baa34c2f8d77cf013fb4eb0dbe59d82bfb16a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.0",
+            "commit": "119baa34c2f8d77cf013fb4eb0dbe59d82bfb16a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 May 2024 07:26:39 GMT",
+      "tag": "@fluentui/react-charting_v5.21.3",
+      "version": "5.21.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.148",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.8",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Apr 2024 07:25:30 GMT",
+      "tag": "@fluentui/react-charting_v5.21.2",
+      "version": "5.21.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "lamalkar@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1af5dc3e3a8087d255f60f79f8cae2e4b13fc748",
+            "comment": "Sankey diagram bug fix - Use the formatted node value instead of the raw value, to calculate text measurement."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Apr 2024 07:25:20 GMT",
+      "tag": "@fluentui/react-charting_v5.21.1",
+      "version": "5.21.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0000d27b3c519ecd4abb232cdbb21f19da315aa6",
+            "comment": "Disable focus on non-highlighted elements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Apr 2024 07:27:48 GMT",
+      "tag": "@fluentui/react-charting_v5.21.0",
+      "version": "5.21.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lamalkar@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf",
+            "comment": "Sankey Diagram: Support number formatting"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.1",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.147",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.17",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.7",
+            "commit": "45f80cfd2d3eb5f29202040d98099c3e74563959"
+          }
+        ],
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "21ae4f9435448776fa6c79ad2a3d44630241dac6",
+            "comment": "Set axisType for single data point in case of AreaChart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "03a90793df87040d0a72b49ea00cc332f3980e11",
+            "comment": "Fix overlapping bars on continuous axes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Apr 2024 07:28:27 GMT",
+      "tag": "@fluentui/react-charting_v5.20.2",
+      "version": "5.20.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.0",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.146",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.6",
+            "commit": "187902d26b22214c8f6bec26204a26e5c16364c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Apr 2024 07:26:09 GMT",
+      "tag": "@fluentui/react-charting_v5.20.1",
+      "version": "5.20.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9550c4cd2ffbcfdc4fc0f0ed66866e5cf11bd2c9",
+            "comment": "Add data-is-focusable to root node text component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Apr 2024 07:27:08 GMT",
+      "tag": "@fluentui/react-charting_v5.20.0",
+      "version": "5.20.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d4bd6428dc2f52948e668f1f1410972b6c5cf62",
+            "comment": "Fix wrong aria label placement in SparklineChart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9f623be6d4a4551725206a78764f7b0df87df98b",
+            "comment": "Update d3 dependencies to latest ES5 versions and fix only the major version of the dependency"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 07:25:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.45",
+      "version": "5.19.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "167121109+skyfong@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0ffac2e4ef87e4c2f7b9ac7e60aae6f3efe7264",
+            "comment": "Add shape prop to ILegendsProps to pass to Overflow items"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Apr 2024 07:29:11 GMT",
+      "tag": "@fluentui/react-charting_v5.19.44",
+      "version": "5.19.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.44",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.145",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.16",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.5",
+            "commit": "89ca3a5f03955ddeef940ef537263e9882ecdb67"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Apr 2024 07:28:55 GMT",
+      "tag": "@fluentui/react-charting_v5.19.43",
+      "version": "5.19.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.144",
+            "commit": "b6e9fdefdfe32bd6e23c1ea0d854c5977b730ed8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.4",
+            "commit": "b6e9fdefdfe32bd6e23c1ea0d854c5977b730ed8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Apr 2024 07:26:50 GMT",
+      "tag": "@fluentui/react-charting_v5.19.42",
+      "version": "5.19.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.143",
+            "commit": "b86224057900c35648743a8bb80104d0c0c28f2c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.3",
+            "commit": "b86224057900c35648743a8bb80104d0c0c28f2c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Apr 2024 07:25:53 GMT",
+      "tag": "@fluentui/react-charting_v5.19.41",
+      "version": "5.19.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "11cddcb584c4957e3fee39a8ffd48cba0969db61",
+            "comment": "Fix colors for high contrast mode in chart hover card"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Apr 2024 07:29:31 GMT",
+      "tag": "@fluentui/react-charting_v5.19.40",
+      "version": "5.19.40",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "3150bfa1b9200d7f24be2ba791ba6fa32e835eae",
+            "comment": "chore: migrate to monosize 0.5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.43",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.142",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.15",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.2",
+            "commit": "d7a9f5b4b802c28692dd9a91b6c150a218f03e09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Apr 2024 07:26:16 GMT",
+      "tag": "@fluentui/react-charting_v5.19.39",
+      "version": "5.19.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "87f37bcda562f8d5bcde71e8896b6ccd74e750d6",
+            "comment": "Fix incorrect bar height for y values < 1 in vertical stacked bar chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Mar 2024 07:28:45 GMT",
+      "tag": "@fluentui/react-charting_v5.19.38",
+      "version": "5.19.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0b3daaa393add4d5fc559b834b03145fa2853c79",
+            "comment": "Elevate data points less than 1% of total sum to 1%"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.141",
+            "commit": "caf072510560c342c3e6e0bcc57b83b8500d21f6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.1",
+            "commit": "caf072510560c342c3e6e0bcc57b83b8500d21f6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Mar 2024 07:28:53 GMT",
+      "tag": "@fluentui/react-charting_v5.19.37",
+      "version": "5.19.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b7410c7e31a0cdb6890c58a0f2cf5f31a36e01e8",
+            "comment": "fix: Build errors in TypeScript 5.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.42",
+            "commit": "5bbfacbf7f1d0e2616cc02eec0d4a158b55ea705"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.140",
+            "commit": "5bbfacbf7f1d0e2616cc02eec0d4a158b55ea705"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.117.0",
+            "commit": "5bbfacbf7f1d0e2616cc02eec0d4a158b55ea705"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Mar 2024 07:27:31 GMT",
+      "tag": "@fluentui/react-charting_v5.19.36",
+      "version": "5.19.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.139",
+            "commit": "e1c4956ba0ac868534ce097f6dda298309dbe59f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.116.0",
+            "commit": "e1c4956ba0ac868534ce097f6dda298309dbe59f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/react-charting_v5.19.35",
+      "version": "5.19.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.41",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.138",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.7",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Mar 2024 07:26:23 GMT",
+      "tag": "@fluentui/react-charting_v5.19.34",
+      "version": "5.19.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "352b45e8fc81137cad89a9c24e7f5c4d6b5f94f0",
+            "comment": "Add RTL for Date Axis in VBC"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Mar 2024 07:26:25 GMT",
+      "tag": "@fluentui/react-charting_v5.19.33",
+      "version": "5.19.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "55ebe225ada59512118a2ba6e34bf0de9f91ad00",
+            "comment": "Add isLegendSelected condition for single point data in LineChart"
+          },
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6e6a1bf624e5a682b3607d918793d6f0eeb6b12a",
+            "comment": "VSBC RTL scale added for DateAxis and StringAxis"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Mar 2024 07:26:30 GMT",
+      "tag": "@fluentui/react-charting_v5.19.32",
+      "version": "5.19.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "shermanchow@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e938593214c8b9ef558ad129c34a6a49daae0cb6",
+            "comment": "Add gradient color capability to AreaChart."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Mar 2024 07:26:19 GMT",
+      "tag": "@fluentui/react-charting_v5.19.31",
+      "version": "5.19.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5fa09dd5fd1d2a75447fa781f1b919fbc12f47c4",
+            "comment": "Fix 2:1 spacing in vertical bar charts with string x-axis"
+          },
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cb7b32981d6f82f0696a8e89e3ea19dd2eee3266",
+            "comment": "Reducing monosize of charts and removing circular dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Mar 2024 07:26:28 GMT",
+      "tag": "@fluentui/react-charting_v5.19.30",
+      "version": "5.19.30",
+      "comments": {
+        "none": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f357c800c5f39bfe46a9081ce47f38b983dfbe7e",
+            "comment": "Add dynamic status badge for test coverage"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Feb 2024 07:25:41 GMT",
       "tag": "@fluentui/react-charting_v5.19.30",
       "version": "5.19.30",

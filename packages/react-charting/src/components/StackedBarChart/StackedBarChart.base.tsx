@@ -6,8 +6,9 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, getAccessibleDataObject } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import { convertToLocaleString } from '../../utilities/locale-util';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -327,7 +328,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}
-          data-is-focusable={!this.props.hideTooltip}
+          data-is-focusable={!this.props.hideTooltip && shouldHighlight}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
           aria-label={this._getAriaLabel(point)}

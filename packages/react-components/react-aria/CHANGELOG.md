@@ -1,8 +1,119 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Tue, 20 Feb 2024 14:22:17 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.11.1)
+
+Mon, 06 May 2024 12:55:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.11.0..@fluentui/react-aria_v9.11.1)
+
+### Patches
+
+- feat: use ariaNotify in AriaLiveAnnouncer when available ([PR #31251](https://github.com/microsoft/fluentui/pull/31251) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.11.0)
+
+Thu, 02 May 2024 11:36:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.5..@fluentui/react-aria_v9.11.0)
+
+### Minor changes
+
+- Adding function to focus last active descendant if it exists ([PR #31140](https://github.com/microsoft/fluentui/pull/31140) by stevenco@microsoft.com)
+- ActiveDescendantChangeEvent for tracking active item ([PR #31149](https://github.com/microsoft/fluentui/pull/31149) by jurokapsiar@gmail.com)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+
+### Patches
+
+- Updating ActiveDescendent scrollIntoView logic to work with ancester scroll containers and scroll margin styles ([PR #31158](https://github.com/microsoft/fluentui/pull/31158) by stevenco@microsoft.com)
+
+## [9.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.5)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.4..@fluentui/react-aria_v9.10.5)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.4)
+
+Wed, 17 Apr 2024 21:53:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.3..@fluentui/react-aria_v9.10.4)
+
+### Patches
+
+- fix: End key should move activeOption  ([PR #30864](https://github.com/microsoft/fluentui/pull/30864) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.3)
+
+Tue, 02 Apr 2024 09:48:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.2..@fluentui/react-aria_v9.10.3)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.16.0 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.35 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-tabster to v9.19.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+- Bump @fluentui/react-utilities to v9.18.6 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by beachball)
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.2)
+
+Mon, 18 Mar 2024 19:50:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.1..@fluentui/react-aria_v9.10.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.2 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.34 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-tabster to v9.19.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+- Bump @fluentui/react-utilities to v9.18.5 ([PR #30600](https://github.com/microsoft/fluentui/pull/30600) by beachball)
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.1)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.10.0..@fluentui/react-aria_v9.10.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.33 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-tabster to v9.19.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.10.0)
+
+Thu, 07 Mar 2024 19:33:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.9.1..@fluentui/react-aria_v9.10.0)
+
+### Minor changes
+
+- feat: active descendants imperative handle to toggle attribute ([PR #30716](https://github.com/microsoft/fluentui/pull/30716) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.32 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-tabster to v9.19.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.9.1)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.9.0..@fluentui/react-aria_v9.9.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-tabster to v9.19.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
 
 ## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.9.0)
 

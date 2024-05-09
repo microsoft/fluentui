@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { CircleRegular, CircleFilled, SquareRegular, SquareFilled } from '@fluentui/react-icons';
-import { Rating } from '@fluentui/react-rating-preview';
+import { Rating } from '@fluentui/react-rating';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Rating Converged', module)
@@ -48,11 +48,11 @@ storiesOf('Rating Converged', module)
   ))
   .addStory(
     'Rating with custom circle icons',
-    () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} defaultValue={3.5} />,
+    () => <Rating iconFilled={CircleFilled} iconOutline={CircleRegular} defaultValue={3.5} />,
     {},
   )
   .addStory(
     'Rating with custom square icons',
-    () => <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} defaultValue={3.5} />,
+    () => <Rating iconFilled={SquareFilled} iconOutline={SquareRegular} defaultValue={3.5} />,
     {},
   );

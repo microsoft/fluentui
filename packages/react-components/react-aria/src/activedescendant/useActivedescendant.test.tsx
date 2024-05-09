@@ -91,6 +91,22 @@ describe('useActivedescendant', () => {
     expect(button).toHaveActiveDescendant(expecetdOption);
   });
 
+  it('should not have aria-activedescendant attribute if hideAttributes invoked', () => {
+    const expecetdOption = 'option-1';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    imperativeRef.current?.hideAttributes();
+
+    const res = imperativeRef.current?.first();
+    expect(res).toBe(expecetdOption);
+    const button = getByRole('button');
+    expect(button).not.toHaveActiveDescendant(expecetdOption);
+
+    imperativeRef.current?.showAttributes();
+    expect(button).toHaveActiveDescendant(expecetdOption);
+  });
+
   it('should focus next option', () => {
     const expectedOption = 'option-2';
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
@@ -249,6 +265,25 @@ describe('useActivedescendant', () => {
       const res = imperativeRef.current?.find(id => id === expectedOption, { passive: true });
       expect(res).toBe(expectedOption);
       expect(getByRole('button')).toHaveActiveDescendant('option-1');
+    });
+
+    it('should focus last active descendant', () => {
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+      // there should not be a last active descendant yet
+      expect(imperativeRef.current?.focusLastActive()).toBeFalsy();
+
+      imperativeRef.current?.focus('option-3');
+      expect(imperativeRef.current?.active()).toBe('option-3');
+
+      imperativeRef.current?.blur();
+      expect(imperativeRef.current?.active()).toBeUndefined();
+
+      expect(imperativeRef.current?.focusLastActive()).toBeTruthy();
+      expect(imperativeRef.current?.active()).toBe('option-3');
+
+      expect(getByRole('button')).toHaveActiveDescendant('option-3');
     });
 
     it('should find element starting from', () => {

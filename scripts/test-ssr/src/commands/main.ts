@@ -141,6 +141,8 @@ export async function main(params: MainParams) {
   await buildAssets({
     chromeVersion: CHROME_VERSION,
 
+    distDirectory,
+
     esmEntryPoint,
     cjsEntryPoint,
 

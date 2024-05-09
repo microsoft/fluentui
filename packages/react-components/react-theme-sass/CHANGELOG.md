@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Thu, 09 Nov 2023 17:29:46 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2024 19:33:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.21)
+
+Thu, 07 Mar 2024 19:33:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.20..@fluentui/react-theme-sass_v9.0.0-alpha.21)
+
+### Changes
+
+- feat: Add color tokens ([PR #30412](https://github.com/microsoft/fluentui/pull/30412) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.20)
 

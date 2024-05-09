@@ -11,6 +11,8 @@ import {
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { GroupedVerticalBarChartBase } from '../src/components/GroupedVerticalBarChart/GroupedVerticalBarChart.base';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { resetIds } from '@fluentui/react';
+
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -238,7 +240,13 @@ const margins = {
   bottom: 10,
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_createDataSetOfGVBC', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should create grouped vertical bar chart data for multiple series', () => {
     render(<GroupedVerticalBarChart data={chartPoints} />);
     const instance = new GroupedVerticalBarChartBase({
@@ -286,6 +294,8 @@ runTest('_createDataSetOfGVBC', () => {
 });
 
 runTest('_createDataset', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should create bars data for multiple series', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -319,6 +329,8 @@ runTest('_createDataset', () => {
 });
 
 runTest('_getLegendData', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return legends data for multiple series', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -350,6 +362,8 @@ runTest('_getLegendData', () => {
 });
 
 runTest('_isChartEmpty', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return true when chart data is empty ', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -368,6 +382,8 @@ runTest('_isChartEmpty', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return correct aria label for a point with xAxisCalloutData and yAxisCalloutData', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: [],
@@ -410,6 +426,8 @@ runTest('_getAriaLabel', () => {
 });
 
 runTest('Get Domain Margins', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the correct margins when total width is greater than required width', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: chartPoints,
@@ -458,6 +476,8 @@ runTest('Get Domain Margins', () => {
 });
 
 runTest('Get Scales', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return correct x0Scale and x1Scale', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: chartPoints,
@@ -486,6 +506,8 @@ runTest('Get Scales', () => {
 });
 
 runTest('_buildGraph', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the correct graph data', () => {
     const instance = new GroupedVerticalBarChartBase({
       data: chartPoints,

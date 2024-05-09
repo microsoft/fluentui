@@ -65,7 +65,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     options.positioningRef,
     () => ({
       updatePosition: () => managerRef.current?.updatePosition(),
-      setTarget: (target: TargetElement) => {
+      setTarget: (target: TargetElement | null) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -202,7 +202,7 @@ function usePositioningOptions(options: PositioningOptions) {
           overflowBoundaryPadding,
           isRtl,
         }),
-        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
+        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),

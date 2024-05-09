@@ -1,7 +1,6 @@
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 
-import { getProjectMetadata } from '@fluentui/scripts-monorepo';
-import * as fs from 'fs-extra';
 import { TaskFunction, copyInstructionsTask, copyTask, logger, resolveCwd, series } from 'just-scripts';
 
 import { getTsPathAliasesConfig } from './utils';
@@ -39,80 +38,80 @@ export function expandSourcePath(pattern: string): string | null {
  *
  * Used solely for packages that use TS solution config files with TS path aliases
  */
-export function copyCompiled() {
-  const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
+export function copyCompiledFactory(metadata: ReturnType<typeof import('./metadata-utils').getRawMetadata>) {
+  return () => {
+    const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
 
-  const packageDir = process.cwd();
-  const tsConfig = tsConfigs.lib;
+    const packageDir = process.cwd();
+    const tsConfig = tsConfigs.lib;
 
-  if (!(isUsingTsSolutionConfigs && tsConfig)) {
-    logger.warn(`copy-compiled: works only with packages that use TS solution config files. Skipping...`);
-    return;
-  }
+    if (!(isUsingTsSolutionConfigs && tsConfig)) {
+      logger.warn(`copy-compiled: works only with packages that use TS solution config files. Skipping...`);
+      return;
+    }
 
-  // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
-  const hasNewCompilationSetup = (tsConfig.compilerOptions.outDir as string).includes('dist/out-tsc');
+    // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+    const hasNewCompilationSetup = (tsConfig.compilerOptions.outDir as string).includes('dist/out-tsc');
 
-  if (!hasNewCompilationSetup) {
-    logger.info('copy-compiled: noop');
+    if (!hasNewCompilationSetup) {
+      logger.info('copy-compiled: noop');
 
-    return;
-  }
+      return;
+    }
 
-  const projectMetadata = getProjectMetadata(packageJson.name);
+    if (!metadata.project.sourceRoot) {
+      throw new Error(`${packageJson.name} is missing 'sourceRoot' in project.json`);
+    }
 
-  if (!projectMetadata.sourceRoot) {
-    throw new Error(`${packageJson.name} is missing 'sourceRoot' in project.json`);
-  }
+    const paths = {
+      esm: packageJson.module
+        ? {
+            in: path.join(
+              packageDir,
+              tsConfig.compilerOptions.outDir as string,
+              path.dirname(packageJson.module),
+              metadata.project.sourceRoot,
+            ),
+            out: path.join(packageDir, path.dirname(packageJson.module)),
+          }
+        : null,
+      commonJs: {
+        in: path.join(
+          packageDir,
+          tsConfig.compilerOptions.outDir as string,
+          path.dirname(packageJson.main),
+          metadata.project.sourceRoot,
+        ),
+        out: path.join(packageDir, path.dirname(packageJson.main)),
+      },
+      amd: {
+        in: path.join(packageDir, tsConfig.compilerOptions.outDir as string, 'lib-amd', metadata.project.sourceRoot),
+        out: path.join(packageDir, 'lib-amd'),
+      },
+    };
 
-  const paths = {
-    esm: packageJson.module
-      ? {
-          in: path.join(
-            packageDir,
-            tsConfig.compilerOptions.outDir as string,
-            path.dirname(packageJson.module),
-            projectMetadata.sourceRoot,
-          ),
-          out: path.join(packageDir, path.dirname(packageJson.module)),
-        }
-      : null,
-    commonJs: {
-      in: path.join(
-        packageDir,
-        tsConfig.compilerOptions.outDir as string,
-        path.dirname(packageJson.main),
-        projectMetadata.sourceRoot,
-      ),
-      out: path.join(packageDir, path.dirname(packageJson.main)),
-    },
-    amd: {
-      in: path.join(packageDir, tsConfig.compilerOptions.outDir as string, 'lib-amd', projectMetadata.sourceRoot),
-      out: path.join(packageDir, 'lib-amd'),
-    },
+    const tasks = [
+      paths.esm
+        ? copyTask({
+            paths: [paths.esm.in],
+            dest: paths.esm.out,
+          })
+        : null,
+      copyTask({
+        paths: [paths.commonJs.in],
+
+        dest: paths.commonJs.out,
+      }),
+      fs.existsSync(paths.amd.in)
+        ? copyTask({
+            paths: [paths.amd.in],
+            dest: paths.amd.out,
+          })
+        : null,
+    ].filter(Boolean) as TaskFunction[];
+
+    return series(...tasks);
   };
-
-  const tasks = [
-    paths.esm
-      ? copyTask({
-          paths: [paths.esm.in],
-          dest: paths.esm.out,
-        })
-      : null,
-    copyTask({
-      paths: [paths.commonJs.in],
-
-      dest: paths.commonJs.out,
-    }),
-    fs.existsSync(paths.amd.in)
-      ? copyTask({
-          paths: [paths.amd.in],
-          dest: paths.amd.out,
-        })
-      : null,
-  ].filter(Boolean) as TaskFunction[];
-
-  return series(...tasks);
 }
 export function copy() {
   const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
@@ -121,7 +120,9 @@ export function copy() {
     return;
   }
 
-  const config: { copyTo?: { [destination: string]: string | string[] } } = fs.readJSONSync(configPath);
+  const config: { copyTo?: { [destination: string]: string | string[] } } = JSON.parse(
+    fs.readFileSync(configPath, 'utf-8'),
+  );
   const errorText =
     'config/pre-copy.json must have this structure: { copyTo: { [destination: string]: string | string[] } }';
 

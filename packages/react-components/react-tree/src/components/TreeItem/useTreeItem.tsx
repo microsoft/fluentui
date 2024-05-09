@@ -44,6 +44,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     as = 'div',
     itemType = 'leaf',
     'aria-level': level = contextLevel,
+    'aria-selected': ariaSelected,
+    'aria-expanded': ariaExpanded,
     ...rest
   } = props;
 
@@ -239,11 +241,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         role: 'treeitem',
         'aria-level': level,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
-        // aria-selected is required according to WAI-ARIA spec
-        // https://www.w3.org/TR/wai-aria-1.1/#treeitem
         // Casting: when selectionMode is 'single', checked is a boolean
-        'aria-selected': selectionMode === 'single' ? (checked as boolean) : 'false',
-        'aria-expanded': itemType === 'branch' ? open : undefined,
+        'aria-selected': ariaSelected !== undefined ? ariaSelected : selectionMode === 'single' ? !!checked : undefined,
+        'aria-expanded': ariaExpanded !== undefined ? ariaExpanded : itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
         onChange: handleChange,

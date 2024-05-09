@@ -6,13 +6,44 @@ import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveD
 import { ACTIVEDESCENDANT_ATTRIBUTE, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 import { scrollIntoView } from './scrollIntoView';
 
+interface ActiveDescendantChangeEventDetail {
+  id: string;
+  previousId: string | null;
+}
+
+export type ActiveDescendantChangeEvent = CustomEvent<ActiveDescendantChangeEventDetail>;
+
+export const createActiveDescendantChangeEvent = (
+  detail: ActiveDescendantChangeEventDetail,
+): ActiveDescendantChangeEvent =>
+  new CustomEvent<ActiveDescendantChangeEventDetail>('activedescendantchange', {
+    bubbles: true,
+    cancelable: false,
+    composed: true,
+    detail,
+  });
+
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
 ): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
   const focusVisibleRef = React.useRef(false);
   const activeIdRef = React.useRef<string | null>(null);
+  const lastActiveIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
+  const attributeVisibilityRef = React.useRef(true);
+
+  const removeAttribute = React.useCallback(() => {
+    activeParentRef.current?.removeAttribute('aria-activedescendant');
+  }, []);
+  const setAttribute = React.useCallback((id?: string) => {
+    if (id) {
+      activeIdRef.current = id;
+    }
+    if (attributeVisibilityRef.current && activeIdRef.current) {
+      activeParentRef.current?.setAttribute('aria-activedescendant', activeIdRef.current);
+    }
+  }, []);
 
   useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
     focusVisibleRef.current = isNavigatingWithKeyboard;
@@ -42,9 +73,11 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
 
-    activeParentRef.current?.removeAttribute('aria-activedescendant');
+    removeAttribute();
+    lastActiveIdRef.current = activeIdRef.current;
     activeIdRef.current = null;
-  }, [activeParentRef, getActiveDescendant]);
+    return active?.id ?? null;
+  }, [getActiveDescendant, removeAttribute]);
 
   const focusActiveDescendant = React.useCallback(
     (nextActive: HTMLElement | null) => {
@@ -52,18 +85,20 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         return;
       }
 
-      blurActiveDescendant();
+      const previousActiveId = blurActiveDescendant();
 
-      scrollIntoView(nextActive, listboxRef.current);
-      activeParentRef.current?.setAttribute('aria-activedescendant', nextActive.id);
-      activeIdRef.current = nextActive.id;
+      scrollIntoView(nextActive);
+      setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
       if (focusVisibleRef.current) {
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
+
+      const event = createActiveDescendantChangeEvent({ id: nextActive.id, previousId: previousActiveId });
+      nextActive.dispatchEvent(event);
     },
-    [activeParentRef, listboxRef, blurActiveDescendant],
+    [blurActiveDescendant, setAttribute],
   );
 
   const controller: ActiveDescendantImperativeRef = React.useMemo(
@@ -119,7 +154,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active: () => {
         return getActiveDescendant()?.id;
       },
-
       focus: (id: string) => {
         if (!listboxRef.current) {
           return;
@@ -130,7 +164,17 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
           focusActiveDescendant(target);
         }
       },
+      focusLastActive: () => {
+        if (!listboxRef.current || !lastActiveIdRef.current) {
+          return;
+        }
 
+        const target = listboxRef.current.querySelector<HTMLElement>(`#${lastActiveIdRef.current}`);
+        if (target) {
+          focusActiveDescendant(target);
+          return true;
+        }
+      },
       find(predicate, { passive, startFrom } = {}) {
         const target = optionWalker.find(predicate, startFrom);
         if (!passive) {
@@ -139,8 +183,24 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
         return target?.id;
       },
+      showAttributes() {
+        attributeVisibilityRef.current = true;
+        setAttribute();
+      },
+      hideAttributes() {
+        attributeVisibilityRef.current = false;
+        removeAttribute();
+      },
     }),
-    [optionWalker, listboxRef, focusActiveDescendant, blurActiveDescendant, getActiveDescendant],
+    [
+      optionWalker,
+      listboxRef,
+      setAttribute,
+      removeAttribute,
+      focusActiveDescendant,
+      blurActiveDescendant,
+      getActiveDescendant,
+    ],
   );
 
   React.useImperativeHandle(imperativeRef, () => controller);

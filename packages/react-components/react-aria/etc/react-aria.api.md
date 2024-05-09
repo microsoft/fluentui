@@ -15,6 +15,9 @@ import type { UnionToIntersection } from '@fluentui/react-utilities';
 export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";
 
 // @public (undocumented)
+export type ActiveDescendantChangeEvent = CustomEvent<ActiveDescendantChangeEventDetail>;
+
+// @public (undocumented)
 export const ActiveDescendantContextProvider: React_2.Provider<ActiveDescendantContextValue | undefined>;
 
 // @public (undocumented)
@@ -34,12 +37,17 @@ export interface ActiveDescendantImperativeRef {
     first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     focus: (id: string) => void;
+    focusLastActive: () => boolean | undefined;
+    // (undocumented)
+    hideAttributes: () => void;
     // (undocumented)
     last: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     next: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     prev: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    showAttributes: () => void;
 }
 
 // @public (undocumented)

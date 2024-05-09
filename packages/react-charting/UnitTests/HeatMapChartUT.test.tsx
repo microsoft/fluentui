@@ -6,9 +6,12 @@ import { IHeatMapChartData, IHeatMapChartDataPoint } from '../src/HorizontalBarC
 import { render } from '@testing-library/react';
 import { dataToBuffer } from 'memfs/lib/volume';
 import { XAxisTypes, YAxisType } from '../src/utilities/index';
+import { conditionalTest, isTimezoneSet, forEachTimezone } from '../src/utilities/TestUtility.test';
+import { resetIds } from '@fluentui/react';
 
 const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
+const { Timezone } = require('../scripts/constants');
 
 const emptyData: IHeatMapChartData[] = [];
 const domainValuesForColorScale = [0, 600];
@@ -19,8 +22,8 @@ const xPoint: string[] = ['Test1', 'test2'];
 const yPoint1: number[] = [10000];
 const xPoint1: number[] = [20000];
 
-const yPoint2: Date[] = [new Date('2020-03-03')];
-const xPoint2: Date[] = [new Date('2020-04-03')];
+const yPoint2: Date[] = [new Date('2020-03-03T15:00Z')];
+const xPoint2: Date[] = [new Date('2020-04-03T15:00Z')];
 
 const HeatMapData: IHeatMapChartProps['data'] = [
   {
@@ -95,7 +98,13 @@ const HeatMapDataDatePoints: IHeatMapChartProps['data'] = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_getXandY', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper X and Y values for string xPoint and yPoint', () => {
     render(<HeatMapChart data={HeatMapData} domainValuesForColorScale={[]} rangeValuesForColorScale={[]} />);
     const instance = new HeatMapChartBase({
@@ -125,6 +134,8 @@ runTest('_getXandY', () => {
 });
 
 runTest('_getOpacity', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper opacity for legends', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -142,6 +153,8 @@ runTest('_getOpacity', () => {
 });
 
 runTest('_createLegendBars', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper legends data', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -160,6 +173,8 @@ runTest('_createLegendBars', () => {
 });
 
 runTest('_getColorScale', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper color scale data', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -177,6 +192,8 @@ runTest('_getColorScale', () => {
 });
 
 runTest('_getXIndex', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper xIndex for string xPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -184,6 +201,7 @@ runTest('_getXIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.StringAxis;
     const xIndex = instance._getXIndex(xPoint[0]);
     expect(xIndex).toEqual('Test1');
   });
@@ -195,12 +213,15 @@ runTest('_getXIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.NumericAxis;
     const xIndex = instance._getXIndex(xPoint1[0]);
     expect(xIndex).toEqual('20000');
   });
 });
 
 runTest('_getYIndex', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper yIndex for string yPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -208,6 +229,7 @@ runTest('_getYIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._yAxisType = YAxisType.StringAxis;
     const yIndex = instance._getYIndex(yPoint[0]);
     expect(yIndex).toEqual('p1');
   });
@@ -219,12 +241,15 @@ runTest('_getYIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._yAxisType = YAxisType.NumericAxis;
     const yIndex = instance._getYIndex(yPoint1[0]);
     expect(yIndex).toEqual('10000');
   });
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper aria-label for numeric xPoint and yPoint', () => {
     const p1 = {
       x: 10,
@@ -295,6 +320,8 @@ runTest('_getAriaLabel', () => {
 });
 
 runTest('_getFormattedLabelForXAxisDataPoint', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper xAxis label for non empty string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -319,6 +346,8 @@ runTest('_getFormattedLabelForXAxisDataPoint', () => {
 });
 
 runTest('_getFormattedLabelForYAxisDataPoint', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper yAxis label for non empty string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -343,6 +372,8 @@ runTest('_getFormattedLabelForYAxisDataPoint', () => {
 });
 
 runTest('_getStringFormattedNumber', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper string formatted number for numeric value', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -388,42 +419,9 @@ runTest('_getStringFormattedNumber', () => {
   });
 });
 
-runTest('_getStringFormattedDate', () => {
-  test('Should return proper string formatted date for date point', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const result = instance._getStringFormattedDate('100000000');
-    expect(result).toEqual('Jan/02');
-  });
-
-  test('Should return proper string formatted date for empty point', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const result = instance._getStringFormattedDate('');
-    expect(result).toEqual('Jan/01');
-  });
-
-  test('Should return proper string formatted date for date point', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const result = instance._getStringFormattedDate('100000000', '%b/%d/%Y');
-    expect(result).toEqual('Jan/02/1970');
-  });
-});
-
 runTest('_getXAxisDataPoints', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper xAxis data points for string points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -448,21 +446,11 @@ runTest('_getXAxisDataPoints', () => {
     expect(result[0]).toEqual('30');
     expect(result[1]).toEqual('100');
   });
-
-  test('Should return proper xAxis data points for date points', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    instance._xAxisType = XAxisTypes.DateAxis;
-    const result = instance._getXAxisDataPoints({ '30': '1', '10': '1' });
-    expect(result[0]).toEqual('Jan/01');
-  });
 });
 
 runTest('_getYAxisDataPoints', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper yAxis data points for string points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -487,21 +475,11 @@ runTest('_getYAxisDataPoints', () => {
     expect(result[0]).toEqual('30');
     expect(result[1]).toEqual('100');
   });
-
-  test('Should return proper yAxis data points for date points', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    instance._yAxisType = YAxisType.DateAxis;
-    const result = instance._getYAxisDataPoints({ '300000000': '1', '100000000': '1' });
-    expect(result[0]).toEqual('Jan/02');
-  });
 });
 
 runTest('_createNewDataSet', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper data set for default axis type', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -510,16 +488,9 @@ runTest('_createNewDataSet', () => {
     });
     expect(instance).toBeDefined();
     const result = instance._createNewDataSet(HeatMapData, '%b/%d', '.2~s', '%b/%d', '.2~s');
-    expect(result.dataSet.p1[0].descriptionMessage).toEqual('a good day to start with in Texas with best air quality');
-    expect(result.dataSet.p1[0].x).toEqual('Test1');
-    expect(result.dataSet.p1[0].y).toEqual('p1');
-    expect(result.dataSet.p2[0].descriptionMessage).toEqual('Due to unexpected heavy rain');
-    expect(result.dataSet.p2[0].x).toEqual('test2');
-    expect(result.dataSet.p2[0].y).toEqual('p2');
-    expect(result.xAxisPoints[0]).toEqual('Test1');
-    expect(result.xAxisPoints[1]).toEqual('test2');
-    expect(result.yAxisPoints[0]).toEqual('p1');
-    expect(result.yAxisPoints[1]).toEqual('p2');
+    expect(result).toMatchSnapshot();
+    expect(result.xAxisPoints[0]).toEqual('');
+    expect(result.yAxisPoints[0]).toEqual('');
   });
 
   test('Should return proper data set for string axis type', () => {
@@ -573,106 +544,201 @@ runTest('_createNewDataSet', () => {
   });
 });
 
-runTest('Skip - timezone related test cases', () => {
-  test('Should return proper data set for date axis with default axis type', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const result = instance._createNewDataSet(HeatMapDataDatePoints, '%b/%d', '.2~s', '%b/%d', '.2~s');
-    expect(result.xAxisPoints[0]).toEqual('Fri Apr 03 2020 05:30:00 GMT+0530 (India Standard Time)');
-    expect(result.yAxisPoints[0]).toEqual('Tue Mar 03 2020 05:30:00 GMT+0530 (India Standard Time)');
-  });
-
-  test('Should return proper aria-label for date xPoint and yPoint', () => {
-    const p1 = {
-      x: new Date('2020-03-03'),
-      y: new Date('2020-04-03'),
-      value: 100,
-      legend: 'legend1',
-    };
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const ariaLabel = instance._getAriaLabel(p1);
-    expect(ariaLabel).toEqual(
-      'Tue Mar 03 2020 05:30:00 GMT+0530 (India Standard Time), Fri Apr 03 2020 05:30:00 GMT+0530 (India Standard Time). legend1, 100.',
+runTest('Timezone related test cases', () => {
+  forEachTimezone((tzName, tzIdentifier) => {
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper data set for date axis with default axis type in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        instance._yAxisType = YAxisType.DateAxis;
+        instance._xAxisType = XAxisTypes.DateAxis;
+        const result = instance._createNewDataSet(HeatMapDataDatePoints, '%b/%d', '.2~s', '%b/%d', '.2~s');
+        expect(result.xAxisPoints[0]).toMatchSnapshot();
+        expect(result.yAxisPoints[0]).toMatchSnapshot();
+      },
     );
-  });
 
-  test('Should return proper aria-label for date xPoint and yPoint without legend', () => {
-    const p1 = {
-      x: new Date('2020-03-03'),
-      y: new Date('2020-04-03'),
-      value: 100,
-      legend: '',
-    };
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const ariaLabel = instance._getAriaLabel(p1);
-    expect(ariaLabel).toEqual(
-      'Tue Mar 03 2020 05:30:00 GMT+0530 (India Standard Time), Fri Apr 03 2020 05:30:00 GMT+0530 (India Standard Time). , 100.',
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper aria-label for date xPoint and yPoint in ${tzName} timezone`,
+      () => {
+        const p1 = {
+          x: new Date('2020-03-03T15:00Z'),
+          y: new Date('2020-04-03T15:00Z'),
+          value: 100,
+          legend: 'legend1',
+        };
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        const ariaLabel = instance._getAriaLabel(p1);
+        expect(ariaLabel).toMatchSnapshot();
+      },
     );
-  });
 
-  test('Should return proper aria-label for numeric xPoint and date yPoint', () => {
-    const p1 = {
-      x: 100,
-      y: new Date('2020-04-03'),
-      value: 100,
-      legend: '',
-    };
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const ariaLabel = instance._getAriaLabel(p1);
-    expect(ariaLabel).toEqual('100, Fri Apr 03 2020 05:30:00 GMT+0530 (India Standard Time). , 100.');
-  });
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper aria-label for date xPoint and yPoint without legend in ${tzName} timezone`,
+      () => {
+        const p1 = {
+          x: new Date('2020-03-03T15:00Z'),
+          y: new Date('2020-04-03T15:00Z'),
+          value: 100,
+          legend: '',
+        };
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        const ariaLabel = instance._getAriaLabel(p1);
+        expect(ariaLabel).toMatchSnapshot();
+      },
+    );
 
-  test('Should return proper X and Y values for date xPoint and yPoint', () => {
-    const instance = new HeatMapChartBase({
-      data: HeatMapDataDatePoints,
-      domainValuesForColorScale: domainValuesForColorScale,
-      rangeValuesForColorScale: rangeValuesForColorScale,
-    });
-    expect(instance).toBeDefined();
-    const result = instance._getXandY();
-    expect(result).toBeDefined();
-    expect(result.x).toEqual(new Date('2020-04-03T00:00:00.000Z'));
-    expect(result.y).toEqual(new Date('2020-03-03T00:00:00.000Z'));
-  });
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper aria-label for numeric xPoint and date yPoint in ${tzName} timezone`,
+      () => {
+        const p1 = {
+          x: 100,
+          y: new Date('2020-04-03T15:00Z'),
+          value: 100,
+          legend: '',
+        };
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        const ariaLabel = instance._getAriaLabel(p1);
+        expect(ariaLabel).toMatchSnapshot();
+      },
+    );
 
-  test('Should return proper xIndex for date xPoint', () => {
-    const instance = new HeatMapChartBase({
-      data: HeatMapDataNumaricPoints,
-      domainValuesForColorScale: domainValuesForColorScale,
-      rangeValuesForColorScale: rangeValuesForColorScale,
-    });
-    expect(instance).toBeDefined();
-    const xIndex = instance._getXIndex(xPoint2[0]);
-    expect(xIndex).toEqual('Fri Apr 03 2020 05:30:00 GMT+0530 (India Standard Time)');
-  });
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper X and Y values for date xPoint and yPoint in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: HeatMapDataDatePoints,
+          domainValuesForColorScale: domainValuesForColorScale,
+          rangeValuesForColorScale: rangeValuesForColorScale,
+        });
+        expect(instance).toBeDefined();
+        const result = instance._getXandY();
+        expect(result).toBeDefined();
+        expect(result.x).toMatchSnapshot();
+        expect(result.y).toMatchSnapshot();
+      },
+    );
 
-  test('Should return proper xIndex for date xPoint', () => {
-    const instance = new HeatMapChartBase({
-      data: HeatMapDataNumaricPoints,
-      domainValuesForColorScale: domainValuesForColorScale,
-      rangeValuesForColorScale: rangeValuesForColorScale,
-    });
-    expect(instance).toBeDefined();
-    const yIndex = instance._getYIndex(yPoint2[0]);
-    expect(yIndex).toEqual('Tue Mar 03 2020 05:30:00 GMT+0530 (India Standard Time)');
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper xIndex for date xPoint in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: HeatMapDataNumaricPoints,
+          domainValuesForColorScale: domainValuesForColorScale,
+          rangeValuesForColorScale: rangeValuesForColorScale,
+        });
+        expect(instance).toBeDefined();
+        instance._xAxisType = XAxisTypes.DateAxis;
+        const xIndex = instance._getXIndex(xPoint2[0]);
+        expect(xIndex).toMatchSnapshot();
+      },
+    );
+
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper yIndex for date xPoint in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: HeatMapDataNumaricPoints,
+          domainValuesForColorScale: domainValuesForColorScale,
+          rangeValuesForColorScale: rangeValuesForColorScale,
+        });
+        expect(instance).toBeDefined();
+        instance._yAxisType = YAxisType.DateAxis;
+        const yIndex = instance._getYIndex(yPoint2[0]);
+        expect(yIndex).toMatchSnapshot();
+      },
+    );
+
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper string formatted date for date point in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        const result = instance._getStringFormattedDate('100000000');
+        expect(result).toMatchSnapshot();
+      },
+    );
+
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper string formatted date for empty point in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        const result = instance._getStringFormattedDate('');
+        expect(result).toMatchSnapshot();
+      },
+    );
+
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper string formatted date for date point in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        const result = instance._getStringFormattedDate('100000000', '%b/%d/%Y');
+        expect(result).toMatchSnapshot();
+      },
+    );
+
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper xAxis data points for date points in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        instance._xAxisType = XAxisTypes.DateAxis;
+        const result = instance._getXAxisDataPoints({ '30': '1', '10': '1' });
+        expect(result[0]).toMatchSnapshot();
+      },
+    );
+
+    conditionalTest(isTimezoneSet(tzIdentifier) && env === 'TEST')(
+      `Should return proper yAxis data points for date points in ${tzName} timezone`,
+      () => {
+        const instance = new HeatMapChartBase({
+          data: emptyData,
+          domainValuesForColorScale: [],
+          rangeValuesForColorScale: [],
+        });
+        expect(instance).toBeDefined();
+        instance._yAxisType = YAxisType.DateAxis;
+        const result = instance._getYAxisDataPoints({ '300000000': '1', '100000000': '1' });
+        expect(result[0]).toMatchSnapshot();
+      },
+    );
   });
 });

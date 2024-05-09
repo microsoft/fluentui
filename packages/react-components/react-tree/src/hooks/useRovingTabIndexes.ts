@@ -1,13 +1,26 @@
 import * as React from 'react';
 import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { useFocusedElementChange } from '@fluentui/react-tabster';
+import { elementContains } from '@fluentui/react-utilities';
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
  */
 export function useRovingTabIndex() {
   const currentElementRef = React.useRef<HTMLElement>();
+  const walkerRef = React.useRef<HTMLElementWalker | null>(null);
+  useFocusedElementChange(element => {
+    if (
+      element?.getAttribute('role') === 'treeitem' &&
+      walkerRef.current &&
+      elementContains(walkerRef.current.root, element)
+    ) {
+      rove(element);
+    }
+  });
 
   const initialize = React.useCallback((walker: HTMLElementWalker) => {
+    walkerRef.current = walker;
     walker.currentElement = walker.root;
     let tabbableChild = walker.firstChild(element =>
       element.tabIndex === 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,

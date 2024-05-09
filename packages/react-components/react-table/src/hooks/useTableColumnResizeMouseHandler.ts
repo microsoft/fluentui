@@ -7,15 +7,16 @@ import {
   getEventClientCoords,
   isMouseEvent,
   isTouchEvent,
+  useAnimationFrame,
 } from '@fluentui/react-utilities';
 
 export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);
+  const [dragging, setDragging] = React.useState<boolean>(false);
 
   const { targetDocument } = useFluent();
-  const globalWin = targetDocument?.defaultView;
 
   const { getColumnWidth, setColumnWidth } = columnResizeState;
 
@@ -32,16 +33,14 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
     [setColumnWidth],
   );
 
+  const [requestRecalcFrame] = useAnimationFrame();
+
   const onDrag = React.useCallback(
     (e: NativeTouchOrMouseEvent) => {
       // Using requestAnimationFrame here drastically improves resizing experience on slower CPUs
-      if (typeof globalWin?.requestAnimationFrame === 'function') {
-        requestAnimationFrame(() => recalculatePosition(e));
-      } else {
-        recalculatePosition(e);
-      }
+      requestRecalcFrame(() => recalculatePosition(e));
     },
-    [globalWin?.requestAnimationFrame, recalculatePosition],
+    [requestRecalcFrame, recalculatePosition],
   );
 
   const onDragEnd = React.useCallback(
@@ -54,6 +53,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
         targetDocument?.removeEventListener('touchend', onDragEnd);
         targetDocument?.removeEventListener('touchmove', onDrag);
       }
+      setDragging(false);
     },
     [onDrag, targetDocument],
   );
@@ -73,11 +73,13 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
         }
         targetDocument?.addEventListener('mouseup', onDragEnd);
         targetDocument?.addEventListener('mousemove', onDrag);
+        setDragging(true);
       }
 
       if (isTouchEvent(event)) {
         targetDocument?.addEventListener('touchend', onDragEnd);
         targetDocument?.addEventListener('touchmove', onDrag);
+        setDragging(true);
       }
     },
     [getColumnWidth, onDrag, onDragEnd, targetDocument],
@@ -85,5 +87,6 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
 
   return {
     getOnMouseDown,
+    dragging,
   };
 }

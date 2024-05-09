@@ -40,6 +40,15 @@ export const ComboBoxFreeInputExample: React.FunctionComponent = () => {
         allowFreeInput
         autoComplete="off"
       />
+      <ComboBox
+        defaultSelectedKey="C"
+        label="ComboBox with allowFreeInput and caseSensitive without autocomplete"
+        options={options}
+        styles={comboBoxStyles}
+        allowFreeInput
+        autoComplete="off"
+        caseSensitive
+      />
     </div>
   );
 };

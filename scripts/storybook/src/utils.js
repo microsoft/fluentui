@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nx/devkit');
+const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration, getProjects } = require('@nx/devkit');
 const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
@@ -196,7 +196,6 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
   function isPackagePartOfReactComponentsSuite(projectName) {
     const suiteProject = allPackageInfo['@fluentui/react-components'];
 
-    // this is needed because react-northstar is a lerna sub-project thus `getAllPackageInfo` returns only projects within `packages/fluentui/` folder
     if (suiteProject) {
       const suiteDependencies = suiteProject.packageJson.dependencies ?? {};
       return Boolean(suiteDependencies[projectName]);
@@ -211,34 +210,88 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
  *
  * This helper is useful for creating aggregated storybooks which will generate multiple stories across packages.
  *
- * @param {{packageName:string,callerPath:string}} options
+ * @param {{packageName:string,callerPath:string,excludeStoriesInsertionFromPackages?:string[]}} options
  * @returns
  */
 function getPackageStoriesGlob(options) {
-  const projectMetadata = getProjectMetadata(options.packageName);
+  const projects = getAllProjects();
+
+  const excludeStoriesInsertionFromPackages = options.excludeStoriesInsertionFromPackages ?? [];
+  const projectMetadata = /** @type {NonNullable<ReturnType<typeof getMetadata>>} */ (
+    getMetadata(options.packageName, projects)
+  );
 
   /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
   const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  packageJson.dependencies = packageJson.dependencies ?? {};
-
-  const dependencies = { ...packageJson.dependencies };
+  const dependencies = { ...(packageJson.dependencies ?? {}) };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
+  const packages = Object.keys(dependencies);
 
-  return Object.keys(dependencies)
-    .filter(pkgName => pkgName.startsWith('@fluentui/'))
-    .map(pkgName => {
-      const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
-      const pkgMetadata = getProjectMetadata(pkgName);
+  const result = packages.reduce((acc, pkgName) => {
+    if (!(pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))) {
+      return acc;
+    }
 
-      if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
-        return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
+    const pkgMetadata = getMetadata(pkgName, projects, { throwIfNotFound: false });
+
+    if (!pkgMetadata) {
+      return acc;
+    }
+
+    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+
+    // if defined package(project) has stories sibling project, that means we need to look for stories in sibling project as the original project doesn't have stories anymore
+    // @see https://github.com/microsoft/fluentui/issues/30516
+    const pkgMetadataStories = projects.get(`${pkgName}-stories`);
+    if (pkgMetadataStories) {
+      acc.push(`${rootOffset}${pkgMetadataStories.root}/src/${storiesGlob}`);
+      return acc;
+    }
+
+    const hasStoriesFolder = fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'));
+
+    if (hasStoriesFolder) {
+      acc.push(`${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`);
+      return acc;
+    }
+
+    acc.push(`${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`);
+
+    return acc;
+  }, /** @type {string[]}*/ ([]));
+
+  return result;
+
+  // ========================================
+  // Helpers
+  // ========================================
+
+  function getAllProjects() {
+    const tree = new FsTree(workspaceRoot, false);
+    return getProjects(tree);
+  }
+
+  function getMetadata(
+    /** @type {string}*/ packageName,
+    /** @type {ReturnType<typeof getAllProjects>}*/ allProjects,
+    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options,
+  ) {
+    const { throwIfNotFound = true } = { ..._options };
+    const metadata = allProjects.get(packageName);
+
+    if (!metadata) {
+      if (throwIfNotFound) {
+        throw new Error(`Project "${packageName}" not found in workspace`);
       }
 
-      return `${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`;
-    });
+      return null;
+    }
+
+    return metadata;
+  }
 }
 
 /**

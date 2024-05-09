@@ -5,9 +5,16 @@ import type { MenuProps, PositioningImperativeRef } from '@fluentui/react-compon
 
 export const AnchorToCustomTarget = () => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const customAnchorRef = React.useRef<HTMLButtonElement>(null);
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
+    // do not close menu as an outside click if clicking on the custom trigger/target
+    // this prevents it from closing & immediately re-opening when clicking custom triggers
+    if (data.type === 'clickOutside' && (e.target === customAnchorRef.current || e.target === buttonRef.current)) {
+      return;
+    }
+
     setOpen(data.open);
   };
 
@@ -21,7 +28,7 @@ export const AnchorToCustomTarget = () => {
 
   return (
     <>
-      <Button {...restoreFocusTargetAttribute} onClick={() => setOpen(s => !s)}>
+      <Button {...restoreFocusTargetAttribute} ref={customAnchorRef} onClick={() => setOpen(s => !s)}>
         Open menu
       </Button>
       <Button {...restoreFocusTargetAttribute} ref={buttonRef} onClick={() => setOpen(s => !s)}>

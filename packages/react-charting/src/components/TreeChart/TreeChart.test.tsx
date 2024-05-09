@@ -130,6 +130,8 @@ function sharedAfterEach() {
 }
 
 describe('TreeChart snapshot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders treechart two layer correctly', () => {
     const component = renderer.create(<TreeChart treeData={twoLayerChart} />);
     const tree = component.toJSON();
@@ -169,6 +171,8 @@ describe('TreeChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(TreeChartBase.prototype, 'render');
     const props = {
@@ -200,6 +204,8 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Tree Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<TreeChart treeData={threeLayerChart} />);
     let axeResults;

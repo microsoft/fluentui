@@ -55,8 +55,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       isAriaPlaceholderRendered: false,
       isTooltipVisible: false,
     };
-
-    this._async = new Async(this);
   }
 
   // Render
@@ -129,6 +127,10 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         </div>
       </div>
     );
+  }
+
+  public componentDidMount(): void {
+    this._async = new Async(this);
   }
 
   public componentWillUnmount(): void {

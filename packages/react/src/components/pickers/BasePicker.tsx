@@ -93,7 +93,7 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
 /**
  * {@docCategory Pickers}
  */
-export class BasePicker<T, P extends IBasePickerProps<T>>
+export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   extends React.Component<P, IBasePickerState<T>>
   implements IBasePicker<T>
 {
@@ -1098,7 +1098,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   };
 }
 
-export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
+export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
