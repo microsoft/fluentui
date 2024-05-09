@@ -1,4 +1,4 @@
-import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
 import {
