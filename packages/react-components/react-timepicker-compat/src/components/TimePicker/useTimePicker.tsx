@@ -122,12 +122,13 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [dateEndAnchor, dateStartAnchor, hourCycle, showSeconds],
   );
 
+  const mergedClearIconRef = useMergedRefs(baseState.clearIcon?.ref, clearIconRef);
   const state: TimePickerState = {
     ...baseState,
     clearIcon: baseState.clearIcon
       ? {
           ...baseState.clearIcon,
-          ref: useMergedRefs(baseState.clearIcon.ref, clearIconRef),
+          ref: mergedClearIconRef,
         }
       : undefined,
     freeform,
