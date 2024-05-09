@@ -67,6 +67,8 @@ export const useTagPickerInput_unstable = (
   const { value = contextValue, disabled = contextDisabled } = props;
   const { findLastFocusable } = useFocusFinders();
 
+  const isTypingRef = React.useRef(false);
+
   const root = useInputTriggerSlot(
     {
       type: 'text',
@@ -76,15 +78,17 @@ export const useTagPickerInput_unstable = (
       ...getIntrinsicElementProps('input', props),
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         props.onKeyDown?.(event);
-        if (event.key === ArrowLeft && event.currentTarget.selectionStart === 0 && tagPickerGroupRef.current) {
+        if (
+          (event.key === ArrowLeft || event.key === Backspace) &&
+          event.currentTarget.selectionStart === 0 &&
+          tagPickerGroupRef.current
+        ) {
           findLastFocusable(tagPickerGroupRef.current)?.focus();
-          return;
-        }
-        if (event.key === Space && open) {
-          setOpen(event, false);
-          return;
-        }
-        if (event.key === Enter) {
+        } else if (event.key === Space) {
+          if (open && !isTypingRef.current) {
+            setOpen(event, false);
+          }
+        } else if (event.key === Enter) {
           if (open) {
             ReactDOM.unstable_batchedUpdates(() => {
               setValue(undefined);
@@ -93,19 +97,9 @@ export const useTagPickerInput_unstable = (
           } else {
             setOpen(event, true);
           }
-          return;
         }
-        if (event.key === Backspace && value?.length === 0 && selectedOptions.length) {
-          const toDismiss = selectedOptions[selectedOptions.length - 1];
-          selectOption(event, {
-            value: toDismiss,
-            // These values no longer exist because the option has unregistered itself
-            // for the purposes of selection - these values aren't actually used
-            id: 'ERROR_DO_NOT_USE',
-            text: 'ERROR_DO_NOT_USE',
-          });
-          return;
-        }
+        isTypingRef.current =
+          event.key.length === 1 && event.code !== Space && !event.altKey && !event.ctrlKey && !event.metaKey;
       }),
     },
     useMergedRefs(triggerRef, ref),
