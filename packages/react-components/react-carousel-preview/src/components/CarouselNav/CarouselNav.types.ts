@@ -1,17 +1,21 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
 
 export type CarouselNavSlots = {
-  root: Slot<'div'>;
+  /**
+   * The element wrapping the carousel pagination. By default this is a div.
+   */
+  root: NonNullable<Slot<'div'>>;
 };
 
-/**
- * CarouselNav Props
- */
-export type CarouselNavProps = ComponentProps<CarouselNavSlots> & {};
+export type NavButtonRenderFunction = (value: string) => React.ReactNode;
 
-/**
- * State used in rendering CarouselNav
- */
-export type CarouselNavState = ComponentState<CarouselNavSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from CarouselNavProps.
-// & Required<Pick<CarouselNavProps, 'propName'>>
+export type CarouselNavState = ComponentState<CarouselNavSlots> & {
+  values: string[];
+
+  renderNavButton: NavButtonRenderFunction;
+};
+
+export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
+  children: NavButtonRenderFunction;
+};

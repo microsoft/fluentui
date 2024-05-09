@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: ensure clicking on surface will toggle open state",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -419,6 +419,4 @@ For the set of colors `aria-label` or `aria-labelby` should be provided.
 SwatchPicker component has role `radiogroup`.
 ColorSwatch and ImageSwatch have role `radio`.
 
-![SwatchPicker Accessibility - navigation](./assets/swatch-picker-a11y-nav.jpg)
-
-![SwatchPicker Accessibility - selection](./assets/swatch-picker-a11y-selection.jpg)
+![SwatchPicker Accessibility - navigation](./assets/swatch-picker-a11y.jpg)
