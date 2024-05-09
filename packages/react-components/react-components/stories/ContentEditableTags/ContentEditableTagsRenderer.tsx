@@ -16,11 +16,11 @@ const options = people.map(person => ({
 
 export const ContentEditableTagsRenderer = () => {
   const { targetDocument } = useFluent();
-  const { overrideSelection, getCaretPosition } = useCaretManipulation();
+  const { overrideLeftArrow, overrideRightArrow, getCaretPosition } = useCaretManipulation();
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string | null>(
-    '<span class="pickedItem">Johnny</span>Somebody<span class="pickedItem">Mark</span>',
+    '<span class="pickedItem">Johnny</span><span class="pickedItem">Bob</span>Somebody<span class="pickedItem">Mark</span>',
   );
   const [selected, setSelected] = React.useState<string | null>(null);
   const listboxId = useId('listbox');
@@ -106,10 +106,10 @@ export const ContentEditableTagsRenderer = () => {
           preventDefault = true;
           break;
         case 'ArrowLeft':
-          preventDefault = overrideSelection(inputRef.current, 'Left');
+          preventDefault = overrideLeftArrow(inputRef.current);
           break;
         case 'ArrowRight':
-          preventDefault = overrideSelection(inputRef.current, 'Right');
+          preventDefault = overrideRightArrow(inputRef.current);
           break;
         case 'Tab':
           selectActive();
@@ -123,7 +123,7 @@ export const ContentEditableTagsRenderer = () => {
         event.preventDefault();
       }
     },
-    [selectActive, setOpen, inputRef, overrideSelection],
+    [selectActive, setOpen, overrideLeftArrow, overrideRightArrow, inputRef],
   );
 
   React.useEffect(() => {
