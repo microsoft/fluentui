@@ -65,7 +65,6 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '600px',
     backgroundColor: '#fff',
-    height: '600px',
   },
   content: {
     ...shorthands.flex(1),
