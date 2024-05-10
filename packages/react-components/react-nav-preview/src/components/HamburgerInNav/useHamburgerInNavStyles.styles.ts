@@ -1,11 +1,12 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { ButtonSlots, useButtonStyles_unstable } from '@fluentui/react-components';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { HamburgerInNavSlots, HamburgerInNavState } from './HamburgerInNav.types';
+import type { HamburgerInNavState } from './HamburgerInNav.types';
+import { navItemTokens } from '../sharedNavStyles.styles';
 
-export const hamburgerInNavClassNames: SlotClassNames<HamburgerInNavSlots> = {
+export const hamburgerInNavClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-HamburgerInNav',
-  // TODO: add class names for all slots on HamburgerInNavSlots.
-  // Should be of the form `<slotName>: 'fui-HamburgerInNav__<slotName>`
+  icon: 'fui-HamburgerInNav__icon',
 };
 
 /**
@@ -13,21 +14,31 @@ export const hamburgerInNavClassNames: SlotClassNames<HamburgerInNavSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    marginTop: '10px',
+    textDecorationLine: 'none',
+    backgroundColor: navItemTokens.backgroundColor,
+    ...shorthands.border('none'),
+    ':hover': {
+      backgroundColor: navItemTokens.backgroundColorHover,
+    },
+    ':active': {
+      backgroundColor: navItemTokens.backgroundColorPressed,
+    },
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
  * Apply styling to the HamburgerInNav slots based on the state
  */
 export const useHamburgerInNavStyles_unstable = (state: HamburgerInNavState): HamburgerInNavState => {
+  useButtonStyles_unstable(state);
   const styles = useStyles();
+
   state.root.className = mergeClasses(hamburgerInNavClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(hamburgerInNavClassNames.icon, state.icon.className);
+  }
 
   return state;
 };

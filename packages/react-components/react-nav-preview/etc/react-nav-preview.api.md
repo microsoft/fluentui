@@ -249,11 +249,11 @@ export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps>;
 export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots>;
 
 // @public
-export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots> & {};
+export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots>;
 
 // @public (undocumented)
 export type NavSectionHeaderSlots = {
-    root: Slot<'div'>;
+    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
 };
 
 // @public

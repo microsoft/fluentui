@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  HamburgerInNav,
   NavCategory,
   NavCategoryItem,
   NavDrawer,
@@ -9,20 +10,12 @@ import {
   NavDrawerHeaderNav,
   NavDrawerProps,
   NavItem,
+  NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import {
-  Button,
-  Caption1Strong,
-  Label,
-  Radio,
-  RadioGroup,
-  makeStyles,
-  shorthands,
-  tokens,
-  useId,
-} from '@fluentui/react-components';
+import { DrawerProps } from '@fluentui/react-drawer';
+import { Button, Label, Radio, RadioGroup, makeStyles, shorthands, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -36,7 +29,6 @@ import {
   HeartPulse20Regular,
   MegaphoneLoud20Filled,
   MegaphoneLoud20Regular,
-  NavigationFilled,
   NotePin20Filled,
   NotePin20Regular,
   People20Filled,
@@ -55,8 +47,6 @@ import {
   Settings20Regular,
   bundleIcon,
 } from '@fluentui/react-icons';
-import { navItemTokens } from '../../src/components/sharedNavStyles.styles';
-import type { DrawerProps } from '@fluentui/react-drawer';
 
 const useStyles = makeStyles({
   root: {
@@ -79,21 +69,6 @@ const useStyles = makeStyles({
   field: {
     display: 'grid',
     gridRowGap: tokens.spacingVerticalS,
-  },
-
-  headingContent: {
-    marginInlineStart: `10px`,
-  },
-  hamburger: {
-    backgroundColor: navItemTokens.backgroundColor,
-    color: tokens.colorNeutralForeground2,
-    textDecorationLine: 'none',
-    ':hover': {
-      backgroundColor: navItemTokens.backgroundColorHover,
-    },
-    ':active': {
-      backgroundColor: navItemTokens.backgroundColorPressed,
-    },
   },
 });
 
@@ -138,11 +113,11 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
       >
         <NavDrawerHeader>
           <NavDrawerHeaderNav>
-            <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
+            <HamburgerInNav />
           </NavDrawerHeaderNav>
         </NavDrawerHeader>
         <NavDrawerBody>
-          <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
+          <NavSectionHeader>Home</NavSectionHeader>
           <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
             Dashboard
           </NavItem>
@@ -152,7 +127,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem target="_blank" icon={<EmployeeSpotlight />} onClick={someClickHandler} value="3">
             Employee Spotlight
           </NavItem>
-          <Caption1Strong className={styles.headingContent}>Employee Management</Caption1Strong>
+          <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavItem target="_blank" icon={<Search />} onClick={someClickHandler} value="4">
             Profile Search
           </NavItem>
@@ -173,7 +148,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem icon={<Interviews />} value="9">
             Interviews
           </NavItem>
-          <Caption1Strong className={styles.headingContent}>Benefits</Caption1Strong>
+          <NavSectionHeader>Benefits</NavSectionHeader>
           <NavItem icon={<HealthPlans />} value="10">
             Health Plans
           </NavItem>
@@ -191,7 +166,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <Caption1Strong className={styles.headingContent}>Learning</Caption1Strong>
+          <NavSectionHeader>Learning</NavSectionHeader>
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs
           </NavItem>
@@ -207,7 +182,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <Caption1Strong className={styles.headingContent}>Analytics</Caption1Strong>
+          <NavSectionHeader>Analytics</NavSectionHeader>
           <NavItem target="_blank" onClick={someClickHandler} icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
