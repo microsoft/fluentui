@@ -1,10 +1,21 @@
 /*
  * Heads Up!
  * This file should be kept in sync with the `docs-root.css` file for the React v9 Storybook.
- *
- * DO NOT use design tokens in this file.
- * This file styles the content outside of story previews where a Fluent theme is not expected to be set or change.
  */
+
+/* remove the docs wrapper bg to let page bg show through */
+#docs-root .sbdocs-wrapper {
+  background: transparent !important;
+}
+
+/* sb-show-main is missing during page transitions causing a page shift */
+/* todo: cleanup once we no longer inherit docs-root */
+.sb-show-main.sb-main-fullscreen,
+.sb-main-fullscreen {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
 
 #docs-root .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
