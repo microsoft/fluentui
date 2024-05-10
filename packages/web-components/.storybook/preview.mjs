@@ -1,10 +1,8 @@
-import * as Fluent from '../src/index-rollup.js';
-import webcomponentsTheme from './theme.mjs';
 import { switchTheme } from '../public/theme-switch.js';
-import '../../../.storybook/docs-root.css';
-import './docs-root-web-compoents.css';
+import webcomponentsTheme from './theme.mjs';
 
-Fluent;
+import '../src/index-rollup.js';
+import './docs-root.css';
 
 function changeTheme(e) {
   switchTheme(e.target.value);
@@ -23,14 +21,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: [
-        'Concepts',
-        [
-          'Introduction',
-        ],
-        'Components',
-        'Theme',
-      ],
+      order: ['Concepts', ['Introduction'], 'Components', 'Theme'],
     },
   },
   docs: {
