@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.margin('unset'),
     paddingInlineStart: '12px',
-    paddingBlockStart: '0px',
+    paddingBlockStart: '10px',
     paddingBlockEnd: '0px',
   },
 });
