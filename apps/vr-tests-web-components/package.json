@@ -9,7 +9,6 @@
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "eslint src --ext .ts,.tsx",
     "start": "start-storybook",
-    "test": "jest --passWithNoTests",
     "type-check": "tsc",
     "vr:build": "yarn build",
     "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"

@@ -8,8 +8,7 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "jsx": "react",
-    "moduleResolution": "Node16",
-    "typeRoots": ["../../node_modules/@types"]
+    "moduleResolution": "Node16"
   },
   "include": ["./src", "./.storybook/*"]
 }
