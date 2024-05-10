@@ -7,8 +7,8 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, Field } from '@fluentui/react-components';
+} from '@fluentui/react-components';
+import { Tag, Avatar, Button, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -21,17 +21,26 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Default = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+export const SecondaryAction = () => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
     setSelectedOptions(data.selectedOptions);
+  };
+  const handleAllClear: React.MouseEventHandler = event => {
+    setSelectedOptions([]);
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl>
+        <TagPickerControl
+          secondaryAction={
+            <Button appearance="transparent" size="small" shape="rounded" onClick={handleAllClear}>
+              All Clear
+            </Button>
+          }
+        >
           <TagPickerGroup>
             {selectedOptions.map(option => (
               <Tag
@@ -63,4 +72,14 @@ export const Default = () => {
       </TagPicker>
     </Field>
   );
+};
+
+SecondaryAction.parameters = {
+  docs: {
+    description: {
+      story: `
+\`TagPickerControl\` provides a \`secondaryAction\` slot for possible extra functionalities that may be desired. \`secondaryAction\` slot is \`absolute\` positioned on the top right corner of the control component together with \`expandIcon\` slot.
+`,
+    },
+  },
 };

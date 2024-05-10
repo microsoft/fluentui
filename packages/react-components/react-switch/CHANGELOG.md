@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Mon, 06 May 2024 12:55:01 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2024 19:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.81)
+
+Thu, 09 May 2024 19:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.80..@fluentui/react-switch_v9.1.81)
+
+### Patches
+
+- fix: Add HC hover active styling to Switch. ([PR #31283](https://github.com/microsoft/fluentui/pull/31283) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
 
 ## [9.1.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.80)
 

@@ -7,8 +7,9 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
-import { Tag, Avatar, Button, Field } from '@fluentui/react-components';
+} from '@fluentui/react-components';
+import { Tag, Avatar, Field } from '@fluentui/react-components';
+import { ArrowDownFilled } from '@fluentui/react-icons';
 
 const options = [
   'John Doe',
@@ -21,26 +22,17 @@ const options = [
   'Maria Rossi',
 ];
 
-export const SecondaryAction = () => {
+export const ExpandIcon = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
     setSelectedOptions(data.selectedOptions);
-  };
-  const handleAllClear: React.MouseEventHandler = event => {
-    setSelectedOptions([]);
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl
-          secondaryAction={
-            <Button appearance="transparent" size="small" shape="rounded" onClick={handleAllClear}>
-              All Clear
-            </Button>
-          }
-        >
+        <TagPickerControl expandIcon={<ArrowDownFilled />}>
           <TagPickerGroup>
             {selectedOptions.map(option => (
               <Tag
@@ -74,12 +66,12 @@ export const SecondaryAction = () => {
   );
 };
 
-SecondaryAction.parameters = {
+ExpandIcon.parameters = {
   docs: {
     description: {
       story: `
-\`TagPickerControl\` provides a \`secondaryAction\` slot for possible extra functionalities that may be desired. \`secondaryAction\` slot is \`absolute\` positioned on the top right corner of the control component together with \`expandIcon\` slot.
-`,
+\`TagPickerControl\` provides an \`expandIcon\` slot for modifying the default \`expandIcon\` chevron.
+You can also remove the slot entirely by providing \`null\` to it.`,
     },
   },
 };

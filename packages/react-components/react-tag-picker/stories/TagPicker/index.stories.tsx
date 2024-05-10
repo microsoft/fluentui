@@ -6,7 +6,7 @@ import {
   TagPickerList,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-components';
 
 import descriptionMd from './TagPickerDescription.md';
 import bestPracticesMd from './TagPickerBestPractices.md';
@@ -25,7 +25,7 @@ export { TruncatedText } from './TagPickerTruncatedText.stories';
 export { SingleSelect } from './TagPickerSingleSelect.stories';
 
 export default {
-  title: 'Preview Components/TagPicker',
+  title: 'Components/TagPicker',
   component: TagPicker,
   subcomponents: { TagPickerControl, TagPickerGroup, TagPickerButton, TagPickerInput, TagPickerList, TagPickerOption },
   parameters: {

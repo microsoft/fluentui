@@ -2,12 +2,12 @@ import * as React from 'react';
 import {
   TagPicker,
   TagPickerList,
-  TagPickerButton,
+  TagPickerInput,
   TagPickerControl,
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-components';
 import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 const options = [
@@ -21,8 +21,8 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Button = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
@@ -30,7 +30,7 @@ export const Button = () => {
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker size={size} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
@@ -44,9 +44,8 @@ export const Button = () => {
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerButton aria-label="Select Employees" />
+          <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
-
         <TagPickerList>
           {tagPickerOptions.length > 0
             ? tagPickerOptions.map(option => (
@@ -66,12 +65,27 @@ export const Button = () => {
   );
 };
 
-Button.parameters = {
+export const Size = () => (
+  <>
+    <div>
+      <h4>Extra Large</h4>
+      <Example size="extra-large" />
+    </div>
+    <div>
+      <h4>Large</h4>
+      <Example size="large" />
+    </div>
+    <div>
+      <h4>Medium</h4>
+      <Example size="medium" />
+    </div>
+  </>
+);
+
+Size.parameters = {
   docs: {
     description: {
-      story: `
-The component \`TagPickerButton\` renders an "invisible" button that can be used instead of \`TagPickerInput\` to opt-out of a text field and to provide something similar to a [\`Dropdown\`](https://react.fluentui.dev/?path=/docs/components-dropdown--default) behavior.
-      `,
+      story: `A \`TagPicker\`'s size can be set to \`medium\` (default), \`large\` or \`extra-large\`.`,
     },
   },
 };

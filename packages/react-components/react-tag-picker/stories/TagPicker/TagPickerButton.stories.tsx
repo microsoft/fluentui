@@ -2,14 +2,13 @@ import * as React from 'react';
 import {
   TagPicker,
   TagPickerList,
-  TagPickerInput,
+  TagPickerButton,
   TagPickerControl,
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-components';
 import { Tag, Avatar, Field } from '@fluentui/react-components';
-import { ArrowDownFilled } from '@fluentui/react-icons';
 
 const options = [
   'John Doe',
@@ -22,9 +21,9 @@ const options = [
   'Maria Rossi',
 ];
 
-export const ExpandIcon = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
+export const Button = () => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
@@ -32,7 +31,7 @@ export const ExpandIcon = () => {
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl expandIcon={<ArrowDownFilled />}>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
               <Tag
@@ -45,8 +44,9 @@ export const ExpandIcon = () => {
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput aria-label="Select Employees" />
+          <TagPickerButton aria-label="Select Employees" />
         </TagPickerControl>
+
         <TagPickerList>
           {tagPickerOptions.length > 0
             ? tagPickerOptions.map(option => (
@@ -66,12 +66,12 @@ export const ExpandIcon = () => {
   );
 };
 
-ExpandIcon.parameters = {
+Button.parameters = {
   docs: {
     description: {
       story: `
-\`TagPickerControl\` provides an \`expandIcon\` slot for modifying the default \`expandIcon\` chevron.
-You can also remove the slot entirely by providing \`null\` to it.`,
+The component \`TagPickerButton\` renders an "invisible" button that can be used instead of \`TagPickerInput\` to opt-out of a text field and to provide something similar to a [\`Dropdown\`](https://react.fluentui.dev/?path=/docs/components-dropdown--default) behavior.
+      `,
     },
   },
 };
