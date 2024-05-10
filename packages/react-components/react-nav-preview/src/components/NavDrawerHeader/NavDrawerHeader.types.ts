@@ -1,4 +1,4 @@
-import { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from '@fluentui/react-drawer';
+import type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from '@fluentui/react-drawer';
 
 export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 

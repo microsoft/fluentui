@@ -1,8 +1,8 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer';
 
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerHeaderNavSlots, NavDrawerHeaderNavState } from './NavDrawerHeaderNav.types';
-import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const navDrawerHeaderNavClassNames: SlotClassNames<NavDrawerHeaderNavSlots> = {
   root: 'fui-NavDrawerHeaderNav',

@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerFooterSlots, NavDrawerFooterState } from './NavDrawerFooter.types';
 
 export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots> = {

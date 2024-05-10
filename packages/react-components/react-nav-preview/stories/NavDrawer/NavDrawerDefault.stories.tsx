@@ -12,7 +12,6 @@ import {
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerProps } from '@fluentui/react-drawer';
 import {
   Button,
   Caption1Strong,
@@ -57,6 +56,7 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import { navItemTokens } from '../../src/components/sharedNavStyles.styles';
+import type { DrawerProps } from '@fluentui/react-drawer';
 
 const useStyles = makeStyles({
   root: {
