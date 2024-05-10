@@ -3,12 +3,15 @@ import {
   NavCategory,
   NavCategoryItem,
   NavDrawer,
+  NavDrawerBody,
+  NavDrawerFooter,
+  NavDrawerHeader,
+  NavDrawerHeaderNav,
   NavDrawerProps,
   NavItem,
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerProps } from '@fluentui/react-drawer';
 import {
   Button,
   Caption1Strong,
@@ -53,6 +56,7 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 import { navItemTokens } from '../../src/components/sharedNavStyles.styles';
+import type { DrawerProps } from '@fluentui/react-drawer';
 
 const useStyles = makeStyles({
   root: {
@@ -79,24 +83,6 @@ const useStyles = makeStyles({
 
   headingContent: {
     marginInlineStart: `10px`,
-  },
-  drawerFooterOverrides: {
-    display: 'unset',
-    ...shorthands.padding(0, tokens.spacingVerticalMNudge),
-  },
-  drawerHeaderOverrides: {
-    ...shorthands.margin('unset'),
-    paddingInlineStart: '12px',
-    paddingBlockStart: '0px',
-    paddingBlockEnd: '0px',
-  },
-  drawerHeaderNavOverrides: {
-    ...shorthands.margin('unset'),
-    paddingInlineStart: '0px',
-    paddingBlockStart: '0px',
-  },
-  drawerBodyOverrides: {
-    ...shorthands.padding(0, tokens.spacingVerticalMNudge),
   },
   hamburger: {
     backgroundColor: navItemTokens.backgroundColor,
@@ -150,12 +136,12 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         onOpenChange={(_, { open }) => setIsOpen(open)}
         size="small"
       >
-        <DrawerHeader className={styles.drawerHeaderOverrides}>
-          <DrawerHeaderNavigation className={styles.drawerHeaderNavOverrides}>
+        <NavDrawerHeader>
+          <NavDrawerHeaderNav>
             <Button appearance="transparent" icon={<NavigationFilled />} className={styles.hamburger} />
-          </DrawerHeaderNavigation>
-        </DrawerHeader>
-        <DrawerBody className={styles.drawerBodyOverrides}>
+          </NavDrawerHeaderNav>
+        </NavDrawerHeader>
+        <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
           <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
             Dashboard
@@ -228,15 +214,15 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem target="_blank" onClick={someClickHandler} icon={<Reports />} value="20">
             Reports
           </NavItem>
-        </DrawerBody>
-        <DrawerFooter className={styles.drawerFooterOverrides}>
+        </NavDrawerBody>
+        <NavDrawerFooter>
           <NavItem value="21" target="_blank" onClick={someClickHandler} icon={<Person />}>
             Profile
           </NavItem>
           <NavItem icon={<Settings />} target="_blank" onClick={someClickHandler} value="24">
             App Settings
           </NavItem>
-        </DrawerFooter>
+        </NavDrawerFooter>
       </NavDrawer>
       <div className={styles.content}>
         <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
