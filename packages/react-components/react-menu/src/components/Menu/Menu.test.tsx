@@ -397,4 +397,23 @@ describe('Menu', () => {
     expect(container.querySelector('#second')?.getAttribute('aria-checked')).toBe('true');
     expect(container.querySelector('#third')?.getAttribute('aria-checked')).toBe('false');
   });
+
+  it('should render correct aria-labelledby attribute from corresponding trigger id', () => {
+    const customId = 'myTrigger';
+    const { getByRole } = render(
+      <Menu open>
+        <MenuTrigger disableButtonEnhancement>
+          <button id={customId}>Menu trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    // Assert
+    expect(getByRole('menu')).toHaveAttribute('aria-labelledby', customId);
+  });
 });
