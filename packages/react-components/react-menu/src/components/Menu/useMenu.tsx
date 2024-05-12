@@ -87,7 +87,9 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
-  if (menuTrigger?.props?.children?.props?.id) triggerId = menuTrigger.props.children.props.id;
+  if (menuTrigger?.props?.children?.props?.id) {
+    triggerId = menuTrigger.props.children.props.id;
+  }
 
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
