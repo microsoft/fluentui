@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bug fix for #18318 which ensures that a specified id attribute placed on the first trigger child is used for the menu aria-labelledby when provided",
+  "packageName": "@fluentui/react-menu",
+  "email": "ijackson145@gmail.com",
+  "dependentChangeType": "patch"
+}
