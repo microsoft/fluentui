@@ -143,29 +143,29 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
-          <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
+          <NavItem as="button" icon={<Dashboard />} onClick={someClickHandler} value="1">
             Dashboard
           </NavItem>
-          <NavItem target="_blank" icon={<Announcements />} onClick={someClickHandler} value="2">
+          <NavItem as="button" icon={<Announcements />} onClick={someClickHandler} value="2">
             Announcements
           </NavItem>
-          <NavItem target="_blank" icon={<EmployeeSpotlight />} onClick={someClickHandler} value="3">
+          <NavItem as="button" icon={<EmployeeSpotlight />} onClick={someClickHandler} value="3">
             Employee Spotlight
           </NavItem>
           <Caption1Strong className={styles.headingContent}>Employee Management</Caption1Strong>
-          <NavItem target="_blank" icon={<Search />} onClick={someClickHandler} value="4">
+          <NavItem as="button" icon={<Search />} onClick={someClickHandler} value="4">
             Profile Search
           </NavItem>
-          <NavItem target="_blank" icon={<PerformanceReviews />} onClick={someClickHandler} value="5">
+          <NavItem as="button" icon={<PerformanceReviews />} onClick={someClickHandler} value="5">
             Performance Reviews
           </NavItem>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="7">
+              <NavSubItem as="button" onClick={someClickHandler} value="7">
                 Openings
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="8">
+              <NavSubItem as="button" onClick={someClickHandler} value="8">
                 Submissions
               </NavSubItem>
             </NavSubItemGroup>
@@ -182,10 +182,10 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               Retirement
             </NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="13">
+              <NavSubItem as="button" onClick={someClickHandler} value="13">
                 Plan Information
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="14">
+              <NavSubItem as="button" onClick={someClickHandler} value="14">
                 Fund Performance
               </NavSubItem>
             </NavSubItemGroup>
@@ -198,28 +198,28 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavCategory value="16">
             <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="17">
+              <NavSubItem as="button" onClick={someClickHandler} value="17">
                 Career Paths
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="18">
+              <NavSubItem as="button" onClick={someClickHandler} value="18">
                 Planning
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
 
           <Caption1Strong className={styles.headingContent}>Analytics</Caption1Strong>
-          <NavItem target="_blank" onClick={someClickHandler} icon={<Analytics />} value="19">
+          <NavItem as="button" onClick={someClickHandler} icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
-          <NavItem target="_blank" onClick={someClickHandler} icon={<Reports />} value="20">
+          <NavItem as="button" onClick={someClickHandler} icon={<Reports />} value="20">
             Reports
           </NavItem>
         </NavDrawerBody>
         <NavDrawerFooter>
-          <NavItem value="21" target="_blank" onClick={someClickHandler} icon={<Person />}>
+          <NavItem value="21" as="button" onClick={someClickHandler} icon={<Person />}>
             Profile
           </NavItem>
-          <NavItem icon={<Settings />} target="_blank" onClick={someClickHandler} value="24">
+          <NavItem icon={<Settings />} as="button" onClick={someClickHandler} value="24">
             App Settings
           </NavItem>
         </NavDrawerFooter>

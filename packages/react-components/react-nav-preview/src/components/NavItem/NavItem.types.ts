@@ -1,8 +1,9 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { NavItemValue } from '../NavContext.types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavItemSlots = {
-  root: NonNullable<Slot<'a'>>;
+  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 
   /**
    * Icon that renders before the content.
