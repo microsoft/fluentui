@@ -2,6 +2,124 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 13 May 2024 12:34:18 GMT",
+      "tag": "@fluentui/react-components_v9.51.0",
+      "version": "9.51.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bd0a0820115040f9024807d72b29c9f5766a732b",
+            "comment": "fix(Combobox): `expandIcon={null}` should not throw"
+          }
+        ],
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing Drawer and MessageBar context exports."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing Drawer context exports."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing context exports."
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "e1f12b95461c0d790df6e6f41e6bc79e8fe896e1",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "1ccf6c23ddc4d125940ce23ea3788d0069665f67",
+            "comment": "feat: Moving styles to new recomposed components."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing SwatchPicker context exports."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:10 GMT",
+      "tag": "@fluentui/react-components_v9.50.0",
+      "version": "9.50.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "mingyuanyu@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "be6442940b29091db5d32224009f869cb4d4955e",
+            "comment": "fix combobox empty string and zero value"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0df0796f7264423cc6172ec857a6800f07f8e407",
+            "comment": "fix: expand button should be disabled when Combobox is disabled"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "6533854bc4236dd9070538dc89971a190e6689d3",
+            "comment": "fix: move styles declared in useDisableBodyScroll() to a separate file"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4f931d3c112abddde1f5fdb7efb7f0813e8d2bd7",
+            "comment": "fix: Add HC hover active styling to Switch."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fded6b429c65eff45fb00a827434fd9936cf6d60",
+            "comment": "fix: replace internal useKeyborg() with useKeyborgRef()"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44",
+            "comment": "feat: add @fluentui/react-tag-picker to suite"
+          },
+          {
+            "author": "robert@robertpenner.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "a276e61fe284cf4d8345806365451b14c4c1589c",
+            "comment": "BREAKING: fix motion token values and adjust structure to match original source"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2f4006afba4bdb5a9ff136a5ee8079bfd1533268",
+            "comment": "fix overflowBoundaryPadding being ingored when autoSize was on"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44",
+            "comment": "feat: release stable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:00 GMT",
       "tag": "@fluentui/react-components_v9.49.2",
       "version": "9.49.2",

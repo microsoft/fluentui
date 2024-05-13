@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import type { NavDrawerFooterProps, NavDrawerFooterState } from './NavDrawerFooter.types';
 
 /**
@@ -13,22 +13,7 @@ import type { NavDrawerFooterProps, NavDrawerFooterState } from './NavDrawerFoot
  */
 export const useNavDrawerFooter_unstable = (
   props: NavDrawerFooterProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLElement>,
 ): NavDrawerFooterState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
-  };
+  return useDrawerFooter_unstable(props, ref);
 };

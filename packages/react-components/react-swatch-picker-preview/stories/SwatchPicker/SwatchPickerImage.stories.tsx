@@ -4,9 +4,9 @@ import { SwatchPicker, SwatchPickerOnSelectEventHandler, ImageSwatch } from '@fl
 
 const useStyles = makeStyles({
   example: {
-    width: '1024px',
-    height: '683px',
-    ...shorthands.border('1px', 'solid', '#ccc'),
+    width: '700px',
+    height: '466px',
+    backgroundSize: 'cover',
     ...shorthands.margin('20px', '0'),
   },
   swatch: {
@@ -70,4 +70,12 @@ export const SwatchPickerImage = () => {
       />
     </>
   );
+};
+
+SwatchPickerImage.parameters = {
+  docs: {
+    description: {
+      story: 'A swatch can be represented as an image.',
+    },
+  },
 };

@@ -1,17 +1,17 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type {
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from '@fluentui/react-drawer';
 
-export type NavDrawerHeaderNavSlots = {
-  root: Slot<'div'>;
-};
-
-/**
- * NavDrawerHeaderNav Props
- */
-export type NavDrawerHeaderNavProps = ComponentProps<NavDrawerHeaderNavSlots> & {};
+export type NavDrawerHeaderNavSlots = DrawerHeaderNavigationSlots;
 
 /**
- * State used in rendering NavDrawerHeaderNav
+ * NavDrawerHeader Props
  */
-export type NavDrawerHeaderNavState = ComponentState<NavDrawerHeaderNavSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from NavDrawerHeaderNavProps.
-// & Required<Pick<NavDrawerHeaderNavProps, 'propName'>>
+export type NavDrawerHeaderNavProps = DrawerHeaderNavigationProps;
+
+/**
+ * State used in rendering NavDrawerHeader
+ */
+export type NavDrawerHeaderNavState = DrawerHeaderNavigationState;

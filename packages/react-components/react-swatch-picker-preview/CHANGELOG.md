@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-swatch-picker-preview
 
-This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 May 2024 12:34:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.5.0)
+
+Mon, 13 May 2024 12:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.3..@fluentui/react-swatch-picker-preview_v0.5.0)
+
+### Minor changes
+
+- feat: Add missing SwatchPicker context exports. ([PR #31328](https://github.com/microsoft/fluentui/pull/31328) by estebanmu@microsoft.com)
+
+## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.3)
+
+Thu, 09 May 2024 19:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.2..@fluentui/react-swatch-picker-preview_v0.4.3)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
 
 ## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.2)
 

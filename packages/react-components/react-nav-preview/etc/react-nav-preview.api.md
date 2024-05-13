@@ -8,6 +8,18 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DrawerBodyProps } from '@fluentui/react-drawer';
+import type { DrawerBodySlots } from '@fluentui/react-drawer';
+import type { DrawerBodyState } from '@fluentui/react-drawer';
+import type { DrawerFooterProps } from '@fluentui/react-drawer';
+import type { DrawerFooterSlots } from '@fluentui/react-drawer';
+import type { DrawerFooterState } from '@fluentui/react-drawer';
+import type { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
+import type { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
+import type { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import type { DrawerHeaderProps } from '@fluentui/react-drawer';
+import type { DrawerHeaderSlots } from '@fluentui/react-drawer';
+import type { DrawerHeaderState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
@@ -122,15 +134,13 @@ export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps>;
 export const navDrawerBodyClassNames: SlotClassNames<NavDrawerBodySlots>;
 
 // @public
-export type NavDrawerBodyProps = ComponentProps<NavDrawerBodySlots> & {};
+export type NavDrawerBodyProps = DrawerBodyProps;
 
 // @public (undocumented)
-export type NavDrawerBodySlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerBodySlots = DrawerBodySlots;
 
 // @public
-export type NavDrawerBodyState = ComponentState<NavDrawerBodySlots>;
+export type NavDrawerBodyState = DrawerBodyState;
 
 // @public (undocumented)
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
@@ -142,15 +152,13 @@ export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
 export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots>;
 
 // @public
-export type NavDrawerFooterProps = ComponentProps<NavDrawerFooterSlots> & {};
+export type NavDrawerFooterProps = DrawerFooterProps;
 
 // @public (undocumented)
-export type NavDrawerFooterSlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerFooterSlots = DrawerFooterSlots;
 
 // @public
-export type NavDrawerFooterState = ComponentState<NavDrawerFooterSlots>;
+export type NavDrawerFooterState = DrawerFooterState;
 
 // @public
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps>;
@@ -165,26 +173,22 @@ export const NavDrawerHeaderNav: ForwardRefComponent<NavDrawerHeaderNavProps>;
 export const navDrawerHeaderNavClassNames: SlotClassNames<NavDrawerHeaderNavSlots>;
 
 // @public
-export type NavDrawerHeaderNavProps = ComponentProps<NavDrawerHeaderNavSlots> & {};
+export type NavDrawerHeaderNavProps = DrawerHeaderNavigationProps;
 
 // @public (undocumented)
-export type NavDrawerHeaderNavSlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerHeaderNavSlots = DrawerHeaderNavigationSlots;
 
 // @public
-export type NavDrawerHeaderNavState = ComponentState<NavDrawerHeaderNavSlots>;
+export type NavDrawerHeaderNavState = DrawerHeaderNavigationState;
 
 // @public
-export type NavDrawerHeaderProps = ComponentProps<NavDrawerHeaderSlots> & {};
+export type NavDrawerHeaderProps = DrawerHeaderProps;
 
 // @public (undocumented)
-export type NavDrawerHeaderSlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 
 // @public
-export type NavDrawerHeaderState = ComponentState<NavDrawerHeaderSlots>;
+export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
 export type NavDrawerProps = DrawerProps & NavProps;
@@ -325,18 +329,6 @@ export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, conte
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
-export const renderNavDrawerBody_unstable: (state: NavDrawerBodyState) => JSX.Element;
-
-// @public
-export const renderNavDrawerFooter_unstable: (state: NavDrawerFooterState) => JSX.Element;
-
-// @public
-export const renderNavDrawerHeader_unstable: (state: NavDrawerHeaderState) => JSX.Element;
-
-// @public
-export const renderNavDrawerHeaderNav_unstable: (state: NavDrawerHeaderNavState) => JSX.Element;
-
-// @public
 export const renderNavItem_unstable: (state: NavItemState) => JSX.Element;
 
 // @public
@@ -385,16 +377,16 @@ export const useNavDrawerBody_unstable: (props: NavDrawerBodyProps, ref: React_2
 export const useNavDrawerBodyStyles_unstable: (state: NavDrawerBodyState) => NavDrawerBodyState;
 
 // @public
-export const useNavDrawerFooter_unstable: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerFooterState;
+export const useNavDrawerFooter_unstable: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLElement>) => NavDrawerFooterState;
 
 // @public
 export const useNavDrawerFooterStyles_unstable: (state: NavDrawerFooterState) => NavDrawerFooterState;
 
 // @public
-export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerHeaderState;
+export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderState;
 
 // @public
-export const useNavDrawerHeaderNav_unstable: (props: NavDrawerHeaderNavProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerHeaderNavState;
+export const useNavDrawerHeaderNav_unstable: (props: NavDrawerHeaderNavProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderNavState;
 
 // @public
 export const useNavDrawerHeaderNavStyles_unstable: (state: NavDrawerHeaderNavState) => NavDrawerHeaderNavState;

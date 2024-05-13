@@ -147,31 +147,6 @@ describe('Combobox', () => {
     expect(chevronButton?.getAttribute('aria-labelledby')).toBeFalsy();
   });
 
-  it('Respects author-provided labels for the chevron button', () => {
-    const renderedCombobox = render(
-      <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-label': 'test label' }}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Combobox>,
-    );
-
-    const chevronButton = renderedCombobox.container.querySelector('[role=button]');
-    expect(chevronButton?.getAttribute('aria-label')).toEqual('test label');
-    expect(chevronButton?.getAttribute('aria-labelledby')).toBeFalsy();
-
-    renderedCombobox.rerender(
-      <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-labelledby': 'testId' }}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Combobox>,
-    );
-
-    expect(chevronButton?.getAttribute('aria-label')).toBeFalsy();
-    expect(chevronButton?.getAttribute('aria-labelledby')).toEqual('testId');
-  });
-
   it('adds aria-owns and aria-controls pointing to the popup', () => {
     const { getByRole, container } = render(
       <Combobox open className="root">
@@ -221,20 +196,6 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
-  it('opens the popup on expand icon click', () => {
-    const { getByRole, getByTestId } = render(
-      <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Combobox>,
-    );
-
-    userEvent.click(getByTestId('icon'));
-
-    expect(getByRole('listbox')).not.toBeNull();
-  });
-
   it('opens the popup when typing', () => {
     const { getByRole } = render(
       <Combobox>
@@ -249,40 +210,6 @@ describe('Combobox', () => {
 
     expect(getByRole('listbox')).not.toBeNull();
     expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
-  });
-
-  it('closes the popup on expand icon click', () => {
-    const { getByTestId, queryByRole } = render(
-      <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Combobox>,
-    );
-
-    userEvent.tab();
-    userEvent.click(getByTestId('icon'));
-
-    expect(queryByRole('listbox')).toBeNull();
-  });
-
-  it('closes the popup on blur/outside click after clicking on the expand icon', () => {
-    const { getByTestId, queryByRole } = render(
-      <>
-        <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
-          <Option>Red</Option>
-          <Option>Green</Option>
-          <Option>Blue</Option>
-        </Combobox>
-        <div data-testid="outside">outside</div>
-      </>,
-    );
-
-    userEvent.click(getByTestId('icon'));
-    expect(queryByRole('listbox')).not.toBeNull();
-
-    userEvent.click(getByTestId('outside'));
-    expect(queryByRole('listbox')).toBeNull();
   });
 
   it('does not close the combobox on click with controlled open', () => {
@@ -1142,6 +1069,90 @@ describe('Combobox', () => {
       expect(activeOptionText).toBe('Green');
       userEvent.keyboard('{ArrowUp}');
       expect(activeOptionText).toBe('Red');
+    });
+  });
+
+  describe('expandIcon', () => {
+    it('respects author-provided labels for the chevron button', () => {
+      const { container, rerender } = render(
+        <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-label': 'test label' }}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      const chevronButton = container.querySelector('[role=button]');
+      expect(chevronButton?.getAttribute('aria-label')).toEqual('test label');
+      expect(chevronButton?.getAttribute('aria-labelledby')).toBeFalsy();
+
+      rerender(
+        <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-labelledby': 'testId' }}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      expect(chevronButton?.getAttribute('aria-label')).toBeFalsy();
+      expect(chevronButton?.getAttribute('aria-labelledby')).toEqual('testId');
+    });
+
+    it('opens the popup on expand icon click', () => {
+      const { getByRole, getByTestId } = render(
+        <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      userEvent.click(getByTestId('icon'));
+      expect(getByRole('listbox')).not.toBeNull();
+    });
+
+    it('closes the popup on expand icon click', () => {
+      const { getByTestId, queryByRole } = render(
+        <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      userEvent.tab();
+      userEvent.click(getByTestId('icon'));
+
+      expect(queryByRole('listbox')).toBeNull();
+    });
+
+    it('closes the popup on blur/outside click after clicking on the expand icon', () => {
+      const { getByTestId, queryByRole } = render(
+        <>
+          <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+          <div data-testid="outside">outside</div>
+        </>,
+      );
+
+      userEvent.click(getByTestId('icon'));
+      expect(queryByRole('listbox')).not.toBeNull();
+
+      userEvent.click(getByTestId('outside'));
+      expect(queryByRole('listbox')).toBeNull();
+    });
+
+    it('allows to pass "null"', () => {
+      const { container } = render(
+        <Combobox expandIcon={null}>
+          <Option>Red</Option>
+        </Combobox>,
+      );
+
+      expect(container.querySelector(`.${comboboxClassNames.expandIcon}`)).not.toBeInTheDocument();
     });
   });
 });
