@@ -608,6 +608,145 @@ describe('Overflow', () => {
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
   });
 
+  it('should update overflow menu when visible item is added/removed', () => {
+    const Example = () => {
+      const [mapHelper, setMapHelper] = React.useState<string[]>(new Array(10).fill(0).map((_, i) => i.toString()));
+      const addItem = React.useCallback((index: number, item: string) => {
+        setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
+      }, []);
+      const deleteItem = React.useCallback((index, count) => {
+        setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
+      }, []);
+
+      return (
+        <>
+          <Container>
+            {mapHelper.map(i => (
+              <Item key={i} id={i}>
+                {i}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <div>
+            <button id="add-3rd" onClick={() => addItem(3, '2b')}>
+              Add at index 3
+            </button>
+            <button id="delete-3rd" onClick={() => deleteItem(3, 1)}>
+              Delete at index 3
+            </button>
+          </div>
+        </>
+      );
+    };
+    mount(<Example />);
+    setContainerWidth(300);
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+
+    cy.get('#add-3rd').click();
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+6');
+
+    cy.get('#delete-3rd').click();
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+  });
+
+  it('should update overflow menu when overflow item is added/removed', () => {
+    const Example = () => {
+      const [mapHelper, setMapHelper] = React.useState<string[]>(new Array(10).fill(0).map((_, i) => i.toString()));
+      const addItem = React.useCallback((index: number, item: string) => {
+        setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
+      }, []);
+      const deleteItem = React.useCallback((index, count) => {
+        setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
+      }, []);
+
+      return (
+        <>
+          <Container>
+            {mapHelper.map(i => (
+              <Item key={i} id={i}>
+                {i}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <div>
+            <button id="add-8th" onClick={() => addItem(8, '7b')}>
+              Add at index 8
+            </button>
+            <button id="delete-8th" onClick={() => deleteItem(8, 1)}>
+              Delete at index 8
+            </button>
+          </div>
+        </>
+      );
+    };
+    mount(<Example />);
+    setContainerWidth(300);
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+
+    cy.get('#add-8th').click();
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+6');
+
+    cy.get('#delete-8th').click();
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+  });
+
+  it('should remove overflow menu when all overflow items are removed', () => {
+    const Example = () => {
+      const [mapHelper, setMapHelper] = React.useState<string[]>(new Array(10).fill(0).map((_, i) => i.toString()));
+      const deleteItem = React.useCallback((index, count) => {
+        setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
+      }, []);
+
+      return (
+        <>
+          <Container>
+            {mapHelper.map(i => (
+              <Item key={i} id={i}>
+                {i}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <div>
+            <button id="delete-5plus" onClick={() => deleteItem(5, 10)}>
+              Delete all from index 5
+            </button>
+          </div>
+        </>
+      );
+    };
+    mount(<Example />);
+    setContainerWidth(300);
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+5');
+
+    cy.get('#delete-5plus').click();
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
   it('should be no flickering with larger divider', () => {
     mount(
       <Container>

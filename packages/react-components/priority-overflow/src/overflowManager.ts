@@ -256,6 +256,12 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
 
+    if (observing) {
+      // We might be removing an item in an overflow which would not affect the tops,
+      // but we need to update anyway to update the overflow menu state
+      forceDispatch = true;
+    }
+
     const item = overflowItems[itemId];
     visibleItemQueue.remove(itemId);
     invisibleItemQueue.remove(itemId);
