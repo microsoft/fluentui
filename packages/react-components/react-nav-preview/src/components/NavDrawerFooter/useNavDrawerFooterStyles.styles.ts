@@ -1,11 +1,11 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerFooterSlots, NavDrawerFooterState } from './NavDrawerFooter.types';
 
 export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots> = {
   root: 'fui-NavDrawerFooter',
-  // TODO: add class names for all slots on NavDrawerFooterSlots.
-  // Should be of the form `<slotName>: 'fui-NavDrawerFooter__<slotName>`
 };
 
 /**
@@ -13,21 +13,18 @@ export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'unset',
+    ...shorthands.padding(0, tokens.spacingVerticalMNudge),
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
  * Apply styling to the NavDrawerFooter slots based on the state
  */
 export const useNavDrawerFooterStyles_unstable = (state: NavDrawerFooterState): NavDrawerFooterState => {
+  useDrawerFooterStyles_unstable(state);
   const styles = useStyles();
   state.root.className = mergeClasses(navDrawerFooterClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

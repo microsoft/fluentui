@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 13 May 2024 12:34:18 GMT",
+      "tag": "@fluentui/react-combobox_v9.11.3",
+      "version": "9.11.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bd0a0820115040f9024807d72b29c9f5766a732b",
+            "comment": "fix(Combobox): `expandIcon={null}` should not throw"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 May 2024 19:35:10 GMT",
       "tag": "@fluentui/react-combobox_v9.11.2",
       "version": "9.11.2",
