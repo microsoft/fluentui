@@ -25,7 +25,10 @@ export const useCaretManipulation = () => {
     const startOffset = range.startOffset;
     const startParent = startContainer.parentNode as HTMLElement;
     if (startParent?.classList.contains('pickedItem') && startOffset !== 0) {
+      // alert(range.startOffset);
+      // alert(range.endContainer.tkextContent);
       range.setStart(startContainer, 0);
+      range.setEnd(range.endContainer, 0);
       return true;
     }
     return false;
@@ -76,10 +79,10 @@ export const useCaretManipulation = () => {
     }
   };
 
-  const moveCaretFromItem = (element: HTMLElement | null, character: string) => {
+  const moveCaretFromItem = (element: HTMLElement | null) => {
     const range = getRange(element);
     if (range === null) {
-      return false;
+      return;
     }
     const startContainer = range.startContainer;
     const startOffset = range.startOffset;
@@ -90,18 +93,15 @@ export const useCaretManipulation = () => {
     const isAtItemStart = startParent?.classList.contains('pickedItem') && startOffset === 0;
     if (isAtItemStart) {
       let prevSibling = startParent.previousSibling;
-      let characterInserted = false;
       if (prevSibling === null || prevSibling.nodeType !== Node.TEXT_NODE) {
-        prevSibling = targetDocument?.createTextNode(character) as Text;
+        prevSibling = targetDocument?.createTextNode('X') as Text;
         startParent.parentNode?.insertBefore(prevSibling, startParent);
-        characterInserted = true;
       }
       const newPosition = prevSibling.toString().length;
-      range.setStart(prevSibling, newPosition);
+      // range.setStart(prevSibling, newPosition);
+      range.setStart(prevSibling, 0);
       range.setEnd(prevSibling, newPosition);
-      return characterInserted;
     }
-    return false;
   };
 
   const getCaretPosition = (element: HTMLElement) => {

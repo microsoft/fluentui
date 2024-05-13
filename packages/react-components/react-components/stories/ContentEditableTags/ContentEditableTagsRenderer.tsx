@@ -118,7 +118,7 @@ export const ContentEditableTagsRenderer = () => {
           break;
         default:
           if (isKeyCharacter(event)) {
-            preventDefault = moveCaretFromItem(inputRef.current, event.key);
+            moveCaretFromItem(inputRef.current);
           }
           // alert(preventDefault);
           break;
