@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
@@ -19,7 +19,7 @@ export const useNavSubItem_unstable = (
   props: NavSubItemProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): NavSubItemState => {
-  const { onClick, value: subItemValue } = props;
+  const { onClick, value: subItemValue, as = 'button' } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
@@ -51,14 +51,15 @@ export const useNavSubItem_unstable = (
       root: 'button',
     },
     root: slot.always<ARIAButtonSlotProps<'a'>>(
-      getIntrinsicElementProps('a', {
-        ref,
-        role: 'nav',
-        type: 'navigation',
-        ...props,
-        onClick: onNavSubItemClick,
-      }),
-      { elementType: 'a' },
+      getIntrinsicElementProps(as, useARIAButtonProps(props.as, { ...props, onClick: onNavSubItemClick })),
+      {
+        elementType: 'button',
+        defaultProps: {
+          ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+          type: 'button',
+          role: 'nav',
+        },
+      },
     ),
     selected,
     value: subItemValue,

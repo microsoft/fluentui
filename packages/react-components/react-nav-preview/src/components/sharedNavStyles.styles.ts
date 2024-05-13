@@ -29,6 +29,7 @@ export const useRootDefaultClassName = makeResetStyles({
   color: tokens.colorNeutralForeground2,
   textDecorationLine: 'none',
   border: 'none',
+  width: '100%',
   ...typographyStyles.body1,
   ':hover': {
     backgroundColor: navItemTokens.backgroundColorHover,
