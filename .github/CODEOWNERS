@@ -121,6 +121,7 @@ apps/ts-minbar-test-react @microsoft/fluentui-react-build
 apps/ts-minbar-test-react-components @microsoft/fluentui-react-build
 apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
+apps/vr-tests-web-components @microsoft/fui-wc
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/fluentui-react-build
