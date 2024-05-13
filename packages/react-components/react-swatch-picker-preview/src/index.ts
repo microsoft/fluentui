@@ -5,6 +5,13 @@ export {
   useSwatchPicker_unstable,
   swatchPickerClassNames,
 } from './SwatchPicker';
+export {
+  SwatchPickerProvider,
+  swatchPickerContextDefaultValue,
+  useSwatchPickerContextValue_unstable,
+  useSwatchPickerContextValues,
+} from './contexts';
+export type { SwatchPickerContextValue, SwatchPickerContextValues } from './contexts';
 export type {
   SwatchPickerProps,
   SwatchPickerSlots,

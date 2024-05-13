@@ -290,6 +290,7 @@ import { drawerBodyClassNames } from '@fluentui/react-drawer';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
@@ -311,6 +312,7 @@ import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { Dropdown } from '@fluentui/react-combobox';
@@ -1337,6 +1339,8 @@ import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDrawer_unstable } from '@fluentui/react-drawer';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerContext_unstable } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
@@ -1435,10 +1439,12 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMessageBar_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
@@ -2214,6 +2220,8 @@ export { DrawerBodySlots }
 
 export { DrawerBodyState }
 
+export { DrawerContextValue }
+
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
@@ -2255,6 +2263,8 @@ export { DrawerHeaderTitleSlots }
 export { DrawerHeaderTitleState }
 
 export { DrawerProps }
+
+export { DrawerProvider }
 
 export { DrawerSlots }
 
@@ -4308,6 +4318,10 @@ export { useDrawerBody_unstable }
 
 export { useDrawerBodyStyles_unstable }
 
+export { useDrawerContext_unstable }
+
+export { useDrawerContextValue }
+
 export { useDrawerFooter_unstable }
 
 export { useDrawerFooterStyles_unstable }
@@ -4504,6 +4518,8 @@ export { useMessageBar_unstable }
 
 export { useMessageBarActions_unstable }
 
+export { useMessageBarActionsContextValue_unstable }
+
 export { useMessageBarActionsStyles_unstable }
 
 export { useMessageBarBody_unstable }
@@ -4511,6 +4527,8 @@ export { useMessageBarBody_unstable }
 export { useMessageBarBodyStyles_unstable }
 
 export { useMessageBarContext }
+
+export { useMessageBarContextValue_unstable }
 
 export { useMessageBarGroup_unstable }
 

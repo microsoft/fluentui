@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add missing Drawer and MessageBar context exports.",
+  "packageName": "@fluentui/react-components",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
