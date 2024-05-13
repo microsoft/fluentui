@@ -80,7 +80,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return !this._isChartEmpty() ? (
-      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
+      <ErrorBoundary hasEmptyState={true} handleError={this.props.handleError} theme={this.props.theme}>
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
           {data!.map((points: IChartProps, index: number) => {
             if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
