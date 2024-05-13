@@ -176,8 +176,7 @@
     "./dist/esm/toggle-button/define.js"
   ],
   "scripts": {
-    "tsc": "tsc",
-    "api-extractor": "api-extractor",
+    "type-check": "echo 'TODO'",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
     "compile": "node ./scripts/compile",
     "compile:benchmark": "rollup -c rollup.bench.js",
@@ -199,8 +198,7 @@
   "devDependencies": {
     "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
-    "@tensile-perf/web-components": "~0.1.13",
-    "rimraf": "^3.0.2"
+    "@tensile-perf/web-components": "~0.1.13"
   },
   "dependencies": {
     "@microsoft/fast-element": "2.0.0-beta.26",

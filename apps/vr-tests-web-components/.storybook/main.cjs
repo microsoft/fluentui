@@ -9,7 +9,12 @@ const tsPaths = new TsconfigPathsPlugin({
   configFile: tsConfigPath,
 });
 
-module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
+// TODO - these types are copied from root ./storybook/main.js as if we would like to use those as is, it will force us to add our custom storybook plugins as devDeps to WC
+//      - refactor this to be shared
+
+/** @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig */
+
+module.exports = /** @type {StorybookBaseConfig} */ ({
   addons: [
     {
       name: '@storybook/addon-docs',
