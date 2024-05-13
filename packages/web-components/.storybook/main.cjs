@@ -9,7 +9,24 @@ const tsPaths = new TsconfigPathsPlugin({
   configFile: tsConfigPath,
 });
 
-module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookConfig,'typescript'|'babel'|'previewHead'>} */ ({
+// TODO - these types are copied from root ./storybook/main.js as if we would like to use those as is, it will force us to add our custom storybook plugins as devDeps to WC
+//      - refactor this to be shared
+
+/**
+ * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
+ *
+ * @typedef {{
+ *   babel: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
+ *   previewHead: (head: string) => string;
+ * }} StorybookExtraConfig
+ *
+ * @typedef {StorybookBaseConfig &
+ *   Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>> &
+ *   StorybookExtraConfig
+ * } StorybookConfig
+ */
+
+module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'|'previewHead'>} */ ({
   stories: ['../src/**/*.stories.@(ts|mdx)'],
   staticDirs: ['../public'],
   core: {
