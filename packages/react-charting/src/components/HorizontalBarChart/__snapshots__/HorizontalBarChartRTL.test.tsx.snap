@@ -25,7 +25,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone2"
+          data-focuszone-id="FocusZone1"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
@@ -63,7 +63,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               </span>
               <div
                 hidden=""
-                id="tooltip3"
+                id="tooltip2"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
@@ -94,7 +94,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone4"
+          data-focuszone-id="FocusZone3"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
@@ -159,7 +159,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone5"
+          data-focuszone-id="FocusZone4"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
@@ -197,7 +197,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               </span>
               <div
                 hidden=""
-                id="tooltip6"
+                id="tooltip5"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
@@ -228,7 +228,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone7"
+          data-focuszone-id="FocusZone6"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
@@ -293,7 +293,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone8"
+          data-focuszone-id="FocusZone7"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
@@ -331,7 +331,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               </span>
               <div
                 hidden=""
-                id="tooltip9"
+                id="tooltip8"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 three
@@ -362,7 +362,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone10"
+          data-focuszone-id="FocusZone9"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
@@ -445,7 +445,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone2"
+          data-focuszone-id="FocusZone1"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
@@ -483,7 +483,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               </span>
               <div
                 hidden=""
-                id="tooltip3"
+                id="tooltip2"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 one
@@ -514,7 +514,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone4"
+          data-focuszone-id="FocusZone3"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
@@ -579,7 +579,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone5"
+          data-focuszone-id="FocusZone4"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
@@ -617,7 +617,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               </span>
               <div
                 hidden=""
-                id="tooltip6"
+                id="tooltip5"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 two
@@ -648,7 +648,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone7"
+          data-focuszone-id="FocusZone6"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
@@ -713,7 +713,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone8"
+          data-focuszone-id="FocusZone7"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <div
@@ -751,7 +751,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               </span>
               <div
                 hidden=""
-                id="tooltip9"
+                id="tooltip8"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 three
@@ -782,7 +782,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               {
                 padding-right: 0px;
               }
-          data-focuszone-id="FocusZone10"
+          data-focuszone-id="FocusZone9"
           data-tabster="{\\"uncontrolled\\": {}}"
         >
           <svg
@@ -878,7 +878,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone5"
+            data-focuszone-id="FocusZone4"
             data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
@@ -916,7 +916,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 </span>
                 <div
                   hidden=""
-                  id="tooltip6"
+                  id="tooltip5"
                   style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   one
@@ -947,7 +947,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 {
                   padding-right: 0px;
                 }
-            data-focuszone-id="FocusZone7"
+            data-focuszone-id="FocusZone6"
             data-tabster="{\\"uncontrolled\\": {}}"
           >
             <svg
@@ -1012,7 +1012,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone8"
+            data-focuszone-id="FocusZone7"
             data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
@@ -1050,7 +1050,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 </span>
                 <div
                   hidden=""
-                  id="tooltip9"
+                  id="tooltip8"
                   style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   two
@@ -1081,7 +1081,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 {
                   padding-right: 0px;
                 }
-            data-focuszone-id="FocusZone10"
+            data-focuszone-id="FocusZone9"
             data-tabster="{\\"uncontrolled\\": {}}"
           >
             <svg
@@ -1146,7 +1146,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone11"
+            data-focuszone-id="FocusZone10"
             data-tabster="{\\"uncontrolled\\": {}}"
           >
             <div
@@ -1184,7 +1184,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 </span>
                 <div
                   hidden=""
-                  id="tooltip12"
+                  id="tooltip11"
                   style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   three
@@ -1215,7 +1215,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 {
                   padding-right: 0px;
                 }
-            data-focuszone-id="FocusZone13"
+            data-focuszone-id="FocusZone12"
             data-tabster="{\\"uncontrolled\\": {}}"
           >
             <svg
@@ -1277,11 +1277,51 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 1`] = `
 <div>
   <div
-    aria-label="Graph has no data to display"
-    id="_HBC_empty1"
-    role="alert"
-    style="opacity: 0;"
-  />
+    style="display: flex; justify-content: center; align-items: center; height: 100%;"
+  >
+    <div
+      aria-label="Graph has no data to display"
+      id="_Chart_empty_1"
+      role="alert"
+      style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 10px;"
+    >
+      <div
+        style="display: flex; justify-content: center; align-items: center; height: 100%;"
+      >
+        <span
+          aria-hidden="true"
+          class=""
+          style="font-size: 175px; height: 175px;"
+        >
+          <svg
+            focusable="false"
+            viewBox="0 0 2048 2048"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M960 0q133 0 255 34t230 96 194 150 150 195 97 229 34 256q0 133-34 255t-96 230-150 194-195 150-229 97-256 34q-133 0-255-34t-230-96-194-150-150-195-97-229T0 960q0-133 34-255t96-230 150-194 195-150 229-97T960 0zm0 1792q114 0 220-30t199-84 169-130 130-168 84-199 30-221q0-114-30-220t-84-199-130-169-168-130-199-84-221-30q-115 0-221 30t-198 84-169 130-130 168-84 199-30 221q0 114 30 220t84 199 130 169 168 130 199 84 221 30zM896 512h128v640H896V512zm0 768h128v128H896v-128z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        style="font-size: 14px; font-weight: 700; font-family: Segoe UI; text-align: center;"
+      >
+        Couldn't load data
+      </div>
+      <div
+        style="font-size: 12px; font-family: Segoe UI; text-align: center;"
+      >
+        Something went wrong and we couldn't get the page to display
+      </div>
+      <div
+        style="font-size: 12px; font-family: Segoe UI; text-align: center;"
+      >
+        Error code: 
+        No data
+      </div>
+    </div>
+  </div>
 </div>
 `;
 

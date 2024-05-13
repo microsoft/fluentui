@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { getId } from '@fluentui/react/lib/Utilities';
-import ErrorImage from './ErrorImage';
+import ErrorImage from '../assets/ErrorImage';
 import { ITheme } from '@fluentui/react/lib/Styling';
-import MissingDataImage from './MissingDataImage';
+import MissingDataImage from '../assets/MissingDataImage';
 
 export enum ErrorCodes {
   NoData = 'No data',
