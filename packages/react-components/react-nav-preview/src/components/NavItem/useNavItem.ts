@@ -43,7 +43,7 @@ export const useNavItem_unstable = (
   }, [onRegister, onUnregister, innerRef, value]);
 
   return {
-    components: { root: 'a', icon: 'span' },
+    components: { root: 'button', icon: 'span' },
     root: slot.always<ARIAButtonSlotProps<'a'>>(
       getIntrinsicElementProps('a', {
         ref,

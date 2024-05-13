@@ -48,7 +48,7 @@ export const useNavSubItem_unstable = (
 
   return {
     components: {
-      root: 'a',
+      root: 'button',
     },
     root: slot.always<ARIAButtonSlotProps<'a'>>(
       getIntrinsicElementProps('a', {
