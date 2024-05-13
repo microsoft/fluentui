@@ -82,6 +82,7 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
    * similar to getElementById but for FlatTreeItems
    */
   getElementFromItem(item: HeadlessTreeItem<Props>): HTMLElement | null;
+  getItem(value: TreeItemValue): HeadlessTreeItem<Props> | undefined;
   /**
    * an iterable containing all visually available flat tree items
    */
@@ -176,11 +177,14 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
       onCheckedChange: handleCheckedChange,
       onNavigation: options.onNavigation ?? noop,
     }),
+    // ref, handleOpenChange - useEventCallback, handleCheckedChange - useEventCallback
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [openItems, checkedItems, options.selectionMode, options.onNavigation],
   );
 
   const items = React.useCallback(() => headlessTree.visibleItems(openItems), [openItems, headlessTree]);
+
+  const getItem = React.useCallback((value: TreeItemValue) => headlessTree.get(value), [headlessTree]);
 
   return React.useMemo<HeadlessFlatTree<Props>>(
     () => ({
@@ -188,9 +192,10 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
       getTreeProps,
       getNextNavigableItem,
       getElementFromItem,
+      getItem,
       items,
     }),
-    [navigation.navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items],
+    [navigation.navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items, getItem],
   );
 }
 

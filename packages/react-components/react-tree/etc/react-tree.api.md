@@ -86,6 +86,7 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
     navigate(data: TreeNavigationData_unstable): void;
     getNextNavigableItem(visibleItems: HeadlessTreeItem<Props>[], data: TreeNavigationData_unstable): HeadlessTreeItem<Props> | undefined;
     getElementFromItem(item: HeadlessTreeItem<Props>): HTMLElement | null;
+    getItem(value: TreeItemValue): HeadlessTreeItem<Props> | undefined;
     items(): IterableIterator<HeadlessTreeItem<Props>>;
 };
 

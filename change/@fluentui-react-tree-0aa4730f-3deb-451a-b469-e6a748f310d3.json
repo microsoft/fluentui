@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds getItem to HeadlessFlatTree (breaking change)",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
