@@ -290,6 +290,7 @@ import { drawerBodyClassNames } from '@fluentui/react-drawer';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
@@ -311,6 +312,7 @@ import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { Dropdown } from '@fluentui/react-combobox';
@@ -769,6 +771,14 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderTag_unstable } from '@fluentui/react-tags';
 import { renderTagGroup_unstable } from '@fluentui/react-tags';
+import { renderTagPicker_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerButton_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerControl_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerGroup_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerInput_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerList_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerOption_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerOptionGroup } from '@fluentui/react-tag-picker';
 import { renderTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
@@ -983,6 +993,49 @@ import { tagGroupClassNames } from '@fluentui/react-tags';
 import { TagGroupProps } from '@fluentui/react-tags';
 import { TagGroupSlots } from '@fluentui/react-tags';
 import { TagGroupState } from '@fluentui/react-tags';
+import { TagPicker } from '@fluentui/react-tag-picker';
+import { TagPickerButton } from '@fluentui/react-tag-picker';
+import { tagPickerButtonClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerButtonProps } from '@fluentui/react-tag-picker';
+import { TagPickerButtonSlots } from '@fluentui/react-tag-picker';
+import { TagPickerButtonState } from '@fluentui/react-tag-picker';
+import { TagPickerContextValues } from '@fluentui/react-tag-picker';
+import { TagPickerControl } from '@fluentui/react-tag-picker';
+import { tagPickerControlClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerControlProps } from '@fluentui/react-tag-picker';
+import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
+import { TagPickerControlState } from '@fluentui/react-tag-picker';
+import { TagPickerGroup } from '@fluentui/react-tag-picker';
+import { tagPickerGroupClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerGroupProps } from '@fluentui/react-tag-picker';
+import { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
+import { TagPickerGroupState } from '@fluentui/react-tag-picker';
+import { TagPickerInput } from '@fluentui/react-tag-picker';
+import { tagPickerInputClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerInputProps } from '@fluentui/react-tag-picker';
+import { TagPickerInputSlots } from '@fluentui/react-tag-picker';
+import { TagPickerInputState } from '@fluentui/react-tag-picker';
+import { TagPickerList } from '@fluentui/react-tag-picker';
+import { tagPickerListClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerListProps } from '@fluentui/react-tag-picker';
+import { TagPickerListSlots } from '@fluentui/react-tag-picker';
+import { TagPickerListState } from '@fluentui/react-tag-picker';
+import { TagPickerOnOpenChangeData } from '@fluentui/react-tag-picker';
+import { TagPickerOnOptionSelectData } from '@fluentui/react-tag-picker';
+import { TagPickerOption } from '@fluentui/react-tag-picker';
+import { tagPickerOptionClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { tagPickerOptionGroupClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupProps } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupSlots } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupState } from '@fluentui/react-tag-picker';
+import { TagPickerOptionProps } from '@fluentui/react-tag-picker';
+import { TagPickerOptionSlots } from '@fluentui/react-tag-picker';
+import { TagPickerOptionState } from '@fluentui/react-tag-picker';
+import { TagPickerProps } from '@fluentui/react-tag-picker';
+import { TagPickerSize } from '@fluentui/react-tag-picker';
+import { TagPickerSlots } from '@fluentui/react-tag-picker';
+import { TagPickerState } from '@fluentui/react-tag-picker';
 import { TagProps } from '@fluentui/react-tags';
 import { TagShape } from '@fluentui/react-tags';
 import { TagSize } from '@fluentui/react-tags';
@@ -1286,6 +1339,8 @@ import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDrawer_unstable } from '@fluentui/react-drawer';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerContext_unstable } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
@@ -1384,10 +1439,12 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMessageBar_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
@@ -1498,6 +1555,22 @@ import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagGroupContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagPicker_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerButton_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerButtonStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerControl_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerControlStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerFilter } from '@fluentui/react-tag-picker';
+import { useTagPickerGroup_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerGroupStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerInput_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerInputStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerList_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerListStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerOption_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionGroupStyles } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionStyles_unstable } from '@fluentui/react-tag-picker';
 import { useTagStyles_unstable } from '@fluentui/react-tags';
 import { useTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
@@ -2147,6 +2220,8 @@ export { DrawerBodySlots }
 
 export { DrawerBodyState }
 
+export { DrawerContextValue }
+
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
@@ -2188,6 +2263,8 @@ export { DrawerHeaderTitleSlots }
 export { DrawerHeaderTitleState }
 
 export { DrawerProps }
+
+export { DrawerProvider }
 
 export { DrawerSlots }
 
@@ -3105,6 +3182,22 @@ export { renderTag_unstable }
 
 export { renderTagGroup_unstable }
 
+export { renderTagPicker_unstable }
+
+export { renderTagPickerButton_unstable }
+
+export { renderTagPickerControl_unstable }
+
+export { renderTagPickerGroup_unstable }
+
+export { renderTagPickerInput_unstable }
+
+export { renderTagPickerList_unstable }
+
+export { renderTagPickerOption_unstable }
+
+export { renderTagPickerOptionGroup }
+
 export { renderTeachingPopover_unstable }
 
 export { renderTeachingPopoverBody_unstable }
@@ -3532,6 +3625,92 @@ export { TagGroupProps }
 export { TagGroupSlots }
 
 export { TagGroupState }
+
+export { TagPicker }
+
+export { TagPickerButton }
+
+export { tagPickerButtonClassNames }
+
+export { TagPickerButtonProps }
+
+export { TagPickerButtonSlots }
+
+export { TagPickerButtonState }
+
+export { TagPickerContextValues }
+
+export { TagPickerControl }
+
+export { tagPickerControlClassNames }
+
+export { TagPickerControlProps }
+
+export { TagPickerControlSlots }
+
+export { TagPickerControlState }
+
+export { TagPickerGroup }
+
+export { tagPickerGroupClassNames }
+
+export { TagPickerGroupProps }
+
+export { TagPickerGroupSlots }
+
+export { TagPickerGroupState }
+
+export { TagPickerInput }
+
+export { tagPickerInputClassNames }
+
+export { TagPickerInputProps }
+
+export { TagPickerInputSlots }
+
+export { TagPickerInputState }
+
+export { TagPickerList }
+
+export { tagPickerListClassNames }
+
+export { TagPickerListProps }
+
+export { TagPickerListSlots }
+
+export { TagPickerListState }
+
+export { TagPickerOnOpenChangeData }
+
+export { TagPickerOnOptionSelectData }
+
+export { TagPickerOption }
+
+export { tagPickerOptionClassNames }
+
+export { TagPickerOptionGroup }
+
+export { tagPickerOptionGroupClassNames }
+
+export { TagPickerOptionGroupProps }
+
+export { TagPickerOptionGroupSlots }
+
+export { TagPickerOptionGroupState }
+
+export { TagPickerOptionProps }
+
+export { TagPickerOptionSlots }
+
+export { TagPickerOptionState }
+
+export { TagPickerProps }
+
+export { TagPickerSize }
+
+export { TagPickerSlots }
+
+export { TagPickerState }
 
 export { TagProps }
 
@@ -4139,6 +4318,10 @@ export { useDrawerBody_unstable }
 
 export { useDrawerBodyStyles_unstable }
 
+export { useDrawerContext_unstable }
+
+export { useDrawerContextValue }
+
 export { useDrawerFooter_unstable }
 
 export { useDrawerFooterStyles_unstable }
@@ -4335,6 +4518,8 @@ export { useMessageBar_unstable }
 
 export { useMessageBarActions_unstable }
 
+export { useMessageBarActionsContextValue_unstable }
+
 export { useMessageBarActionsStyles_unstable }
 
 export { useMessageBarBody_unstable }
@@ -4342,6 +4527,8 @@ export { useMessageBarBody_unstable }
 export { useMessageBarBodyStyles_unstable }
 
 export { useMessageBarContext }
+
+export { useMessageBarContextValue_unstable }
 
 export { useMessageBarGroup_unstable }
 
@@ -4562,6 +4749,38 @@ export { useTagGroup_unstable }
 export { useTagGroupContextValues_unstable }
 
 export { useTagGroupStyles_unstable }
+
+export { useTagPicker_unstable }
+
+export { useTagPickerButton_unstable }
+
+export { useTagPickerButtonStyles_unstable }
+
+export { useTagPickerControl_unstable }
+
+export { useTagPickerControlStyles_unstable }
+
+export { useTagPickerFilter }
+
+export { useTagPickerGroup_unstable }
+
+export { useTagPickerGroupStyles_unstable }
+
+export { useTagPickerInput_unstable }
+
+export { useTagPickerInputStyles_unstable }
+
+export { useTagPickerList_unstable }
+
+export { useTagPickerListStyles_unstable }
+
+export { useTagPickerOption_unstable }
+
+export { useTagPickerOptionGroup }
+
+export { useTagPickerOptionGroupStyles }
+
+export { useTagPickerOptionStyles_unstable }
 
 export { useTagStyles_unstable }
 

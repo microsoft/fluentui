@@ -46,36 +46,59 @@ describe('normalize-package-dependencies generator', () => {
     tree = createTreeWithEmptyWorkspace();
     tree = createProject(tree, {
       projectName: 'react-one',
+      projectVersion: '1.0.0',
       deps: { dev: { '@proj/build-tool': '^1.0.0' }, prod: { react: '17.x.x' }, peer: {} },
       tags: ['platform:any'],
     });
     tree = createProject(tree, {
       projectName: 'react-two',
+      projectVersion: '1.0.0',
       deps: { dev: { '@proj/build-tool': '^1.0.0' }, prod: { react: '17.x.x', '@proj/react-one': '^1.0.0' }, peer: {} },
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
       projectName: 'react-three',
+      projectVersion: '0.1.0',
       deps: {
         dev: {},
-        prod: { react: '17.x.x', '@proj/react-two': '^1.0.0', '@proj/react-four': '1.0.0-beta.17' },
+        prod: {
+          react: '17.x.x',
+          '@proj/react-two': '^1.0.0',
+          '@proj/react-four': '1.0.0-beta.17',
+          '@proj/react-five': '9.0.0-alpha.17',
+        },
         peer: {},
       },
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
       projectName: 'react-four',
+      projectVersion: '1.0.0-beta.17',
       deps: { dev: {}, prod: { react: '17.x.x' }, peer: {} },
       tags: ['platform:any', 'scope:two'],
     });
     tree = createProject(tree, {
+      projectName: 'react-five',
+      projectVersion: '9.0.0-alpha.17',
+      deps: { dev: {}, prod: { react: '17.x.x' }, peer: {} },
+      tags: ['platform:any', 'scope:two'],
+    });
+    tree = createProject(tree, {
+      projectName: 'web-component-one',
+      projectVersion: '3.0.0-beta.17',
+      deps: { dev: {}, prod: { 'lit-element': '3.x.x' }, peer: {} },
+      tags: ['platform:web', 'scope:web-components'],
+    });
+    tree = createProject(tree, {
       projectName: 'build-tool',
+      projectVersion: '0.0.1',
       deps: { dev: {}, prod: { nx: '16.x.x' }, peer: {} },
       tags: ['platform:node', 'scope:tools'],
     });
     tree = createProject(tree, {
       projectName: 'react-app',
       projectType: 'application',
+      projectVersion: '0.0.1',
       deps: {
         dev: { '@proj/build-tool': '^1.0.0' },
         prod: {
@@ -83,6 +106,8 @@ describe('normalize-package-dependencies generator', () => {
           '@proj/react-one': '^1.0.0',
           '@proj/react-two': '^1.0.0',
           '@proj/react-four': '1.0.0-beta.17',
+          '@proj/react-five': '9.0.0-alpha.17',
+          '@proj/web-component-one': '3.0.0-beta.17',
         },
         peer: {},
       },
@@ -117,6 +142,8 @@ describe('normalize-package-dependencies generator', () => {
           '@proj/react-one': '^1.0.0',
           '@proj/react-two': '^1.0.0',
           '@proj/react-four': '1.0.0-beta.17',
+          '@proj/react-five': '9.0.0-alpha.17',
+          '@proj/web-component-one': '3.0.0-beta.17',
         });
         expect(reactApp.devDependencies).toEqual({
           '@proj/build-tool': '^1.0.0',
@@ -145,20 +172,24 @@ describe('normalize-package-dependencies generator', () => {
           "  - @proj/react-one@^1.0.0",
           "  - @proj/react-two@^1.0.0",
           "  - @proj/react-four@1.0.0-beta.17",
+          "  - @proj/react-five@9.0.0-alpha.17",
+          "  - @proj/web-component-one@3.0.0-beta.17",
           "",
         ]
       `);
       expect(infoLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "All these dependencies version should be specified as '*' or '>=9.0.0-alpha' ",
-          "Fix this by running 'nx g @fluentui/workspace-plugin:normalize-package-dependencies'",
+          "All these dependencies version should be specified as '*' or '>={MAJOR}.0.0-alpha' (NOTE: 'MAJOR' equals to specified package major version)",
+          "🛠️ FIX: run 'nx g @fluentui/workspace-plugin:normalize-package-dependencies'",
         ]
       `);
     });
 
     it(`should report if prerelease package range changed to normal release version`, async () => {
+      // normalize versions
       await generator(tree, {});
 
+      // change version of pre-release package to zero based major standard release
       updateProject(tree, { projectName: 'react-four', version: '0.1.0' });
 
       await expect(generator(tree, { verify: true })).rejects.toThrowErrorMatchingInlineSnapshot(
@@ -168,7 +199,7 @@ describe('normalize-package-dependencies generator', () => {
       expect(logLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
           "@proj/react-app has following dependency version issues:",
-          "  - @proj/react-four@>=9.0.0-alpha",
+          "  - @proj/react-four@>=1.0.0-alpha",
           "",
         ]
       `);
@@ -189,10 +220,15 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(reactApp.dependencies).toEqual({
         react: '17.x.x',
+        // workspace dependencies
         '@proj/react-one': '*',
         '@proj/react-two': '*',
+        // non workspace dependency - different version of original workspace installed from npm
         '@proj/react-three': '^0.1.0',
-        '@proj/react-four': '>=9.0.0-alpha',
+        // workspace dependencies pre-releases
+        '@proj/react-five': '>=9.0.0-alpha',
+        '@proj/react-four': '>=1.0.0-alpha',
+        '@proj/web-component-one': '>=3.0.0-alpha',
       });
       expect(reactApp.devDependencies).toEqual({
         '@proj/build-tool': '*',
@@ -206,10 +242,13 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(reactApp.dependencies).toEqual(
         expect.objectContaining({
-          '@proj/react-four': '>=9.0.0-alpha',
+          '@proj/react-four': '>=1.0.0-alpha',
+          '@proj/react-five': '>=9.0.0-alpha',
+          '@proj/web-component-one': '>=3.0.0-alpha',
         }),
       );
 
+      // change version of pre-release package to zero based major standard release
       updateProject(tree, { projectName: 'react-four', version: '0.1.0' });
 
       await generator(tree, {});
@@ -224,10 +263,12 @@ describe('normalize-package-dependencies generator', () => {
     });
 
     it(`should revert incorrect beachball bump change version on pre-release package`, async () => {
+      // simulate beachball bumping version of pre-release package to incorrect version
       updateProject(tree, {
         projectName: 'react-app',
         dependencies: {
-          '@proj/react-four': '1.0.0-beta.17 <9.0.0',
+          '@proj/web-component-one': '3.0.0-beta.18 <3.0.0',
+          '@proj/react-five': '9.0.0-alpha.18 <9.0.0',
         },
       });
 
@@ -237,7 +278,8 @@ describe('normalize-package-dependencies generator', () => {
 
       expect(reactApp.dependencies).toEqual(
         expect.objectContaining({
-          '@proj/react-four': '>=9.0.0-alpha',
+          '@proj/web-component-one': '>=3.0.0-alpha',
+          '@proj/react-five': '>=9.0.0-alpha',
         }),
       );
     });
@@ -273,6 +315,7 @@ describe('normalize-package-dependencies generator', () => {
         '@proj/react-one': '^0.1.0',
         '@proj/react-two': '^1.0.0',
         '@proj/react-four': '1.0.0-beta.17',
+        '@proj/react-five': '9.0.0-alpha.17',
       });
       expect(reactThree.devDependencies).toEqual({ '@proj/build-tool': '^0.1.0' });
     });
@@ -327,17 +370,19 @@ function createProject(
   options: {
     projectName: string;
     projectType?: 'application' | 'library';
+    projectVersion: string;
     tags?: string[];
     deps: { prod: Record<string, string>; dev: Record<string, string>; peer: Record<string, string> };
   },
 ) {
-  const { projectName, deps, tags, projectType = 'library' } = options;
+  const { projectName, projectVersion, deps, tags, projectType = 'library' } = options;
   const packageName = `@proj/${projectName}`;
 
   const rootPath = `packages/${projectName}`;
 
   writeJson(tree, `packages/${projectName}/package.json`, {
     name: packageName,
+    version: projectVersion,
     dependencies: { ...deps.prod },
     devDependencies: { ...deps.dev },
     peerDependencies: { ...deps.peer },

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
+import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
+import { useCarouselContext_unstable } from '../CarouselContext';
 
 /**
  * Create the state required to render CarouselCard.
@@ -15,20 +17,30 @@ export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  return {
-    // TODO add appropriate props/defaults
+  const { value } = props;
+
+  const visible = useCarouselContext_unstable(c => c.value === value);
+  const state: CarouselCardState = {
+    value,
+    visible,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
+        [CAROUSEL_ITEM]: value,
+        [CAROUSEL_ACTIVE_ITEM]: visible,
+        hidden: !visible,
         ...props,
       }),
       { elementType: 'div' },
     ),
   };
+
+  if (!visible) {
+    state.root.children = null;
+  }
+
+  return state;
 };

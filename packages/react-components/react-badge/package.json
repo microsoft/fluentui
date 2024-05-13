@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-badge",
-  "version": "9.2.32",
+  "version": "9.2.34",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,11 +33,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.237",
-    "@fluentui/react-jsx-runtime": "^9.0.36",
-    "@fluentui/react-shared-contexts": "^9.17.0",
+    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-jsx-runtime": "^9.0.37",
+    "@fluentui/react-shared-contexts": "^9.18.0",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.7",
+    "@fluentui/react-utilities": "^9.18.8",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

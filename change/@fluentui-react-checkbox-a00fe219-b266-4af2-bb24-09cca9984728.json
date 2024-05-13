@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": " chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,17 +1,44 @@
-export const durationUltraFast = 50;
-export const durationFaster = 100;
-export const durationFast = 150;
-export const durationNormal = 200;
-export const durationSlow = 300;
-export const durationSlower = 400;
-export const durationUltraSlow = 500;
+// Copied from packages/tokens/src/global/durations.ts
+// Values are numeric in milliseconds for ease of use in Web Animations API
+// (rather than parsing '__ms')
+export const durations = {
+  durationUltraFast: 50,
+  durationFaster: 100,
+  durationFast: 150,
+  durationNormal: 200,
+  durationGentle: 250,
+  durationSlow: 300,
+  durationSlower: 400,
+  durationUltraSlow: 500,
+} as const;
 
-export const easingAccelerateMax = 'cubic-bezier(1,0,1,1)';
-export const easingAccelerateMid = 'cubic-bezier(0.7,0,1,0.5)';
-export const easingAccelerateMin = 'cubic-bezier(0.8,0,1,1)';
-export const easingDecelerateMax = 'cubic-bezier(0,0,0,1)';
-export const easingDecelerateMid = 'cubic-bezier(0.1,0.9,0.2,1)';
-export const easingDecelerateMin = 'cubic-bezier(0.33,0,0.1,1)';
-export const easingMaxEasyEase = 'cubic-bezier(0.8,0,0.1,1)';
-export const easingEasyEase = 'cubic-bezier(0.33,0,0.67,1)';
-export const easingLinear = 'cubic-bezier(0,0,1,1)';
+// Copied from packages/tokens/src/global/curves.ts
+// Names and values are preserved exactly
+export const curves = {
+  curveAccelerateMax: 'cubic-bezier(0.9,0.1,1,0.2)',
+  curveAccelerateMid: 'cubic-bezier(1,0,1,1)',
+  curveAccelerateMin: 'cubic-bezier(0.8,0,0.78,1)',
+  curveDecelerateMax: 'cubic-bezier(0.1,0.9,0.2,1)',
+  curveDecelerateMid: 'cubic-bezier(0,0,0,1)',
+  curveDecelerateMin: 'cubic-bezier(0.33,0,0.1,1)',
+  curveEasyEaseMax: 'cubic-bezier(0.8,0,0.2,1)',
+  curveEasyEase: 'cubic-bezier(0.33,0,0.67,1)',
+  curveLinear: 'cubic-bezier(0,0,1,1)',
+} as const;
+
+// A merged flat lookup for convenience
+export const motionTokens = {
+  ...durations,
+  ...curves,
+};
+
+/*
+TODO: enforce naming conventions when TypeScript 4.4 features are supported in Fluent:
+
+type DurationKey = `duration${Capitalize<string>}`;
+type CurveKey = `curve${Capitalize<string>}`;
+type CurveValue = `cubic-bezier(${number},${number},${number},${number})`;
+
+type DurationTokens = Record<DurationKey, number>;
+type CurveTokens = Record<CurveKey, CurveValue>;
+*/

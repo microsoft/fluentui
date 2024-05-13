@@ -422,10 +422,14 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
+    const benchMark = point.data;
     const yValue =
       point.yAxisCalloutData ||
       (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      (legend ? `${legend}, ` : '') + `${yValue}.` + (benchMark ? 'with benchmark at ' + `${benchMark}, ` : '')
+    );
   };
 
   private _isChartEmpty(): boolean {

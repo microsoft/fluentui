@@ -2,6 +2,7 @@ export {
   MessageBar,
   useMessageBarStyles_unstable,
   useMessageBar_unstable,
+  useMessageBarContextValue_unstable,
   renderMessageBar_unstable,
   messageBarClassNames,
 } from './MessageBar';
@@ -23,6 +24,7 @@ export {
   useMessageBarActionsStyles_unstable,
   useMessageBarActions_unstable,
   renderMessageBarActions_unstable,
+  useMessageBarActionsContextValue_unstable,
   messageBarActionsClassNames,
 } from './MessageBarActions';
 
@@ -38,8 +40,15 @@ export {
 
 export type { MessageBarBodyProps, MessageBarBodySlots, MessageBarBodyState } from './MessageBarBody';
 
-export { MessageBarContextProvider, useMessageBarContext } from './contexts/messageBarContext';
-export type { MessageBarContextValue } from './contexts/messageBarContext';
+export {
+  MessageBarContextProvider,
+  messageBarContextDefaultValue,
+  messageBarTransitionContextDefaultValue,
+  useMessageBarContext,
+  MessageBarTransitionContextProvider,
+  useMessageBarTransitionContext,
+} from './contexts';
+export type { MessageBarContextValue, MessageBarTransitionContextValue } from './contexts';
 export {
   MessageBarGroup,
   useMessageBarGroupStyles_unstable,
