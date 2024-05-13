@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from
 import { useNavContext_unstable } from '../NavContext';
 
 import type { NavItemProps, NavItemState } from './NavItem.types';
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render NavItem.
@@ -13,7 +14,10 @@ import type { NavItemProps, NavItemState } from './NavItem.types';
  * @param props - props from this instance of NavItem
  * @param ref - reference to root HTMLAnchorElement of NavItem
  */
-export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
+export const useNavItem_unstable = (
+  props: NavItemProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): NavItemState => {
   const { onClick, value, icon } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
@@ -22,7 +26,9 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
 
   const innerRef = React.useRef<HTMLElement>(null);
   const onNavItemClick = useEventCallback(
-    mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
+    mergeCallbacks(onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>, event =>
+      onSelect(event, { type: 'click', event, value }),
+    ),
   );
 
   React.useEffect(() => {
@@ -38,7 +44,7 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
 
   return {
     components: { root: 'a', icon: 'span' },
-    root: slot.always(
+    root: slot.always<ARIAButtonSlotProps<'a'>>(
       getIntrinsicElementProps('a', {
         ref,
         role: 'nav',
