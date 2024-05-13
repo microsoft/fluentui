@@ -45,7 +45,7 @@
     "@fluentui/react-popover": "^9.9.8",
     "@fluentui/react-button": "^9.3.79",
     "@fluentui/react-tabster": "^9.21.2",
-    "@fluentui/react-icons": "^2.0.237",
+    "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-aria": "^9.11.2",
     "@fluentui/react-context-selector": "^9.1.59",
     "use-sync-external-store": "^1.2.0"

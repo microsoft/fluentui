@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^9.3.79",
-    "@fluentui/react-icons": "^2.0.237",
+    "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-jsx-runtime": "^9.0.37",
     "@fluentui/react-shared-contexts": "^9.18.0",
     "@fluentui/react-theme": "^9.1.19",
