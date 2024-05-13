@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Update react-icons package to 2.0.239.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
