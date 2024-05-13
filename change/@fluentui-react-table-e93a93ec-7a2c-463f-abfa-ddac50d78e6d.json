@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: uograde react-icons to 2.0.239",
+  "packageName": "@fluentui/react-table",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
