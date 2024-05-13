@@ -87,3 +87,11 @@ export const SwatchPickerPopup = () => {
     </>
   );
 };
+
+SwatchPickerPopup.parameters = {
+  docs: {
+    description: {
+      story: 'The swatch picker can be integrated within a popover or similar element.',
+    },
+  },
+};

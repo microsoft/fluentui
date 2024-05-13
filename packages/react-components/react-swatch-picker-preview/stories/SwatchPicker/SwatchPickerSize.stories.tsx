@@ -52,3 +52,12 @@ export const SwatchPickerSize = () => {
     </div>
   );
 };
+
+SwatchPickerSize.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `size` prop sets width and height of the Swatch. The default is `medium` which is 28x28px. `extra-small` is 20x20px, `small` is 24x24px, `large` is 32x32px.',
+    },
+  },
+};

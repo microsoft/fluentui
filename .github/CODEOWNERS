@@ -126,7 +126,6 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
-apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
 apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
 apps/react-18-tests-v9 @microsoft/cxe-red @micahgodbolt
 apps/recipes-react-components @microsoft/cxe-red @microsoft/fluentui-react @sopranopillow
@@ -250,7 +249,7 @@ packages/react-components/react-motions-preview @microsoft/teams-prg
 packages/react-components/react-teaching-popover @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat @microsoft/teams-prg
 packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
-packages/react-components/react-tag-picker-preview @microsoft/teams-prg
+packages/react-components/react-tag-picker @microsoft/teams-prg
 packages/react-components/react-carousel-preview @microsoft/xc-uxe @Mitch-At-Work
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 

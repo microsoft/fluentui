@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix overflowBoundaryPadding being ingored when autoSize was on",
-  "packageName": "@fluentui/react-positioning",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

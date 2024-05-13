@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2024 19:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.0)
+
+Thu, 09 May 2024 19:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.14.5..@fluentui/react-positioning_v9.15.0)
+
+### Minor changes
+
+- fix overflowBoundaryPadding being ingored when autoSize was on ([PR #31277](https://github.com/microsoft/fluentui/pull/31277) by jirivyhnalek@microsoft.com)
 
 ## [9.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.14.5)
 
