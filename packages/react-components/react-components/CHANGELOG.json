@@ -2,6 +2,59 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 13 May 2024 12:34:18 GMT",
+      "tag": "@fluentui/react-components_v9.51.0",
+      "version": "9.51.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bd0a0820115040f9024807d72b29c9f5766a732b",
+            "comment": "fix(Combobox): `expandIcon={null}` should not throw"
+          }
+        ],
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing Drawer and MessageBar context exports."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing Drawer context exports."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing context exports."
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "e1f12b95461c0d790df6e6f41e6bc79e8fe896e1",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "1ccf6c23ddc4d125940ce23ea3788d0069665f67",
+            "comment": "feat: Moving styles to new recomposed components."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing SwatchPicker context exports."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 May 2024 19:35:10 GMT",
       "tag": "@fluentui/react-components_v9.50.0",
       "version": "9.50.0",

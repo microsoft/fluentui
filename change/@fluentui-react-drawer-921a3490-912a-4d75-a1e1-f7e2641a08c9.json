@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add missing Drawer context exports.",
-  "packageName": "@fluentui/react-drawer",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

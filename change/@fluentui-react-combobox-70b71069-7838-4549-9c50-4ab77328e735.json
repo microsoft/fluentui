@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Combobox): `expandIcon={null}` should not throw",
-  "packageName": "@fluentui/react-combobox",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
