@@ -34,7 +34,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-icons": "^2.0.237",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",
@@ -77,6 +77,8 @@
     "tslib": "^2.1.0",
     "@fluentui/react-breadcrumb": "*",
     "@fluentui/react-rating": "*",
-    "@fluentui/react-search": ">=9.0.0-alpha"
+    "@fluentui/react-search": "*",
+    "@fluentui/react-teaching-popover": "*",
+    "@fluentui/react-tag-picker": "*"
   }
 }

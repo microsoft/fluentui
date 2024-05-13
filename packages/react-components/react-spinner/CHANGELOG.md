@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Tue, 02 Apr 2024 09:48:00 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.7)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.6..@fluentui/react-spinner_v9.4.7)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-label to v9.1.69 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.6)
+
+Thu, 02 May 2024 11:36:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.5..@fluentui/react-spinner_v9.4.6)
+
+### Patches
+
+- Fix spinner embedded in button animation ([PR #31195](https://github.com/microsoft/fluentui/pull/31195) by kirpadv@gmail.com)
+
+## [9.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.5)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.4..@fluentui/react-spinner_v9.4.5)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-label to v9.1.68 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.4)
+
+Wed, 17 Apr 2024 21:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.4.3..@fluentui/react-spinner_v9.4.4)
+
+### Patches
+
+- chore: move tabindex to the root slot of Spinner. ([PR #31056](https://github.com/microsoft/fluentui/pull/31056) by ololubek@microsoft.com)
 
 ## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.3)
 

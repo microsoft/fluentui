@@ -1,7 +1,7 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
-import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
+import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
   TimeLocaleObject as d3TimeLocaleObject,
@@ -833,12 +833,13 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     d3Select(d1)
-      .on('mouseover', d => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
           .html(originalDataArray[i])
-          .style('left', d3Event.pageX + 'px')
-          .style('top', d3Event.pageY - 28 + 'px');
+          .style('left', event.pageX + 'px')
+          .style('top', event.pageY - 28 + 'px');
       })
       .on('mouseout', d => {
         div.style('opacity', 0);
@@ -961,9 +962,8 @@ export function domainRangeOfVSBCNumeric(
 ): IDomainNRange {
   const xMin = d3Min(points, (point: IDataPoint) => point.x as number)!;
   const xMax = d3Max(points, (point: IDataPoint) => point.x as number)!;
-  // barWidth / 2 - for to get tick middle of the bar
-  const rMax = margins.left! + barWidth / 2;
-  const rMin = width - margins.right! - barWidth / 2;
+  const rMax = margins.left!;
+  const rMin = width - margins.right!;
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMax, rEndValue: rMin }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue: rMax, rEndValue: rMin };
@@ -1017,8 +1017,8 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
     lDate = d3Max(points as any[], point => point.x as Date)!;
   }
 
-  const rStartValue = margins.left! + (barWidth ? barWidth / 2 : 0);
-  const rEndValue = width - margins.right! - (barWidth ? barWidth / 2 : 0);
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
 
   return isRTL
     ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
@@ -1043,8 +1043,8 @@ export function domainRageOfVerticalNumeric(
 ): IDomainNRange {
   const xMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
   const xMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-  const rMin = margins.left! + barWidth / 2;
-  const rMax = containerWidth - margins.right! - barWidth / 2;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue: rMin, rEndValue: rMax }
@@ -1492,15 +1492,15 @@ const MIN_BAR_WIDTH = 1;
 export const getBarWidth = (
   barWidthProp: number | 'default' | 'auto' | undefined,
   maxBarWidthProp: number | undefined,
-  defaultValue = DEFAULT_BAR_WIDTH,
+  adjustedValue = DEFAULT_BAR_WIDTH,
 ): number => {
   let barWidth: number;
   if (typeof barWidthProp === 'number') {
     barWidth = barWidthProp;
   } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
-    barWidth = DEFAULT_BAR_WIDTH;
+    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
   } else {
-    barWidth = defaultValue;
+    barWidth = adjustedValue;
   }
   if (typeof maxBarWidthProp === 'number') {
     barWidth = Math.min(barWidth, maxBarWidthProp);

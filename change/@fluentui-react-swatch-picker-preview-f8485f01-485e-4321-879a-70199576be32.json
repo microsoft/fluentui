@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add missing SwatchPicker context exports.",
+  "packageName": "@fluentui/react-swatch-picker-preview",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}

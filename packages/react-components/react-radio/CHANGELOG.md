@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.19)
+
+Thu, 09 May 2024 19:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.18..@fluentui/react-radio_v9.2.19)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
+
+## [9.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.18)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.17..@fluentui/react-radio_v9.2.18)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.64 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-label to v9.1.69 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.17)
+
+Thu, 02 May 2024 11:36:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.16..@fluentui/react-radio_v9.2.17)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.63 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+
+## [9.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.16)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.15..@fluentui/react-radio_v9.2.16)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.62 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.36 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-label to v9.1.68 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-tabster to v9.20.1 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+
+## [9.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.15)
+
+Wed, 17 Apr 2024 21:54:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.14..@fluentui/react-radio_v9.2.15)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.61 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
+- Bump @fluentui/react-tabster to v9.20.0 ([PR #31100](https://github.com/microsoft/fluentui/pull/31100) by beachball)
 
 ## [9.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.14)
 

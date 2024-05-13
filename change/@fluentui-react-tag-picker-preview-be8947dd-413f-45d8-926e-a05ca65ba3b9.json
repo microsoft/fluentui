@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: ensure Click and Enter open/close popover properly",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

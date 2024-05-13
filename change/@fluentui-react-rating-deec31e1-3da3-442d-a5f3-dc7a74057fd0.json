@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update RatingDisplay value margin-left tokens.",
-  "packageName": "@fluentui/react-rating",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

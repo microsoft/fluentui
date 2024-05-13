@@ -11,17 +11,9 @@ import { BreadcrumbDivider } from '../BreadcrumbDivider';
 import { partitionBreadcrumbItems } from '../../utils';
 import type { BreadcrumbProps } from './Breadcrumb.types';
 import type { PartitionBreadcrumbItems } from '../../utils';
-import {
-  Button,
-  Menu,
-  MenuList,
-  MenuItemLink,
-  MenuPopover,
-  MenuTrigger,
-  useIsOverflowItemVisible,
-  useOverflowMenu,
-  MenuItem,
-} from '@fluentui/react-components';
+import { Button } from '@fluentui/react-button';
+import { Menu, MenuList, MenuItemLink, MenuPopover, MenuTrigger, MenuItem } from '@fluentui/react-menu';
+import { useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 const mountFluent = (element: JSX.Element) => {

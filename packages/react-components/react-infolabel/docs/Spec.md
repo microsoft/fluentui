@@ -1,4 +1,4 @@
-# @fluentui/react-infobutton Spec
+# @fluentui/react-infolabel Spec
 
 Convergence epic issue: [#25062](https://github.com/microsoft/fluentui/issues/25062)
 

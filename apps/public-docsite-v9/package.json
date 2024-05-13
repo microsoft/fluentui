@@ -37,14 +37,13 @@
     "@fluentui/theme-designer": "*",
     "@fluentui/react-swatch-picker-preview": "*",
     "@fluentui/react-motions-preview": "*",
-    "@fluentui/react-tag-picker-preview": "*",
-    "@fluentui/react-teaching-popover-preview": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@griffel/react": "^1.5.14",
     "@microsoft/applicationinsights-web": "^3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@fluentui/react-nav-preview": "*"
   }
 }

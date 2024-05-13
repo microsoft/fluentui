@@ -37,15 +37,24 @@ export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellS
   subtle?: boolean;
 
   /**
-   * Completely hides the selection cell visually but takes up the same space
-   * @default false
+   * Completely hides the selection cell
+   * @deprecated cells should never use hidden, since doing so breaks table structure and screen reader navigation. Use `invisible` instead.
    */
   hidden?: boolean;
+
+  /**
+   * Hides the selection cell visually but takes up the same space
+   * @default false
+   */
+  invisible?: boolean;
 };
 
 /**
  * State used in rendering TableSelectionCell
  */
 export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> &
-  Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle' | 'hidden'> &
-  Pick<TableContextValue, 'noNativeElements'>;
+  Pick<Required<TableSelectionCellProps>, 'type' | 'checked' | 'subtle'> &
+  Pick<TableContextValue, 'noNativeElements'> & {
+    /* Visually hides the selection cell; not deprecated on state */
+    hidden: boolean;
+  };

@@ -66,6 +66,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useMenuGroupHeaderStyles_unstable: (state: unknown) => void;
         useMenuGroupStyles_unstable: (state: unknown) => void;
         useMenuItemCheckboxStyles_unstable: (state: unknown) => void;
+        useMenuItemSwitchStyles_unstable: (state: unknown) => void;
         useMenuItemRadioStyles_unstable: (state: unknown) => void;
         useMenuItemStyles_unstable: (state: unknown) => void;
         useMenuListStyles_unstable: (state: unknown) => void;
@@ -149,6 +150,13 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
         useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
         useTimePickerCompatStyles_unstable: (state: unknown) => void;
+        useTagPickerInputStyles_unstable: (state: unknown) => void;
+        useTagPickerButtonStyles_unstable: (state: unknown) => void;
+        useTagPickerControlStyles_unstable: (state: unknown) => void;
+        useTagPickerGroupStyles_unstable: (state: unknown) => void;
+        useTagPickerListStyles_unstable: (state: unknown) => void;
+        useTagPickerOptionStyles_unstable: (state: unknown) => void;
+        useTagPickerOptionGroupStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

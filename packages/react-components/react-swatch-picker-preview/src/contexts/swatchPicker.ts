@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { createContext, ContextSelector, useContextSelector, Context } from '@fluentui/react-context-selector';
-import { SwatchPickerProps, SwatchPickerState } from '../components/SwatchPicker/SwatchPicker.types';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { ContextSelector, Context } from '@fluentui/react-context-selector';
+import type { SwatchPickerProps, SwatchPickerState } from '../components/SwatchPicker/SwatchPicker.types';
 
 /**
  * The context through which individual color controls communicate with the picker.
@@ -12,6 +13,7 @@ export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' 
   isGrid: boolean;
 
   /**
+   * @internal
    * Callback used by ColorSwatch to request a change on it's selected state
    * Should be used to select ColorSwatch
    */

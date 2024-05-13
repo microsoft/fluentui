@@ -2,6 +2,84 @@
   "name": "@fluentui/react-motions-preview",
   "entries": [
     {
+      "date": "Thu, 09 May 2024 19:35:11 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robert@robertpenner.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "a276e61fe284cf4d8345806365451b14c4c1589c",
+            "comment": "BREAKING: fix motion token values and adjust structure to match original source"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:35 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.7",
+      "version": "0.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "0be8dea7d1e2aa07fd2f95942ffd7b4020053a6a",
+            "comment": "fix(PresenceGroup): cleanup children properly"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "8c5af01305951a27bc5f0b549b67592269ceeed0",
+            "comment": "chore: improve state handling in createPresenceComponent()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 08:17:49 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.6",
+      "version": "0.2.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.17.0",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-motions-preview_v0.2.5",
       "version": "0.2.5",

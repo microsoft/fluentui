@@ -4,8 +4,14 @@ export {
   useSwatchPickerStyles_unstable,
   useSwatchPicker_unstable,
   swatchPickerClassNames,
-  swatchPickerCSSVars,
 } from './SwatchPicker';
+export {
+  SwatchPickerProvider,
+  swatchPickerContextDefaultValue,
+  useSwatchPickerContextValue_unstable,
+  useSwatchPickerContextValues,
+} from './contexts';
+export type { SwatchPickerContextValue, SwatchPickerContextValues } from './contexts';
 export type {
   SwatchPickerProps,
   SwatchPickerSlots,

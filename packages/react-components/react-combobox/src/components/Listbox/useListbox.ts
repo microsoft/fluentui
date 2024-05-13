@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import {
+  ActiveDescendantChangeEvent,
   useActiveDescendant,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
@@ -48,10 +49,31 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
+  const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
+
+  const listenerRef = React.useMemo(() => {
+    let element: HTMLDivElement | null = null;
+
+    const listener = (untypedEvent: Event) => {
+      // Typescript doesn't support custom event types on handler
+      const event = untypedEvent as ActiveDescendantChangeEvent;
+      onActiveDescendantChange?.(event);
+    };
+
+    return (el: HTMLDivElement | null) => {
+      if (!el) {
+        element?.removeEventListener('activedescendantchange', listener);
+        return;
+      }
+
+      element = el;
+      element.addEventListener('activedescendantchange', listener);
+    };
+  }, [onActiveDescendantChange]);
+
   const activeDescendantContext = useActiveDescendantContext();
-  const activeDescendantController = useHasParentActiveDescendantContext()
-    ? activeDescendantContext.controller
-    : controller;
+  const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
+  const activeDescendantController = hasParentActiveDescendantContext ? activeDescendantContext.controller : controller;
 
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
@@ -90,6 +112,39 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
+  const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
+    if (hasParentActiveDescendantContext || activeDescendantController.active()) {
+      return;
+    }
+
+    // restore focus to last active option (if it still exists) - similar to memorizeCurrent in useArrowNavigationGroup
+    if (activeDescendantController.focusLastActive()) {
+      return;
+    }
+
+    // if there is a selected option, focus it and make it active
+    const selectedOptionValues = selectedOptions ?? [];
+    const firstSelectedOption = optionCollection.getOptionsMatchingValue(value =>
+      selectedOptionValues.includes(value),
+    )[0];
+    if (firstSelectedOption) {
+      activeDescendantController.focus(firstSelectedOption.id);
+      return;
+    }
+
+    // if there is no active descendant and no selected options, set the first option as active
+    activeDescendantController.first();
+  };
+
+  const onBlur = (_event: React.FocusEvent<HTMLElement>) => {
+    if (hasParentActiveDescendantContext) {
+      return;
+    }
+
+    // blur active descendant styles on blur, in the absence of a parent context controlling the state
+    activeDescendantController.blur();
+  };
+
   // get state from parent combobox, if it exists
   const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
@@ -117,7 +172,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef),
+        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef, listenerRef),
         role: multiselect ? 'menu' : 'listbox',
         tabIndex: 0,
         ...props,
@@ -127,11 +182,14 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     multiselect,
     clearSelection,
     activeDescendantController,
+    onActiveDescendantChange,
     ...optionCollection,
     ...optionContextValues,
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
+  state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
+  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlur));
 
   return state;
 };

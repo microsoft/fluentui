@@ -13,6 +13,9 @@ const useStyles = makeStyles({
     height: '100px',
     ...shorthands.border('1px', 'solid', '#ccc'),
     ...shorthands.margin('20px', '0'),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
 });
 
@@ -56,4 +59,12 @@ const ColorSwatchWithTooltip = (props: ColorSwatchProps) => {
       <ColorSwatch color={color} value={value} aria-label={label} />
     </Tooltip>
   );
+};
+
+SwatchPickerWithTooltip.parameters = {
+  docs: {
+    description: {
+      story: 'Each swatch should have a descriptive tooltip.',
+    },
+  },
 };

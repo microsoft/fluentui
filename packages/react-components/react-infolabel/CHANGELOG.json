@@ -2,6 +2,167 @@
   "name": "@fluentui/react-infolabel",
   "entries": [
     {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.32",
+      "version": "9.0.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.9.8",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.21.2",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.31",
+      "version": "9.0.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-label to v9.1.69",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.9.7",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:34 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.30",
+      "version": "9.0.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.9.6",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 08:17:49 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.29",
+      "version": "9.0.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-label to v9.1.68",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.9.5",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.20.1",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.36",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 21:53:53 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.28",
+      "version": "9.0.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.9.4",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "31be1ad41f981f559919d0261c9750b50d69fcda",
+            "comment": "perf: speed up tsc by not running on cypress files during .d.ts generation and type-checking"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/react-infolabel_v9.0.27",
       "version": "9.0.27",

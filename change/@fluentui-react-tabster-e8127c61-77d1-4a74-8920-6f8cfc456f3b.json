@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Tabster 7.1.0.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

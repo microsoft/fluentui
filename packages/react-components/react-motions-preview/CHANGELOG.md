@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-motions-preview
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2024 19:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.3.0)
+
+Thu, 09 May 2024 19:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.2.8..@fluentui/react-motions-preview_v0.3.0)
+
+### Minor changes
+
+- BREAKING: fix motion token values and adjust structure to match original source ([PR #31262](https://github.com/microsoft/fluentui/pull/31262) by robert@robertpenner.com)
+
+## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.2.8)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.2.7..@fluentui/react-motions-preview_v0.2.8)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.2.7)
+
+Thu, 02 May 2024 11:36:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.2.6..@fluentui/react-motions-preview_v0.2.7)
+
+### Patches
+
+- fix(PresenceGroup): cleanup children properly ([PR #31175](https://github.com/microsoft/fluentui/pull/31175) by olfedias@microsoft.com)
+- chore: improve state handling in createPresenceComponent() ([PR #31143](https://github.com/microsoft/fluentui/pull/31143) by olfedias@microsoft.com)
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.2.6)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.2.5..@fluentui/react-motions-preview_v0.2.6)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.17.0 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.2.5)
 

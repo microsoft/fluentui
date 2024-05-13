@@ -193,6 +193,6 @@ describe('workspace-generator generator', () => {
     `);
   });
   it(`should throw when required props are missing`, async () => {
-    expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(`[Error: name is required]`);
+    await expect(generator(tree, { name: '' })).rejects.toMatchInlineSnapshot(`[Error: name is required]`);
   });
 });

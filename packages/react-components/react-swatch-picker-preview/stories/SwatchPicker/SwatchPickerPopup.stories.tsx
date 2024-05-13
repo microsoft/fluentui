@@ -8,6 +8,9 @@ const useStyles = makeStyles({
     height: '100px',
     ...shorthands.border('1px', 'solid', '#ccc'),
     ...shorthands.margin('20px', '0'),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
 });
 
@@ -83,4 +86,12 @@ export const SwatchPickerPopup = () => {
       />
     </>
   );
+};
+
+SwatchPickerPopup.parameters = {
+  docs: {
+    description: {
+      story: 'The swatch picker can be integrated within a popover or similar element.',
+    },
+  },
 };
