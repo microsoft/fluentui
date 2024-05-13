@@ -73,6 +73,11 @@ The single reliable solution is to prefix styles with a unique identifier. This 
 <div class="main-order0 main-order1"></div>
 ```
 
+The proposed idea is to integrate prefix as a part of classes generation in Griffel as a salt for hashing (see [`hashClassName`](https://github.com/microsoft/griffel/blob/e3bf466e36464585ecff0ca3492760f6ada76dcc/packages/core/src/runtime/utils/hashClassName.ts#L23-L32) function):
+
+- 👍 Class length won't change
+- 👍 Apps can easily _prefix_ classes with a unique identifier like a project name
+
 ## Problem statement
 
 Integrating prefixing into Griffel is relatively straightforward. However, we currently undergo a pre-processing step in `@fluentui/react-components` that modifies JavaScript code.
@@ -115,7 +120,10 @@ const useStyles = /*#__PURE__*/ __styles(
 
 </details>
 
-Addressing prefixing for pre-processed styles presents a challenge, as they have already been transformed into CSS rules and classes.
+Addressing prefixing for pre-processed styles presents a challenge, as they have already been transformed into CSS rules and classes:
+
+- 👎 **Webpack loader** (i.e. build time) - Will make loaders more complex and less efficient
+- 👎 **Runtime** - Will require additional logic in `__styles()` (_artifact of AOT compilation in Griffel_) to prefix classes that makes the idea of AOT compilation obsolete
 
 ## Current workaround
 
@@ -142,30 +150,14 @@ As a result, the CSS rules will have a higher specificity and will override any 
 > );
 > ```
 >
-> - We cannot prefix classes in the mapping with current APIs (part 1)
-> - We can prefix CSS classes (part 2)
+> - We cannot prefix classes in the mapping with current APIs (part 1) as classes have been already hashed~~~~
+> - We can prefix CSS classes (part 2) properly only but invoking Stylis (CSS preprocessor) on every CSS rule
 
 > Note: `__styles()` is a result of AOT compilation in Griffel, adding additional responsibilities to it makes the idea of AOT compilation obsolete.
 
 A [StackBlitz example](https://stackblitz.com/edit/vitejs-vite-d11ccd) demonstrates this workaround.
 
 ## Proposal
-
-The long-term solution is to discontinue the pre-processing of styles in `@fluentui/react-components` and transfer this responsibility to the consuming application.
-
-> Note: Applications already undertake this responsibility, as first and third-party packages do not include pre-processed styles.
-
-### Option A: Stop pre-processing styles
-
-This option involves eliminating the pre-processing step from `@fluentui/react-components`, shifting the responsibility to the consuming application.
-
-This is the simplest option, albeit it necessitates adjustments in the consuming app and is not backward compatible. Consequently, apps not utilizing [AOT in Griffel](https://griffel.js.org/react/ahead-of-time-compilation/introduction) will experience noticeable slowdowns during initial loading.
-
-## Pros and Cons
-
-- 👍 (DX) drastically simplified Fluent build flow
-  👍 (DX/CI) significantly faster transpilation of Fluent libraries ([microsoft/griffel#534](https://github.com/microsoft/griffel/issues/534))
-- 👎 Not backward compatible
 
 ### Option B: Ship ESM output with unprocessed styles
 
@@ -194,3 +186,23 @@ module.exports = {
 - 👎 Harder to maintain; adds complexity to the build system
 - 👎 Another public API that is tightly coupled only for limited set of files including Griffel
 - 👎 Increased install size (NPM package will be larger)
+
+## Rejected solutions
+
+### Option A: Stop pre-processing styles
+
+_Rejection reason:_
+
+_- This option is not backward compatible and will cause performance issues for apps not utilizing AOT_
+
+> Note: Applications already undertake this responsibility, as first and third-party packages do not include pre-processed styles.
+
+This option involves eliminating the pre-processing step from `@fluentui/react-components`, shifting the responsibility to the consuming application.
+
+This is the simplest option, albeit it necessitates adjustments in the consuming app and is not backward compatible. Consequently, apps not utilizing [AOT in Griffel](https://griffel.js.org/react/ahead-of-time-compilation/introduction) will experience noticeable slowdowns during initial loading.
+
+## Pros and Cons
+
+- 👍 (DX) drastically simplified Fluent build flow
+  👍 (DX/CI) significantly faster transpilation of Fluent libraries ([microsoft/griffel#534](https://github.com/microsoft/griffel/issues/534))
+- 👎 Not backward compatible
