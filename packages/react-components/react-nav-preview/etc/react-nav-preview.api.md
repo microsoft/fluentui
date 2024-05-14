@@ -204,7 +204,7 @@ export const NavItem: ForwardRefComponent<NavItemProps>;
 export const navItemClassNames: SlotClassNames<NavItemSlots>;
 
 // @public
-export type NavItemProps = ComponentProps<NavItemSlots> & React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type NavItemProps = ComponentProps<NavItemSlots> & React_2.AnchorHTMLAttributes<HTMLAnchorElement> & React_2.ButtonHTMLAttributes<HTMLButtonElement> & {
     value: NavItemValue;
 };
 
@@ -294,9 +294,9 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
 };
 
 // @public
-export type NavSubItemProps = ComponentProps<NavSubItemSlots> & React_2.AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type NavSubItemProps = (ComponentProps<NavSubItemSlots> & React_2.AnchorHTMLAttributes<HTMLAnchorElement>) & (React_2.ButtonHTMLAttributes<HTMLButtonElement> & {
     value: NavItemValue;
-};
+});
 
 // @public (undocumented)
 export type NavSubItemSlots = {
