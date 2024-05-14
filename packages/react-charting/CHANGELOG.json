@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 08 May 2024 07:25:17 GMT",
+      "tag": "@fluentui/react-charting_v5.21.7",
+      "version": "5.21.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9f76194440113ae14b260dd1b3bb75e48ba63f8a",
+            "comment": "Accessibility issue fixes: Added bench mark data and tooltip data to aria label in HorizontalBarChart and VerticalStackedBarChart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 May 2024 07:26:47 GMT",
       "tag": "@fluentui/react-charting_v5.21.6",
       "version": "5.21.6",

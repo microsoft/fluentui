@@ -60,3 +60,11 @@ const ColorSwatchWithTooltip = (props: ColorSwatchProps) => {
     </Tooltip>
   );
 };
+
+SwatchPickerWithTooltip.parameters = {
+  docs: {
+    description: {
+      story: 'Each swatch should have a descriptive tooltip.',
+    },
+  },
+};

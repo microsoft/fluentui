@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motions-preview
 
-This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2024 19:35:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.3.0)
+
+Thu, 09 May 2024 19:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.2.8..@fluentui/react-motions-preview_v0.3.0)
+
+### Minor changes
+
+- BREAKING: fix motion token values and adjust structure to match original source ([PR #31262](https://github.com/microsoft/fluentui/pull/31262) by robert@robertpenner.com)
 
 ## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.2.8)
 

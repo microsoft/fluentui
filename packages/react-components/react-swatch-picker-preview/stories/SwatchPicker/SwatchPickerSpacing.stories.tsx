@@ -44,3 +44,11 @@ export const SwatchPickerSpacing = () => {
     </div>
   );
 };
+
+SwatchPickerSpacing.parameters = {
+  docs: {
+    description: {
+      story: 'The `spacing` prop sets gap between swatches.',
+    },
+  },
+};

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "force update the overflow when item is removed",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

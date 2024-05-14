@@ -2,6 +2,36 @@
   "name": "@fluentui/react-swatch-picker-preview",
   "entries": [
     {
+      "date": "Mon, 13 May 2024 12:34:20 GMT",
+      "tag": "@fluentui/react-swatch-picker-preview_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing SwatchPicker context exports."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-swatch-picker-preview_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.21.2",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:02 GMT",
       "tag": "@fluentui/react-swatch-picker-preview_v0.4.2",
       "version": "0.4.2",

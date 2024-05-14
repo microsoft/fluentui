@@ -1,0 +1,32 @@
+{
+  "name": "@fluentui/react-nav-preview",
+  "entries": [
+    {
+      "date": "Mon, 13 May 2024 12:34:19 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "e1f12b95461c0d790df6e6f41e6bc79e8fe896e1",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "1ccf6c23ddc4d125940ce23ea3788d0069665f67",
+            "comment": "feat: Moving styles to new recomposed components."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.3.0",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7"
+          }
+        ]
+      }
+    }
+  ]
+}
