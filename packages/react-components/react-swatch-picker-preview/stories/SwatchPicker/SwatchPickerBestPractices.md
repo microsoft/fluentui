@@ -8,11 +8,13 @@
 - Maximum recommended number of swatches per row is 8.
 - Use a grid layout when there are more than 4 swatches. The maximum recommended number of swatches in a grid is 64 - an 8 x 8 grid.
 - Tooltip should be shown for each color.
+- When using an icon, make sure that the contrast ratio between the icon and a swatch is a least 3:1.
 
 ### Don't
 
 - Avoid using rounded corners in a grid layout for the SwatchPicker, as it may cause the [Hermann grid illusion](https://en.wikipedia.org/wiki/Grid_illusion).
 - When using `extra small` or smaller swatches spacing should be not less than 4px.
+- Avoid showing more than 4 disabled swatches.
 
 ### Accessibility
 
