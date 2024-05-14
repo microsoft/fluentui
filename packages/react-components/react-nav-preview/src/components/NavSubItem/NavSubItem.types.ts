@@ -11,13 +11,14 @@ export type NavSubItemSlots = {
 /**
  * NavSubItem Props
  */
-export type NavSubItemProps = ComponentProps<NavSubItemSlots> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-    /**
-     * The value that identifies this NavSubItem when selected.
-     */
-    value: NavItemValue;
-  };
+export type NavSubItemProps =
+  | (ComponentProps<NavSubItemSlots> & React.AnchorHTMLAttributes<HTMLAnchorElement>)
+  | (React.ButtonHTMLAttributes<HTMLButtonElement> & {
+      /**
+       * The value that identifies this NavSubItem when selected.
+       */
+      value: NavItemValue;
+    });
 
 /**
  * State used in rendering NavSubItem

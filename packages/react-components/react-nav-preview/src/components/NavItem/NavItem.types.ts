@@ -15,13 +15,14 @@ export type NavItemSlots = {
 /**
  * NavItem Props
  */
-export type NavItemProps = ComponentProps<NavItemSlots> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-    /**
-     * The value that identifies this navCategoryItem when selected.
-     */
-    value: NavItemValue;
-  };
+export type NavItemProps =
+  | (ComponentProps<NavItemSlots> & React.AnchorHTMLAttributes<HTMLAnchorElement>)
+  | (React.ButtonHTMLAttributes<HTMLButtonElement> & {
+      /**
+       * The value that identifies this navCategoryItem when selected.
+       */
+      value: NavItemValue;
+    });
 
 /**
  * State used in rendering NavItem
