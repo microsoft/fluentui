@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
 import { useNavContext_unstable } from '../NavContext';
 
 import type { NavItemProps, NavItemState } from './NavItem.types';
@@ -18,18 +18,36 @@ export const useNavItem_unstable = (
   props: NavItemProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): NavItemState => {
-  const { onClick, value, icon, as = 'button' } = props;
+  const { onClick, value, icon, as, href } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
+
+  const rootElementType = as || (href ? 'a' : 'button');
 
   const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onNavItemClick = useEventCallback(
-    mergeCallbacks(onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>, event =>
-      onSelect(event, { type: 'click', event, value }),
-    ),
+
+  const onNavItemClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
+    onClick?.(event);
+
+    if (!event.defaultPrevented && isHTMLElement(event.target)) {
+      onSelect(event, { type: 'click', event, value });
+    }
+  });
+
+  const _navItem = slot.always<ARIAButtonSlotProps<'a'>>(
+    getIntrinsicElementProps(rootElementType, useARIAButtonProps(rootElementType, props)),
+    {
+      elementType: rootElementType,
+      defaultProps: {
+        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        type: rootElementType,
+      },
+    },
   );
+
+  _navItem.onClick = onNavItemClick;
 
   React.useEffect(() => {
     onRegister({
@@ -43,23 +61,8 @@ export const useNavItem_unstable = (
   }, [onRegister, onUnregister, innerRef, value]);
 
   return {
-    components: { root: 'button', icon: 'span' },
-    root: slot.always<ARIAButtonSlotProps<'a'>>(
-      getIntrinsicElementProps(
-        as,
-        useARIAButtonProps(props.as, {
-          ...props,
-          onClick: onNavItemClick,
-        }),
-      ),
-      {
-        elementType: 'button',
-        defaultProps: {
-          ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-          type: 'button',
-        },
-      },
-    ),
+    components: { root: rootElementType, icon: 'span' },
+    root: _navItem,
     icon: slot.optional(icon, {
       elementType: 'span',
     }),

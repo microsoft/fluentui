@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  slot,
+  useEventCallback,
+  mergeCallbacks,
+  isHTMLElement,
+} from '@fluentui/react-utilities';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
@@ -19,21 +25,38 @@ export const useNavSubItem_unstable = (
   props: NavSubItemProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): NavSubItemState => {
-  const { onClick, value: subItemValue, as = 'button' } = props;
+  const { onClick, value: subItemValue, as, href } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
   const { value: parentCategoryValue } = useNavCategoryContext_unstable();
 
+  const rootElementType = as || (href ? 'a' : 'button');
+
   const selected = selectedValue === subItemValue;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
-  const onNavSubItemClick = useEventCallback(
-    mergeCallbacks(onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>, event =>
-      onSelect(event, { type: 'click', event, value: subItemValue, categoryValue: parentCategoryValue }),
-    ),
+  const onNavSubItemClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
+    onClick?.(event);
+
+    if (!event.defaultPrevented && isHTMLElement(event.target)) {
+      onSelect(event, { type: 'click', event, value: subItemValue, categoryValue: parentCategoryValue });
+    }
+  });
+
+  const _navSubItem = slot.always<ARIAButtonSlotProps<'a'>>(
+    getIntrinsicElementProps(rootElementType, useARIAButtonProps(rootElementType, props)),
+    {
+      elementType: rootElementType,
+      defaultProps: {
+        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        type: rootElementType,
+      },
+    },
   );
+
+  _navSubItem.onClick = onNavSubItemClick;
 
   React.useEffect(() => {
     onRegister({
@@ -48,18 +71,9 @@ export const useNavSubItem_unstable = (
 
   return {
     components: {
-      root: 'button',
+      root: rootElementType,
     },
-    root: slot.always<ARIAButtonSlotProps<'a'>>(
-      getIntrinsicElementProps(as, useARIAButtonProps(props.as, { ...props, onClick: onNavSubItemClick })),
-      {
-        elementType: 'button',
-        defaultProps: {
-          ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-          type: 'button',
-        },
-      },
-    ),
+    root: _navSubItem,
     selected,
     value: subItemValue,
   };
