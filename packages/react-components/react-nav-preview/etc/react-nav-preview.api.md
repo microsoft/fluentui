@@ -204,7 +204,7 @@ export const NavItem: ForwardRefComponent<NavItemProps>;
 export const navItemClassNames: SlotClassNames<NavItemSlots>;
 
 // @public
-export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
+export type NavItemProps = ComponentProps<NavItemSlots> & {
     value: NavItemValue;
 };
 
@@ -294,7 +294,7 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
 };
 
 // @public
-export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
+export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {
     value: NavItemValue;
 };
 
