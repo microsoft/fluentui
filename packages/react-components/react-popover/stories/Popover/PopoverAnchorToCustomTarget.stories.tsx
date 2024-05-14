@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import {
+  makeStyles,
+  shorthands,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  useMergedRefs,
+} from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 const useStyles = makeStyles({
   container: {
@@ -24,15 +32,16 @@ const ExampleContent = () => {
 };
 
 export const AnchorToCustomTarget = () => {
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
-  const positioningRef = React.useRef<PositioningImperativeRef>(null);
-  const styles = useStyles();
-
-  React.useEffect(() => {
+  const updateTarget = React.useCallback(() => {
     if (buttonRef.current) {
       positioningRef.current?.setTarget(buttonRef.current);
     }
-  }, [buttonRef, positioningRef]);
+  }, []);
+
+  const buttonRef = useMergedRefs<HTMLButtonElement>(updateTarget);
+  const positioningRef = useMergedRefs<PositioningImperativeRef>(updateTarget);
+
+  const styles = useStyles();
 
   return (
     <div className={styles.container}>
