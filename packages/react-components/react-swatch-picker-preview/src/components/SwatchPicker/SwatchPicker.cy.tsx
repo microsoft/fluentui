@@ -96,7 +96,7 @@ const SwatchPickerGridColorSample = (props: SwatchPickerProps) => (
       Before
     </p>
 
-    <SwatchPicker {...props} id="swatch-picker">
+    <SwatchPicker layout="grid" {...props} id="swatch-picker">
       {renderSwatchPickerGrid({ items: colors, columnCount: 3 })}
     </SwatchPicker>
 
@@ -233,6 +233,16 @@ describe('SwatchPicker', () => {
         cy.get('#swatch-2').realClick();
         cy.get('#swatch-2').should('have.attr', 'aria-checked', 'false');
       });
+      it('defaultSelectedValue is correct', () => {
+        mountFluent(<SwatchPickerRowColorSample defaultSelectedValue="00AFED" />);
+        cy.get('#swatch-0').should('have.attr', 'aria-checked', 'false');
+        cy.get('#swatch-3').should('have.attr', 'aria-checked', 'true');
+      });
+      it('selectedValue value is correct', () => {
+        mountFluent(<SwatchPickerRowColorSample selectedValue="00AFED" />);
+        cy.get('#swatch-0').should('have.attr', 'aria-checked', 'false');
+        cy.get('#swatch-3').should('have.attr', 'aria-checked', 'true');
+      });
     });
     describe('grid layout', () => {
       it('should select color swatch onClick', () => {
@@ -259,6 +269,16 @@ describe('SwatchPicker', () => {
         cy.get('#swatch-1').should('have.attr', 'aria-selected', 'false');
         cy.get('#swatch-1').realClick();
         cy.get('#swatch-1').should('have.attr', 'aria-selected', 'false');
+      });
+      it('defaultSelectedValue is correct', () => {
+        mountFluent(<SwatchPickerGridColorSample defaultSelectedValue="FEFF37" />);
+        cy.get('#color-0').should('have.attr', 'aria-selected', 'false');
+        cy.get('#color-2').should('have.attr', 'aria-selected', 'true');
+      });
+      it('selectedValue value is correct', () => {
+        mountFluent(<SwatchPickerGridColorSample selectedValue="00B053" />);
+        cy.get('#color-0').should('have.attr', 'aria-selected', 'false');
+        cy.get('#color-4').should('have.attr', 'aria-selected', 'true');
       });
     });
   });
