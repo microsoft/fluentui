@@ -375,6 +375,10 @@ export class Tabs extends BaseTabs {
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
+  public disabledChanged(): void {
+    this.updateTabDisabledState();
+  }
+
   /**
    * size
    * defaults to medium.
@@ -514,6 +518,25 @@ export class Tabs extends BaseTabs {
   public tabsChanged(): void {
     super.tabsChanged();
     this.setTabData();
+  }
+
+  /**
+   * Updates the 'disabled' attribute of each tab based on the 'disabled' property of the Tabs component.
+   * If the 'disabled' property is true, the 'disabled' attribute is added to each tab.
+   * If the 'disabled' property is false, the 'disabled' attribute is removed from each tab.
+   * This method does nothing if the 'tabs' property is not defined or is an empty array.
+   */
+  private updateTabDisabledState(): void {
+    if (this.tabs && this.tabs.length > 0) {
+      const tabs = this.tabs as Tab[];
+      tabs.forEach((tab: HTMLElement) => {
+        if (this.disabled) {
+          tab.setAttribute('disabled', '');
+        } else {
+          tab.removeAttribute('disabled');
+        }
+      });
+    }
   }
 }
 
