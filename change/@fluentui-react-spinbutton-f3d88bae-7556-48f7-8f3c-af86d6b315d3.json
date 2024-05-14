@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update SpinButton layout styling",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
