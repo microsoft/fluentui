@@ -1,15 +1,6 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  shorthands,
-  Button,
-  Popover,
-  PopoverSurface,
-  useRestoreFocusTarget,
-  useId,
-} from '@fluentui/react-components';
+import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import { SwatchPicker, SwatchPickerOnSelectEventHandler, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
-import type { PositioningImperativeRef } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
@@ -20,9 +11,6 @@ const useStyles = makeStyles({
     '@media (forced-colors: active)': {
       forcedColorAdjust: 'none',
     },
-  },
-  contentHeader: {
-    marginTop: '0',
   },
 });
 
@@ -38,17 +26,41 @@ const colors = [
 ];
 
 const gradientColors = [
-  { color: 'linear-gradient(0deg, #FF1921, #FFB92E)', value: 'orange-red', 'aria-label': 'gradient orange-red' },
-  { color: 'linear-gradient(0deg, #FFC12E, #FEFF37)', value: 'yellow-orange', 'aria-label': 'gradient yellow-orange' },
-  { color: 'linear-gradient(0deg, #90D057, #FEFF37)', value: 'yellow-green', 'aria-label': 'gradient yellow-green' },
+  {
+    color: 'linear-gradient(0deg, #FF1921, #FFB92E)',
+    value: 'orange-red',
+    'aria-label': 'gradient orange-red',
+  },
+  {
+    color: 'linear-gradient(0deg, #FFC12E, #FEFF37)',
+    value: 'yellow-orange',
+    'aria-label': 'gradient yellow-orange',
+  },
+  {
+    color: 'linear-gradient(0deg, #90D057, #FEFF37)',
+    value: 'yellow-green',
+    'aria-label': 'gradient yellow-green',
+  },
   {
     color: 'linear-gradient(0deg, #00B053, #90D057)',
     value: 'light-green-gradient',
     'aria-label': 'gradient light green',
   },
-  { color: 'linear-gradient(0deg, #00B053, #00AFED)', value: 'green-blue', 'aria-label': 'gradient green-blue' },
-  { color: 'linear-gradient(0deg, #006EBD, #00AFED)', value: 'blue gradient', 'aria-label': 'gradient blue' },
-  { color: 'linear-gradient(0deg, #712F9E, #00AFED)', value: 'blue-purple', 'aria-label': 'gradient blue-purple' },
+  {
+    color: 'linear-gradient(0deg, #00B053, #00AFED)',
+    value: 'green-blue',
+    'aria-label': 'gradient green-blue',
+  },
+  {
+    color: 'linear-gradient(0deg, #006EBD, #00AFED)',
+    value: 'blue gradient',
+    'aria-label': 'gradient blue',
+  },
+  {
+    color: 'linear-gradient(0deg, #712F9E, #00AFED)',
+    value: 'blue-purple',
+    'aria-label': 'gradient blue-purple',
+  },
   {
     color:
       'linear-gradient(0deg, #FF1921 0%, #FFC12E 10%, #FEFF37 20%, #90D057 30%, #00B053 40%, #00AFED 50%, #006EBD 60%, #011F5E 70%, #712F9E 80%)',
@@ -60,43 +72,33 @@ const gradientColors = [
 export const SwatchPickerPopup = () => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
-  const [open, setOpen] = React.useState(false);
+
+  const [popoverOpen, setPopoverOpen] = React.useState(false);
 
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedSwatch);
-    setOpen(!open);
+
+    setPopoverOpen(false);
   };
 
-  const headerId = useId();
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
-  const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const styles = useStyles();
-  const restoreFocusTargetAttribute = useRestoreFocusTarget();
-
-  React.useEffect(() => {
-    if (buttonRef.current) {
-      positioningRef.current?.setTarget(buttonRef.current);
-    }
-  }, [buttonRef, positioningRef]);
 
   return (
     <>
-      <Button {...restoreFocusTargetAttribute} ref={buttonRef} onClick={() => setOpen(_open => !_open)}>
-        Choose color
-      </Button>
-      <Popover onOpenChange={(_, data) => setOpen(data.open)} trapFocus open={open} positioning={{ positioningRef }}>
-        <PopoverSurface aria-labelledby={headerId}>
-          <h3 id={headerId} className={styles.contentHeader}>
-            Color sets
-          </h3>
-          <h4>Color set 1</h4>
+      <Popover open={popoverOpen} trapFocus onOpenChange={(_, data) => setPopoverOpen(data.open)}>
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Choose color</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <h3>Color set 1</h3>
           <SwatchPicker aria-label="SwatchPicker set 1" selectedValue={selectedValue} onSelectionChange={handleSelect}>
             {colors.map((color, index) => {
               return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
             })}
           </SwatchPicker>
-          <h4>Color set 2</h4>
+          <h3>Color set 2</h3>
           <SwatchPicker aria-label="SwatchPicker set 2" selectedValue={selectedValue} onSelectionChange={handleSelect}>
             {gradientColors.map((color, index) => {
               return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
