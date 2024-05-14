@@ -25,7 +25,6 @@ const useRootClassName = makeResetStyles({
   gridTemplateRows: '1fr 1fr',
   columnGap: tokens.spacingHorizontalXS,
   rowGap: 0,
-  position: 'relative',
   isolation: 'isolate',
 
   backgroundColor: tokens.colorNeutralBackground1,
@@ -46,11 +45,8 @@ const useRootClassName = makeResetStyles({
   '::before': {
     content: '""',
     boxSizing: 'border-box',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
+    gridArea: '1 / 1 / 3 / 3',
+    marginLeft: `calc(-1 * ${tokens.spacingHorizontalMNudge})`,
     pointerEvents: 'none',
     zIndex: 10,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
@@ -61,19 +57,11 @@ const useRootClassName = makeResetStyles({
   '::after': {
     boxSizing: 'border-box',
     content: '""',
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: 20,
+    gridArea: '1 / 1 / 3 / 3',
 
-    // Maintaining the correct corner radius:
-    // Use the whole border-radius as the height and only put radii on the bottom corners.
-    // (Otherwise the radius would be automatically reduced to fit available space.)
-    // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-    height: `max(2px, ${tokens.borderRadiusMedium})`,
     borderBottomLeftRadius: tokens.borderRadiusMedium,
     borderBottomRightRadius: tokens.borderRadiusMedium,
+    marginLeft: `calc(-1 * ${tokens.spacingHorizontalMNudge})`,
 
     // Flat 2px border:
     // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
@@ -248,7 +236,6 @@ const useBaseButtonClassName = makeResetStyles({
   alignItems: 'center',
   justifyContent: 'center',
   border: '0',
-  position: 'absolute',
 
   outlineStyle: 'none',
   height: '16px',
