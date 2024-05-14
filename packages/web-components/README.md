@@ -1,7 +1,7 @@
 # Fluent UI Web Components
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40fluentui%2Fweb-components.svg)](https://badge.fury.io/js/%40fluentui%2Fweb-components)
+[![npm version](https://img.shields.io/npm/v/@fluentui/web-components/beta?style=flat-square)](https://www.npmjs.com/package/@fluentui/web-components/v/3.0.0-beta.15)
 
 `@fluentui/web-components` is a library of Web Components that _composes_ `@microsoft/fast-foundation` and supports Microsoft's Fluent design language.
 
