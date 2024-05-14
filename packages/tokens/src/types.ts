@@ -773,9 +773,6 @@ export type Theme = FontSizeTokens &
   FontWeightTokens &
   ColorPaletteTokens &
   ColorStatusTokens &
-  ColorTokens &
-  ButtonTokens &
-  SwitchTokens &
-  ComboboxTokens;
+  ColorTokens;
 
 export type PartialTheme = Partial<Theme>;

@@ -29,9 +29,9 @@ export const buttonGroupTokens = {
   buttonPrimaryForegroundColorPressed: `var(--buttonPrimaryForegroundColorPressed,${tokens.colorNeutralForegroundOnBrand})`,
 
   // Outline
-  buttonOutlineBackgroundColorRest: `var(--buttonOutlineBackgroundColorRest,${tokens.colorTransparentBackgroundRest})`,
-  buttonOutlineBackgroundColorHover: `var(--buttonOutlineBackgroundColorHover,${tokens.colorTransparentBackgroundRest})`,
-  buttonOutlineBackgroundColorPressed: `var(--buttonOutlineBackgroundColorPressed,${tokens.colorTransparentBackgroundRest})`,
+  buttonOutlineBackgroundColorRest: `var(--buttonOutlineBackgroundColorRest,${tokens.colorTransparentBackground})`,
+  buttonOutlineBackgroundColorHover: `var(--buttonOutlineBackgroundColorHover,${tokens.colorTransparentBackgroundHover})`,
+  buttonOutlineBackgroundColorPressed: `var(--buttonOutlineBackgroundColorPressed,${tokens.colorTransparentBackgroundPressed})`,
 
   // Subtle
   buttonSubtleBackgroundColorRest: `var(--buttonSubtleBackgroundColorRest,${tokens.colorSubtleBackground})`,
