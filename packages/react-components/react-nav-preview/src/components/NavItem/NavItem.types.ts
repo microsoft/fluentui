@@ -14,7 +14,7 @@ export type NavItemSlots = {
 /**
  * NavItem Props
  */
-export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
+export type NavItemProps = ComponentProps<NavItemSlots> & {
   /**
    * The value that identifies this navCategoryItem when selected.
    */

@@ -143,7 +143,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
-          <NavItem as="button" icon={<Dashboard />} onClick={someClickHandler} value="1">
+          <NavItem as="a" href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
           <NavItem as="button" icon={<Announcements />} onClick={someClickHandler} value="2">

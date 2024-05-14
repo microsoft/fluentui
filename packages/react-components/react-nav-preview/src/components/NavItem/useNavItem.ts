@@ -57,7 +57,6 @@ export const useNavItem_unstable = (
         defaultProps: {
           ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
           type: 'button',
-          role: 'nav',
         },
       },
     ),
