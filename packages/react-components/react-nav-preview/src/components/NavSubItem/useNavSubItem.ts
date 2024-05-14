@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  slot,
-  useEventCallback,
-  mergeCallbacks,
-  isHTMLElement,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
