@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import { SwatchPicker, SwatchPickerOnSelectEventHandler, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
