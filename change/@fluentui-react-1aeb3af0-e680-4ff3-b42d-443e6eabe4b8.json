@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix ColorSlider hue gradient",
+  "packageName": "@fluentui/react",
+  "email": "jyoonbuck@microsoft.com",
+  "dependentChangeType": "patch"
+}

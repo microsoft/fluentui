@@ -5,17 +5,13 @@ import type { IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.t
 const hueStyle = {
   background: `linear-gradient(${[
     'to left',
-    'red 0',
-    '#f09 10%',
-    '#cd00ff 20%',
-    '#3200ff 30%',
-    '#06f 40%',
-    '#00fffd 50%',
-    '#0f6 60%',
-    '#35ff00 70%',
-    '#cdff00 80%',
-    '#f90 90%',
-    'red 100%',
+    'red',
+    'fuchsia',
+    'blue',
+    'aqua',
+    'lime',
+    'yellow',
+    'red',
   ].join(',')})`,
 };
 
