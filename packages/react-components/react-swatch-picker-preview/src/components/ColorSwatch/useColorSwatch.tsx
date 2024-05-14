@@ -4,10 +4,8 @@ import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import { ProhibitedFilled } from '@fluentui/react-icons';
-import { calculateContrastRatioFromHex } from '../../utils/contrastUtils';
 import { tokens } from '@fluentui/react-theme';
 
-const DISABLED_ICON_COLOR = '#FFFFFF';
 /**
  * Create the state required to render ColorSwatch.
  *
@@ -28,9 +26,6 @@ export const useColorSwatch_unstable = (
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
-
-  const contrastRatio = calculateContrastRatioFromHex(color, DISABLED_ICON_COLOR);
-  const disabledContrastColor = contrastRatio && contrastRatio < 3 ? '#000000' : DISABLED_ICON_COLOR;
 
   const onColorSwatchClick = useEventCallback(
     mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
@@ -56,7 +51,7 @@ export const useColorSwatch_unstable = (
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
   const disabledIconShorthand = slot.optional(disabledIcon, {
     defaultProps: {
-      children: <ProhibitedFilled color={disabledContrastColor} />,
+      children: <ProhibitedFilled />,
     },
     renderByDefault: true,
     elementType: 'span',

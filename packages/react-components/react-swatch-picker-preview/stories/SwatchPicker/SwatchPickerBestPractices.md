@@ -8,6 +8,7 @@
 - Maximum recommended number of swatches per row is 8.
 - Use a grid layout when there are more than 4 swatches. The maximum recommended number of swatches in a grid is 64 - an 8 x 8 grid.
 - Tooltip should be shown for each color.
+- Consider using [Polished](https://polished.js.org/) library for calculation of contrast ratio.
 
 ### Don't
 

@@ -49,7 +49,6 @@ describe('SwatchPicker', () => {
               <svg
                 aria-hidden="true"
                 class=""
-                color="#FFFFFF"
                 fill="currentColor"
                 height="1em"
                 viewBox="0 0 20 20"

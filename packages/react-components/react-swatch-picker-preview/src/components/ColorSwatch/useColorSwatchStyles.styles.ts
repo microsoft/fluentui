@@ -131,7 +131,8 @@ const useShapeStyles = makeStyles({
 
 const useIconStyles = makeStyles({
   disabledIcon: {
-    // color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundInverted,
+    filter: 'drop-shadow(0 1px 1px rgb(0 0 0 / 1))',
   },
   icon: {
     position: 'absolute',
