@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix focus order issue in legends overflow callout",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

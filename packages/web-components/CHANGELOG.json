@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 14 May 2024 04:07:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.15",
+      "version": "3.0.0-beta.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f9e93dfe7e46ef92520f01538f4a8da1a4e04145",
+            "comment": "chore: merge wc-3 to master - avoiding any library bumps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 May 2024 04:09:09 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.15",
       "version": "3.0.0-beta.15",
