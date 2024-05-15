@@ -626,6 +626,18 @@ export const colorBrandBackground = "var(--colorBrandBackground)";
 export const colorBrandBackground2 = "var(--colorBrandBackground2)";
 
 // @public (undocumented)
+export const colorBrandBackground2Hover = "var(--colorBrandBackground2Hover)";
+
+// @public (undocumented)
+export const colorBrandBackground2Pressed = "var(--colorBrandBackground2Pressed)";
+
+// @public (undocumented)
+export const colorBrandBackground3Static = "var(--colorBrandBackground3Static)";
+
+// @public (undocumented)
+export const colorBrandBackground4Static = "var(--colorBrandBackground4Static)";
+
+// @public (undocumented)
 export const colorBrandBackgroundHover = "var(--colorBrandBackgroundHover)";
 
 // @public (undocumented)
@@ -654,6 +666,12 @@ export const colorBrandForeground1 = "var(--colorBrandForeground1)";
 
 // @public (undocumented)
 export const colorBrandForeground2 = "var(--colorBrandForeground2)";
+
+// @public (undocumented)
+export const colorBrandForeground2Hover = "var(--colorBrandForeground2Hover)";
+
+// @public (undocumented)
+export const colorBrandForeground2Pressed = "var(--colorBrandForeground2Pressed)";
 
 // @public (undocumented)
 export const colorBrandForegroundInverted = "var(--colorBrandForegroundInverted)";
@@ -699,6 +717,15 @@ export const colorBrandStroke1 = "var(--colorBrandStroke1)";
 
 // @public (undocumented)
 export const colorBrandStroke2 = "var(--colorBrandStroke2)";
+
+// @public (undocumented)
+export const colorBrandStroke2Contrast = "var(--colorBrandStroke2Contrast)";
+
+// @public (undocumented)
+export const colorBrandStroke2Hover = "var(--colorBrandStroke2Hover)";
+
+// @public (undocumented)
+export const colorBrandStroke2Pressed = "var(--colorBrandStroke2Pressed)";
 
 // @public (undocumented)
 export const colorCompoundBrandBackground = "var(--colorCompoundBrandBackground)";
@@ -791,6 +818,12 @@ export const colorNeutralBackground5Selected = "var(--colorNeutralBackground5Sel
 export const colorNeutralBackground6 = "var(--colorNeutralBackground6)";
 
 // @public (undocumented)
+export const colorNeutralBackgroundAlpha = "var(--colorNeutralBackgroundAlpha)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundAlpha2 = "var(--colorNeutralBackgroundAlpha2)";
+
+// @public (undocumented)
 export const colorNeutralBackgroundDisabled = "var(--colorNeutralBackgroundDisabled)";
 
 // @public (undocumented)
@@ -801,6 +834,21 @@ export const colorNeutralBackgroundInvertedDisabled = "var(--colorNeutralBackgro
 
 // @public (undocumented)
 export const colorNeutralBackgroundStatic = "var(--colorNeutralBackgroundStatic)";
+
+// @public (undocumented)
+export const colorNeutralCardBackground = "var(--colorNeutralCardBackground)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundDisabled = "var(--colorNeutralCardBackgroundDisabled)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundHover = "var(--colorNeutralCardBackgroundHover)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundPressed = "var(--colorNeutralCardBackgroundPressed)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundSelected = "var(--colorNeutralCardBackgroundSelected)";
 
 // @public (undocumented)
 export const colorNeutralForeground1 = "var(--colorNeutralForeground1)";
@@ -974,6 +1022,12 @@ export const colorNeutralStrokeAccessiblePressed = "var(--colorNeutralStrokeAcce
 export const colorNeutralStrokeAccessibleSelected = "var(--colorNeutralStrokeAccessibleSelected)";
 
 // @public (undocumented)
+export const colorNeutralStrokeAlpha = "var(--colorNeutralStrokeAlpha)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAlpha2 = "var(--colorNeutralStrokeAlpha2)";
+
+// @public (undocumented)
 export const colorNeutralStrokeDisabled = "var(--colorNeutralStrokeDisabled)";
 
 // @public (undocumented)
@@ -993,6 +1047,9 @@ export const colorNeutralStrokeOnBrand2Pressed = "var(--colorNeutralStrokeOnBran
 
 // @public (undocumented)
 export const colorNeutralStrokeOnBrand2Selected = "var(--colorNeutralStrokeOnBrand2Selected)";
+
+// @public (undocumented)
+export const colorNeutralStrokeSubtle = "var(--colorNeutralStrokeSubtle)";
 
 // @public (undocumented)
 export const colorPaletteAnchorBackground2 = "var(--colorPaletteAnchorBackground2)";
@@ -1448,6 +1505,102 @@ export const colorPaletteYellowForegroundInverted = "var(--colorPaletteYellowFor
 export const colorScrollbarOverlay = "var(--colorScrollbarOverlay)";
 
 // @public (undocumented)
+export const colorStatusDangerBackground1 = "var(--colorStatusDangerBackground1)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground2 = "var(--colorStatusDangerBackground2)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground3 = "var(--colorStatusDangerBackground3)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground3Hover = "var(--colorStatusDangerBackground3Hover)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground3Pressed = "var(--colorStatusDangerBackground3Pressed)";
+
+// @public (undocumented)
+export const colorStatusDangerBorder1 = "var(--colorStatusDangerBorder1)";
+
+// @public (undocumented)
+export const colorStatusDangerBorder2 = "var(--colorStatusDangerBorder2)";
+
+// @public (undocumented)
+export const colorStatusDangerBorderActive = "var(--colorStatusDangerBorderActive)";
+
+// @public (undocumented)
+export const colorStatusDangerForeground1 = "var(--colorStatusDangerForeground1)";
+
+// @public (undocumented)
+export const colorStatusDangerForeground2 = "var(--colorStatusDangerForeground2)";
+
+// @public (undocumented)
+export const colorStatusDangerForeground3 = "var(--colorStatusDangerForeground3)";
+
+// @public (undocumented)
+export const colorStatusDangerForegroundInverted = "var(--colorStatusDangerForegroundInverted)";
+
+// @public (undocumented)
+export const colorStatusSuccessBackground1 = "var(--colorStatusSuccessBackground1)";
+
+// @public (undocumented)
+export const colorStatusSuccessBackground2 = "var(--colorStatusSuccessBackground2)";
+
+// @public (undocumented)
+export const colorStatusSuccessBackground3 = "var(--colorStatusSuccessBackground3)";
+
+// @public (undocumented)
+export const colorStatusSuccessBorder1 = "var(--colorStatusSuccessBorder1)";
+
+// @public (undocumented)
+export const colorStatusSuccessBorder2 = "var(--colorStatusSuccessBorder2)";
+
+// @public (undocumented)
+export const colorStatusSuccessBorderActive = "var(--colorStatusSuccessBorderActive)";
+
+// @public (undocumented)
+export const colorStatusSuccessForeground1 = "var(--colorStatusSuccessForeground1)";
+
+// @public (undocumented)
+export const colorStatusSuccessForeground2 = "var(--colorStatusSuccessForeground2)";
+
+// @public (undocumented)
+export const colorStatusSuccessForeground3 = "var(--colorStatusSuccessForeground3)";
+
+// @public (undocumented)
+export const colorStatusSuccessForegroundInverted = "var(--colorStatusSuccessForegroundInverted)";
+
+// @public (undocumented)
+export const colorStatusWarningBackground1 = "var(--colorStatusWarningBackground1)";
+
+// @public (undocumented)
+export const colorStatusWarningBackground2 = "var(--colorStatusWarningBackground2)";
+
+// @public (undocumented)
+export const colorStatusWarningBackground3 = "var(--colorStatusWarningBackground3)";
+
+// @public (undocumented)
+export const colorStatusWarningBorder1 = "var(--colorStatusWarningBorder1)";
+
+// @public (undocumented)
+export const colorStatusWarningBorder2 = "var(--colorStatusWarningBorder2)";
+
+// @public (undocumented)
+export const colorStatusWarningBorderActive = "var(--colorStatusWarningBorderActive)";
+
+// @public (undocumented)
+export const colorStatusWarningForeground1 = "var(--colorStatusWarningForeground1)";
+
+// @public (undocumented)
+export const colorStatusWarningForeground2 = "var(--colorStatusWarningForeground2)";
+
+// @public (undocumented)
+export const colorStatusWarningForeground3 = "var(--colorStatusWarningForeground3)";
+
+// @public (undocumented)
+export const colorStatusWarningForegroundInverted = "var(--colorStatusWarningForegroundInverted)";
+
+// @public (undocumented)
 export const colorStrokeFocus1 = "var(--colorStrokeFocus1)";
 
 // @public (undocumented)
@@ -1773,6 +1926,9 @@ export const durationFast = "var(--durationFast)";
 
 // @public (undocumented)
 export const durationFaster = "var(--durationFaster)";
+
+// @public (undocumented)
+export const durationGentle = "var(--durationGentle)";
 
 // @public (undocumented)
 export const durationNormal = "var(--durationNormal)";
@@ -2320,7 +2476,7 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 //
 // @internal (undocumented)
 export const roleForMenuItem: {
-    [value in keyof typeof MenuItemRole]: typeof MenuItemRole[value];
+    [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
 };
 
 // @public

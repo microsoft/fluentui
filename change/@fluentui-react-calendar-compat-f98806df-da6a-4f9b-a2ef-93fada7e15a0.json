@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Make header button in overlaid month picker match the other header button's styles.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
