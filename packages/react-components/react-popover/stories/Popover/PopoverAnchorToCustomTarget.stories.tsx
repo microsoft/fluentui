@@ -32,14 +32,13 @@ const ExampleContent = () => {
 };
 
 export const AnchorToCustomTarget = () => {
-  const updateTarget = React.useCallback(() => {
-    if (buttonRef.current) {
-      positioningRef.current?.setTarget(buttonRef.current);
-    }
-  }, [buttonRef, positioningRef]);
-
-  const buttonRef = useMergedRefs<HTMLButtonElement>(updateTarget);
-  const positioningRef = useMergedRefs<PositioningImperativeRef>(updateTarget);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const buttonRef = React.useCallback(
+    (el: HTMLButtonElement | null) => {
+      positioningRef.current?.setTarget(el);
+    },
+    [positioningRef],
+  );
 
   const styles = useStyles();
 
