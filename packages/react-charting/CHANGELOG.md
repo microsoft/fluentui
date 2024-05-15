@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 08 May 2024 07:25:17 GMT and should not be manually modified.
+This log was last generated on Wed, 15 May 2024 07:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.8)
+
+Wed, 15 May 2024 07:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.7..@fluentui/react-charting_v5.21.8)
+
+### Patches
+
+- Fix focus trap issue in sankey chart ([PR #31310](https://github.com/microsoft/fluentui/pull/31310) by kumarkshitij@microsoft.com)
+- Fix focus order issue in legends overflow callout ([PR #31317](https://github.com/microsoft/fluentui/pull/31317) by kumarkshitij@microsoft.com)
 
 ## [5.21.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.7)
 
