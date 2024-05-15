@@ -2958,9 +2958,13 @@ export class TextInput extends FASTElement {
     connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
+    // @internal
+    controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
     // @internal
     defaultSlottedNodes: Node[];
+    // @internal
+    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     dirname?: string;
     disabled?: boolean;
     // (undocumented)

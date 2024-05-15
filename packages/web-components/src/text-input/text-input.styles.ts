@@ -70,9 +70,12 @@ export const styles: ElementStyles = css`
     flex-shrink: 0;
     padding-inline-end: ${spacingHorizontalXS};
   }
-  .label__hidden {
+
+  .label[hidden],
+  :host(:empty) .label {
     display: none;
   }
+
   .root {
     position: relative;
     box-sizing: border-box;

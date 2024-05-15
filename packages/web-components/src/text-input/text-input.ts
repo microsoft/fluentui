@@ -71,6 +71,17 @@ export class TextInput extends FASTElement {
   public defaultSlottedNodes!: Node[];
 
   /**
+   * Updates the control label visibility based on the presence of default slotted content.
+   *
+   * @internal
+   */
+  public defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
+    if (this.$fastController.isConnected) {
+      this.controlLabel.hidden = !next?.length;
+    }
+  }
+
+  /**
    * Sets the directionality of the element to be submitted with form data.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/dirname | `dirname`} attribute
    *
@@ -294,6 +305,14 @@ export class TextInput extends FASTElement {
    * @internal
    */
   public control!: HTMLInputElement;
+
+  /**
+   * A reference to the internal label element.
+   *
+   * @internal
+   */
+  @observable
+  public controlLabel!: HTMLLabelElement;
 
   /**
    * Indicates that the value has been changed by the user.

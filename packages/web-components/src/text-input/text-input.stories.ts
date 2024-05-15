@@ -254,3 +254,9 @@ export const Required: Story<FluentTextInput> = renderComponent(html<StoryArgs<F
     <button type="submit">Submit</button>
   </form>
 `);
+
+export const WithoutLabel: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
+  <fluent-text-input>
+    <span slot="end">${Person20Regular}</span>
+  </fluent-text-input>
+`);

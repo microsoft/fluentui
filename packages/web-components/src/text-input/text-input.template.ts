@@ -12,11 +12,7 @@ import type { TextInputOptions } from './text-input.options.js';
  */
 export function textInputTemplate<T extends TextInput>(options: TextInputOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <label
-      part="label"
-      for="control"
-      class="${x => (x.defaultSlottedNodes && x.defaultSlottedNodes.length ? 'label' : 'label label__hidden')}"
-    >
+    <label part="label" for="control" class="label" ${ref('controlLabel')}>
       <slot
         ${slotted({
           property: 'defaultSlottedNodes',

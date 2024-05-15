@@ -272,7 +272,7 @@ test.describe('TextInput', () => {
       <fluent-text-input></fluent-text-input>
     `);
 
-    await expect(label).toHaveClass(/label__hidden/);
+    await expect(label).toBeHidden();
   });
 
   test('should hide the label when start content is provided', async ({ page }) => {
@@ -285,7 +285,7 @@ test.describe('TextInput', () => {
       </fluent-text-input>
     `);
 
-    await expect(label).toHaveClass(/label__hidden/);
+    await expect(label).toBeHidden();
   });
 
   test('should hide the label when end content is provided', async ({ page }) => {
@@ -298,7 +298,7 @@ test.describe('TextInput', () => {
       </fluent-text-input>
     `);
 
-    await expect(label).toHaveClass(/label__hidden/);
+    await expect(label).toBeHidden();
   });
 
   test('should hide the label when start and end content are provided', async ({ page }) => {
@@ -312,7 +312,7 @@ test.describe('TextInput', () => {
       </fluent-text-input>
     `);
 
-    await expect(label).toHaveClass(/label__hidden/);
+    await expect(label).toBeHidden();
   });
 
   test('should hide the label when space-only text nodes are slotted', async ({ page }) => {
@@ -323,7 +323,7 @@ test.describe('TextInput', () => {
 
     await expect(element).toHaveText(/\n\s\n/);
 
-    await expect(label).toHaveClass(/label__hidden/);
+    await expect(label).toBeHidden();
   });
 
   test('should fire a `change` event when the internal control emits a `change` event', async ({ page }) => {
