@@ -7,6 +7,9 @@
 /// <reference types="react" />
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ButtonProps } from '@fluentui/react-button';
+import { ButtonSlots } from '@fluentui/react-button';
+import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DrawerBodyProps } from '@fluentui/react-drawer';
@@ -35,35 +38,25 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
 
 // @public (undocumented)
-export const hamburgerClassNames: SlotClassNames<HamburgerSlots>;
+export const hamburgerClassNames: SlotClassNames<ButtonSlots>;
 
 // @public
 export const HamburgerInNav: ForwardRefComponent<HamburgerInNavProps>;
 
 // @public (undocumented)
-export const hamburgerInNavClassNames: SlotClassNames<HamburgerInNavSlots>;
+export const hamburgerInNavClassNames: SlotClassNames<ButtonSlots>;
 
 // @public
-export type HamburgerInNavProps = ComponentProps<HamburgerInNavSlots> & {};
-
-// @public (undocumented)
-export type HamburgerInNavSlots = {
-    root: Slot<'div'>;
-};
+export type HamburgerInNavProps = ButtonProps;
 
 // @public
-export type HamburgerInNavState = ComponentState<HamburgerInNavSlots>;
+export type HamburgerInNavState = ButtonState;
 
 // @public
-export type HamburgerProps = ComponentProps<HamburgerSlots> & {};
-
-// @public (undocumented)
-export type HamburgerSlots = {
-    root: Slot<'div'>;
-};
+export type HamburgerProps = ButtonProps;
 
 // @public
-export type HamburgerState = ComponentState<HamburgerSlots>;
+export type HamburgerState = ButtonState;
 
 // @public
 export const Nav: ForwardRefComponent<NavProps>;
@@ -251,11 +244,11 @@ export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps>;
 export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots>;
 
 // @public
-export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots> & {};
+export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots>;
 
 // @public (undocumented)
 export type NavSectionHeaderSlots = {
-    root: Slot<'div'>;
+    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
 };
 
 // @public
@@ -313,12 +306,6 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
-// @public
-export const renderHamburger_unstable: (state: HamburgerState) => JSX.Element;
-
-// @public
-export const renderHamburgerInNav_unstable: (state: HamburgerInNavState) => JSX.Element;
-
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
@@ -344,10 +331,7 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
 
 // @public
-export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLDivElement>) => HamburgerState;
-
-// @public
-export const useHamburgerInNav_unstable: (props: HamburgerInNavProps, ref: React_2.Ref<HTMLDivElement>) => HamburgerInNavState;
+export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;
 
 // @public
 export const useHamburgerInNavStyles_unstable: (state: HamburgerInNavState) => HamburgerInNavState;
