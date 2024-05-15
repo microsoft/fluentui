@@ -1,11 +1,11 @@
 import { ButtonProps, ButtonState } from '@fluentui/react-button';
 
 /**
- * HamburgerInNav Props
+ * Hamburger Props
  */
 export type HamburgerProps = ButtonProps;
 
 /**
- * State used in rendering HamburgerInNav
+ * State used in rendering Hamburger
  */
 export type HamburgerState = ButtonState;
