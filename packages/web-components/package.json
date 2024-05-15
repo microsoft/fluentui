@@ -191,8 +191,7 @@
     "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
     "start-storybook": "node node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
-    "pretest": "yarn build-storybook --quiet",
-    "test": "npx playwright test",
+    "e2e": "playwright test",
     "test:dev": "playwright test"
   },
   "devDependencies": {

@@ -6,7 +6,7 @@ import { classNamesFunction, find, getNativeProps, buttonProperties } from '@flu
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react/lib/OverflowSet';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import {
   ILegend,
   ILegendsProps,
@@ -234,6 +234,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
           'aria-multiselectable': canSelectMultipleLegends,
         })}
         direction={FocusZoneDirection.vertical}
+        handleTabKey={FocusZoneTabbableElements.all}
+        isCircularNavigation={true}
         {...this.props.focusZonePropsInHoverCard}
         className={classNames.hoverCardRoot}
       >
