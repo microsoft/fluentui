@@ -172,7 +172,8 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/src/index.ts"]
+      "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/src/index.ts"],
+      "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"]
     }
   }
 }
