@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: fix scroll locking issues introduced by a regression",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
