@@ -61,10 +61,11 @@ const useStyles = makeStyles({
     display: 'grid',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    flexGap: tokens.spacingVerticalXXL,
   },
   field: {
     display: 'flex',
+    marginTop: '4px',
+    marginLeft: '8px',
     flexDirection: 'column',
     gridRowGap: tokens.spacingVerticalS,
   },
