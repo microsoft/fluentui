@@ -61,11 +61,11 @@ const useStyles = makeStyles({
     display: 'grid',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    gridRowGap: tokens.spacingVerticalXXL,
-    gridAutoRows: 'max-content',
+    flexGap: tokens.spacingVerticalXXL,
   },
   field: {
-    display: 'grid',
+    display: 'flex',
+    flexDirection: 'column',
     gridRowGap: tokens.spacingVerticalS,
   },
 });
