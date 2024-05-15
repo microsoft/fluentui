@@ -36,7 +36,7 @@ export const AnchorToCustomTarget = () => {
     if (buttonRef.current) {
       positioningRef.current?.setTarget(buttonRef.current);
     }
-  }, []);
+  }, [buttonRef, positioningRef]);
 
   const buttonRef = useMergedRefs<HTMLButtonElement>(updateTarget);
   const positioningRef = useMergedRefs<PositioningImperativeRef>(updateTarget);
