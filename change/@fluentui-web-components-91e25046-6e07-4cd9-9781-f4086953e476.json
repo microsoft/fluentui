@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Readme update for npm version number to beta.",
+  "packageName": "@fluentui/web-components",
+  "email": "falkicon@me.com",
+  "dependentChangeType": "none"
+}
