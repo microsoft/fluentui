@@ -43,7 +43,7 @@ import {
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
   findVSBCNumericMinMaxOfY,
-  createYAxisForOtherCharts,
+  createYAxisForCharts,
   IDomainNRange,
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfVSBCNumeric,
@@ -210,7 +210,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           chartType={ChartTypes.VerticalStackedBarChart}
           xAxisType={this._xAxisType}
           calloutProps={calloutProps}
-          createYAxis={createYAxisForOtherCharts}
+          createYAxis={createYAxisForCharts}
           tickParams={tickParams}
           legendBars={legendBars}
           getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}

@@ -12,7 +12,7 @@ import { ILegend, Legends } from '../Legends/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartTypes,
-  createYAxisForOtherCharts,
+  createYAxisForCharts,
   getAccessibleDataObject,
   XAxisTypes,
   YAxisType,
@@ -196,7 +196,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         xAxisType={XAxisTypes.StringAxis}
         yAxisType={YAxisType.StringAxis}
         calloutProps={calloutProps}
-        createYAxis={createYAxisForOtherCharts}
+        createYAxis={createYAxisForCharts}
         chartHoverProps={chartHoverProps}
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
@@ -247,9 +247,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    } else if (xAxisType === XAxisTypes.DateAxis) {
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     } else {
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);

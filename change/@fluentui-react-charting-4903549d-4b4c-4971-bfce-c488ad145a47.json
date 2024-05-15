@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "Refactoring utilities to reduce monosize of components",
   "packageName": "@fluentui/react-charting",
   "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }

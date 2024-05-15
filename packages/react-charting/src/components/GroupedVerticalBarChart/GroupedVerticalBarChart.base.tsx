@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
@@ -19,7 +18,7 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
-  createYAxisForOtherCharts,
+  createYAxisForCharts,
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxisForOtherCharts,
@@ -178,7 +177,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         calloutProps={calloutProps}
         legendBars={legends}
         xAxisType={this._xAxisType}
-        createYAxis={createYAxisForOtherCharts}
+        createYAxis={createYAxisForCharts}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         getDomainNRangeValues={this._getDomainNRangeValues}
@@ -221,7 +220,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: IGroupedVerticalBarChartData[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,
@@ -232,9 +231,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    } else if (xAxisType === XAxisTypes.DateAxis) {
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     } else {
       domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);

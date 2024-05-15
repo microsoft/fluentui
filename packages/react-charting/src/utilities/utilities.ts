@@ -359,7 +359,7 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   return yAxisScale;
 }
 
-export function createYAxisForOtherCharts(
+export function createYAxisForCharts(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
   axisData: IAxisData,

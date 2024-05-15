@@ -8,6 +8,7 @@ import { ILegendsProps } from '../Legends/index';
 import {
   IAccessibilityProps,
   IDataPoint,
+  IGroupedVerticalBarChartData,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
@@ -652,7 +653,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | ILineChartPoints[]
       | IVerticalBarChartDataPoint[]
       | IVerticalStackedBarDataPoint[]
-      | IHorizontalBarChartWithAxisDataPoint[],
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IGroupedVerticalBarChartData[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

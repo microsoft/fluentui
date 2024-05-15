@@ -29,7 +29,7 @@ import {
   getNextColor,
   getColorFromToken,
   findNumericMinMaxOfY,
-  createYAxisForOtherCharts,
+  createYAxisForCharts,
   IDomainNRange,
   domainRangeOfNumericForAreaChart,
   domainRangeOfDateForAreaLineVerticalBarChart,
@@ -194,7 +194,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
-          createYAxis={createYAxisForOtherCharts}
+          createYAxis={createYAxisForCharts}
           isCalloutForStack
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
