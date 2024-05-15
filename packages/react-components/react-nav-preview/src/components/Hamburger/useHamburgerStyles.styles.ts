@@ -1,11 +1,12 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { ButtonSlots, useButtonStyles_unstable } from '@fluentui/react-button';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { HamburgerSlots, HamburgerState } from './Hamburger.types';
+import type { HamburgerState } from './Hamburger.types';
+import { navItemTokens } from '../sharedNavStyles.styles';
 
-export const hamburgerClassNames: SlotClassNames<HamburgerSlots> = {
-  root: 'fui-Hamburger',
-  // TODO: add class names for all slots on HamburgerSlots.
-  // Should be of the form `<slotName>: 'fui-Hamburger__<slotName>`
+export const hamburgerClassNames: SlotClassNames<ButtonSlots> = {
+  root: 'fui-HamburgerInNav',
+  icon: 'fui-HamburgerInNav__icon',
 };
 
 /**
@@ -13,21 +14,30 @@ export const hamburgerClassNames: SlotClassNames<HamburgerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    textDecorationLine: 'none',
+    backgroundColor: navItemTokens.backgroundColor,
+    ...shorthands.border('none'),
+    ':hover': {
+      backgroundColor: navItemTokens.backgroundColorHover,
+    },
+    ':active': {
+      backgroundColor: navItemTokens.backgroundColorPressed,
+    },
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
- * Apply styling to the Hamburger slots based on the state
+ * Apply styling to the HamburgerInNav slots based on the state
  */
 export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerState => {
+  useButtonStyles_unstable(state);
   const styles = useStyles();
+
   state.root.className = mergeClasses(hamburgerClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(hamburgerClassNames.icon, state.icon.className);
+  }
 
   return state;
 };

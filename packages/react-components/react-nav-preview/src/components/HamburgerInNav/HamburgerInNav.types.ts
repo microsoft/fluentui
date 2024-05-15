@@ -1,17 +1,11 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type HamburgerInNavSlots = {
-  root: Slot<'div'>;
-};
+import { ButtonProps, ButtonState } from '@fluentui/react-button';
 
 /**
  * HamburgerInNav Props
  */
-export type HamburgerInNavProps = ComponentProps<HamburgerInNavSlots> & {};
+export type HamburgerInNavProps = ButtonProps;
 
 /**
  * State used in rendering HamburgerInNav
  */
-export type HamburgerInNavState = ComponentState<HamburgerInNavSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from HamburgerInNavProps.
-// & Required<Pick<HamburgerInNavProps, 'propName'>>
+export type HamburgerInNavState = ButtonState;
