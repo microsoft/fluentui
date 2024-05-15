@@ -18,7 +18,6 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -39,7 +38,9 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -515,7 +516,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -536,7 +536,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1012,7 +1014,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -1033,7 +1034,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1489,7 +1492,6 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -1510,7 +1512,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1603,7 +1607,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -1624,7 +1627,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2100,7 +2105,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2121,7 +2125,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2597,7 +2603,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2618,7 +2623,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -3094,7 +3101,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -3115,7 +3121,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Chart. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",

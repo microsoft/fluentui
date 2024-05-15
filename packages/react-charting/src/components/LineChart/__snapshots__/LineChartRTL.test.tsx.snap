@@ -3900,7 +3900,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           width: 100%;
         }
     id="chart_9"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_10"
@@ -3918,9 +3917,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4755,7 +4755,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           width: 100%;
         }
     id="chart_9"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_10"
@@ -4773,9 +4772,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -5612,7 +5612,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           width: 100%;
         }
     id="chart_9"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_10"
@@ -5630,9 +5629,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -6467,7 +6467,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           width: 100%;
         }
     id="chart_9"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_10"
@@ -6485,9 +6484,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="LineChart"
+        aria-label="LineChartThe X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -7335,7 +7335,6 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             width: 100%;
           }
       id="chart_12"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_13"
@@ -7353,9 +7352,10 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="LineChart"
+          aria-label="LineChartThe X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >
