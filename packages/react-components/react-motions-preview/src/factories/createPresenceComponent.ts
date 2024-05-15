@@ -1,4 +1,4 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { EventData, EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -55,7 +55,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean }>({});
 
-    const isFirstMount = React.useRef<boolean>(true);
+    const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
     const onEnterFinish = useEventCallback((event: AnimationPlaybackEvent) => {
@@ -74,39 +74,40 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
       optionsRef.current = { appear };
     });
 
-    useIsomorphicLayoutEffect(() => {
-      if (!elementRef.current || shouldSkipAnimation(optionsRef.current.appear, isFirstMount.current, visible)) {
-        return;
-      }
+    useIsomorphicLayoutEffect(
+      () => {
+        if (!elementRef.current || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
+          return;
+        }
 
-      const presenceDefinition = typeof motion === 'function' ? motion(elementRef.current) : motion;
-      const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
+        const presenceDefinition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
 
-      const animation = elementRef.current.animate(keyframes, {
-        fill: 'forwards',
+        const animation = elementRef.current.animate(keyframes, {
+          fill: 'forwards',
 
-        ...options,
-        ...(isReducedMotion() && { duration: 1 }),
-      });
+          ...options,
+          ...(isReducedMotion() && { duration: 1 }),
+        });
 
-      if (!visible && isFirstMount.current) {
-        // Heads up!
-        // .finish() is used there to skip animation on first mount, but apply animation styles immediately
-        animation.finish();
-        return;
-      }
+        if (!visible && isFirstMount) {
+          // Heads up!
+          // .finish() is used there to skip animation on first mount, but apply animation styles immediately
+          animation.finish();
+          return;
+        }
 
-      animationRef.current = animation;
-      animation.onfinish = visible ? onEnterFinish : onExitFinish;
+        animationRef.current = animation;
+        animation.onfinish = visible ? onEnterFinish : onExitFinish;
 
-      return () => {
-        animation.cancel();
-      };
-    }, [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible]);
-
-    useIsomorphicLayoutEffect(() => {
-      isFirstMount.current = false;
-    }, []);
+        return () => {
+          animation.cancel();
+        };
+      },
+      // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
+    );
 
     if (mounted) {
       return React.cloneElement(child, { ref });
