@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 15 May 2024 04:06:44 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.15",
+      "version": "3.0.0-beta.15",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f2fdfb33124652b41663f6aaba9e8c590d9335a4",
+            "comment": "Use e2e script for Playwright tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 May 2024 04:07:20 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.15",
       "version": "3.0.0-beta.15",
