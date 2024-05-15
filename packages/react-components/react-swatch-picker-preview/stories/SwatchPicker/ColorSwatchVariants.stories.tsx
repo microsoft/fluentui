@@ -14,7 +14,6 @@ export const ColorSwatchVariants = () => {
   const styles = useStyles();
   return (
     <div className={styles.example}>
-      <ColorSwatch color="purple" value="purple-color" aria-label="Purple" />
       <ColorSwatch color="#E3008C" value="hot-pink-color" aria-label="Hot pink" />
       <ColorSwatch color="linear-gradient(0deg, #E3008C, #fff232)" value="gradient" aria-label="Gradient yellow pink" />
       <ColorSwatch color="#c8eeff" icon={<HeartFilled color="red" />} value="icon" aria-label="heart-icon" />
@@ -22,6 +21,7 @@ export const ColorSwatchVariants = () => {
       <ColorSwatch color="#ff659a" value="initials" aria-label="initials">
         A
       </ColorSwatch>
+      <ColorSwatch disabled color="#c8eeff" value="icon" aria-label="heart-icon" />
     </div>
   );
 };

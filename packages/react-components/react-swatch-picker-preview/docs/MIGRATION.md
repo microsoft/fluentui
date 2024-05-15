@@ -52,6 +52,7 @@
 
 #### New props
 
+- `borderColor`
 - `size`
 - `shape`
 
