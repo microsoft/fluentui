@@ -123,6 +123,7 @@ export interface TabsterCoreProps {
 }
 
 export interface DOMAPI {
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   // eslint-disable-next-line no-restricted-globals
   createMutationObserver: (callback: MutationCallback) => MutationObserver;
   createTreeWalker(doc: Document, root: Node, whatToShow?: number, filter?: NodeFilter | null): TreeWalker;

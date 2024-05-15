@@ -197,6 +197,7 @@ export function setIconOptions(options: Partial<IconOptions>): void {
 }
 
 let _missingIcons: string[] = [];
+// TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 // eslint-disable-next-line no-restricted-globals
 let _missingIconsTimer: ReturnType<typeof setTimeout> | undefined = undefined;
 

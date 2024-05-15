@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
-import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
@@ -25,8 +25,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
-  const throttleDispatchTimerRef = React.useRef(0);
   const restoreFocusSourceAttributes = useRestoreFocusSource();
+  const [setThrottleTimeout, clearThrottleTimeout] = useTimeout();
 
   const { dir } = useFluent();
   const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
@@ -43,20 +43,16 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
           if (canDispatchCustomEventRef.current) {
             canDispatchCustomEventRef.current = false;
             dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore #16889 Node setTimeout type leaking
-            // eslint-disable-next-line no-restricted-globals
-            throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 250);
+            setThrottleTimeout(() => (canDispatchCustomEventRef.current = true), 250);
           }
         });
       }
     },
-    [popoverRef, throttleDispatchTimerRef],
+    [popoverRef, setThrottleTimeout],
   );
 
   React.useEffect(() => {
-    // eslint-disable-next-line no-restricted-globals
-    () => clearTimeout(throttleDispatchTimerRef.current);
+    () => clearThrottleTimeout();
   }, []);
 
   const inline = useMenuContext_unstable(context => context.inline) ?? false;

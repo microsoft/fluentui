@@ -5,9 +5,9 @@
  * @returns function to cleanup the resize observer
  */
 export function observeResize(elementToObserve: HTMLElement, callback: ResizeObserverCallback) {
-  const GlobalResizeObsever = elementToObserve.ownerDocument.defaultView?.ResizeObserver;
+  const GlobalResizeObserver = elementToObserve.ownerDocument.defaultView?.ResizeObserver;
 
-  if (!GlobalResizeObsever) {
+  if (!GlobalResizeObserver) {
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line no-console
       console.error('@fluentui/priority-overflow', 'ResizeObserver does not exist on container window');
@@ -15,8 +15,9 @@ export function observeResize(elementToObserve: HTMLElement, callback: ResizeObs
     return () => null;
   }
 
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   // eslint-disable-next-line no-restricted-globals
-  let resizeObserver: ResizeObserver | undefined = new GlobalResizeObsever(callback);
+  let resizeObserver: ResizeObserver | undefined = new GlobalResizeObserver(callback);
   resizeObserver.observe(elementToObserve);
 
   return () => {

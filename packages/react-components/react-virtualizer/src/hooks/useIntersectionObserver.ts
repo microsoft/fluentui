@@ -56,10 +56,12 @@ export const useIntersectionObserver = (
 ): {
   setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   // eslint-disable-next-line no-restricted-globals
   observer: MutableRefObject<IntersectionObserver | undefined>;
 } => {
   // eslint-disable-next-line no-restricted-globals
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   const observer = useRef<IntersectionObserver>();
   const [observerList, setObserverList] = useState<Element[]>();
   const { targetDocument } = useFluent();

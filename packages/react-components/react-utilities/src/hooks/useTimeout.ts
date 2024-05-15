@@ -1,12 +1,8 @@
 import { useBrowserTimer } from './useBrowserTimer';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-const setTimeoutNoop = (callback: Function) => {
-  callback();
-  return 0;
-};
-
-const clearTimeoutNoop = (handle: number) => handle;
+const setTimeoutNoop = (_callback: Function) => -1;
+const clearTimeoutNoop = (_handle: number) => undefined;
 
 /**
  * @internal

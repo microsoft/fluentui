@@ -48,6 +48,7 @@ export type VirtualizerDynamicPaginationProps = {
 export interface ResizeCallbackWithRef {
   (
     entries: ResizeObserverEntry[],
+    // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
     // eslint-disable-next-line no-restricted-globals
     observer: ResizeObserver,
     scrollRef?: MutableRefObject<HTMLElement | null>,
