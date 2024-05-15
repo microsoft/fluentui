@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { NavItemValue } from '../NavContext.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
@@ -15,14 +14,13 @@ export type NavItemSlots = {
 /**
  * NavItem Props
  */
-export type NavItemProps = ComponentProps<NavItemSlots> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement> &
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    /**
-     * The value that identifies this navCategoryItem when selected.
-     */
-    value: NavItemValue;
-  };
+export type NavItemProps = ComponentProps<NavItemSlots> & {
+  href?: string;
+  /**
+   * The value that identifies this navCategoryItem when selected.
+   */
+  value: NavItemValue;
+};
 
 /**
  * State used in rendering NavItem
