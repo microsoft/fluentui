@@ -37,7 +37,7 @@ CalendarDateBoundaries.parameters = {
   docs: {
     description: {
       story:
-        'A Calendar Compat can be modified to set a minDate and maxDate in order to restrict' +
+        'A Calendar Compat can be modified to set a minDate and maxDate in order to restrict ' +
         'the dates that can be selected.',
     },
   },
