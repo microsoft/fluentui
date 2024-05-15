@@ -625,6 +625,18 @@ describe('prepare-initial-release generator', () => {
             library: [],
             stories: [
               {
+                filePath: 'packages/react-one-preview/library/bundle-size/index.fixture.js',
+                content: stripIndents`
+                import {One} from '@proj/react-one-preview';
+
+                console.log(One);
+
+                export default {
+                   name: '@proj/react-one-preview - package',
+                }
+          `,
+              },
+              {
                 filePath: 'packages/react-one-preview/stories/src/One.stories.tsx',
                 content: stripIndents`
             import { One } from '@proj/react-one-preview';
@@ -716,6 +728,18 @@ describe('prepare-initial-release generator', () => {
             sourceRoot: 'packages/react-one/stories/src',
           }),
         );
+
+        expect(utils.project.library.bundleSize()).toMatchInlineSnapshot(`
+          Object {
+            "packages/react-one/library/bundle-size/index.fixture.js": "import { One } from '@proj/react-one';
+
+          console.log(One);
+
+          export default {
+          name: '@proj/react-one - package',
+          };",
+          }
+        `);
 
         expect(utils.project.library.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one
