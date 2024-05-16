@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 16 May 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.16",
+      "version": "3.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcec1f8d69fab6d04c39b7665e7c547e522cfc20",
+            "comment": "Synchronize design token exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 May 2024 04:06:44 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.15",
       "version": "3.0.0-beta.15",
