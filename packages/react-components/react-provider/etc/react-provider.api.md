@@ -157,6 +157,11 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTagPickerListStyles_unstable: (state: unknown) => void;
         useTagPickerOptionStyles_unstable: (state: unknown) => void;
         useTagPickerOptionGroupStyles_unstable: (state: unknown) => void;
+        useColorSwatchStyles_unstable: (state: unknown) => void;
+        useImageSwatchStyles_unstable: (state: unknown) => void;
+        useEmptySwatchStyles_unstable: (state: unknown) => void;
+        useSwatchPickerRowStyles_unstable: (state: unknown) => void;
+        useSwatchPickerStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
