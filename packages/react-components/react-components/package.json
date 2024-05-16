@@ -65,6 +65,7 @@
     "@fluentui/react-slider": "^9.1.82",
     "@fluentui/react-spinbutton": "^9.2.75",
     "@fluentui/react-spinner": "^9.4.7",
+    "@fluentui/react-swatch-picker": "^9.0.0",
     "@fluentui/react-switch": "^9.1.82",
     "@fluentui/react-table": "^9.15.4",
     "@fluentui/react-tabs": "^9.4.20",
