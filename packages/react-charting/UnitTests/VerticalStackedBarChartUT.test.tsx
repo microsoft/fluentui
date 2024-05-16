@@ -157,7 +157,7 @@ runTest('get area label', () => {
   testWithWait(
     'Should return the correct aria label for a stacked Bar',
     VerticalStackedBarChart,
-    { data: simplePointsWithLine },
+    { data: simplePointsWithLine, barWidth: 25 },
     container => {
       const barAreaLabel = screen.queryByText('2.5');
       expect(barAreaLabel).not.toBeNull();
