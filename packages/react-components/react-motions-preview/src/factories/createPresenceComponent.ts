@@ -68,7 +68,7 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
       visible,
       animateOpacity,
       unmountOnExit,
-      override = {}
+      override = {},
     } = { ...itemContext, ...props };
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
