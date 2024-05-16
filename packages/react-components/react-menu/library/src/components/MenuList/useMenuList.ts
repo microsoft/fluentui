@@ -12,6 +12,7 @@ import {
   TabsterMoveFocusEventName,
   type TabsterMoveFocusEvent,
 } from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
@@ -22,6 +23,7 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
  */
 export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const { findAllFocusable } = useFocusFinders();
+  const { targetDocument } = useFluent();
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
   const focusAttributes = useArrowNavigationGroup({ circular: true });
@@ -37,25 +39,24 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   React.useEffect(() => {
     const element = innerRef.current;
 
-    if (element) {
-      const doc = element.ownerDocument;
+    if (targetDocument && element) {
       const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
         const nextElement = e.detail.next;
 
-        if (element.contains(doc.activeElement) && nextElement && !element.contains(nextElement)) {
+        if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
           e.preventDefault();
 
           nextElement.focus();
         }
       };
 
-      doc.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+      targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
 
       return () => {
-        doc.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+        targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
       };
     }
-  }, [innerRef]);
+  }, [innerRef, targetDocument]);
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
