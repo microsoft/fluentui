@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.4)
+
+Thu, 16 May 2024 09:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.14.3..@fluentui/react-menu_v9.14.4)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
 
 ## [9.14.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.3)
 

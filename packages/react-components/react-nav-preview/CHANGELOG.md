@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Mon, 13 May 2024 12:34:19 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.1.1)
+
+Thu, 16 May 2024 09:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.1.0..@fluentui/react-nav-preview_v0.1.1)
+
+### Patches
+
+- chore: Update react-icons package to 2.0.239. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-drawer to v9.3.1 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.1.0)
 
