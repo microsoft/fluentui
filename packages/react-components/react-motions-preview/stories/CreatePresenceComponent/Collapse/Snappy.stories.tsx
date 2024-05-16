@@ -1,6 +1,6 @@
 import * as React from 'react';
 import description from './Snappy.stories.md';
-import { Collapse } from '@fluentui/react-motions-preview';
+import { CollapseSnappy } from '@fluentui/react-motions-preview';
 import { Checkbox } from '@fluentui/react-components';
 import { loremIpsum } from '../utils/loremIpsum';
 
@@ -10,9 +10,9 @@ export const Snappy = () => {
   return (
     <div>
       <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} />
-      <Collapse.Snappy visible={visible}>
+      <CollapseSnappy visible={visible}>
         <div style={{ padding: 8 }}>{loremIpsum(10)}</div>
-      </Collapse.Snappy>
+      </CollapseSnappy>
     </div>
   );
 };

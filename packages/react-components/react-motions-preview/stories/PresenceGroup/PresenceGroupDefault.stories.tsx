@@ -13,14 +13,20 @@ import {
 } from '@fluentui/react-components';
 import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
 // import { createPresenceComponent, motionTokens, PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
-import { PresenceGroup, Collapse, Scale, Fade } from '@fluentui/react-motions-preview';
+import {
+  PresenceGroup,
+  Collapse,
+  CollapseExaggerated,
+  CollapseSnappy,
+  Scale,
+  Fade,
+} from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 const motionOptions = {
   Collapse,
-  ['Collapse.Pushy']: Collapse.Pushy,
-  ['Collapse.Gentle']: Collapse.Gentle,
-  ['Collapse.Snappy']: Collapse.Snappy,
+  ['CollapseExaggerated']: CollapseExaggerated,
+  ['CollapseSnappy']: CollapseSnappy,
   ['Scale']: Scale,
   ['Fade']: Fade,
 };

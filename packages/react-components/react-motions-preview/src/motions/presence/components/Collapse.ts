@@ -1,10 +1,13 @@
 import { createPresenceComponent } from '../../../factories/createPresenceComponent';
-import { motionTokens } from '../../motionTokens';
+import { durations, curves } from '../../motionTokens';
 import { PresenceMotionFn, PresenceOverrideFields, PresenceTransitionProps } from '../../../types';
 import { createPresenceVariant } from '../../../factories/createPresenceVariant';
 
-const duration = motionTokens.durationNormal;
-const easing = motionTokens.curveDecelerateMid;
+const { durationSlow, durationNormal, durationUltraFast } = durations;
+const { curveDecelerateMid, curveEasyEaseMax } = curves;
+
+const duration = durationNormal;
+const easing = curveEasyEaseMax;
 
 // There may be Collapse-specific parameters in the future, e.g. for partial collapse
 type CollapseParams = PresenceOverrideFields;
@@ -48,21 +51,22 @@ const collapseMotion: PresenceMotionFn<CollapseParams> = ({
 };
 
 /** A React component that applies collapse/expand transitions to its children. */
-const Collapse = createPresenceComponent(collapseMotion);
+export const Collapse = createPresenceComponent(collapseMotion);
 
-const Snappy = createPresenceVariant({
+export const CollapseSnappy = createPresenceVariant({
   component: Collapse,
-  override: { all: { duration: motionTokens.durationUltraFast } },
+  override: { all: { duration: durationUltraFast } },
 });
 
-const Gentle = createPresenceVariant({ component: Collapse, override: { all: { duration: 1000 } } });
-
-const Pushy = createPresenceVariant({
+export const CollapseExaggerated = createPresenceVariant({
   component: Collapse,
-  override: { all: { duration: motionTokens.durationUltraSlow, easing: motionTokens.curveEasyEaseMax } },
+  override: {
+    enter: { duration: durationSlow, easing: curveEasyEaseMax },
+    exit: { duration: durationNormal, easing: curveEasyEaseMax },
+  },
 });
 
 // Support default <Collapse> plus variants like <Collapse.Snappy>
-const WithVariants = Object.assign(Collapse, { Snappy, Gentle, Pushy });
+// const WithVariants = Object.assign(Collapse, { Snappy, Gentle, Pushy: Exaggerated });
 
-export { WithVariants as Collapse };
+// export { WithVariants as Collapse };
