@@ -83,6 +83,19 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     const activeOption = activeOptionId ? getOptionById(activeOptionId) : null;
 
     switch (action) {
+      case 'First':
+      case 'Last':
+      case 'Next':
+      case 'Previous':
+      case 'PageDown':
+      case 'PageUp':
+      case 'CloseSelect':
+      case 'Select':
+        event.preventDefault();
+        break;
+    }
+
+    switch (action) {
       case 'Next':
         if (activeOption) {
           activeDescendantController.next();
@@ -112,39 +125,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
-  const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
-    if (hasParentActiveDescendantContext || activeDescendantController.active()) {
-      return;
-    }
-
-    // restore focus to last active option (if it still exists) - similar to memorizeCurrent in useArrowNavigationGroup
-    if (activeDescendantController.focusLastActive()) {
-      return;
-    }
-
-    // if there is a selected option, focus it and make it active
-    const selectedOptionValues = selectedOptions ?? [];
-    const firstSelectedOption = optionCollection.getOptionsMatchingValue(value =>
-      selectedOptionValues.includes(value),
-    )[0];
-    if (firstSelectedOption) {
-      activeDescendantController.focus(firstSelectedOption.id);
-      return;
-    }
-
-    // if there is no active descendant and no selected options, set the first option as active
-    activeDescendantController.first();
-  };
-
-  const onBlur = (_event: React.FocusEvent<HTMLElement>) => {
-    if (hasParentActiveDescendantContext) {
-      return;
-    }
-
-    // blur active descendant styles on blur, in the absence of a parent context controlling the state
-    activeDescendantController.blur();
-  };
-
   // get state from parent combobox, if it exists
   const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
@@ -162,6 +142,30 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         selectOption,
         ...UNSAFE_noLongerUsed,
       };
+
+  React.useEffect(() => {
+    // if it is single-select and there is a selected option, start at the selected option
+    if (!multiselect && optionContextValues.selectedOptions.length > 0) {
+      const selectedOption = optionCollection
+        .getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0])
+        .pop();
+
+      if (selectedOption?.id) {
+        activeDescendantController.focus(selectedOption.id);
+      }
+    }
+
+    // otherwise start at the first option
+    else {
+      activeDescendantController.first();
+    }
+
+    return () => {
+      activeDescendantController.blur();
+    };
+    // this should only be run once in the lifecycle of the Listbox
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeDescendantController]);
 
   const state: ListboxState = {
     components: {
@@ -188,8 +192,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
-  state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
-  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlur));
 
   return state;
 };
