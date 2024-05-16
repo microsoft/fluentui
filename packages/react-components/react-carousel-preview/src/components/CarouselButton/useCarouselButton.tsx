@@ -4,6 +4,8 @@ import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.
 import { useButton_unstable } from '@fluentui/react-button';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselValues_unstable } from '../useCarouselValues';
+import { slot } from '@fluentui/react-utilities';
+import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render CarouselButton.
@@ -49,6 +51,20 @@ export const useCarouselButton_unstable = (
   return {
     navType,
     // We lean on react-button class to handle styling and icon enhancements
-    ...useButton_unstable({ disabled: isTrailing, ...props, onClick: handleButtonClick }, ref),
+    ...useButton_unstable(
+      {
+        icon: slot.optional(props.icon, {
+          defaultProps: {
+            children: navType === 'next' ? <ChevronRightRegular /> : <ChevronLeftRegular />,
+          },
+          renderByDefault: true,
+          elementType: 'span',
+        }),
+        disabled: isTrailing,
+        ...props,
+        onClick: handleButtonClick,
+      },
+      ref,
+    ),
   };
 };

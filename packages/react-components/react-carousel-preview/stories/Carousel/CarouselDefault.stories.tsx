@@ -15,9 +15,9 @@ export const Default = (props: Partial<CarouselProps>) => (
     <CarouselCard value="test-3">{'test-3'}</CarouselCard>
     <CarouselCard value="test-4">{'test-4'}</CarouselCard>
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <CarouselButton navType="prev">{'prev'}</CarouselButton>
+      <CarouselButton navType="prev" />
       <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
-      <CarouselButton navType="next">{'next'}</CarouselButton>
+      <CarouselButton navType="next" />
     </div>
   </Carousel>
 );
