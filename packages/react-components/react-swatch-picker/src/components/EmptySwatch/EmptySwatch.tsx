@@ -4,6 +4,7 @@ import { useEmptySwatch_unstable } from './useEmptySwatch';
 import { renderEmptySwatch_unstable } from './renderEmptySwatch';
 import { useEmptySwatchStyles_unstable } from './useEmptySwatchStyles.styles';
 import type { EmptySwatchProps } from './EmptySwatch.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * EmptySwatch component is used for adding new color swatches.
@@ -12,9 +13,7 @@ export const EmptySwatch: ForwardRefComponent<EmptySwatchProps> = React.forwardR
   const state = useEmptySwatch_unstable(props, ref);
 
   useEmptySwatchStyles_unstable(state);
-  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-  // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
-  // useCustomStyleHook_unstable('useEmptySwatchStyles_unstable')(state);
+  useCustomStyleHook_unstable('useEmptySwatchStyles_unstable')(state);
   return renderEmptySwatch_unstable(state);
 });
 

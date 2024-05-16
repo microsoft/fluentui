@@ -5,6 +5,7 @@ import { renderSwatchPicker_unstable } from './renderSwatchPicker';
 import { useSwatchPickerStyles_unstable } from './useSwatchPickerStyles.styles';
 import type { SwatchPickerProps } from './SwatchPicker.types';
 import { useSwatchPickerContextValues } from '../../contexts/swatchPicker';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * SwatchPicker component - TODO: add more docs
@@ -14,8 +15,7 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps> = React.forwar
   const contextValues = useSwatchPickerContextValues(state);
 
   useSwatchPickerStyles_unstable(state);
-  // TODO when SwatchPicker is stable add this line:
-  // useCustomStyleHook_unstable('useSwatchPickerStyles_unstable')(state);
+  useCustomStyleHook_unstable('useSwatchPickerStyles_unstable')(state);
 
   return renderSwatchPicker_unstable(state, contextValues);
 });
