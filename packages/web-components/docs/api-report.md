@@ -2710,8 +2710,11 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends BaseProgress {
+export class Spinner extends FASTElement {
+    constructor();
     appearance?: SpinnerAppearance;
+    // @internal
+    protected elementInternals: ElementInternals;
     size?: SpinnerSize;
 }
 

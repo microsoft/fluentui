@@ -1,12 +1,18 @@
-import { attr } from '@microsoft/fast-element';
-import { BaseProgress } from '../progress-bar/base-progress.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
 import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
  * The base class used for constructing a fluent-spinner custom element
  * @public
  */
-export class Spinner extends BaseProgress {
+export class Spinner extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  protected elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * The size of the spinner
    *
@@ -27,4 +33,9 @@ export class Spinner extends BaseProgress {
    */
   @attr
   public appearance?: SpinnerAppearance;
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'progressbar';
+  }
 }
