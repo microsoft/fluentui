@@ -12,6 +12,7 @@ export const spinButtonClassNames: SlotClassNames<SpinButtonSlots> = {
 
 const spinButtonExtraClassNames = {
   buttonActive: 'fui-SpinButton__button_active',
+  change: 'change_for_pr',
 };
 
 const fieldHeights = {
@@ -25,7 +26,7 @@ const useRootClassName = makeResetStyles({
   gridTemplateRows: '1fr 1fr',
   columnGap: tokens.spacingHorizontalXS,
   rowGap: 0,
-  // position: 'relative',
+  position: 'relative',
   isolation: 'isolate',
 
   backgroundColor: tokens.colorNeutralBackground1,
