@@ -75,9 +75,7 @@ export const MultilineWithoutActions = () => (
           <MessageBarTitle>{intent}</MessageBarTitle>
           Message providing information to the user with actionable insights. <Link>Link</Link>
         </MessageBarBody>
-        <MessageBarActions
-          containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}
-         />
+        <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />} />
       </MessageBar>
     ))}
   </div>
