@@ -17524,33 +17524,33 @@ monaco-editor@0.33.0:
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
   integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
-monosize-bundler-webpack@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.0.tgz#f70e04453397a9fe1959bc9bd302e76a5871fbf1"
-  integrity sha512-iZvgekCCQEcTVWYdLSPwotmHL5oO9cSr9dgDuCYafhfZKwNfFKxfFRraSUffNQlYBc2eH2ZiU1hhcauA30fbnA==
+monosize-bundler-webpack@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.2.tgz#b49897678ebc1cbeabc178de992c75672208219a"
+  integrity sha512-2OzDknhkeuxElrNgDfQoQRSQ7aJ/4wu/gJUm9xtKKhi3MHdd57Wtv7BjILN+alL9hkG+YipCSf95M6WmP9Ovrg==
   dependencies:
-    monosize "^0.5.0"
+    monosize "^0.6.0"
     picocolors "^1.0.0"
     terser "^5.16.0"
     terser-webpack-plugin "^5.3.1"
     tslib "^2.4.1"
     webpack "^5.76.0"
 
-monosize-storage-azure@0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.10.tgz#e90390af2c9709f35cdfe51a0218f8effd1c824c"
-  integrity sha512-asvaHsx4TSmdyh1rvxm6uWa91Suml9Vorfpc0YUGUsOj7KXOg3vxObxrTvKPiBSSWEbQ/Nb1XXJCzt4s8CaX1w==
+monosize-storage-azure@0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.12.tgz#1612ab109b90aea8347f2536d2f1df49c68142c6"
+  integrity sha512-NsHLEx2qTbd4amYR+vsbtx5+61HFmTzHrCdpi5U493D/3DQ8DY0f6VxUb+bUz4p9hTg4XMfxUpAcbgJwJTiv9Q==
   dependencies:
     "@azure/data-tables" "^13.0.0"
-    monosize "^0.5.0"
+    monosize "^0.6.0"
     node-fetch "^3.3.0"
     picocolors "^1.0.0"
     tslib "^2.4.1"
 
-monosize@0.5.0, monosize@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.5.0.tgz#06de5a1f77338877a336627418b5b45458718498"
-  integrity sha512-+1Z3UyGP/t65Hft9wcDIlgGNuH7xB3ExKjxZ97qaGz//ujLPE2/SkeQcF4LxegBFjQnU4vm9g1pnb4Acc8b4Rg==
+monosize@0.6.0, monosize@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.6.0.tgz#d42e33c1c2165dc223db0e1981f54ef45af4fdb9"
+  integrity sha512-bAh080zQqt80cUDFgYyIW0mPiFiJdTxLzlWhznG8VJgTaAMEOPRQ0xEuDF2RPFmoc9IQO3sv8QZ/fzTK2z0Uig==
   dependencies:
     acorn "^8.11.3"
     ci-info "^3.7.0"
