@@ -33,7 +33,9 @@ export type MessageBarActionsSlots = {
 };
 
 // @public
-export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> & Pick<Required<MessageBarContextValue>, 'layout'>;
+export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> & Pick<Required<MessageBarContextValue>, 'layout'> & {
+    hasActions: boolean;
+};
 
 // @public
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;

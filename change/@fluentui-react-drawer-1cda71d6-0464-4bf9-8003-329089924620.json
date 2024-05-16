@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: restore scroll when Drawer closes",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

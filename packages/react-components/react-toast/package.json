@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toast",
-  "version": "9.3.41",
+  "version": "9.3.42",
   "description": "Toast component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

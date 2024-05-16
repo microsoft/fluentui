@@ -2,6 +2,21 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Thu, 16 May 2024 09:25:20 GMT",
+      "tag": "@fluentui/react-radio_v9.2.20",
+      "version": "9.2.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-field to v9.1.65",
+            "commit": "62553563ad80b95e37a9e628d6a860c829b58dbf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 May 2024 19:35:12 GMT",
       "tag": "@fluentui/react-radio_v9.2.19",
       "version": "9.2.19",
