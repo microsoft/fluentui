@@ -13,6 +13,11 @@ export type ColorSwatchSlots = {
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
   Pick<SwatchPickerProps, 'size' | 'shape'> & {
     /**
+     * Border color when contrast is low
+     */
+    borderColor?: string;
+
+    /**
      * Swatch color
      */
     color: string;

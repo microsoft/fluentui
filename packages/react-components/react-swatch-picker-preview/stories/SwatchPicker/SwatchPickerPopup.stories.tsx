@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import { SwatchPicker, SwatchPickerOnSelectEventHandler, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -26,17 +27,41 @@ const colors = [
 ];
 
 const gradientColors = [
-  { color: 'linear-gradient(0deg, #FF1921, #FFB92E)', value: 'orange-red', 'aria-label': 'gradient orange-red' },
-  { color: 'linear-gradient(0deg, #FFC12E, #FEFF37)', value: 'yellow-orange', 'aria-label': 'gradient yellow-orange' },
-  { color: 'linear-gradient(0deg, #90D057, #FEFF37)', value: 'yellow-green', 'aria-label': 'gradient yellow-green' },
+  {
+    color: 'linear-gradient(0deg, #FF1921, #FFB92E)',
+    value: 'orange-red',
+    'aria-label': 'gradient orange-red',
+  },
+  {
+    color: 'linear-gradient(0deg, #FFC12E, #FEFF37)',
+    value: 'yellow-orange',
+    'aria-label': 'gradient yellow-orange',
+  },
+  {
+    color: 'linear-gradient(0deg, #90D057, #FEFF37)',
+    value: 'yellow-green',
+    'aria-label': 'gradient yellow-green',
+  },
   {
     color: 'linear-gradient(0deg, #00B053, #90D057)',
     value: 'light-green-gradient',
     'aria-label': 'gradient light green',
   },
-  { color: 'linear-gradient(0deg, #00B053, #00AFED)', value: 'green-blue', 'aria-label': 'gradient green-blue' },
-  { color: 'linear-gradient(0deg, #006EBD, #00AFED)', value: 'blue gradient', 'aria-label': 'gradient blue' },
-  { color: 'linear-gradient(0deg, #712F9E, #00AFED)', value: 'blue-purple', 'aria-label': 'gradient blue-purple' },
+  {
+    color: 'linear-gradient(0deg, #00B053, #00AFED)',
+    value: 'green-blue',
+    'aria-label': 'gradient green-blue',
+  },
+  {
+    color: 'linear-gradient(0deg, #006EBD, #00AFED)',
+    value: 'blue gradient',
+    'aria-label': 'gradient blue',
+  },
+  {
+    color: 'linear-gradient(0deg, #712F9E, #00AFED)',
+    value: 'blue-purple',
+    'aria-label': 'gradient blue-purple',
+  },
   {
     color:
       'linear-gradient(0deg, #FF1921 0%, #FFC12E 10%, #FEFF37 20%, #90D057 30%, #00B053 40%, #00AFED 50%, #006EBD 60%, #011F5E 70%, #712F9E 80%)',
@@ -49,16 +74,20 @@ export const SwatchPickerPopup = () => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
 
+  const [popoverOpen, setPopoverOpen] = React.useState(false);
+
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedSwatch);
+
+    setPopoverOpen(false);
   };
 
   const styles = useStyles();
 
   return (
     <>
-      <Popover trapFocus>
+      <Popover open={popoverOpen} trapFocus onOpenChange={(_, data) => setPopoverOpen(data.open)}>
         <PopoverTrigger disableButtonEnhancement>
           <Button>Choose color</Button>
         </PopoverTrigger>
@@ -86,4 +115,12 @@ export const SwatchPickerPopup = () => {
       />
     </>
   );
+};
+
+SwatchPickerPopup.parameters = {
+  docs: {
+    description: {
+      story: 'The swatch picker can be integrated within a popover or similar element.',
+    },
+  },
 };

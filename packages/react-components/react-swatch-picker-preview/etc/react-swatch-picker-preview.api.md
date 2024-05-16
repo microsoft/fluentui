@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -23,6 +24,7 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+    borderColor?: string;
     color: string;
     disabled?: boolean;
     value: string;
@@ -100,6 +102,7 @@ export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JS
 // @public (undocumented)
 export const swatchCSSVars: {
     color: string;
+    borderColor: string;
 };
 
 // @public
@@ -107,6 +110,23 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 
 // @public (undocumented)
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
+
+// @public (undocumented)
+export const swatchPickerContextDefaultValue: SwatchPickerContextValue;
+
+// @public
+export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing' | 'selectedValue'> & {
+    isGrid: boolean;
+    requestSelectionChange: (event: React_2.MouseEvent<HTMLButtonElement>, data: {
+        selectedValue: string;
+        selectedSwatch: string;
+    }) => void;
+};
+
+// @public (undocumented)
+export type SwatchPickerContextValues = {
+    swatchPicker: SwatchPickerContextValue;
+};
 
 // @public (undocumented)
 export type SwatchPickerGridProps = {
@@ -138,6 +158,9 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     shape?: 'rounded' | 'square' | 'circular';
     spacing?: 'small' | 'medium';
 };
+
+// @public (undocumented)
+export const SwatchPickerProvider: React_2.Provider<SwatchPickerContextValue> & React_2.FC<React_2.ProviderProps<SwatchPickerContextValue>>;
 
 // @public
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;
@@ -189,6 +212,12 @@ export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSw
 
 // @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
+
+// @public (undocumented)
+export const useSwatchPickerContextValue_unstable: <T>(selector: ContextSelector<SwatchPickerContextValue, T>) => T;
+
+// @public (undocumented)
+export const useSwatchPickerContextValues: (state: SwatchPickerState) => SwatchPickerContextValues;
 
 // @public
 export const useSwatchPickerRow_unstable: (props: SwatchPickerRowProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerRowState;

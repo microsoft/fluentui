@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-swatch-picker-preview
 
-This log was last generated on Tue, 23 Apr 2024 08:17:48 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.6.0)
+
+Thu, 16 May 2024 09:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.5.0..@fluentui/react-swatch-picker-preview_v0.6.0)
+
+### Minor changes
+
+- feat(react-swatch-picker): added contrast ratio utils ([PR #31358](https://github.com/microsoft/fluentui/pull/31358) by vkozlova@microsoft.com)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.5.0)
+
+Mon, 13 May 2024 12:34:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.3..@fluentui/react-swatch-picker-preview_v0.5.0)
+
+### Minor changes
+
+- feat: Add missing SwatchPicker context exports. ([PR #31328](https://github.com/microsoft/fluentui/pull/31328) by estebanmu@microsoft.com)
+
+## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.3)
+
+Thu, 09 May 2024 19:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.2..@fluentui/react-swatch-picker-preview_v0.4.3)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
+
+## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.2)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.1..@fluentui/react-swatch-picker-preview_v0.4.2)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.59 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.1)
+
+Thu, 02 May 2024 11:36:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.0..@fluentui/react-swatch-picker-preview_v0.4.1)
+
+### Patches
+
+-  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.0)
 

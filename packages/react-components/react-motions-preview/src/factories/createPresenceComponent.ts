@@ -1,10 +1,12 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { EventData, EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
+import { useMountedState } from '../hooks/useMountedState';
+import { animate } from '../utils/animate';
 import { getChildElement } from '../utils/getChildElement';
 import type {
   PresenceMotion,
@@ -51,6 +53,10 @@ export type PresenceComponentProps<CustomOverrides = {}> = {
   override?: PresenceOverride<CustomOverrides>;
 };
 
+function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
+  return !appear && isFirstMount && visible;
+}
+
 export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>) {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
@@ -62,8 +68,10 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
       visible,
       animateOpacity,
       unmountOnExit,
-      override = {},
+      override = {}
     } = { ...itemContext, ...props };
+
+    const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
 
     const animationRef = useMotionImperativeRef(imperativeRef);
@@ -74,11 +82,9 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
     const overrideRef = React.useRef(override);
     const animateOpacityRef = React.useRef(animateOpacity);
     const ref = useMergedRefs(elementRef, child.ref);
-    const optionsRef = React.useRef<{ appear?: boolean }>();
+    const optionsRef = React.useRef<{ appear?: boolean }>({});
 
-    const [mounted, setMounted] = React.useState(() => (unmountOnExit ? visible : true));
-
-    const isFirstMount = React.useRef<boolean>(true);
+    const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
     const onEnterFinish = useEventCallback((event: AnimationPlaybackEvent) => {
@@ -89,6 +95,7 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
 
       if (unmountOnExit) {
         setMounted(false);
+        itemContext?.onExit();
       }
     });
 
@@ -96,14 +103,12 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
       optionsRef.current = { appear };
     });
 
-    useIsomorphicLayoutEffect(() => {
-      if (visible) {
-        setMounted(true);
-        return;
-      }
+    useIsomorphicLayoutEffect(
+      () => {
+        if (!elementRef.current || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
+          return;
+        }
 
-      // Check for .animate which may not be available in some environments, e.g. unit tests
-      if (elementRef.current && elementRef.current.animate) {
         const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
         // Only create override objects if there are any overrides;
         // otherwise use undefined so enter/exit overrides won't be passed to the motion function
@@ -112,86 +117,41 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
         const exit =
           all || exitProp ? ({ ...all, ...exitProp } as Partial<PresenceOverrideFields & CustomProps>) : undefined;
 
-        // const motionFnParams: Parameters<PresenceMotionFn<CustomProps>>[0] = {
-        //   element: elementRef.current,
-        //   animateOpacity,
-        // };
-        // if (enter) {
-        //   motionFnParams.enter = enter;
-        // }
-        // if (exit) {
-        //   motionFnParams.exit = exit;
-        // }
-        // const definition = typeof motion === 'function' ? motion(motionFnParams) : motion;
-        const definition =
+        const presenceDefinition =
           typeof motion === 'function'
             ? motion({ element: elementRef.current, animateOpacity: animateOpacityRef.current, enter, exit })
             : motion;
-        const { keyframes, ...options } = definition.exit;
+        const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
 
-        const animation = elementRef.current.animate(keyframes, {
+        const animation = animate(elementRef.current, keyframes, {
           fill: 'forwards',
 
           ...options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
-        if (isFirstMount.current) {
+        if (!animation) {
+          return;
+        }
+
+        if (!visible && isFirstMount) {
           // Heads up!
-          // .finish() is used there to skip animation on first mount, but apply animation styles
+          // .finish() is used there to skip animation on first mount, but apply animation styles immediately
           animation.finish();
           return;
         }
 
         animationRef.current = animation;
-        animation.onfinish = onExitFinish;
-
-        return () => {
-          // TODO: should we set unmount there?
-          animation.cancel();
-        };
-      }
-    }, [animationRef, isReducedMotion, onExitFinish, visible]);
-
-    useIsomorphicLayoutEffect(() => {
-      if (!(elementRef.current && elementRef.current.animate)) {
-        return;
-      }
-
-      const shouldEnter = isFirstMount.current ? optionsRef.current?.appear && visible : mounted && visible;
-
-      if (shouldEnter) {
-        const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
-        const enter =
-          all || enterProp ? ({ ...all, ...enterProp } as Partial<PresenceOverrideFields & CustomProps>) : undefined;
-        const exit =
-          all || exitProp ? ({ ...all, ...exitProp } as Partial<PresenceOverrideFields & CustomProps>) : undefined;
-
-        const definition =
-          typeof motion === 'function'
-            ? motion({ element: elementRef.current, animateOpacity: animateOpacityRef.current, enter, exit })
-            : motion;
-        const { keyframes, ...options } = definition.enter;
-
-        const animation = elementRef.current.animate(keyframes, {
-          fill: 'forwards',
-
-          ...options,
-          ...(isReducedMotion() && { duration: 1 }),
-        });
-
-        animationRef.current = animation;
-        animation.onfinish = onEnterFinish;
+        animation.onfinish = visible ? onEnterFinish : onExitFinish;
 
         return () => {
           animation.cancel();
         };
-      }
-    }, [animationRef, isReducedMotion, mounted, onEnterFinish, visible]);
-
-    useIsomorphicLayoutEffect(() => {
-      isFirstMount.current = false;
-    }, []);
+      },
+      // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
+    );
 
     React.useEffect(() => {
       overrideRef.current = override;

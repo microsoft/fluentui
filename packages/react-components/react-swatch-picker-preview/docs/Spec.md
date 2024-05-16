@@ -184,13 +184,14 @@ import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
 
 ### ColorSwatch
 
-| Property | Values                                   | Default  | Purpose                          |
-| -------- | ---------------------------------------- | -------- | -------------------------------- |
-| color    | `string`                                 |          | Color in hex, RGB or named color |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                       |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell  |
-| disabled | `boolean`                                |          |                                  |
-| value    | `string`                                 |          | Unique value of the swatch       |
+| Property    | Values                                   | Default  | Purpose                          |
+| ----------- | ---------------------------------------- | -------- | -------------------------------- |
+| borderColor | `string`                                 |          | Sets border color                |
+| color       | `string`                                 |          | Color in hex, RGB or named color |
+| shape       | `square`, `circular`, `rounded`          | `square` | Sets shape                       |
+| size        | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell  |
+| disabled    | `boolean`                                |          |                                  |
+| value       | `string`                                 |          | Unique value of the swatch       |
 
 | Slots        | Values   | Default  | Description                                                             |
 | ------------ | -------- | -------- | ----------------------------------------------------------------------- |
@@ -419,6 +420,4 @@ For the set of colors `aria-label` or `aria-labelby` should be provided.
 SwatchPicker component has role `radiogroup`.
 ColorSwatch and ImageSwatch have role `radio`.
 
-![SwatchPicker Accessibility - navigation](./assets/swatch-picker-a11y-nav.jpg)
-
-![SwatchPicker Accessibility - selection](./assets/swatch-picker-a11y-selection.jpg)
+![SwatchPicker Accessibility - navigation](./assets/swatch-picker-a11y.jpg)

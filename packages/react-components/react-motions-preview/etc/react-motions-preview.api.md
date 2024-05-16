@@ -4,13 +4,12 @@
 
 ```ts
 
-import { EventData } from '@fluentui/react-utilities';
-import { EventHandler } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import { FC } from 'react';
-import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
-import { Ref } from 'react';
+import { ReactNode } from 'react';
 
 // @public (undocumented)
 export type AtomMotion = {
@@ -21,21 +20,16 @@ export type AtomMotion = {
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
 // @public (undocumented)
-export const Collapse: React_2.FC<{
-    appear?: boolean | undefined;
-    children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
-    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined> | undefined;
-    onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
-    direction: "enter" | "exit";
-    }> | undefined;
-    visible?: boolean | undefined;
-    animateOpacity?: boolean | undefined;
-    unmountOnExit?: boolean | undefined;
-    override?: PresenceOverride<    {}> | undefined;
-}> & {
-    Snappy: (props: React_2.ComponentProps<typeof Collapse_2>) => React_2.ReactElement<any, any> | null;
-    Gentle: (props: React_2.ComponentProps<typeof Collapse_2>) => React_2.ReactElement<any, any> | null;
-    Pushy: (props: React_2.ComponentProps<typeof Collapse_2>) => React_2.ReactElement<any, any> | null;
+export const Collapse: FC<PresenceComponentProps<    {}>> & {
+    Snappy: (props: PresenceComponentProps<    {}> & {
+        children?: ReactNode;
+    }) => ReactElement<any, any> | null;
+    Gentle: (props: PresenceComponentProps<    {}> & {
+        children?: ReactNode;
+    }) => ReactElement<any, any> | null;
+    Pushy: (props: PresenceComponentProps<    {}> & {
+        children?: ReactNode;
+    }) => ReactElement<any, any> | null;
 };
 
 // @public
@@ -70,18 +64,7 @@ export const durations: {
 };
 
 // @public
-export const Fade: FC<    {
-appear?: boolean | undefined;
-children: ReactElement<any, string | JSXElementConstructor<any>>;
-imperativeRef?: Ref<MotionImperativeRef | undefined> | undefined;
-onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
-direction: "enter" | "exit";
-}> | undefined;
-visible?: boolean | undefined;
-animateOpacity?: boolean | undefined;
-unmountOnExit?: boolean | undefined;
-override?: PresenceOverride<    {}> | undefined;
-}>;
+export const Fade: FC<PresenceComponentProps<    {}>>;
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -138,18 +121,7 @@ export type PresenceMotionFn<CustomProps = {}> = (params: {
 } & PresenceTransitionProps<CustomProps>) => PresenceMotion;
 
 // @public
-export const Scale: FC<    {
-appear?: boolean | undefined;
-children: ReactElement<any, string | JSXElementConstructor<any>>;
-imperativeRef?: Ref<MotionImperativeRef | undefined> | undefined;
-onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
-direction: "enter" | "exit";
-}> | undefined;
-visible?: boolean | undefined;
-animateOpacity?: boolean | undefined;
-unmountOnExit?: boolean | undefined;
-override?: PresenceOverride<    {}> | undefined;
-}>;
+export const Scale: FC<PresenceComponentProps<    {}>>;
 
 // (No @packageDocumentation comment for this package)
 

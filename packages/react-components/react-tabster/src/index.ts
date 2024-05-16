@@ -15,6 +15,7 @@ export {
   useUncontrolledFocus,
   useOnKeyboardNavigationChange,
   useSetKeyboardNavigation,
+  useFocusedElementChange,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,
@@ -67,3 +68,7 @@ export const GroupperMoveFocusEventName = Events.GroupperMoveFocusEventName;
 export const GroupperMoveFocusEvent: typeof Events.GroupperMoveFocusEvent = Events.GroupperMoveFocusEvent;
 export type GroupperMoveFocusEventDetail = Events.GroupperMoveFocusEventDetail;
 export const GroupperMoveFocusActions = Types.GroupperMoveFocusActions;
+
+export const MoverMemorizedElementEventName = Events.MoverMemorizedElementEventName;
+export const MoverMemorizedElementEvent: typeof Events.MoverMemorizedElementEvent = Events.MoverMemorizedElementEvent;
+export type MoverMemorizedElementEventDetail = Events.MoverMemorizedElementEventDetail;

@@ -14,7 +14,10 @@ export default async function (tree: Tree, schema: TsconfigBaseAllGeneratorSchem
 
   if (!normalizedOptions.verify) {
     writeJson(tree, tsConfigAllPath, mergedTsConfig);
-    await formatFiles(tree);
+
+    if (!normalizedOptions.skipFormat) {
+      await formatFiles(tree);
+    }
 
     return;
   }

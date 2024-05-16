@@ -12,9 +12,8 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingVerticalL),
     ...shorthands.borderRadius(tokens.borderRadiusXLarge),
-    ...shorthands.borderWidth('0px'),
-    width: '320px',
-    boxSizing: 'border-box',
+    width: '288px',
+    boxSizing: 'content-box',
   },
 });
 

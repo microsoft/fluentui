@@ -5280,7 +5280,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                   fill: rgb(179, 179, 179);
                 }
-            data-is-focusable={true}
             dominantBaseline="middle"
             textAnchor="middle"
             y={5}

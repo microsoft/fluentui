@@ -1,3 +1,6 @@
+// Copied from packages/tokens/src/global/durations.ts
+// Values are numeric in milliseconds for ease of use in Web Animations API
+// (rather than parsing '__ms')
 export const durations = {
   durationUltraFast: 50,
   durationFaster: 100,
@@ -9,6 +12,8 @@ export const durations = {
   durationUltraSlow: 500,
 } as const;
 
+// Copied from packages/tokens/src/global/curves.ts
+// Names and values are preserved exactly
 export const curves = {
   curveAccelerateMax: 'cubic-bezier(0.9,0.1,1,0.2)',
   curveAccelerateMid: 'cubic-bezier(1,0,1,1)',
@@ -21,14 +26,19 @@ export const curves = {
   curveLinear: 'cubic-bezier(0,0,1,1)',
 } as const;
 
+// A merged flat lookup for convenience
 export const motionTokens = {
-  // For flat lookup
   ...durations,
   ...curves,
 };
 
-// TODO: consider when TypeScript 4.4 is allowed:
-// type DurationKey = `duration${Capitalize<string>}`;
-// type DurationValue = `${number}ms`;
-// type CurveKey = `curve${Capitalize<string>}`;
-// type CurveValue = `cubic-bezier(${number},${number},${number},${number})`;
+/*
+TODO: enforce naming conventions when TypeScript 4.4 features are supported in Fluent:
+
+type DurationKey = `duration${Capitalize<string>}`;
+type CurveKey = `curve${Capitalize<string>}`;
+type CurveValue = `cubic-bezier(${number},${number},${number},${number})`;
+
+type DurationTokens = Record<DurationKey, number>;
+type CurveTokens = Record<CurveKey, CurveValue>;
+*/

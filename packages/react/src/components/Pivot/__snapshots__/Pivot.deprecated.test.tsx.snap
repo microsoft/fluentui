@@ -129,15 +129,15 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -318,15 +318,15 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;

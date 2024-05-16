@@ -4,11 +4,12 @@
 
 Create a branch from your forked repo for your code changes:
 
-\```
+```
 git checkout master
-git pull upstream master
-git checkout -b my-branch-name
-\```
+git pull upstream master // pulls from the main repo
+git push // syncs your fork's master and your local master
+git checkout -b my-branch-name // creates your branch
+```
 
 We strongly recommend using the CLI as your primary interface with git. GUIs are useful for viewing diffs, creating branches and making quick commits. However they often do not correctly merge and sync working branches with master. Mistakes in this step are time consuming to fix.
 
@@ -49,36 +50,36 @@ git commit -m "Your brief message." // Makes the commits. You may notice a sligh
 git push --force// Pushes your changes to your forked branch.
 ```
 
-### Syncing with master
+### Syncing your branch with master
 
 It is strongly recommended that you rebase your branch onto (rather than merging with) master.
 
 ```
 git checkout master // Switches to master
 git pull upstream master // Syncs your local master with the latest version of master at the origin
-git checkout your-fancy-branch // Switches to your branch
+git checkout your-fancy-branch // Switches back to your branch
 git rebase -i master // Tacks your commits onto the end of master. Force is necessary since rebase changes history.
 ```
 
 Resolve any conflicts in your editor.
 
-`git push upstream --force` // Pushes your changes to your forked branch. Include `upstream` if you have an open pull request, otherwise do not include it.
+`git push --force` // Pushes your changes to your forked branch.
 
 Creating _draft_ pull requests is often an easy way to keep track of your work without it being actively reviewed by others.
 
 In other cases, such as before checking in or running tests, you may need to run a full build (or build up to a certain package):
 
 - `yarn lage build --since master` - build everything. You shouldn't need to do this for regular work flow.
-- `yarn buildto package-name` - build up to a package. It is good to run this weekly, or anytim you start a new project off master.
+- `yarn buildto package-name` - build up to a package. It is good to run this weekly, or anytime you start a new project off master.
   - `yarn buildto @fluentui/react`
 
 ### Making a pull request
 
-Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update the right docs accordingly. Commit this change.
+Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update our API docs accordingly. Commit this file change.
 
-If your changes make any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. Check these updates in.
+Some of our tests make use of DOM snapshot tests. If your branch makes any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. This will update any necessary files used by our snapshot tests.
 
-Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
+Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. You will need to run this at least once for every PR made to a published package. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
 
 - Major - Don't do these without expressed agreement from the team. This is a very stable repo. This option is usually disabled.
 - Minor - Adding new API surface area that is backwards compatible and does not dramatically change the intent of an API.
@@ -90,7 +91,7 @@ When your change is ready, [create a pull request](https://github.com/microsoft/
 
 Common checklist for PR's
 
-- Descriptive title: "feat: Adding 'multiple' prop to Nav"
+- Descriptive title: "feat(package-name): Adding 'multiple' prop to Nav"
 - Brief description of the improvement you're making. You should summarize the issue you are addressing. Assume the PR is the reviewer's starting point and they should only have to dive into the issue for very specific details.
 - Link to the relevant issue.
 - Visual aid for changes to give more context. Before and After clips help a lot.
@@ -100,3 +101,13 @@ Common checklist for PR's
 
 If you're using an internal Microsoft linked account, feel free to squash that big green button. 🎉
 If you're not using a Microsoft linked account, someone from the team will have to merge it for you. Thanks for the contribution! 🙏
+
+### Pulling someone elses branch
+
+Sometimes you might have to pull down someone else's branch to test or work on something. Working with forks makes this process a little different than a standard git set up. The process is similar to the initial upstream master:
+
+```
+git remote add yourFriendsRepo https://github.com/yourFriendsUserName/fluentui.git // creates a remote of your friends fork on your local machine
+git fetch yourFriendsRepo yourFriends/fancy/branch // grabs the branch you want to work on
+git checkout feat/react-drawer/move-scroll-logic-to-context // switches to the branch
+```

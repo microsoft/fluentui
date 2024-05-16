@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
+import { useDrawerContext_unstable } from '../../contexts/drawerContext';
+
 import type { DrawerHeaderProps, DrawerHeaderState } from './DrawerHeader.types';
 
 /**
@@ -13,6 +15,8 @@ import type { DrawerHeaderProps, DrawerHeaderState } from './DrawerHeader.types'
  * @param ref - reference to root HTMLElement of DrawerHeader
  */
 export const useDrawerHeader_unstable = (props: DrawerHeaderProps, ref: React.Ref<HTMLElement>): DrawerHeaderState => {
+  const { scrollState } = useDrawerContext_unstable();
+
   return {
     components: {
       root: 'header',
@@ -25,5 +29,7 @@ export const useDrawerHeader_unstable = (props: DrawerHeaderProps, ref: React.Re
       }),
       { elementType: 'header' },
     ),
+
+    scrollState,
   };
 };

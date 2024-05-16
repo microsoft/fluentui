@@ -9,15 +9,17 @@ const TestComponent: React.FC<{
   onRender: (data: { id: string; appear: boolean; visible: boolean }) => void;
 }> = props => {
   const { id, onRender } = props;
-  const context = React.useContext(PresenceGroupChildContext) as PresenceGroupChildContextValue;
+  const { appear, visible, onExit } = React.useContext(PresenceGroupChildContext) as PresenceGroupChildContextValue;
 
   React.useEffect(() => {
-    onRender({
-      id,
-      appear: context.appear,
-      visible: context.visible,
-    });
+    onRender({ id, appear, visible });
   });
+
+  React.useEffect(() => {
+    if (!visible) {
+      onExit();
+    }
+  }, [onExit, visible]);
 
   return <div>{id}</div>;
 };
@@ -26,7 +28,7 @@ describe('PresenceGroup', () => {
   it('renders items an provides context to them', () => {
     const onItemRender = jest.fn();
 
-    render(
+    const { queryByText } = render(
       <PresenceGroup>
         <TestComponent id="1" onRender={onItemRender} />
         <TestComponent id="2" onRender={onItemRender} />
@@ -36,12 +38,15 @@ describe('PresenceGroup', () => {
     expect(onItemRender).toHaveBeenCalledTimes(2);
     expect(onItemRender).toHaveBeenNthCalledWith(1, { id: '1', appear: false, visible: true });
     expect(onItemRender).toHaveBeenNthCalledWith(2, { id: '2', appear: false, visible: true });
+
+    expect(queryByText('1')).toBeInTheDocument();
+    expect(queryByText('2')).toBeInTheDocument();
   });
 
   it('updates context when items are added or removed', () => {
     const onItemRender = jest.fn();
 
-    const { rerender } = render(
+    const { queryByText, rerender } = render(
       <PresenceGroup>
         <TestComponent key="1" id="1" onRender={onItemRender} />
         <TestComponent key="2" id="2" onRender={onItemRender} />
@@ -49,8 +54,12 @@ describe('PresenceGroup', () => {
     );
 
     expect(onItemRender).toHaveBeenCalledTimes(2);
-    onItemRender.mockClear();
+    expect(queryByText('1')).toBeInTheDocument();
+    expect(queryByText('2')).toBeInTheDocument();
 
+    // ---
+
+    onItemRender.mockClear();
     rerender(
       <PresenceGroup>
         <TestComponent key="1" id="1" onRender={onItemRender} />
@@ -58,9 +67,12 @@ describe('PresenceGroup', () => {
       </PresenceGroup>,
     );
 
-    expect(onItemRender).toHaveBeenCalledTimes(3);
     expect(onItemRender).toHaveBeenNthCalledWith(1, { id: '1', appear: false, visible: true });
     expect(onItemRender).toHaveBeenNthCalledWith(2, { id: '3', appear: true, visible: true });
     expect(onItemRender).toHaveBeenNthCalledWith(3, { id: '2', appear: false, visible: false });
+
+    expect(queryByText('1')).toBeInTheDocument();
+    expect(queryByText('2')).not.toBeInTheDocument();
+    expect(queryByText('3')).toBeInTheDocument();
   });
 });

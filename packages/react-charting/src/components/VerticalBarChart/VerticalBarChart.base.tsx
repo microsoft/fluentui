@@ -161,7 +161,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         xAxisType={this._xAxisType}
         calloutProps={calloutProps}
         tickParams={tickParams}
-        {...(this._isHavingLine && { isCalloutForStack: true })}
+        {...(this._isHavingLine && this._noLegendHighlighted() && { isCalloutForStack: true })}
         legendBars={legendBars}
         datasetForXAxisDomain={this._xAxisLabels}
         barwidth={this._barWidth}
@@ -285,20 +285,33 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         },
         index: number,
       ) => {
+        // Create an object to store line point ref so that the object can be passed by reference to the focus handler
+        const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
         return (
           <circle
             key={index}
             id={getId('_VBC_point_')}
             cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
-            onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
+            onMouseOver={
+              this._legendHighlighted(lineLegendText!)
+                ? this._lineHover.bind(this, item.point)
+                : this._onBarHover.bind(this, item.point, colorScale(item.y))
+            }
             onMouseOut={this._onBarLeave}
-            r={8}
+            r={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
             stroke={lineLegendColor}
             fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
-            visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            visibility={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
             onClick={item.point.lineData?.onClick}
+            // When no legend is highlighted: Line points are automatically displayed along with the bars
+            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
+            // and avoid conveying duplicate info, make these line points non-focusable.
+            data-is-focusable={this._legendHighlighted(lineLegendText!)}
+            ref={e => (circleRef.refElement = e)}
+            onFocus={this._lineFocus.bind(this, item.point, circleRef)}
+            onBlur={this._handleChartMouseLeave}
           />
         );
       },
@@ -310,6 +323,29 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {dots}
       </>
     );
+  };
+
+  private _getCircleVisibilityAndRadius = (
+    xAxisPoint: string | number | Date,
+    legend: string,
+  ): { visibility: CircleVisbility; radius: number } => {
+    const { selectedLegend, activeXdataPoint } = this.state;
+    if (selectedLegend !== '') {
+      if (xAxisPoint === activeXdataPoint && selectedLegend === legend) {
+        return { visibility: CircleVisbility.show, radius: 8 };
+      } else if (selectedLegend === legend) {
+        // Don't hide the circle to keep it focusable. For more information,
+        // see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
+        return { visibility: CircleVisbility.show, radius: 0.3 };
+      } else {
+        return { visibility: CircleVisbility.hide, radius: 0 };
+      }
+    } else {
+      return {
+        visibility: activeXdataPoint === xAxisPoint ? CircleVisbility.show : CircleVisbility.hide,
+        radius: 8,
+      };
+    }
   };
 
   private _checkForLine = (): boolean => {
@@ -472,7 +508,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
-        activeXdataPoint: point.x,
+        // Hovering over a bar should highlight corresponding line points only when no legend is selected
+        activeXdataPoint: this._noLegendHighlighted() ? point.x : null,
         YValueHover,
         hoverXValue,
         callOutAccessibilityData: point.callOutAccessibilityData,
@@ -515,6 +552,37 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           callOutAccessibilityData: point.callOutAccessibilityData,
         });
       }
+    });
+  };
+
+  private _lineHover = (point: IVerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) => {
+    mouseEvent.persist();
+    this._lineHoverFocus(point, mouseEvent);
+  };
+
+  private _lineFocus = (point: IVerticalBarChartDataPoint, ref: { refElement: SVGCircleElement | null }) => {
+    if (ref.refElement) {
+      this._lineHoverFocus(point, ref.refElement);
+    }
+  };
+
+  private _lineHoverFocus = (
+    point: IVerticalBarChartDataPoint,
+    refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
+  ) => {
+    const { theme } = this.props;
+    const { lineLegendText = '', lineLegendColor = theme!.palette.yellow } = this.props;
+    this.setState({
+      refSelected,
+      isCalloutVisible: true,
+      calloutLegend: lineLegendText,
+      dataForHoverCard: point.lineData!.y,
+      color: lineLegendColor,
+      xCalloutValue:
+        point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+      yCalloutValue: point.lineData!.yAxisCalloutData,
+      dataPointCalloutProps: point,
+      activeXdataPoint: point.x,
     });
   };
 
@@ -592,7 +660,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -736,7 +804,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
