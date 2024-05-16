@@ -25,7 +25,7 @@
     "@fluentui/react-persona": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-spinbutton": "*",
-    "@fluentui/react-swatch-picker-preview": "*",
+    "@fluentui/react-swatch-picker": "*",
     "@fluentui/react-theme": "*",
     "@griffel/core": "^1.14.1",
     "@microsoft/load-themed-styles": "^1.10.26",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, renderSwatchPickerGrid } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
@@ -22,36 +22,33 @@ const colors = [
   { color: '#712F9E', value: '712F9E', 'aria-label': 'purple' },
 ];
 
-export const SwatchPickerShape = () => {
+export const SwatchPickerSpacing = () => {
   const styles = useStyles();
+
   return (
     <div className={styles.example}>
-      <h3>Square</h3>
-      <SwatchPicker aria-label="SwatchPicker square shape">
-        {colors.map(color => (
-          <ColorSwatch key={color.value} {...color} />
-        ))}
+      <h3>Medium</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker medium spacing">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
+        })}
       </SwatchPicker>
-      <h3>Circular</h3>
-      <SwatchPicker aria-label="SwatchPicker circular shape" shape="circular">
-        {colors.map(color => (
-          <ColorSwatch key={color.value} {...color} />
-        ))}
-      </SwatchPicker>
-      <h3>Rounded</h3>
-      <SwatchPicker aria-label="SwatchPicker rounded shape" shape="rounded">
-        {colors.map(color => (
-          <ColorSwatch key={color.value} {...color} />
-        ))}
+      <h3>Small</h3>
+      <SwatchPicker layout="grid" aria-label="SwatchPicker small spacing" spacing="small">
+        {renderSwatchPickerGrid({
+          items: colors,
+          columnCount: 3,
+        })}
       </SwatchPicker>
     </div>
   );
 };
 
-SwatchPickerShape.parameters = {
+SwatchPickerSpacing.parameters = {
   docs: {
     description: {
-      story: 'The `shape` prop sets border-radius of the Swatch. The default is `square`.',
+      story: 'The `spacing` prop sets gap between swatches.',
     },
   },
 };

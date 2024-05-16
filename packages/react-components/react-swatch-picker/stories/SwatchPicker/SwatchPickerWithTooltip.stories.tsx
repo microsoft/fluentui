@@ -5,7 +5,7 @@ import {
   ColorSwatch,
   ColorSwatchProps,
   SwatchPickerOnSelectEventHandler,
-} from '@fluentui/react-swatch-picker-preview';
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

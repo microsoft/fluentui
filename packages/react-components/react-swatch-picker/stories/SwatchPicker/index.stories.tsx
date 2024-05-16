@@ -1,11 +1,5 @@
 import { ComponentMeta } from '@storybook/react';
-import {
-  SwatchPicker,
-  ColorSwatch,
-  ImageSwatch,
-  SwatchPickerRow,
-  EmptySwatch,
-} from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch, ImageSwatch, SwatchPickerRow, EmptySwatch } from '@fluentui/react-components';
 
 import descriptionMd from './SwatchPickerDescription.md';
 import bestPracticesMd from './SwatchPickerBestPractices.md';
@@ -23,7 +17,7 @@ export { SwatchPickerWithTooltip } from './SwatchPickerWithTooltip.stories';
 export { SwatchPickerPopup } from './SwatchPickerPopup.stories';
 
 const metadata: ComponentMeta<typeof SwatchPicker> = {
-  title: 'Preview Components/SwatchPicker',
+  title: 'Components/SwatchPicker',
   component: SwatchPicker,
   subcomponents: {
     ColorSwatch,

@@ -19,7 +19,7 @@ Thu, 16 May 2024 09:25:18 GMT
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.5.0)
 
-Mon, 13 May 2024 12:34:20 GMT 
+Mon, 13 May 2024 12:34:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.3..@fluentui/react-swatch-picker-preview_v0.5.0)
 
 ### Minor changes
@@ -28,7 +28,7 @@ Mon, 13 May 2024 12:34:20 GMT
 
 ## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.3)
 
-Thu, 09 May 2024 19:35:12 GMT 
+Thu, 09 May 2024 19:35:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.2..@fluentui/react-swatch-picker-preview_v0.4.3)
 
 ### Patches
@@ -37,7 +37,7 @@ Thu, 09 May 2024 19:35:12 GMT
 
 ## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.2)
 
-Mon, 06 May 2024 12:55:02 GMT 
+Mon, 06 May 2024 12:55:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.1..@fluentui/react-swatch-picker-preview_v0.4.2)
 
 ### Patches
@@ -50,17 +50,17 @@ Mon, 06 May 2024 12:55:02 GMT
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.1)
 
-Thu, 02 May 2024 11:36:38 GMT 
+Thu, 02 May 2024 11:36:38 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.4.0..@fluentui/react-swatch-picker-preview_v0.4.1)
 
 ### Patches
 
--  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
 - Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.4.0)
 
-Tue, 23 Apr 2024 08:17:48 GMT 
+Tue, 23 Apr 2024 08:17:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.3.0..@fluentui/react-swatch-picker-preview_v0.4.0)
 
 ### Minor changes
@@ -74,7 +74,7 @@ Tue, 23 Apr 2024 08:17:48 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.3.0)
 
-Wed, 17 Apr 2024 21:53:58 GMT 
+Wed, 17 Apr 2024 21:53:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.2.1..@fluentui/react-swatch-picker-preview_v0.3.0)
 
 ### Minor changes
@@ -90,7 +90,7 @@ Wed, 17 Apr 2024 21:53:58 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.2.1)
 
-Tue, 02 Apr 2024 09:48:00 GMT 
+Tue, 02 Apr 2024 09:48:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.2.0..@fluentui/react-swatch-picker-preview_v0.2.1)
 
 ### Patches
@@ -103,7 +103,7 @@ Tue, 02 Apr 2024 09:48:00 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker-preview_v0.2.0)
 
-Thu, 28 Mar 2024 10:43:54 GMT 
+Thu, 28 Mar 2024 10:43:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker-preview_v0.1.0..@fluentui/react-swatch-picker-preview_v0.2.0)
 
 ### Minor changes

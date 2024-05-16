@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Label } from '@fluentui/react-components';
-import {
-  SwatchPicker,
-  EmptySwatch,
-  ColorSwatch,
-  SwatchPickerOnSelectEventHandler,
-} from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, EmptySwatch, ColorSwatch, SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

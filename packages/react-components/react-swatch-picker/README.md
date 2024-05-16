@@ -1,4 +1,4 @@
-# @fluentui/react-swatch-picker-preview
+# @fluentui/react-swatch-picker
 
 **React Swatch Picker components for [Fluent UI React](https://react.fluentui.dev/)**
 

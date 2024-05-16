@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-swatch-picker-preview',
+  displayName: 'react-swatch-picker',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
