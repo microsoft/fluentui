@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-migration-v8-v9",
-  "version": "9.6.11",
+  "version": "9.6.13",
   "description": "Migration shim components and methods for hybrid v8/v9 applications building on Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,8 +34,8 @@
     "@ctrl/tinycolor": "3.3.4",
     "@fluentui/fluent2-theme": "^8.107.79",
     "@fluentui/react": "^8.118.2",
-    "@fluentui/react-components": "^9.50.0",
-    "@fluentui/react-icons": "^2.0.237",
+    "@fluentui/react-components": "^9.51.1",
+    "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-hooks": "^8.8.1",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.8",

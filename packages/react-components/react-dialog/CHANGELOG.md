@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 09 May 2024 19:35:11 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.5)
+
+Thu, 16 May 2024 09:25:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.10.4..@fluentui/react-dialog_v9.10.5)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- bugfix: fix scroll locking issues introduced by a regression ([PR #31377](https://github.com/microsoft/fluentui/pull/31377) by bernardo.sunderhus@gmail.com)
 
 ## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.4)
 

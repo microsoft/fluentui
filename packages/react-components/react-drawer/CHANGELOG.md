@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.3.1)
+
+Thu, 16 May 2024 09:25:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.3.0..@fluentui/react-drawer_v9.3.1)
+
+### Patches
+
+- fix: restore scroll when Drawer closes ([PR #31367](https://github.com/microsoft/fluentui/pull/31367) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.10.5 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.3.0)
+
+Mon, 13 May 2024 12:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.2.2..@fluentui/react-drawer_v9.3.0)
+
+### Minor changes
+
+- feat: Add missing Drawer context exports. ([PR #31328](https://github.com/microsoft/fluentui/pull/31328) by estebanmu@microsoft.com)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.2.2)
 

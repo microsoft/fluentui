@@ -2,6 +2,1077 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 16 May 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.16",
+      "version": "3.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcec1f8d69fab6d04c39b7665e7c547e522cfc20",
+            "comment": "Synchronize design token exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 May 2024 04:06:44 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.15",
+      "version": "3.0.0-beta.15",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f2fdfb33124652b41663f6aaba9e8c590d9335a4",
+            "comment": "Use e2e script for Playwright tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 May 2024 04:07:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.15",
+      "version": "3.0.0-beta.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f9e93dfe7e46ef92520f01538f4a8da1a4e04145",
+            "comment": "chore: merge wc-3 to master - avoiding any library bumps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 May 2024 04:09:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.15",
+      "version": "3.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "dc5cd66206e6fd01b6849fdfe9b02bcb86121aec",
+            "comment": "fix(web-components): remove all barrell exports with exception of design tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Apr 2024 04:07:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.14",
+      "version": "3.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8eb247555918987d33171c6a932cc4218d36727d",
+            "comment": "create CSS partials for named typography styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Apr 2024 04:09:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.13",
+      "version": "3.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "ee42c7c3871b4f7cb97cf7868e12772d1bfe2b06",
+            "comment": "ensure buttons with long text maintain center alignment"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 04:09:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.12",
+      "version": "3.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2eab460e1fbb6dbc68008bcd5963279761c64460",
+            "comment": "Use ElementInternals for Button components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Apr 2024 04:09:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.11",
+      "version": "3.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "0d4cc99c6174fc0e9320cb448aa7ae136ce1fae3",
+            "comment": "fix(web-components): remove final dependencies on fast-foundation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Apr 2024 04:08:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.10",
+      "version": "3.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "0bdcbe7aedc829f039ed48cd9ef546709429e5fb",
+            "comment": "revert design token syntax change for DX"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Apr 2024 04:08:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.9",
+      "version": "3.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "=",
+            "package": "@fluentui/web-components",
+            "commit": "9ac84d348585fbbb214b18be076c566ec60f9d99",
+            "comment": "chore: setup perf benchmarking in web components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/web-components",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.2",
+            "commit": "9ac84d348585fbbb214b18be076c566ec60f9d99"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Feb 2024 04:08:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.8",
+      "version": "3.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8fd063a5c1c6b7c0b77cf2c51436d564b5b1c1f0",
+            "comment": "Removes dependancy on fast-foundation classes and templates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Feb 2024 04:08:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.7",
+      "version": "3.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4909fe2c8e9fb9029b5e7fa4d5aa73d299cf089f",
+            "comment": "feat: remove JS design token implementation in favor of platform css variables"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Dec 2023 04:08:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.6",
+      "version": "3.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ebe7e4837a07b1218f9f7196b5c3043c0ad4cbb3",
+            "comment": "Updating disclaimer on storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Oct 2023 04:16:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.6",
+      "version": "3.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "dd16c56adf42b8f2771907749d3f8fde8eb52f4e",
+            "comment": "feat(dialog): add dialog web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Oct 2023 04:18:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.5",
+      "version": "3.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "hale.rankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef39b5c4329868b9426612c188e31496b26d75e5",
+            "comment": "Updates package with Menu component sideEffect."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Oct 2023 04:17:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.4",
+      "version": "3.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "af42938529ee2284a933a9f64db163c3bf283400",
+            "comment": "fix: update switch to use margin instead of transform for the checked state to support RTL"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Sep 2023 04:18:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.3",
+      "version": "3.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "980b0d394322fd6a11ea85d57721e928ca4803a5",
+            "comment": "feat(menu): adds menu web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Aug 2023 04:19:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.2",
+      "version": "3.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9d4c07c582596b55ceea4b68677fd74dd9236ae7",
+            "comment": "Fixed pathing to types for package exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Aug 2023 04:19:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.1",
+      "version": "3.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c271ab35c7160288de81b27a31627aa199a9afe3",
+            "comment": "Bump version to beta"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 04:18:01 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.31",
+      "version": "3.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "913d17528272d230a1c6f72652271faaebeb1a12",
+            "comment": "feat(web-components): add explicit named exports for design tokens and package export path for theme utils"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Aug 2023 04:17:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.30",
+      "version": "3.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2f59582504dca05054a49aa2d47a483356fb6a69",
+            "comment": "feat(web-components): update core component files to use foundation export paths and update package exports to include extensions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 04:16:01 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.29",
+      "version": "3.0.0-alpha.29",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a6baaca2a79e39bd1ef616ddb757d7505d6b0adf",
+            "comment": "chore: Enable lint for unit tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Aug 2023 04:16:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.29",
+      "version": "3.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8c3c3b2fbc9cf08609ae30d5f9fd2dddfaef3b0c",
+            "comment": "fix(web-components): update latest versions of fast packages and fix unallowed attributes issue for fluent-divider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Aug 2023 04:18:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.28",
+      "version": "3.0.0-alpha.28",
+      "comments": {
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c83bfec16fd0d93b1305e5f5aec5d8a62c8f7cb7",
+            "comment": "add playwright testing to the web component package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 04:16:56 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.28",
+      "version": "3.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a00e814aa5a1641754d4b7fb6f05c0ac2aa4e060",
+            "comment": "fix(web-components): enumerate side-effects for package export paths"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Aug 2023 04:18:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.27",
+      "version": "3.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "54df8d3a425019ac593089e57225e624247aeb2e",
+            "comment": "(accessibility): high contrast fixes"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "5e205bc242bef175275d73d3ca5c52243782f589",
+            "comment": "Fixes low contrast in dark mode for web component badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Aug 2023 04:17:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.26",
+      "version": "3.0.0-alpha.26",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c41d572219c127e1c042ce847b9e867c150b230c",
+            "comment": "dummy change to trigger CI"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "67cb8d06db5c7f17da4c6116729925705c0f7d3e",
+            "comment": "feat: Add support for scoped theming"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Jul 2023 04:14:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "none": [
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/web-components",
+            "commit": "b1dae68db2d16f214923fd188872d5cbe485e01a",
+            "comment": "Documentation style updates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 04:18:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ee984a5df76329a1da80fbe2cb6b20394d26eb7c",
+            "comment": "fix(web-components): check if component is connected before calling setAttribute in attribute changed callback"
+          },
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44328d34af5ce81c8b66b87a02a6082c2e967fc5",
+            "comment": "feat(checkbox): Add checkbox web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Jun 2023 04:17:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.24",
+      "version": "3.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7d890d73560b1fec4e8d1d280ce5417529a0530f",
+            "comment": "export fluent design system from web-components package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jun 2023 04:18:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.23",
+      "version": "3.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ac7f17ec809a50b1b709e5fd66e8566b4181f08e",
+            "comment": "feat(text-input): add TextInput as a new web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 04:19:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.22",
+      "version": "3.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "60b51196b1939782da61b7ff578c17fa510ef864",
+            "comment": "feat(menu-item): export MenuItemRole constants"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 May 2023 04:19:56 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.21",
+      "version": "3.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "cad93648a2ce28e99935d4ab36089d770fa06a53",
+            "comment": "Fixes exports in Switch"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 May 2023 04:19:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.20",
+      "version": "3.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1dddc623661d1b2667a866a1f779363d91a759e4",
+            "comment": "feat(radio): add radio and radio-group web components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Apr 2023 04:19:22 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.19",
+      "version": "3.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f801e34cdc25ba01ccf3b2baa9fac1080d987e9b",
+            "comment": "feat(menu-list): Add menu-list and menu-item web components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Apr 2023 04:20:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.18",
+      "version": "3.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9cd641f4d38d6889ee50afeedca54f77617cd1a5",
+            "comment": "Image component style updates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Apr 2023 04:23:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.17",
+      "version": "3.0.0-alpha.17",
+      "comments": {
+        "none": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "e5ff319c5354a9f47d6f5b990441673e32998b7c",
+            "comment": "Adds Select spec"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Apr 2023 04:19:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.17",
+      "version": "3.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cc0a6678ff55f657b13b70cff02645fe3772c84e",
+            "comment": "feat(toggle-button): add toggle button web component"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "37195a34b36538ab0cc7c765824691bab796502e",
+            "comment": "feat(compound-button): add compound button as new web component"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5ab8f95663fcac978d98dccc65626196679a2ae2",
+            "comment": "feat(anchor-button): add anchor button to web components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Apr 2023 04:24:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.16",
+      "version": "3.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "30b72e9804a37880b4b90c0bcd400635506f300e",
+            "comment": "Adding Tabs, Tab and Tab-Panel"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Apr 2023 04:17:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.15",
+      "version": "3.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "48980fef03e94733a686deea7dc9454eba6dd8c4",
+            "comment": "feat(label): adds label as a new web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Apr 2023 04:22:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.14",
+      "version": "3.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "55024b9a8799834f6d102445218ffd724a125913",
+            "comment": "Adding TabList, Tab, and TabPanel web components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2a1f8f60205b064140fab122cced18b06177546d",
+            "comment": "feat(menu-button): add menu button as new component"
+          }
+        ],
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ca6e4dd7ed8476810a51384f0e44b54989cc0b66",
+            "comment": "chore(web-components): fixes the alphabetical order of package exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Mar 2023 04:19:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.13",
+      "version": "3.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f5a5e507a3902a9703d5198a13cc96335c82eaa",
+            "comment": "update fast-element and fast-foundation dependencies"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d901fa95e8f90c1b5dabda8602a72ecb77288f0c",
+            "comment": "feat(button): add button web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Mar 2023 04:20:01 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.12",
+      "version": "3.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "d63779409cf8b7565b415fdac51e09cf4dbc6e08",
+            "comment": "Adds Slider as a web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Mar 2023 04:21:22 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.11",
+      "version": "3.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6e51be008ee479451431421eaf2e3e63744b6d5c",
+            "comment": "update FAST dependencies to latest package versions"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc86569d1d96d6deff9188fa0702d173150dd5dd",
+            "comment": "Adds css containment to implemented web components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Mar 2023 04:19:45 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.10",
+      "version": "3.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "443b8d8e35429ffbabda35cbe7d4704adaaf8ab4",
+            "comment": "fix: [text] block breaks the style attribute"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Mar 2023 04:24:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "07c70c3cb2253817e70e9b1c4615aee7e69a1816",
+            "comment": "Adds SliderLabel spec and folder"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Mar 2023 04:23:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9ae245574502f15ed372dc37b0374883f45ccdf2",
+            "comment": "adds radio and radio group spec"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Mar 2023 04:20:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "d87331975f16754f9debb4e11c6dd4f2b516f130",
+            "comment": "Redo of PR of Slider spec after merge error"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Feb 2023 04:25:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.8",
+      "version": "3.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c0d4b0def168396e9139672146bbadbe408ea4d4",
+            "comment": "updates wc3 accordion and accordion item docs"
+          }
+        ],
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "237267b5ad816d090011c93f2922476c1abfe87f",
+            "comment": "chore: Enable Typescript strict mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Feb 2023 04:27:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.7",
+      "version": "3.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4309a0d5afbe56dab0b1204922a37873fe832c8b",
+            "comment": "feat(avatar): add Avatar web component"
+          },
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7d9573d73b4be010c2b07540fa0c23c27aba2821",
+            "comment": "feat(divider): Add divider web component"
+          },
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e793ad8a7f7ae0239a808439d121cf012dd414e5",
+            "comment": "feat(image): Add image web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Feb 2023 04:20:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.6",
+      "version": "3.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2de60aec984eb2802da76c6c67849da358c0db49",
+            "comment": "feat(switch): Add switch web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 04:22:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.5",
+      "version": "3.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1ad2597f744bf7c3e2eada7720eea793fcee660e",
+            "comment": "feat(accordion): Add accordion web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Feb 2023 04:21:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.4",
+      "version": "3.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "57f2ea7f8389f1409fba6fb0697708ddf8fb05d9",
+            "comment": "docs: Add landing page"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Feb 2023 04:19:53 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.4",
+      "version": "3.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "jslone@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "b79b33d10cbd6015531fa943e0e6dbe7f84b9b42",
+            "comment": "chore: run manually to bump wc to fix failed CI release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Feb 2023 16:51:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.4",
+      "version": "3.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ae03f3eec389aca7e15fde295868aacd51eb1822",
+            "comment": "chore(web-components): introduce ts-solution configs and monorepo setup/DX"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "226b7af089cea03d27ec722cabc73d018f263fd1",
+            "comment": "fix(web-components): dont ship non production assets to npm registry"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Feb 2023 04:24:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.3",
+      "version": "3.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "4d959c01c7b282136e669b7c0ac0d038b9deeafe",
+            "comment": "Adds Spinner as a web component"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "09b44a73d3d225044af4e114d210176f7f38001a",
+            "comment": "update fast element and foundation versions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 04:21:38 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5745de0ab6ab860f905c33d4430b857b8a72f27f",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Feb 2023 04:20:29 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcf643c51586968fa700b83eb1982866e6cfe946",
+            "comment": "ci: setup web-components docsite CI/CD"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 04:18:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1949a66866dca51e82530efdedbb3d455880d614",
+            "comment": "chore(web-components): run manually bump to fix failed CI release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Jan 2023 17:42:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "68de783e80c71173a717c758680a63bf9c7e8c78",
+            "comment": "feat: export theme"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c5b3031ada2f788ef0a36185024f4c10c16143d6",
+            "comment": "chore: run manually bump to fix failed CI release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Jan 2023 14:49:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.1",
+      "version": "3.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "1322f3f962e8a850fe104cc2ba9b12b2bc2f2842",
+            "comment": "add progressbar as new component"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6de62a46eafd74b968ec913901729b3f7284dc7a",
+            "comment": "Add initial theme"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eead74fee07339f998615fe34d8f847d0f63af6e",
+            "comment": "add badge and counter badge as new components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5e3ba35835c0a5487b574ea58a51cccd67b5fa8c",
+            "comment": "add text as a new component"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7c94cbd46051ea57bba4e8885c86e89967bb412c",
+            "comment": "chore: setup typescript 4.7 for web-components package"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cd42ab4f8aa11c7ac134538193dc8dc4a01ca0f3",
+            "comment": "Reset web-components for v3 development"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f15428e8fb2c3cfbfe8e555978bfa66f74f8fd8",
+            "comment": "chore: bump web-components to 3.0.0-alpha.0"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9b29aada3dba8f929530ddc1b4b64e869d5fffd4",
+            "comment": "chore(web-components): resolve invalid webpack test regex on windows"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "be3d30fcbe222be34b02a554e948d14bb2d730df",
+            "comment": "update clean file to .cjs and ensure rimraf is in dependency tree"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Apr 2024 07:28:55 GMT",
       "tag": "@fluentui/web-components_v2.6.1",
       "version": "2.6.1",

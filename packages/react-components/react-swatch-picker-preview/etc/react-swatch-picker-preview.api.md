@@ -24,6 +24,7 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+    borderColor?: string;
     color: string;
     disabled?: boolean;
     value: string;
@@ -101,6 +102,7 @@ export const renderSwatchPickerRow_unstable: (state: SwatchPickerRowState) => JS
 // @public (undocumented)
 export const swatchCSSVars: {
     color: string;
+    borderColor: string;
 };
 
 // @public

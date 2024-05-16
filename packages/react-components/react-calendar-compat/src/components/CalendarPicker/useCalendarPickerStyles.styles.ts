@@ -73,6 +73,7 @@ const useCurrentItemButtonStyles = makeStyles({
     animationTimingFunction: EASING_FUNCTION_2,
   },
   hasHeaderClickCallback: {
+    // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
     '&:hover': {
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorBrandForegroundOnLightHover,
