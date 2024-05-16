@@ -6,6 +6,7 @@ import { VerticalStackedBarChart } from '../src/components/VerticalStackedBarCha
 import { testWithWait, testWithoutWait } from '../src/utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from '../src/components/VerticalStackedBarChart/VerticalStackedBarChart.base';
 import { resetIds } from '@fluentui/react';
+import { XAxisTypes } from '../src/utilities/utilities';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -76,7 +77,7 @@ function sharedBeforeEach() {
   resetIds();
 }
 
-runTest('VerticalBarChart unit tests', () => {
+runTest('VerticalStackedBarChart unit tests', () => {
   beforeEach(sharedBeforeEach);
 
   runTest('get Path', () => {
@@ -89,7 +90,7 @@ runTest('VerticalBarChart unit tests', () => {
         expect(svg).not.toBeNull();
         const paths = svg!.querySelectorAll('path');
         expect(paths).toHaveLength(2);
-        expect(paths[0]!.getAttribute('d')).toBe(`M56.5,6V0.5H-35.5V6`);
+        expect(paths[0]!.getAttribute('d')).toBe(`M49,6V0.5H-28V6`);
         expect(paths[1]!.getAttribute('d')).toBe(`M-6,275.5H0.5V20.5H-6`);
       },
     );
@@ -278,6 +279,7 @@ runTest('Get lines data', () => {
   test('Should return line data properly after formatting', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     const lineObject = instance._getFormattedLineData(simplePointsWithLine);
@@ -293,6 +295,7 @@ runTest('Get lines data', () => {
   test('Should return the correct line legends', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     instance._points = simplePointsWithLine;
@@ -317,6 +320,7 @@ runTest('_toFocusWholeStack', () => {
   test('Should return the correct focus to whole stack value properly', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     const result = instance._toFocusWholeStack(false);
@@ -328,6 +332,7 @@ runTest('_toFocusWholeStack', () => {
   test('Should return the correct data set', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     instance._points = simplePointsWithLine;
@@ -357,6 +362,7 @@ runTest('Get Domain Margins', () => {
   test('Should return the correct margins when total width is greater than required width', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     instance._points = simplePointsWithLine;
@@ -372,14 +378,15 @@ runTest('Get Domain Margins', () => {
     instance._createDataSetLayer();
     var result = instance._getDomainMargins(1000);
     expect(result['bottom']).toEqual(10);
-    expect(result['left']).toEqual(468);
-    expect(result['right']).toEqual(468);
+    expect(result['left']).toEqual(26);
+    expect(result['right']).toEqual(26);
     expect(result['top']).toEqual(10);
   });
 
   test('Should return the correct margins when total width is less than required width', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     instance._points = simplePointsWithLine;
@@ -395,8 +402,8 @@ runTest('Get Domain Margins', () => {
     instance._createDataSetLayer();
     var result = instance._getDomainMargins(50);
     expect(result['bottom']).toEqual(10);
-    expect(result['left']).toEqual(18);
-    expect(result['right']).toEqual(18);
+    expect(result['left']).toEqual(20.5);
+    expect(result['right']).toEqual(20.5);
     expect(result['top']).toEqual(10);
   });
 });
@@ -407,6 +414,7 @@ runTest('Get Scales', () => {
   test('Should return scales for numeric x-axis', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     instance._points = simplePointsWithLine;
@@ -421,8 +429,8 @@ runTest('Get Scales', () => {
     instance._dataset = instance._createDataSetLayer();
     const containerHeight = 500;
     const containerWidth = 800;
-    const isNumericAxis = true;
-    const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+    instance._xAxisType = XAxisTypes.NumericAxis;
+    const scales = instance._getScales(containerHeight, containerWidth);
 
     expect(scales.xBarScale).toBeDefined();
     expect(scales.yBarScale).toBeDefined();
@@ -431,6 +439,7 @@ runTest('Get Scales', () => {
   test('Should return scales for non-numeric axis', () => {
     const instance = new VerticalStackedBarChartBase({
       data: chartPointsWithStringXAxisPoint,
+      theme: DarkTheme,
     });
     expect(instance).toBeDefined();
     instance._points = chartPointsWithStringXAxisPoint;
@@ -445,8 +454,8 @@ runTest('Get Scales', () => {
     instance._dataset = instance._createDataSetLayer();
     const containerHeight = 500;
     const containerWidth = 800;
-    const isNumericAxis = true;
-    const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+    instance._xAxisType = XAxisTypes.NumericAxis;
+    const scales = instance._getScales(containerHeight, containerWidth);
 
     expect(scales.xBarScale).toBeDefined();
     expect(scales.yBarScale).toBeDefined();
