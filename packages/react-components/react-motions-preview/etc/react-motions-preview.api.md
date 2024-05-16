@@ -19,18 +19,18 @@ export type AtomMotion = {
 // @public (undocumented)
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
+// @public
+export const Collapse: FC<PresenceComponentProps<    {}>>;
+
 // @public (undocumented)
-export const Collapse: FC<PresenceComponentProps<    {}>> & {
-    Snappy: (props: PresenceComponentProps<    {}> & {
-        children?: ReactNode;
-    }) => ReactElement<any, any> | null;
-    Gentle: (props: PresenceComponentProps<    {}> & {
-        children?: ReactNode;
-    }) => ReactElement<any, any> | null;
-    Pushy: (props: PresenceComponentProps<    {}> & {
-        children?: ReactNode;
-    }) => ReactElement<any, any> | null;
-};
+export const CollapseExaggerated: (props: PresenceComponentProps<    {}> & {
+    children?: ReactNode;
+}) => ReactElement<any, any> | null;
+
+// @public (undocumented)
+export const CollapseSnappy: (props: PresenceComponentProps<    {}> & {
+    children?: ReactNode;
+}) => ReactElement<any, any> | null;
 
 // @public
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
