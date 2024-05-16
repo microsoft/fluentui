@@ -53,7 +53,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
   React.useEffect(() => {
     () => clearThrottleTimeout();
-  }, []);
+  }, [clearThrottleTimeout]);
 
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
   const mountNode = useMenuContext_unstable(context => context.mountNode);
