@@ -39,7 +39,6 @@ const UNSAFE_noLongerUsed = {
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
   const optionCollection = useOptionCollection();
-  const { getOptionById } = optionCollection;
 
   const {
     listboxRef: activeDescendantListboxRef,
@@ -49,7 +48,15 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
+  const hasListboxContext = useHasParentContext(ListboxContext);
   const onActiveDescendantChange = useListboxContext_unstable(ctx => ctx.onActiveDescendantChange);
+  const contextGetOptionById = useListboxContext_unstable(ctx => ctx.getOptionById);
+  const contextGetOptionsMatchingValue = useListboxContext_unstable(ctx => ctx.getOptionsMatchingValue);
+
+  const getOptionById = hasListboxContext ? contextGetOptionById : optionCollection.getOptionById;
+  const getOptionsMatchingValue = hasListboxContext
+    ? contextGetOptionsMatchingValue
+    : optionCollection.getOptionsMatchingValue;
 
   const listenerRef = React.useMemo(() => {
     let element: HTMLDivElement | null = null;
@@ -126,7 +133,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   // get state from parent combobox, if it exists
-  const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
   const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 
@@ -146,9 +152,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   React.useEffect(() => {
     // if it is single-select and there is a selected option, start at the selected option
     if (!multiselect && optionContextValues.selectedOptions.length > 0) {
-      const selectedOption = optionCollection
-        .getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0])
-        .pop();
+      const selectedOption = getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0]).pop();
 
       if (selectedOption?.id) {
         activeDescendantController.focus(selectedOption.id);
