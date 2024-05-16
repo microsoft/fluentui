@@ -181,7 +181,7 @@ runTest('VerticalBarChart unit tests', () => {
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-2000)).toBeGreaterThan(containerWidth);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
-      expect(Math.ceil(scales.xBarScale(-1281))).toEqual(containerWidth);
+      expect(Math.ceil(scales.xBarScale(-581))).toEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeLessThan(0);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);
