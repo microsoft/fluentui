@@ -213,9 +213,9 @@ export const styles = css`
     box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
   }
 
-  :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"])),
-  :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"]):hover),
-  :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"]):hover:active) {
+  :host(:is([disabled][appearance='primary'], [disabled-focusabale][appearance='primary'])),
+  :host(:is([disabled][appearance='primary'], [disabled-focusabale][appearance='primary']):hover),
+  :host(:is([disabled][appearance='primary'], [disabled-focusabale][appearance='primary']):hover:active) {
     border-color: transparent;
   }
 
@@ -231,9 +231,9 @@ export const styles = css`
     background-color: ${colorTransparentBackgroundPressed};
   }
 
-  :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"])),
-  :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"]):hover),
-  :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"]):hover:active) {
+  :host(:is([disabled][appearance='outline'], [disabled-focusabale][appearance='outline'])),
+  :host(:is([disabled][appearance='outline'], [disabled-focusabale][appearance='outline']):hover),
+  :host(:is([disabled][appearance='outline'], [disabled-focusabale][appearance='outline']):hover:active) {
     background-color: ${colorTransparentBackground};
   }
 
@@ -255,9 +255,9 @@ export const styles = css`
     border-color: transparent;
   }
 
-  :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"])),
-  :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover),
-  :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover:active) {
+  :host(:is([disabled][appearance='subtle'], [disabled-focusabale][appearance='subtle'])),
+  :host(:is([disabled][appearance='subtle'], [disabled-focusabale][appearance='subtle']):hover),
+  :host(:is([disabled][appearance='subtle'], [disabled-focusabale][appearance='subtle']):hover:active) {
     background-color: ${colorTransparentBackground};
     border-color: transparent;
   }
@@ -291,9 +291,9 @@ export const styles = css`
     border-color: transparent;
   }
 
-  :host(is:([disabled][appearance='transparent'], [disabled-focusabale][appearance="transparent"])),
-  :host(is:([disabled][appearance='transparent'], [disabled-focusabale][appearance="transparent"]):hover),
-  :host(is:([disabled][appearance='transparent'], [disabled-focusabale][appearance="transparent"]):hover:active) {
+  :host(:is([disabled][appearance='transparent'], [disabled-focusabale][appearance='transparent'])),
+  :host(:is([disabled][appearance='transparent'], [disabled-focusabale][appearance='transparent']):hover),
+  :host(:is([disabled][appearance='transparent'], [disabled-focusabale][appearance='transparent']):hover:active) {
     border-color: transparent;
     background-color: ${colorTransparentBackground};
   }
