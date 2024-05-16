@@ -6,7 +6,12 @@ import {
   getIntrinsicElementProps,
   slot,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import {
+  useArrowNavigationGroup,
+  useFocusFinders,
+  TabsterMoveFocusEventName,
+  TabsterMoveFocusEvent,
+} from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
@@ -19,7 +24,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
-  const focusAttributes = useArrowNavigationGroup({ circular: true, ignoreDefaultKeydown: { Tab: hasMenuContext } });
+  const focusAttributes = useArrowNavigationGroup({ circular: true });
 
   if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
@@ -28,6 +33,30 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   }
 
   const innerRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const element = innerRef.current;
+
+    if (element) {
+      const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
+        const nextElement = e.detail.next;
+
+        if (nextElement && !element.contains(nextElement)) {
+          e.preventDefault();
+
+          nextElement.focus();
+        }
+      };
+
+      const doc = element.ownerDocument;
+
+      doc.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+
+      return () => {
+        doc.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+      };
+    }
+  }, [innerRef]);
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
