@@ -2,6 +2,6 @@
   "type": "minor",
   "comment": "fix: Updating types for NavItem and NavSubItem to better handle keyboarding.",
   "packageName": "@fluentui/react-nav-preview",
-  "email": "17346018+mltejera@users.noreply.github.com",
+  "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
 }
