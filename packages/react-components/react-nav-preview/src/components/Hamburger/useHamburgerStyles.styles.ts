@@ -5,8 +5,8 @@ import type { HamburgerState } from './Hamburger.types';
 import { navItemTokens } from '../sharedNavStyles.styles';
 
 export const hamburgerClassNames: SlotClassNames<ButtonSlots> = {
-  root: 'fui-HamburgerInNav',
-  icon: 'fui-HamburgerInNav__icon',
+  root: 'fui-Hamburger',
+  icon: 'fui-Hamburger__icon',
 };
 
 /**
