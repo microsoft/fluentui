@@ -10,7 +10,7 @@ import {
   useArrowNavigationGroup,
   useFocusFinders,
   TabsterMoveFocusEventName,
-  TabsterMoveFocusEvent,
+  type TabsterMoveFocusEvent,
 } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
