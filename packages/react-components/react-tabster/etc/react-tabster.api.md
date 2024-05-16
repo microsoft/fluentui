@@ -574,6 +574,9 @@ const GroupperMoveFocusActions_2: GroupperMoveFocusActions_2;
 export { GroupperMoveFocusEvent }
 
 // @public (undocumented)
+export type GroupperMoveFocusEvent = Events.GroupperMoveFocusEvent;
+
+// @public (undocumented)
 type GroupperMoveFocusEvent_2 = CustomEvent<{
     action: GroupperMoveFocusAction;
 } | undefined>;
@@ -816,6 +819,9 @@ export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElement
 export { MoverMemorizedElementEventName }
 
 export { MoverMoveFocusEvent }
+
+// @public (undocumented)
+export type MoverMoveFocusEvent = Events.MoverMoveFocusEvent;
 
 // @public (undocumented)
 type MoverMoveFocusEvent_2 = CustomEvent<{
@@ -1221,7 +1227,13 @@ interface TabsterElementStorageEntry {
 type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
 
 // @public (undocumented)
-type TabsterMoveFocusEvent = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
+export const TabsterMoveFocusEvent: typeof Events.TabsterMoveFocusEvent;
+
+// @public (undocumented)
+export type TabsterMoveFocusEvent = Events.TabsterMoveFocusEvent;
+
+// @public (undocumented)
+type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
 
 // @public (undocumented)
 interface TabsterMoveFocusEventDetails {
@@ -1234,6 +1246,9 @@ interface TabsterMoveFocusEventDetails {
     // (undocumented)
     relatedEvent?: KeyboardEvent;
 }
+
+// @public (undocumented)
+export const TabsterMoveFocusEventName: "tabster:movefocus";
 
 // @public (undocumented)
 type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement & SysOnElement & RestorerOnElement>;
@@ -1285,7 +1300,7 @@ declare namespace TabsterTypes {
         GroupperMoveFocusEvent_2 as GroupperMoveFocusEvent,
         TabsterEventWithDetails,
         TabsterMoveFocusEventDetails,
-        TabsterMoveFocusEvent,
+        TabsterMoveFocusEvent_2 as TabsterMoveFocusEvent,
         TabsterDOMAttribute_2 as TabsterDOMAttribute,
         TabsterCoreProps,
         DOMAPI,
