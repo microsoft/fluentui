@@ -4,7 +4,7 @@ import { PresenceMotionFn, PresenceOverrideFields, PresenceTransitionProps } fro
 import { createPresenceVariant } from '../../../factories/createPresenceVariant';
 
 const { durationSlow, durationNormal, durationUltraFast } = durations;
-const { curveDecelerateMid, curveEasyEaseMax } = curves;
+const { curveEasyEaseMax } = curves;
 
 const duration = durationNormal;
 const easing = curveEasyEaseMax;
