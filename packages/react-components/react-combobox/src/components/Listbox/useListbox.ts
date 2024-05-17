@@ -77,8 +77,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
-  const isPointerFocusRef = React.useRef(false);
-
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
     const activeOptionId = activeDescendantController.active();
@@ -114,17 +112,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
   };
 
-  const onPointerDown = () => {
-    isPointerFocusRef.current = true;
-  };
-
   const onFocus = (_event: React.FocusEvent<HTMLElement>) => {
-    // skip if pointer-originated focus
-    if (isPointerFocusRef.current) {
-      isPointerFocusRef.current = false;
-      return;
-    }
-
     if (hasParentActiveDescendantContext || activeDescendantController.active()) {
       return;
     }
@@ -200,7 +188,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
-  state.root.onPointerDown = useEventCallback(mergeCallbacks(state.root.onPointerDown, onPointerDown));
   state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlur));
 
