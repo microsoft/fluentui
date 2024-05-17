@@ -43,7 +43,7 @@ import {
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
   findVerticalNumericMinMaxOfY,
-  createYAxisForCharts,
+  createNumericYAxis,
   IDomainNRange,
   domainRageOfVerticalNumeric,
   domainRangeOfDateForAreaLineVerticalBarChart,
@@ -167,7 +167,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         points={this._points}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
-        createYAxis={createYAxisForCharts}
+        createYAxis={createNumericYAxis}
         calloutProps={calloutProps}
         tickParams={tickParams}
         {...(this._isHavingLine && { isCalloutForStack: true })}

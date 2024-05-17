@@ -12,7 +12,7 @@ import { ILegend, Legends } from '../Legends/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartTypes,
-  createYAxisForCharts,
+  createNumericYAxis,
   getAccessibleDataObject,
   XAxisTypes,
   YAxisType,
@@ -196,7 +196,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         xAxisType={XAxisTypes.StringAxis}
         yAxisType={YAxisType.StringAxis}
         calloutProps={calloutProps}
-        createYAxis={createYAxisForCharts}
+        createYAxis={createNumericYAxis}
         chartHoverProps={chartHoverProps}
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}

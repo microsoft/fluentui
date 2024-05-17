@@ -18,7 +18,7 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
-  createYAxisForCharts,
+  createNumericYAxis,
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxisForOtherCharts,
@@ -177,7 +177,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         calloutProps={calloutProps}
         legendBars={legends}
         xAxisType={this._xAxisType}
-        createYAxis={createYAxisForCharts}
+        createYAxis={createNumericYAxis}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         getDomainNRangeValues={this._getDomainNRangeValues}

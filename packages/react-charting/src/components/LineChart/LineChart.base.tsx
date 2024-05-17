@@ -36,7 +36,7 @@ import {
   getNextColor,
   getColorFromToken,
   findNumericMinMaxOfY,
-  createYAxisForCharts,
+  createNumericYAxis,
   IDomainNRange,
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfNumericForAreaChart,
@@ -282,7 +282,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
-        createYAxis={createYAxisForCharts}
+        createYAxis={createNumericYAxis}
         getmargins={this._getMargins}
         getMinMaxOfYAxis={findNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
