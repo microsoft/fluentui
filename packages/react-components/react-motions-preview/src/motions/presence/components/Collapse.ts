@@ -1,7 +1,7 @@
 import { createPresenceComponent } from '../../../factories/createPresenceComponent';
 import { PresenceMotionFn } from '../../../types';
 import { motionTokens } from '../../motionTokens';
-import { overridePresenceMotion } from '../../../factories/overridePresenceMotion';
+import { createVariantComponent } from '../../../factories/createVariantComponent';
 
 const { durationSlow, durationNormal, durationUltraFast, curveEasyEaseMax } = motionTokens;
 
@@ -39,13 +39,9 @@ const collapseMotion: PresenceMotionFn = ({ element, animateOpacity = true }) =>
 /** A React component that applies collapse/expand transitions to its children. */
 export const Collapse = createPresenceComponent(collapseMotion);
 
-export const CollapseSnappy = createPresenceComponent(
-  overridePresenceMotion(collapseMotion, { all: { duration: durationUltraFast } }),
-);
+export const CollapseSnappy = createVariantComponent(Collapse, { all: { duration: durationUltraFast } });
 
-export const CollapseExaggerated = createPresenceComponent(
-  overridePresenceMotion(collapseMotion, {
-    enter: { duration: durationSlow, easing: curveEasyEaseMax },
-    exit: { duration: durationNormal, easing: curveEasyEaseMax },
-  }),
-);
+export const CollapseExaggerated = createVariantComponent(Collapse, {
+  enter: { duration: durationSlow, easing: curveEasyEaseMax },
+  exit: { duration: durationNormal, easing: curveEasyEaseMax },
+});

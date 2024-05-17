@@ -1,7 +1,7 @@
 import { createPresenceComponent } from '../../../factories/createPresenceComponent';
 import { PresenceMotionFn } from '../../../types';
 import { motionTokens } from '../../motionTokens';
-import { overridePresenceMotion } from '../../../factories/overridePresenceMotion';
+import { createVariantComponent } from '../../../factories/createVariantComponent';
 
 const { durationGentle, durationNormal, durationSlow, durationFast, curveDecelerateMax, curveAccelerateMax } =
   motionTokens;
@@ -32,16 +32,12 @@ const scaleMotion: PresenceMotionFn = ({ /* element, */ animateOpacity = true })
 /** A React component that applies scale in/out transitions to its children. */
 export const Scale = createPresenceComponent(scaleMotion);
 
-export const ScaleSnappy = createPresenceComponent(
-  overridePresenceMotion(scaleMotion, {
-    enter: { duration: durationNormal, easing: curveDecelerateMax },
-    exit: { duration: durationFast, easing: curveAccelerateMax },
-  }),
-);
+export const ScaleSnappy = createVariantComponent(Scale, {
+  enter: { duration: durationNormal, easing: curveDecelerateMax },
+  exit: { duration: durationFast, easing: curveAccelerateMax },
+});
 
-export const ScaleExaggerated = createPresenceComponent(
-  overridePresenceMotion(scaleMotion, {
-    enter: { duration: durationSlow, easing: curveDecelerateMax },
-    exit: { duration: durationGentle, easing: curveAccelerateMax },
-  }),
-);
+export const ScaleExaggerated = createVariantComponent(Scale, {
+  enter: { duration: durationSlow, easing: curveDecelerateMax },
+  exit: { duration: durationGentle, easing: curveAccelerateMax },
+});

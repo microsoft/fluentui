@@ -1,7 +1,7 @@
 import { createPresenceComponent } from '../../../factories/createPresenceComponent';
 import { motionTokens } from '../../motionTokens';
 import { PresenceMotion } from '../../../types';
-import { overridePresenceMotion } from '../../../factories/overridePresenceMotion';
+import { createVariantComponent } from '../../../factories/createVariantComponent';
 
 const { durationNormal, durationFast, durationGentle, curveEasyEase } = motionTokens;
 
@@ -17,10 +17,6 @@ const fadeMotion: PresenceMotion = {
 /** A React component that applies fade in/out transitions to its children. */
 export const Fade = createPresenceComponent(fadeMotion);
 
-export const FadeSnappy = createPresenceComponent(
-  overridePresenceMotion(fadeMotion, { all: { duration: durationFast } }),
-);
+export const FadeSnappy = createVariantComponent(Fade, { all: { duration: durationFast } });
 
-export const FadeExaggerated = createPresenceComponent(
-  overridePresenceMotion(fadeMotion, { all: { duration: durationGentle } }),
-);
+export const FadeExaggerated = createVariantComponent(Fade, { all: { duration: durationGentle } });
