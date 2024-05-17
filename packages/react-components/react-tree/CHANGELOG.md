@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.43)
+
+Thu, 16 May 2024 09:25:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.4.42..@fluentui/react-tree_v9.4.43)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.26 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+- Bump @fluentui/react-button to v9.3.80 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.25 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+- Bump @fluentui/react-radio to v9.2.20 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [9.4.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.42)
 

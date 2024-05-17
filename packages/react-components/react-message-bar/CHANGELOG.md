@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Mon, 13 May 2024 12:34:19 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.1.1)
+
+Thu, 16 May 2024 09:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.1.0..@fluentui/react-message-bar_v9.1.1)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-button to v9.3.80 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.1.0)
 

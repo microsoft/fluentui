@@ -606,7 +606,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
                 data-is-focusable="false"
                 role="text"

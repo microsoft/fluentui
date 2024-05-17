@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(OverflowItem): properly propagate refs to child elements",
-  "packageName": "@fluentui/react-overflow",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

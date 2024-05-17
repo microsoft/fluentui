@@ -80,6 +80,7 @@ export const SLIDE_UP_OUT20 = {
     transform: 'translate3d(0, -20px, 0)',
   },
 };
+/* eslint-disable deprecation/deprecation */
 export const TRANSITION_ROW_DISAPPEARANCE = {
   '100%': {
     height: '0px',
@@ -97,3 +98,4 @@ export const TRANSITION_ROW_DISAPPEARANCE = {
     width: '100%',
   },
 };
+/* eslint-enable deprecation/deprecation */

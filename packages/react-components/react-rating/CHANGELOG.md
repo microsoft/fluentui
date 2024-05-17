@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-rating
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.8)
+
+Thu, 16 May 2024 09:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.7..@fluentui/react-rating_v9.0.8)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
 
 ## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.7)
 

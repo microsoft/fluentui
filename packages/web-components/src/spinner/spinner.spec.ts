@@ -22,17 +22,6 @@ test.describe('Spinner', () => {
     await page.close();
   });
 
-  // Foundation tests
-  test('should include a role of progressbar', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-spinner></fluent-spinner>
-        `;
-    });
-
-    await expect(element).toHaveAttribute('role', 'progressbar');
-  });
-
   // Fluent Specific property tests
   test('should set and retrieve the `appearance` property correctly to primary', async () => {
     await element.evaluate((node: Spinner) => {

@@ -37,17 +37,17 @@ export type HeadlessTree<Props extends HeadlessTreeItemProps> = {
   root: HeadlessTreeItem<HeadlessTreeItemProps>;
   /**
    * method to get a virtual tree item by its value
-   * @param key the key of the item to get
+   * @param key - the key of the item to get
    */
   get(value: TreeItemValue): HeadlessTreeItem<Props> | undefined;
   /**
    * method to check if a virtual tree item exists by its value
-   * @param value the value of the item to check if exists
+   * @param value - the value of the item to check if exists
    */
   has(value: TreeItemValue): boolean;
   /**
    * method to add a new virtual tree item to the virtual tree
-   * @param props the props of the item to add
+   * @param props - the props of the item to add
    */
   add(props: Props): void;
   /**
@@ -55,32 +55,32 @@ export type HeadlessTree<Props extends HeadlessTreeItemProps> = {
    * When an item is removed:
    * 1. all its children are also removed
    * 2. all its siblings are repositioned
-   * @param value the value of the item to remove
+   * @param value - the value of the item to remove
    */
   // remove(value: TreeItemValue): void;
   /**
    * method to get the parent of a virtual tree item by its value
-   * @param value the value of the item to get the parent from
+   * @param value - the value of the item to get the parent from
    */
   getParent(value: TreeItemValue): HeadlessTreeItem<Props>;
   /**
    * method to get the subtree of a virtual tree item by its value
-   * @param value the value of the item to get the subtree from
+   * @param value - the value of the item to get the subtree from
    */
   subtree(value: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
   /**
    * method to get the children of a virtual tree item by its value
-   * @param value the value of the item to get the children from
+   * @param value - the value of the item to get the children from
    */
   children(value: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
   /**
    * method to get the visible items of a virtual tree
-   * @param openItems the open items of the tree
+   * @param openItems - the open items of the tree
    */
   visibleItems(openItems: ImmutableSet<TreeItemValue>): IterableIterator<HeadlessTreeItem<Props>>;
   /**
    * method to get the ancestors of a virtual tree item by its value
-   * @param value the value of the item to get the ancestors from
+   * @param value - the value of the item to get the ancestors from
    */
   ancestors(value: TreeItemValue): IterableIterator<HeadlessTreeItem<Props>>;
 };
@@ -137,29 +137,6 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
       };
       itemsPerValue.set(item.value, item);
     },
-    // TODO: eventually it would be nice to have this method exported for the user to modify
-    // the internal state of the virtual tree
-    // remove(value) {
-    //   const itemToBeRemoved = itemsPerValue.get(value);
-    //   if (!itemToBeRemoved) {
-    //     return;
-    //   }
-    //   const parentItem = headlessTree.getParent(value);
-    //   parentItem.childrenValues.splice(itemToBeRemoved.position, 1);
-    //   itemsPerValue.delete(value);
-    //   if (parentItem.childrenValues.length === 0) {
-    //     parentItem.itemType = 'leaf';
-    //   }
-    //   for (let index = itemToBeRemoved.position; index < parentItem.childrenValues.length; index++) {
-    //     const child = itemsPerValue.get(parentItem.childrenValues[index]);
-    //     if (child) {
-    //       child.position = index + 1;
-    //     }
-    //   }
-    //   for (const descendant of HeadlessTreeSubtreeGenerator(value, headlessTree)) {
-    //     itemsPerValue.delete(descendant.value);
-    //   }
-    // },
     subtree: key => HeadlessTreeSubtreeGenerator(key, headlessTree),
     children: key => HeadlessTreeChildrenGenerator(key, headlessTree),
     ancestors: key => HeadlessTreeAncestorsGenerator(key, headlessTree),
@@ -223,7 +200,7 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
 
 /**
  * Generator that returns all subtree of a given virtual tree item
- * @param key the key of the item to get the subtree from
+ * @param key - the key of the item to get the subtree from
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function* HeadlessTreeSubtreeGenerator<Props extends HeadlessTreeItemProps>(
@@ -242,7 +219,7 @@ function* HeadlessTreeSubtreeGenerator<Props extends HeadlessTreeItemProps>(
 
 /**
  * Generator that returns all children of a given virtual tree item
- * @param key the key of the item to get the children from
+ * @param key - the key of the item to get the children from
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function* HeadlessTreeChildrenGenerator<Props extends HeadlessTreeItemProps>(
@@ -260,7 +237,7 @@ function* HeadlessTreeChildrenGenerator<Props extends HeadlessTreeItemProps>(
 
 /**
  * Generator that returns all ancestors of a given virtual tree item
- * @param key the key of the item to get the children from
+ * @param key - the key of the item to get the children from
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function* HeadlessTreeAncestorsGenerator<Props extends HeadlessTreeItemProps>(
@@ -276,7 +253,7 @@ function* HeadlessTreeAncestorsGenerator<Props extends HeadlessTreeItemProps>(
 
 /**
  * Generator that returns all visible items of a given virtual tree
- * @param openItems the open items of the tree
+ * @param openItems - the open items of the tree
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function* HeadlessTreeVisibleItemsGenerator<Props extends HeadlessTreeItemProps>(

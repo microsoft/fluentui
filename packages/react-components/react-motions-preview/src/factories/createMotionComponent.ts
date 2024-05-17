@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
+import { animate } from '../utils/animate';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
 
@@ -38,7 +39,7 @@ export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
         const definition = typeof motion === 'function' ? motion(element) : motion;
         const { keyframes, ...options } = definition;
 
-        const animation = element.animate(keyframes, {
+        const animation = animate(element, keyframes, {
           fill: 'forwards',
 
           ...options,
@@ -46,6 +47,10 @@ export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
 
           ...(isReducedMotion() && { duration: 1 }),
         });
+
+        if (!animation) {
+          return;
+        }
 
         animationRef.current = animation;
 

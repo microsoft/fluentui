@@ -31,6 +31,10 @@ const useMultilineStyles = makeStyles({
     marginRight: '0px',
     paddingRight: tokens.spacingVerticalM,
   },
+
+  noActions: {
+    display: 'none',
+  },
 });
 
 /**
@@ -44,6 +48,7 @@ export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsStat
     messageBarActionsClassNames.root,
     rootBaseStyles,
     state.layout === 'multiline' && multilineStyles.root,
+    !state.hasActions && multilineStyles.noActions,
     state.root.className,
   );
 

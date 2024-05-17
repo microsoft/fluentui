@@ -210,7 +210,7 @@ export type StyledTextSlots = {
 };
 
 // @public (undocumented)
-export const useFlexStyles: () => Record<"flex" | "fill" | "column" | "wrap" | "inline" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
+export const useFlexStyles: () => Record<"flex" | "fill" | "inline" | "column" | "wrap" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
 
 // @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
