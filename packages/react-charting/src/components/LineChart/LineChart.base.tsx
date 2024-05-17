@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
@@ -349,7 +348,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: ILineChartPoints[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

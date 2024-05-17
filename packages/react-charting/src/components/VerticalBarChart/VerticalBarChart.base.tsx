@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
@@ -27,6 +26,7 @@ import {
   Legends,
   IChildProps,
   IYValueHover,
+  IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -220,7 +220,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: IDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

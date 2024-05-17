@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
@@ -28,6 +27,7 @@ import {
   IVSChartDataPoint,
   ILineDataInVerticalStackedBarChart,
   IModifiedCartesianChartProps,
+  IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -288,7 +288,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: IDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

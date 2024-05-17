@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
@@ -176,7 +175,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   }
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: IHorizontalBarChartWithAxisDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

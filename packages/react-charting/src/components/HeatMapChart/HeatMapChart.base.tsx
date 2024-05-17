@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
 import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
@@ -236,7 +235,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: IHeatMapChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

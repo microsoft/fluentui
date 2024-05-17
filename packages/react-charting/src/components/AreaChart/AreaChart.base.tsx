@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
@@ -245,7 +244,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _getDomainNRangeValues = (
-    points: any,
+    points: ILineChartPoints[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

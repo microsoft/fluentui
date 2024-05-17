@@ -9,6 +9,7 @@ import {
   IAccessibilityProps,
   IDataPoint,
   IGroupedVerticalBarChartData,
+  IHeatMapChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
@@ -654,7 +655,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IVerticalBarChartDataPoint[]
       | IVerticalStackedBarDataPoint[]
       | IHorizontalBarChartWithAxisDataPoint[]
-      | IGroupedVerticalBarChartData[],
+      | IGroupedVerticalBarChartData[]
+      | IHeatMapChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,
