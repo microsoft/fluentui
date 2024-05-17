@@ -17,6 +17,7 @@ import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
 import type { Theme } from '@fluentui/tokens';
+import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTElement {
@@ -2709,8 +2710,11 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends BaseProgress {
+export class Spinner extends FASTElement {
+    constructor();
     appearance?: SpinnerAppearance;
+    // @internal
+    protected elementInternals: ElementInternals;
     size?: SpinnerSize;
 }
 
@@ -2725,11 +2729,6 @@ export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
 
 // @public (undocumented)
 export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
-
-// @public
-export type SpinnerOptions = {
-    indeterminateIndicator?: StaticallyComposableHTML<Spinner>;
-};
 
 // @public
 export const SpinnerSize: {
@@ -2749,7 +2748,7 @@ export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
 export const SpinnerStyles: ElementStyles;
 
 // @public (undocumented)
-export const SpinnerTemplate: ElementViewTemplate<Spinner>;
+export const SpinnerTemplate: ViewTemplate<Spinner, any>;
 
 // @public (undocumented)
 export const strokeWidthThick = "var(--strokeWidthThick)";
