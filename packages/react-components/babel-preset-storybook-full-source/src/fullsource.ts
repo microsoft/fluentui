@@ -30,21 +30,23 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
     name: PLUGIN_NAME,
     visitor: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      VariableDeclarator(path, state) {
+      async VariableDeclarator(path, state) {
         if (
           t.isIdentifier(path.node.id) &&
           t.isStringLiteral(path.node.init) &&
           path.node.id.name === '__STORY__' &&
           path.parentPath.isVariableDeclaration()
         ) {
-          const transformedCode = babel.transformSync(path.node.init.value, {
-            ...state.file.opts,
-            compact: false,
-            retainLines: true,
-            comments: false,
-            plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
-          })?.code;
-          const code = prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
+          const transformedCode = (
+            await babel.transformAsync(path.node.init.value, {
+              ...state.file.opts,
+              compact: false,
+              retainLines: true,
+              comments: false,
+              plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
+            })
+          )?.code;
+          const code = await prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
 
           path.get('init').replaceWith(t.stringLiteral(code));
         }

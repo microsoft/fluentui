@@ -17,7 +17,7 @@ const ESLint = new CLIEngine({
 });
 const pluginName = 'gulp-example-source';
 
-const createExampleSourceCode = (file: Vinyl): ExampleSource => {
+const createExampleSourceCode = async (file: Vinyl): Promise<ExampleSource> => {
   const tsSource = file.contents?.toString() ?? '';
 
   const babelResult = Babel.transform(tsSource, {
@@ -27,7 +27,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
     presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
     sourceType: 'module',
   });
-  const prettierResult = prettier.format(babelResult?.code ?? '', {
+  const prettierResult = await prettier.format(babelResult?.code ?? '', {
     ...prettierConfig,
     trailingComma: 'all',
     printWidth: 100,
@@ -57,19 +57,20 @@ export default () =>
       return;
     }
 
-    try {
-      const sourcePath = getRelativePathToSourceFile(file.path);
-      const source = createExampleSourceCode(file);
+    const sourcePath = getRelativePathToSourceFile(file.path);
 
-      const sourceFile = new Vinyl({
-        path: sourcePath,
-        contents: Buffer.from(JSON.stringify(source, null, 2)),
+    createExampleSourceCode(file)
+      .then(source => {
+        const sourceFile = new Vinyl({
+          path: sourcePath,
+          contents: Buffer.from(JSON.stringify(source, null, 2)),
+        });
+        // `gulp-cache` relies on this private entry
+        sourceFile._cachedKey = file._cachedKey;
+
+        cb(null, sourceFile);
+      })
+      .catch(err => {
+        cb(err);
       });
-      // `gulp-cache` relies on this private entry
-      sourceFile._cachedKey = file._cachedKey;
-
-      cb(null, sourceFile);
-    } catch (e) {
-      cb(e);
-    }
   });

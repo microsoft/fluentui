@@ -52,6 +52,8 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
   )
   `;
 
-  fs.writeFileSync(config.esmEntryPoint, prettier.format(appTemplate, { parser: 'typescript' }));
-  fs.writeFileSync(config.cjsEntryPoint, prettier.format(storiesTemplate, { parser: 'typescript' }));
+  await Promise.all([
+    fs.promises.writeFile(config.esmEntryPoint, await prettier.format(appTemplate, { parser: 'typescript' })),
+    fs.promises.writeFile(config.cjsEntryPoint, await prettier.format(storiesTemplate, { parser: 'typescript' })),
+  ]);
 }

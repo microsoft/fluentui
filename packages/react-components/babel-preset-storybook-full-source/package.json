@@ -28,7 +28,7 @@
   "dependencies": {
     "@babel/core": "^7.10.4",
     "@swc/helpers": "^0.5.1",
-    "prettier": "2.8.8",
+    "prettier": "^3.0.0",
     "pkg-up": "^3.1.0"
   },
   "exports": {

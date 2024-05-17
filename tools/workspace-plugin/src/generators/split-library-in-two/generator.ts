@@ -67,13 +67,7 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 
   await tsConfigBaseAllGenerator(tree, { verify: false, skipFormat: true });
 
-  // TODO: we don't wanna fail master build because formatting failed
-  // - Nx is using await `prettier.format` under the hood which is for prettier v3, but we use prettier v2 ATM, while that unnecessary await should not cause harm it seems it does
-  try {
-    await formatFiles(tree);
-  } catch (err) {
-    console.log(err);
-  }
+  await formatFiles(tree);
 
   return () => {
     installPackagesTask(tree, true);

@@ -1,28 +1,19 @@
 import * as _ from 'lodash';
-import * as _prettier from 'prettier/standalone';
-
-import * as babel from 'prettier/parser-babel';
-import * as html from 'prettier/parser-html';
-import * as typescript from 'prettier/parser-typescript';
+import * as _prettierSync from '@prettier/sync';
 
 import { CodeSnippetMode, CodeSnippetValue } from './types';
 
-// `prettier` is a CJS library, there are known issues with them:
+// `_prettierSync` is a ESM library but ships only CJS format, there are known issues with them:
 // https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
-const prettier = (_prettier as any).default || _prettier;
+const prettierSync = (_prettierSync as any).default || _prettierSync;
 
 const prettierConfig = {
-  htmlWhitespaceSensitivity: 'ignore',
+  htmlWhitespaceSensitivity: 'ignore' as const,
   printWidth: 100,
   tabWidth: 2,
   semi: false,
   singleQuote: true,
-  trailingComma: 'all',
-  plugins: {
-    babel,
-    html,
-    typescript,
-  },
+  trailingComma: 'all' as const,
 };
 
 const normalizeToString = (value: CodeSnippetValue): string => {
@@ -31,7 +22,7 @@ const normalizeToString = (value: CodeSnippetValue): string => {
 };
 
 export const prettifyCode = (code: string, parser: 'babel' | 'json' | 'html' | 'typescript') => {
-  const formatted = prettier.format(code, {
+  const formatted = prettierSync.format(code, {
     ...prettierConfig,
     // a narrower print width is more friendly to doc examples
     parser,
