@@ -43,10 +43,13 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
       const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
         const nextElement = e.detail.next;
 
-        if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
+        if (
+          nextElement &&
+          hasMenuContext &&
+          element.contains(targetDocument.activeElement) &&
+          !element.contains(nextElement)
+        ) {
           e.preventDefault();
-
-          nextElement.focus();
         }
       };
 
@@ -56,7 +59,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
       };
     }
-  }, [innerRef, targetDocument]);
+  }, [innerRef, targetDocument, hasMenuContext]);
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
