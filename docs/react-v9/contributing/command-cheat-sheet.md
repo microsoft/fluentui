@@ -13,7 +13,7 @@ yarn update-snapshots # updates snapshot tests
 yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
 yarn nx run <package-name>:generate-api # updates API files
 yarn nx run <package-name>:<target-name> # runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
-yarn workspace @fluentui/<package-name> type-check # quickly runs type checks and associated linting
+yarn nx run @fluentui/<package-name>:type-check # quickly runs type checks and associated linting
 yarn lage build --to react # build v8 so intellisense works.
 ```
 
