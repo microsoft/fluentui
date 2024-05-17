@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, Slot, TriggerProps } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 
 /**
  * Slot properties for Tooltip
@@ -136,4 +137,5 @@ export type TooltipState = ComponentState<TooltipSlots> &
      * CSS class for the arrow element
      */
     arrowClassName?: string;
+    materialType?: MaterialTypeContextValue;
   };

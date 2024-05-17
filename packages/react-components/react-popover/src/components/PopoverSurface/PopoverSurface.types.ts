@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverContextValue } from '../../popoverContext';
+import type { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 
 /**
  * PopoverSurface Props
@@ -22,4 +23,5 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> &
      * CSS class for the arrow element
      */
     arrowClassName?: string;
+    materialType?: MaterialTypeContextValue;
   };
