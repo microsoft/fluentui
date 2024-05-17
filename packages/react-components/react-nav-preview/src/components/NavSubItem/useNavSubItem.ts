@@ -40,7 +40,7 @@ export const useNavSubItem_unstable = (
     }
   });
 
-  const _navSubItem = slot.always<ARIAButtonSlotProps<'a'>>(
+  const root = slot.always<ARIAButtonSlotProps<'a'>>(
     getIntrinsicElementProps(rootElementType, useARIAButtonProps(rootElementType, props)),
     {
       elementType: rootElementType,
@@ -51,7 +51,7 @@ export const useNavSubItem_unstable = (
     },
   );
 
-  _navSubItem.onClick = onNavSubItemClick;
+  root.onClick = onNavSubItemClick;
 
   React.useEffect(() => {
     onRegister({
@@ -68,7 +68,7 @@ export const useNavSubItem_unstable = (
     components: {
       root: rootElementType,
     },
-    root: _navSubItem,
+    root: root,
     selected,
     value: subItemValue,
   };
