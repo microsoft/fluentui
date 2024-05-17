@@ -202,7 +202,7 @@ function usePositioningOptions(options: PositioningOptions) {
           overflowBoundaryPadding,
           isRtl,
         }),
-        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
+        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),

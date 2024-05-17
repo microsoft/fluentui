@@ -16,5 +16,8 @@
 
   "dtsRollup": {
     "enabled": true
+  },
+  "compiler": {
+    "tsconfigFilePath": "./tsconfig.api-extractor.json"
   }
 }

@@ -1,12 +1,9 @@
 <div id="switches-container">
-  <fluent-switch id="direction-switch">
-    Direction
-    <span slot="checked-message">RTL</span>
-    <span slot="unchecked-message">LTR</span>
-  </fluent-switch>
-  <fluent-switch id="luminance-switch">
-    Luminance
-    <span slot="checked-message">Dark</span>
-    <span slot="unchecked-message">Light</span>
-  </fluent-switch>
+  <label for="theme-switch">Theme</label>
+  <select id="theme-switch" name="theme">
+    <option value="web-light" selected>Web Light</option>
+    <option value="web-dark">Web Dark</option>
+    <option value="teams-light">Teams Light</option>
+    <option value="teams-dark">Teams Dark</option>
+  </select>
 </div>

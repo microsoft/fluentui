@@ -12,6 +12,7 @@ export { Pinned } from './Pinned.stories';
 export { Dividers } from './Dividers.stories';
 export { LargerDividers } from './LargerDividers.stories';
 export { PriorityWithDividers } from './PriorityWithDividers.stories';
+export { CustomComponent } from './CustomComponent.stories';
 
 export default {
   title: 'Components/Overflow',

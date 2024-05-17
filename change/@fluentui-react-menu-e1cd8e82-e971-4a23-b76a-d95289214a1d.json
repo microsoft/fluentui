@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: 8px menu section header padding",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

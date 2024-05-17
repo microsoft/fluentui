@@ -91,7 +91,7 @@ export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps
 // @public (undocumented)
 export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
     clearIcon?: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;

@@ -7,6 +7,7 @@ import { getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorep
  * vNext scope includes all packages that have version > 8.x and shared internal packages that need versions bumped.
  * @returns {string[]} Array of package paths for beachball scope
  */
+export function getConfig({ version }: { version: 'web-components' }): { scope: string[] };
 export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
 export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
@@ -16,7 +17,7 @@ export function getConfig({ version }: { version: 'vNext' }): {
     include: string[];
   };
 };
-export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
+export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' }) {
   const vNextPackagePaths = getVNextPackagePaths();
 
   if (version === 'vNext') {
@@ -30,9 +31,15 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
     };
   }
 
-  if (version === 'v8') {
-    const ignoreVNextScope = vNextPackagePaths.map(pkgPath => `!${pkgPath}`);
+  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
 
+  if (version === 'web-components') {
+    return {
+      scope: ['packages/web-components', '!apps/*', ...ignoreVNextScope],
+    };
+  }
+
+  if (version === 'v8') {
     return { scope: [...ignoreVNextScope] };
   }
 

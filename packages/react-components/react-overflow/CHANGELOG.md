@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.19)
+
+Thu, 16 May 2024 09:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.1.18..@fluentui/react-overflow_v9.1.19)
+
+### Patches
+
+- fix(OverflowItem): properly propagate refs to child elements ([PR #31347](https://github.com/microsoft/fluentui/pull/31347) by olfedias@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.1.12 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [9.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.18)
 

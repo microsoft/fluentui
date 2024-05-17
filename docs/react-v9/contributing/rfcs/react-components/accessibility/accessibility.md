@@ -75,7 +75,7 @@ _Automated tests_ will contain:
 _Manual tests_ will be executed on small isolated pages which show different accessibility scenarios. For each component, suitable scenarios will be defined and implemented. They will be then tested by experienced trusted accessibility testers and real users.
 Axe-core test will be also executed on each of the scenarios.
 
-As a first step, accessibility scenarios will be introduced as [hidden Storybook stories](https://github.com/microsoft/fluentui/blob/master/rfcs/convergence/authoring-stories.md#10-internal-stories-for-testing).
+As a first step, accessibility scenarios will be introduced as [hidden Storybook stories](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/authoring-stories.md#10-internal-stories-for-testing).
 
 Later, after descriptions, best practices and other relevant information will be added, they can be made public, so that consumers of the library can use them as validated patterns when creating their own user experiences.
 

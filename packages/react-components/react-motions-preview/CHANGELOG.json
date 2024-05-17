@@ -2,6 +2,36 @@
   "name": "@fluentui/react-motions-preview",
   "entries": [
     {
+      "date": "Thu, 16 May 2024 09:25:16 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "6e7021a53c286d6e7e5e43b5f9bad626799700ec",
+            "comment": "fix(motions): use useFirstMount() in createPresenceComponent()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:11 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robert@robertpenner.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "a276e61fe284cf4d8345806365451b14c4c1589c",
+            "comment": "BREAKING: fix motion token values and adjust structure to match original source"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:02 GMT",
       "tag": "@fluentui/react-motions-preview_v0.2.8",
       "version": "0.2.8",

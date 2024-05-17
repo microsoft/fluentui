@@ -2,6 +2,63 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 15 May 2024 07:25:15 GMT",
+      "tag": "@fluentui/react-charting_v5.21.8",
+      "version": "5.21.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bf854a4b7ba1ac057f57a21527cf1d0240c14d9b",
+            "comment": "Fix focus trap issue in sankey chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "aa5c3955ff992acb607596012c63424a1df81c57",
+            "comment": "Fix focus order issue in legends overflow callout"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 May 2024 07:25:17 GMT",
+      "tag": "@fluentui/react-charting_v5.21.7",
+      "version": "5.21.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9f76194440113ae14b260dd1b3bb75e48ba63f8a",
+            "comment": "Accessibility issue fixes: Added bench mark data and tooltip data to aria label in HorizontalBarChart and VerticalStackedBarChart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 May 2024 07:26:47 GMT",
+      "tag": "@fluentui/react-charting_v5.21.6",
+      "version": "5.21.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.151",
+            "commit": "b8a626b76b30b92480cd15449f1d9f761458544c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.2",
+            "commit": "b8a626b76b30b92480cd15449f1d9f761458544c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 07:25:44 GMT",
       "tag": "@fluentui/react-charting_v5.21.5",
       "version": "5.21.5",

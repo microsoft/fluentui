@@ -9,7 +9,7 @@ import {
   TagPickerOption,
   TagPickerOptionGroup,
   TagPickerProps,
-} from '@fluentui/react-tag-picker-preview';
+} from '@fluentui/react-tag-picker';
 import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities/getStoryVariant';

@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 06 May 2024 07:25:44 GMT and should not be manually modified.
+This log was last generated on Wed, 15 May 2024 07:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.8)
+
+Wed, 15 May 2024 07:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.7..@fluentui/react-charting_v5.21.8)
+
+### Patches
+
+- Fix focus trap issue in sankey chart ([PR #31310](https://github.com/microsoft/fluentui/pull/31310) by kumarkshitij@microsoft.com)
+- Fix focus order issue in legends overflow callout ([PR #31317](https://github.com/microsoft/fluentui/pull/31317) by kumarkshitij@microsoft.com)
+
+## [5.21.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.7)
+
+Wed, 08 May 2024 07:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.6..@fluentui/react-charting_v5.21.7)
+
+### Patches
+
+- Accessibility issue fixes: Added bench mark data and tooltip data to aria label in HorizontalBarChart and VerticalStackedBarChart ([PR #31228](https://github.com/microsoft/fluentui/pull/31228) by 132879294+v-baambati@users.noreply.github.com)
+
+## [5.21.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.6)
+
+Tue, 07 May 2024 07:26:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.5..@fluentui/react-charting_v5.21.6)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.151 ([PR #31285](https://github.com/microsoft/fluentui/pull/31285) by beachball)
+- Bump @fluentui/react to v8.118.2 ([PR #31285](https://github.com/microsoft/fluentui/pull/31285) by beachball)
 
 ## [5.21.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.5)
 
