@@ -1,11 +1,11 @@
 import * as _ from 'lodash';
-import * as prettier from 'prettier/standalone';
+import * as _prettierSync from '@prettier/sync';
 
 import { CodeSnippetMode, CodeSnippetValue } from './types';
 
-// `prettier` is a CJS library, there are known issues with them:
+// `_prettierSync` is a ESM library but ships only CJS format, there are known issues with them:
 // https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
-// const prettier = (_prettier as any).default || _prettier;
+const prettierSync = (_prettierSync as any).default || _prettierSync;
 
 const prettierConfig = {
   htmlWhitespaceSensitivity: 'ignore' as const,
@@ -21,8 +21,8 @@ const normalizeToString = (value: CodeSnippetValue): string => {
   return _.isObject(value) ? JSON.stringify(value, null, 2) : (value as string);
 };
 
-export const prettifyCode = async (code: string, parser: 'babel' | 'json' | 'html' | 'typescript') => {
-  const formatted = await prettier.format(code, {
+export const prettifyCode = (code: string, parser: 'babel' | 'json' | 'html' | 'typescript') => {
+  const formatted = prettierSync.format(code, {
     ...prettierConfig,
     // a narrower print width is more friendly to doc examples
     parser,

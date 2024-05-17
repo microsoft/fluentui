@@ -46,7 +46,7 @@ const createExampleSourceCode = async (file: Vinyl): Promise<ExampleSource> => {
 };
 
 export default () =>
-  through.obj(async (file: Vinyl, enc, cb) => {
+  through.obj((file: Vinyl, enc, cb) => {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -57,19 +57,20 @@ export default () =>
       return;
     }
 
-    try {
-      const sourcePath = getRelativePathToSourceFile(file.path);
-      const source = await createExampleSourceCode(file);
+    const sourcePath = getRelativePathToSourceFile(file.path);
 
-      const sourceFile = new Vinyl({
-        path: sourcePath,
-        contents: Buffer.from(JSON.stringify(source, null, 2)),
+    createExampleSourceCode(file)
+      .then(source => {
+        const sourceFile = new Vinyl({
+          path: sourcePath,
+          contents: Buffer.from(JSON.stringify(source, null, 2)),
+        });
+        // `gulp-cache` relies on this private entry
+        sourceFile._cachedKey = file._cachedKey;
+
+        cb(null, sourceFile);
+      })
+      .catch(err => {
+        cb(err);
       });
-      // `gulp-cache` relies on this private entry
-      sourceFile._cachedKey = file._cachedKey;
-
-      cb(null, sourceFile);
-    } catch (e) {
-      cb(e);
-    }
   });

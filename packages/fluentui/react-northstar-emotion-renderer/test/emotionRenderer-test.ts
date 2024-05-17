@@ -1,7 +1,7 @@
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
-// import * as prettier from 'prettier';
+import * as prettierSync from '@prettier/sync';
 
 expect.addSnapshotSerializer({
   test(value) {
@@ -18,9 +18,7 @@ expect.addSnapshotSerializer({
       .map((node: HTMLStyleElement) => reduceRules(node?.sheet as unknown as CSSStyleSheet))
       .join(';');
 
-    // TODO - cannot call async functions within snapshot serializer
-    // return prettier.format(insertedCSS, { parser: 'css' })).trim();
-    return insertedCSS.trim();
+    return prettierSync.format(insertedCSS, { parser: 'css' }).trim();
   },
 });
 
