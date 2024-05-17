@@ -1,11 +1,6 @@
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import {
-  HeadlessTree,
-  HeadlessTreeItem,
-  HeadlessTreeItemProps,
-  createHeadlessTree,
-} from '../../utils/createHeadlessTree';
+import { HeadlessTreeItem, HeadlessTreeItemProps, createHeadlessTree } from '../../utils/createHeadlessTree';
 import { treeDataTypes } from '../../utils/tokens';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
@@ -102,6 +97,13 @@ export type HeadlessFlatTreeOptions = Pick<
   };
 
 /**
+ * @internal
+ */
+type HeadlessFlatTreeReturn<Props extends HeadlessFlatTreeItemProps> = HeadlessFlatTree<Props> & {
+  getItem(value: TreeItemValue): HeadlessTreeItem<Props> | undefined;
+};
+
+/**
  * this hook provides FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems
  * in multiple scenarios including virtualization.
  *
@@ -114,10 +116,10 @@ export type HeadlessFlatTreeOptions = Pick<
  * @param options - in case control over the internal openItems is required
  */
 export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(
-  props: Props[] | HeadlessTree<Props>,
+  props: Props[],
   options: HeadlessFlatTreeOptions = {},
-): HeadlessFlatTree<Props> {
-  const headlessTree = React.useMemo(() => (Array.isArray(props) ? createHeadlessTree(props) : props), [props]);
+): HeadlessFlatTreeReturn<Props> {
+  const headlessTree = React.useMemo(() => createHeadlessTree(props), [props]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options, headlessTree);
   const navigation = useFlatTreeNavigation();
@@ -188,15 +190,18 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 
   const items = React.useCallback(() => headlessTree.visibleItems(openItems), [openItems, headlessTree]);
 
-  return React.useMemo<HeadlessFlatTree<Props>>(
+  const getItem = React.useCallback((value: TreeItemValue) => headlessTree.get(value), [headlessTree]);
+
+  return React.useMemo<HeadlessFlatTreeReturn<Props>>(
     () => ({
       navigate: navigation.navigate,
       getTreeProps,
       getNextNavigableItem,
       getElementFromItem,
       items,
+      getItem,
     }),
-    [navigation.navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items],
+    [navigation.navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items, getItem],
   );
 }
 

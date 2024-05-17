@@ -32,9 +32,6 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export function createHeadlessTree<Props extends HeadlessTreeItemProps>(initialProps?: Props[]): HeadlessTree<Props>;
-
-// @public
 export const flattenTree_unstable: <Props extends TreeItemProps>(items: FlattenTreeItem<Props>[]) => FlattenedTreeItem<Props>[];
 
 // @public (undocumented)
@@ -407,7 +404,7 @@ export const useFlatTreeContextValues_unstable: (state: FlatTreeState) => FlatTr
 export const useFlatTreeStyles_unstable: (state: FlatTreeState) => FlatTreeState;
 
 // @public
-export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[] | HeadlessTree<Props>, options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
+export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTreeReturn<Props>;
 
 // @public (undocumented)
 export const useSubtreeContext_unstable: () => SubtreeContextValue;
