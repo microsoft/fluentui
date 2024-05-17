@@ -150,6 +150,18 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
         useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
         useTimePickerCompatStyles_unstable: (state: unknown) => void;
+        useTagPickerInputStyles_unstable: (state: unknown) => void;
+        useTagPickerButtonStyles_unstable: (state: unknown) => void;
+        useTagPickerControlStyles_unstable: (state: unknown) => void;
+        useTagPickerGroupStyles_unstable: (state: unknown) => void;
+        useTagPickerListStyles_unstable: (state: unknown) => void;
+        useTagPickerOptionStyles_unstable: (state: unknown) => void;
+        useTagPickerOptionGroupStyles_unstable: (state: unknown) => void;
+        useColorSwatchStyles_unstable: (state: unknown) => void;
+        useImageSwatchStyles_unstable: (state: unknown) => void;
+        useEmptySwatchStyles_unstable: (state: unknown) => void;
+        useSwatchPickerRowStyles_unstable: (state: unknown) => void;
+        useSwatchPickerStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

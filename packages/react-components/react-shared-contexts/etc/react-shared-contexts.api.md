@@ -157,6 +157,18 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
+    useTagPickerInputStyles_unstable: CustomStyleHook;
+    useTagPickerButtonStyles_unstable: CustomStyleHook;
+    useTagPickerControlStyles_unstable: CustomStyleHook;
+    useTagPickerGroupStyles_unstable: CustomStyleHook;
+    useTagPickerListStyles_unstable: CustomStyleHook;
+    useTagPickerOptionStyles_unstable: CustomStyleHook;
+    useTagPickerOptionGroupStyles_unstable: CustomStyleHook;
+    useColorSwatchStyles_unstable: CustomStyleHook;
+    useImageSwatchStyles_unstable: CustomStyleHook;
+    useEmptySwatchStyles_unstable: CustomStyleHook;
+    useSwatchPickerRowStyles_unstable: CustomStyleHook;
+    useSwatchPickerStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -283,6 +295,18 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
+    useTagPickerInputStyles_unstable: CustomStyleHook;
+    useTagPickerButtonStyles_unstable: CustomStyleHook;
+    useTagPickerControlStyles_unstable: CustomStyleHook;
+    useTagPickerGroupStyles_unstable: CustomStyleHook;
+    useTagPickerListStyles_unstable: CustomStyleHook;
+    useTagPickerOptionStyles_unstable: CustomStyleHook;
+    useTagPickerOptionGroupStyles_unstable: CustomStyleHook;
+    useColorSwatchStyles_unstable: CustomStyleHook;
+    useImageSwatchStyles_unstable: CustomStyleHook;
+    useEmptySwatchStyles_unstable: CustomStyleHook;
+    useSwatchPickerRowStyles_unstable: CustomStyleHook;
+    useSwatchPickerStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -409,6 +433,18 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
+    useTagPickerInputStyles_unstable: CustomStyleHook;
+    useTagPickerButtonStyles_unstable: CustomStyleHook;
+    useTagPickerControlStyles_unstable: CustomStyleHook;
+    useTagPickerGroupStyles_unstable: CustomStyleHook;
+    useTagPickerListStyles_unstable: CustomStyleHook;
+    useTagPickerOptionStyles_unstable: CustomStyleHook;
+    useTagPickerOptionGroupStyles_unstable: CustomStyleHook;
+    useColorSwatchStyles_unstable: CustomStyleHook;
+    useImageSwatchStyles_unstable: CustomStyleHook;
+    useEmptySwatchStyles_unstable: CustomStyleHook;
+    useSwatchPickerRowStyles_unstable: CustomStyleHook;
+    useSwatchPickerStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

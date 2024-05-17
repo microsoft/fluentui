@@ -1,186 +1,142 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css } from '@microsoft/fast-element';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
-  disabledCursor,
-  display,
-  ElementDefinitionContext,
-  focusVisible,
-  forcedColorsStylesheetBehavior,
-  RadioOptions,
-} from '@microsoft/fast-foundation';
-import { heightNumber } from '../styles';
-import {
-  accentFillActive,
-  accentFillHover,
-  accentFillRest,
-  designUnit,
-  disabledOpacity,
-  foregroundOnAccentRest,
-  neutralFillInputAltActive,
-  neutralFillInputAltFocus,
-  neutralFillInputAltHover,
-  neutralFillInputAltRest,
-  neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
-  strokeWidth,
-} from '../design-tokens';
-import { typeRampBase } from '../styles/patterns/type-ramp';
-import { focusTreatmentTight } from '../styles/focus';
+  borderRadiusCircular,
+  borderRadiusSmall,
+  colorCompoundBrandForeground1,
+  colorCompoundBrandForeground1Pressed,
+  colorCompoundBrandStrokeHover,
+  colorCompoundBrandStrokePressed,
+  colorNeutralForeground2,
+  colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
+  fontFamilyBase,
+  fontSizeBase300,
+  fontWeightRegular,
+  lineHeightBase300,
+  spacingHorizontalS,
+  spacingHorizontalXS,
+  spacingVerticalS,
+} from '../theme/design-tokens.js';
 
-export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: RadioOptions,
-) =>
-  css`
-    ${display('inline-flex')} :host {
-      --input-size: calc((${heightNumber} / 2) + ${designUnit});
-      align-items: center;
-      outline: none;
-      ${
-        /*
-         * Chromium likes to select label text or the default slot when
-         * the radio button is clicked. Maybe there is a better solution here?
-         */ ''
-      } user-select: none;
-      position: relative;
-      flex-direction: row;
-      transition: all 0.2s ease-in-out;
-    }
+/** Radio styles
+ * @public
+ */
+export const styles = css`
+  ${display('inline-grid')}
 
-    .control {
-      position: relative;
-      width: calc(var(--input-size) * 1px);
-      height: calc(var(--input-size) * 1px);
-      box-sizing: border-box;
-      border-radius: 50%;
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
-      background: ${neutralFillInputAltRest};
-      cursor: pointer;
+  :host {
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+    gap: ${spacingHorizontalXS};
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    user-select: none;
+    color: blue;
+    color: var(--state-color, ${colorNeutralForeground3});
+    padding-inline-end: ${spacingHorizontalS};
+    --control-border-color: ${colorNeutralStrokeAccessible};
+    --checked-indicator-background-color: ${colorCompoundBrandForeground1};
+    --state-color: ${colorNeutralForeground3};
+  }
+  :host([disabled]) {
+    --control-border-color: ${colorNeutralForegroundDisabled};
+    --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
+    --state-color: ${colorNeutralForegroundDisabled};
+  }
+  .label {
+    cursor: pointer;
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase300};
+  }
+  .label__hidden {
+    display: none;
+  }
+  .control {
+    box-sizing: border-box;
+    align-items: center;
+    border: 1px solid var(--control-border-color, ${colorNeutralStrokeAccessible});
+    border-radius: ${borderRadiusCircular};
+    display: flex;
+    height: 16px;
+    justify-content: center;
+    margin: ${spacingVerticalS} ${spacingHorizontalS};
+    position: relative;
+    width: 16px;
+    justify-self: center;
+  }
+  .checked-indicator {
+    border-radius: ${borderRadiusCircular};
+    height: 10px;
+    opacity: 0;
+    width: 10px;
+  }
+  :host([aria-checked='false']:hover) .control {
+    color: ${colorNeutralForeground2};
+  }
+  :host(:focus-visible) {
+    border-radius: ${borderRadiusSmall};
+    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
+  }
+  :host(:hover) .control {
+    border-color: ${colorNeutralStrokeAccessibleHover};
+  }
+  :host(:active) .control {
+    border-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+  :host([aria-checked='true']) .checked-indicator {
+    opacity: 1;
+  }
+  :host([aria-checked='true']) .control {
+    border-color: var(--control-border-color, ${colorNeutralStrokeAccessible});
+  }
+  :host([aria-checked='true']) .checked-indicator {
+    background-color: var(--checked-indicator-background-color, ${colorCompoundBrandForeground1});
+  }
+  :host([aria-checked='true']:hover) .control {
+    border-color: ${colorCompoundBrandStrokeHover};
+  }
+  :host([aria-checked='true']:hover) .checked-indicator {
+    background-color: ${colorCompoundBrandStrokeHover};
+  }
+  :host([aria-checked='true']:active) .control {
+    border-color: ${colorCompoundBrandStrokePressed};
+  }
+  :host([aria-checked='true']:active) .checked-indicator {
+    background: ${colorCompoundBrandForeground1Pressed};
+  }
+  :host([disabled]) {
+    color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
+  }
+  :host([disabled]) .control {
+    pointer-events: none;
+    border-color: ${colorNeutralForegroundDisabled};
+  }
+  :host([disabled]) .checked-indicator {
+    background: ${colorNeutralForegroundDisabled};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host .control {
+      border-color: InactiveBorder;
     }
-
-    .label__hidden {
-      display: none;
-      visibility: hidden;
+    :host([aria-checked='true']) .checked-indicator,
+    :host([aria-checked='true']:active) .checked-indicator,
+    :host([aria-checked='true']:hover) .checked-indicator {
+      background-color: Highlight;
+      border-color: ActiveBorder;
     }
-
-    .label {
-      ${typeRampBase}
-      color: ${neutralForegroundRest};
-      ${
-        /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-      } padding-inline-start: calc(${designUnit} * 2px + 2px);
-      margin-inline-end: calc(${designUnit} * 2px + 2px);
-      cursor: pointer;
-    }
-
-    .control,
-    slot[name='checked-indicator'] {
-      flex-shrink: 0;
-    }
-
-    slot[name='checked-indicator'] {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      fill: ${foregroundOnAccentRest};
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    :host(:not(.disabled):hover) .control {
-      background: ${neutralFillInputAltHover};
-      border-color: ${neutralStrokeStrongHover};
-    }
-
-    :host(:not(.disabled):active) .control {
-      background: ${neutralFillInputAltActive};
-      border-color: ${neutralStrokeStrongActive};
-    }
-
-    :host(:not(.disabled):active) slot[name='checked-indicator'] {
-      opacity: 1;
-    }
-
-    :host(:${focusVisible}) .control {
-      ${focusTreatmentTight}
-      background: ${neutralFillInputAltFocus};
-    }
-
-    :host(.checked) .control {
-      background: ${accentFillRest};
-      border-color: transparent;
-    }
-
-    :host(.checked:not(.disabled):hover) .control {
-      background: ${accentFillHover};
-      border-color: transparent;
-    }
-
-    :host(.checked:not(.disabled):active) .control {
-      background: ${accentFillActive};
-      border-color: transparent;
-    }
-
-    :host(.disabled) .label,
-    :host(.readonly) .label,
-    :host(.readonly) .control,
-    :host(.disabled) .control {
-      cursor: ${disabledCursor};
-    }
-
-    :host(.checked) slot[name='checked-indicator'] {
-      opacity: 1;
-    }
-
-    :host(.disabled) {
-      opacity: ${disabledOpacity};
-    }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        .control {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host(:not(.disabled):hover) .control,
-        :host(:not(.disabled):active) .control {
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(:${focusVisible}) .control {
-          forced-color-adjust: none;
-          background: ${SystemColors.Field};
-          outline-color: ${SystemColors.FieldText};
-        }
-        :host(.checked:not(.disabled):hover) .control,
-        :host(.checked:not(.disabled):active) .control {
-          border-color: ${SystemColors.Highlight};
-          background: ${SystemColors.Highlight};
-        }
-        :host(.checked) slot[name='checked-indicator'] {
-          fill: ${SystemColors.Highlight};
-        }
-        :host(.checked:hover) .control slot[name='checked-indicator'] {
-          fill: ${SystemColors.HighlightText};
-        }
-        :host(.disabled) {
-          opacity: 1;
-        }
-        :host(.disabled) .label {
-          color: ${SystemColors.GrayText};
-        }
-        :host(.disabled) .control,
-        :host(.checked.disabled) .control {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.GrayText};
-        }
-        :host(.disabled) slot[name='checked-indicator'],
-        :host(.checked.disabled) slot[name='checked-indicator'] {
-          fill: ${SystemColors.GrayText};
-        }
-      `,
-    ),
-  );
+  `),
+);

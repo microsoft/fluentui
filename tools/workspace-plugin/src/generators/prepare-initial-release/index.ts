@@ -124,6 +124,16 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
 
   updateFileContent(tree, { filePath: options.paths.jestConfig, updater: contentNameUpdater });
 
+  const bundleSizeFixturesRoot = joinPathFragments(options.projectConfig.root, 'bundle-size');
+  if (tree.exists(bundleSizeFixturesRoot)) {
+    visitNotIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
+      updateFileContent(tree, {
+        filePath,
+        updater: contentNameUpdater,
+      });
+    });
+  }
+
   const mdFilePath = {
     readme: joinPathFragments(options.projectConfig.root, 'README.md'),
     api: joinPathFragments(options.projectConfig.root, 'etc', options.normalizedPkgName + '.api.md'),

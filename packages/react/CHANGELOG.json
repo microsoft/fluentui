@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 07 May 2024 07:26:46 GMT",
+      "tag": "@fluentui/react_v8.118.2",
+      "version": "8.118.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ilmat@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "55c85d75a6b62659b137bf0a09fdcd7b7335dbe7",
+            "comment": "fix aria role for draggable columns in DetailsList DetailsHeader"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 07:25:44 GMT",
+      "tag": "@fluentui/react_v8.118.1",
+      "version": "8.118.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22",
+            "comment": "fix: Fixing SplitButton styles in High Contrast Mode."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 May 2024 07:27:45 GMT",
       "tag": "@fluentui/react_v8.118.0",
       "version": "8.118.0",

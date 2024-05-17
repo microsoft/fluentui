@@ -1,22 +1,18 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselButtonSlots, CarouselButtonState } from './CarouselButton.types';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
 
 export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots> = {
   root: 'fui-CarouselButton',
-  // TODO: add class names for all slots on CarouselButtonSlots.
-  // Should be of the form `<slotName>: 'fui-CarouselButton__<slotName>`
+  icon: 'fui-CarouselButton__icon',
 };
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
-
-  // TODO add additional classes for different states and/or slots
+  root: {},
 });
 
 /**
@@ -24,10 +20,16 @@ const useStyles = makeStyles({
  */
 export const useCarouselButtonStyles_unstable = (state: CarouselButtonState): CarouselButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(carouselButtonClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state = {
+    ...state,
+    ...useButtonStyles_unstable(state),
+  };
+
+  state.root.className = mergeClasses(carouselButtonClassNames.root, styles.root, state.root.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(carouselButtonClassNames.icon, state.icon.className);
+  }
 
   return state;
 };

@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { CarouselNavButton } from './CarouselNavButton';
+import { CarouselNavButtonProps } from './CarouselNavButton.types';
 
 describe('CarouselNavButton', () => {
   isConformant({
-    Component: CarouselNavButton,
+    Component: CarouselNavButton as React.FunctionComponent<CarouselNavButtonProps>,
     displayName: 'CarouselNavButton',
   });
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Make blank cells in heatmap chart accessible",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

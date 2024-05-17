@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Thu, 02 May 2024 11:36:33 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.65)
+
+Thu, 16 May 2024 09:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.64..@fluentui/react-field_v9.1.65)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+
+## [9.1.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.64)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.63..@fluentui/react-field_v9.1.64)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.59 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-label to v9.1.69 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
 
 ## [9.1.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.63)
 

@@ -194,8 +194,17 @@ const useInputBaseClassName = makeResetStyles({
     ':hover': {
       color: 'CanvasText',
     },
+    ':hover:active': {
+      color: 'CanvasText',
+    },
     ':enabled:checked': {
       ':hover': {
+        [`& ~ .${switchClassNames.indicator}`]: {
+          backgroundColor: 'Highlight',
+          color: 'Canvas',
+        },
+      },
+      ':hover:active': {
         [`& ~ .${switchClassNames.indicator}`]: {
           backgroundColor: 'Highlight',
           color: 'Canvas',

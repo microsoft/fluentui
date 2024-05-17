@@ -17,11 +17,11 @@ export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
  */
 const useNavSubItemSpecificStyles = makeStyles({
   base: {
-    paddingInlineStart: '36px',
+    paddingInlineStart: '46px',
   },
   selectedIndicator: {
     '::after': {
-      marginInlineStart: `-${navItemTokens.indicatorOffset + 24}px`,
+      marginInlineStart: `-${navItemTokens.indicatorOffset + 34}px`,
     },
   },
 });

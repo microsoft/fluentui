@@ -3,13 +3,22 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselNavState, CarouselNavSlots } from './CarouselNav.types';
+import { CarouselNavContextProvider } from './CarouselNavContext';
 
 /**
  * Render the final JSX of CarouselNav
  */
 export const renderCarouselNav_unstable = (state: CarouselNavState) => {
   assertSlots<CarouselNavSlots>(state);
+  const { values, renderNavButton } = state;
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {values.map(value => (
+        <CarouselNavContextProvider value={value} key={value}>
+          {renderNavButton(value)}
+        </CarouselNavContextProvider>
+      ))}
+    </state.root>
+  );
 };
