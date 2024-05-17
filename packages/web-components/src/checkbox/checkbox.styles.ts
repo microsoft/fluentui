@@ -198,34 +198,34 @@ export const styles = css`
     .checked-indicator {
       color: Highlight;
     }
-    :host(:active) .indeterminate-indicator,
+
+    :host(
+        :is(
+            :active,
+            [aria-checked='true'],
+            [aria-checked='mixed'],
+            [aria-checked='true']:hover,
+            [aria-checked='mixed']:hover
+          )
+      )
+      .control {
+      border-color: Highlight;
+    }
+
+    :host(:is(:hover, :active)) .indeterminate-indicator,
     .indeterminate-indicator {
       background-color: Highlight;
     }
-    :host([aria-checked='true']) .control,
-    :host([aria-checked='mixed']) .control,
-    :host([aria-checked='true']:hover) .control,
-    :host([aria-checked='mixed']:hover) .control,
-    :host(:active) .control {
-      border-color: Highlight;
-    }
-    :host(:hover) .indeterminate-indicator {
-      background-color: Highlight;
-    }
-    :host([disabled]) .control,
-    :host([aria-checked='mixed'][disabled]) .control,
-    :host([aria-checked='true'][disabled]) .control {
+
+    :host(:is([disabled], [aria-checked='true'][disabled], [aria-checked='mixed'][disabled])) .control {
       border-color: graytext;
     }
-    :host([aria-checked='true'][disabled]) .checked-indicator,
+
+    :host([disabled]) .indeterminate-indicator,
+    :host(:is([disabled], [aria-checked='true'][disabled], [aria-checked='mixed'][disabled])) .label,
     :host([disabled]) ::slotted([slot='start']),
-    :host([disabled]) .label,
-    :host([aria-checked='mixed'][disabled]) .label,
-    :host([aria-checked='true'][disabled]) .label {
+    :host([aria-checked='true'][disabled]) .checked-indicator {
       color: graytext;
-    }
-    :host([disabled]) .indeterminate-indicator {
-      background-color: graytext;
     }
   `),
 );
