@@ -47,9 +47,10 @@ export type PresenceOverride<CustomOverrideFields = {}> = {
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
 /** A factory function to create a presence motion, which has enter and exit transitions. */
-export type PresenceMotionFn<CustomProps = {}> = (
+export type PresenceMotionFn</* CustomProps = {} */> = (
   // TODO: DRY up with other types
-  params: { element: HTMLElement; animateOpacity?: boolean } & PresenceTransitionProps<CustomProps>,
+  // params: { element: HTMLElement; animateOpacity?: boolean } & PresenceTransitionProps<CustomProps>,
+  params: { element: HTMLElement; animateOpacity?: boolean },
 ) => PresenceMotion;
 
 export type MotionImperativeRef = {

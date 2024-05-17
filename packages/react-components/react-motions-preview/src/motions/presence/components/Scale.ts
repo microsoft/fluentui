@@ -1,24 +1,13 @@
 import { createPresenceComponent } from '../../../factories/createPresenceComponent';
+import { PresenceMotionFn } from '../../../types';
 import { motionTokens } from '../../motionTokens';
-import { PresenceMotionFn, PresenceOverrideFields, PresenceTransitionProps } from '../../../types';
+import { overridePresenceMotion } from '../../../factories/overridePresenceMotion';
 
-const duration = motionTokens.durationSlow;
+const { durationGentle, durationNormal, durationSlow, durationFast, curveDecelerateMax, curveAccelerateMax } =
+  motionTokens;
 
-// There may be Collapse-specific parameters in the future, e.g. for partial collapse
-type CollapseParams = PresenceOverrideFields;
-
-export const defaults: Required<PresenceTransitionProps<CollapseParams>> = {
-  enter: { duration, easing: motionTokens.curveDecelerateMin },
-  exit: { duration, easing: motionTokens.curveAccelerateMin },
-} as const;
-
-// Define a presence motion (enter/exit transitions) for scale in/out
-const scaleMotion: PresenceMotionFn<CollapseParams> = ({
-  element,
-  enter: enterOverride,
-  exit: exitOverride,
-  animateOpacity = true,
-}) => {
+/** Define a presence motion for scale in/out */
+const scaleMotion: PresenceMotionFn = ({ /* element, */ animateOpacity = true }) => {
   const fromOpacity = animateOpacity ? 0 : 1;
   const toOpacity = 1;
   const fromScale = 0.9; // Could be a custom param in the future
@@ -35,10 +24,24 @@ const scaleMotion: PresenceMotionFn<CollapseParams> = ({
   ];
 
   return {
-    enter: { ...defaults.enter, ...enterOverride, keyframes: enterKeyframes },
-    exit: { ...defaults.exit, ...exitOverride, keyframes: exitKeyframes },
+    enter: { duration: durationGentle, easing: curveDecelerateMax, keyframes: enterKeyframes },
+    exit: { duration: durationNormal, easing: curveAccelerateMax, keyframes: exitKeyframes },
   };
 };
 
 /** A React component that applies scale in/out transitions to its children. */
 export const Scale = createPresenceComponent(scaleMotion);
+
+export const ScaleSnappy = createPresenceComponent(
+  overridePresenceMotion(scaleMotion, {
+    enter: { duration: durationNormal, easing: curveDecelerateMax },
+    exit: { duration: durationFast, easing: curveAccelerateMax },
+  }),
+);
+
+export const ScaleExaggerated = createPresenceComponent(
+  overridePresenceMotion(scaleMotion, {
+    enter: { duration: durationSlow, easing: curveDecelerateMax },
+    exit: { duration: durationGentle, easing: curveAccelerateMax },
+  }),
+);

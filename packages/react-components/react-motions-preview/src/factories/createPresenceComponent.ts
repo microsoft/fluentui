@@ -8,19 +8,13 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { animate } from '../utils/animate';
 import { getChildElement } from '../utils/getChildElement';
-import type {
-  PresenceMotion,
-  MotionImperativeRef,
-  PresenceMotionFn,
-  PresenceOverrideFields,
-  PresenceOverride,
-} from '../types';
+import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
 type PresenceMotionEventData = EventData<'animation', AnimationPlaybackEvent> & {
   direction: 'enter' | 'exit';
 };
 
-export type PresenceComponentProps<CustomOverrides = {}> = {
+export type PresenceComponentProps = {
   /**
    * By default, the child component won't execute the "enter" motion when it initially mounts, regardless of the value
    * of "visible". If you desire this behavior, ensure both "appear" and "visible" are set to "true".
@@ -49,37 +43,28 @@ export type PresenceComponentProps<CustomOverrides = {}> = {
    * you prefer to unmount the component after it finishes exiting.
    */
   unmountOnExit?: boolean;
-
-  override?: PresenceOverride<CustomOverrides>;
 };
 
 function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
   return !appear && isFirstMount && visible;
 }
 
-export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>) {
+export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const {
-      appear,
-      children,
-      imperativeRef,
-      onMotionFinish,
-      visible,
-      animateOpacity,
-      unmountOnExit,
-      override = {},
-    } = { ...itemContext, ...props };
+    const { appear, children, imperativeRef, onMotionFinish, visible, animateOpacity, unmountOnExit } = {
+      ...itemContext,
+      ...props,
+    };
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
 
     const animationRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
-    // For override and animateOpacity props, we don't want to restart the animation when they change.
-    // So we use refs to store the current values, which will not rerender the component when they change.
-    // The new value will show on the next animation, usually triggered by the visible prop.
-    const overrideRef = React.useRef(override);
+    // For a prop like animateOpacity, we don't want to restart the animation when it changes.
+    // So we use a ref to store the current value, which will not rerender the component when it changes.
+    // The new value will show on the next animation, usually by toggling the `visible` prop.
     const animateOpacityRef = React.useRef(animateOpacity);
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean }>({});
@@ -109,17 +94,9 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
           return;
         }
 
-        const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
-        // Only create override objects if there are any overrides;
-        // otherwise use undefined so enter/exit overrides won't be passed to the motion function
-        const enter =
-          all || enterProp ? ({ ...all, ...enterProp } as Partial<PresenceOverrideFields & CustomProps>) : undefined;
-        const exit =
-          all || exitProp ? ({ ...all, ...exitProp } as Partial<PresenceOverrideFields & CustomProps>) : undefined;
-
         const presenceDefinition =
           typeof motion === 'function'
-            ? motion({ element: elementRef.current, animateOpacity: animateOpacityRef.current, enter, exit })
+            ? motion({ element: elementRef.current, animateOpacity: animateOpacityRef.current })
             : motion;
         const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
 
@@ -152,10 +129,6 @@ export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
     );
-
-    React.useEffect(() => {
-      overrideRef.current = override;
-    }, [override]);
 
     React.useEffect(() => {
       animateOpacityRef.current = animateOpacity;
