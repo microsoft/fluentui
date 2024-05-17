@@ -39,16 +39,11 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   React.useEffect(() => {
     const element = innerRef.current;
 
-    if (targetDocument && element) {
+    if (hasMenuContext && targetDocument && element) {
       const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
         const nextElement = e.detail.next;
 
-        if (
-          nextElement &&
-          hasMenuContext &&
-          element.contains(targetDocument.activeElement) &&
-          !element.contains(nextElement)
-        ) {
+        if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
           e.preventDefault();
         }
       };
