@@ -32,7 +32,12 @@ const optionTextForEasing = (optionKey: CurveKey | '') => {
   return `${displayKey}`;
 };
 
-const paramStyles: React.CSSProperties = { color: 'lightgreen' };
+const overrideAbsentStyle: React.CSSProperties = { color: 'yellow' };
+const overridePresentStyle: React.CSSProperties = { color: 'lightgreen' };
+const paramStyle: React.CSSProperties = { color: 'lightpink' };
+const identifier1Style: React.CSSProperties = { color: 'lightblue' };
+const identifier2Style: React.CSSProperties = { color: 'pink' };
+const commentStyle: React.CSSProperties = { color: '#888' };
 const monospaceFont = 'Lucida Console, Monaco, Courier New';
 
 export const useMotionConfig = ({ overrideName }: { overrideName: 'enter' | 'exit' | 'all' }) => {
@@ -189,14 +194,38 @@ export const OverrideCodePreviewJSON = ({
     overrideNamed && Object.keys(overrideNamed).length
       ? JSON.stringify(overrideNamed, null, ' ').replace(/"/g, '').replace(/:/g, ': ')
       : '';
-  const overrideJSX = overrideJSON ? <>{` override={${overrideJSON}}`}</> : null;
+  const overrideJSX = overrideJSON ? (
+    <span style={overridePresentStyle}>{overrideJSON}</span>
+  ) : (
+    <span style={overrideAbsentStyle}>{`{ /* select below */ }`}</span>
+  );
 
   const exampleCodeJSX = (
     <>
-      {`<${tagName} ...`}
-      <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
-      <span style={paramStyles}>{!unmountOnExit ? '' : ' unmountOnExit={true}'}</span>
+      {'const '}
+      <span style={identifier1Style}>override</span>
+      {' = '}
       {overrideJSX}
+      {';'}
+
+      <br />
+      {`const `}
+      <span style={identifier2Style}>Variant</span>
+      {` = createVariantComponent(${tagName}, `}
+      <span style={identifier1Style}>override</span>
+      {`);`}
+
+      <br />
+      <span style={commentStyle}>{`// use custom component`}</span>
+      <br />
+
+      {/* {`const MyVariant = createVariantComponent(${tagName}, ${overrideJSON});`} */}
+      {`<`}
+      <span style={identifier2Style}>Variant</span>
+      {` ...`}
+      <span style={paramStyle}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
+      <span style={paramStyle}>{!unmountOnExit ? '' : ' unmountOnExit={true}'}</span>
+      {/* {overrideJSX} */}
       {'>'}
     </>
   );
@@ -272,8 +301,8 @@ export const OverrideCodePreview = ({
   const exampleCodeJSX = (
     <>
       {`<${tagName} ...`}
-      <span style={paramStyles}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
-      <span style={paramStyles}>{!unmountOnExit ? '' : ' unmountOnExit={true}'}</span>
+      <span style={paramStyle}>{animateOpacity ? '' : ' animateOpacity={false}'}</span>
+      <span style={paramStyle}>{!unmountOnExit ? '' : ' unmountOnExit={true}'}</span>
       {overrideJSX}
       {'>'}
     </>

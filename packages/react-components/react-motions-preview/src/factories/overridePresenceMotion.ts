@@ -1,20 +1,5 @@
 import { PresenceMotion, PresenceMotionFn } from '../types';
-// import * as React from 'react';
-// import { PresenceComponentProps } from './createPresenceComponent';
 import { PresenceOverride } from '../types';
-
-// TODO: replace override with mergePresenceMotion and move to own file
-/*
-export const createPresenceVariantComponent = <PresenceComponent extends React.FC<PresenceComponentProps>>({
-  component,
-  override,
-}: {
-  component: PresenceComponent;
-  override: PresenceOverride;
-}) => {
-  return (props: React.ComponentProps<PresenceComponent>) => component({ ...props, override });
-};
-*/
 
 export const overridePresenceMotion = (
   motion: PresenceMotion | PresenceMotionFn,

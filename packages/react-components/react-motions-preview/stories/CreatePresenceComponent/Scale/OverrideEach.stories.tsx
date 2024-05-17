@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Checkbox, ToggleButton } from '@fluentui/react-components';
-import { Scale } from '@fluentui/react-motions-preview';
+import { Scale, createVariantComponent } from '@fluentui/react-motions-preview';
 import { useMotionConfigurator, OverrideCodePreviewJSON } from '../utils/useMotionConfigurator';
 import description from './OverrideEach.stories.md';
 
@@ -42,9 +42,14 @@ export const OverrideEach = () => {
     overrideName: 'exit',
   });
 
-  // Merge overrides for enter and exit transitions
-  const override = { ...overrideEnter, ...overrideExit };
-  const overrideNamed = { ...overrideNamedEnter, ...overrideNamedExit };
+  const overrideNamed = React.useMemo(
+    () => ({ ...overrideNamedEnter, ...overrideNamedExit }),
+    [overrideNamedEnter, overrideNamedExit],
+  );
+  const MotionComponent = React.useMemo(
+    () => createVariantComponent(Scale, { ...overrideEnter, ...overrideExit }),
+    [overrideEnter, overrideExit],
+  );
 
   return (
     <>
@@ -72,10 +77,7 @@ export const OverrideEach = () => {
           <span>{visible ? '☑️' : '🔲'}</span>&nbsp; visible
         </ToggleButton>
       </div>
-
-      <Scale {...{ visible, animateOpacity, override, unmountOnExit }}>
-        <div>{loremIpsum(10)}</div>
-      </Scale>
+      {MotionComponent({ visible, animateOpacity, unmountOnExit, children: <div>{loremIpsum(10)}</div> })}
     </>
   );
 };

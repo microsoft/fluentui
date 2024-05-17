@@ -45,11 +45,16 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
+export type PresenceComponent<Motion = PresenceMotion | PresenceMotionFn> = React.FC<PresenceComponentProps> &
+  React.FC<PresenceComponentProps> & {
+    motionDefinition: Motion;
+  };
+
 function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
   return !appear && isFirstMount && visible;
 }
 
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
+export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof motion> {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
     const { appear, children, imperativeRef, onMotionFinish, visible, animateOpacity, unmountOnExit } = {
@@ -141,5 +146,5 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     return null;
   };
 
-  return Presence;
+  return Object.assign(Presence, { motionDefinition: motion });
 }
