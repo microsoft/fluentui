@@ -7,6 +7,7 @@ export interface SidebarProps {
   className?: string;
 }
 
+/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground3,
   },
 });
+/* eslint-enable deprecation/deprecation */
 
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();

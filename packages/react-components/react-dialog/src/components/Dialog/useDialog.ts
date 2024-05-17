@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
+import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
@@ -44,19 +44,6 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const isNestedDialog = useHasParentContext(DialogContext);
-
-  const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
-  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
-  useIsomorphicLayoutEffect(() => {
-    if (isNestedDialog) {
-      return;
-    }
-    if (open && isBodyScrollLocked) {
-      disableBodyScroll();
-    } else {
-      enableBodyScroll();
-    }
-  }, [disableBodyScroll, enableBodyScroll, isBodyScrollLocked, isNestedDialog, open]);
 
   return {
     components: {

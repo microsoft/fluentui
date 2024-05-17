@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bump @griffel/react",
+  "packageName": "@fluentui/react-positioning",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

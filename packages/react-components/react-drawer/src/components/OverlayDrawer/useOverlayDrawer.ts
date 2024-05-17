@@ -43,7 +43,7 @@ export const useOverlayDrawer_unstable = (
 
   const dialog = slot.always(
     {
-      open: true,
+      open,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
