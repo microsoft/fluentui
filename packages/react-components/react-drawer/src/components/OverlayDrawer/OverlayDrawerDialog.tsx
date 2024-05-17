@@ -9,7 +9,8 @@ import {
   useDialogContextValues_unstable,
 } from '@fluentui/react-dialog';
 
-const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const renderOverlayDrawerDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
   const { content, trigger } = state;
 
   return (
@@ -32,7 +33,7 @@ export const OverlayDrawerDialog: React.FC<DialogProps> = React.memo(props => {
   const state = useDialog_unstable(props);
   const contextValues = useDialogContextValues_unstable(state);
 
-  return renderDialog_unstable(state, contextValues);
+  return renderOverlayDrawerDialog_unstable(state, contextValues);
 });
 
 OverlayDrawerDialog.displayName = 'OverlayDrawerDialog';
