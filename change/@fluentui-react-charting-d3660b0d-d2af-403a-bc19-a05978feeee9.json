@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Enabled focus for events in line chart with keyboard",
+  "comment": "Updated opacity value for cards title",
   "packageName": "@fluentui/react-charting",
   "email": "132879294+v-baambati@users.noreply.github.com",
   "dependentChangeType": "patch"
