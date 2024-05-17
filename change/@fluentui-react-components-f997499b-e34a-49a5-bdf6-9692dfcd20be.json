@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds MaterialType context to support Semi Transparency",
+  "packageName": "@fluentui/react-components",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
