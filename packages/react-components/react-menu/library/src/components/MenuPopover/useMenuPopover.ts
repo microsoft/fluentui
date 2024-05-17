@@ -4,7 +4,7 @@ import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTim
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent, useMaterialType } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 
@@ -29,6 +29,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const canDispatchCustomEventRef = React.useRef(true);
   const restoreFocusSourceAttributes = useRestoreFocusSource();
   const [setThrottleTimeout, clearThrottleTimeout] = useTimeout();
+  const materialType = useMaterialType();
 
   const { dir } = useFluent();
   const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
@@ -97,5 +98,5 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     }
     onKeyDownOriginal?.(event);
   });
-  return { inline, mountNode, components: { root: 'div' }, root: rootProps };
+  return { materialType, inline, mountNode, components: { root: 'div' }, root: rootProps };
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEventCallback, useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent, useMaterialType } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
 import {
@@ -38,8 +38,10 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
   const dismissedWithKeyboardRef = React.useRef(false);
+  const materialType = useMaterialType();
 
   const state: MenuItemState = {
+    materialType,
     hasSubmenu,
     disabled,
     persistOnClick,

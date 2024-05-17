@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   root: {
     alignItems: 'center',
     borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground2,
     columnGap: tokens.spacingHorizontalXS,
     cursor: 'pointer',
     display: 'flex',
@@ -125,6 +125,20 @@ const useStyles = makeStyles({
     },
   },
   multiselectCheckDisabled: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
+  materialType: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackground,
+      color: tokens.colorNeutralForeground1Hover,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
+    },
+
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackground,
+      color: tokens.colorNeutralForeground1Pressed,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
+    },
+  },
 });
 
 /**
@@ -141,6 +155,7 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
     styles.active,
     disabled && styles.disabled,
     selected && styles.selected,
+    state.materialType && styles.materialType,
     state.root.className,
   );
 

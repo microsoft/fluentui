@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-u
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
+import { useMaterialType } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -28,6 +29,7 @@ export const usePopoverSurface_unstable = (
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const inertTrapFocus = usePopoverContext_unstable(context => context.inertTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
+  const materialType = useMaterialType();
   const { modalAttributes } = useModalAttributes({
     trapFocus,
     legacyTrapFocus: !inertTrapFocus,
@@ -35,6 +37,7 @@ export const usePopoverSurface_unstable = (
   });
 
   const state: PopoverSurfaceState = {
+    materialType,
     inline,
     appearance,
     withArrow,

@@ -1,3 +1,4 @@
+import { MaterialType } from '@fluentui/react-shared-contexts';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuDividerSlots = {
@@ -6,4 +7,6 @@ export type MenuDividerSlots = {
 
 export type MenuDividerProps = ComponentProps<MenuDividerSlots>;
 
-export type MenuDividerState = ComponentState<MenuDividerSlots>;
+export type MenuDividerState = ComponentState<MenuDividerSlots> & {
+  materialType?: MaterialType;
+};

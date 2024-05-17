@@ -1,4 +1,5 @@
 import type { PortalProps } from '@fluentui/react-portal';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuPopoverSlots = {
@@ -20,4 +21,5 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> &
      * This option is disregarded for submenus
      */
     inline: boolean;
+    materialType?: MaterialTypeContextValue;
   };

@@ -99,8 +99,11 @@ export {
   usePortalMountNode,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
+  MaterialTypeProvider,
+  useMaterialType,
+  MaterialType,
 } from '@fluentui/react-shared-contexts';
-export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
+export type { AnnounceContextValue, MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
   // eslint-disable-next-line deprecation/deprecation

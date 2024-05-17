@@ -5,6 +5,7 @@ import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
 import { useListboxContext_unstable } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
+import { useMaterialType } from '@fluentui/react-shared-contexts';
 
 function getTextString(text: string | undefined, children: React.ReactNode) {
   if (text !== undefined) {
@@ -98,7 +99,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     ? { role: 'menuitemcheckbox', 'aria-checked': selected }
     : { role: 'option', 'aria-selected': selected };
 
+  const materialType = useMaterialType();
+
   return {
+    materialType,
     components: {
       root: 'div',
       checkIcon: 'span',

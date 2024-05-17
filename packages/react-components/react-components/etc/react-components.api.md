@@ -451,6 +451,9 @@ import { ListboxState } from '@fluentui/react-combobox';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
+import { MaterialType } from '@fluentui/react-shared-contexts';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
+import { MaterialTypeProvider } from '@fluentui/react-shared-contexts';
 import { Menu } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
 import { menuButtonClassNames } from '@fluentui/react-button';
@@ -1467,6 +1470,7 @@ import { useLinkStyles_unstable } from '@fluentui/react-link';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useMaterialType } from '@fluentui/react-shared-contexts';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -2612,6 +2616,12 @@ export { makeResetStyles }
 export { makeStaticStyles }
 
 export { makeStyles }
+
+export { MaterialType }
+
+export { MaterialTypeContextValue }
+
+export { MaterialTypeProvider }
 
 export { Menu }
 
@@ -4644,6 +4654,8 @@ export { useListbox_unstable }
 export { useListboxContextValues }
 
 export { useListboxStyles_unstable }
+
+export { useMaterialType }
 
 export { useMenu_unstable }
 

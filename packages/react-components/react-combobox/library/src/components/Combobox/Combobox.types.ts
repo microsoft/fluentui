@@ -10,6 +10,7 @@ import type {
   ComboboxBaseState,
 } from '../../utils/ComboboxBase.types';
 import { Listbox } from '../Listbox/Listbox';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 
 export type ComboboxSlots = {
   /** The root combobox slot */
@@ -47,6 +48,7 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
   ComboboxBaseState & {
     showClearIcon?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
+    materialType?: MaterialTypeContextValue;
   };
 
 /* Export types defined in ComboboxBase */

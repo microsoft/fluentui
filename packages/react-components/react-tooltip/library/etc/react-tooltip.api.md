@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -51,6 +52,7 @@ export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mo
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;
+    materialType?: MaterialTypeContextValue;
 };
 
 // @public

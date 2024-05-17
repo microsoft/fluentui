@@ -48,3 +48,6 @@ export type {
   AnnounceContextValue as AnnounceContextValue_unstable,
   AnnounceOptions,
 } from './AnnounceContext';
+
+export { MaterialTypeProvider, useMaterialType, MaterialType } from './MaterialTypeContext';
+export type { MaterialTypeContextValue } from './MaterialTypeContext';

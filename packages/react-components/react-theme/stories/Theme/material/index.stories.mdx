@@ -1,0 +1,17 @@
+import { Meta, Canvas, Title, Story } from '@storybook/addon-docs';
+import { Material } from './ThemeMaterial.stories';
+import { MaterialMenu } from './ThemeMaterialMenu.stories';
+
+<Meta title="Theme/Material" />
+
+<Title>Material</Title>
+
+<Canvas withSource="none">
+  <Story name="All" story={Material} />
+</Canvas>
+
+<Title>Menu</Title>
+
+<Canvas withSource="none">
+  <Story name="Menu" story={MaterialMenu} />
+</Canvas>

@@ -9,6 +9,7 @@ import type {
   ComboboxBaseState,
 } from '../../utils/ComboboxBase.types';
 import { Listbox } from '../Listbox/Listbox';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 
 export type DropdownSlots = {
   /** The root dropdown slot */
@@ -43,6 +44,7 @@ export type DropdownState = ComponentState<DropdownSlots> &
     showClearButton?: boolean;
 
     activeDescendantController: ActiveDescendantImperativeRef;
+    materialType?: MaterialTypeContextValue;
   };
 
 /* Export types defined in ComboboxBase */

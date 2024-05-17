@@ -19,6 +19,7 @@ import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
+import { useMaterialType } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Dropdown.
@@ -41,6 +42,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
+  const materialType = useMaterialType();
 
   const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
   const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
@@ -95,6 +97,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const showClearButton = selectedOptions.length > 0 && clearable && !multiselect;
   const state: DropdownState = {
+    materialType,
     components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     button: trigger,

@@ -4,6 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 import { arrowHeight } from './private/constants';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { MaterialType } from '@fluentui/react-shared-contexts';
 
 export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
   content: 'fui-Tooltip__content',
@@ -46,6 +47,28 @@ const useStyles = makeStyles({
   arrow: createArrowStyles({ arrowHeight }),
 });
 
+const useMaterialTypeStyles = makeStyles<MaterialType>({
+  [MaterialType.Opaque]: {},
+  [MaterialType.SemiOpaque]: {
+    backdropFilter: 'blur(80px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.Translucent]: {
+    backdropFilter: 'blur(45px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.SemiTransparent]: {
+    backdropFilter: 'blur(30px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+});
+
 /**
  * Apply styling to the Tooltip slots based on the state
  */
@@ -53,6 +76,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
   'use no memo';
 
   const styles = useStyles();
+  const materialTypeStyles = useMaterialTypeStyles();
 
   state.content.className = mergeClasses(
     tooltipClassNames.content,
@@ -60,6 +84,7 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
     state.appearance === 'inverted' && styles.inverted,
     state.visible && styles.visible,
     state.content.className,
+    state.materialType && materialTypeStyles[state.materialType],
   );
 
   state.arrowClassName = styles.arrow;

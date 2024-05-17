@@ -3,6 +3,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
+import { MaterialType } from '@fluentui/react-shared-contexts';
 
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
@@ -252,6 +253,28 @@ const useIconStyles = makeStyles({
   },
 });
 
+const useMaterialTypeStyles = makeStyles<MaterialType>({
+  [MaterialType.Opaque]: {},
+  [MaterialType.SemiOpaque]: {
+    backdropFilter: 'blur(80px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.Translucent]: {
+    backdropFilter: 'blur(45px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.SemiTransparent]: {
+    backdropFilter: 'blur(30px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+});
+
 /**
  * Apply styling to the Combobox slots based on the state
  */
@@ -264,6 +287,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
+  const materialTypeStyles = useMaterialTypeStyles();
 
   state.root.className = mergeClasses(
     comboboxClassNames.root,
@@ -291,6 +315,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
       styles.listbox,
       state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
+      state.materialType && materialTypeStyles[state.materialType],
       state.listbox.className,
     );
   }
