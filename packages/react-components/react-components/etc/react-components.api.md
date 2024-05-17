@@ -529,6 +529,7 @@ import { mergeClasses } from '@griffel/react';
 import { MessageBar } from '@fluentui/react-message-bar';
 import { MessageBarActions } from '@fluentui/react-message-bar';
 import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsContextValues } from '@fluentui/react-message-bar';
 import { MessageBarActionsProps } from '@fluentui/react-message-bar';
 import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
 import { MessageBarActionsState } from '@fluentui/react-message-bar';
@@ -540,6 +541,7 @@ import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { messageBarClassNames } from '@fluentui/react-message-bar';
 import { MessageBarContextProvider } from '@fluentui/react-message-bar';
 import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarContextValues } from '@fluentui/react-message-bar';
 import { MessageBarGroup } from '@fluentui/react-message-bar';
 import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
 import { MessageBarGroupProps } from '@fluentui/react-message-bar';
@@ -554,6 +556,7 @@ import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
 import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
+import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -2750,6 +2753,8 @@ export { MessageBarActions }
 
 export { messageBarActionsClassNames }
 
+export { MessageBarActionsContextValues }
+
 export { MessageBarActionsProps }
 
 export { MessageBarActionsSlots }
@@ -2771,6 +2776,8 @@ export { messageBarClassNames }
 export { MessageBarContextProvider }
 
 export { MessageBarContextValue }
+
+export { MessageBarContextValues }
 
 export { MessageBarGroup }
 
@@ -2799,6 +2806,8 @@ export { MessageBarTitleProps }
 export { MessageBarTitleSlots }
 
 export { MessageBarTitleState }
+
+export { MessageBarTransitionContextValue }
 
 export { OnOpenChangeData }
 
