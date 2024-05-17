@@ -143,7 +143,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
-          <NavItem icon={<Dashboard />} value="1">
+          <NavItem onClick={someClickHandler} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
           <NavItem href="https://www.bing.com" icon={<Announcements />} value="2">
@@ -192,8 +192,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           </NavCategory>
 
           <Caption1Strong className={styles.headingContent}>Learning</Caption1Strong>
-          {/* As button, since no href is present */}
-          <NavItem icon={<TrainingPrograms />} as="button" onClick={someClickHandler} value="15">
+          <NavItem icon={<TrainingPrograms />} onClick={someClickHandler} value="15">
             Training Programs
           </NavItem>
           <NavCategory value="16">
@@ -202,8 +201,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               <NavSubItem href="https://www.bing.com" onClick={someClickHandler} value="17">
                 Career Paths
               </NavSubItem>
-              {/* As button, since no href is present */}
-              <NavSubItem as="a" onClick={someClickHandler} value="18">
+              <NavSubItem onClick={someClickHandler} value="18">
                 Planning
               </NavSubItem>
             </NavSubItemGroup>

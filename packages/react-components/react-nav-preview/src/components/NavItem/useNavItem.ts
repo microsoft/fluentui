@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { NavItemProps, NavItemState } from './NavItem.types';
-import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render NavItem.
@@ -36,7 +37,7 @@ export const useNavItem_unstable = (
     }
   });
 
-  const _navItem = slot.always<ARIAButtonSlotProps<'a'>>(
+  const root = slot.always<ARIAButtonSlotProps<'a'>>(
     getIntrinsicElementProps(rootElementType, useARIAButtonProps(rootElementType, props)),
     {
       elementType: rootElementType,
@@ -47,7 +48,7 @@ export const useNavItem_unstable = (
     },
   );
 
-  _navItem.onClick = onNavItemClick;
+  root.onClick = onNavItemClick;
 
   React.useEffect(() => {
     onRegister({
@@ -62,7 +63,7 @@ export const useNavItem_unstable = (
 
   return {
     components: { root: rootElementType, icon: 'span' },
-    root: _navItem,
+    root: root,
     icon: slot.optional(icon, {
       elementType: 'span',
     }),

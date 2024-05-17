@@ -29,6 +29,9 @@ export const useRootDefaultClassName = makeResetStyles({
   color: tokens.colorNeutralForeground2,
   textDecorationLine: 'none',
   border: 'none',
+  // this element can change between a button and an anchor
+  // so we need to reset box sizing to prevent horizontal overflow
+  boxSizing: 'border-box',
   width: '100%',
   ...typographyStyles.body1,
   ':hover': {
