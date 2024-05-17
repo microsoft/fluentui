@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 17 May 2024 04:06:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.17",
+      "version": "3.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "74312a0e79ef7297b0a5a1d2e63af24d4786ac38",
+            "comment": "fix(web-components): remove determinate from spinner implementation"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fa9416a9f3fefc36b2e2ee3b32ea8c038bb4d91e",
+            "comment": "Fix compound disabled selector in fluent-button and fluent-anchor-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 May 2024 04:07:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.16",
       "version": "3.0.0-beta.16",

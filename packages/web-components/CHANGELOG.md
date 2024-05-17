@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 16 May 2024 04:07:03 GMT and should not be manually modified.
+This log was last generated on Fri, 17 May 2024 04:06:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.17)
+
+Fri, 17 May 2024 04:06:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.16..@fluentui/web-components_v3.0.0-beta.17)
+
+### Changes
+
+- fix(web-components): remove determinate from spinner implementation ([PR #31404](https://github.com/microsoft/fluentui/pull/31404) by 13071055+chrisdholt@users.noreply.github.com)
+- Fix compound disabled selector in fluent-button and fluent-anchor-button ([PR #31302](https://github.com/microsoft/fluentui/pull/31302) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.16)
 
