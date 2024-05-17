@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pulling a fix for https://github.com/microsoft/tabster/issues/374.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
