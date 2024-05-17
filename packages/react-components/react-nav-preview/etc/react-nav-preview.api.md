@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DrawerBodyProps } from '@fluentui/react-drawer';
@@ -203,7 +204,8 @@ export const NavItem: ForwardRefComponent<NavItemProps>;
 export const navItemClassNames: SlotClassNames<NavItemSlots>;
 
 // @public
-export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
+export type NavItemProps = ComponentProps<NavItemSlots> & {
+    href?: string;
     value: NavItemValue;
 };
 
@@ -215,7 +217,7 @@ export type NavItemRegisterData = {
 
 // @public (undocumented)
 export type NavItemSlots = {
-    root: NonNullable<Slot<'a'>>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
     icon?: Slot<'span'>;
 };
 
@@ -293,13 +295,14 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
 };
 
 // @public
-export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
+export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {
+    href?: string;
     value: NavItemValue;
 };
 
 // @public (undocumented)
 export type NavSubItemSlots = {
-    root: Slot<'a'>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 };
 
 // @public
@@ -398,7 +401,7 @@ export const useNavDrawerHeaderStyles_unstable: (state: NavDrawerHeaderState) =>
 export const useNavDrawerStyles_unstable: (state: NavDrawerState) => NavDrawerState;
 
 // @public
-export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavItemState;
+export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => NavItemState;
 
 // @public
 export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
@@ -413,7 +416,7 @@ export const useNavSectionHeaderStyles_unstable: (state: NavSectionHeaderState) 
 export const useNavStyles_unstable: (state: NavState) => NavState;
 
 // @public
-export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavSubItemState;
+export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => NavSubItemState;
 
 // @public
 export const useNavSubItemGroup_unstable: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;

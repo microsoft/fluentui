@@ -23,6 +23,11 @@ export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 // @public (undocumented)
 export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>;
 
+// @public (undocumented)
+export type MessageBarActionsContextValues = {
+    button: ButtonContextValue;
+};
+
 // @public
 export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
 
@@ -69,6 +74,11 @@ export type MessageBarContextValue = {
     actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
     bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
     titleId: string;
+};
+
+// @public (undocumented)
+export type MessageBarContextValues = {
+    messageBar: MessageBarContextValue;
 };
 
 // @public

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-swatch-picker): added CustomStyleHooks",
+  "packageName": "@fluentui/react-provider",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}

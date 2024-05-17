@@ -39,8 +39,8 @@
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.8",
     "@fluentui/react-jsx-runtime": "^9.0.37",
-    "@griffel/core": "^1.14.1",
-    "@griffel/react": "^1.5.14",
+    "@griffel/core": "^1.16.0",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
