@@ -17,7 +17,7 @@ const ESLint = new CLIEngine({
 });
 const pluginName = 'gulp-example-source';
 
-const createExampleSourceCode = (file: Vinyl): ExampleSource => {
+const createExampleSourceCode = async (file: Vinyl): Promise<ExampleSource> => {
   const tsSource = file.contents?.toString() ?? '';
 
   const babelResult = Babel.transform(tsSource, {
@@ -27,7 +27,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
     presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
     sourceType: 'module',
   });
-  const prettierResult = prettier.format(babelResult?.code ?? '', {
+  const prettierResult = await prettier.format(babelResult?.code ?? '', {
     ...prettierConfig,
     trailingComma: 'all',
     printWidth: 100,
@@ -46,7 +46,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
 };
 
 export default () =>
-  through.obj((file: Vinyl, enc, cb) => {
+  through.obj(async (file: Vinyl, enc, cb) => {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -59,7 +59,7 @@ export default () =>
 
     try {
       const sourcePath = getRelativePathToSourceFile(file.path);
-      const source = createExampleSourceCode(file);
+      const source = await createExampleSourceCode(file);
 
       const sourceFile = new Vinyl({
         path: sourcePath,
