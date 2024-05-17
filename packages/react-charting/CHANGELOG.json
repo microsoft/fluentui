@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 15 May 2024 07:25:15 GMT",
+      "tag": "@fluentui/react-charting_v5.21.8",
+      "version": "5.21.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bf854a4b7ba1ac057f57a21527cf1d0240c14d9b",
+            "comment": "Fix focus trap issue in sankey chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "aa5c3955ff992acb607596012c63424a1df81c57",
+            "comment": "Fix focus order issue in legends overflow callout"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 May 2024 07:25:17 GMT",
       "tag": "@fluentui/react-charting_v5.21.7",
       "version": "5.21.7",

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: bump @griffel/react",
+  "packageName": "@fluentui/react-alert",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

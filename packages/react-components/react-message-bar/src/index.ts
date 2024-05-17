@@ -7,7 +7,13 @@ export {
   messageBarClassNames,
 } from './MessageBar';
 
-export type { MessageBarProps, MessageBarSlots, MessageBarState, MessageBarIntent } from './MessageBar';
+export type {
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+  MessageBarIntent,
+  MessageBarContextValues,
+} from './MessageBar';
 
 export {
   MessageBarTitle,
@@ -28,7 +34,12 @@ export {
   messageBarActionsClassNames,
 } from './MessageBarActions';
 
-export type { MessageBarActionsProps, MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions';
+export type {
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+  MessageBarActionsContextValues,
+} from './MessageBarActions';
 
 export {
   MessageBarBody,

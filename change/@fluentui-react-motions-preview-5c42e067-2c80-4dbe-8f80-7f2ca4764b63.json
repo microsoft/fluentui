@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(motions): add mock for .animate() calls",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
