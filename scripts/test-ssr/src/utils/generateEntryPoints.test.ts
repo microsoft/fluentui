@@ -1,9 +1,18 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+import * as prettierSync from '@prettier/sync';
 import * as tmp from 'tmp';
 
 import { generateEntryPoints } from './generateEntryPoints';
+
+jest.mock('prettier', () => {
+  const formatStaticOverride = (source: string, options: Record<string, unknown>) =>
+    Promise.resolve(prettierSync.format(source, options));
+  return {
+    format: formatStaticOverride,
+  };
+});
 
 describe('generateEntryPoints', () => {
   it('creates entry point files', async () => {
@@ -55,22 +64,22 @@ describe('generateEntryPoints', () => {
       "
     `);
     expect(appFile).toMatchInlineSnapshot(`
-      "import { RendererProvider, createDOMRenderer } from \\"@griffel/react\\";
-      import * as React from \\"react\\";
-      import * as ReactDOM from \\"react-dom\\";
+"import { RendererProvider, createDOMRenderer } from \\"@griffel/react\\";
+import * as React from \\"react\\";
+import * as ReactDOM from \\"react-dom\\";
 
-      import { App } from \\"./stories\\";
+import { App } from \\"./stories\\";
 
-      const renderer = createDOMRenderer();
+const renderer = createDOMRenderer();
 
-      // .hydrate() is used to trigger hydration on pre-generated markup in \\"index.html\\"
-      ReactDOM.hydrate(
-        <RendererProvider renderer={renderer}>
-          <App />
-        </RendererProvider>,
-        document.querySelector(\\"#root\\")
-      );
-      "
-    `);
+// .hydrate() is used to trigger hydration on pre-generated markup in \\"index.html\\"
+ReactDOM.hydrate(
+  <RendererProvider renderer={renderer}>
+    <App />
+  </RendererProvider>,
+  document.querySelector(\\"#root\\"),
+);
+"
+`);
   });
 });
