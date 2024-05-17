@@ -5,7 +5,7 @@ import {
   DrawerHeaderTitle,
   OverlayDrawer,
   Button,
-  Label,
+  Field,
   useId,
   tokens,
   makeStyles,
@@ -68,13 +68,14 @@ export const CustomSize = () => {
         </Button>
 
         <div className={styles.field}>
-          <Label id={labelId}>Size</Label>
-          <Input
-            pattern="[0-9]*"
-            value={customSize.toString()}
-            onChange={(_, data) => setCustomSize(data.value ? parseInt(data.value, 10) : 0)}
-            id={inputId}
-          />
+          <Field label="Size">
+            <Input
+              pattern="[0-9]*"
+              value={customSize.toString()}
+              onChange={(_, data) => setCustomSize(data.value ? parseInt(data.value, 10) : 0)}
+              id={inputId}
+            />
+          </Field>
         </div>
       </div>
     </div>
