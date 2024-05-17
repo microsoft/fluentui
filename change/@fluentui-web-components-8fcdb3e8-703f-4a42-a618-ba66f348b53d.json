@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(web-components): update README.md and add initial developer quick start pages",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
