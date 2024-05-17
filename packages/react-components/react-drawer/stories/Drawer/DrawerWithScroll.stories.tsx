@@ -43,7 +43,7 @@ const Footer = () => {
 
 const Body = () => {
   return (
-    <DrawerBody tabIndex={0}>
+    <DrawerBody tabIndex={0} role="group" aria-label="Example scrolling content">
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus nam aut amet similique, iure vel voluptates
       cum cumque repellendus perferendis maiores officia unde in? Autem neque sequi maiores eum omnis. Lorem ipsum,
       dolor sit amet consectetur adipisicing elit. Perspiciatis ipsam explicabo tempora ipsum saepe nam. Eum aliquid
