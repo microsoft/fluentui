@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
+  ActiveOptionChangeData as ComboboxBaseActiveOptionChangeData,
   ComboboxBaseContextValues,
   ComboboxBaseOpenChangeData,
   ComboboxBaseOpenEvents,
@@ -52,3 +53,4 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
 export type ComboboxContextValues = ComboboxBaseContextValues;
 export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;
 export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
+export type ActiveOptionChangeData = ComboboxBaseActiveOptionChangeData;

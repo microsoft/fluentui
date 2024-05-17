@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 23 Apr 2024 08:17:47 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2024 11:36:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.1)
+
+Thu, 02 May 2024 11:36:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.14.0..@fluentui/react-menu_v9.14.1)
+
+### Patches
+
+-  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- daniharo:fix-menu-split ([PR #30959](https://github.com/microsoft/fluentui/pull/30959) by lingfangao@hotmail.com)
+- refactor: use timeout and animation frame utilities ([PR #31168](https://github.com/microsoft/fluentui/pull/31168) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.11.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-portal to v9.4.22 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
 
 ## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.0)
 

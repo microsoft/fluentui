@@ -50,7 +50,8 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     ...props,
     onOptionSelect: useEventCallback((event, data) =>
       props.onOptionSelect?.(event, {
-        ...data,
+        selectedOptions: data.selectedOptions,
+        value: data.optionValue,
         type: event.type,
         event,
       } as TagPickerOnOptionSelectData),
@@ -112,7 +113,6 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     setHasFocus: comboboxState.setHasFocus,
     setOpen,
     setValue: comboboxState.setValue,
-    multiselect: comboboxState.multiselect,
     value: comboboxState.value,
     freeform: comboboxState.freeform,
   };

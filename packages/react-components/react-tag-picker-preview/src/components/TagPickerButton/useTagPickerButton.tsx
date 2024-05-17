@@ -18,18 +18,8 @@ export const useTagPickerButton_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): TagPickerButtonState => {
   const { controller: activeDescendantController } = useActiveDescendantContext();
-  const {
-    triggerRef,
-    getOptionById,
-    open,
-    selectOption,
-    setHasFocus,
-    setOpen,
-    multiselect,
-    value,
-    popoverId,
-    hasSelectedOption,
-  } = usePickerContext();
+  const { triggerRef, getOptionById, open, selectOption, setHasFocus, setOpen, value, popoverId, hasSelectedOption } =
+    usePickerContext();
   // casting is required here as triggerRef can either be button or input,
   // but in this case we can assure it's a button
   const root = useButtonTriggerSlot(props, triggerRef as React.RefObject<HTMLButtonElement>, {
@@ -47,7 +37,7 @@ export const useTagPickerButton_unstable = (
       selectOption,
       setHasFocus,
       setOpen,
-      multiselect,
+      multiselect: true,
     },
   });
 
@@ -76,7 +66,6 @@ function usePickerContext() {
     setHasFocus: useTagPickerContext_unstable(ctx => ctx.setHasFocus),
     setOpen: useTagPickerContext_unstable(ctx => ctx.setOpen),
     setValue: useTagPickerContext_unstable(ctx => ctx.setValue),
-    multiselect: useTagPickerContext_unstable(ctx => ctx.multiselect),
     value: useTagPickerContext_unstable(ctx => ctx.value),
     popoverId: useTagPickerContext_unstable(ctx => ctx.popoverId),
     hasSelectedOption: useTagPickerContext_unstable(ctx => ctx.selectedOptions.length > 0),
