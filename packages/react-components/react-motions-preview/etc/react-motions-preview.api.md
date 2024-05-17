@@ -6,10 +6,7 @@
 
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
-import { FC } from 'react';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
-import { ReactNode } from 'react';
 
 // @public (undocumented)
 export type AtomMotion = {
@@ -20,23 +17,22 @@ export type AtomMotion = {
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
 // @public
-export const Collapse: FC<PresenceComponentProps<    {}>>;
+export const Collapse: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
-export const CollapseExaggerated: (props: PresenceComponentProps<    {}> & {
-    children?: ReactNode;
-}) => ReactElement<any, any> | null;
+export const CollapseExaggerated: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
-export const CollapseSnappy: (props: PresenceComponentProps<    {}> & {
-    children?: ReactNode;
-}) => ReactElement<any, any> | null;
+export const CollapseSnappy: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>): React_2.FC<PresenceComponentProps<{}>>;
+export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof motion>;
+
+// @public (undocumented)
+export const createVariantComponent: <T extends PresenceComponent<PresenceMotion | PresenceMotionFn>>(component: T, override: PresenceOverride) => PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
 export const curves: {
@@ -64,7 +60,7 @@ export const durations: {
 };
 
 // @public
-export const Fade: FC<PresenceComponentProps<    {}>>;
+export const Fade: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -115,13 +111,13 @@ export type PresenceMotion = {
 };
 
 // @public
-export type PresenceMotionFn<CustomProps = {}> = (params: {
+export type PresenceMotionFn = (params: {
     element: HTMLElement;
     animateOpacity?: boolean;
-} & PresenceTransitionProps<CustomProps>) => PresenceMotion;
+}) => PresenceMotion;
 
 // @public
-export const Scale: FC<PresenceComponentProps<    {}>>;
+export const Scale: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // (No @packageDocumentation comment for this package)
 
