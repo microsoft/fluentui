@@ -13,6 +13,7 @@ import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.Cus
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
 import { HorizontalBarChartVariantExample } from './HorizontalBarChart.Variant.Example';
+import { HorizontalBarChartErrorExample } from './HorizontalBarChart.Error.Example';
 
 const HorizontalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
@@ -24,6 +25,8 @@ const HorizontalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
 const HorizontalBarChartVariantExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Variant.Example.tsx') as string;
+const HorizontalBarChartErrorExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Error.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -50,6 +53,9 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             </ExampleCard>
             <ExampleCard title="HorizontalBarChart Variant" code={HorizontalBarChartVariantExampleCode}>
               <HorizontalBarChartVariantExample />
+            </ExampleCard>
+            <ExampleCard title="HorizontalBarChart Error" code={HorizontalBarChartErrorExampleCode}>
+              <HorizontalBarChartErrorExample />
             </ExampleCard>
           </div>
         }

@@ -678,6 +678,8 @@ export interface IHorizontalBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    handleEmptyState?: () => JSX.Element;
+    handleError?: () => JSX.Element;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
@@ -735,6 +737,8 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
+    handleEmptyState?: () => JSX.Element;
+    handleError?: () => JSX.Element;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
