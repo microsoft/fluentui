@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 13 May 2024 12:34:18 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.11.4)
+
+Thu, 16 May 2024 09:25:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.11.3..@fluentui/react-combobox_v9.11.4)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.1.65 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [9.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.11.3)
 

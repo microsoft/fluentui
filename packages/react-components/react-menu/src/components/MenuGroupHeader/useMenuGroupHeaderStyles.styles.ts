@@ -11,8 +11,8 @@ const useStyles = makeStyles({
   root: {
     fontSize: tokens.fontSizeBase200,
     color: tokens.colorNeutralForeground3,
-    paddingLeft: '12px',
-    paddingRight: '12px',
+    paddingLeft: '8px',
+    paddingRight: '8px',
     fontWeight: tokens.fontWeightSemibold,
     height: '32px',
     display: 'flex',

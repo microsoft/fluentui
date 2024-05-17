@@ -5,3 +5,7 @@ export const useHTMLNoScrollStyles = makeResetStyles({
   overflowY: ['hidden', 'clip'],
   scrollbarGutter: 'stable',
 });
+
+export const useBodyNoScrollStyles = makeResetStyles({
+  overflowY: 'hidden',
+});

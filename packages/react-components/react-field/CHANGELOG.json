@@ -2,6 +2,21 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Thu, 16 May 2024 09:25:15 GMT",
+      "tag": "@fluentui/react-field_v9.1.65",
+      "version": "9.1.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "c35e78e5853894033a69f6135ad003894a8b6a95",
+            "comment": " chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:02 GMT",
       "tag": "@fluentui/react-field_v9.1.64",
       "version": "9.1.64",

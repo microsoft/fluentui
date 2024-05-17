@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-list-preview
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.5)
+
+Thu, 16 May 2024 09:25:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.2.4..@fluentui/react-list-preview_v0.2.5)
+
+### Patches
+
+- Bump @fluentui/react-checkbox to v9.2.25 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.4)
 

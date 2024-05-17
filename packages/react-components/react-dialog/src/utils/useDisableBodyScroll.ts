@@ -1,37 +1,41 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useCallback } from 'react';
 
-import { useHTMLNoScrollStyles } from './useDisableBodyScroll.styles';
+import { useBodyNoScrollStyles, useHTMLNoScrollStyles } from './useDisableBodyScroll.styles';
 
 /**
- * hook that disables body scrolling through `overflowY: hidden` CSS property
+ * @internal
+ * A React *hook* that disables body scrolling through `overflowY: hidden` CSS property
  */
 export function useDisableBodyScroll(): {
   disableBodyScroll: () => void;
   enableBodyScroll: () => void;
 } {
-  const htmlNoScrollStyle = useHTMLNoScrollStyles();
+  const htmlNoScrollStyles = useHTMLNoScrollStyles();
+  const bodyNoScrollStyles = useBodyNoScrollStyles();
   const { targetDocument } = useFluent_unstable();
 
   const disableBodyScroll = useCallback(() => {
     if (!targetDocument) {
       return;
     }
-    const isScrollbarVisible =
-      (targetDocument.defaultView?.innerWidth ?? 0) > targetDocument.documentElement.clientWidth;
-    if (!isScrollbarVisible) {
+    const isHorizontalScrollbarVisible =
+      targetDocument.body.clientHeight > (targetDocument.defaultView?.innerHeight ?? 0);
+    if (!isHorizontalScrollbarVisible) {
       return;
     }
-    targetDocument.documentElement.classList.add(htmlNoScrollStyle);
+    targetDocument.documentElement.classList.add(htmlNoScrollStyles);
+    targetDocument.body.classList.add(bodyNoScrollStyles);
     return;
-  }, [targetDocument, htmlNoScrollStyle]);
+  }, [targetDocument, htmlNoScrollStyles, bodyNoScrollStyles]);
 
   const enableBodyScroll = useCallback(() => {
     if (!targetDocument) {
       return;
     }
-    targetDocument.documentElement.classList.remove(htmlNoScrollStyle);
-  }, [targetDocument, htmlNoScrollStyle]);
+    targetDocument.documentElement.classList.remove(htmlNoScrollStyles);
+    targetDocument.body.classList.remove(bodyNoScrollStyles);
+  }, [targetDocument, htmlNoScrollStyles, bodyNoScrollStyles]);
 
   return {
     disableBodyScroll,

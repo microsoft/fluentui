@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motions-preview
 
-This log was last generated on Thu, 09 May 2024 19:35:11 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2024 09:25:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.3.1)
+
+Thu, 16 May 2024 09:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.3.0..@fluentui/react-motions-preview_v0.3.1)
+
+### Patches
+
+- fix(motions): use useFirstMount() in createPresenceComponent() ([PR #31379](https://github.com/microsoft/fluentui/pull/31379) by olfedias@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.3.0)
 
