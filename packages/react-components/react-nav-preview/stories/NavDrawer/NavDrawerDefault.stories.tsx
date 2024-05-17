@@ -36,10 +36,10 @@ import {
   People20Regular,
   PeopleStar20Filled,
   PeopleStar20Regular,
-  PersonFilled,
+  Person20Filled,
   PersonLightbulb20Filled,
   PersonLightbulb20Regular,
-  PersonRegular,
+  Person20Regular,
   PersonSearch20Filled,
   PersonSearch20Regular,
   PreviewLink20Filled,
@@ -71,7 +71,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Person = bundleIcon(PersonFilled, PersonRegular);
+const Person = bundleIcon(Person20Filled, Person20Regular);
 const Dashboard = bundleIcon(Board20Filled, Board20Regular);
 const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
 const EmployeeSpotlight = bundleIcon(PersonLightbulb20Filled, PersonLightbulb20Regular);
