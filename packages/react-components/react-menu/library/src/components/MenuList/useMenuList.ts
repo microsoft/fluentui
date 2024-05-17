@@ -44,6 +44,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         const nextElement = e.detail.next;
 
         if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
+          // Preventing Tabster from handling Tab press, useMenuPopover will handle it.
           e.preventDefault();
         }
       };
