@@ -19,6 +19,8 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
         {trigger}
         {content && (
           <DialogSurfaceMotion appear visible={open} unmountOnExit>
+            // Casting here as content should be equivalent to <DialogSurface/>
+            // FIXME: content should not be ReactNode it should be ReactElement instead.
             {content as React.ReactElement}
           </DialogSurfaceMotion>
         )}
