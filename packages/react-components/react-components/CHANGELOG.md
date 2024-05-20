@@ -1,8 +1,163 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 16 May 2024 09:25:11 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:44:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.52.0)
+
+Mon, 20 May 2024 12:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.51.1..@fluentui/react-components_v9.52.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat(react-swatch-picker): release SwatchPicker as 9.0.0 stable ([PR #31389](https://github.com/microsoft/fluentui/pull/31389) by vkozlova@microsoft.com)
+  - feat: Export missing contextValues. ([PR #31383](https://github.com/microsoft/fluentui/pull/31383) by estebanmu@microsoft.com)
+- `@fluentui/react-message-bar`
+  - feat: Export missing contextValues. ([PR #31383](https://github.com/microsoft/fluentui/pull/31383) by estebanmu@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - fix: Updating types for NavItem and NavSubItem to better handle keyboarding. ([PR #31352](https://github.com/microsoft/fluentui/pull/31352) by matejera@microsoft.com)
+- `@fluentui/react-provider`
+  - feat(react-swatch-picker): added CustomStyleHooks ([PR #31389](https://github.com/microsoft/fluentui/pull/31389) by vkozlova@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat(react-swatch-picker): added CustomStyleHooks ([PR #31389](https://github.com/microsoft/fluentui/pull/31389) by vkozlova@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - feat(react-swatch-picker): release SwatchPicker as 9.0.0 stable ([PR #31389](https://github.com/microsoft/fluentui/pull/31389) by vkozlova@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: exposes createHeadlessTree ([PR #31343](https://github.com/microsoft/fluentui/pull/31343) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-field`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-list-preview`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+  - fix: 8px menu section header padding ([PR #31396](https://github.com/microsoft/fluentui/pull/31396) by lingfangao@hotmail.com)
+- `@fluentui/react-message-bar`
+  - fix: MessageBar without actions should not take up space ([PR #31391](https://github.com/microsoft/fluentui/pull/31391) by lingfangao@hotmail.com)
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-motions-preview`
+  - chore(motions): add mock for .animate() calls ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-rating`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-text`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/babel-preset-global-context`
+  - chore: improve typings of exported preset ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-alert`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
 
 ## [9.51.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.51.1)
 

@@ -2,6 +2,51 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 07:29:19 GMT",
+      "tag": "@fluentui/react-charting_v5.21.9",
+      "version": "5.21.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e69f90d32c4b4f11dfab5e563d2475d0d3f8940a",
+            "comment": "Focus enabled to line chart events"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "80b76ebc10599c2c3d5814df64c850941388d246",
+            "comment": "Updated opacity value for cards title"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.2",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.152",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.18",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.3",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 May 2024 07:25:15 GMT",
       "tag": "@fluentui/react-charting_v5.21.8",
       "version": "5.21.8",
