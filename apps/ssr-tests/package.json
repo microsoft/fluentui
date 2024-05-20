@@ -4,6 +4,7 @@
   "description": "Server-side rendering tests for @fluentui/react.",
   "private": true,
   "scripts": {
+    "type-check": "tsc -p . --noEmit --baseUrl .",
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "test": "just-scripts test",

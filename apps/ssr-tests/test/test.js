@@ -52,6 +52,11 @@ describe('Utilities', () => {
   });
 });
 
+/**
+ *
+ * @param {string} componentName
+ * @param {React.FunctionComponent} component
+ */
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, done => {
     let elem = React.createElement(component);
@@ -59,7 +64,7 @@ function testRender(componentName, component) {
     try {
       ReactDOMServer.renderToString(elem);
       done();
-    } catch (e) {
+    } catch (/** @type {any} */ e) {
       done(new Error(e));
     }
   });
