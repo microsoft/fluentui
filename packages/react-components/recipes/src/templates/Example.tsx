@@ -6,7 +6,7 @@ import { makeStyles, shorthands, mergeClasses } from '@griffel/react';
 const useExampleStyles = makeStyles({
   root: {
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius('16px'),
+    borderRadius: '16px',
     ...shorthands.padding('30px'),
     ...shorthands.margin('6px'),
   },

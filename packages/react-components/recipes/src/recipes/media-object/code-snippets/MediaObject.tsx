@@ -7,7 +7,8 @@ const useExampleStyles = makeStyles({
   multiExample: {
     display: 'flex',
     justifyContent: 'center',
-    ...shorthands.gap('60px'),
+    rowGap: '60px',
+    columnGap: '60px',
   },
 });
 
@@ -21,12 +22,14 @@ const useSkeletonStyles = makeStyles({
   legendContainer: {
     display: 'flex',
     flexDirection: 'column-reverse',
-    ...shorthands.gap('10px'),
+    rowGap: '10px',
+    columnGap: '10px',
     ...shorthands.padding('4px'),
   },
   legend: {
     display: 'flex',
-    ...shorthands.gap('5px'),
+    rowGap: '5px',
+    columnGap: '5px',
   },
   legendColor: {
     alignSelf: 'center',
@@ -39,12 +42,14 @@ const useMediaObjectStyles = makeStyles({
   main: {
     display: 'flex',
     flexDirection: 'row',
-    ...shorthands.gap('4px'),
+    rowGap: '4px',
+    columnGap: '4px',
   },
   text: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('4px'),
+    rowGap: '4px',
+    columnGap: '4px',
   },
   emptyMedia: {
     ...shorthands.padding('20px', '20px', '20px', '80px'),
@@ -61,7 +66,8 @@ const useMediaObjectStyles = makeStyles({
   verticalMediaObject: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('4px'),
+    rowGap: '4px',
+    columnGap: '4px',
     alignItems: 'center',
   },
   centerTextPosition: {
