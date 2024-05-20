@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix to not shrink checkbox even when option text is very long",
+  "packageName": "@fluentui/react-combobox",
+  "email": "hnisiji@gmail.com",
+  "dependentChangeType": "patch"
+}
