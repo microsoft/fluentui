@@ -35,7 +35,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -1018,7 +1018,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2001,7 +2001,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2997,7 +2997,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Chart. The X axis displays values. The Y axis displays values. "
+          aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
           role="region"
@@ -9771,7 +9771,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -10456,7 +10456,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -11130,7 +11130,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -11804,7 +11804,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"

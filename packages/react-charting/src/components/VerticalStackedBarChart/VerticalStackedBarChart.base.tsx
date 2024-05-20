@@ -198,6 +198,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       return (
         <CartesianChart
           {...this.props}
+          chartTitle={this._getChartTitle()}
           points={this._dataset}
           chartType={ChartTypes.VerticalStackedBarChart}
           xAxisType={this._xAxisType}
@@ -1110,4 +1111,15 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.data.filter(item => item.chartData.length === 0).length === 0
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    const numLines = Object.keys(this._lineObject).length;
+    return (
+      (chartTitle ? `${chartTitle}. ` : '') +
+      `Vertical bar chart with ${data?.length || 0} stacked bars` +
+      (numLines > 0 ? ` and ${numLines} lines` : '') +
+      '. '
+    );
+  };
 }

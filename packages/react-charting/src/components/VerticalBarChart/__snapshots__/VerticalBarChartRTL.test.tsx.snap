@@ -35,7 +35,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -821,7 +821,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -1620,7 +1620,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Chart. The X axis displays values. The Y axis displays values. "
+          aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
           role="region"
@@ -2418,7 +2418,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -11448,7 +11448,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -12234,7 +12234,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 4 bars. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -13098,7 +13098,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -13930,7 +13930,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"

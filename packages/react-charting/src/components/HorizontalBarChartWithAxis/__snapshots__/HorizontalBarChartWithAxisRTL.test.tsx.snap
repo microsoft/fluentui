@@ -35,7 +35,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -1037,7 +1037,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2052,7 +2052,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Chart. The X axis displays values. The Y axis displays values. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
           role="region"
@@ -3055,7 +3055,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -4057,7 +4057,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays categories. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         focusable="false"
         height="292"
         role="region"
@@ -4915,7 +4915,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"

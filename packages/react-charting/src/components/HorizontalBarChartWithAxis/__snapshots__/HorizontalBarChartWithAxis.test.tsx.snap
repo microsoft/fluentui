@@ -38,7 +38,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -660,7 +660,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -795,7 +795,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays categories. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
       height={0}
       role="region"
       style={
@@ -1405,7 +1405,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays categories. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
       height={0}
       role="region"
       style={

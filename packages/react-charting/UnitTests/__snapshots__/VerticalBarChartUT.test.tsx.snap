@@ -35,7 +35,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Chart. The X axis displays values. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"

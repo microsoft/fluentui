@@ -38,7 +38,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -429,7 +429,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -820,7 +820,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -1191,7 +1191,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -1303,7 +1303,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -1694,7 +1694,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -2085,7 +2085,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -2476,7 +2476,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
@@ -2867,7 +2867,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Chart. The X axis displays values. The Y axis displays values. "
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
       role="region"
       style={
