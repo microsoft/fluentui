@@ -17524,33 +17524,33 @@ monaco-editor@0.33.0:
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
   integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
-monosize-bundler-webpack@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.3.tgz#941612471321e1e2258d2eecf23af249bd006f22"
-  integrity sha512-Qsi4X03Q3zNt5QDFn8uUOzqCyLLIJkYnxAmRDqH6nbgVKgTXfvnv/kbzmb/UQGf20Vf75u4EuiNiV76fwIP8bg==
+monosize-bundler-webpack@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.4.tgz#c9f730c7237c26153b45f40c04940de0af3e1f4c"
+  integrity sha512-lYQ2Cg+J4KH7SjHnMRPKSg6CUASQ3BMiLVB5jhSvS79Rz3LmEsy0VFrbasjHFG05VErI9j/JvpLLxS+zHyS2kQ==
   dependencies:
-    monosize "^0.6.1"
+    monosize "^0.6.2"
     picocolors "^1.0.0"
     terser "^5.16.0"
     terser-webpack-plugin "^5.3.1"
     tslib "^2.4.1"
     webpack "^5.76.0"
 
-monosize-storage-azure@0.0.13:
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.13.tgz#cc4a3b99b00ed26a1bea800134896c1c3b5019d9"
-  integrity sha512-+dR63f1lllUtSHYRGpr5Pr2kLlgDv0dijKdvgMlQrkY63xzmnFy79fFB3kdd97mfRcW1W0rR6ORZ+Og7gRJLYA==
+monosize-storage-azure@0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.14.tgz#f3b5810f885063f0d7fa86ca17625ce22546433f"
+  integrity sha512-hFaIo1ZoB4ZIlbRyPJ4CeXDEwGF/FVaG6j1rlgWuwilYavYAm9q/y0GprAFp6uRN8kQxi8WS6OiZCna/YIYHJA==
   dependencies:
     "@azure/data-tables" "^13.0.0"
-    monosize "^0.6.1"
+    monosize "^0.6.2"
     node-fetch "^3.3.0"
     picocolors "^1.0.0"
     tslib "^2.4.1"
 
-monosize@0.6.1, monosize@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.6.1.tgz#2920fa84c8689003d38a50b6696a94d5fce8a87f"
-  integrity sha512-6PqepsaQMxx3kPAoUyuZ1wmjWrh2mPq6NE/PClatnytvYhkGU7ET6+5BJ1HnJFuVLn7b0nqRBECPyiBT6RD0tA==
+monosize@0.6.2, monosize@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.6.2.tgz#0b192dd9ac12ab5833c65cdb4ca4e1c05cfaddb1"
+  integrity sha512-bTP2FnY0/G527uUmZ7GF5Gz7awSSVTPn7laHd6higpjZMv7f7IGtWgoNuhtaj/E92ZL1S3zm8+cb4TUgHxJdNQ==
   dependencies:
     acorn "^8.11.3"
     ci-info "^3.7.0"
@@ -17561,7 +17561,6 @@ monosize@0.6.1, monosize@^0.6.1:
     picocolors "^1.0.0"
     pretty-bytes "^6.0.0"
     tslib "^2.4.1"
-    workspace-tools "^0.29.1"
     yargs "^17.6.2"
 
 moo-color@^1.0.2:
@@ -24450,19 +24449,7 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@0.29.1, workspace-tools@^0.29.1:
-  version "0.29.1"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.29.1.tgz#ff38f7484961cd87a342a8fd14eacd31d1645f56"
-  integrity sha512-BVPROxNszGmyaUD2ErLWP4BpCiIkG1P//CnziOvHd27o1TeBm+7T1HKlYu89T4XGAjgPL/NP+tZ4j6aBvG/p/A==
-  dependencies:
-    "@yarnpkg/lockfile" "^1.1.0"
-    git-url-parse "^13.0.0"
-    globby "^11.0.0"
-    jju "^1.4.0"
-    js-yaml "^4.1.0"
-    micromatch "^4.0.0"
-
-workspace-tools@^0.27.0:
+workspace-tools@0.27.0, workspace-tools@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.27.0.tgz#11e8f1ec2cb4c80d1cefcf92da2d0154dc001aa8"
   integrity sha512-5mtE5Vy0Se4brAUJXKfXNtaS9jcUcH+IGF4LNU1xJr4bW1o5bK2gV0pykodB+n6V84nRtaD/4I/9w98aujm7LA==
