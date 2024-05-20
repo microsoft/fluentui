@@ -201,7 +201,7 @@ export type OptionGroupSlots = {
 // @public
 export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
-// @public (undocumented)
+// @public
 export type OptionOnSelectData = {
     optionValue: string | undefined;
     optionText: string | undefined;
@@ -249,7 +249,7 @@ export const renderOption_unstable: (state: OptionState) => JSX.Element;
 // @public
 export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
 
-// @public (undocumented)
+// @public
 export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @internal
