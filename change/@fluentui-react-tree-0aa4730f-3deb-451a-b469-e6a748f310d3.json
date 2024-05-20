@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: exposes createHeadlessTree",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
