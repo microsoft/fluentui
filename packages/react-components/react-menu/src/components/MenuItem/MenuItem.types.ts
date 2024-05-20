@@ -1,3 +1,4 @@
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
@@ -56,4 +57,6 @@ export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'conten
   };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
-  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    materialType?: MaterialTypeContextValue;
+  };

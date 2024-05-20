@@ -4,6 +4,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
 import type { DropdownSlots, DropdownState } from './Dropdown.types';
+import { MaterialType } from '@fluentui/react-shared-contexts';
 
 export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
   root: 'fui-Dropdown',
@@ -256,6 +257,28 @@ const useBaseClearButtonStyle = makeResetStyles({
   ...createFocusOutlineStyle(),
 });
 
+const useMaterialTypeStyles = makeStyles<MaterialType>({
+  [MaterialType.Opaque]: {},
+  [MaterialType.SemiOpaque]: {
+    backdropFilter: 'blur(80px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.Translucent]: {
+    backdropFilter: 'blur(45px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.SemiTransparent]: {
+    backdropFilter: 'blur(30px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+});
+
 /**
  * Apply styling to the Dropdown slots based on the state
  */
@@ -266,6 +289,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const clearButtonStyle = useBaseClearButtonStyle();
+  const materialTypeStyles = useMaterialTypeStyles();
 
   state.root.className = mergeClasses(
     dropdownClassNames.root,
@@ -293,6 +317,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
       styles.listbox,
       state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
+      state.materialType && materialTypeStyles[state.materialType],
       state.listbox.className,
     );
   }
