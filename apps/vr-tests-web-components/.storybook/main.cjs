@@ -30,7 +30,6 @@ module.exports = /** @type {import('../../../.storybook/types').StorybookBaseCon
     builder: 'webpack5',
     disableTelemetry: true,
   },
-  babel: {},
   typescript: {
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
     reactDocgen: false,

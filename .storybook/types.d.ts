@@ -2,8 +2,8 @@ import type { StorybookConfig as StorybookBaseConfig } from '@storybook/core-com
 
 export type { StorybookBaseConfig };
 export type StorybookExtraConfig = {
-  babel: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
-  previewHead: (head: string) => string;
+  babel?: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
+  previewHead?: (head: string) => string;
 };
 
 export type StorybookConfig = StorybookBaseConfig &
