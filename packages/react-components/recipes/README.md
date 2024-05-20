@@ -2,6 +2,8 @@
 
 ## Recipes for @fluentui/react-components
 
+> **⚠️⚠️ This package should never be released ⚠️⚠️**
+
 ### What is a recipe?
 
 A recipe is a document that allows you to communicate how to build a component, how to explain a concept, or how to use our library to build an experience.

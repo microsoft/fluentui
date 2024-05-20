@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands, Text } from '@fluentui/react-components';
 import { Attach24Regular } from '@fluentui/react-icons';
+import { makeStyles, shorthands, mergeClasses } from '@griffel/react';
+import { Text } from '@fluentui/react-text';
 
 const useExampleStyles = makeStyles({
   multiExample: {

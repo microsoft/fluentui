@@ -1993,6 +1993,28 @@
     "@griffel/react" "^1.5.14"
     "@swc/helpers" "^0.5.1"
 
+"@fluentui/react-tag-picker-preview@*":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tag-picker-preview/-/react-tag-picker-preview-0.5.0.tgz#7f8e759c7216cf1c18a78b57aa49291939b93a58"
+  integrity sha512-N4sp5IumhJx91nP9UHBaJijLmeoGA6D1vCsKMGR1WUUSkEQSUnTGXBfCg0nTAvGEmjuk3mjNFz/V0DjxUngNng==
+  dependencies:
+    "@fluentui/keyboard-keys" "^9.0.7"
+    "@fluentui/react-aria" "^9.11.1"
+    "@fluentui/react-combobox" "^9.11.1"
+    "@fluentui/react-context-selector" "^9.1.59"
+    "@fluentui/react-field" "^9.1.64"
+    "@fluentui/react-icons" "^2.0.237"
+    "@fluentui/react-jsx-runtime" "^9.0.37"
+    "@fluentui/react-portal" "^9.4.23"
+    "@fluentui/react-positioning" "^9.14.5"
+    "@fluentui/react-shared-contexts" "^9.18.0"
+    "@fluentui/react-tabster" "^9.21.1"
+    "@fluentui/react-tags" "^9.3.3"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.8"
+    "@griffel/react" "^1.5.14"
+    "@swc/helpers" "^0.5.1"
+
 "@griffel/babel-preset@1.5.8", "@griffel/babel-preset@^1.5.8":
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.5.8.tgz#2ee5e404b34350fcb40a2506d73b0467f1a66be0"

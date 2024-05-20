@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  FluentProvider,
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  tokens,
-  webLightTheme,
-} from '@fluentui/react-components';
+import { FluentProvider } from '@fluentui/react-provider';
+import { tokens, webLightTheme } from '@fluentui/react-theme';
+import { makeStyles, shorthands, mergeClasses } from '@griffel/react';
 
 const useExampleStyles = makeStyles({
   root: {
