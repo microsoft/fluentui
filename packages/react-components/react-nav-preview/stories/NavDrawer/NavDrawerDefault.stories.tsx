@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Hamburger,
-  HamburgerInNav,
   NavCategory,
   NavCategoryItem,
   NavDrawer,
@@ -101,7 +100,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type} size="small">
         <NavDrawerHeader>
           <NavDrawerHeaderNav>
-            <HamburgerInNav onClick={() => setIsOpen(false)} />
+            <Hamburger onClick={() => setIsOpen(false)} />
           </NavDrawerHeaderNav>
         </NavDrawerHeader>
         <NavDrawerBody>

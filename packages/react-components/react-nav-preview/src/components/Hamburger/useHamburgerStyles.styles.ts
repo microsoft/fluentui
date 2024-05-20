@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the HamburgerInNav slots based on the state
+ * Apply styling to the Hamburger slots based on the state
  */
 export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerState => {
   useButtonStyles_unstable(state);
