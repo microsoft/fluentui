@@ -30,20 +30,24 @@ export function getTsPathAliasesConfig() {
   const tsConfigFileNames = {
     root: 'tsconfig.json',
     lib: 'tsconfig.lib.json',
+    app: 'tsconfig.app.json',
   };
   const tsConfigFilePaths = {
     root: path.join(cwd, tsConfigFileNames.root),
     lib: path.join(cwd, tsConfigFileNames.lib),
+    app: path.join(cwd, tsConfigFileNames.app),
   };
   const tsConfigFileContents = {
     root: fs.existsSync(tsConfigFilePaths.root) ? fs.readFileSync(tsConfigFilePaths.root, 'utf-8') : null,
     lib: fs.existsSync(tsConfigFilePaths.lib) ? fs.readFileSync(tsConfigFilePaths.lib, 'utf-8') : null,
+    app: fs.existsSync(tsConfigFilePaths.app) ? fs.readFileSync(tsConfigFilePaths.app, 'utf-8') : null,
   };
   const tsConfigs = {
     root: tsConfigFileContents.root
       ? (parseJson(tsConfigFileContents.root, { expectComments: true }) as TsConfig)
       : null,
     lib: tsConfigFileContents.lib ? (parseJson(tsConfigFileContents.lib, { expectComments: true }) as TsConfig) : null,
+    app: tsConfigFileContents.app ? (parseJson(tsConfigFileContents.app, { expectComments: true }) as TsConfig) : null,
   };
   const packageJson: PackageJson = JSON.parse(fs.readFileSync(path.join(cwd, './package.json'), 'utf-8'));
 
@@ -51,7 +55,7 @@ export function getTsPathAliasesConfig() {
     tsConfigs.root &&
     tsConfigs.root.references &&
     tsConfigs.root.references.length > 0 &&
-    Boolean(tsConfigFileContents.lib);
+    (Boolean(tsConfigFileContents.lib) || Boolean(tsConfigFileContents.app));
 
   return {
     tsConfigFileNames,
