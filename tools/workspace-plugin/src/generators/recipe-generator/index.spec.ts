@@ -5,7 +5,7 @@ import path from 'path';
 import generator from './index';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 
-const recipesRoot = 'packages/react-components/src/recipes';
+const recipesRoot = 'packages/react-components/recipes/src/recipes';
 const recipeName = 'Hello World';
 const recipePackageName = 'hello-world';
 

@@ -29,6 +29,7 @@
     "copy-notices": "node scripts/generators/copy-notices.js",
     "create-component": "yarn nx g @fluentui/workspace-plugin:react-component",
     "create-package": "yarn nx g @fluentui/workspace-plugin:react-library",
+    "create-recipe": "yarn nx g @fluentui/workspace-plugin:recipe-generator",
     "e2e": "lage e2e --verbose --concurrency=1",
     "format": "node scripts/executors/format.js",
     "generate-version-files": "node -r ./scripts/ts-node/register ./scripts/generators/generate-version-files",
