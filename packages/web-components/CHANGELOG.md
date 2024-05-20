@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 17 May 2024 04:06:08 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 04:07:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.18)
+
+Mon, 20 May 2024 04:07:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.17..@fluentui/web-components_v3.0.0-beta.18)
+
+### Changes
+
+- adds high contrast styles to badge web component ([PR #31234](https://github.com/microsoft/fluentui/pull/31234) by ryanmerrill@microsoft.com)
 
 ## [3.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.17)
 
