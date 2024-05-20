@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Checkbox, ToggleButton } from '@fluentui/react-components';
-import { Scale, createVariantComponent } from '@fluentui/react-motions-preview';
+import { Collapse, createVariantComponent } from '@fluentui/react-motions-preview';
 import { useMotionConfigurator, OverrideCodePreviewJSON } from '../utils/useMotionConfigurator';
-import description from './OverrideEach.stories.md';
+import description from './Custom.stories.md';
 
 import { loremIpsum } from '../utils/loremIpsum';
 
-const tagName = 'Scale';
+const tagName = 'Collapse';
 
-export const OverrideEach = () => {
+export const Custom = () => {
   const [visible, setVisible] = React.useState(false);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const [unmountOnExit, setUnmountOnExit] = React.useState(false);
@@ -47,7 +47,7 @@ export const OverrideEach = () => {
     [overrideNamedEnter, overrideNamedExit],
   );
   const MotionComponent = React.useMemo(
-    () => createVariantComponent(Scale, { ...overrideEnter, ...overrideExit }),
+    () => createVariantComponent(Collapse, { ...overrideEnter, ...overrideExit }),
     [overrideEnter, overrideExit],
   );
 
@@ -82,7 +82,7 @@ export const OverrideEach = () => {
   );
 };
 
-OverrideEach.parameters = {
+Custom.parameters = {
   docs: {
     description: {
       story: description,
