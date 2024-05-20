@@ -4,6 +4,8 @@ import {
   IVerticalStackedChartProps,
   VerticalStackedBarChart,
   ILineChartLineOptions,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -86,7 +88,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 40,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '61%',
       },
@@ -100,7 +102,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata3',
         data: 20,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '31%',
       },
@@ -110,7 +112,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 30,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
       },
@@ -124,7 +126,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata3',
         data: 40,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '45%',
       },
@@ -134,7 +136,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 44,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '43%',
       },
@@ -148,7 +150,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata3',
         data: 30,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
       },
@@ -158,7 +160,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 88,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '63%',
       },
@@ -172,7 +174,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata3',
         data: 30,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '21%',
       },
