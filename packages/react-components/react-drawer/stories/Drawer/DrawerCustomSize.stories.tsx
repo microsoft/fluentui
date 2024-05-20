@@ -6,7 +6,6 @@ import {
   OverlayDrawer,
   Button,
   Field,
-  useId,
   tokens,
   makeStyles,
   Input,
