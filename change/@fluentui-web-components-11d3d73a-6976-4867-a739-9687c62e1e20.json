@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: simplify compile script, tweak api-extractor config to stop spamming CI with warnings",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
