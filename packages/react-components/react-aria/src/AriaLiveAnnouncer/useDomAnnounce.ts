@@ -147,7 +147,7 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
       clearAnnounceTimeout();
       timeoutRef.current = undefined;
     };
-  }, [targetDocument]);
+  }, [clearAnnounceTimeout, targetDocument]);
 
   return announce;
 };
