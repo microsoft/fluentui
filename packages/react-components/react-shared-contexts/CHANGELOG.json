@@ -2,6 +2,66 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:45:03 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.19.0",
+      "version": "9.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "cafe42c624950811c743a01e3a92f394ff7afcdd",
+            "comment": "feat(react-swatch-picker): added CustomStyleHooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:00 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.18.0",
+      "version": "9.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "0152e14e7e4bd7a2adc96057316a258acd3d0fe4",
+            "comment": "feat: adds TagPicker to custom style hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 08:17:48 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "f7ab06d5315980bcb575cecc384aded8729137db",
+            "comment": "feat: Implement MenuItemSwitch component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Apr 2024 09:48:00 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.16.0",
+      "version": "9.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ff674cf53a5dce6feab08ac0f478b6d38fcb00d6",
+            "comment": "deprecate unused ListItemButton exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Mar 2024 19:50:46 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.15.2",
       "version": "9.15.2",

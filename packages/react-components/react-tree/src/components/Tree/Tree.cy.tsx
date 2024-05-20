@@ -1,6 +1,3 @@
-/// <reference types="cypress" />
-/// <reference types="cypress-real-events" />
-
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -364,5 +361,19 @@ describe('Tree', () => {
       cy.get('[data-testid="tree-item-2-1"]').realClick();
       cy.get('[data-testid="tree-item-2-1-1"]').should('exist');
     });
+  });
+  it('should ensure roving tab indexes when focusing programmatically', () => {
+    mount(
+      <>
+        <button id="btn-before-tree">before tree</button>
+        <TreeTest defaultOpenItems={['item1', 'item2', 'item2__item1']} />
+        <button id="btn-after-tree">after tree</button>
+      </>,
+    );
+    cy.get('#btn-before-tree').focus().realPress('Tab');
+    cy.get('[data-testid="item1"]').should('be.focused');
+    cy.get('[data-testid="item2__item1"]').focus().realPress('Tab');
+    cy.get('#btn-after-tree').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('[data-testid="item2__item1"]').should('be.focused');
   });
 });

@@ -50,6 +50,7 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
           return null;
         }
 
+        treeWalkerRef.current.currentNode = listboxRef.current;
         return treeWalkerRef.current.lastChild() as HTMLElement | null;
       },
       next: () => {

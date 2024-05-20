@@ -29,6 +29,12 @@ exports[`ColorRectangle renders correctly 1`] = `
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
         outline: 2px solid CanvasText;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 1px solid #605e5c;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+        outline: 2px solid CanvasText;
+      }
   data-is-focusable={true}
   onKeyDown={[Function]}
   onMouseDown={[Function]}

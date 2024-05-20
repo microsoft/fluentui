@@ -1,4 +1,4 @@
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.
@@ -7,6 +7,7 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui
  * vNext scope includes all packages that have version > 8.x and shared internal packages that need versions bumped.
  * @returns {string[]} Array of package paths for beachball scope
  */
+export function getConfig({ version }: { version: 'web-components' }): { scope: string[] };
 export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
 export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
@@ -16,9 +17,8 @@ export function getConfig({ version }: { version: 'vNext' }): {
     include: string[];
   };
 };
-export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
-  const allPackageInfo = getAllPackageInfo();
-  const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
+export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' }) {
+  const vNextPackagePaths = getVNextPackagePaths();
 
   if (version === 'vNext') {
     return {
@@ -31,23 +31,24 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
     };
   }
 
-  if (version === 'v8') {
-    const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
+  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
 
+  if (version === 'web-components') {
+    return {
+      scope: ['packages/web-components', '!apps/*', ...ignoreVNextScope],
+    };
+  }
+
+  if (version === 'v8') {
     return { scope: [...ignoreVNextScope] };
   }
 
   throw new Error('Unsupported version scopes acquisition');
 }
 
-function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
-  return Object.values(allPackageInfo)
-    .map(packageInfo => {
-      if (isConvergedPackage({ packagePathOrJson: packageInfo.packageJson })) {
-        return packageInfo.packagePath;
-      }
+function getVNextPackagePaths() {
+  const allProjects = getAllPackageInfo(isConvergedPackage);
+  const values = Object.values(allProjects);
 
-      return false;
-    })
-    .filter(Boolean) as string[];
+  return values.map(project => project.packagePath);
 }

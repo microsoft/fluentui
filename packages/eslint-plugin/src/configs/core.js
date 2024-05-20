@@ -63,6 +63,7 @@ const config = {
     'lib-commonjs',
     'node_modules',
     'temp',
+    'bundle-size',
     '**/__snapshots__',
     '**/*.scss.ts',
   ],
@@ -333,6 +334,13 @@ const getOverrides = () => [
     files: [...configHelpers.docsFiles],
     rules: {
       'import/no-webpack-loader-syntax': 'off', // this is ok in docs
+    },
+  },
+  {
+    // Temporary overrides till Griffel migration is finished
+    files: ['**/*.stories.tsx', '**/*.styles.ts', '**/*.cy.tsx', '**/*.mixins.ts'],
+    rules: {
+      'deprecation/deprecation': 'off',
     },
   },
   {

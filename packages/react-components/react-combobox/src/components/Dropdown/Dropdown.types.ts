@@ -1,6 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
+  ActiveOptionChangeData as ComboboxBaseActiveOptionChangeData,
   ComboboxBaseContextValues,
   ComboboxBaseOpenChangeData,
   ComboboxBaseOpenEvents,
@@ -35,7 +36,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
  * State used in rendering Dropdown
  */
 export type DropdownState = ComponentState<DropdownSlots> &
-  ComboboxBaseState & {
+  Omit<ComboboxBaseState, 'freeform'> & {
     /* Whether the placeholder is currently displayed */
     placeholderVisible: boolean;
 
@@ -48,3 +49,4 @@ export type DropdownState = ComponentState<DropdownSlots> &
 export type DropdownContextValues = ComboboxBaseContextValues;
 export type DropdownOpenEvents = ComboboxBaseOpenEvents;
 export type DropdownOpenChangeData = ComboboxBaseOpenChangeData;
+export type ActiveOptionChangeData = ComboboxBaseActiveOptionChangeData;

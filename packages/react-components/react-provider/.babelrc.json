@@ -1,25 +1,4 @@
 {
-  "presets": [
-    [
-      "@griffel",
-      {
-        "babelOptions": {
-          "plugins": [
-            [
-              "babel-plugin-module-resolver",
-              {
-                "root": ["../../../"],
-                "alias": {
-                  "@fluentui/tokens": "packages/tokens/lib/index.js",
-                  "^@fluentui/(?!react-icons)(.+)": "packages/react-components/\\1/lib/index.js"
-                }
-              }
-            ]
-          ]
-        },
-        "modules": [{ "moduleSource": "@griffel/core", "importName": "makeStyles" }]
-      }
-    ]
-  ],
+  "extends": "../../../.babelrc-v9.json",
   "plugins": ["annotate-pure-calls", "@babel/transform-react-pure-annotations"]
 }

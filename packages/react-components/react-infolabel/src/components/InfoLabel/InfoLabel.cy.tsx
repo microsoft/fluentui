@@ -1,5 +1,3 @@
-/// <reference types="cypress-real-events" />
-
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';

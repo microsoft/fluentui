@@ -45,6 +45,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useMenuGroupHeaderStyles_unstable: CustomStyleHook;
   useMenuGroupStyles_unstable: CustomStyleHook;
   useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+  useMenuItemSwitchStyles_unstable: CustomStyleHook;
   useMenuItemRadioStyles_unstable: CustomStyleHook;
   useMenuItemStyles_unstable: CustomStyleHook;
   useMenuListStyles_unstable: CustomStyleHook;
@@ -134,6 +135,18 @@ export type CustomStyleHooksContextValue = Partial<{
   useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
   useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
+  useTagPickerInputStyles_unstable: CustomStyleHook;
+  useTagPickerButtonStyles_unstable: CustomStyleHook;
+  useTagPickerControlStyles_unstable: CustomStyleHook;
+  useTagPickerGroupStyles_unstable: CustomStyleHook;
+  useTagPickerListStyles_unstable: CustomStyleHook;
+  useTagPickerOptionStyles_unstable: CustomStyleHook;
+  useTagPickerOptionGroupStyles_unstable: CustomStyleHook;
+  useColorSwatchStyles_unstable: CustomStyleHook;
+  useImageSwatchStyles_unstable: CustomStyleHook;
+  useEmptySwatchStyles_unstable: CustomStyleHook;
+  useSwatchPickerRowStyles_unstable: CustomStyleHook;
+  useSwatchPickerStyles_unstable: CustomStyleHook;
 }>;
 
 /**

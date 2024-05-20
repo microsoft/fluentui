@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useNavContext_unstable } from '../NavContext';
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { NavItemProps, NavItemState } from './NavItem.types';
 
 /**
@@ -11,19 +13,42 @@ import type { NavItemProps, NavItemState } from './NavItem.types';
  * before being passed to renderNavItem_unstable.
  *
  * @param props - props from this instance of NavItem
- * @param ref - reference to root HTMLDivElement of NavItem
+ * @param ref - reference to root HTMLAnchorElement of NavItem
  */
-export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
-  const { content, onClick, value } = props;
+export const useNavItem_unstable = (
+  props: NavItemProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): NavItemState => {
+  const { onClick, value, icon, as, href } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
+
+  const rootElementType = as || (href ? 'a' : 'button');
 
   const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onNavItemClick = useEventCallback(
-    mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
+
+  const onNavItemClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
+    onClick?.(event);
+
+    if (!event.defaultPrevented && isHTMLElement(event.target)) {
+      onSelect(event, { type: 'click', event, value });
+    }
+  });
+
+  const root = slot.always<ARIAButtonSlotProps<'a'>>(
+    getIntrinsicElementProps(rootElementType, useARIAButtonProps(rootElementType, props)),
+    {
+      elementType: rootElementType,
+      defaultProps: {
+        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        type: rootElementType,
+      },
+    },
   );
+
+  root.onClick = onNavItemClick;
 
   React.useEffect(() => {
     onRegister({
@@ -36,24 +61,12 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnch
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
-
   return {
-    components: { root: 'a', content: 'span' },
-    root: slot.always(
-      getIntrinsicElementProps('a', {
-        ref,
-        role: 'nav',
-        type: 'navigation',
-        ...props,
-        onClick: onNavItemClick,
-      }),
-      { elementType: 'a' },
-    ),
-    content: contentSlot,
+    components: { root: rootElementType, icon: 'span' },
+    root: root,
+    icon: slot.optional(icon, {
+      elementType: 'span',
+    }),
     selected,
     value,
   };

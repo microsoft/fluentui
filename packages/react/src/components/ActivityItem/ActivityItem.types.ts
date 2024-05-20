@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { IStyle } from '../../Styling';
+import type { IShadowDomStyle, IStyle } from '../../Styling';
 import type { IRenderFunction } from '../../Utilities';
 import type { IPersonaSharedProps } from '../../Persona';
 
@@ -97,7 +97,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
 /**
  * {@docCategory ActivityItem}
  */
-export interface IActivityItemStyles {
+export interface IActivityItemStyles extends IShadowDomStyle {
   /**
    * Styles applied to the root activity item container.
    */

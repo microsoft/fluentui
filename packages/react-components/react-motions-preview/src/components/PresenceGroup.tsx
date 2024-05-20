@@ -41,7 +41,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  #handleExit(childKey: string) {
+  #handleExit = (childKey: string) => {
     const currentChildMapping = getChildMapping(this.props.children);
 
     if (childKey in currentChildMapping) {
@@ -56,7 +56,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
         return { childMapping };
       });
     }
-  }
+  };
 
   componentDidMount() {
     this.#mounted = true;

@@ -13,7 +13,8 @@ export const renderNavItem_unstable = (state: NavItemState) => {
 
   return (
     <state.root>
-      <state.content />
+      {state.icon && <state.icon />}
+      {state.root.children}
     </state.root>
   );
 };

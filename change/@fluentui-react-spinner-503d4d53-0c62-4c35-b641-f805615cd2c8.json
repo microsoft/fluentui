@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: rotating SVG should not cause parent overflow",
-  "packageName": "@fluentui/react-spinner",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
