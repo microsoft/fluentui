@@ -3,7 +3,7 @@ import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } fr
 import { ThemeContext } from '@fluentui/react';
 
 export const HorizontalBarChartCustomAccessibilityExample: React.FunctionComponent<{}> = () => {
-  const isDarkMode = () => {
+  const IsDarkMode = () => {
     const theme = React.useContext(ThemeContext);
     return theme?.isInverted;
   };
@@ -17,7 +17,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color9, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color9, IsDarkMode()),
           xAxisCalloutData: '2021/06/10',
           yAxisCalloutData: '10%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart one 2021/06/10 10%' },
@@ -32,7 +32,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color10, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color10, IsDarkMode()),
           xAxisCalloutData: '2021/06/11',
           yAxisCalloutData: '5%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart two 2021/06/11 5%' },
@@ -47,7 +47,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color11, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color11, IsDarkMode()),
           xAxisCalloutData: '2021/06/12',
           yAxisCalloutData: '59%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart three 2021/06/12 59%' },
@@ -62,7 +62,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color12, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color12, IsDarkMode()),
           xAxisCalloutData: '2021/06/13',
           yAxisCalloutData: '105%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart four 2021/06/13 105%' },
@@ -77,7 +77,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color13, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color13, IsDarkMode()),
           xAxisCalloutData: '2021/06/14',
           yAxisCalloutData: '76%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart five 2021/06/14 76%' },
@@ -92,7 +92,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color14, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color14, IsDarkMode()),
           xAxisCalloutData: '2021/06/15',
           yAxisCalloutData: '93%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart six 2021/06/15 93%' },
@@ -107,7 +107,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color15, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color15, IsDarkMode()),
           xAxisCalloutData: '2021/06/16',
           yAxisCalloutData: '65%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart seven 2021/06/16 65%' },
@@ -122,7 +122,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color16, isDarkMode()),
+          color: getColorFromToken(DataVizPalette.color16, IsDarkMode()),
           xAxisCalloutData: '2021/06/17',
           yAxisCalloutData: '28%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart eight 2021/06/17 28%' },

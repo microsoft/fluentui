@@ -23,7 +23,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
   }
 
   public render() {
-    const isDarkMode = () => {
+    const IsDarkMode = () => {
       const theme = React.useContext(ThemeContext);
       return theme?.isInverted;
     };
@@ -35,7 +35,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'one',
             horizontalBarChartdata: { x: 1543, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color17, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color17, IsDarkMode()),
           },
         ],
       },
@@ -45,7 +45,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'two',
             horizontalBarChartdata: { x: 800, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color18, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color18, IsDarkMode()),
           },
         ],
       },
@@ -55,7 +55,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'three',
             horizontalBarChartdata: { x: 8888, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color19, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color19, IsDarkMode()),
           },
         ],
       },
@@ -65,7 +65,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'four',
             horizontalBarChartdata: { x: 15888, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color20, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color20, IsDarkMode()),
           },
         ],
       },
@@ -75,7 +75,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'five',
             horizontalBarChartdata: { x: 11444, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color21, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color21, IsDarkMode()),
           },
         ],
       },
@@ -85,7 +85,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'six',
             horizontalBarChartdata: { x: 14000, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color22, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color22, IsDarkMode()),
           },
         ],
       },
@@ -95,7 +95,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'seven',
             horizontalBarChartdata: { x: 9855, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color23, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color23, IsDarkMode()),
           },
         ],
       },
@@ -105,7 +105,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'eight',
             horizontalBarChartdata: { x: 4250, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color24, isDarkMode()),
+            color: getColorFromToken(DataVizPalette.color24, IsDarkMode()),
           },
         ],
       },
