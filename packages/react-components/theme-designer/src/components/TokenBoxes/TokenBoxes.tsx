@@ -14,6 +14,7 @@ export interface TokenBoxProps {
   themeColor: string;
 }
 
+/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'grid',
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
     paddingLeft: tokens.spacingVerticalS,
   },
 });
+/* eslint-enable deprecation/deprecation */
 
 export const TokenBox: React.FC<TokenBoxProps> = props => {
   const styles = useStyles();

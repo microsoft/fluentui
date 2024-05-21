@@ -284,6 +284,12 @@ export interface IComboBoxProps
    * Custom render function for the label text.
    */
   onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+
+  /**
+   * Whether matching the ComboBox options when writing in the ComboBox input should be case-sensitive or not.
+   * @defaultvalue false
+   */
+  caseSensitive?: boolean;
 }
 
 /**

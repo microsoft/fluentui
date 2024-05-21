@@ -1,4 +1,4 @@
-import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
 import {
@@ -792,11 +792,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
           onMouseLeave={this._onCloseCallout}
         >
-          <FocusZone
-            direction={FocusZoneDirection.bidirectional}
-            isCircularNavigation={true}
-            handleTabKey={FocusZoneTabbableElements.all}
-          >
+          <FocusZone direction={FocusZoneDirection.bidirectional}>
             <svg width={width} height={height} id={this._chartId}>
               <g className={classNames.links} strokeOpacity={1}>
                 {linkData}

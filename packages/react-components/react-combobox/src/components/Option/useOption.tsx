@@ -61,7 +61,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const selected = useListboxContext_unstable(ctx => {
     const selectedOptions = ctx.selectedOptions;
 
-    return !!optionValue && !!selectedOptions.find(o => o === optionValue);
+    return optionValue !== undefined && selectedOptions.find(o => o === optionValue) !== undefined;
   });
   const selectOption = useListboxContext_unstable(ctx => ctx.selectOption);
   const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);

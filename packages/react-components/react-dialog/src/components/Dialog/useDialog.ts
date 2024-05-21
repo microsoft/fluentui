@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
+import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
@@ -37,19 +37,13 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const focusRef = useFocusFirstElement(open, modalType);
-  const disableBodyScroll = useDisableBodyScroll();
-  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
-
-  useIsomorphicLayoutEffect(() => {
-    if (isBodyScrollLocked) {
-      return disableBodyScroll();
-    }
-  }, [disableBodyScroll, isBodyScrollLocked]);
 
   const { modalAttributes, triggerAttributes } = useModalAttributes({
     trapFocus: modalType !== 'non-modal',
     legacyTrapFocus: !inertTrapFocus,
   });
+
+  const isNestedDialog = useHasParentContext(DialogContext);
 
   return {
     components: {
@@ -62,9 +56,9 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),
-    isNestedDialog: useHasParentContext(DialogContext),
+    isNestedDialog,
     dialogRef: focusRef,
-    modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
+    modalAttributes,
     triggerAttributes,
   };
 };

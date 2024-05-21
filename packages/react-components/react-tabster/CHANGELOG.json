@@ -2,6 +2,110 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:45:06 GMT",
+      "tag": "@fluentui/react-tabster_v9.21.3",
+      "version": "9.21.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-tabster_v9.21.2",
+      "version": "9.21.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fded6b429c65eff45fb00a827434fd9936cf6d60",
+            "comment": "fix: replace internal useKeyborg() with useKeyborgRef()"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:01 GMT",
+      "tag": "@fluentui/react-tabster_v9.21.1",
+      "version": "9.21.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "de1ebdc8c44ac61696ace95998503817f9e4bfca",
+            "comment": "fix: bump keyborg to 2.6.0 nad tabster to 7.1.2 in order to fix iOS touch bug"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:39 GMT",
+      "tag": "@fluentui/react-tabster_v9.21.0",
+      "version": "9.21.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "07fd25b36efb62a2c277f3e7edcc48705345bc20",
+            "comment": "Exposing MoverMemorizedElementEvent for the applications to be able to force forget or alter memorized elements."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92",
+            "comment": "feat: useListenFocusedElement hook"
+          }
+        ],
+        "patch": [
+          {
+            "author": "stevenco@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f561ced7e85f67bd04ccaffec6a6903efe157057",
+            "comment": "Fixing issues where current keyborg status is not known to late subscribers"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041",
+            "comment": "Pulling Tabster 7.1.1 that supports more granular configuration of the aria-hidden handling for modal dialogs."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-tabster_v9.20.1",
       "version": "9.20.1",

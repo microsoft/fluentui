@@ -35,9 +35,6 @@ packages/fluentui/docs/src/behaviorMenu.json
 packages/fluentui/docs/src/exampleMenus
 packages/fluentui/docs/src/exampleSources
 packages/fluentui/ability-attributes/src/schema.ts
-packages/web-components/src/**/*.styles.ts
-packages/web-components/**/*.spec.ts
-packages/web-components/src/default-palette.ts
 
 # template files which actually follow a different language's formatting
 *.hbs

@@ -36,6 +36,9 @@ describe('Option', () => {
     onOptionClick() {
       // noop
     },
+    onActiveDescendantChange() {
+      // noop
+    },
   };
 
   it('renders a default single-select state', () => {
@@ -117,6 +120,18 @@ describe('Option', () => {
     );
 
     expect(getByText('one').getAttribute('aria-selected')).toEqual('false');
+  });
+
+  it('handles an empty string as a value', () => {
+    const { getByText } = render(
+      <ListboxContext.Provider value={{ ...defaultContextValues, selectedOptions: [''] }}>
+        <Option value="" text="Option 1">
+          one
+        </Option>
+      </ListboxContext.Provider>,
+    );
+
+    expect(getByText('one').getAttribute('aria-selected')).toEqual('true');
   });
 
   it('calls console.warn if the text prop is absent and the children is not a string', () => {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating ActiveDescendent scrollIntoView logic to work with ancester scroll containers and scroll margin styles",
-  "packageName": "@fluentui/react-aria",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}

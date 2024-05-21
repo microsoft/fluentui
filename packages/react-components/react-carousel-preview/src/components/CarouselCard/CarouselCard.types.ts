@@ -7,11 +7,17 @@ export type CarouselCardSlots = {
 /**
  * CarouselCard Props
  */
-export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {};
+export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
+  /**
+   * The value used to identify a page,
+   * it should be unique and is necessary for pagination
+   */
+  value: string;
+};
 
 /**
  * State used in rendering CarouselCard
  */
-export type CarouselCardState = ComponentState<CarouselCardSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from CarouselCardProps.
-// & Required<Pick<CarouselCardProps, 'propName'>>
+export type CarouselCardState = ComponentState<CarouselCardSlots> & {
+  visible: boolean;
+} & Pick<CarouselCardProps, 'value'>;

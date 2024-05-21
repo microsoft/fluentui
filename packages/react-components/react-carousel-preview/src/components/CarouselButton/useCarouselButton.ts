@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
+import { useButton_unstable } from '@fluentui/react-button';
+import { useCarouselContext_unstable } from '../CarouselContext';
+import { useCarouselValues_unstable } from '../useCarouselValues';
 
 /**
  * Create the state required to render CarouselButton.
@@ -13,22 +16,39 @@ import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.
  */
 export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CarouselButtonState => {
+  const { navType } = props;
+
+  const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
+  const values = useCarouselValues_unstable(snapshot => snapshot);
+  const activeValue = useCarouselContext_unstable(c => c.value);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+
+    selectPageByDirection(event, navType);
+  };
+
+  const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
+
+  const isTrailing = React.useMemo(() => {
+    if (!activeValue) {
+      return false;
+    }
+
+    if (navType === 'prev') {
+      return values.indexOf(activeValue) === 0;
+    }
+
+    return values.indexOf(activeValue) === values.length - 1;
+  }, [navType, activeValue, values]);
+
   return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+    navType,
+    // We lean on react-button class to handle styling and icon enhancements
+    ...useButton_unstable({ disabled: isTrailing, ...props, onClick: handleButtonClick }, ref),
   };
 };

@@ -24,15 +24,15 @@ const ExampleContent = () => {
 };
 
 export const AnchorToCustomTarget = () => {
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
-  const styles = useStyles();
+  const buttonRef = React.useCallback(
+    (el: HTMLButtonElement | null) => {
+      positioningRef.current?.setTarget(el);
+    },
+    [positioningRef],
+  );
 
-  React.useEffect(() => {
-    if (buttonRef.current) {
-      positioningRef.current?.setTarget(buttonRef.current);
-    }
-  }, [buttonRef, positioningRef]);
+  const styles = useStyles();
 
   return (
     <div className={styles.container}>

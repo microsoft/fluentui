@@ -9,6 +9,7 @@ import {
   readJson,
   updateJson,
   installPackagesTask,
+  visitNotIgnoredFiles,
 } from '@nrwl/devkit';
 import childProcess from 'child_process';
 
@@ -254,6 +255,18 @@ describe('prepare-initial-release generator', () => {
           `,
             },
             {
+              filePath: 'packages/react-one-preview/bundle-size/index.fixture.js',
+              content: stripIndents`
+                import {One} from '@proj/react-one-preview';
+
+                console.log(One);
+
+                export default {
+                   name: '@proj/react-one-preview - package',
+                }
+          `,
+            },
+            {
               filePath: 'packages/react-one-preview/stories/One.stories.tsx',
               content: stripIndents`
             import { One } from '@proj/react-one-preview';
@@ -328,6 +341,17 @@ describe('prepare-initial-release generator', () => {
           }),
         );
         expect(utils.project.jest()).toEqual(expect.stringContaining(`displayName: 'react-one'`));
+        expect(utils.project.bundleSize()).toMatchInlineSnapshot(`
+          Object {
+            "packages/react-one/bundle-size/index.fixture.js": "import { One } from '@proj/react-one';
+
+          console.log(One);
+
+          export default {
+          name: '@proj/react-one - package',
+          };",
+          }
+        `);
         expect(utils.project.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one
 
@@ -605,6 +629,16 @@ These are not production-ready components and **should never be used in product*
     md: {
       readme: () => tree.read(joinPathFragments(newRoot, 'README.md'), 'utf-8'),
       api: () => tree.read(joinPathFragments(newRoot, `etc/${projectName.replace('-preview', '')}.api.md`), 'utf-8'),
+    },
+    bundleSize: () => {
+      const root = joinPathFragments(newRoot, 'bundle-size');
+      const contents: Record<string, string> = {};
+
+      visitNotIgnoredFiles(tree, root, file => {
+        contents[file] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
+      });
+
+      return contents;
     },
     global: {
       tsBase: () => readJson<TsConfig>(tree, tsConfigBasePath),

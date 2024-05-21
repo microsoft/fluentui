@@ -129,15 +129,15 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -318,15 +318,15 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -569,15 +569,15 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -758,15 +758,15 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -997,15 +997,15 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -1186,15 +1186,15 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -1380,15 +1380,15 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -1638,15 +1638,15 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -1827,15 +1827,15 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -2015,15 +2015,15 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -2267,15 +2267,15 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -2456,15 +2456,15 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -2696,17 +2696,17 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            color: #000000;
-            outline-offset: -2px;
-            outline: none;
-          }
           &:active {
             background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            color: #000000;
+            outline-offset: -2px;
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -2935,17 +2935,17 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            color: #000000;
-            outline-offset: -2px;
-            outline: none;
-          }
           &:active {
             background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            color: #000000;
+            outline-offset: -2px;
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -3221,15 +3221,15 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -3410,15 +3410,15 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -3649,17 +3649,17 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            color: #000000;
-            outline-offset: -2px;
-            outline: none;
-          }
           &:active {
             background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            color: #000000;
+            outline-offset: -2px;
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -3888,17 +3888,17 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            color: #000000;
-            outline-offset: -2px;
-            outline: none;
-          }
           &:active {
             background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            color: #000000;
+            outline-offset: -2px;
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -4172,15 +4172,15 @@ exports[`Pivot supports JSX expressions 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
@@ -4356,15 +4356,15 @@ exports[`Pivot supports JSX expressions 1`] = `
           &:hover .ms-Button-icon {
             color: #0078d4;
           }
-          &:focus {
-            outline: none;
-          }
           &:active {
             background-color: #edebe9;
             color: #201f1e;
           }
           &:active .ms-Button-icon {
             color: #004578;
+          }
+          &:focus {
+            outline: none;
           }
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;

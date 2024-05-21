@@ -2,6 +2,215 @@
   "name": "@fluentui/react-breadcrumb",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:44:52 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.27",
+      "version": "9.0.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-aria to v9.11.3",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.81",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.2.22",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.21.3",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 May 2024 09:25:12 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.26",
+      "version": "9.0.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "c35e78e5853894033a69f6135ad003894a8b6a95",
+            "comment": " chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.80",
+            "commit": "62553563ad80b95e37a9e628d6a860c829b58dbf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.25",
+      "version": "9.0.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-aria to v9.11.2",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.79",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.2.21",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.21.2",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.24",
+      "version": "9.0.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-aria to v9.11.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.78",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.2.20",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:30 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.23",
+      "version": "9.0.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-aria to v9.11.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.77",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.2.19",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "ff79ac88545c9cbc7966f75f61a9d506f3ebb963",
+            "comment": "fix: remove circular dependencies from cypress files"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-breadcrumb_v9.0.22",
       "version": "9.0.22",

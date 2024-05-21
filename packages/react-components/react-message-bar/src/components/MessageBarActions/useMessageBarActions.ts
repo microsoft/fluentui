@@ -31,5 +31,6 @@ export const useMessageBarActions_unstable = (
       { elementType: 'div' },
     ),
     layout,
+    hasActions: !!props.children,
   };
 };

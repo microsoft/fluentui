@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 23 Apr 2024 08:17:47 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:45:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.16.0)
+
+Mon, 20 May 2024 12:45:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.15.2..@fluentui/react-provider_v9.16.0)
+
+### Minor changes
+
+- feat(react-swatch-picker): added CustomStyleHooks ([PR #31389](https://github.com/microsoft/fluentui/pull/31389) by vkozlova@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.15.2)
+
+Thu, 16 May 2024 09:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.15.1..@fluentui/react-provider_v9.15.2)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.15.1)
+
+Thu, 09 May 2024 19:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.15.0..@fluentui/react-provider_v9.15.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.15.0)
+
+Mon, 06 May 2024 12:55:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.14.1..@fluentui/react-provider_v9.15.0)
+
+### Minor changes
+
+- feat: adds TagPicker to custom style hooks ([PR #31272](https://github.com/microsoft/fluentui/pull/31272) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.14.1)
+
+Thu, 02 May 2024 11:36:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.14.0..@fluentui/react-provider_v9.14.1)
+
+### Patches
+
+-  chore: upgrade @fluentui/react-icons to 2.0.237. ([PR #31139](https://github.com/microsoft/fluentui/pull/31139) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.0 ([PR #31231](https://github.com/microsoft/fluentui/pull/31231) by beachball)
 
 ## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.14.0)
 

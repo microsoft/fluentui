@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 23 Apr 2024 08:17:48 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:45:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.19.0)
+
+Mon, 20 May 2024 12:45:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.18.0..@fluentui/react-shared-contexts_v9.19.0)
+
+### Minor changes
+
+- feat(react-swatch-picker): added CustomStyleHooks ([PR #31389](https://github.com/microsoft/fluentui/pull/31389) by vkozlova@microsoft.com)
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.18.0)
+
+Mon, 06 May 2024 12:55:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.17.0..@fluentui/react-shared-contexts_v9.18.0)
+
+### Minor changes
+
+- feat: adds TagPicker to custom style hooks ([PR #31272](https://github.com/microsoft/fluentui/pull/31272) by bernardo.sunderhus@gmail.com)
 
 ## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.17.0)
 

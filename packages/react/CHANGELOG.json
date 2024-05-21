@@ -2,6 +2,147 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 07:29:20 GMT",
+      "tag": "@fluentui/react_v8.118.3",
+      "version": "8.118.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.6.4",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.5",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.39",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.6.5",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.2",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.8.2",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.22",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/set-version to v8.2.18",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.10",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.48",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.15.5",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 May 2024 07:26:46 GMT",
+      "tag": "@fluentui/react_v8.118.2",
+      "version": "8.118.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ilmat@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "55c85d75a6b62659b137bf0a09fdcd7b7335dbe7",
+            "comment": "fix aria role for draggable columns in DetailsList DetailsHeader"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 07:25:44 GMT",
+      "tag": "@fluentui/react_v8.118.1",
+      "version": "8.118.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "15c3f5231b7acf7b78d4217c76742c272f1aed22",
+            "comment": "fix: Fixing SplitButton styles in High Contrast Mode."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 07:27:45 GMT",
+      "tag": "@fluentui/react_v8.118.0",
+      "version": "8.118.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c03c973c7ae9ac2ce7314d6054e9a175bb0c0fd7",
+            "comment": "feat: Add caseSensitive prop to Combobox."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 May 2024 07:26:38 GMT",
+      "tag": "@fluentui/react_v8.117.8",
+      "version": "8.117.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f52fe2b3d16c12ae036cd08a50e0e15b8483c6cf",
+            "comment": "fix: update List to render after scrolling finishes."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d8d50ebc175467a916bfcd569aba38b5a15fb041",
+            "comment": "Making sure V9 dialog doesn't set aria-hidden on a host element that is used as a container for V8 popups, dropdowns and menus."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Apr 2024 07:27:48 GMT",
       "tag": "@fluentui/react_v8.117.7",
       "version": "8.117.7",

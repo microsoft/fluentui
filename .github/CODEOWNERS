@@ -121,12 +121,12 @@ apps/ts-minbar-test-react @microsoft/fluentui-react-build
 apps/ts-minbar-test-react-components @microsoft/fluentui-react-build
 apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
+apps/vr-tests-web-components @microsoft/fui-wc
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
-apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
 apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
 apps/react-18-tests-v9 @microsoft/cxe-red @micahgodbolt
 apps/recipes-react-components @microsoft/cxe-red @microsoft/fluentui-react @sopranopillow
@@ -223,7 +223,6 @@ packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
 packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
-packages/react-components/react-infobutton @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
@@ -244,7 +243,7 @@ packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar @microsoft/teams-prg
 packages/react-components/react-rating @microsoft/cxe-red @tomi-msft
-packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
+packages/react-components/react-swatch-picker @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
@@ -252,7 +251,7 @@ packages/react-components/react-motions-preview @microsoft/teams-prg
 packages/react-components/react-teaching-popover @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat @microsoft/teams-prg
 packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
-packages/react-components/react-tag-picker-preview @microsoft/teams-prg
+packages/react-components/react-tag-picker @microsoft/teams-prg
 packages/react-components/react-platform-adapter-preview @microsoft/fluentui-xplat
 packages/react-components/react-carousel-preview @microsoft/xc-uxe @Mitch-At-Work
 # <%= NX-CODEOWNER-PLACEHOLDER %>
