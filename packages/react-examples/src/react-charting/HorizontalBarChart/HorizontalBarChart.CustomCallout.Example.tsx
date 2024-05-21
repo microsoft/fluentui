@@ -13,10 +13,7 @@ import * as d3 from 'd3-format';
 export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}> = () => {
   const hideRatio: boolean[] = [true, false];
 
-  const IsDarkMode = () => {
-    const theme = React.useContext(ThemeContext);
-    return theme?.isInverted;
-  };
+  const isDarkMode: boolean = React.useContext(ThemeContext)?.isInverted ?? false;
 
   const data: IChartProps[] = [
     {
@@ -25,7 +22,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color28, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color28, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '1.5K',
         },
@@ -37,7 +34,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color29, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color29, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '800',
         },
@@ -49,7 +46,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color30, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color30, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '8.8K',
         },
@@ -61,7 +58,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color31, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color31, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '16K',
         },
@@ -73,7 +70,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color32, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color32, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '11K',
         },
@@ -85,7 +82,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color33, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color33, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '14K',
         },
@@ -97,7 +94,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color34, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color34, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '9.9K',
         },
@@ -109,7 +106,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          color: getColorFromToken(DataVizPalette.color35, IsDarkMode()),
+          color: getColorFromToken(DataVizPalette.color35, isDarkMode),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '4.3K',
         },

@@ -18,7 +18,7 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
     rectNode: {
       strokeWidth: '2px',
       fill: props.theme!.semanticColors.bodyBackground,
-      padding: '10px',
+      padding: '12px',
       rx: '2px',
     },
     rectText: {
