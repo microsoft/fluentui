@@ -44,6 +44,7 @@
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",
     "tslib": "^2.1.0",
+    "react-hook-form": "^5.7.2",
     "@fluentui/react-nav-preview": "*"
   }
 }
