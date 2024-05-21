@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "adds high contrast styles to badge web component",
-  "packageName": "@fluentui/web-components",
-  "email": "ryanmerrill@microsoft.com",
-  "dependentChangeType": "patch"
-}

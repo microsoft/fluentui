@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export missing contextValues.",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

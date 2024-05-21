@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { StackedBarChart, IChartDataPoint, IChartProps } from '@fluentui/react-charting';
+import {
+  StackedBarChart,
+  IChartDataPoint,
+  IChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class StackedBarChartMultipleExample extends React.Component<{}, {}> {
@@ -10,9 +16,9 @@ export class StackedBarChartMultipleExample extends React.Component<{}, {}> {
       {
         legend: 'This is the third legend of the chart',
         data: 35,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
       },
-      { legend: 'This is the fourth legend of the chart', data: 87, color: DefaultPalette.greenLight },
+      { legend: 'This is the fourth legend of the chart', data: 87, color: getColorFromToken(DataVizPalette.color5) },
     ];
     const chartTitle = 'Stacked bar chart 2nd example';
 

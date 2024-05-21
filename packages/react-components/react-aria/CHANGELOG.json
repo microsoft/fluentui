@@ -2,6 +2,39 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:45:09 GMT",
+      "tag": "@fluentui/react-aria_v9.11.3",
+      "version": "9.11.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-tabster to v9.21.3",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 May 2024 19:35:12 GMT",
       "tag": "@fluentui/react-aria_v9.11.2",
       "version": "9.11.2",

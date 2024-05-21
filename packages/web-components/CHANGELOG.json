@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 21 May 2024 04:06:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.19",
+      "version": "3.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "ff3ca5a1308af09abe3fcdea6c8b2ed403f4b25e",
+            "comment": "Use click() instead of press() in button keydownHandler"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 04:07:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.18",
+      "version": "3.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryanmerrill@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "62b64b4eb6aa3f192de9e5b2ab85e96ca4e33fa7",
+            "comment": "adds high contrast styles to badge web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 May 2024 04:06:08 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.17",
       "version": "3.0.0-beta.17",
