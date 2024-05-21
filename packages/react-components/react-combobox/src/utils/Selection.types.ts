@@ -16,7 +16,7 @@ export type SelectionProps = {
    */
   multiselect?: boolean;
 
-  /* Callback when an option is selected */
+  /** Callback when an option is selected */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
@@ -28,14 +28,14 @@ export type SelectionProps = {
   selectedOptions?: string[];
 };
 
-/* Values returned by the useSelection hook */
+/** Values returned by the useSelection hook */
 export type SelectionState = {
   clearSelection: (event: SelectionEvents) => void;
   selectedOptions: string[];
   selectOption: (event: SelectionEvents, option: OptionValue) => void;
 };
 
-/*
+/**
  * Data for the onOptionSelect callback.
  * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
  */
@@ -45,7 +45,7 @@ export type OptionOnSelectData = {
   selectedOptions: string[];
 };
 
-/* Possible event types for onOptionSelect */
+/** Possible event types for onOptionSelect */
 export type SelectionEvents =
   | React.ChangeEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>

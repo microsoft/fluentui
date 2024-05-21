@@ -143,29 +143,29 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           <Caption1Strong className={styles.headingContent}>Home</Caption1Strong>
-          <NavItem target="_blank" icon={<Dashboard />} onClick={someClickHandler} value="1">
+          <NavItem onClick={someClickHandler} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
-          <NavItem target="_blank" icon={<Announcements />} onClick={someClickHandler} value="2">
+          <NavItem href="https://www.bing.com" icon={<Announcements />} value="2">
             Announcements
           </NavItem>
-          <NavItem target="_blank" icon={<EmployeeSpotlight />} onClick={someClickHandler} value="3">
+          <NavItem href="https://www.bing.com" icon={<EmployeeSpotlight />} value="3">
             Employee Spotlight
           </NavItem>
           <Caption1Strong className={styles.headingContent}>Employee Management</Caption1Strong>
-          <NavItem target="_blank" icon={<Search />} onClick={someClickHandler} value="4">
+          <NavItem icon={<Search />} href="https://www.bing.com" value="4">
             Profile Search
           </NavItem>
-          <NavItem target="_blank" icon={<PerformanceReviews />} onClick={someClickHandler} value="5">
+          <NavItem icon={<PerformanceReviews />} href="https://www.bing.com" value="5">
             Performance Reviews
           </NavItem>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="7">
+              <NavSubItem href="https://www.bing.com" value="7">
                 Openings
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="8">
+              <NavSubItem href="https://www.bing.com" value="8">
                 Submissions
               </NavSubItem>
             </NavSubItemGroup>
@@ -174,7 +174,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             Interviews
           </NavItem>
           <Caption1Strong className={styles.headingContent}>Benefits</Caption1Strong>
-          <NavItem icon={<HealthPlans />} value="10">
+          <NavItem href="https://www.bing.com" onClick={someClickHandler} icon={<HealthPlans />} value="10">
             Health Plans
           </NavItem>
           <NavCategory value="11">
@@ -182,44 +182,44 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               Retirement
             </NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="13">
+              <NavSubItem href="https://www.bing.com" value="13">
                 Plan Information
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="14">
+              <NavSubItem href="https://www.bing.com" value="14">
                 Fund Performance
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
 
           <Caption1Strong className={styles.headingContent}>Learning</Caption1Strong>
-          <NavItem icon={<TrainingPrograms />} value="15">
+          <NavItem icon={<TrainingPrograms />} onClick={someClickHandler} value="15">
             Training Programs
           </NavItem>
           <NavCategory value="16">
             <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="17">
+              <NavSubItem href="https://www.bing.com" onClick={someClickHandler} value="17">
                 Career Paths
               </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="18">
+              <NavSubItem onClick={someClickHandler} value="18">
                 Planning
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
 
           <Caption1Strong className={styles.headingContent}>Analytics</Caption1Strong>
-          <NavItem target="_blank" onClick={someClickHandler} icon={<Analytics />} value="19">
+          <NavItem href="https://www.bing.com" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
-          <NavItem target="_blank" onClick={someClickHandler} icon={<Reports />} value="20">
+          <NavItem href="https://www.bing.com" icon={<Reports />} value="20">
             Reports
           </NavItem>
         </NavDrawerBody>
         <NavDrawerFooter>
-          <NavItem value="21" target="_blank" onClick={someClickHandler} icon={<Person />}>
+          <NavItem value="21" href="https://www.bing.com" icon={<Person />}>
             Profile
           </NavItem>
-          <NavItem icon={<Settings />} target="_blank" onClick={someClickHandler} value="24">
+          <NavItem icon={<Settings />} href="https://www.bing.com" value="24">
             App Settings
           </NavItem>
         </NavDrawerFooter>

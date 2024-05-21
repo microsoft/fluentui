@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Thu, 16 May 2024 09:25:18 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:45:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.83)
+
+Mon, 20 May 2024 12:45:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.82..@fluentui/react-switch_v9.1.83)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.66 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-label to v9.1.70 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
 
 ## [9.1.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.82)
 

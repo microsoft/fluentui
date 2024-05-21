@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MessageBar without actions should not take up space",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
