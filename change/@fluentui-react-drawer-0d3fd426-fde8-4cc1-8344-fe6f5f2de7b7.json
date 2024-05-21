@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "allow aside as tag for Drawer components",
+  "comment": "feat: allow aside as tag for Drawer components",
   "packageName": "@fluentui/react-drawer",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
