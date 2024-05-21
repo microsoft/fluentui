@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:44:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.81)
+
+Mon, 20 May 2024 12:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.80..@fluentui/react-button_v9.3.81)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.3.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.80)
+
+Thu, 16 May 2024 09:25:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.79..@fluentui/react-button_v9.3.80)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
 
 ## [9.3.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.79)
 

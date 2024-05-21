@@ -337,6 +337,13 @@ const getOverrides = () => [
     },
   },
   {
+    // Temporary overrides till Griffel migration is finished
+    files: ['**/*.stories.tsx', '**/*.styles.ts', '**/*.cy.tsx', '**/*.mixins.ts'],
+    rules: {
+      'deprecation/deprecation': 'off',
+    },
+  },
+  {
     files: [...configHelpers.configFiles],
     rules: {
       'no-console': 'off',

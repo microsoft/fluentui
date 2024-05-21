@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   badgeBaseStyles,
   badgeFilledStyles,
@@ -33,4 +34,12 @@ export const styles = css`
   ${badgeOutlineStyles}
   ${badgeTintStyles}
   ${badgeBaseStyles}
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host,
+    :host([appearance='outline']),
+    :host([appearance='tint']) {
+      border-color: CanvasText;
+    }
+  `),
+);

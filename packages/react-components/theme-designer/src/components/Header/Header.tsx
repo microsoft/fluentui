@@ -25,6 +25,7 @@ export interface HeaderProps {
   className?: string;
 }
 
+/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -52,6 +53,7 @@ const useStyles = makeStyles({
     paddingRight: tokens.spacingHorizontalL,
   },
 });
+/* eslint-enable deprecation/deprecation */
 
 export const Header: React.FC<HeaderProps> = props => {
   const styles = useStyles();

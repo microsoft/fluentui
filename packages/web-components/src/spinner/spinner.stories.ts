@@ -79,5 +79,7 @@ export const Size = renderComponent(html<SpinnerStoryArgs>`
     <fluent-spinner size="large"></fluent-spinner>
     <code>extra-large</code>
     <fluent-spinner size="extra-large"></fluent-spinner>
+    <code>huge</code>
+    <fluent-spinner size="huge"></fluent-spinner>
   </div>
 `);

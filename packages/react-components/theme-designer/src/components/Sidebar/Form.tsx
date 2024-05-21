@@ -19,6 +19,7 @@ import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext'
 // import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
 
+/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground3,
@@ -80,6 +81,7 @@ const useStyles = makeStyles({
     paddingRight: '20px',
   },
 });
+/* eslint-enable deprecation/deprecation */
 
 const DELAY_INPUT = 20;
 export const Form: React.FC = () => {

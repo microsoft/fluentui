@@ -2,6 +2,72 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 21 May 2024 04:06:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.19",
+      "version": "3.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "ff3ca5a1308af09abe3fcdea6c8b2ed403f4b25e",
+            "comment": "Use click() instead of press() in button keydownHandler"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 04:07:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.18",
+      "version": "3.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryanmerrill@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "62b64b4eb6aa3f192de9e5b2ab85e96ca4e33fa7",
+            "comment": "adds high contrast styles to badge web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 May 2024 04:06:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.17",
+      "version": "3.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "74312a0e79ef7297b0a5a1d2e63af24d4786ac38",
+            "comment": "fix(web-components): remove determinate from spinner implementation"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fa9416a9f3fefc36b2e2ee3b32ea8c038bb4d91e",
+            "comment": "Fix compound disabled selector in fluent-button and fluent-anchor-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 May 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.16",
+      "version": "3.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcec1f8d69fab6d04c39b7665e7c547e522cfc20",
+            "comment": "Synchronize design token exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 May 2024 04:06:44 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.15",
       "version": "3.0.0-beta.15",

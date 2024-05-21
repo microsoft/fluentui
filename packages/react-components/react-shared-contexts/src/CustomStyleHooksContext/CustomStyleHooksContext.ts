@@ -142,6 +142,11 @@ export type CustomStyleHooksContextValue = Partial<{
   useTagPickerListStyles_unstable: CustomStyleHook;
   useTagPickerOptionStyles_unstable: CustomStyleHook;
   useTagPickerOptionGroupStyles_unstable: CustomStyleHook;
+  useColorSwatchStyles_unstable: CustomStyleHook;
+  useImageSwatchStyles_unstable: CustomStyleHook;
+  useEmptySwatchStyles_unstable: CustomStyleHook;
+  useSwatchPickerRowStyles_unstable: CustomStyleHook;
+  useSwatchPickerStyles_unstable: CustomStyleHook;
 }>;
 
 /**

@@ -31,7 +31,7 @@ import {
 export interface ContentProps {
   className?: string;
 }
-
+/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -81,6 +81,7 @@ const useStyles = makeStyles({
     justifyContent: 'left',
   },
 });
+/* eslint-enable deprecation/deprecation */
 
 /*
 	Note the state of the stickersheet is that we need consensus on the following post Build 2023:
