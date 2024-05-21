@@ -15,7 +15,8 @@
     "type-check": "just-scripts type-check",
     "start": "yarn storybook:docs",
     "storybook": "start-storybook --port 3000 --no-manager-cache",
-    "storybook:docs": "yarn storybook --docs"
+    "storybook:docs": "yarn storybook --docs",
+    "test": "jest --passWithNoTests"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
