@@ -235,6 +235,11 @@ export interface CalendarDayGridStyles {
   daySelected?: string;
 
   /**
+   * The style to apply to an exact date which was selected
+   */
+  daySingleSelected?: string;
+
+  /**
    * The style to apply to row around weeks
    */
   weekRow?: string;
@@ -283,4 +288,9 @@ export interface CalendarDayGridStyles {
    * The style applied to the marker on days to mark as important
    */
   dayMarker?: string;
+
+  /**
+   * The style applied to the day "today" span
+   */
+  dayTodayMarker?: string;
 }

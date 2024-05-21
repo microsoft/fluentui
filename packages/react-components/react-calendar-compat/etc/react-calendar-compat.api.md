@@ -97,6 +97,8 @@ export interface CalendarDayGridStyles {
     dayOutsideBounds?: string;
     dayOutsideNavigatedMonth?: string;
     daySelected?: string;
+    daySingleSelected?: string;
+    dayTodayMarker?: string;
     firstTransitionWeek?: string;
     lastTransitionWeek?: string;
     table?: string;
