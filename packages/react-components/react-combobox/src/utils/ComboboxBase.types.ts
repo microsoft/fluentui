@@ -141,7 +141,7 @@ export type ComboboxBaseOpenChangeData = {
   open: boolean;
 };
 
-/* Possible event types for onOpen */
+/** Possible event types for onOpen */
 export type ComboboxBaseOpenEvents =
   | React.MouseEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
