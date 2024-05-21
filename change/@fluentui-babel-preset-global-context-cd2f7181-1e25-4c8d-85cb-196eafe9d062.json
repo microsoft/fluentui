@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: improve typings of exported preset",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -40,6 +40,6 @@ export type OptionCollectionState = {
   /** The unordered option data. */
   options: OptionValue[];
 
-  /* A function that child options call to register their values. Returns a function to unregister the option. */
+  /** A function that child options call to register their values. Returns a function to unregister the option. */
   registerOption: (option: OptionValue, element: HTMLElement) => () => void;
 };

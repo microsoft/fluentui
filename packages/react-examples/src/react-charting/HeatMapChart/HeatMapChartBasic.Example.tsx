@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { HeatMapChart, IHeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
+import { Label } from '@fluentui/react';
 
 interface IHeatMapChartBasicExampleState {
   width: number;
@@ -319,7 +320,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightSlider${this.state.height}`}
         />
-        <p>Heat map explaining the Air Quality Index</p>
+        <Label>Heat map explaining the Air Quality Index</Label>
         <div style={rootStyle}>
           <HeatMapChart
             culture={window.navigator.language}

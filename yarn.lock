@@ -17492,33 +17492,33 @@ monaco-editor@0.33.0:
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
   integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
-monosize-bundler-webpack@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.0.tgz#f70e04453397a9fe1959bc9bd302e76a5871fbf1"
-  integrity sha512-iZvgekCCQEcTVWYdLSPwotmHL5oO9cSr9dgDuCYafhfZKwNfFKxfFRraSUffNQlYBc2eH2ZiU1hhcauA30fbnA==
+monosize-bundler-webpack@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.4.tgz#c9f730c7237c26153b45f40c04940de0af3e1f4c"
+  integrity sha512-lYQ2Cg+J4KH7SjHnMRPKSg6CUASQ3BMiLVB5jhSvS79Rz3LmEsy0VFrbasjHFG05VErI9j/JvpLLxS+zHyS2kQ==
   dependencies:
-    monosize "^0.5.0"
+    monosize "^0.6.2"
     picocolors "^1.0.0"
     terser "^5.16.0"
     terser-webpack-plugin "^5.3.1"
     tslib "^2.4.1"
     webpack "^5.76.0"
 
-monosize-storage-azure@0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.10.tgz#e90390af2c9709f35cdfe51a0218f8effd1c824c"
-  integrity sha512-asvaHsx4TSmdyh1rvxm6uWa91Suml9Vorfpc0YUGUsOj7KXOg3vxObxrTvKPiBSSWEbQ/Nb1XXJCzt4s8CaX1w==
+monosize-storage-azure@0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.14.tgz#f3b5810f885063f0d7fa86ca17625ce22546433f"
+  integrity sha512-hFaIo1ZoB4ZIlbRyPJ4CeXDEwGF/FVaG6j1rlgWuwilYavYAm9q/y0GprAFp6uRN8kQxi8WS6OiZCna/YIYHJA==
   dependencies:
     "@azure/data-tables" "^13.0.0"
-    monosize "^0.5.0"
+    monosize "^0.6.2"
     node-fetch "^3.3.0"
     picocolors "^1.0.0"
     tslib "^2.4.1"
 
-monosize@0.5.0, monosize@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.5.0.tgz#06de5a1f77338877a336627418b5b45458718498"
-  integrity sha512-+1Z3UyGP/t65Hft9wcDIlgGNuH7xB3ExKjxZ97qaGz//ujLPE2/SkeQcF4LxegBFjQnU4vm9g1pnb4Acc8b4Rg==
+monosize@0.6.2, monosize@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.6.2.tgz#0b192dd9ac12ab5833c65cdb4ca4e1c05cfaddb1"
+  integrity sha512-bTP2FnY0/G527uUmZ7GF5Gz7awSSVTPn7laHd6higpjZMv7f7IGtWgoNuhtaj/E92ZL1S3zm8+cb4TUgHxJdNQ==
   dependencies:
     acorn "^8.11.3"
     ci-info "^3.7.0"
@@ -17529,7 +17529,6 @@ monosize@0.5.0, monosize@^0.5.0:
     picocolors "^1.0.0"
     pretty-bytes "^6.0.0"
     tslib "^2.4.1"
-    workspace-tools "^0.29.1"
     yargs "^17.6.2"
 
 moo-color@^1.0.2:
@@ -21215,9 +21214,9 @@ semver-truncate@^3.0.0:
     semver "^7.3.5"
 
 "semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0, semver@^5.7.0:
-  version "5.7.1"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
-  integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.2.tgz#48d55db737c3287cd4835e17fa13feace1c41ef8"
+  integrity sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==
 
 semver@7.5.2:
   version "7.5.2"
@@ -21232,11 +21231,9 @@ semver@^6.0.0, semver@^6.1.0, semver@^6.1.2, semver@^6.2.0, semver@^6.3.0, semve
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
 semver@^7.0.0, semver@^7.1.1, semver@^7.2.1, semver@^7.3.2, semver@^7.3.4, semver@^7.3.5, semver@^7.3.8, semver@^7.5.3, semver@^7.5.4, semver@^7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.0.tgz#1a46a4db4bffcccd97b743b5005c8325f23d4e2d"
-  integrity sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==
-  dependencies:
-    lru-cache "^6.0.0"
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.2.tgz#1e3b34759f896e8f14d6134732ce798aeb0c6e13"
+  integrity sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==
 
 semver@~7.3.0:
   version "7.3.8"
@@ -24418,19 +24415,7 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@0.29.1, workspace-tools@^0.29.1:
-  version "0.29.1"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.29.1.tgz#ff38f7484961cd87a342a8fd14eacd31d1645f56"
-  integrity sha512-BVPROxNszGmyaUD2ErLWP4BpCiIkG1P//CnziOvHd27o1TeBm+7T1HKlYu89T4XGAjgPL/NP+tZ4j6aBvG/p/A==
-  dependencies:
-    "@yarnpkg/lockfile" "^1.1.0"
-    git-url-parse "^13.0.0"
-    globby "^11.0.0"
-    jju "^1.4.0"
-    js-yaml "^4.1.0"
-    micromatch "^4.0.0"
-
-workspace-tools@^0.27.0:
+workspace-tools@0.27.0, workspace-tools@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.27.0.tgz#11e8f1ec2cb4c80d1cefcf92da2d0154dc001aa8"
   integrity sha512-5mtE5Vy0Se4brAUJXKfXNtaS9jcUcH+IGF4LNU1xJr4bW1o5bK2gV0pykodB+n6V84nRtaD/4I/9w98aujm7LA==

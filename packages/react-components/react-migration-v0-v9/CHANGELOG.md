@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Thu, 16 May 2024 09:25:15 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:44:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.1.33)
+
+Mon, 20 May 2024 12:44:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.1.32..@fluentui/react-migration-v0-v9_v9.1.33)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-components to v9.52.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.60 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
 
 ## [9.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.1.32)
 
