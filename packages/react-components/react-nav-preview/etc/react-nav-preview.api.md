@@ -41,18 +41,6 @@ export const Hamburger: ForwardRefComponent<HamburgerProps>;
 export const hamburgerClassNames: SlotClassNames<ButtonSlots>;
 
 // @public
-export const HamburgerInNav: ForwardRefComponent<HamburgerInNavProps>;
-
-// @public (undocumented)
-export const hamburgerInNavClassNames: SlotClassNames<ButtonSlots>;
-
-// @public
-export type HamburgerInNavProps = ButtonProps;
-
-// @public
-export type HamburgerInNavState = ButtonState;
-
-// @public
 export type HamburgerProps = ButtonProps;
 
 // @public
@@ -332,9 +320,6 @@ export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JS
 
 // @public
 export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;
-
-// @public
-export const useHamburgerInNavStyles_unstable: (state: HamburgerInNavState) => HamburgerInNavState;
 
 // @public
 export const useHamburgerStyles_unstable: (state: HamburgerState) => HamburgerState;
