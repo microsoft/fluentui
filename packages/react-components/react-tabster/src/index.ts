@@ -34,8 +34,8 @@ export type {
 
 export { applyFocusVisiblePolyfill } from './focus/index';
 import {
-  Types,
-  EventsTypes,
+  type Types,
+  type EventsTypes,
   dispatchGroupperMoveFocusEvent,
   dispatchMoverMoveFocusEvent,
   MoverMoveFocusEventName,
