@@ -32,7 +32,7 @@ These components are more than just a convergence of the implementations of the 
 
 # Versioning Overview
 
-Each component is released in multiple phases. This process has changed as of July 2023, and is outlined in more detail in the [[new release process   v9 packages]] article. In summary:
+Each component is released in multiple phases. This process has changed as of July 2023, and is outlined in more detail in the [v9 package release cycle](release-process.md). In summary:
 
 1. **Kickoff phase**: Package has `-preview` suffix and is not yet published to NPM (private).
 2. **Preview phase**: Package has `-preview` suffix and is published with version `0.(major).(minor|patch)`. Breaking changes will be marked as minor, but announced as such in changelogs.
@@ -166,7 +166,6 @@ Once the first draft of the spec has been reviewed, you can get started on the i
 - Respect Figma tokens (and use the Provider)
 - Respect API principles, shorthands and slots handling
 - No dependency on v0/v7/v8
-- Add tsdoc `/** */` comments to all public APIs in your component
 
 You can follow examples of other converged components for the structure of the implementation, such as:
 
@@ -224,8 +223,6 @@ Once the component has been released as unstable, you should perform additional 
   - When deciding what tests to write, generally the tests should cover all states in your component's styling hook (`use{Component}Styles`).
 - **Bundle Size Tests**
   - Example: [Button.fixture.js](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/bundle-size/Button.fixture.js)
-- **Performance Tests**
-  - Example: [Button.tsx](https://github.com/microsoft/fluentui/blob/master/apps/perf-test-react-components/src/scenarios/Button.tsx)
 - **Manual Accessibility Tests**
   - For more info see [Manual Accessibility Review Checklist](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist)
 
@@ -247,18 +244,10 @@ Organize a bug bash with other Fluent UI crews. This is the last chance to verif
 
 Once all validation has been completed, the component is ready for a stable release! 🎉
 
-Use the following script to move the package to stable, replacing `MYCOMPONENT` with the appropriate package name:
+Use the following script to move the package to stable, replacing `your-component` with the appropriate package name:
 
 ```bash
-yarn nx generate prepare-initial-release --project @fluentui/react-MYCOMPONENT-preview --phase=stable
+yarn nx generate prepare-initial-release --project @fluentui/react-your-component-preview --phase=stable
 ```
-
-- Rename the package to remove `-preview` (should be done by the script).
-- Deprecate the existing `-preview` package in NPM.
-- Change beachball's `disallowedChangeTypes` to `"major", "prerelease"` in its package.json
-  - Example: [react-button/package.json](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/package.json)
-- Add exports to [`@fluentui/react-components`](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-components/src/index.ts)
-- Update `README.md` and `{Component}Description.md` to remove references to the component being unstable.
-- Update `stories/{Component}/index.stories.tsx` to move the stories from `"Preview Components/"` to `"Components/"`.
 
 **Important**: Once the component has been released as stable, it can no longer have any breaking changes before the next major release of the library.
