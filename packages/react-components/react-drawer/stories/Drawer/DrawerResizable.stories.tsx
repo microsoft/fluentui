@@ -18,6 +18,15 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '480px',
     backgroundColor: '#fff',
+    userSelect: 'auto',
+  },
+
+  rootResizerActive: {
+    userSelect: 'none',
+  },
+
+  container: {
+    position: 'relative',
   },
 
   drawer: {
@@ -75,6 +84,10 @@ export const Resizable = () => {
     [isResizing],
   );
 
+  const ResizeComponent: React.FC = () => (
+    <div className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)} onMouseDown={startResizing} />
+  );
+
   React.useEffect(() => {
     window.addEventListener('mousemove', resize);
     window.addEventListener('mouseup', stopResizing);
@@ -87,25 +100,24 @@ export const Resizable = () => {
   }, [resize, stopResizing]);
 
   return (
-    <div className={styles.root}>
-      <InlineDrawer
-        open
-        ref={sidebarRef}
-        className={styles.drawer}
-        style={{ width: `${sidebarWidth}px` }}
-        onMouseDown={e => e.preventDefault()}
-      >
-        <div className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)} onMouseDown={startResizing} />
-
-        <DrawerHeader>
-          <DrawerHeaderTitle>Default Drawer</DrawerHeaderTitle>
-        </DrawerHeader>
-
-        <DrawerBody>
-          <p>Resizable content</p>
-        </DrawerBody>
-      </InlineDrawer>
-
+    <div className={mergeClasses(styles.root, isResizing && styles.rootResizerActive)}>
+      <div className={styles.container}>
+        <InlineDrawer
+          open
+          ref={sidebarRef}
+          className={styles.drawer}
+          style={{ width: `${sidebarWidth}px` }}
+          onMouseDown={e => e.preventDefault()}
+        >
+          <DrawerHeader>
+            <DrawerHeaderTitle>Default Drawer</DrawerHeaderTitle>
+          </DrawerHeader>
+          <DrawerBody>
+            <p>Resizable content</p>
+          </DrawerBody>
+        </InlineDrawer>
+        <ResizeComponent />
+      </div>
       <p className={styles.content}>Resize the drawer to see the change</p>
     </div>
   );

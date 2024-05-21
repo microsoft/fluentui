@@ -23,6 +23,11 @@ export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 // @public (undocumented)
 export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>;
 
+// @public (undocumented)
+export type MessageBarActionsContextValues = {
+    button: ButtonContextValue;
+};
+
 // @public
 export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
 
@@ -33,7 +38,9 @@ export type MessageBarActionsSlots = {
 };
 
 // @public
-export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> & Pick<Required<MessageBarContextValue>, 'layout'>;
+export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> & Pick<Required<MessageBarContextValue>, 'layout'> & {
+    hasActions: boolean;
+};
 
 // @public
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
@@ -56,6 +63,9 @@ export type MessageBarBodyState = ComponentState<MessageBarBodySlots>;
 export const messageBarClassNames: SlotClassNames<MessageBarSlots>;
 
 // @public (undocumented)
+export const messageBarContextDefaultValue: MessageBarContextValue;
+
+// @public (undocumented)
 export const MessageBarContextProvider: React_2.Provider<MessageBarContextValue | undefined>;
 
 // @public (undocumented)
@@ -64,6 +74,11 @@ export type MessageBarContextValue = {
     actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
     bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
     titleId: string;
+};
+
+// @public (undocumented)
+export type MessageBarContextValues = {
+    messageBar: MessageBarContextValue;
 };
 
 // @public
@@ -129,6 +144,18 @@ export type MessageBarTitleSlots = {
 // @public
 export type MessageBarTitleState = ComponentState<MessageBarTitleSlots>;
 
+// @internal (undocumented)
+export const messageBarTransitionContextDefaultValue: MessageBarTransitionContextValue;
+
+// @internal
+export const MessageBarTransitionContextProvider: React_2.Provider<MessageBarTransitionContextValue | undefined>;
+
+// @public (undocumented)
+export type MessageBarTransitionContextValue = {
+    className: string;
+    nodeRef: React_2.Ref<HTMLDivElement | null>;
+};
+
 // @public
 export const renderMessageBar_unstable: (state: MessageBarState, contexts: MessageBarContextValues) => JSX.Element;
 
@@ -150,6 +177,9 @@ export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<H
 // @public
 export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarActionsState;
 
+// @public (undocumented)
+export function useMessageBarActionsContextValue_unstable(): MessageBarActionsContextValues;
+
 // @public
 export const useMessageBarActionsStyles_unstable: (state: MessageBarActionsState) => MessageBarActionsState;
 
@@ -161,6 +191,9 @@ export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => M
 
 // @public (undocumented)
 export const useMessageBarContext: () => MessageBarContextValue;
+
+// @public (undocumented)
+export function useMessageBarContextValue_unstable(state: MessageBarState): MessageBarContextValues;
 
 // @public
 export const useMessageBarGroup_unstable: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarGroupState;
@@ -176,6 +209,9 @@ export const useMessageBarTitle_unstable: (props: MessageBarTitleProps, ref: Rea
 
 // @public
 export const useMessageBarTitleStyles_unstable: (state: MessageBarTitleState) => MessageBarTitleState;
+
+// @internal (undocumented)
+export const useMessageBarTransitionContext: () => MessageBarTransitionContextValue;
 
 // (No @packageDocumentation comment for this package)
 

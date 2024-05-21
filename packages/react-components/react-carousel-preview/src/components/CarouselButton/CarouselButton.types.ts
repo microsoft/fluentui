@@ -1,17 +1,22 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 
-export type CarouselButtonSlots = {
-  root: Slot<'div'>;
+export type CarouselButtonSlots = ButtonSlots & {
+  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 };
 
 /**
  * CarouselButton Props
  */
-export type CarouselButtonProps = ComponentProps<CarouselButtonSlots> & {};
+export type CarouselButtonProps = ButtonProps &
+  ComponentProps<CarouselButtonSlots> & {
+    navType: 'prev' | 'next';
+  };
 
 /**
  * State used in rendering CarouselButton
  */
-export type CarouselButtonState = ComponentState<CarouselButtonSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from CarouselButtonProps.
-// & Required<Pick<CarouselButtonProps, 'propName'>>
+export type CarouselButtonState = ButtonState &
+  ComponentState<CarouselButtonSlots> &
+  Pick<CarouselButtonProps, 'navType'>;

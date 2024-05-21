@@ -42,8 +42,6 @@ export const useNavCategoryItem_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
-        role: 'nav',
-        type: 'navigation',
         ...props,
         onClick: onNavCategoryItemClick,
       }),

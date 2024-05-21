@@ -480,7 +480,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
                 data-is-focusable={false}
                 role="text"

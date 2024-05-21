@@ -1,7 +1,8 @@
 import { spawnSync } from 'child_process';
+
+import { fluentRepoDetails, getPullRequestForCommit } from '@fluentui/scripts-github';
 import { Octokit } from '@octokit/rest';
-import { PackageChangelogRenderInfo, ChangelogEntry } from 'beachball';
-import { getPullRequestForCommit, fluentRepoDetails } from '@fluentui/scripts-github';
+import { ChangelogEntry, PackageChangelogRenderInfo } from 'beachball';
 
 const githubPAT = process.env.GITHUB_PAT;
 if (!githubPAT && (process.argv.includes('bump') || process.argv.includes('publish'))) {
