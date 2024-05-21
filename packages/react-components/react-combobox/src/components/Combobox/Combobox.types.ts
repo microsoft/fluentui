@@ -12,19 +12,19 @@ import type {
 import { Listbox } from '../Listbox/Listbox';
 
 export type ComboboxSlots = {
-  /* The root combobox slot */
+  /** The root combobox slot */
   root: NonNullable<Slot<'div'>>;
 
-  /* The dropdown arrow icon */
+  /** The dropdown arrow icon */
   expandIcon?: Slot<'span'>;
 
-  /* The dropdown clear icon */
+  /** The dropdown clear icon */
   clearIcon?: Slot<'span'>;
 
-  /* The primary slot, an input with role="combobox" */
+  /** The primary slot, an input with role="combobox" */
   input: NonNullable<Slot<'input'>>;
 
-  /* The dropdown listbox slot */
+  /** The dropdown listbox slot */
   listbox?: Slot<typeof Listbox>;
 };
 
@@ -34,7 +34,7 @@ export type ComboboxSlots = {
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   ComboboxBaseProps & {
     freeform?: boolean;
-    /*
+    /**
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
      */
     children?: React.ReactNode;

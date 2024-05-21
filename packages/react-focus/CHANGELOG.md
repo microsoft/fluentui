@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 07:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.2)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.1..@fluentui/react-focus_v8.9.2)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.4.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/merge-styles to v8.6.5 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/set-version to v8.2.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/style-utilities to v8.10.10 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/utilities to v8.15.5 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
 
 ## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.1)
 
