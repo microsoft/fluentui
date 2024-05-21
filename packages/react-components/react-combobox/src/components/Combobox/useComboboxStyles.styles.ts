@@ -25,7 +25,7 @@ const fieldHeights = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
     display: 'inline-grid',
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
       height: `max(2px, ${tokens.borderRadiusMedium})`,
       borderBottomLeftRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
+      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
@@ -82,7 +82,7 @@ const useStyles = makeStyles({
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -115,7 +115,7 @@ const useStyles = makeStyles({
   // appearance variants
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
 
@@ -132,16 +132,16 @@ const useStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
-    ...shorthands.borderRadius(0),
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
+    borderRadius: '0',
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -168,7 +168,7 @@ const useInputStyles = makeStyles({
   input: {
     alignSelf: 'stretch',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
+    border: 'none',
     color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
 
@@ -185,15 +185,15 @@ const useInputStyles = makeStyles({
   // size variants
   small: {
     ...typographyStyles.caption1,
-    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
+    padding: `0 0 0 ${`calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   medium: {
     ...typographyStyles.body1,
-    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
+    padding: `0 0 0 ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   large: {
     ...typographyStyles.body2,
-    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
+    padding: `0 0 0 ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -225,9 +225,9 @@ const useIconStyles = makeStyles({
   visuallyHidden: {
     clip: 'rect(0px, 0px, 0px, 0px)',
     height: '1px',
-    ...shorthands.margin('-1px'),
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('0px'),
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0px',
     width: '1px',
     position: 'absolute',
   },

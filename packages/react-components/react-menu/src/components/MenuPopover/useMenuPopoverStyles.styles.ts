@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -10,7 +10,7 @@ export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
     boxSizing: 'border-box',
@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     overflowX: 'hidden',
     width: 'max-content',
     boxShadow: `${tokens.shadow16}`,
-    ...shorthands.padding('4px'),
-    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    padding: '4px',
+    border: `1px solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
     ...createSlideStyles(10),
   },

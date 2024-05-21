@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuListSlots, MenuListState } from './MenuList.types';
 
 export const menuListClassNames: SlotClassNames<MenuListSlots> = {
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('2px'),
+    gap: '2px',
   },
   hasMenuContext: {
     height: '100%',

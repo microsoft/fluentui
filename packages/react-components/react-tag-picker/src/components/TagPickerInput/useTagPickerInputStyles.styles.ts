@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { typographyStyles, tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerInputSlots, TagPickerInputState } from './TagPickerInput.types';
@@ -25,7 +25,7 @@ const useBaseStyle = makeResetStyles({
     visibility: 'hidden',
     whiteSpace: 'pre-wrap',
   },
-  ...shorthands.border('0'),
+  border: 'none',
   minWidth: '24px',
   maxWidth: '100%',
   // by default width is 0,
@@ -42,15 +42,15 @@ const useStyles = makeStyles({
   // size variants
   medium: {
     ...typographyStyles.body1,
-    ...shorthands.padding(tokens.spacingVerticalSNudge, 0, tokens.spacingVerticalSNudge, 0),
+    padding: `${tokens.spacingVerticalSNudge} 0 ${tokens.spacingVerticalSNudge} 0`,
   },
   large: {
     ...typographyStyles.body1,
-    ...shorthands.padding(tokens.spacingVerticalMNudge, 0, tokens.spacingVerticalMNudge, 0),
+    padding: `${tokens.spacingVerticalMNudge} 0 ${tokens.spacingVerticalMNudge} 0`,
   },
   'extra-large': {
     ...typographyStyles.body1,
-    ...shorthands.padding(tokens.spacingVerticalM, 0, tokens.spacingVerticalM, 0),
+    padding: `${tokens.spacingVerticalM} 0 ${tokens.spacingVerticalM} 0`,
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,

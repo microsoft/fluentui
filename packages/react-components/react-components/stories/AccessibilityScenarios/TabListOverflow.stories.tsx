@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
 
 import {
   tokens,
@@ -129,8 +129,8 @@ const OverflowMenu = (props: OverflowMenuProps) => {
 const useSettingsStyles = makeStyles({
   settings: {
     backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('5px'),
+    overflow: 'hidden',
+    padding: '5px',
     zIndex: 0, //stop the browser resize handle from piercing the overflow menu
   },
   horizontal: {

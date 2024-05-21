@@ -5,7 +5,6 @@ import {
   PopoverSurface,
   Button,
   makeStyles,
-  shorthands,
   Checkbox,
   SpinButton,
   Label,
@@ -13,8 +12,8 @@ import {
 
 const useStyles = makeStyles({
   boundary: {
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('20px'),
+    border: '2px dashed red',
+    padding: '20px',
     width: '300px',
     height: '300px',
     display: 'flex',

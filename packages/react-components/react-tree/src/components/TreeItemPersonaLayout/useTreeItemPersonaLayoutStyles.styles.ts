@@ -1,6 +1,6 @@
 import type { TreeItemPersonaLayoutSlots, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
@@ -75,7 +75,7 @@ const useMainBaseStyles = makeResetStyles({
 
 const useMainStyles = makeStyles({
   withDescription: {
-    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalXS, 0, tokens.spacingHorizontalS),
+    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalS}`,
   },
 });
 

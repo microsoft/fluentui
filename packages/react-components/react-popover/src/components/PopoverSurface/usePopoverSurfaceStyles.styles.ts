@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowHeightStyles, createArrowStyles, createSlideStyles } from '@fluentui/react-positioning';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
@@ -23,8 +23,8 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow16,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    borderRadius: tokens.borderRadiusMedium,
+    border: `1px solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
     ...createSlideStyles(10),
   },
@@ -45,17 +45,11 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundOnBrand,
   },
 
-  smallPadding: {
-    ...shorthands.padding('12px'),
-  },
+  smallPadding: { padding: '12px' },
 
-  mediumPadding: {
-    ...shorthands.padding('16px'),
-  },
+  mediumPadding: { padding: '16px' },
 
-  largePadding: {
-    ...shorthands.padding('20px'),
-  },
+  largePadding: { padding: '20px' },
 
   smallArrow: createArrowHeightStyles(arrowHeights.small),
   mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
