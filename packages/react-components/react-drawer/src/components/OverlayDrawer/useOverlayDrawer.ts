@@ -14,16 +14,16 @@ import { OverlayDrawerSurface } from './OverlayDrawerSurface';
  * before being passed to renderOverlayDrawer_unstable.
  *
  * @param props - props from this instance of OverlayDrawer
- * @param ref - reference to root HTMLDivElement of OverlayDrawer
+ * @param ref - reference to root HTMLElement of OverlayDrawer
  */
 export const useOverlayDrawer_unstable = (
   props: OverlayDrawerProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLElement>,
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
   const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
 
-  const motion = useMotion<HTMLDivElement>(open);
+  const motion = useMotion<HTMLElement>(open);
 
   const backdropProps = slot.resolveShorthand(props.backdrop);
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
@@ -36,7 +36,11 @@ export const useOverlayDrawer_unstable = (
     {
       elementType: OverlayDrawerSurface,
       defaultProps: {
-        ref: useMergedRefs(ref, motion.ref),
+        /**
+         * Drawer accepts a `div` or `aside` element type, but Dialog only accepts a `div` element type.
+         * We need to cast the ref to a `div` element type to not break Dialog's ref type.
+         */
+        ref: useMergedRefs(ref, motion.ref) as React.RefObject<HTMLDivElement>,
       },
     },
   );
