@@ -7,13 +7,18 @@ There are many ways to keep up with your PR review requests but this guide aims 
 - github.com
   - Pull request review requests
   - Notifications
-- Teams bot
 - Email notifications
 - Extending functionality
 
 # github.com
 
-## Pull request review requests
+## Notifications
+
+With [GitHub notifications](https://github.com/notifications), you can see activity for PRs on which you or a team you are in were requested to review. This can be a little more convoluted given that you'll see all notifications for any repositories you are part of.
+
+![list of notifications in the GitHub Inbox](https://user-images.githubusercontent.com/39736248/154150991-22be6e40-5eb3-46a8-ae47-5943ce6d6879.png)
+
+## PR requests
 
 The GitHub website gives you a rudimentary list of open PRs where your, or your team’s, review is required. You can access it here https://github.com/pulls/review-requested.
 
@@ -22,25 +27,6 @@ The GitHub website gives you a rudimentary list of open PRs where your, or your 
 New PRs that you have yet to be view will have an indicator to the left.
 PRs stay in the list until they are merged, which means this method is most effective for new PR requests and not so much follow up on viewed PRs.
 However, following the normal PR flow and asking for a re-review after addressing people’s concerns adds the indicator back to the PR, notifying you that there’s an update to it.
-
-## Notifications
-
-With [GitHub notifications](https://github.com/notifications), you can see activity for PRs on which you or a team you are in were requested to review. This can be a little more convoluted given that you'll see all notifications for any repositories you are part of.
-
-![list of notifications in the GitHub Inbox](https://user-images.githubusercontent.com/39736248/154150991-22be6e40-5eb3-46a8-ae47-5943ce6d6879.png)
-
-# Teams bot
-
-[![GitHub logo](https://img.shields.io/badge/-integrations%2Fmicrosoft--teams-lightgrey?style=social&logo=github)](https://github.com/integrations/microsoft-teams)
-
-## Features
-
-There's a Teams bot that can be configured to your liking to provide you with useful information like:
-
-- Issues created
-- Comments made
-- PRs open
-- Review requests
 
 ## Installation
 
