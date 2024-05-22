@@ -98,16 +98,16 @@ export const HorizontalBarChartVariantExample: React.FunctionComponent<{}> = () 
     ];
   };
 
-  const onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+  function _onCheckChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
     setHideLabels(checked);
-  };
+  }
 
   return (
     <>
       <Checkbox
         label="Hide labels"
         checked={hideLabels}
-        onChange={onCheckChange}
+        onChange={_onCheckChange}
         styles={{ root: { marginBottom: '20px' } }}
       />
       <div style={{ maxWidth: 600 }}>
