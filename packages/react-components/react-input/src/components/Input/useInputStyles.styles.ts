@@ -141,7 +141,7 @@ const useRootStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    borderRadius: '0',
+    borderRadius: '0', // corners look strange if rounded
     // corners look strange if rounded
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
