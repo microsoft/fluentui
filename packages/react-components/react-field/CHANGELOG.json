@@ -2,6 +2,60 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:44:56 GMT",
+      "tag": "@fluentui/react-field_v9.1.66",
+      "version": "9.1.66",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.60",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.1.70",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 May 2024 09:25:15 GMT",
+      "tag": "@fluentui/react-field_v9.1.65",
+      "version": "9.1.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "c35e78e5853894033a69f6135ad003894a8b6a95",
+            "comment": " chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:02 GMT",
       "tag": "@fluentui/react-field_v9.1.64",
       "version": "9.1.64",

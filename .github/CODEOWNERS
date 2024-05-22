@@ -121,6 +121,7 @@ apps/ts-minbar-test-react @microsoft/fluentui-react-build
 apps/ts-minbar-test-react-components @microsoft/fluentui-react-build
 apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
+apps/vr-tests-web-components @microsoft/fui-wc
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/fluentui-react-build
@@ -241,7 +242,7 @@ packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar @microsoft/teams-prg
 packages/react-components/react-rating @microsoft/cxe-red @tomi-msft
-packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
+packages/react-components/react-swatch-picker @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg

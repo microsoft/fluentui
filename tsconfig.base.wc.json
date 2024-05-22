@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "Node16",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "pretty": true,
+    "typeRoots": ["node_modules/@types", "./typings"],
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@fluentui/web-components": ["packages/web-components/src/index.ts"],
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
+    }
+  }
+}

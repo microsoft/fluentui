@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 07:29:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.8",
+      "version": "1.17.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Apr 2024 07:27:48 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.7",
       "version": "1.17.7",

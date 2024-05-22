@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 07:29:20 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.6.4",
+      "version": "8.6.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/date-time-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.18",
+            "commit": "eadc00f974b3199e6c34d2e9d16015add154ec3b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Apr 2024 07:27:48 GMT",
       "tag": "@fluentui/date-time-utilities_v8.6.3",
       "version": "8.6.3",

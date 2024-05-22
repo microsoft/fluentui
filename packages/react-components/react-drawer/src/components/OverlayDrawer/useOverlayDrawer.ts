@@ -21,7 +21,7 @@ export const useOverlayDrawer_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
+  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
   const motion = useMotion<HTMLDivElement>(open);
 
@@ -43,8 +43,7 @@ export const useOverlayDrawer_unstable = (
 
   const dialog = slot.always(
     {
-      open: true,
-      defaultOpen,
+      open,
       onOpenChange,
       inertTrapFocus,
       modalType,

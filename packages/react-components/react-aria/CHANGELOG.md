@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 09 May 2024 19:35:12 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:45:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.11.3)
+
+Mon, 20 May 2024 12:45:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.11.2..@fluentui/react-aria_v9.11.3)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
 
 ## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.11.2)
 

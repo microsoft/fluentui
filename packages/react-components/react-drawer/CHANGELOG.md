@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Mon, 13 May 2024 12:34:19 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:44:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.3.2)
+
+Mon, 20 May 2024 12:44:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.3.1..@fluentui/react-drawer_v9.3.2)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-dialog to v9.10.6 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-motion-preview to v0.5.21 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.3.1)
+
+Thu, 16 May 2024 09:25:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.3.0..@fluentui/react-drawer_v9.3.1)
+
+### Patches
+
+- fix: restore scroll when Drawer closes ([PR #31367](https://github.com/microsoft/fluentui/pull/31367) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.10.5 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.3.0)
 

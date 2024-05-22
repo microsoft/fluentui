@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Overflow } from './Overflow';
 import { OverflowItem } from './OverflowItem';
+
 describe('Overflow', () => {
   beforeAll(() => {
     // https://github.com/jsdom/jsdom/issues/3368
@@ -45,5 +46,24 @@ describe('Overflow', () => {
         </div>
       </Overflow>,
     );
+  });
+
+  describe('ref', () => {
+    it('handles ref propagation', () => {
+      const itemRef = jest.fn();
+      const childRef = jest.fn();
+
+      render(
+        <Overflow ref={itemRef}>
+          <div id="child" ref={childRef} />
+        </Overflow>,
+      );
+
+      expect(itemRef).toHaveBeenCalledTimes(1);
+      expect(itemRef).toHaveBeenCalledWith(expect.objectContaining({ id: 'child', tagName: 'DIV' }));
+
+      expect(childRef).toHaveBeenCalledTimes(1);
+      expect(childRef).toHaveBeenCalledWith(expect.objectContaining({ id: 'child', tagName: 'DIV' }));
+    });
   });
 });
