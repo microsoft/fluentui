@@ -1,6 +1,35 @@
 import * as React from 'react';
-import { Combobox, makeStyles, Option, shorthands, tokens, useId } from '@fluentui/react-components';
+import {
+  Combobox,
+  makeStyles,
+  Option,
+  shorthands,
+  tokens,
+  useId,
+  webLightTheme,
+  Theme,
+  FluentProvider,
+} from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
+
+const customTheme: Theme = {
+  ...webLightTheme,
+  ctrlComboboxBorderRadius: '10px',
+  comboboxForegroundColor: 'white',
+  comboboxPlaceholderForegroundColor: 'teal',
+
+  ctrlComboboxBottomBorderColorRest: 'red',
+  ctrlComboboxBottomBorderColorPressed: 'green',
+
+  ctrlComboboxOutlineBackgroundColorRest: 'yellow',
+  ctrlComboboxOutlineBorderColorRest: 'purple',
+  ctrlComboboxOutlineBorderColorHover: 'orange',
+  ctrlComboboxOutlineBottomBorderColor: 'blue',
+  ctrlComboBoxOutlineBottomBorderColor: 'violet',
+
+  ctrlComboboxUnderlineBackgroundColor: 'cyan',
+  ctrlComboboxUnderlineBottomBorderColor: 'magenta',
+};
 
 const useStyles = makeStyles({
   root: {
@@ -39,58 +68,112 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
-      <div>
-        <label id={`${comboId}-outline`}>Outline</label>
-        <Combobox aria-labelledby={`${comboId}-outline`} placeholder="Select a color" appearance="outline" {...props}>
-          <Option>Red</Option>
-          <Option>Green</Option>
-          <Option>Blue</Option>
-        </Combobox>
-      </div>
+    <>
+      <div className={styles.root}>
+        <div>
+          <label id={`${comboId}-outline`}>Outline</label>
+          <Combobox aria-labelledby={`${comboId}-outline`} placeholder="Select a color" appearance="outline" {...props}>
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
 
-      <div>
-        <label id={`${comboId}-underline`}>Underline</label>
-        <Combobox
-          aria-labelledby={`${comboId}-underline`}
-          placeholder="Select a color"
-          appearance="underline"
-          {...props}
-        >
-          <Option>Red</Option>
-          <Option>Green</Option>
-          <Option>Blue</Option>
-        </Combobox>
-      </div>
+        <div>
+          <label id={`${comboId}-underline`}>Underline</label>
+          <Combobox
+            aria-labelledby={`${comboId}-underline`}
+            placeholder="Select a color"
+            appearance="underline"
+            {...props}
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
 
-      <div className={styles.filledDarker}>
-        <label id={`${comboId}-filledDarker`}>Filled Darker</label>
-        <Combobox
-          aria-labelledby={`${comboId}-filledDarker`}
-          placeholder="Select a color"
-          appearance="filled-darker"
-          {...props}
-        >
-          <Option>Red</Option>
-          <Option>Green</Option>
-          <Option>Blue</Option>
-        </Combobox>
-      </div>
+        <div className={styles.filledDarker}>
+          <label id={`${comboId}-filledDarker`}>Filled Darker</label>
+          <Combobox
+            aria-labelledby={`${comboId}-filledDarker`}
+            placeholder="Select a color"
+            appearance="filled-darker"
+            {...props}
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
 
-      <div className={styles.filledLighter}>
-        <label id={`${comboId}-filledLighter`}>Filled Lighter</label>
-        <Combobox
-          aria-labelledby={`${comboId}-filledLighter`}
-          placeholder="Select a color"
-          appearance="filled-lighter"
-          {...props}
-        >
-          <Option>Red</Option>
-          <Option>Green</Option>
-          <Option>Blue</Option>
-        </Combobox>
+        <div className={styles.filledLighter}>
+          <label id={`${comboId}-filledLighter`}>Filled Lighter</label>
+          <Combobox
+            aria-labelledby={`${comboId}-filledLighter`}
+            placeholder="Select a color"
+            appearance="filled-lighter"
+            {...props}
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
       </div>
-    </div>
+      <FluentProvider className={styles.root} theme={customTheme}>
+        <div>
+          <label id={`${comboId}-outline`}>Custom Outline</label>
+          <Combobox aria-labelledby={`${comboId}-outline`} placeholder="Select a color" appearance="outline" {...props}>
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
+
+        <div>
+          <label id={`${comboId}-underline`}>Custom Underline</label>
+          <Combobox
+            aria-labelledby={`${comboId}-underline`}
+            placeholder="Select a color"
+            appearance="underline"
+            {...props}
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
+
+        <div className={styles.filledDarker}>
+          <label id={`${comboId}-filledDarker`}>Custom Filled Darker</label>
+          <Combobox
+            aria-labelledby={`${comboId}-filledDarker`}
+            placeholder="Select a color"
+            appearance="filled-darker"
+            {...props}
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
+
+        <div className={styles.filledLighter}>
+          <label id={`${comboId}-filledLighter`}>Custom Filled Lighter</label>
+          <Combobox
+            aria-labelledby={`${comboId}-filledLighter`}
+            placeholder="Select a color"
+            appearance="filled-lighter"
+            {...props}
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Combobox>
+        </div>
+      </FluentProvider>
+    </>
   );
 };
 
