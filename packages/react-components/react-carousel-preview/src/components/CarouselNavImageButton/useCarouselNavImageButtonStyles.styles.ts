@@ -1,19 +1,34 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselNavImageButtonSlots, CarouselNavImageButtonState } from './CarouselNavImageButton.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselNavImageButtonClassNames: SlotClassNames<CarouselNavImageButtonSlots> = {
   root: 'fui-CarouselNavImageButton',
-  // TODO: add class names for all slots on CarouselNavImageButtonSlots.
-  // Should be of the form `<slotName>: 'fui-CarouselNavImageButton__<slotName>`
+  image: 'fui-CarouselNavImageButton__image',
 };
+
+const imageButtonSize = 40;
+const selectedImageButtonSize = 48;
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding(0),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    width: imageButtonSize + 'px',
+    height: imageButtonSize + 'px',
+    boxSizing: 'content-box',
+  },
+  image: {
+    width: imageButtonSize + 'px',
+    height: imageButtonSize + 'px',
+  },
+  selected: {
+    width: selectedImageButtonSize + 'px',
+    height: selectedImageButtonSize + 'px',
   },
 
   // TODO add additional classes for different states and/or slots
@@ -25,11 +40,23 @@ const useStyles = makeStyles({
 export const useCarouselNavImageButtonStyles_unstable = (
   state: CarouselNavImageButtonState,
 ): CarouselNavImageButtonState => {
+  const { isSelected } = state;
   const styles = useStyles();
-  state.root.className = mergeClasses(carouselNavImageButtonClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    carouselNavImageButtonClassNames.root,
+    styles.root,
+    isSelected && styles.selected,
+    state.root.className,
+  );
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.image) {
+    state.image.className = mergeClasses(
+      carouselNavImageButtonClassNames.image,
+      styles.image,
+      isSelected && styles.selected,
+      state.image?.className,
+    );
+  }
 
   return state;
 };

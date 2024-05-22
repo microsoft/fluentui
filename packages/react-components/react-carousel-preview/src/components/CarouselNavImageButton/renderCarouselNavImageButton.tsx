@@ -11,5 +11,9 @@ export const renderCarouselNavImageButton_unstable = (state: CarouselNavImageBut
   assertSlots<CarouselNavImageButtonSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      <state.image />
+    </state.root>
+  );
 };

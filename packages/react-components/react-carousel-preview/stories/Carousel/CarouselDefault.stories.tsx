@@ -4,9 +4,11 @@ import {
   CarouselButton,
   CarouselCard,
   CarouselNav,
-  CarouselNavButton,
+  CarouselNavImageButton,
   CarouselProps,
 } from '@fluentui/react-carousel-preview';
+
+const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
 export const Default = (props: Partial<CarouselProps>) => (
   <Carousel loop={true} defaultValue={'test-1'} {...props}>
@@ -16,7 +18,7 @@ export const Default = (props: Partial<CarouselProps>) => (
     <CarouselCard value="test-4">{'test-4'}</CarouselCard>
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       <CarouselButton navType="prev" />
-      <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
+      <CarouselNav>{() => <CarouselNavImageButton image={{ src: swapImage }} />}</CarouselNav>
       <CarouselButton navType="next" />
     </div>
   </Carousel>

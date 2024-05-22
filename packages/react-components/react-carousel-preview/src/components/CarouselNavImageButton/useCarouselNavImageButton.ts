@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { CarouselNavImageButtonProps, CarouselNavImageButtonState } from './CarouselNavImageButton.types';
+import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
+import { useCarouselContext_unstable } from '../CarouselContext';
+import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
 
 /**
  * Create the state required to render CarouselNavImageButton.
@@ -15,20 +19,56 @@ export const useCarouselNavImageButton_unstable = (
   props: CarouselNavImageButtonProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselNavImageButtonState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+  const { onClick, as = 'a' } = props;
+
+  const value = useCarouselNavContext();
+
+  const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
+  const isSelected = useCarouselContext_unstable(c => c.value === value);
+
+  const handleClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
+    onClick?.(event);
+
+    if (!event.defaultPrevented && isHTMLElement(event.target)) {
+      selectPageByValue(event, value);
+    }
+  });
+
+  const defaultTabProps = useTabsterAttributes({
+    focusable: { isDefault: isSelected },
+  });
+
+  const _carouselButton = slot.always<ARIAButtonSlotProps<'a'>>(
+    getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
+    {
+      elementType: 'button',
+      defaultProps: {
+        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        role: 'tab',
+        type: 'button',
+        ...defaultTabProps,
+      },
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+  );
+
+  // Override onClick
+  _carouselButton.onClick = handleClick;
+
+  let image = slot.always(
+    getIntrinsicElementProps('img', {
+      'aria-hidden': true,
+      ...props.image,
+    }),
+    { elementType: 'img' },
+  );
+
+  return {
+    components: {
+      root: 'button',
+      image: 'img',
+    },
+    root: _carouselButton,
+    image,
+    isSelected,
   };
 };
