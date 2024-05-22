@@ -6,6 +6,7 @@
     "lib": ["ESNext", "DOM"],
     "declaration": true,
     "declarationDir": "dist/dts",
+    "rootDir": "./src",
     "outDir": "dist/esm",
     "importHelpers": true,
     "types": ["web"]

@@ -10,7 +10,6 @@
     "skipLibCheck": true,
     "pretty": true,
     "typeRoots": ["node_modules/@types", "./typings"],
-    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@fluentui/web-components": ["packages/web-components/src/index.ts"],
