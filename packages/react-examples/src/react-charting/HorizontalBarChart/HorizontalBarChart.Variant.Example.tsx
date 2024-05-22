@@ -9,33 +9,19 @@ import {
 import { ThemeContext } from '@fluentui/react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
-interface IHBCVariantExampleState {
-  hideLabels: boolean;
-}
+export const HorizontalBarChartVariantExample: React.FunctionComponent<{}> = () => {
+  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
+  const theme = React.useContext(ThemeContext);
 
-export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVariantExampleState> {
-  constructor(props = {}) {
-    super(props);
-
-    this.state = {
-      hideLabels: false,
-    };
-  }
-
-  public render() {
-    const IsDarkMode = () => {
-      const theme = React.useContext(ThemeContext);
-      return theme?.isInverted;
-    };
-
-    const data: IChartProps[] = [
+  const getData = (isDarkMode: boolean): IChartProps[] => {
+    return [
       {
         chartTitle: 'one',
         chartData: [
           {
             legend: 'one',
             horizontalBarChartdata: { x: 1543, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color17, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color17, isDarkMode),
           },
         ],
       },
@@ -45,7 +31,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'two',
             horizontalBarChartdata: { x: 800, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color18, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color18, isDarkMode),
           },
         ],
       },
@@ -55,7 +41,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'three',
             horizontalBarChartdata: { x: 8888, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color19, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color19, isDarkMode),
           },
         ],
       },
@@ -65,7 +51,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'four',
             horizontalBarChartdata: { x: 15888, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color20, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color20, isDarkMode),
           },
         ],
       },
@@ -75,7 +61,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'five',
             horizontalBarChartdata: { x: 11444, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color21, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color21, isDarkMode),
           },
         ],
       },
@@ -85,7 +71,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'six',
             horizontalBarChartdata: { x: 14000, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color22, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color22, isDarkMode),
           },
         ],
       },
@@ -95,7 +81,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'seven',
             horizontalBarChartdata: { x: 9855, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color23, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color23, isDarkMode),
           },
         ],
       },
@@ -105,32 +91,33 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           {
             legend: 'eight',
             horizontalBarChartdata: { x: 4250, y: 15000 },
-            color: getColorFromToken(DataVizPalette.color24, IsDarkMode()),
+            color: getColorFromToken(DataVizPalette.color24, isDarkMode),
           },
         ],
       },
     ];
+  };
 
-    return (
-      <>
-        <Checkbox
-          label="Hide labels"
-          checked={this.state.hideLabels}
-          onChange={this._onCheckChange}
-          styles={{ root: { marginBottom: '20px' } }}
-        />
-        <div style={{ maxWidth: 600 }}>
-          <HorizontalBarChart
-            data={data}
-            variant={HorizontalBarChartVariant.AbsoluteScale}
-            hideLabels={this.state.hideLabels}
-          />
-        </div>
-      </>
-    );
+  function _onCheckChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+    setHideLabels(checked);
   }
 
-  private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideLabels: checked });
-  };
-}
+  return (
+    <>
+      <Checkbox
+        label="Hide labels"
+        checked={hideLabels}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={_onCheckChange}
+        styles={{ root: { marginBottom: '20px' } }}
+      />
+      <div style={{ maxWidth: 600 }}>
+        <HorizontalBarChart
+          data={getData(theme?.isInverted ?? false)}
+          variant={HorizontalBarChartVariant.AbsoluteScale}
+          hideLabels={hideLabels}
+        />
+      </div>
+    </>
+  );
+};
