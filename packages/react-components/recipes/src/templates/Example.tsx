@@ -1,24 +1,8 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { tokens, webLightTheme } from '@fluentui/react-theme';
-import { makeStyles, shorthands, mergeClasses } from '@griffel/react';
-
-const useExampleStyles = makeStyles({
-  root: {
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    borderRadius: '16px',
-    ...shorthands.padding('30px'),
-    ...shorthands.margin('6px'),
-  },
-  innerContainer: {
-    display: 'flex',
-    backgroundColor: 'rgb(250, 250, 250)',
-    ...shorthands.padding('48px', '24px', '48px', '24px'),
-  },
-  centered: {
-    justifyContent: 'center',
-  },
-});
+import { webLightTheme } from '@fluentui/react-theme';
+import { mergeClasses } from '@griffel/react';
+import { useExampleStyles } from './Example.styles';
 
 export const TemplateExample: React.FC<{ centered?: boolean }> = ({ children, centered }) => {
   const exampleStyles = useExampleStyles();
