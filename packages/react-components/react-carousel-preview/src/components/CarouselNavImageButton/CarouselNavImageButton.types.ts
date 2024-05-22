@@ -7,7 +7,7 @@ export type CarouselNavImageButtonSlots = {
    */
   root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
   /**
-   * The image to go in button
+   * Required: The image within the button
    */
   image: Slot<'img'>;
 };

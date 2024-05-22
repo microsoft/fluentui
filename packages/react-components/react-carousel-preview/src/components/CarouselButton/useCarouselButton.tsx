@@ -62,6 +62,7 @@ export const useCarouselButton_unstable = (
           elementType: 'span',
         }),
         disabled: isTrailing,
+        'aria-disabled': isTrailing,
         ...props,
         onClick: handleButtonClick,
       },

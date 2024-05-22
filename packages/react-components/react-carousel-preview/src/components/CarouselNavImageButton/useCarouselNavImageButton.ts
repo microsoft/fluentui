@@ -56,7 +56,9 @@ export const useCarouselNavImageButton_unstable = (
 
   let image = slot.always(
     getIntrinsicElementProps('img', {
-      'aria-hidden': true,
+      'aria-hidden': true, // Hidden as button is responsible for navigation description
+      alt: '',
+      role: 'presentation',
       ...props.image,
     }),
     { elementType: 'img' },

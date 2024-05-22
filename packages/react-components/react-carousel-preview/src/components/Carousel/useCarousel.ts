@@ -149,6 +149,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, carouselRef, rootRef),
+        role: 'region',
+        'aria-roledescription': 'carousel',
         ...props,
       }),
       { elementType: 'div' },
