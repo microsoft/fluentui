@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 21 May 2024 07:25:11 GMT",
+      "tag": "@fluentui/react-charting_v5.21.10",
+      "version": "5.21.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c621c5b9d824a41d68328dd61457cf301236ddf6",
+            "comment": "Fix style issue for tree chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a",
+            "comment": "Improve gauge chart screen reader accessibility"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 07:29:19 GMT",
       "tag": "@fluentui/react-charting_v5.21.9",
       "version": "5.21.9",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 20 May 2024 07:29:19 GMT and should not be manually modified.
+This log was last generated on Tue, 21 May 2024 07:25:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.10)
+
+Tue, 21 May 2024 07:25:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.9..@fluentui/react-charting_v5.21.10)
+
+### Patches
+
+- Fix style issue for tree chart ([PR #31425](https://github.com/microsoft/fluentui/pull/31425) by 98592573+AtishayMsft@users.noreply.github.com)
+- Improve gauge chart screen reader accessibility ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by kumarkshitij@microsoft.com)
 
 ## [5.21.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.9)
 

@@ -31,7 +31,7 @@ const storyTemplate = html<BadgeStoryArgs>`
     ${when(
       x => x.iconPosition === 'end',
       html<BadgeStoryArgs>`<svg
-        slot="start"
+        slot="end"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -52,39 +52,65 @@ export default {
   title: 'Components/Badge/Badge',
   args: {
     content: null,
+    appearance: BadgeAppearance.filled,
+    color: BadgeColor.brand,
+    shape: BadgeShape.circular,
+    size: BadgeSize.medium,
+    iconPosition: 'none',
   },
   argTypes: {
     appearance: {
-      options: Object.values(BadgeAppearance),
+      description: 'Sets the appearance of the badge to one of the predefined styles',
+      table: {
+        defaultValue: { summary: BadgeAppearance.filled },
+      },
       control: {
         type: 'select',
+        options: Object.values(BadgeAppearance),
       },
     },
     color: {
-      options: Object.values(BadgeColor),
+      description: 'Sets the color of the badge to one of the predefined colors',
+      table: {
+        defaultValue: { summary: BadgeColor.brand },
+      },
       control: {
         type: 'select',
+        options: Object.values(BadgeColor),
       },
     },
     shape: {
-      options: Object.values(BadgeShape),
+      description: 'Sets the shape of the badge to one of the predefined shapes',
+      table: {
+        defaultValue: { summary: BadgeShape.circular },
+      },
       control: {
         type: 'select',
+        options: Object.values(BadgeShape),
       },
     },
     size: {
-      options: Object.values(BadgeSize),
+      description: 'Sets the size of the badge to one of the predefined sizes',
+      table: {
+        defaultValue: { summary: BadgeSize.medium },
+      },
       control: {
         type: 'select',
+        options: Object.values(BadgeSize),
       },
     },
     iconPosition: {
-      options: ['none', 'start', 'end'],
+      description: 'Sets the position of the icon to start or end of the badge content',
+      table: {
+        defaultValue: { summary: 'none' },
+      },
       control: {
         type: 'select',
+        options: ['none', 'start', 'end'],
       },
     },
     content: {
+      description: 'Sets the content of the badge',
       control: 'text',
     },
   },
