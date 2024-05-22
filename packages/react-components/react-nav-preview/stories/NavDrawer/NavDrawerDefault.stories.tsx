@@ -19,7 +19,6 @@ import {
   Radio,
   RadioGroup,
   makeStyles,
-  shorthands,
   tokens,
   useId,
 } from '@fluentui/react-components';
@@ -60,16 +59,15 @@ import type { DrawerProps } from '@fluentui/react-drawer';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('2px', 'solid', '#ccc'),
-    ...shorthands.overflow('hidden'),
+    border: '2px solid #ccc',
+    overflow: 'hidden',
     display: 'flex',
     height: '600px',
     backgroundColor: '#fff',
   },
   content: {
-    ...shorthands.flex(1),
-    ...shorthands.padding('16px'),
-
+    flex: '1',
+    padding: '16px',
     display: 'grid',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
