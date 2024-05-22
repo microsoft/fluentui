@@ -1,6 +1,6 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { RadioSlots, RadioState } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -186,7 +186,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   },
 
   after: {
