@@ -446,8 +446,8 @@ runTest('Get Domain Margins', () => {
     });
     var result = instance._getDomainMargins(1000);
     expect(result['bottom']).toEqual(10);
-    expect(result['left']).toEqual(384.44444444444446);
-    expect(result['right']).toEqual(384.44444444444446);
+    expect(result['left']?.toFixed(2)).toEqual('384.44');
+    expect(result['right']?.toFixed(2)).toEqual('384.44');
     expect(result['top']).toEqual(10);
   });
 
@@ -494,7 +494,8 @@ runTest('Get Scales', () => {
       theme: instance.props.theme!,
       href: instance.props.href!,
     });
-    var x0Scale = instance._createX0Scale(1000);
+    const containerWidth = 1000;
+    var x0Scale = instance._createX0Scale(containerWidth);
     expect(x0Scale).not.toBeNull();
     const domains = x0Scale['domain'];
     const ranges = x0Scale['range'];
@@ -502,6 +503,9 @@ runTest('Get Scales', () => {
     expect(ranges).not.toBeNull();
     var x1Scale = instance._createX1Scale();
     expect(x1Scale).not.toBeNull();
+    expect(x1Scale).not.toBeNull();
+    expect(x0Scale('foo')).toBeUndefined();
+    expect(x0Scale('Jan - Mar')).toBeLessThanOrEqual(containerWidth);
   });
 });
 
@@ -540,7 +544,10 @@ runTest('_buildGraph', () => {
     expect(result['props']['children'][0]).not.toBeNull();
     expect(result['props']['children'][0]).not.toBeNull();
     expect(result['props']['children'][0][0]).not.toBeNull();
+    expect(result.props.children).toHaveLength(2);
     const bar = result['props']['children'][0][0];
     expect(bar['props']['aria-label']).toEqual('2020/05/30. 2022, 29%.');
+    expect(bar.type).toEqual('rect');
+    expect(bar.type).toEqual('rect');
   });
 });
