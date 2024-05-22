@@ -555,7 +555,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       <FocusZone>
         <div className={this._classNames?.root}>
           <svg
-            className="svgTree1"
+            className="svgTree"
             width={this.state._width - this._margin.left! - this._margin.right!}
             height={this.state._height - this._margin.top! - this._margin.bottom!}
           >
