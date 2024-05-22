@@ -107,6 +107,7 @@ export const HorizontalBarChartVariantExample: React.FunctionComponent<{}> = () 
       <Checkbox
         label="Hide labels"
         checked={hideLabels}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={_onCheckChange}
         styles={{ root: { marginBottom: '20px' } }}
       />
