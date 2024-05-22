@@ -6,6 +6,5 @@
     "declaration": true,
     "inlineSources": true
   },
-  "exclude": [],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
