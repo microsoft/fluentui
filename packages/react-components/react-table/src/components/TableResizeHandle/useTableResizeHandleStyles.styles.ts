@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     top: 0,
     bottom: 0,
     width: '16px',
-    ...shorthands.margin(0, '-8px'),
+    margin: '0 -8px',
     cursor: 'col-resize',
     opacity: 0,
     transitionProperty: 'opacity',

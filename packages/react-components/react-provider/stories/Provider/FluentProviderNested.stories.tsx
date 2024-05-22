@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens, webLightTheme, FluentProvider } from '@fluentui/react-components';
+import { makeStyles, tokens, webLightTheme, FluentProvider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
-    ...shorthands.border('5px', 'solid', tokens.colorBrandStroke1),
-    ...shorthands.borderRadius('5px'),
-    ...shorthands.margin('5px'),
+    border: `5px solid ${tokens.colorBrandStroke1}`,
+    borderRadius: '5px',
+    margin: '5px',
   },
   text: {
-    ...shorthands.padding('5px'),
+    padding: '5px',
     fontSize: '18px',
   },
 });

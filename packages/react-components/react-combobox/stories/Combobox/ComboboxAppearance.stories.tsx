@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Combobox, makeStyles, Option, shorthands, tokens, useId } from '@fluentui/react-components';
+import { Combobox, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -8,15 +8,15 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
-    ...shorthands.gap('20px'),
+    gap: '20px',
     maxWidth: '400px',
     '> div': {
       display: 'grid',
       gridTemplateRows: 'repeat(1fr)',
       justifyItems: 'start',
-      ...shorthands.gap('2px'),
+      gap: '2px',
       // need padding to see the background color for filled variants
-      ...shorthands.padding('5px', '20px', '10px'),
+      padding: '5px 20px 10px',
     },
   },
   // filledLighter and filledDarker appearances depend on particular background colors

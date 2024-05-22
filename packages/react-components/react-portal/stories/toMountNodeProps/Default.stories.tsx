@@ -1,22 +1,13 @@
 import * as React from 'react';
 
-import {
-  Button,
-  makeStyles,
-  mergeClasses,
-  Portal,
-  shorthands,
-  tokens,
-  toMountNodeProps,
-} from '@fluentui/react-components';
+import { Button, makeStyles, mergeClasses, Portal, tokens, toMountNodeProps } from '@fluentui/react-components';
 import type { PortalProps } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   message: {
     backgroundColor: tokens.colorNeutralBackground1,
-
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStatusSuccessBorder1),
-    ...shorthands.padding('20px'),
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorStatusSuccessBorder1}`,
+    padding: '20px',
 
     fontSize: tokens.fontSizeBase600,
 

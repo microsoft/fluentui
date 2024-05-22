@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, makeStyles, Option, shorthands, useId, Persona } from '@fluentui/react-components';
+import { Dropdown, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -7,13 +7,13 @@ const useStyles = makeStyles({
     // Stack the label above the field with a gap
     display: 'grid',
     justifyItems: 'start',
-    ...shorthands.gap('20px'),
+    gap: '20px',
     maxWidth: '400px',
   },
   field: {
     display: 'grid',
     justifyItems: 'start',
-    ...shorthands.gap('2px'),
+    gap: '2px',
   },
 });
 

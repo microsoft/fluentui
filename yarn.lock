@@ -2022,10 +2022,10 @@
     stylis "^4.2.0"
     tslib "^2.1.0"
 
-"@griffel/eslint-plugin@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@griffel/eslint-plugin/-/eslint-plugin-1.6.2.tgz#346f4e0c50a2819e1d745ae095f52f26e35aee90"
-  integrity sha512-HYpGxBo5+U8MzQujA+Qp8cxL85961OeGfi521mFT10tv2JFGRuB2K8OvqOrLYcolUg13pz+WO+X9uqLLmNnucw==
+"@griffel/eslint-plugin@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@griffel/eslint-plugin/-/eslint-plugin-1.6.3.tgz#cb4e9b88e31bcaed5c16e13a6ec60882d49bd938"
+  integrity sha512-Lefrqz/JSZUheA4DeDNOnZtabfL9dyFBrOdIWrN6G7w/gQnPY62KuxvbRymZy4VcwnjAoFitLY5j9TtAHGyH0w==
   dependencies:
     "@typescript-eslint/utils" "^6.18.1"
     csstype "^3.1.3"
@@ -22415,10 +22415,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.2.tgz#ab2fb2bc67b78059e1406b2afc35aec69eb824a5"
-  integrity sha512-wYG9ddAeSUxBrcPCZ+hQV5IcsyM089nTGkQ53G9/2pPDdUa3pBC4sP3qmdbvu+IoFpy62CMDxMgxQmegtCiLKg==
+tabster@^7.1.4:
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.4.tgz#3a56a0fd17df27f7f579f9b34f2c855683a086e2"
+  integrity sha512-P3DtJ8ub8QCVYPY7Be9/UpqeyBulcFHFbhMswlPooFT/XsC+nMByfADZ+wC5QCdSNlYEGoDgB+EVscln8SrXhg==
   dependencies:
     keyborg "2.6.0"
     tslib "^2.3.1"

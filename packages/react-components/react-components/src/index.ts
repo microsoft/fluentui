@@ -860,6 +860,7 @@ export {
   useDialogContext_unstable,
   useDialogSurfaceContext_unstable,
   useDialogSurfaceContextValues_unstable,
+  DialogProvider,
 } from '@fluentui/react-dialog';
 
 export type {
