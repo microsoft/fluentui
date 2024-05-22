@@ -25,7 +25,6 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorTransparentStroke}`,
     padding: '4px 11px 6px 11px', // '5px 12px 7px 12px' minus the border width '1px'
-    // '5px 12px 7px 12px' minus the border width '1px'
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
 
