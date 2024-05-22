@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update IconDirectionContextProvider imports to use export map",
+  "packageName": "@fluentui/react-provider",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
