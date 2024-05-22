@@ -23,6 +23,12 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+    ...shorthands.marginInline(tokens.spacingHorizontalS),
+    ...shorthands.marginBlock('auto'),
+    ...shorthands.paddingBlock(tokens.spacingHorizontalXS),
+    ...shorthands.paddingInline(tokens.spacingHorizontalXS),
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
   },
 });
 

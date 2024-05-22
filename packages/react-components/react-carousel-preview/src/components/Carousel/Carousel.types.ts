@@ -23,6 +23,11 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Callback to notify a page change.
    */
   onValueChange?: EventHandler<CarouselValueChangeData>;
+
+  /**
+   * Looping enables the carousel to loop back around on navigation past trailing index
+   */
+  loop?: Boolean;
 };
 
 /**

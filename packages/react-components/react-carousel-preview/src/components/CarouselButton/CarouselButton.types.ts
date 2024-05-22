@@ -11,6 +11,9 @@ export type CarouselButtonSlots = ButtonSlots & {
  */
 export type CarouselButtonProps = ButtonProps &
   ComponentProps<CarouselButtonSlots> & {
+    /**
+     * Dictates whether button will be of type go next or go previous
+     */
     navType: 'prev' | 'next';
   };
 

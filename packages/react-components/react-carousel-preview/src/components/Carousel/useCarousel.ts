@@ -23,7 +23,7 @@ import type { CarouselContextValue } from '../CarouselContext.types';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  const { onValueChange } = props;
+  const { onValueChange, loop } = props;
 
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
   const [store] = React.useState(() => createCarouselStore());
@@ -105,21 +105,37 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     };
   }, [carouselWalker, store]);
 
-  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
-    const active = carouselWalker.active();
+  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback(
+    (event, direction, loop) => {
+      const active = carouselWalker.active();
 
-    if (!active?.value) {
-      return;
-    }
+      if (!active?.value) {
+        return;
+      }
 
-    const newPage =
-      direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
+      let newPage =
+        direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
 
-    if (newPage) {
-      setValue(newPage?.value);
-      onValueChange?.(event, { event, type: 'click', value: newPage?.value });
-    }
-  });
+      if (!newPage && loop) {
+        if (direction === 'prev') {
+          newPage = carouselWalker.nextPage(active.value);
+          while (newPage && carouselWalker.nextPage(newPage?.value)) {
+            newPage = carouselWalker.nextPage(newPage?.value);
+          }
+        } else {
+          newPage = carouselWalker.prevPage(active.value);
+          while (newPage && carouselWalker.prevPage(newPage?.value)) {
+            newPage = carouselWalker.prevPage(newPage?.value);
+          }
+        }
+      }
+
+      if (newPage) {
+        setValue(newPage?.value);
+        onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+      }
+    },
+  );
 
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
     setValue(_value);
@@ -141,5 +157,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     value,
     selectPageByDirection,
     selectPageByValue,
+    loop,
   };
 }

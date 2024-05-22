@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     height: '8px',
     width: '8px',
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: tokens.colorNeutralForeground1,
   },
   rootUnselected: {
     border: 'none',
@@ -30,11 +30,11 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
-    backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 30%, transparent)`,
+    backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForeground1} 30%, transparent)`,
     '@supports not (color: color-mix(in lch, white, black))': {
       // This will also affect the focus border, but only in older unsupported browsers
       opacity: 0.3,
-      backgroundColor: tokens.colorBrandBackground,
+      backgroundColor: tokens.colorNeutralForeground1,
     },
   },
   rootSelected: {
