@@ -19,7 +19,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "e2e": "cypress run --component",
