@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: normalize rootDir ts setting and scope it only to wc lib",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
