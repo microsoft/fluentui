@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -34,17 +34,17 @@ const useRootStyles = makeStyles({
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground6,
     width: '100%',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
 
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'CanvasText',
     },
   },
   rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
   },
   square: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
+    borderRadius: tokens.borderRadiusNone,
   },
   medium: {
     height: barThicknessValues.medium,
@@ -62,7 +62,7 @@ const useBarStyles = makeStyles({
     '@media screen and (forced-colors: active)': {
       backgroundColor: 'Highlight',
     },
-    ...shorthands.borderRadius('inherit'),
+    borderRadius: 'inherit',
     height: '100%',
   },
   nonZeroDeterminate: {

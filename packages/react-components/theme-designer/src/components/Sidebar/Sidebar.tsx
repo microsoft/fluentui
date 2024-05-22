@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-components';
 import { Form } from './Form';
 
@@ -7,19 +7,17 @@ export interface SidebarProps {
   className?: string;
 }
 
-/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.gap(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL),
+    borderRight: `1px solid ${tokens.colorNeutralStroke1}`,
+    gap: `${tokens.spacingVerticalXXL} ${tokens.spacingHorizontalXXL}`,
     backgroundColor: tokens.colorNeutralBackground3,
   },
 });
-/* eslint-enable deprecation/deprecation */
 
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();

@@ -1,4 +1,4 @@
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-components';
 
 export const useStyles = makeStyles({
@@ -19,9 +19,7 @@ export const useStyles = makeStyles({
     display: 'inline',
     paddingLeft: '5px',
     paddingRight: '5px',
-    /* eslint-disable deprecation/deprecation */
-    ...shorthands.borderRadius('10px'),
-    /* eslint-enable deprecation/deprecation */
+    borderRadius: '10px',
   },
   menu: {
     marginTop: tokens.spacingVerticalXS,

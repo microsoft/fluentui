@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: migrate .shorthands() [cxe-red]",
+  "packageName": "@fluentui/react-button",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
