@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { EmptySwatchSlots, EmptySwatchState } from './EmptySwatch.types';
 import { tokens } from '@fluentui/react-theme';
@@ -37,22 +37,16 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    }),
+    borderRadius: tokens.borderRadiusMedium,
+    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusMedium }),
   },
   circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    }),
+    borderRadius: tokens.borderRadiusCircular,
+    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
   },
   square: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusNone),
-    }),
+    borderRadius: tokens.borderRadiusNone,
+    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
   },
 });
 
