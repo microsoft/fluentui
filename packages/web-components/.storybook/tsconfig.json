@@ -4,7 +4,7 @@
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
-    "types": ["node"]
+    "types": ["node", "web"]
   },
   "include": ["*", "../public", "../src/**/*.stories.*"]
 }
