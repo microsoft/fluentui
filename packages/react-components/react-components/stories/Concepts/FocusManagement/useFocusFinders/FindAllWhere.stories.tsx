@@ -15,7 +15,6 @@ import {
   ToggleButton,
   useArrowNavigationGroup,
   makeStyles,
-  shorthands,
   useFocusFinders,
   Body1Stronger,
   tokens,
@@ -24,10 +23,9 @@ import {
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    ...shorthands.gap('5px'),
-    ...shorthands.padding('10px'),
-
-    ...shorthands.border('2px', 'solid', tokens.colorBrandStroke1),
+    gap: '5px',
+    padding: '10px',
+    border: `2px solid ${tokens.colorBrandStroke1}`,
     borderBottomLeftRadius: tokens.borderRadiusMedium,
     borderBottomRightRadius: tokens.borderRadiusMedium,
   },
@@ -35,8 +33,8 @@ const useStyles = makeStyles({
     display: 'block',
     backgroundColor: tokens.colorBrandStroke1,
     color: tokens.colorNeutralForegroundOnBrand,
+    padding: '4px',
 
-    ...shorthands.padding('4px'),
     borderTopLeftRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: tokens.borderRadiusMedium,
   },

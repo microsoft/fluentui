@@ -1,5 +1,5 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ToolbarSlots, ToolbarState } from './Toolbar.types';
 
 export const toolbarClassNames: SlotClassNames<ToolbarSlots> = {
@@ -13,21 +13,15 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.padding('4px', '8px'),
+    padding: '4px 8px',
   },
   vertical: {
     flexDirection: 'column',
     width: 'fit-content',
   },
-  small: {
-    ...shorthands.padding('0px', '4px'),
-  },
-  medium: {
-    ...shorthands.padding('4px', '8px'),
-  },
-  large: {
-    ...shorthands.padding('4px', '20px'),
-  },
+  small: { padding: '0px 4px' },
+  medium: { padding: '4px 8px' },
+  large: { padding: '4px 20px' },
 });
 
 /**

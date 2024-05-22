@@ -3,7 +3,6 @@ import {
   useId,
   Text,
   makeStyles,
-  shorthands,
   tokens,
   Popover,
   Button,
@@ -16,7 +15,7 @@ import {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    ...shorthands.gap('20px'),
+    gap: '20px',
   },
 
   button: {
@@ -34,7 +33,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     width: 'fit-content',
     fontWeight: tokens.fontWeightBold,
-    ...shorthands.padding('2px', '12px'),
+    padding: '2px 12px',
   },
 
   log: {
@@ -43,8 +42,8 @@ const useStyles = makeStyles({
     position: 'relative',
     minWidth: '200px',
     height: '200px',
-    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
-    ...shorthands.padding('12px', '12px'),
+    border: `2px solid ${tokens.colorBrandBackground}`,
+    padding: '12px',
   },
 });
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, teamsLightTheme } from '@fluentui/react-components';
+import { makeStyles, teamsLightTheme } from '@fluentui/react-components';
 import type { CurveTokens, DurationTokens } from '@fluentui/react-components';
 
 const theme = teamsLightTheme;
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   durationAnimation: {
     width: '4px',
     height: '64px',
-    ...shorthands.margin(0, '30px'),
+    margin: '0 30px',
     backgroundColor: '#ccc',
     position: 'relative',
     animationIterationCount: 'infinite',
@@ -20,8 +20,7 @@ const useStyles = makeStyles({
   curvesAnimation: {
     width: '64px',
     height: '64px',
-    // ...shorthands.margin(0, '30px'),
-    ...shorthands.borderRadius('64px'),
+    borderRadius: '64px',
     backgroundColor: '#ccc',
     position: 'relative',
     animationIterationCount: 'infinite',

@@ -1,13 +1,6 @@
 /* eslint-disable no-restricted-globals, no-restricted-properties */
 import * as React from 'react';
-import {
-  makeStyles,
-  tokens,
-  shorthands,
-  mergeClasses,
-  createCSSRuleFromTheme,
-  webLightTheme,
-} from '@fluentui/react-components';
+import { makeStyles, tokens, mergeClasses, createCSSRuleFromTheme, webLightTheme } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   colorBrandBackground: {
@@ -18,12 +11,10 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorNeutralForeground2,
   },
-  box: {
-    ...shorthands.padding(tokens.spacingHorizontalM),
-  },
+  box: { padding: tokens.spacingHorizontalM },
   layout: {
     display: 'flex',
-    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
+    gap: `${tokens.spacingHorizontalM} ${tokens.spacingVerticalM}`,
   },
 });
 

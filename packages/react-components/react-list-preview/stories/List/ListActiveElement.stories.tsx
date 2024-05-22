@@ -1,13 +1,4 @@
-import {
-  Button,
-  makeStyles,
-  Persona,
-  shorthands,
-  mergeClasses,
-  Text,
-  tokens,
-  SelectionItemId,
-} from '@fluentui/react-components';
+import { Button, makeStyles, Persona, mergeClasses, Text, tokens, SelectionItemId } from '@fluentui/react-components';
 import { Mic16Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
@@ -43,7 +34,7 @@ const useStyles = makeStyles({
   },
   item: {
     cursor: 'pointer',
-    ...shorthands.padding('2px', '6px'),
+    padding: '2px 6px',
     justifyContent: 'space-between',
   },
   itemSelected: {
