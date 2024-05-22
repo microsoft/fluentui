@@ -9,7 +9,7 @@ import {
 import { ThemeContext } from '@fluentui/react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
-export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}> = () => {
+export const HorizontalBarChartVariantExample: React.FunctionComponent<{}> = () => {
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const theme = React.useContext(ThemeContext);
 
