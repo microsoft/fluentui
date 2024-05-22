@@ -2022,10 +2022,10 @@
     stylis "^4.2.0"
     tslib "^2.1.0"
 
-"@griffel/eslint-plugin@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@griffel/eslint-plugin/-/eslint-plugin-1.6.2.tgz#346f4e0c50a2819e1d745ae095f52f26e35aee90"
-  integrity sha512-HYpGxBo5+U8MzQujA+Qp8cxL85961OeGfi521mFT10tv2JFGRuB2K8OvqOrLYcolUg13pz+WO+X9uqLLmNnucw==
+"@griffel/eslint-plugin@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@griffel/eslint-plugin/-/eslint-plugin-1.6.3.tgz#cb4e9b88e31bcaed5c16e13a6ec60882d49bd938"
+  integrity sha512-Lefrqz/JSZUheA4DeDNOnZtabfL9dyFBrOdIWrN6G7w/gQnPY62KuxvbRymZy4VcwnjAoFitLY5j9TtAHGyH0w==
   dependencies:
     "@typescript-eslint/utils" "^6.18.1"
     csstype "^3.1.3"
@@ -17492,33 +17492,33 @@ monaco-editor@0.33.0:
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
   integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
-monosize-bundler-webpack@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.0.tgz#f70e04453397a9fe1959bc9bd302e76a5871fbf1"
-  integrity sha512-iZvgekCCQEcTVWYdLSPwotmHL5oO9cSr9dgDuCYafhfZKwNfFKxfFRraSUffNQlYBc2eH2ZiU1hhcauA30fbnA==
+monosize-bundler-webpack@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/monosize-bundler-webpack/-/monosize-bundler-webpack-0.1.4.tgz#c9f730c7237c26153b45f40c04940de0af3e1f4c"
+  integrity sha512-lYQ2Cg+J4KH7SjHnMRPKSg6CUASQ3BMiLVB5jhSvS79Rz3LmEsy0VFrbasjHFG05VErI9j/JvpLLxS+zHyS2kQ==
   dependencies:
-    monosize "^0.5.0"
+    monosize "^0.6.2"
     picocolors "^1.0.0"
     terser "^5.16.0"
     terser-webpack-plugin "^5.3.1"
     tslib "^2.4.1"
     webpack "^5.76.0"
 
-monosize-storage-azure@0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.10.tgz#e90390af2c9709f35cdfe51a0218f8effd1c824c"
-  integrity sha512-asvaHsx4TSmdyh1rvxm6uWa91Suml9Vorfpc0YUGUsOj7KXOg3vxObxrTvKPiBSSWEbQ/Nb1XXJCzt4s8CaX1w==
+monosize-storage-azure@0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.14.tgz#f3b5810f885063f0d7fa86ca17625ce22546433f"
+  integrity sha512-hFaIo1ZoB4ZIlbRyPJ4CeXDEwGF/FVaG6j1rlgWuwilYavYAm9q/y0GprAFp6uRN8kQxi8WS6OiZCna/YIYHJA==
   dependencies:
     "@azure/data-tables" "^13.0.0"
-    monosize "^0.5.0"
+    monosize "^0.6.2"
     node-fetch "^3.3.0"
     picocolors "^1.0.0"
     tslib "^2.4.1"
 
-monosize@0.5.0, monosize@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.5.0.tgz#06de5a1f77338877a336627418b5b45458718498"
-  integrity sha512-+1Z3UyGP/t65Hft9wcDIlgGNuH7xB3ExKjxZ97qaGz//ujLPE2/SkeQcF4LxegBFjQnU4vm9g1pnb4Acc8b4Rg==
+monosize@0.6.2, monosize@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/monosize/-/monosize-0.6.2.tgz#0b192dd9ac12ab5833c65cdb4ca4e1c05cfaddb1"
+  integrity sha512-bTP2FnY0/G527uUmZ7GF5Gz7awSSVTPn7laHd6higpjZMv7f7IGtWgoNuhtaj/E92ZL1S3zm8+cb4TUgHxJdNQ==
   dependencies:
     acorn "^8.11.3"
     ci-info "^3.7.0"
@@ -17529,7 +17529,6 @@ monosize@0.5.0, monosize@^0.5.0:
     picocolors "^1.0.0"
     pretty-bytes "^6.0.0"
     tslib "^2.4.1"
-    workspace-tools "^0.29.1"
     yargs "^17.6.2"
 
 moo-color@^1.0.2:
@@ -22416,10 +22415,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.2.tgz#ab2fb2bc67b78059e1406b2afc35aec69eb824a5"
-  integrity sha512-wYG9ddAeSUxBrcPCZ+hQV5IcsyM089nTGkQ53G9/2pPDdUa3pBC4sP3qmdbvu+IoFpy62CMDxMgxQmegtCiLKg==
+tabster@^7.1.4:
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.4.tgz#3a56a0fd17df27f7f579f9b34f2c855683a086e2"
+  integrity sha512-P3DtJ8ub8QCVYPY7Be9/UpqeyBulcFHFbhMswlPooFT/XsC+nMByfADZ+wC5QCdSNlYEGoDgB+EVscln8SrXhg==
   dependencies:
     keyborg "2.6.0"
     tslib "^2.3.1"
@@ -24416,19 +24415,7 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
-workspace-tools@0.29.1, workspace-tools@^0.29.1:
-  version "0.29.1"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.29.1.tgz#ff38f7484961cd87a342a8fd14eacd31d1645f56"
-  integrity sha512-BVPROxNszGmyaUD2ErLWP4BpCiIkG1P//CnziOvHd27o1TeBm+7T1HKlYu89T4XGAjgPL/NP+tZ4j6aBvG/p/A==
-  dependencies:
-    "@yarnpkg/lockfile" "^1.1.0"
-    git-url-parse "^13.0.0"
-    globby "^11.0.0"
-    jju "^1.4.0"
-    js-yaml "^4.1.0"
-    micromatch "^4.0.0"
-
-workspace-tools@^0.27.0:
+workspace-tools@0.27.0, workspace-tools@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.27.0.tgz#11e8f1ec2cb4c80d1cefcf92da2d0154dc001aa8"
   integrity sha512-5mtE5Vy0Se4brAUJXKfXNtaS9jcUcH+IGF4LNU1xJr4bW1o5bK2gV0pykodB+n6V84nRtaD/4I/9w98aujm7LA==

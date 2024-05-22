@@ -9,7 +9,7 @@ import { SelectionEvents, SelectionProps, SelectionState } from '../../utils/Sel
 import type { ListboxContextValue } from '../../contexts/ListboxContext';
 
 export type ListboxSlots = {
-  /* The root slot, a `<div>` with `role="listbox"` */
+  /** The root slot, a `<div>` with `role="listbox"` */
   root: Slot<'div'>;
 };
 

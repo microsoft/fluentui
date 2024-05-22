@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Improve gauge chart screen reader accessibility",
+  "comment": "Improve screen reader accessibility of cartesian charts",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"

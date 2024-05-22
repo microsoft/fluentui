@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: add --noEmit for type-checking task",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

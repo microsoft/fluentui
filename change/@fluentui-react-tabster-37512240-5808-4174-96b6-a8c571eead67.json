@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: bump tabster to 7.1.4 containing fix for https://github.com/microsoft/tabster/issues/374.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
