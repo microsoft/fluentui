@@ -15,9 +15,7 @@ export function observeResize(elementToObserve: HTMLElement, callback: ResizeObs
     return () => null;
   }
 
-  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-  // eslint-disable-next-line no-restricted-globals
-  let resizeObserver: ResizeObserver | undefined = new GlobalResizeObserver(callback);
+  let resizeObserver: InstanceType<typeof GlobalResizeObserver> | undefined = new GlobalResizeObserver(callback);
   resizeObserver.observe(elementToObserve);
 
   return () => {
