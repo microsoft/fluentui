@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Text } from '@fluentui/react-components';
+import { makeStyles, Text } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   text: {
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     width: '240px',
     display: 'block',
   },

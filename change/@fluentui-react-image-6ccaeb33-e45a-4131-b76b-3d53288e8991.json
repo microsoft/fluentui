@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: replace usage of .shorthands() in styles",
+  "packageName": "@fluentui/react-image",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Caption1, tokens, Text } from '@fluentui/react-components';
+import { makeStyles, Button, Caption1, tokens, Text } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-components';
 
@@ -12,7 +12,7 @@ const resolveAsset = (asset: string) => {
 
 const useStyles = makeStyles({
   main: {
-    ...shorthands.gap('16px'),
+    gap: '16px',
     display: 'flex',
     flexWrap: 'wrap',
   },
@@ -27,17 +27,15 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
   },
 
-  smallRadius: {
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-  },
+  smallRadius: { borderRadius: tokens.borderRadiusSmall },
 
   grayBackground: {
     backgroundColor: tokens.colorNeutralBackground3,
   },
 
   logoBadge: {
-    ...shorthands.padding('5px'),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    padding: '5px',
+    borderRadius: tokens.borderRadiusSmall,
     backgroundColor: '#FFF',
     boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
   },
