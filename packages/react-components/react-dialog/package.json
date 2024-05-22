@@ -42,9 +42,9 @@
   "dependencies": {
     "@fluentui/react-utilities": "^9.18.9",
     "@fluentui/react-jsx-runtime": "^9.0.38",
-    "react-transition-group": "^4.4.1",
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-context-selector": "^9.1.60",
+    "@fluentui/react-motions-preview": "^0.3.0",
     "@fluentui/react-shared-contexts": "^9.19.0",
     "@fluentui/react-aria": "^9.11.3",
     "@fluentui/react-icons": "^2.0.239",
