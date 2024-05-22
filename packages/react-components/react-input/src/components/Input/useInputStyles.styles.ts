@@ -160,7 +160,10 @@ const useRootStyles = makeStyles({
     ':active,:focus-within': {
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
-    '::after': { borderRadius: '0' }, // remove rounded corners from focus underline
+    '::after': { 
+      // remove rounded corners from focus underline
+      borderRadius: '0' 
+    }, 
   },
   filled: {
     ...shorthands.borderColor(tokens.colorTransparentStroke),
