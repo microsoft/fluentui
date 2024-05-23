@@ -18,6 +18,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.padding(0),
     ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
     boxSizing: 'content-box',
