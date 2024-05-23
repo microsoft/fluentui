@@ -6,7 +6,7 @@ import { useNavSectionHeaderStyles_unstable } from './useNavSectionHeaderStyles.
 import type { NavSectionHeaderProps } from './NavSectionHeader.types';
 
 /**
- * NavSectionHeader component - TODO: add more docs
+ * NavSectionHeader component
  */
 export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps> = React.forwardRef((props, ref) => {
   const state = useNavSectionHeader_unstable(props, ref);
