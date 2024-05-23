@@ -144,7 +144,7 @@ export const Listbox: ForwardRefComponent<ListboxProps>;
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
 
 // @public
-export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
+export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'getOptionById' | 'getOptionsMatchingValue' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
     onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
