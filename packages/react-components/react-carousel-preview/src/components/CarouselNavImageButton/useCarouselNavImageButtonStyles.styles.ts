@@ -16,12 +16,15 @@ const selectedImageButtonSize = 48;
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding(0),
+    padding: '0px',
     ...shorthands.borderColor(tokens.colorTransparentStroke),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    borderRadius: tokens.borderRadiusSmall,
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
     boxSizing: 'content-box',
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   image: {
     width: imageButtonSize + 'px',

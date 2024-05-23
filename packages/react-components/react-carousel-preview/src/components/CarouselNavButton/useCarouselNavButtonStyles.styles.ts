@@ -19,6 +19,9 @@ const useStyles = makeStyles({
     height: '8px',
     width: '8px',
     backgroundColor: tokens.colorNeutralForeground1,
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   rootUnselected: {
     border: 'none',

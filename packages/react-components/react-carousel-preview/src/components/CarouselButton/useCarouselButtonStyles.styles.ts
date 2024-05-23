@@ -17,6 +17,9 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
 });
 
