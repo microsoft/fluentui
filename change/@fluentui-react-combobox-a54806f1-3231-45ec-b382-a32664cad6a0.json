@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: Surfacing Dropdown and Combobox prop comments to docsite.",
-  "packageName": "@fluentui/react-combobox",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "none"
-}

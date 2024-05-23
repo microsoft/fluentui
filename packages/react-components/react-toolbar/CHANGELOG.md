@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Mon, 20 May 2024 12:45:08 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.85)
+
+Thu, 23 May 2024 08:02:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.84..@fluentui/react-toolbar_v9.1.85)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.3.82 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-radio to v9.2.22 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.1.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.84)
 

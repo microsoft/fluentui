@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: re-exports DialogProvider",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(OverlayDrawer): unlock scroll when reduced motion is enabled",
-  "packageName": "@fluentui/react-drawer",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

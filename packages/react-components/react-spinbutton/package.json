@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-spinbutton",
-  "version": "9.2.76",
+  "version": "9.2.77",
   "description": "Fluent UI React SpinButton component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

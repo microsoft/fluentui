@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 20 May 2024 12:45:02 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.16.1)
+
+Thu, 23 May 2024 08:02:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.16.0..@fluentui/react-provider_v9.16.1)
+
+### Patches
+
+- fix: Update IconDirectionContextProvider imports to use export map ([PR #31006](https://github.com/microsoft/fluentui/pull/31006) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.16.0)
 

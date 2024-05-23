@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:44 GMT",
+      "tag": "@fluentui/react-input_v9.4.77",
+      "version": "9.4.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:56 GMT",
       "tag": "@fluentui/react-input_v9.4.76",
       "version": "9.4.76",

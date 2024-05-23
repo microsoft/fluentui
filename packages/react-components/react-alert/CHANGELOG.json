@@ -2,6 +2,39 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:39 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.123",
+      "version": "9.0.0-beta.123",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "4833b3e243cbe0160935af0afb610976d2a64cdd",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.6.28",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.3.82",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:51 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-beta.122",
       "version": "9.0.0-beta.122",

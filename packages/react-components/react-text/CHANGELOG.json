@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:50 GMT",
+      "tag": "@fluentui/react-text_v9.4.19",
+      "version": "9.4.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "92329052b8ed1f6b1574a1b02f841e463d4bbb1c",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:07 GMT",
       "tag": "@fluentui/react-text_v9.4.18",
       "version": "9.4.18",

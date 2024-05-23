@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add cleanup for timeout in announce",
-  "packageName": "@fluentui/react-aria",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

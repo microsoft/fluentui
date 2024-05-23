@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Mon, 20 May 2024 12:44:56 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.67)
+
+Thu, 23 May 2024 08:02:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.66..@fluentui/react-image_v9.1.67)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31448](https://github.com/microsoft/fluentui/pull/31448) by olfedias@microsoft.com)
 
 ## [9.1.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.66)
 
