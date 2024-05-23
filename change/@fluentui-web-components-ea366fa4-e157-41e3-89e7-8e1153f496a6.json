@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: implement proper type-checking command  within web-component domain",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

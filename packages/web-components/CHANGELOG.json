@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 04:06:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.20",
+      "version": "3.0.0-beta.20",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "051db5e7f6699ef23072c23adf644ebcf547cff7",
+            "comment": "chore: simplify compile script, tweak api-extractor config to stop spamming CI with warnings"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "98bbbe98ae3e505a1173f50bf7805e8a3d9003cc",
+            "comment": "fix: add --noEmit for type-checking task"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c3eed1e105fd5c3d3c933114e47ec2701efe5d38",
+            "comment": "chore: implement proper type-checking command  within web-component domain"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 May 2024 04:06:55 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.20",
       "version": "3.0.0-beta.20",
