@@ -53,7 +53,7 @@ const getTotalOffsetTop = (element: HTMLElement, scrollParent: HTMLElement): num
 };
 
 const getScrollMargins = (element: HTMLElement) => {
-  const win = element.ownerDocument.defaultView;
+  const win = element.ownerDocument?.defaultView;
   if (!win) {
     return {
       scrollMarginTop: 0,
