@@ -17,7 +17,6 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import * as React from 'react';
-import { $createHorizontalRuleNode, HorizontalRuleNode } from '../Lexical/HorizontalRuleNode';
 import { $createNamePillNode, NamePillNode } from './NamePillNode';
 import { AutocompletePlugin } from './AutocompletePlugin';
 import { AriaLiveAnnouncer } from '@fluentui/react-aria';
@@ -80,7 +79,7 @@ export function LexicalEditor2() {
     namespace: 'MyEditor',
     theme,
     onError,
-    nodes: [HorizontalRuleNode, NamePillNode],
+    nodes: [NamePillNode],
   };
 
   return (
