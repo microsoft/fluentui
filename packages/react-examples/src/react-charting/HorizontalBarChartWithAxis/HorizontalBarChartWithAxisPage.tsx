@@ -11,7 +11,7 @@ import {
 import { HorizontalBarChartWithAxisBasicExample } from './HorizontalBarChartWithAxis.Basic.Example';
 import { HorizontalBarChartWithAxisTooltipExample } from './HorizontalBarChartWithAxis.AxisTooltip.Example';
 import { HorizontalBarChartWithAxisStringAxisTooltipExample } from './HorizontalBarChartWithAxis.StringAxisTooltip.Example';
-import { HorizontalBarChartWithAxisErrorExample } from './HorizontalBarChartWithAxis.Error.Example';
+import { HorizontalBarChartWithAxisEmptyExample } from './HorizontalBarChartWithAxis.Empty.Example';
 
 const HorizontalBarChartWithAxisBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
@@ -19,8 +19,8 @@ const HorizontalBarChartWithAxisTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.AxisTooltip.Example.tsx') as string;
 const HorizontalBarChartWithAxisStringAxisTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.StringAxisTooltip.Example.tsx') as string;
-const HorizontalBarChartWithAxisErrorExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Error.Example.tsx') as string;
+const HorizontalBarChartWithAxisEmptyExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Empty.Example.tsx') as string;
 
 export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -46,10 +46,10 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
               <HorizontalBarChartWithAxisStringAxisTooltipExample />
             </ExampleCard>
             <ExampleCard
-              title="HorizontalBarChartWithAxis error scenario"
-              code={HorizontalBarChartWithAxisErrorExampleCode}
+              title="HorizontalBarChartWithAxis empty data scenario"
+              code={HorizontalBarChartWithAxisEmptyExampleCode}
             >
-              <HorizontalBarChartWithAxisErrorExample />
+              <HorizontalBarChartWithAxisEmptyExample />
             </ExampleCard>
           </div>
         }

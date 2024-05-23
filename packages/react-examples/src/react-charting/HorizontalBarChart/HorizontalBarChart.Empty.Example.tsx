@@ -5,7 +5,7 @@ interface IHorizontalBarChartState {
   chartMode: ChartDataMode;
 }
 
-export class HorizontalBarChartErrorExample extends React.Component<
+export class HorizontalBarChartEmptyExample extends React.Component<
   IHorizontalBarChartProps,
   IHorizontalBarChartState
 > {

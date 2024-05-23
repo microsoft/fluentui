@@ -8,7 +8,7 @@ interface IHorizontalBarChartWithAxisState {
   useSingleColor: boolean;
 }
 
-export class HorizontalBarChartWithAxisErrorExample extends React.Component<
+export class HorizontalBarChartWithAxisEmptyExample extends React.Component<
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisState
 > {

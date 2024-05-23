@@ -5,7 +5,7 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { HorizontalBarChartWithAxisBasicExample } from './HorizontalBarChartWithAxis.Basic.Example';
 import { HorizontalBarChartWithAxisTooltipExample } from './HorizontalBarChartWithAxis.AxisTooltip.Example';
 import { HorizontalBarChartWithAxisStringAxisTooltipExample } from './HorizontalBarChartWithAxis.StringAxisTooltip.Example';
-import { HorizontalBarChartWithAxisErrorExample } from './HorizontalBarChartWithAxis.Error.Example';
+import { HorizontalBarChartWithAxisEmptyExample } from './HorizontalBarChartWithAxis.Empty.Example';
 
 const HorizontalBarChartWithAxisBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
@@ -13,8 +13,8 @@ const HorizontalBarChartWithAxisTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.AxisTooltip.Example.tsx') as string;
 const HorizontalBarChartWithAxisStringAxisTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.StringAxisTooltip.Example.tsx') as string;
-const HorizontalBarChartWithAxisErrorExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Error.Example.tsx') as string;
+const HorizontalBarChartWithAxisEmptyExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Empty.Example.tsx') as string;
 
 export const HorizontalBarChartWithAxisPageProps: IDocPageProps = {
   title: 'HorizontalBarChartWithAxis',
@@ -38,9 +38,9 @@ export const HorizontalBarChartWithAxisPageProps: IDocPageProps = {
       view: <HorizontalBarChartWithAxisStringAxisTooltipExample />,
     },
     {
-      title: 'HorizontalBarChartWithAxis error scenario',
-      code: HorizontalBarChartWithAxisErrorExampleCode,
-      view: <HorizontalBarChartWithAxisErrorExample />,
+      title: 'HorizontalBarChartWithAxis empty data scenario',
+      code: HorizontalBarChartWithAxisEmptyExampleCode,
+      view: <HorizontalBarChartWithAxisEmptyExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/docs/HorizontalBarChartWithAxisOverview.md'),
