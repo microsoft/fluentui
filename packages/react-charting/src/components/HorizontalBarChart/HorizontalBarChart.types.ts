@@ -102,6 +102,11 @@ export interface IHorizontalBarChartProps {
    * Callback to handle empty state while chart is rendering.
    */
   handleEmptyState?: () => JSX.Element;
+
+  /**
+   * Custom error message to show in the chart.
+   */
+  customErrorMsg?: string;
 }
 
 /**

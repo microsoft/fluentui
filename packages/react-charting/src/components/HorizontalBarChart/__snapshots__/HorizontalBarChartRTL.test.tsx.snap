@@ -1277,49 +1277,81 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 1`] = `
 <div>
   <div
-    style="display: flex; justify-content: center; align-items: center; height: 100%;"
+    aria-label="Something went wrong and we couldn't get the page to display"
+    class=
+
+        {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-top: 10px;
+        }
+    id="_Chart_empty_1"
   >
     <div
-      aria-label="Graph has no data to display"
-      id="_Chart_empty_1"
-      role="alert"
-      style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 10px;"
+      class=
+
+          {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+          }
     >
-      <div
-        style="display: flex; justify-content: center; align-items: center; height: 100%;"
+      <span
+        aria-hidden="true"
+        class=
+
+            {
+              font-size: 150px;
+              height: 150px;
+            }
       >
-        <span
-          aria-hidden="true"
-          class=""
-          style="font-size: 175px; height: 175px;"
+        <svg
+          focusable="false"
+          viewBox="0 0 2048 2048"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            focusable="false"
-            viewBox="0 0 2048 2048"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M960 0q133 0 255 34t230 96 194 150 150 195 97 229 34 256q0 133-34 255t-96 230-150 194-195 150-229 97-256 34q-133 0-255-34t-230-96-194-150-150-195-97-229T0 960q0-133 34-255t96-230 150-194 195-150 229-97T960 0zm0 1792q114 0 220-30t199-84 169-130 130-168 84-199 30-221q0-114-30-220t-84-199-130-169-168-130-199-84-221-30q-115 0-221 30t-198 84-169 130-130 168-84 199-30 221q0 114 30 220t84 199 130 169 168 130 199 84 221 30zM896 512h128v640H896V512zm0 768h128v128H896v-128z"
-            />
-          </svg>
-        </span>
-      </div>
-      <div
-        style="font-size: 14px; font-weight: 700; font-family: Segoe UI; text-align: center;"
-      >
-        Couldn't load data
-      </div>
-      <div
-        style="font-size: 12px; font-family: Segoe UI; text-align: center;"
-      >
-        Something went wrong and we couldn't get the page to display
-      </div>
-      <div
-        style="font-size: 12px; font-family: Segoe UI; text-align: center;"
-      >
-        Error code: 
-        No data
-      </div>
+          <path
+            d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 141-36 272t-104 244-160 207-207 161-245 103-272 37q-141 0-272-36t-244-104-207-160-161-207-103-245-37-272q0-141 36-272t104-244 160-207 207-161T752 37t272-37zm0 1920q124 0 238-32t214-90 181-140 140-181 91-214 32-239q0-124-32-238t-90-214-140-181-181-140-214-91-239-32q-124 0-238 32t-214 90-181 140-140 181-91 214-32 239q0 124 32 238t90 214 140 181 181 140 214 91 239 32zm443-1249l-352 353 352 353-90 90-353-352-353 352-90-90 352-353-352-353 90-90 353 352 353-352 90 90z"
+          />
+        </svg>
+      </span>
+    </div>
+    <div
+      class=
+
+          {
+            font-family: Segoe UI;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+          }
+    >
+      Couldn't load data
+    </div>
+    <div
+      class=
+
+          {
+            font-family: Segoe UI;
+            font-size: 12px;
+            text-align: center;
+          }
+    >
+      Something went wrong and we couldn't get the page to display
+    </div>
+    <div
+      class=
+
+          {
+            font-family: Segoe UI;
+            font-size: 12px;
+            text-align: center;
+          }
+    >
+      Error code: No data
     </div>
   </div>
 </div>

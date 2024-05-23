@@ -34,7 +34,7 @@ import {
   getTypeOfAxis,
   getNextColor,
 } from '../../utilities/index';
-import ErrorBoundary from '../CommonComponents/ErrorBoundary';
+import { ErrorBoundary } from '../CommonComponents/ErrorBoundary';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -135,8 +135,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    return !this._isChartEmpty() ? (
-      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
+    return (
+      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme} hasEmptyState={this._isChartEmpty()}>
         <CartesianChart
           {...this.props}
           points={this._points}
@@ -165,15 +165,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           }}
         />
       </ErrorBoundary>
-    ) : (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-        <ErrorBoundary
-          hasEmptyState={true}
-          theme={this.props.theme}
-          width={this.props.width!}
-          handleEmptyState={this.props.handleEmptyState}
-        />
-      </div>
     );
   }
 
