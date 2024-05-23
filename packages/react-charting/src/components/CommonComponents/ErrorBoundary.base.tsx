@@ -32,6 +32,7 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
       hasEmptyState: this.props.hasEmptyState,
       theme: this.props.theme!,
       width: this.props.width,
+      height: this.props.height,
     });
   }
 
@@ -47,6 +48,7 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
       if (this.state.hasError && this.props.handleError !== undefined) {
         return this.props.handleError();
       }
+
       if (this.props.hasEmptyState && this.props.handleEmptyState !== undefined) {
         return (
           <div
@@ -66,10 +68,7 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
           aria-label={this.state.errorMsg ? this.state.errorMsg : this._defaultErrorMsg}
         >
           <div className={this._classNames.errorIconDiv}>{this._getErrorIcon()}</div>
-          <div className={this._classNames.dataLoadErrorText}>{"Couldn't load data"}</div>
-          <div className={this._classNames.dataLoadErrorSubText}>
-            {this.props.customErrorMsg ? this.props.customErrorMsg : this._defaultErrorMsg}
-          </div>
+          {this._displayErrorMessage()}
           <div className={this._classNames.dataLoadErrorSubText}>
             {`Error code: ${this.props.hasEmptyState ? ErrorCodes.NoData : ErrorCodes.GeneralError}`}
           </div>
@@ -90,6 +89,19 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
       <ErrorIcon className={this._classNames.errorIconLightTheme} />
     ) : (
       <ErrorIcon className={this._classNames.errorIconDarkTheme} />
+    );
+  }
+
+  private _displayErrorMessage() {
+    return this.props.customErrorMsg ? (
+      <div className={this._classNames.dataLoadErrorText}>{this.props.customErrorMsg}</div>
+    ) : (
+      <>
+        <div className={this._classNames.dataLoadErrorText}>{"Couldn't load data"}</div>
+        <div className={this._classNames.dataLoadErrorSubText}>
+          {this.props.customErrorMsg ? this.props.customErrorMsg : this._defaultErrorMsg}
+        </div>
+      </>
     );
   }
 }

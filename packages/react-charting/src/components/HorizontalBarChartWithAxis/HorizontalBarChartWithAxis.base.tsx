@@ -136,7 +136,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       tickFormat: this.props.tickFormat,
     };
     return (
-      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme} hasEmptyState={this._isChartEmpty()}>
+      <ErrorBoundary
+        handleError={this.props.handleError}
+        handleEmptyState={this.props.handleEmptyState}
+        theme={this.props.theme}
+        hasEmptyState={this._isChartEmpty()}
+      >
         <CartesianChart
           {...this.props}
           points={this._points}

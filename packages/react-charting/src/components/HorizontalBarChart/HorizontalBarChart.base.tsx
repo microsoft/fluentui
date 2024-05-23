@@ -82,9 +82,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     return (
       <ErrorBoundary
         handleError={this.props.handleError}
+        handleEmptyState={this.props.handleEmptyState}
         theme={this.props.theme}
         hasEmptyState={this._isChartEmpty()}
         customErrorMsg={this.props.customErrorMsg}
+        width={this.props.width}
       >
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
           {data!.map((points: IChartProps, index: number) => {

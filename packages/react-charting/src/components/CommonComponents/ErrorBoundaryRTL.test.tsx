@@ -27,7 +27,7 @@ describe('ErrorBoundary', () => {
     expect(screen.getByText(`Error code: ${ErrorCodes.NoData}`)).toBeInTheDocument();
   });
 
-  it('should render error message when an error is thrown', () => {
+  it('should render custom error message when an error is thrown', () => {
     const ThrowError = () => {
       const [count, setCount] = React.useState(0);
       if (count > 1) {
@@ -50,20 +50,8 @@ describe('ErrorBoundary', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'increment' }));
     fireEvent.click(screen.getByRole('button', { name: 'increment' }));
-    expect(screen.getByText('Custom error component')).toBeInTheDocument();
+    expect(screen.queryByText('Custom error component')).toBeInTheDocument();
   });
-
-  // it('should render custom error component when handleError prop is provided', () => {
-  //   const CustomErrorComponent = () => <div>Custom error component</div>;
-  //   const error = new Error('Something went wrong');
-  //   renderErrorBoundary({ hasEmptyState: false, handleError: CustomErrorComponent });
-  //   // Simulate an error in a child component
-  //   act(() => {
-  //     throw error;
-  //   });
-
-  //   expect(screen.getByText('Custom error component')).toBeInTheDocument();
-  // });
 
   it('should render custom empty state component when handleEmptyState prop is provided', () => {
     const CustomEmptyStateComponent = () => <div>Custom empty state component</div>;
