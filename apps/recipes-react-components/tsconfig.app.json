@@ -3,8 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     "lib": ["ES2019", "dom"],
-    "declaration": true,
-    "inlineSources": true
+    "types": []
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
