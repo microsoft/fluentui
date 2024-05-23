@@ -8,6 +8,7 @@ import { VerticalBarChartBase } from '../src/components/VerticalBarChart/Vertica
 import { max as d3Max } from 'd3-array';
 import { IVerticalBarChartDataPoint } from '../src/index';
 import { resetIds } from '@fluentui/react';
+import { XAxisTypes } from '../src/utilities/utilities';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -49,8 +50,8 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin);
       const margins = instance._getDomainMargins(width);
       expect(margins).toBeDefined();
-      expect(margins.left).toEqual(468);
-      expect(margins.right).toEqual(468);
+      expect(margins.left).toEqual(18);
+      expect(margins.right).toEqual(18);
       expect(margins.top).toEqual(10);
       expect(margins.bottom).toEqual(10);
     });
@@ -101,15 +102,14 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
-      const isNumericAxis = true;
-
-      const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+      instance._xAxisType = XAxisTypes.NumericAxis;
+      const scales = instance._getScales(containerHeight, containerWidth);
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-1000)).toBeLessThan(0);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeGreaterThan(containerWidth);
-      expect(Math.ceil(scales.xBarScale(27181))).toEqual(containerWidth);
+      expect(Math.ceil(scales.xBarScale(26581))).toEqual(containerWidth);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);
       expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
@@ -138,8 +138,8 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
-      const isNumericAxis = false;
-      const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+      instance._xAxisType = XAxisTypes.StringAxis;
+      const scales = instance._getScales(containerHeight, containerWidth);
 
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
@@ -174,15 +174,14 @@ runTest('VerticalBarChart unit tests', () => {
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
-      const isNumericAxis = true;
-
-      const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+      instance._xAxisType = XAxisTypes.NumericAxis;
+      const scales = instance._getScales(containerHeight, containerWidth);
 
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-2000)).toBeGreaterThan(containerWidth);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
-      expect(Math.ceil(scales.xBarScale(-1181))).toEqual(containerWidth);
+      expect(Math.ceil(scales.xBarScale(-581))).toEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeLessThan(0);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);

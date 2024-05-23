@@ -51,21 +51,7 @@ export const styles = css`
     stroke: rgba(255, 255, 255, 0.2);
   }
 
-  .determinate {
-    stroke: ${colorBrandStroke1};
-    fill: none;
-    stroke-width: 1.5px;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
-    transition: all 0.2s ease-in-out;
-  }
-
-  :host([appearance='inverted']) .determinite {
-    stroke: ${colorNeutralStrokeOnBrand2};
-  }
-
-  .indeterminate-indicator-1 {
+  .indicator {
     stroke: ${colorBrandStroke1};
     fill: none;
     stroke-width: 1.5px;
@@ -76,7 +62,7 @@ export const styles = css`
     animation: spin-infinite 3s cubic-bezier(0.53, 0.21, 0.29, 0.67) infinite;
   }
 
-  :host([appearance='inverted']) .indeterminate-indicator-1 {
+  :host([appearance='inverted']) .indicator {
     stroke: ${colorNeutralStrokeOnBrand2};
   }
 

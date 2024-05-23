@@ -1,4 +1,4 @@
-import { GriffelStyle, shorthands, tokens } from '@fluentui/react-components';
+import { GriffelStyle, tokens } from '@fluentui/react-components';
 import { input } from './Input.mixins';
 
 const testMixin = (mixin: GriffelStyle | undefined, expectedStyle: GriffelStyle | undefined) => {
@@ -11,9 +11,7 @@ const testMixin = (mixin: GriffelStyle | undefined, expectedStyle: GriffelStyle 
 
 describe('Input.mixins', () => {
   describe('error', () => {
-    testMixin(input.error(), {
-      ...shorthands.border('1px', 'solid', tokens.colorPaletteRedBorderActive),
-    });
+    testMixin(input.error(), { border: `1px solid ${tokens.colorPaletteRedBorderActive}` });
   });
 
   describe('errorIndicator', () => {

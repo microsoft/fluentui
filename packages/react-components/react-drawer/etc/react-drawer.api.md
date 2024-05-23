@@ -158,7 +158,9 @@ export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
 export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots>;
 
 // @public
-export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
+export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'> & DrawerBaseProps & {
+    defaultOpen?: boolean;
+};
 
 // @public
 export type OverlayDrawerSlots = {

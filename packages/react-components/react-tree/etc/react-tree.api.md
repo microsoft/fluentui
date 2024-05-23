@@ -404,7 +404,7 @@ export const useFlatTreeContextValues_unstable: (state: FlatTreeState) => FlatTr
 export const useFlatTreeStyles_unstable: (state: FlatTreeState) => FlatTreeState;
 
 // @public
-export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
+export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTreeReturn<Props>;
 
 // @public (undocumented)
 export const useSubtreeContext_unstable: () => SubtreeContextValue;

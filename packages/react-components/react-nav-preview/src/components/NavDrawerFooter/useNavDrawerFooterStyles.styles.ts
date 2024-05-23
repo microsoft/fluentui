@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -14,7 +14,7 @@ export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'unset',
-    ...shorthands.padding(0, tokens.spacingVerticalMNudge),
+    padding: `0 ${tokens.spacingVerticalMNudge}`,
   },
 });
 

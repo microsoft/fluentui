@@ -104,6 +104,16 @@ test.describe('Button', () => {
     await expect(element).not.toBeFocused();
   });
 
+  test('should have transparent border when the `disabled` attribute is present', async ({ page }) => {
+    const element = page.locator('fluent-button');
+
+    await page.setContent(/* html */ `
+      <fluent-button appearance='primary' disabled>Button</fluent-button>
+    `);
+
+    await expect(element).toHaveCSS('border-color', 'rgb(0, 0, 0)');
+  });
+
   test('should be focusable when the `disabled-focusable` attribute is present', async ({ page }) => {
     const element = page.locator('fluent-button');
 
@@ -114,6 +124,16 @@ test.describe('Button', () => {
     await element.focus();
 
     await expect(element).toBeFocused();
+  });
+
+  test('should have transparent border when the `disabled-focusable` attribute is present', async ({ page }) => {
+    const element = page.locator('fluent-button');
+
+    await page.setContent(/* html */ `
+      <fluent-button appearance='primary' disabled-focusable>Button</fluent-button>
+    `);
+
+    await expect(element).toHaveCSS('border-color', 'rgb(0, 0, 0)');
   });
 
   test('should NOT be clickable when the `disabled` attribute is present', async ({ page }) => {

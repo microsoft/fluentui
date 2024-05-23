@@ -5,7 +5,6 @@ import {
   mergeClasses,
   Overflow,
   OverflowItem,
-  shorthands,
   tokens,
   useIsOverflowItemVisible,
 } from '@fluentui/react-components';
@@ -16,20 +15,20 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'nowrap',
     minWidth: 0,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
 
   resizableArea: {
     minWidth: '200px',
     maxWidth: '800px',
-    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
-    ...shorthands.padding('20px', '10px', '10px', '10px'),
+    border: `2px solid ${tokens.colorBrandBackground}`,
+    padding: '20px 10px 10px 10px',
     position: 'relative',
     resize: 'horizontal',
     '::after': {
       content: `'Resizable Area'`,
       position: 'absolute',
-      ...shorthands.padding('1px', '4px', '1px'),
+      padding: '1px 4px 1px',
       top: '-2px',
       left: '-2px',
       fontFamily: 'monospace',

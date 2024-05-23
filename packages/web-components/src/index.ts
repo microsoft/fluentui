@@ -155,7 +155,6 @@ export {
   Spinner,
   SpinnerAppearance,
   SpinnerSize,
-  SpinnerOptions,
   SpinnerTemplate,
   SpinnerStyles,
   SpinnerDefinition,

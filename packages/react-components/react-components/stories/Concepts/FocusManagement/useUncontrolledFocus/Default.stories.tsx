@@ -1,28 +1,20 @@
 import * as React from 'react';
 
 import { FocusTrapZone } from '@fluentui/react';
-import {
-  useUncontrolledFocus,
-  Field,
-  Switch,
-  Button,
-  makeStyles,
-  shorthands,
-  tokens,
-} from '@fluentui/react-components';
+import { useUncontrolledFocus, Field, Switch, Button, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   focusTrapZone: {
     display: 'flex',
     columnGap: '10px',
-    ...shorthands.padding('20px', '10px', '10px', '10px'),
+    padding: '20px 10px 10px 10px',
     position: 'relative',
     maxWidth: '400px',
-    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
+    border: `2px solid ${tokens.colorBrandBackground}`,
     '::after': {
       content: `'FocusTrapZone'`,
       position: 'absolute',
-      ...shorthands.padding('1px', '4px', '1px'),
+      padding: '1px 4px 1px',
       top: '-2px',
       left: '-2px',
       fontFamily: 'monospace',

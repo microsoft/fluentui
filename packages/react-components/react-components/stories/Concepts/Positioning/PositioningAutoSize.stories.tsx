@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Button,
   makeStyles,
-  shorthands,
   Checkbox,
   SpinButton,
   Label,
@@ -15,7 +14,7 @@ import {
 
 const useStyles = makeStyles({
   boundary: {
-    ...shorthands.border('2px', 'dashed', 'red'),
+    border: '2px dashed red',
     width: '300px',
     height: '300px',
     display: 'flex',

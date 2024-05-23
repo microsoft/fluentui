@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "paths": {}
+    "paths": null,
+    "baseUrl": "."
   }
 }

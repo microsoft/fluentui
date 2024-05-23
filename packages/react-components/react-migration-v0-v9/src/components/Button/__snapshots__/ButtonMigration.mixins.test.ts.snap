@@ -9,12 +9,8 @@ Object {
     "display": "inline",
   },
   "& svg": Object {
-    "marginBottom": 0,
-    "marginLeft": "-4px",
-    "marginRight": 0,
-    "marginTop": "-4px",
-    "overflowX": "visible",
-    "overflowY": "visible",
+    "margin": "-4px 0 0 -4px",
+    "overflow": "visible",
     "paddingBottom": "100%",
     "width": "100%",
   },
@@ -38,8 +34,7 @@ Object {
     "display": "inline",
   },
   "& svg": Object {
-    "overflowX": "visible",
-    "overflowY": "visible",
+    "overflow": "visible",
   },
   "&:hover": Object {
     "& .fui-Icon-filled": Object {

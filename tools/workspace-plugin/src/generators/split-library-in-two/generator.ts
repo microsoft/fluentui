@@ -25,17 +25,37 @@ import { TsConfig } from '../../types';
 import { workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
+export { isSplitProject, assertStoriesProject } from './shared';
+
 interface Options extends SplitLibraryInTwoGeneratorSchema {
   projectConfig: ReturnType<typeof readProjectConfiguration>;
   projectOffsetFromRoot: { old: string; updated: string };
   oldContent: {
     tsConfig: Record<string, unknown>;
+    packageJSON: Record<string, unknown>;
+  };
+
+  oldPackageMetadata: {
+    ssrTestsScript: string | undefined;
   };
 }
 
 const noop = () => {
   return;
 };
+
+function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema) {
+  if (options.logs) {
+    return output;
+  }
+
+  return {
+    log: noop,
+    note: noop,
+    warn: noop,
+    error: noop,
+  } as unknown as typeof output;
+}
 
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
   if (options.project && options.all) {
@@ -45,24 +65,26 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
     throw new Error('missing `project` or `all` option');
   }
 
+  const cliOutput = createOutputLogger(options);
+
   if (options.all) {
     const projects = getProjects(tree);
     const projectsToSplit = Array.from(projects).filter(([_, project]) =>
       assertProject(tree, project, { warn: noop } as unknown as typeof output),
     );
 
-    output.log({
+    cliOutput.log({
       title: `Splitting ${projectsToSplit.length} libraries in two...`,
       bodyLines: projectsToSplit.map(([name]) => name),
     });
 
     for (const [projectName, project] of projectsToSplit) {
-      splitLibraryInTwoInternal(tree, { projectName, project });
+      splitLibraryInTwoInternal(tree, { projectName, project }, cliOutput);
     }
   }
 
   if (options.project) {
-    splitLibraryInTwoInternal(tree, { projectName: options.project });
+    splitLibraryInTwoInternal(tree, { projectName: options.project }, cliOutput);
   }
 
   await tsConfigBaseAllGenerator(tree, { verify: false, skipFormat: true });
@@ -70,7 +92,9 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   // TODO: we don't wanna fail master build because formatting failed
   // - Nx is using await `prettier.format` under the hood which is for prettier v3, but we use prettier v2 ATM, while that unnecessary await should not cause harm it seems it does
   try {
-    await formatFiles(tree);
+    if (!options.skipFormat) {
+      await formatFiles(tree);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -80,16 +104,21 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   };
 }
 
-function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string; project?: ProjectConfiguration }) {
+function splitLibraryInTwoInternal(
+  tree: Tree,
+  options: { projectName: string; project?: ProjectConfiguration },
+  logger: typeof output,
+) {
   const { projectName, project } = options;
   const projectConfig = project ?? readProjectConfiguration(tree, options.projectName);
 
-  output.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
+  logger.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
 
   if (!assertProject(tree, projectConfig, output)) {
     return;
   }
 
+  const packageJSON = readJson(tree, joinPathFragments(projectConfig.root, 'package.json'));
   const normalizedOptions = {
     projectName,
     projectConfig,
@@ -99,19 +128,23 @@ function splitLibraryInTwoInternal(tree: Tree, options: { projectName: string; p
     },
     oldContent: {
       tsConfig: readJson(tree, joinPathFragments(projectConfig.root, 'tsconfig.json')),
+      packageJSON,
+    },
+    oldPackageMetadata: {
+      ssrTestsScript: packageJSON?.scripts?.['test-ssr'],
     },
   };
 
-  cleanup(tree, normalizedOptions);
+  cleanup(tree, normalizedOptions, logger);
 
-  makeSrcLibrary(tree, normalizedOptions);
-  makeStoriesLibrary(tree, normalizedOptions);
+  makeSrcLibrary(tree, normalizedOptions, logger);
+  makeStoriesLibrary(tree, normalizedOptions, logger);
 }
 
 export default splitLibraryInTwoGenerator;
 
-function cleanup(tree: Tree, options: Options) {
-  output.log({ title: 'Cleaning up build assets...' });
+function cleanup(tree: Tree, options: Options, logger: typeof output) {
+  logger.log({ title: 'Cleaning up build assets...' });
   const oldProjectRoot = options.projectConfig.root;
   tree.delete(joinPathFragments(oldProjectRoot, 'dist'));
   tree.delete(joinPathFragments(oldProjectRoot, 'lib'));
@@ -122,8 +155,8 @@ function cleanup(tree: Tree, options: Options) {
   tree.delete(joinPathFragments(oldProjectRoot, 'node_modules'));
 }
 
-function makeSrcLibrary(tree: Tree, options: Options) {
-  output.log({ title: 'creating library/ project' });
+function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
+  logger.log({ title: 'creating library/ project' });
 
   const oldProjectRoot = options.projectConfig.root;
   const newProjectRoot = joinPathFragments(oldProjectRoot, 'library');
@@ -161,15 +194,17 @@ function makeSrcLibrary(tree: Tree, options: Options) {
     json.scripts ??= {};
     json.scripts.storybook = 'yarn --cwd ../stories storybook';
     json.scripts['type-check'] = 'just-scripts type-check';
-    if (json.scripts['test-ssr']) {
-      json.scripts['test-ssr'] = `test-ssr \"../stories/src/**/*.stories.tsx\"`;
-    }
+    delete json.scripts['test-ssr'];
 
-    const deps = getMissingDevDependenciesFromCypressAndJestFiles(tree, {
-      sourceRoot: newProjectSourceRoot,
-      projectName: options.projectConfig.name!,
-      dependencies: json.dependencies,
-    });
+    const deps = getMissingDevDependenciesFromCypressAndJestFiles(
+      tree,
+      {
+        sourceRoot: newProjectSourceRoot,
+        projectName: options.projectConfig.name!,
+        dependencies: json.dependencies,
+      },
+      logger,
+    );
 
     json.devDependencies ??= {};
     json.devDependencies = { ...deps, ...json.devDependencies };
@@ -230,8 +265,8 @@ function makeSrcLibrary(tree: Tree, options: Options) {
   updateCodeowners(tree, options);
 }
 
-function makeStoriesLibrary(tree: Tree, options: Options) {
-  output.log({ title: 'creating stories/ project' });
+function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output) {
+  logger.log({ title: 'creating stories/ project' });
   const oldProjectRoot = options.projectConfig.root;
   const newProjectRoot = joinPathFragments(oldProjectRoot, 'stories');
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
@@ -288,6 +323,7 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
         'type-check': 'just-scripts type-check',
         lint: 'eslint src/',
         format: 'just-scripts prettier',
+        ...(options.oldPackageMetadata.ssrTestsScript ? { 'test-ssr': `test-ssr "./src/**/*.stories.tsx"` } : null),
       },
       devDependencies: {
         ...storiesWorkspaceDeps,
@@ -370,7 +406,12 @@ function makeStoriesLibrary(tree: Tree, options: Options) {
     root: newProjectRoot,
     sourceRoot: newProjectSourceRoot,
     name: `${options.projectConfig.name}-stories`,
-    tags: ['vNext', 'platform:web', 'type:stories'],
+    tags: [
+      'vNext',
+      'platform:web',
+      options.projectConfig.tags?.includes('compat') ? 'compat' : null,
+      'type:stories',
+    ].filter(Boolean) as string[],
   });
 
   updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
@@ -385,16 +426,6 @@ function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: 
 
   if (projectConfig.projectType !== 'library') {
     logger.warn({ title: 'This generator is only for libraries' });
-    return;
-  }
-
-  if (projectConfig.name?.endsWith('-preview')) {
-    logger.warn({ title: 'preview projects are not supported YET, skipping...' });
-    return;
-  }
-
-  if (tags.includes('compat')) {
-    logger.warn({ title: 'compat projects are not supported YET, skipping...' });
     return;
   }
 
@@ -497,6 +528,7 @@ function getWorkspaceDependencies(tree: Tree, imports: string[]) {
 function getMissingDevDependenciesFromCypressAndJestFiles(
   tree: Tree,
   options: { sourceRoot: string; projectName: string; dependencies: Record<string, string> },
+  logger: typeof output,
 ) {
   const { projectName, sourceRoot, dependencies } = options;
 
@@ -528,7 +560,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
     // don't add self to deps
     delete deps[projectName];
 
-    output.warn({
+    logger.warn({
       title: 'Not adding self to dependencies',
       bodyLines: ['You should not import from you package absolute path within test files. Prefer relative imports.'],
     });
@@ -545,7 +577,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
     });
 
     if (log.length > 0) {
-      output.warn({
+      logger.warn({
         title: 'Not adding dependencies that are already present in package.json',
         bodyLines: log,
       });
@@ -553,7 +585,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
   }
 
   if (deps['@fluentui/react-components']) {
-    output.error({
+    logger.error({
       title: 'react-components cannot be used within cypress or jest test files as it creates circular dependency.',
       bodyLines: [
         'Please remove/replace problematic imports from the test files and remove the dependency from "package.json#devDependencies".',
@@ -561,7 +593,7 @@ function getMissingDevDependenciesFromCypressAndJestFiles(
     });
   }
 
-  output.log({ title: 'Adding missing dependencies', bodyLines: Object.keys(deps) });
+  logger.log({ title: 'Adding missing dependencies', bodyLines: Object.keys(deps) });
 
   return deps;
 }

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 07:28:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.23)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.22..@fluentui/react-window-provider_v2.2.23)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.19 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+
+## [2.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.22)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.21..@fluentui/react-window-provider_v2.2.22)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
 
 ## [2.2.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.21)
 

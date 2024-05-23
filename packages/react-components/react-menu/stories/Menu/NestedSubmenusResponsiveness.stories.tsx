@@ -9,7 +9,6 @@ import {
   MenuPopover,
   PositioningImperativeRef,
   makeStyles,
-  shorthands,
   tokens,
   mergeClasses,
   MenuProps,
@@ -23,19 +22,18 @@ const useStyles = makeStyles({
 
   resizableArea: {
     width: '500px',
-    ...shorthands.border('2px', 'dashed', 'red'),
     height: '400px',
-    ...shorthands.padding('10px'),
     position: 'relative',
-    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
-    ...shorthands.padding('20px', '10px', '10px', '10px'),
+    border: `2px solid ${tokens.colorBrandBackground}`,
+    padding: '20px 10px 10px 10px',
     resize: 'both',
     backgroundImage: `linear-gradient(-45deg, ${tokens.colorBrandBackground} 20px, transparent 20px)`,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     '::after': {
       content: `'Resizable Area'`,
       position: 'absolute',
-      ...shorthands.padding('1px', '4px', '1px'),
+      padding: '1px 4px 1px',
       top: '-2px',
       left: '-2px',
       fontFamily: 'monospace',

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   makeStyles,
-  shorthands,
   tokens,
   Button,
   Text,
@@ -23,7 +22,7 @@ import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.gap('16px'),
+    gap: '16px',
     display: 'flex',
     flexWrap: 'wrap',
   },
@@ -34,19 +33,15 @@ const useStyles = makeStyles({
   },
 
   flex: {
-    ...shorthands.gap('4px'),
+    gap: '4px',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
 
-  labels: {
-    ...shorthands.gap('6px'),
-  },
+  labels: { gap: '6px' },
 
-  footer: {
-    ...shorthands.gap('12px'),
-  },
+  footer: { gap: '12px' },
 
   caption: {
     color: tokens.colorNeutralForeground3,
@@ -58,7 +53,7 @@ const useStyles = makeStyles({
   },
 
   grid: {
-    ...shorthands.gap('16px'),
+    gap: '16px',
     display: 'flex',
     flexDirection: 'column',
   },

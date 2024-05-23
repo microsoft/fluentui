@@ -8,7 +8,6 @@ import {
   webLightTheme,
   FluentProvider,
   makeStyles,
-  shorthands,
 } from '@fluentui/react-components';
 import { CompoundButtonShim } from '@fluentui/react-migration-v8-v9';
 
@@ -26,7 +25,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 
