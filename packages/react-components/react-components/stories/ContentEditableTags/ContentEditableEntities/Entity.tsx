@@ -51,12 +51,15 @@ export class TextEntity extends Entity {
   }
 
   public render() {
-    return renderToString(
-      <span data-entityid={this.id} data-entityname={TextEntity.entityName}>
-        {this.value}
-      </span>,
-    );
+    return this.value;
   }
+  // public render() {
+  //   return renderToString(
+  //     <span data-entityid={this.id} data-entityname={TextEntity.entityName}>
+  //       {this.value}
+  //     </span>,
+  //   );
+  // }
 }
 
 export class AtomicEntity extends Entity {
