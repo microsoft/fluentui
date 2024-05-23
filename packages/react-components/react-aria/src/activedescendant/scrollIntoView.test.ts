@@ -187,4 +187,36 @@ describe('scrollIntoView', () => {
 
     expect(mockAncestorScrollTo).toHaveBeenCalledWith(0, 122);
   });
+
+  it('should use the provided `window` argument', () => {
+    listboxGrandParent = {
+      ...listboxGrandParent,
+      scrollTop: 0,
+    };
+    listboxParent = {
+      ...listboxParent,
+      offsetParent: listboxGrandParent as Element,
+      parentElement: listboxGrandParent as HTMLElement,
+    };
+    listbox = {
+      ...listbox,
+      scrollHeight: 100,
+      offsetHeight: 100,
+      offsetParent: listboxGrandParent as Element,
+      parentElement: listboxParent as HTMLElement,
+    };
+    const option: Partial<HTMLElement> = {
+      offsetHeight: 10,
+      offsetTop: 160,
+      offsetParent: listboxGrandParent as HTMLElement,
+      parentElement: listbox as HTMLElement,
+      contains: jest.fn().mockReturnValue(false),
+    };
+
+    const getComputedStyleSpy = jest.spyOn(window, 'getComputedStyle');
+
+    scrollIntoView(option as HTMLElement);
+
+    expect(getComputedStyleSpy).toHaveBeenCalledTimes(1);
+  });
 });

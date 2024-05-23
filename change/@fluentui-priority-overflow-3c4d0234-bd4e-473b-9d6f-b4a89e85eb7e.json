@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: disable eslint rule",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

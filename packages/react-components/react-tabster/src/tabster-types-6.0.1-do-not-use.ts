@@ -123,6 +123,8 @@ export interface TabsterCoreProps {
 }
 
 export interface DOMAPI {
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+  // eslint-disable-next-line no-restricted-globals
   createMutationObserver: (callback: MutationCallback) => MutationObserver;
   createTreeWalker(doc: Document, root: Node, whatToShow?: number, filter?: NodeFilter | null): TreeWalker;
   getParentNode(node: Node | null | undefined): ParentNode | null;
@@ -744,7 +746,6 @@ export const MoverKeys: MoverKeys = {
   End: 8,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MoverAPI extends MoverAPIInternal, Disposable {
   /** @internal (will likely be exposed once the API is fully stable) */
   moveFocus(fromElement: HTMLElement, key: MoverKey): HTMLElement | null;
@@ -794,7 +795,6 @@ export interface GroupperAPIInternal {
   handleKeyPress(element: HTMLElement, event: KeyboardEvent, fromModalizer?: boolean): void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface GroupperAPI extends GroupperAPIInternal, Disposable {
   /** @internal (will likely be exposed once the API is fully stable) */
   moveFocus(element: HTMLElement, action: GroupperMoveFocusAction): HTMLElement | null;
