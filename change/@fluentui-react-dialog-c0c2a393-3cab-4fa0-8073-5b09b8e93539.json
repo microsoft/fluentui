@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: inferVirtualParent prop for Dialog",
+  "packageName": "@fluentui/react-dialog",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

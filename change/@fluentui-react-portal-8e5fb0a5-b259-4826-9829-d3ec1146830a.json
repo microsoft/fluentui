@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: noVirtualParent prop",
+  "packageName": "@fluentui/react-portal",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
