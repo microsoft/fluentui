@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: useControllableState warns if controlled and uncontrolled at the same time",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
