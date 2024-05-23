@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 20 May 2024 04:07:06 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2024 04:06:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.20)
+
+Wed, 22 May 2024 04:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.19..@fluentui/web-components_v3.0.0-beta.20)
+
+### Changes
+
+- chore(web-components): update README.md and add initial developer quick start pages ([PR #31416](https://github.com/microsoft/fluentui/pull/31416) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.19)
+
+Tue, 21 May 2024 04:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.18..@fluentui/web-components_v3.0.0-beta.19)
+
+### Changes
+
+- Use click() instead of press() in button keydownHandler ([PR #31428](https://github.com/microsoft/fluentui/pull/31428) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.18)
 

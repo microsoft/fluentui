@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   makeStyles,
-  shorthands,
   teamsDarkTheme,
   teamsLightTheme,
   tokens,
@@ -15,17 +14,17 @@ const useStyles = makeStyles({
     marginTop: '5px',
   },
   provider: {
-    ...shorthands.border('1px'),
-    ...shorthands.borderRadius('5px'),
-    ...shorthands.padding('5px'),
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
   },
   text: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
     fontSize: '20px',
-    ...shorthands.border('1px'),
-    ...shorthands.borderRadius('5px'),
-    ...shorthands.padding('5px'),
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
   },
 });
 

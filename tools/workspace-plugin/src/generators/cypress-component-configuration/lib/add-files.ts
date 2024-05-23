@@ -32,6 +32,9 @@ export function addFiles(tree: Tree, options: Options) {
     json.scripts.e2e = 'cypress run --component';
     json.scripts['e2e:local'] = 'cypress open --component';
 
+    json.devDependencies = json.devDependencies ?? {};
+    json.devDependencies['@fluentui/scripts-cypress'] = '*';
+
     return json;
   });
 

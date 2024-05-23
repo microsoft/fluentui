@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Mon, 20 May 2024 12:44:53 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.27)
+
+Thu, 23 May 2024 08:02:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.2.26..@fluentui/react-checkbox_v9.2.27)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31449](https://github.com/microsoft/fluentui/pull/31449) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.2.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.26)
 

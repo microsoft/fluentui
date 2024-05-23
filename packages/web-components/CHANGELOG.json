@@ -2,6 +2,63 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 04:06:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.20",
+      "version": "3.0.0-beta.20",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "051db5e7f6699ef23072c23adf644ebcf547cff7",
+            "comment": "chore: simplify compile script, tweak api-extractor config to stop spamming CI with warnings"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "98bbbe98ae3e505a1173f50bf7805e8a3d9003cc",
+            "comment": "fix: add --noEmit for type-checking task"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c3eed1e105fd5c3d3c933114e47ec2701efe5d38",
+            "comment": "chore: implement proper type-checking command  within web-component domain"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 May 2024 04:06:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.20",
+      "version": "3.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "cd28f309f0752f8296337d3ce6c6b44bdda3378a",
+            "comment": "chore(web-components): update README.md and add initial developer quick start pages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 May 2024 04:06:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.19",
+      "version": "3.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "ff3ca5a1308af09abe3fcdea6c8b2ed403f4b25e",
+            "comment": "Use click() instead of press() in button keydownHandler"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 04:07:06 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.18",
       "version": "3.0.0-beta.18",

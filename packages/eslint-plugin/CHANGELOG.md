@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 20 May 2024 07:29:19 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 07:28:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.9)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.8..@fluentui/eslint-plugin_v1.17.9)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31447](https://github.com/microsoft/fluentui/pull/31447) by olfedias@microsoft.com)
 
 ## [1.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.8)
 

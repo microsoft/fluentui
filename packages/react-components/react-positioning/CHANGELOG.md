@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 20 May 2024 12:45:01 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.2)
+
+Thu, 23 May 2024 08:02:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.1..@fluentui/react-positioning_v9.15.2)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
 
 ## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.1)
 

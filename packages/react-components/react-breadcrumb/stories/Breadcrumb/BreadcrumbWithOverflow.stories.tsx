@@ -7,7 +7,6 @@ import {
   partitionBreadcrumbItems,
   ButtonProps,
   makeStyles,
-  shorthands,
   tokens,
   Button,
   Menu,
@@ -109,8 +108,8 @@ const items: Item[] = [
 const useExampleStyles = makeStyles({
   example: {
     backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('5px'),
+    overflow: 'hidden',
+    padding: '5px',
     zIndex: 0, //stop the browser resize handle from piercing the overflow menu
     height: 'fit-content',
     minWidth: '200px',
@@ -122,7 +121,7 @@ const useExampleStyles = makeStyles({
 const useTooltipStyles = makeStyles({
   tooltip: {
     whiteSpace: 'nowrap',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
 });

@@ -1,35 +1,28 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { Transition } from 'react-transition-group';
+import * as React from 'react';
+
 import { DialogProvider, DialogSurfaceProvider } from '../../contexts';
+import { DialogSurfaceMotion } from '../DialogSurfaceMotion';
 import type { DialogState, DialogContextValues } from './Dialog.types';
-import { DialogTransitionProvider } from '../../contexts/dialogTransitionContext';
 
 /**
  * Render the final JSX of Dialog
  */
 export const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
-  const { content, trigger } = state;
+  const { content, open, trigger } = state;
 
   return (
     <DialogProvider value={contextValues.dialog}>
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         {trigger}
-        {process.env.NODE_ENV === 'test' ? (
-          state.open && <DialogTransitionProvider value={undefined}>{content}</DialogTransitionProvider>
-        ) : (
-          <Transition
-            mountOnEnter
-            unmountOnExit
-            in={state.open}
-            nodeRef={state.dialogRef}
-            appear={true}
-            // FIXME: this should not be hardcoded tokens.durationGentle
-            timeout={250}
-          >
-            {status => <DialogTransitionProvider value={status}>{content}</DialogTransitionProvider>}
-          </Transition>
+        {content && (
+          <DialogSurfaceMotion appear visible={open} unmountOnExit>
+            {/* Casting here as content should be equivalent to <DialogSurface/> */}
+            {/* FIXME: content should not be ReactNode it should be ReactElement instead. */}
+            {content as React.ReactElement}
+          </DialogSurfaceMotion>
         )}
       </DialogSurfaceProvider>
     </DialogProvider>

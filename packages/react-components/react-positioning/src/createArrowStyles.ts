@@ -1,4 +1,3 @@
-import { shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { GriffelStyle } from '@griffel/react';
 
@@ -84,12 +83,8 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
       width: 'inherit',
       height: 'inherit',
       backgroundColor: 'inherit',
-      ...shorthands.borderRight(
-        `${borderWidth} /* @noflip */`,
-        `${borderStyle} /* @noflip */`,
-        `${borderColor} /* @noflip */`,
-      ),
-      ...shorthands.borderBottom(borderWidth, borderStyle, borderColor),
+      borderRight: `${borderWidth} ${borderStyle} ${borderColor} /* @noflip */`,
+      borderBottom: `${borderWidth} ${borderStyle} ${borderColor}`,
       borderBottomRightRadius: tokens.borderRadiusSmall,
       transform: 'rotate(var(--fui-positioning-angle)) translate(0, 50%) rotate(45deg) /* @noflip */',
     },

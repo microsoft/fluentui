@@ -2,6 +2,72 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 07:28:50 GMT",
+      "tag": "@fluentui/react-charting_v5.21.11",
+      "version": "5.21.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "708e42218c1e87e9b8e88fb285c5a3be477701a9",
+            "comment": "Improve screen reader accessibility of cartesian charts"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ca8fa3046015d16cb1f9b81085c906d57c98fd44",
+            "comment": "Fixed failed unit test cases in VerticalBarChart,VerticalStackedBarChart and GroupedVerticalBarChart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.3",
+            "commit": "10e6758b203de79c53ce31ba264e137f83f50ff4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.153",
+            "commit": "10e6758b203de79c53ce31ba264e137f83f50ff4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.19",
+            "commit": "10e6758b203de79c53ce31ba264e137f83f50ff4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.4",
+            "commit": "10e6758b203de79c53ce31ba264e137f83f50ff4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 May 2024 07:25:11 GMT",
+      "tag": "@fluentui/react-charting_v5.21.10",
+      "version": "5.21.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c621c5b9d824a41d68328dd61457cf301236ddf6",
+            "comment": "Fix style issue for tree chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a",
+            "comment": "Improve gauge chart screen reader accessibility"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 07:29:19 GMT",
       "tag": "@fluentui/react-charting_v5.21.9",
       "version": "5.21.9",

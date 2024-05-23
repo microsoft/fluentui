@@ -2,6 +2,21 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:46 GMT",
+      "tag": "@fluentui/react-progress_v9.1.77",
+      "version": "9.1.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:01 GMT",
       "tag": "@fluentui/react-progress_v9.1.76",
       "version": "9.1.76",

@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens, FluentProvider } from '@fluentui/react-components';
+import { makeStyles, tokens, FluentProvider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('5px'),
+    gap: '5px',
     width: '300px',
   },
   text: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
     fontSize: '18px',
-    ...shorthands.border('1px'),
-    ...shorthands.borderRadius('5px'),
-    ...shorthands.padding('5px'),
+    border: '1px',
+    borderRadius: '5px',
+    padding: '5px',
   },
 });
 

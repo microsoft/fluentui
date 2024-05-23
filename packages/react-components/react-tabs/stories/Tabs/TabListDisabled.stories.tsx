@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Tab, TabList } from '@fluentui/react-components';
+import { makeStyles, Tab, TabList } from '@fluentui/react-components';
 import { CalendarMonthRegular, CalendarMonthFilled, bundleIcon } from '@fluentui/react-icons';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    ...shorthands.padding('50px', '20px'),
+    padding: '50px 20px',
     rowGap: '20px',
   },
 });

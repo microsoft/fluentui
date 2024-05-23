@@ -10,25 +10,25 @@ import {
   Button,
   Link,
   makeStyles,
-  shorthands,
   tokens,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   messageBarGroup: {
-    ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    padding: tokens.spacingHorizontalMNudge,
     display: 'flex',
     flexDirection: 'column',
     marginTop: '10px',
-    ...shorthands.gap('10px'),
+    gap: '10px',
+
     height: '300px',
-    ...shorthands.overflow('auto'),
-    ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
+    overflow: 'auto',
+    border: `2px solid ${tokens.colorBrandForeground1}`,
   },
   buttonGroup: {
     display: 'flex',
     justifyContent: 'end',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
 });
 

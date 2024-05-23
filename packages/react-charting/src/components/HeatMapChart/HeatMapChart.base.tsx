@@ -179,6 +179,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={data}
         chartType={ChartTypes.HeatMapChart}
         xAxisType={XAxisTypes.StringAxis}
@@ -726,4 +727,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle } = this.props;
+    const numDataPoints = this.props.data.reduce((acc, curr) => acc + curr.data.length, 0);
+    return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
+  };
 }

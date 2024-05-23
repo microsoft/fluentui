@@ -2,6 +2,27 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:46 GMT",
+      "tag": "@fluentui/react-radio_v9.2.22",
+      "version": "9.2.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:02 GMT",
       "tag": "@fluentui/react-radio_v9.2.21",
       "version": "9.2.21",

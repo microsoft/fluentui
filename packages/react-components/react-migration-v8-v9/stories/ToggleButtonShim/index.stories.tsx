@@ -4,7 +4,7 @@ import descriptionMd from './Description.md';
 
 import { DefaultButton, Icon, initializeIcons } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, webLightTheme, makeStyles, shorthands, ToggleButton } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme, makeStyles, ToggleButton } from '@fluentui/react-components';
 import { ToggleButtonShim } from '@fluentui/react-migration-v8-v9';
 
 initializeIcons();
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 

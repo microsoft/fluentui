@@ -446,8 +446,8 @@ runTest('Get Domain Margins', () => {
     });
     var result = instance._getDomainMargins(1000);
     expect(result['bottom']).toEqual(10);
-    expect(result['left']).toEqual(384.44444444444446);
-    expect(result['right']).toEqual(384.44444444444446);
+    expect(result['left']).toEqual(18);
+    expect(result['right']).toEqual(18);
     expect(result['top']).toEqual(10);
   });
 

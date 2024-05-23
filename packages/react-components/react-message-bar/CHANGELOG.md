@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Mon, 20 May 2024 12:44:58 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.1)
+
+Thu, 23 May 2024 08:02:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.2.0..@fluentui/react-message-bar_v9.2.1)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31458](https://github.com/microsoft/fluentui/pull/31458) by olfedias@microsoft.com)
+- Bump @fluentui/react-button to v9.3.82 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.0)
 

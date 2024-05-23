@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId, Input, Label } from '@fluentui/react-components';
+import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('20px'),
+    gap: '20px',
+
     maxWidth: '400px',
     // Stack the label above the field (with 2px gap per the design system)
-    '> div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('2px') },
+    '> div': { display: 'flex', flexDirection: 'column', gap: '2px' },
   },
 });
 

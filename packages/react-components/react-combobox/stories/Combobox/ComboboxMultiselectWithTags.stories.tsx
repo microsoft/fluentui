@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Combobox, makeStyles, Option, shorthands, tokens, useId } from '@fluentui/react-components';
+import { Button, Combobox, makeStyles, Option, tokens, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 import { Dismiss12Regular } from '@fluentui/react-icons';
 
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
-    ...shorthands.gap('2px'),
+    gap: '2px',
     maxWidth: '400px',
   },
   tagsList: {

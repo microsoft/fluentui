@@ -2,6 +2,27 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:39 GMT",
+      "tag": "@fluentui/react-aria_v9.11.4",
+      "version": "9.11.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4b0e5dcbebbde56ed1c1c6792d78aa5957dc65b8",
+            "comment": "fix: add cleanup for timeout in announce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:09 GMT",
       "tag": "@fluentui/react-aria_v9.11.3",
       "version": "9.11.3",

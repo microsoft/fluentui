@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
@@ -84,7 +84,7 @@ const useIndicatorStyles = makeStyles({
   lowerHalf: {
     right: '50%',
     '& > svg': {
-      ...shorthands.flex(0, 0, 'auto'),
+      flex: '0 0 auto',
     },
   },
   upperHalf: {

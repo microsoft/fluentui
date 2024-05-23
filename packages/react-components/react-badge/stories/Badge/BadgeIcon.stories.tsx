@@ -10,7 +10,8 @@ export const Icon = () => {
 Icon.parameters = {
   docs: {
     description: {
-      story: 'A badge can display an icon.',
+      story:
+        "A badge can display an icon. If the icon is meaningful, then either the icon must have a label or the parent control's label must include the information conveyed by the icon.",
     },
   },
 };
