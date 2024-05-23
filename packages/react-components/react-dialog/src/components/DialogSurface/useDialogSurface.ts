@@ -34,6 +34,7 @@ export const useDialogSurface_unstable = (
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
   const open = useDialogContext_unstable(ctx => ctx.open);
+  const inferVirtualParent = useDialogContext_unstable(ctx => ctx.inferVirtualParent);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -92,6 +93,7 @@ export const useDialogSurface_unstable = (
     backdrop,
     isNestedDialog,
     transitionStatus,
+    noVirtualParent: inferVirtualParent,
     mountNode: props.mountNode,
     root: slot.always(
       getIntrinsicElementProps('div', {

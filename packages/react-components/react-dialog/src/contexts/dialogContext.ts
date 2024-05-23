@@ -12,6 +12,7 @@ export type DialogContextValue = {
   isNestedDialog: boolean;
   dialogRef: React.Ref<DialogSurfaceElement>;
   modalType: DialogModalType;
+  inferVirtualParent: boolean;
   /**
    * Requests dialog main component to update it's internal open state
    */
@@ -23,6 +24,7 @@ const defaultContextValue: DialogContextValue = {
   inertTrapFocus: false,
   modalType: 'modal',
   isNestedDialog: false,
+  inferVirtualParent: false,
   dialogRef: { current: null },
   requestOpenChange() {
     /* noop */

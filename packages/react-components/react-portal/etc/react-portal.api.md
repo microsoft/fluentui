@@ -20,10 +20,11 @@ export type PortalProps = {
         element?: HTMLElement | null;
         className?: string;
     };
+    noVirtualParent?: boolean;
 };
 
 // @public (undocumented)
-export type PortalState = Pick<PortalProps, 'children'> & {
+export type PortalState = Pick<PortalProps, 'children'> & Pick<Required<PortalProps>, 'noVirtualParent'> & {
     mountNode: HTMLElement | null | undefined;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 };

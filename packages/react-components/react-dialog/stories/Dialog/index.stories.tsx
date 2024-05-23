@@ -19,6 +19,7 @@ export { CustomTrigger } from './DialogCustomTrigger.stories';
 export { WithForm } from './DialogWithForm.stories';
 export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
+export { InferredVirtualParent } from './DialogInferredVirtualParent.stories';
 
 const metadata: ComponentMeta<typeof Dialog> = {
   title: 'Components/Dialog',

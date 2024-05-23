@@ -40,4 +40,6 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
      * In test environment, this is always `undefined`.
      */
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+
+    noVirtualParent: boolean;
   };

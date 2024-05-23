@@ -13,7 +13,7 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
   assertSlots<DialogSurfaceSlots>(state);
 
   return (
-    <Portal mountNode={state.mountNode}>
+    <Portal noVirtualParent={state.noVirtualParent} mountNode={state.mountNode}>
       {state.backdrop && <state.backdrop />}
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         <state.root />

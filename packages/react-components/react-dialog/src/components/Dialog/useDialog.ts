@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
 import { useModalAttributes } from '@fluentui/react-tabster';
+import { useInferredVirtualParent } from './useInferredVirtualParent';
 
 /**
  * Create the state required to render Dialog.
@@ -36,6 +37,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   });
 
+  const inferredVirtualParentRef = useInferredVirtualParent({ trigger, enabled: !!props.inferVirtualParent, open });
   const focusRef = useFocusFirstElement(open, modalType);
 
   const { modalAttributes, triggerAttributes } = useModalAttributes({
@@ -49,6 +51,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     components: {
       backdrop: 'div',
     },
+    inferVirtualParent: !!props.inferVirtualParent,
     inertTrapFocus,
     open,
     modalType,
@@ -57,7 +60,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),
     isNestedDialog,
-    dialogRef: focusRef,
+    dialogRef: useMergedRefs(focusRef, inferredVirtualParentRef),
     modalAttributes,
     triggerAttributes,
   };

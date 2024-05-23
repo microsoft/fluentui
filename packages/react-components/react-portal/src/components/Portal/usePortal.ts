@@ -23,10 +23,11 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
     children: props.children,
     mountNode,
     virtualParentRootRef,
+    noVirtualParent: props.noVirtualParent ?? false,
   };
 
   React.useEffect(() => {
-    if (!mountNode) {
+    if (!mountNode || props.noVirtualParent) {
       return;
     }
 
@@ -80,7 +81,7 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
         setVirtualParent(mountNode, undefined);
       };
     }
-  }, [virtualParentRootRef, mountNode]);
+  }, [virtualParentRootRef, mountNode, props.noVirtualParent]);
 
   return state;
 };

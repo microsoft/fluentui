@@ -12,6 +12,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     requestOpenChange,
     modalAttributes,
     triggerAttributes,
+    inferVirtualParent,
   } = state;
 
   /**
@@ -28,6 +29,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     modalAttributes,
     triggerAttributes,
     requestOpenChange,
+    inferVirtualParent,
   };
 
   const dialogSurface: DialogSurfaceContextValue = false;

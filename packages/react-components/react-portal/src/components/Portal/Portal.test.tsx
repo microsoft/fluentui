@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { getParent } from '@fluentui/react-utilities';
+import { elementContains, getParent } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { Portal } from './Portal';
@@ -58,5 +58,18 @@ describe('Portal', () => {
 
     const mountNode = container.querySelector<HTMLSpanElement>('#container');
     expect((getParent(mountNode) as HTMLElement).id).toBe('parent');
+  });
+
+  it('should not set virtual parent if noVirtualParent prop is true', () => {
+    const Test = () => {
+      return (
+        <Portal noVirtualParent>
+          <button>Foo</button>
+        </Portal>
+      );
+    };
+
+    const { container, getByRole } = render(<Test />);
+    expect(elementContains(container, getByRole('button'))).toBe(false);
   });
 });

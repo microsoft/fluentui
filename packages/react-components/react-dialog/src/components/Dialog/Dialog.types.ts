@@ -95,6 +95,14 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   inertTrapFocus?: boolean;
+
+  /**
+   * When this prop is used without a DialogTrigger. The virtual parent is inferred from
+   * the active element before focus is moved into the dialog.
+   *
+   * @default false
+   */
+  inferVirtualParent?: boolean;
 };
 
 export type DialogState = ComponentState<DialogSlots> &
