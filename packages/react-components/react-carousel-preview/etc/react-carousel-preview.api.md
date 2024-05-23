@@ -135,11 +135,14 @@ export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonS
 
 // @public (undocumented)
 export type CarouselNavImageButtonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+    image: Slot<'img'>;
 };
 
 // @public
-export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonSlots>;
+export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonSlots> & {
+    isSelected?: boolean;
+};
 
 // @public (undocumented)
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
@@ -162,6 +165,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     defaultValue?: string;
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
+    loop?: Boolean;
 };
 
 // @public (undocumented)
@@ -236,7 +240,7 @@ export const useCarouselNavButton_unstable: (props: CarouselNavButtonProps, ref:
 export const useCarouselNavButtonStyles_unstable: (state: CarouselNavButtonState) => CarouselNavButtonState;
 
 // @public
-export const useCarouselNavImageButton_unstable: (props: CarouselNavImageButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselNavImageButtonState;
+export const useCarouselNavImageButton_unstable: (props: CarouselNavImageButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CarouselNavImageButtonState;
 
 // @public
 export const useCarouselNavImageButtonStyles_unstable: (state: CarouselNavImageButtonState) => CarouselNavImageButtonState;

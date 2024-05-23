@@ -13,11 +13,11 @@ import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
  * before being passed to renderCarouselNavImageButton_unstable.
  *
  * @param props - props from this instance of CarouselNavImageButton
- * @param ref - reference to root HTMLDivElement of CarouselNavImageButton
+ * @param ref - reference to root HTMLButtonElement | HTMLAnchorElement of CarouselNavImageButton
  */
 export const useCarouselNavImageButton_unstable = (
   props: CarouselNavImageButtonProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): CarouselNavImageButtonState => {
   const { onClick, as = 'a' } = props;
 
