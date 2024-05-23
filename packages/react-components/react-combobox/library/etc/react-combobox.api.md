@@ -171,6 +171,7 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
     activeOption?: OptionValue;
     focusVisible: boolean;
     setActiveOption(option?: OptionValue): void;
+    standalone: boolean;
     selectOption(event: SelectionEvents, option: OptionValue): void;
     activeDescendantController: ActiveDescendantImperativeRef;
     onActiveDescendantChange?: (event: ActiveDescendantChangeEvent) => void;
