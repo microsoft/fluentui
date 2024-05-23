@@ -1,10 +1,7 @@
-export const scrollIntoView = (target: HTMLElement | null | undefined, winArg?: Window | null) => {
+export const scrollIntoView = (target: HTMLElement | null | undefined) => {
   if (!target) {
     return;
   }
-
-  // eslint-disable-next-line no-restricted-globals
-  const win = winArg ?? window;
 
   const scrollParent = findScrollableParent(target.parentElement as HTMLElement);
   if (!scrollParent) {
@@ -14,7 +11,7 @@ export const scrollIntoView = (target: HTMLElement | null | undefined, winArg?: 
   const { offsetHeight } = target;
   const offsetTop = getTotalOffsetTop(target, scrollParent);
 
-  const { scrollMarginTop, scrollMarginBottom } = getScrollMargins(target, win);
+  const { scrollMarginTop, scrollMarginBottom } = getScrollMargins(target);
 
   const { offsetHeight: parentOffsetHeight, scrollTop } = scrollParent;
 
@@ -55,7 +52,15 @@ const getTotalOffsetTop = (element: HTMLElement, scrollParent: HTMLElement): num
   return element.offsetTop + getTotalOffsetTop(element.offsetParent as HTMLElement, scrollParent);
 };
 
-const getScrollMargins = (element: HTMLElement, win: Window) => {
+const getScrollMargins = (element: HTMLElement) => {
+  const win = element.ownerDocument.defaultView;
+  if (!win) {
+    return {
+      scrollMarginTop: 0,
+      scrollMarginBottom: 0,
+    };
+  }
+
   const computedStyles = win.getComputedStyle(element);
   const scrollMarginTop =
     getIntValueOfComputedStyle(computedStyles.scrollMarginTop) ??
