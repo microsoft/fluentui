@@ -1993,6 +1993,46 @@
     "@griffel/react" "^1.5.14"
     "@swc/helpers" "^0.5.1"
 
+"@fluentui/react-provider@^9.16.1":
+  version "9.16.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-provider/-/react-provider-9.16.1.tgz#9cf0dab3296f1ebbdd704e580f8908d0db6678d8"
+  integrity sha512-i5NLPdxKmov0iz6XR/pdU85v2aMRzqWnP2so50ARqRDEbYudqeQStZQg6+QQI/dM/TnRiR/IYDRuZrvrkcav1Q==
+  dependencies:
+    "@fluentui/react-icons" "^2.0.239"
+    "@fluentui/react-jsx-runtime" "^9.0.38"
+    "@fluentui/react-shared-contexts" "^9.19.0"
+    "@fluentui/react-tabster" "^9.21.4"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.9"
+    "@griffel/core" "^1.16.0"
+    "@griffel/react" "^1.5.22"
+    "@swc/helpers" "^0.5.1"
+
+"@fluentui/react-tabster@^9.21.4":
+  version "9.21.4"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tabster/-/react-tabster-9.21.4.tgz#9688bdf924f1497e354c6125eef2b4390648755d"
+  integrity sha512-POHXSr82v3/TWeYLYgX87B98/vJacEbcKBmUxRAjCDwhaSVsD+aqa7a3ayDcl2sXmj+YRmHTYsQC1KJ/9NpUfA==
+  dependencies:
+    "@fluentui/react-shared-contexts" "^9.19.0"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.9"
+    "@griffel/react" "^1.5.22"
+    "@swc/helpers" "^0.5.1"
+    keyborg "^2.6.0"
+    tabster "^7.1.4"
+
+"@fluentui/react-text@^9.4.19":
+  version "9.4.19"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-text/-/react-text-9.4.19.tgz#4f4584046744195107a1d38d8a713ebea98068f6"
+  integrity sha512-eJ6XpSKITWDmQmai/N2yBVIQBEy2MMRYuEdnfkCjEEjto3spEpX4ry0kizDZXzSs+3blDAMVZEansUWE+7mOYQ==
+  dependencies:
+    "@fluentui/react-jsx-runtime" "^9.0.38"
+    "@fluentui/react-shared-contexts" "^9.19.0"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.9"
+    "@griffel/react" "^1.5.22"
+    "@swc/helpers" "^0.5.1"
+
 "@griffel/babel-preset@1.5.8", "@griffel/babel-preset@^1.5.8":
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.5.8.tgz#2ee5e404b34350fcb40a2506d73b0467f1a66be0"
@@ -22419,6 +22459,14 @@ tabster@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.2.tgz#ab2fb2bc67b78059e1406b2afc35aec69eb824a5"
   integrity sha512-wYG9ddAeSUxBrcPCZ+hQV5IcsyM089nTGkQ53G9/2pPDdUa3pBC4sP3qmdbvu+IoFpy62CMDxMgxQmegtCiLKg==
+  dependencies:
+    keyborg "2.6.0"
+    tslib "^2.3.1"
+
+tabster@^7.1.4:
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.4.tgz#3a56a0fd17df27f7f579f9b34f2c855683a086e2"
+  integrity sha512-P3DtJ8ub8QCVYPY7Be9/UpqeyBulcFHFbhMswlPooFT/XsC+nMByfADZ+wC5QCdSNlYEGoDgB+EVscln8SrXhg==
   dependencies:
     keyborg "2.6.0"
     tslib "^2.3.1"
