@@ -8,11 +8,12 @@
     "format:check": "yarn format -c",
     "lint": "eslint --ext .ts,.js .",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check"
   },
   "dependencies": {
     "@fluentui/scripts-utils": "*",
     "@fluentui/scripts-puppeteer": "*",
     "@fluentui/scripts-monorepo": "*"
-  }
+  },
+  "devDependencies": {}
 }

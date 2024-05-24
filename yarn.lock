@@ -2824,7 +2824,7 @@
   dependencies:
     "@nx/workspace" "17.3.2"
 
-"@nx/devkit@17.3.2":
+"@nx/devkit@17.3.2", "@nx/devkit@^17.3.2":
   version "17.3.2"
   resolved "https://registry.yarnpkg.com/@nx/devkit/-/devkit-17.3.2.tgz#c10b3e5f9bc642881c24aa2e3878ca4290994a80"
   integrity sha512-gbOIhwrZKCSSFFbh6nE6LLCvAU7mhSdBSnRiS14YBwJJMu4CRJ0IcaFz58iXqGWZefMivKtkNFtx+zqwUC4ziw==
