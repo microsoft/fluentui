@@ -21,7 +21,7 @@ export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
 export const AsAnAnchor = () => (
   <Button id={buttonId} as="a" href="#">
-    Hello, world
+    Testing
   </Button>
 );
 
