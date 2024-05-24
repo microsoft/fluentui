@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 24 May 2024 04:06:21 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.21",
+      "version": "3.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "db8e9c52f0cab4e3bf2018dfca3c356a64444c9e",
+            "comment": "Use ElementInternals for the TextInput component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 04:06:00 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.20",
       "version": "3.0.0-beta.20",
