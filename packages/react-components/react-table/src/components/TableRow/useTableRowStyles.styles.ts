@@ -43,10 +43,7 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
     ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      },
+      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
       { selector: 'focus' },
     ),
   },
@@ -81,13 +78,9 @@ const useStyles = makeStyles({
     },
   },
 
-  medium: {
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
-  },
+  medium: { borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}` },
 
-  small: {
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
-  },
+  small: { borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}` },
 
   'extra-small': {
     fontSize: tokens.fontSizeBase200,
@@ -102,8 +95,8 @@ const useStyles = makeStyles({
     },
 
     '@media(forced-colors: active)': {
-      ...shorthands.border('2px', 'solid', 'transparent'),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      border: '2px solid transparent',
+      borderRadius: tokens.borderRadiusMedium,
       boxSizing: 'border-box',
       ':focus-visible': {
         outlineOffset: '-4px',
@@ -113,8 +106,8 @@ const useStyles = makeStyles({
 
   neutral: {
     '@media(forced-colors: active)': {
-      ...shorthands.border('2px', 'solid', 'transparent'),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      border: '2px solid transparent',
+      borderRadius: tokens.borderRadiusMedium,
       boxSizing: 'border-box',
       ':focus-visible': {
         outlineOffset: '-4px',

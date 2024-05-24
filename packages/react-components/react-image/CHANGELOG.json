@@ -2,6 +2,21 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:43 GMT",
+      "tag": "@fluentui/react-image_v9.1.67",
+      "version": "9.1.67",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "92329052b8ed1f6b1574a1b02f841e463d4bbb1c",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:56 GMT",
       "tag": "@fluentui/react-image_v9.1.66",
       "version": "9.1.66",

@@ -1,25 +1,18 @@
 import * as React from 'react';
-import {
-  DrawerBody,
-  DrawerHeader,
-  DrawerHeaderTitle,
-  InlineDrawer,
-  makeStyles,
-  shorthands,
-} from '@fluentui/react-components';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('2px', 'solid', '#ccc'),
-    ...shorthands.overflow('hidden'),
+    border: '2px solid #ccc',
+    overflow: 'hidden',
     display: 'flex',
     height: '480px',
     backgroundColor: '#fff',
   },
 
   content: {
-    ...shorthands.flex(1),
-    ...shorthands.padding('16px'),
+    flex: '1',
+    padding: '16px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',

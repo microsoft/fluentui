@@ -2,6 +2,21 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:50 GMT",
+      "tag": "@fluentui/react-textarea_v9.3.77",
+      "version": "9.3.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:07 GMT",
       "tag": "@fluentui/react-textarea_v9.3.76",
       "version": "9.3.76",

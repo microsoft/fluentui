@@ -18,14 +18,13 @@ import {
   Radio,
   UseArrowNavigationGroupOptions,
   makeStyles,
-  shorthands,
   mergeClasses,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
 
   vertical: {

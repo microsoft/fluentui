@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:48 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.2.77",
+      "version": "9.2.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:04 GMT",
       "tag": "@fluentui/react-spinbutton_v9.2.76",
       "version": "9.2.76",

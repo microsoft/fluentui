@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 20 May 2024 12:45:06 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.21.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.21.4)
+
+Thu, 23 May 2024 08:02:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.21.3..@fluentui/react-tabster_v9.21.4)
+
+### Patches
+
+- fix: bump tabster to 7.1.4 containing fix for https://github.com/microsoft/tabster/issues/374. ([PR #31413](https://github.com/microsoft/fluentui/pull/31413) by marata@microsoft.com)
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
 
 ## [9.21.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.21.3)
 

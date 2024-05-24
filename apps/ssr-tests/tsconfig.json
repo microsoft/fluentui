@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "checkJs": true,
+    "allowJs": true,
+    "types": ["node", "mocha"]
+  },
+  "include": ["test/"]
+}

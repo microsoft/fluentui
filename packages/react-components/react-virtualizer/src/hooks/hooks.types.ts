@@ -46,5 +46,11 @@ export type VirtualizerDynamicPaginationProps = {
  * Backwards compatible with ResizeObserverCallback if preferred
  */
 export interface ResizeCallbackWithRef {
-  (entries: ResizeObserverEntry[], observer: ResizeObserver, scrollRef?: MutableRefObject<HTMLElement | null>): void;
+  (
+    entries: ResizeObserverEntry[],
+    // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+    // eslint-disable-next-line no-restricted-globals
+    observer: ResizeObserver,
+    scrollRef?: MutableRefObject<HTMLElement | null>,
+  ): void;
 }

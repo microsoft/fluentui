@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "deprecate: defaultOpen as it is not being used",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

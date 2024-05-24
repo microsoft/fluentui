@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Mon, 20 May 2024 12:44:51 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.56)
+
+Thu, 23 May 2024 08:02:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.55..@fluentui/react-accordion_v9.3.56)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31449](https://github.com/microsoft/fluentui/pull/31449) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.3.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.55)
 

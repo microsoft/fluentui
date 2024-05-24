@@ -1,5 +1,5 @@
-import { canUseDOM } from '../ssr/canUseDOM';
 import { useBrowserTimer } from './useBrowserTimer';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 const setAnimationFrameNoop = (callback: FrameRequestCallback) => {
   callback(0);
@@ -16,11 +16,11 @@ const cancelAnimationFrameNoop = (handle: number) => handle;
  * @returns A pair of [requestAnimationFrame, cancelAnimationFrame] that are stable between renders.
  */
 export function useAnimationFrame() {
-  const isDOM = canUseDOM();
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
 
-  // TODO: figure it out a way to not call global.requestAnimationFrame and instead infer window from some context
-  const setAnimationFrame = isDOM ? requestAnimationFrame : setAnimationFrameNoop;
-  const clearAnimationFrame = isDOM ? cancelAnimationFrame : cancelAnimationFrameNoop;
+  const setAnimationFrame = win ? win.requestAnimationFrame : setAnimationFrameNoop;
+  const clearAnimationFrame = win ? win.cancelAnimationFrame : cancelAnimationFrameNoop;
 
   return useBrowserTimer(setAnimationFrame, clearAnimationFrame);
 }

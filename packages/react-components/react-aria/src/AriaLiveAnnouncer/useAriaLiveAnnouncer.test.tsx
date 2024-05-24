@@ -17,6 +17,7 @@ describe('useAriaLiveAnnouncer', () => {
       body: {
         append: jest.fn(),
       },
+      defaultView: global,
     } as unknown as Document;
     const ContextWrapper: React.FC = props => {
       return <Provider value={{ dir: 'ltr', targetDocument }}>{props.children}</Provider>;

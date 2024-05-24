@@ -10,6 +10,5 @@ import type { NavSectionHeaderState, NavSectionHeaderSlots } from './NavSectionH
 export const renderNavSectionHeader_unstable = (state: NavSectionHeaderState) => {
   assertSlots<NavSectionHeaderSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <state.root />;
 };

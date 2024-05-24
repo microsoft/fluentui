@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:40 GMT",
+      "tag": "@fluentui/react-badge_v9.2.37",
+      "version": "9.2.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:52 GMT",
       "tag": "@fluentui/react-badge_v9.2.36",
       "version": "9.2.36",

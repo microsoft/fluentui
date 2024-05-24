@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 20 May 2024 12:44:56 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.77)
+
+Thu, 23 May 2024 08:02:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.76..@fluentui/react-input_v9.4.77)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31449](https://github.com/microsoft/fluentui/pull/31449) by olfedias@microsoft.com)
 
 ## [9.4.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.76)
 

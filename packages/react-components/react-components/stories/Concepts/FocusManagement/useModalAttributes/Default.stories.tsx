@@ -1,23 +1,15 @@
 import * as React from 'react';
-import {
-  useModalAttributes,
-  useFocusFinders,
-  makeStyles,
-  shorthands,
-  Button,
-  tokens,
-  Title2,
-} from '@fluentui/react-components';
+import { useModalAttributes, useFocusFinders, makeStyles, Button, tokens, Title2 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   dialog: {
     position: 'fixed',
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.inset(0),
-    ...shorthands.padding('10px'),
-    ...shorthands.margin('auto'),
-    ...shorthands.borderStyle('none'),
-    ...shorthands.overflow('unset'),
+    inset: '0',
+    padding: '10px',
+    margin: 'auto',
+    border: 'none',
+    overflow: 'unset',
     boxShadow: tokens.shadow16,
     width: '450px',
     height: '200px',
@@ -29,7 +21,7 @@ const useStyles = makeStyles({
     display: 'flex',
     marginTop: 'auto',
     justifyContent: 'end',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
 });
 

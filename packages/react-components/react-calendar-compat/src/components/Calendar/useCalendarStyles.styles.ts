@@ -22,8 +22,8 @@ const useRootStyles = makeStyles({
   normalize: {
     boxShadow: 'none',
     boxSizing: 'border-box',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    margin: '0',
+    padding: '0',
   },
   monthPickerNotVisible: {
     flexDirection: 'column',
@@ -41,8 +41,7 @@ const useRootStyles = makeStyles({
 
 const useDividerStyles = makeStyles({
   base: {
-    ...shorthands.borderColor(tokens.colorNeutralStroke2),
-    ...shorthands.borderRight('1px', 'solid'),
+    borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
     top: 0,
   },
 });
@@ -68,8 +67,8 @@ const useGoTodayButtonStyles = makeStyles({
     lineHeight: '30px',
     marginRight: '16px',
     marginTop: '3px',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0, '4px'),
+    overflow: 'visible',
+    padding: '0 4px',
 
     '& div': {
       fontSize: tokens.fontSizeBase200,
@@ -80,8 +79,8 @@ const useGoTodayButtonStyles = makeStyles({
       cursor: 'pointer',
 
       '@media (forced-colors: active)': {
-        ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'ButtonText'),
-        ...shorthands.borderRadius(tokens.borderRadiusSmall),
+        outline: tokens.strokeWidthThin,
+        borderRadius: tokens.borderRadiusSmall,
       },
     },
     '&:hover:active': {
@@ -96,11 +95,11 @@ const useGoTodayButtonStyles = makeStyles({
 
 const useLiveRegionStyles = makeStyles({
   base: {
-    ...shorthands.border(0),
+    border: 'none',
     height: '1px',
-    ...shorthands.margin('-1px'),
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding(0),
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0',
     position: 'absolute',
     width: '1px',
   },

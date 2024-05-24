@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   makeStyles,
   tokens,
-  shorthands,
   mergeClasses,
   createCSSRuleFromTheme,
   webLightTheme,
@@ -19,17 +18,15 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorNeutralForeground2,
   },
-  box: {
-    ...shorthands.padding(tokens.spacingHorizontalM),
-  },
+  box: { padding: tokens.spacingHorizontalM },
   horizontalLayout: {
     display: 'flex',
-    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
+    gap: `${tokens.spacingHorizontalM} ${tokens.spacingVerticalM}`,
   },
   verticalLayout: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingHorizontalM, tokens.spacingVerticalM),
+    gap: `${tokens.spacingHorizontalM} ${tokens.spacingVerticalM}`,
   },
 });
 

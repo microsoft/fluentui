@@ -71,10 +71,17 @@ describe(`cypress-component-configuration`, () => {
       }
     `);
 
-    expect(readJson(tree, 'packages/one/package.json').scripts).toEqual(
+    const pkgJson = readJson(tree, 'packages/one/package.json');
+
+    expect(pkgJson.scripts).toEqual(
       expect.objectContaining({
         e2e: 'cypress run --component',
         'e2e:local': 'cypress open --component',
+      }),
+    );
+    expect(pkgJson.devDependencies).toEqual(
+      expect.objectContaining({
+        '@fluentui/scripts-cypress': '*',
       }),
     );
   });

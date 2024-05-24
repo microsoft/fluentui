@@ -1,4 +1,4 @@
-import { Checkbox, Label, makeStyles, shorthands, Slider, tokens, useId } from '@fluentui/react-components';
+import { Checkbox, Label, makeStyles, Slider, tokens, useId } from '@fluentui/react-components';
 import { createPresenceComponent } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef, PresenceMotionFn } from '@fluentui/react-motions-preview';
 import * as React from 'react';
@@ -9,40 +9,36 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
-
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.padding('10px'),
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: '10px',
 
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '200px',
   },
   item: {
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandBackground),
-    ...shorthands.padding('8px'),
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
+    padding: '8px',
 
     width: '300px',
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gridArea('2', '1', '2', '3'),
+    gridArea: '2 1 2 3',
 
     marginTop: '20px',
-
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.padding('10px'),
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: '10px',
   },
-  description: {
-    ...shorthands.margin('5px'),
-  },
+  description: { margin: '5px' },
 });
 
 const collapseMotion: PresenceMotionFn = element => {

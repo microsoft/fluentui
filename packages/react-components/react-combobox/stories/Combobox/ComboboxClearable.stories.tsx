@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Combobox, Label, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
+import { Combobox, Label, makeStyles, Option, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridTemplateRows: 'auto auto',
     justifyItems: 'start',
-    ...shorthands.gap('2px'),
+    gap: '2px',
   },
 });
 

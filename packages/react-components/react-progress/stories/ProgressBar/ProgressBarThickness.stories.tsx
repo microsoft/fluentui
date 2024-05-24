@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Field, ProgressBar, makeStyles, shorthands } from '@fluentui/react-components';
+import { Field, ProgressBar, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.margin('20px', '0px'),
+    margin: '20px 0px',
   },
 });
 
