@@ -54,7 +54,7 @@ export const useCarouselNavImageButton_unstable = (
   // Override onClick
   _carouselButton.onClick = handleClick;
 
-  let image = slot.always(
+  const image = slot.always(
     getIntrinsicElementProps('img', {
       'aria-hidden': true, // Hidden as button is responsible for navigation description
       alt: '',

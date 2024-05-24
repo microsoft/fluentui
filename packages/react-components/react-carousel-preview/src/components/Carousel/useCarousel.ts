@@ -106,7 +106,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   }, [carouselWalker, store]);
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback(
-    (event, direction, loop) => {
+    (event, direction, _loop) => {
       const active = carouselWalker.active();
 
       if (!active?.value) {
@@ -116,7 +116,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       let newPage =
         direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
 
-      if (!newPage && loop) {
+      if (!newPage && _loop) {
         if (direction === 'prev') {
           newPage = carouselWalker.nextPage(active.value);
           while (newPage && carouselWalker.nextPage(newPage?.value)) {
