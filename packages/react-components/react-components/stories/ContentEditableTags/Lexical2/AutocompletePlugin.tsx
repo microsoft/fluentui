@@ -46,29 +46,22 @@ export type AutocompletePluginProps = {
   query: string;
 };
 
-export const AutocompletePlugin = () => {
+type AutocompletePluginLexicalHooksProps = {
+  onQueryChange: (newQuery: string) => void;
+  newPillCandidate?: string;
+  onKeyUp: (event: KeyboardEvent) => boolean;
+  onKeyDown: (event: KeyboardEvent) => boolean;
+  children: (renderProps: { appendCandidate: () => void }) => React.ReactElement;
+};
+
+const AutocompletePluginLexicalHooks: React.FC<AutocompletePluginLexicalHooksProps> = ({
+  onQueryChange,
+  newPillCandidate,
+  children,
+  onKeyUp,
+  onKeyDown,
+}) => {
   const [editor] = useLexicalComposerContext();
-  const [isOpen, setIsOpen] = React.useState(true);
-  const [query, setQuery] = React.useState('');
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const { announce } = useAnnounce();
-
-  const styles = useStyles();
-  const filtered = useFilteredList(query);
-
-  React.useEffect(() => {
-    return editor.registerCommand(
-      SELECTION_CHANGE_COMMAND,
-      () => {
-        const sel = $getSelection();
-        if ($isRangeSelection(sel) && sel.getNodes().length === 1) {
-          const node = sel.getNodes()[0];
-          setQuery(node.getTextContent());
-        }
-      },
-      COMMAND_PRIORITY_EDITOR,
-    );
-  }, [editor]);
 
   const appendSelectedItem = React.useCallback(() => {
     const sel = $getSelection();
@@ -82,17 +75,16 @@ export const AutocompletePlugin = () => {
 
     // handle adding of new node from selection
     if ($isRangeSelection(sel) && sel.getNodes().length === 1) {
-      const newValue = filtered[selectedIndex];
-      if (newValue) {
+      if (newPillCandidate) {
         const node = sel.getNodes()[0];
-        const newNode = $createNamePillNode(newValue);
+        const newNode = $createNamePillNode(newPillCandidate);
         node.replace(newNode);
         newNode.selectEnd();
         return true;
       }
     }
     return false;
-  }, [editor, filtered, selectedIndex]);
+  }, [editor, newPillCandidate]);
 
   React.useEffect(() => {
     return editor.registerCommand(KEY_ENTER_COMMAND, appendSelectedItem, COMMAND_PRIORITY_CRITICAL);
@@ -100,42 +92,17 @@ export const AutocompletePlugin = () => {
 
   React.useEffect(() => {
     return editor.registerCommand(
-      KEY_ARROW_UP_COMMAND,
-      payload => {
-        const event = payload;
-        if (isOpen) {
-          setSelectedIndex(currentIndex => {
-            return Math.max(0, currentIndex - 1);
-          });
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          return true;
+      SELECTION_CHANGE_COMMAND,
+      () => {
+        const sel = $getSelection();
+        if ($isRangeSelection(sel) && sel.getNodes().length === 1) {
+          const node = sel.getNodes()[0];
+          onQueryChange(node.getTextContent());
         }
-        return false;
       },
-      COMMAND_PRIORITY_CRITICAL,
+      COMMAND_PRIORITY_EDITOR,
     );
-  }, [editor, isOpen]);
-
-  React.useEffect(() => {
-    return editor.registerCommand(
-      KEY_ARROW_DOWN_COMMAND,
-      payload => {
-        const event = payload;
-
-        if (isOpen) {
-          setSelectedIndex(currentIndex => {
-            return Math.min(currentIndex + 1, filtered.length - 1);
-          });
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          return true;
-        }
-        return false;
-      },
-      COMMAND_PRIORITY_CRITICAL,
-    );
-  }, [editor, isOpen, filtered]);
+  }, [editor]);
 
   React.useEffect(() => {
     return editor.registerCommand(
@@ -146,6 +113,38 @@ export const AutocompletePlugin = () => {
       COMMAND_PRIORITY_CRITICAL,
     );
   }, [editor]);
+
+  React.useEffect(() => {
+    return editor.registerCommand(
+      KEY_ARROW_UP_COMMAND,
+      payload => {
+        return onKeyUp(payload);
+      },
+      COMMAND_PRIORITY_CRITICAL,
+    );
+  }, [editor, onKeyUp]);
+
+  React.useEffect(() => {
+    return editor.registerCommand(
+      KEY_ARROW_DOWN_COMMAND,
+      payload => {
+        return onKeyDown(payload);
+      },
+      COMMAND_PRIORITY_CRITICAL,
+    );
+  }, [editor, onKeyDown]);
+
+  return children({ appendCandidate: appendSelectedItem });
+};
+
+export const AutocompletePlugin = () => {
+  const [isOpen, setIsOpen] = React.useState(true);
+  const [query, setQuery] = React.useState('');
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const { announce } = useAnnounce();
+
+  const styles = useStyles();
+  const filtered = useFilteredList(query);
 
   React.useEffect(() => {
     if (query.length) {
@@ -174,20 +173,61 @@ export const AutocompletePlugin = () => {
     }
   }, [selectedIndex]);
 
+  const onKeyUp = React.useCallback(
+    event => {
+      if (isOpen) {
+        setSelectedIndex(currentIndex => {
+          return Math.max(0, currentIndex - 1);
+        });
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return true;
+      }
+      return false;
+    },
+    [isOpen, selectedIndex],
+  );
+
+  const onKeyDown = React.useCallback(
+    event => {
+      if (isOpen) {
+        setSelectedIndex(currentIndex => {
+          return Math.min(currentIndex + 1, filtered.length - 1);
+        });
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return true;
+      }
+      return false;
+    },
+    [isOpen, selectedIndex],
+  );
+
   return (
-    <div className={mergeClasses(styles.root, !isOpen && styles.hidden)}>
-      {filtered.map((option, index) => (
-        <div
-          key={option}
-          className={mergeClasses(styles.item, index === selectedIndex && styles.selected)}
-          onMouseOver={() => {
-            setSelectedIndex(index);
-          }}
-          onClick={() => editor.update(appendSelectedItem)}
-        >
-          {option}
-        </div>
-      ))}
-    </div>
+    <AutocompletePluginLexicalHooks
+      onQueryChange={newQuery => setQuery(newQuery)}
+      newPillCandidate={filtered[selectedIndex]}
+      onKeyUp={onKeyUp}
+      onKeyDown={onKeyDown}
+    >
+      {({ appendCandidate }) => {
+        return (
+          <div className={mergeClasses(styles.root, !isOpen && styles.hidden)}>
+            {filtered.map((option, index) => (
+              <div
+                key={option}
+                className={mergeClasses(styles.item, index === selectedIndex && styles.selected)}
+                onMouseOver={() => {
+                  setSelectedIndex(index);
+                }}
+                onClick={() => appendCandidate()}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        );
+      }}
+    </AutocompletePluginLexicalHooks>
   );
 };
