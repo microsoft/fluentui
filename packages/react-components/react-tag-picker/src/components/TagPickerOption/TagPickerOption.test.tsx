@@ -2,9 +2,10 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TagPickerOption } from './TagPickerOption';
+import { TagPickerOptionProps } from './TagPickerOption.types';
 
 describe('TagPickerOption', () => {
-  isConformant({
+  isConformant<TagPickerOptionProps>({
     Component: TagPickerOption,
     displayName: 'TagPickerOption',
     requiredProps: { value: 'value', media: <></>, secondaryContent: <></> },
