@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 24 May 2024 07:28:16 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.18.0",
+      "version": "1.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "feat: disallow direct access to globals"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 07:28:51 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.9",
       "version": "1.17.9",

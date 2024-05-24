@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Thu, 23 May 2024 07:28:51 GMT and should not be manually modified.
+This log was last generated on Fri, 24 May 2024 07:28:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.0)
+
+Fri, 24 May 2024 07:28:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.9..@fluentui/eslint-plugin_v1.18.0)
+
+### Minor changes
+
+- feat: disallow direct access to globals ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
 
 ## [1.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.9)
 

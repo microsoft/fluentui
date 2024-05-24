@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: disallow direct access to globals",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
