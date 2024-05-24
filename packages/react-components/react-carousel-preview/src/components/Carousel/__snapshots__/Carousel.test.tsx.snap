@@ -3,7 +3,9 @@
 exports[`Carousel renders a default state 1`] = `
 <div>
   <div
+    aria-roledescription="carousel"
     class="fui-Carousel"
+    role="region"
   >
     Default Carousel
   </div>
