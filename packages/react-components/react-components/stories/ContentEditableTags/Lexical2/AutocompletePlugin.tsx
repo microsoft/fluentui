@@ -42,24 +42,18 @@ export const AutocompletePlugin = () => {
     setIsOpen(!!query.length);
   }, [query]);
 
-  React.useEffect(() => {
-    if (!isOpen || !query) return;
-    if (filtered.length) {
-      announce(`Found ${filtered.length} options`, { batchId: 'found-options' });
-    } else {
-      announce(`No options found`, { batchId: 'found-options' });
-    }
-  }, [filtered.length, isOpen]);
+  const selectedItem = React.useMemo(() => filtered[selectedIndex], [selectedIndex, filtered]);
 
-  React.useEffect(() => {
-    if (!open || !query) return;
-    const option = filtered[selectedIndex];
-    if (option) {
-      announce(option, { batchId: 'selected-option' });
-    }
-  }, [selectedIndex]);
+  // React.useEffect(() => {
+  //   if (!isOpen || !query) return;
+  //   if (filtered.length) {
+  //     announce(`Found ${filtered.length} options`, { batchId: 'found-options' });
+  //   } else {
+  //     announce(`No options found`, { batchId: 'found-options' });
+  //   }
+  // }, [filtered.length, isOpen]);
 
-  const onKeyUp = React.useCallback(
+  const onArrowKeyUp = React.useCallback(
     event => {
       if (isOpen) {
         setSelectedIndex(currentIndex => {
@@ -74,7 +68,17 @@ export const AutocompletePlugin = () => {
     [isOpen, selectedIndex],
   );
 
-  const onKeyDown = React.useCallback(
+  React.useEffect(() => {
+    if (!isOpen || !query) return;
+    if (selectedItem) {
+      announce(`${selectedItem} ${selectedIndex + 1} of ${filtered.length}`, {
+        batchId: 'selected-option',
+        polite: false,
+      });
+    }
+  }, [selectedItem, isOpen, query, selectedIndex, filtered]);
+
+  const onArrowKeyDown = React.useCallback(
     event => {
       if (isOpen) {
         setSelectedIndex(currentIndex => {
@@ -93,8 +97,17 @@ export const AutocompletePlugin = () => {
     <AutocompletePluginCore
       onQueryChange={newQuery => setQuery(newQuery)}
       newPillCandidate={filtered[selectedIndex]}
-      onKeyUp={onKeyUp}
-      onKeyDown={onKeyDown}
+      onArrowKeyUp={onArrowKeyUp}
+      onArrowKeyDown={onArrowKeyDown}
+      announce={announce}
+      onEscape={() => {
+        if (isOpen) {
+          setIsOpen(false);
+          announce('Autocomplete closed', { batchId: 'autocomplete-closed' });
+          return true;
+        }
+        return false;
+      }}
     >
       {({ appendCandidate }) => {
         return (

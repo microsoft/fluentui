@@ -1,71 +1,15 @@
-import {
-  $createParagraphNode,
-  $createTextNode,
-  $getRoot,
-  $getSelection,
-  $isNodeSelection,
-  COMMAND_PRIORITY_EDITOR,
-  SELECTION_CHANGE_COMMAND,
-} from 'lexical';
-import { useEffect } from 'react';
-
+import { AriaLiveAnnouncer } from '@fluentui/react-aria';
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import * as React from 'react';
-import { $createNamePillNode, NamePillNode } from './NamePillNode';
 import { AutocompletePlugin } from './AutocompletePlugin';
-import { AriaLiveAnnouncer } from '@fluentui/react-aria';
+import { NamePillNode } from './NamePillNode';
 
 const theme = {};
-
-const DefaultValuePlugin = () => {
-  const [editor] = useLexicalComposerContext();
-  useEffect(() => {
-    editor.update(() => {
-      const paragraph = $createParagraphNode();
-      paragraph.append(
-        $createTextNode('Hello '),
-        $createHorizontalRuleNode(),
-        $createTextNode('OK, '),
-        $createNamePillNode('Bill'),
-        $createNamePillNode('Sam'),
-        $createTextNode(', how are you?'),
-      );
-      $getRoot().append(paragraph);
-    });
-  }, []);
-  return null;
-};
-
-const AccessibilityAnnouncePlugin = () => {
-  const [editor] = useLexicalComposerContext();
-  const [lastAnnouncement, setLastAnnouncement] = React.useState('');
-
-  useEffect(() => {
-    return editor.registerCommand(
-      SELECTION_CHANGE_COMMAND,
-      () => {
-        const sel = $getSelection();
-        if ($isNodeSelection(sel)) {
-          const node = sel.getNodes()[0];
-          const htmlElement = editor.getElementByKey(node.__key);
-          setLastAnnouncement(htmlElement?.ariaLabel || '');
-        } else {
-          setLastAnnouncement('');
-        }
-        return false;
-      },
-      COMMAND_PRIORITY_EDITOR,
-    );
-  }, [editor]);
-
-  return <div aria-live="polite">{lastAnnouncement}</div>;
-};
 
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will
@@ -92,8 +36,6 @@ export function LexicalEditor2() {
         />
         <HistoryPlugin />
         <AutoFocusPlugin />
-
-        <AccessibilityAnnouncePlugin />
         <AutocompletePlugin />
       </LexicalComposer>
     </AriaLiveAnnouncer>
