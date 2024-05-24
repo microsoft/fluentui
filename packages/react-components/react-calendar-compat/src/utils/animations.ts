@@ -1,5 +1,3 @@
-import { shorthands } from '@griffel/react';
-
 export const EASING_FUNCTION_1 = 'cubic-bezier(.1,.9,.2,1)';
 export const EASING_FUNCTION_2 = 'cubic-bezier(.1,.25,.75,.9)';
 export const DURATION_1 = '0.167s';
@@ -80,20 +78,22 @@ export const SLIDE_UP_OUT20 = {
     transform: 'translate3d(0, -20px, 0)',
   },
 };
+
 export const TRANSITION_ROW_DISAPPEARANCE = {
   '100%': {
     height: '0px',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     width: '0px',
   },
   '99.9%': {
     height: '28px',
-    ...shorthands.overflow('visible'),
+    overflow: 'visible',
     width: '100%',
   },
   '0%': {
     height: '28px',
-    ...shorthands.overflow('visible'),
+    overflow: 'visible',
     width: '100%',
   },
 };

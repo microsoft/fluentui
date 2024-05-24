@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types';
 import { tokens } from '@fluentui/react-theme';
@@ -11,7 +11,7 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingVerticalNone),
+    padding: `${tokens.spacingHorizontalNone} ${tokens.spacingVerticalNone}`,
     display: 'flex',
   },
   row: {
@@ -20,12 +20,8 @@ const useStyles = makeStyles({
   grid: {
     flexDirection: 'column',
   },
-  spacingSmall: {
-    ...shorthands.gap('2px'),
-  },
-  spacingMedium: {
-    ...shorthands.gap('4px'),
-  },
+  spacingSmall: { gap: '2px' },
+  spacingMedium: { gap: '4px' },
 });
 
 /**

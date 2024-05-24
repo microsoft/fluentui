@@ -15,7 +15,7 @@ type TextStoryMeta = Meta<TextStoryArgs>;
  * @param content - the content for the element
  * @returns ViewTemplate
  */
-const generateSemanticElementTemplate = (as: string, content) => {
+const generateSemanticElementTemplate = (as: string, content: string) => {
   switch (as) {
     case 'h1':
       return html`<h1>${content}</h1>`;

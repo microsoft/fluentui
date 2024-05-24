@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Thu, 16 May 2024 09:25:18 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.77)
+
+Thu, 23 May 2024 08:02:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.76..@fluentui/react-spinbutton_v9.2.77)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31449](https://github.com/microsoft/fluentui/pull/31449) by olfedias@microsoft.com)
+
+## [9.2.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.76)
+
+Mon, 20 May 2024 12:45:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.75..@fluentui/react-spinbutton_v9.2.76)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.66 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
 
 ## [9.2.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.75)
 

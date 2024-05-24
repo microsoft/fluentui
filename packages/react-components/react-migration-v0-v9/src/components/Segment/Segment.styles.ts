@@ -2,7 +2,7 @@ import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 export const useSegmentStyles = makeStyles({
   segment: {
-    ...shorthands.padding('1em'),
+    padding: '1em',
     ...shorthands.borderWidth('2px', 0, 0),
     ...shorthands.borderColor('transparent'),
     ...shorthands.borderStyle('solid'),

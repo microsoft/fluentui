@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import {
   tokens,
   TabList,
@@ -42,14 +42,14 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'start',
     boxSizing: 'border-box',
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
   },
   controlRow: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'start',
     justifyContent: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalL),
+    gap: tokens.spacingHorizontalL,
   },
   controlColumn: {
     display: 'flex',
@@ -61,19 +61,19 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'start',
-    ...shorthands.gap(tokens.spacingVerticalS),
+    gap: tokens.spacingVerticalS,
   },
   icons: {
     display: 'grid',
     gridTemplateColumns: 'auto auto',
     gridTemplateRows: 'auto auto',
-    gridRowGap: tokens.spacingVerticalS,
-    gridColumnGap: tokens.spacingHorizontalS,
+    rowGap: tokens.spacingVerticalS,
+    columnGap: tokens.spacingHorizontalS,
     justifyContent: 'center',
   },
   avatar: {
     display: 'flex',
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
   },
   avatarText: {
     display: 'flex',

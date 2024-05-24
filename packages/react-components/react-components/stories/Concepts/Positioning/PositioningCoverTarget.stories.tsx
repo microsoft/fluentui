@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  Button,
-  Popover,
-  PopoverSurface,
-  PopoverTrigger,
-} from '@fluentui/react-components';
+import { makeStyles, mergeClasses, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PositioningShorthand } from '@fluentui/react-components';
 
 const useExampleStyles = makeStyles({
@@ -32,8 +24,8 @@ const useGridExampleStyles = makeStyles({
     display: 'inline-grid',
     gridTemplateColumns: 'repeat(5, 1fr)',
     gridTemplateRows: 'repeat(5, 64px)',
-    ...shorthands.gap('20px'),
-    ...shorthands.margin('16px', '128px'),
+    gap: '20px',
+    margin: '16px 128px',
   },
 
   instructions: {
@@ -141,74 +133,70 @@ export const CoverTarget = () => {
   const styles = useGridExampleStyles();
 
   return (
-    <>
-      <div className={styles.targetContainer}>
-        <div className={styles.instructions}>Click each button to see its positioned element</div>
-        <PositionedComponent
-          positioning={{ position: 'above', align: 'start', coverTarget: true }}
-          targetClassName={styles.aboveStart}
-          targetContent="above-start"
-        />
-        <PositionedComponent
-          positioning={{ position: 'above', coverTarget: true }}
-          targetClassName={styles.above}
-          targetContent="above"
-        />
-        <PositionedComponent
-          positioning={{ position: 'above', align: 'end', coverTarget: true }}
-          targetClassName={styles.aboveEnd}
-          targetContent="above-end"
-        />
+    <div className={styles.targetContainer}>
+      <div className={styles.instructions}>Click each button to see its positioned element</div>
+      <PositionedComponent
+        positioning={{ position: 'above', align: 'start', coverTarget: true }}
+        targetClassName={styles.aboveStart}
+        targetContent="above-start"
+      />
+      <PositionedComponent
+        positioning={{ position: 'above', coverTarget: true }}
+        targetClassName={styles.above}
+        targetContent="above"
+      />
+      <PositionedComponent
+        positioning={{ position: 'above', align: 'end', coverTarget: true }}
+        targetClassName={styles.aboveEnd}
+        targetContent="above-end"
+      />
 
-        <PositionedComponent
-          positioning={{ position: 'before', align: 'top', coverTarget: true }}
-          targetClassName={styles.beforeTop}
-          targetContent="before-top"
-        />
-        <PositionedComponent
-          positioning={{ position: 'before', coverTarget: true }}
-          targetClassName={styles.before}
-          targetContent="before"
-        />
-        <PositionedComponent
-          positioning={{ position: 'before', align: 'bottom', coverTarget: true }}
-          targetClassName={styles.beforeBottom}
-          targetContent="before-bottom"
-        />
-
-        <PositionedComponent
-          positioning={{ position: 'after', align: 'top', coverTarget: true }}
-          targetClassName={styles.afterTop}
-          targetContent="after-top"
-        />
-        <PositionedComponent
-          positioning={{ position: 'after', coverTarget: true }}
-          targetClassName={styles.after}
-          targetContent="after"
-        />
-        <PositionedComponent
-          positioning={{ position: 'after', align: 'bottom', coverTarget: true }}
-          targetClassName={styles.afterBottom}
-          targetContent="after-bottom"
-        />
-
-        <PositionedComponent
-          positioning={{ position: 'below', align: 'start', coverTarget: true }}
-          targetClassName={styles.belowStart}
-          targetContent="below-start"
-        />
-        <PositionedComponent
-          positioning={{ position: 'below', coverTarget: true }}
-          targetClassName={styles.below}
-          targetContent="below"
-        />
-        <PositionedComponent
-          positioning={{ position: 'below', align: 'end', coverTarget: true }}
-          targetClassName={styles.belowEnd}
-          targetContent="below-end"
-        />
-      </div>
-    </>
+      <PositionedComponent
+        positioning={{ position: 'before', align: 'top', coverTarget: true }}
+        targetClassName={styles.beforeTop}
+        targetContent="before-top"
+      />
+      <PositionedComponent
+        positioning={{ position: 'before', coverTarget: true }}
+        targetClassName={styles.before}
+        targetContent="before"
+      />
+      <PositionedComponent
+        positioning={{ position: 'before', align: 'bottom', coverTarget: true }}
+        targetClassName={styles.beforeBottom}
+        targetContent="before-bottom"
+      />
+      <PositionedComponent
+        positioning={{ position: 'after', align: 'top', coverTarget: true }}
+        targetClassName={styles.afterTop}
+        targetContent="after-top"
+      />
+      <PositionedComponent
+        positioning={{ position: 'after', coverTarget: true }}
+        targetClassName={styles.after}
+        targetContent="after"
+      />
+      <PositionedComponent
+        positioning={{ position: 'after', align: 'bottom', coverTarget: true }}
+        targetClassName={styles.afterBottom}
+        targetContent="after-bottom"
+      />
+      <PositionedComponent
+        positioning={{ position: 'below', align: 'start', coverTarget: true }}
+        targetClassName={styles.belowStart}
+        targetContent="below-start"
+      />
+      <PositionedComponent
+        positioning={{ position: 'below', coverTarget: true }}
+        targetClassName={styles.below}
+        targetContent="below"
+      />
+      <PositionedComponent
+        positioning={{ position: 'below', align: 'end', coverTarget: true }}
+        targetClassName={styles.belowEnd}
+        targetContent="below-end"
+      />
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, makeStyles, Option, OptionGroup, shorthands, useId } from '@fluentui/react-components';
+import { Dropdown, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import {
   AnimalCat24Filled,
@@ -22,14 +22,10 @@ const useCustomOptionStyles = makeStyles({
   option: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
-  icon: {
-    ...shorthands.flex(0, 0, 'auto'),
-  },
-  text: {
-    ...shorthands.flex(1, 1, 'auto'),
-  },
+  icon: { flex: '0 0 auto' },
+  text: { flex: '1 1 auto' },
 });
 
 type CustomOptionProps = Partial<OptionProps> & { animal: keyof typeof animalIcons };
@@ -65,7 +61,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
-    ...shorthands.gap('2px'),
+    gap: '2px',
     maxWidth: '400px',
   },
   listbox: {

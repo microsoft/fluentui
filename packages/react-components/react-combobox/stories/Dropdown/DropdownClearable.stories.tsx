@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Dropdown, Label, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
+import { Dropdown, Label, makeStyles, Option, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
-    ...shorthands.gap('2px'),
+    gap: '2px',
     maxWidth: '400px',
   },
 });

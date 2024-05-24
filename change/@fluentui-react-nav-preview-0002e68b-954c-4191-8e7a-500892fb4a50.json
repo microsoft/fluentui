@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Recomposing NavSectionHeader and Hamburger. Removing HamburgerInNav. Some other pixel pushing.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "minor"
+}

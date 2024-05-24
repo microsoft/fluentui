@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(react-swatch-picker): release SwatchPicker as 9.0.0 stable",
-  "packageName": "@fluentui/react-components",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
