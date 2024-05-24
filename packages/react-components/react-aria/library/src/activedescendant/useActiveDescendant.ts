@@ -164,17 +164,6 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
           focusActiveDescendant(target);
         }
       },
-      focusLastActive: () => {
-        if (!listboxRef.current || !lastActiveIdRef.current) {
-          return;
-        }
-
-        const target = listboxRef.current.querySelector<HTMLElement>(`#${lastActiveIdRef.current}`);
-        if (target) {
-          focusActiveDescendant(target);
-          return true;
-        }
-      },
       find(predicate, { passive, startFrom } = {}) {
         const target = optionWalker.find(predicate, startFrom);
         if (!passive) {
@@ -182,6 +171,18 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         }
 
         return target?.id;
+      },
+      scrollActiveIntoView: () => {
+        if (!listboxRef.current) {
+          return;
+        }
+
+        const active = getActiveDescendant();
+        if (!active) {
+          return;
+        }
+
+        scrollIntoView(active);
       },
       showAttributes() {
         attributeVisibilityRef.current = true;

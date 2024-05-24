@@ -10,10 +10,9 @@ export interface ActiveDescendantImperativeRef {
   active: () => string | undefined;
   focus: (id: string) => void;
   /**
-   * Focuses the last active descendant, if it still exists
-   * @returns true if the last active descendant was focused
+   * Scrolls the active option into view, if it still exists
    */
-  focusLastActive: () => boolean | undefined;
+  scrollActiveIntoView: () => void;
   hideAttributes: () => void;
   showAttributes: () => void;
 }

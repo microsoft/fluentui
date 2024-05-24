@@ -19,6 +19,7 @@ import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
+import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UNSAFE_noLongerUsed = {
@@ -77,6 +78,9 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       element.addEventListener('activedescendantchange', listener);
     };
   }, [onActiveDescendantChange]);
+
+  const [isNavigatingWithKeyboard, setIsNavigatingWithKeyboard] = React.useState(false);
+  useOnKeyboardNavigationChange(setIsNavigatingWithKeyboard);
 
   const activeDescendantContext = useActiveDescendantContext();
   const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
@@ -171,6 +175,12 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeDescendantController]);
 
+  const onFocus = React.useCallback(() => {
+    if (isNavigatingWithKeyboard && !hasParentActiveDescendantContext) {
+      activeDescendantController.scrollActiveIntoView();
+    }
+  }, [activeDescendantController, hasParentActiveDescendantContext, isNavigatingWithKeyboard]);
+
   const state: ListboxState = {
     components: {
       root: 'div',
@@ -197,6 +207,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
+  state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
 
   return state;
 };
