@@ -15,10 +15,18 @@ import {
 } from 'lexical';
 import { $createNamePillNode } from './NamePillNode';
 
+const getAutocompleteItemId = (autocompleteId: string, value: string) => {
+  return `${autocompleteId}_item-${value}`;
+};
+
 type AutocompletePluginCoreProps = {
+  id: string;
   onQueryChange: (newQuery: string) => void;
-  children: (renderProps: { appendCandidate: () => void }) => React.ReactElement;
-  newPillCandidate?: string;
+  children: (renderProps: {
+    appendCandidate: () => void;
+    getItemId: typeof getAutocompleteItemId;
+  }) => React.ReactElement;
+  autocompleteItem?: string;
   onArrowKeyUp?: (event: KeyboardEvent) => boolean;
   onArrowKeyDown?: (event: KeyboardEvent) => boolean;
   onEscape?: (event: KeyboardEvent) => boolean;
@@ -26,8 +34,9 @@ type AutocompletePluginCoreProps = {
 };
 
 export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
+  id,
   onQueryChange,
-  newPillCandidate,
+  autocompleteItem,
   children,
   onArrowKeyUp,
   onArrowKeyDown,
@@ -48,17 +57,17 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
 
     // handle adding of new node from selection
     if ($isRangeSelection(sel) && sel.getNodes().length === 1) {
-      if (newPillCandidate) {
+      if (autocompleteItem) {
         const node = sel.getNodes()[0];
-        const newNode = $createNamePillNode(newPillCandidate);
+        const newNode = $createNamePillNode(autocompleteItem);
         node.replace(newNode);
         newNode.selectEnd();
-        announce?.(`Added ${newPillCandidate}`, { batchId: 'added-pill' });
+        announce?.(`Added ${autocompleteItem}`, { batchId: 'added-pill' });
         return true;
       }
     }
     return false;
-  }, [editor, newPillCandidate]);
+  }, [editor, autocompleteItem]);
 
   React.useEffect(() => {
     return editor.registerCommand(KEY_ENTER_COMMAND, appendSelectedItem, COMMAND_PRIORITY_CRITICAL);
@@ -66,6 +75,14 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
   React.useEffect(() => {
     return editor.registerCommand(KEY_ESCAPE_COMMAND, onEscape, COMMAND_PRIORITY_CRITICAL);
   });
+
+  // Update the activedescendant on the parent element to the currently selected item
+  React.useEffect(() => {
+    const editorElement = editor.getRootElement();
+    if (editorElement && autocompleteItem) {
+      editorElement.setAttribute('aria-activedescendant', getAutocompleteItemId(id, autocompleteItem));
+    }
+  }, [autocompleteItem]);
 
   React.useEffect(() => {
     return editor.registerCommand(
@@ -120,5 +137,5 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
     );
   }, [editor, onArrowKeyDown]);
 
-  return children({ appendCandidate: appendSelectedItem });
+  return children({ appendCandidate: appendSelectedItem, getItemId: getAutocompleteItemId });
 };

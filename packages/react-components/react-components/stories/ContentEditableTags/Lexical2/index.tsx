@@ -9,6 +9,8 @@ import * as React from 'react';
 import { AutocompletePlugin } from './AutocompletePlugin';
 import { NamePillNode } from './NamePillNode';
 
+import { getId } from '@fluentui/react';
+
 const theme = {};
 
 // Catch any errors that occur during Lexical updates and log them
@@ -19,6 +21,8 @@ function onError(error) {
 }
 
 export function LexicalEditor2() {
+  const id = getId('autocomplete');
+
   const initialConfig = {
     namespace: 'MyEditor',
     theme,
@@ -30,13 +34,13 @@ export function LexicalEditor2() {
     <AriaLiveAnnouncer>
       <LexicalComposer initialConfig={initialConfig}>
         <RichTextPlugin
-          contentEditable={<ContentEditable style={{ border: '1px solid grey' }} />}
+          contentEditable={<ContentEditable style={{ border: '1px solid grey' }} ariaOwns={id} />}
           placeholder={<div></div>}
           ErrorBoundary={LexicalErrorBoundary}
         />
         <HistoryPlugin />
         <AutoFocusPlugin />
-        <AutocompletePlugin />
+        <AutocompletePlugin id={id} />
       </LexicalComposer>
     </AriaLiveAnnouncer>
   );

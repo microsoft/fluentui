@@ -28,7 +28,7 @@ const useFilteredList = (filter: string) => {
   return options.filter(option => option.toLowerCase().includes(filter.toLowerCase()));
 };
 
-export const AutocompletePlugin = () => {
+export const AutocompletePlugin = ({ id }: { id: string }) => {
   const [isOpen, setIsOpen] = React.useState(true);
   const [query, setQuery] = React.useState('');
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -44,14 +44,7 @@ export const AutocompletePlugin = () => {
 
   const selectedItem = React.useMemo(() => filtered[selectedIndex], [selectedIndex, filtered]);
 
-  // React.useEffect(() => {
-  //   if (!isOpen || !query) return;
-  //   if (filtered.length) {
-  //     announce(`Found ${filtered.length} options`, { batchId: 'found-options' });
-  //   } else {
-  //     announce(`No options found`, { batchId: 'found-options' });
-  //   }
-  // }, [filtered.length, isOpen]);
+  React.useEffect(() => {}, [selectedItem]);
 
   const onArrowKeyUp = React.useCallback(
     event => {
@@ -68,15 +61,15 @@ export const AutocompletePlugin = () => {
     [isOpen, selectedIndex],
   );
 
-  React.useEffect(() => {
-    if (!isOpen || !query) return;
-    if (selectedItem) {
-      announce(`${selectedItem} ${selectedIndex + 1} of ${filtered.length}`, {
-        batchId: 'selected-option',
-        polite: false,
-      });
-    }
-  }, [selectedItem, isOpen, query, selectedIndex, filtered]);
+  // React.useEffect(() => {
+  //   if (!isOpen || !query) return;
+  //   if (selectedItem) {
+  //     announce(`${selectedItem} ${selectedIndex + 1} of ${filtered.length}`, {
+  //       batchId: 'selected-option',
+  //       polite: false,
+  //     });
+  //   }
+  // }, [selectedItem, isOpen, query, selectedIndex, filtered]);
 
   const onArrowKeyDown = React.useCallback(
     event => {
@@ -95,8 +88,9 @@ export const AutocompletePlugin = () => {
 
   return (
     <AutocompletePluginCore
+      id={id}
       onQueryChange={newQuery => setQuery(newQuery)}
-      newPillCandidate={filtered[selectedIndex]}
+      autocompleteItem={isOpen ? selectedItem : undefined}
       onArrowKeyUp={onArrowKeyUp}
       onArrowKeyDown={onArrowKeyDown}
       announce={announce}
@@ -109,11 +103,14 @@ export const AutocompletePlugin = () => {
         return false;
       }}
     >
-      {({ appendCandidate }) => {
+      {({ appendCandidate, getItemId }) => {
         return (
-          <div className={mergeClasses(styles.root, !isOpen && styles.hidden)}>
+          <div className={mergeClasses(styles.root, !isOpen && styles.hidden)} id={id} role="menu">
             {filtered.map((option, index) => (
               <div
+                id={getItemId(id, option)}
+                aria-label={option}
+                role="menuitem"
                 key={option}
                 className={mergeClasses(styles.item, index === selectedIndex && styles.selected)}
                 onMouseOver={() => {
