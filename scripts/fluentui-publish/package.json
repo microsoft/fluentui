@@ -8,7 +8,7 @@
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js .",
+    "lint": "eslint --ext .ts,.js ./src ./bin",
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check"
   },

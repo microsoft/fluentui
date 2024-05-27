@@ -6,7 +6,7 @@
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js .",
+    "lint": "eslint --ext .ts,.js ./src",
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check"
   },
@@ -14,7 +14,8 @@
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-utils": "*",
     "@fluentui/scripts-prettier": "*",
-    "flamegrill": "0.2.0"
+    "flamegrill": "0.2.0",
+    "just-scripts": "1.8.2"
   },
   "devDependencies": {}
 }
