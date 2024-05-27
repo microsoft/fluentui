@@ -34,7 +34,7 @@ Open a command line and run:
 
 If you do not wish to contribute changes, for `@fluentui/react` version 8 please follow the instructions on the [`@fluentui/react` README](https://github.com/microsoft/fluentui/blob/master/packages/react/README.md#building-the-repo) page for how to clone and build the main repo. Else, keep reading.
 
-Run `yarn`. This may take a while initially, especially on vanilla Windows systems.
+Run `yarn`. This may take a while initially.
 
 Run `yarn start` and select your start up project.
 
