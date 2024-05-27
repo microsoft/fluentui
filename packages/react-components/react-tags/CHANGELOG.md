@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Mon, 20 May 2024 12:45:06 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.7)
+
+Thu, 23 May 2024 08:02:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.3.6..@fluentui/react-tags_v9.3.7)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-avatar to v9.6.28 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.3.6)
 

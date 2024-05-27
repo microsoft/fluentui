@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -13,7 +13,7 @@ export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.margin('unset'),
+    margin: 'unset',
     paddingInlineStart: '12px',
     paddingBlockStart: '10px',
     paddingBlockEnd: '0px',

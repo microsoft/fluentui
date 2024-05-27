@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Mon, 20 May 2024 12:45:07 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.19)
+
+Thu, 23 May 2024 08:02:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.18..@fluentui/react-text_v9.4.19)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31448](https://github.com/microsoft/fluentui/pull/31448) by olfedias@microsoft.com)
 
 ## [9.4.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.18)
 

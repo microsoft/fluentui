@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 20 May 2024 12:44:57 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.6)
+
+Thu, 23 May 2024 08:02:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.14.5..@fluentui/react-menu_v9.14.6)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-portal to v9.4.26 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-positioning to v9.15.2 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.14.5)
 

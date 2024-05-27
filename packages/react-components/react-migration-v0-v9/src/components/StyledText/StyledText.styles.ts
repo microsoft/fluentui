@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const useSizeStyles = makeStyles({
   base100: {
@@ -81,7 +81,7 @@ export const useStyles = makeStyles({
   },
   nowrap: {
     whiteSpace: 'nowrap',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   truncate: {
     textOverflow: 'ellipsis',

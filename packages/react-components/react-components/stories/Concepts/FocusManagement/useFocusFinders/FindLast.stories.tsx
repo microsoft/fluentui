@@ -10,23 +10,16 @@ import {
   ClipboardPasteRegular,
   CutRegular,
 } from '@fluentui/react-icons';
-import {
-  Button,
-  useArrowNavigationGroup,
-  makeStyles,
-  shorthands,
-  useFocusFinders,
-  tokens,
-} from '@fluentui/react-components';
+import { Button, useArrowNavigationGroup, makeStyles, useFocusFinders, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     marginTop: '5px',
     display: 'flex',
-    ...shorthands.gap('5px'),
-    ...shorthands.padding('10px'),
-    ...shorthands.border('2px', 'solid', tokens.colorBrandStroke1),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    gap: '5px',
+    padding: '10px',
+    border: `2px solid ${tokens.colorBrandStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
   },
 });
 

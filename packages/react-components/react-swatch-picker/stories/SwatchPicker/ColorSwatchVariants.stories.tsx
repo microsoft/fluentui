@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { HeartFilled } from '@fluentui/react-icons';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { ColorSwatch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
     display: 'flex',
-    ...shorthands.gap('8px'),
+    gap: '8px',
   },
 });
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   makeStyles,
   mergeClasses,
-  shorthands,
   tokens,
   Body1,
   Title3,
@@ -39,7 +38,7 @@ export interface ContentProps {
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding('16px'),
+    padding: '16px',
   },
   threeCol: {
     display: 'grid',
@@ -53,13 +52,13 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
   },
   col2: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
   },
   col3: {
     display: 'grid',
@@ -90,7 +89,7 @@ const useStyles = makeStyles({
   },
   avatar: {
     display: 'flex',
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
   },
   avatarText: {
     display: 'flex',

@@ -10,12 +10,12 @@ import {
   ClipboardPasteRegular,
   CutRegular,
 } from '@fluentui/react-icons';
-import { Button, useArrowNavigationGroup, makeStyles, shorthands } from '@fluentui/react-components';
+import { Button, useArrowNavigationGroup, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
 });
 

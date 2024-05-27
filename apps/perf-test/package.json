@@ -9,7 +9,7 @@
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "type-check": "tsc -p . --noEmit",
+    "type-check": "just-scripts type-check",
     "test:perf": "just-scripts perf-test"
   },
   "devDependencies": {

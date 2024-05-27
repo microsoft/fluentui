@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/recipes",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/recipes/src",
+  "tags": ["platform:web", "vNext", "type:stories"],
+  "implicitDependencies": []
+}

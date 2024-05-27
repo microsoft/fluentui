@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Skeleton, SkeletonItem, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Skeleton, SkeletonItem, makeStyles, tokens } from '@fluentui/react-components';
 import type { SkeletonProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     display: 'grid',
     paddingBottom: '10px',
     position: 'relative',
-    ...shorthands.gap('10px'),
+    gap: '10px',
     gridTemplateColumns: 'min-content 80%',
   },
   secondThirdRow: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     display: 'grid',
     paddingBottom: '10px',
     position: 'relative',
-    ...shorthands.gap('10px'),
+    gap: '10px',
     gridTemplateColumns: 'min-content 20% 20% 15% 15%',
   },
 });

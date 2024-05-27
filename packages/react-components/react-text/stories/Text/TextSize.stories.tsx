@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Text } from '@fluentui/react-components';
+import { makeStyles, Text } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.gap('16px'),
+    gap: '16px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'baseline',

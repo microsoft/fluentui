@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { SwatchPicker, SwatchPickerOnSelectEventHandler, ImageSwatch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     width: '700px',
     height: '466px',
     backgroundSize: 'cover',
-    ...shorthands.margin('20px', '0'),
+    margin: '20px 0',
   },
   swatch: {
     width: '100px',

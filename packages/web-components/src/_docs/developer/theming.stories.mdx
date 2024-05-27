@@ -1,0 +1,61 @@
+import { Meta, Source } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Theming" />
+
+# Theming
+
+The Fluent UI Theme is represented by a set of tokens. Each token resolves to a single value which can be assigned to a CSS property.
+
+```ts
+const exampleTheme = {
+  borderRadiusSmall: '2px',
+  //...
+  colorNeutralForeground2: '#424242',
+};
+```
+
+You can browse all the available tokens in **[Theme](/docs/theme-color--page)** section of the docs.
+
+## How theme is applied
+
+Tokens are resolved to CSS variables. The `setTheme` utility is responsible for setting the values of the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
+
+Use `setTheme` at the root of your app and pass a theme as the function parameter. The utility will set tokens as CSS variables on the document body.
+
+```js
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+
+setTheme(webLightTheme);
+```
+
+If you need to set token values for an element which is not the document body, you can use `setThemeFor` and pass an element followed by the theme.
+
+```js
+import { setThemeFor } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+
+const el = document.getElementById('my-element');
+
+setThemeFor(el, webLightTheme);
+```
+
+### Do not use CSS variables directly
+
+**⚠ Never use theme CSS variables directly!** The CSS variables implementation of the theme is internal to the library. We might eventually decide to change the variable names, hash them or even use direct values instead of some variables. Always use the `tokens` to access the theme.
+
+## Available themes
+
+Fluent UI currently exports following themes:
+
+- Web Light (`webLightTheme`)
+- Web Dark (`webDarkTheme`)
+- Teams Light (`teamsLightTheme`)
+- Teams Dark (`teamsDarkTheme`)
+
+### High contrast themes
+
+⚠ Do not use High Contrast themes! All Fluent UI components support Windows High Contrast mode automatically regardless of the active theme.
+Windows high contrast mode is the recommended high contrast platform for all customers using Fluent UI.
+
+Hardcoded High Contrast themes are considered legacy, to be used only in applications which explicitly support those.

@@ -1,7 +1,6 @@
 import {
   createDOMRenderer,
   makeStyles,
-  shorthands,
   tokens,
   FluentProvider,
   Portal,
@@ -12,17 +11,14 @@ import * as ReactDOM from 'react-dom';
 
 const useStyles = makeStyles({
   provider: {
-    ...shorthands.border('3px', 'solid', tokens.colorBrandForeground2),
-    ...shorthands.borderRadius('5px'),
-    ...shorthands.padding('5px'),
+    border: `3px solid ${tokens.colorBrandForeground2}`,
+    borderRadius: '5px',
+    padding: '5px',
 
     backgroundColor: tokens.colorBrandBackground2,
     marginBottom: '20px',
   },
-  portal: {
-    ...shorthands.border('3x', 'dotted', tokens.colorPaletteDarkOrangeBorder2),
-    ...shorthands.padding('5px'),
-  },
+  portal: { border: `3x dotted ${tokens.colorPaletteDarkOrangeBorder2}`, padding: '5px' },
 });
 
 type FrameRendererProps = {

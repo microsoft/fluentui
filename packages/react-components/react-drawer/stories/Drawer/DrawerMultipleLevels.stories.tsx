@@ -11,7 +11,6 @@ import {
   ToolbarGroup,
   ToolbarButton,
   makeStyles,
-  shorthands,
   tokens,
   mergeClasses,
 } from '@fluentui/react-components';
@@ -24,8 +23,7 @@ const useStyles = makeStyles({
   },
 
   body: {
-    ...shorthands.flex(1),
-
+    flex: '1',
     width: '100%',
     maxWidth: '100%',
     position: 'relative',

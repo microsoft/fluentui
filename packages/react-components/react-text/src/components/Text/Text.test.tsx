@@ -40,8 +40,7 @@ describe('Text', () => {
       display: inline;
       text-align: start;
       white-space: normal;
-      overflow-x: visible;
-      overflow-y: visible;
+      overflow: visible;
       text-overflow: clip;
     `);
   });
@@ -52,8 +51,7 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
       white-space: nowrap;
-      overflow-x: hidden;
-      overflow-y: hidden;
+      overflow: hidden;
     `);
   });
 

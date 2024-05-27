@@ -1,18 +1,10 @@
 import * as React from 'react';
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverSurface,
-  Button,
-  makeStyles,
-  shorthands,
-  Checkbox,
-} from '@fluentui/react-components';
+import { Popover, PopoverTrigger, PopoverSurface, Button, makeStyles, Checkbox } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   boundary: {
-    ...shorthands.border('2px', 'dashed', 'red'),
-    ...shorthands.padding('20px'),
+    border: '2px dashed red',
+    padding: '20px',
     width: '300px',
     height: '300px',
     display: 'flex',

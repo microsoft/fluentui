@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type {
   TeachingPopoverCarouselFooterSlots,
   TeachingPopoverCarouselFooterState,
@@ -19,10 +19,10 @@ const useStyles = makeStyles({
   },
   rootCentered: {
     justifyContent: 'space-between',
-    ...shorthands.gap('8px'),
+    gap: '8px',
   },
   rootRightAligned: {
-    ...shorthands.gap('8px'),
+    gap: '8px',
     '& :first-child': {
       marginInlineEnd: 'auto',
     },
