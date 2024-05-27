@@ -20,7 +20,7 @@ function onError(error) {
   console.error(error);
 }
 
-export function LexicalEditor2() {
+export function LexicalEditor() {
   const id = getId('autocomplete');
 
   const initialConfig = {
