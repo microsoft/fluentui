@@ -95,7 +95,7 @@ export const AutocompletePlugin = ({ id }: { id: string }) => {
         return false;
       }}
     >
-      {({ appendCandidate, getItemId }) => {
+      {({ onClick, getItemId }) => {
         return (
           <div
             className={mergeClasses(styles.root, !isOpen && styles.hidden)}
@@ -113,7 +113,7 @@ export const AutocompletePlugin = ({ id }: { id: string }) => {
                 onMouseOver={() => {
                   setSelectedIndex(index);
                 }}
-                onClick={() => appendCandidate()}
+                onClick={onClick}
               >
                 {option}
               </div>

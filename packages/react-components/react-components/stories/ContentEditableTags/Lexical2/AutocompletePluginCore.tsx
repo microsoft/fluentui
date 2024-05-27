@@ -23,10 +23,7 @@ type AutocompletePluginCoreProps = {
   id: string;
   isOpen: boolean;
   onQueryChange: (newQuery: string) => void;
-  children: (renderProps: {
-    appendCandidate: () => void;
-    getItemId: typeof getAutocompleteItemId;
-  }) => React.ReactElement;
+  children: (renderProps: { onClick: () => void; getItemId: typeof getAutocompleteItemId }) => React.ReactElement;
   autocompleteItem?: string;
   onArrowKeyUp?: (event: KeyboardEvent) => boolean;
   onArrowKeyDown?: (event: KeyboardEvent) => boolean;
@@ -146,5 +143,9 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
     );
   }, [editor, onArrowKeyDown]);
 
-  return children({ appendCandidate: appendSelectedItem, getItemId: getAutocompleteItemId });
+  const onClick = React.useCallback(() => {
+    editor.update(appendSelectedItem);
+  }, [appendSelectedItem]);
+
+  return children({ onClick, getItemId: getAutocompleteItemId });
 };
