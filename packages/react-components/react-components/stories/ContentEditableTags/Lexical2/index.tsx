@@ -34,7 +34,14 @@ export function LexicalEditor2() {
     <AriaLiveAnnouncer>
       <LexicalComposer initialConfig={initialConfig}>
         <RichTextPlugin
-          contentEditable={<ContentEditable style={{ border: '1px solid grey' }} ariaOwns={id} />}
+          contentEditable={
+            <ContentEditable
+              style={{ border: '1px solid grey' }}
+              ariaOwns={id}
+              ariaAutoComplete={'list'}
+              ariaMultiline={false}
+            />
+          }
           placeholder={<div></div>}
           ErrorBoundary={LexicalErrorBoundary}
         />

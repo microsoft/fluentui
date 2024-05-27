@@ -21,6 +21,7 @@ const getAutocompleteItemId = (autocompleteId: string, value: string) => {
 
 type AutocompletePluginCoreProps = {
   id: string;
+  isOpen: boolean;
   onQueryChange: (newQuery: string) => void;
   children: (renderProps: {
     appendCandidate: () => void;
@@ -30,18 +31,19 @@ type AutocompletePluginCoreProps = {
   onArrowKeyUp?: (event: KeyboardEvent) => boolean;
   onArrowKeyDown?: (event: KeyboardEvent) => boolean;
   onEscape?: (event: KeyboardEvent) => boolean;
-  announce?: (message: string, options?: { batchId: string }) => void;
+  query?: string;
 };
 
 export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
   id,
+  isOpen,
   onQueryChange,
   autocompleteItem,
   children,
   onArrowKeyUp,
   onArrowKeyDown,
-  announce,
   onEscape,
+  query,
 }) => {
   const [editor] = useLexicalComposerContext();
 
@@ -62,7 +64,6 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
         const newNode = $createNamePillNode(autocompleteItem);
         node.replace(newNode);
         newNode.selectEnd();
-        announce?.(`Added ${autocompleteItem}`, { batchId: 'added-pill' });
         return true;
       }
     }
@@ -82,7 +83,7 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
     if (editorElement && autocompleteItem) {
       editorElement.setAttribute('aria-activedescendant', getAutocompleteItemId(id, autocompleteItem));
     }
-  }, [autocompleteItem]);
+  }, [autocompleteItem, query]);
 
   React.useEffect(() => {
     return editor.registerCommand(
@@ -91,21 +92,29 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
         const sel = $getSelection();
         if (!sel) return;
 
+        const editorElement = editor.getRootElement();
+
         const nodes = sel.getNodes();
         if ($isRangeSelection(sel) && nodes.length === 1) {
           onQueryChange(nodes[0].getTextContent());
+          if (!isOpen) {
+            editorElement?.setAttribute('aria-activedescendant', '');
+          }
         }
 
         if ($isNodeSelection(sel)) {
           const htmlElement = editor.getElementByKey(nodes[0].__key);
-          htmlElement?.ariaLabel && announce?.(htmlElement?.ariaLabel);
+
+          if (editorElement && htmlElement) {
+            editorElement.setAttribute('aria-activedescendant', htmlElement.id);
+          }
           // when node is selected, clear query so that the autocomplete is not shown
           onQueryChange('');
         }
       },
       COMMAND_PRIORITY_EDITOR,
     );
-  }, [editor]);
+  }, [editor, isOpen, autocompleteItem, query, onQueryChange]);
 
   React.useEffect(() => {
     return editor.registerCommand(

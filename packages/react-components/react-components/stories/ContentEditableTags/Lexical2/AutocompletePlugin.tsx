@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands, useAnnounce } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
 import * as React from 'react';
 import { people } from '../data';
 import { AutocompletePluginCore } from './AutocompletePluginCore';
@@ -25,22 +25,24 @@ const useStyles = makeStyles({
 const options = people;
 
 const useFilteredList = (filter: string) => {
-  return options.filter(option => option.toLowerCase().includes(filter.toLowerCase()));
+  return React.useMemo(
+    () => (filter.length ? options.filter(option => option.toLowerCase().includes(filter.toLowerCase())) : []),
+    [filter],
+  );
 };
 
 export const AutocompletePlugin = ({ id }: { id: string }) => {
   const [isOpen, setIsOpen] = React.useState(true);
   const [query, setQuery] = React.useState('');
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const { announce } = useAnnounce();
 
   const styles = useStyles();
   const filtered = useFilteredList(query);
 
   React.useEffect(() => {
     setSelectedIndex(0);
-    setIsOpen(!!query.length);
-  }, [query]);
+    setIsOpen(!!filtered.length);
+  }, [filtered]);
 
   const selectedItem = React.useMemo(() => filtered[selectedIndex], [selectedIndex, filtered]);
 
@@ -61,16 +63,6 @@ export const AutocompletePlugin = ({ id }: { id: string }) => {
     [isOpen, selectedIndex],
   );
 
-  // React.useEffect(() => {
-  //   if (!isOpen || !query) return;
-  //   if (selectedItem) {
-  //     announce(`${selectedItem} ${selectedIndex + 1} of ${filtered.length}`, {
-  //       batchId: 'selected-option',
-  //       polite: false,
-  //     });
-  //   }
-  // }, [selectedItem, isOpen, query, selectedIndex, filtered]);
-
   const onArrowKeyDown = React.useCallback(
     event => {
       if (isOpen) {
@@ -89,15 +81,15 @@ export const AutocompletePlugin = ({ id }: { id: string }) => {
   return (
     <AutocompletePluginCore
       id={id}
+      isOpen={isOpen}
+      query={query}
       onQueryChange={newQuery => setQuery(newQuery)}
       autocompleteItem={isOpen ? selectedItem : undefined}
       onArrowKeyUp={onArrowKeyUp}
       onArrowKeyDown={onArrowKeyDown}
-      announce={announce}
       onEscape={() => {
         if (isOpen) {
           setIsOpen(false);
-          announce('Autocomplete closed', { batchId: 'autocomplete-closed' });
           return true;
         }
         return false;
@@ -105,12 +97,17 @@ export const AutocompletePlugin = ({ id }: { id: string }) => {
     >
       {({ appendCandidate, getItemId }) => {
         return (
-          <div className={mergeClasses(styles.root, !isOpen && styles.hidden)} id={id} role="menu">
+          <div
+            className={mergeClasses(styles.root, !isOpen && styles.hidden)}
+            id={id}
+            role="listbox"
+            aria-expanded={isOpen}
+          >
             {filtered.map((option, index) => (
               <div
                 id={getItemId(id, option)}
                 aria-label={option}
-                role="menuitem"
+                role="option"
                 key={option}
                 className={mergeClasses(styles.item, index === selectedIndex && styles.selected)}
                 onMouseOver={() => {

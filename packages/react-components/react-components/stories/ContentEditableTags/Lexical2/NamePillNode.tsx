@@ -46,6 +46,7 @@ export class NamePillNode extends DecoratorNode<React.ReactNode> {
   createDOM(): HTMLElement {
     const el = document.createElement('span');
     el.ariaLabel = this.__id;
+    el.id = this.__id;
     return el;
   }
 
