@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, makeStyles, SearchBox, shorthands, tokens } from '@fluentui/react-components';
+import { Field, makeStyles, SearchBox, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   fieldWrapper: {
-    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   },
 });
 

@@ -11,17 +11,11 @@ const {
 const tsConfigPath = path.resolve(__dirname, '../tsconfig.base.json');
 
 /**
- * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
+ * @typedef {import('./types').StorybookConfig} StorybookBaseConfig
  *
- * @typedef {{
- *   babel: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
- *   previewHead: (head: string) => string;
- * }} StorybookExtraConfig
+ * @typedef {import('./types').StorybookExtraConfig} StorybookExtraConfig
  *
- * @typedef {StorybookBaseConfig &
- *   Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>> &
- *   StorybookExtraConfig
- * } StorybookConfig
+ * @typedef {import('./types').StorybookConfig} StorybookConfig
  */
 
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');

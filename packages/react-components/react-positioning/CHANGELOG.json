@@ -2,6 +2,63 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:46 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.2",
+      "version": "9.15.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "3baaca98be01a35d76f9c0ab1937d0feeba195dd",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:45:01 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:11 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2f4006afba4bdb5a9ff136a5ee8079bfd1533268",
+            "comment": "fix overflowBoundaryPadding being ingored when autoSize was on"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:02 GMT",
       "tag": "@fluentui/react-positioning_v9.14.5",
       "version": "9.14.5",

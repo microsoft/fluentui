@@ -3,7 +3,7 @@ import * as React from 'react';
 import descriptionMd from './Description.md';
 
 import { FormField, Input, Provider, teamsTheme } from '@fluentui/react-northstar';
-import { Field, makeStyles, shorthands } from '@fluentui/react-components';
+import { Field, makeStyles } from '@fluentui/react-components';
 import { FormFieldShim } from '@fluentui/react-migration-v0-v9';
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 

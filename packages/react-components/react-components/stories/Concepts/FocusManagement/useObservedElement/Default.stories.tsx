@@ -5,7 +5,6 @@ import {
   useFocusObserved,
   useId,
   makeStyles,
-  shorthands,
   tokens,
   ToggleButton,
   Title3,
@@ -15,16 +14,16 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
+    gap: '10px',
 
     backgroundColor: tokens.colorBrandBackground2,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.padding('10px'),
+    borderRadius: tokens.borderRadiusMedium,
+    padding: '10px',
   },
 });
 

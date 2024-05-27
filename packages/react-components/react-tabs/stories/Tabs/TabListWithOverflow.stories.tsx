@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   makeStyles,
   mergeClasses,
-  shorthands,
   tokens,
   Button,
   Menu,
@@ -194,8 +193,8 @@ const OverflowMenu = (props: OverflowMenuProps) => {
 const useExampleStyles = makeStyles({
   example: {
     backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('5px'),
+    overflow: 'hidden',
+    padding: '5px',
     zIndex: 0, //stop the browser resize handle from piercing the overflow menu
   },
   horizontal: {
@@ -281,8 +280,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    ...shorthands.overflow('auto'),
-    ...shorthands.padding('50px', '20px'),
+    overflow: 'auto',
+    padding: '50px 20px',
     rowGap: '20px',
     minHeight: '600px', //lets the page remain at a minimum height when vertical tabs are resized
   },

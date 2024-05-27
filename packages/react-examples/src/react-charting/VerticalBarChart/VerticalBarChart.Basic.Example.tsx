@@ -4,6 +4,8 @@ import {
   IVerticalBarChartProps,
   IVerticalBarChartDataPoint,
   ILineChartLineOptions,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
@@ -110,7 +112,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 40000,
         y: 13000,
         legend: 'Bananas',
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '5%',
       },
@@ -118,7 +120,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 52000,
         y: 43000,
         legend: 'Giraffes',
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '18%',
         lineData: {
@@ -142,7 +144,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 80000,
         y: 20000,
         legend: 'Elephants',
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
         lineData: {
@@ -154,7 +156,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 92000,
         y: 45000,
         legend: 'Monkeys',
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '19%',
         lineData: {

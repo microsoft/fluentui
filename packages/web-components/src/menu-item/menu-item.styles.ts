@@ -1,293 +1,203 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
+import { css } from '@microsoft/fast-element';
+import { display } from '../utils/index.js';
 import {
-  disabledCursor,
-  display,
-  ElementDefinitionContext,
-  focusVisible,
-  forcedColorsStylesheetBehavior,
-  MenuItemOptions,
-} from '@microsoft/fast-foundation';
-import { SystemColors } from '@microsoft/fast-web-utilities';
-import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
-import {
-  controlCornerRadius,
-  disabledOpacity,
-  neutralFillStealthActive,
-  neutralFillStealthHover,
-  neutralForegroundHint,
-  neutralForegroundRest,
-  strokeWidth,
-} from '../design-tokens';
-import { typeRampBase } from '../styles/patterns/type-ramp';
-import { focusTreatmentBase } from '../styles/focus';
+  borderRadiusMedium,
+  colorCompoundBrandForeground1Hover,
+  colorCompoundBrandForeground1Pressed,
+  colorNeutralBackground1,
+  colorNeutralBackground1Hover,
+  colorNeutralBackground1Selected,
+  colorNeutralBackgroundDisabled,
+  colorNeutralForeground2,
+  colorNeutralForeground2Hover,
+  colorNeutralForeground2Pressed,
+  colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
+  fontFamilyBase,
+  fontSizeBase200,
+  fontSizeBase300,
+  fontSizeBase500,
+  fontWeightRegular,
+  lineHeightBase200,
+  lineHeightBase300,
+} from '../theme/design-tokens.js';
 
-export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: MenuItemOptions,
-) =>
-  css`
-    ${display('grid')} :host {
-      contain: layout;
-      overflow: visible;
-      ${typeRampBase}
-      box-sizing: border-box;
-      height: calc(${heightNumber} * 1px);
-      grid-template-columns: minmax(32px, auto) 1fr minmax(32px, auto);
-      grid-template-rows: auto;
-      justify-items: center;
-      align-items: center;
-      padding: 0;
-      white-space: nowrap;
-      color: ${neutralForegroundRest};
-      fill: currentcolor;
-      cursor: pointer;
-      border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${strokeWidth} * 1px) solid transparent;
-      position: relative;
-    }
+/** MenuItem styles
+ * @public
+ */
+export const styles = css`
+  ${display('grid')}
 
-    :host(.indent-0) {
-      grid-template-columns: auto 1fr minmax(32px, auto);
-    }
+  :host {
+    grid-template-columns: 20px 20px auto 20px;
+    align-items: center;
+    grid-gap: 4px;
+    height: 32px;
+    background: ${colorNeutralBackground1};
+    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
+    border-radius: ${borderRadiusMedium};
+    color: ${colorNeutralForeground2};
+    padding: 0 10px;
+    cursor: pointer;
+    overflow: visible;
+    contain: layout;
+  }
 
-    :host(.indent-0) .content {
-      grid-column: 1;
-      grid-row: 1;
-      margin-inline-start: 10px;
-    }
+  :host(:hover) {
+    background: ${colorNeutralBackground1Hover};
+  }
 
-    :host(.indent-0) .expand-collapse-glyph-container {
-      grid-column: 5;
-      grid-row: 1;
-    }
+  .content {
+    white-space: nowrap;
+    flex-grow: 1;
+    grid-column: auto / span 2;
+    padding: 0 2px;
+  }
 
-    :host(.indent-2) {
-      grid-template-columns: minmax(32px, auto) minmax(32px, auto) 1fr minmax(32px, auto) minmax(32px, auto);
-    }
+  .checkbox,
+  .radio {
+    display: none;
+  }
 
-    :host(.indent-2) .content {
-      grid-column: 3;
-      grid-row: 1;
-      margin-inline-start: 10px;
-    }
+  .input-container,
+  .expand-collapse-glyph-container,
+  ::slotted([slot='start']),
+  ::slotted([slot='end']),
+  :host([checked]) .checkbox,
+  :host([checked]) .radio {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: ${colorNeutralForeground2};
+  }
 
-    :host(.indent-2) .expand-collapse-glyph-container {
-      grid-column: 5;
-      grid-row: 1;
-    }
+  .expand-collapse-glyph-container,
+  ::slotted([slot='start']),
+  ::slotted([slot='end']) {
+    height: 32px;
+    font-size: ${fontSizeBase500};
+    width: fit-content;
+  }
 
-    :host(.indent-2) .start {
-      grid-column: 2;
-    }
+  .input-container {
+    width: 20px;
+  }
 
-    :host(.indent-2) .end {
-      grid-column: 4;
-    }
+  ::slotted([slot='end']) {
+    color: ${colorNeutralForeground3};
+    font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
+    white-space: nowrap;
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
+  }
 
-    :host(:${focusVisible}) {
-      ${focusTreatmentBase}
-    }
+  .expand-collapse-glyph-container {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
+  }
 
-    :host(:not([disabled]):hover) {
-      background: ${neutralFillStealthHover};
-    }
+  :host(:hover) .input-container,
+  :host(:hover) .expand-collapse-glyph-container,
+  :host(:hover) .content {
+    color: ${colorNeutralForeground2Hover};
+  }
 
-    :host(:not([disabled]):active),
-    :host(.expanded) {
-      background: ${neutralFillStealthActive};
-      color: ${neutralForegroundRest};
-      z-index: 2;
-    }
+  :host([icon]:hover) ::slotted([slot='start']) {
+    color: ${colorCompoundBrandForeground1Hover};
+  }
 
-    :host([disabled]) {
-      cursor: ${disabledCursor};
-      opacity: ${disabledOpacity};
-    }
+  :host(:active) {
+    background-color: ${colorNeutralBackground1Selected};
+  }
 
-    .content {
-      grid-column-start: 2;
-      justify-self: start;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  :host(:active) .input-container,
+  :host(:active) .expand-collapse-glyph-container,
+  :host(:active) .content {
+    color: ${colorNeutralForeground2Pressed};
+  }
 
-    .start,
-    .end {
-      display: flex;
-      justify-content: center;
-    }
+  :host(:active) ::slotted([slot='start']) {
+    color: ${colorCompoundBrandForeground1Pressed};
+  }
 
-    :host(.indent-0[aria-haspopup='menu']) {
-      display: grid;
-      grid-template-columns: minmax(32px, auto) auto 1fr minmax(32px, auto) minmax(32px, auto);
-      align-items: center;
-      min-height: 32px;
-    }
+  :host([disabled]) {
+    background-color: ${colorNeutralBackgroundDisabled};
+  }
 
-    :host(.indent-1[aria-haspopup='menu']),
-    :host(.indent-1[role='menuitemcheckbox']),
-    :host(.indent-1[role='menuitemradio']) {
-      display: grid;
-      grid-template-columns: minmax(32px, auto) auto 1fr minmax(32px, auto) minmax(32px, auto);
-      align-items: center;
-      min-height: 32px;
-    }
+  :host([disabled]) .content,
+  :host([disabled]) .expand-collapse-glyph-container,
+  :host([disabled]) ::slotted([slot='end']),
+  :host([disabled]) ::slotted([slot='start']) {
+    color: ${colorNeutralForegroundDisabled};
+  }
 
-    :host(.indent-2:not([aria-haspopup='menu'])) .end {
-      grid-column: 5;
-    }
+  :host([data-indent]) {
+    display: grid;
+  }
 
-    :host .input-container,
-    :host .expand-collapse-glyph-container {
-      display: none;
-    }
+  :host([data-indent='1']) .content {
+    grid-column: 2 / span 1;
+  }
 
-    :host([aria-haspopup='menu']) .expand-collapse-glyph-container,
-    :host([role='menuitemcheckbox']) .input-container,
-    :host([role='menuitemradio']) .input-container {
-      display: grid;
-    }
+  :host([data-indent='1'][role='menuitemcheckbox']) {
+    display: grid;
+  }
 
-    :host([aria-haspopup='menu']) .content,
-    :host([role='menuitemcheckbox']) .content,
-    :host([role='menuitemradio']) .content {
-      grid-column-start: 3;
-    }
+  :host([data-indent='2'][aria-haspopup='menu']) ::slotted([slot='end']) {
+    grid-column: 4 / span 1;
+  }
 
-    :host([aria-haspopup='menu'].indent-0) .content {
-      grid-column-start: 1;
-    }
+  :host([data-indent='2'][aria-haspopup='menu']) .expand-collapse-glyph-container {
+    grid-column: 5 / span 1;
+  }
 
-    :host([aria-haspopup='menu']) .end,
-    :host([role='menuitemcheckbox']) .end,
-    :host([role='menuitemradio']) .end {
-      grid-column-start: 4;
-    }
+  :host([data-indent='1']) .content {
+    grid-column: 2 / span 1;
+  }
 
-    :host .expand-collapse,
-    :host .checkbox,
-    :host .radio {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      box-sizing: border-box;
-    }
+  :host([data-indent='1'][role='menuitemcheckbox']) .content,
+  :host([data-indent='1'][role='menuitemradio']) .content {
+    grid-column: auto / span 1;
+  }
 
-    :host .checkbox-indicator,
-    :host .radio-indicator,
-    slot[name='checkbox-indicator'],
-    slot[name='radio-indicator'] {
-      display: none;
-    }
+  :host([icon]) ::slotted([slot='end']),
+  :host([data-indent='1']) ::slotted([slot='end']) {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
+  }
 
-    ::slotted([slot='end']:not(svg)) {
-      margin-inline-end: 10px;
-      color: ${neutralForegroundHint};
-    }
+  :host([data-indent='2']) {
+    display: grid;
+    grid-template-columns: 20px 20px auto auto;
+  }
 
-    :host([aria-checked='true']) .checkbox-indicator,
-    :host([aria-checked='true']) slot[name='checkbox-indicator'],
-    :host([aria-checked='true']) .radio-indicator,
-    :host([aria-checked='true']) slot[name='radio-indicator'] {
-      display: flex;
-    }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        :host,
-        ::slotted([slot='end']:not(svg)) {
-          forced-color-adjust: none;
-          color: ${SystemColors.ButtonText};
-          fill: currentcolor;
-        }
-        :host(:not([disabled]):hover) {
-          background: ${SystemColors.Highlight};
-          color: ${SystemColors.HighlightText};
-          fill: currentcolor;
-        }
-        :host(:hover) .start,
-        :host(:hover) .end,
-        :host(:hover)::slotted(svg),
-        :host(:active) .start,
-        :host(:active) .end,
-        :host(:active)::slotted(svg),
-        :host(:hover) ::slotted([slot='end']:not(svg)),
-        :host(:${focusVisible}) ::slotted([slot='end']:not(svg)) {
-          color: ${SystemColors.HighlightText};
-          fill: currentcolor;
-        }
-        :host(.expanded) {
-          background: ${SystemColors.Highlight};
-          color: ${SystemColors.HighlightText};
-        }
-        :host(:${focusVisible}) {
-          background: ${SystemColors.Highlight};
-          outline-color: ${SystemColors.ButtonText};
-          color: ${SystemColors.HighlightText};
-          fill: currentcolor;
-        }
-        :host([disabled]),
-        :host([disabled]:hover),
-        :host([disabled]:hover) .start,
-        :host([disabled]:hover) .end,
-        :host([disabled]:hover)::slotted(svg),
-        :host([disabled]:${focusVisible}) {
-          background: ${SystemColors.ButtonFace};
-          color: ${SystemColors.GrayText};
-          fill: currentcolor;
-          opacity: 1;
-        }
-        :host([disabled]:${focusVisible}) {
-          outline-color: ${SystemColors.GrayText};
-        }
-        :host .expanded-toggle,
-        :host .checkbox,
-        :host .radio {
-          border-color: ${SystemColors.ButtonText};
-          background: ${SystemColors.HighlightText};
-        }
-        :host([checked]) .checkbox,
-        :host([checked]) .radio {
-          background: ${SystemColors.HighlightText};
-          border-color: ${SystemColors.HighlightText};
-        }
-        :host(:hover) .expanded-toggle,
-            :host(:hover) .checkbox,
-            :host(:hover) .radio,
-            :host(:${focusVisible}) .expanded-toggle,
-            :host(:${focusVisible}) .checkbox,
-            :host(:${focusVisible}) .radio,
-            :host([checked]:hover) .checkbox,
-            :host([checked]:hover) .radio,
-            :host([checked]:${focusVisible}) .checkbox,
-            :host([checked]:${focusVisible}) .radio {
-          border-color: ${SystemColors.HighlightText};
-        }
-        :host([aria-checked='true']) {
-          background: ${SystemColors.Highlight};
-          color: ${SystemColors.HighlightText};
-        }
-        :host([aria-checked='true']) .checkbox-indicator,
-        :host([aria-checked='true']) ::slotted([slot='checkbox-indicator']),
-        :host([aria-checked='true']) ::slotted([slot='radio-indicator']) {
-          fill: ${SystemColors.Highlight};
-        }
-        :host([aria-checked='true']) .radio-indicator {
-          background: ${SystemColors.Highlight};
-        }
-      `,
-    ),
-    new DirectionalStyleSheetBehavior(
-      css`
-        .expand-collapse-glyph-container {
-          transform: rotate(0deg);
-        }
-      `,
-      css`
-        .expand-collapse-glyph-container {
-          transform: rotate(180deg);
-        }
-      `,
-    ),
-  );
+  :host([data-indent='2']) .content {
+    grid-column: 3 / span 1;
+  }
+
+  :host([data-indent='2']) .input-container {
+    grid-column: 1 / span 1;
+  }
+
+  :host([data-indent='2']) ::slotted([slot='start']) {
+    grid-column: 2 / span 1;
+  }
+
+  :host([aria-haspopup='menu']) {
+    grid-template-columns: 20px auto auto 20px;
+  }
+
+  :host([data-indent='2'][aria-haspopup='menu']) {
+    grid-template-columns: 20px 20px auto auto 20px;
+  }
+
+  :host([aria-haspopup='menu']) ::slotted([slot='end']) {
+    grid-column: 3 / span 1;
+    justify-self: flex-end;
+  }
+
+  :host([data-indent='2'][aria-haspopup='menu']) ::slotted([slot='end']) {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
+  }
+`;

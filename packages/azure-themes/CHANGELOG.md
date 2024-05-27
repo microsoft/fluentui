@@ -1,8 +1,38 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 07 May 2024 07:26:47 GMT and should not be manually modified.
+This log was last generated on Fri, 24 May 2024 07:28:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.78](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.78)
+
+Fri, 24 May 2024 07:28:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.77..@fluentui/azure-themes_v8.6.78)
+
+### Patches
+
+- Bump @fluentui/react to v8.118.5 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+- Bump @fluentui/set-version to v8.2.20 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+
+## [8.6.77](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.77)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.76..@fluentui/azure-themes_v8.6.77)
+
+### Patches
+
+- Bump @fluentui/react to v8.118.4 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+- Bump @fluentui/set-version to v8.2.19 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+
+## [8.6.76](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.76)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.75..@fluentui/azure-themes_v8.6.76)
+
+### Patches
+
+- Bump @fluentui/react to v8.118.3 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/set-version to v8.2.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
 
 ## [8.6.75](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.75)
 

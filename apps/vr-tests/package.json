@@ -10,7 +10,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "start-storybook -p 3000",
-    "type-check": "tsc",
+    "type-check": "tsc -p . --noEmit --baseUrl .",
     "vr:build": "yarn build",
     "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },

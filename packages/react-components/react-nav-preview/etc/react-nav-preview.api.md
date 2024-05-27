@@ -6,8 +6,24 @@
 
 /// <reference types="react" />
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ButtonProps } from '@fluentui/react-button';
+import { ButtonSlots } from '@fluentui/react-button';
+import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DrawerBodyProps } from '@fluentui/react-drawer';
+import type { DrawerBodySlots } from '@fluentui/react-drawer';
+import type { DrawerBodyState } from '@fluentui/react-drawer';
+import type { DrawerFooterProps } from '@fluentui/react-drawer';
+import type { DrawerFooterSlots } from '@fluentui/react-drawer';
+import type { DrawerFooterState } from '@fluentui/react-drawer';
+import type { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
+import type { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
+import type { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import type { DrawerHeaderProps } from '@fluentui/react-drawer';
+import type { DrawerHeaderSlots } from '@fluentui/react-drawer';
+import type { DrawerHeaderState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
@@ -22,35 +38,13 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
 
 // @public (undocumented)
-export const hamburgerClassNames: SlotClassNames<HamburgerSlots>;
+export const hamburgerClassNames: SlotClassNames<ButtonSlots>;
 
 // @public
-export const HamburgerInNav: ForwardRefComponent<HamburgerInNavProps>;
-
-// @public (undocumented)
-export const hamburgerInNavClassNames: SlotClassNames<HamburgerInNavSlots>;
+export type HamburgerProps = ButtonProps;
 
 // @public
-export type HamburgerInNavProps = ComponentProps<HamburgerInNavSlots> & {};
-
-// @public (undocumented)
-export type HamburgerInNavSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type HamburgerInNavState = ComponentState<HamburgerInNavSlots>;
-
-// @public
-export type HamburgerProps = ComponentProps<HamburgerSlots> & {};
-
-// @public (undocumented)
-export type HamburgerSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type HamburgerState = ComponentState<HamburgerSlots>;
+export type HamburgerState = ButtonState;
 
 // @public
 export const Nav: ForwardRefComponent<NavProps>;
@@ -122,15 +116,13 @@ export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps>;
 export const navDrawerBodyClassNames: SlotClassNames<NavDrawerBodySlots>;
 
 // @public
-export type NavDrawerBodyProps = ComponentProps<NavDrawerBodySlots> & {};
+export type NavDrawerBodyProps = DrawerBodyProps;
 
 // @public (undocumented)
-export type NavDrawerBodySlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerBodySlots = DrawerBodySlots;
 
 // @public
-export type NavDrawerBodyState = ComponentState<NavDrawerBodySlots>;
+export type NavDrawerBodyState = DrawerBodyState;
 
 // @public (undocumented)
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
@@ -142,15 +134,13 @@ export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
 export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots>;
 
 // @public
-export type NavDrawerFooterProps = ComponentProps<NavDrawerFooterSlots> & {};
+export type NavDrawerFooterProps = DrawerFooterProps;
 
 // @public (undocumented)
-export type NavDrawerFooterSlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerFooterSlots = DrawerFooterSlots;
 
 // @public
-export type NavDrawerFooterState = ComponentState<NavDrawerFooterSlots>;
+export type NavDrawerFooterState = DrawerFooterState;
 
 // @public
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps>;
@@ -165,26 +155,22 @@ export const NavDrawerHeaderNav: ForwardRefComponent<NavDrawerHeaderNavProps>;
 export const navDrawerHeaderNavClassNames: SlotClassNames<NavDrawerHeaderNavSlots>;
 
 // @public
-export type NavDrawerHeaderNavProps = ComponentProps<NavDrawerHeaderNavSlots> & {};
+export type NavDrawerHeaderNavProps = DrawerHeaderNavigationProps;
 
 // @public (undocumented)
-export type NavDrawerHeaderNavSlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerHeaderNavSlots = DrawerHeaderNavigationSlots;
 
 // @public
-export type NavDrawerHeaderNavState = ComponentState<NavDrawerHeaderNavSlots>;
+export type NavDrawerHeaderNavState = DrawerHeaderNavigationState;
 
 // @public
-export type NavDrawerHeaderProps = ComponentProps<NavDrawerHeaderSlots> & {};
+export type NavDrawerHeaderProps = DrawerHeaderProps;
 
 // @public (undocumented)
-export type NavDrawerHeaderSlots = {
-    root: Slot<'div'>;
-};
+export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 
 // @public
-export type NavDrawerHeaderState = ComponentState<NavDrawerHeaderSlots>;
+export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
 export type NavDrawerProps = DrawerProps & NavProps;
@@ -199,7 +185,8 @@ export const NavItem: ForwardRefComponent<NavItemProps>;
 export const navItemClassNames: SlotClassNames<NavItemSlots>;
 
 // @public
-export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
+export type NavItemProps = ComponentProps<NavItemSlots> & {
+    href?: string;
     value: NavItemValue;
 };
 
@@ -211,7 +198,7 @@ export type NavItemRegisterData = {
 
 // @public (undocumented)
 export type NavItemSlots = {
-    root: NonNullable<Slot<'a'>>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
     icon?: Slot<'span'>;
 };
 
@@ -245,11 +232,11 @@ export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps>;
 export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots>;
 
 // @public
-export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots> & {};
+export type NavSectionHeaderProps = ComponentProps<NavSectionHeaderSlots>;
 
 // @public (undocumented)
 export type NavSectionHeaderSlots = {
-    root: Slot<'div'>;
+    root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
 };
 
 // @public
@@ -289,13 +276,14 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
 };
 
 // @public
-export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
+export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {
+    href?: string;
     value: NavItemValue;
 };
 
 // @public (undocumented)
 export type NavSubItemSlots = {
-    root: Slot<'a'>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 };
 
 // @public
@@ -305,12 +293,6 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
-
-// @public
-export const renderHamburger_unstable: (state: HamburgerState) => JSX.Element;
-
-// @public
-export const renderHamburgerInNav_unstable: (state: HamburgerInNavState) => JSX.Element;
 
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
@@ -325,18 +307,6 @@ export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, conte
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
-export const renderNavDrawerBody_unstable: (state: NavDrawerBodyState) => JSX.Element;
-
-// @public
-export const renderNavDrawerFooter_unstable: (state: NavDrawerFooterState) => JSX.Element;
-
-// @public
-export const renderNavDrawerHeader_unstable: (state: NavDrawerHeaderState) => JSX.Element;
-
-// @public
-export const renderNavDrawerHeaderNav_unstable: (state: NavDrawerHeaderNavState) => JSX.Element;
-
-// @public
 export const renderNavItem_unstable: (state: NavItemState) => JSX.Element;
 
 // @public
@@ -349,13 +319,7 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
 
 // @public
-export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLDivElement>) => HamburgerState;
-
-// @public
-export const useHamburgerInNav_unstable: (props: HamburgerInNavProps, ref: React_2.Ref<HTMLDivElement>) => HamburgerInNavState;
-
-// @public
-export const useHamburgerInNavStyles_unstable: (state: HamburgerInNavState) => HamburgerInNavState;
+export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;
 
 // @public
 export const useHamburgerStyles_unstable: (state: HamburgerState) => HamburgerState;
@@ -385,16 +349,16 @@ export const useNavDrawerBody_unstable: (props: NavDrawerBodyProps, ref: React_2
 export const useNavDrawerBodyStyles_unstable: (state: NavDrawerBodyState) => NavDrawerBodyState;
 
 // @public
-export const useNavDrawerFooter_unstable: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerFooterState;
+export const useNavDrawerFooter_unstable: (props: NavDrawerFooterProps, ref: React_2.Ref<HTMLElement>) => NavDrawerFooterState;
 
 // @public
 export const useNavDrawerFooterStyles_unstable: (state: NavDrawerFooterState) => NavDrawerFooterState;
 
 // @public
-export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerHeaderState;
+export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderState;
 
 // @public
-export const useNavDrawerHeaderNav_unstable: (props: NavDrawerHeaderNavProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerHeaderNavState;
+export const useNavDrawerHeaderNav_unstable: (props: NavDrawerHeaderNavProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderNavState;
 
 // @public
 export const useNavDrawerHeaderNavStyles_unstable: (state: NavDrawerHeaderNavState) => NavDrawerHeaderNavState;
@@ -406,7 +370,7 @@ export const useNavDrawerHeaderStyles_unstable: (state: NavDrawerHeaderState) =>
 export const useNavDrawerStyles_unstable: (state: NavDrawerState) => NavDrawerState;
 
 // @public
-export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavItemState;
+export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => NavItemState;
 
 // @public
 export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
@@ -421,7 +385,7 @@ export const useNavSectionHeaderStyles_unstable: (state: NavSectionHeaderState) 
 export const useNavStyles_unstable: (state: NavState) => NavState;
 
 // @public
-export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavSubItemState;
+export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => NavSubItemState;
 
 // @public
 export const useNavSubItemGroup_unstable: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;

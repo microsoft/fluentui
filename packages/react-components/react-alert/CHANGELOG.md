@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Mon, 06 May 2024 12:55:02 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.123](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.123)
+
+Thu, 23 May 2024 08:02:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.122..@fluentui/react-alert_v9.0.0-beta.123)
+
+### Changes
+
+- chore: replace usage of .shorthands() in styles ([PR #31458](https://github.com/microsoft/fluentui/pull/31458) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.28 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-button to v9.3.82 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+
+## [9.0.0-beta.122](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.122)
+
+Mon, 20 May 2024 12:44:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.121..@fluentui/react-alert_v9.0.0-beta.122)
+
+### Changes
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.27 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-button to v9.3.81 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.0.0-beta.121](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.121)
+
+Thu, 16 May 2024 09:25:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.120..@fluentui/react-alert_v9.0.0-beta.121)
+
+### Changes
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.26 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+- Bump @fluentui/react-button to v9.3.80 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+
+## [9.0.0-beta.120](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.120)
+
+Thu, 09 May 2024 19:35:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.119..@fluentui/react-alert_v9.0.0-beta.120)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.6.25 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
+- Bump @fluentui/react-button to v9.3.79 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
 
 ## [9.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.119)
 

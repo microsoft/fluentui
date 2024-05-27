@@ -1,10 +1,8 @@
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonJS from 'rollup-plugin-commonjs';
-import filesize from 'rollup-plugin-filesize';
-import resolve from 'rollup-plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import esbuild, { minify } from 'rollup-plugin-esbuild';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
-import typescript from 'rollup-plugin-typescript2';
-import { transformCSSFragment, transformHTMLFragment } from './build/transform-fragments';
+import { transformCSSFragment, transformHTMLFragment } from './scripts/transform-fragments';
 
 const parserOptions = {
   sourceType: 'module',
@@ -21,18 +19,14 @@ export default [
       {
         file: 'dist/web-components.min.js',
         format: 'esm',
-        plugins: [terser()],
+        plugins: [minify()],
       },
     ],
     plugins: [
-      resolve(),
+      nodeResolve({ browser: true }),
       commonJS(),
-      typescript({
-        tsconfigOverride: {
-          compilerOptions: {
-            declaration: false,
-          },
-        },
+      esbuild({
+        tsconfig: './tsconfig.lib.json',
       }),
       transformTaggedTemplate({
         tagsToProcess: ['css'],
@@ -43,10 +37,6 @@ export default [
         tagsToProcess: ['html'],
         transformer: transformHTMLFragment,
         parserOptions,
-      }),
-      filesize({
-        showMinifiedSize: false,
-        showBrotliSize: true,
       }),
     ],
   },

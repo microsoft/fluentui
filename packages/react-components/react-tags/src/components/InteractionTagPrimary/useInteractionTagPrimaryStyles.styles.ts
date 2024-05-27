@@ -101,7 +101,7 @@ const useRootCircularContrastStyles = makeStyles({
     '@media (forced-colors: active)': {
       position: 'relative',
       '::before': {
-        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+        borderRight: `${tokens.strokeWidthThin} solid transparent`,
         borderTopRightRadius: tokens.borderRadiusCircular,
         borderBottomRightRadius: tokens.borderRadiusCircular,
       },
