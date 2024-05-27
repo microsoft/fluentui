@@ -2,11 +2,11 @@
   "name": "@fluentui/scripts-beachball",
   "version": "0.0.1",
   "private": true,
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js .",
+    "lint": "eslint --ext .ts,.js ./src",
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check"
   },

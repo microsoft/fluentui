@@ -15,7 +15,6 @@
     "@fluentui/scripts-utils": "*",
     "@fluentui/scripts-prettier": "*",
     "@fluentui/scripts-puppeteer": "*",
-    "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-projects-test": "*"
   },
   "devDependencies": {}

@@ -6,6 +6,6 @@ exports.register = register;
 function register() {
   if (process.env.NODE_ENV !== 'test') {
     // @ts-expect-error - ts-node/register doesn't provide types so this would error
-    require('@fluentui/scripts-ts-node/register');
+    require('@fluentui/scripts-ts-node/src/register');
   }
 }
