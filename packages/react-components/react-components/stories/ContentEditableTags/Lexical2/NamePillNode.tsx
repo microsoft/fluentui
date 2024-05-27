@@ -47,6 +47,8 @@ export class NamePillNode extends DecoratorNode<React.ReactNode> {
     const el = document.createElement('span');
     el.ariaLabel = this.__id;
     el.id = this.__id;
+    el.setAttribute('role', 'option');
+    el.setAttribute('aria-selected', 'true');
     return el;
   }
 
