@@ -13,4 +13,8 @@ Then try running:
 If the issues still persist, clean your repo:
 
 `yarn cache clean`
-`yarn` // Vanilla Windows users may have better luck with yarn build.
+`yarn`
+
+If unrelated errors are still persistent, a clean build may resolve:
+
+`yarn build`

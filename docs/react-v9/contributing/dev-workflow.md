@@ -96,7 +96,7 @@ When your change is ready, [create a pull request](https://github.com/microsoft/
 
 Common checklist for PR's
 
-- Descriptive title: "feat:package-name Adding 'multiple' prop to Nav"
+- Descriptive title: "feat(package-name): Adding 'multiple' prop to Nav"
 - Brief description of the improvement you're making. You should summarize the issue you are addressing. Assume the PR is the reviewer's starting point and they should only have to dive into the issue for very specific details.
 - Link to the relevant issue.
 - Visual aid for changes to give more context. Before and After clips help a lot.

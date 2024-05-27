@@ -8,7 +8,7 @@ yarn create-package # scaffolds a new package
 yarn create-component # scaffolds a new component
 yarn change # creates a new change file, if needed
 yarn clean # tidies any cached dependencies
-yarn build # Windows users not using WSL may likely have to run this after cleaning, or if they need to generate an api change file. Note that this command can take up to an hour depending on the speed of your hard drive.
+yarn build # generates and relinks all packages and temporary files, this can be a good option if you see errors unrelated to the packages you are working on
 yarn start # runs a package. You can select the package of choice.
 yarn update-snapshots # updates snapshot tests
 yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
