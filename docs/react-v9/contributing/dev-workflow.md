@@ -28,7 +28,7 @@ cd fluentui
 yarn
 ```
 
-Vanilla Windows users not working in WSL should run `yarn clean` and then `yarn build` weekly or when pulling from master breaks the environment.
+Windows users not working in WSL should run `yarn clean` and then `yarn build` on first use to ensure correct linking in non-\*nix systems.
 
 Run `yarn start` and select your start up project.
 
