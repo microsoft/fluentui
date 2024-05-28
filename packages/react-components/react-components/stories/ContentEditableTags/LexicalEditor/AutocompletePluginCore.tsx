@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {
   $getSelection,
+  $isDecoratorNode,
   $isNodeSelection,
   $isRangeSelection,
   COMMAND_PRIORITY_CRITICAL,
@@ -9,6 +10,8 @@ import {
   INSERT_PARAGRAPH_COMMAND,
   KEY_ARROW_DOWN_COMMAND,
   KEY_ARROW_UP_COMMAND,
+  KEY_BACKSPACE_COMMAND,
+  KEY_DELETE_COMMAND,
   KEY_ENTER_COMMAND,
   KEY_ESCAPE_COMMAND,
   SELECTION_CHANGE_COMMAND,
@@ -65,13 +68,49 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
       }
     }
     return false;
-  }, [editor, autocompleteItem]);
+  }, [autocompleteItem]);
+
+  const onBackspace = React.useCallback(() => {
+    const sel = $getSelection();
+
+    if ($isNodeSelection(sel) && sel.getNodes().length === 1) {
+      const selectedNode = sel.getNodes()[0];
+      if ($isDecoratorNode(selectedNode)) {
+        // Have to move the selection at the end and let the native capslock handle the deletion
+        // otherwise 2 of the nodes will be deleted for some reason. This feels like a bug in lexical.
+        selectedNode.selectEnd();
+      }
+    }
+    return false;
+  }, []);
+
+  const onDelete = React.useCallback(() => {
+    const sel = $getSelection();
+
+    if ($isNodeSelection(sel) && sel.getNodes().length === 1) {
+      const selectedNode = sel.getNodes()[0];
+      if ($isDecoratorNode(selectedNode)) {
+        // Have to move the selection at the start and let the native delete handle the deletion
+        // otherwise 2 of the nodes will be deleted for some reason. This feels like a bug in lexical.
+        selectedNode.selectStart();
+      }
+    }
+
+    return false;
+  }, []);
 
   React.useEffect(() => {
     return editor.registerCommand(KEY_ENTER_COMMAND, appendSelectedItem, COMMAND_PRIORITY_CRITICAL);
   });
+
   React.useEffect(() => {
     return editor.registerCommand(KEY_ESCAPE_COMMAND, onEscape, COMMAND_PRIORITY_CRITICAL);
+  });
+  React.useEffect(() => {
+    return editor.registerCommand(KEY_BACKSPACE_COMMAND, onBackspace, COMMAND_PRIORITY_CRITICAL);
+  });
+  React.useEffect(() => {
+    return editor.registerCommand(KEY_DELETE_COMMAND, onDelete, COMMAND_PRIORITY_CRITICAL);
   });
 
   // Update the activedescendant on the parent element to the currently selected item
@@ -80,14 +119,16 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
     if (editorElement && autocompleteItem) {
       editorElement.setAttribute('aria-activedescendant', getAutocompleteItemId(id, autocompleteItem));
     }
-  }, [autocompleteItem, query]);
+  }, [autocompleteItem, editor, id, query]);
 
   React.useEffect(() => {
     return editor.registerCommand(
       SELECTION_CHANGE_COMMAND,
       () => {
         const sel = $getSelection();
-        if (!sel) return;
+        if (!sel) {
+          return;
+        }
 
         const editorElement = editor.getRootElement();
 
@@ -145,7 +186,7 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
 
   const onClick = React.useCallback(() => {
     editor.update(appendSelectedItem);
-  }, [appendSelectedItem]);
+  }, [appendSelectedItem, editor]);
 
   return children({ onClick, getItemId: getAutocompleteItemId });
 };
