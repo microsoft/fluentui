@@ -113,22 +113,10 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
         return;
       }
 
-      let newPage =
-        direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
-
-      if (!newPage && _loop) {
-        if (direction === 'prev') {
-          newPage = carouselWalker.nextPage(active.value);
-          while (newPage && carouselWalker.nextPage(newPage?.value)) {
-            newPage = carouselWalker.nextPage(newPage?.value);
-          }
-        } else {
-          newPage = carouselWalker.prevPage(active.value);
-          while (newPage && carouselWalker.prevPage(newPage?.value)) {
-            newPage = carouselWalker.prevPage(newPage?.value);
-          }
-        }
-      }
+      const newPage =
+        direction === 'prev'
+          ? carouselWalker.prevPage(active.value, _loop)
+          : carouselWalker.nextPage(active.value, _loop);
 
       if (newPage) {
         setValue(newPage?.value);
