@@ -22,7 +22,12 @@ export type PresenceComponentProps = {
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
 
-  /** Callback that is called when the motion finishes. */
+  /**
+   * Callback that is called when the whole motion finishes.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "finish" events. The callback is
+   * triggered once all animations have finished with "null" instead of an event object to avoid ambiguity.
+   */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
   onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
