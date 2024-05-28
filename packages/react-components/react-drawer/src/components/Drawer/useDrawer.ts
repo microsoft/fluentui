@@ -22,7 +22,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
       root: elementType,
     },
 
-    root: slot.always<DrawerProps>(
+    root: slot.always(
       slot.resolveShorthand({
         ref,
         ...props,
