@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSkeleton_unstable } from './useSkeleton';
 import { renderSkeleton_unstable } from './renderSkeleton';
-import { useSkeletonStyles_unstable } from './useSkeletonStyles';
+import { useSkeletonStyles_unstable } from './useSkeletonStyles.styles';
 import { useSkeletonContextValues } from './useSkeletonContextValues';
 import type { SkeletonProps } from './Skeleton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
