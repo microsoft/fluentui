@@ -126,6 +126,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
+    // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+    // eslint-disable-next-line no-restricted-globals
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       /* Sanity check - do we even need virtualization? */
       if (virtualizerLength > numItems) {

@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Mon, 13 May 2024 12:34:20 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.15)
+
+Thu, 23 May 2024 08:02:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.14..@fluentui/react-migration-v8-v9_v9.6.15)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.53.0 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+
+## [9.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.14)
+
+Mon, 20 May 2024 12:44:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.13..@fluentui/react-migration-v8-v9_v9.6.14)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.52.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.13)
+
+Thu, 16 May 2024 09:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.12..@fluentui/react-migration-v8-v9_v9.6.13)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-components to v9.51.1 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
 
 ## [9.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.12)
 

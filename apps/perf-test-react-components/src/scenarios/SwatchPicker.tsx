@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SwatchPicker, ColorSwatch, ImageSwatch, EmptySwatch } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch, ImageSwatch, EmptySwatch } from '@fluentui/react-components';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 

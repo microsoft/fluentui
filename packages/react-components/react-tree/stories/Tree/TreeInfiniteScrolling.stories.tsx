@@ -7,7 +7,7 @@ import {
   useHeadlessFlatTree_unstable,
   TreeItemValue,
 } from '@fluentui/react-components';
-import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
+import { makeStyles, Spinner } from '@fluentui/react-components';
 
 const ITEMS_PER_PAGE = 10;
 const MAX_PAGES = 4;
@@ -29,14 +29,14 @@ const useStyles = makeStyles({
   container: {
     height: '400px',
     paddingBottom: '10px',
-    ...shorthands.overflow('auto'),
+    overflow: 'auto',
   },
   screenReadersOnly: {
     position: 'absolute',
     width: '1px',
     height: '1px',
-    ...shorthands.margin('-1'),
-    ...shorthands.overflow('hidden'),
+    margin: '-1',
+    overflow: 'hidden',
     clip: 'rect(0,0,0,0)',
     whiteSpace: 'nowrap',
   },

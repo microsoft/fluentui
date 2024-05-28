@@ -75,6 +75,9 @@ describe('scrollIntoView', () => {
       offsetParent: listbox as HTMLElement,
       parentElement: listbox as HTMLElement,
       contains: jest.fn().mockReturnValue(false),
+      ownerDocument: {
+        defaultView: window,
+      } as Document,
     };
 
     jest
@@ -118,6 +121,9 @@ describe('scrollIntoView', () => {
       offsetParent: listbox as HTMLElement,
       parentElement: listbox as HTMLElement,
       contains: jest.fn().mockReturnValue(false),
+      ownerDocument: {
+        defaultView: window,
+      } as Document,
     };
 
     jest

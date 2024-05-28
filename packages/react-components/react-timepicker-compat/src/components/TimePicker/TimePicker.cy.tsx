@@ -9,7 +9,7 @@ const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const Default = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
+const Default = ({ freeform, clearable }: Pick<TimePickerProps, 'freeform' | 'clearable'>) => {
   const [selectedTimeText, setSelectedTimeText] = React.useState<string | undefined>(undefined);
   const onTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
     setSelectedTimeText(data.selectedTimeText);
@@ -18,6 +18,7 @@ const Default = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
     <div>
       <TimePicker
         freeform={freeform}
+        clearable={clearable}
         startHour={10}
         endHour={20}
         increment={60}
@@ -29,7 +30,7 @@ const Default = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
   );
 };
 
-const Controlled = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
+const Controlled = ({ freeform, clearable }: Pick<TimePickerProps, 'freeform' | 'clearable'>) => {
   const [selectedTime, setSelectedTime] = React.useState<Date | null>(null);
   const [selectedTimeText, setSelectedTimeText] = React.useState<string | undefined>(undefined);
   const [value, setValue] = React.useState<string>('');
@@ -47,6 +48,7 @@ const Controlled = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
     <div>
       <TimePicker
         freeform={freeform}
+        clearable={clearable}
         startHour={10}
         endHour={20}
         increment={60}
@@ -63,6 +65,7 @@ const Controlled = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
 
 const inputSelector = '[role="combobox"]';
 const optionSelector = (index: number) => `[role="option"]:nth-of-type(${index + 1})`;
+const clearIconSelector = '.fui-Combobox__clearIcon';
 
 describe('TimePicker', () => {
   [
@@ -141,6 +144,22 @@ describe('TimePicker', () => {
 
         cy.realPress('Tab');
         cy.get('#selected-time-text').should('have.text', '10:30');
+      });
+    });
+
+    describe('clearable', () => {
+      it(`${name} should clear input on clear icon click`, () => {
+        mount(<Example clearable />);
+        cy.get(inputSelector).click().realPress('Enter').get(inputSelector).should('have.value', '10:00');
+        cy.get(clearIconSelector).click().get(inputSelector).should('have.value', '');
+        cy.get('#selected-time-text').should('have.text', '');
+      });
+
+      it(`freeform ${name} should clear input on clear icon click`, () => {
+        mount(<Example clearable freeform />);
+        cy.get(inputSelector).click().type('14{enter}').get(inputSelector).should('have.value', '14:00');
+        cy.get(clearIconSelector).click().get(inputSelector).should('have.value', '');
+        cy.get('#selected-time-text').should('have.text', '');
       });
     });
   });

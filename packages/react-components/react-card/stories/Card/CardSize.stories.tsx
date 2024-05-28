@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, tokens, shorthands, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
+import { makeStyles, tokens, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
 import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -18,9 +18,7 @@ const useStyles = makeStyles({
     rowGap: '36px',
   },
 
-  title: {
-    ...shorthands.margin(0, 0, '12px'),
-  },
+  title: { margin: '0 0 12px' },
 
   card: {
     width: '300px',
@@ -29,14 +27,14 @@ const useStyles = makeStyles({
   },
 
   flex: {
-    ...shorthands.gap('4px'),
+    gap: '4px',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
 
   appIcon: {
-    ...shorthands.borderRadius('4px'),
+    borderRadius: '4px',
     height: '32px',
   },
 

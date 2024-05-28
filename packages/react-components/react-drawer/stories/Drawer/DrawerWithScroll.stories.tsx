@@ -43,7 +43,7 @@ const Footer = () => {
 
 const Body = () => {
   return (
-    <DrawerBody>
+    <DrawerBody tabIndex={0} role="group" aria-label="Example scrolling content">
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus nam aut amet similique, iure vel voluptates
       cum cumque repellendus perferendis maiores officia unde in? Autem neque sequi maiores eum omnis. Lorem ipsum,
       dolor sit amet consectetur adipisicing elit. Perspiciatis ipsam explicabo tempora ipsum saepe nam. Eum aliquid
@@ -89,7 +89,9 @@ WithScroll.parameters = {
     description: {
       story: [
         'By default, the drawer will not scroll its content when it overflows.',
-        'To enable this behavior, the DrawerBody component can be used to wrap the content of the drawer.',
+        'To enable this behavior, the DrawerBody component can be used to wrap the content of the drawer. \n',
+        'Important note: if the drawer content does not contain any focusable elements, the DrawerBody itself needs',
+        'a tabIndex of 0 to ensure keyboard scroll access.',
       ].join('\n'),
     },
   },

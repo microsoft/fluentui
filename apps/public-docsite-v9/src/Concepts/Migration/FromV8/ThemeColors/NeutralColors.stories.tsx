@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ColorCompare } from './ColorCompare';
 import { lightThemeNeutralMap, darkThemeNeutralMap } from './themeMap';
 
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

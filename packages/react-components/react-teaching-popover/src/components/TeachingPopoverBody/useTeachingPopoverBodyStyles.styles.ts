@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TeachingPopoverBodySlots, TeachingPopoverBodyState } from './TeachingPopoverBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -11,8 +11,8 @@ const popoverBodyDimension = 288;
 
 export const useMediaStyles = makeStyles({
   base: {
-    ...shorthands.gridArea('media'),
-    ...shorthands.overflow('hidden'),
+    gridArea: 'media',
+    overflow: 'hidden',
     width: `${popoverBodyDimension}px`,
     marginBottom: '12px',
     verticalAlign: 'middle',

@@ -70,6 +70,42 @@ describe('createPresenceComponent', () => {
     });
   });
 
+  describe('onMotionFinish', () => {
+    it('is not called on first render', () => {
+      const onMotionFinish = jest.fn();
+      const TestAtom = createPresenceComponent(motion);
+      const { ElementMock } = createElementMock();
+
+      render(
+        <TestAtom onMotionFinish={onMotionFinish}>
+          <ElementMock />
+        </TestAtom>,
+      );
+
+      expect(onMotionFinish).toHaveBeenCalledTimes(0);
+    });
+
+    it('calls "onMotionFinish" when animation finishes', () => {
+      const onMotionFinish = jest.fn();
+      const TestAtom = createPresenceComponent(motion);
+      const { ElementMock } = createElementMock();
+
+      const { rerender } = render(
+        <TestAtom onMotionFinish={onMotionFinish} visible>
+          <ElementMock />
+        </TestAtom>,
+      );
+      rerender(
+        <TestAtom onMotionFinish={onMotionFinish} visible={false}>
+          <ElementMock />
+        </TestAtom>,
+      );
+
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
+      expect(onMotionFinish).toHaveBeenCalledWith(null, { direction: 'exit' });
+    });
+  });
+
   describe('visible', () => {
     it('animates when state changes', () => {
       const TestAtom = createPresenceComponent(motion);

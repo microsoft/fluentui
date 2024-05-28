@@ -18,7 +18,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -36,8 +35,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -803,7 +804,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -821,8 +821,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1601,7 +1603,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             width: 100%;
           }
       id="chart_6"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_7"
@@ -1619,8 +1620,10 @@ exports[`Theme Change Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2398,7 +2401,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -2416,8 +2418,10 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -11427,7 +11431,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -11445,8 +11448,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -12212,7 +12217,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -12230,8 +12234,10 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 4 bars. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -13075,7 +13081,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -13093,8 +13098,10 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -13906,7 +13913,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -13924,8 +13930,10 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >

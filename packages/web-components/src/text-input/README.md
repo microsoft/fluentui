@@ -1,155 +1,149 @@
-# TextInput
+# The `TextInput` Custom Element
 
-> An implementation of a [text input](https://w3c.github.io/html-reference/input.text.html) as a form-connected web-component.
-> <br />
+A partial implementation of an [`<input>`](https://w3c.github.io/html-reference/input.text.html) as a form-associated custom element.
 
-## **Design Spec**
+The `<fluent-text-input>` is intended to match feature parity with the Fluent UI React 9 `<Input />` component. However, due to the nature of web components there will not be 100% parity between the two.
 
-[Link to Text Input Design Spec in Figma](https://www.figma.com/file/TvHmWjZYxwtI9Tz6v5BT7E/Input?node-id=2366-657&t=UNSOfCD3St9ffppx-0)
+[View the Text Input Design Spec in Figma](https://www.figma.com/file/TvHmWjZYxwtI9Tz6v5BT7E/Input?node-id=2366-657&t=UNSOfCD3St9ffppx-0)
 
-<br />
+## API
 
-## **Engineering Spec**
+### Class: `TextInput`
 
-Fluent WC3 Text Input extends from the [FAST Text Field](https://explore.fast.design/components/fast-text-field) and is intended to be as close to the Fluent UI React 9 Input implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+#### Definition
 
-<br />
+| Detail     | Description           |
+| ---------- | --------------------- |
+| Tag Name   | `<fluent-text-input>` |
+| Superclass | `FASTElement`         |
 
-## Class: `TextInput`
+#### Static Fields
 
-<br />
+| Name             | Privacy | Type      | Default | Description               | Inherited From |
+| ---------------- | ------- | --------- | ------- | ------------------------- | -------------- |
+| `formAssociated` | public  | `boolean` | `true`  | The form-associated flag. |                |
 
-### **Component Name**
+#### Fields
 
-`<fluent-text-input>`
+| Name                | Privacy | Type                                | Default     | Description                                                                                                                          |
+| ------------------- | ------- | ----------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `appearance`        | public  | `TextInputAppearance`               | `'outline'` | Indicates the styled appearance of the element.                                                                                      |
+| `autocomplete`      | public  | `string \| undefined`               |             | Indicates the element's autocomplete state.                                                                                          |
+| `autofocus`         | public  | `boolean`                           |             | Indicates that the element should get focus after the page finishes loading.                                                         |
+| `controlSize`       | public  | `TextInputControlSize \| undefined` | `'medium'`  | Sets the size of the control.                                                                                                        |
+| `dirname`           | public  | `string \| undefined`               |             | Sets the directionality of the element to be submitted with form data.                                                               |
+| `disabled`          | public  | `boolean \| undefined`              |             | Sets the element's disabled state.                                                                                                   |
+| `formAttribute`     | public  | `string \| undefined`               |             | The id of a form to associate the element to.                                                                                        |
+| `initialValue`      | public  | `string`                            |             | The initial value of the input.                                                                                                      |
+| `list`              | public  | `string`                            |             | Allows associating a `REPLACELTdatalistREPLACEGT` to the element by ID.                                                              |
+| `maxlength`         | public  | `number`                            |             | The maximum number of characters a user can enter.                                                                                   |
+| `minlength`         | public  | `number`                            |             | The minimum number of characters a user can enter.                                                                                   |
+| `multiple`          | public  | `boolean`                           |             | Indicates that a comma-separated list of email addresses can be entered. This attribute is only valid when `type="email"`.           |
+| `name`              | public  | `string`                            |             | The name of the element. This element's value will be surfaced during form submission under the provided name.                       |
+| `pattern`           | public  | `string`                            |             | A regular expression that the value must match to pass validation.                                                                   |
+| `placeholder`       | public  | `string`                            |             | Sets the placeholder value of the element, generally used to provide a hint to the user.                                             |
+| `readonly`          | public  | `boolean \| undefined`              |             | When true, the control will be immutable by user interaction.                                                                        |
+| `required`          | public  | `boolean`                           |             | The element's required attribute.                                                                                                    |
+| `size`              | public  | `number`                            |             | Sets the width of the element to a specified number of characters.                                                                   |
+| `spellcheck`        | public  | `boolean`                           |             | Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used. |
+| `type`              | public  | `TextInputType`                     |             | Allows setting a type or mode of text.                                                                                               |
+| `validity`          | public  | `ValidityState`                     |             | The element's validity state.                                                                                                        |
+| `validationMessage` | public  | `string`                            |             | The validation message.                                                                                                              |
+| `value`             | public  | `string`                            |             | The current value of the input.                                                                                                      |
+| `willValidate`      | public  | `boolean`                           |             | Determines if the control can be submitted for constraint validation.                                                                |
+| `form`              | public  | `HTMLFormElement \| null`           |             | The associated form element.                                                                                                         |
+| `role`              |         | `string`                            | `'textbox'` |                                                                                                                                      |
 
-<br />
+#### Methods
 
-### **Variables**
+| Name          | Privacy | Description                             | Parameters                                                                                            | Return |
+| ------------- | ------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------ |
+| `select`      | public  | Selects all the text in the text field. |                                                                                                       | `void` |
+| `setValidity` | public  | Sets the validity of the control.       | <ul><li>`flags: ValidityStateFlags`</li><li>`message: string`</li><li>`anchor: HTMLElement`</li></ul> | `void` |
 
-| Name                   | Description                          | Type                                                                                                             |
-| ---------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `TextInputControlSize` | Size variations for text input       | `{ small: "small", medium: "medium", large: "large" }`                                                           |
-| `TextInputAppearance`  | Appearance variations for text input | `{ outline: "outline", underline: "underline", filledLighter: "filled-lighter", filledDarker: "filled-darker" }` |
-| `TextInputType`        | Text input types                     | `{ email: "email", password: "password", tel: "tel", text: "text", url: "url" }`                                 |
+#### Attributes
 
-<br />
+| Name           | Field         |
+| -------------- | ------------- |
+| `appearance`   | appearance    |
+| `autocomplete` | autocomplete  |
+| `autofocus`    | autofocus     |
+| `control-size` | controlSize   |
+| `dirname`      | dirname       |
+| `disabled`     | disabled      |
+| `form`         | formAttribute |
+| `value`        | initialValue  |
+| `list`         | list          |
+| `maxlength`    | maxlength     |
+| `minlength`    | minlength     |
+| `multiple`     | multiple      |
+| `name`         | name          |
+| `pattern`      | pattern       |
+| `placeholder`  | placeholder   |
+| `readonly`     | readonly      |
+| `required`     | required      |
+| `size`         | size          |
+| `spellcheck`   | spellcheck    |
+| `type`         | type          |
 
-### **Fields**
+#### CSS Parts
 
-| Name            | Privacy | Type                   | Default                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------- | ------- | ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `appearance`    | public  | `TextInputAppearance`  | `TextInputAppearance.outline` | Sets appearance of text input.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `autofocus`     | public  | `boolean`              | `false`                       | Indicates element should get focus after the page finishes loading..                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `disabled`      | public  | `boolean`              | `false`                       | Disables text input                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| `list`          | public  | `string`               |                               | Allows associating a `datalist` to an element by `id`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `maxlength`     | public  | `number`               |                               | The maximum number of characters a user can enter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `minlength`     | public  | `number`               |                               | The minimum number of characters a user can enter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `name`          | public  | `string`               |                               | The name of the control                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `pattern`       | public  | `string`               |                               | A regular expression the text input's contents must match in order to be valid                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `placeholder`   | public  | `string`               |                               | An exemplar value to display in the text input field whenever it is empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `readonly`      | public  | `boolean`              | `false`                       | The text input should be submitted with the form but should not be editable                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `required`      | public  | `boolean`              | `false`                       | Sets the text input as required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `size`          | public  | `number`               |                               | A number indicating how many characters wide the input field should be                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `spellcheck`    | public  | `boolean`              | `false`                       | Controls whether or not to enable spell checking for the text input, or if the default spell checking configuration should be used                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `type`          | public  | `TextInputType`        | `TextInputType.text`          | Sets the size of the text input                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `current-value` | public  |                        |                               | Stores the current value of an input element. This attribute is commonly used in web development frameworks like Angular and React, where the value of the input element is managed by the framework. By using the current-value attribute, you can ensure that the input element always displays the correct value, even if it is changed by the framework or another JavaScript code. This attribute can also be used to set the initial value of an input element. [link: `current-value` RFC](https://github.com/microsoft/fast/issues/5119) |
-| `control-size`  | public  | `TextInputControlSize` | `TextInputControlSize.medium` | Sets the size of the component                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Name      | Description                                 |
+| --------- | ------------------------------------------- |
+| `label`   | The internal `<label>` element              |
+| `root`    | the root container for the internal control |
+| `control` | The internal `<input>` control              |
 
-<br />
+#### Slots
 
-### **Methods**
+| Name    | Description                                    |
+| ------- | ---------------------------------------------- |
+| `start` | Content which can be provided before the input |
+| `end`   | Content which can be provided after the input  |
+|         | The default slot for button content            |
 
-| Name       | Privacy | Description                                       |
-| ---------- | ------- | ------------------------------------------------- |
-| `select`   | public  | Selects all the text in the text field            |
-| `validate` | public  | {@inheritDoc (FormAssociated:interface).validate} |
+<hr/>
 
-### **Events**
+### Exported Variables
 
-| Name     | Type | Description                 | Inherited From |
-| -------- | ---- | --------------------------- | -------------- |
-| `change` |      | Fires a custom change event |                |
+| Name                              | Description                                                    | Type                                                              |
+| --------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `TextInputControlSize`            | Values for the `control-size` attribute on TextInput elements. | `"small" \| "medium" \| "large"`                                  |
+| `TextInputAppearance`             | Values for the `appearance` attribute on TextInput elements.   | `"outline" \| "underline" \| "filled-lighter" \| "filled-darker"` |
+| `TextInputType`                   | Values for the `type` attribute on TextInput elements.         | `"email" \| "password" \| "tel" \| "text" \| "url"`               |
+| `ImplicitSubmissionBlockingTypes` | Input types that block implicit form submission.               | `array`                                                           |
 
-<br />
+<hr/>
 
-### **Attributes**
+## Accessibility
 
-| Name           | Field       |
-| -------------- | ----------- |
-| `appearance`   | appearance  |
-| `autofocus`    | autofocus   |
-| `list`         | list        |
-| `maxlength`    | maxlength   |
-| `minlength`    | minlength   |
-| `pattern`      | pattern     |
-| `placeholder`  | placeholder |
-| `readonly `    | readonly    |
-| `size`         | size        |
-| `spellcheck`   | spellcheck  |
-| `type`         | type        |
-| `control-size` | type        |
+- [W3C Text Input Spec](https://w3c.github.io/html-reference/input.text.html)
+- [W3C ARIA Textbox Role](https://w3c.github.io/aria/#textbox)
+- [ElementInternals](https://developer.mozilla.org/docs/Web/API/ElementInternals)
 
-<br />
-
-### **Slots**
-
-| Name    | Description                                                                  |
-| ------- | ---------------------------------------------------------------------------- |
-| `start` | used to place content at the start of the text input within the input border |
-| `end`   | used to place content at the end of the text input within the input border   |
-|         | The default slot for text input content                                      |
-
-<br />
-
-**Block v.s Inline**
-
-The Fluent UI `TextInput` component design spec offers two appearance variations for the display property - block (default) and inline. To achieve the inline variation, users should apply their own custom CSS.
-
-```css
-/* all instances */
-
-fluent-text-input {
-  display: inline-flex;
-  align-items: center;
-}
-
-/* class instances */
-
-fluent-text-input.inline {
-  display: inline-flex;
-  align-items: center;
-}
-```
-
-<br />
-<hr />
-<br />
-
-## **Accessibility**
-
-[W3C Text Input Spec](https://w3c.github.io/html-reference/input.text.html)
-
-<br />
-
-### **WAI-ARIA Roles, States, and Properties**
+### WAI-ARIA Roles, States, and Properties
 
 This component supports ARIA attributes that inherit from the [ARIA Global States and Properties](https://www.w3.org/TR/wai-aria-1.2/#global_states).
 
-<br />
 <hr />
-<br />
 
-## **Preparation**
+## Fluent Web Component v3 v.s Fluent React 9
 
-### **Fluent Web Component v3 v.s Fluent React 9**
-
-<br />
-
-**Component and Slot Mapping**
+### Component and Slot Mapping
 
 | Fluent UI React 9 | Fluent Web Components 3 |
 | ----------------- | ----------------------- |
 | `<Input>`         | `<fluent-text-input>`   |
 | `contentBefore`   | `start`                 |
 | `contentAfter`    | `end`                   |
+
+### Block and Inline Display
+
+The Fluent UI `<Input />` component design spec offers two appearance variations for the display property - `block` (default) and `inline`. To achieve the inline variation, users should apply their own custom CSS.
+
+```css
+fluent-text-input {
+  display: inline-flex;
+  align-items: center;
+}
+```

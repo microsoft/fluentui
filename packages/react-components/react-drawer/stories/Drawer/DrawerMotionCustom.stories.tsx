@@ -3,7 +3,6 @@ import {
   Button,
   makeStyles,
   mergeClasses,
-  shorthands,
   // tokens,
   DrawerBody,
   DrawerHeader,
@@ -32,8 +31,8 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('2px', 'solid', '#ccc'),
-    ...shorthands.overflow('hidden'),
+    border: '2px solid #ccc',
+    overflow: 'hidden',
     display: 'flex',
     height: '480px',
     position: 'relative',
@@ -42,9 +41,8 @@ const useStyles = makeStyles({
   },
 
   content: {
-    ...shorthands.flex(1),
-    ...shorthands.padding('16px'),
-
+    flex: '1',
+    padding: '16px',
     boxSizing: 'border-box',
     overflowY: 'auto',
     position: 'absolute',

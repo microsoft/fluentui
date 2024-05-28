@@ -147,7 +147,7 @@ const useRootStyles = makeStyles({
   underline: {
     '::before': {
       ...shorthands.borderWidth(0, 0, '1px', 0),
-      ...shorthands.borderRadius(tokens.borderRadiusNone), // corners look strange if rounded
+      borderRadius: tokens.borderRadiusNone, // corners look strange if rounded
     },
   },
 
@@ -161,12 +161,14 @@ const useRootStyles = makeStyles({
         borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
       },
     },
-    '::after': shorthands.borderRadius(tokens.borderRadiusNone), // remove rounded corners from focus underline
+    '::after': {
+      borderRadius: tokens.borderRadiusNone, // remove rounded corners from focus underline
+    },
   },
 
   filled: {
     '::before': {
-      ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+      border: `1px solid ${tokens.colorTransparentStroke}`,
     },
   },
 
@@ -308,12 +310,12 @@ const useButtonStyles = makeStyles({
   // Additionally the design uses fractional values so these are
   // rounded to the nearest integer.
   incrementButtonSmall: {
-    ...shorthands.padding('3px', '6px', '0px', '4px'),
+    padding: '3px 6px 0px 4px',
     height: '12px',
   },
 
   decrementButtonSmall: {
-    ...shorthands.padding('0px', '6px', '3px', '4px'),
+    padding: '0px 6px 3px 4px',
     height: '12px',
   },
 

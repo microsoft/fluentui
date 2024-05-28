@@ -242,7 +242,7 @@ packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar @microsoft/teams-prg
 packages/react-components/react-rating @microsoft/cxe-red @tomi-msft
-packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
+packages/react-components/react-swatch-picker @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
@@ -252,6 +252,7 @@ packages/react-components/react-timepicker-compat @microsoft/teams-prg
 packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
 packages/react-components/react-tag-picker @microsoft/teams-prg
 packages/react-components/react-carousel-preview @microsoft/xc-uxe @Mitch-At-Work
+packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

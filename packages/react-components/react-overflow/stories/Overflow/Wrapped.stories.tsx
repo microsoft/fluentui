@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   makeStyles,
-  shorthands,
   Button,
   Menu,
   MenuTrigger,
@@ -23,12 +22,12 @@ const useStyles = makeStyles({
     flexGrow: 1,
     flexWrap: 'nowrap',
     minWidth: 0,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
 
   farItems: {
     display: 'flex',
-    ...shorthands.gap('4px'),
+    gap: '4px',
     flexWrap: 'nowrap',
     marginRight: '10px', //to allow the resize handle to be grabbed
   },
@@ -38,15 +37,15 @@ const useStyles = makeStyles({
     flexWrap: 'nowrap',
     minWidth: '200px',
     maxWidth: '1000px',
-    ...shorthands.border('2px', 'solid', tokens.colorBrandBackground),
-    ...shorthands.padding('20px', '10px', '10px', '10px'),
-    ...shorthands.overflow('hidden'),
+    border: `2px solid ${tokens.colorBrandBackground}`,
+    padding: '20px 10px 10px 10px',
+    overflow: 'hidden',
     position: 'relative',
     resize: 'horizontal',
     '::after': {
       content: `'Resizable Area'`,
       position: 'absolute',
-      ...shorthands.padding('1px', '4px', '1px'),
+      padding: '1px 4px 1px',
       top: '-2px',
       left: '-2px',
       fontFamily: 'monospace',

@@ -1,4 +1,4 @@
-import { GriffelStyle, shorthands } from '@fluentui/react-components';
+import { GriffelStyle } from '@fluentui/react-components';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 // class names from v0 - not imported as we do not want to keep depending on v0.
@@ -31,16 +31,14 @@ export const v9Icon = (): GriffelStyle => ({
     paddingBottom: '100%',
     // negative margin is necessary here for centering v9 icon
     // with v0 button, because of extra spaces that svg contains
-    ...shorthands.margin('-4px', 0, 0, '-4px'),
-    ...shorthands.overflow('visible'),
+    margin: '-4px 0 0 -4px',
+    overflow: 'visible',
   },
   ...v9HoverClasses(),
 });
 
 export const v9CustomSizeIcon = (): GriffelStyle => ({
-  '& svg': {
-    ...shorthands.overflow('visible'),
-  },
+  '& svg': { overflow: 'visible' },
   ...v9HoverClasses(),
 });
 

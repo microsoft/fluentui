@@ -279,22 +279,17 @@ const useRootStyles = makeStyles({
   },
 
   // Shape variations
-  circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  },
+  circular: { borderRadius: tokens.borderRadiusCircular },
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
-  square: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
-  },
+  square: { borderRadius: tokens.borderRadiusNone },
 
   // Size variations
   small: {
     minWidth: '64px',
-    ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
-
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    padding: `${buttonSpacingSmall} ${tokens.spacingHorizontalS}`,
+    borderRadius: tokens.borderRadiusMedium,
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
@@ -309,9 +304,8 @@ const useRootStyles = makeStyles({
   },
   large: {
     minWidth: '96px',
-    ...shorthands.padding(buttonSpacingLarge, tokens.spacingHorizontalL),
-
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    padding: `${buttonSpacingLarge} ${tokens.spacingHorizontalL}`,
+    borderRadius: tokens.borderRadiusMedium,
 
     fontSize: tokens.fontSizeBase400,
     fontWeight: tokens.fontWeightSemibold,
@@ -455,15 +449,11 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   // Shape variations
-  circular: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  }),
+  circular: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
   rounded: {
     /* The rounded styles are exactly the same as the base styles. */
   },
-  square: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
-  }),
+  square: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
 
   // Primary styles
   primary: {
@@ -488,33 +478,29 @@ const useRootFocusStyles = makeStyles({
   },
 
   // Size variations
-  small: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-  }),
+  small: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusSmall }),
   medium: {
     /* defined in base styles */
   },
-  large: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusLarge),
-  }),
+  large: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusLarge }),
 });
 
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacingSmallWithIcon),
+    padding: buttonSpacingSmallWithIcon,
 
     minWidth: '24px',
     maxWidth: '24px',
   },
   medium: {
-    ...shorthands.padding(buttonSpacingMedium),
+    padding: buttonSpacingMedium,
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    ...shorthands.padding(buttonSpacingLargeWithIcon),
+    padding: buttonSpacingLargeWithIcon,
 
     minWidth: '40px',
     maxWidth: '40px',

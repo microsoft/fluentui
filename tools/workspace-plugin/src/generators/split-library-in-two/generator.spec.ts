@@ -23,7 +23,7 @@ const noop = () => {
 
 describe('split-library-in-two generator', () => {
   let tree: Tree;
-  const options = { project: '@proj/react-hello' };
+  const options = { project: '@proj/react-hello', logs: true };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
@@ -119,11 +119,12 @@ describe('split-library-in-two generator', () => {
       }),
     );
 
-    expect(readJson(tree, `${newConfig.root}/package.json`)).toEqual(
+    const newConfigPackageJSON = readJson(tree, `${newConfig.root}/package.json`);
+    expect(newConfigPackageJSON.scripts['test-ssr']).toEqual(undefined);
+    expect(newConfigPackageJSON).toEqual(
       expect.objectContaining({
         name: '@proj/react-hello',
         scripts: expect.objectContaining({
-          'test-ssr': 'test-ssr "../stories/src/**/*.stories.tsx"',
           'type-check': 'just-scripts type-check',
           storybook: 'yarn --cwd ../stories storybook',
         }),
@@ -192,6 +193,7 @@ describe('split-library-in-two generator', () => {
           "lint": "eslint src/",
           "start": "yarn storybook",
           "storybook": "start-storybook",
+          "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
           "type-check": "just-scripts type-check",
         },
         "version": "0.0.0",
