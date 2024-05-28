@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Picker prototype",
+  "packageName": "@fluentui/react-components",
+  "email": "asamec@microsoft.com",
+  "dependentChangeType": "patch"
+}

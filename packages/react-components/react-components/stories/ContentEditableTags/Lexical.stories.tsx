@@ -4,7 +4,7 @@ import { Prototype } from './utils/stories';
 
 export const Lexical: React.FC = () => {
   return (
-    <Prototype pageTitle="tags">
+    <Prototype pageTitle="Lexical">
       <h1>Lexical editor</h1>
       <LexicalEditor />
     </Prototype>

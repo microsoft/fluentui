@@ -4,7 +4,7 @@ import { ContentEditableTagsRenderer } from './ContentEditableTagsRenderer';
 
 export const ContentEditableTags: React.FC = () => {
   return (
-    <Prototype pageTitle="tags">
+    <Prototype pageTitle="Selection manipulation">
       <h1>Content editable tags</h1>
       <ContentEditableTagsRenderer />
     </Prototype>
