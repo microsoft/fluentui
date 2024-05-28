@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bump api-extractor-model in order to migrate to TS 4.9",
+  "packageName": "@fluentui/api-docs",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
