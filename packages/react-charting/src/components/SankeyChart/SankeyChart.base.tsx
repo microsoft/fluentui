@@ -759,6 +759,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         borderColorsForNodes,
       );
 
+      // In FocusZone, the focus order is determined by the rendering order of the elements. We need to find
+      // a rendering order such that the focus moves through the nodes and links in a logical sequence.
+      // Rendering the nodes and links layer by layer in a vertical order seems to be the most effective solution
+      // with FocusZone. Although this focus order may not be entirely logical, it ensures that the focus moves
+      // sequentially and prevents links (especially skip layer links) from being rendered over the nodes.
       const nodeLinkDomOrderArray: { layer: number; type: string; index: number }[] = [];
       nodes.sort((a: SNode, b: SNode) => {
         if (a.x0 !== b.x0) {
@@ -827,6 +832,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
           onMouseLeave={this._onCloseCallout}
         >
+          {/*
+          - Horizontal navigation has been disabled because the nodes and links are rendered vertically,
+          causing the left/right arrow keys to move focus up or down to the previous or next sibling element.
+          - Bidirectional navigation has been disabled because it causes the up/down arrow keys to move the focus
+          in a non-sequential and erratic manner within a 2D grid.
+          */}
           <FocusZone direction={FocusZoneDirection.vertical}>
             <svg width={width} height={height} id={this._chartId}>
               {nodeLinkDomOrderArray.map(item => {
@@ -836,17 +847,19 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                       {nodeData![item.index]}
                     </g>
                   );
+                } else {
+                  return (
+                    <g
+                      key={`${(links[item.index].source as SNode).nodeId}-${
+                        (links[item.index].target as SNode).nodeId
+                      }`}
+                      className={classNames.links}
+                      strokeOpacity={1}
+                    >
+                      {linkData![item.index]}
+                    </g>
+                  );
                 }
-
-                return (
-                  <g
-                    key={`${(links[item.index].source as SNode).nodeId}-${(links[item.index].target as SNode).nodeId}`}
-                    className={classNames.links}
-                    strokeOpacity={1}
-                  >
-                    {linkData![item.index]}
-                  </g>
-                );
               })}
               {calloutProps.isCalloutVisible && (
                 <Callout {...calloutProps}>
