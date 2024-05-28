@@ -43,7 +43,6 @@ describe('createMotionComponent', () => {
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
       duration: motion.duration,
       fill: 'forwards',
-      iterations: 1,
     });
   });
 

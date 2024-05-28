@@ -26,6 +26,7 @@ const useClasses = makeStyles({
 const FadeEnter = createMotionComponent({
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: motionTokens.durationSlow,
+  iterations: Infinity,
 });
 
 export const CreateMotionComponentDefault = () => {
@@ -41,7 +42,7 @@ export const CreateMotionComponentDefault = () => {
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <FadeEnter iterations={Infinity} imperativeRef={motionRef}>
+        <FadeEnter imperativeRef={motionRef}>
           <div className={classes.item} />
         </FadeEnter>
       </div>
