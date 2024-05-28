@@ -39,7 +39,7 @@ import {
   IDomainNRange,
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfNumericForAreaChart,
-  createStringYAxisForOtherCharts,
+  createStringYAxis,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -288,7 +288,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
         getDomainNRangeValues={this._getDomainNRangeValues}
-        createStringYAxis={createStringYAxisForOtherCharts}
+        createStringYAxis={createStringYAxis}
         onChartMouseLeave={this._handleChartMouseLeave}
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */

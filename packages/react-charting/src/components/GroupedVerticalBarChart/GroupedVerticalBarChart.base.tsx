@@ -21,7 +21,7 @@ import {
   createNumericYAxis,
   IDomainNRange,
   domainRangeOfXStringAxis,
-  createStringYAxisForOtherCharts,
+  createStringYAxis,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -182,7 +182,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         tickParams={tickParams}
         getDomainNRangeValues={this._getDomainNRangeValues}
         getMinMaxOfYAxis={this._getMinMaxOfYAxis}
-        createStringYAxis={createStringYAxisForOtherCharts}
+        createStringYAxis={createStringYAxis}
         tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{

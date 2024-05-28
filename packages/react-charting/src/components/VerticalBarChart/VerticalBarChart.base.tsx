@@ -48,7 +48,7 @@ import {
   domainRageOfVerticalNumeric,
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfXStringAxis,
-  createStringYAxisForOtherCharts,
+  createStringYAxis,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -176,7 +176,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
-        createStringYAxis={createStringYAxisForOtherCharts}
+        createStringYAxis={createStringYAxis}
         getmargins={this._getMargins}
         getMinMaxOfYAxis={findVerticalNumericMinMaxOfY}
         getGraphData={this._getGraphData}

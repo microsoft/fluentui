@@ -19,7 +19,7 @@ import {
   IMargins,
   IDomainNRange,
   domainRangeOfXStringAxis,
-  createStringYAxisForOtherCharts,
+  createStringYAxis,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
@@ -200,7 +200,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
         stringDatasetForYAxisDomain={this._stringYAxisDataPoints}
-        createStringYAxis={createStringYAxisForOtherCharts}
+        createStringYAxis={createStringYAxis}
         getDomainNRangeValues={this._getDomainNRangeValues}
         getMinMaxOfYAxis={this._getMinMaxOfYAxis}
         xAxisTickCount={this._stringXAxisDataPoints.length}

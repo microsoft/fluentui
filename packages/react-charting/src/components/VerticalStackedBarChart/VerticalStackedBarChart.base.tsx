@@ -48,7 +48,7 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
-  createStringYAxisForOtherCharts,
+  createStringYAxis,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -217,7 +217,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
           getDomainNRangeValues={this._getDomainNRangeValues}
-          createStringYAxis={createStringYAxisForOtherCharts}
+          createStringYAxis={createStringYAxis}
           barwidth={this._barWidth}
           focusZoneDirection={
             isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical

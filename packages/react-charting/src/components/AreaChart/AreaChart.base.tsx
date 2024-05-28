@@ -32,7 +32,7 @@ import {
   IDomainNRange,
   domainRangeOfNumericForAreaChart,
   domainRangeOfDateForAreaLineVerticalBarChart,
-  createStringYAxisForOtherCharts,
+  createStringYAxis,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -200,7 +200,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           maxOfYVal={stackedInfo.maxOfYVal}
           getGraphData={this._getGraphData}
           getDomainNRangeValues={this._getDomainNRangeValues}
-          createStringYAxis={createStringYAxisForOtherCharts}
+          createStringYAxis={createStringYAxis}
           getmargins={this._getMargins}
           getMinMaxOfYAxis={findNumericMinMaxOfY}
           customizedCallout={this._getCustomizedCallout()}
