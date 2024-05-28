@@ -3,7 +3,7 @@ import * as React from 'react';
 import descriptionMd from './Description.md';
 
 import { Checkbox } from '@fluentui/react';
-import { Checkbox as CheckboxV9, makeStyles, shorthands } from '@fluentui/react-components';
+import { Checkbox as CheckboxV9, makeStyles } from '@fluentui/react-components';
 import { CheckboxShim } from '@fluentui/react-migration-v8-v9';
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 

@@ -2,6 +2,51 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Tue, 28 May 2024 07:28:20 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.8",
+      "version": "8.6.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.21",
+            "commit": "a96863b605b797397efab6fbecc6534ed8bd5e99"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 May 2024 07:28:17 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.7",
+      "version": "8.6.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.20",
+            "commit": "e5b614623b9aa1ae3f1f86f3e753b934943a4601"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 May 2024 07:28:51 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.6",
+      "version": "8.6.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.19",
+            "commit": "10e6758b203de79c53ce31ba264e137f83f50ff4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 07:29:20 GMT",
       "tag": "@fluentui/merge-styles_v8.6.5",
       "version": "8.6.5",

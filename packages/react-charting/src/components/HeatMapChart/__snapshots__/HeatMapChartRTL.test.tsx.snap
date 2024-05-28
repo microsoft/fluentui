@@ -612,7 +612,6 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           width: 100%;
         }
     id="chart_1"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_2"
@@ -630,8 +629,10 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1185,7 +1186,6 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           width: 100%;
         }
     id="chart_1"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_2"
@@ -1203,8 +1203,10 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:46 GMT",
+      "tag": "@fluentui/react-provider_v9.16.1",
+      "version": "9.16.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f20861ce1962daf648910c07f1e372c369d13798",
+            "comment": "fix: Update IconDirectionContextProvider imports to use export map"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:02 GMT",
       "tag": "@fluentui/react-provider_v9.16.0",
       "version": "9.16.0",

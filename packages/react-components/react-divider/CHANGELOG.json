@@ -2,6 +2,21 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:42 GMT",
+      "tag": "@fluentui/react-divider_v9.2.69",
+      "version": "9.2.69",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "a4ff47a3ad5c29b620f3f480f3d6833cc441e471",
+            "comment": "chore: update docs wording for wrapper slot"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:55 GMT",
       "tag": "@fluentui/react-divider_v9.2.69",
       "version": "9.2.69",

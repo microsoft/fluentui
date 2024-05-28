@@ -1,6 +1,6 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { makeResetStyles, makeStyles, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles } from '@griffel/react';
 
 // Styles shared by several nav components.
 
@@ -62,7 +62,7 @@ export const useIndicatorStyles = makeStyles({
       backgroundColor: tokens.colorNeutralForeground2BrandSelected,
       height: `${navItemTokens.indicatorHeight}px`,
       width: `${navItemTokens.indicatorWidth}px`,
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      borderRadius: tokens.borderRadiusCircular,
       content: '""',
     },
   },
@@ -79,7 +79,7 @@ export const useIconStyles = makeStyles({
     alignItems: 'top',
     display: 'inline-flex',
     justifyContent: 'center',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     [`& .${iconFilledClassName}`]: {
       display: 'none',
     },

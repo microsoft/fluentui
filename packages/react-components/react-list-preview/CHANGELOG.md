@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-list-preview
 
-This log was last generated on Mon, 20 May 2024 12:44:57 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.7)
+
+Thu, 23 May 2024 08:02:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.2.6..@fluentui/react-list-preview_v0.2.7)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.2.27 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.6)
 

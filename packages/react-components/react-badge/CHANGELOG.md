@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Mon, 20 May 2024 12:44:52 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.37)
+
+Thu, 23 May 2024 08:02:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.36..@fluentui/react-badge_v9.2.37)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31449](https://github.com/microsoft/fluentui/pull/31449) by olfedias@microsoft.com)
 
 ## [9.2.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.36)
 

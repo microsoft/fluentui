@@ -16,6 +16,18 @@
     "all": {
       "type": "boolean",
       "description": "Run generator on all vNext packages"
+    },
+    "logs": {
+      "type": "boolean",
+      "default": true,
+      "visible": false,
+      "x-priority": "internal"
+    },
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false,
+      "x-priority": "internal"
     }
   },
   "required": []

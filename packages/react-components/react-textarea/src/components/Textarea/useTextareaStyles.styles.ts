@@ -17,14 +17,14 @@ const useRootStyles = makeStyles({
     boxSizing: 'border-box',
     position: 'relative',
     // Padding needed so the focus indicator does not overlap the resize handle, this should match focus indicator size.
-    ...shorthands.padding('0', '0', tokens.strokeWidthThick, '0'),
-    ...shorthands.margin('0'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    padding: `0 0 ${tokens.strokeWidthThick} 0`,
+    margin: '0',
+    borderRadius: tokens.borderRadiusMedium,
   },
 
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeDisabled),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeDisabled}`,
 
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -54,7 +54,7 @@ const useRootStyles = makeStyles({
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
       // (This could be done without trimming using `background: linear-gradient(...)`, but using
       // borderBottom makes it easier for people to override the color if needed.)
-      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
+      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: `inset(calc(100% - ${tokens.strokeWidthThick}) 0 0 0)`,
 
       // Animation for focus OUT
@@ -92,7 +92,7 @@ const useRootStyles = makeStyles({
   },
 
   filled: {
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
     ':hover,:focus-within': {
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
@@ -105,33 +105,33 @@ const useRootStyles = makeStyles({
   },
   'filled-darker-shadow': {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
     boxShadow: tokens.shadow2,
   },
   'filled-lighter-shadow': {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
     boxShadow: tokens.shadow2,
   },
 
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
   outlineInteractive: {
     ':hover': {
-      ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1Hover),
+      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Hover}`,
       borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
     },
 
     ':active': {
-      ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1Pressed),
+      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
 
     ':focus-within': {
-      ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
@@ -149,7 +149,7 @@ const useRootStyles = makeStyles({
 const useTextareaStyles = makeStyles({
   base: {
     ...shorthands.borderStyle('none'),
-    ...shorthands.margin('0'),
+    margin: '0',
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
@@ -182,28 +182,19 @@ const useTextareaStyles = makeStyles({
   // affected by changing the padding of the root.
   small: {
     minHeight: '40px',
-    ...shorthands.padding(
-      tokens.spacingVerticalXS,
-      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `${tokens.spacingVerticalXS} calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     maxHeight: '200px',
     ...typographyStyles.caption1,
   },
   medium: {
     minHeight: '52px',
-    ...shorthands.padding(
-      tokens.spacingVerticalSNudge,
-      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `${tokens.spacingVerticalSNudge} calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
     maxHeight: '260px',
     ...typographyStyles.body1,
   },
   large: {
     minHeight: '64px',
-    ...shorthands.padding(
-      tokens.spacingVerticalS,
-      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `${tokens.spacingVerticalS} calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
     maxHeight: '320px',
     ...typographyStyles.body2,
   },

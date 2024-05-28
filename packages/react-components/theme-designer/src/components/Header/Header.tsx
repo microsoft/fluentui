@@ -8,7 +8,6 @@ import {
   webDarkTheme,
   Button,
 } from '@fluentui/react-components';
-import { shorthands } from '@griffel/react';
 
 const MFSTLogo = () => {
   return (
@@ -25,7 +24,6 @@ export interface HeaderProps {
   className?: string;
 }
 
-/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -38,7 +36,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'start',
     paddingLeft: tokens.spacingHorizontalL,
-    ...shorthands.gap(tokens.spacingHorizontalS),
+    gap: tokens.spacingHorizontalS,
   },
   text: {
     width: '300px',
@@ -53,7 +51,6 @@ const useStyles = makeStyles({
     paddingRight: tokens.spacingHorizontalL,
   },
 });
-/* eslint-enable deprecation/deprecation */
 
 export const Header: React.FC<HeaderProps> = props => {
   const styles = useStyles();

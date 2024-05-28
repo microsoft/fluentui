@@ -2,6 +2,27 @@
   "name": "@fluentui/react-rating",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:47 GMT",
+      "tag": "@fluentui/react-rating_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:02 GMT",
       "tag": "@fluentui/react-rating_v9.0.9",
       "version": "9.0.9",

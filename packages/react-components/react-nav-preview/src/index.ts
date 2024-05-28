@@ -61,6 +61,5 @@ export * from './NavDrawerFooter';
 export * from './NavDrawerHeader';
 export * from './NavDrawerHeaderNav';
 export * from './NavDrawerBody';
-export * from './HamburgerInNav';
 export * from './Hamburger';
 export * from './NavSectionHeader';

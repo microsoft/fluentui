@@ -59,7 +59,7 @@ type OverflowMenuItemProps = {
 
 const useMenuItemStyles = makeStyles({
   menuItem: {
-    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalXS),
+    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalXS}`,
     ':hover': {
       [`& .${tagClassNames.root}`]: {
         color: tokens.colorNeutralForeground2Hover,
@@ -108,10 +108,9 @@ const OverflowMenu = () => {
     <InteractionTag>
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <InteractionTagPrimary
-            ref={ref}
-            aria-label={`${overflowCount} more tags`}
-          >{`+${overflowCount}`}</InteractionTagPrimary>
+          <InteractionTagPrimary ref={ref} aria-label={`${overflowCount} more tags`}>
+            {`+${overflowCount}`}
+          </InteractionTagPrimary>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -129,8 +128,8 @@ const OverflowMenu = () => {
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('5px'),
+    overflow: 'hidden',
+    padding: '5px',
     zIndex: 0, // stop the browser resize handle from piercing the overflow menu
     height: 'fit-content',
     minWidth: '150px',

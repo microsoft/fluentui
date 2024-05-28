@@ -10,7 +10,6 @@ import {
   MenuPopover,
   MenuTrigger,
   mergeClasses,
-  shorthands,
   Text,
   tokens,
 } from '@fluentui/react-components';
@@ -35,12 +34,12 @@ const useStyles = makeStyles({
   list: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('16px'),
+    gap: '16px',
     maxWidth: '300px',
   },
   listItem: {
     display: 'grid',
-    ...shorthands.padding('8px'),
+    padding: '8px',
   },
   caption: {
     color: tokens.colorNeutralForeground3,
@@ -48,7 +47,7 @@ const useStyles = makeStyles({
   image: {
     height: '160px',
     maxWidth: '100%',
-    ...shorthands.borderRadius('5px'),
+    borderRadius: '5px',
   },
   title: {
     fontWeight: 600,
@@ -60,13 +59,10 @@ const useStyles = makeStyles({
     top: '10px',
     zIndex: 1,
   },
-  preview: {
-    ...shorthands.gridArea('preview'),
-    ...shorthands.overflow('hidden'),
-  },
-  header: { ...shorthands.gridArea('header') },
-  action: { ...shorthands.gridArea('action') },
-  secondaryAction: { ...shorthands.gridArea('secondary_action') },
+  preview: { gridArea: 'preview', overflow: 'hidden' },
+  header: { gridArea: 'header' },
+  action: { gridArea: 'action' },
+  secondaryAction: { gridArea: 'secondary_action' },
 });
 
 const CustomListItem = (props: { title: string; value: string }) => {

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:47 GMT",
+      "tag": "@fluentui/react-slider_v9.1.84",
+      "version": "9.1.84",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:04 GMT",
       "tag": "@fluentui/react-slider_v9.1.83",
       "version": "9.1.83",

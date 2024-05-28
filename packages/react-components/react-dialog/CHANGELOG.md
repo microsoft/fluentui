@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Mon, 20 May 2024 12:44:55 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.7)
+
+Thu, 23 May 2024 08:02:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.10.6..@fluentui/react-dialog_v9.10.7)
+
+### Patches
+
+- chore(Dialog): migrate to new motion APIs ([PR #31380](https://github.com/microsoft/fluentui/pull/31380) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.11.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+- Bump @fluentui/react-portal to v9.4.26 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
 
 ## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.6)
 

@@ -7,15 +7,14 @@ import {
   DrawerProps,
   Button,
   makeStyles,
-  shorthands,
   tokens,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('2px', 'solid', '#ccc'),
-    ...shorthands.overflow('hidden'),
+    border: '2px solid #ccc',
+    overflow: 'hidden',
 
     display: 'flex',
     height: '480px',
@@ -23,8 +22,8 @@ const useStyles = makeStyles({
   },
 
   content: {
-    ...shorthands.margin(tokens.spacingVerticalXL, tokens.spacingHorizontalXL),
-    ...shorthands.flex(1),
+    margin: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalXL}`,
+    flex: '1',
 
     gridRowGap: tokens.spacingVerticalXXL,
   },

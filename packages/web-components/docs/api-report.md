@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="web" />
+
 import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -2942,61 +2944,75 @@ export const TextFont: {
 // @public
 export type TextFont = ValuesOf<typeof TextFont>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedTextField" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "TextInput" because one of its declarations is marked as @internal
 //
-// @public (undocumented)
-export class TextInput extends FormAssociatedTextField {
+// @public
+export class TextInput extends FASTElement {
+    constructor();
     appearance?: TextInputAppearance;
+    autocomplete?: string;
     autofocus: boolean;
+    // @internal
+    changeHandler(e: InputEvent): void;
     // (undocumented)
-    protected autofocusChanged(): void;
-    // @internal (undocumented)
     connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
+    // @internal
+    controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
-    // @internal (undocumented)
+    // @internal
     defaultSlottedNodes: Node[];
     // @internal
-    handleChange(): void;
+    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    dirname?: string;
+    disabled?: boolean;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
-    handleTextInput(): void;
+    protected elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialValue: string;
+    // @internal
+    initialValueChanged(): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keypressHandler(e: KeyboardEvent): boolean | void;
     list: string;
-    // (undocumented)
-    protected listChanged(): void;
     maxlength: number;
-    // (undocumented)
-    protected maxlengthChanged(): void;
     minlength: number;
-    // (undocumented)
-    protected minlengthChanged(): void;
+    multiple: boolean;
+    name: string;
     pattern: string;
-    // (undocumented)
-    protected patternChanged(): void;
     placeholder: string;
-    // (undocumented)
-    protected placeholderChanged(): void;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+    readonly?: boolean;
+    // @internal
+    readonlyChanged(): void;
+    required: boolean;
+    // @internal
+    requiredChanged(previous: boolean, next: boolean): void;
     select(): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: ValidityStateFlags, message?: string, anchor?: HTMLElement): void;
     size: number;
-    // (undocumented)
-    protected sizeChanged(): void;
     spellcheck: boolean;
-    // (undocumented)
-    protected spellcheckChanged(): void;
     type: TextInputType;
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@fluentui/web-components" does not have an export "FormAssociated"
-    //
-    // (undocumented)
-    validate(): void;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DelegatesARIATextbox" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export interface TextInput extends StartEnd, DelegatesARIATextbox {
+// @internal (undocumented)
+export interface TextInput extends StartEnd {
 }
 
 // @public
@@ -3007,7 +3023,7 @@ export const TextInputAppearance: {
     readonly filledDarker: "filled-darker";
 };
 
-// @public
+// @public (undocumented)
 export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
 
 // @public
@@ -3017,13 +3033,13 @@ export const TextInputControlSize: {
     readonly large: "large";
 };
 
-// @public
+// @public (undocumented)
 export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 
 // @public
 export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
 
-// @public (undocumented)
+// @public
 export type TextInputOptions = StartEndOptions<TextInput>;
 
 // @public
@@ -3043,7 +3059,7 @@ export const TextInputType: {
     readonly url: "url";
 };
 
-// @public
+// @public (undocumented)
 export type TextInputType = ValuesOf<typeof TextInputType>;
 
 // @public

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SkeletonItemSlots, SkeletonItemState } from './SkeletonItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -44,7 +44,7 @@ const skeletonPulseAnimation = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     backgroundSize: '300% 100%',
     backgroundPositionX: 'center',
     backgroundPositionY: 'center',
@@ -99,7 +99,7 @@ const useStyles = makeStyles({
 const useRectangleStyles = makeStyles({
   root: {
     width: '100%',
-    ...shorthands.borderRadius('4px'),
+    borderRadius: '4px',
   },
   8: { height: '8px' },
   12: { height: '12px' },
@@ -140,7 +140,7 @@ const useSizeStyles = makeStyles({
 
 const useCircleSizeStyles = makeStyles({
   root: {
-    ...shorthands.borderRadius('50%'),
+    borderRadius: '50%',
   },
 });
 

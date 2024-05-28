@@ -3,7 +3,7 @@ import descriptionMd from './Description.md';
 import { Input, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { Input as V9Input, Label } from '@fluentui/react-components';
 import { ErrorCircleFilled } from '@fluentui/react-icons';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { input } from '@fluentui/react-migration-v0-v9';
 
 const useStyles = makeStyles({
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
+    gap: '2px',
   },
 });
 

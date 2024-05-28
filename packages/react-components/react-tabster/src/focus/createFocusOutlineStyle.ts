@@ -70,12 +70,8 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
       pointerEvents: 'none',
       zIndex: 1,
 
-      /* eslint-disable deprecation/deprecation */
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderWidth(outlineWidth),
-      ...shorthands.borderRadius(outlineRadius),
-      ...shorthands.borderColor(outlineColor),
-      /* eslint-enable deprecation/deprecation */
+      border: `${outlineWidth} solid ${outlineColor}`,
+      borderRadius: outlineRadius,
 
       top: getOutlinePosition(options, 'top'),
       right: getOutlinePosition(options, 'right'),

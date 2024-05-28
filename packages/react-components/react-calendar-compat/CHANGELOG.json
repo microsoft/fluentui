@@ -2,6 +2,27 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:41 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.9",
+      "version": "0.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:53 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.1.8",
       "version": "0.1.8",

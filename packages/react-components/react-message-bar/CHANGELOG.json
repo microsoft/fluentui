@@ -2,6 +2,27 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:45 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "4833b3e243cbe0160935af0afb610976d2a64cdd",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.82",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:44:58 GMT",
       "tag": "@fluentui/react-message-bar_v9.2.0",
       "version": "9.2.0",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId, Body1, Button, Input, Label, Text } from '@fluentui/react-components';
+import { makeStyles, useId, Body1, Button, Input, Label, Text } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 import type { ButtonProps } from '@fluentui/react-components';
 
@@ -7,11 +7,11 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('20px'),
+    gap: '20px',
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
     // Stack the label above the field (with 2px gap per the design system)
-    '> div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('2px') },
+    '> div': { display: 'flex', flexDirection: 'column', gap: '2px' },
   },
 });
 

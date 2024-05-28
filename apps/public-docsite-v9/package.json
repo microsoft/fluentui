@@ -36,6 +36,7 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",
     "@fluentui/react-motions-preview": "*",
+    "@fluentui/recipes": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@griffel/react": "^1.5.22",
     "@microsoft/applicationinsights-web": "^3",

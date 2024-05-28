@@ -9,12 +9,12 @@ import {
   ToastTitle,
   Text,
   makeStyles,
-  shorthands,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.border('2px', 'dashed', 'green'),
+    border: '2px dashed green',
+
     height: '500px',
     width: '500px',
     display: 'flex',

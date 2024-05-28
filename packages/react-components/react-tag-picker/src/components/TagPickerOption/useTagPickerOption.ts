@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
-import { OptionProps, useOption_unstable } from '@fluentui/react-combobox';
+import { useOption_unstable } from '@fluentui/react-combobox';
 import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOption.types';
 
 /**
@@ -16,7 +16,7 @@ export const useTagPickerOption_unstable = (
   props: TagPickerOptionProps,
   ref: React.Ref<HTMLDivElement>,
 ): TagPickerOptionState => {
-  const optionState = useOption_unstable(props as OptionProps, ref);
+  const optionState = useOption_unstable(props, ref);
   const state: TagPickerOptionState = {
     components: {
       ...optionState.components,

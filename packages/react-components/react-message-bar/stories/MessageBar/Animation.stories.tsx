@@ -11,7 +11,6 @@ import {
   Button,
   Link,
   makeStyles,
-  shorthands,
   tokens,
   Field,
   RadioGroup,
@@ -24,14 +23,15 @@ const useStyles = makeStyles({
     flexDirection: 'row',
   },
   messageBarGroup: {
-    ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    padding: tokens.spacingHorizontalMNudge,
     display: 'flex',
     flexDirection: 'column',
     marginTop: '10px',
-    ...shorthands.gap('10px'),
+    gap: '10px',
+
     height: '300px',
-    ...shorthands.overflow('auto'),
-    ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
+    overflow: 'auto',
+    border: `2px solid ${tokens.colorBrandForeground1}`,
   },
   field: {
     flexGrow: 1,
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
   },
   buttonGroup: {
     display: 'flex',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
 });
 

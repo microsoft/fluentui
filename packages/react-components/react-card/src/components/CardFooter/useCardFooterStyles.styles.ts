@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    ...shorthands.gap('12px'),
+    gap: '12px',
   },
   action: {
     marginLeft: 'auto',

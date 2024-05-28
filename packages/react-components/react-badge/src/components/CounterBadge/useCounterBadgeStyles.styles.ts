@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     minWidth: 'auto',
     width: '6px',
     height: '6px',
-    ...shorthands.padding('0'),
+    padding: '0',
   },
   hide: {
     display: 'none',
