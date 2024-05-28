@@ -3,4 +3,4 @@ export * from './Skeleton.types';
 export * from './renderSkeleton';
 export * from './useSkeleton';
 export * from './useSkeletonContextValues';
-export * from './useSkeletonStyles';
+export * from './useSkeletonStyles.styles';
