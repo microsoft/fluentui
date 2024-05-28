@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update focus order in sankey chart for vertical navigation",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
