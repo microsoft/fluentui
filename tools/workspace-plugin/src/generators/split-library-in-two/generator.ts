@@ -27,6 +27,8 @@ import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
 export { isSplitProject, assertStoriesProject } from './shared';
 
+type CLIOutput = typeof output;
+
 interface Options extends SplitLibraryInTwoGeneratorSchema {
   projectConfig: ReturnType<typeof readProjectConfiguration>;
   projectOffsetFromRoot: { old: string; updated: string };
@@ -44,7 +46,7 @@ const noop = () => {
   return;
 };
 
-function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema) {
+function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema): CLIOutput {
   if (options.logs) {
     return output;
   }
@@ -54,7 +56,7 @@ function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema) {
     note: noop,
     warn: noop,
     error: noop,
-  } as unknown as typeof output;
+  } as unknown as CLIOutput;
 }
 
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
@@ -70,7 +72,7 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   if (options.all) {
     const projects = getProjects(tree);
     const projectsToSplit = Array.from(projects).filter(([_, project]) =>
-      assertProject(tree, project, { warn: noop } as unknown as typeof output),
+      assertProject(tree, project, { warn: noop } as unknown as CLIOutput),
     );
 
     cliOutput.log({
@@ -107,14 +109,14 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 function splitLibraryInTwoInternal(
   tree: Tree,
   options: { projectName: string; project?: ProjectConfiguration },
-  logger: typeof output,
+  logger: CLIOutput,
 ) {
   const { projectName, project } = options;
   const projectConfig = project ?? readProjectConfiguration(tree, options.projectName);
 
   logger.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
 
-  if (!assertProject(tree, projectConfig, output)) {
+  if (!assertProject(tree, projectConfig, logger)) {
     return;
   }
 
@@ -143,7 +145,7 @@ function splitLibraryInTwoInternal(
 
 export default splitLibraryInTwoGenerator;
 
-function cleanup(tree: Tree, options: Options, logger: typeof output) {
+function cleanup(tree: Tree, options: Options, logger: CLIOutput) {
   logger.log({ title: 'Cleaning up build assets...' });
   const oldProjectRoot = options.projectConfig.root;
   tree.delete(joinPathFragments(oldProjectRoot, 'dist'));
@@ -155,7 +157,7 @@ function cleanup(tree: Tree, options: Options, logger: typeof output) {
   tree.delete(joinPathFragments(oldProjectRoot, 'node_modules'));
 }
 
-function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
+function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   logger.log({ title: 'creating library/ project' });
 
   const oldProjectRoot = options.projectConfig.root;
@@ -265,7 +267,7 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
   updateCodeowners(tree, options);
 }
 
-function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output) {
+function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   logger.log({ title: 'creating stories/ project' });
   const oldProjectRoot = options.projectConfig.root;
   const newProjectRoot = joinPathFragments(oldProjectRoot, 'stories');
@@ -421,7 +423,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
   });
 }
 
-function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: typeof output) {
+function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: Pick<CLIOutput, 'warn'>) {
   const tags = projectConfig.tags ?? [];
 
   if (projectConfig.projectType !== 'library') {
@@ -528,7 +530,7 @@ function getWorkspaceDependencies(tree: Tree, imports: string[]) {
 function getMissingDevDependenciesFromCypressAndJestFiles(
   tree: Tree,
   options: { sourceRoot: string; projectName: string; dependencies: Record<string, string> },
-  logger: typeof output,
+  logger: CLIOutput,
 ) {
   const { projectName, sourceRoot, dependencies } = options;
 
