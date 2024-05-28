@@ -17,6 +17,10 @@ export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps
   const dialogSurfaceState = useDialogSurface_unstable(
     {
       ...props,
+      /**
+       * Drawer accepts a `div` or `aside` element type, but Dialog only accepts a `div` element type.
+       * We need to cast the ref to a `div` element type to not break Dialog's ref type.
+       */
       as: props.as as 'div',
     },
     ref,
