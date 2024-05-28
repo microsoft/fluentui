@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 24 May 2024 07:28:16 GMT and should not be manually modified.
+This log was last generated on Tue, 28 May 2024 07:28:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.1)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.0..@fluentui/eslint-plugin_v1.18.1)
+
+### Patches
+
+- chore: re-enable deprecation/deprecation for files with styles ([PR #31459](https://github.com/microsoft/fluentui/pull/31459) by olfedias@microsoft.com)
 
 ## [1.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.0)
 
