@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InlineDrawer, OverlayDrawer } from '@fluentui/react-drawer';
+import { Drawer } from '@fluentui/react-drawer';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { slot } from '@fluentui/react-utilities';
 import { useNav_unstable } from '../Nav/useNav';
@@ -15,7 +15,6 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
  * @param ref - reference to root HTMLDivElement of NavDrawer
  */
 export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTMLDivElement>): NavDrawerState => {
-  const { type = 'inline' } = props;
   const focusAttributes = useArrowNavigationGroup({
     axis: 'vertical',
     circular: true,
@@ -29,21 +28,19 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     ref,
   );
 
-  const elementType = type === 'inline' ? InlineDrawer : OverlayDrawer;
-
   return {
     ...navState,
     components: {
-      root: elementType,
+      root: Drawer,
     },
-    root: slot.always<NavDrawerProps>(
+    root: slot.always(
       slot.resolveShorthand({
         ref,
         ...props,
         ...focusAttributes,
       }),
       {
-        elementType,
+        elementType: props.as || 'div',
       },
     ),
   };
