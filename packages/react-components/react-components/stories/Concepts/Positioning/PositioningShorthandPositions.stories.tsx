@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  Button,
-  Popover,
-  PopoverSurface,
-  PopoverTrigger,
-} from '@fluentui/react-components';
+import { makeStyles, mergeClasses, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PositioningShorthand } from '@fluentui/react-components';
 
 const useExampleStyles = makeStyles({
@@ -32,8 +24,8 @@ const useGridExampleStyles = makeStyles({
     display: 'inline-grid',
     gridTemplateColumns: 'repeat(5, 1fr)',
     gridTemplateRows: 'repeat(5, 64px)',
-    ...shorthands.gap('20px'),
-    ...shorthands.margin('16px', '128px'),
+    gap: '20px',
+    margin: '16px 128px',
   },
 
   instructions: {

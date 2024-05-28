@@ -9,7 +9,7 @@
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
     "start": "start-storybook",
-    "type-check": "tsc"
+    "type-check": "just-scripts type-check"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -17,12 +17,12 @@
   },
   "dependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-icons": "^2.0.237",
+    "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-theme": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
-    "@griffel/react": "^1.5.14",
+    "@griffel/react": "^1.5.22",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"

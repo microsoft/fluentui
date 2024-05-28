@@ -1,24 +1,14 @@
 import * as React from 'react';
-import {
-  AriaLiveAnnouncer,
-  Button,
-  Field,
-  Input,
-  makeStyles,
-  shorthands,
-  tokens,
-  useAnnounce,
-} from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Button, Field, Input, makeStyles, tokens, useAnnounce } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('8px'),
-    ...shorthands.padding('8px'),
-
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius('4px'),
+    gap: '8px',
+    padding: '8px',
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: '4px',
   },
 });
 

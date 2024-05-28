@@ -1,10 +1,11 @@
 import path from 'path';
+import { execSync } from 'child_process';
 import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nx/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';
+import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
 
 import { ReactComponentGeneratorSchema } from './schema';
-import { execSync } from 'child_process';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -51,6 +52,7 @@ function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
     directory: 'components',
     componentName: nameCasings.className,
     npmPackageName: project.projectConfig.name as string,
+    isSplitProject: isSplitProject(tree, project.projectConfig),
   };
 }
 
@@ -98,16 +100,16 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 
   // story
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files', 'story'),
-    path.join(options.paths.stories, options.componentName),
-    templateOptions,
-  );
+  const storiesPath = options.isSplitProject
+    ? path.join(options.projectConfig.root, '../stories/src', options.componentName)
+    : path.join(options.paths.stories, options.componentName);
+  generateFiles(tree, path.join(__dirname, 'files', 'story'), storiesPath, templateOptions);
 
-  const storiesGitkeep = path.join(options.paths.stories, '.gitkeep');
-  if (tree.exists(storiesGitkeep)) {
-    tree.delete(storiesGitkeep);
+  if (!options.isSplitProject) {
+    const storiesGitkeep = path.join(options.paths.stories, '.gitkeep');
+    if (tree.exists(storiesGitkeep)) {
+      tree.delete(storiesGitkeep);
+    }
   }
 }
 
@@ -129,5 +131,8 @@ function assertComponent(tree: Tree, options: NormalizedSchema) {
   if (tree.exists(componentDirPath)) {
     throw new Error(`The component "${options.componentName}" already exists`);
   }
+
+  assertStoriesProject(tree, { isSplitProject: options.isSplitProject, project: options.projectConfig });
+
   return;
 }

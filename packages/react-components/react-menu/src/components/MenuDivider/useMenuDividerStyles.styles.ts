@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -9,9 +9,9 @@ export const menuDividerClassNames: SlotClassNames<MenuDividerSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.margin('4px', '-5px', '4px', '-5px'),
+    margin: '4px -5px 4px -5px',
     width: 'auto',
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
   },
 });
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Thu, 16 May 2024 09:25:11 GMT",
+      "tag": "@fluentui/priority-overflow_v9.1.12",
+      "version": "9.1.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "45cd3f0d925b631e24d84d7f8c22bf1736353dc8",
+            "comment": "force update the overflow when item is removed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 09:58:42 GMT",
       "tag": "@fluentui/priority-overflow_v9.1.11",
       "version": "9.1.11",

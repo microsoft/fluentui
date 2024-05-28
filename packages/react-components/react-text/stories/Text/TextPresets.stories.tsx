@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   makeStyles,
-  shorthands,
   Body1,
   Body1Strong,
   Body1Stronger,
@@ -24,7 +23,7 @@ import textPresetsMd from './TextPresets.md';
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.gap('16px'),
+    gap: '16px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'baseline',

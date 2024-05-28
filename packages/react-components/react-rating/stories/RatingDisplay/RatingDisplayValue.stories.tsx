@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { RatingDisplay } from '@fluentui/react-components';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
 });
 

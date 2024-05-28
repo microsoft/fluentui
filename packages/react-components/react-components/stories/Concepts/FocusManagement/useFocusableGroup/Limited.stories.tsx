@@ -4,7 +4,6 @@ import {
   Button,
   useFocusableGroup,
   makeStyles,
-  shorthands,
   tokens,
   createFocusOutlineStyle,
   useId,
@@ -12,14 +11,12 @@ import {
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('10px'),
-
+    padding: '10px',
     display: 'flex',
-    ...shorthands.gap('5px'),
+    gap: '5px',
     position: 'relative',
-
     backgroundColor: tokens.colorBrandBackground2,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
 
     ...createFocusOutlineStyle(),
   },
@@ -29,12 +26,12 @@ const useStyles = makeStyles({
   },
   actions: {
     display: 'flex',
-    ...shorthands.gap('5px'),
+    gap: '5px',
   },
   pane: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
 });
 

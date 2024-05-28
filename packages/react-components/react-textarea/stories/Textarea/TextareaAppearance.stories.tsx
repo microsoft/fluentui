@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, makeStyles, mergeClasses, shorthands, tokens, Textarea } from '@fluentui/react-components';
+import { Field, makeStyles, mergeClasses, tokens, Textarea } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundInverted2,
   },
   fieldWrapper: {
-    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   },
 });
 

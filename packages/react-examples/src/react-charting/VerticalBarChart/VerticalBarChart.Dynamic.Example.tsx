@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 
@@ -41,10 +46,26 @@ const xAxisTypeOptions: IChoiceGroupOption[] = [
 
 export class VerticalBarChartDynamicExample extends React.Component<IVerticalBarChartProps, IExampleState> {
   private _colors = [
-    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
-    [DefaultPalette.orangeLighter, DefaultPalette.orangeLight, DefaultPalette.orange],
-    [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark],
-    [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
+    [
+      getColorFromToken(DataVizPalette.color1),
+      getColorFromToken(DataVizPalette.color2),
+      getColorFromToken(DataVizPalette.color3),
+    ],
+    [
+      getColorFromToken(DataVizPalette.color4),
+      getColorFromToken(DataVizPalette.color5),
+      getColorFromToken(DataVizPalette.color6),
+    ],
+    [
+      getColorFromToken(DataVizPalette.color7),
+      getColorFromToken(DataVizPalette.color8),
+      getColorFromToken(DataVizPalette.color9),
+    ],
+    [
+      getColorFromToken(DataVizPalette.color10),
+      getColorFromToken(DataVizPalette.color11),
+      getColorFromToken(DataVizPalette.color12),
+    ],
   ];
   private _colorIndex = 0;
   private _prevBarWidth = 16;
