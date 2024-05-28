@@ -90,6 +90,7 @@ export const TruncatedText = () => {
                   value={option.value}
                   key={option.value}
                   title={option.value}
+                  text={option.value}
                 >
                   <div className={styles.optionContent}>{option.value}</div>
                 </TagPickerOption>
