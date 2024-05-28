@@ -21,7 +21,7 @@ export const FullscreenLink = (props: FullscreenLinkProps) => (
 export const TagsListLink: React.FC = props => (
   <a
     className="sbdocs sbdocs-a"
-    href={`iframe.html?id=concepts-developer-accessibility-contenteditabletags-list-of-tags--page`}
+    href={`iframe.html?id=concepts-developer-accessibility-contenteditabletags-list-of-content-editable-tags--page`}
   >
     {props.children}
   </a>
