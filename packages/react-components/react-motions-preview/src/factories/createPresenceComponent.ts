@@ -1,5 +1,4 @@
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
-import type { EventData, EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
@@ -9,10 +8,6 @@ import { useMountedState } from '../hooks/useMountedState';
 import { animate } from '../utils/animate';
 import { getChildElement } from '../utils/getChildElement';
 import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
-
-type PresenceMotionEventData = EventData<'animation', AnimationPlaybackEvent> & {
-  direction: 'enter' | 'exit';
-};
 
 export type PresenceComponentProps = {
   /**
@@ -27,7 +22,9 @@ export type PresenceComponentProps = {
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
 
-  onMotionFinish?: EventHandler<PresenceMotionEventData>;
+  /** Callback that is called when the motion finishes. */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
@@ -59,11 +56,11 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
-    const onEnterFinish = useEventCallback((event: AnimationPlaybackEvent) => {
-      onMotionFinish?.(event, { event, type: 'animation', direction: 'enter' });
+    const onEnterFinish = useEventCallback(() => {
+      onMotionFinish?.(null, { direction: 'enter' });
     });
-    const onExitFinish = useEventCallback((event: AnimationPlaybackEvent) => {
-      onMotionFinish?.(event, { event, type: 'animation', direction: 'exit' });
+    const onExitFinish = useEventCallback(() => {
+      onMotionFinish?.(null, { direction: 'exit' });
 
       if (unmountOnExit) {
         setMounted(false);

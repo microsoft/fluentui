@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING: remove event argument from \"onMotionFinish\" prop",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
