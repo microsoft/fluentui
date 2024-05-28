@@ -15,7 +15,7 @@ const options = people.map(person => ({
   text: person,
 }));
 
-export const ContentEditableTagsRenderer = () => {
+export const SelectionManipulationPickerRenderer = () => {
   const { targetDocument } = useFluent();
   const { overrideLeftArrow, overrideRightArrow, moveCaretFromItem, getCaretPosition } = useCaretManipulation();
 

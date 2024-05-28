@@ -1,5 +1,5 @@
-export { ContentEditableTags } from './ContentEditableTags.stories';
-export { Lexical } from './Lexical.stories';
+export { SelectionManipulationPicker } from './SelectionManipulationPicker.stories';
+export { LexicalPicker } from './LexicalPicker.stories';
 
 export default {
   title: 'Concepts/Developer/Accessibility/ContentEditableTags',
