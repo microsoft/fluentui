@@ -24,7 +24,7 @@ describe('Drawer', () => {
    * component-handles-classname|component-has-static-classnames-object|make-styles-overrides-win: Drawer uses the DialogSurface component to render the classname, so the main component do not handle classname.
    * consistent-callback-args: Disabled that as the Drawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
    */
-  isConformant({
+  isConformant<DrawerProps>({
     Component: Drawer,
     displayName: 'Drawer',
     disabledTests: [

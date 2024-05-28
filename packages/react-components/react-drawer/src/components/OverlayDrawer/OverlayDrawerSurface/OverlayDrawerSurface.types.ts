@@ -1,5 +1,5 @@
-import type { DialogSurfaceProps, DialogSurfaceSlots, DialogSurfaceState } from '@fluentui/react-dialog';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { DialogSurfaceProps, DialogSurfaceSlots } from '@fluentui/react-dialog';
+import type { ComponentProps, Slot } from '@fluentui/react-utilities';
 
 /**
  * OverlayDrawerSurface slots
@@ -13,8 +13,3 @@ export type OverlayDrawerSurfaceSlots = Pick<DialogSurfaceSlots, 'backdrop'> & {
  */
 export type OverlayDrawerSurfaceProps = ComponentProps<OverlayDrawerSurfaceSlots> &
   Pick<DialogSurfaceProps, 'mountNode'>;
-
-/**
- * State used in rendering OverlayDrawerSurface
- */
-export type OverlayDrawerSurfaceState = DialogSurfaceState & ComponentState<OverlayDrawerSurfaceSlots>;

@@ -19,14 +19,15 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
   const { separator = false } = props;
 
   const motion = useMotion<HTMLElement>(open);
+  const defaultTag = props.as || 'div';
 
   return {
     components: {
-      root: 'div',
+      root: defaultTag,
     },
 
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps(defaultTag, {
         ...props,
         ref: useMergedRefs(ref, motion.ref),
       }),

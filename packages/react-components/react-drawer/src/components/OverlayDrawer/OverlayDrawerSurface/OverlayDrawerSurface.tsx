@@ -14,7 +14,13 @@ import type { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface.types';
  * OverlayDrawerSurface is a proxy for DialogSurface as is only meant to be used internally for Drawer.
  */
 export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps> = React.forwardRef((props, ref) => {
-  const dialogSurfaceState = useDialogSurface_unstable(props, ref);
+  const dialogSurfaceState = useDialogSurface_unstable(
+    {
+      ...props,
+      as: props.as as 'div',
+    },
+    ref,
+  );
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
 
   useOverlayDrawerSurfaceStyles_unstable(dialogSurfaceState);
