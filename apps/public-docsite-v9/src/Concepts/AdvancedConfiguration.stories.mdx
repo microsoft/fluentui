@@ -39,7 +39,7 @@ Fluent UI React v9 uses Griffel as CSS-in-JS to apply styles. To provide determi
 To configure the sorting behavior, please pass `compareMediaQueries` function with the same signature as sort functions in e.g. `Array.prototype.sort`.
 
 ```js
-import { createDOMRenderer } from '@griffel/react';
+import { createDOMRenderer } from '@fluentui/react-components';
 
 const mediaQueryOrder = [
   'only screen and (min-width: 1024px)',
@@ -69,7 +69,7 @@ const renderer = createDOMRenderer(document, {
 For mobile-first methodology, consider using [`sort-css-media-queries`](https://github.com/dutchenkoOleg/sort-css-media-queries):
 
 ```js
-import { createDOMRenderer } from '@griffel/react';
+import { createDOMRenderer } from '@fluentui/react-components';
 import sortCSSmq from 'sort-css-media-queries';
 
 const renderer = createDOMRenderer(document, {
