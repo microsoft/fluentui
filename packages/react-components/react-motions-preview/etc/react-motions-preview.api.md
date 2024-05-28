@@ -4,8 +4,6 @@
 
 ```ts
 
-import type { EventData } from '@fluentui/react-utilities';
-import type { EventHandler } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
