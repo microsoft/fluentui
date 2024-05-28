@@ -3,7 +3,7 @@ import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 
 export type CarouselButtonSlots = ButtonSlots & {
-  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
 };
 
 /**

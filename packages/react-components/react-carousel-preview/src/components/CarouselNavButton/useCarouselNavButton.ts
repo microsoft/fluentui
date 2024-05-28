@@ -3,7 +3,7 @@ import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from 
 import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
 import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
 import { useCarouselContext_unstable } from '../CarouselContext';
-import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 /**
@@ -17,16 +17,16 @@ import { useTabsterAttributes } from '@fluentui/react-tabster';
  */
 export const useCarouselNavButton_unstable = (
   props: CarouselNavButtonProps,
-  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+  ref: React.Ref<ARIAButtonElement>,
 ): CarouselNavButtonState => {
-  const { onClick, as = 'a' } = props;
+  const { onClick, as = 'button' } = props;
 
   const value = useCarouselNavContext();
 
   const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
   const isSelected = useCarouselContext_unstable(c => c.value === value);
 
-  const handleClick: ARIAButtonSlotProps<'a'>['onClick'] = useEventCallback(event => {
+  const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
 
     if (!event.defaultPrevented && isHTMLElement(event.target)) {
@@ -38,12 +38,12 @@ export const useCarouselNavButton_unstable = (
     focusable: { isDefault: isSelected },
   });
 
-  const _carouselButton = slot.always<ARIAButtonSlotProps<'a'>>(
+  const _carouselButton = slot.always<ARIAButtonSlotProps>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
       defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        ref: ref as React.Ref<HTMLButtonElement>,
         role: 'tab',
         type: 'button',
         ...defaultTabProps,

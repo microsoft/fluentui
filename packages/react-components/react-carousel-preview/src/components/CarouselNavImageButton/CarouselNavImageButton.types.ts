@@ -5,7 +5,7 @@ export type CarouselNavImageButtonSlots = {
   /**
    * ARIA compliant nav buttons used to jump to pages
    */
-  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
   /**
    * Required: The image within the button
    */

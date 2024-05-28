@@ -6,6 +6,7 @@ import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselValues_unstable } from '../useCarouselValues';
 import { slot } from '@fluentui/react-utilities';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
+import { ARIAButtonElement } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render CarouselButton.
@@ -18,7 +19,7 @@ import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
  */
 export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
-  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+  ref: React.Ref<ARIAButtonElement>,
 ): CarouselButtonState => {
   const { navType } = props;
 
@@ -66,7 +67,7 @@ export const useCarouselButton_unstable = (
         ...props,
         onClick: handleButtonClick,
       },
-      ref,
+      ref as React.Ref<HTMLButtonElement>,
     ),
   };
 };
