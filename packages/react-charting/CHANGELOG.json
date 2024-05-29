@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 29 May 2024 07:24:53 GMT",
+      "tag": "@fluentui/react-charting_v5.21.14",
+      "version": "5.21.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ea6069e8d28a8b6e5c5ad16cd28dd6bc1f8696ad",
+            "comment": "Update focus order in sankey chart for vertical navigation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 May 2024 07:28:20 GMT",
       "tag": "@fluentui/react-charting_v5.21.13",
       "version": "5.21.13",
