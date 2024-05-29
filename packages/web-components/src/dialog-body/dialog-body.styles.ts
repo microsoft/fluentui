@@ -60,10 +60,6 @@ export const styles = css`
     display: none;
   }
 
-  .title:empty {
-    background: pink;
-  }
-
   .content {
     vertical-align: top;
     min-height: 32px;
