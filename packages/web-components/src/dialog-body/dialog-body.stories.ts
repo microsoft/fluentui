@@ -1,13 +1,13 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
+import type { Args } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
+import { Dialog as FluentDialog } from '../dialog/dialog.js';
 import type { DialogBody as FluentDialogBody } from './dialog-body.js';
 import './define.js';
 import '../button/define.js';
 import '../text/define.js';
 
 type DialogStoryArgs = Args & FluentDialogBody;
-// type DialogBodyStoryMeta = Meta<DialogStoryArgs>;
 
 const dismissed20Regular = html<DialogStoryArgs>`
   <svg
@@ -42,11 +42,6 @@ const dismissCircle20Regular = html`<svg
 const closeDialog = (e: Event, id: string, dismissed: boolean = false) => {
   const dialog = document.getElementById(id) as FluentDialog;
   dialog.hide();
-};
-
-const openDialog = (e: Event, id: string) => {
-  const dialog = document.getElementById(id) as FluentDialog;
-  dialog.show();
 };
 
 const dialogTemplate = html<DialogStoryArgs>`
