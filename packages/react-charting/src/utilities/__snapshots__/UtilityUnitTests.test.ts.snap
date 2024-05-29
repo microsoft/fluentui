@@ -1086,6 +1086,270 @@ exports[`createStringXAxis should render the x-axis labels correctly for specifi
 </g>
 `;
 
+exports[`createStringYAxis should render y-axis labels correctly for specific padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78.57142857142857)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.00000000000001)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,21.428571428571427)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,83.33333333333334)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,16.666666666666668)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly with a custom tick format 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,83.33333333333334)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      Y-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      Y-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,16.666666666666668)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      Y-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly with specific tick padding value 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,83.33333333333334)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,16.666666666666668)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
 exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly when layout direction is RTL 1`] = `
 <g
   fill="none"
@@ -1277,270 +1541,6 @@ exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis lab
       dy="0.32em"
       fill="currentColor"
       x="-11"
-    >
-      label 3
-    </text>
-  </g>
-</g>
-`;
-
-exports[`createStringYAxisForOtherCharts should render y-axis labels correctly for specific padding values 1`] = `
-<g
-  fill="none"
-  font-family="sans-serif"
-  font-size="10"
-  text-anchor="end"
->
-  <path
-    class="domain"
-    d="M0.5,100.5V0.5"
-    stroke="currentColor"
-  />
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,78.57142857142857)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-12"
-    >
-      label 1
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,50.00000000000001)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-12"
-    >
-      label 2
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,21.428571428571427)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-12"
-    >
-      label 3
-    </text>
-  </g>
-</g>
-`;
-
-exports[`createStringYAxisForOtherCharts should render y-axis labels correctly when layout direction is RTL 1`] = `
-<g
-  fill="none"
-  font-family="sans-serif"
-  font-size="10"
-  text-anchor="start"
->
-  <path
-    class="domain"
-    d="M0.5,100.5V0.5"
-    stroke="currentColor"
-  />
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,83.33333333333334)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="12"
-    >
-      label 1
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,50)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="12"
-    >
-      label 2
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,16.666666666666668)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="12"
-    >
-      label 3
-    </text>
-  </g>
-</g>
-`;
-
-exports[`createStringYAxisForOtherCharts should render y-axis labels correctly with a custom tick format 1`] = `
-<g
-  fill="none"
-  font-family="sans-serif"
-  font-size="10"
-  text-anchor="end"
->
-  <path
-    class="domain"
-    d="M0.5,100.5V0.5"
-    stroke="currentColor"
-  />
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,83.33333333333334)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-12"
-    >
-      Y-axis label 1
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,50)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-12"
-    >
-      Y-axis label 2
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,16.666666666666668)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-12"
-    >
-      Y-axis label 3
-    </text>
-  </g>
-</g>
-`;
-
-exports[`createStringYAxisForOtherCharts should render y-axis labels correctly with specific tick padding value 1`] = `
-<g
-  fill="none"
-  font-family="sans-serif"
-  font-size="10"
-  text-anchor="end"
->
-  <path
-    class="domain"
-    d="M0.5,100.5V0.5"
-    stroke="currentColor"
-  />
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,83.33333333333334)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-5"
-    >
-      label 1
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,50)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-5"
-    >
-      label 2
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,16.666666666666668)"
-  >
-    <line
-      stroke="currentColor"
-      x2="0"
-    />
-    <text
-      dy="0.32em"
-      fill="currentColor"
-      x="-5"
     >
       label 3
     </text>
