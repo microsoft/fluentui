@@ -373,6 +373,7 @@
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "@types/jest-axe/axe-core": "4.7.2",
+    "@microsoft/api-extractor/typescript": "4.9.5",
     "eslint": "7.25.0",
     "@mdx-js/loader/loader-utils": "~2.0.4",
     "swc-loader": "^0.2.3",
