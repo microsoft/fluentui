@@ -7,7 +7,7 @@ export type DividerSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /**
-   * Accessibility wrapper for content when presented.
+   * Wrapper for content when presented.
    */
   wrapper: NonNullable<Slot<'div'>>;
 };

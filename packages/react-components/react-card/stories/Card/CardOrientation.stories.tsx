@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
+import { makeStyles, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
@@ -12,7 +12,7 @@ const resolveAsset = (asset: string) => {
 
 const useStyles = makeStyles({
   main: {
-    ...shorthands.gap('36px'),
+    gap: '36px',
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
@@ -28,9 +28,7 @@ const useStyles = makeStyles({
     width: 'fit-content',
   },
 
-  title: {
-    ...shorthands.margin(0, 0, '12px'),
-  },
+  title: { margin: '0 0 12px' },
 
   horizontalCardImage: {
     width: '64px',
@@ -38,7 +36,7 @@ const useStyles = makeStyles({
   },
 
   headerImage: {
-    ...shorthands.borderRadius('4px'),
+    borderRadius: '4px',
     maxWidth: '44px',
     maxHeight: '44px',
   },
@@ -47,9 +45,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
   },
 
-  text: {
-    ...shorthands.margin(0),
-  },
+  text: { margin: '0' },
 });
 
 const Title = ({ children }: React.PropsWithChildren<{}>) => {

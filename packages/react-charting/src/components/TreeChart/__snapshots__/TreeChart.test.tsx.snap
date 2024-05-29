@@ -909,7 +909,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
@@ -920,7 +920,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M321.25,205.2173913043478 V230
     H208.75 H433.75"
@@ -931,7 +931,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M583.75,205.2173913043478 V230
     H471.25 H696.25"
@@ -942,7 +942,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M846.25,205.2173913043478 V230
     H733.75 H958.75"
@@ -953,7 +953,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M1108.75,205.2173913043478 V230
     H996.25 H1221.25"
@@ -1873,7 +1873,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
@@ -1884,7 +1884,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M321.25,205.2173913043478 V230
     H208.75 H433.75"
@@ -1895,7 +1895,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M583.75,205.2173913043478 V230
     H471.25 H696.25"
@@ -1906,7 +1906,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M846.25,205.2173913043478 V230
     H733.75 H958.75"
@@ -1917,7 +1917,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M1108.75,205.2173913043478 V230
     H996.25 H1221.25"
@@ -2837,7 +2837,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
@@ -2848,7 +2848,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M321.25,205.2173913043478 V230
     H208.75 H433.75"
@@ -2859,7 +2859,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M583.75,205.2173913043478 V230
     H471.25 H696.25"
@@ -2870,7 +2870,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M846.25,205.2173913043478 V230
     H733.75 H958.75"
@@ -2881,7 +2881,7 @@ subText sub Parent info parentId: 13
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M1108.75,205.2173913043478 V230
     H996.25 H1221.25"
@@ -3233,7 +3233,7 @@ subText Subtext val is subtext Parent info parentId: 0
               {
                 fill: none;
                 stroke-width: 2px;
-                stroke: #A1A1A1;
+                stroke: #605e5c;
               }
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"

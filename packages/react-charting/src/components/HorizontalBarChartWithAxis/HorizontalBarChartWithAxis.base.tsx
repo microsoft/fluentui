@@ -142,6 +142,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     return (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
         xAxisType={this._xAxisType}
@@ -713,5 +714,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const xValue = point.xAxisCalloutData || point.x;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
+  };
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
   };
 }

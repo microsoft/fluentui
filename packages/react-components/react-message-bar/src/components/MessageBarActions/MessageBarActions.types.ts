@@ -23,4 +23,9 @@ export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
  * State used in rendering MessageBarActions
  */
 export type MessageBarActionsState = ComponentState<MessageBarActionsSlots> &
-  Pick<Required<MessageBarContextValue>, 'layout'>;
+  Pick<Required<MessageBarContextValue>, 'layout'> & {
+    /**
+     * Whether there are actions as children of this component
+     */
+    hasActions: boolean;
+  };

@@ -6,11 +6,14 @@
 
 /// <reference types="react" />
 
+import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import { EventData } from '@fluentui/react-utilities';
+import { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -27,7 +30,7 @@ import type { SlotComponentType } from '@fluentui/react-utilities';
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
 // @public
-export type ComboboxBaseProps = SelectionProps & Pick<PortalProps, 'mountNode'> & {
+export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<PortalProps, 'mountNode'> & {
     appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
     clearable?: boolean;
     defaultOpen?: boolean;
@@ -55,6 +58,7 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
     disabled: boolean;
     freeform: boolean;
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
 };
 
 // @public (undocumented)
@@ -87,7 +91,7 @@ export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps
 // @public (undocumented)
 export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
     clearIcon?: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;
@@ -142,6 +146,7 @@ export const listboxClassNames: SlotClassNames<ListboxSlots>;
 // @public
 export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
+    onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
 
 // @public (undocumented)
@@ -168,6 +173,7 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
     setActiveOption(option?: OptionValue): void;
     selectOption(event: SelectionEvents, option: OptionValue): void;
     activeDescendantController: ActiveDescendantImperativeRef;
+    onActiveDescendantChange?: (event: ActiveDescendantChangeEvent) => void;
 };
 
 // @public
@@ -195,7 +201,7 @@ export type OptionGroupSlots = {
 // @public
 export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
-// @public (undocumented)
+// @public
 export type OptionOnSelectData = {
     optionValue: string | undefined;
     optionText: string | undefined;
@@ -243,7 +249,7 @@ export const renderOption_unstable: (state: OptionState) => JSX.Element;
 // @public
 export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
 
-// @public (undocumented)
+// @public
 export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @internal

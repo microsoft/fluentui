@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   dismissButton: {
     color: tokens.colorNeutralForeground2,
     position: 'relative',
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
@@ -40,10 +40,10 @@ const useStyles = makeStyles({
     borderBottomRightRadius: tokens.borderRadiusNone,
     borderRightStyle: 'none',
     marginInlineStart: 'auto',
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
   },

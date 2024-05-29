@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add optional `window` argument to `scrollIntoView`.",
+  "packageName": "@fluentui/react-aria",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

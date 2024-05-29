@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
+import { animate } from '../utils/animate';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
 
@@ -11,8 +12,6 @@ type MotionComponentProps = {
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
-
-  iterations?: number;
 };
 
 /**
@@ -22,7 +21,7 @@ type MotionComponentProps = {
  */
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
   const Atom: React.FC<MotionComponentProps> = props => {
-    const { children, iterations = 1, imperativeRef } = props;
+    const { children, imperativeRef } = props;
 
     const child = getChildElement(children);
 
@@ -38,14 +37,16 @@ export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
         const definition = typeof motion === 'function' ? motion(element) : motion;
         const { keyframes, ...options } = definition;
 
-        const animation = element.animate(keyframes, {
+        const animation = animate(element, keyframes, {
           fill: 'forwards',
 
           ...options,
-          iterations,
-
           ...(isReducedMotion() && { duration: 1 }),
         });
+
+        if (!animation) {
+          return;
+        }
 
         animationRef.current = animation;
 
@@ -53,7 +54,7 @@ export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
           animation.cancel();
         };
       }
-    }, [animationRef, iterations, isReducedMotion]);
+    }, [animationRef, isReducedMotion]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };

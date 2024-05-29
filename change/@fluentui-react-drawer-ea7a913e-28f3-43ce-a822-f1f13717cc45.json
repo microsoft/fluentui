@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: move scroll detector to a dedicated react context",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

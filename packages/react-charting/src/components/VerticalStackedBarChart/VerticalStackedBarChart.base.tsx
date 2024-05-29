@@ -149,6 +149,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._emptyChartId = getId('_VSBC_empty');
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -206,6 +207,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       return (
         <CartesianChart
           {...this.props}
+          chartTitle={this._getChartTitle()}
           points={this._dataset}
           chartType={ChartTypes.VerticalStackedBarChart}
           xAxisType={this._xAxisType}
@@ -423,6 +425,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
     Object.keys(lineObject).forEach((item: string, index: number) => {
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
+        // Create an object to store line point ref so that the object can be passed by reference to the focus handler
+        const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
@@ -444,6 +448,13 @@ export class VerticalStackedBarChartBase extends React.Component<
             strokeWidth={3}
             visibility={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            // When no legend is highlighted: Line points are automatically displayed along with the bars
+            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
+            // and avoid conveying duplicate info, make these line points non-focusable.
+            data-is-focusable={this._legendHighlighted(item)}
+            ref={e => (circleRef.refElement = e)}
+            onFocus={this._lineFocus.bind(this, circlePoint, circleRef)}
+            onBlur={this._lineHoverOut}
           />,
         );
       });
@@ -672,14 +683,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _lineHover = (lineData: LinePoint, mouseEvent: React.MouseEvent<SVGElement>) => {
     mouseEvent.persist();
-    this.setState({
-      refSelected: mouseEvent,
-      isCalloutVisible: true,
-      xCalloutValue: `${lineData.xItem.xAxisPoint}`,
-      yCalloutValue: `${lineData.yAxisCalloutData || lineData.data || lineData.y}`,
-      activeXAxisDataPoint: lineData.xItem.xAxisPoint,
-      color: lineData.color,
-    });
+    this._lineHoverFocus(lineData, mouseEvent);
   };
 
   private _lineHoverOut = () => {
@@ -690,6 +694,23 @@ export class VerticalStackedBarChartBase extends React.Component<
       yCalloutValue: '',
       activeXAxisDataPoint: '',
       color: '',
+    });
+  };
+
+  private _lineFocus = (lineData: LinePoint, ref: { refElement: SVGCircleElement | null }) => {
+    if (ref.refElement) {
+      this._lineHoverFocus(lineData, ref.refElement);
+    }
+  };
+
+  private _lineHoverFocus = (lineData: LinePoint, refSelected: React.MouseEvent<SVGElement> | SVGCircleElement) => {
+    this.setState({
+      refSelected,
+      isCalloutVisible: true,
+      xCalloutValue: `${lineData.xItem.xAxisPoint}`,
+      yCalloutValue: `${lineData.yAxisCalloutData || lineData.data || lineData.y}`,
+      activeXAxisDataPoint: lineData.xItem.xAxisPoint,
+      color: lineData.color,
     });
   };
 
@@ -1133,4 +1154,15 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.data.filter(item => item.chartData.length === 0).length === 0
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    const numLines = Object.keys(this._lineObject).length;
+    return (
+      (chartTitle ? `${chartTitle}. ` : '') +
+      `Vertical bar chart with ${data?.length || 0} stacked bars` +
+      (numLines > 0 ? ` and ${numLines} lines` : '') +
+      '. '
+    );
+  };
 }

@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "outDir": "dist/esm",
+    "types": ["web", "node", "webpack-env"]
+  },
+  "include": ["src/**/*.test.*", "src/**/*.spec.*"]
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import type { ActiveDescendantChangeEvent, ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import { EventData, EventHandler } from '@fluentui/react-utilities';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
@@ -12,6 +13,7 @@ import { ListboxContextValue } from '../contexts/ListboxContext';
  * Shared types between Combobox and Dropdown components
  */
 export type ComboboxBaseProps = SelectionProps &
+  HighlightedOptionProps &
   Pick<PortalProps, 'mountNode'> & {
     /**
      * Controls the colors and borders of the combobox trigger.
@@ -128,6 +130,8 @@ export type ComboboxBaseState = Required<
     onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
     disabled: boolean;
     freeform: boolean;
+
+    onActiveDescendantChange: (event: ActiveDescendantChangeEvent) => void;
   };
 
 /**
@@ -137,7 +141,7 @@ export type ComboboxBaseOpenChangeData = {
   open: boolean;
 };
 
-/* Possible event types for onOpen */
+/** Possible event types for onOpen */
 export type ComboboxBaseOpenEvents =
   | React.MouseEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
@@ -147,4 +151,13 @@ export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
   activeDescendant: ActiveDescendantContextValue;
   listbox: ListboxContextValue;
+};
+
+export type ActiveOptionChangeData = EventData<'change', ActiveDescendantChangeEvent> & {
+  previousOption: OptionValue | null | undefined;
+  nextOption: OptionValue | null | undefined;
+};
+
+export type HighlightedOptionProps = {
+  onActiveOptionChange?: EventHandler<ActiveOptionChangeData>;
 };

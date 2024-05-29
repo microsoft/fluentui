@@ -15,7 +15,7 @@ export default async function (tree: Tree, schema: RecipeGeneratorGeneratorSchem
 function normalizeOptions(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
   const workspaceConfig = getWorkspaceConfig(tree);
   const recipesProject = getProjectConfig(tree, {
-    packageName: `@${workspaceConfig.npmScope}/recipes-react-components`,
+    packageName: `@${workspaceConfig.npmScope}/recipes`,
   });
 
   const recipesRoot = joinPathFragments(recipesProject.paths.sourceRoot, 'recipes');

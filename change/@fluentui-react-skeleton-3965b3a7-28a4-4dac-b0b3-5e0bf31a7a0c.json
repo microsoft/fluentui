@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: rename useSkeletonStyles.ts to useSkeletonStyles.styles.ts",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

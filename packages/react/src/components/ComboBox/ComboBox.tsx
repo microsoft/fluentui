@@ -897,7 +897,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     // Remember the original value and then make the value lowercase for comparison
     const originalUpdatedValue: string = updatedValue;
-    updatedValue = updatedValue.toLocaleLowerCase();
+    // Make the value lowercase for comparison if caseSensitive is false
+    updatedValue = this._adjustForCaseSensitivity(updatedValue);
 
     let newSuggestedDisplayValue = '';
 
@@ -910,14 +911,14 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           option =>
             isNormalOption(option) &&
             !option.disabled &&
-            getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+            this._adjustForCaseSensitivity(getPreviewText(option)).indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
         const text: string = getPreviewText(items[0]);
 
         // If the user typed out the complete option text, we don't need any suggested display text anymore
-        newSuggestedDisplayValue = text.toLocaleLowerCase() !== updatedValue ? text : '';
+        newSuggestedDisplayValue = this._adjustForCaseSensitivity(text) !== updatedValue ? text : '';
 
         // remember the index of the match we found
         newCurrentPendingValueValidIndex = items[0].index;
@@ -928,7 +929,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         .map((item, index) => ({ ...item, index }))
         .filter(
           option =>
-            isNormalOption(option) && !option.disabled && getPreviewText(option).toLocaleLowerCase() === updatedValue,
+            isNormalOption(option) &&
+            !option.disabled &&
+            this._adjustForCaseSensitivity(getPreviewText(option)) === updatedValue,
         );
 
       // if we found a match remember the index
@@ -994,7 +997,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _updateAutocompleteIndexWithoutFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
     const originalUpdatedValue: string = updatedValue;
-    updatedValue = updatedValue.toLocaleLowerCase();
+    updatedValue = this._adjustForCaseSensitivity(updatedValue);
 
     // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
     const items = currentOptions
@@ -1002,7 +1005,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       .filter(
         option =>
-          isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
+          isNormalOption(option) &&
+          !option.disabled &&
+          this._adjustForCaseSensitivity(option.text).indexOf(updatedValue) === 0,
       );
 
     // If we found a match, update the state
@@ -1300,21 +1305,26 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       // Check to see if the user typed an exact match
       if (indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
-        const pendingOptionText = getPreviewText(currentOptions[currentPendingValueValidIndex]).toLocaleLowerCase();
+        const pendingOptionText = this._adjustForCaseSensitivity(
+          getPreviewText(currentOptions[currentPendingValueValidIndex]),
+        );
+
         const autofill = this._autofill.current;
 
         // By exact match, that means: our pending value is the same as the pending option text OR
         // the pending option starts with the pending value and we have an "autoComplete" selection
         // where the total length is equal to pending option length OR
         // the live value in the underlying input matches the pending option; update the state
+        const adjustedCurrentPendingValue = this._adjustForCaseSensitivity(currentPendingValue);
         if (
-          currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
+          adjustedCurrentPendingValue === pendingOptionText ||
           (autoComplete &&
-            pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
+            pendingOptionText.indexOf(adjustedCurrentPendingValue) === 0 &&
             autofill?.isValueSelected &&
             currentPendingValue.length + (autofill.selectionEnd! - autofill.selectionStart!) ===
               pendingOptionText.length) ||
-          autofill?.inputElement?.value.toLocaleLowerCase() === pendingOptionText
+          (autofill?.inputElement?.value !== undefined &&
+            this._adjustForCaseSensitivity(autofill.inputElement.value) === pendingOptionText)
         ) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
           if (multiSelect && this.state.isOpen) {
@@ -2490,6 +2500,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _hasFocus() {
     return this.state.focusState !== 'none';
+  }
+
+  private _adjustForCaseSensitivity(text: string): string {
+    return this.props.caseSensitive ? text : text.toLowerCase();
   }
 }
 

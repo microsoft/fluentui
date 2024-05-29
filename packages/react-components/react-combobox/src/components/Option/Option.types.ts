@@ -2,10 +2,10 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import * as React from 'react';
 
 export type OptionSlots = {
-  /* The root option slot, with role="option" */
+  /** The root option slot, with role="option" */
   root: NonNullable<Slot<'div'>>;
 
-  /* The check icon that is visible for selected options */
+  /** The check icon that is visible for selected options */
   checkIcon: Slot<'span'>;
 };
 
@@ -19,7 +19,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
    */
   disabled?: boolean;
 
-  /*
+  /**
    * Defines a unique identifier for the option.
    * Use this to control selectedOptions, or to get the option value in the onOptionSelect callback.
    * Defaults to `text` if not provided.
@@ -62,9 +62,9 @@ export type OptionState = ComponentState<OptionSlots> &
      */
     focusVisible: boolean;
 
-    /* If true, the option is part of a multiselect combobox or listbox */
+    /** If true, the option is part of a multiselect combobox or listbox */
     multiselect?: boolean;
 
-    /* If true, the option is selected */
+    /** If true, the option is selected */
     selected: boolean;
   };

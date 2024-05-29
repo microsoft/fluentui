@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 import { createMotionComponent } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -8,28 +8,25 @@ const useClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
-
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.padding('10px'),
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: '10px',
 
     alignItems: 'center',
   },
   item: {
     backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    borderRadius: tokens.borderRadiusCircular,
     width: '100px',
     height: '100px',
     forcedColorAdjust: 'none',
   },
-  description: {
-    ...shorthands.margin('5px'),
-  },
+  description: { margin: '5px' },
 });
 
 const BackgroundChange = createMotionComponent({
@@ -38,6 +35,7 @@ const BackgroundChange = createMotionComponent({
     { backgroundColor: tokens.colorStatusSuccessBackground3 },
   ],
   duration: 3000,
+  iterations: Infinity,
 });
 
 export const TokensUsage = () => {
@@ -46,7 +44,7 @@ export const TokensUsage = () => {
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <BackgroundChange iterations={Infinity}>
+        <BackgroundChange>
           <div className={classes.item} />
         </BackgroundChange>
 

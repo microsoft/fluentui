@@ -7,11 +7,11 @@ type Box = {
   text: 'string';
 };
 
-interface IWhatsNewBoxProps {
+interface WhatsNewBoxProps {
   boxes: Box[];
 }
 
-export const WhatsNewBoxes: React.FC<IWhatsNewBoxProps> = props => {
+export const WhatsNewBoxes: React.FC<WhatsNewBoxProps> = props => {
   const styles = useWhatsNewStyles();
 
   return (

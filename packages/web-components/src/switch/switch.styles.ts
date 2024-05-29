@@ -1,253 +1,178 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css } from '@microsoft/fast-element';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
-  disabledCursor,
-  display,
-  ElementDefinitionContext,
-  focusVisible,
-  forcedColorsStylesheetBehavior,
-  SwitchOptions,
-} from '@microsoft/fast-foundation';
-import { DirectionalStyleSheetBehavior, heightNumber } from '../styles';
-import {
-  accentFillActive,
-  accentFillHover,
-  accentFillRest,
-  bodyFont,
-  designUnit,
-  disabledOpacity,
-  foregroundOnAccentActive,
-  foregroundOnAccentHover,
-  foregroundOnAccentRest,
-  neutralFillInputAltActive,
-  neutralFillInputAltFocus,
-  neutralFillInputAltHover,
-  neutralFillInputAltRest,
-  neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
-  strokeWidth,
-} from '../design-tokens';
-import { typeRampBase } from '../styles/patterns/type-ramp';
-import { focusTreatmentTight } from '../styles/focus';
+  borderRadiusCircular,
+  colorCompoundBrandBackground,
+  colorCompoundBrandBackgroundHover,
+  colorCompoundBrandBackgroundPressed,
+  colorNeutralBackgroundDisabled,
+  colorNeutralForeground1,
+  colorNeutralForeground3,
+  colorNeutralForeground3Hover,
+  colorNeutralForeground3Pressed,
+  colorNeutralForegroundDisabled,
+  colorNeutralForegroundInverted,
+  colorNeutralForegroundInvertedHover,
+  colorNeutralForegroundInvertedPressed,
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeDisabled,
+  colorStrokeFocus2,
+  colorTransparentBackground,
+  colorTransparentStroke,
+  curveEasyEase,
+  durationNormal,
+  fontFamilyBase,
+  fontSizeBase300,
+  fontWeightRegular,
+  lineHeightBase300,
+  shadow4,
+  spacingHorizontalS,
+  spacingHorizontalXS,
+  spacingHorizontalXXS,
+  spacingVerticalS,
+  spacingVerticalXS,
+  strokeWidthThick,
+} from '../theme/design-tokens.js';
 
-export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: SwitchOptions,
-) =>
-  css`
-    :host([hidden]) {
-      display: none;
-    }
+export const styles = css`
+  ${display('inline-flex')}
 
-    ${display('inline-flex')} :host {
-      align-items: center;
-      outline: none;
-      font-family: ${bodyFont};
-      ${
-        /*
-         * Chromium likes to select label text or the default slot when
-         * the checkbox is clicked. Maybe there is a better solution here?
-         */ ''
-      } user-select: none;
-    }
+  :host {
+    align-items: center;
+    flex-direction: row-reverse;
+    outline: none;
+    user-select: none;
+    contain: content;
+  }
+  :host([label-position='before']) {
+    flex-direction: row;
+  }
+  :host([label-position='above']) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  :host([disabled]) .label,
+  :host([readonly]) .label,
+  :host([readonly]) .switch,
+  :host([disabled]) .switch {
+    cursor: not-allowed;
+  }
+  .label {
+    position: relative;
+    color: ${colorNeutralForeground1};
+    line-height: ${lineHeightBase300};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    font-family: ${fontFamilyBase};
+    padding: ${spacingVerticalXS} ${spacingHorizontalXS};
+    cursor: pointer;
+  }
+  .label__hidden {
+    display: none;
+  }
+  .switch {
+    display: flex;
+    align-items: center;
+    padding: 0 ${spacingHorizontalXXS};
+    box-sizing: border-box;
+    width: 40px;
+    height: 20px;
+    background-color: ${colorTransparentBackground};
+    border: 1px solid ${colorNeutralStrokeAccessible};
+    border-radius: ${borderRadiusCircular};
+    outline: none;
+    cursor: pointer;
+    margin: ${spacingVerticalS} ${spacingHorizontalS};
+  }
+  :host(:hover) .switch {
+    background: none;
+    border-color: ${colorNeutralStrokeAccessibleHover};
+  }
+  :host(:active) .switch {
+    border-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+  :host([disabled]) .switch,
+  :host([readonly]) .switch {
+    border: 1px solid ${colorNeutralStrokeDisabled};
+    background-color: none;
+    pointer: default;
+  }
+  :host([aria-checked='true']) .switch {
+    background: ${colorCompoundBrandBackground};
+  }
+  :host([aria-checked='true']:hover) .switch {
+    background: ${colorCompoundBrandBackgroundHover};
+    border-color: ${colorCompoundBrandBackgroundHover};
+  }
+  :host([aria-checked='true']:active) .switch {
+    background: ${colorCompoundBrandBackgroundPressed};
+    border-color: ${colorCompoundBrandBackgroundPressed};
+  }
+  :host([aria-checked='true'][disabled]) .switch {
+    background: ${colorNeutralBackgroundDisabled};
+    border-color: ${colorNeutralStrokeDisabled};
+  }
+  .checked-indicator {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    margin-inline-start: 0;
+    background-color: ${colorNeutralForeground3};
+    transition-duration: ${durationNormal};
+    transition-timing-function: ${curveEasyEase};
+    transition-property: margin-inline-start;
+  }
+  :host([aria-checked='true']) .checked-indicator {
+    background-color: ${colorNeutralForegroundInverted};
+    margin-inline-start: calc(100% - 14px);
+  }
+  :host([aria-checked='true']:hover) .checked-indicator {
+    background: ${colorNeutralForegroundInvertedHover};
+  }
+  :host([aria-checked='true']:active) .checked-indicator {
+    background: ${colorNeutralForegroundInvertedPressed};
+  }
+  :host(:hover) .checked-indicator {
+    background-color: ${colorNeutralForeground3Hover};
+  }
+  :host(:active) .checked-indicator {
+    background-color: ${colorNeutralForeground3Pressed};
+  }
+  :host([disabled]) .checked-indicator,
+  :host([readonly]) .checked-indicator {
+    background: ${colorNeutralForegroundDisabled};
+  }
+  :host([aria-checked='true'][disabled]) .checked-indicator {
+    background: ${colorNeutralForegroundDisabled};
+  }
 
-    :host(.disabled) {
-      opacity: ${disabledOpacity};
-    }
-
-    :host(.disabled) .label,
-    :host(.readonly) .label,
-    :host(.disabled) .switch,
-    :host(.readonly) .switch,
-    :host(.disabled) .status-message,
-    :host(.readonly) .status-message {
-      cursor: ${disabledCursor};
-    }
-
+  :host(:focus-visible) {
+    border-color: ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
     .switch {
-      position: relative;
-      box-sizing: border-box;
-      width: calc(((${heightNumber} / 2) + ${designUnit}) * 2px);
-      height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
-      background: ${neutralFillInputAltRest};
-      border-radius: calc(${heightNumber} * 1px);
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
-      cursor: pointer;
+      border-color: InactiveBorder;
     }
-
-    :host(:not(.disabled):hover) .switch {
-      background: ${neutralFillInputAltHover};
-      border-color: ${neutralStrokeStrongHover};
+    :host([aria-checked='true']) .switch,
+    :host([aria-checked='true']:active) .switch,
+    :host([aria-checked='true']:hover) .switch {
+      background: Highlight;
+      border-color: Highlight;
     }
-
-    :host(:not(.disabled):active) .switch {
-      background: ${neutralFillInputAltActive};
-      border-color: ${neutralStrokeStrongActive};
+    .checked-indicator,
+    :host(:hover) .checked-indicator,
+    :host(:active) .checked-indicator {
+      background-color: ActiveCaption;
     }
-
-    :host(:${focusVisible}) .switch {
-      ${focusTreatmentTight}
-      background: ${neutralFillInputAltFocus};
+    :host([aria-checked='true']) .checked-indicator,
+    :host([aria-checked='true']:hover) .checked-indicator,
+    :host([aria-checked='true']:active) .checked-indicator {
+      background-color: ButtonFace;
     }
-
-    :host(.checked) .switch {
-      background: ${accentFillRest};
-      border-color: transparent;
-    }
-
-    :host(.checked:not(.disabled):hover) .switch {
-      background: ${accentFillHover};
-      border-color: transparent;
-    }
-
-    :host(.checked:not(.disabled):active) .switch {
-      background: ${accentFillActive};
-      border-color: transparent;
-    }
-
-    slot[name='switch'] {
-      position: absolute;
-      display: flex;
-      border: 1px solid transparent; /* Spacing included in the transform reference box */
-      fill: ${neutralForegroundRest};
-      transition: all 0.2s ease-in-out;
-    }
-
-    .status-message {
-      color: ${neutralForegroundRest};
-      cursor: pointer;
-      ${typeRampBase}
-    }
-
-    .label__hidden {
-      display: none;
-      visibility: hidden;
-    }
-
-    .label {
-      color: ${neutralForegroundRest};
-      ${typeRampBase}
-      margin-inline-end: calc(${designUnit} * 2px + 2px);
-      cursor: pointer;
-    }
-
-    ::slotted([slot="checked-message"]),
-    ::slotted([slot="unchecked-message"]) {
-        margin-inline-start: calc(${designUnit} * 2px + 2px);
-    }
-
-    :host(.checked) .switch {
-      background: ${accentFillRest};
-    }
-
-    :host(.checked) .switch slot[name='switch'] {
-      fill: ${foregroundOnAccentRest};
-      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
-    }
-
-    :host(.checked:not(.disabled)) .switch:hover {
-      background: ${accentFillHover};
-    }
-
-    :host(.checked:not(.disabled)) .switch:hover slot[name='switch'] {
-      fill: ${foregroundOnAccentHover};
-    }
-
-    :host(.checked:not(.disabled)) .switch:active {
-      background: ${accentFillActive};
-    }
-
-    :host(.checked:not(.disabled)) .switch:active slot[name='switch'] {
-      fill: ${foregroundOnAccentActive};
-    }
-
-    .unchecked-message {
-      display: block;
-    }
-
-    .checked-message {
-      display: none;
-    }
-
-    :host(.checked) .unchecked-message {
-      display: none;
-    }
-
-    :host(.checked) .checked-message {
-      display: block;
-    }
-  `.withBehaviors(
-    new DirectionalStyleSheetBehavior(
-      css`
-        slot[name='switch'] {
-          left: 0;
-        }
-
-        :host(.checked) slot[name='switch'] {
-          left: 100%;
-          transform: translateX(-100%);
-        }
-      `,
-      css`
-        slot[name='switch'] {
-          right: 0;
-        }
-
-        :host(.checked) slot[name='switch'] {
-          right: 100%;
-          transform: translateX(100%);
-        }
-      `,
-    ),
-    forcedColorsStylesheetBehavior(
-      css`
-        :host(:not(.disabled)) .switch slot[name='switch'] {
-          forced-color-adjust: none;
-          fill: ${SystemColors.FieldText};
-        }
-        .switch {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host(.checked) .switch {
-          background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(:not(.disabled):hover) .switch ,
-        :host(:not(.disabled):active) .switch,
-        :host(.checked:not(.disabled):hover) .switch {
-          background: ${SystemColors.HighlightText};
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(.checked:not(.disabled)) .switch slot[name="switch"] {
-          fill: ${SystemColors.HighlightText};
-        }
-        :host(.checked:not(.disabled):hover) .switch slot[name='switch'] {
-          fill: ${SystemColors.Highlight};
-        }
-        :host(:${focusVisible}) .switch {
-          forced-color-adjust: none;
-          background: ${SystemColors.Field}; 
-          border-color: ${SystemColors.Highlight};
-          outline-color: ${SystemColors.FieldText};
-        }
-        :host(.disabled) {
-          opacity: 1;
-        }
-        :host(.disabled) slot[name='switch'] {
-          forced-color-adjust: none;
-          fill: ${SystemColors.GrayText};
-        }
-        :host(.disabled) .switch {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.GrayText};
-        }
-        .status-message,
-        .label {
-          color: ${SystemColors.FieldText};
-        }
-      `,
-    ),
-  );
+  `),
+);

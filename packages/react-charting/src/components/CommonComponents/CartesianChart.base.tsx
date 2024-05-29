@@ -476,7 +476,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       <div
         id={this.idForGraph}
         className={this._classNames.root}
-        role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this._onChartLeave}
       >
@@ -491,7 +490,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}
-            aria-label={this.props.chartTitle}
+            role="region"
+            aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
             {...svgProps}
           >
@@ -514,6 +514,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   y: svgDimensions.height - this.titleMargin,
                   className: this._classNames.axisTitle!,
                   textAnchor: 'middle',
+                  'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
@@ -561,6 +562,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                       },
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
                       className: this._classNames.axisTitle!,
+                      'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
@@ -583,6 +585,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
                   className: this._classNames.axisTitle!,
+                  'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
@@ -890,5 +893,33 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     return minChartWidth;
+  };
+
+  private _getChartDescription = (): string => {
+    return (
+      (this.props.chartTitle || 'Chart. ') +
+      this._getAxisTitle('X', this.props.xAxisTitle, this.props.xAxisType) +
+      this._getAxisTitle('Y', this.props.yAxisTitle, this.props.yAxisType || YAxisType.NumericAxis) +
+      (this.props.secondaryYScaleOptions
+        ? this._getAxisTitle('secondary Y', this.props.secondaryYAxistitle, YAxisType.NumericAxis)
+        : '')
+    );
+  };
+
+  private _getAxisTitle = (
+    axisLabel: string,
+    axisTitle: string | undefined,
+    axisType: XAxisTypes | YAxisType,
+  ): string => {
+    return (
+      `The ${axisLabel} axis displays ` +
+      (axisTitle ||
+        (axisType === XAxisTypes.StringAxis || axisType === YAxisType.StringAxis
+          ? 'categories'
+          : axisType === XAxisTypes.DateAxis || axisType === YAxisType.DateAxis
+          ? 'time'
+          : 'values')) +
+      '. '
+    );
   };
 }

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding function to focus last active descendant if it exists",
-  "packageName": "@fluentui/react-aria",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}

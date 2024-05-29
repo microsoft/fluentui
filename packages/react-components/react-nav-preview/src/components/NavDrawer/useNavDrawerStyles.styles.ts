@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   root: {
     width: '260px', // per spec
     backgroundColor: navItemTokens.backgroundColor,
+    alignItems: 'unset',
   },
 });
 

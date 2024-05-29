@@ -1,20 +1,56 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
 
-  "mainEntryPointFilePath": "dist/dts/index.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/dist/dts/index.d.ts",
 
   "apiReport": {
     "enabled": true,
-    "reportFolder": "docs",
+    "reportFolder": "<projectFolder>/docs",
     "reportFileName": "api-report.md"
   },
 
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "dist/fluent-web-components.api.json"
+    "apiJsonFilePath": "<projectFolder>/dist/fluent-web-components.api.json"
   },
-
   "dtsRollup": {
     "enabled": true
+  },
+  "compiler": {
+    "skipLibCheck": false,
+    "tsconfigFilePath": "./tsconfig.api-extractor.json"
+  },
+  "messages": {
+    "tsdocMessageReporting": {
+      "tsdoc-undefined-tag": {
+        "logLevel": "none"
+      },
+      "tsdoc-unsupported-tag": {
+        "logLevel": "none"
+      },
+      "tsdoc-param-tag-with-invalid-type": {
+        "logLevel": "none"
+      },
+      "tsdoc-param-tag-missing-hyphen": {
+        "logLevel": "none"
+      }
+    },
+    "extractorMessageReporting": {
+      "ae-forgotten-export": {
+        "logLevel": "none"
+      },
+      "ae-missing-release-tag": {
+        "logLevel": "none"
+      },
+      "ae-unresolved-link": {
+        "logLevel": "none"
+      },
+      "ae-internal-missing-underscore": {
+        "logLevel": "none"
+      },
+      "ae-different-release-tags": {
+        "logLevel": "none"
+      }
+    }
   }
 }

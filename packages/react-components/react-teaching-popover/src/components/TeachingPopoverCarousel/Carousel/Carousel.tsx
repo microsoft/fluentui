@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   isHTMLElement,
   useMergedRefs,
@@ -5,7 +6,7 @@ import {
   type EventHandler,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 import { CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
@@ -26,6 +27,8 @@ export type UseCarouselOptions = {
 export function useCarousel_unstable(options: UseCarouselOptions) {
   const { onValueChange, onFinish } = options;
 
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
   const [store] = React.useState(() => createCarouselStore());
 
@@ -61,6 +64,10 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
   }, [store]);
 
   React.useEffect(() => {
+    if (!win) {
+      return;
+    }
+
     const config: MutationObserverInit = {
       attributes: true,
       attributeFilter: [CAROUSEL_ITEM],
@@ -95,7 +102,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     };
 
     // Create an observer instance linked to the callback function
-    const observer = new MutationObserver(callback);
+    const observer = new win.MutationObserver(callback);
 
     // Start observing the target node for configured mutations
     observer.observe(rootRef.current!, config);
@@ -104,7 +111,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     return () => {
       observer.disconnect();
     };
-  }, [carouselWalker, store]);
+  }, [carouselWalker, store, win]);
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();

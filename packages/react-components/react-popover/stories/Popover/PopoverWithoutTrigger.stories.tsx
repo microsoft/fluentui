@@ -1,18 +1,10 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  shorthands,
-  Button,
-  Popover,
-  PopoverSurface,
-  useId,
-  useRestoreFocusTarget,
-} from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, useId, useRestoreFocusTarget } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 const useStyles = makeStyles({
   container: {
     display: 'flex',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
 
   contentHeader: {

@@ -36,6 +36,12 @@ export type DrawerBodySlots = {
 // @public
 export type DrawerBodyState = ComponentState<DrawerBodySlots>;
 
+// @public (undocumented)
+export type DrawerContextValue = {
+    scrollState: DrawerScrollState;
+    setScrollState: (scrollState: DrawerScrollState) => void;
+};
+
 // @public
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 
@@ -116,6 +122,9 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
 };
 
 // @public (undocumented)
+export const DrawerProvider: React_2.Provider<DrawerContextValue | undefined>;
+
+// @public (undocumented)
 export type DrawerSlots = {
     root: Slot<OverlayDrawerProps | InlineDrawerProps>;
 };
@@ -149,7 +158,9 @@ export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
 export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots>;
 
 // @public
-export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
+export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'> & DrawerBaseProps & {
+    defaultOpen?: boolean;
+};
 
 // @public
 export type OverlayDrawerSlots = {
@@ -191,6 +202,12 @@ export const useDrawerBody_unstable: (props: DrawerBodyProps, ref: React_2.Ref<H
 
 // @public
 export const useDrawerBodyStyles_unstable: (state: DrawerBodyState) => DrawerBodyState;
+
+// @public (undocumented)
+export const useDrawerContext_unstable: () => DrawerContextValue;
+
+// @public (undocumented)
+export const useDrawerContextValue: () => DrawerContextValue;
 
 // @public
 export const useDrawerFooter_unstable: (props: DrawerFooterProps, ref: React_2.Ref<HTMLElement>) => DrawerFooterState;

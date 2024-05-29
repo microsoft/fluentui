@@ -97,6 +97,13 @@ export type HeadlessFlatTreeOptions = Pick<
   };
 
 /**
+ * @internal
+ */
+type HeadlessFlatTreeReturn<Props extends HeadlessFlatTreeItemProps> = HeadlessFlatTree<Props> & {
+  getItem(value: TreeItemValue): HeadlessTreeItem<Props> | undefined;
+};
+
+/**
  * this hook provides FlatTree API to manage all required mechanisms to convert a list of items into renderable TreeItems
  * in multiple scenarios including virtualization.
  *
@@ -111,7 +118,7 @@ export type HeadlessFlatTreeOptions = Pick<
 export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(
   props: Props[],
   options: HeadlessFlatTreeOptions = {},
-): HeadlessFlatTree<Props> {
+): HeadlessFlatTreeReturn<Props> {
   const headlessTree = React.useMemo(() => createHeadlessTree(props), [props]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options, headlessTree);
@@ -176,24 +183,29 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
       onCheckedChange: handleCheckedChange,
       onNavigation: options.onNavigation ?? noop,
     }),
+    // ref, handleOpenChange - useEventCallback, handleCheckedChange - useEventCallback
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [openItems, checkedItems, options.selectionMode, options.onNavigation],
   );
 
   const items = React.useCallback(() => headlessTree.visibleItems(openItems), [openItems, headlessTree]);
 
-  return React.useMemo<HeadlessFlatTree<Props>>(
+  const getItem = React.useCallback((value: TreeItemValue) => headlessTree.get(value), [headlessTree]);
+
+  return React.useMemo<HeadlessFlatTreeReturn<Props>>(
     () => ({
       navigate: navigation.navigate,
       getTreeProps,
       getNextNavigableItem,
       getElementFromItem,
       items,
+      getItem,
     }),
-    [navigation.navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items],
+    [navigation.navigate, getTreeProps, getNextNavigableItem, getElementFromItem, items, getItem],
   );
 }
 
+/** @internal */
 function noop() {
   /* noop */
 }

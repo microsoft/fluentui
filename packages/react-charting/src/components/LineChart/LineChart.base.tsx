@@ -274,7 +274,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
-        chartTitle={data.chartTitle}
+        chartTitle={this._getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}
         isCalloutForStack
@@ -712,10 +712,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseOut={this._handleMouseOut}
               {...this._getClickHandler(this._points[i].onLineClick)}
               opacity={1}
-              role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
-                this._points[i].data.length
-              } data points.`}
             />,
           );
         } else {
@@ -730,10 +726,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               strokeWidth={strokeWidth}
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
               opacity={0.1}
-              role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
-                this._points[i].data.length
-              } data points.`}
             />,
           );
         }
@@ -996,7 +988,19 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
       }
 
-      lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
+      lines.push(
+        <g
+          key={`line_${i}`}
+          role="region"
+          aria-label={`${legendVal}, line ${i + 1} of ${this._points.length} with ${
+            this._points[i].data.length
+          } data points.`}
+        >
+          {bordersForLine}
+          {linesForLine}
+          {pointsForLine}
+        </g>,
+      );
     }
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -1468,4 +1472,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, lineChartData } = this.props.data;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Line chart with ${lineChartData?.length || 0} lines. `;
+  };
 }

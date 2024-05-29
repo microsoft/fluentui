@@ -438,7 +438,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                     font-size: 12px;
                     font-weight: 400;
                     line-height: 16px;
-                    opacity: 0.8;
+                    opacity: 0.85;
                   }
             >
                

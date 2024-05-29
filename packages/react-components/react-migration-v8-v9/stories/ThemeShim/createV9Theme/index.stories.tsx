@@ -7,7 +7,6 @@ import {
   makeStyles,
   Textarea,
   TextareaProps,
-  shorthands,
   tokens,
   Theme as ThemeV9,
   webLightTheme,
@@ -26,7 +25,7 @@ const useStyles = makeStyles({
     gridTemplateRows: 'auto',
     gridRowGap: '10px',
     justifyItems: 'start',
-    ...shorthands.padding('5px'),
+    padding: '5px',
   },
   instructions: {
     color: tokens.colorNeutralForeground2,
@@ -55,7 +54,7 @@ const useStyles = makeStyles({
     display: 'inline-block',
     width: '10px',
     height: '10px',
-    ...shorthands.border('1px', 'solid', 'black'),
+    border: '1px solid black',
   },
 });
 

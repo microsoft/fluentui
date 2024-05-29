@@ -25,7 +25,7 @@ import { brandRamp } from '../../utils/getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
-import { useStyles } from './TokenList.style';
+import { useStyles } from './TokenList.styles';
 import { constructRowParameters } from './TokenIssueList';
 
 export interface TokenIssueListProps {

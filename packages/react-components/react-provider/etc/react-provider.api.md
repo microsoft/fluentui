@@ -4,12 +4,10 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
-import type { IconDirectionContextValue } from '@fluentui/react-icons';
+import type { IconDirectionContextValue } from '@fluentui/react-icons/lib/providers';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -150,6 +148,18 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
         useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
         useTimePickerCompatStyles_unstable: (state: unknown) => void;
+        useTagPickerInputStyles_unstable: (state: unknown) => void;
+        useTagPickerButtonStyles_unstable: (state: unknown) => void;
+        useTagPickerControlStyles_unstable: (state: unknown) => void;
+        useTagPickerGroupStyles_unstable: (state: unknown) => void;
+        useTagPickerListStyles_unstable: (state: unknown) => void;
+        useTagPickerOptionStyles_unstable: (state: unknown) => void;
+        useTagPickerOptionGroupStyles_unstable: (state: unknown) => void;
+        useColorSwatchStyles_unstable: (state: unknown) => void;
+        useImageSwatchStyles_unstable: (state: unknown) => void;
+        useEmptySwatchStyles_unstable: (state: unknown) => void;
+        useSwatchPickerRowStyles_unstable: (state: unknown) => void;
+        useSwatchPickerStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

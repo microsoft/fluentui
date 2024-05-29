@@ -156,7 +156,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
-      const { lineChartData, chartTitle } = this.props.data;
+      const { lineChartData } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
       this._calloutPoints = calloutPoints;
@@ -188,7 +188,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       return (
         <CartesianChart
           {...this.props}
-          chartTitle={chartTitle}
+          chartTitle={this._getChartTitle()}
           points={points}
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
@@ -754,7 +754,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
         // Render circles for all data points
         graph.push(
-          <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
+          <g
+            key={`${index}-dots-${this._uniqueIdForGraph}`}
+            d={area(singleStackedData)!}
+            clipPath="url(#clip)"
+            role="region"
+            aria-label={`${points[index].legend}, series ${index + 1} of ${points.length} with ${
+              points[index].data.length
+            } data points.`}
+          >
             {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
               const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
               const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
@@ -960,4 +968,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       // which means chart is not empty
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, lineChartData } = this.props.data;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Area chart with ${lineChartData?.length || 0} data series. `;
+  };
 }

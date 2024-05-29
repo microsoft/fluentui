@@ -3,6 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselButtonState, CarouselButtonSlots } from './CarouselButton.types';
+import { renderButton_unstable } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of CarouselButton
@@ -10,6 +11,6 @@ import type { CarouselButtonState, CarouselButtonSlots } from './CarouselButton.
 export const renderCarouselButton_unstable = (state: CarouselButtonState) => {
   assertSlots<CarouselButtonSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  // We render the underlying react-button with injected carousel functionality
+  return renderButton_unstable(state);
 };
