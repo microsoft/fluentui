@@ -41,7 +41,7 @@ const useClasses = makeStyles({
   description: { margin: '5px' },
 });
 
-const Grow = createMotionComponent(element => ({
+const Grow = createMotionComponent(({ element }) => ({
   duration: motionTokens.durationUltraSlow,
   keyframes: [
     { opacity: 0, maxHeight: `${element.scrollHeight / 2}px` },

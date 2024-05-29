@@ -59,7 +59,7 @@ describe('createMotionComponent', () => {
     );
 
     expect(fnMotion).toHaveBeenCalledTimes(1);
-    expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+    expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
 
     expect(animateMock).toHaveBeenCalledTimes(1);
   });

@@ -85,7 +85,7 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
           return;
         }
 
-        const presenceMotion = typeof value === 'function' ? value(element) : value;
+        const presenceMotion = typeof value === 'function' ? value({ element }) : value;
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });

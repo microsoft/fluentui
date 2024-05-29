@@ -5,8 +5,8 @@ export type PresenceMotion = {
   exit: AtomMotion | AtomMotion[];
 };
 
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion | AtomMotion[];
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+export type AtomMotionFn = (params: { element: HTMLElement }) => AtomMotion | AtomMotion[];
+export type PresenceMotionFn = (params: { element: HTMLElement }) => PresenceMotion;
 
 // ---
 

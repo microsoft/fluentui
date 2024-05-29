@@ -1,6 +1,6 @@
 import { createPresenceComponent } from '@fluentui/react-motions-preview';
 
-export const ToastContainerMotion = createPresenceComponent(element => ({
+export const ToastContainerMotion = createPresenceComponent(({ element }) => ({
   enter: [
     {
       keyframes: [
