@@ -29,7 +29,7 @@ export const useOverlayDrawer_unstable = (
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
 
   const root = slot.always(
-    getIntrinsicElementProps(props.as || 'div', {
+    getIntrinsicElementProps('div', {
       ref: useMergedRefs(ref, motion.ref),
       ...props,
       mountNode: props.mountNode,

@@ -20,6 +20,8 @@ export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps
       /**
        * Drawer accepts a `div` or `aside` element type, but Dialog only accepts a `div` element type.
        * We need to cast the ref to a `div` element type to not break Dialog's ref type.
+       *
+       * FIXME: Evaluate the possibility to remove this cast when Dialog is refactored to accept `aside` elements.
        */
       as: props.as as 'div',
     },
