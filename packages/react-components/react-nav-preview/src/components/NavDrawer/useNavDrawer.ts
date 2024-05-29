@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Drawer, DrawerProps } from '@fluentui/react-drawer';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { slot } from '@fluentui/react-utilities';
+
 import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
 
@@ -35,11 +36,11 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     },
 
     root: slot.always<DrawerProps>(
-      slot.resolveShorthand({
+      {
         ref,
         ...props,
         ...focusAttributes,
-      }),
+      },
       {
         elementType: Drawer,
       },
