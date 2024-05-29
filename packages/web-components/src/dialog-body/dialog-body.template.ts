@@ -22,12 +22,8 @@ const dismissed16Regular = html.partial(`
  */
 export const template: ElementViewTemplate = html`
   <div class="title" part="title">
-    <!--
---><slot name="title"></slot
-    ><!--
---><slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot
-    ><!--
--->${when(
+    <slot name="title"></slot>
+    <slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot>${when(
       // if parent is is non-modal and no title action is provided and noTitleAction is false, show default action
       x => x.parentNode?.type === DialogType.nonModal && x.titleAction.length === 0 && !x.noTitleAction,
       html`<fluent-button
@@ -43,8 +39,6 @@ export const template: ElementViewTemplate = html`
       </fluent-button>`,
     )}
   </div>
-
   <div class="content" part="content"><slot></slot></div>
-
   <div class="actions" part="actions"><slot name="action"></slot></div>
 `;
