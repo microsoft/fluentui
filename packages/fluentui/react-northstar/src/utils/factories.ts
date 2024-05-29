@@ -10,7 +10,7 @@ import { ShorthandValue, Props, PropsOf, ShorthandRenderFunction } from '../type
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
 
-interface CreateShorthandOptions<P> {
+interface CreateShorthandOptions<P extends {}> {
   /** Default props object */
   defaultProps?: () => Partial<Props<P>>;
 
@@ -31,7 +31,7 @@ const mappedProps: { [key in HTMLTag]: ShorthandProp } = {
   input: 'type',
 };
 
-export type ShorthandFactory<P> = (
+export type ShorthandFactory<P extends {}> = (
   value: ShorthandValue<P>,
   options?: CreateShorthandOptions<P>,
 ) => React.ReactElement | null | undefined;
@@ -44,7 +44,7 @@ export type ShorthandFactory<P> = (
  * @param config - Options passed to factory
  * @returns A shorthand factory function waiting for `val` and `defaultProps`.
  */
-export function createShorthandFactory<TStringElement extends keyof JSX.IntrinsicElements, P>(config: {
+export function createShorthandFactory<TStringElement extends keyof JSX.IntrinsicElements, P extends {}>(config: {
   /** A ReactClass or string */
   Component: TStringElement;
   /** A function that maps a primitive value to the Component props */
@@ -54,13 +54,13 @@ export function createShorthandFactory<TStringElement extends keyof JSX.Intrinsi
   /** Indicates if factory supports React Elements */
   allowsJSX?: boolean;
 }): ShorthandFactory<P>;
-export function createShorthandFactory<TFunctionComponent extends React.FunctionComponent, P>(config: {
+export function createShorthandFactory<TFunctionComponent extends React.FunctionComponent, P extends {}>(config: {
   Component: TFunctionComponent;
   mappedProp?: keyof PropsOf<TFunctionComponent>;
   mappedArrayProp?: keyof PropsOf<TFunctionComponent>;
   allowsJSX?: boolean;
 }): ShorthandFactory<P>;
-export function createShorthandFactory<TInstance extends React.Component, P>(config: {
+export function createShorthandFactory<TInstance extends React.Component, P extends {}>(config: {
   Component: { new (...args: any[]): TInstance };
   mappedProp?: keyof PropsOf<TInstance>;
   mappedArrayProp?: keyof PropsOf<TInstance>;
@@ -86,7 +86,7 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
 // Factories
 // ============================================================
 
-export function createShorthandInternal<P>({
+export function createShorthandInternal<P extends {}>({
   Component,
   mappedProp,
   mappedArrayProp,
@@ -255,7 +255,7 @@ export function createShorthand<TInstance extends React.Component>(
   value?: ShorthandValue<PropsOf<TInstance>>,
   options?: CreateShorthandOptions<PropsOf<TInstance>>,
 ): React.ReactElement;
-export function createShorthand<E extends keyof JSX.IntrinsicElements, P>(
+export function createShorthand<E extends keyof JSX.IntrinsicElements, P extends {}>(
   Component: ComponentWithAs<E, P> & {
     shorthandConfig?: ShorthandConfig<P>;
     fluentComposeConfig?: ComposePreparedOptions<P>;
