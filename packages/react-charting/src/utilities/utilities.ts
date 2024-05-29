@@ -328,35 +328,7 @@ export function prepareDatapoints(
   return dataPointsArray;
 }
 
-/**
- * Creating Numeric Y axis of the chart
- * @export
- * @param {IYAxisParams} yAxisParams
- * @param {boolean} isRtl
- */
-export function createYAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  chartType: ChartTypes,
-  barWidth: number,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-) {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
-    default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
-  }
-}
-
-export function createYAxisForHorizontalBarChartWithAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  barWidth: number,
-) {
+export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -384,7 +356,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   return yAxisScale;
 }
 
-export function createYAxisForOtherCharts(
+export function createNumericYAxis(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
   axisData: IAxisData,
@@ -428,22 +400,6 @@ export function createYAxisForOtherCharts(
   return yAxisScale;
 }
 
-export const createStringYAxis = (
-  yAxisParams: IYAxisParams,
-  dataPoints: string[],
-  isRtl: boolean,
-  chartType: ChartTypes,
-  barWidth: number | undefined,
-  culture?: string,
-) => {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, isRtl, barWidth!, culture);
-    default:
-      return createStringYAxisForOtherCharts(yAxisParams, dataPoints, isRtl);
-  }
-};
-
 /**
  * Creating String Y axis of the chart for Horizontal Bar Chart With Axis
  * @param yAxisParams
@@ -455,7 +411,6 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   dataPoints: string[],
   isRtl: boolean,
   barWidth: number,
-  culture?: string,
 ) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
 
@@ -477,7 +432,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
+export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
@@ -713,7 +668,6 @@ export function createYAxisLabels(
   yAxis: any,
   noOfCharsToTruncate: number,
   truncateLabel: boolean,
-  xValue: number,
   isRtl: boolean,
 ) {
   if (node === null) {
@@ -1052,86 +1006,6 @@ export function domainRageOfVerticalNumeric(
 }
 
 /**
- * For creating X axis, need to calculate x axis domain and range values from given points.
- * This may vary based on chart type and type of x axis
- * So, this method will define which method need to call based on chart type and axis type.
- * @export
- * @param {*} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {ChartTypes} chartType
- * @param {boolean} isRTL
- * @param {XAxisTypes} xAxisType
- * @param {number} [barWidth]
- * @returns {IDomainNRange}
- */
-export function getDomainNRangeValues(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  margins: IMargins,
-  width: number,
-  chartType: ChartTypes,
-  isRTL: boolean,
-  xAxisType: XAxisTypes,
-  barWidth: number,
-  tickValues: Date[] | number[] | undefined,
-  shiftX: number,
-): IDomainNRange {
-  let domainNRangeValue: IDomainNRange;
-  if (xAxisType === XAxisTypes.NumericAxis) {
-    switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
-        break;
-      case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
-        break;
-      case ChartTypes.VerticalBarChart:
-        domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
-        break;
-      case ChartTypes.HorizontalBarChartWithAxis:
-        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  } else if (xAxisType === XAxisTypes.DateAxis) {
-    switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-      case ChartTypes.VerticalBarChart:
-      case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
-          points,
-          margins,
-          width,
-          isRTL,
-          tickValues! as Date[],
-          chartType,
-          barWidth,
-        );
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  } else {
-    // String Axis type
-    switch (chartType) {
-      case ChartTypes.VerticalStackedBarChart:
-      case ChartTypes.GroupedVerticalBarChart:
-      case ChartTypes.VerticalBarChart:
-      case ChartTypes.HeatMapChart:
-        domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  }
-  return domainNRangeValue;
-}
-
-/**
  * Calculating start and ending values of the Area chart and LineChart
  * @export
  * @param {ILineChartPoints[]} points
@@ -1216,45 +1090,6 @@ export function findHBCWANumericMinMaxOfY(
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
-}
-
-/**
- * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
- * So, this method will define which method need to call based on chart type to find out min and max values(For Domain).
- * For grouped vertical bar chart, Calculating yMax value in the base file and sending as MaxOfYVal to cartesian.
- * @export
- * @param {*} points
- * @param {ChartTypes} chartType
- * @returns {{ startValue: number; endValue: number }}
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getMinMaxOfYAxis(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  chartType: ChartTypes,
-  yAxisType: YAxisType | undefined = YAxisType.NumericAxis,
-): { startValue: number; endValue: number } {
-  let minMaxValues: { startValue: number; endValue: number };
-
-  switch (chartType) {
-    case ChartTypes.AreaChart:
-    case ChartTypes.LineChart:
-      minMaxValues = findNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.VerticalStackedBarChart:
-      minMaxValues = findVSBCNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.VerticalBarChart:
-      minMaxValues = findVerticalNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.HorizontalBarChartWithAxis:
-      minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
-      break;
-    default:
-      minMaxValues = { startValue: 0, endValue: 0 };
-  }
-
-  return minMaxValues;
 }
 
 /**

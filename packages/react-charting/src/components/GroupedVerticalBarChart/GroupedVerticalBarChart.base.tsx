@@ -18,6 +18,10 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -175,8 +179,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         calloutProps={calloutProps}
         legendBars={legends}
         xAxisType={this._xAxisType}
+        createYAxis={createNumericYAxis}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        getMinMaxOfYAxis={this._getMinMaxOfYAxis}
+        createStringYAxis={createStringYAxis}
         tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{
@@ -208,6 +216,30 @@ export class GroupedVerticalBarChartBase extends React.Component<
       />
     );
   }
+
+  private _getMinMaxOfYAxis = () => {
+    return { startValue: 0, endValue: 0 };
+  };
+
+  private _getDomainNRangeValues = (
+    points: IGroupedVerticalBarChartData[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _getGraphData = (
     xScale: StringAxis | NumericAxis,

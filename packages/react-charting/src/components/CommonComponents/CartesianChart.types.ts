@@ -5,9 +5,21 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IAccessibilityProps, IMargins } from '../../types/index';
-import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
+import {
+  IAccessibilityProps,
+  IDataPoint,
+  IGroupedVerticalBarChartData,
+  IHeatMapChartDataPoint,
+  IHorizontalBarChartWithAxisDataPoint,
+  ILineChartPoints,
+  IMargins,
+  IVerticalBarChartDataPoint,
+  IVerticalStackedBarDataPoint,
+} from '../../types/index';
+import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
+import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
+import { ScaleBand, ScaleLinear } from 'd3-scale';
 
 /**
  * Cartesian Chart style properties
@@ -614,4 +626,54 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis: (
+    points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
+    yAxisType: YAxisType | undefined,
+  ) => { startValue: number; endValue: number };
+
+  /**
+   * Create the y-axis
+   */
+  createYAxis: (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean,
+    useSecondaryYScale?: boolean,
+  ) => ScaleLinear<number, number, never>;
+
+  /**
+   * Get the domain and range values
+   */
+  getDomainNRangeValues: (
+    points:
+      | ILineChartPoints[]
+      | IVerticalBarChartDataPoint[]
+      | IVerticalStackedBarDataPoint[]
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IGroupedVerticalBarChartData[]
+      | IHeatMapChartDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => IDomainNRange;
+
+  /**
+   * Create the string y-axis
+   */
+  createStringYAxis: (
+    yAxisParams: IYAxisParams,
+    dataPoints: string[],
+    isRtl: boolean,
+    barWidth: number | undefined,
+  ) => ScaleBand<string>;
 }

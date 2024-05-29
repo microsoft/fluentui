@@ -27,6 +27,7 @@ import {
   IVSChartDataPoint,
   ILineDataInVerticalStackedBarChart,
   IModifiedCartesianChartProps,
+  IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -41,6 +42,13 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  findVSBCNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfVSBCNumeric,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -204,10 +212,14 @@ export class VerticalStackedBarChartBase extends React.Component<
           chartType={ChartTypes.VerticalStackedBarChart}
           xAxisType={this._xAxisType}
           calloutProps={calloutProps}
+          createYAxis={createNumericYAxis}
           tickParams={tickParams}
           legendBars={legendBars}
+          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
+          getDomainNRangeValues={this._getDomainNRangeValues}
+          createStringYAxis={createStringYAxis}
           barwidth={this._barWidth}
           focusZoneDirection={
             isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
@@ -275,6 +287,36 @@ export class VerticalStackedBarChartBase extends React.Component<
       shouldFocusStackOnly = isCalloutForStack;
     }
     return shouldFocusStackOnly;
+  };
+
+  private _getDomainNRangeValues = (
+    points: IDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   };
 
   private _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {

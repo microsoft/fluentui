@@ -26,6 +26,7 @@ import {
   Legends,
   IChildProps,
   IYValueHover,
+  IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -41,6 +42,13 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  findVerticalNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRageOfVerticalNumeric,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -161,6 +169,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         points={this._points}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
+        createYAxis={createNumericYAxis}
         calloutProps={calloutProps}
         tickParams={tickParams}
         {...(this._isHavingLine && this._noLegendHighlighted() && { isCalloutForStack: true })}
@@ -169,8 +178,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
+        createStringYAxis={createStringYAxis}
         getmargins={this._getMargins}
+        getMinMaxOfYAxis={findVerticalNumericMinMaxOfY}
         getGraphData={this._getGraphData}
+        getDomainNRangeValues={this._getDomainNRangeValues}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         getDomainMargins={this._getDomainMargins}
@@ -208,6 +220,36 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: IDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _createLine = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
