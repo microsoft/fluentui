@@ -13,6 +13,11 @@ export interface IErrorBoundaryProps {
   customErrorMsg?: string;
 
   /**
+   * Custom empty data message.
+   */
+  customEmptyMsg?: string;
+
+  /**
    * Handle error function to show custom error message.
    * @returns JSX.Element
    */

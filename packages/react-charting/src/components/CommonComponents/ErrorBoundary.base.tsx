@@ -62,11 +62,7 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
         );
       }
       return (
-        <div
-          id={getId('_Chart_empty_')}
-          className={this._classNames.root}
-          aria-label={this.state.errorMsg ? this.state.errorMsg : this._defaultErrorMsg}
-        >
+        <div id={getId('_Chart_empty_')} className={this._classNames.root} aria-label={this._getAriaLabel()}>
           <div className={this._classNames.errorIconDiv}>{this._getErrorIcon()}</div>
           {this._displayErrorMessage()}
           <div className={this._classNames.dataLoadErrorSubText}>
@@ -93,7 +89,9 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
   }
 
   private _displayErrorMessage() {
-    return this.props.customErrorMsg ? (
+    return this.props.hasEmptyState && this.props.customEmptyMsg ? (
+      <div className={this._classNames.dataLoadErrorText}>{this.props.customEmptyMsg}</div>
+    ) : this.state.hasError && this.props.customErrorMsg ? (
       <div className={this._classNames.dataLoadErrorText}>{this.props.customErrorMsg}</div>
     ) : (
       <>
@@ -103,5 +101,15 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
         </div>
       </>
     );
+  }
+
+  private _getAriaLabel() {
+    return this.props.hasEmptyState && this.props.customEmptyMsg
+      ? this.props.customEmptyMsg
+      : this.state.hasError && this.props.customErrorMsg
+      ? this.props.customErrorMsg
+      : this.state.errorMsg
+      ? this.state.errorMsg
+      : this._defaultErrorMsg;
   }
 }
