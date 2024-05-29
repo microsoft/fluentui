@@ -32,7 +32,7 @@ export class Dialog extends FASTElement {
    * @public
    * The type of the dialog modal
    */
-  @attr({ attribute: 'type' })
+  @attr
   public type: DialogType = DialogType.modal;
 
   /**
