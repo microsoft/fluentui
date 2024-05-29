@@ -15,9 +15,9 @@
   "dependencies": {
     "@griffel/eslint-plugin": "^1.6.3",
     "@rnx-kit/eslint-plugin": "^0.2.5",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/experimental-utils": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/experimental-utils": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.4.0",
