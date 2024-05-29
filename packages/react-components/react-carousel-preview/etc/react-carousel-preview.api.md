@@ -119,7 +119,7 @@ export type CarouselNavButtonSlots = {
 
 // @public
 export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
-    isSelected?: boolean;
+    selected?: boolean;
 };
 
 // @public (undocumented)
@@ -142,7 +142,7 @@ export type CarouselNavImageButtonSlots = {
 
 // @public
 export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonSlots> & {
-    isSelected?: boolean;
+    selected?: boolean;
 };
 
 // @public (undocumented)

@@ -20,5 +20,5 @@ export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
   /**
    * Enables selection state control
    */
-  isSelected?: boolean;
+  selected?: boolean;
 };

@@ -33,7 +33,7 @@ export const useCarouselButton_unstable = (
       return;
     }
 
-    selectPageByDirection(event, navType, circular);
+    selectPageByDirection(event, navType);
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
