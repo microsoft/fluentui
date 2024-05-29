@@ -23,7 +23,7 @@ import type { CarouselContextValue } from '../CarouselContext.types';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  const { onValueChange, loop } = props;
+  const { onValueChange, circular } = props;
 
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
   const [store] = React.useState(() => createCarouselStore());
@@ -105,25 +105,23 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     };
   }, [carouselWalker, store]);
 
-  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback(
-    (event, direction, _loop) => {
-      const active = carouselWalker.active();
+  const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
+    const active = carouselWalker.active();
 
-      if (!active?.value) {
-        return;
-      }
+    if (!active?.value) {
+      return;
+    }
 
-      const newPage =
-        direction === 'prev'
-          ? carouselWalker.prevPage(active.value, _loop)
-          : carouselWalker.nextPage(active.value, _loop);
+    const newPage =
+      direction === 'prev'
+        ? carouselWalker.prevPage(active.value, circular)
+        : carouselWalker.nextPage(active.value, circular);
 
-      if (newPage) {
-        setValue(newPage?.value);
-        onValueChange?.(event, { event, type: 'click', value: newPage?.value });
-      }
-    },
-  );
+    if (newPage) {
+      setValue(newPage?.value);
+      onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+    }
+  });
 
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
     setValue(_value);
@@ -146,6 +144,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     value,
     selectPageByDirection,
     selectPageByValue,
-    loop,
+    circular,
   };
 }

@@ -26,20 +26,20 @@ export const useCarouselButton_unstable = (
   const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
   const values = useCarouselValues_unstable(snapshot => snapshot);
   const activeValue = useCarouselContext_unstable(c => c.value);
-  const loop = useCarouselContext_unstable(c => c.loop);
+  const circular = useCarouselContext_unstable(c => c.circular);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
       return;
     }
 
-    selectPageByDirection(event, navType, loop);
+    selectPageByDirection(event, navType, circular);
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
 
   const isTrailing = React.useMemo(() => {
-    if (!activeValue || loop) {
+    if (!activeValue || circular) {
       return false;
     }
 
@@ -48,7 +48,7 @@ export const useCarouselButton_unstable = (
     }
 
     return values.indexOf(activeValue) === values.length - 1;
-  }, [navType, activeValue, values, loop]);
+  }, [navType, activeValue, values, circular]);
 
   return {
     navType,

@@ -44,12 +44,12 @@ const useStyles = makeStyles({
 export const useCarouselNavImageButtonStyles_unstable = (
   state: CarouselNavImageButtonState,
 ): CarouselNavImageButtonState => {
-  const { isSelected } = state;
+  const { selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     carouselNavImageButtonClassNames.root,
     styles.root,
-    isSelected && styles.selected,
+    selected && styles.selected,
     state.root.className,
   );
 
@@ -57,7 +57,7 @@ export const useCarouselNavImageButtonStyles_unstable = (
     state.image.className = mergeClasses(
       carouselNavImageButtonClassNames.image,
       styles.image,
-      isSelected && styles.selected,
+      selected && styles.selected,
       state.image?.className,
     );
   }

@@ -24,5 +24,5 @@ export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonS
   /**
    * Enables selection state control
    */
-  isSelected?: boolean;
+  selected?: boolean;
 };

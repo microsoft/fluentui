@@ -25,9 +25,9 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   onValueChange?: EventHandler<CarouselValueChangeData>;
 
   /**
-   * Looping enables the carousel to loop back around on navigation past trailing index
+   * Circular enables the carousel to loop back around on navigation past trailing index
    */
-  loop?: Boolean;
+  circular?: Boolean;
 };
 
 /**

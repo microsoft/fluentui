@@ -6,8 +6,8 @@ import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from './constants';
 
 export type CarouselWalker = {
   find(value: string): { el: HTMLElement; value: string } | null;
-  nextPage(value: string, loop?: Boolean): { el: HTMLElement; value: string } | null;
-  prevPage(value: string, loop?: Boolean): { el: HTMLElement; value: string } | null;
+  nextPage(value: string, circular?: Boolean): { el: HTMLElement; value: string } | null;
+  prevPage(value: string, circular?: Boolean): { el: HTMLElement; value: string } | null;
   active(): { el: HTMLElement; value: string } | null;
 };
 
@@ -83,7 +83,7 @@ export const useCarouselWalker_unstable = () => {
 
           return null;
         },
-        nextPage(value: string, loop?: Boolean) {
+        nextPage(value: string, circular?: Boolean) {
           const res = this.find(value);
           if (!res || !treeWalkerRef.current?.currentNode) {
             return null;
@@ -92,7 +92,7 @@ export const useCarouselWalker_unstable = () => {
           treeWalkerRef.current.currentNode = res.el;
 
           let next = treeWalkerRef.current.nextNode();
-          if (loop && !isHTMLElement(next) && htmlRef.current) {
+          if (circular && !isHTMLElement(next) && htmlRef.current) {
             treeWalkerRef.current.currentNode = htmlRef.current;
             next = treeWalkerRef.current.firstChild();
           }
@@ -106,7 +106,7 @@ export const useCarouselWalker_unstable = () => {
 
           return null;
         },
-        prevPage(value: string, loop?: Boolean) {
+        prevPage(value: string, circular?: Boolean) {
           const res = this.find(value);
           if (!res || !treeWalkerRef.current?.currentNode) {
             return null;
@@ -115,7 +115,7 @@ export const useCarouselWalker_unstable = () => {
           treeWalkerRef.current.currentNode = res.el;
           let next = treeWalkerRef.current.previousNode();
 
-          if (loop && !isHTMLElement(next) && htmlRef.current) {
+          if (circular && !isHTMLElement(next) && htmlRef.current) {
             treeWalkerRef.current.currentNode = htmlRef.current;
             next = treeWalkerRef.current.lastChild();
           }

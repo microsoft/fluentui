@@ -24,10 +24,8 @@ const useStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     }),
     borderRadius: tokens.borderRadiusXLarge,
-    marginInline: tokens.spacingHorizontalS,
-    marginBlock: 'auto',
-    paddingBlock: tokens.spacingHorizontalXS,
-    paddingInline: tokens.spacingHorizontalXS,
+    margin: `auto ${tokens.spacingHorizontalS}`,
+    padding: tokens.spacingHorizontalXS,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
   },
 });

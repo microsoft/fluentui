@@ -60,12 +60,12 @@ const useStyles = makeStyles({
 export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonState): CarouselNavButtonState => {
   const styles = useStyles();
 
-  const { isSelected } = state;
+  const { selected } = state;
 
   state.root.className = mergeClasses(
     carouselNavButtonClassNames.root,
     styles.root,
-    isSelected ? styles.rootSelected : styles.rootUnselected,
+    selected ? styles.rootSelected : styles.rootUnselected,
     state.root.className,
   );
 

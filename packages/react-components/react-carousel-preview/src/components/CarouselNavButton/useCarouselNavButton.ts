@@ -24,7 +24,7 @@ export const useCarouselNavButton_unstable = (
   const value = useCarouselNavContext();
 
   const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
-  const isSelected = useCarouselContext_unstable(c => c.value === value);
+  const selected = useCarouselContext_unstable(c => c.value === value);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -35,7 +35,7 @@ export const useCarouselNavButton_unstable = (
   });
 
   const defaultTabProps = useTabsterAttributes({
-    focusable: { isDefault: isSelected },
+    focusable: { isDefault: selected },
   });
 
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
@@ -55,7 +55,7 @@ export const useCarouselNavButton_unstable = (
   _carouselButton.onClick = handleClick;
 
   const state: CarouselNavButtonState = {
-    isSelected,
+    selected,
     components: {
       root: 'button',
     },

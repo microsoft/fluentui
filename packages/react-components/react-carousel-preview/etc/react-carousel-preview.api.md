@@ -166,7 +166,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     defaultValue?: string;
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
-    loop?: Boolean;
+    circular?: Boolean;
 };
 
 // @public (undocumented)
