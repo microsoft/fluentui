@@ -454,30 +454,30 @@ describe('createStringYAxisForHorizontalBarChartWithAxis', () => {
   });
 });
 
-describe('createStringYAxisForOtherCharts', () => {
+describe('createStringYAxis', () => {
   const dataPoints: string[] = ['label 1', 'label 2', 'label 3'];
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for specific padding values', () => {
     const yAxisParams = createYAxisParams({ yAxisPadding: 0.5 });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, true);
+    utils.createStringYAxis(yAxisParams, dataPoints, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (value: string) => `Y-axis ${value}` });
-    utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
+    utils.createStringYAxis(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });
