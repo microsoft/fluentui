@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
@@ -29,13 +29,17 @@ export const useOverlayDrawer_unstable = (
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
 
   const root = slot.always(
-    getIntrinsicElementProps('div', {
+    {
       ...props,
       ref: useMergedRefs(ref, motion.ref),
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
-    }),
+    },
     {
-      elementType: OverlayDrawerSurface,
+      /**
+       * Drawer accepts a `div` or `aside` element type, but Dialog only accepts a `div` element type.
+       * We need to cast the ref to a `div` element type to not break Dialog's ref type.
+       */
+      elementType: OverlayDrawerSurface as unknown as 'div',
     },
   );
 

@@ -23,10 +23,10 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     },
 
     root: slot.always(
-      slot.resolveShorthand({
+      {
         ref,
         ...props,
-      }),
+      },
       {
         elementType,
       },
