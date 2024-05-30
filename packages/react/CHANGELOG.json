@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 30 May 2024 07:24:02 GMT",
+      "tag": "@fluentui/react_v8.118.6",
+      "version": "8.118.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "287ce4504b97d6735b3734f0d0768bbc890a3a6e",
+            "comment": "chore: normalize all scripts source to live under /src"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 May 2024 07:28:20 GMT",
       "tag": "@fluentui/react_v8.118.6",
       "version": "8.118.6",

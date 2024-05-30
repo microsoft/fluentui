@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 29 May 2024 07:24:53 GMT and should not be manually modified.
+This log was last generated on Thu, 30 May 2024 07:24:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.15)
+
+Thu, 30 May 2024 07:24:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.14..@fluentui/react-charting_v5.21.15)
+
+### Patches
+
+- Refactoring utilities to reduce monosize of components ([PR #31291](https://github.com/microsoft/fluentui/pull/31291) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.21.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.14)
 
