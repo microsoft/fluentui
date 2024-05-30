@@ -32,6 +32,7 @@ export const useCarouselCard_unstable = (
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
         hidden: !visible,
+        role: 'presentation',
         ...props,
       }),
       { elementType: 'div' },
