@@ -1,4 +1,4 @@
-import { elements, ElementViewTemplate, html, ref, slotted, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import { DialogType } from '../dialog/dialog.options.js';
 
 const dismissed16Regular = html.partial(`
@@ -23,10 +23,9 @@ const dismissed16Regular = html.partial(`
 export const template: ElementViewTemplate = html`
   <div class="title" part="title">
     <slot name="title"></slot>
-    <slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot>${when(
-      // if parent is is non-modal and no title action is provided and noTitleAction is false, show default action
-      x => x.parentNode?.type === DialogType.nonModal && x.titleAction.length === 0 && !x.noTitleAction,
-      html`<fluent-button
+    <slot name="title-action">
+      <fluent-button
+        :hidden=${x => x.noTitleAction || x.parentNode?.type !== DialogType.nonModal}
         tabindex="0"
         part="title-action"
         class="title-action"
@@ -36,8 +35,8 @@ export const template: ElementViewTemplate = html`
         ${ref('defaultTitleAction')}
       >
         ${dismissed16Regular}
-      </fluent-button>`,
-    )}
+      </fluent-button>
+    </slot>
   </div>
   <div class="content" part="content"><slot></slot></div>
   <div class="actions" part="actions"><slot name="action"></slot></div>
