@@ -1,12 +1,12 @@
 // @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const minimatch = require('minimatch');
 
 const createRule = require('../../utils/createRule');
 const { getTypeServices } = require('../../utils/type-services');
 
-/** @typedef { import('@typescript-eslint/experimental-utils').TSESTree.VariableDeclarator } VariableDeclarator*/
-/** @typedef { import('@typescript-eslint/experimental-utils').TSESTree.ExportSpecifier} ExportSpecifier */
+/** @typedef { import('@typescript-eslint/utils').TSESTree.VariableDeclarator } VariableDeclarator*/
+/** @typedef { import('@typescript-eslint/utils').TSESTree.ExportSpecifier} ExportSpecifier */
 /**
  * @typedef {{
  *  exclude?: string[];
@@ -35,7 +35,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban export of React context or context selector objects',
-      category: 'Best Practices',
       recommended: 'error',
     },
     messages: {

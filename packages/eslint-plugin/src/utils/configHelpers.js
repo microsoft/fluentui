@@ -101,6 +101,7 @@ module.exports = {
    * @returns {import("eslint").Linter.RulesRecord}
    */
   getNamingConventionRule: (config = { prefixInterface: false }) => ({
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
