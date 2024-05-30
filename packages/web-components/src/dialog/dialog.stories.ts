@@ -426,7 +426,7 @@ export const ImageAndText = renderComponent(html<DialogStoryArgs>`
     <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-image')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-image" type="${DialogType.nonModal}">
-      <fluent-image>
+      <fluent-image block>
         <img alt="image layout story" src="https://picsum.photos/600/400" />
       </fluent-image>
       <fluent-dialog-body>
@@ -527,7 +527,7 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
     <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-longcontent')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-longcontent">
-      <fluent-image>
+      <fluent-image block>
         <img alt="image layout story" src="https://picsum.photos/600/400" />
       </fluent-image>
       <fluent-dialog-body>

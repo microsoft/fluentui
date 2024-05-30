@@ -39,7 +39,6 @@ export const styles = css`
       height: fit-content;
       margin: auto auto;
       max-height: 100vh;
-      max-width: 100%;
       padding: 0;
       width: 100vw;
 
