@@ -118,6 +118,7 @@ export {
   // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
+  useAnimationFrame,
   useId,
   useIsomorphicLayoutEffect,
   useEventCallback,
@@ -126,6 +127,7 @@ export {
   useMergedRefs,
   useScrollbarWidth,
   useSelection,
+  useTimeout,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
