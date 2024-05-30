@@ -154,6 +154,11 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       };
 
   React.useEffect(() => {
+    if (!hasParentActiveDescendantContext) {
+      // disable focus-visible attributes until focus is received
+      activeDescendantController.hideFocusVisibleAttributes();
+    }
+
     // if it is single-select and there is a selected option, start at the selected option
     if (!multiselect && optionContextValues.selectedOptions.length > 0) {
       const selectedOption = getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0]).pop();
@@ -171,15 +176,30 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     return () => {
       activeDescendantController.blur();
     };
+
     // this should only be run once in the lifecycle of the Listbox
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeDescendantController]);
+  }, []);
 
   const onFocus = React.useCallback(() => {
-    if (isNavigatingWithKeyboard && !hasParentActiveDescendantContext) {
+    if (hasParentActiveDescendantContext) {
+      return;
+    }
+
+    activeDescendantController.showFocusVisibleAttributes();
+
+    if (isNavigatingWithKeyboard) {
       activeDescendantController.scrollActiveIntoView();
     }
   }, [activeDescendantController, hasParentActiveDescendantContext, isNavigatingWithKeyboard]);
+
+  const onBlur = React.useCallback(() => {
+    if (hasParentActiveDescendantContext) {
+      return;
+    }
+
+    activeDescendantController.hideFocusVisibleAttributes();
+  }, [activeDescendantController, hasParentActiveDescendantContext]);
 
   const state: ListboxState = {
     components: {
@@ -208,6 +228,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
   state.root.onFocus = useEventCallback(mergeCallbacks(state.root.onFocus, onFocus));
+  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlur));
 
   return state;
 };

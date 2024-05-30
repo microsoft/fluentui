@@ -1,6 +1,5 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from '@fluentui/react-aria';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
 
@@ -23,12 +22,6 @@ const useStyles = makeStyles({
     padding: tokens.spacingHorizontalXS,
     rowGap: tokens.spacingHorizontalXXS,
   },
-
-  standaloneRoot: {
-    [`&:not(:focus) [${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
-      display: 'none',
-    },
-  },
 });
 
 /**
@@ -36,12 +29,7 @@ const useStyles = makeStyles({
  */
 export const useListboxStyles_unstable = (state: ListboxState): ListboxState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
-    listboxClassNames.root,
-    styles.root,
-    state.standalone && styles.standaloneRoot,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(listboxClassNames.root, styles.root, state.root.className);
 
   return state;
 };

@@ -10,11 +10,17 @@ export interface ActiveDescendantImperativeRef {
   active: () => string | undefined;
   focus: (id: string) => void;
   /**
+   * @deprecated This function is not used internally anymore and will be removed in the future
+   */
+  focusLastActive: () => void;
+  /**
    * Scrolls the active option into view, if it still exists
    */
   scrollActiveIntoView: () => void;
   hideAttributes: () => void;
   showAttributes: () => void;
+  hideFocusVisibleAttributes: () => void;
+  showFocusVisibleAttributes: () => void;
 }
 
 export interface ActiveDescendantOptions {
