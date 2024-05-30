@@ -9,6 +9,8 @@ import {
   COMMAND_PRIORITY_EDITOR,
   INSERT_PARAGRAPH_COMMAND,
   KEY_ARROW_DOWN_COMMAND,
+  KEY_ARROW_LEFT_COMMAND,
+  KEY_ARROW_RIGHT_COMMAND,
   KEY_ARROW_UP_COMMAND,
   KEY_BACKSPACE_COMMAND,
   KEY_DELETE_COMMAND,
@@ -159,6 +161,27 @@ export const AutocompletePluginCore: React.FC<AutocompletePluginCoreProps> = ({
       INSERT_PARAGRAPH_COMMAND,
       () => {
         return true;
+      },
+      COMMAND_PRIORITY_CRITICAL,
+    );
+  }, [editor]);
+
+  React.useEffect(() => {
+    return editor.registerCommand(
+      KEY_ARROW_LEFT_COMMAND,
+      () => {
+        editor.getRootElement()?.setAttribute('aria-activedescendant', '');
+        return false;
+      },
+      COMMAND_PRIORITY_CRITICAL,
+    );
+  }, [editor]);
+  React.useEffect(() => {
+    return editor.registerCommand(
+      KEY_ARROW_RIGHT_COMMAND,
+      () => {
+        editor.getRootElement()?.setAttribute('aria-activedescendant', '');
+        return false;
       },
       COMMAND_PRIORITY_CRITICAL,
     );
