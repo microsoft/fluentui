@@ -4,7 +4,7 @@
   "root": true,
   "overrides": [
     {
-      "files": ["src/rules/*.js", "src/configs/*.js"],
+      "files": ["src/rules/*.js"],
       "rules": {
         // too many false positives on node types
         "@typescript-eslint/naming-convention": "off"

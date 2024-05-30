@@ -27,9 +27,7 @@ const __internal = {
       ? {
           files: ['**/src/**/*.{ts,tsx}'],
           rules: {
-            /* eslint-disable @typescript-eslint/naming-convention */
             '@nx/workspace-consistent-callback-type': 'error',
-            /* eslint-enable @typescript-eslint/naming-convention */
           },
         }
       : null,

@@ -50,11 +50,9 @@ module.exports = (/** @type {import('@babel/core').ConfigAPI} */ api) => {
       'babel-plugin-annotate-pure-imports',
       {
         imports: {
-          /* eslint-disable @typescript-eslint/naming-convention */
           '@fluentui/react-bindings': 'compose',
           '@fluentui/react-context-selector': 'createContext',
           '../utils/createSvgIcon': ['createSvgIcon'],
-          /* eslint-enable @typescript-eslint/naming-convention */
         },
       },
     ],
