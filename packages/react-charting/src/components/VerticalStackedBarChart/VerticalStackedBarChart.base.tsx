@@ -7,6 +7,7 @@ import {
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
+  scaleTime as d3ScaleTime,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -41,6 +42,7 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  formatDate,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -693,7 +695,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       YValueHover: isLinesPresent
         ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
         : stack.chartData.slice().reverse(),
-      hoverXValue: stack.xAxisPoint instanceof Date ? stack.xAxisPoint.toLocaleDateString() : stack.xAxisPoint,
+      hoverXValue:
+        stack.xAxisPoint instanceof Date ? formatDate(stack.xAxisPoint, this.props.useUTC) : stack.xAxisPoint,
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
       callOutAccessibilityData: stack.stackCallOutAccessibilityData,
@@ -966,7 +969,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       const lDate = d3Max(this._dataset, (point: IVerticalStackedBarDataPoint) => {
         return point.x as Date;
       })!;
-      const xBarScale = d3ScaleUtc()
+      const xBarScale = this.props.useUTC ? d3ScaleUtc() : d3ScaleTime();
+      xBarScale
         .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
 
@@ -1033,7 +1037,11 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _getAriaLabel = (singleChartData: IVerticalStackedChartProps, point?: IVSChartDataPoint): string => {
     if (!point) {
       /** if shouldFocusWholeStack is true */
-      const xValue = singleChartData.xAxisCalloutData || singleChartData.xAxisPoint;
+      const xValue =
+        singleChartData.xAxisCalloutData ||
+        (singleChartData.xAxisPoint instanceof Date
+          ? formatDate(singleChartData.xAxisPoint)
+          : singleChartData.xAxisPoint);
       const pointValues = singleChartData.chartData
         .map(pt => {
           const legend = pt.legend;
@@ -1054,7 +1062,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
     }
     /** if shouldFocusWholeStack is false */
-    const xValue = singleChartData.xAxisCalloutData || point.xAxisCalloutData || singleChartData.xAxisPoint;
+    const xValue =
+      singleChartData.xAxisCalloutData ||
+      point.xAxisCalloutData ||
+      (singleChartData.xAxisPoint instanceof Date
+        ? formatDate(singleChartData.xAxisPoint)
+        : singleChartData.xAxisPoint);
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.data;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
