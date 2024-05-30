@@ -38,11 +38,10 @@ export class Checkbox extends FASTElement {
 
   public set checked(state: boolean) {
     this._checked = state;
-    this.elementInternals.ariaChecked = `${state}`;
 
     this.setFormValue(state ? this.value : null);
     this.setValidity();
-
+    this.setAriaChecked();
     toggleState(this.elementInternals, 'checked', state);
 
     Observable.notify(this, 'checked');
@@ -90,7 +89,7 @@ export class Checkbox extends FASTElement {
    * @internal
    */
   public indeterminateChanged(prev: boolean, next: boolean): void {
-    this.elementInternals.ariaChecked = next ? 'mixed' : `${this.checked}`;
+    this.setAriaChecked();
     toggleState(this.elementInternals, 'indeterminate', next);
   }
 
@@ -165,6 +164,7 @@ export class Checkbox extends FASTElement {
   public requiredChanged(prev: boolean, next: boolean): void {
     if (this.$fastController.isConnected) {
       this.setValidity();
+      this.elementInternals.ariaRequired = `${!!next}`;
     }
   }
 
@@ -315,6 +315,7 @@ export class Checkbox extends FASTElement {
     super.connectedCallback();
 
     this.setFormValue(this.checked ? this.value : null);
+    this.setAriaChecked();
     this.setValidity();
   }
 
@@ -442,6 +443,15 @@ export class Checkbox extends FASTElement {
     }
 
     return this._validationMessageFallbackControl.validationMessage;
+  }
+
+  /**
+   * Sets the `elementInternals.ariaChecked` value based on the `checked` state.
+   *
+   * @internal
+   */
+  private setAriaChecked(): void {
+    this.elementInternals.ariaChecked = this.indeterminate ? 'mixed' : `${this.checked}`;
   }
 
   /**

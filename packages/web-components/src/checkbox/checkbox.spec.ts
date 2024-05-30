@@ -59,7 +59,7 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'checkbox');
   });
 
-  test('should set a default `aria-checked` value when `checked` is not defined', async ({ page }) => {
+  test('should set the `ariaChecked` property to `false` when `checked` is not defined', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
 
     await page.setContent(/* html */ `
@@ -68,23 +68,23 @@ test.describe('Checkbox', () => {
 
     await expect(element).not.toHaveAttribute('checked');
 
-    await expect(element).toHaveAttribute('aria-checked', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
   });
 
-  test('should set the `aria-checked` attribute equal to the `checked` property', async ({ page }) => {
+  test('should set the `ariaChecked` property equal to the `checked` property', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
 
     await page.setContent(/* html */ `
         <fluent-checkbox checked></fluent-checkbox>
     `);
 
-    await expect(element).toHaveAttribute('aria-checked', 'true');
+    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'true');
 
     await element.evaluate((node: Checkbox) => {
       node.checked = false;
     });
 
-    await expect(element).toHaveAttribute('aria-checked', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
   });
 
   test('should NOT set a default `aria-required` value when `required` is not defined', async ({ page }) => {
@@ -123,7 +123,7 @@ test.describe('Checkbox', () => {
     await expect(element).not.toBeFocused();
   });
 
-  test('should set the `aria-checked` attribute to "mixed" when `indeterminate` property is true', async ({ page }) => {
+  test('should set the `ariaChecked` attribute to "mixed" when `indeterminate` property is true', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
 
     await page.setContent(/* html */ `
@@ -134,13 +134,13 @@ test.describe('Checkbox', () => {
       node.indeterminate = true;
     });
 
-    await expect(element).toHaveAttribute('aria-checked', 'mixed');
+    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'mixed');
 
     await element.evaluate((node: Checkbox) => {
       node.indeterminate = false;
     });
 
-    await expect(element).toHaveAttribute('aria-checked', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
   });
 
   test('should set off `indeterminate` on `checked` change by user click', async ({ page }) => {
