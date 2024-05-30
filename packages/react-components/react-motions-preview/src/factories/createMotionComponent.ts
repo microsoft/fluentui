@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
-import { animate } from '../utils/animate';
+import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
 
@@ -17,15 +17,14 @@ type MotionComponentProps = {
 /**
  * Creates a component that will animate the children using the provided motion.
  *
- * @param motion - A motion definition.
+ * @param value - A motion definition.
  */
-export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
+export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn) {
   const Atom: React.FC<MotionComponentProps> = props => {
     const { children, imperativeRef } = props;
-
     const child = getChildElement(children);
 
-    const animationRef = useMotionImperativeRef(imperativeRef);
+    const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
 
     const isReducedMotion = useIsReducedMotion();
@@ -34,27 +33,16 @@ export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
       const element = elementRef.current;
 
       if (element) {
-        const definition = typeof motion === 'function' ? motion(element) : motion;
-        const { keyframes, ...options } = definition;
+        const atoms = typeof value === 'function' ? value(element) : value;
+        const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
-        const animation = animate(element, keyframes, {
-          fill: 'forwards',
-
-          ...options,
-          ...(isReducedMotion() && { duration: 1 }),
-        });
-
-        if (!animation) {
-          return;
-        }
-
-        animationRef.current = animation;
+        handleRef.current = handle;
 
         return () => {
-          animation.cancel();
+          handle.cancel();
         };
       }
-    }, [animationRef, isReducedMotion]);
+    }, [handleRef, isReducedMotion]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };
