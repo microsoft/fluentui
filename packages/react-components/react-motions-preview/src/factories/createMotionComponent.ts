@@ -7,7 +7,7 @@ import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
 
-type MotionComponentProps = {
+export type MotionComponentProps = {
   children: React.ReactElement;
 
   /** Provides imperative controls for the animation. */

@@ -35,7 +35,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "react-transition-group": "^4.4.1",
+    "@fluentui/react-motions-preview": "^0.3.2",
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-aria": "^9.11.4",
     "@fluentui/react-icons": "^2.0.239",

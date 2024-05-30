@@ -46,6 +46,12 @@ export const durations: {
 };
 
 // @public (undocumented)
+export type MotionComponentProps = {
+    children: React_2.ReactElement;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+};
+
+// @public (undocumented)
 export type MotionImperativeRef = {
     setPlaybackRate: (rate: number) => void;
     setPlayState: (state: 'running' | 'paused') => void;
@@ -70,6 +76,18 @@ export const motionTokens: {
     durationSlow: 300;
     durationSlower: 400;
     durationUltraSlow: 500;
+};
+
+// @public (undocumented)
+export type PresenceComponentProps = {
+    appear?: boolean;
+    children: React_2.ReactElement;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+    onMotionFinish?: (ev: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+    visible?: boolean;
+    unmountOnExit?: boolean;
 };
 
 // @public (undocumented)
