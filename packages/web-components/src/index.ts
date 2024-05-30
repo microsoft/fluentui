@@ -98,6 +98,16 @@ export {
   DividerTemplate,
   DividerStyles,
 } from './divider/index.js';
+export {
+  Drawer,
+  DrawerDefinition,
+  DrawerPosition,
+  DrawerSize,
+  DrawerModalType,
+  DrawerType,
+  DrawerTemplate,
+  DrawerStyles,
+} from './drawer/index.js';
 export { Image, ImageFit, ImageShape, ImageDefinition, ImageTemplate, ImageStyles } from './image/index.js';
 export { Label, LabelSize, LabelWeight, LabelDefinition, LabelStyles, LabelTemplate } from './label/index.js';
 export { Menu, MenuTemplate, MenuStyles, MenuDefinition } from './menu/index.js';
