@@ -105,6 +105,7 @@
     "@react-native/babel-preset": "0.73.21",
     "@rnx-kit/eslint-plugin": "0.4.2",
     "@rollup/plugin-node-resolve": "13.3.0",
+    "@storybook/addons": "6.5.15",
     "@storybook/addon-a11y": "6.5.15",
     "@storybook/addon-actions": "6.5.15",
     "@storybook/addon-docs": "6.5.15",
