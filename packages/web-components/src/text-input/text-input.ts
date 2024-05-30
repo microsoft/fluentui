@@ -407,14 +407,8 @@ export class TextInput extends FASTElement {
    * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
   public changeHandler(e: InputEvent): void {
-    e.preventDefault();
     this.setValidity();
-
-    this.$emit('change', e, {
-      bubbles: true,
-      cancelable: false,
-      composed: false,
-    });
+    this.$emit('change', e);
   }
 
   public connectedCallback(): void {
