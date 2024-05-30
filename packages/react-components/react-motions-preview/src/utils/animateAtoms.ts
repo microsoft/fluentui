@@ -42,8 +42,15 @@ export function animateAtoms(
         .then(() => {
           callback();
         })
-        .catch(() => {
+        .catch((err: unknown) => {
+          const DOMException = element.ownerDocument.defaultView?.DOMException;
+
           // Ignores "DOMException: The user aborted a request" that appears if animations are cancelled
+          if (DOMException && err instanceof DOMException) {
+            return;
+          }
+
+          throw err;
         });
     },
 
