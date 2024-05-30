@@ -101,7 +101,6 @@ module.exports = {
    * @returns {import("eslint").Linter.RulesRecord}
    */
   getNamingConventionRule: (config = { prefixInterface: false }) => ({
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
@@ -128,6 +127,21 @@ module.exports = {
         selector: 'interface',
         format: ['PascalCase'],
         ...(config.prefixInterface ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
+      },
+      // Ignore properties that require quotes - https://typescript-eslint.io/rules/naming-convention/#ignore-properties-that-require-quotes
+      {
+        selector: [
+          'classProperty',
+          'objectLiteralProperty',
+          'typeProperty',
+          'classMethod',
+          'objectLiteralMethod',
+          'typeMethod',
+          'accessor',
+          'enumMember',
+        ],
+        format: null,
+        modifiers: ['requiresQuotes'],
       },
       {
         selector: 'default',
