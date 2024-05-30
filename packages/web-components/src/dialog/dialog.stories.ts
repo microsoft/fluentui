@@ -100,9 +100,9 @@ export default {
       },
       defaultValue: DialogType.modal,
     },
-    onOpenChange: {
+    open: {
       description:
-        'Event fired when the component transitions from its open state.<br /><br /><code>event</code>: A CustomEvent emitted when the open state changes.<br /><br /> <code>detail</code>: An object containing relevant information, such as the open value and the type of interaction that triggered the event.',
+        'Event fired when the component transitions from its open state.<br /><br /><code>event</code>: A CustomEvent emitted when the open state changes.<br /><br /> <code>detail</code>: An object containing the <code>open</code> value of the dialog.',
     },
   },
 } as DialogStoryMeta;
