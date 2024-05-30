@@ -10,7 +10,6 @@ import {
   fontWeightSemibold,
   lineHeightBase300,
   lineHeightBase500,
-  spacingHorizontalS,
   spacingHorizontalXXL,
   spacingVerticalL,
   spacingVerticalS,
@@ -21,32 +20,29 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('grid')}
 
-  /* formerly .root */
   :host {
     background: ${colorNeutralBackground1};
     box-sizing: border-box;
-    display: grid;
     gap: ${spacingVerticalS};
     padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
     container: dialog-body / inline-size;
   }
 
   .title {
-    font-size: ${fontSizeBase500};
-    line-height: ${lineHeightBase500};
-    font-weight: ${fontWeightSemibold};
-    font-family: ${fontFamilyBase};
-    color: ${colorNeutralForeground1};
-    display: flex;
-    justify-content: space-between;
+    box-sizing: border-box;
     align-items: flex-start;
-    column-gap: 8px;
-
-    /* Sticky header */
     background: ${colorNeutralBackground1};
+    color: ${colorNeutralForeground1};
+    column-gap: 8px;
+    display: flex;
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase500};
+    font-weight: ${fontWeightSemibold};
     inset-block-start: 0;
+    justify-content: space-between;
+    line-height: ${lineHeightBase500};
     margin-block-end: calc(${spacingVerticalS} * -1);
     margin-block-start: calc(${spacingVerticalXXL} * -1);
     padding-block-end: ${spacingVerticalS};
@@ -61,33 +57,27 @@ export const styles = css`
   }
 
   .content {
-    vertical-align: top;
-    min-height: 32px;
-    color: ${colorNeutralForeground1};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    font-weight: ${fontWeightRegular};
-    font-family: ${fontFamilyBase};
-    overflow-y: auto;
     box-sizing: border-box;
+    color: ${colorNeutralForeground1};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase300};
+    min-height: 32px;
   }
 
   .actions {
-    display: flex;
-    grid-column-start: 1;
-    flex-direction: column;
-    max-width: 100vw;
-    row-gap: ${spacingVerticalS};
-    padding-block-start: ${spacingVerticalL};
-    justify-self: stretch;
-    width: 100%;
-
-    /* Sticky footer */
+    box-sizing: border-box;
     background: ${colorNeutralBackground1};
+    display: flex;
+    flex-direction: column;
+    gap: ${spacingVerticalS};
     inset-block-end: 0;
     margin-block-end: calc(${spacingVerticalXXL} * -1);
     padding-block-end: ${spacingVerticalXXL};
+    padding-block-start: ${spacingVerticalL};
     position: sticky;
+    z-index: 2;
   }
 
   /* Hide slot if nothing is slotted to remove gap */
@@ -95,24 +85,11 @@ export const styles = css`
     display: none;
   }
 
-  ::slotted([slot='action']) {
-    width: 100%;
-  }
-
   @container (min-width: 480px) {
-    ::slotted([slot='action']) {
-      width: fit-content;
-    }
-
     .actions {
-      display: flex;
+      align-items: center;
       flex-direction: row;
       justify-content: flex-end;
-      align-items: center;
-      column-gap: ${spacingHorizontalS};
-      box-sizing: border-box;
-
-      /* Sticky footer */
       margin-block-start: calc(${spacingVerticalS} * -1);
       padding-block-start: ${spacingVerticalS};
     }

@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
 import {
   borderRadiusXLarge,
   colorBackgroundOverlay,
@@ -19,8 +18,6 @@ import {
  */
 export const styles = css`
   @layer base {
-    ${display('flex')}
-
     :host {
       --dialog-backdrop: ${colorBackgroundOverlay};
       --dialog-starting-scale: 0.85;
@@ -36,25 +33,17 @@ export const styles = css`
       border: ${strokeWidthThin} solid ${colorTransparentStroke};
       box-shadow: ${shadow64};
       color: ${colorNeutralForeground1};
-      height: fit-content;
-      margin: auto auto;
-      max-height: 100vh;
+      max-height: calc(-48px + 100vh);
       padding: 0;
-      width: 100vw;
+      width: 100%;
+      max-width: 600px;
+    }
 
-      /* for non-modal dialogs */
+    :host([type='non-modal']) dialog {
       inset: 0;
       position: fixed;
       z-index: 2;
       overflow: auto;
-      /* end for non-modal dialogs */
-    }
-
-    @media screen and (min-width: 480px) {
-      dialog {
-        max-width: 600px;
-        width: 100%;
-      }
     }
   }
 
@@ -83,7 +72,7 @@ export const styles = css`
       dialog:not([open]) {
         /* Make small when leaving */
         scale: var(--dialog-starting-scale);
-        /* faster leaving the stage then entering */
+        /* Faster leaving the stage then entering */
         transition-timing-function: ${curveAccelerateMid};
       }
     }
