@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ArgTypes } from '@storybook/api';
-import { makeStyles, shorthands, useId, Input, Label } from '@fluentui/react-components';
+import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
+    gap: '2px',
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },

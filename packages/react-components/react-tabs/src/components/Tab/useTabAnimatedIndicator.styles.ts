@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { TabState, TabValue } from './Tab.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
 import { TabRegisterData } from '../TabList/TabList.types';
 import { tokens } from '@fluentui/react-theme';
@@ -15,7 +15,7 @@ const tabIndicatorCssVars_unstable = {
 const useActiveIndicatorStyles = makeStyles({
   base: {
     // overflow is required to allow the selection indicator to animate outside the tab area.
-    ...shorthands.overflow('visible'),
+    overflow: 'visible',
   },
   animated: {
     '::after': {

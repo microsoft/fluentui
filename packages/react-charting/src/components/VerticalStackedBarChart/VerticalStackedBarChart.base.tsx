@@ -28,6 +28,7 @@ import {
   IVSChartDataPoint,
   ILineDataInVerticalStackedBarChart,
   IModifiedCartesianChartProps,
+  IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -42,6 +43,13 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  findVSBCNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfVSBCNumeric,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
   formatDate,
 } from '../../utilities/index';
 
@@ -143,6 +151,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._emptyChartId = getId('_VSBC_empty');
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -200,14 +209,19 @@ export class VerticalStackedBarChartBase extends React.Component<
       return (
         <CartesianChart
           {...this.props}
+          chartTitle={this._getChartTitle()}
           points={this._dataset}
           chartType={ChartTypes.VerticalStackedBarChart}
           xAxisType={this._xAxisType}
           calloutProps={calloutProps}
+          createYAxis={createNumericYAxis}
           tickParams={tickParams}
           legendBars={legendBars}
+          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
+          getDomainNRangeValues={this._getDomainNRangeValues}
+          createStringYAxis={createStringYAxis}
           barwidth={this._barWidth}
           focusZoneDirection={
             isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
@@ -275,6 +289,36 @@ export class VerticalStackedBarChartBase extends React.Component<
       shouldFocusStackOnly = isCalloutForStack;
     }
     return shouldFocusStackOnly;
+  };
+
+  private _getDomainNRangeValues = (
+    points: IDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
   };
 
   private _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {
@@ -1123,4 +1167,15 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.data.filter(item => item.chartData.length === 0).length === 0
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    const numLines = Object.keys(this._lineObject).length;
+    return (
+      (chartTitle ? `${chartTitle}. ` : '') +
+      `Vertical bar chart with ${data?.length || 0} stacked bars` +
+      (numLines > 0 ? ` and ${numLines} lines` : '') +
+      '. '
+    );
+  };
 }

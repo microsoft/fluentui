@@ -2,7 +2,6 @@ import {
   makeStyles,
   Button,
   Persona,
-  shorthands,
   tokens,
   MessageBar,
   MessageBarTitle,
@@ -20,25 +19,20 @@ const useClasses = makeStyles({
   card: {
     display: 'flex',
     flexDirection: 'column',
-
-    ...shorthands.gap('10px'),
-
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    gap: '10px',
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: 0,
-    ...shorthands.padding('10px'),
+    padding: '10px',
   },
   controls: {
     display: 'flex',
-
-    ...shorthands.gap('10px'),
-
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
-    ...shorthands.borderBottom('none'),
+    gap: '10px',
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderBottom: 'none',
     borderTopLeftRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: tokens.borderRadiusMedium,
-    ...shorthands.padding('10px'),
-
+    padding: '10px',
     alignSelf: 'end',
   },
 });
@@ -168,7 +162,7 @@ const ItemMotion = createPresenceComponent({
       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
     ],
-    easing: motionTokens.easingEasyEase,
+    easing: motionTokens.curveEasyEase,
     duration: motionTokens.durationUltraSlow,
   },
   exit: {
@@ -176,7 +170,7 @@ const ItemMotion = createPresenceComponent({
       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
     ],
-    easing: motionTokens.easingEasyEase,
+    easing: motionTokens.curveEasyEase,
     duration: motionTokens.durationUltraSlow,
   },
 });
@@ -186,51 +180,49 @@ export const PresenceGroupDefault = () => {
   const [limit, setLimit] = React.useState(3);
 
   return (
-    <>
-      <div className={classes.container}>
-        <div className={classes.controls}>
-          <Button
-            appearance="primary"
-            disabled={limit + 1 === users.length}
-            icon={<AddRegular />}
-            onClick={() => setLimit(l => l + 1)}
-            size="small"
-          >
-            Add user
-          </Button>
-          <Button disabled={limit === 0} icon={<DeleteRegular />} onClick={() => setLimit(l => l - 1)} size="small">
-            Remove user
-          </Button>
-        </div>
-
-        <div className={classes.card}>
-          <ItemMotion visible={limit === 0} unmountOnExit>
-            <MessageBar>
-              <MessageBarBody>
-                <MessageBarTitle>No users</MessageBarTitle>
-                Click "Add user" to add a user to the presence group.
-              </MessageBarBody>
-            </MessageBar>
-          </ItemMotion>
-
-          <PresenceGroup>
-            {users.slice(0, limit).map(item => (
-              <ItemMotion key={item.name}>
-                <Persona
-                  avatar={{
-                    image: { src: item.image },
-                  }}
-                  textPosition="after"
-                  name={item.name}
-                  presence={{ status: 'available' }}
-                  secondaryText="Available"
-                  size="extra-large"
-                />
-              </ItemMotion>
-            ))}
-          </PresenceGroup>
-        </div>
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Button
+          appearance="primary"
+          disabled={limit + 1 === users.length}
+          icon={<AddRegular />}
+          onClick={() => setLimit(l => l + 1)}
+          size="small"
+        >
+          Add user
+        </Button>
+        <Button disabled={limit === 0} icon={<DeleteRegular />} onClick={() => setLimit(l => l - 1)} size="small">
+          Remove user
+        </Button>
       </div>
-    </>
+
+      <div className={classes.card}>
+        <ItemMotion visible={limit === 0} unmountOnExit>
+          <MessageBar>
+            <MessageBarBody>
+              <MessageBarTitle>No users</MessageBarTitle>
+              Click "Add user" to add a user to the presence group.
+            </MessageBarBody>
+          </MessageBar>
+        </ItemMotion>
+
+        <PresenceGroup>
+          {users.slice(0, limit).map(item => (
+            <ItemMotion key={item.name}>
+              <Persona
+                avatar={{
+                  image: { src: item.image },
+                }}
+                textPosition="after"
+                name={item.name}
+                presence={{ status: 'available' }}
+                secondaryText="Available"
+                size="extra-large"
+              />
+            </ItemMotion>
+          ))}
+        </PresenceGroup>
+      </div>
+    </div>
   );
 };

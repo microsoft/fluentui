@@ -2,7 +2,7 @@
   "name": "@fluentui/react-carousel-preview",
   "version": "0.0.0",
   "private": true,
-  "description": "New fluentui react package",
+  "description": "A composable carousel component that enables pagination with minimal rerenders",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -37,11 +37,17 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.36",
-    "@fluentui/react-shared-contexts": "^9.17.0",
+    "@fluentui/react-jsx-runtime": "^9.0.38",
+    "@fluentui/react-shared-contexts": "^9.19.0",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.7",
-    "@griffel/react": "^1.5.14",
+    "@fluentui/react-utilities": "^9.18.9",
+    "@fluentui/react-button": "^9.3.82",
+    "@fluentui/react-tabster": "^9.21.4",
+    "@fluentui/react-aria": "^9.11.4",
+    "@fluentui/react-context-selector": "^9.1.60",
+    "@fluentui/react-icons": "^2.0.239",
+    "use-sync-external-store": "^1.2.0",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

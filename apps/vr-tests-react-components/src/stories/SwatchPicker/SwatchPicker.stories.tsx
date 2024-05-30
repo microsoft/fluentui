@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SwatchPicker } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker } from '@fluentui/react-swatch-picker';
 import { SampleSwatchPickerColors, SampleSwatchPickerImages, SampleSwatchPickerGrid, steps } from './utils';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';

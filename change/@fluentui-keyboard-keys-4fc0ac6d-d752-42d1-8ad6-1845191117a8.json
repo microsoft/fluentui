@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use new performant 'type-check' for v9 libaries",
+  "packageName": "@fluentui/keyboard-keys",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

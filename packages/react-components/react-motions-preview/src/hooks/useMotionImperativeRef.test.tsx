@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
-import type { MotionImperativeRef } from '../types';
+import type { AnimationHandle, MotionImperativeRef } from '../types';
 import { useMotionImperativeRef } from './useMotionImperativeRef';
 
 describe('useMotionImperativeRef', () => {
@@ -20,7 +20,7 @@ describe('useMotionImperativeRef', () => {
     const animationMock = {
       play: jest.fn(),
       pause: jest.fn(),
-    } as Partial<Animation> as Animation;
+    } as Partial<AnimationHandle> as AnimationHandle;
 
     const setPlaybackRate = jest.fn();
     Object.defineProperty(animationMock, 'playbackRate', {

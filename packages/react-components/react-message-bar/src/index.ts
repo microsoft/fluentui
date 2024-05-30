@@ -2,11 +2,18 @@ export {
   MessageBar,
   useMessageBarStyles_unstable,
   useMessageBar_unstable,
+  useMessageBarContextValue_unstable,
   renderMessageBar_unstable,
   messageBarClassNames,
 } from './MessageBar';
 
-export type { MessageBarProps, MessageBarSlots, MessageBarState, MessageBarIntent } from './MessageBar';
+export type {
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+  MessageBarIntent,
+  MessageBarContextValues,
+} from './MessageBar';
 
 export {
   MessageBarTitle,
@@ -23,10 +30,16 @@ export {
   useMessageBarActionsStyles_unstable,
   useMessageBarActions_unstable,
   renderMessageBarActions_unstable,
+  useMessageBarActionsContextValue_unstable,
   messageBarActionsClassNames,
 } from './MessageBarActions';
 
-export type { MessageBarActionsProps, MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions';
+export type {
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+  MessageBarActionsContextValues,
+} from './MessageBarActions';
 
 export {
   MessageBarBody,
@@ -38,8 +51,15 @@ export {
 
 export type { MessageBarBodyProps, MessageBarBodySlots, MessageBarBodyState } from './MessageBarBody';
 
-export { MessageBarContextProvider, useMessageBarContext } from './contexts/messageBarContext';
-export type { MessageBarContextValue } from './contexts/messageBarContext';
+export {
+  MessageBarContextProvider,
+  messageBarContextDefaultValue,
+  messageBarTransitionContextDefaultValue,
+  useMessageBarContext,
+  MessageBarTransitionContextProvider,
+  useMessageBarTransitionContext,
+} from './contexts';
+export type { MessageBarContextValue, MessageBarTransitionContextValue } from './contexts';
 export {
   MessageBarGroup,
   useMessageBarGroupStyles_unstable,

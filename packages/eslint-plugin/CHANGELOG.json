@@ -2,6 +2,66 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 28 May 2024 07:28:20 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.18.1",
+      "version": "1.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "3be221900e3c3898dc34570c5f4d14a224bc2d01",
+            "comment": "chore: re-enable deprecation/deprecation for files with styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 May 2024 07:28:16 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.18.0",
+      "version": "1.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "feat: disallow direct access to globals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 May 2024 07:28:51 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.9",
+      "version": "1.17.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5e68a1a2c9513435bcd2a8caa42ac0a64d90f505",
+            "comment": "chore: bump @griffel/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 07:29:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.8",
+      "version": "1.17.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Apr 2024 07:27:48 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.7",
       "version": "1.17.7",

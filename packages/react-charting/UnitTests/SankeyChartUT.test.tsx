@@ -160,7 +160,12 @@ runTest('_createLinks', () => {
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
     const normalizedData = privateInstance._normalizeSankeyData(data.SankeyChartData!, 912, 468);
-    const result = privateInstance._createLinks(normalizedData.data.links);
+    const _linkAttributes = instance._linkAttributes(
+      normalizedData['links'],
+      instance._strings.linkFrom,
+      instance._accessibility.linkAriaLabel,
+    );
+    const result = instance._createLinks(normalizedData['links'], _linkAttributes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
     const link1 = result![0]! as React.ReactElement;
@@ -206,7 +211,12 @@ runTest('_createLinks', () => {
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
     const normalizedData = privateInstance._normalizeSankeyData(data.SankeyChartData!, 912, 468);
-    const result = privateInstance._createLinks(normalizedData.data.links);
+    const _linkAttributes = instance._linkAttributes(
+      normalizedData['links'],
+      instance._strings.linkFrom,
+      instance._accessibility.linkAriaLabel,
+    );
+    const result = instance._createLinks(normalizedData['links'], _linkAttributes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
     const link1 = result![0]! as React.ReactElement;
@@ -274,7 +284,12 @@ runTest('_createNodes', () => {
       pathColor: '#4B3867',
       className: 'UT',
     });
-    const result = privateInstance._createNodes(_classNames, normalizedData.data.nodes);
+    const _nodeAttributes = instance._computeNodeAttributes(
+      normalizedData['nodes'],
+      instance._accessibility.nodeAriaLabel,
+    );
+    const tooltipDiv = instance._fetchTooltip(_classNames);
+    const result = instance._createNodes(_classNames, normalizedData['nodes'], _nodeAttributes, tooltipDiv);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
     const node1 = result![0]! as React.ReactElement;
@@ -318,7 +333,12 @@ runTest('_createNodes', () => {
       pathColor: '#4B3867',
       className: 'UT',
     });
-    const result = privateInstance._createNodes(_classNames, normalizedData.data.nodes);
+    const _nodeAttributes = instance._computeNodeAttributes(
+      normalizedData['nodes'],
+      instance._accessibility.nodeAriaLabel,
+    );
+    const tooltipDiv = instance._fetchTooltip(_classNames);
+    const result = instance._createNodes(_classNames, normalizedData['nodes'], _nodeAttributes, tooltipDiv);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
     const node1 = result![0]! as React.ReactElement;

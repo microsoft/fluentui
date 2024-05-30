@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
+import { makeStyles, Spinner } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    '> div': { ...shorthands.padding('20px') },
+    '> div': { padding: '20px' },
   },
 });
 

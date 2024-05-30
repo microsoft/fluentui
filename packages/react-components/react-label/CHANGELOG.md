@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2024 12:44:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.70)
+
+Mon, 20 May 2024 12:44:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.69..@fluentui/react-label_v9.1.70)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.1.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.69)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.68..@fluentui/react-label_v9.1.69)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
 
 ## [9.1.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.68)
 

@@ -1,8 +1,68 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Thu, 02 May 2024 11:36:38 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2024 08:02:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.84)
+
+Thu, 23 May 2024 08:02:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.83..@fluentui/react-switch_v9.1.84)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31449](https://github.com/microsoft/fluentui/pull/31449) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.4 ([commit](https://github.com/microsoft/fluentui/commit/03599d609e8310b08c57d1f871cffbf717d79207) by beachball)
+
+## [9.1.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.83)
+
+Mon, 20 May 2024 12:45:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.82..@fluentui/react-switch_v9.1.83)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-field to v9.1.66 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.38 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-label to v9.1.70 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-tabster to v9.21.3 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.1.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.82)
+
+Thu, 16 May 2024 09:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.81..@fluentui/react-switch_v9.1.82)
+
+### Patches
+
+-  chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix. ([PR #31287](https://github.com/microsoft/fluentui/pull/31287) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.1.65 ([PR #31390](https://github.com/microsoft/fluentui/pull/31390) by beachball)
+
+## [9.1.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.81)
+
+Thu, 09 May 2024 19:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.80..@fluentui/react-switch_v9.1.81)
+
+### Patches
+
+- fix: Add HC hover active styling to Switch. ([PR #31283](https://github.com/microsoft/fluentui/pull/31283) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.21.2 ([PR #31321](https://github.com/microsoft/fluentui/pull/31321) by beachball)
+
+## [9.1.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.80)
+
+Mon, 06 May 2024 12:55:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.79..@fluentui/react-switch_v9.1.80)
+
+### Patches
+
+- fix: Add HC styling for Switch font icon ([PR #31241](https://github.com/microsoft/fluentui/pull/31241) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.1.64 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.37 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-label to v9.1.69 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-tabster to v9.21.1 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
 
 ## [9.1.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.79)
 

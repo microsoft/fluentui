@@ -1,11 +1,11 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselNavSlots, CarouselNavState } from './CarouselNav.types';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselNavClassNames: SlotClassNames<CarouselNavSlots> = {
   root: 'fui-CarouselNav',
-  // TODO: add class names for all slots on CarouselNavSlots.
-  // Should be of the form `<slotName>: 'fui-CarouselNav__<slotName>`
 };
 
 /**
@@ -13,10 +13,21 @@ export const carouselNavClassNames: SlotClassNames<CarouselNavSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'row',
+    columnGap: tokens.spacingHorizontalXS,
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...createCustomFocusIndicatorStyle({
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
+      ...shorthands.borderColor('transparent'),
+    }),
+    borderRadius: tokens.borderRadiusXLarge,
+    margin: `auto ${tokens.spacingHorizontalS}`,
+    padding: tokens.spacingHorizontalXS,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -25,9 +36,6 @@ const useStyles = makeStyles({
 export const useCarouselNavStyles_unstable = (state: CarouselNavState): CarouselNavState => {
   const styles = useStyles();
   state.root.className = mergeClasses(carouselNavClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

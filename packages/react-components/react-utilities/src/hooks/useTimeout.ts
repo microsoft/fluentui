@@ -1,4 +1,8 @@
 import { useBrowserTimer } from './useBrowserTimer';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+
+const setTimeoutNoop = (_callback: Function) => -1;
+const clearTimeoutNoop = (_handle: number) => undefined;
 
 /**
  * @internal
@@ -9,6 +13,11 @@ import { useBrowserTimer } from './useBrowserTimer';
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
 export function useTimeout() {
-  // TODO: figure it out a way to not call global.setTimeout and instead infer window from some context
-  return useBrowserTimer(setTimeout, clearTimeout);
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
+
+  const setTimerFn = win ? win.setTimeout : setTimeoutNoop;
+  const clearTimerFn = win ? win.clearTimeout : clearTimeoutNoop;
+
+  return useBrowserTimer(setTimerFn, clearTimerFn);
 }

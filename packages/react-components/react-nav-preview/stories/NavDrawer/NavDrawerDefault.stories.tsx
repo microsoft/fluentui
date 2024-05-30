@@ -1,45 +1,89 @@
 import * as React from 'react';
 import {
+  Hamburger,
   NavCategory,
   NavCategoryItem,
   NavDrawer,
+  NavDrawerBody,
+  NavDrawerFooter,
+  NavDrawerHeader,
+  NavDrawerHeaderNav,
   NavDrawerProps,
   NavItem,
+  NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
-import { DrawerBody, DrawerProps } from '@fluentui/react-drawer';
-import { Button, Label, Radio, RadioGroup, makeStyles, shorthands, tokens, useId } from '@fluentui/react-components';
-import { Folder20Filled, Folder20Regular, bundleIcon } from '@fluentui/react-icons';
+import { DrawerProps } from '@fluentui/react-drawer';
+import { Label, Radio, RadioGroup, makeStyles, tokens, useId } from '@fluentui/react-components';
+import {
+  Board20Filled,
+  Board20Regular,
+  BoxMultiple20Filled,
+  BoxMultiple20Regular,
+  DataArea20Filled,
+  DataArea20Regular,
+  DocumentBulletListMultiple20Filled,
+  DocumentBulletListMultiple20Regular,
+  HeartPulse20Filled,
+  HeartPulse20Regular,
+  MegaphoneLoud20Filled,
+  MegaphoneLoud20Regular,
+  NotePin20Filled,
+  NotePin20Regular,
+  People20Filled,
+  People20Regular,
+  PeopleStar20Filled,
+  PeopleStar20Regular,
+  Person20Filled,
+  PersonLightbulb20Filled,
+  PersonLightbulb20Regular,
+  Person20Regular,
+  PersonSearch20Filled,
+  PersonSearch20Regular,
+  PreviewLink20Filled,
+  PreviewLink20Regular,
+  Settings20Filled,
+  Settings20Regular,
+  bundleIcon,
+} from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('2px', 'solid', '#ccc'),
-    ...shorthands.overflow('hidden'),
-
+    overflow: 'hidden',
     display: 'flex',
-    height: '480px',
-    backgroundColor: '#fff',
+    height: '600px',
   },
-
   content: {
-    ...shorthands.flex(1),
-    ...shorthands.padding('16px'),
-
+    flex: '1',
+    padding: '16px',
     display: 'grid',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    gridRowGap: tokens.spacingVerticalXXL,
-    gridAutoRows: 'max-content',
   },
-
   field: {
-    display: 'grid',
+    display: 'flex',
+    marginTop: '4px',
+    marginLeft: '8px',
+    flexDirection: 'column',
     gridRowGap: tokens.spacingVerticalS,
   },
 });
 
-const Folder = bundleIcon(Folder20Filled, Folder20Regular);
+const Person = bundleIcon(Person20Filled, Person20Regular);
+const Dashboard = bundleIcon(Board20Filled, Board20Regular);
+const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
+const EmployeeSpotlight = bundleIcon(PersonLightbulb20Filled, PersonLightbulb20Regular);
+const Search = bundleIcon(PersonSearch20Filled, PersonSearch20Regular);
+const PerformanceReviews = bundleIcon(PreviewLink20Filled, PreviewLink20Regular);
+const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
+const Interviews = bundleIcon(People20Filled, People20Regular);
+const HealthPlans = bundleIcon(HeartPulse20Filled, HeartPulse20Regular);
+const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
+const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
+const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
+const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
+const Settings = bundleIcon(Settings20Filled, Settings20Regular);
 
 type DrawerType = Required<DrawerProps>['type'];
 
@@ -48,68 +92,107 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   const labelId = useId('type-label');
 
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [type, setType] = React.useState<DrawerType>('overlay');
-
-  const someClickHandler = () => {
-    console.log('someClickHandler');
-  };
+  const [isOpen, setIsOpen] = React.useState(true);
+  const [type, setType] = React.useState<DrawerType>('inline');
 
   return (
     <div className={styles.root}>
-      <NavDrawer
-        defaultSelectedValue={'10'}
-        defaultSelectedCategoryValue={'8'}
-        open={isOpen}
-        type={type}
-        onOpenChange={(_, { open }) => setIsOpen(open)}
-        size="small"
-      >
-        <DrawerBody>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="1">
-            First
+      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type} size="small">
+        <NavDrawerHeader>
+          <NavDrawerHeaderNav>
+            <Hamburger onClick={() => setIsOpen(false)} />
+          </NavDrawerHeaderNav>
+        </NavDrawerHeader>
+        <NavDrawerBody>
+          <NavSectionHeader>Home</NavSectionHeader>
+          <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
+            Dashboard
           </NavItem>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="2">
-            Second
+          <NavItem href="https://www.bing.com" icon={<Announcements />} value="2">
+            Announcements
           </NavItem>
-          <NavItem icon={<Folder />} target="_blank" onClick={someClickHandler} value="3">
-            Third
+          <NavItem href="https://www.bing.com" icon={<EmployeeSpotlight />} value="3">
+            Employee Spotlight
           </NavItem>
-          <NavCategory value="4">
-            <NavCategoryItem icon={<Folder />}>NavCategoryItem 1</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="5">
-                Five
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="6">
-                Six
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="7">
-                Seven
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-          <NavCategory value="8">
-            <NavCategoryItem icon={<Folder />}>NavCategoryItem2</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="9">
-                Nine
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="10">
-                Ten
-              </NavSubItem>
-              <NavSubItem target="_blank" onClick={someClickHandler} value="11">
-                Eleven
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-        </DrawerBody>
-      </NavDrawer>{' '}
-      <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
-          {type === 'inline' ? 'Toggle' : 'Open'}
-        </Button>
+          <NavItem icon={<Search />} href="https://www.bing.com" value="4">
+            Profile Search
+          </NavItem>
+          <NavItem icon={<PerformanceReviews />} href="https://www.bing.com" value="5">
+            Performance Reviews
+          </NavItem>
 
+          <NavSectionHeader>Employee Management</NavSectionHeader>
+          <NavCategory value="6">
+            <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem href="https://www.bing.com" value="7">
+                Openings
+              </NavSubItem>
+              <NavSubItem href="https://www.bing.com" value="8">
+                Submissions
+              </NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+          <NavItem icon={<Interviews />} value="9">
+            Interviews
+          </NavItem>
+          <NavItem href="https://www.bing.com" icon={<HealthPlans />} value="10">
+            Health Plans
+          </NavItem>
+
+          <NavSectionHeader>Benefits</NavSectionHeader>
+          <NavItem icon={<HealthPlans />} value="10">
+            Health Plans
+          </NavItem>
+          <NavCategory value="11">
+            <NavCategoryItem icon={<Person />} value="12">
+              Retirement
+            </NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem href="https://www.bing.com" value="13">
+                Plan Information
+              </NavSubItem>
+              <NavSubItem href="https://www.bing.com" value="14">
+                Fund Performance
+              </NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+
+          <NavSectionHeader>Learning</NavSectionHeader>
+          <NavItem icon={<TrainingPrograms />} value="15">
+            Training Programs
+          </NavItem>
+          <NavCategory value="16">
+            <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
+            <NavSubItemGroup>
+              <NavSubItem href="https://www.bing.com" value="17">
+                Career Paths
+              </NavSubItem>
+              <NavSubItem href="https://www.bing.com" value="18">
+                Planning
+              </NavSubItem>
+            </NavSubItemGroup>
+          </NavCategory>
+
+          <NavSectionHeader>Analytics</NavSectionHeader>
+          <NavItem target="_blank" icon={<Analytics />} value="19">
+            Workforce Data
+          </NavItem>
+          <NavItem href="https://www.bing.com" icon={<Reports />} value="20">
+            Reports
+          </NavItem>
+        </NavDrawerBody>
+        <NavDrawerFooter>
+          <NavItem value="21" href="https://www.bing.com" icon={<Person />}>
+            Profile
+          </NavItem>
+          <NavItem icon={<Settings />} href="https://www.bing.com" value="24">
+            App Settings
+          </NavItem>
+        </NavDrawerFooter>
+      </NavDrawer>
+      <div className={styles.content}>
+        {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
         <div className={styles.field}>
           <Label id={labelId}>Type</Label>
           <RadioGroup value={type} onChange={(_, data) => setType(data.value as DrawerType)} aria-labelledby={labelId}>

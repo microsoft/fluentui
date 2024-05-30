@@ -7,7 +7,7 @@ import {
   ImageSwatch,
   EmptySwatch,
   SwatchPickerRow,
-} from '@fluentui/react-swatch-picker-preview';
+} from '@fluentui/react-swatch-picker';
 import { HeartRegular } from '@fluentui/react-icons';
 
 export const steps = new Steps()
