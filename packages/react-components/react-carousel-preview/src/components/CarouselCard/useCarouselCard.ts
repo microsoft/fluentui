@@ -22,12 +22,13 @@ export const useCarouselCard_unstable = (
 
   const _value = useCarouselContext_unstable(c => c.value);
   const circular = useCarouselContext_unstable(c => c.circular);
+  const peeking = useCarouselContext_unstable(c => c.peeking);
   const values = useCarouselValues_unstable(snapshot => snapshot);
 
   const currentIndex = _value ? values.indexOf(_value) : null;
   let peekDir: 'prev' | 'next' | null | undefined = null;
 
-  if (currentIndex !== null && currentIndex >= 0) {
+  if (peeking && currentIndex !== null && currentIndex >= 0) {
     let nextValue = currentIndex + 1 < values.length ? values[currentIndex + 1] : null;
     let prevValue = currentIndex - 1 >= 0 ? values[currentIndex - 1] : null;
 
@@ -57,6 +58,8 @@ export const useCarouselCard_unstable = (
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
         hidden: !visible && !peekDir,
+        'aria-hidden': !visible,
+        inert: !visible,
         role: 'presentation',
         ...props,
       }),
