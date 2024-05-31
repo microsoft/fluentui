@@ -70,10 +70,8 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
       pointerEvents: 'none',
       zIndex: 1,
 
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderWidth(outlineWidth),
-      ...shorthands.borderRadius(outlineRadius),
-      ...shorthands.borderColor(outlineColor),
+      border: `${outlineWidth} solid ${outlineColor}`,
+      borderRadius: outlineRadius,
 
       top: getOutlinePosition(options, 'top'),
       right: getOutlinePosition(options, 'right'),

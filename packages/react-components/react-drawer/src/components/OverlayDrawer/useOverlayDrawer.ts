@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
-import { Dialog } from '@fluentui/react-dialog';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
+import { OverlayDrawerDialog } from './OverlayDrawerDialog';
 import { OverlayDrawerSurface } from './OverlayDrawerSurface';
 
 /**
@@ -21,7 +21,7 @@ export const useOverlayDrawer_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
+  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
   const motion = useMotion<HTMLDivElement>(open);
 
@@ -44,7 +44,6 @@ export const useOverlayDrawer_unstable = (
   const dialog = slot.always(
     {
       open,
-      defaultOpen,
       onOpenChange,
       inertTrapFocus,
       modalType,
@@ -55,14 +54,14 @@ export const useOverlayDrawer_unstable = (
       children: null as unknown as JSX.Element,
     },
     {
-      elementType: Dialog,
+      elementType: OverlayDrawerDialog,
     },
   );
 
   return {
     components: {
       root: OverlayDrawerSurface,
-      dialog: Dialog,
+      dialog: OverlayDrawerDialog,
     },
 
     root,

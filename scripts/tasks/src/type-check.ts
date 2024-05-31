@@ -4,7 +4,7 @@ import { exec } from 'just-scripts-utils';
 
 import { type TsConfig, getTsPathAliasesConfig } from './utils';
 
-export async function typeCheck() {
+export function typeCheck(): Promise<void> | undefined {
   const { isUsingTsSolutionConfigs, tsConfigs } = getTsPathAliasesConfig();
 
   if (!isUsingTsSolutionConfigs) {
@@ -20,17 +20,22 @@ export async function typeCheck() {
 
   const tsConfigsRefs = getTsConfigs(config, { spec: false, e2e: false });
 
-  const asyncQueue = [];
+  const asyncQueue: Array<ReturnType<typeof exec>> = [];
 
   for (const ref of tsConfigsRefs) {
-    const program = `tsc -p ${ref} --pretty --baseUrl .`;
+    const program = `tsc -p ${ref} --pretty --baseUrl . --noEmit`;
     asyncQueue.push(exec(program));
   }
 
-  return Promise.all(asyncQueue).catch(err => {
-    console.error(err.stdout);
-    process.exit(1);
-  });
+  return Promise.all(asyncQueue)
+    .then(_ => {
+      logger.info('Type checking completed successfully');
+      return;
+    })
+    .catch(err => {
+      console.error(err.stdout);
+      process.exit(1);
+    });
 }
 
 function getTsConfigs(solutionConfig: TsConfig, exclude: { spec: boolean; e2e: boolean }) {

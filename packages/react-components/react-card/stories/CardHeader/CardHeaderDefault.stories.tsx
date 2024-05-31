@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { CardHeader } from '@fluentui/react-components';
-import { makeStyles, shorthands, Button, Body1, Caption1 } from '@fluentui/react-components';
+import { makeStyles, Button, Body1, Caption1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.padding('16px'),
-    ...shorthands.gap('16px'),
+    padding: '16px',
+    gap: '16px',
   },
   header: {
     width: '300px',

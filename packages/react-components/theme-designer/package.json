@@ -22,7 +22,7 @@
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
@@ -32,14 +32,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-alert": "9.0.0-beta.121",
-    "@fluentui/react-components": "^9.51.1",
-    "@fluentui/react-context-selector": "^9.1.59",
+    "@fluentui/react-alert": "9.0.0-beta.123",
+    "@fluentui/react-components": "^9.53.0",
+    "@fluentui/react-context-selector": "^9.1.60",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.8",
-    "@griffel/react": "^1.5.14",
+    "@fluentui/react-utilities": "^9.18.9",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@types/dedent": "0.7.0",
     "codesandbox-import-utils": "2.2.3"

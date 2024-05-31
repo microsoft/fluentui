@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: clear icon not working with freeform",
+  "packageName": "@fluentui/react-timepicker-compat",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

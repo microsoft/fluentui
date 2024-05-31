@@ -33,6 +33,11 @@ import {
   StringAxis,
   getTypeOfAxis,
   getNextColor,
+  findHBCWANumericMinMaxOfY,
+  createYAxisForHorizontalBarChartWithAxis,
+  IDomainNRange,
+  domainRangeOfNumericForHorizontalBarChartWithAxis,
+  createStringYAxisForHorizontalBarChartWithAxis,
 } from '../../utilities/index';
 import ErrorBoundary from '../CommonComponents/ErrorBoundary';
 
@@ -139,6 +144,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
         <CartesianChart
           {...this.props}
+          chartTitle={this._getChartTitle()}
           points={this._points}
           chartType={ChartTypes.HorizontalBarChartWithAxis}
           xAxisType={this._xAxisType}
@@ -147,6 +153,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           calloutProps={calloutProps}
           tickParams={tickParams}
           legendBars={legendBars}
+          createYAxis={createYAxisForHorizontalBarChartWithAxis}
+          getDomainNRangeValues={this._getDomainNRangeValues}
+          createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
+          getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
           barwidth={this._barHeight}
           focusZoneDirection={FocusZoneDirection.vertical}
           customizedCallout={this._getCustomizedCallout()}
@@ -176,6 +186,26 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       </div>
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: IHorizontalBarChartWithAxisDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  };
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
@@ -701,4 +731,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
+  };
 }

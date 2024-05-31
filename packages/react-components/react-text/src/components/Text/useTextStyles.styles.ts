@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TextSlots, TextState } from './Text.types';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,12 +19,12 @@ const useStyles = makeStyles({
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
-    ...shorthands.overflow('visible'),
+    overflow: 'visible',
     textOverflow: 'clip',
   },
   nowrap: {
     whiteSpace: 'nowrap',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   truncate: {
     textOverflow: 'ellipsis',

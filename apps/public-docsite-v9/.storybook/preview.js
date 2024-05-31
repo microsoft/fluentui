@@ -1,5 +1,6 @@
 import * as rootPreview from '../../../.storybook/preview';
 
+// TODO: These custom Docs implementations should be part of custom SB addon/storybook components package
 import { FluentDocsContainer } from '../src/DocsComponents/FluentDocsContainer.stories';
 import { FluentDocsPage } from '../src/DocsComponents/FluentDocsPage.stories';
 
@@ -44,6 +45,7 @@ export const parameters = {
             ['Component Mapping', 'Color Mapping', 'Troubleshooting'],
             'from v0',
           ],
+          'Recipes',
         ],
         'Theme',
         [

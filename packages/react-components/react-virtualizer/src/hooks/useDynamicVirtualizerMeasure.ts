@@ -78,6 +78,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const resizeCallback = React.useCallback(
     (
       _entries: ResizeObserverEntry[],
+      // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+      // eslint-disable-next-line no-restricted-globals
       _observer: ResizeObserver,
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {

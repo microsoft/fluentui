@@ -31,10 +31,15 @@ import {
   tooltipOfXAxislabels,
   Points,
   pointTypes,
-  getMinMaxOfYAxis,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  findNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfNumericForAreaChart,
+  createStringYAxis,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -269,17 +274,21 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
-        chartTitle={data.chartTitle}
+        chartTitle={this._getChartTitle()}
         points={points}
         chartType={ChartTypes.LineChart}
         isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        createYAxis={createNumericYAxis}
         getmargins={this._getMargins}
+        getMinMaxOfYAxis={findNumericMinMaxOfY}
         getGraphData={this._initializeLineChartData}
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        createStringYAxis={createStringYAxis}
         onChartMouseLeave={this._handleChartMouseLeave}
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
@@ -337,6 +346,36 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: ILineChartPoints[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  };
 
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
@@ -673,10 +712,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseOut={this._handleMouseOut}
               {...this._getClickHandler(this._points[i].onLineClick)}
               opacity={1}
-              role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
-                this._points[i].data.length
-              } data points.`}
             />,
           );
         } else {
@@ -691,10 +726,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               strokeWidth={strokeWidth}
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
               opacity={0.1}
-              role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
-                this._points[i].data.length
-              } data points.`}
             />,
           );
         }
@@ -957,7 +988,19 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
       }
 
-      lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
+      lines.push(
+        <g
+          key={`line_${i}`}
+          role="region"
+          aria-label={`${legendVal}, line ${i + 1} of ${this._points.length} with ${
+            this._points[i].data.length
+          } data points.`}
+        >
+          {bordersForLine}
+          {linesForLine}
+          {pointsForLine}
+        </g>,
+      );
     }
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -994,7 +1037,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._colorFillBars = this.props.colorFillBars!;
     }
 
-    const yMinMaxValues = getMinMaxOfYAxis(this._points, ChartTypes.LineChart);
+    const yMinMaxValues = findNumericMinMaxOfY(this._points);
     const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
@@ -1429,4 +1472,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, lineChartData } = this.props.data;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Line chart with ${lineChartData?.length || 0} lines. `;
+  };
 }

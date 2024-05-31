@@ -10,7 +10,7 @@ const commands = {
    * - respect ignore files (which eslint doesn't do by default when passed a specific file path)
    * - match the set of files that are linted by the package's normal `lint` command
    */
-  lint: 'node ./scripts/lint-staged/eslint',
+  lint: 'node ./scripts/lint-staged/src/eslint',
 };
 
 // https://www.npmjs.com/package/lint-staged
