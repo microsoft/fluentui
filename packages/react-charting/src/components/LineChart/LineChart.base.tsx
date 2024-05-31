@@ -149,6 +149,7 @@ export interface ILineChartState extends IBasestate {
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
   public static defaultProps: Partial<ILineChartProps> = {
     enableReflow: true,
+    useUTC: true,
   };
 
   private _points: LineChartDataWithIndex[];

@@ -99,6 +99,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 > {
   public static defaultProps: Partial<IVerticalStackedBarChartProps> = {
     maxBarWidth: 24,
+    useUTC: true,
   };
 
   private _points: IVerticalStackedChartProps[];

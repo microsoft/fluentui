@@ -78,6 +78,7 @@ type ColorScale = (_p?: number) => string;
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
+    useUTC: true,
   };
 
   private _points: IVerticalBarChartDataPoint[];

@@ -64,10 +64,6 @@ export interface ICartesianChartState {
  * 3.Fit parent Continer
  */
 export class CartesianChartBase extends React.Component<IModifiedCartesianChartProps, ICartesianChartState> {
-  public static defaultProps: Partial<IModifiedCartesianChartProps> = {
-    useUTC: true,
-  };
-
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;

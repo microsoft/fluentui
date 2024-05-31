@@ -82,6 +82,10 @@ export interface IAreaChartState extends IBasestate {
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
+  public static defaultProps: Partial<IAreaChartProps> = {
+    useUTC: true,
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _createSet: (data: ILineChartPoints[]) => {
