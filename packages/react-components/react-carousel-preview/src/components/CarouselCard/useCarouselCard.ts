@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
+import { useCarouselValues_unstable } from '../useCarouselValues';
 
 /**
  * Create the state required to render CarouselCard.
@@ -19,10 +20,34 @@ export const useCarouselCard_unstable = (
 ): CarouselCardState => {
   const { value } = props;
 
-  const visible = useCarouselContext_unstable(c => c.value === value);
+  const _value = useCarouselContext_unstable(c => c.value);
+  const circular = useCarouselContext_unstable(c => c.circular);
+  const values = useCarouselValues_unstable(snapshot => snapshot);
+
+  const currentIndex = _value ? values.indexOf(_value) : null;
+  let peekDir: 'prev' | 'next' | null | undefined = null;
+
+  if (currentIndex !== null && currentIndex >= 0) {
+    let nextValue = currentIndex + 1 < values.length ? values[currentIndex + 1] : null;
+    let prevValue = currentIndex - 1 >= 0 ? values[currentIndex - 1] : null;
+
+    if (!nextValue && circular) {
+      nextValue = values[0];
+    }
+
+    if (!prevValue && circular) {
+      prevValue = values[values.length - 1];
+    }
+
+    if (nextValue === value || prevValue === value) {
+      peekDir = nextValue === value ? 'next' : 'prev';
+    }
+  }
+  const visible = _value === value;
   const state: CarouselCardState = {
     value,
     visible,
+    peekDir,
     components: {
       root: 'div',
     },
@@ -31,7 +56,7 @@ export const useCarouselCard_unstable = (
         ref,
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
-        hidden: !visible,
+        hidden: !visible && !peekDir,
         role: 'presentation',
         ...props,
       }),
@@ -39,7 +64,7 @@ export const useCarouselCard_unstable = (
     ),
   };
 
-  if (!visible) {
+  if (!visible && !peekDir) {
     state.root.children = null;
   }
 
