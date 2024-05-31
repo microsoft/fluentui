@@ -133,7 +133,7 @@ async function runMeasures(
     for (let i = 0; i < times; i++) {
       const page = await browser.openPage(url);
 
-      const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
+      const measuresFromStep = (await page.executeJavaScript(codeToExecute)) as ProfilerMeasureCycle;
       measures.push(measuresFromStep);
       bar.tick();
 
@@ -143,10 +143,10 @@ async function runMeasures(
     const page = await browser.openPage(url);
 
     // Empty run to skip slow first run
-    await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
+    await page.executeJavaScript(codeToExecute);
 
     for (let i = 0; i < times; i++) {
-      const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
+      const measuresFromStep = (await page.executeJavaScript(codeToExecute)) as ProfilerMeasureCycle;
 
       measures.push(measuresFromStep);
       bar.tick();
@@ -219,5 +219,5 @@ task('perf:serve:stop', cb => {
   }
 });
 
-task('perf', series('perf:clean', 'perf:build', 'perf:serve', 'perf:run', 'perf:serve:stop'));
-task('perf:debug', series('perf:clean', 'perf:build', 'perf:serve'));
+task('perf', series(/* 'perf:clean',  'perf:build', */ 'perf:serve', 'perf:run', 'perf:serve:stop'));
+task('perf:debug', series(/* 'perf:clean', 'perf:build', */ 'perf:serve'));
