@@ -4,7 +4,7 @@ import { template } from './dialog-body.template.js';
 import { styles } from './dialog-body.styles.js';
 
 /**
- * The Fluent Dialog Element
+ * The Fluent Dialog Body Element
  *
  * @public
  * @remarks
