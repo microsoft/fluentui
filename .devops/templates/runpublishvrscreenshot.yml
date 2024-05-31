@@ -38,13 +38,8 @@ steps:
     displayName: Check if vrTests should be skipped
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} vr:build
-    displayName: Build VR tests components package
-    condition: eq(variables['vrTestSkip'], 'no')
-
-  - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} vr:test --verbose
-    displayName: 'Run VR tests'
+      yarn lage vr:test --to ${{ parameters.vrTestPackageName }} --verbose
+    displayName: 'Prepare and Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
