@@ -219,5 +219,5 @@ task('perf:serve:stop', cb => {
   }
 });
 
-task('perf', series('perf:clean', 'perf:build', 'perf:serve', 'perf:run', 'perf:serve:stop'));
-task('perf:debug', series('perf:clean', 'perf:build', 'perf:serve'));
+task('perf', series(/* 'perf:clean',  'perf:build', */ 'perf:serve', 'perf:run', 'perf:serve:stop'));
+task('perf:debug', series(/* 'perf:clean', 'perf:build', */ 'perf:serve'));
