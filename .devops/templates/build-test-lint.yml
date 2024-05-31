@@ -7,44 +7,59 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
-      yarn nx run workspace-plugin:check-graph
-      yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
-      yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
-
-    displayName: Workspace lint
+      yarn playwright install --with-deps
+    displayName: Install Playwright dependencies
 
   - script: |
-      # following packages need to be build in advance:
-      # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts,
-      # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
-      #
-      # NOTE: we are running this via lage in order to get cache hits later on
-      yarn lage build --to @fluentui/api-docs @fluentui/digest --verbose
-      yarn tsc -p ./tsconfig.just-scripts-configs.json
-    displayName: Type-check just.config.ts files
+      yarn cypress verify
+    displayName: verify cypress install
 
   - script: |
-      yarn check:installed-dependencies-versions
-    displayName: 'check packages: installed dependencies versions'
+      yarn lage build --verbose
+    displayName: build
 
   - script: |
-      if [[ -n "$(targetBranch)" ]]; then
-        yarn format --since $(targetBranch) --check
-      else
-        yarn format --all --check
-      fi
-    displayName: check formatting
-
-  ## Danger.js checks for Fluent UI N*
-  - script: |
-      DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
-    displayName: danger
-    condition: eq(variables.isPR, true)
-    env:
-      DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+      yarn lage bundle-size --verbose
+    displayName: bundle-size
 
   - script: |
-      yarn buildci $(sinceArg)
-    displayName: build, test, lint, test-ssr
+      yarn lage build-storybook --verbose
+    displayName: build-storybook
+
+  - script: |
+      yarn lage bundle --verbose
+    displayName: bundle
+
+  - script: |
+      yarn lage verify-packaging --verbose
+    displayName: verify-packaging
+
+  - script: |
+      yarn lage lint --verbose
+    displayName: lint
+
+  - script: |
+      yarn lage type-check --verbose
+    displayName: type-check
+
+  - script: |
+      yarn lage test --verbose
+    displayName: test
+
+  - script: |
+      yarn lage e2e --verbose
+    displayName: e2e
+
+  - script: |
+      yarn lage test-ssr --verbose
+    displayName: test-ssr
+
+  - script: |
+      yarn lage test-perf --verbose
+    displayName: test-perf
+
+  - script: |
+      yarn lage vr:test --verbose
+    displayName: test-vr
 
   - template: cleanup.yml
