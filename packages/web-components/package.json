@@ -142,7 +142,8 @@
     "./theme.js": {
       "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "./dist/esm/accordion/define.js",
@@ -173,7 +174,9 @@
     "./dist/esm/tab-panel/define.js",
     "./dist/esm/text/define.js",
     "./dist/esm/text-input/define.js",
-    "./dist/esm/toggle-button/define.js"
+    "./dist/esm/toggle-button/define.js",
+    "./dist/web-components.js",
+    "./dist/web-components.min.js"
   ],
   "scripts": {
     "type-check": "node ./scripts/type-check",
