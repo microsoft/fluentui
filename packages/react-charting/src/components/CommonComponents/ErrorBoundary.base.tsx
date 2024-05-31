@@ -77,14 +77,14 @@ export class ErrorBoundaryBase extends React.Component<IErrorBoundaryProps, IErr
   private _getErrorIcon(): JSX.Element {
     return this.props.hasEmptyState ? (
       this.props.theme && !this.props.theme!.isInverted ? (
-        <ErrorBadgeIcon className={this._classNames.errorIconLightTheme} />
+        <ErrorIcon className={this._classNames.errorIconLightTheme} />
       ) : (
-        <StatusErrorFullIcon className={this._classNames.errorIconDarkTheme} />
+        <ErrorIcon className={this._classNames.errorIconDarkTheme} />
       )
     ) : this.props.theme && !this.props.theme!.isInverted ? (
-      <ErrorIcon className={this._classNames.errorIconLightTheme} />
+      <ErrorBadgeIcon className={this._classNames.errorIconLightTheme} />
     ) : (
-      <ErrorIcon className={this._classNames.errorIconDarkTheme} />
+      <StatusErrorFullIcon className={this._classNames.errorIconDarkTheme} />
     );
   }
 
