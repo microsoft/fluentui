@@ -1,6 +1,6 @@
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { eventAnimationEnd, keyEscape } from '@microsoft/fast-web-utilities';
-import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { keyEscape } from '@microsoft/fast-web-utilities';
+import { DrawerModalType, DrawerPosition, DrawerSize } from './drawer.options.js';
 
 /**
  * Drawer
@@ -80,7 +80,7 @@ export class Drawer extends FASTElement {
    * @defaultValue start
    */
   @attr
-  public position?: DrawerPosition;
+  public position: DrawerPosition = DrawerPosition.start;
 
   /**
    * Sets the size of the drawer (small/medium/large).
@@ -123,7 +123,7 @@ export class Drawer extends FASTElement {
    */
   public show(): void {
     if (!this.dialog.open) {
-      if (this.inline || this.type === DrawerModalType.nonModal) {
+      if (this.inline) {
         this.dialog.show();
       } else {
         this.dialog.showModal();

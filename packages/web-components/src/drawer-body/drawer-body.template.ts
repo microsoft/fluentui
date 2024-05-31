@@ -1,0 +1,25 @@
+import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import type { DrawerBody } from './drawer-body.js';
+
+/**
+ * The template for the Drawer component.
+ * @public
+ */
+export function drawerBodyTemplate<T extends DrawerBody>(): ElementViewTemplate<T> {
+  return html<T>`
+    <div class="drawer-body" part="drawer-body">
+      <div class="header" part="header">
+        <slot name="title"></slot>
+        <slot name="close"></slot>
+      </div>
+      <div class="content" part="content">
+        <slot></slot>
+      </div>
+      <div class="footer" part="footer">
+        <slot name="footer"></slot>
+      </div>
+    </div>
+  `;
+}
+
+export const template: ElementViewTemplate<DrawerBody> = drawerBodyTemplate();

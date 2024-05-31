@@ -44,17 +44,3 @@ export const DrawerModalType = {
  * @public
  */
 export type DrawerModalType = ValuesOf<typeof DrawerModalType>;
-
-/**
- * A drawer can be different sizes
- */
-export const DrawerType = {
-  overlay: 'overlay',
-  inline: 'inline',
-} as const;
-
-/**
- * The size of the drawer.
- * @public
- */
-export type DrawerType = ValuesOf<typeof DrawerType>;

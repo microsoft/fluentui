@@ -28,10 +28,11 @@ export const styles = css`
 
   :host {
     --dialog-backdrop: ${colorBackgroundOverlay};
-    width: fit-content;
+    overflow: hidden;
   }
 
   dialog {
+    position: fixed;
     display: none;
     z-index: var(--drawer-elevation, 1000);
     font-size: ${fontSizeBase300};
@@ -41,11 +42,12 @@ export const styles = css`
     color: ${colorNeutralForeground1};
     max-width: var(--drawer-width, 592px);
     max-height: 100vh;
+    overflow: hidden;
     height: 100%;
+    transition: none;
   }
 
   dialog[open] {
-    position: fixed;
     outline: none;
     top: 0;
     margin-inline-start: 0;
@@ -62,9 +64,6 @@ export const styles = css`
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     background: ${colorNeutralBackground1};
   }
-  :host([position='end']) dialog[open] {
-    margin-inline-end: 0;
-  }
 
   :host([inline]) {
     width: fit-content;
@@ -77,14 +76,6 @@ export const styles = css`
 
   :host([inline]) dialog[open] {
     position: relative;
-  }
-
-  :host([type='non-modal']) dialog::backdrop {
-    display: none;
-  }
-
-  :host([type='non-modal']:not([inline])) dialog[open] {
-    position: fixed;
   }
 
   :host([size='small']) dialog {
@@ -108,6 +99,7 @@ export const styles = css`
     inset-inline-start: 0px;
     border-inline-end-color: ${colorTransparentStroke};
     border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
+    transform: translateX(-100%);
   }
 
   :host([position='end']) dialog {
@@ -116,6 +108,7 @@ export const styles = css`
     inset-inline-end: 0px;
     border-inline-end-color: ${colorTransparentStroke};
     border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
+    transform: translateX(100%);
   }
 
   dialog:focus-visible:after {
@@ -141,36 +134,39 @@ export const styles = css`
     /* Disable animations for reduced motion */
     @media (prefers-reduced-motion: no-preference) {
       dialog {
-        transition: display allow-discrete, opacity, overlay allow-discrete, transform;
-        transition-duration: ${durationGentle};
-        transition-timing-function: ${curveDecelerateMid};
+        transition: transform ${durationGentle} ${curveDecelerateMid};
+      }
+
+      :host([position='start']) dialog {
         /* Move offscreen left when closed */
         transform: translateX(-100%);
       }
 
-      /* Exit styles for dialog */
-      dialog:not([open]) {
-        transform: translateX(-100%);
-        transition-timing-function: ${curveAccelerateMid};
-      }
       :host([position='end']) dialog {
+        /* Move offscreen right when closed */
         transform: translateX(100%);
       }
 
-      [open],
-      :host([position='end']) dialog[open] {
+      /* Move onscreen when open */
+      dialog[open] {
         transform: translateX(0);
       }
 
       /* Exit styles for dialog */
+      dialog:not([open]) {
+        transition-timing-function: ${curveAccelerateMid};
+      }
+
+      :host([position='start']) dialog:not([open]) {
+        transform: translateX(-100%);
+      }
+
       :host([position='end']) dialog:not([open]) {
         transform: translateX(100%);
       }
 
       ::backdrop {
-        transition: display allow-discrete, opacity, overlay allow-discrete, scale;
-        transition-duration: ${durationGentle};
-        transition-timing-function: ${curveDecelerateMid};
+        transition: opacity ${durationGentle} ${curveDecelerateMid};
         background: var(--dialog-backdrop, ${colorBackgroundOverlay});
         /* Set opacity to 0 when closed */
         opacity: 0;
@@ -188,10 +184,9 @@ export const styles = css`
 
     @starting-style {
       dialog,
-      [open] {
+      :host([position='start']) dialog {
         transform: translateX(-100%);
       }
-      :host([position='end']) dialog[open],
       :host([position='end']) dialog {
         transform: translateX(100%);
       }
