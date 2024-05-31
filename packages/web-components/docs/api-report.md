@@ -2948,7 +2948,6 @@ export type TextFont = ValuesOf<typeof TextFont>;
 //
 // @public
 export class TextInput extends FASTElement {
-    constructor();
     appearance?: TextInputAppearance;
     autocomplete?: string;
     autofocus: boolean;

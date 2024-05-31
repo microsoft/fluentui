@@ -16,7 +16,7 @@ import { convertToLocaleString } from '../../utilities/locale-util';
 import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import ErrorBoundary from '../CommonComponents/ErrorBoundary';
+import { ErrorBoundary } from '../CommonComponents/ErrorBoundary';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -79,8 +79,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return !this._isChartEmpty() ? (
-      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
+    return (
+      <ErrorBoundary
+        handleError={this.props.handleError}
+        handleEmptyState={this.props.handleEmptyState}
+        theme={this.props.theme}
+        hasEmptyState={this._isChartEmpty()}
+        customErrorMsg={this.props.customErrorMsg}
+        width={this.props.width}
+      >
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
           {data!.map((points: IChartProps, index: number) => {
             if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -177,15 +184,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           </Callout>
         </div>
       </ErrorBoundary>
-    ) : (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-        <ErrorBoundary
-          hasEmptyState={this._isChartEmpty()}
-          theme={this.props.theme}
-          width={this.props.width!}
-          handleEmptyState={this.props.handleEmptyState}
-        />
-      </div>
     );
   }
 

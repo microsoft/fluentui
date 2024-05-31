@@ -452,3 +452,21 @@ describe('Horizontal Bar Chart With Axis - axe-core', () => {
     expect(axeResults).toHaveNoViolations();
   });
 });
+
+describe('Horizontal Bar Chart with Axis - Error Boundary', () => {
+  test('Should render the error boundary when the component throws an error', () => {
+    // Arrange
+    render(
+      <HorizontalBarChartWithAxis
+        data={[]}
+        handleEmptyState={() => {
+          return <div>Custom Error Message</div>;
+        }}
+      />,
+    );
+    // Assert
+    expect(screen.queryByText('Custom Error Message')).toBeInTheDocument();
+    expect(screen.queryByText("Couldn't load data")).not.toBeInTheDocument();
+    expect(screen.queryByText("Something went wrong and we couldn't get the page to display")).not.toBeInTheDocument();
+  });
+});

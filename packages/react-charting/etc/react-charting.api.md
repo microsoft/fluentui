@@ -679,6 +679,7 @@ export interface IHorizontalBarChartProps {
     chartDataMode?: ChartDataMode;
     className?: string;
     culture?: string;
+    customErrorMsg?: string;
     data?: IChartProps[];
     handleEmptyState?: () => JSX.Element;
     handleError?: () => JSX.Element;
