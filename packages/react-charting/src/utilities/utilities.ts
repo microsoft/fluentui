@@ -1382,5 +1382,5 @@ export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: 
 
 export const formatDate = (date: Date, useUTC?: boolean) => {
   const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
-  return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' UTC' : '');
+  return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
