@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import { ILineChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 interface IAreaChartBasicState {
   width: number;
   height: number;
+  useUTC: boolean;
 }
 
 export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicState> {
@@ -13,6 +15,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     this.state = {
       width: 700,
       height: 300,
+      useUTC: true,
     };
   }
 
@@ -27,50 +30,53 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     console.log('height change');
     this.setState({ height: parseInt(e.target.value, 10) });
   };
+  private _onCheckChange = (ev: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ useUTC: checked });
+  };
 
   private _basicExample(): JSX.Element {
     const chart1Points = [
       {
-        x: new Date('2018/01/06'),
+        x: new Date('2018-01-06'),
         y: 5,
       },
       {
-        x: new Date('2018/01/08'),
+        x: new Date('2018-01-08'),
         y: 16,
       },
       {
-        x: new Date('2018/01/16'),
+        x: new Date('2018-01-16'),
         y: 6,
       },
       {
-        x: new Date('2018/02/06'),
+        x: new Date('2018-02-06'),
         y: 30,
       },
       {
-        x: new Date('2018/02/16'),
+        x: new Date('2018-02-16'),
         y: 10,
       },
     ];
 
     const chart2Points = [
       {
-        x: new Date('2018/01/06'),
+        x: new Date('2018-01-06'),
         y: 10,
       },
       {
-        x: new Date('2018/01/08'),
+        x: new Date('2018-01-08'),
         y: 33,
       },
       {
-        x: new Date('2018/01/16'),
+        x: new Date('2018-01-16'),
         y: 21,
       },
       {
-        x: new Date('2018/02/06'),
+        x: new Date('2018-02-06'),
         y: 44,
       },
       {
-        x: new Date('2018/02/16'),
+        x: new Date('2018-02-16'),
         y: 22,
       },
     ];
@@ -129,6 +135,12 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
+        <Checkbox
+          label="Use UTC time"
+          checked={this.state.useUTC}
+          onChange={this._onCheckChange}
+          styles={{ root: { marginTop: '20px' } }}
+        />
         <div style={rootStyle}>
           <AreaChart
             showXAxisLablesTooltip
@@ -138,6 +150,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
             showYAxisGridLines={false}
             enablePerfOptimization={true}
             enableReflow={true}
+            useUTC={this.state.useUTC}
           />
         </div>
       </>
