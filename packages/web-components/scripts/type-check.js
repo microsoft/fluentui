@@ -6,8 +6,6 @@ import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
 import { exit } from 'node:process';
 
-import { getDirname } from './utils.js';
-
 const asyncExec = promisify(exec);
 
 main().catch(err => {
@@ -19,8 +17,7 @@ main().catch(err => {
  * Copied from ${@link 'file://./../../../scripts/tasks/src/type-check.ts'}
  */
 async function main() {
-  const __dirname = getDirname();
-  const rootConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '../tsconfig.json'), 'utf-8'));
+  const rootConfig = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '../tsconfig.json'), 'utf-8'));
 
   const tsConfigsRefs = getTsConfigs(rootConfig, { spec: false, e2e: false });
 

@@ -10,8 +10,6 @@ import path from 'node:path';
 
 import micromatch from 'micromatch';
 
-import { getDirname } from './utils.js';
-
 main();
 
 function main() {
@@ -41,7 +39,7 @@ function main() {
 
 function verifyPackaging(options) {
   const { alwaysPublishedFiles, nonProdAssets, rootConfigFiles } = options;
-  const root = path.join(getDirname(), '../');
+  const root = path.join(import.meta.dirname, '../');
 
   /** @type {{ private?: boolean }} */
   const packageJSON = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf-8'));
