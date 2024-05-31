@@ -8,7 +8,7 @@ import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawe
  * A Drawer component for creating modal or non-modal drawers with various configurations.
  * @extends FASTElement
  *
- * @attr {DrawerModalType} modal-type - Determines whether the drawer should be displayed as modal, non-modal, or alert. When in modal or alert mode, an overlay is applied over the rest of the view.
+ * @attr {DrawerModalType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert. When in modal or alert mode, an overlay is applied over the rest of the view.
  * @attr {string} aria-labelledby - The ID of the element that labels the drawer.
  * @attr {string} aria-describedby - The ID of the element that describes the drawer.
  * @attr {DrawerType} type - Sets the type of the drawer (overlay/inline).
@@ -37,29 +37,6 @@ import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawe
 
 export class Drawer extends FASTElement {
   /**
-   * This method is called when the custom element becomes connected to the document's DOM.
-   * @public
-   */
-  public connectedCallback(): void {
-    super.connectedCallback();
-    /**
-     * By placing the syncDialogOpenState() inside Updates.enqueue(), we ensure that any actions to synchronize the component's state based on initial attributes are deferred until after all other pending DOM updates are processed.
-     * This ensures that the internal state of the dialog element aligns with the initial attributes specified on the <fluent-drawer>, such as automatically opening the dialog when the 'open' attribute is present at the time of connection to the DOM.
-     */
-    Updates.enqueue(() => {
-      this.syncDialogOpenState();
-    });
-  }
-
-  /**
-   * This method is called when the custom element is disconnected from the document's DOM.
-   * @public
-   */
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-  }
-
-  /**
    * The dialog element.
    * @public
    *
@@ -72,8 +49,8 @@ export class Drawer extends FASTElement {
    * When in modal or alert mode, an overlay is applied over the rest of the view.
    * @public
    */
-  @attr({ attribute: 'modal-type' })
-  public modalType: DrawerModalType = DrawerModalType.modal;
+  @attr({ attribute: 'type' })
+  public type: DrawerModalType = DrawerModalType.modal;
 
   /**
    * The ID of the element that labels the drawer.
@@ -90,12 +67,12 @@ export class Drawer extends FASTElement {
   public ariaDescribedby?: string;
 
   /**
-   * Sets the type of the drawer (overlay/inline).
+   * Sets the drawer as inline
    * @public
-   * @defaultValue overlay
+   * @defaultValue false
    */
-  @attr
-  public type?: DrawerType;
+  @attr({ mode: 'boolean' })
+  public inline: boolean = false;
 
   /**
    * Sets the position of the drawer (start/end).
@@ -114,61 +91,28 @@ export class Drawer extends FASTElement {
   public size?: DrawerSize;
 
   /**
-   * Sets the open state of the drawer
-   * @public
-   * @defaultValue false
-   */
-  @attr({ mode: 'boolean' })
-  public open: boolean = false;
-
-  /**
-   * Indicates whether the drawer is currently closing.
-   * @private
-   */
-  private closing: boolean = false;
-
-  /**
-   * Ensures the dialog's visibility aligns with the `open` property.
-   * @private
-   */
-  private syncDialogOpenState(): void {
-    if (this.open) {
-      this.show();
-    } else {
-      this.hide();
-    }
-  }
-
-  /**
-   * Emits a 'cancel' event.
-   * @internal
+   * Method to emit an event when the dialog is dismissed
    */
   public dismiss(): void {
     this.$emit('dismiss');
   }
 
   /**
-   * Handles changes to the `open` property.
+   * Method to emit an event when the dialog's open state changes
    * @public
    */
-  public openChanged(oldValue: boolean, newValue: boolean): void {
-    if (this.$fastController.isConnected) {
-      if (newValue) {
-        this.show();
-      } else {
-        this.hide();
-      }
-    }
-  }
+  public emitOpenChange = (): void => {
+    this.$emit('open', { open: this.dialog.open });
+  };
 
   /**
    * @public
-   * Method called when the 'modalType' attribute changes
+   * Method called when the 'type' attribute changes
    */
-  public typeChanged(oldValue: DrawerType, newValue: DrawerType): void {
-    if (newValue !== oldValue) {
-      if (newValue == DrawerType.inline) {
-        this.modalType = DrawerModalType.nonModal;
+  public inlineChanged(oldValue: boolean, newValue: boolean): void {
+    if (this.$fastController.isConnected) {
+      if (newValue) {
+        this.type = DrawerModalType.nonModal;
       }
     }
   }
@@ -179,14 +123,11 @@ export class Drawer extends FASTElement {
    */
   public show(): void {
     if (!this.dialog.open) {
-      if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
+      if (this.inline || this.type === DrawerModalType.nonModal) {
         this.dialog.show();
       } else {
         this.dialog.showModal();
       }
-      this.open = true;
-      this.closing = false;
-      this.triggerAnimation();
     }
   }
 
@@ -196,10 +137,7 @@ export class Drawer extends FASTElement {
    */
   public hide(): void {
     if (this.dialog.open) {
-      this.closing = true;
-      Updates.enqueue(() => {
-        this.triggerAnimation();
-      });
+      this.dialog.close();
     }
   }
 
@@ -212,7 +150,7 @@ export class Drawer extends FASTElement {
    */
   public clickHandler(event: Event): boolean {
     event.preventDefault();
-    if (this.open && this.modalType !== DrawerModalType.alert && event.target === this.dialog) {
+    if (this.dialog.open && this.type !== DrawerModalType.alert && event.target === this.dialog) {
       this.hide();
       this.dismiss();
     }
@@ -233,7 +171,7 @@ export class Drawer extends FASTElement {
       case keyEscape:
         event.preventDefault();
 
-        if (this.modalType !== DrawerModalType.alert) {
+        if (this.type !== DrawerModalType.alert) {
           this.hide();
           this.dismiss();
         }
@@ -242,38 +180,4 @@ export class Drawer extends FASTElement {
         return true;
     }
   };
-
-  /**
-   * A function that calls the animation end handler.
-   * @private
-   */
-  private readonly animationEndHandlerFunction = (): void => this.animationEndHandler();
-
-  /**
-   * Triggers the opening or closing animation on the drawer.
-   * @private
-   */
-  private triggerAnimation(): void {
-    this.setAttribute('data-animating', '');
-    if (this.closing) {
-      this.setAttribute('data-closing', '');
-    }
-    this.dialog.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
-  }
-
-  /**
-   * Handles the end of the animation.
-   * @private
-   *
-   */
-  private animationEndHandler(): void {
-    this.dialog.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
-    this.removeAttribute('data-animating');
-    if (this.closing) {
-      this.removeAttribute('data-closing');
-      this.dialog.close();
-      this.open = false;
-      this.closing = false;
-    }
-  }
 }

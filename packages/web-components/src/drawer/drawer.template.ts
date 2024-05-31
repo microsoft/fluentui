@@ -11,15 +11,15 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.modalType === DrawerModalType.alert ? 'alertdialog' : void 0)}"
-      aria-modal="${x => (x.modalType === 'non-modal' || x.type === 'inline' ? void 0 : 'true')}"
+      role="${x => (x.type === DrawerModalType.alert ? 'alertdialog' : void 0)}"
+      aria-modal="${x => (x.type === 'non-modal' || x.inline ? void 0 : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
       size="${x => x.size}"
       position="${x => x.position}"
-      modal-type="${x => x.modalType}"
       type="${x => x.type}"
+      ?inline="${x => x.inline}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       ${ref('dialog')}

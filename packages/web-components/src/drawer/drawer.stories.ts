@@ -30,12 +30,12 @@ const toggleDrawer = (drawerID: string, containerID?: string) => {
     const drawers = container!.querySelectorAll(`fluent-drawer:not(#${drawerID})`);
     drawers.forEach(drawerElement => {
       const drawer = drawerElement as FluentDrawer;
-      if (drawer.open) {
+      if (drawer.dialog.open) {
         drawer.hide();
       }
     });
   }
-  if (drawer.open) {
+  if (drawer.dialog.open) {
     drawer.hide();
   } else {
     drawer.show();
@@ -47,14 +47,14 @@ const toggleSelectedDrawer = (radioGroupId: string) => {
   const idSubString = radioGroup.value;
   const drawerToOpen = document.querySelector(`#drawer-${idSubString}`) as FluentDrawer;
   const drawersToClose = document.querySelectorAll(`fluent-drawer:not(#drawer-${idSubString})`);
-  if (drawerToOpen.open) {
+  if (drawerToOpen.dialog.open) {
     drawerToOpen.hide();
   } else {
     drawerToOpen.show();
   }
   drawersToClose.forEach(d => {
     const drawer = d as FluentDrawer;
-    if (drawer.open) {
+    if (drawer.dialog.open) {
       drawer.hide();
     }
   });
@@ -62,7 +62,7 @@ const toggleSelectedDrawer = (radioGroupId: string) => {
 
 const hideDrawer = (drawerID: string) => {
   const drawer = document.getElementById(drawerID) as FluentDrawer;
-  if (drawer.open) {
+  if (drawer.dialog.open) {
     drawer.hide();
   }
 };
@@ -143,8 +143,8 @@ const storyTemplate = html<DrawerStoryArgs>`
           id="drawer-default-start"
           position="start"
           size="${x => x.size}"
-          modal-type="${x => x.modalType}"
           type="${x => x.type}"
+          ?inline="${x => x.inline}"
         >
           <div class="container">
             <div class="row-gap--16 column flex">
@@ -201,8 +201,8 @@ const storyTemplate = html<DrawerStoryArgs>`
           id="drawer-default-end"
           position="end"
           size="${x => x.size}"
-          modal-type="${x => x.modalType}"
           type="${x => x.type}"
+          ?inline="${x => x.inline}"
         >
           <div class="container">
             <div class="row-gap--16 column flex">
@@ -238,8 +238,8 @@ const storyTemplate = html<DrawerStoryArgs>`
 export default {
   title: 'Components/Drawer',
   args: {
-    modalType: DrawerModalType.modal,
-    type: DrawerType.overlay,
+    type: DrawerModalType.modal,
+    inline: false,
     size: DrawerSize.medium,
   },
   argTypes: {
@@ -254,7 +254,7 @@ export default {
         },
       },
     },
-    modalType: {
+    type: {
       options: Object.values(DrawerModalType),
       control: {
         type: 'select',
@@ -268,17 +268,16 @@ export default {
         },
       },
     },
-    type: {
-      options: Object.values(DrawerType),
+    inline: {
       control: {
-        type: 'select',
+        type: 'boolean',
       },
       table: {
         type: {
-          summary: 'Sets the modal type of the drawer',
+          summary: 'Determines if the drawer is an inline drawer',
         },
         defaultValue: {
-          summary: DrawerType.overlay,
+          summary: false,
         },
       },
     },
@@ -327,7 +326,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
               </p>
             </fluent-text>
             <fluent-text font="monospace" size="300" weight="regular" as="p">
-              <code>modal-type="modal"</code>
+              <code>type="modal"</code>
             </fluent-text>
           </div>
         </div>
@@ -343,7 +342,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>modal-type="modal"</code>
+        <code>type="modal"</code>
       </fluent-text>
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-modal')}">Toggle Drawer</fluent-button>
     </div>
@@ -353,7 +352,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
 export const Alert = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>
-      <fluent-drawer id="drawer-alert" modal-type="alert">
+      <fluent-drawer id="drawer-alert" type="alert">
         <div class="container">
           <div class="row-gap--16 column flex">
             <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"><h1>Alert</h1></fluent-text>
@@ -365,7 +364,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
               </p>
             </fluent-text>
             <fluent-text font="monospace" size="300" weight="regular" as="p">
-              <code>modal-type="alert"</code>
+              <code>type="alert"</code>
             </fluent-text>
           </div>
           <div slot="footer">
@@ -385,7 +384,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>modal-type="alert"</code>
+        <code>type="alert"</code>
       </fluent-text>
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-alert')}">Toggle Drawer</fluent-button>
     </div>
@@ -395,7 +394,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
 export const NonModal = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>
-      <fluent-drawer id="drawer-nonmodal" modal-type="non-modal">
+      <fluent-drawer id="drawer-nonmodal" type="non-modal">
         <div class="container">
           <div class="row-gap--16 column flex">
             <div slot="header" class="flex justify--space-between">
@@ -418,7 +417,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
               </p>
             </fluent-text>
             <fluent-text font="monospace" size="300" weight="regular" as="p">
-              <code>modal-type="non-modal"</code>
+              <code>type="non-modal"</code>
             </fluent-text>
           </div>
         </div>
@@ -434,7 +433,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>modal-type="non-modal"</code>
+        <code>type="non-modal"</code>
       </fluent-text>
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-nonmodal')}"
         >Toggle Drawer</fluent-button
@@ -495,7 +494,7 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
 
 export const Inline = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
-    <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline" modal-type="non-modal">
+    <fluent-drawer position="start" size="small" id="drawer-inline-start" inline type="non-modal">
       <div class="container">
         <div class="row-gap--16 column flex">
           <div class="flex justify--space-between">
@@ -544,7 +543,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         >Toggle Drawer</fluent-button
       >
     </div>
-    <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" modal-type="non-modal">
+    <fluent-drawer position="end" size="small" id="drawer-inline-end" inline type="non-modal">
       <div class="container">
         <div class="row-gap--16 column flex">
           <div slot="header" class="flex justify--space-between">
