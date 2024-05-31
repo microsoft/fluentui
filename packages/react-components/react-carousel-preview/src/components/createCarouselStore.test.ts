@@ -3,7 +3,7 @@ import { createCarouselStore } from './createCarouselStore';
 describe('createCarouselStore', () => {
   describe('addValue', () => {
     it('adds a value', () => {
-      const store = createCarouselStore();
+      const store = createCarouselStore(null);
       store.addValue('foo');
 
       expect(store.getSnapshot()).toEqual(['foo']);
@@ -12,7 +12,7 @@ describe('createCarouselStore', () => {
 
   describe('insertValue', () => {
     it('inserts a value', () => {
-      const store = createCarouselStore();
+      const store = createCarouselStore(null);
 
       store.addValue('foo');
       store.addValue('bar');
@@ -24,7 +24,7 @@ describe('createCarouselStore', () => {
 
   describe('removeValue', () => {
     it('removes a value', () => {
-      const store = createCarouselStore();
+      const store = createCarouselStore(null);
 
       store.addValue('foo');
       store.addValue('bar');
@@ -37,11 +37,11 @@ describe('createCarouselStore', () => {
 
   describe('clear', () => {
     it('clears all values', () => {
-      const store = createCarouselStore();
+      const store = createCarouselStore(null);
 
       store.addValue('foo');
       store.addValue('bar');
-      store.clear();
+      store.clearValues();
 
       expect(store.getSnapshot()).toEqual([]);
     });
@@ -49,7 +49,7 @@ describe('createCarouselStore', () => {
 
   describe('subscribe', () => {
     it('subscribes to changes', () => {
-      const store = createCarouselStore();
+      const store = createCarouselStore(null);
       const listener = jest.fn();
 
       store.subscribe(listener);
@@ -59,7 +59,7 @@ describe('createCarouselStore', () => {
     });
 
     it('unsubscribes from changes', () => {
-      const store = createCarouselStore();
+      const store = createCarouselStore(null);
       const listener = jest.fn();
 
       const unsubscribe = store.subscribe(listener);

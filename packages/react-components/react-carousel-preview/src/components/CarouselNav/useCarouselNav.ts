@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { useCarouselValues_unstable } from '../useCarouselValues';
+import { useCarouselStore_unstable } from '../useCarouselStore';
 
 /**
  * Create the state required to render CarouselNav.
@@ -22,7 +22,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const values = useCarouselValues_unstable(snapshot => snapshot);
+  const values = useCarouselStore_unstable(snapshot => snapshot.values);
 
   return {
     values,

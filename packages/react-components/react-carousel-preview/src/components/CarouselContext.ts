@@ -1,12 +1,10 @@
-import { type Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import * as React from 'react';
 
 import { createCarouselStore } from './createCarouselStore';
-import { CarouselState } from '../Carousel';
-import { CarouselContextValue, CarouselContextValues } from './CarouselContext.types';
+import { CarouselContextValue } from './CarouselContext.types';
 
 export const carouselContextDefaultValue: CarouselContextValue = {
-  store: createCarouselStore(),
-  value: null,
+  store: createCarouselStore(null),
   selectPageByDirection: () => {
     /** noop */
   },
@@ -14,27 +12,11 @@ export const carouselContextDefaultValue: CarouselContextValue = {
     /** noop */
   },
   circular: false,
+  peeking: false,
 };
 
-const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(
-  undefined,
-) as Context<CarouselContextValue>;
+const CarouselContext = React.createContext<CarouselContextValue | undefined>(undefined);
 
 export const CarouselProvider = CarouselContext.Provider;
 
-export const useCarouselContext_unstable = <T>(selector: ContextSelector<CarouselContextValue, T>): T =>
-  useContextSelector(CarouselContext, (ctx = carouselContextDefaultValue) => selector(ctx));
-
-export function useCarouselContextValues_unstable(state: CarouselState): CarouselContextValues {
-  const { store, value, selectPageByDirection, selectPageByValue, circular } = state;
-
-  const carousel = {
-    store,
-    value,
-    selectPageByDirection,
-    selectPageByValue,
-    circular,
-  };
-
-  return { carousel };
-}
+export const useCarouselContext_unstable = () => React.useContext(CarouselContext) ?? carouselContextDefaultValue;

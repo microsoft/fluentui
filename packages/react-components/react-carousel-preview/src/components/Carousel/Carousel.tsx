@@ -4,7 +4,7 @@ import { useCarousel_unstable } from './useCarousel';
 import { renderCarousel_unstable } from './renderCarousel';
 import { useCarouselStyles_unstable } from './useCarouselStyles.styles';
 import type { CarouselProps } from './Carousel.types';
-import { useCarouselContextValues_unstable } from '../CarouselContext';
+import { useCarouselContextValues_unstable } from './useCarouselContextValues';
 
 /**
  * Carousel is the context wrapper and container for all carousel content/controls,

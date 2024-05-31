@@ -2,12 +2,18 @@ import * as React from 'react';
 import { EventData } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
-  clear: () => void;
+  setActiveValue: (newValue: string | null) => void;
+
+  clearValues: () => void;
   addValue: (value: string) => void;
   insertValue: (value: string, prev: string | null) => void;
   removeValue: (value: string) => void;
   subscribe: (listener: () => void) => () => void;
-  getSnapshot: () => string[];
+
+  getSnapshot: () => {
+    activeValue: string | null;
+    values: string[];
+  };
 };
 
 export type CarouselItem = {
@@ -24,13 +30,13 @@ export type CarouselValueChangeData = EventData<'click', React.MouseEvent<HTMLBu
 
 export type CarouselContextValue = {
   store: CarouselStore;
-  value: string | null;
   selectPageByDirection: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
   circular?: Boolean;
+  peeking?: Boolean;
 };
 
 /**
