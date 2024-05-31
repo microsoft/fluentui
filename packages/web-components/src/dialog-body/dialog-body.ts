@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 /**
- * Dialog component that extends the FASTElement class.
+ * Dialog Body component that extends the FASTElement class.
  *
  * @public
  * @extends FASTElement
