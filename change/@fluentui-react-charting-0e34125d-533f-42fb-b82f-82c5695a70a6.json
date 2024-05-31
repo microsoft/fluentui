@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add prop to toggle time display between UTC and local",
+  "packageName": "@fluentui/react-charting",
+  "email": "110246001+krkshitij@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
