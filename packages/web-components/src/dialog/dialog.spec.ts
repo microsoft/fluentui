@@ -5,7 +5,13 @@ test.describe('Dialog', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-dialog-dialog--default'));
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-button'));
+    await page.waitForFunction(() =>
+      Promise.all([
+        customElements.whenDefined('fluent-button'),
+        customElements.whenDefined('fluent-dialog'),
+        customElements.whenDefined('fluent-dialog-body'),
+      ]),
+    );
   });
 
   test('should open and close dialog', async ({ page }) => {
