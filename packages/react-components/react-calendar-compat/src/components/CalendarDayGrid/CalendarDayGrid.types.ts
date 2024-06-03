@@ -290,7 +290,7 @@ export interface CalendarDayGridStyles {
   dayMarker?: string;
 
   /**
-   * The style applied to the day "today" span
+   * The classname applied to the day "today" span
    */
   dayTodayMarker?: string;
 }
