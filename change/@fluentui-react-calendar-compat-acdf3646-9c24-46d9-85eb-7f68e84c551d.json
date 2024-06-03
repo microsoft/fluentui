@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat(calendar-compat): changed design for the selected state",
   "packageName": "@fluentui/react-calendar-compat",
   "email": "vkozlova@microsoft.com",
