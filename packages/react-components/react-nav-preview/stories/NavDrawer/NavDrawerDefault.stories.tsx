@@ -97,7 +97,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type} size="small">
+      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
         <NavDrawerHeader>
           <NavDrawerHeaderNav>
             <Hamburger onClick={() => setIsOpen(false)} />
