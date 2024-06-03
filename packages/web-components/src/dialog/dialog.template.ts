@@ -16,7 +16,7 @@ export const template: ElementViewTemplate<Dialog> = html`
     aria-describedby="${x => x.ariaDescribedby}"
     aria-labelledby="${x => x.ariaLabelledby}"
     aria-label="${x => x.ariaLabel}"
-    @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
+    @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
     @cancel="${(x, c) => (x.type === DialogType.alert ? c.event.preventDefault() : true)}"
     ${ref('dialog')}
   >

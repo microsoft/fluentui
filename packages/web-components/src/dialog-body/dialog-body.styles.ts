@@ -51,11 +51,6 @@ export const styles = css`
     z-index: 1;
   }
 
-  /* Hide slot if nothing is slotted to remove gap */
-  :not(:has(:is([slot='title'], [slot='title-action']))) .title:not(:has(.title-action)) {
-    display: none;
-  }
-
   .content {
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
@@ -80,7 +75,8 @@ export const styles = css`
     z-index: 2;
   }
 
-  /* Hide slot if nothing is slotted to remove gap */
+  /* Hide slots if nothing is slotted to remove grid gap */
+  :not(:has(:is([slot='title'], [slot='title-action']))) .title:not(:has(.title-action)),
   :not(:has([slot='action'])) .actions {
     display: none;
   }
