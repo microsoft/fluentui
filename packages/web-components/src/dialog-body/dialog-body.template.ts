@@ -25,7 +25,7 @@ export const template: ElementViewTemplate = html`
     <slot name="title"></slot>
     <slot name="title-action">
       <fluent-button
-        :hidden=${x => x.noTitleAction || x.parentNode?.type !== DialogType.nonModal}
+        ?hidden=${x => x.noTitleAction || x.parentNode?.type !== DialogType.nonModal}
         tabindex="0"
         part="title-action"
         class="title-action"
