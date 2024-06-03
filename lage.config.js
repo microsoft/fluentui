@@ -13,6 +13,8 @@ module.exports = {
     'generate-api': ['^generate-api'],
     'test-ssr': [],
     e2e: [],
+    'e2e-pw': [],
+    'test-integration': ['build'],
     'test-perf': ['bundle'],
     'vr:test': ['build-storybook'],
     'type-check': ['build'],
