@@ -235,7 +235,7 @@ export interface CalendarDayGridStyles {
   daySelected?: string;
 
   /**
-   * The style to apply to an exact date which was selected
+   * The classname applied when a single day is selected
    */
   daySingleSelected?: string;
 
