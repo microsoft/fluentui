@@ -55,6 +55,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   useIsomorphicLayoutEffect(() => {
     store.setActiveValue(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   React.useEffect(() => {
