@@ -18,6 +18,7 @@ pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: BuildTestLint
+    timeoutInMinutes: 180
     workspace:
       clean: all
     steps:
