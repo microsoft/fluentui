@@ -871,6 +871,7 @@ export type {
   DialogOpenChangeEvent,
   DialogSlots,
   DialogState,
+  DialogModalType,
   DialogTriggerProps,
   DialogTriggerChildProps,
   DialogTriggerState,

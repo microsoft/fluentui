@@ -260,6 +260,7 @@ import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogContextValue } from '@fluentui/react-dialog';
+import { DialogModalType } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
@@ -2217,6 +2218,8 @@ export { DialogContentSlots }
 export { DialogContentState }
 
 export { DialogContextValue }
+
+export { DialogModalType }
 
 export { DialogOpenChangeData }
 

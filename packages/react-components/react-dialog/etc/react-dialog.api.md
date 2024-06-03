@@ -100,6 +100,9 @@ export type DialogContextValues = {
 };
 
 // @public (undocumented)
+export type DialogModalType = 'modal' | 'non-modal' | 'alert';
+
+// @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
