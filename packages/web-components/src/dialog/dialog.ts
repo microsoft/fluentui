@@ -39,8 +39,8 @@ export class Dialog extends FASTElement {
    * @public
    * Method to emit an event when the dialog's open state changes
    */
-  public emitOpenChange = (): void => {
-    this.$emit('open', { open: this.dialog.open });
+  public emitToggle = (): void => {
+    this.$emit('toggle', { open: this.dialog.open });
   };
 
   /**
@@ -54,7 +54,7 @@ export class Dialog extends FASTElement {
       } else if (this.type === DialogType.nonModal) {
         this.dialog.show();
       }
-      this.emitOpenChange();
+      this.emitToggle();
     });
   }
 
@@ -64,7 +64,7 @@ export class Dialog extends FASTElement {
    */
   public hide(): void {
     this.dialog.close();
-    this.emitOpenChange();
+    this.emitToggle();
   }
 
   /**
