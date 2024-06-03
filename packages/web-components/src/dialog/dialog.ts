@@ -5,14 +5,13 @@ import { Button as FluentButton } from '../button/button.js';
 import { DialogModalType } from './dialog.options.js';
 
 /**
- * Dialog component that extends the FASTElement class.
+ * A Dialog Custom HTML Element.
  *
  * @public
- * @extends FASTElement
  */
 export class Dialog extends FASTElement {
   /**
-   * @private
+   * @internal
    * Indicates whether focus is being trapped within the dialog
    */
   private isTrappingFocus: boolean = false;
@@ -97,7 +96,7 @@ export class Dialog extends FASTElement {
   public noTitleAction: boolean = false;
 
   /**
-   * @private
+   * @internal
    * Indicates whether focus should be trapped within the dialog
    */
   private trapFocus: boolean = false;
@@ -228,7 +227,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Handles keydown events on the document
    * @param e - The keydown event
    */
@@ -243,7 +242,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Handles tab keydown events
    * @param e - The keydown event
    */
@@ -272,7 +271,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Gets the bounds of the tab queue
    * @returns (HTMLElement | SVGElement)[]
    */
@@ -283,7 +282,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Focuses the first element in the tab queue
    */
   private focusFirstElement = (): void => {
@@ -299,7 +298,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Determines if focus should be forced
    * @param currentFocusElement - The currently focused element
    * @returns boolean
@@ -309,7 +308,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Determines if focus should be trapped
    * @returns boolean
    */
@@ -318,7 +317,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Handles focus events on the document
    * @param e - The focus event
    */
@@ -330,7 +329,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Updates the state of focus trapping
    * @param shouldTrapFocusOverride - Optional override for whether focus should be trapped
    */
@@ -354,7 +353,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @private
+   * @internal
    * Reduces the list of tabbable items
    * @param elements - The current list of elements
    * @param element - The element to consider adding to the list
@@ -377,7 +376,7 @@ export class Dialog extends FASTElement {
   }
 
   /**
-   * @private
+   * @internal
    * Determines if an element is a focusable FASTElement
    * @param element - The element to check
    * @returns boolean
@@ -387,7 +386,7 @@ export class Dialog extends FASTElement {
   }
 
   /**
-   * @private
+   * @internal
    * Determines if an element has a tabbable shadow
    * @param element - The element to check
    * @returns boolean

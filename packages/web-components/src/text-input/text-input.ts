@@ -22,7 +22,6 @@ export class TextInput extends FASTElement {
    * Indicates the styled appearance of the element.
    *
    * @public
-   * @default 'outline'
    * @remarks
    * HTML Attribute: `appearance`
    */
@@ -55,7 +54,6 @@ export class TextInput extends FASTElement {
    * Sets the size of the control.
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: `control-size`
    */
