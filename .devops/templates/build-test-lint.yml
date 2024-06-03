@@ -44,22 +44,30 @@ steps:
 
   - script: |
       yarn lage test --verbose
-    displayName: test
+    displayName: test (jest)
 
   - script: |
-      yarn lage e2e --verbose
-    displayName: e2e
+      yarn lage test-integration --verbose
+    displayName: integration test (project tests)
+
+  - script: |
+      yarn lage e2e --concurrency=1 --verbose
+    displayName: e2e (cypress)
+
+  - script: |
+      yarn lage e2e-pw --verbose
+    displayName: e2e (playwright)
 
   - script: |
       yarn lage test-ssr --verbose
     displayName: test-ssr
 
   - script: |
-      yarn lage test-perf --verbose
-    displayName: test-perf
-
-  - script: |
       yarn lage vr:test --verbose
     displayName: test-vr
+
+  - script: |
+      yarn lage test-perf --verbose
+    displayName: test-perf
 
   - template: cleanup.yml
