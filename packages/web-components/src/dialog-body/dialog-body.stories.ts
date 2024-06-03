@@ -39,11 +39,6 @@ const dismissCircle20Regular = html`<svg
   ></path>
 </svg>`;
 
-const closeDialog = (e: Event, id: string, dismissed: boolean = false) => {
-  const dialog = document.getElementById(id) as FluentDialog;
-  dialog.hide();
-};
-
 const dialogTemplate = html<DialogStoryArgs>`
     <fluent-dialog-body>
       <div slot="title">This is a Dialog title</div>
@@ -59,7 +54,6 @@ const dialogTemplate = html<DialogStoryArgs>`
       <fluent-button
         slot="actions"
         id="dialog-default-close"
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
       >
         Close Dialog
       </fluent-button>
@@ -106,9 +100,7 @@ export const Basic = renderComponent(html<DialogStoryArgs>`
     </fluent-text>
     <br />
     <fluent-text block><code>slot="action"</code></fluent-text>
-    <fluent-button slot="action" @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
-      >Close Dialog</fluent-button
-    >
+    <fluent-button slot="action">Close Dialog</fluent-button>
     <fluent-button appearance="primary" slot="action">Call to Action</fluent-button>
   </fluent-dialog-body>
 `);
@@ -116,14 +108,7 @@ export const Basic = renderComponent(html<DialogStoryArgs>`
 export const Actions = renderComponent(html<DialogStoryArgs>`
   <fluent-dialog-body id="dialog-fluidactions">
     <div slot="title">Actions</div>
-    <fluent-button
-      appearance="transparent"
-      icon-only
-      @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
-      slot="title-action"
-    >
-      ${dismissed20Regular}
-    </fluent-button>
+    <fluent-button appearance="transparent" icon-only slot="title-action"> ${dismissed20Regular} </fluent-button>
     <div>
       <fluent-text block>
         <p>
@@ -137,13 +122,7 @@ export const Actions = renderComponent(html<DialogStoryArgs>`
     <fluent-button size="small" slot="action">Something</fluent-button>
     <fluent-button size="small" slot="action">Something Else</fluent-button>
 
-    <fluent-button
-      slot="action"
-      size="small"
-      appearance="primary"
-      @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
-      >Close Dialog</fluent-button
-    >
+    <fluent-button slot="action" size="small" appearance="primary">Close Dialog</fluent-button>
     <fluent-button size="small" slot="action">Something Else Entirely</fluent-button>
   </fluent-dialog-body>
 `);
