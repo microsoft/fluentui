@@ -29,6 +29,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { useFluent } from '@fluentui/react-components';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -299,6 +300,11 @@ export function createStringXAxis(
   }
   const tickValues = dataset.map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
+}
+
+export function isRtl() {
+  const { dir } = useFluent(); // "dir" returns "ltr" or "rtl"
+  return dir === 'rtl';
 }
 
 /**

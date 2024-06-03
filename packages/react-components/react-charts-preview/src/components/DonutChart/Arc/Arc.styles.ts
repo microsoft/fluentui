@@ -1,5 +1,5 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { tokens } from '@fluentui/react-theme';
 
 export const getStyles = (props: IArcProps): IArcStyles => {
   const { color, href, theme } = props;
@@ -21,8 +21,8 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       fill: 'transparent',
     },
     arcLabel: {
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.semibold,
+      fontSize: tokens.fontSizeBase100,
+      fontWeight: tokens.fontWeightSemibold,
       fill: theme.palette.neutralPrimary,
     },
   };

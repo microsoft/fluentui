@@ -6,7 +6,6 @@ import {
   classNamesFunction,
   format,
   getId,
-  getRTL,
   memoizeFunction,
 } from '@fluentui/react/lib/Utilities';
 import { sum as d3Sum } from 'd3-array';
@@ -17,7 +16,7 @@ import * as React from 'react';
 import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
-import { IMargins } from '../../utilities/utilities';
+import { IMargins, isRtl } from '../../utilities/utilities';
 import {
   ISankeyChartAccessibilityProps,
   ISankeyChartData,
@@ -582,7 +581,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private readonly _emptyChartId: string;
   private readonly _labelTooltipId: string;
   private readonly _margins: IMargins;
-  private readonly _isRtl: boolean = getRTL();
+  private readonly _isRtl: boolean = isRtl();
 
   private readonly _computeClassNamesProps: (
     theme: ITheme,

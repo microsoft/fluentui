@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
 import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, getAccessibleDataObject, isRtl } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { convertToLocaleString } from '../../utilities/locale-util';
 
@@ -40,7 +40,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string;
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
-  private _isRTL = getRTL();
+  private _isRTL = isRtl();
 
   public constructor(props: IStackedBarChartProps) {
     super(props);

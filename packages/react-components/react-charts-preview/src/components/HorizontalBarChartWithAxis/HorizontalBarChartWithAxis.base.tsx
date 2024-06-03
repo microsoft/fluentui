@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend } from '../../components/Legends/Legends.types';
@@ -33,6 +33,7 @@ import {
   StringAxis,
   getTypeOfAxis,
   getNextColor,
+  isRtl,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -63,7 +64,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _refArray: IRefArrayData[];
   private _calloutId: string;
   private margins: IMargins;
-  private _isRtl: boolean = getRTL();
+  private _isRtl: boolean = isRtl();
   private _bars: JSX.Element[];
   private _yAxisLabels: string[];
   private _xMax: number;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix } from '../../../utilities/index';
+import { formatValueWithSIPrefix, isRtl } from '../../../utilities/index';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -19,7 +19,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   public state: {} = {};
 
   private currentRef = React.createRef<SVGPathElement>();
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean = isRtl();
 
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
     _updateChart(nextProps);

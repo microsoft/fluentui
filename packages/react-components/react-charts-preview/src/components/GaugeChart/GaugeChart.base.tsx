@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import {
   IGaugeChartProps,
   IGaugeChartSegment,
@@ -18,6 +18,7 @@ import {
   getColorFromToken,
   getNextColor,
   pointTypes,
+  isRtl,
 } from '../../utilities/index';
 import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -150,7 +151,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       height: 70 + this._margins.top + this._margins.bottom + this._legendsHeight,
     };
 
-    this._isRTL = getRTL(props.theme);
+    this._isRTL = isRtl();
     this._calloutAnchor = '';
   }
 

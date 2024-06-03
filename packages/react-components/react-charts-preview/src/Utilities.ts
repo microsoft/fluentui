@@ -84,8 +84,6 @@ export {
   getParent,
   getPreviousElement,
   getPropsWithDefaults,
-  getRTL,
-  getRTLSafeKeyCode,
   getRect,
   // eslint-disable-next-line deprecation/deprecation
   getResourceUrl,

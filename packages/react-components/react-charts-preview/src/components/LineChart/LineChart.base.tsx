@@ -4,7 +4,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find, memoizeFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -35,6 +35,7 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
+  isRtl,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -170,7 +171,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean = isRtl();
 
   constructor(props: ILineChartProps) {
     super(props);

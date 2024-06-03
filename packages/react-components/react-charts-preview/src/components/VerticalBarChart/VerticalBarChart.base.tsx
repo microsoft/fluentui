@@ -8,7 +8,7 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
@@ -41,6 +41,7 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  isRtl,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -77,7 +78,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _refArray: IRefArrayData[];
   private _calloutId: string;
   private margins: IMargins;
-  private _isRtl: boolean = getRTL();
+  private _isRtl: boolean = isRtl();
   private _bars: JSX.Element[];
   private _xAxisLabels: string[];
   private _yMax: number;

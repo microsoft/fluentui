@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { IArcProps, IArcState, IArcStyles } from './Arc.types';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
-import { wrapContent } from '../../../utilities/utilities';
+import { wrapContent, isRtl } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
 import { convertToLocaleString } from '../../../utilities/locale-util';
 
@@ -56,7 +56,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 }
 
 export class LabeledArc extends Arc {
-  private _isRTL = getRTL();
+  private _isRTL = isRtl();
 
   public constructor(props: IArcProps) {
     super(props);

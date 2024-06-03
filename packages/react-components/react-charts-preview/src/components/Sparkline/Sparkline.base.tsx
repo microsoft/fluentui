@@ -4,8 +4,9 @@ import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+import { isRtl } from '../../utilities/utilities';
 
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
@@ -32,7 +33,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   private area: any;
   private line: any;
   private _emptyChartId: string;
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean = isRtl();
 
   constructor(props: ISparklineProps) {
     super(props);

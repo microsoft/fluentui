@@ -3,7 +3,7 @@ import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, getId, getRTL, memoizeFunction, warnDeprecations } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, memoizeFunction, warnDeprecations } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -18,6 +18,7 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  isRtl,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -86,7 +87,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _calloutId: string;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
-  private _isRtl: boolean = getRTL();
+  private _isRtl: boolean = isRtl();
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
   private _barWidth: number;
   private _domainMargin: number;

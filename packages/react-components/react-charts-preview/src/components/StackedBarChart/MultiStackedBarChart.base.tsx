@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { ILegend, Legends } from '../Legends/index';
 import {
@@ -14,7 +14,7 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject, isRtl } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -52,7 +52,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean = isRtl();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
   private _emptyChartId: string;
   private _barId: string;

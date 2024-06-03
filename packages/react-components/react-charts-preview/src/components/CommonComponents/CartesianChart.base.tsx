@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
-import { Callout } from '@fluentui/react/lib/Callout';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ICartesianChartStyles,
@@ -33,6 +33,7 @@ import {
   createYAxisLabels,
   ChartTypes,
   wrapContent,
+  isRtl,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -79,7 +80,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private idForGraph: string;
   private idForDefaultTabbableElement: string;
   private _reqID: number;
-  private _isRtl: boolean = getRTL();
+  private _isRtl: boolean = isRtl();
   private _tickValues: (string | number)[];
   private titleMargin: number;
   private _isFirstRender: boolean = true;

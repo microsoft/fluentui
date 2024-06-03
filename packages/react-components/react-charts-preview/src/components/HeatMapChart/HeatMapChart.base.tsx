@@ -3,7 +3,6 @@ import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
@@ -165,7 +164,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       color: this.state.calloutTextColor,
       target: this.state.target,
       styles: this._classNames.subComponentStyles.calloutStyles,
-      directionalHint: DirectionalHint.topAutoEdge,
       onDismiss: this._closeCallout,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
       preventDismissOnLostFocus: true,

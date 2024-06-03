@@ -29,7 +29,6 @@ import {
   getColorFromToken,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
-import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -168,7 +167,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       const calloutProps = {
         target: this.state.refSelected,
         isCalloutVisible: this.state.isCalloutVisible,
-        directionalHint: DirectionalHint.topAutoEdge,
         YValueHover: this.state.YValueHover,
         hoverXValue: this.state.hoverXValue,
         id: `toolTip${this._uniqueCallOutID}`,

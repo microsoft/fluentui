@@ -8,7 +8,7 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
-import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
@@ -41,6 +41,7 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  isRtl,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -100,7 +101,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _calloutId: string;
   private _colors: string[];
   private margins: IMargins;
-  private _isRtl: boolean = getRTL();
+  private _isRtl: boolean = isRtl();
   private _createLegendsForLine: (data: IVerticalStackedChartProps[]) => LineLegends[];
   private _lineObject: LineObject;
   private _tooltipId: string;

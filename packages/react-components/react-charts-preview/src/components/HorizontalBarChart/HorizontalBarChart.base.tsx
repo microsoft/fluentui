@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, find, getId, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, find, getId } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import {
   IAccessibilityProps,
@@ -13,7 +13,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject, isRtl } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -40,7 +40,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _calloutId: string;
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
-  private _isRTL: boolean = getRTL();
+  private _isRTL: boolean = isRtl();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
   private _emptyChartId: string;
 

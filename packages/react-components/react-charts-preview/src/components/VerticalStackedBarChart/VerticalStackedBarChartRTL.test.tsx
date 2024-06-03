@@ -237,7 +237,7 @@ describe('Vertical stacked bar chart - Subcomponent Line', () => {
       expect(container).toMatchSnapshot();
     },
     () => {
-      jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
+      jest.spyOn(utils, 'isRtl').mockImplementation(() => true);
     },
   );
 });
