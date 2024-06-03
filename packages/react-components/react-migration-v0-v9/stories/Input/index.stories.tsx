@@ -13,9 +13,6 @@ const useStyles = makeStyles({
   fluid: {
     ...input.fluid(),
   },
-  error: {
-    ...input.error(),
-  },
   errorIndicator: {
     ...input.errorIndicator(),
     fontSize: '16px',
@@ -67,7 +64,7 @@ export const Error = () => {
           <V9Input
             id="surname"
             contentAfter={<ErrorCircleFilled className={styles.errorIndicator} />}
-            className={styles.error}
+            aria-invalid={true}
           />
         </div>
       </div>
