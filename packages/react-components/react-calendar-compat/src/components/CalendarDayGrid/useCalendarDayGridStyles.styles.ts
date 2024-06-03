@@ -455,6 +455,6 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
         lastTransitionWeekStyles.verticalBackward,
     ),
     dayMarker: mergeClasses(calendarDayGridClassNames.dayMarker, dayMarkerStyles.base),
-    dayTodayMarker: mergeClasses(dayTodayMarkerStyles.base, calendarDayGridClassNames.dayTodayMarker),
+    dayTodayMarker: mergeClasses(calendarDayGridClassNames.dayTodayMarker, dayTodayMarkerStyles.base),
   };
 };
