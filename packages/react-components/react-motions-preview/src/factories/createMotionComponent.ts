@@ -33,7 +33,7 @@ export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMot
       const element = elementRef.current;
 
       if (element) {
-        const atoms = typeof value === 'function' ? value(element) : value;
+        const atoms = typeof value === 'function' ? value({ element }) : value;
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
         handleRef.current = handle;

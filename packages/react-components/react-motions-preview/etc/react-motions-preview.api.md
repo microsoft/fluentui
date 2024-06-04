@@ -12,7 +12,9 @@ export type AtomMotion = {
 } & KeyframeEffectOptions;
 
 // @public (undocumented)
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion | AtomMotion[];
+export type AtomMotionFn = (params: {
+    element: HTMLElement;
+}) => AtomMotion | AtomMotion[];
 
 // @public
 export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn): React_2.FC<MotionComponentProps>;
@@ -113,7 +115,9 @@ export type PresenceMotion = {
 };
 
 // @public (undocumented)
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+export type PresenceMotionFn = (params: {
+    element: HTMLElement;
+}) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
 
