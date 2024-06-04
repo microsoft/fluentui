@@ -18,6 +18,13 @@
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
+  "files": [
+    "*.md",
+    "dist/dts/",
+    "dist/esm/",
+    "dist/*.js",
+    "dist/*.d.ts"
+  ],
   "exports": {
     ".": {
       "types": "./dist/dts/index.d.ts",
@@ -179,6 +186,7 @@
     "./dist/web-components.min.js"
   ],
   "scripts": {
+    "verify-packaging": "node ./scripts/verify-packaging",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
     "compile": "node ./scripts/compile",
