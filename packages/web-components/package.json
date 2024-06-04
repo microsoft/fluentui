@@ -71,6 +71,10 @@
       "types": "./dist/dts/drawer/define.d.ts",
       "default": "./dist/esm/drawer/define.js"
     },
+    "./drawer-body.js": {
+      "types": "./dist/dts/drawer-body/define.d.ts",
+      "default": "./dist/esm/drawer-body/define.js"
+    },
     "./image.js": {
       "types": "./dist/dts/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
