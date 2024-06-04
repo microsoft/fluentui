@@ -8,6 +8,7 @@ import './checkbox/define.js';
 import './compound-button/define.js';
 import './counter-badge/define.js';
 import './dialog/define.js';
+import './dialog-body/define.js';
 import './divider/define.js';
 import './image/define.js';
 import './label/define.js';
