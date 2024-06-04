@@ -1,12 +1,18 @@
 export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
 export type PresenceMotion = {
-  enter: AtomMotion;
-  exit: AtomMotion;
+  enter: AtomMotion | AtomMotion[];
+  exit: AtomMotion | AtomMotion[];
 };
 
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+export type AtomMotionFn = (params: { element: HTMLElement }) => AtomMotion | AtomMotion[];
+export type PresenceMotionFn = (params: { element: HTMLElement }) => PresenceMotion;
+
+// ---
+
+export type AnimationHandle = Pick<Animation, 'cancel' | 'finish' | 'pause' | 'play' | 'playbackRate'> & {
+  onfinish: () => void;
+};
 
 export type MotionImperativeRef = {
   /** Sets the playback rate of the animation, where 1 is normal speed. */

@@ -8,7 +8,6 @@ import {
   truncateBreadcrumbLongName,
   isTruncatableBreadcrumbContent,
   makeStyles,
-  shorthands,
   Tooltip,
   useIsOverflowItemVisible,
   Menu,
@@ -90,7 +89,7 @@ const itemsWithLongNames: Item[] = [
 const useTooltipStyles = makeStyles({
   tooltip: {
     whiteSpace: 'nowrap',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
 });

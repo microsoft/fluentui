@@ -32,6 +32,12 @@ describe('Fabric components', () => {
     let links = AppDefinition.examplePages[i].links;
     for (let j = 0; j < links.length; j++) {
       let { key, component } = links[j];
+      if (!key) {
+        throw new Error(`Component key (current value "${key}") is missing for ${component}`);
+      }
+      if (!component) {
+        throw new Error(`Component (current value "${component}") is missing for ${key}`);
+      }
 
       testRender(key, component);
     }
@@ -52,6 +58,11 @@ describe('Utilities', () => {
   });
 });
 
+/**
+ *
+ * @param {string} componentName
+ * @param {React.ComponentClass | (() => JSX.Element)} component
+ */
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, done => {
     let elem = React.createElement(component);
@@ -59,7 +70,7 @@ function testRender(componentName, component) {
     try {
       ReactDOMServer.renderToString(elem);
       done();
-    } catch (e) {
+    } catch (/** @type {any} */ e) {
       done(new Error(e));
     }
   });

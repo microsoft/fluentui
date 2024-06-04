@@ -1,8 +1,9 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { DialogSurfaceState } from '@fluentui/react-dialog';
 
-import type { OverlayDrawerSurfaceSlots, OverlayDrawerSurfaceState } from './OverlayDrawerSurface.types';
+import type { OverlayDrawerSurfaceSlots } from './OverlayDrawerSurface.types';
 
 export const OverlayDrawerSurfaceClassNames: SlotClassNames<OverlayDrawerSurfaceSlots> = {
   root: 'fui-OverlayDrawerSurface',
@@ -27,7 +28,7 @@ const useBackdropStyles = makeStyles({
 /**
  * Apply styling to the OverlayDrawerSurface slots based on the state
  */
-export const useOverlayDrawerSurfaceStyles_unstable = (state: OverlayDrawerSurfaceState): OverlayDrawerSurfaceState => {
+export const useOverlayDrawerSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   const backdropResetStyles = useBackdropResetStyles();
   const backdropStyles = useBackdropStyles();
 

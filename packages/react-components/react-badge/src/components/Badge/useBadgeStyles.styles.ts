@@ -54,7 +54,7 @@ const useRootStyles = makeStyles({
     fontSize: '4px',
     lineHeight: '4px',
     minWidth: 'unset',
-    ...shorthands.padding('unset'),
+    padding: 'unset',
   },
   'extra-small': {
     width: '10px',
@@ -62,12 +62,12 @@ const useRootStyles = makeStyles({
     fontSize: '6px',
     lineHeight: '6px',
     minWidth: 'unset',
-    ...shorthands.padding('unset'),
+    padding: 'unset',
   },
   small: {
     width: '16px',
     height: '16px',
-    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`),
+    padding: `0 calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
   },
   medium: {
     // Set by useRootClassName
@@ -75,29 +75,22 @@ const useRootStyles = makeStyles({
   large: {
     width: '24px',
     height: '24px',
-    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
+    padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   },
   'extra-large': {
     width: '32px',
     height: '32px',
-    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`),
+    padding: `0 calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`,
   },
 
   // shape
 
-  square: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
-  },
-  rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-  },
-  roundedSmallToTiny: {
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-  },
+  square: { borderRadius: tokens.borderRadiusNone },
+  rounded: { borderRadius: tokens.borderRadiusMedium },
+  roundedSmallToTiny: { borderRadius: tokens.borderRadiusSmall },
   circular: {
     // Set by useRootClassName
   },
-
   // hide the boder when appearance is "ghost"
 
   borderGhost: {

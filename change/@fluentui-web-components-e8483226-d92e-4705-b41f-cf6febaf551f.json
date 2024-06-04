@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(web-components): remove tabindex from slider thumb causing duplicate focus regions",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

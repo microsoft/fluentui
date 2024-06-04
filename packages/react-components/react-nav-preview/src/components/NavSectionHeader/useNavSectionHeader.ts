@@ -16,19 +16,15 @@ export const useNavSectionHeader_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): NavSectionHeaderState => {
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: 'h3',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps('h3', {
         ref,
         ...props,
       }),
-      { elementType: 'div' },
+      { elementType: 'h3' },
     ),
   };
 };

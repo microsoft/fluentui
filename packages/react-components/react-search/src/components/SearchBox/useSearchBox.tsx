@@ -22,14 +22,24 @@ import type { SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox
  * @param ref - reference to root HTMLElement of SearchBox
  */
 export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTMLInputElement>): SearchBoxState => {
-  const { size = 'medium', disabled = false, root, contentBefore, dismiss, contentAfter, ...inputProps } = props;
+  const {
+    size = 'medium',
+    disabled = false,
+    root,
+    contentBefore,
+    dismiss,
+    contentAfter,
+    value,
+    defaultValue,
+    ...inputProps
+  } = props;
 
   const searchBoxRootRef = React.useRef<HTMLDivElement>(null);
   const searchBoxRef = React.useRef<HTMLInputElement>(null);
 
-  const [value, setValue] = useControllableState({
-    state: props.value,
-    defaultState: props.defaultValue,
+  const [internalValue, setInternalValue] = useControllableState({
+    state: value,
+    defaultState: defaultValue,
     initialState: '',
   });
 
@@ -51,7 +61,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       dismiss.onClick?.(event);
     }
     const newValue = '';
-    setValue(newValue);
+    setInternalValue(newValue);
     props.onChange?.(event, { value: newValue });
   });
 
@@ -60,7 +70,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       type: 'search',
       disabled,
       size,
-      value,
+      value: internalValue,
       root: slot.always<ExtractSlotProps<SearchBoxSlots['root']>>(
         {
           ...rootProps,
@@ -87,7 +97,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
         props.onChange?.(ev, { value: newValue });
-        setValue(newValue);
+        setInternalValue(newValue);
       }),
     },
     useMergedRefs(searchBoxRef, ref),

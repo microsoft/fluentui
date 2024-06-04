@@ -10,7 +10,7 @@ export const toastClassNames: SlotClassNames<ToastSlots> = {
 const useRootBaseClassName = makeResetStyles({
   display: 'grid',
   gridTemplateColumns: 'auto 1fr auto',
-  padding: '12px 12px',
+  padding: '12px',
   borderRadius: tokens.borderRadiusMedium,
   border: `1px solid ${tokens.colorTransparentStroke}`,
   boxShadow: tokens.shadow8,

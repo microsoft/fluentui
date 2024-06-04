@@ -29,6 +29,7 @@ export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = 
   table: 'fui-CalendarDayGrid__table',
   dayCell: 'fui-CalendarDayGrid__dayCell',
   daySelected: 'fui-CalendarDayGrid__daySelected',
+  daySingleSelected: 'fui-CalendarDayGrid__daySingleSelected',
   weekRow: 'fui-CalendarDayGrid__weekRow',
   weekDayLabelCell: 'fui-CalendarDayGrid__weekDayLabelCell',
   weekNumberCell: 'fui-CalendarDayGrid__weekNumberCell',
@@ -39,6 +40,7 @@ export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = 
   firstTransitionWeek: 'fui-CalendarDayGrid__firstTransitionWeek',
   lastTransitionWeek: 'fui-CalendarDayGrid__lastTransitionWeek',
   dayMarker: 'fui-CalendarDayGrid__dayMarker',
+  dayTodayMarker: 'fui-CalendarDayGrid__dayTodayMarker',
 };
 
 /**
@@ -78,12 +80,9 @@ const useDayCellStyles = makeStyles({
     cursor: 'pointer',
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
-    height: '28px',
-    lineHeight: '28px',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    margin: '0',
+    padding: '2px',
     position: 'relative',
-    width: '28px',
     '@media (forced-colors: active)': {
       backgroundColor: 'Window',
       color: 'WindowText',
@@ -93,10 +92,11 @@ const useDayCellStyles = makeStyles({
       color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       '@media (forced-colors: active)': {
-        backgroundColor: 'Window',
-        color: 'WindowText',
-        ...shorthands.outline('1px', 'solid', 'Highlight'),
+        outline: '1px solid Highlight',
         zIndex: 3,
+        [`& .${calendarDayGridClassNames.dayTodayMarker}`]: {
+          backgroundColor: 'Highlight',
+        },
       },
     },
 
@@ -112,8 +112,8 @@ const useDayCellStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle({
     style: {
-      outlineWidth: tokens.strokeWidthThin,
-      ...shorthands.borderWidth(tokens.strokeWidthThin),
+      outlineWidth: tokens.strokeWidthThick,
+      ...shorthands.borderWidth(tokens.strokeWidthThick),
     },
   }),
 });
@@ -142,6 +142,30 @@ const useDaySelectedStyles = makeStyles({
     [`& > .${calendarDayGridClassNames.dayMarker}`]: {
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
+      },
+    },
+  },
+});
+
+const useDaySingleSelectedStyles = makeStyles({
+  base: {
+    color: tokens.colorNeutralForeground1Static,
+
+    [`& > .${calendarDayGridClassNames.dayMarker}`]: {
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Window',
+      },
+    },
+
+    [`& > .${calendarDayGridClassNames.dayButton}`]: {
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      borderRadius: tokens.borderRadiusMedium,
+      ...shorthands.border('1px', 'solid', tokens.colorBrandStroke1),
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        ...shorthands.borderColor('Highlight'),
+        color: 'HighlightText',
+        forcedColorAdjust: 'none',
       },
     },
   },
@@ -180,15 +204,14 @@ const useWeekDayLabelCellStyles = makeStyles({
 const useWeekNumberCellStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStroke2),
-    ...shorthands.borderRight('1px', 'solid'),
+    borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground4,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     height: '28px',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    margin: '0',
+    padding: '0',
     width: '28px',
   },
 });
@@ -221,38 +244,38 @@ const useDayOutsideNavigatedMonthStyles = makeStyles({
 const useDayButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderRadius('2px'),
-    ...shorthands.borderStyle('none'),
+    border: 'none',
     color: 'inherit',
     cursor: 'pointer',
     fontSize: tokens.fontSizeBase200,
     fontWeight: 'inherit',
     height: '24px',
     lineHeight: '24px',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
+    overflow: 'visible',
+    padding: '0',
     width: '24px',
 
     '&span': {
       height: 'inherit',
       lineHeight: 'inherit',
     },
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+      borderRadius: tokens.borderRadiusMedium,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+    },
   },
 });
 
 const useDayIsTodayStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderRadius('100%'),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     color: tokens.colorNeutralForegroundOnBrand,
     fontWeight: tokens.fontWeightSemibold,
-
-    '@media (forced-colors: active)': {
-      backgroundColor: 'WindowText',
-      ...shorthands.borderColor('WindowText'),
-      color: 'Window',
-      forcedColorAdjust: 'none',
-    },
 
     [`& > .${calendarDayGridClassNames.dayMarker}`]: {
       backgroundColor: tokens.colorNeutralForegroundOnBrand,
@@ -263,11 +286,31 @@ const useDayIsTodayStyles = makeStyles({
   },
 });
 
+const useDayTodayMarkerStyles = makeStyles({
+  base: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: tokens.colorBrandBackground,
+    borderRadius: '100%',
+    width: '20px',
+    height: '20px',
+    lineHeight: '20px',
+    '@media (forced-colors: active)': {
+      backgroundColor: 'WindowText',
+      ...shorthands.borderColor('WindowText'),
+      color: 'Window',
+      forcedColorAdjust: 'none',
+    },
+  },
+});
+
 const useFirstTransitionWeekStyles = makeStyles({
   base: {
     height: 0,
     opacity: 0,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     position: 'absolute',
     width: 0,
   },
@@ -284,7 +327,7 @@ const useLastTransitionWeekStyles = makeStyles({
     height: 0,
     marginTop: '-28px',
     opacity: 0,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     position: 'absolute',
     width: 0,
   },
@@ -299,11 +342,12 @@ const useLastTransitionWeekStyles = makeStyles({
 const useDayMarkerStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorBrandForeground2,
-    ...shorthands.borderRadius('100%'),
+    borderRadius: '100%',
     bottom: '1px',
     height: '4px',
     left: 0,
-    ...shorthands.margin('auto'),
+    margin: 'auto',
+
     position: 'absolute',
     right: 0,
     width: '4px',
@@ -318,16 +362,16 @@ const useDayMarkerStyles = makeStyles({
 const useCornerBorderAndRadiusStyles = makeStyles({
   corners: {
     [`&.${weekCornersClassNames.topRightCornerDate}`]: {
-      borderTopRightRadius: '2px',
+      borderTopRightRadius: tokens.borderRadiusMedium,
     },
     [`&.${weekCornersClassNames.topLeftCornerDate}`]: {
-      borderTopLeftRadius: '2px',
+      borderTopLeftRadius: tokens.borderRadiusMedium,
     },
     [`&.${weekCornersClassNames.bottomRightCornerDate}`]: {
-      borderBottomRightRadius: '2px',
+      borderBottomRightRadius: tokens.borderRadiusMedium,
     },
     [`&.${weekCornersClassNames.bottomLeftCornerDate}`]: {
-      borderBottomLeftRadius: '2px',
+      borderBottomLeftRadius: tokens.borderRadiusMedium,
     },
   },
 });
@@ -342,6 +386,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
   const tableStyles = useTableStyles();
   const dayCellStyles = useDayCellStyles();
   const daySelectedStyles = useDaySelectedStyles();
+  const daySingleSelectedStyles = useDaySingleSelectedStyles();
   const weekRowStyles = useWeekRowStyles();
   const weekDayLabelCellStyles = useWeekDayLabelCellStyles();
   const weekNumberCellStyles = useWeekNumberCellStyles();
@@ -353,6 +398,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
   const lastTransitionWeekStyles = useLastTransitionWeekStyles();
   const dayMarkerStyles = useDayMarkerStyles();
   const cornerBorderAndRadiusStyles = useCornerBorderAndRadiusStyles();
+  const dayTodayMarkerStyles = useDayTodayMarkerStyles();
 
   const { animateBackwards, animationDirection, lightenDaysOutsideNavigatedMonth, showWeekNumbers } = props;
 
@@ -370,6 +416,7 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
       cornerBorderAndRadiusStyles.corners,
     ),
     daySelected: mergeClasses(calendarDayGridClassNames.daySelected, daySelectedStyles.base),
+    daySingleSelected: mergeClasses(calendarDayGridClassNames.daySingleSelected, daySingleSelectedStyles.base),
     weekRow: mergeClasses(
       calendarDayGridClassNames.weekRow,
       animateBackwards !== undefined && weekRowStyles.base,
@@ -408,5 +455,6 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
         lastTransitionWeekStyles.verticalBackward,
     ),
     dayMarker: mergeClasses(calendarDayGridClassNames.dayMarker, dayMarkerStyles.base),
+    dayTodayMarker: mergeClasses(calendarDayGridClassNames.dayTodayMarker, dayTodayMarkerStyles.base),
   };
 };

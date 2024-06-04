@@ -7,7 +7,7 @@ export const Overlay = () => {
 
   return (
     <div>
-      <OverlayDrawer open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer as="aside" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={

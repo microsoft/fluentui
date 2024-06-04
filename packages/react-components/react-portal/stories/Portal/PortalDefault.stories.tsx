@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens, Portal } from '@fluentui/react-components';
+import { makeStyles, tokens, Portal } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   content: {
     backgroundColor: tokens.colorPaletteYellowBackground3,
-    ...shorthands.border('3px', 'dashed'),
-    ...shorthands.padding('5px'),
+    border: '3px dashed',
+    padding: '5px',
   },
   container: {
-    ...shorthands.border('3px', 'dashed'),
-    ...shorthands.padding('5px'),
+    border: '3px dashed',
+    padding: '5px',
   },
 });
 

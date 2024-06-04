@@ -18,34 +18,37 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     height: '8px',
     width: '8px',
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: tokens.colorNeutralForeground1,
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
   rootUnselected: {
-    ...shorthands.border(0),
-    ...shorthands.borderRadius('50%'),
-    ...shorthands.padding('0px'),
-    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
+    border: 'none',
+    borderRadius: '50%',
+    padding: '0px',
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
-    backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 30%, transparent)`,
+    backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForeground1} 30%, transparent)`,
     '@supports not (color: color-mix(in lch, white, black))': {
       // This will also affect the focus border, but only in older unsupported browsers
       opacity: 0.3,
-      backgroundColor: tokens.colorBrandBackground,
+      backgroundColor: tokens.colorNeutralForeground1,
     },
   },
   rootSelected: {
-    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     width: '16px',
-    ...shorthands.border(0),
-    ...shorthands.borderRadius('4px'),
-    ...shorthands.padding('0px'),
+    border: 'none',
+    borderRadius: '4px',
+    padding: '0px',
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
   },
@@ -57,12 +60,12 @@ const useStyles = makeStyles({
 export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonState): CarouselNavButtonState => {
   const styles = useStyles();
 
-  const { isSelected } = state;
+  const { selected } = state;
 
   state.root.className = mergeClasses(
     carouselNavButtonClassNames.root,
     styles.root,
-    isSelected ? styles.rootSelected : styles.rootUnselected,
+    selected ? styles.rootSelected : styles.rootUnselected,
     state.root.className,
   );
 

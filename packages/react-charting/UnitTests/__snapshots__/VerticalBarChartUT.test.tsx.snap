@@ -18,7 +18,6 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -36,8 +35,10 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >

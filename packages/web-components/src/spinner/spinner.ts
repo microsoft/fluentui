@@ -1,26 +1,22 @@
-import { attr } from '@microsoft/fast-element';
-import { BaseProgress } from '../progress-bar/base-progress.js';
-import { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
 import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
-
-/**
- * Progress configuration options
- * @public
- */
-export type SpinnerOptions = {
-  indeterminateIndicator?: StaticallyComposableHTML<Spinner>;
-};
 
 /**
  * The base class used for constructing a fluent-spinner custom element
  * @public
  */
-export class Spinner extends BaseProgress {
+export class Spinner extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  protected elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * The size of the spinner
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -30,10 +26,14 @@ export class Spinner extends BaseProgress {
   /**
    * The appearance of the spinner
    * @public
-   * @default 'primary'
    * @remarks
    * HTML Attribute: appearance
    */
   @attr
   public appearance?: SpinnerAppearance;
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'progressbar';
+  }
 }

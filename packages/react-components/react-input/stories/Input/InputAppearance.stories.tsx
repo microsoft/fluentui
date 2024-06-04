@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands, tokens, useId, Input, Label } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, tokens, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
     marginTop: tokens.spacingVerticalMNudge,
-    ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    padding: tokens.spacingHorizontalMNudge,
   },
   filledLighter: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,

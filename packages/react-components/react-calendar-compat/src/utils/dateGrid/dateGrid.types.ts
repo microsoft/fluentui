@@ -11,8 +11,10 @@ export interface Day {
   isInMonth: boolean;
   /** Is current date is "today" date */
   isToday: boolean;
-  /** Is current date is selected */
+  /** Is current date is selected in range */
   isSelected: boolean;
+  /** Is current date is selected */
+  isSingleSelected: boolean;
   /** Is current date within restriction boundaries */
   isInBounds: boolean;
   /** Is current date marked */

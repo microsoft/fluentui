@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 import { createMotionComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
@@ -8,16 +8,15 @@ const useClasses = makeStyles({
     display: 'flex',
   },
   card: {
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorNeutralForeground3),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-
-    ...shorthands.padding('20px'),
-    ...shorthands.margin('20px'),
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: '20px',
+    margin: '20px',
   },
   item: {
     backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorTransparentStroke),
-    ...shorthands.borderRadius('50%'),
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
+    borderRadius: '50%',
 
     width: '100px',
     height: '100px',
@@ -27,6 +26,7 @@ const useClasses = makeStyles({
 const FadeEnter = createMotionComponent({
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: motionTokens.durationSlow,
+  iterations: Infinity,
 });
 
 export const CreateMotionComponentDefault = () => {
@@ -42,7 +42,7 @@ export const CreateMotionComponentDefault = () => {
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <FadeEnter iterations={Infinity} imperativeRef={motionRef}>
+        <FadeEnter imperativeRef={motionRef}>
           <div className={classes.item} />
         </FadeEnter>
       </div>

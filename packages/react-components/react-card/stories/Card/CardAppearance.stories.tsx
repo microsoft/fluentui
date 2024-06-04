@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  shorthands,
-  tokens,
-  Button,
-  Text,
-  Caption1,
-  Subtitle1,
-  Body1,
-  mergeClasses,
-} from '@fluentui/react-components';
+import { makeStyles, tokens, Button, Text, Caption1, Subtitle1, Body1, mergeClasses } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
@@ -22,19 +12,15 @@ const resolveAsset = (asset: string) => {
 
 const useStyles = makeStyles({
   main: {
-    ...shorthands.gap('36px'),
+    gap: '36px',
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
   },
 
-  title: {
-    ...shorthands.margin(0, 0, '12px'),
-  },
+  title: { margin: '0 0 12px' },
 
-  description: {
-    ...shorthands.margin(0, 0, '12px'),
-  },
+  description: { margin: '0 0 12px' },
 
   card: {
     width: '480px',
@@ -47,14 +33,12 @@ const useStyles = makeStyles({
   },
 
   logo: {
-    ...shorthands.borderRadius('4px'),
+    borderRadius: '4px',
     width: '48px',
     height: '48px',
   },
 
-  text: {
-    ...shorthands.margin(0),
-  },
+  text: { margin: '0' },
 });
 
 const ExampleHeader = ({ title, description }: Record<string, string>) => {

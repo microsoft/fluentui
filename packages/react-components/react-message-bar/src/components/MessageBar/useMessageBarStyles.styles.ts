@@ -58,7 +58,7 @@ const useStyles = makeStyles({
   },
 
   square: {
-    ...shorthands.borderRadius(0),
+    borderRadius: '0',
   },
 });
 

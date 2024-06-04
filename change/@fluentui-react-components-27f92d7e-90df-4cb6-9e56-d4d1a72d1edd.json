@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(react-components): use performant type-check target",
+  "packageName": "@fluentui/react-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

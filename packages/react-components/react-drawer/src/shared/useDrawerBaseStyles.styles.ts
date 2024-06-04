@@ -1,4 +1,4 @@
-import { type GriffelResetStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 import { DrawerBaseState } from './DrawerBase.types';
@@ -48,13 +48,13 @@ const useDrawerStyles = makeStyles({
 
   /* Positioning */
   start: {
-    ...shorthands.borderRight(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
     left: 0,
     right: 'auto',
   },
   end: {
-    ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
     right: 0,
     left: 'auto',

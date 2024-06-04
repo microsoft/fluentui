@@ -3,7 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "VARIANT": "18-bookworm"
+      "VARIANT": "20-bookworm"
     }
   },
   "features": {

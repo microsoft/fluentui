@@ -33,18 +33,13 @@ const defaultWorkWeekDays: DayOfWeek[] = [
 function useDateState(props: CalendarProps) {
   const { value, today: todayProp, onSelectDate } = props;
 
-  const today = React.useMemo(() => {
-    if (todayProp === undefined) {
-      return new Date();
-    }
-    return todayProp;
-  }, [todayProp]);
+  const today = React.useMemo(() => todayProp ?? new Date(), [todayProp]);
 
   /** The currently selected date in the calendar */
   const [selectedDate, setSelectedDate] = useControllableState({
-    defaultState: today,
-    initialState: today,
     state: value,
+    defaultState: value ? undefined : today,
+    initialState: today,
   });
 
   /** The currently focused date in the day picker, but not necessarily selected */
@@ -91,17 +86,13 @@ function useVisibilityState({
     showMonthPickerAsOverlay,
   });
 
-  const [isMonthPickerVisible, setIsMonthPickerVisible] = useControllableState({
-    defaultState: false,
-    initialState: true,
-    state: showMonthPickerAsOverlayState ? undefined : isMonthPickerVisibleProp,
-  });
+  const [isMonthPickerVisible, setIsMonthPickerVisible] = React.useState(() =>
+    showMonthPickerAsOverlayState ? false : isMonthPickerVisibleProp ?? false,
+  );
   /** State used to show/hide day picker */
-  const [isDayPickerVisible, setIsDayPickerVisible] = useControllableState({
-    defaultState: true,
-    initialState: true,
-    state: showMonthPickerAsOverlayState ? undefined : isDayPickerVisibleProp,
-  });
+  const [isDayPickerVisible, setIsDayPickerVisible] = React.useState(() =>
+    showMonthPickerAsOverlayState ? true : isDayPickerVisibleProp ?? true,
+  );
 
   const toggleDayMonthPickerVisibility = () => {
     setIsMonthPickerVisible(!isMonthPickerVisible);

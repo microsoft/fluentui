@@ -1,15 +1,17 @@
-import * as React from 'react';
+import { Escape } from '@fluentui/keyboard-keys';
 import {
   useEventCallback,
   useMergedRefs,
   isResolvedShorthand,
   slot,
   getIntrinsicElementProps,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
-import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+import * as React from 'react';
+
 import { useDialogContext_unstable } from '../../contexts';
-import { Escape } from '@fluentui/keyboard-keys';
-import { useDialogTransitionContext_unstable } from '../../contexts/dialogTransitionContext';
+import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
+import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
  * Create the state required to render DialogSurface.
@@ -26,11 +28,12 @@ export const useDialogSurface_unstable = (
 ): DialogSurfaceState => {
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
-  const transitionStatus = useDialogTransitionContext_unstable();
+
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+  const open = useDialogContext_unstable(ctx => ctx.open);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -70,11 +73,26 @@ export const useDialogSurface_unstable = (
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
   }
+
+  const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
+
+  useIsomorphicLayoutEffect(() => {
+    if (isNestedDialog || modalType === 'non-modal') {
+      return;
+    }
+
+    disableBodyScroll();
+
+    return () => {
+      enableBodyScroll();
+    };
+  }, [enableBodyScroll, isNestedDialog, disableBodyScroll, modalType]);
+
   return {
     components: { backdrop: 'div', root: 'div' },
+    open,
     backdrop,
     isNestedDialog,
-    transitionStatus,
     mountNode: props.mountNode,
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -92,5 +110,8 @@ export const useDialogSurface_unstable = (
       }),
       { elementType: 'div' },
     ),
+
+    // Deprecated properties
+    transitionStatus: undefined,
   };
 };

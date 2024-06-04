@@ -8,7 +8,8 @@ export { PresenceAppear as appear } from './PresenceAppear.stories';
 export { PresenceUnmountOnExit as unmountOnExit } from './PresenceUnmountOnExit.stories';
 export { PresenceOnMotionFinish as onMotionFinish } from './PresenceOnMotionFinish.stories';
 
-export { MotionFunctions as functions } from './MotionFunctions.stories';
+export { PresenceMotionArrays as arrays } from './PresenceMotionArrays.stories';
+export { PresenceMotionFunctions as functions } from './PresenceMotionFunctions.stories';
 
 export default {
   title: 'Utilities/Web Motions (Preview)/createPresenceComponent',

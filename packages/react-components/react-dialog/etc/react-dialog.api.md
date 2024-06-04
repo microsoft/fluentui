@@ -94,6 +94,15 @@ export type DialogContextValue = {
 } & Partial<ReturnType<typeof useModalAttributes>>;
 
 // @public (undocumented)
+export type DialogContextValues = {
+    dialog: DialogContextValue;
+    dialogSurface: DialogSurfaceContextValue;
+};
+
+// @public (undocumented)
+export type DialogModalType = 'modal' | 'non-modal' | 'alert';
+
+// @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
@@ -167,6 +176,7 @@ export type DialogSurfaceSlots = {
 
 // @public
 export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
+    open?: boolean;
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 };
 
@@ -254,6 +264,9 @@ export const useDialogContentStyles_unstable: (state: DialogContentState) => Dia
 
 // @public (undocumented)
 export const useDialogContext_unstable: <T>(selector: ContextSelector<DialogContextValue, T>) => T;
+
+// @public (undocumented)
+export function useDialogContextValues_unstable(state: DialogState): DialogContextValues;
 
 // @public
 export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;

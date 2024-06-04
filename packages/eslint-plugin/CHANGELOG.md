@@ -1,8 +1,44 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
+This log was last generated on Tue, 28 May 2024 07:28:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.1)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.0..@fluentui/eslint-plugin_v1.18.1)
+
+### Patches
+
+- chore: re-enable deprecation/deprecation for files with styles ([PR #31459](https://github.com/microsoft/fluentui/pull/31459) by olfedias@microsoft.com)
+
+## [1.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.0)
+
+Fri, 24 May 2024 07:28:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.9..@fluentui/eslint-plugin_v1.18.0)
+
+### Minor changes
+
+- feat: disallow direct access to globals ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+
+## [1.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.9)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.8..@fluentui/eslint-plugin_v1.17.9)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31447](https://github.com/microsoft/fluentui/pull/31447) by olfedias@microsoft.com)
+
+## [1.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.8)
+
+Mon, 20 May 2024 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.7..@fluentui/eslint-plugin_v1.17.8)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
 
 ## [1.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.7)
 
