@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Renaming useCalendarMonthStyles.ts to useCalendarMonthStyles.styles.ts.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
