@@ -5,7 +5,8 @@ const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
 /**
  * Sets the theme tokens on defaultNode.
- * @param theme Flat object of theme token values.
+ * @param theme - Flat object of theme token values.
+ * @internal
  */
 export const setTheme = (theme: Theme) => {
   for (const t of tokenNames) {
@@ -13,6 +14,9 @@ export const setTheme = (theme: Theme) => {
   }
 };
 
+/**
+ * @internal
+ */
 export const setThemeFor = (element: HTMLElement, theme: Theme) => {
   for (const t of tokenNames) {
     element.style.setProperty(`--${t}`, theme[t] as string);

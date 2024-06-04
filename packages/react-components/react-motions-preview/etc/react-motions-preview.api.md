@@ -4,8 +4,6 @@
 
 ```ts
 
-import type { EventData } from '@fluentui/react-utilities';
-import type { EventHandler } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -14,7 +12,9 @@ export type AtomMotion = {
 } & KeyframeEffectOptions;
 
 // @public (undocumented)
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+export type AtomMotionFn = (params: {
+    element: HTMLElement;
+}) => AtomMotion | AtomMotion[];
 
 // @public
 export const Collapse: PresenceComponent<PresenceMotion | PresenceMotionFn>;
@@ -26,10 +26,10 @@ export const CollapseExaggerated: PresenceComponent<PresenceMotion | PresenceMot
 export const CollapseSnappy: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public
-export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
+export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof motion>;
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof motion>;
 
 // @public (undocumented)
 export const createVariantComponent: <T extends PresenceComponent<PresenceMotion | PresenceMotionFn>>(component: T, override: PresenceOverride) => PresenceComponent<PresenceMotion | PresenceMotionFn>;
@@ -63,6 +63,12 @@ export const durations: {
 export const Fade: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
+export type MotionComponentProps = {
+    children: React_2.ReactElement;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+};
+
+// @public (undocumented)
 export type MotionImperativeRef = {
     setPlaybackRate: (rate: number) => void;
     setPlayState: (state: 'running' | 'paused') => void;
@@ -90,6 +96,18 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
+export type PresenceComponentProps = {
+    appear?: boolean;
+    children: React_2.ReactElement;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+    onMotionFinish?: (ev: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+    visible?: boolean;
+    unmountOnExit?: boolean;
+};
+
+// @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
     constructor(props: PresenceGroupProps, context: unknown);
     // (undocumented)
@@ -107,7 +125,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 
 // @public
 export type PresenceMotion = {
-    [transition in PresenceTransitionName]: AtomMotion;
+    [transition in PresenceTransitionName]: AtomMotion | AtomMotion[];
 };
 
 // @public

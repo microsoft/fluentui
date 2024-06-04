@@ -40,5 +40,4 @@ export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
 /**
  * State used in rendering OverlayDrawer
  */
-export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> &
-  Required<DrawerBaseState>;
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;

@@ -35,6 +35,7 @@ const DropIn = createMotionComponent({
     { transform: 'rotate(0deg) translateY(0%)', opacity: 1 },
   ],
   duration: 4000,
+  iterations: Infinity,
 });
 
 export const CreateMotionComponent = () => {
@@ -43,7 +44,7 @@ export const CreateMotionComponent = () => {
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <DropIn iterations={Infinity}>
+        <DropIn>
           <div className={classes.item} />
         </DropIn>
 

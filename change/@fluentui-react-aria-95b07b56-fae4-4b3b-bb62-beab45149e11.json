@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove optional \"win\" argument",
+  "packageName": "@fluentui/react-aria",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

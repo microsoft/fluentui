@@ -31,9 +31,20 @@ export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlot
 export type ToastContainerState = ComponentState<ToastContainerSlots> &
   Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> &
   Pick<ToastContainerContextValue, 'titleId' | 'bodyId'> & {
+    /**
+     * @deprecated Will be always "0".
+     */
     transitionTimeout: number;
     timerTimeout: number;
     running: boolean;
+    /**
+     * @deprecated Will be always no-op.
+     */
     onTransitionEntering: () => void;
+    /**
+     * @deprecated
+     */
     nodeRef: React.Ref<HTMLDivElement>;
+
+    onMotionFinish?: (event: null, data: { direction: 'enter' | 'exit' }) => void;
   };

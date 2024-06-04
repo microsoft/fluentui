@@ -127,6 +127,9 @@
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
+      "@fluentui/react-motion-components-preview": [
+        "packages/react-components/react-motion-components-preview/library/src/index.ts"
+      ],
       "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"],
       "@fluentui/react-motions-preview": ["packages/react-components/react-motions-preview/src/index.ts"],
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
@@ -151,6 +154,7 @@
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
+      "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
@@ -169,10 +173,13 @@
       "@fluentui/react-tree": ["packages/react-components/react-tree/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"],
+      "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/src/index.ts"]
+      "@fluentui/react-motion-components-preview-stories": [
+        "packages/react-components/react-motion-components-preview/stories/src/index.ts"
+      ]
     }
   }
 }

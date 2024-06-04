@@ -1,18 +1,13 @@
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
-import type { EventData, EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
-import { animate } from '../utils/animate';
+import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
 import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
-
-type PresenceMotionEventData = EventData<'animation', AnimationPlaybackEvent> & {
-  direction: 'enter' | 'exit';
-};
 
 export type PresenceComponentProps = {
   /**
@@ -27,7 +22,14 @@ export type PresenceComponentProps = {
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
 
-  onMotionFinish?: EventHandler<PresenceMotionEventData>;
+  /**
+   * Callback that is called when the whole motion finishes.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "finish" events. The callback is
+   * triggered once all animations have finished with "null" instead of an event object to avoid ambiguity.
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
@@ -54,7 +56,7 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
   return !appear && isFirstMount && visible;
 }
 
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof motion> {
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof value> {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
     const { appear, children, imperativeRef, onMotionFinish, visible, animateOpacity, unmountOnExit } = {
@@ -65,7 +67,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
 
-    const animationRef = useMotionImperativeRef(imperativeRef);
+    const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     // For a prop like animateOpacity, we don't want to restart the animation when it changes.
     // So we use a ref to store the current value, which will not rerender the component when it changes.
@@ -77,11 +79,11 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
-    const onEnterFinish = useEventCallback((event: AnimationPlaybackEvent) => {
-      onMotionFinish?.(event, { event, type: 'animation', direction: 'enter' });
+    const onEnterFinish = useEventCallback(() => {
+      onMotionFinish?.(null, { direction: 'enter' });
     });
-    const onExitFinish = useEventCallback((event: AnimationPlaybackEvent) => {
-      onMotionFinish?.(event, { event, type: 'animation', direction: 'exit' });
+    const onExitFinish = useEventCallback(() => {
+      onMotionFinish?.(null, { direction: 'exit' });
 
       if (unmountOnExit) {
         setMounted(false);
@@ -95,44 +97,35 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
 
     useIsomorphicLayoutEffect(
       () => {
-        if (!elementRef.current || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
+        const element = elementRef.current;
+
+        if (!element || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
           return;
         }
 
-        const presenceDefinition =
-          typeof motion === 'function'
-            ? motion({ element: elementRef.current, animateOpacity: animateOpacityRef.current })
-            : motion;
-        const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
+        const presenceMotion =
+          typeof value === 'function' ? value({ element: element, animateOpacity: animateOpacityRef.current }) : value;
+        const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
-        const animation = animate(elementRef.current, keyframes, {
-          fill: 'forwards',
-
-          ...options,
-          ...(isReducedMotion() && { duration: 1 }),
-        });
-
-        if (!animation) {
-          return;
-        }
+        const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
         if (!visible && isFirstMount) {
           // Heads up!
           // .finish() is used there to skip animation on first mount, but apply animation styles immediately
-          animation.finish();
+          handle.finish();
           return;
         }
 
-        animationRef.current = animation;
-        animation.onfinish = visible ? onEnterFinish : onExitFinish;
+        handleRef.current = handle;
+        handle.onfinish = visible ? onEnterFinish : onExitFinish;
 
         return () => {
-          animation.cancel();
+          handle.cancel();
         };
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
+      [handleRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
     );
 
     React.useEffect(() => {
@@ -146,5 +139,5 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     return null;
   };
 
-  return Object.assign(Presence, { motionDefinition: motion });
+  return Object.assign(Presence, { motionDefinition: value });
 }

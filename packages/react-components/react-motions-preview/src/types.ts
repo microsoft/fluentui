@@ -4,7 +4,7 @@ export type PresenceTransitionName = 'enter' | 'exit';
 
 /** A presence motion molecule has an `enter` atom and an `exit` atom. */
 export type PresenceMotion = {
-  [transition in PresenceTransitionName]: AtomMotion;
+  [transition in PresenceTransitionName]: AtomMotion | AtomMotion[];
 };
 
 type DurationMS = number;
@@ -44,14 +44,14 @@ export type PresenceOverride<CustomOverrideFields = {}> = {
   [transition in PresenceTransitionName]?: Partial<PresenceOverrideFields & CustomOverrideFields>;
 };
 
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+export type AtomMotionFn = (params: { element: HTMLElement }) => AtomMotion | AtomMotion[];
+export type PresenceMotionFn = (params: { element: HTMLElement }) => PresenceMotion;
 
-/** A factory function to create a presence motion, which has enter and exit transitions. */
-export type PresenceMotionFn</* CustomProps = {} */> = (
-  // TODO: DRY up with other types
-  // params: { element: HTMLElement; animateOpacity?: boolean } & PresenceTransitionProps<CustomProps>,
-  params: { element: HTMLElement; animateOpacity?: boolean },
-) => PresenceMotion;
+// ---
+
+export type AnimationHandle = Pick<Animation, 'cancel' | 'finish' | 'pause' | 'play' | 'playbackRate'> & {
+  onfinish: () => void;
+};
 
 export type MotionImperativeRef = {
   /** Sets the playback rate of the animation, where 1 is normal speed. */

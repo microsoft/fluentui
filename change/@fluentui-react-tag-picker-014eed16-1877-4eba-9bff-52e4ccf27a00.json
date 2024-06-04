@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds text property to TagPickerOption",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

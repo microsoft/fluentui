@@ -4,6 +4,7 @@ export type {
   DialogSlots,
   DialogProps,
   DialogState,
+  DialogModalType,
   DialogOpenChangeData,
   DialogOpenChangeEvent,
   DialogOpenChangeEventHandler,

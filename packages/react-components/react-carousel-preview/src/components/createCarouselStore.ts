@@ -1,11 +1,18 @@
 import { type CarouselStore } from './CarouselContext.types';
 
-export const createCarouselStore = (): CarouselStore => {
+export const createCarouselStore = (initialValue: string | null): CarouselStore => {
   let values: string[] = [];
+  let activeValue: string | null = initialValue;
+
   let listeners: Array<() => void> = [];
 
   const carouselStore = {
-    clear() {
+    setActiveValue(newValue: string | null) {
+      activeValue = newValue;
+      emitChange();
+    },
+
+    clearValues() {
       values = [];
       emitChange();
     },
@@ -39,8 +46,9 @@ export const createCarouselStore = (): CarouselStore => {
         listeners = listeners.filter(l => l !== listener);
       };
     },
+
     getSnapshot() {
-      return values;
+      return { activeValue, values };
     },
   };
 

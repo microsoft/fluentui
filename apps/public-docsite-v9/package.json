@@ -15,7 +15,8 @@
     "type-check": "just-scripts type-check",
     "start": "yarn storybook:docs",
     "storybook": "start-storybook --port 3000 --no-manager-cache",
-    "storybook:docs": "yarn storybook --docs"
+    "storybook:docs": "yarn storybook --docs",
+    "test": "jest --passWithNoTests"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -36,6 +37,7 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",
     "@fluentui/react-motions-preview": "*",
+    "@fluentui/recipes": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@griffel/react": "^1.5.22",
     "@microsoft/applicationinsights-web": "^3",
@@ -43,6 +45,7 @@
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",
     "tslib": "^2.1.0",
+    "react-hook-form": "^5.7.2",
     "@fluentui/react-nav-preview": "*"
   }
 }
