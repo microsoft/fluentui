@@ -17,7 +17,13 @@ function main() {
   const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
   const generatedTokens = fluentTokens.reduce((acc, t) => {
-    const token = `export const ${t} = 'var(--${t})';\n`;
+    const token = `
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
+ * @public
+ */
+export const ${t} = 'var(--${t})';
+`;
     return acc + token;
   }, '');
 
