@@ -12,13 +12,13 @@ export type AtomMotion = {
 } & KeyframeEffectOptions;
 
 // @public (undocumented)
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+export type AtomMotionFn = (element: HTMLElement) => AtomMotion | AtomMotion[];
 
 // @public
-export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
+export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
 
 // @public (undocumented)
 export const curves: {
@@ -90,8 +90,8 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 
 // @public (undocumented)
 export type PresenceMotion = {
-    enter: AtomMotion;
-    exit: AtomMotion;
+    enter: AtomMotion | AtomMotion[];
+    exit: AtomMotion | AtomMotion[];
 };
 
 // @public (undocumented)

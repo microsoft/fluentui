@@ -5,7 +5,7 @@ import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
-import { animate } from '../utils/animate';
+import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
 import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
@@ -45,7 +45,7 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
   return !appear && isFirstMount && visible;
 }
 
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
     const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
@@ -53,7 +53,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
 
-    const animationRef = useMotionImperativeRef(imperativeRef);
+    const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean }>({});
@@ -79,41 +79,34 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
 
     useIsomorphicLayoutEffect(
       () => {
-        if (!elementRef.current || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
+        const element = elementRef.current;
+
+        if (!element || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
           return;
         }
 
-        const presenceDefinition = typeof motion === 'function' ? motion(elementRef.current) : motion;
-        const { keyframes, ...options } = visible ? presenceDefinition.enter : presenceDefinition.exit;
+        const presenceMotion = typeof value === 'function' ? value(element) : value;
+        const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
-        const animation = animate(elementRef.current, keyframes, {
-          fill: 'forwards',
-
-          ...options,
-          ...(isReducedMotion() && { duration: 1 }),
-        });
-
-        if (!animation) {
-          return;
-        }
+        const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
         if (!visible && isFirstMount) {
           // Heads up!
           // .finish() is used there to skip animation on first mount, but apply animation styles immediately
-          animation.finish();
+          handle.finish();
           return;
         }
 
-        animationRef.current = animation;
-        animation.onfinish = visible ? onEnterFinish : onExitFinish;
+        handleRef.current = handle;
+        handle.onfinish = visible ? onEnterFinish : onExitFinish;
 
         return () => {
-          animation.cancel();
+          handle.cancel();
         };
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [animationRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
+      [handleRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
     );
 
     if (mounted) {

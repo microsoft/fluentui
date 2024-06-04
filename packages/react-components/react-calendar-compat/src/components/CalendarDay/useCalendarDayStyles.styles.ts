@@ -48,7 +48,7 @@ const useMonthAndYearStyles = makeStyles({
     alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground1,
     display: 'inline-block',
     flexGrow: 1,
@@ -95,7 +95,7 @@ const useHeaderIconButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground3,
     display: 'block',
     fontFamily: 'inherit',

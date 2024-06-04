@@ -37,4 +37,4 @@ export const ToggleButtonSize = ButtonSize;
  */
 export type ToggleButtonSize = ValuesOf<typeof ToggleButtonSize>;
 
-export { ButtonOptions as ToggleButtonOptions };
+export type { ButtonOptions as ToggleButtonOptions };

@@ -1,7 +1,7 @@
 import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import { staticallyCompose } from '../utils/index.js';
-import { AccordionItem, AccordionItemOptions } from './accordion-item.js';
+import type { AccordionItem, AccordionItemOptions } from './accordion-item.js';
 
 const chevronRight20Filled = html.partial(`<svg
   width="20"

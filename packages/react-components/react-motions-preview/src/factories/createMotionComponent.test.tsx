@@ -6,7 +6,6 @@ import { createMotionComponent } from './createMotionComponent';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-
   duration: 500,
 };
 
@@ -14,6 +13,7 @@ function createElementMock() {
   const animateMock = jest.fn().mockImplementation(() => ({
     play: jest.fn(),
     cancel: jest.fn(),
+    persist: jest.fn(),
   }));
   const ElementMock = React.forwardRef((props, ref) => {
     React.useImperativeHandle(ref, () => ({

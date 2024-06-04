@@ -31,7 +31,6 @@ export class Checkbox extends FormAssociatedCheckbox {
    * Sets shape of the checkbox.
    *
    * @public
-   * @default 'square'
    * @remarks
    * HTML Attribute: shape
    */
@@ -42,7 +41,6 @@ export class Checkbox extends FormAssociatedCheckbox {
    * Sets size of the checkbox.
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -53,7 +51,6 @@ export class Checkbox extends FormAssociatedCheckbox {
    * Sets position of the label relative to the input
    *
    * @public
-   * @default 'after'
    * @remarks
    * HTML Attribute: label-position
    */

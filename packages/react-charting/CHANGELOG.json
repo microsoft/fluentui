@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 04 Jun 2024 07:24:52 GMT",
+      "tag": "@fluentui/react-charting_v5.21.16",
+      "version": "5.21.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b857011bdff49fa057f95a16079cfe90431b4184",
+            "comment": "Add prop to toggle time display between UTC and local"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 May 2024 07:24:03 GMT",
       "tag": "@fluentui/react-charting_v5.21.15",
       "version": "5.21.15",

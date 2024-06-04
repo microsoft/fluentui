@@ -17,8 +17,8 @@ import { TabsAppearance, TabsOrientation, TabsSize } from './tabs.options.js';
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
+ * A Tabs component that wraps a collection of tab and tab panel elements.
  *
- * @class TabList component
  * @public
  */
 export class BaseTabs extends FASTElement {
@@ -413,10 +413,10 @@ export class Tabs extends BaseTabs {
   }
 
   /**
-   * applyUpdatedCSSValues
+   * Calculates and applies updated values to CSS variables.
    *
-   * calculates and applies updated values to CSS variables
-   * @param tab
+   * @param tab - the tab element to apply the updated values to
+   * @internal
    */
   private applyUpdatedCSSValues(tab: Tab) {
     this.calculateAnimationProperties(tab);
@@ -425,9 +425,11 @@ export class Tabs extends BaseTabs {
   }
 
   /**
-   * animationLoop
-   * runs through all the operations required for setting the tab active indicator to its starting location, ending location, and applying the animated css class to the tab.
-   * @param tab
+   * Runs through all the operations required for setting the tab active indicator to its starting location, ending
+   * location, and applying the animated css class to the tab.
+   *
+   * @param tab - the tab element to apply the updated values to
+   * @internal
    */
   private animationLoop(tab: Tab) {
     // remove the animated class so nothing animates yet
@@ -443,8 +445,10 @@ export class Tabs extends BaseTabs {
   }
 
   /**
-   * setTabData
-   * sets the data from the active tab onto the class. used for making all the animation calculations for the active tab indicator.
+   * Sets the data from the active tab onto the class. used for making all the animation calculations for the active
+   * tab indicator.
+   *
+   * @internal
    */
   private setTabData(): void {
     if (this.tabs && this.tabs.length > 0) {

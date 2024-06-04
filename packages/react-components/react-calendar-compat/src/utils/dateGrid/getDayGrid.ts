@@ -83,6 +83,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         isInMonth: date.getMonth() === navigatedDate.getMonth(),
         isToday: compareDates(todaysDate, date),
         isSelected: isInDateRangeArray(date, selectedDates),
+        isSingleSelected: selectedDates.length === 1 && compareDates(date, selectedDate),
         isInBounds: !isRestrictedDate(date, restrictedDateOptions),
         isMarked: markedDays?.some((markedDay: Date) => compareDates(originalDate, markedDay)) || false,
       };

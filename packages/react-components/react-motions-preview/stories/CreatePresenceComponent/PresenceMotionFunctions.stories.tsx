@@ -3,7 +3,7 @@ import { createPresenceComponent } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef, PresenceMotionFn } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './MotionFunctions.stories.md';
+import description from './PresenceMotionFunctions.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -55,7 +55,7 @@ const collapseMotion: PresenceMotionFn = element => {
 };
 const Collapse = createPresenceComponent(collapseMotion);
 
-export const MotionFunctions = () => {
+export const PresenceMotionFunctions = () => {
   const classes = useClasses();
   const sliderId = useId();
 
@@ -118,7 +118,7 @@ export const MotionFunctions = () => {
   );
 };
 
-MotionFunctions.parameters = {
+PresenceMotionFunctions.parameters = {
   docs: {
     description: {
       story: description,

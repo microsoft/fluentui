@@ -432,6 +432,13 @@ export interface ICartesianChartProps {
    * If RTL is enabled, minimum left and right margins required for secondary y axis title is 60px
    */
   secondaryYAxistitle?: string;
+
+  /**
+   * Whether to use UTC time for axis scale, ticks, and the time display in callouts.
+   * When set to `true`, time is displayed equally, regardless of the user's timezone settings.
+   * @default true
+   */
+  useUTC?: boolean;
 }
 
 export interface IYValueHover {

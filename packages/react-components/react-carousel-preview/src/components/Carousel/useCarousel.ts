@@ -25,7 +25,7 @@ import type { CarouselContextValue } from '../CarouselContext.types';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  const { onValueChange } = props;
+  const { onValueChange, circular } = props;
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
@@ -121,7 +121,9 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }
 
     const newPage =
-      direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
+      direction === 'prev'
+        ? carouselWalker.prevPage(active.value, circular)
+        : carouselWalker.nextPage(active.value, circular);
 
     if (newPage) {
       setValue(newPage?.value);
@@ -141,6 +143,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, carouselRef, rootRef),
+        role: 'region',
         ...props,
       }),
       { elementType: 'div' },
@@ -149,5 +152,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     value,
     selectPageByDirection,
     selectPageByValue,
+    circular,
   };
 }

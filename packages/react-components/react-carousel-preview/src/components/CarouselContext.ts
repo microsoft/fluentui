@@ -13,6 +13,7 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   selectPageByValue: () => {
     /** noop */
   },
+  circular: false,
 };
 
 const CarouselContext: Context<CarouselContextValue> = createContext<CarouselContextValue | undefined>(
@@ -25,13 +26,14 @@ export const useCarouselContext_unstable = <T>(selector: ContextSelector<Carouse
   useContextSelector(CarouselContext, (ctx = carouselContextDefaultValue) => selector(ctx));
 
 export function useCarouselContextValues_unstable(state: CarouselState): CarouselContextValues {
-  const { store, value, selectPageByDirection, selectPageByValue } = state;
+  const { store, value, selectPageByDirection, selectPageByValue, circular } = state;
 
   const carousel = {
     store,
     value,
     selectPageByDirection,
     selectPageByValue,
+    circular,
   };
 
   return { carousel };

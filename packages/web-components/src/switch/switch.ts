@@ -13,7 +13,6 @@ export class Switch extends FormAssociatedSwitch {
    * The label position of the switch
    *
    * @public
-   * @default 'after'
    * @remarks
    * HTML Attribute: labelposition
    */

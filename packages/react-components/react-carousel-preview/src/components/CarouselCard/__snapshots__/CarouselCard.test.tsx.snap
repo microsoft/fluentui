@@ -7,6 +7,7 @@ exports[`CarouselCard renders a default state 1`] = `
     data-carousel-active-item="false"
     data-carousel-item="test-0"
     hidden=""
+    role="presentation"
   />
 </div>
 `;
