@@ -5,8 +5,14 @@ export type PresenceMotion = {
   exit: AtomMotion | AtomMotion[];
 };
 
-export type AtomMotionFn = (params: { element: HTMLElement }) => AtomMotion | AtomMotion[];
-export type PresenceMotionFn = (params: { element: HTMLElement }) => PresenceMotion;
+export type MotionParam = boolean | number | string;
+
+export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
+  params: { element: HTMLElement } & MotionParams,
+) => AtomMotion | AtomMotion[];
+export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
+  params: { element: HTMLElement } & MotionParams,
+) => PresenceMotion;
 
 // ---
 
