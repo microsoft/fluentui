@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 30 May 2024 07:24:03 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jun 2024 07:24:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.16)
+
+Tue, 04 Jun 2024 07:24:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.15..@fluentui/react-charting_v5.21.16)
+
+### Patches
+
+- Add prop to toggle time display between UTC and local ([PR #31525](https://github.com/microsoft/fluentui/pull/31525) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.21.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.15)
 
