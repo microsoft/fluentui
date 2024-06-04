@@ -13,7 +13,7 @@ import {
   DEFAULT_DATE_FORMATTING,
 } from '../../utils';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
-import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles';
+import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
 
