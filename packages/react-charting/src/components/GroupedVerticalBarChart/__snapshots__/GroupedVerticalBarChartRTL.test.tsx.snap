@@ -4476,7 +4476,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 28px;
                         font-weight: bold;

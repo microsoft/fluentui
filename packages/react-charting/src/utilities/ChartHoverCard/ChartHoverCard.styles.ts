@@ -56,7 +56,7 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
     calloutContentY: [
       theme.fonts.xxLarge,
       {
-        color: color ? color : theme.semanticColors.bodyText,
+        color: theme.semanticColors.bodyText,
         fontWeight: 'bold',
         lineHeight: '36px',
         selectors: {
