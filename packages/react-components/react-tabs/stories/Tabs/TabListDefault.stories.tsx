@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Tab, TabList } from '@fluentui/react-components';
+import { makeStyles, Tab, TabList } from '@fluentui/react-components';
 import type { TabListProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    ...shorthands.padding('50px', '20px'),
+    padding: '50px 20px',
     rowGap: '20px',
   },
 });

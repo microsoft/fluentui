@@ -1,10 +1,8 @@
-import { GriffelStyle, shorthands, tokens } from '@fluentui/react-components';
+import { GriffelStyle, tokens } from '@fluentui/react-components';
 
 const fluid = (): GriffelStyle => ({ width: '100%' });
 
-const error = (): GriffelStyle => ({
-  ...shorthands.border('1px', 'solid', tokens.colorPaletteRedBorderActive),
-});
+const error = (): GriffelStyle => ({ border: `1px solid ${tokens.colorPaletteRedBorderActive}` });
 
 const errorIndicator = (): GriffelStyle => ({
   color: tokens.colorPaletteRedBorderActive,

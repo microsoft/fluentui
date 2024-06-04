@@ -2,6 +2,33 @@
   "name": "@fluentui/react-motions-preview",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:44:59 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "62553563ad80b95e37a9e628d6a860c829b58dbf",
+            "comment": "chore(motions): add mock for .animate() calls"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 May 2024 09:25:16 GMT",
       "tag": "@fluentui/react-motions-preview_v0.3.1",
       "version": "0.3.1",

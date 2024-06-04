@@ -6,7 +6,6 @@ import {
   InlineDrawer,
   Button,
   makeStyles,
-  shorthands,
   tokens,
   DrawerProps,
   mergeClasses,
@@ -15,16 +14,16 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('2px', 'solid', '#ccc'),
-    ...shorthands.overflow('hidden'),
+    border: '2px solid #ccc',
+    overflow: 'hidden',
     display: 'flex',
     height: '480px',
     backgroundColor: '#fff',
   },
 
   content: {
-    ...shorthands.flex(1),
-    ...shorthands.padding('16px'),
+    flex: '1',
+    padding: '16px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',

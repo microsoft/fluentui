@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: compatibility with Drawer slots",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

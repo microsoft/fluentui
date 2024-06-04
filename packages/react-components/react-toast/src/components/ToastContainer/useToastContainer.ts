@@ -129,37 +129,21 @@ export const useToastContainer_unstable = (
     }
   }, [targetDocument, pause, play, pauseOnWindowBlur]);
 
-  // It's impossible to animate to height: auto in CSS, the actual pixel value must be known
-  // Get the height of the toast before animation styles have been applied and set a CSS
-  // variable with its height. The CSS variable will be used by the styles
-  const onTransitionEntering = () => {
-    if (!toastRef.current) {
-      return;
-    }
-
-    const element = toastRef.current;
-    element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
-  };
-
   // Users never actually use ToastContainer as a JSX but imperatively through useToastContainerController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
+  const onMotionFinish: ToastContainerState['onMotionFinish'] = React.useCallback(
+    (_, { direction }) => {
+      if (direction === 'exit') {
+        remove();
+      }
 
-  // Using a ref callback here because addEventListener supports `once`
-  const toastAnimationRef = React.useCallback(
-    (el: HTMLDivElement | null) => {
-      if (el && toastRef.current) {
-        toastRef.current.addEventListener(
-          'animationend',
-          () => {
-            // start toast once it's fully animated in
-            play();
-            onStatusChange('visible');
-          },
-          { once: true },
-        );
+      if (direction === 'enter') {
+        // start toast once it's fully animated in
+        play();
+        onStatusChange('visible');
       }
     },
-    [play, onStatusChange],
+    [onStatusChange, play, remove],
   );
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -220,7 +204,7 @@ export const useToastContainer_unstable = (
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, toastRef, toastAnimationRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, toastRef) as React.Ref<HTMLDivElement>,
         children,
         tabIndex: 0,
         role: 'listitem',
@@ -236,16 +220,19 @@ export const useToastContainer_unstable = (
       { elementType: 'div' },
     ),
     timerTimeout,
-    transitionTimeout: 500,
+    transitionTimeout: 0,
     running,
     visible,
     remove,
     close,
-    onTransitionEntering,
+    onTransitionEntering: () => {
+      /* no-op */
+    },
     updateId,
     nodeRef: toastRef,
     intent,
     titleId,
     bodyId,
+    onMotionFinish,
   };
 };

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { makeStyles, shorthands, Button, Label } from '@fluentui/react-components';
+import { makeStyles, Button, Label } from '@fluentui/react-components';
 import { SwatchPicker, EmptySwatch, ColorSwatch, SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
     width: '100px',
     height: '100px',
-    ...shorthands.border('1px', 'solid', '#ccc'),
-    ...shorthands.margin('20px', '0'),
+    border: '1px solid #ccc',
+    margin: '20px 0',
     '@media (forced-colors: active)': {
       forcedColorAdjust: 'none',
     },
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
   input: {
     display: 'block',
-    ...shorthands.margin('10px', '0'),
+    margin: '10px 0',
   },
 });
 
@@ -69,7 +69,14 @@ export const EmptySwatchExample = () => {
 
       <div className={styles.example} style={{ backgroundColor: selectedColor }} />
       <Label htmlFor="color-select">Add more colors:</Label>
-      <input className={styles.input} ref={inputRef} type="color" id="color-select" name="color-select" />
+      <input
+        aria-label="Open color picker"
+        className={styles.input}
+        ref={inputRef}
+        type="color"
+        id="color-select"
+        name="color-select"
+      />
       <Button
         className={styles.button}
         appearance="primary"

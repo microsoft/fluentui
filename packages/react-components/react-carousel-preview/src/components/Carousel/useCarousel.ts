@@ -5,8 +5,11 @@ import {
   slot,
   useControllableState,
   useEventCallback,
+  useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+
 import type { CarouselProps, CarouselState } from './Carousel.types';
 import { useCarouselWalker_unstable } from '../useCarouselWalker';
 import { createCarouselStore } from '../createCarouselStore';
@@ -23,16 +26,19 @@ import type { CarouselContextValue } from '../CarouselContext.types';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  const { onValueChange } = props;
+  const { onValueChange, circular, peeking } = props;
 
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
-  const [store] = React.useState(() => createCarouselStore());
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
     state: props.value,
     initialState: null,
   });
+  const [store] = React.useState(() => createCarouselStore(value));
+
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -47,6 +53,10 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }, [value]);
   }
 
+  useIsomorphicLayoutEffect(() => {
+    store.setActiveValue(value);
+  }, [store, value]);
+
   React.useEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
 
@@ -55,11 +65,15 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }
 
     return () => {
-      store.clear();
+      store.clearValues();
     };
   }, [store]);
 
   React.useEffect(() => {
+    if (!win) {
+      return;
+    }
+
     const config: MutationObserverInit = {
       attributes: true,
       attributeFilter: [CAROUSEL_ITEM],
@@ -94,7 +108,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     };
 
     // Create an observer instance linked to the callback function
-    const observer = new MutationObserver(callback);
+    const observer = new win.MutationObserver(callback);
 
     // Start observing the target node for configured mutations
     observer.observe(rootRef.current!, config);
@@ -103,7 +117,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     return () => {
       observer.disconnect();
     };
-  }, [carouselWalker, store]);
+  }, [carouselWalker, store, win]);
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
@@ -113,7 +127,9 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }
 
     const newPage =
-      direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
+      direction === 'prev'
+        ? carouselWalker.prevPage(active.value, circular)
+        : carouselWalker.nextPage(active.value, circular);
 
     if (newPage) {
       setValue(newPage?.value);
@@ -133,13 +149,15 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, carouselRef, rootRef),
+        role: 'region',
         ...props,
       }),
       { elementType: 'div' },
     ),
     store,
-    value,
     selectPageByDirection,
     selectPageByValue,
+    circular,
+    peeking,
   };
 }

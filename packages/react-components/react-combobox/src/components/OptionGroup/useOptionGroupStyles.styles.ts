@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { OptionGroupSlots, OptionGroupState } from './OptionGroup.types';
 
 export const optionGroupClassNames: SlotClassNames<OptionGroupSlots> = {
@@ -19,21 +19,21 @@ const useStyles = makeStyles({
 
     '&:not(:last-child)::after': {
       content: '""',
-      ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
+      borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
       display: 'block',
       paddingBottom: tokens.spacingHorizontalXS,
-      ...shorthands.margin(0, `calc(${tokens.spacingHorizontalXS} * -1)`, tokens.spacingVerticalXS),
+      margin: `0 ${`calc(${tokens.spacingHorizontalXS} * -1)`} ${tokens.spacingVerticalXS}`,
     },
   },
 
   label: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground3,
     display: 'block',
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding(tokens.spacingHorizontalS, tokens.spacingHorizontalSNudge),
+    padding: `${tokens.spacingHorizontalS} ${tokens.spacingHorizontalSNudge}`,
   },
 });
 

@@ -197,9 +197,14 @@ export type TagPickerOptionGroupState = OptionGroupState;
 
 // @public
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
-    children: React_2.ReactNode;
     value: string;
-};
+} & ({
+    text?: string;
+    children: string;
+} | {
+    text: string;
+    children?: React_2.ReactNode;
+});
 
 // @public (undocumented)
 export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {

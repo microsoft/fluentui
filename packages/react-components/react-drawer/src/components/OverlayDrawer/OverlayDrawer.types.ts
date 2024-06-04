@@ -28,11 +28,16 @@ export type OverlayDrawerInternalSlots = OverlayDrawerSlots & {
  * OverlayDrawer Props
  */
 export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
-  Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> &
-  DrawerBaseProps;
+  Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'> &
+  DrawerBaseProps & {
+    /**
+     * @deprecated OverlayDrawer can work only as a controlled component
+     * and does not support uncontrolled mode i.e. defaultOpen prop
+     */
+    defaultOpen?: boolean;
+  };
 
 /**
  * State used in rendering OverlayDrawer
  */
-export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> &
-  Required<DrawerBaseState>;
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;

@@ -5,6 +5,7 @@
     "allowJs": true,
     "lib": ["ES2020", "DOM"]
   },
+  "types": [],
   "include": ["pr-deploy-site.js", "just.config.ts"],
   "files": ["../../typings/find-free-port/index.d.ts"]
 }

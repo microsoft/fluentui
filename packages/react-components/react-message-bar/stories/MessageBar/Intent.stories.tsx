@@ -6,14 +6,13 @@ import {
   MessageBarIntent,
   Link,
   makeStyles,
-  shorthands,
 } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
+    gap: '10px',
   },
 });
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];

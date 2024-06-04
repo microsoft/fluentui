@@ -2,6 +2,54 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Thu, 23 May 2024 08:02:40 GMT",
+      "tag": "@fluentui/react-badge_v9.2.37",
+      "version": "9.2.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:44:52 GMT",
+      "tag": "@fluentui/react-badge_v9.2.36",
+      "version": "9.2.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 May 2024 09:25:12 GMT",
       "tag": "@fluentui/react-badge_v9.2.35",
       "version": "9.2.35",

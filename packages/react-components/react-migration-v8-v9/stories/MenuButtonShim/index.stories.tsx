@@ -8,7 +8,6 @@ import {
   FluentProvider,
   webLightTheme,
   makeStyles,
-  shorthands,
   Menu,
   MenuButton,
   MenuDivider,
@@ -36,7 +35,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 

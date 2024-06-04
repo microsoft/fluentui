@@ -5,6 +5,8 @@ import {
   IChartProps,
   StackedBarChart,
   IStackedBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
@@ -32,7 +34,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
     [
       DefaultPalette.blueMid,
       DefaultPalette.blue,
-      DefaultPalette.blueLight,
+      getColorFromToken(DataVizPalette.color6),
       DefaultPalette.tealDark,
       DefaultPalette.teal,
       DefaultPalette.tealLight,
@@ -43,13 +45,13 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       DefaultPalette.orange,
       DefaultPalette.orangeLight,
       DefaultPalette.orangeLighter,
-      DefaultPalette.yellow,
+      getColorFromToken(DataVizPalette.color10),
       DefaultPalette.yellowLight,
     ],
     [
       DefaultPalette.greenDark,
       DefaultPalette.green,
-      DefaultPalette.greenLight,
+      getColorFromToken(DataVizPalette.color5),
       DefaultPalette.neutralPrimary,
       DefaultPalette.neutralSecondary,
       DefaultPalette.neutralTertiary,
@@ -70,10 +72,10 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       dynamicData: {
         chartTitle: 'Stacked Bar chart',
         chartData: [
-          { legend: 'first', data: 40, color: DefaultPalette.blueLight },
-          { legend: 'second', data: 23, color: DefaultPalette.yellow },
+          { legend: 'first', data: 40, color: getColorFromToken(DataVizPalette.color6) },
+          { legend: 'second', data: 23, color: getColorFromToken(DataVizPalette.color10) },
           { legend: 'third', data: 35, color: DefaultPalette.neutralSecondary },
-          { legend: 'fourth', data: 87, color: DefaultPalette.greenLight },
+          { legend: 'fourth', data: 87, color: getColorFromToken(DataVizPalette.color5) },
         ],
       },
       statusKey: 0,

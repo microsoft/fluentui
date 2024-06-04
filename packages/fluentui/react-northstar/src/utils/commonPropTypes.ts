@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import { ReactChildren } from '../types';
 
-export interface StyledComponentProps<P = any, V = any> {
+export interface StyledComponentProps<P extends {} = any, V extends {} = any> {
   /** Additional CSS styles to apply to the component instance.  */
   styles?: ComponentSlotStyle<P, V>;
 
@@ -14,7 +14,7 @@ export interface StyledComponentProps<P = any, V = any> {
   variables?: ComponentVariablesInput;
 }
 
-export interface UIComponentProps<P = any, V = any> extends StyledComponentProps<P, V> {
+export interface UIComponentProps<P extends {} = any, V extends {} = any> extends StyledComponentProps<P, V> {
   /** Additional CSS class name(s) to apply.  */
   className?: string;
   design?: ComponentDesignProp;

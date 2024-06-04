@@ -2,9 +2,10 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { InlineDrawer } from './InlineDrawer';
 import { isConformant } from '../../testing/isConformant';
+import { InlineDrawerProps } from './InlineDrawer.types';
 
 describe('InlineDrawer', () => {
-  isConformant({
+  isConformant<InlineDrawerProps>({
     Component: InlineDrawer,
     displayName: 'InlineDrawer',
     requiredProps: {

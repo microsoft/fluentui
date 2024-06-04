@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
 import { tokens } from '@fluentui/react-theme';
@@ -16,8 +16,8 @@ const useRootBaseStyles = makeResetStyles({
   listStyleType: 'none',
   ...createCustomFocusIndicatorStyle(
     {
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
     },
     { selector: 'focus' },
   ),
@@ -27,9 +27,7 @@ const useCheckmarkBaseStyles = makeStyles({
   root: {
     alignSelf: 'center',
     //eslint-disable-next-line
-    '& .fui-Checkbox__indicator': {
-      ...shorthands.margin('4px'),
-    },
+    '& .fui-Checkbox__indicator': { margin: '4px' },
   },
 });
 /**

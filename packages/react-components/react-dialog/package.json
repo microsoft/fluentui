@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-dialog",
-  "version": "9.10.5",
+  "version": "9.10.7",
   "description": "Dialog component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -40,17 +40,17 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.18.8",
-    "@fluentui/react-jsx-runtime": "^9.0.37",
-    "react-transition-group": "^4.4.1",
+    "@fluentui/react-utilities": "^9.18.9",
+    "@fluentui/react-jsx-runtime": "^9.0.38",
     "@fluentui/keyboard-keys": "^9.0.7",
-    "@fluentui/react-context-selector": "^9.1.59",
-    "@fluentui/react-shared-contexts": "^9.18.0",
-    "@fluentui/react-aria": "^9.11.2",
+    "@fluentui/react-context-selector": "^9.1.60",
+    "@fluentui/react-motions-preview": "^0.3.2",
+    "@fluentui/react-shared-contexts": "^9.19.0",
+    "@fluentui/react-aria": "^9.11.4",
     "@fluentui/react-icons": "^2.0.239",
-    "@fluentui/react-tabster": "^9.21.2",
+    "@fluentui/react-tabster": "^9.21.4",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-portal": "^9.4.24",
+    "@fluentui/react-portal": "^9.4.26",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

@@ -24,6 +24,6 @@
     "perf:test:debug": "cross-env PERF=true gulp perf:debug --debug",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
-    "type-check": "tsc -p ."
+    "type-check": "tsc -p . --noEmit --baseUrl ."
   }
 }

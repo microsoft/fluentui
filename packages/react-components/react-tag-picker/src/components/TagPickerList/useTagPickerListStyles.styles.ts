@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerListSlots, TagPickerListState } from './TagPickerList.types';
@@ -13,7 +13,7 @@ export const tagPickerListClassNames: SlotClassNames<TagPickerListSlots> = {
 const useStyles = makeStyles({
   root: {
     boxShadow: `${tokens.shadow16}`,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },

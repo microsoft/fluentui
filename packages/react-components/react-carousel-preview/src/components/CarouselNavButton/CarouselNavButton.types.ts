@@ -5,7 +5,7 @@ export type CarouselNavButtonSlots = {
   /**
    * ARIA compliant nav buttons used to jump to pages
    */
-  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
 };
 
 /**
@@ -20,5 +20,5 @@ export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
   /**
    * Enables selection state control
    */
-  isSelected?: boolean;
+  selected?: boolean;
 };

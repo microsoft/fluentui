@@ -14,7 +14,7 @@
     "lint": "just-scripts lint",
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "test-ssr": "test-ssr \"./src/stories/**/*.stories.tsx\""
   },
   "dependencies": {

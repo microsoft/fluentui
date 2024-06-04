@@ -11,14 +11,15 @@ const getPercent = (value: number, min: number, max: number) => {
 };
 
 export const useSliderState_unstable = (state: SliderState, props: SliderProps) => {
-  const { defaultValue = 0, min = 0, max = 100, step, value } = props;
+  const { min = 0, max = 100, step } = props;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value !== undefined ? clamp(value, min, max) : undefined,
-    defaultState: clamp(defaultValue, min, max),
+    state: props.value,
+    defaultState: props.defaultValue,
     initialState: 0,
   });
-  const valuePercent = getPercent(currentValue, min, max);
+  const clampedValue = clamp(currentValue, min, max);
+  const valuePercent = getPercent(clampedValue, min, max);
 
   const inputOnChange = state.input.onChange;
   const propsOnChange = props.onChange;
@@ -47,7 +48,7 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
   };
 
   // Input Props
-  state.input.value = currentValue;
+  state.input.value = clampedValue;
   state.input.onChange = onChange;
 
   return state;

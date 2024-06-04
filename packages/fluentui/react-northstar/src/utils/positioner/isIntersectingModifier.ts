@@ -1,4 +1,5 @@
-import { detectOverflow, Modifier } from '@popperjs/core';
+import { detectOverflow } from '@popperjs/core';
+import type { Modifier } from '@popperjs/core';
 
 export const isIntersectingModifier: IsIntersectingModifier = {
   name: 'is-intersecting-modifier',

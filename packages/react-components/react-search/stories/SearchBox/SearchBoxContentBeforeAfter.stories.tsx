@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonProps,
-  Field,
-  makeStyles,
-  SearchBox,
-  shorthands,
-  Text,
-  tokens,
-} from '@fluentui/react-components';
+import { Button, ButtonProps, Field, makeStyles, SearchBox, Text, tokens } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -17,7 +8,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   fieldWrapper: {
-    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   },
 });
 

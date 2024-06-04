@@ -6,7 +6,6 @@ import { createMotionComponent } from './createMotionComponent';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-
   duration: 500,
 };
 
@@ -14,6 +13,7 @@ function createElementMock() {
   const animateMock = jest.fn().mockImplementation(() => ({
     play: jest.fn(),
     cancel: jest.fn(),
+    persist: jest.fn(),
   }));
   const ElementMock = React.forwardRef((props, ref) => {
     React.useImperativeHandle(ref, () => ({
@@ -43,7 +43,6 @@ describe('createMotionComponent', () => {
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
       duration: motion.duration,
       fill: 'forwards',
-      iterations: 1,
     });
   });
 
@@ -60,7 +59,7 @@ describe('createMotionComponent', () => {
     );
 
     expect(fnMotion).toHaveBeenCalledTimes(1);
-    expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+    expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
 
     expect(animateMock).toHaveBeenCalledTimes(1);
   });

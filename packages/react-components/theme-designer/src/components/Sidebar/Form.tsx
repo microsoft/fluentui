@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import {
   Accordion,
@@ -19,7 +19,6 @@ import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext'
 // import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
 
-/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground3,
@@ -44,15 +43,15 @@ const useStyles = makeStyles({
     columnGap: tokens.spacingVerticalL,
   },
   colorPicker: {
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius('25px'),
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: '25px',
     height: '30px',
     width: '30px',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   color: {
-    ...shorthands.padding('0px'),
-    ...shorthands.border('0px'),
+    padding: '0px',
+    border: 'none',
     opacity: '0',
   },
   slider: {
@@ -70,7 +69,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
+    gap: '2px',
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },
@@ -81,7 +80,6 @@ const useStyles = makeStyles({
     paddingRight: '20px',
   },
 });
-/* eslint-enable deprecation/deprecation */
 
 const DELAY_INPUT = 20;
 export const Form: React.FC = () => {

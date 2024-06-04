@@ -8,11 +8,13 @@ yarn create-package # scaffolds a new package
 yarn create-component # scaffolds a new component
 yarn change # creates a new change file, if needed
 yarn clean # tidies any cached dependencies
+yarn build # generates and relinks all packages and temporary files, this can be a good option if you see errors unrelated to the packages you are working on
 yarn start # runs a package. You can select the package of choice.
 yarn update-snapshots # updates snapshot tests
 yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
 yarn nx run <package-name>:generate-api # updates API files
 yarn nx run <package-name>:<target-name> # runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
+yarn nx run @fluentui/<package-name>:type-check # quickly runs type checks and associated linting
 yarn lage build --to react # build v8 so intellisense works.
 ```
 

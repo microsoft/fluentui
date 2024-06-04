@@ -10,7 +10,6 @@ export class Label extends FASTElement {
    * 	Specifies font size of a label
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -21,7 +20,6 @@ export class Label extends FASTElement {
    * 	Specifies font weight of a label
    *
    * @public
-   * @default 'regular'
    * @remarks
    * HTML Attribute: weight
    */
