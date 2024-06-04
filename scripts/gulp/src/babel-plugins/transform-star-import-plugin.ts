@@ -1,4 +1,5 @@
 import * as T from '@babel/types';
+
 import type { BabelPlugin } from './types';
 
 /**

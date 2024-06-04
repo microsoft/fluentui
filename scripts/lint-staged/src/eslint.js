@@ -7,7 +7,7 @@ const os = require('os');
 const path = require('path');
 const { promisify } = require('util');
 
-const { getWorkspaceProjects, workspaceRoot } = require('@fluentui/scripts-monorepo');
+const { findConfig } = require('@fluentui/scripts-utils');
 const { default: PQueue } = require('p-queue');
 const exec = promisify(child_process.exec);
 
@@ -16,44 +16,37 @@ const exec = promisify(child_process.exec);
  */
 const eslintForPackageScript = path.join(__dirname, 'eslint-for-package.js');
 
-const files = process.argv.slice(2);
-
 /**
  * Since we have an eslint config file per package we need to respect this when running
  * eslint for staged files. To do this we group the files per package name. This function takes
  * a list of package names and returns an object with the package root as the key and the files
  * in that package as the value.
+ *
+ * @param {string[]} files
  * @returns {{ [packagePath: string]: string[] }}
  */
-function groupFilesByPackage() {
+function groupFilesByPackage(files) {
   /** @type {{ [packagePath: string]: string[] }} */
   const filesByPackage = {};
 
-  const packagesWithEslint = [];
-  const projects = getWorkspaceProjects();
-  for (const [, projectConfig] of projects) {
-    const absoluteRootPath = path.join(workspaceRoot, projectConfig.root);
-    if (fs.readdirSync(absoluteRootPath).some(f => f.startsWith('.eslintrc'))) {
-      packagesWithEslint.push(absoluteRootPath);
-    }
-  }
-
   for (const file of files) {
-    // eslint-disable-next-line no-shadow
-    const packagePath = packagesWithEslint.find(packagePath => {
-      // if file lives within searched package we will get only shortened absolute path `/src/abc.ts`
-      // we add `.` to make it relative and thus have match pattern to check upon
-      const normalizedFilePath = file.replace(packagePath, '.');
-      return normalizedFilePath.startsWith('./');
-    });
+    const packagePath = findConfig('project.json', file)?.replace('/project.json', '');
 
-    // Exclude files in a package without an eslintrc (or not in a package at all)
-    if (packagePath) {
-      if (!filesByPackage[packagePath]) {
-        filesByPackage[packagePath] = [];
-      }
-      filesByPackage[packagePath].push(file);
+    if (!packagePath) {
+      continue;
     }
+
+    const hasEslintConfig =
+      fs.existsSync(path.join(packagePath, '.eslintrc.json')) || fs.existsSync(path.join(packagePath, '.eslintrc.js'));
+
+    if (!hasEslintConfig) {
+      continue;
+    }
+
+    if (!filesByPackage[packagePath]) {
+      filesByPackage[packagePath] = [];
+    }
+    filesByPackage[packagePath].push(file);
   }
 
   return filesByPackage;
@@ -61,24 +54,26 @@ function groupFilesByPackage() {
 
 /**
  * Runs eslint for the staged files in the packages that require it.
+ * @param {string[]} files
  */
-async function runEslintOnFilesGroupedPerPackage() {
-  const filesGroupedByPackage = groupFilesByPackage();
+async function runEslintOnFilesGroupedPerPackage(files) {
+  const filesGroupedByPackage = groupFilesByPackage(files);
 
   // Log an empty line on error to make the eslint output look better
-  console.log('');
+  console.log('', filesGroupedByPackage);
 
   const queue = new PQueue({ concurrency: os.cpus().length / 2 });
   let hasError = false;
 
   await queue.addAll(
     // eslint-disable-next-line no-shadow
-    Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
+    Object.entries(filesGroupedByPackage).map(([packageRootAbsolutePath, files]) => async () => {
       // This script handles running eslint on ONLY touched files for each package.
       const cmd = `node ${eslintForPackageScript} ${files.join(' ')}`;
+      console.log(`${cmd}`);
 
       return (
-        exec(cmd, { cwd: packagePath })
+        exec(cmd, { cwd: packageRootAbsolutePath })
           // Log severity:error lint reports including severity:warn
           // this will also result in killing the process
           .catch((/** @type {{ stdout: string, stderr: string }} */ err) => {
@@ -106,7 +101,12 @@ async function runEslintOnFilesGroupedPerPackage() {
 }
 
 function main() {
-  runEslintOnFilesGroupedPerPackage().catch(err => {
+  /**
+   * Files that are staged for commit - Absolute paths
+   */
+  const files = process.argv.slice(2);
+
+  runEslintOnFilesGroupedPerPackage(files).catch(err => {
     console.error(err);
     process.exit(1);
   });

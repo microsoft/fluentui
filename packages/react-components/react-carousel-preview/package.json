@@ -45,6 +45,7 @@
     "@fluentui/react-tabster": "^9.21.4",
     "@fluentui/react-aria": "^9.11.4",
     "@fluentui/react-context-selector": "^9.1.60",
+    "@fluentui/react-icons": "^2.0.239",
     "use-sync-external-store": "^1.2.0",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"

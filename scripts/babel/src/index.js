@@ -1,3 +1,7 @@
+/**
+ * This files is used solely for react-northstar projects. Please don't any new logic here
+ */
+
 /** @typedef {import('@babel/core').TransformOptions['caller']} Caller */
 
 const isNodeCaller = (/** @type {Caller}*/ caller) => {

@@ -1,10 +1,10 @@
 // @ts-check
 
+const fs = require('fs');
 const path = require('path');
 
 const { eslintConstants } = require('@fluentui/scripts-monorepo');
 const { ESLint } = require('eslint');
-const fs = require('fs-extra');
 const micromatch = require('micromatch');
 
 /**
@@ -21,8 +21,9 @@ const micromatch = require('micromatch');
 async function run() {
   // Get information needed to determine whether files in this package should be linted
   const packagePath = process.cwd();
-  const packageJson = fs.readJSONSync(path.join(packagePath, 'package.json'));
-  const lintScript = packageJson.scripts.lint || '';
+  /** @type {{scripts?:Record<string,string>}} */
+  const packageJson = JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf-8'));
+  const lintScript = packageJson.scripts?.lint ?? '';
   /** @type {import('eslint').ESLint} */
   let eslint;
   /** @type {string} */
@@ -43,7 +44,7 @@ async function run() {
     eslint = new ESLint({ fix: true, cache: lintScript.includes('--cache') });
   }
 
-  // files are provided by @see `./eslint.js` via cli
+  // files are provided by @see `file://./eslint.js` via cli
   const cliFiles = process.argv.slice(2);
   // Filter out files with non-linted extensions
   const files = cliFiles.filter(file => micromatch.isMatch(file, includePattern));

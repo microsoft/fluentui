@@ -1,5 +1,5 @@
-import * as T from '@babel/types';
 import { NodePath } from '@babel/traverse';
+import * as T from '@babel/types';
 
 export type BabelPluginArguments = {
   types: typeof T;

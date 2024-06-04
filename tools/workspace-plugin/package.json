@@ -6,7 +6,11 @@
   "generators": "./generators.json",
   "scripts": {
     "test": "nx run @fluentui/workspace-plugin:test",
-    "type-check": "nx run @fluentui/workspace-plugin:type-check",
+    "type-check": "node  ./scripts/type-check.mjs",
     "lint": "eslint --ext .ts,.js,.json ."
-  }
+  },
+  "dependencies": {
+    "@nx/devkit": "^17.3.2"
+  },
+  "devDependencies": {}
 }

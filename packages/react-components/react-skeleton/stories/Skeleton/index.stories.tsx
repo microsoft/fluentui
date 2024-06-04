@@ -1,4 +1,4 @@
-import { Skeleton } from '@fluentui/react-components';
+import { Skeleton, SkeletonItem } from '@fluentui/react-components';
 
 import descriptionMd from './SkeletonDescription.md';
 import bestPracticesMd from './SkeletonBestPractices.md';
@@ -11,6 +11,9 @@ export { Row } from './SkeletonRow.stories';
 export default {
   title: 'Components/Skeleton',
   component: Skeleton,
+  subcomponents: {
+    SkeletonItem,
+  },
   parameters: {
     docs: {
       description: {

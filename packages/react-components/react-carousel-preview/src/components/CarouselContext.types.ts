@@ -30,6 +30,7 @@ export type CarouselContextValue = {
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
+  circular?: Boolean;
 };
 
 /**
