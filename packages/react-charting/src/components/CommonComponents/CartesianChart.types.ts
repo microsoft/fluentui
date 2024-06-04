@@ -434,7 +434,7 @@ export interface ICartesianChartProps {
   secondaryYAxistitle?: string;
 
   /**
-   * Whether to use UTC time for axis ticks and time display in the callout.
+   * Whether to use UTC time for axis scale, ticks, and the time display in callouts.
    * When set to `true`, time is displayed equally, regardless of the user's timezone settings.
    * @default true
    */
