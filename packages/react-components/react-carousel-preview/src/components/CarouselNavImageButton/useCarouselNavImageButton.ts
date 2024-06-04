@@ -5,6 +5,7 @@ import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@flu
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
+import { useCarouselStore_unstable } from '../useCarouselStore';
 
 /**
  * Create the state required to render CarouselNavImageButton.
@@ -23,8 +24,8 @@ export const useCarouselNavImageButton_unstable = (
 
   const value = useCarouselNavContext();
 
-  const selectPageByValue = useCarouselContext_unstable(c => c.selectPageByValue);
-  const selected = useCarouselContext_unstable(c => c.value === value);
+  const { selectPageByValue } = useCarouselContext_unstable();
+  const selected = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);

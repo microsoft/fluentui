@@ -5,6 +5,7 @@ import {
   slot,
   useControllableState,
   useEventCallback,
+  useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -25,18 +26,19 @@ import type { CarouselContextValue } from '../CarouselContext.types';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  const { onValueChange, circular } = props;
+  const { onValueChange, circular, peeking } = props;
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
-  const [store] = React.useState(() => createCarouselStore());
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
     state: props.value,
     initialState: null,
   });
+  const [store] = React.useState(() => createCarouselStore(value));
+
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -51,6 +53,10 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }, [value]);
   }
 
+  useIsomorphicLayoutEffect(() => {
+    store.setActiveValue(value);
+  }, [store, value]);
+
   React.useEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
 
@@ -59,7 +65,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }
 
     return () => {
-      store.clear();
+      store.clearValues();
     };
   }, [store]);
 
@@ -149,9 +155,9 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       { elementType: 'div' },
     ),
     store,
-    value,
     selectPageByDirection,
     selectPageByValue,
     circular,
+    peeking,
   };
 }

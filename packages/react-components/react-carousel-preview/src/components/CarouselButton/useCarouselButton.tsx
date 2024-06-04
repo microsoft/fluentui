@@ -3,7 +3,7 @@ import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useCarouselContext_unstable } from '../CarouselContext';
-import { useCarouselValues_unstable } from '../useCarouselValues';
+import { useCarouselStore_unstable } from '../useCarouselStore';
 import { slot } from '@fluentui/react-utilities';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { ARIAButtonElement } from '@fluentui/react-aria';
@@ -23,10 +23,18 @@ export const useCarouselButton_unstable = (
 ): CarouselButtonState => {
   const { navType } = props;
 
-  const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
-  const values = useCarouselValues_unstable(snapshot => snapshot);
-  const activeValue = useCarouselContext_unstable(c => c.value);
-  const circular = useCarouselContext_unstable(c => c.circular);
+  const { circular, selectPageByDirection } = useCarouselContext_unstable();
+  const isTrailing = useCarouselStore_unstable(snapshot => {
+    if (!snapshot.activeValue || circular) {
+      return false;
+    }
+
+    if (navType === 'prev') {
+      return snapshot.values.indexOf(snapshot.activeValue) === 0;
+    }
+
+    return snapshot.values.indexOf(snapshot.activeValue) === snapshot.values.length - 1;
+  });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
@@ -37,18 +45,6 @@ export const useCarouselButton_unstable = (
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
-
-  const isTrailing = React.useMemo(() => {
-    if (!activeValue || circular) {
-      return false;
-    }
-
-    if (navType === 'prev') {
-      return values.indexOf(activeValue) === 0;
-    }
-
-    return values.indexOf(activeValue) === values.length - 1;
-  }, [navType, activeValue, values, circular]);
 
   return {
     navType,
