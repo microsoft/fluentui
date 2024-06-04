@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { SwatchPicker, ColorSwatch, SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
     width: '100px',
     height: '100px',
-    ...shorthands.border('1px', 'solid', '#ccc'),
-    ...shorthands.margin('20px', '0'),
+    border: '1px solid #ccc',
+    margin: '20px 0',
     '@media (forced-colors: active)': {
       forcedColorAdjust: 'none',
     },

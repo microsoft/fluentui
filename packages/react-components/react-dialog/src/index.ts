@@ -1,8 +1,10 @@
-export { Dialog, renderDialog_unstable, useDialog_unstable } from './Dialog';
+export { Dialog, renderDialog_unstable, useDialog_unstable, useDialogContextValues_unstable } from './Dialog';
 export type {
+  DialogContextValues,
   DialogSlots,
   DialogProps,
   DialogState,
+  DialogModalType,
   DialogOpenChangeData,
   DialogOpenChangeEvent,
   DialogOpenChangeEventHandler,

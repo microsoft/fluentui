@@ -11,19 +11,19 @@ import type {
 import { Listbox } from '../Listbox/Listbox';
 
 export type DropdownSlots = {
-  /* The root dropdown slot */
+  /** The root dropdown slot */
   root: NonNullable<Slot<'div'>>;
 
-  /* The dropdown arrow icon */
+  /** The dropdown arrow icon */
   expandIcon?: Slot<'span'>;
 
-  /* The dropdown clear icon */
+  /** The dropdown clear icon */
   clearButton?: Slot<'button'>;
 
-  /* The primary slot, the element with role="combobox" */
+  /** The primary slot, the element with role="combobox" */
   button: NonNullable<Slot<'button'>>;
 
-  /* The dropdown listbox slot */
+  /** The dropdown listbox slot */
   listbox?: Slot<typeof Listbox>;
 };
 
@@ -37,7 +37,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
  */
 export type DropdownState = ComponentState<DropdownSlots> &
   Omit<ComboboxBaseState, 'freeform'> & {
-    /* Whether the placeholder is currently displayed */
+    /** Whether the placeholder is currently displayed */
     placeholderVisible: boolean;
 
     showClearButton?: boolean;

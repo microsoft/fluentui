@@ -118,6 +118,7 @@ export {
   // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
+  useAnimationFrame,
   useId,
   useIsomorphicLayoutEffect,
   useEventCallback,
@@ -126,6 +127,7 @@ export {
   useMergedRefs,
   useScrollbarWidth,
   useSelection,
+  useTimeout,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -860,6 +862,7 @@ export {
   useDialogContext_unstable,
   useDialogSurfaceContext_unstable,
   useDialogSurfaceContextValues_unstable,
+  DialogProvider,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -868,6 +871,7 @@ export type {
   DialogOpenChangeEvent,
   DialogSlots,
   DialogState,
+  DialogModalType,
   DialogTriggerProps,
   DialogTriggerChildProps,
   DialogTriggerState,
@@ -1439,10 +1443,13 @@ export type {
   MessageBarActionsProps,
   MessageBarActionsSlots,
   MessageBarActionsState,
+  MessageBarActionsContextValues,
+  MessageBarTransitionContextValue,
   MessageBarBodyProps,
   MessageBarBodySlots,
   MessageBarBodyState,
   MessageBarContextValue,
+  MessageBarContextValues,
   MessageBarGroupProps,
   MessageBarGroupSlots,
   MessageBarGroupState,

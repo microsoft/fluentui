@@ -18,7 +18,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -39,7 +38,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -408,7 +409,6 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -429,7 +429,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -798,7 +800,6 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -819,7 +820,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1168,7 +1171,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -1189,7 +1191,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1279,7 +1283,6 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -1300,7 +1303,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1669,7 +1674,6 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -1690,7 +1694,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2059,7 +2065,6 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2080,7 +2085,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2449,7 +2456,6 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2470,7 +2476,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -2839,7 +2847,6 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -2860,7 +2867,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
       height={0}
+      role="region"
       style={
         Object {
           "display": "block",

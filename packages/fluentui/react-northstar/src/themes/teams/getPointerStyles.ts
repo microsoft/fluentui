@@ -1,9 +1,9 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import * as PopperJs from '@popperjs/core';
+import type { BasePlacement as PopperJsBasePlacement } from '@popperjs/core';
 
 type GetContainerStylesOptions = {
   padding: string;
-  placement: PopperJs.BasePlacement;
+  placement: PopperJsBasePlacement;
 };
 
 type GetPointerStylesOptions = {
@@ -16,7 +16,7 @@ type GetPointerStylesOptions = {
   height: string;
   width: string;
 
-  placement: PopperJs.BasePlacement;
+  placement: PopperJsBasePlacement;
   rtl: boolean;
   svg?: string;
 };

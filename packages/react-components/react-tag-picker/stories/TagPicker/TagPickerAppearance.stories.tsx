@@ -8,7 +8,7 @@ import {
   TagPickerOption,
   TagPickerGroup,
 } from '@fluentui/react-components';
-import { Tag, Avatar, tokens, shorthands, makeStyles, Field } from '@fluentui/react-components';
+import { Tag, Avatar, tokens, makeStyles, Field } from '@fluentui/react-components';
 
 const options = [
   'John Doe',
@@ -69,9 +69,9 @@ const useStyles = makeStyles({
   darkBG: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
     color: tokens.colorNeutralForegroundInverted2,
-    ...shorthands.padding('20px'),
-    ...shorthands.marginBlock('10px'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    padding: '20px',
+    marginBlock: '10px',
+    borderRadius: tokens.borderRadiusMedium,
   },
 });
 

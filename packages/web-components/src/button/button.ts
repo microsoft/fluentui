@@ -378,7 +378,7 @@ export class Button extends FASTElement {
     }
 
     if (e.key === keyEnter || e.key === keySpace) {
-      this.press();
+      this.click();
       return;
     }
 

@@ -260,9 +260,11 @@ import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogContextValue } from '@fluentui/react-dialog';
+import { DialogModalType } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
+import { DialogProvider } from '@fluentui/react-dialog';
 import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
@@ -529,6 +531,7 @@ import { mergeClasses } from '@griffel/react';
 import { MessageBar } from '@fluentui/react-message-bar';
 import { MessageBarActions } from '@fluentui/react-message-bar';
 import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsContextValues } from '@fluentui/react-message-bar';
 import { MessageBarActionsProps } from '@fluentui/react-message-bar';
 import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
 import { MessageBarActionsState } from '@fluentui/react-message-bar';
@@ -540,6 +543,7 @@ import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { messageBarClassNames } from '@fluentui/react-message-bar';
 import { MessageBarContextProvider } from '@fluentui/react-message-bar';
 import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarContextValues } from '@fluentui/react-message-bar';
 import { MessageBarGroup } from '@fluentui/react-message-bar';
 import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
 import { MessageBarGroupProps } from '@fluentui/react-message-bar';
@@ -554,6 +558,7 @@ import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
 import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
+import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -1294,6 +1299,7 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAnimationFrame } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
@@ -1653,6 +1659,7 @@ import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useTimeout } from '@fluentui/react-utilities';
 import { useToast_unstable } from '@fluentui/react-toast';
 import { useToastBody_unstable } from '@fluentui/react-toast';
 import { useToastBodyStyles_unstable } from '@fluentui/react-toast';
@@ -2212,11 +2219,15 @@ export { DialogContentState }
 
 export { DialogContextValue }
 
+export { DialogModalType }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
 
 export { DialogProps }
+
+export { DialogProvider }
 
 export { DialogSlots }
 
@@ -2750,6 +2761,8 @@ export { MessageBarActions }
 
 export { messageBarActionsClassNames }
 
+export { MessageBarActionsContextValues }
+
 export { MessageBarActionsProps }
 
 export { MessageBarActionsSlots }
@@ -2771,6 +2784,8 @@ export { messageBarClassNames }
 export { MessageBarContextProvider }
 
 export { MessageBarContextValue }
+
+export { MessageBarContextValues }
 
 export { MessageBarGroup }
 
@@ -2799,6 +2814,8 @@ export { MessageBarTitleProps }
 export { MessageBarTitleSlots }
 
 export { MessageBarTitleState }
+
+export { MessageBarTransitionContextValue }
 
 export { OnOpenChangeData }
 
@@ -4280,6 +4297,8 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAnimationFrame }
+
 export { useAnnounce }
 
 export { useAriaLiveAnnouncer_unstable }
@@ -4997,6 +5016,8 @@ export { useTextareaStyles_unstable }
 export { useTextStyles_unstable }
 
 export { useThemeClassName }
+
+export { useTimeout }
 
 export { useToast_unstable }
 

@@ -53,7 +53,15 @@ const getTotalOffsetTop = (element: HTMLElement, scrollParent: HTMLElement): num
 };
 
 const getScrollMargins = (element: HTMLElement) => {
-  const computedStyles = getComputedStyle(element);
+  const win = element.ownerDocument?.defaultView;
+  if (!win) {
+    return {
+      scrollMarginTop: 0,
+      scrollMarginBottom: 0,
+    };
+  }
+
+  const computedStyles = win.getComputedStyle(element);
   const scrollMarginTop =
     getIntValueOfComputedStyle(computedStyles.scrollMarginTop) ??
     getIntValueOfComputedStyle(computedStyles.scrollMarginBlockStart);

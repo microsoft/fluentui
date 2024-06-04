@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { useMotion, useMotionClassNames } from '@fluentui/react-motion-preview';
-import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Button, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 
   rectangle: {
-    ...shorthands.borderRadius('8px'),
+    borderRadius: '8px',
 
     width: '150px',
     height: '100px',

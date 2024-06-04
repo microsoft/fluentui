@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DefaultPalette } from '@fluentui/react';
-import { Button, makeStyles, Textarea, TextareaProps, shorthands, RadioGroup, Radio } from '@fluentui/react-components';
+import { Button, makeStyles, Textarea, TextareaProps, RadioGroup, Radio } from '@fluentui/react-components';
 import { createBrandVariants } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     gridTemplateRows: 'auto',
     gridRowGap: '10px',
     justifyItems: 'start',
-    ...shorthands.padding('5px'),
+    padding: '5px',
   },
   editor: {
     width: '400px',
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     display: 'inline-block',
     width: '10px',
     height: '10px',
-    ...shorthands.border('1px', 'solid', 'black'),
+    border: '1px solid black',
   },
 });
 

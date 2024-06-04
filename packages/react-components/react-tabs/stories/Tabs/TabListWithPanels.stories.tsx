@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens, Tab, TabList } from '@fluentui/react-components';
+import { makeStyles, tokens, Tab, TabList } from '@fluentui/react-components';
 import {
   AirplaneRegular,
   AirplaneFilled,
@@ -21,14 +21,14 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    ...shorthands.padding('50px', '20px'),
+    padding: '50px 20px',
     rowGap: '20px',
   },
   panels: {
-    ...shorthands.padding(0, '10px'),
+    padding: '0 10px',
     '& th': {
       textAlign: 'left',
-      ...shorthands.padding(0, '30px', 0, 0),
+      padding: '0 30px 0 0',
     },
   },
   propsTable: {
@@ -36,7 +36,7 @@ const useStyles = makeStyles({
       fontWeight: tokens.fontWeightSemibold,
     },
     '& td': {
-      ...shorthands.padding(0, '30px', 0, 0),
+      padding: '0 30px 0 0',
     },
   },
 });

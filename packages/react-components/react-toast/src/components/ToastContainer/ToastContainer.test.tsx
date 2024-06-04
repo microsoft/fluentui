@@ -5,6 +5,7 @@ import { isConformant } from '../../testing/isConformant';
 import { ToastContainerProps } from './ToastContainer.types';
 import { toastContainerClassNames } from './useToastContainerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { type PresenceComponentProps } from '@fluentui/react-motions-preview';
 
 const defaultToastContainerProps: ToastContainerProps = {
   announce: () => null,
@@ -32,6 +33,27 @@ const defaultToastContainerProps: ToastContainerProps = {
 const runningTimerSelector = '[data-timer-status="running"]';
 const pausedTimerSelector = '[data-timer-status="paused"]';
 
+const FAKE_MOTION_DURATION = 500;
+
+jest.mock('./ToastContainerMotion', () => ({
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  ToastContainerMotion: (props: PresenceComponentProps) => {
+    const { children, onMotionFinish, visible } = props;
+
+    React.useEffect(() => {
+      const timeout = setTimeout(() => {
+        onMotionFinish?.(null, { direction: visible ? 'enter' : 'exit' });
+      }, FAKE_MOTION_DURATION);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }, [onMotionFinish, visible]);
+
+    return <>{children}</>;
+  },
+}));
+
 describe('ToastContainer', () => {
   beforeEach(() => {
     jest.useRealTimers();
@@ -43,7 +65,11 @@ describe('ToastContainer', () => {
     displayName: 'ToastContainer',
     requiredProps: defaultToastContainerProps,
     isInternal: true,
-    disabledTests: ['consistent-callback-args'],
+    disabledTests: [
+      'consistent-callback-args',
+      // There are conflicts between ToastContainerMotion mock and React
+      'make-styles-overrides-win',
+    ],
   });
 
   it('renders a default state', () => {
@@ -104,31 +130,32 @@ describe('ToastContainer', () => {
   });
 
   it('should start timer after toast on animationend', () => {
+    jest.useFakeTimers();
+
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1 };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
     act(() => {
-      if (toastElement) {
-        fireEvent.animationEnd(toastElement);
-      }
+      jest.advanceTimersToNextTimer(FAKE_MOTION_DURATION);
     });
 
     expect(container.querySelector(runningTimerSelector)).not.toBeNull();
   });
 
   it('should close toast ontimeout', () => {
+    jest.useFakeTimers();
+
     const close = jest.fn();
-    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, close };
+    const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 500, close };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
+
     act(() => {
-      if (toastElement) {
-        fireEvent.animationEnd(toastElement);
-      }
+      jest.advanceTimersByTime(FAKE_MOTION_DURATION);
     });
 
     const timer = container.querySelector(runningTimerSelector);
@@ -144,15 +171,16 @@ describe('ToastContainer', () => {
   });
 
   it('should pause on hover', () => {
+    jest.useFakeTimers();
+
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnHover: true };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
+
     act(() => {
-      if (toastElement) {
-        fireEvent.animationEnd(toastElement);
-      }
+      jest.advanceTimersToNextTimer(FAKE_MOTION_DURATION);
     });
 
     expect(container.querySelector(runningTimerSelector)).not.toBeNull();
@@ -175,15 +203,16 @@ describe('ToastContainer', () => {
   });
 
   it('should pause on window blur', () => {
+    jest.useFakeTimers();
+
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnWindowBlur: true };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
     const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
+
     act(() => {
-      if (toastElement) {
-        fireEvent.animationEnd(toastElement);
-      }
+      jest.advanceTimersByTime(FAKE_MOTION_DURATION);
     });
 
     expect(container.querySelector(runningTimerSelector)).not.toBeNull();

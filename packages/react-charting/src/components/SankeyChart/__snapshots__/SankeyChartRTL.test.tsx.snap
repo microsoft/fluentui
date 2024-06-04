@@ -38,84 +38,6 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           class=
 
               {
-                fill: #ffffff;
-                stroke-width: 3px;
-                stroke: #000000;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
-              }
-          stroke-opacity="1"
-        >
-          <g>
-            <defs>
-              <lineargradient
-                id="gradient-link1-0"
-                x1="0%"
-                x2="100%"
-                y1="0%"
-                y2="0%"
-              >
-                <stop
-                  offset="0"
-                  stop-color="#757575"
-                />
-                <stop
-                  offset="100%"
-                  stop-color="#757575"
-                />
-              </lineargradient>
-            </defs>
-            <path
-              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
-              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
-              data-is-focusable="true"
-              fill-opacity="1"
-              id="link13"
-              role="img"
-              stroke="#757575"
-              stroke-opacity="1"
-              stroke-width="2"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <defs>
-              <lineargradient
-                id="gradient-link1-1"
-                x1="0%"
-                x2="100%"
-                y1="0%"
-                y2="0%"
-              >
-                <stop
-                  offset="0"
-                  stop-color="#8764B8"
-                />
-                <stop
-                  offset="100%"
-                  stop-color="#8764B8"
-                />
-              </lineargradient>
-            </defs>
-            <path
-              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
-              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
-              data-is-focusable="true"
-              fill-opacity="1"
-              id="link14"
-              role="img"
-              stroke="#757575"
-              stroke-opacity="1"
-              stroke-width="2"
-              tabindex="-1"
-            />
-          </g>
-        </g>
-        <g
-          class=
-
-              {
                 fill: #F5F5F5;
               }
               @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
@@ -135,7 +57,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               role="img"
               stroke="#4B3867"
               stroke-width="2"
-              tabindex="-1"
+              tabindex="0"
               width="124"
               x="48"
               y="36"
@@ -186,6 +108,17 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </text>
             </g>
           </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
           <g
             id="nodeGElement8"
           >
@@ -250,6 +183,109 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </text>
             </g>
           </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-0"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#757575"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#757575"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
+              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link13"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-1"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#8764B8"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
+              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link14"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
           <g
             id="nodeGElement10"
           >
@@ -314,6 +350,17 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </text>
             </g>
           </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
           <g
             id="nodeGElement12"
           >
@@ -436,84 +483,6 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             class=
 
                 {
-                  fill: #1b1a19;
-                  stroke-width: 3px;
-                  stroke: #ffffff;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
-                }
-            stroke-opacity="1"
-          >
-            <g>
-              <defs>
-                <lineargradient
-                  id="gradient-link4-0"
-                  x1="0%"
-                  x2="100%"
-                  y1="0%"
-                  y2="0%"
-                >
-                  <stop
-                    offset="0"
-                    stop-color="#757575"
-                  />
-                  <stop
-                    offset="100%"
-                    stop-color="#757575"
-                  />
-                </lineargradient>
-              </defs>
-              <path
-                aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
-                d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
-                data-is-focusable="true"
-                fill-opacity="1"
-                id="link16"
-                role="img"
-                stroke="#757575"
-                stroke-opacity="1"
-                stroke-width="2"
-                tabindex="0"
-              />
-            </g>
-            <g>
-              <defs>
-                <lineargradient
-                  id="gradient-link4-1"
-                  x1="0%"
-                  x2="100%"
-                  y1="0%"
-                  y2="0%"
-                >
-                  <stop
-                    offset="0"
-                    stop-color="#8764B8"
-                  />
-                  <stop
-                    offset="100%"
-                    stop-color="#8764B8"
-                  />
-                </lineargradient>
-              </defs>
-              <path
-                aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
-                d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
-                data-is-focusable="true"
-                fill-opacity="1"
-                id="link17"
-                role="img"
-                stroke="#757575"
-                stroke-opacity="1"
-                stroke-width="2"
-                tabindex="-1"
-              />
-            </g>
-          </g>
-          <g
-            class=
-
-                {
                   fill: #F5F5F5;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
@@ -533,7 +502,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 stroke="#4B3867"
                 stroke-width="2"
-                tabindex="-1"
+                tabindex="0"
                 width="124"
                 x="48"
                 y="36"
@@ -584,6 +553,17 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </text>
               </g>
             </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
             <g
               id="nodeGElement11"
             >
@@ -648,6 +628,109 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </text>
               </g>
             </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #1b1a19;
+                  stroke-width: 3px;
+                  stroke: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+            stroke-opacity="1"
+          >
+            <g>
+              <defs>
+                <lineargradient
+                  id="gradient-link4-0"
+                  x1="0%"
+                  x2="100%"
+                  y1="0%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#757575"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#757575"
+                  />
+                </lineargradient>
+              </defs>
+              <path
+                aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
+                d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+                data-is-focusable="true"
+                fill-opacity="1"
+                id="link16"
+                role="img"
+                stroke="#757575"
+                stroke-opacity="1"
+                stroke-width="2"
+                tabindex="-1"
+              />
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #1b1a19;
+                  stroke-width: 3px;
+                  stroke: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+            stroke-opacity="1"
+          >
+            <g>
+              <defs>
+                <lineargradient
+                  id="gradient-link4-1"
+                  x1="0%"
+                  x2="100%"
+                  y1="0%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#8764B8"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#8764B8"
+                  />
+                </lineargradient>
+              </defs>
+              <path
+                aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
+                d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+                data-is-focusable="true"
+                fill-opacity="1"
+                id="link17"
+                role="img"
+                stroke="#757575"
+                stroke-opacity="1"
+                stroke-width="2"
+                tabindex="-1"
+              />
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
             <g
               id="nodeGElement13"
             >
@@ -712,6 +795,17 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </text>
               </g>
             </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
             <g
               id="nodeGElement15"
             >
@@ -834,84 +928,6 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           class=
 
               {
-                fill: #ffffff;
-                stroke-width: 3px;
-                stroke: #000000;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
-              }
-          stroke-opacity="1"
-        >
-          <g>
-            <defs>
-              <lineargradient
-                id="gradient-link1-0"
-                x1="0%"
-                x2="100%"
-                y1="0%"
-                y2="0%"
-              >
-                <stop
-                  offset="0"
-                  stop-color="#757575"
-                />
-                <stop
-                  offset="100%"
-                  stop-color="#757575"
-                />
-              </lineargradient>
-            </defs>
-            <path
-              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
-              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
-              data-is-focusable="true"
-              fill-opacity="1"
-              id="link13"
-              role="img"
-              stroke="#757575"
-              stroke-opacity="1"
-              stroke-width="2"
-              tabindex="0"
-            />
-          </g>
-          <g>
-            <defs>
-              <lineargradient
-                id="gradient-link1-1"
-                x1="0%"
-                x2="100%"
-                y1="0%"
-                y2="0%"
-              >
-                <stop
-                  offset="0"
-                  stop-color="#8764B8"
-                />
-                <stop
-                  offset="100%"
-                  stop-color="#8764B8"
-                />
-              </lineargradient>
-            </defs>
-            <path
-              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
-              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
-              data-is-focusable="true"
-              fill-opacity="1"
-              id="link14"
-              role="img"
-              stroke="#757575"
-              stroke-opacity="1"
-              stroke-width="2"
-              tabindex="-1"
-            />
-          </g>
-        </g>
-        <g
-          class=
-
-              {
                 fill: #F5F5F5;
               }
               @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
@@ -931,7 +947,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               role="img"
               stroke="#4B3867"
               stroke-width="2"
-              tabindex="-1"
+              tabindex="0"
               width="124"
               x="48"
               y="36"
@@ -982,6 +998,17 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </text>
             </g>
           </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
           <g
             id="nodeGElement8"
           >
@@ -1046,6 +1073,109 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </text>
             </g>
           </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-0"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#757575"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#757575"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
+              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link13"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-1"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#8764B8"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
+              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link14"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
           <g
             id="nodeGElement10"
           >
@@ -1110,6 +1240,17 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </text>
             </g>
           </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
           <g
             id="nodeGElement12"
           >

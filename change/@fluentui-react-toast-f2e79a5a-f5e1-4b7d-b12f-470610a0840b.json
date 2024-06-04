@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adopt changes in motion APIs",
+  "packageName": "@fluentui/react-toast",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

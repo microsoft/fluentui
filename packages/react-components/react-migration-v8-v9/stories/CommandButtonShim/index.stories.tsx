@@ -4,7 +4,7 @@ import descriptionMd from './Description.md';
 
 import { CommandButton, Icon } from '@fluentui/react';
 import type { IIconProps } from '@fluentui/react';
-import { FluentProvider, Button, webLightTheme, makeStyles, shorthands } from '@fluentui/react-components';
+import { FluentProvider, Button, webLightTheme, makeStyles } from '@fluentui/react-components';
 import { CommandButtonShim } from '@fluentui/react-migration-v8-v9';
 
 const useStyles = makeStyles({
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 

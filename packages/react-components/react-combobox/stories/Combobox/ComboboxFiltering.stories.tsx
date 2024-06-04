@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Combobox, ComboboxProps, makeStyles, shorthands, useComboboxFilter, useId } from '@fluentui/react-components';
+import { Combobox, ComboboxProps, makeStyles, useComboboxFilter, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
-    ...shorthands.gap('2px'),
+    gap: '2px',
     maxWidth: '400px',
   },
 });

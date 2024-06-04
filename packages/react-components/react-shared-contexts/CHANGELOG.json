@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 20 May 2024 12:45:03 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.19.0",
+      "version": "9.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "cafe42c624950811c743a01e3a92f394ff7afcdd",
+            "comment": "feat(react-swatch-picker): added CustomStyleHooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 May 2024 12:55:00 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.18.0",
       "version": "9.18.0",

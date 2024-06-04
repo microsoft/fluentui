@@ -11,6 +11,8 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
   const [width, setWidth] = React.useState(0);
 
   const container = React.useRef<HTMLElement | undefined>(undefined);
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+  // eslint-disable-next-line no-restricted-globals
   const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
 
   const { targetDocument } = useFluent();

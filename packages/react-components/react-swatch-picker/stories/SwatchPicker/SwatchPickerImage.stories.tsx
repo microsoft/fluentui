@@ -1,17 +1,22 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { SwatchPicker, SwatchPickerOnSelectEventHandler, ImageSwatch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
-    width: '700px',
+    width: '100%',
     height: '466px',
-    backgroundSize: 'cover',
-    ...shorthands.margin('20px', '0'),
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    margin: '20px 0',
   },
   swatch: {
     width: '100px',
     height: '100px',
+    '@media (max-width: 768px)': {
+      width: '50px',
+      height: '50px',
+    },
   },
 });
 

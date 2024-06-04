@@ -12,7 +12,7 @@ export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFoot
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    ...shorthands.gap('8px'),
+    gap: '8px',
     paddingTop: '12px',
   },
   rootVertical: {
@@ -24,11 +24,11 @@ const useStyles = makeStyles({
   },
   buttonRootVertical: {
     width: 'auto',
-    ...shorthands.borderRadius('4px'),
+    borderRadius: '4px',
   },
   buttonRootHorizontal: {
     minWidth: '96px',
-    ...shorthands.borderRadius('4px'),
+    borderRadius: '4px',
   },
   brandSecondary: {
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),

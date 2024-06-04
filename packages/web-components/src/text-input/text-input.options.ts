@@ -1,7 +1,17 @@
-import type { ValuesOf } from '../utils/index.js';
+import type { StartEndOptions } from '../patterns/start-end.js';
+import type { ValuesOf } from '../utils/typings.js';
+import type { TextInput } from './text-input.js';
 
 /**
- * TextInput size constants
+ * TextInput configuration options.
+ *
+ * @public
+ */
+export type TextInputOptions = StartEndOptions<TextInput>;
+
+/**
+ * Values for the `control-size` attribute on TextInput elements.
+ *
  * @public
  */
 export const TextInputControlSize = {
@@ -10,14 +20,11 @@ export const TextInputControlSize = {
   large: 'large',
 } as const;
 
-/**
- * Applies size styling to TextInput
- * @public
- */
 export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 
 /**
- * TextInput appearance constants
+ * Values for the `appearance` attribute on TextInput elements.
+ *
  * @public
  */
 export const TextInputAppearance = {
@@ -27,45 +34,39 @@ export const TextInputAppearance = {
   filledDarker: 'filled-darker',
 } as const;
 
-/**
- * Applies appearance styling to TextInput
- * @public
- */
 export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
 
 /**
- * Text field sub-types
+ * Values for the `type` attribute on TextInput elements.
+ *
  * @public
  */
 export const TextInputType = {
-  /**
-   * An email TextInput
-   */
   email: 'email',
-
-  /**
-   * A password TextInput
-   */
   password: 'password',
-
-  /**
-   * A telephone TextInput
-   */
   tel: 'tel',
-
-  /**
-   * A text TextInput
-   */
   text: 'text',
-
-  /**
-   * A URL TextInput
-   */
   url: 'url',
 } as const;
 
+export type TextInputType = ValuesOf<typeof TextInputType>;
+
 /**
- * Types for the text field sub-types
+ * Input types that block implicit form submission.
+ *
  * @public
  */
-export type TextInputType = ValuesOf<typeof TextInputType>;
+export const ImplicitSubmissionBlockingTypes = [
+  'date',
+  'datetime-local',
+  'email',
+  'month',
+  'number',
+  'password',
+  'search',
+  'tel',
+  'text',
+  'time',
+  'url',
+  'week',
+];

@@ -251,7 +251,10 @@ packages/react-components/react-teaching-popover @microsoft/xc-uxe @Mitch-At-Wor
 packages/react-components/react-timepicker-compat @microsoft/teams-prg
 packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
 packages/react-components/react-tag-picker @microsoft/teams-prg
-packages/react-components/react-carousel-preview @microsoft/xc-uxe @Mitch-At-Work
+packages/react-components/react-carousel-preview @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
+packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
+packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
+packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
