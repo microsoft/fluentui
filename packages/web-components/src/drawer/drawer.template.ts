@@ -1,6 +1,6 @@
 import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
-import { DrawerModalType } from './drawer.options.js';
+import { DrawerType } from './drawer.options.js';
 
 /**
  * The template for the Drawer component.
@@ -11,7 +11,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.type === DrawerModalType.alert ? 'alertdialog' : void 0)}"
+      role="${x => (x.type === DrawerType.alert ? 'alertdialog' : void 0)}"
       aria-modal="${x => (x.type === 'non-modal' || x.inline ? void 0 : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"

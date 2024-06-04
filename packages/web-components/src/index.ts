@@ -103,7 +103,7 @@ export {
   DrawerDefinition,
   DrawerPosition,
   DrawerSize,
-  DrawerModalType,
+  DrawerType,
   DrawerTemplate,
   DrawerStyles,
 } from './drawer/index.js';

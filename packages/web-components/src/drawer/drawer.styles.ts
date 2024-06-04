@@ -32,7 +32,6 @@ export const styles = css`
   }
 
   dialog {
-    position: fixed;
     display: none;
     z-index: var(--drawer-elevation, 1000);
     font-size: ${fontSizeBase300};

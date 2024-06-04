@@ -3,7 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup } from '../radio-group/radio-group.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
-import { DrawerModalType, DrawerPosition, DrawerSize } from './drawer.options.js';
+import { DrawerType, DrawerPosition, DrawerSize } from './drawer.options.js';
 import './define.js';
 import '../drawer-body/define.js';
 
@@ -143,9 +143,7 @@ const storyTemplate = html<DrawerStoryArgs>`
           ?inline="${x => x.inline}"
         >
           <fluent-drawer-body>
-            <fluent-text font="base" size="500" weight="semibold" as="h1" slot="title"
-              ><h1>Drawer Header</h1></fluent-text
-            >
+            <span slot="title"> Drawer Header</span>
             <div>
               <fluent-text>
                 The drawer gives users a quick entry point to configuration and information. It should be used when
@@ -202,9 +200,8 @@ const storyTemplate = html<DrawerStoryArgs>`
           ?inline="${x => x.inline}"
         >
           <fluent-drawer-body>
-            <fluent-text font="base" size="500" weight="semibold" as="h1" slot="title"
-              ><h1>Drawer Header</h1></fluent-text
-            >
+            <span slot="title"> Drawer Header</span>
+
             <div>
               <fluent-text>
                 The drawer gives users a quick entry point to configuration and information. It should be used when
@@ -237,7 +234,7 @@ const storyTemplate = html<DrawerStoryArgs>`
 export default {
   title: 'Components/Drawer',
   args: {
-    type: DrawerModalType.modal,
+    type: DrawerType.modal,
     inline: false,
     size: DrawerSize.medium,
   },
@@ -254,7 +251,7 @@ export default {
       },
     },
     type: {
-      options: Object.values(DrawerModalType),
+      options: Object.values(DrawerType),
       control: {
         type: 'select',
       },
@@ -263,7 +260,7 @@ export default {
           summary: 'Sets the modal type of the drawer',
         },
         defaultValue: {
-          summary: DrawerModalType.modal,
+          summary: DrawerType.modal,
         },
       },
     },
@@ -304,9 +301,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
     <div>
       <fluent-drawer id="drawer-modal" type="modal">
         <fluent-drawer-body>
-          <fluent-text font="base" size="500" weight="semibold" as="h1" slot="title"
-            ><h1>Drawer Header</h1></fluent-text
-          >
+          <span slot="title"> Drawer Header</span>
           <fluent-button
             slot="close"
             appearance="transparent"
@@ -360,7 +355,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
     <div>
       <fluent-drawer id="drawer-alert" type="alert">
         <fluent-drawer-body>
-          <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Alert</h1></fluent-text>
+          <span slot="title">Alert</span>
           <fluent-text font="base" size="300" weight="regular" as="p" block="true">
             <p>
               When an alert dialog is open it interrupts the user's workflow to communicate an important message or ask
@@ -402,7 +397,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
     <div>
       <fluent-drawer id="drawer-nonmodal" type="non-modal">
         <fluent-drawer-body>
-          <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Non Modal</h1></fluent-text>
+          <span slot="title">Non modal</span>
           <fluent-button
             slot="close"
             appearance="transparent"
@@ -449,7 +444,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
     <fluent-drawer position="start" size="small" id="drawer-inline-start" inline type="non-modal">
       <fluent-drawer-body>
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
+        <span slot="title">Drawer Inline</span>
         <fluent-button
           slot="close"
           appearance="transparent"
@@ -504,7 +499,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
     </div>
     <fluent-drawer position="end" size="small" id="drawer-inline-end" inline type="non-modal">
       <fluent-drawer-body>
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
+        <span slot="title">Drawer Inline</span>
         <fluent-button
           slot="close"
           appearance="transparent"
@@ -537,11 +532,10 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
 export const Position = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
     <div>
-      <fluent-drawer inline id="drawer-position-start" size="small">
+      <fluent-drawer inline type="non-modal" id="drawer-position-start" size="small">
         <fluent-drawer-body>
-          <fluent-text slot="titie" font="base" size="500" weight="semibold" as="h1"
-            ><h1>Drawer Position Start</h1></fluent-text
-          >
+          <span slot="title">Drawer position start</span>
+
           <fluent-button
             slot="close"
             appearance="transparent"
@@ -592,11 +586,9 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
       >
     </div>
     <div>
-      <fluent-drawer position="end" inline id="drawer-position-end" size="small">
+      <fluent-drawer position="end" inline type="non-modal" id="drawer-position-end" size="small">
         <fluent-drawer-body>
-          <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
-            ><h1>Drawer Position End</h1></fluent-text
-          >
+          <span slot="title">Drawer position end</span>
           <fluent-button
             slot="close"
             appearance="transparent"
@@ -652,7 +644,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
     </div>
     <fluent-drawer size="small" id="drawer-size-small" type="modal">
       <fluent-drawer-body>
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Small</h1></fluent-text>
+      <span slot="title">Drawer small</span>
         <fluent-button
           slot="close"
           appearance="transparent"
@@ -673,7 +665,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
     </fluent-drawer>
     <fluent-drawer size="medium" id="drawer-size-medium" type="modal">
       <fluent-drawer-body>
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Medium</h1></fluent-text>
+      <span slot="title">Drawer medium</span>
         <fluent-button
           slot="close"
           appearance="transparent"
@@ -694,9 +686,8 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
     </fluent-drawer>
     <fluent-drawer size="large" id="drawer-size-large" type="modal">
       <fluent-drawer-body>
-              <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
-                ><h1>Drawer Large</h1></fluent-text
-              >
+      <span slot="title">Drawer large</span>
+
               <fluent-button
                 slot="action"
                 appearance="transparent"
@@ -719,9 +710,8 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
     <fluent-drawer size="full" id="drawer-size-full" type="modal">
            <fluent-drawer-body>
 
-            <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
-              ><h1>Drawer Full</h1></fluent-text
-            >
+           <span slot="title">Drawer full</span>
+
             <fluent-button
               slot="close"
               appearance="transparent"
@@ -762,7 +752,7 @@ export const CustomSize = renderComponent(html`
     </div>
     <fluent-drawer id="drawer-width-custom" type="modal">
       <fluent-drawer-body>
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Custom Size</h1></fluent-text>
+        <span slot="title">Custom size</span>
         <fluent-button
           slot="close"
           appearance="transparent"

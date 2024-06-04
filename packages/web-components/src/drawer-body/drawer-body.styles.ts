@@ -1,6 +1,12 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/index.js';
-import { spacingHorizontalM, spacingVerticalL } from '../theme/design-tokens.js';
+import {
+  spacingHorizontalM,
+  spacingHorizontalXL,
+  spacingVerticalL,
+  spacingVerticalXXL,
+} from '../theme/design-tokens.js';
+import { typographySubtitle1Styles } from '../styles/partials/typography.partials.js';
 
 /** Drawer styles
  * @public
@@ -8,9 +14,10 @@ import { spacingHorizontalM, spacingVerticalL } from '../theme/design-tokens.js'
 export const styles = css`
   ${display('flex')}
   :host {
+    position: relative;
     height: 100%;
-    padding: var(--spacingHorizontalXL);
-    max-height: calc(100vh - (2 * var(--spacingVerticalXXL)));
+    padding: ${spacingHorizontalXL};
+    max-height: calc(100vh - (2 * ${spacingVerticalXXL}));
   }
   .drawer-body {
     display: grid;
@@ -23,12 +30,9 @@ export const styles = css`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    ${typographySubtitle1Styles}
   }
-  .title {
-    font-weight: var(--fontWeightSemibold);
-    font-size: var(--fontSizeBase500);
-    line-height: var(--lineHeightBase500);
-  }
+
   .footer {
     display: flex;
     justify-content: flex-start;

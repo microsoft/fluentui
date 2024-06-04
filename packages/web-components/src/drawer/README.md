@@ -18,7 +18,7 @@ The Fluent WC3 Drawer extends `FASTElement`
 <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.modalType === DrawerModalType.alert ? 'alertdialog' : void 0)}"
+      role="${x => (x.modalType === DrawerType.alert ? 'alertdialog' : void 0)}"
       aria-modal="${x => (x.modalType === 'non-modal' || x.type === 'inline' ? void 0 : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
@@ -47,12 +47,12 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 ### **Variables**
 
-| Name              | Type                            | Description            |
-| ----------------- | ------------------------------- | ---------------------- |
-| `DrawerPosition`  | `start` `end`                   | Positions for Drawer   |
-| `DrawerSize`      | `small` `medium` `large` `full` | Sizes for Drawer       |
-| `DrawerModalType` | `modal` `non-modal` `alert`     | Modal types for Drawer |
-| `DrawerType`      | `overlay` `inline`              | Types for Drawer       |
+| Name             | Type                            | Description            |
+| ---------------- | ------------------------------- | ---------------------- |
+| `DrawerPosition` | `start` `end`                   | Positions for Drawer   |
+| `DrawerSize`     | `small` `medium` `large` `full` | Sizes for Drawer       |
+| `DrawerType`     | `modal` `non-modal` `alert`     | Modal types for Drawer |
+| `DrawerType`     | `overlay` `inline`              | Types for Drawer       |
 
 ### **Attributes**
 
