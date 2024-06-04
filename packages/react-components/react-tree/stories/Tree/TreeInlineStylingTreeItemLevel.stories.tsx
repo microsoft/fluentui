@@ -4,11 +4,13 @@ import {
   TreeItem,
   TreeItemLayout,
   treeItemLevelToken,
+  useTreeItemContext_unstable,
   useSubtreeContext_unstable,
 } from '@fluentui/react-components';
 
 export const InlineStylingTreeItemLevel = () => {
   const { level } = useSubtreeContext_unstable();
+  const open = useTreeItemContext_unstable(ctx => ctx.open || level === 1);
   return level === 0 ? (
     <Tree aria-label="Inline Styling Tree Item Level">
       <InlineStylingTreeItemLevel />
@@ -16,9 +18,11 @@ export const InlineStylingTreeItemLevel = () => {
   ) : (
     <TreeItem value={level} itemType="branch" style={{ [treeItemLevelToken]: level }}>
       <TreeItemLayout>{`level ${level}, item 1`}</TreeItemLayout>
-      <Tree>
-        <InlineStylingTreeItemLevel />
-      </Tree>
+      {open && (
+        <Tree>
+          <InlineStylingTreeItemLevel />
+        </Tree>
+      )}
     </TreeItem>
   );
 };
