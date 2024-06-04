@@ -1,13 +1,13 @@
 import {
   createPresenceComponent,
-  Checkbox,
-  Label,
+  Field,
   makeStyles,
+  mergeClasses,
   type MotionImperativeRef,
   type PresenceMotionFn,
   Slider,
+  Switch,
   tokens,
-  useId,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -16,19 +16,47 @@ import description from './PresenceMotionFunctions.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '10px',
+    gridTemplate: `"cardA cardB" "controls ." / 1fr 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
 
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '200px',
+    minHeight: '230px',
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gridArea: 'controls',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+  },
+  sliderField: {
+    gridTemplateColumns: 'min-content 1fr',
+  },
+  sliderLabel: {
+    textWrap: 'nowrap',
+  },
+
+  cardA: {
+    gridArea: 'cardA',
+  },
+  cardB: {
+    gridArea: 'cardB',
   },
   item: {
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
@@ -36,17 +64,13 @@ const useClasses = makeStyles({
 
     width: '300px',
   },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: '2 1 2 3',
-
-    marginTop: '20px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+  description: {
+    fontFamily: tokens.fontFamilyMonospace,
     borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
+    marginTop: '10px',
+    padding: '5px 10px',
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
   },
-  description: { margin: '5px' },
 });
 
 const collapseMotion: PresenceMotionFn = ({ element }) => {
@@ -65,7 +89,6 @@ const Collapse = createPresenceComponent(collapseMotion);
 
 export const PresenceMotionFunctions = () => {
   const classes = useClasses();
-  const sliderId = useId();
 
   const motionInRef = React.useRef<MotionImperativeRef>();
   const motionOutRef = React.useRef<MotionImperativeRef>();
@@ -82,7 +105,7 @@ export const PresenceMotionFunctions = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.card}>
+      <div className={mergeClasses(classes.card, classes.cardA)}>
         <Collapse imperativeRef={motionInRef} visible={visible}>
           <div className={classes.item}>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
@@ -92,7 +115,7 @@ export const PresenceMotionFunctions = () => {
         </Collapse>
         <div className={classes.description}>normal state</div>
       </div>
-      <div className={classes.card}>
+      <div className={mergeClasses(classes.card, classes.cardB)}>
         <Collapse imperativeRef={motionOutRef} visible={!visible}>
           <div className={classes.item}>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie,
@@ -104,23 +127,30 @@ export const PresenceMotionFunctions = () => {
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <Checkbox label="Visible?" checked={visible} onChange={() => setVisible(v => !v)} />
-        </div>
-        <div>
-          <Label htmlFor={sliderId}>
-            <code>playbackRate</code>: {playbackRate}%
-          </Label>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
+        <Field
+          className={mergeClasses(classes.field, classes.sliderField)}
+          label={{
+            children: (
+              <>
+                <code>playbackRate</code>: {playbackRate}%
+              </>
+            ),
+            className: classes.sliderLabel,
+          }}
+          orientation="horizontal"
+        >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
-            id={sliderId}
             max={100}
-            step={10}
+            step={5}
           />
-        </div>
+        </Field>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 import {
   createMotionComponent,
-  Label,
+  Field,
   makeStyles,
+  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
   tokens,
-  useId,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -14,36 +14,48 @@ import description from './MotionFunctions.stories.md';
 
 const useClasses = makeStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
+    display: 'grid',
+    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
-
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '200px',
+    minHeight: '180px',
   },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gridArea: 'controls',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+  },
+  sliderField: {
+    gridTemplateColumns: 'min-content 1fr',
+  },
+  sliderLabel: {
+    textWrap: 'nowrap',
+  },
+
   item: {
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorBrandBackground}`,
     padding: '8px',
     width: '300px',
     overflow: 'hidden',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-    gridArea: '2 1 2 3',
-
-    marginTop: '20px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
   },
   description: { margin: '5px' },
 });
@@ -60,7 +72,6 @@ const Grow = createMotionComponent(({ element }) => ({
 
 export const MotionFunctions = () => {
   const classes = useClasses();
-  const sliderId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
   const [playbackRate, setPlaybackRate] = React.useState<number>(20);
@@ -84,20 +95,28 @@ export const MotionFunctions = () => {
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <Label htmlFor={sliderId}>
-            <code>playbackRate</code>: {playbackRate}%
-          </Label>
+        <Field
+          className={mergeClasses(classes.field, classes.sliderField)}
+          label={{
+            children: (
+              <>
+                <code>playbackRate</code>: {playbackRate}%
+              </>
+            ),
+            className: classes.sliderLabel,
+          }}
+          orientation="horizontal"
+        >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
+            className={mergeClasses(classes.field, classes.sliderField)}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
-            id={sliderId}
             max={100}
-            step={10}
+            step={5}
           />
-        </div>
+        </Field>
       </div>
     </div>
   );

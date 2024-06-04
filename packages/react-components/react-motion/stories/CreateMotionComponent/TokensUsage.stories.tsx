@@ -6,18 +6,22 @@ import description from './TokensUsage.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '10px',
+    gridTemplate: `"card" / 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
-
-    alignItems: 'center',
   },
+
   item: {
     backgroundColor: tokens.colorBrandBackground,
     borderRadius: tokens.borderRadiusCircular,
@@ -25,7 +29,13 @@ const useClasses = makeStyles({
     height: '100px',
     forcedColorAdjust: 'none',
   },
-  description: { margin: '5px' },
+  description: {
+    fontFamily: tokens.fontFamilyMonospace,
+    borderRadius: tokens.borderRadiusMedium,
+    marginTop: '10px',
+    padding: '5px 10px',
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+  },
 });
 
 const BackgroundChange = createMotionComponent({
@@ -47,7 +57,7 @@ export const TokensUsage = () => {
           <div className={classes.item} />
         </BackgroundChange>
 
-        <code className={classes.description}>Custom background color motion</code>
+        <div className={classes.description}>Custom background color motion</div>
       </div>
     </div>
   );
@@ -58,9 +68,5 @@ TokensUsage.parameters = {
     description: {
       story: description,
     },
-    name: 'foo',
   },
-  name: 'foo',
-  storyName: 'foo',
-  title: 'components/Button',
 };
