@@ -20,7 +20,8 @@ The `DrawerBody` component does not emit custom events beyond those standard to 
 
 | Name     | Description                           |
 | -------- | ------------------------------------- |
-| `header` | The slot for header                   |
+| `title`  | The slot for title                    |
+| `close`  | The slot for the close button         |
 |          | The default slot for the main content |
 | `footer` | The slot for the footer               |
 
