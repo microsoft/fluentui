@@ -29,7 +29,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
-import { useFluent } from '@fluentui/react-components';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;

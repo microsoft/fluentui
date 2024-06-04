@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { tokens } from '@fluentui/react-theme';
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
@@ -23,8 +23,8 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     },
 
     barLabel: {
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.semibold,
+      fontSize: tokens.fontSizeBase100,
+      fontWeight: tokens.fontWeightSemibold,
       fill: theme.palette.neutralPrimary,
     },
   };
