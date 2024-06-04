@@ -315,6 +315,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             dateLocalizeOptions,
             timeFormatLocale,
             customDateTimeFormatter,
+            this.props.useUTC,
           ));
           break;
         case XAxisTypes.StringAxis:
