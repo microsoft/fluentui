@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/index.js';
-import { spacingHorizontalS, spacingVerticalL } from '../theme/design-tokens.js';
+import { spacingHorizontalM, spacingVerticalL } from '../theme/design-tokens.js';
 
 /** Drawer styles
  * @public
@@ -32,6 +32,6 @@ export const styles = css`
   .footer {
     display: flex;
     justify-content: flex-start;
-    gap: ${spacingHorizontalS};
+    gap: ${spacingHorizontalM};
   }
 `;

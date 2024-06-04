@@ -128,6 +128,7 @@ export class Drawer extends FASTElement {
       } else {
         this.dialog.showModal();
       }
+      this.emitOpenChange();
     }
   }
 

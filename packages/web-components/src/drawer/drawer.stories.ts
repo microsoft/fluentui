@@ -120,8 +120,8 @@ const storyTemplate = html<DrawerStoryArgs>`
       .justify--space-between {
         justify-content: space-between;
       }
-      .row-gap--16 {
-        row-gap: 16px;
+      .gap--16 {
+        gap: 16px;
       }
       .col-gap--8 {
         column-gap: 8px;
@@ -162,7 +162,7 @@ const storyTemplate = html<DrawerStoryArgs>`
                 </fluent-radio-group>
               </div>
             </div>
-            <div slot="footer">
+            <div slot="footer" class="flex gap--16">
               <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-start')}"
                 >Close</fluent-button
               >
@@ -171,7 +171,7 @@ const storyTemplate = html<DrawerStoryArgs>`
           </fluent-drawer-body>
         </fluent-drawer>
       </div>
-      <div class="row-gap--16 column flex justify--center padding--16 width-400">
+      <div class="gap--16 column flex justify--center padding--16 width-400">
         <fluent-text weight="bold" size="400" as="h3"><h3>Drawer</h3></fluent-text>
 
         <fluent-text font="base" size="300" weight="regular" as="p">
@@ -221,7 +221,7 @@ const storyTemplate = html<DrawerStoryArgs>`
                 </fluent-radio-group>
               </div>
             </div>
-            <div slot="footer">
+            <div slot="footer" class="flex gap--16">
               <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-end')}"
                 >Close</fluent-button
               >
@@ -328,7 +328,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
               <code>type="modal"</code>
             </fluent-text>
           </div>
-          <div slot="footer">
+          <div slot="footer" class="flex gap--16">
             <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-start')}"
               >Close</fluent-button
             >
@@ -337,7 +337,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
         </fluent-drawer-body>
       </fluent-drawer>
     </div>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Modal</h3></fluent-text>
       <fluent-text weight="regular" size="300" as="p" block="true">
         <p>
@@ -372,14 +372,14 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
           <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
             <code>type="alert"</code>
           </fluent-text>
-          <div slot="footer">
+          <div slot="footer" class="flex gap--16">
             <fluent-button appearance="primary">Do Something</fluent-button>
             <fluent-button appearance="secondary" @click=${() => hideDrawer('drawer-alert')}>Close</fluent-button>
           </div>
         </fluent-drawer-body>
       </fluent-drawer>
     </div>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Alert</h3></fluent-text>
       <fluent-text weight="regular" size="300" as="p">
         <p>
@@ -426,7 +426,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
         </fluent-drawer-body>
       </fluent-drawer>
     </div>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Non Modal</h3></fluent-text>
       <fluent-text weight="regular" size="300" as="p">
         <p>
@@ -441,54 +441,6 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-nonmodal')}"
         >Toggle Drawer</fluent-button
       >
-    </div>
-  </div>
-`);
-
-export const Overlay = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify--center full-height">
-    <div>
-      <fluent-drawer id="drawer-overlay">
-        <fluent-drawer-body>
-          <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Overlay</h1></fluent-text>
-          <fluent-button
-            slot="close"
-            appearance="transparent"
-            icon-only
-            aria-label="close"
-            @click="${() => hideDrawer('drawer-overlay')}"
-          >
-            ${dismissed20Regular}
-          </fluent-button>
-          <fluent-text font="base" size="300" weight="regular" as="p">
-            <p>
-              A Drawer rendered with an overlay contains supplementary content and are used for complex creation, edit,
-              or management experiences. For example, viewing details about an item in a list or editing settings. By
-              default, drawer is blocking and signifies that the users full attention is required when making
-              configurations.
-            </p>
-          </fluent-text>
-          <br />
-          <fluent-text font="monospace" size="300" weight="regular" as="p">
-            <code>default</code>
-          </fluent-text>
-        </fluent-drawer-body>
-      </fluent-drawer>
-    </div>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Overlay</h3></fluent-text>
-      <fluent-text font="base" size="300" weight="regular" as="p">
-        <p>
-          A Drawer rendered with an overlay contains supplementary content and are used for complex creation, edit, or
-          management experiences. For example, viewing details about an item in a list or editing settings. By default,
-          drawer is blocking and signifies that the users full attention is required when making configurations.
-        </p>
-      </fluent-text>
-      <br />
-      <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>type="overlay"</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-overlay')}">Toggle Drawer</fluent-button>
     </div>
   </div>
 `);
@@ -524,7 +476,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         </fluent-text>
       </fluent-drawer-body>
     </fluent-drawer>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Inline</h3></fluent-text>
       <fluent-text font="base" size="300" weight="regular" as="p">
         <p>
@@ -610,14 +562,14 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
           <fluent-text font="monospace" size="300" weight="regular">
             <code>default</code>
           </fluent-text>
-          <div slot="footer">
+          <div slot="footer" class="flex gap--16">
             <fluent-button appearance="primary">Primary</fluent-button>
             <fluent-button appearance="secondary">Secondary</fluent-button>
           </div>
         </fluent-drawer-body>
       </fluent-drawer>
     </div>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Position</h3></fluent-text>
 
       <fluent-text font="base" size="300" weight="regular" as="p">
@@ -666,7 +618,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
           <fluent-text font="monospace" size="300" weight="regular">
             <code>position="end"</code>
           </fluent-text>
-          <div slot="footer">
+          <div slot="footer" class="flex gap--16">
             <fluent-button appearance="primary">Primary</fluent-button>
             <fluent-button appearance="secondary">Secondary</fluent-button>
           </div>
@@ -678,7 +630,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
 
 export const Size = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Size</h3></fluent-text>
 
       <fluent-text font="base" size="300" weight="regular" as="p">
@@ -793,7 +745,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
 
 export const CustomSize = renderComponent(html`
   <div class="flex justify--center full-height">
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+    <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Custom Size</h3></fluent-text>
 
       <fluent-text font="base" size="300" weight="regular" as="p">

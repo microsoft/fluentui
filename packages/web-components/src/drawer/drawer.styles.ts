@@ -44,7 +44,6 @@ export const styles = css`
     max-height: 100vh;
     overflow: hidden;
     height: 100%;
-    transition: none;
   }
 
   dialog[open] {
@@ -65,13 +64,19 @@ export const styles = css`
     background: ${colorNeutralBackground1};
   }
 
+  :host([type='non-modal']) dialog[open]::backdrop {
+    display: none;
+  }
+
   :host([inline]) {
     width: fit-content;
     position: relative;
+    height: 100%;
   }
 
   :host([inline]) dialog {
     box-shadow: none;
+    position: relative;
   }
 
   :host([inline]) dialog[open] {
@@ -93,22 +98,21 @@ export const styles = css`
     max-width: 100%;
   }
 
+  :host([position='start']) dialog,
+  :host([position='end']) dialog {
+    inset-inline-end: 0px;
+    border-inline-end-color: ${colorTransparentStroke};
+    border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
+  }
+
   :host([position='start']) dialog {
     margin-inline-start: 0;
     margin-inline-end: auto;
-    inset-inline-start: 0px;
-    border-inline-end-color: ${colorTransparentStroke};
-    border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
-    transform: translateX(-100%);
   }
 
   :host([position='end']) dialog {
     margin-inline-start: auto;
     margin-inline-end: 0;
-    inset-inline-end: 0px;
-    border-inline-end-color: ${colorTransparentStroke};
-    border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
-    transform: translateX(100%);
   }
 
   dialog:focus-visible:after {
@@ -134,39 +138,30 @@ export const styles = css`
     /* Disable animations for reduced motion */
     @media (prefers-reduced-motion: no-preference) {
       dialog {
-        transition: transform ${durationGentle} ${curveDecelerateMid};
-      }
-
-      :host([position='start']) dialog {
-        /* Move offscreen left when closed */
-        transform: translateX(-100%);
-      }
-
-      :host([position='end']) dialog {
-        /* Move offscreen right when closed */
-        transform: translateX(100%);
-      }
-
-      /* Move onscreen when open */
-      dialog[open] {
-        transform: translateX(0);
+        transition: display allow-discrete, opacity, overlay allow-discrete, transform;
+        transition-duration: ${durationGentle};
+        transition-timing-function: ${curveDecelerateMid};
       }
 
       /* Exit styles for dialog */
-      dialog:not([open]) {
+      :host dialog:not([open]) {
+        transform: translateX(-100%);
+        transition-timing-function: ${curveAccelerateMid};
+      }
+      :host([position='end']) dialog:not([open]) {
+        transform: translateX(100%);
         transition-timing-function: ${curveAccelerateMid};
       }
 
-      :host([position='start']) dialog:not([open]) {
-        transform: translateX(-100%);
-      }
-
-      :host([position='end']) dialog:not([open]) {
-        transform: translateX(100%);
+      dialog[open],
+      :host([position='end']) dialog[open] {
+        transform: translateX(0);
       }
 
       ::backdrop {
-        transition: opacity ${durationGentle} ${curveDecelerateMid};
+        transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+        transition-duration: ${durationGentle};
+        transition-timing-function: ${curveDecelerateMid};
         background: var(--dialog-backdrop, ${colorBackgroundOverlay});
         /* Set opacity to 0 when closed */
         opacity: 0;
@@ -183,11 +178,10 @@ export const styles = css`
     }
 
     @starting-style {
-      dialog,
-      :host([position='start']) dialog {
+      dialog[open] {
         transform: translateX(-100%);
       }
-      :host([position='end']) dialog {
+      :host([position='end']) dialog[open] {
         transform: translateX(100%);
       }
       [open]::backdrop {
