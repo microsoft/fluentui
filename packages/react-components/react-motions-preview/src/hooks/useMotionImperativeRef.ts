@@ -5,6 +5,10 @@ export function useMotionImperativeRef(imperativeRef: React.Ref<MotionImperative
   const animationRef = React.useRef<AnimationHandle | undefined>();
 
   React.useImperativeHandle(imperativeRef, () => ({
+    cancel: () => {
+      animationRef.current?.cancel();
+    },
+
     setPlayState: state => {
       if (state === 'running') {
         animationRef.current?.play();

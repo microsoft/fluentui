@@ -20,4 +20,10 @@ export type MotionImperativeRef = {
 
   /** Sets the state of the animation to running or paused. */
   setPlayState: (state: 'running' | 'paused') => void;
+
+  /**
+   * Cancels the animation and keyframe effects, jumping to the end of the animation if it's currently playing.
+   * https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel
+   */
+  cancel: () => void;
 };
