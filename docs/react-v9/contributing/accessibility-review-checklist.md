@@ -153,12 +153,12 @@ Note -- this is not only about touch access. A number of assistive tech devices 
   - This is a purely visual test (no screen readers), so screen-reader-only information does not matter in this test.
   - This does not mean that an icon as ubiquitous as a close "x" requires a tooltip 😁
 - [ ] Compare the keyboard interaction pattern to what is expected based on semantics:
-  - To find expectations based on semantics, the [APG](https://w3c.github.io/aria-practices/) has tables of keyboard behavior on individual example pages (and descriptions in the main document
+  - To find expectations based on semantics, the [APG](https://www.w3.org/WAI/ARIA/apg/) has tables of keyboard behavior on individual example pages (and descriptions in the main document
   - The APG is **not a spec, and not a hard requirement**. There may be valid reasons we differ from them. Differences should be noted and listed in the github issue for this test.
 
 ### References
 
-- [ARIA Authoring Practices](https://w3c.github.io/aria-practices/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
 - [List of interactive ARIA roles](https://w3c.github.io/aria/#widget_roles) (note: these can be implicit based on the HTML element)
 
 ---
