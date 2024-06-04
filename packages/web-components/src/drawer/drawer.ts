@@ -72,9 +72,9 @@ export class Drawer extends FASTElement {
    * @defaultValue false
    */
   @attr({ mode: 'boolean' })
-  public inline: boolean = false;
+  public inline?: boolean = false;
 
-  /**
+  /**""
    * Sets the position of the drawer (start/end).
    * @public
    * @defaultValue start
@@ -88,7 +88,7 @@ export class Drawer extends FASTElement {
    * @defaultValue medium
    */
   @attr({ attribute: 'size' })
-  public size?: DrawerSize;
+  public size: DrawerSize = DrawerSize.medium;
 
   /**
    * Method to emit an event when the dialog is dismissed
