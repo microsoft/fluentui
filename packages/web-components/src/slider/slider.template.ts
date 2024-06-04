@@ -42,5 +42,5 @@ export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): E
 }
 
 export const template: ElementViewTemplate<Slider> = sliderTemplate({
-  thumb: `<div class="thumb-cursor" tabindex="0"></div>`,
+  thumb: `<div class="thumb-cursor"></div>`,
 });
