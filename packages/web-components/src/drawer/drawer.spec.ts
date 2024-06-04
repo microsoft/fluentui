@@ -312,7 +312,7 @@ test.describe('Drawer', () => {
     expect(wasDismissed).toBe(true);
   });
 
-  test('should trap focus in the drawer when arrow up/down keys', async () => {
+  test('should trap focus in the drawer when tabbing', async () => {
     const first: Locator = element.locator('button', { hasText: 'First' });
     const second: Locator = element.locator('button', { hasText: 'Second' });
     const third: Locator = page.locator('button', { hasText: 'Third' });
