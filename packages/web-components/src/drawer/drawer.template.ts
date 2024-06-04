@@ -1,6 +1,5 @@
 import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
-import { DrawerType } from './drawer.options.js';
 
 /**
  * The template for the Drawer component.
@@ -11,7 +10,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.type === DrawerType.alert ? 'alertdialog' : void 0)}"
+      role="${x => (x.type === 'non-modal' || x.inline ? 'region' : 'dialog')}"
       aria-modal="${x => (x.type === 'non-modal' || x.inline ? void 0 : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
@@ -21,7 +20,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       type="${x => x.type}"
       ?inline="${x => x.inline}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
+      @cancel="${(x, c) => x.hide()}"
       ${ref('dialog')}
     >
       <slot></slot>

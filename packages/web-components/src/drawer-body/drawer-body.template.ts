@@ -7,17 +7,15 @@ import type { DrawerBody } from './drawer-body.js';
  */
 export function drawerBodyTemplate<T extends DrawerBody>(): ElementViewTemplate<T> {
   return html<T>`
-    <div class="drawer-body" part="drawer-body">
-      <div class="header" part="header">
-        <slot name="title"></slot>
-        <slot name="close"></slot>
-      </div>
-      <div class="content" part="content">
-        <slot></slot>
-      </div>
-      <div class="footer" part="footer">
-        <slot name="footer"></slot>
-      </div>
+    <div class="header" part="header">
+      <slot name="title"></slot>
+      <slot name="close"></slot>
+    </div>
+    <div class="content" part="content">
+      <slot></slot>
+    </div>
+    <div class="footer" part="footer">
+      <slot name="footer"></slot>
     </div>
   `;
 }

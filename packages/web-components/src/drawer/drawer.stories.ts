@@ -350,48 +350,6 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const Alert = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify--center full-height">
-    <div>
-      <fluent-drawer id="drawer-alert" type="alert">
-        <fluent-drawer-body>
-          <span slot="title">Alert</span>
-          <fluent-text font="base" size="300" weight="regular" as="p" block="true">
-            <p>
-              When an alert dialog is open it interrupts the user's workflow to communicate an important message or ask
-              for a decision. Unlike a typical modal dialog, the user must take an action through the options given to
-              dismiss the dialog, and it cannot be dismissed through the dimmed background.
-            </p>
-          </fluent-text>
-          <br />
-          <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
-            <code>type="alert"</code>
-          </fluent-text>
-          <div slot="footer" class="flex gap--16">
-            <fluent-button appearance="primary">Do Something</fluent-button>
-            <fluent-button appearance="secondary" @click=${() => hideDrawer('drawer-alert')}>Close</fluent-button>
-          </div>
-        </fluent-drawer-body>
-      </fluent-drawer>
-    </div>
-    <div class="gap--16 column flex justify--center padding--16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Alert</h3></fluent-text>
-      <fluent-text weight="regular" size="300" as="p">
-        <p>
-          When an alert dialog is open it interrupts the user's workflow to communicate an important message or ask for
-          a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss
-          the dialog, and it cannot be dismissed through the dimmed background.
-        </p>
-      </fluent-text>
-      <br />
-      <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>type="alert"</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-alert')}">Toggle Drawer</fluent-button>
-    </div>
-  </div>
-`);
-
 export const NonModal = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>

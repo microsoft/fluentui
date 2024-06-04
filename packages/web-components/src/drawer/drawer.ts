@@ -1,36 +1,34 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyEscape } from '@microsoft/fast-web-utilities';
-import { DrawerType, DrawerPosition, DrawerSize } from './drawer.options.js';
+import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 /**
- * Drawer
- *
- * A Drawer component for creating modal or non-modal drawers with various configurations.
+ * A Drawer component that allows content to be displayed in a side panel. It can be rendered as modal or non-modal.
  * @extends FASTElement
  *
- * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert. When in modal or alert mode, an overlay is applied over the rest of the view.
+ * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
+ * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
+ * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
  * @attr {boolean} inline - Sets the drawer as an inline element.
  * @attr {DrawerPosition} position - Sets the position of the drawer (start/end).
  * @attr {DrawerSize} size - Sets the size of the drawer (small/medium/large).
- * @attr {string} aria-labelledby - The ID of the element that labels the drawer.
- * @attr {string} aria-describedby - The ID of the element that describes the drawer.
  *
- * @csspart dialog - The dialog element that represents the drawer.
+ * @csspart dialog - The dialog element of the drawer.
  *
- * @slot - Default slot for the drawer's content.
+ * @slot - Default slot for the content of the drawer.
  *
- * @fires toggle - Emitted after the drawer's open state changes
- * @fires beforeToggle - Emitted before the drawer's open state changes
+ * @fires toggle - Event emitted after the dialog's open state changes.
+ * @fires beforetoggle - Event emitted before the dialog's open state changes.
  *
- * @method connectedCallback() - Called when the custom element is connected to the document's DOM.
- * @method show() - Opens the drawer if it is currently hidden.
- * @method hide() - Closes the drawer if it is currently open.
- * @method clickHandler(event) - Handles click events on the drawer.
- * @method keydownHandler(event) - Handles keydown events on the drawer.
- * @method typeChanged(oldValue, newValue) - Handles changes to the `type` attribute.
- * @method inlineChanged(oldValue, newValue) - Handles changes to the `inline` attribute.
+ * @method show - Method to show the drawer.
+ * @method hide - Method to hide the drawer.
+ * @method clickHandler - Handles click events on the drawer.
+ * @method emitToggle - Emits an event after the dialog's open state changes.
+ * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
+ * @method inlineChanged - Method called when the 'inline' attribute changes.
+ * @method typeChanged - Method called when the 'type' attribute changes.
+ * @method validateConfiguration - Validates the configuration of the drawer.
  *
- * @summary A flexible drawer component that can be used in various configurations such as modal, non-modal, alert, inline, overlay, with different sizes and positions.
+ * @summary A component that provides a drawer for displaying content in a side panel.
  *
  * @tag fluent-drawer
  */
@@ -48,10 +46,10 @@ export class Drawer extends FASTElement {
 
   /**
    * @public
-   * Determines whether the drawer should be displayed as modal, non-modal, or alert.
-   * When in modal or alert mode, an overlay is applied over the rest of the view.
+   * Determines whether the drawer should be displayed as modal or non-modal
+   * When rendered as a modal, an overlay is applied over the rest of the view.
    */
-  @attr({ attribute: 'type' })
+  @attr
   public type: DrawerType = DrawerType.modal;
 
   /**
@@ -113,7 +111,7 @@ export class Drawer extends FASTElement {
 
   /**
    * @public
-   * Method to emit an event after the dialog's open state changes
+   * Method to emit an event before the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
    */
   public emitBeforeToggle = (): void => {
@@ -181,34 +179,11 @@ export class Drawer extends FASTElement {
    */
   public clickHandler(event: Event): boolean {
     event.preventDefault();
-    if (this.dialog.open && this.type !== DrawerType.alert && event.target === this.dialog) {
+    if (this.dialog.open && event.target === this.dialog) {
       this.hide();
     }
     return true;
   }
-
-  /**
-   * @public
-   * @param e - The keydown event
-   * @returns boolean | void
-   * Handles keydown events on the drawer
-   */
-  public keydownHandler = (event: KeyboardEvent): boolean | void => {
-    if (event.defaultPrevented) {
-      return;
-    }
-    switch (event.key) {
-      case keyEscape:
-        event.preventDefault();
-
-        if (this.type !== DrawerType.alert) {
-          this.hide();
-        }
-        break;
-      default:
-        return true;
-    }
-  };
 
   /**
    * Validates the configuration of the drawer.

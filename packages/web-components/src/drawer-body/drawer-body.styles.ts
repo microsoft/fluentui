@@ -1,30 +1,20 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/index.js';
-import {
-  spacingHorizontalM,
-  spacingHorizontalXL,
-  spacingVerticalL,
-  spacingVerticalXXL,
-} from '../theme/design-tokens.js';
+import { spacingHorizontalM, spacingHorizontalXL } from '../theme/design-tokens.js';
 import { typographySubtitle1Styles } from '../styles/partials/typography.partials.js';
 
 /** Drawer styles
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('grid')}
   :host {
+    box-sizing: boder-box;
+    grid-template-rows: min-content auto min-content;
     position: relative;
     height: 100%;
     padding: ${spacingHorizontalXL};
-    max-height: calc(100vh - (2 * ${spacingVerticalXXL}));
-  }
-  .drawer-body {
-    display: grid;
-    grid-template-rows: min-content auto min-content;
-    gap: ${spacingVerticalL};
-    overflow-y: auto;
-    max-height: calc(100vh - 2 * ${spacingVerticalL});
+    max-height: 100svh;
   }
   .header {
     display: flex;

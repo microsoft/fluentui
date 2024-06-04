@@ -4,8 +4,6 @@ import {
   colorBackgroundOverlay,
   colorNeutralBackground1,
   colorNeutralForeground1,
-  colorStrokeFocus1,
-  colorStrokeFocus2,
   colorTransparentStroke,
   curveAccelerateMid,
   curveDecelerateMid,
@@ -16,7 +14,6 @@ import {
   fontWeightRegular,
   lineHeightBase300,
   shadow64,
-  strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
@@ -28,7 +25,6 @@ export const styles = css`
 
   :host {
     --dialog-backdrop: ${colorBackgroundOverlay};
-    overflow: hidden;
   }
 
   dialog {
@@ -41,7 +37,6 @@ export const styles = css`
     color: ${colorNeutralForeground1};
     max-width: var(--drawer-width, 592px);
     max-height: 100vh;
-    overflow: hidden;
     height: 100%;
   }
 
@@ -54,7 +49,6 @@ export const styles = css`
     border-radius: 0;
     padding: 0;
     max-width: var(--drawer-width, 592px);
-    overflow: hidden;
     box-shadow: ${shadow64};
     box-sizing: border-box;
     display: flex;
@@ -114,23 +108,8 @@ export const styles = css`
     margin-inline-end: 0;
   }
 
-  dialog:focus-visible:after {
-    content: '';
-    position: absolute;
-    inset: 0px;
-    cursor: pointer;
-    outline: none;
-    border: ${strokeWidthThick} solid ${colorStrokeFocus1};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
-  }
-
-  dialog:focus-visible {
-    outline: none;
-  }
-
   dialog::backdrop {
-    background: ${colorBackgroundOverlay};
-    inset: 0;
+    background: var(--dialog-backdrop);
   }
 
   @layer animations {
