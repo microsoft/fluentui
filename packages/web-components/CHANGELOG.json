@@ -2,6 +2,44 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 03 Jun 2024 04:06:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.22",
+      "version": "3.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8820c131f5b6d0509c2781f741b07932f37a4ff5",
+            "comment": "chore: Export component definitions from rollup bundle"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9b681402fa473147564aeb5f661c871c41f2355a",
+            "comment": "chore: Resolve output warnings for Storybook and api-extractor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 May 2024 04:06:21 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.21",
+      "version": "3.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "db8e9c52f0cab4e3bf2018dfca3c356a64444c9e",
+            "comment": "Use ElementInternals for the TextInput component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 04:06:00 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.20",
       "version": "3.0.0-beta.20",

@@ -4,6 +4,7 @@ exports[`Carousel renders a default state 1`] = `
 <div>
   <div
     class="fui-Carousel"
+    role="region"
   >
     Default Carousel
   </div>

@@ -14,7 +14,7 @@ export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'unset',
-    padding: `0 ${tokens.spacingVerticalMNudge}`,
+    padding: `2px ${tokens.spacingVerticalMNudge}`,
   },
 });
 

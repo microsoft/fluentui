@@ -18,16 +18,14 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "yarn storybook",
-    "storybook": "start-storybook",
+    "start": "echo 'This doesn't do anything. Run `yarn workspace @fluentui/public-docsite-v9 storybook` instead.'",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "react-hook-form": "^5.7.2",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },

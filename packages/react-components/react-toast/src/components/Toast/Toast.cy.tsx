@@ -742,6 +742,8 @@ describe('Toast', () => {
           <Toast>
             <ToastTitle>This is a toast</ToastTitle>
           </Toast>,
+          // giant timeout to prevent auto-dismissal
+          { timeout: 100000 },
         );
       };
 
@@ -760,7 +762,7 @@ describe('Toast', () => {
       .click()
       .get(`#container .${toastClassNames.root}`)
       .should('exist')
-      .get(`body .${toastClassNames.root}`)
+      .get(`[data-portal-node] .${toastClassNames.root}`)
       .should('not.exist');
   });
 });

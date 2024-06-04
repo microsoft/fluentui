@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: exports DialogModalType type",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

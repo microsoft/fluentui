@@ -21,35 +21,14 @@
     "tsconfigFilePath": "./tsconfig.api-extractor.json"
   },
   "messages": {
-    "tsdocMessageReporting": {
-      "tsdoc-undefined-tag": {
-        "logLevel": "none"
-      },
-      "tsdoc-unsupported-tag": {
-        "logLevel": "none"
-      },
-      "tsdoc-param-tag-with-invalid-type": {
-        "logLevel": "none"
-      },
-      "tsdoc-param-tag-missing-hyphen": {
-        "logLevel": "none"
-      }
-    },
     "extractorMessageReporting": {
-      "ae-forgotten-export": {
-        "logLevel": "none"
-      },
       "ae-missing-release-tag": {
-        "logLevel": "none"
-      },
-      "ae-unresolved-link": {
-        "logLevel": "none"
-      },
-      "ae-internal-missing-underscore": {
-        "logLevel": "none"
+        "logLevel": "none",
+        "addToApiReportFile": true
       },
       "ae-different-release-tags": {
-        "logLevel": "none"
+        "logLevel": "none",
+        "addToApiReportFile": true
       }
     }
   }
