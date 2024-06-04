@@ -3,7 +3,7 @@ import { slot } from '@fluentui/react-utilities';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
 import { OverlayDrawer } from '../OverlayDrawer';
-import { InlineDrawer } from '../InlineDrawer';
+import { InlineDrawer, type InlineDrawerProps } from '../InlineDrawer';
 
 /**
  * Create the state required to render Drawer.
@@ -19,7 +19,11 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
 
   return {
     components: {
-      root: elementType,
+      root: elementType as typeof InlineDrawer,
+      // @ts-expect-error This slot should not appear here
+      surfaceMotion: null,
+      // @ts-expect-error This slot should not appear here
+      backdropMotion: null,
     },
 
     root: slot.always(
@@ -28,8 +32,8 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
         ...props,
       },
       {
-        elementType,
+        elementType: elementType as typeof InlineDrawer,
       },
-    ),
+    ) as InlineDrawerProps,
   };
 };

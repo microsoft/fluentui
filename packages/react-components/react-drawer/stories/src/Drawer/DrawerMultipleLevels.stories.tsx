@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {
+  createPresenceComponent,
+  motionTokens,
   OverlayDrawer,
   DrawerBody,
   DrawerHeader,
@@ -11,11 +13,8 @@ import {
   ToolbarGroup,
   ToolbarButton,
   makeStyles,
-  tokens,
-  mergeClasses,
 } from '@fluentui/react-components';
 import { Dismiss24Regular, Calendar24Regular, Settings24Regular, ArrowLeft24Regular } from '@fluentui/react-icons';
-import { useMotion } from '@fluentui/react-motion-preview';
 
 const useStyles = makeStyles({
   toolbar: {
@@ -50,54 +49,52 @@ const useStyles = makeStyles({
   },
 });
 
-const useMotionStyles = makeStyles({
-  toolbarButton: {
-    opacity: 0,
-    transform: 'translate3D(0, 0, 0) scale(0)',
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
-    transitionProperty: 'opacity, transform',
-    willChange: 'opacity, transform',
-  },
+const BodyPresenceMotion = createPresenceComponent<{ level: 1 | 2 }>(({ level }) => {
+  const keyframes = [
+    { opacity: 0, transform: level === 1 ? 'translateX(-100%)' : 'translateX(100%)' },
+    { opacity: 1, transform: 'translateX(0)' },
+  ];
+  const duration = motionTokens.durationNormal;
+  const easing = motionTokens.curveEasyEase;
 
-  toolbarButtonVisible: {
-    opacity: 1,
-    transform: 'translate3D(0, 0, 0) scale(1)',
-  },
+  return {
+    enter: {
+      keyframes: keyframes,
+      duration,
+      easing,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      duration,
+      easing,
+    },
+  };
+});
+const IconPresenceMotion = createPresenceComponent(() => {
+  const keyframes = [
+    { opacity: 0, transform: 'scale(0)' },
+    { opacity: 1, transform: 'scale(1)' },
+  ];
 
-  level: {
-    opacity: 0,
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
-    transitionProperty: 'opacity, transform',
-    willChange: 'opacity, transform',
-  },
-
-  levelVisible: {
-    opacity: 1,
-    transform: 'translate3D(0, 0, 0)',
-  },
-
-  level1: {
-    transform: 'translate3D(-100%, 0, 0)',
-  },
-
-  level2: {
-    transform: 'translate3D(100%, 0, 0)',
-  },
+  return {
+    enter: {
+      keyframes: keyframes,
+      duration: motionTokens.durationNormal,
+      easing: motionTokens.curveEasyEase,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      duration: motionTokens.durationNormal,
+      easing: motionTokens.curveEasyEase,
+    },
+  };
 });
 
 export const MultipleLevels = () => {
   const styles = useStyles();
-  const motionStyles = useMotionStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const [l2, setL2] = React.useState(false);
-
-  const toolbarBackIconMotion = useMotion<HTMLButtonElement>(l2);
-  const toolbarCalendarIconMotion = useMotion<HTMLButtonElement>(!l2);
-  const level1Motion = useMotion<HTMLDivElement>(!l2);
-  const level2Motion = useMotion<HTMLDivElement>(l2);
+  const [level, setLevel] = React.useState<1 | 2>(1);
 
   return (
     <div>
@@ -106,35 +103,25 @@ export const MultipleLevels = () => {
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
               <ToolbarGroup>
-                {toolbarBackIconMotion.canRender && (
+                <IconPresenceMotion visible={level === 2}>
                   <ToolbarButton
-                    ref={toolbarBackIconMotion.ref}
-                    className={mergeClasses(
-                      motionStyles.toolbarButton,
-                      toolbarBackIconMotion.active && motionStyles.toolbarButtonVisible,
-                    )}
                     aria-label="Back"
                     appearance="subtle"
                     icon={<ArrowLeft24Regular />}
-                    onClick={() => setL2(false)}
+                    onClick={() => setLevel(1)}
                   />
-                )}
+                </IconPresenceMotion>
               </ToolbarGroup>
 
               <ToolbarGroup>
-                {toolbarCalendarIconMotion.canRender && (
+                <IconPresenceMotion visible={level === 1}>
                   <ToolbarButton
-                    ref={toolbarCalendarIconMotion.ref}
-                    className={mergeClasses(
-                      motionStyles.toolbarButton,
-                      toolbarCalendarIconMotion.active && motionStyles.toolbarButtonVisible,
-                    )}
                     aria-label="Go to calendar"
                     appearance="subtle"
                     icon={<Calendar24Regular />}
-                    onClick={() => setL2(true)}
+                    onClick={() => setLevel(2)}
                   />
-                )}
+                </IconPresenceMotion>
                 <ToolbarButton aria-label="Settings" appearance="subtle" icon={<Settings24Regular />} />
                 <ToolbarButton
                   aria-label="Close panel"
@@ -148,43 +135,27 @@ export const MultipleLevels = () => {
         </DrawerHeader>
 
         <div className={styles.body}>
-          {level1Motion.canRender && (
-            <DrawerBody
-              ref={level1Motion.ref}
-              className={mergeClasses(
-                styles.level,
-                motionStyles.level,
-                motionStyles.level1,
-                level1Motion.active && motionStyles.levelVisible,
-              )}
-            >
+          <BodyPresenceMotion level={1} visible={level === 1}>
+            <DrawerBody>
               <DrawerHeaderTitle>Level 1 title</DrawerHeaderTitle>
               <p>Level 1 content</p>
             </DrawerBody>
-          )}
+          </BodyPresenceMotion>
 
-          {level2Motion.canRender && (
-            <DrawerBody
-              ref={level2Motion.ref}
-              className={mergeClasses(
-                styles.level,
-                motionStyles.level,
-                motionStyles.level2,
-                level2Motion.active && motionStyles.levelVisible,
-              )}
-            >
+          <BodyPresenceMotion level={2} visible={level === 2}>
+            <DrawerBody>
               <DrawerHeaderTitle>Level 2 title</DrawerHeaderTitle>
               <p>Level 2 content</p>
             </DrawerBody>
-          )}
+          </BodyPresenceMotion>
         </div>
 
         <DrawerFooter className={styles.footer}>
-          <Button appearance="subtle" disabled={!l2} onClick={() => setL2(false)}>
+          <Button appearance="subtle" disabled={level === 1} onClick={() => setLevel(1)}>
             Previous
           </Button>
 
-          <Button appearance="primary" disabled={l2} onClick={() => setL2(true)}>
+          <Button appearance="primary" disabled={level === 2} onClick={() => setLevel(2)}>
             Next
           </Button>
         </DrawerFooter>
