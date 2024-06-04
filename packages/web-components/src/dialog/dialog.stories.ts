@@ -100,9 +100,11 @@ export default {
       },
       defaultValue: DialogType.modal,
     },
+    beforetoggle: {
+      description: `A CustomEvent emitted before the open state changes.<br /><br /> <code>detail</code>: An object containing the <code>oldState</code> and <code>newState</code> of the dialog with the string value of either <code>'open'</code> or <code>'closed'</code>'`,
+    },
     toggle: {
-      description:
-        'Event fired when the component transitions to or from its open state.<br /><br /><code>event</code>: A CustomEvent emitted when the open state changes.<br /><br /> <code>detail</code>: An object containing the <code>open</code> value of the dialog.',
+      description: `A CustomEvent emitted after the open state changes.<br /><br /> <code>detail</code>: An object containing the <code>oldState</code> and <code>newState</code> of the dialog with the string value of either <code>'open'</code> or <code>'closed'</code>'`,
     },
   },
 } as DialogStoryMeta;

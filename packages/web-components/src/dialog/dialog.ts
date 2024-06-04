@@ -37,10 +37,26 @@ export class Dialog extends FASTElement {
 
   /**
    * @public
-   * Method to emit an event when the dialog's open state changes
+   * Method to emit an event before the dialog's open state changes
+   * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   */
+  public emitBeforeToggle = (): void => {
+    this.$emit('beforetoggle', {
+      oldState: this.dialog.open ? 'open' : 'closed',
+      newState: this.dialog.open ? 'closed' : 'open',
+    });
+  };
+
+  /**
+   * @public
+   * Method to emit an event after the dialog's open state changes
+   * HTML spec proposal: https://github.com/whatwg/html/issues/9733
    */
   public emitToggle = (): void => {
-    this.$emit('toggle', { open: this.dialog.open });
+    this.$emit('toggle', {
+      oldState: this.dialog.open ? 'closed' : 'open',
+      newState: this.dialog.open ? 'open' : 'closed',
+    });
   };
 
   /**
@@ -49,6 +65,7 @@ export class Dialog extends FASTElement {
    */
   public show(): void {
     Updates.enqueue(() => {
+      this.emitBeforeToggle();
       if (this.type === DialogType.alert || this.type === DialogType.modal) {
         this.dialog.showModal();
       } else if (this.type === DialogType.nonModal) {
@@ -63,6 +80,7 @@ export class Dialog extends FASTElement {
    * Method to hide the dialog
    */
   public hide(): void {
+    this.emitBeforeToggle();
     this.dialog.close();
     this.emitToggle();
   }
