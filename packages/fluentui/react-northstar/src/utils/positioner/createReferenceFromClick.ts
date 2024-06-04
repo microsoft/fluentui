@@ -1,6 +1,6 @@
-import * as PopperJs from '@popperjs/core';
+import type { VirtualElement as PopperJsVirtualElement } from '@popperjs/core';
 
-export function createReferenceFromClick(nativeEvent: MouseEvent): PopperJs.VirtualElement {
+export function createReferenceFromClick(nativeEvent: MouseEvent): PopperJsVirtualElement {
   const left = nativeEvent.clientX;
   const top = nativeEvent.clientY;
   const right = left + 1;
