@@ -119,15 +119,13 @@ export type DrawerHeaderTitleState = ComponentState<DrawerHeaderTitleSlots>;
 // @public
 export type DrawerProps = ComponentProps<DrawerSlots> & {
     type?: 'inline' | 'overlay';
-};
+} & (OverlayDrawerProps | InlineDrawerProps);
 
 // @public (undocumented)
 export const DrawerProvider: React_2.Provider<DrawerContextValue | undefined>;
 
 // @public (undocumented)
-export type DrawerSlots = {
-    root: Slot<OverlayDrawerProps | InlineDrawerProps>;
-};
+export type DrawerSlots = OverlayDrawerSlots | InlineDrawerSlots;
 
 // @public
 export type DrawerState = ComponentState<DrawerSlots>;
@@ -145,7 +143,7 @@ export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBasePr
 
 // @public (undocumented)
 export type InlineDrawerSlots = {
-    root: Slot<'div'>;
+    root: Slot<'div', 'aside'>;
 };
 
 // @public
@@ -168,7 +166,7 @@ export type OverlayDrawerSlots = {
 };
 
 // @public
-export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> & Required<DrawerBaseState>;
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState, contextValue: DrawerContextValue) => JSX.Element;
@@ -237,13 +235,13 @@ export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState
 export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;
 
 // @public
-export const useInlineDrawer_unstable: (props: InlineDrawerProps, ref: React_2.Ref<HTMLDivElement>) => InlineDrawerState;
+export const useInlineDrawer_unstable: (props: InlineDrawerProps, ref: React_2.Ref<HTMLElement>) => InlineDrawerState;
 
 // @public
 export const useInlineDrawerStyles_unstable: (state: InlineDrawerState) => InlineDrawerState;
 
 // @public
-export const useOverlayDrawer_unstable: (props: OverlayDrawerProps, ref: React_2.Ref<HTMLDivElement>) => OverlayDrawerState;
+export const useOverlayDrawer_unstable: (props: OverlayDrawerProps, ref: React_2.Ref<HTMLElement>) => OverlayDrawerState;
 
 // @public
 export const useOverlayDrawerStyles_unstable: (state: OverlayDrawerState) => OverlayDrawerState;

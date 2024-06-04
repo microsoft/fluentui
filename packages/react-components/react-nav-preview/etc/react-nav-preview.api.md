@@ -10,7 +10,7 @@ import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
-import type { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DrawerBodyProps } from '@fluentui/react-drawer';
 import type { DrawerBodySlots } from '@fluentui/react-drawer';
@@ -25,6 +25,7 @@ import type { DrawerHeaderProps } from '@fluentui/react-drawer';
 import type { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import type { DrawerHeaderState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
@@ -173,7 +174,10 @@ export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
-export type NavDrawerProps = DrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps;
+
+// @public
+export type NavDrawerSlots = DrawerSlots;
 
 // @public
 export type NavDrawerState = DrawerState & NavContextValue;

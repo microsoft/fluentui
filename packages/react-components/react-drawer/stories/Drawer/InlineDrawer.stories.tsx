@@ -51,10 +51,21 @@ const useStyles = makeStyles({
   },
 });
 
-type DrawerInlineExampleProps = {
-  open: boolean;
+type DrawerInlineExampleProps = DrawerProps & {
   setOpen: (open: boolean) => void;
-  position: DrawerProps['position'];
+};
+
+const getMappedPosition = (position: DrawerProps['position']) => {
+  switch (position) {
+    case 'end':
+      return 'Right';
+
+    case 'bottom':
+      return 'Bottom';
+
+    default:
+      return 'Left';
+  }
 };
 
 const setButtonText = (open: boolean, position: DrawerProps['position']) => {
@@ -80,16 +91,16 @@ const setButtonText = (open: boolean, position: DrawerProps['position']) => {
   return buttonText;
 };
 
-const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ open, setOpen, position }) => {
+const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
   return (
-    <InlineDrawer open={open} position={position}>
+    <InlineDrawer {...props}>
       <DrawerHeader>
         <DrawerHeaderTitle
           action={
             <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
           }
         >
-          {position} Inline Drawer
+          {getMappedPosition(props.position)} Inline Drawer
         </DrawerHeaderTitle>
       </DrawerHeader>
 
@@ -110,7 +121,7 @@ export const Inline = () => {
   return (
     <div className={mergeClasses(styles.root, styles.flexColumn)}>
       <div className={styles.root}>
-        <DrawerInlineExample open={leftOpen} setOpen={setLeftOpen} position="start" />
+        <DrawerInlineExample as="aside" open={leftOpen} setOpen={setLeftOpen} position="start" />
 
         <div className={styles.content}>
           <div className={styles.buttons}>
