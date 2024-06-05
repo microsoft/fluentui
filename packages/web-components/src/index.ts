@@ -238,6 +238,62 @@ export {
   SpinnerTemplate,
 } from './spinner/index.js';
 export {
+  Switch,
+  SwitchOptions,
+  SwitchLabelPosition,
+  SwitchDefinition,
+  SwitchStyles,
+  SwitchTemplate,
+} from './switch/index.js';
+export { Tab, TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
+export { TabPanel, TabPanelTemplate, TabPanelStyles, TabPanelDefinition } from './tab-panel/index.js';
+export {
+  Tabs,
+  TabsAppearance,
+  TabsOptions,
+  TabsOrientation,
+  TabsSize,
+  TabsTemplate,
+  TabsStyles,
+  TabsDefinition,
+} from './tabs/index.js';
+export {
+  Text,
+  TextAlign,
+  TextFont,
+  TextSize,
+  TextWeight,
+  TextTemplate,
+  TextStyles,
+  TextDefinition,
+} from './text/index.js';
+export {
+  TextInputOptions,
+  TextInput,
+  TextInputType,
+  TextInputAppearance,
+  TextInputControlSize,
+  TextInputTemplate,
+  TextInputStyles,
+  TextInputDefinition,
+} from './text-input/index.js';
+export {
+  ToggleButton,
+  ToggleButtonAppearance,
+  ToggleButtonOptions,
+  ToggleButtonShape,
+  ToggleButtonSize,
+  ToggleButtonTemplate,
+  ToggleButtonStyles,
+  ToggleButtonDefinition,
+} from './toggle-button/index.js';
+
+export { TreeItem } from './tree-item/index.js';
+export { TreeView } from './tree-view/index.js';
+
+export {
+  typographyBody1Styles,
+  typographyBody1StrongStyles,
   typographyBody1StrongerStyles,
   typographyBody1StrongStyles,
   typographyBody1Styles,
