@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-components';
-import { SwatchPicker, renderSwatchPickerGrid } from '@fluentui/react-components';
+import { makeStyles, SwatchPicker, renderSwatchPickerGrid } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
