@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: preventScroll on navigation",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

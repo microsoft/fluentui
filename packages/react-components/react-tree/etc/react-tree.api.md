@@ -300,7 +300,7 @@ export type TreeNavigationData_unstable = {
     target: HTMLElement;
     value: TreeItemValue;
     parentValue: TreeItemValue | undefined;
-} & ({
+} & FocusOptions & ({
     event: React_2.MouseEvent<HTMLElement>;
     type: 'Click';
 } | {
