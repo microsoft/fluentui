@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 03 Jun 2024 04:06:55 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jun 2024 04:06:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.23)
+
+Wed, 05 Jun 2024 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.22..@fluentui/web-components_v3.0.0-beta.23)
+
+### Changes
+
+- chore: migrate to package.json#files for npm publish scope" ([PR #31519](https://github.com/microsoft/fluentui/pull/31519) by martinhochel@microsoft.com)
+- Refactor fluent-dialog and add fluent-dialog-body ([PR #31512](https://github.com/microsoft/fluentui/pull/31512) by rupertdavid@microsoft.com)
+- fix(web-components): remove tabindex from slider thumb causing duplicate focus regions ([PR #31402](https://github.com/microsoft/fluentui/pull/31402) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.22)
 

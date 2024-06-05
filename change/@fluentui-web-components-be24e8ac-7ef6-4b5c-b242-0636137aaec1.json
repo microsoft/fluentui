@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactor fluent-dialog and add fluent-dialog-body",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 05 Jun 2024 04:06:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.23",
+      "version": "3.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "acfa5b43890d6192c03e68e1069d2724d1842176",
+            "comment": "chore: migrate to package.json#files for npm publish scope\""
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1084cb6b9ace8712f01c14ebd1cdd0807df87949",
+            "comment": "Refactor fluent-dialog and add fluent-dialog-body"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4f32e12d56e7ba06432ca913213fd59a8a93efb4",
+            "comment": "fix(web-components): remove tabindex from slider thumb causing duplicate focus regions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Jun 2024 04:06:55 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.22",
       "version": "3.0.0-beta.22",
