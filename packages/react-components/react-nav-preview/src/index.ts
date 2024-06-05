@@ -1,5 +1,5 @@
 export { Nav, renderNav_unstable, useNav_unstable, useNavStyles_unstable, navClassNames } from './components/Nav/index';
-export type { NavProps, NavSlots, NavState } from './components/Nav/index';
+export type { NavProps, NavSlots, NavState, NavSize } from './components/Nav/index';
 
 export { NavCategory, renderNavCategory_unstable, useNavCategory_unstable } from './components/NavCategory/index';
 export type { NavCategoryProps, NavCategoryState } from './components/NavCategory/index';

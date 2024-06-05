@@ -4,6 +4,7 @@ import {
   useContentStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
+  useSmallStyles,
 } from '../sharedNavStyles.styles';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,9 +20,20 @@ const useNavSubItemSpecificStyles = makeStyles({
   base: {
     paddingInlineStart: '46px',
   },
+  selectedBase: {
+    paddingInlineStart: '40px',
+  },
+  selectedSmallBase: {
+    paddingInlineStart: '40px',
+  },
   selectedIndicator: {
     '::after': {
       marginInlineStart: `-${navItemTokens.indicatorOffset + 34}px`,
+    },
+  },
+  selectedSmallIndicator: {
+    '::after': {
+      marginInlineStart: `-${navItemTokens.smallIndicatorOffset + 36}px`,
     },
   },
 });
@@ -31,19 +43,26 @@ const useNavSubItemSpecificStyles = makeStyles({
  */
 export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItemState => {
   const rootDefaultClassName = useRootDefaultClassName();
+  const smallStyles = useSmallStyles();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
   const navSubItemSpecificStyles = useNavSubItemSpecificStyles();
 
-  const { selected } = state;
+  const { selected, size } = state;
 
   state.root.className = mergeClasses(
     navSubItemClassNames.root,
     rootDefaultClassName,
+    size === 'small' && smallStyles.root,
+    size === 'small' && navSubItemSpecificStyles.selectedBase,
     navSubItemSpecificStyles.base,
     selected && indicatorStyles.base,
     selected && contentStyles.selected,
     selected && navSubItemSpecificStyles.selectedIndicator,
+    selected &&
+      size === 'small' &&
+      navSubItemSpecificStyles.selectedSmallIndicator &&
+      navSubItemSpecificStyles.selectedSmallBase,
     state.root.className,
   );
 

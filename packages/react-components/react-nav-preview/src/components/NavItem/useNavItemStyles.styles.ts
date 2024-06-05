@@ -4,6 +4,7 @@ import {
   useIconStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
+  useSmallStyles,
 } from '../sharedNavStyles.styles';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -18,16 +19,19 @@ export const navItemClassNames: SlotClassNames<NavItemSlots> = {
  */
 export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => {
   const rootDefaultClassName = useRootDefaultClassName();
+  const smallStyles = useSmallStyles();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
   const iconStyles = useIconStyles();
 
-  const { selected } = state;
+  const { selected, size } = state;
 
   state.root.className = mergeClasses(
     navItemClassNames.root,
     rootDefaultClassName,
+    size === 'small' && smallStyles.root,
     selected && indicatorStyles.base,
+    selected && size === 'small' && smallStyles.indicator,
     selected && contentStyles.selected,
     state.root.className,
   );
