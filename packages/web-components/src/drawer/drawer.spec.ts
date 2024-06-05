@@ -8,15 +8,12 @@ import type { Drawer } from './drawer.js';
 test.describe('Drawer', () => {
   let page: Page;
   let element: Locator;
-  let dialog: Locator;
   let root: Locator;
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     root = page.locator('#root');
     element = page.locator('fluent-drawer');
-    dialog = page.locator('dialog');
-
     await page.goto(fixtureURL('components-drawer--drawer'));
   });
 
@@ -26,12 +23,6 @@ test.describe('Drawer', () => {
 
   // eslint-disable-next-line playwright/no-focused-test
   test('should reflect size attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-          <fluent-drawer size="medium"></fluent-drawer>
-      `;
-    });
-
     await expect(element).toHaveAttribute('size', 'medium');
     await expect(element).toHaveJSProperty('size', 'medium');
 
@@ -73,50 +64,25 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('position', 'start');
   });
 
-  test('should reflect modal-type attribute', async () => {
+  test('should reflect type attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer modal-type="modal"></fluent-drawer>
+            <fluent-drawer type="modal"></fluent-drawer>
         `;
     });
 
-    await expect(element).toHaveAttribute('modal-type', 'modal');
-    await expect(element).toHaveJSProperty('modalType', 'modal');
+    await expect(element).toHaveAttribute('type', 'modal');
+    await expect(element).toHaveJSProperty('Type', 'modal');
 
     await element.evaluate((node: Drawer) => {
-      node.modalType = 'non-modal';
+      node.type = 'non-modal';
     });
 
-    await expect(element).toHaveAttribute('modal-type', 'non-modal');
-    await expect(element).toHaveJSProperty('modalType', 'non-modal');
-
-    await element.evaluate((node: Drawer) => {
-      node.modalType = 'alert';
-    });
-
-    await expect(element).toHaveAttribute('modal-type', 'alert');
-    await expect(element).toHaveJSProperty('modalType', 'alert');
+    await expect(element).toHaveAttribute('type', 'non-modal');
+    await expect(element).toHaveJSProperty('type', 'non-modal');
   });
 
-  test('should reflect open attribute', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-drawer open></fluent-drawer>
-        `;
-    });
-
-    await expect(element).toHaveAttribute('open', '');
-    await expect(element).toHaveJSProperty('open', true);
-
-    await element.evaluate((node: Drawer) => {
-      node.open = false;
-    });
-
-    await expect(element).not.toHaveAttribute('open', '');
-    await expect(element).toHaveJSProperty('open', false);
-  });
-
-  test('should reflect aria-label attribute', async () => {
+  test('should reflect ariaLabel attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
               <fluent-drawer aria-label="abc"></fluent-drawer>
@@ -198,8 +164,12 @@ test.describe('Drawer', () => {
   test('close method should close drawer', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer open></fluent-drawer>
+            <fluent-drawer></fluent-drawer>
           `;
+    });
+
+    await element.evaluate((node: Drawer) => {
+      node.show();
     });
 
     await expect(element).toHaveAttribute('open', '');
@@ -231,15 +201,6 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', true);
   });
 
-  test('a drawer with an alert modal-type should include a role of `alertdialog` on the control', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-              <fluent-drawer modal-type="alert"></fluent-drawer>
-            `;
-    });
-    await expect(dialog).toHaveAttribute('role', 'alertdialog');
-  });
-
   test('should emit an event when open property changes', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -251,7 +212,7 @@ test.describe('Drawer', () => {
       element.evaluate(
         node =>
           new Promise(resolve => {
-            node.addEventListener('onOpenChange', () => resolve(true));
+            node.addEventListener('toggle', () => resolve(true));
           }),
       ),
       await element.evaluate((node: Drawer) => {
@@ -267,10 +228,14 @@ test.describe('Drawer', () => {
 
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer open>
+            <fluent-drawer>
               <button>First</button>
             </fluent-drawer>
         `;
+    });
+
+    await element.evaluate((node: Drawer) => {
+      node.show();
     });
 
     await expect(element).toHaveAttribute('open', '');
@@ -286,10 +251,10 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', false);
   });
 
-  test("should fire a 'dismiss' event when keydown is invoked on the document", async () => {
+  test("should fire a 'cancel' event when keydown is invoked on the document", async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer modal-type="modal"></fluent-drawer>
+            <fluent-drawer type="modal"></fluent-drawer>
         `;
     });
 
@@ -310,42 +275,5 @@ test.describe('Drawer', () => {
     ]);
 
     expect(wasDismissed).toBe(true);
-  });
-
-  test('should trap focus in the drawer when tabbing', async () => {
-    const first: Locator = element.locator('button', { hasText: 'First' });
-    const second: Locator = element.locator('button', { hasText: 'Second' });
-    const third: Locator = page.locator('button', { hasText: 'Third' });
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-          <fluent-drawer open>
-            <button>First</button>
-            <button>Second</button>
-            <button>Third</button>
-          </fluent-drawer>
-      `;
-    });
-
-    await first.focus();
-
-    await expect(first).toBeFocused();
-    await first.press('Tab');
-
-    await expect(second).toBeFocused();
-    await second.press('Tab');
-
-    await expect(third).toBeFocused();
-    await third.press('Tab');
-
-    await expect(first).toBeFocused();
-    await first.press('Tab');
-
-    await expect(second).toBeFocused();
-    await second.press('Shift+Tab');
-
-    await expect(first).toBeFocused();
-    await first.press('Shift+Tab');
-
-    await expect(third).toBeFocused();
   });
 });
