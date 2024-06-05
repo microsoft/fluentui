@@ -1,6 +1,6 @@
 // @ts-check
 const createRule = require('../utils/createRule');
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { ESLintUtils } = require('@typescript-eslint/utils');
 
 module.exports = createRule({
   name: 'deprecated-keyboard-event-props',
@@ -8,7 +8,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid use of deprecated KeyboardEvent props "which" and "keyCode".',
-      category: 'Best Practices',
       recommended: 'error',
       requiresTypeChecking: true,
     },

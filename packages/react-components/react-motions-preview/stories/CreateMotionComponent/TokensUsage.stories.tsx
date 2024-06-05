@@ -35,6 +35,7 @@ const BackgroundChange = createMotionComponent({
     { backgroundColor: tokens.colorStatusSuccessBackground3 },
   ],
   duration: 3000,
+  iterations: Infinity,
 });
 
 export const TokensUsage = () => {
@@ -43,7 +44,7 @@ export const TokensUsage = () => {
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <BackgroundChange iterations={Infinity}>
+        <BackgroundChange>
           <div className={classes.item} />
         </BackgroundChange>
 

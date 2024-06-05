@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
 
 export type InlineDrawerSlots = {
-  root: Slot<'div'>;
+  root: Slot<'div', 'aside'>;
 };
 
 /**

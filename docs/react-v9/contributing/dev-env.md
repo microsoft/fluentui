@@ -18,6 +18,7 @@ This document describes how to set up your development environment and contribut
 - Optional: **[Accessibility insight for web](https://accessibilityinsights.io/)**
 - Optional: **[Node Version Manager](https://github.com/nvm-sh/nvm)**
 - Optional: **[CSpell VS Code Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)**
+- Optional: **[Improve build times: WSL for Windows](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)**
 
 ### Verify your environment
 

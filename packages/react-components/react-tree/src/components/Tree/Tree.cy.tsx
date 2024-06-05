@@ -234,6 +234,24 @@ describe('Tree', () => {
         cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{home}');
         cy.get('[data-testid="item1"]').should('be.focused');
       });
+      it('should prevent scrolling when `preventScroll()` is called in navigation', () => {
+        mount(
+          <TreeTest
+            onNavigation={(_event, data) => {
+              data.preventScroll();
+            }}
+            defaultOpenItems={['item1', 'item2', 'item2__item1']}
+          >
+            {Array.from({ length: 200 }, (_, index) => (
+              <TreeItem itemType="branch" value={`item${index}`} data-testid={`item${index}`}>
+                <TreeItemLayout>level 0, item {index + 1}</TreeItemLayout>
+              </TreeItem>
+            ))}
+          </TreeTest>,
+        );
+        cy.get('[data-testid="item0"]').focus().realPress('{end}');
+        cy.get('[data-testid="item199"]').should('be.focused').isOutsideViewport();
+      });
     });
   });
 
@@ -362,6 +380,7 @@ describe('Tree', () => {
       cy.get('[data-testid="tree-item-2-1-1"]').should('exist');
     });
   });
+
   it('should ensure roving tab indexes when focusing programmatically', () => {
     mount(
       <>
@@ -376,4 +395,24 @@ describe('Tree', () => {
     cy.get('#btn-after-tree').should('be.focused').realPress(['Shift', 'Tab']);
     cy.get('[data-testid="item2__item1"]').should('be.focused');
   });
+});
+
+declare global {
+  namespace Cypress {
+    interface Chainable<Subject> {
+      isOutsideViewport(): Chainable<Subject>;
+    }
+  }
+}
+
+Cypress.Commands.add('isOutsideViewport', { prevSubject: true }, subject => {
+  const windowInnerHeight = Cypress.config(`viewportHeight`);
+
+  const bounding = subject[0].getBoundingClientRect();
+
+  const bottomBoundOfWindow = windowInnerHeight;
+
+  expect(bounding.top).to.be.greaterThan(bottomBoundOfWindow);
+
+  return subject;
 });

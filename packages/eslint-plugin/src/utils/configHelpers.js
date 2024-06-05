@@ -128,6 +128,21 @@ module.exports = {
         format: ['PascalCase'],
         ...(config.prefixInterface ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
       },
+      // Ignore properties that require quotes - https://typescript-eslint.io/rules/naming-convention/#ignore-properties-that-require-quotes
+      {
+        selector: [
+          'classProperty',
+          'objectLiteralProperty',
+          'typeProperty',
+          'classMethod',
+          'objectLiteralMethod',
+          'typeMethod',
+          'accessor',
+          'enumMember',
+        ],
+        format: null,
+        modifiers: ['requiresQuotes'],
+      },
       {
         selector: 'default',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],

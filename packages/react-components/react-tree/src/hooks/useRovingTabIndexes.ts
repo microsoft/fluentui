@@ -4,6 +4,7 @@ import { useFocusedElementChange } from '@fluentui/react-tabster';
 import { elementContains } from '@fluentui/react-utilities';
 
 /**
+ * @internal
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
  */
 export function useRovingTabIndex() {
@@ -37,13 +38,13 @@ export function useRovingTabIndex() {
       nextElement.tabIndex = -1;
     }
   }, []);
-  const rove = React.useCallback((nextElement: HTMLElement) => {
+  const rove = React.useCallback((nextElement: HTMLElement, focusOptions?: FocusOptions) => {
     if (!currentElementRef.current) {
       return;
     }
     currentElementRef.current.tabIndex = -1;
     nextElement.tabIndex = 0;
-    nextElement.focus();
+    nextElement.focus(focusOptions);
     currentElementRef.current = nextElement;
   }, []);
 

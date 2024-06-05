@@ -11,6 +11,6 @@
     "types": ["node"],
     "isolatedModules": true
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*.js", "./src/**/*.ts"],
   "exclude": ["**/fixtures/**/*"]
 }

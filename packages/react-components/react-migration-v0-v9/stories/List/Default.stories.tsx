@@ -42,7 +42,6 @@ export const Default = () => {
         <ListItem
           key={key}
           value={key}
-          aria-label={header}
           media={<Image src={media} alt="" shape="circular" width={32} />}
           header={header}
           headerMedia={headerMedia}

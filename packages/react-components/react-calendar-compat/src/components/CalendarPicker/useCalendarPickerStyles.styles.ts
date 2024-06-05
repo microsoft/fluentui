@@ -57,6 +57,7 @@ const useCurrentItemButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
+    borderRadius: tokens.borderRadiusMedium,
     color: 'inherit',
     flexGrow: 1,
     fontFamily: 'inherit',
@@ -100,7 +101,7 @@ const useNavigationButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
     border: 'none',
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground1,
     display: 'block',
     fontFamily: 'inherit',
@@ -165,7 +166,7 @@ const useItemButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
     border: 'none',
-    borderRadius: '2px',
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground3,
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,

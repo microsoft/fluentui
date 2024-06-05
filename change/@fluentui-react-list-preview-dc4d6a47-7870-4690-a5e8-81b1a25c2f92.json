@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation",
+  "packageName": "@fluentui/react-list-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

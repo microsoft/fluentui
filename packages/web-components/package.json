@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.21",
+  "version": "3.0.0-beta.23",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -18,6 +18,13 @@
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
+  "files": [
+    "*.md",
+    "dist/dts/",
+    "dist/esm/",
+    "dist/*.js",
+    "dist/*.d.ts"
+  ],
   "exports": {
     ".": {
       "types": "./dist/dts/index.d.ts",
@@ -62,6 +69,10 @@
     "./dialog.js": {
       "types": "./dist/dts/dialog/define.d.ts",
       "default": "./dist/esm/dialog/define.js"
+    },
+    "./dialog-body.js": {
+      "types": "./dist/dts/dialog-body/define.d.ts",
+      "default": "./dist/esm/dialog-body/define.js"
     },
     "./divider.js": {
       "types": "./dist/dts/divider/define.d.ts",
@@ -142,7 +153,8 @@
     "./theme.js": {
       "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "sideEffects": [
     "./dist/esm/accordion/define.js",
@@ -155,6 +167,7 @@
     "./dist/esm/compound-button/define.js",
     "./dist/esm/counter-badge/define.js",
     "./dist/esm/dialog/define.js",
+    "./dist/esm/dialog-body/define.js",
     "./dist/esm/divider/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
@@ -173,9 +186,12 @@
     "./dist/esm/tab-panel/define.js",
     "./dist/esm/text/define.js",
     "./dist/esm/text-input/define.js",
-    "./dist/esm/toggle-button/define.js"
+    "./dist/esm/toggle-button/define.js",
+    "./dist/web-components.js",
+    "./dist/web-components.min.js"
   ],
   "scripts": {
+    "verify-packaging": "node ./scripts/verify-packaging",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
     "compile": "node ./scripts/compile",

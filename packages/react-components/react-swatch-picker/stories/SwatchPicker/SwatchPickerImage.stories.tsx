@@ -4,14 +4,19 @@ import { SwatchPicker, SwatchPickerOnSelectEventHandler, ImageSwatch } from '@fl
 
 const useStyles = makeStyles({
   example: {
-    width: '700px',
+    width: '100%',
     height: '466px',
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
     margin: '20px 0',
   },
   swatch: {
     width: '100px',
     height: '100px',
+    '@media (max-width: 768px)': {
+      width: '50px',
+      height: '50px',
+    },
   },
 });
 

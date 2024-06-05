@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import * as React from 'react';
 
 import type { PresenceMotion } from '../types';
@@ -18,11 +18,9 @@ function createElementMock() {
   const finishMock = jest.fn();
   const animateMock = jest.fn().mockImplementation(() => ({
     cancel: jest.fn(),
+    persist: jest.fn(),
     finish: finishMock,
-    set onfinish(callback: Function) {
-      callback();
-      return;
-    },
+    finished: Promise.resolve(),
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
@@ -71,7 +69,7 @@ describe('createPresenceComponent', () => {
   });
 
   describe('onMotionFinish', () => {
-    it('is not called on first render', () => {
+    it('is not called on first render', async () => {
       const onMotionFinish = jest.fn();
       const TestAtom = createPresenceComponent(motion);
       const { ElementMock } = createElementMock();
@@ -85,7 +83,7 @@ describe('createPresenceComponent', () => {
       expect(onMotionFinish).toHaveBeenCalledTimes(0);
     });
 
-    it('calls "onMotionFinish" when animation finishes', () => {
+    it('calls "onMotionFinish" when animation finishes', async () => {
       const onMotionFinish = jest.fn();
       const TestAtom = createPresenceComponent(motion);
       const { ElementMock } = createElementMock();
@@ -95,11 +93,14 @@ describe('createPresenceComponent', () => {
           <ElementMock />
         </TestAtom>,
       );
-      rerender(
-        <TestAtom onMotionFinish={onMotionFinish} visible={false}>
-          <ElementMock />
-        </TestAtom>,
-      );
+
+      await act(async () => {
+        rerender(
+          <TestAtom onMotionFinish={onMotionFinish} visible={false}>
+            <ElementMock />
+          </TestAtom>,
+        );
+      });
 
       expect(onMotionFinish).toHaveBeenCalledTimes(1);
       expect(onMotionFinish).toHaveBeenCalledWith(null, { direction: 'exit' });
@@ -152,7 +153,7 @@ describe('createPresenceComponent', () => {
   });
 
   describe('unmountOnExit', () => {
-    it('unmounts when state changes', () => {
+    it('unmounts when state changes', async () => {
       const TestAtom = createPresenceComponent(motion);
       const onRender = jest.fn();
       const { animateMock, ElementMock } = createElementMock();
@@ -170,11 +171,14 @@ describe('createPresenceComponent', () => {
       // ---
 
       jest.clearAllMocks();
-      rerender(
-        <TestAtom visible={false} unmountOnExit>
-          <ElementMock onRender={onRender} />
-        </TestAtom>,
-      );
+
+      await act(async () => {
+        rerender(
+          <TestAtom visible={false} unmountOnExit>
+            <ElementMock onRender={onRender} />
+          </TestAtom>,
+        );
+      });
 
       expect(queryByText('ElementMock')).toBe(null);
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
@@ -236,7 +240,7 @@ describe('createPresenceComponent', () => {
       );
 
       expect(fnMotion).toHaveBeenCalledTimes(1);
-      expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+      expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
 
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
     });
@@ -244,7 +248,7 @@ describe('createPresenceComponent', () => {
 });
 
 describe('PresenceGroupChildContext', () => {
-  it('calls "onExit" when "visible" changes to "false"', () => {
+  it('calls "onExit" when "visible" changes to "false"', async () => {
     const onExit = jest.fn();
     const TestAtom = createPresenceComponent(motion);
     const { ElementMock } = createElementMock();
@@ -268,13 +272,15 @@ describe('PresenceGroupChildContext', () => {
 
     // ---
 
-    rerender(
-      <Wrapper visible={false}>
-        <TestAtom>
-          <ElementMock />
-        </TestAtom>
-      </Wrapper>,
-    );
+    await act(async () => {
+      rerender(
+        <Wrapper visible={false}>
+          <TestAtom>
+            <ElementMock />
+          </TestAtom>
+        </Wrapper>,
+      );
+    });
 
     expect(queryByText('ElementMock')).toBe(null);
     expect(onExit).toHaveBeenCalledTimes(1);

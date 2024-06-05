@@ -22,7 +22,7 @@ describe('OverlayDrawer', () => {
    * component-handles-classname|component-has-static-classnames-object|make-styles-overrides-win: OverlayDrawer uses the DialogSurface component to render the className, so the main component do not handle className.
    * consistent-callback-args: Disabled that as the OverlayDrawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
    */
-  isConformant({
+  isConformant<OverlayDrawerProps>({
     Component: OverlayDrawer,
     displayName: 'OverlayDrawer',
     disabledTests: [

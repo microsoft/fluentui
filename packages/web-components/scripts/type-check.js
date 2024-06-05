@@ -1,7 +1,6 @@
 // @ts-check
 
 import fs from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
@@ -18,9 +17,7 @@ main().catch(err => {
  * Copied from ${@link 'file://./../../../scripts/tasks/src/type-check.ts'}
  */
 async function main() {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  const rootConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '../tsconfig.json'), 'utf-8'));
+  const rootConfig = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '../tsconfig.json'), 'utf-8'));
 
   const tsConfigsRefs = getTsConfigs(rootConfig, { spec: false, e2e: false });
 

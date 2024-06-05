@@ -69,7 +69,14 @@ export const EmptySwatchExample = () => {
 
       <div className={styles.example} style={{ backgroundColor: selectedColor }} />
       <Label htmlFor="color-select">Add more colors:</Label>
-      <input className={styles.input} ref={inputRef} type="color" id="color-select" name="color-select" />
+      <input
+        aria-label="Open color picker"
+        className={styles.input}
+        ref={inputRef}
+        type="color"
+        id="color-select"
+        name="color-select"
+      />
       <Button
         className={styles.button}
         appearance="primary"

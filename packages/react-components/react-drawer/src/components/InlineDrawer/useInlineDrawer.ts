@@ -14,14 +14,11 @@ import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
  * @param props - props from this instance of InlineDrawer
  * @param ref - reference to root HTMLElement of InlineDrawer
  */
-export const useInlineDrawer_unstable = (
-  props: InlineDrawerProps,
-  ref: React.Ref<HTMLDivElement>,
-): InlineDrawerState => {
+export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
   const { size, position, open } = useDrawerDefaultProps(props);
   const { separator = false } = props;
 
-  const motion = useMotion<HTMLDivElement>(open);
+  const motion = useMotion<HTMLElement>(open);
 
   return {
     components: {

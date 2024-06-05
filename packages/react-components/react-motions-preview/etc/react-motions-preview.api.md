@@ -12,13 +12,15 @@ export type AtomMotion = {
 } & KeyframeEffectOptions;
 
 // @public (undocumented)
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+export type AtomMotionFn = (params: {
+    element: HTMLElement;
+}) => AtomMotion | AtomMotion[];
 
 // @public
-export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
+export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
 
 // @public (undocumented)
 export const curves: {
@@ -43,6 +45,12 @@ export const durations: {
     readonly durationSlow: 300;
     readonly durationSlower: 400;
     readonly durationUltraSlow: 500;
+};
+
+// @public (undocumented)
+export type MotionComponentProps = {
+    children: React_2.ReactElement;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
 };
 
 // @public (undocumented)
@@ -73,6 +81,18 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
+export type PresenceComponentProps = {
+    appear?: boolean;
+    children: React_2.ReactElement;
+    imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+    onMotionFinish?: (ev: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+    visible?: boolean;
+    unmountOnExit?: boolean;
+};
+
+// @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
     constructor(props: PresenceGroupProps, context: unknown);
     // (undocumented)
@@ -90,12 +110,14 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 
 // @public (undocumented)
 export type PresenceMotion = {
-    enter: AtomMotion;
-    exit: AtomMotion;
+    enter: AtomMotion | AtomMotion[];
+    exit: AtomMotion | AtomMotion[];
 };
 
 // @public (undocumented)
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+export type PresenceMotionFn = (params: {
+    element: HTMLElement;
+}) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
 
