@@ -1,0 +1,22 @@
+{
+  "name": "@fluentui/react-list-preview-stories",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn storybook",
+    "storybook": "start-storybook",
+    "type-check": "just-scripts type-check",
+    "lint": "eslint src/",
+    "format": "just-scripts prettier",
+    "test-ssr": "test-ssr \"./src/**/*.stories.tsx\""
+  },
+  "devDependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-list-preview": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
+  }
+}

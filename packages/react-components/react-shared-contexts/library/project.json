@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-shared-contexts",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-shared-contexts/library/src",
+  "tags": ["vNext", "platform:web"],
+  "implicitDependencies": []
+}
