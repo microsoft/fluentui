@@ -11,7 +11,7 @@ export const renderTree_unstable = (state: TreeState, contextValues: TreeContext
   return (
     <TreeProvider value={contextValues.tree}>
       {/* Wrap child content in a Collapse transition which manages show/hide */}
-      <Collapse visible={state.open}>
+      <Collapse visible={state.open} unmountOnExit>
         <state.root>{state.root.children}</state.root>
       </Collapse>
     </TreeProvider>
