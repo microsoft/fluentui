@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "Adding small size variant.",
+  "comment": "feat: Adding small size variant.",
   "packageName": "@fluentui/react-nav-preview",
-  "email": "17346018+mltejera@users.noreply.github.com",
+  "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
 }
