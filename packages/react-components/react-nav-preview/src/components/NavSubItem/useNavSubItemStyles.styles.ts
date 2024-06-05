@@ -20,7 +20,7 @@ const useNavSubItemSpecificStyles = makeStyles({
   base: {
     paddingInlineStart: '48px',
   },
-  selectedBase: {
+  smallBase: {
     paddingInlineStart: '40px',
   },
   selectedIndicator: {
@@ -46,7 +46,7 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
     navSubItemClassNames.root,
     rootDefaultClassName,
     size === 'small' && smallStyles.root,
-    size === 'small' && navSubItemSpecificStyles.selectedBase,
+    size === 'small' && navSubItemSpecificStyles.smallBase,
     navSubItemSpecificStyles.base,
     selected && indicatorStyles.base,
     selected && contentStyles.selected,
