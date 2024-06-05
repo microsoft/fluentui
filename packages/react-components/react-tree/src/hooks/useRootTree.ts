@@ -44,7 +44,14 @@ export function useRootTree(
   };
 
   const requestNavigation = (request: Extract<TreeItemRequest, { requestType: 'navigate' }>) => {
-    props.onNavigation?.(request.event, request);
+    let isScrollPrevented = false;
+    props.onNavigation?.(request.event, {
+      ...request,
+      preventScroll: () => {
+        isScrollPrevented = true;
+      },
+      isScrollPrevented: () => isScrollPrevented,
+    });
     switch (request.type) {
       case treeDataTypes.ArrowDown:
       case treeDataTypes.ArrowUp:

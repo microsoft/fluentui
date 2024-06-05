@@ -53,10 +53,10 @@ export function useTreeNavigation() {
         return walkerRef.current.previousElement();
     }
   };
-  function navigate(data: TreeNavigationData_unstable) {
+  function navigate(data: TreeNavigationData_unstable, focusOptions?: FocusOptions) {
     const nextElement = getNextElement(data);
     if (nextElement) {
-      rove(nextElement, data);
+      rove(nextElement, focusOptions);
     }
   }
   return {
