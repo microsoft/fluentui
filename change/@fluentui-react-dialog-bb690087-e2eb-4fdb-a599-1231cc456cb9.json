@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: use @fluentui/react-motion",
+  "packageName": "@fluentui/react-dialog",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

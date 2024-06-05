@@ -135,7 +135,7 @@
         "packages/react-components/react-motion-components-preview/library/src/index.ts"
       ],
       "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/library/src/index.ts"],
-      "@fluentui/react-motions-preview": ["packages/react-components/react-motions-preview/src/index.ts"],
+      "@fluentui/react-motion": ["packages/react-components/react-motion/src/index.ts"],
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/src/index.ts"],

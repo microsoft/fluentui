@@ -1,4 +1,4 @@
-import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 
 const keyframes = [{ opacity: 0 }, { opacity: 1 }];
 
