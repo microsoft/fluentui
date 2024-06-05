@@ -161,6 +161,11 @@ export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<Dialo
 };
 
 // @public
+export type OverlayDrawerSlots = {
+    root: Slot<OverlayDrawerSurfaceProps>;
+};
+
+// @public
 export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;
 
 // @public
