@@ -57,7 +57,7 @@ This makes sure the list is navigable with up and down arrows and user can enter
 
 **When multiple actions are present on the list item, the list item roles should be `grid`, and `row` (this is automatic when `navigationMode="composite"` is passed). You also need to make sure each direct child of the `ListItem` component has a role `gridcell` to adhere to the a11y roles used.** You will get a warning in the console during development if this requirement is not fulfilled.
 
-When List has multiple actions inside of the list item, the user can press **left and right arrow keys** to navigate inside of the list item. Pressing **up and down** arrow keys will select the previous/next list item immediately.
+When List has multiple actions inside of the list item, the user can press **left and right arrow keys** to navigate inside of the list item. Pressing **up and down** arrow keys will move focus to the previous/next immediate list item.
 
 **To summarize the navigation patterns:**
 
@@ -70,7 +70,7 @@ In the most complex scenario, user will be navigating a **selectable** list with
   - `Right arrow` enters the first focusable element **inside** the current list item
   - `Tab` goes to the next focusable item after the List
 - When one of the element inside of the list item is focused:
-  - `Up/Down arrows` select the previous/next list item
+  - `Up/Down arrows` moves focus to the previous/next list item
   - `Left/Rigth arrows` navigate among the secondary options in the list item. If the leftmost item is focused already and left arrow key is pressed, the parent list item is focused.
   - `Esc` focuses the parent list item
 
