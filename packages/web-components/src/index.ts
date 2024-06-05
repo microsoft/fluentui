@@ -210,6 +210,9 @@ export {
   ToggleButtonDefinition,
 } from './toggle-button/index.js';
 
+export { TreeItem } from './tree-item/index.js';
+export { TreeView } from './tree-view/index.js';
+
 export {
   typographyBody1Styles,
   typographyBody1StrongStyles,

@@ -139,6 +139,14 @@
       "types": "./dist/dts/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
     },
+    "./tree-item.js": {
+      "types": "./dist/dts/tree-item/define.d.ts",
+      "default": "./dist/esm/tree-item/define.js"
+    },
+    "./tree-view.js": {
+      "types": "./dist/dts/tree-view/define.d.ts",
+      "default": "./dist/esm/tree-view/define.js"
+    },
     "./theme.js": {
       "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"
