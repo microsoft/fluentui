@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix disabled button styles",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}
