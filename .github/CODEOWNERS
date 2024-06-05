@@ -144,7 +144,8 @@ packages/merge-styles @dzearing @microsoft/cxe-red
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/react-components/priority-overflow @microsoft/teams-prg
-packages/react-components/react-aria @microsoft/teams-prg
+packages/react-components/react-aria/library @microsoft/teams-prg
+packages/react-components/react-aria/stories @microsoft/teams-prg
 packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
@@ -159,8 +160,10 @@ packages/react-icons-mdl2 @microsoft/cxe-red
 packages/react-icons-mdl2-branded @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
-packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-components/react-shared-contexts @microsoft/teams-prg @microsoft/cxe-red
+packages/react-components/react-overflow/library @microsoft/teams-prg
+packages/react-components/react-overflow/stories @microsoft/teams-prg
+packages/react-components/react-shared-contexts/library @microsoft/teams-prg @microsoft/cxe-red
+packages/react-components/react-shared-contexts/stories @microsoft/teams-prg @microsoft/cxe-red
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
@@ -190,7 +193,8 @@ packages/react-components/react-card/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-components/react-combobox @microsoft/cxe-red @microsoft/teams-prg @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
-packages/react-components/react-dialog @microsoft/teams-prg
+packages/react-components/react-dialog/library @microsoft/teams-prg
+packages/react-components/react-dialog/stories @microsoft/teams-prg
 packages/react-components/react-divider @microsoft/cxe-red
 packages/react-components/react-field @microsoft/cxe-red @behowell
 packages/react-focus @microsoft/cxe-red @khmakoto
@@ -199,10 +203,14 @@ packages/react-components/react-image/stories @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red @spmonahan
 packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
 packages/react-components/react-link @microsoft/cxe-red @khmakoto
-packages/react-components/react-menu @microsoft/teams-prg
-packages/react-components/react-popover @microsoft/teams-prg
-packages/react-components/react-portal @microsoft/teams-prg
-packages/react-components/react-provider @microsoft/teams-prg
+packages/react-components/react-menu/library @microsoft/teams-prg
+packages/react-components/react-menu/stories @microsoft/teams-prg
+packages/react-components/react-popover/library @microsoft/teams-prg
+packages/react-components/react-popover/stories @microsoft/teams-prg
+packages/react-components/react-portal/library @microsoft/teams-prg
+packages/react-components/react-portal/stories @microsoft/teams-prg
+packages/react-components/react-provider/library @microsoft/teams-prg
+packages/react-components/react-provider/stories @microsoft/teams-prg
 packages/react-components/react-radio @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-red @smhigley
 packages/react-components/react-slider @microsoft/cxe-red @micahgodbolt
@@ -246,7 +254,8 @@ packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopi
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-motion-preview/stories @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-message-bar @microsoft/teams-prg
+packages/react-components/react-message-bar/library @microsoft/teams-prg
+packages/react-components/react-message-bar/stories @microsoft/teams-prg
 packages/react-components/react-rating @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker/library @microsoft/cxe-prg
 packages/react-components/react-swatch-picker/stories @microsoft/cxe-prg
