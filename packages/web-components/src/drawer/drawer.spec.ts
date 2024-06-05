@@ -1,6 +1,4 @@
 import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
-import { keyEscape } from '@microsoft/fast-web-utilities';
 
 import { fixtureURL } from '../helpers.tests.js';
 import type { Drawer } from './drawer.js';
