@@ -37,7 +37,7 @@ const config = {
         '@swc/helpers',
         '@types/react-test-renderer',
         '@typescript-eslint/eslint-plugin',
-        '@typescript-eslint/experimental-utils',
+        '@typescript-eslint/utils',
         '@typescript-eslint/parser',
         '@microsoft/load-themed-styles',
         'chalk',
