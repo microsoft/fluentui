@@ -369,7 +369,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     openItems?: Iterable<TreeItemValue>;
     defaultOpenItems?: Iterable<TreeItemValue>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
-    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationDataParam): void;
     selectionMode?: SelectionMode_2;
     checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;

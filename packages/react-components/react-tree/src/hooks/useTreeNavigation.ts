@@ -7,6 +7,9 @@ import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useMergedRefs } from '@fluentui/react-utilities';
 
+/**
+ * @internal
+ */
 export function useTreeNavigation() {
   const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
@@ -50,13 +53,16 @@ export function useTreeNavigation() {
         return walkerRef.current.previousElement();
     }
   };
-  function navigate(data: TreeNavigationData_unstable) {
+  function navigate(data: TreeNavigationData_unstable, focusOptions?: FocusOptions) {
     const nextElement = getNextElement(data);
     if (nextElement) {
-      rove(nextElement);
+      rove(nextElement, focusOptions);
     }
   }
-  return { navigate, rootRef: useMergedRefs(walkerRootRef, rootRefCallback) } as const;
+  return {
+    navigate,
+    treeRef: useMergedRefs(walkerRootRef, rootRefCallback) as React.RefCallback<HTMLElement>,
+  } as const;
 }
 
 function lastChildRecursive(walker: HTMLElementWalker) {
