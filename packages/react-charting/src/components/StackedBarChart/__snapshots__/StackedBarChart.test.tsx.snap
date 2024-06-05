@@ -356,7 +356,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #323130;
+                            color: #5c005c;
                             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 28px;
                             font-weight: bold;
