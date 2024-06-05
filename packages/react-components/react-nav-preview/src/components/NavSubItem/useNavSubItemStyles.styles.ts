@@ -18,22 +18,14 @@ export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
  */
 const useNavSubItemSpecificStyles = makeStyles({
   base: {
-    paddingInlineStart: '46px',
+    paddingInlineStart: '48px',
   },
   selectedBase: {
     paddingInlineStart: '40px',
   },
-  selectedSmallBase: {
-    paddingInlineStart: '40px',
-  },
   selectedIndicator: {
     '::after': {
-      marginInlineStart: `-${navItemTokens.indicatorOffset + 34}px`,
-    },
-  },
-  selectedSmallIndicator: {
-    '::after': {
-      marginInlineStart: `-${navItemTokens.smallIndicatorOffset + 36}px`,
+      marginInlineStart: `-${navItemTokens.indicatorOffset + 40}px`,
     },
   },
 });
@@ -59,10 +51,6 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
     selected && indicatorStyles.base,
     selected && contentStyles.selected,
     selected && navSubItemSpecificStyles.selectedIndicator,
-    selected &&
-      size === 'small' &&
-      navSubItemSpecificStyles.selectedSmallIndicator &&
-      navSubItemSpecificStyles.selectedSmallBase,
     state.root.className,
   );
 

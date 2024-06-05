@@ -31,7 +31,6 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
     rootDefaultClassName,
     size === 'small' && smallStyles.root,
     selected && indicatorStyles.base,
-    selected && size === 'small' && smallStyles.indicator,
     selected && contentStyles.selected,
     state.root.className,
   );

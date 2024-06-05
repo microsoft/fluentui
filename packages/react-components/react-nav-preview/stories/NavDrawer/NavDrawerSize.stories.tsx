@@ -119,13 +119,13 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
 
           <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
-            <NavCategoryItem icon={<JobPostings />}>IJob Postings</NavCategoryItem>
+            <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
               <NavSubItem href="https://www.bing.com" value="7">
-                IOpenings
+                Openings
               </NavSubItem>
               <NavSubItem href="https://www.bing.com" value="8">
-                ISubmissions
+                Submissions
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>

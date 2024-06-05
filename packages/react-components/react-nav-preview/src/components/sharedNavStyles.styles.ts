@@ -5,8 +5,7 @@ import { makeResetStyles, makeStyles } from '@griffel/react';
 // Styles shared by several nav components.
 
 export const navItemTokens = {
-  smallIndicatorOffset: 8,
-  indicatorOffset: 18,
+  indicatorOffset: 12,
   indicatorWidth: 4,
   indicatorHeight: 20,
   backgroundColor: tokens.colorNeutralBackground4,
@@ -24,7 +23,7 @@ export const useRootDefaultClassName = makeResetStyles({
   position: 'relative',
   justifyContent: 'start',
   gap: tokens.spacingVerticalL,
-  padding: tokens.spacingVerticalMNudge,
+  padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingVerticalS} ${tokens.spacingVerticalMNudge} ${tokens.spacingVerticalS}`,
   backgroundColor: navItemTokens.backgroundColor,
   borderRadius: tokens.borderRadiusMedium,
   color: tokens.colorNeutralForeground2,
@@ -44,13 +43,8 @@ export const useRootDefaultClassName = makeResetStyles({
 });
 
 export const useSmallStyles = makeStyles({
-  indicator: {
-    '::after': {
-      marginInlineStart: `-${navItemTokens.smallIndicatorOffset}px`,
-    },
-  },
   root: {
-    padding: tokens.spacingVerticalXS,
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingVerticalS} ${tokens.spacingVerticalXS} ${tokens.spacingVerticalS}`,
   },
 });
 

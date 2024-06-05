@@ -56,7 +56,6 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
     rootStyles.base,
     size === 'small' && smallStyles.root,
     selected && open === false && indicatorStyles.base,
-    selected && open === false && size === 'small' && smallStyles.indicator,
     selected && open === false && contentStyles.selected,
     state.root.className,
   );
