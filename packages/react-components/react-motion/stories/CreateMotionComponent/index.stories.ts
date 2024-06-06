@@ -11,7 +11,7 @@ export { MotionArrays as arrays } from './MotionArrays.stories';
 export { MotionFunctions as functions } from './MotionFunctions.stories';
 
 export default {
-  title: 'Utilities/Web Motions (Preview)/createMotionComponent',
+  title: 'Utilities/Web Motions/createMotionComponent',
   component: null,
   parameters: {
     docs: {
