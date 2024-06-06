@@ -114,6 +114,10 @@
       "types": "./dist/dts/radio-group/define.d.ts",
       "default": "./dist/esm/radio-group/define.js"
     },
+    "./rating-display.js": {
+      "types": "./dist/dts/rating-display/define.d.ts",
+      "default": "./dist/esm/rating-display/define.js"
+    },
     "./slider.js": {
       "types": "./dist/dts/slider/define.d.ts",
       "default": "./dist/esm/slider/define.js"
@@ -178,6 +182,7 @@
     "./dist/esm/progress-bar/define.js",
     "./dist/esm/radio/define.js",
     "./dist/esm/radio-group/define.js",
+    "./dist/esm/rating-display/define.js",
     "./dist/esm/slider/define.js",
     "./dist/esm/spinner/define.js",
     "./dist/esm/switch/define.js",

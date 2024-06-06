@@ -1,15 +1,23 @@
 import { css } from '@microsoft/fast-element';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
+  colorBrandBackground,
+  colorBrandStroke2,
+  colorNeutralBackground1Pressed,
   colorNeutralForeground1,
   colorPaletteMarigoldBackground2,
   colorPaletteMarigoldBackground3,
   fontFamilyBase,
   fontSizeBase200,
+  fontSizeBase300,
   fontWeightSemibold,
   lineHeightBase200,
+  lineHeightBase300,
+  spacingHorizontalSNudge,
   spacingHorizontalXS,
+  spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
+import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * The styles for the Rating Display component.
@@ -20,34 +28,106 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    --icon-size: 12px;
+    --icon-size: 16px;
     align-items: center;
+    color: ${colorNeutralForeground1};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
     contain: layout style;
     user-select: none;
+  }
+
+  :host([size=${RatingDisplaySize.small}]) {
+    --icon-size: 12px;
+  }
+
+  :host([size=${RatingDisplaySize.large}]) {
+    --icon-size: 20px;
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
   }
 
   svg {
     width: var(--icon-size);
     height: var(--icon-size);
     fill: ${colorPaletteMarigoldBackground3};
+    margin-inline-end: ${spacingHorizontalXXS};
   }
 
-  svg.half {
+  svg:nth-child(even) {
     clip-path: inset(0 50% 0 0);
     margin-inline-end: calc(0px - var(--icon-size));
   }
 
-  :host(.blank) svg,
-  svg.selected ~ svg {
+  :host([color=${RatingDisplayColor.neutral}]) svg {
+    fill: ${colorNeutralForeground1};
+  }
+
+  :host([color=${RatingDisplayColor.brand}]) svg {
+    fill: ${colorBrandBackground};
+  }
+
+  :host([value^='-']) svg,
+  :host([value='0']) svg,
+  svg[selected] ~ svg {
     fill: ${colorPaletteMarigoldBackground2};
   }
 
-  .value {
-    margin-inline-start: ${spacingHorizontalXS};
-    color: ${colorNeutralForeground1};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightSemibold};
-    line-height: ${lineHeightBase200};
+  :host([color=${RatingDisplayColor.neutral}][value^='-']) svg,
+  :host([color=${RatingDisplayColor.neutral}][value='0']) svg,
+  :host([color=${RatingDisplayColor.neutral}]) svg[selected] ~ svg {
+    fill: ${colorNeutralBackground1Pressed};
   }
-`.withBehaviors(forcedColorsStylesheetBehavior(css``));
+
+  :host([color=${RatingDisplayColor.brand}][value^='-']) svg,
+  :host([color=${RatingDisplayColor.brand}][value='0']) svg,
+  :host([color=${RatingDisplayColor.brand}]) svg[selected] ~ svg {
+    fill: ${colorBrandStroke2};
+  }
+
+  .value {
+    font-weight: ${fontWeightSemibold};
+  }
+
+  .value,
+  .count {
+    margin-inline-start: ${spacingHorizontalXS};
+  }
+
+  :host([size=${RatingDisplaySize.small}]) .value,
+  :host([size=${RatingDisplaySize.small}]) .count {
+    margin-inline-start: ${spacingHorizontalXXS};
+  }
+
+  :host([size=${RatingDisplaySize.large}]) .value,
+  :host([size=${RatingDisplaySize.large}]) .count {
+    margin-inline-start: ${spacingHorizontalSNudge};
+  }
+
+  .count:before {
+    content: '·';
+    margin-inline-end: ${spacingHorizontalXS};
+  }
+
+  :host([size=${RatingDisplaySize.small}]) .count:before {
+    margin-inline-end: ${spacingHorizontalXXS};
+  }
+
+  :host([size=${RatingDisplaySize.large}]) .count:before {
+    margin-inline-end: ${spacingHorizontalSNudge};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host([color]) svg {
+      fill: CanvasText;
+    }
+
+    :host([color][value^='-']) svg,
+    :host([color][value='0']) svg,
+    :host([color]) svg[selected] ~ svg {
+      fill: Canvas;
+      stroke: CanvasText;
+    }
+  `),
+);
