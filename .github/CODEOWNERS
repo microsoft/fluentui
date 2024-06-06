@@ -169,7 +169,8 @@ packages/react-components/react-shared-contexts/library @microsoft/teams-prg @mi
 packages/react-components/react-shared-contexts/stories @microsoft/teams-prg @microsoft/cxe-red
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
-packages/react-components/react-theme @microsoft/teams-prg
+packages/react-components/react-theme/library @microsoft/teams-prg
+packages/react-components/react-theme/stories @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/style-utilities @dzearing @microsoft/cxe-red
@@ -233,7 +234,8 @@ packages/react-components/react-text/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-text/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tooltip @microsoft/cxe-red @behowell @khmakoto
-packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
+packages/react-components/react-toolbar/library @microsoft/teams-prg @chpalac @ling1726
+packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac @ling1726
 packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
@@ -244,11 +246,13 @@ packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
 packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
-packages/react-components/react-tree @microsoft/teams-prg
+packages/react-components/react-tree/library @microsoft/teams-prg
+packages/react-components/react-tree/stories @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
+packages/react-components/react-tags/library @microsoft/cxe-red @microsoft/teams-prg
+packages/react-components/react-tags/stories @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
@@ -261,7 +265,8 @@ packages/react-components/react-drawer/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
-packages/react-components/react-toast @microsoft/teams-prg
+packages/react-components/react-toast/library @microsoft/teams-prg
+packages/react-components/react-toast/stories @microsoft/teams-prg
 packages/react-components/react-search @microsoft/cxe-red @smhigley
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
@@ -280,9 +285,11 @@ packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
 packages/react-components/react-motion @microsoft/teams-prg
 packages/react-components/react-teaching-popover @microsoft/xc-uxe @Mitch-At-Work
-packages/react-components/react-timepicker-compat @microsoft/teams-prg
+packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
+packages/react-components/react-timepicker-compat/stories @microsoft/teams-prg
 packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
-packages/react-components/react-tag-picker @microsoft/teams-prg
+packages/react-components/react-tag-picker/library @microsoft/teams-prg
+packages/react-components/react-tag-picker/stories @microsoft/teams-prg
 packages/react-components/react-carousel-preview @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
 packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
