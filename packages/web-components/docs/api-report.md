@@ -599,8 +599,6 @@ export class Checkbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
-    // @internal
-    defaultSlottedNodes: Node[];
     disabled: boolean;
     // @internal
     elementInternals: ElementInternals;
@@ -622,20 +620,22 @@ export class Checkbox extends FASTElement {
     inputHandler(e: Event): boolean | void;
     // @internal
     keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    keyupHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name: string;
     reportValidity(): boolean;
     required: boolean;
     // @internal
     requiredChanged(prev: boolean, next: boolean): void;
-    // (undocumented)
     setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement | undefined): void;
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     shape: CheckboxShape;
     size?: CheckboxSize;
+    get validationMessage(): string;
     get validity(): ValidityState;
     get value(): string;
     set value(value: string);
@@ -2021,31 +2021,29 @@ export const durationUltraSlow = "var(--durationUltraSlow)";
 // @public
 export class Field extends FASTElement {
     // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
+    changeHandler(e: Event): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal
     focusinHandler(e: FocusEvent): boolean | void;
     // @internal
     focusoutHandler(e: FocusEvent): boolean | void;
-    // @internal
-    handleChange(source: any, propertyName?: string): void;
-    protected input?: SlottableInput;
-    // @internal
-    protected inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
-    // @internal
-    inputSlot: Node[];
-    // @internal
-    inputSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    input: SlottableInput;
     // @internal
     invalidHandler(e: Event): boolean | void;
     labelPosition: FieldLabelPosition;
     // @internal
-    messageSlot: Node[];
+    messageSlot: Element[];
+    // @internal
+    messageSlotChanged(prev: Element[], next: Element[]): void;
+    // @internal
+    setStates(): void;
+    // @internal
+    slottedInputs: SlottableInput[];
+    // @internal
+    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
 }
 
 // @public
@@ -2798,13 +2796,11 @@ export const SliderStyles: ElementStyles;
 export const SliderTemplate: ElementViewTemplate<Slider>;
 
 // @public
-export type SlottableInput = HTMLElement & {
+export type SlottableInput = HTMLElement & ElementInternals & {
     elementInternals?: ElementInternals;
     required: boolean;
     disabled: boolean;
-    validity: ValidityState;
-    checkValidity(): boolean;
-    reportValidity(): boolean;
+    readOnly: boolean;
 };
 
 // @public
@@ -3157,7 +3153,11 @@ export class TextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
     // @internal
-    changeHandler(e: InputEvent): void;
+    beforeinputHandler(e: InputEvent): boolean | void;
+    // @internal
+    changeHandler(e: InputEvent): boolean | void;
+    checkValidity(): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
@@ -3171,10 +3171,9 @@ export class TextInput extends FASTElement {
     defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     dirname?: string;
     disabled?: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
+    focusinHandler(e: FocusEvent): boolean | void;
     get form(): HTMLFormElement | null;
     static readonly formAssociated = true;
     formAttribute?: string;
@@ -3186,7 +3185,7 @@ export class TextInput extends FASTElement {
     // @internal
     inputHandler(e: InputEvent): boolean | void;
     // @internal
-    keypressHandler(e: KeyboardEvent): boolean | void;
+    keydownHandler(e: KeyboardEvent): boolean | void;
     list: string;
     maxlength: number;
     minlength: number;
@@ -3194,17 +3193,19 @@ export class TextInput extends FASTElement {
     name: string;
     pattern: string;
     placeholder: string;
-    readonly?: boolean;
+    readOnly?: boolean;
     // @internal
-    readonlyChanged(): void;
+    readOnlyChanged(): void;
+    reportValidity(): boolean;
     required: boolean;
     // @internal
     requiredChanged(previous: boolean, next: boolean): void;
     select(): void;
+    setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
-    setValidity(flags?: ValidityStateFlags, message?: string, anchor?: HTMLElement): void;
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size: number;
     spellcheck: boolean;
     type: TextInputType;
@@ -3450,15 +3451,7 @@ export const typographyTitle3Styles: CSSDirective;
 
 // @public
 export const ValidationFlags: {
-    readonly valueMissing: "valueMissing";
-    readonly typeMismatch: "typeMismatch";
-    readonly patternMismatch: "patternMismatch";
-    readonly tooLong: "tooLong";
-    readonly tooShort: "tooShort";
-    readonly rangeUnderflow: "rangeUnderflow";
-    readonly rangeOverflow: "rangeOverflow";
-    readonly stepMismatch: "stepMismatch";
-    readonly customError: "customError";
+    [key in keyof ValidityState]: key;
 };
 
 // @public (undocumented)
