@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add @floating-ui/dom as a dependency",
-  "packageName": "@fluentui/web-components",
-  "email": "zacky.ma@microsoft.com",
-  "dependentChangeType": "patch"
-}

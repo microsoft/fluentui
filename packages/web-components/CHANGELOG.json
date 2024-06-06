@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 04:06:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.24",
+      "version": "3.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "zacky.ma@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8f6259c613fd6436360448c7c377dcb22d559370",
+            "comment": "add @floating-ui/dom as a dependency"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5987b6812482d36dc0e0d5f4e86c0a8198728d2a",
+            "comment": "fix disabled button styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 05 Jun 2024 04:06:41 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.23",
       "version": "3.0.0-beta.23",
