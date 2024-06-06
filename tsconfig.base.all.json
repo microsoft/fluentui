@@ -161,6 +161,9 @@
       "@fluentui/react-search": ["packages/react-components/react-search/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-components/react-shared-contexts/library/src/index.ts"],
+      "@fluentui/react-shared-contexts-stories": [
+        "packages/react-components/react-shared-contexts/stories/src/index.ts"
+      ],
       "@fluentui/react-skeleton": ["packages/react-components/react-skeleton/src/index.ts"],
       "@fluentui/react-slider": ["packages/react-components/react-slider/src/index.ts"],
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
@@ -193,11 +196,7 @@
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-motion-preview-stories": ["packages/react-components/react-motion-preview/stories/src/index.ts"],
-      "@fluentui/react-shared-contexts-stories": [
-        "packages/react-components/react-shared-contexts/stories/src/index.ts"
-      ]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }
