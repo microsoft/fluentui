@@ -27,8 +27,8 @@ const TestDiv = (text: string, bgColor: string) => {
 };
 
 export const Default = (props: Partial<CarouselProps>) => (
-  <div style={{ overflow: 'hidden' }}>
-    <Carousel circular={true} peeking={true} defaultValue={'test-1'} {...props}>
+  <div style={{ overflow: 'hidden', boxSizing: 'border-box' }}>
+    <Carousel circular={true} peeking={false} defaultValue={'test-1'} {...props}>
       <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
       <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>
       <CarouselCard value="test-3">{TestDiv('test-3', 'BlanchedAlmond')}</CarouselCard>

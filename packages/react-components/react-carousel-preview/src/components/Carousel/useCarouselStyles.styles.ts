@@ -13,7 +13,9 @@ const PeekSize = '100px';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    position: 'relative',
+  },
   rootPeek: {
     position: 'relative',
     marginRight: PeekSize,

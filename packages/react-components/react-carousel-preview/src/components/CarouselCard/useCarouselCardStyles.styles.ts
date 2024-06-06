@@ -6,16 +6,17 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
   root: 'fui-CarouselCard',
 };
 
-// TODO: Enable varying sizes w/ tokens
-const GapSize = 10;
-
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    marginLeft: GapSize / 2 + 'px',
-    marginRight: GapSize / 2 + 'px',
+    width: '100%',
+  },
+  notVisible: {
+    position: 'absolute',
+    width: '100%',
+    top: '0px',
   },
   peekLeft: {
     position: 'absolute',
@@ -37,11 +38,12 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselCard slots based on the state
  */
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
-  const { peekDir } = state;
+  const { peekDir, visible } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     carouselCardClassNames.root,
     styles.root,
+    !visible && styles.notVisible,
     peekDir === 'next' && styles.peekRight,
     peekDir === 'prev' && styles.peekLeft,
     state.root.className,
