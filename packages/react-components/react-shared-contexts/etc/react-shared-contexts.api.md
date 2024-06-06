@@ -447,6 +447,23 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useSwatchPickerStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
+// @public (undocumented)
+export const MaterialType: {
+    readonly Opaque: "opaque";
+    readonly SemiOpaque: "semi-opaque";
+    readonly Translucent: "translucent";
+    readonly SemiTransparent: "semi-transparent";
+};
+
+// @public (undocumented)
+export type MaterialType = (typeof MaterialType)[keyof typeof MaterialType];
+
+// @public (undocumented)
+export type MaterialTypeContextValue = MaterialType;
+
+// @public (undocumented)
+export const MaterialTypeProvider: React_2.Provider<MaterialType>;
+
 // @internal (undocumented)
 export type OverridesContextValue_unstable = {
     inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
@@ -507,6 +524,9 @@ export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextVa
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
+
+// @public (undocumented)
+export function useMaterialType(): MaterialTypeContextValue;
 
 // Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue_unstable" which is marked as @internal
 //
