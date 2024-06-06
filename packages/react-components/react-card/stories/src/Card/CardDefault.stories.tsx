@@ -6,7 +6,7 @@ import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-compo
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
-    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+    'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/src/assets/';
 
   return `${ASSET_URL}${asset}`;
 };
