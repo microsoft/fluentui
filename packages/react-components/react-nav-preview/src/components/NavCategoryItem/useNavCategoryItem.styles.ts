@@ -20,6 +20,7 @@ export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
 const useExpandIconStyles = makeStyles({
   base: {
     marginInlineStart: 'auto',
+    height: '20px',
   },
   open: {
     transform: 'rotate(90deg)',
