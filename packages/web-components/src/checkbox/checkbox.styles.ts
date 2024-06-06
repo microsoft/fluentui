@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -168,45 +167,45 @@ export const styles = css`
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     :host {
-      border-color: ${SystemColors.FieldText};
+      border-color: FieldText;
     }
 
     :host(:not([slot='input']:focus-visible))::after {
-      border-color: ${SystemColors.Canvas};
+      border-color: Canvas;
     }
 
     :host(:not([disabled]):hover),
     :host(${checkedState}:not([disabled]):hover),
     :host(:not([slot='input']):focus-visible)::after {
-      border-color: ${SystemColors.Highlight};
+      border-color: Highlight;
     }
 
     .indeterminate-indicator,
     .checked-indicator {
-      color: ${SystemColors.HighlightText};
+      color: HighlightText;
     }
 
     :host(${checkedState}),
     :host(${indeterminateState}) .indeterminate-indicator {
-      background-color: ${SystemColors.FieldText};
+      background-color: FieldText;
     }
 
     :host(${checkedState}:not([disabled]):hover),
     :host(${indeterminateState}:not([disabled]):hover) .indeterminate-indicator {
-      background-color: ${SystemColors.Highlight};
+      background-color: Highlight;
     }
 
     :host([disabled]) {
-      border-color: ${SystemColors.GrayText};
+      border-color: GrayText;
     }
 
     :host([disabled]${indeterminateState}) .indeterminate-indicator {
-      background-color: ${SystemColors.GrayText};
+      background-color: GrayText;
     }
 
     :host([disabled]),
     :host([disabled]${checkedState}) .checked-indicator {
-      color: ${SystemColors.GrayText};
+      color: GrayText;
     }
   `),
 );
