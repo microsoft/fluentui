@@ -15,6 +15,9 @@ const useStyles = makeStyles({
   root: {
     padding: `0 ${tokens.spacingVerticalMNudge}`,
     alignItems: 'unset',
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingVerticalXXS,
   },
 });
 
