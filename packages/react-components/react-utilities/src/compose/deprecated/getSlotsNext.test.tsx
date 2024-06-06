@@ -4,6 +4,7 @@ import type { ExtractSlotProps, Slot, SlotComponentType, UnknownSlotProps } from
 import { resolveShorthand } from './resolveShorthand';
 import { SLOT_RENDER_FUNCTION_SYMBOL } from '../constants';
 
+// eslint-disable-next-line deprecation/deprecation
 const resolveShorthandMock = <Props extends UnknownSlotProps>(props: Props): SlotComponentType<Props> => {
   // casting is required here as SlotComponent is a callable
   return { ...props } as SlotComponentType<Props>;

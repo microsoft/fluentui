@@ -7,7 +7,7 @@
 import * as React_2 from 'react';
 
 // @public
-function always<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined, options: SlotOptions<Props>): SlotComponentType<Props>;
+function always<Props extends SlotPropsDataType>(value: Props | SlotShorthandValue | undefined, options: SlotOptions<Props>): SlotComponentType<Props>;
 
 // @internal
 export function applyTriggerPropsToChildren<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children'], triggerChildProps: TriggerChildProps): React_2.ReactElement | null;
@@ -22,15 +22,15 @@ export function canUseDOM(): boolean;
 export const clamp: (value: number, min: number, max: number) => number;
 
 // @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: React_2.ElementType;
     };
 } & {
-    [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
+    [Key in keyof Slots]: ReplaceNullWithUndefined<WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>>;
 };
 
 // @internal (undocumented)
@@ -63,7 +63,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<InferredElementRefType<Props>>>;
+export type ForwardRefComponent<Props> = FunctionComponent<Props & React_2.RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
@@ -72,7 +72,7 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 };
 
 // @public
-export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
+export const getIntrinsicElementProps: <Props extends SlotPropsDataType, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "slot" | "style" | "title" | "as" | "children" | "className" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture">>;
 
 // @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -97,13 +97,13 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public @deprecated
-export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
+export function getSlots<R extends SlotPropsRecord>(state: unknown): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
 
 // @internal @deprecated
-export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
+export function getSlotsNext<R extends SlotPropsRecord>(state: unknown): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
@@ -134,7 +134,7 @@ export function isInteractiveHTMLElement(element: unknown): boolean;
 export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | React_2.MouseEvent;
 
 // @public
-export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
+export function isResolvedShorthand<Shorthand extends Slot<SlotPropsDataType>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
 // @public
 export function isSlot<Props extends {}>(element: unknown): element is SlotComponentType<Props>;
@@ -160,7 +160,7 @@ export type OnSelectionChangeData = {
 };
 
 // @public
-function optional<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
+function optional<Props extends SlotPropsDataType>(value: Props | SlotShorthandValue | undefined | null, options: {
     renderByDefault?: boolean;
 } & SlotOptions<Props>): SlotComponentType<Props> | undefined;
 
@@ -194,15 +194,15 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => 
 export function resetIdsForTests(): void;
 
 // @public @deprecated
-export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps>;
+export const resolveShorthand: ResolveShorthandFunction<SlotPropsDataType>;
 
 // @public
-function resolveShorthand_2<Props extends UnknownSlotProps | null | undefined>(value: Props | SlotShorthandValue): Props;
+function resolveShorthand_2<Props extends SlotPropsDataType | null | undefined>(value: Props | SlotShorthandValue): Props;
 
 // @public @deprecated (undocumented)
-export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
-    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
+export type ResolveShorthandFunction<Props extends SlotPropsDataType = SlotPropsDataType> = {
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): WithoutSlotRenderFunction<P>;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): WithoutSlotRenderFunction<P> | undefined;
 };
 
 // @public @deprecated (undocumented)
@@ -249,13 +249,11 @@ export { SelectionMode_2 as SelectionMode }
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
+export type Slot<Type extends keyof JSX.IntrinsicElements | ComponentType<any> | SlotPropsDataType, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
-    [As in AlternateAs]: {
-        as: As;
-    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
-}[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends ComponentType<infer Props> ? Props extends SlotPropsDataType ? Props : WithSlotRenderFunction<Props> : Type> | (AlternateAs extends unknown ? {
+    as: AlternateAs;
+} & WithSlotRenderFunction<IntrinsicElementProps<AlternateAs>> : never) | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 declare namespace slot {
     export {
@@ -279,23 +277,26 @@ export type SlotClassNames<Slots> = {
 };
 
 // @public
-export type SlotComponentType<Props> = Props & {
-    (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
+export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> & FunctionComponent<{
+    children?: ReactNode;
+}> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-    [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
 
 // @public (undocumented)
-export type SlotOptions<Props extends UnknownSlotProps> = {
+export type SlotOptions<Props extends SlotPropsDataType> = {
     elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    defaultProps?: Partial<Props>;
+    defaultProps?: Partial<Props & {
+        ref?: React_2.Ref<InferredElementRefType<Props>>;
+    }>;
 };
 
 // @public
-export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
+export type SlotPropsRecord = Record<string, SlotPropsDataType | SlotShorthandValue | null | undefined>;
 
 // @public (undocumented)
-export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => React_2.ReactNode;
+export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
 
 // @public @deprecated (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
@@ -303,7 +304,7 @@ export type Slots<S extends SlotPropsRecord> = {
 };
 
 // @public
-export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | React_2.ReactPortal;
+export type SlotShorthandValue = React_2.ReactElement | string | number | Iterable<ReactNode> | React_2.ReactPortal;
 
 // @public
 export const SSRProvider: React_2.FC<{
@@ -321,7 +322,7 @@ export type TriggerProps<TriggerChildProps = unknown> = {
 // @public
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
-// @public
+// @public @deprecated (undocumented)
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
 };

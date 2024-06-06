@@ -70,6 +70,7 @@ describe('createElement with getSlotsNext', () => {
   describe('custom behavior tests', () => {
     it('keeps children from "defaultProps" in a render callback', () => {
       type TestComponentSlots = { slot: Slot<'div'> };
+      // eslint-disable-next-line deprecation/deprecation
       type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
@@ -113,6 +114,7 @@ describe('createElement with getSlotsNext', () => {
 
     it('keeps children from a render template in a render callback', () => {
       type TestComponentSlots = { outer: Slot<'div'>; inner: Slot<'div'> };
+      // eslint-disable-next-line deprecation/deprecation
       type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 

@@ -50,6 +50,7 @@ export const useToastContainer_unstable = (
     pauseOnWindowBlur,
     imperativeRef,
     tryRestoreFocus,
+    content,
     ...rest
   } = props;
   const titleId = useId('toast-title');
