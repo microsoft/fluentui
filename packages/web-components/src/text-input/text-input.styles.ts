@@ -19,6 +19,7 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorPaletteRedBorder2,
   colorTransparentBackground,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
@@ -77,19 +78,25 @@ export const styles: ElementStyles = css`
   }
 
   .root {
-    position: relative;
-    box-sizing: border-box;
-    height: 32px;
-    display: inline-flex;
     align-items: center;
-    flex-direction: row;
-    width: 100%;
-    padding: 0 ${spacingHorizontalMNudge};
+    background-color: ${colorNeutralBackground1};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
+    height: 32px;
+    display: inline-flex;
+    flex-direction: row;
     gap: ${spacingHorizontalXXS};
+    padding: 0 ${spacingHorizontalMNudge};
+    position: relative;
+    width: 100%;
   }
+
+  :has(.control:user-invalid) {
+    border-color: ${colorPaletteRedBorder2};
+  }
+
   .root::after {
     box-sizing: border-box;
     content: '';
@@ -117,7 +124,6 @@ export const styles: ElementStyles = css`
     font-weight: ${fontWeightRegular};
     font-size: ${fontSizeBase300};
     border: none;
-    background: transparent;
     vertical-align: center;
   }
   .control:focus-visible {

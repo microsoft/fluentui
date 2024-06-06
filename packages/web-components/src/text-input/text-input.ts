@@ -1,5 +1,4 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
-import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import type { TextInputControlSize } from './text-input.options.js';
@@ -217,16 +216,16 @@ export class TextInput extends FASTElement {
    * HTML Attribute: `readonly`
    */
   @attr({ attribute: 'readonly', mode: 'boolean' })
-  public readonly?: boolean;
+  public readOnly?: boolean;
 
   /**
    * Syncs the `ElementInternals.ariaReadOnly` property when the `readonly` property changes.
    *
    * @internal
    */
-  public readonlyChanged(): void {
+  public readOnlyChanged(): void {
     if (this.$fastController.isConnected) {
-      this.elementInternals.ariaReadOnly = `${!!this.readonly}`;
+      this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
     }
   }
 
@@ -324,7 +323,7 @@ export class TextInput extends FASTElement {
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The form-associated flag.
@@ -353,7 +352,7 @@ export class TextInput extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    return this.elementInternals.validationMessage;
+    return this.elementInternals.validationMessage || this.control.validationMessage;
   }
 
   /**
@@ -399,6 +398,19 @@ export class TextInput extends FASTElement {
   }
 
   /**
+   * Handles the internal control's `keypress` event.
+   *
+   * @internal
+   */
+  public beforeinputHandler(e: InputEvent): boolean | void {
+    if (e.inputType === 'insertLineBreak') {
+      this.implicitSubmit();
+    }
+
+    return true;
+  }
+
+  /**
    * Change event handler for inner control.
    *
    * @internal
@@ -406,24 +418,53 @@ export class TextInput extends FASTElement {
    * "Change" events are not `composable` so they will not permeate the shadow DOM boundary. This function effectively
    * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
-  public changeHandler(e: InputEvent): void {
+  public changeHandler(e: InputEvent): boolean | void {
     this.setValidity();
-    this.$emit('change', e);
+    this.$emit('change', e, {
+      bubbles: true,
+      composed: true,
+    });
+
+    return true;
+  }
+
+  /**
+   * Checks the validity of the element and returns the result.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
+   */
+  public checkValidity(): boolean {
+    return this.elementInternals.checkValidity();
+  }
+
+  /**
+   * Clicks the inner control when the component is clicked.
+   *
+   * @param e - the event object
+   */
+  public clickHandler(e: MouseEvent): boolean | void {
+    if (this.isSameNode(e.target as Node | null)) {
+      this.control?.click();
+    }
   }
 
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.addEventListener('keypress', this.keypressHandler);
-
     this.setFormValue(this.value);
     this.setValidity();
   }
 
-  public disconnectedCallback(): void {
-    this.removeEventListener('keypress', this.keypressHandler);
-
-    super.disconnectedCallback();
+  /**
+   * Focuses the inner control when the component is focused.
+   *
+   * @param e - the event object
+   * @public
+   */
+  public focusinHandler(e: FocusEvent): boolean | void {
+    this.control?.focus();
   }
 
   /**
@@ -484,12 +525,13 @@ export class TextInput extends FASTElement {
   }
 
   /**
-   * Handles the internal control's `keypress` event.
+   * Handles the internal control's `keydown` event.
    *
+   * @param e - the event object
    * @internal
    */
-  public keypressHandler(e: KeyboardEvent): boolean | void {
-    if (e.key === keyEnter) {
+  public keydownHandler(e: KeyboardEvent): boolean | void {
+    if (e.key === 'Enter') {
       this.implicitSubmit();
     }
 
@@ -511,6 +553,28 @@ export class TextInput extends FASTElement {
   }
 
   /**
+   * Sets the custom validity message.
+   * @param message - The message to set
+   *
+   * @public
+   */
+  public setCustomValidity(message: string): void {
+    this.elementInternals.setValidity({ customError: true }, message);
+    this.reportValidity();
+  }
+
+  /**
+   * Reports the validity of the element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
+   */
+  public reportValidity(): boolean {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
    *
    * @internal
@@ -529,16 +593,18 @@ export class TextInput extends FASTElement {
    * @internal
    */
   public setValidity(
-    flags: ValidityStateFlags = this.control.validity,
-    message: string = this.control.validationMessage,
+    flags: Partial<ValidityState> = this.control.validity,
+    message: string = this.validationMessage,
     anchor: HTMLElement = this.control,
   ): void {
-    if (this.disabled) {
-      this.elementInternals.setValidity({});
-      return;
-    }
+    if (this.$fastController.isConnected) {
+      if (this.disabled) {
+        this.elementInternals.setValidity({});
+        return;
+      }
 
-    this.elementInternals.setValidity(flags, message ?? '', anchor);
+      this.elementInternals.setValidity(flags, message, anchor);
+    }
   }
 }
 
