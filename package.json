@@ -13,7 +13,6 @@
   "scripts": {
     "dedupe": "npx yarn-deduplicate --strategy fewer",
     "build": "lage build --verbose",
-    "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components",
     "buildci": "lage build test lint type-check test-ssr verify-packaging --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
