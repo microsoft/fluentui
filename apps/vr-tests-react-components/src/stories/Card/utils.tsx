@@ -5,7 +5,7 @@ import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 
 const ASSET_URL =
-  'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/';
+  'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/src/assets/';
 
 export const powerpointLogoURL = ASSET_URL + 'powerpoint_logo.svg';
 export const salesPresentationTemplateURL = ASSET_URL + 'sales_template.png';
