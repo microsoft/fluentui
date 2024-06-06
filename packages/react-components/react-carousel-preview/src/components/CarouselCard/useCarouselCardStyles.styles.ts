@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     width: '100%',
     top: '0px',
+    left: '-1000%', // For now, to hide out of viewport.
   },
   peekLeft: {
     position: 'absolute',

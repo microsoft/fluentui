@@ -19,6 +19,7 @@ const TestDiv = (text: string, bgColor: string) => {
         backgroundColor: bgColor,
         alignContent: 'center',
         textAlign: 'center',
+        margin: '0px 5px',
       }}
     >
       {text}

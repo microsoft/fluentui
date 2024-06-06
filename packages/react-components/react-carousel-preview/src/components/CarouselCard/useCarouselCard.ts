@@ -22,6 +22,7 @@ export const useCarouselCard_unstable = (
   const { circular, peeking } = useCarouselContext_unstable();
 
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
+  const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
   const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
     if (!peeking) {
       return;
@@ -51,6 +52,7 @@ export const useCarouselCard_unstable = (
     value,
     visible,
     peekDir,
+    navDirection,
     components: {
       root: 'div',
     },

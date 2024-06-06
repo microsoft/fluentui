@@ -54,8 +54,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   }
 
   useIsomorphicLayoutEffect(() => {
-    store.setActiveValue(value);
-  }, [store, value]);
+    store.setActiveValue(value, circular);
+  }, [store, value, circular]);
 
   React.useEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;

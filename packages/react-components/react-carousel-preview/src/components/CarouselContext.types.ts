@@ -2,7 +2,7 @@ import * as React from 'react';
 import { EventData } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
-  setActiveValue: (newValue: string | null) => void;
+  setActiveValue: (newValue: string | null, circular?: Boolean) => void;
 
   clearValues: () => void;
   addValue: (value: string) => void;
@@ -13,6 +13,7 @@ export type CarouselStore = {
   getSnapshot: () => {
     activeValue: string | null;
     values: string[];
+    navDirection?: 'prev' | 'next' | null;
   };
 };
 

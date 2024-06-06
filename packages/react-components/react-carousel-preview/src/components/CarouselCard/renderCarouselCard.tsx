@@ -36,20 +36,20 @@ const SlideLeft = createPresenceComponent({
   },
 });
 
-// const slideRightKeyframes = [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0%)' }];
-// const slideRightExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(100%)' }];
-// const SlideRight = createPresenceComponent({
-//   enter: {
-//     keyframes: slideRightKeyframes,
-//     easing: motionTokens.curveLinear,
-//     duration: motionTokens.durationGentle,
-//   },
-//   exit: {
-//     keyframes: slideRightExitKeyframes,
-//     easing: motionTokens.curveLinear,
-//     duration: motionTokens.durationGentle,
-//   },
-// });
+const slideRightKeyframes = [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0%)' }];
+const slideRightExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(100%)' }];
+const SlideRight = createPresenceComponent({
+  enter: {
+    keyframes: slideRightKeyframes,
+    easing: motionTokens.curveLinear,
+    duration: motionTokens.durationGentle,
+  },
+  exit: {
+    keyframes: slideRightExitKeyframes,
+    easing: motionTokens.curveLinear,
+    duration: motionTokens.durationGentle,
+  },
+});
 
 /**
  * Render the final JSX of CarouselCard
@@ -57,13 +57,21 @@ const SlideLeft = createPresenceComponent({
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible } = state;
+  const { visible, navDirection } = state;
 
-  // TODO Add additional slots in the appropriate place
-  return (
-    // eslint-disable-next-line react/jsx-no-bind
-    <SlideLeft visible={visible} appear>
-      <state.root />
-    </SlideLeft>
-  );
+  if (navDirection === 'next') {
+    return (
+      <SlideRight visible={visible} appear>
+        <state.root />
+      </SlideRight>
+    );
+  } else if (navDirection === 'prev') {
+    return (
+      <SlideLeft visible={visible} appear>
+        <state.root />
+      </SlideLeft>
+    );
+  } else {
+    return <state.root />;
+  }
 };

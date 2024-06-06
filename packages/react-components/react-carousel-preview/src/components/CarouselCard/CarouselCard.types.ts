@@ -24,4 +24,9 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    * Declares if card should be peeking as previous/next card
    */
   peekDir?: 'prev' | 'next' | null;
+
+  /**
+   * Informs the direction a navigation animation should take
+   */
+  navDirection?: 'prev' | 'next' | null;
 } & Pick<CarouselCardProps, 'value'>;
