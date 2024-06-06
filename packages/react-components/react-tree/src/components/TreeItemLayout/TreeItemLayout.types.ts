@@ -1,7 +1,31 @@
-import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import type * as React from 'react';
+import type {
+  Slot,
+  ComponentProps,
+  ComponentState,
+  ExtractSlotProps,
+  EventData,
+  EventHandler,
+} from '@fluentui/react-utilities';
 import { ButtonContextValue } from '@fluentui/react-button';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';
+
+export type TreeItemLayoutActionVisibilityChangeData = (
+  | EventData<'mouseover' | 'mouseout', MouseEvent>
+  | EventData<'focus' | 'blur', FocusEvent>
+  | EventData<'blur', React.FocusEvent>
+) & { visible: boolean };
+
+export type TreeItemLayoutActionSlotProps = ExtractSlotProps<
+  Slot<'div'> & {
+    /**
+     * Forces visibility of the aside/action content
+     */
+    visible?: boolean;
+    onVisibilityChange?: EventHandler<TreeItemLayoutActionVisibilityChangeData>;
+  }
+>;
 
 export type TreeItemLayoutSlots = {
   root: Slot<'div'>;
@@ -37,16 +61,7 @@ export type TreeItemLayoutSlots = {
    *
    * `actions` slot supports a `visible` prop to force visibility of the actions.
    */
-  actions?: Slot<
-    ExtractSlotProps<
-      Slot<'div'> & {
-        /**
-         * Forces visibility of the aside/action content
-         */
-        visible?: boolean;
-      }
-    >
-  >;
+  actions?: Slot<TreeItemLayoutActionSlotProps>;
   selector?: Slot<typeof Checkbox> | Slot<typeof Radio>;
 };
 
