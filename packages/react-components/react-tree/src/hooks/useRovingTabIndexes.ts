@@ -8,8 +8,15 @@ import { elementContains } from '@fluentui/react-utilities';
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
  */
 export function useRovingTabIndex() {
-  const currentElementRef = React.useRef<HTMLElement>();
+  const currentElementRef = React.useRef<HTMLElement | null>(null);
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
+
+  React.useEffect(() => {
+    if (currentElementRef.current === null && walkerRef.current) {
+      initialize(walkerRef.current);
+    }
+  });
+
   useFocusedElementChange(element => {
     if (
       element?.getAttribute('role') === 'treeitem' &&
