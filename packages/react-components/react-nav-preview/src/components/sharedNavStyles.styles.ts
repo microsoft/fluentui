@@ -5,7 +5,7 @@ import { makeResetStyles, makeStyles } from '@griffel/react';
 // Styles shared by several nav components.
 
 export const navItemTokens = {
-  indicatorOffset: 14,
+  indicatorOffset: 16,
   indicatorWidth: 4,
   indicatorHeight: 20,
   backgroundColor: tokens.colorNeutralBackground4,

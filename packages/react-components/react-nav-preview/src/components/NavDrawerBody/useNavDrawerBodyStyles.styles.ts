@@ -13,7 +13,7 @@ export const navDrawerBodyClassNames: SlotClassNames<NavDrawerBodySlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    padding: `0 ${tokens.spacingVerticalMNudge}`,
+    padding: `0 ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalMNudge}`,
     alignItems: 'unset',
     display: 'flex',
     flexDirection: 'column',

@@ -15,8 +15,7 @@ const useStyles = makeStyles({
   root: {
     margin: 'unset',
     paddingInlineStart: '12px',
-    paddingBlockStart: '10px',
-    paddingBlockEnd: '0px',
+    paddingBlock: '5px',
   },
 });
 
