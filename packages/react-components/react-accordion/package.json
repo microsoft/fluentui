@@ -37,6 +37,7 @@
     "@fluentui/react-context-selector": "^9.1.60",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-jsx-runtime": "^9.0.38",
+    "@fluentui/react-motions-preview": "^0.3.1",
     "@fluentui/react-shared-contexts": "^9.19.0",
     "@fluentui/react-tabster": "^9.21.4",
     "@fluentui/react-theme": "^9.1.19",

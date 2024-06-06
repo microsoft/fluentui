@@ -35,26 +35,44 @@ export type PresenceComponentProps = {
   visible?: boolean;
 
   /**
+   * Fades in/out on enter/exit.
+   * @default true
+   */
+  animateOpacity?: boolean;
+
+  /**
    * By default, the child component remains mounted after it reaches the "finished" state. Set "unmountOnExit" if
    * you prefer to unmount the component after it finishes exiting.
    */
   unmountOnExit?: boolean;
 };
 
+export type PresenceComponent<Motion = PresenceMotion | PresenceMotionFn> = React.FC<PresenceComponentProps> &
+  React.FC<PresenceComponentProps> & {
+    motionDefinition: Motion;
+  };
+
 function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
   return !appear && isFirstMount && visible;
 }
 
-export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn) {
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof value> {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
+    const { appear, children, imperativeRef, onMotionFinish, visible, animateOpacity, unmountOnExit } = {
+      ...itemContext,
+      ...props,
+    };
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
 
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
+    // For a prop like animateOpacity, we don't want to restart the animation when it changes.
+    // So we use a ref to store the current value, which will not rerender the component when it changes.
+    // The new value will show on the next animation, usually by toggling the `visible` prop.
+    const animateOpacityRef = React.useRef(animateOpacity);
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean }>({});
 
@@ -85,7 +103,8 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
           return;
         }
 
-        const presenceMotion = typeof value === 'function' ? value({ element }) : value;
+        const presenceMotion =
+          typeof value === 'function' ? value({ element: element, animateOpacity: animateOpacityRef.current }) : value;
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
@@ -109,6 +128,10 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
       [handleRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
     );
 
+    React.useEffect(() => {
+      animateOpacityRef.current = animateOpacity;
+    }, [animateOpacity]);
+
     if (mounted) {
       return React.cloneElement(child, { ref });
     }
@@ -116,5 +139,5 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
     return null;
   };
 
-  return Presence;
+  return Object.assign(Presence, { motionDefinition: value });
 }

@@ -1,15 +1,36 @@
 import {
   makeStyles,
   Button,
+  Dropdown,
+  Option,
   Persona,
   tokens,
   MessageBar,
   MessageBarTitle,
   MessageBarBody,
+  useId,
 } from '@fluentui/react-components';
 import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
-import { createPresenceComponent, motionTokens, PresenceGroup } from '@fluentui/react-motions-preview';
+// import { createPresenceComponent, motionTokens, PresenceGroup, Collapse } from '@fluentui/react-motions-preview';
+import {
+  PresenceGroup,
+  Collapse,
+  CollapseExaggerated,
+  CollapseSnappy,
+  Scale,
+  Fade,
+} from '@fluentui/react-motions-preview';
 import * as React from 'react';
+
+const motionOptions = {
+  Collapse,
+  ['CollapseExaggerated']: CollapseExaggerated,
+  ['CollapseSnappy']: CollapseSnappy,
+  ['Scale']: Scale,
+  ['Fade']: Fade,
+};
+
+type MotionName = keyof typeof motionOptions;
 
 const useClasses = makeStyles({
   container: {
@@ -76,7 +97,7 @@ const users = [
   },
   {
     image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ColinBallinger.jpg',
-    name: 'ColinBallinger',
+    name: 'Colin Ballinger',
   },
   {
     image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/DaisyPhillips.jpg',
@@ -156,28 +177,33 @@ const users = [
   },
 ];
 
-const ItemMotion = createPresenceComponent({
-  enter: {
-    keyframes: [
-      { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
-      { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
-    ],
-    easing: motionTokens.curveEasyEase,
-    duration: motionTokens.durationUltraSlow,
-  },
-  exit: {
-    keyframes: [
-      { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
-      { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
-    ],
-    easing: motionTokens.curveEasyEase,
-    duration: motionTokens.durationUltraSlow,
-  },
-});
+// const ItemMotion = Collapse;
+
+// const ItemMotion = createPresenceComponent({
+//   enter: {
+//     keyframes: [
+//       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
+//       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
+//     ],
+//     easing: motionTokens.curveEasyEase,
+//     duration: motionTokens.durationUltraSlow,
+//   },
+//   exit: {
+//     keyframes: [
+//       { opacity: 1, transform: 'scaleY(1) translateX(0)', height: '40px' },
+//       { opacity: 0, transform: 'scaleY(0) translateX(-30px)', height: 0 },
+//     ],
+//     easing: motionTokens.curveEasyEase,
+//     duration: motionTokens.durationUltraSlow,
+//   },
+// });
 
 export const PresenceGroupDefault = () => {
+  const comboId = useId('combo-variant');
   const classes = useClasses();
   const [limit, setLimit] = React.useState(3);
+  const [motionName, setMotionName] = React.useState<MotionName>(Object.keys(motionOptions)[0] as MotionName);
+  const ItemMotion = motionOptions[motionName];
 
   return (
     <div className={classes.container}>
@@ -194,6 +220,28 @@ export const PresenceGroupDefault = () => {
         <Button disabled={limit === 0} icon={<DeleteRegular />} onClick={() => setLimit(l => l - 1)} size="small">
           Remove user
         </Button>
+
+        <Dropdown
+          aria-labelledby={comboId}
+          // placeholder="(default)"
+          defaultValue={motionName}
+          // defaultSelectedOptions={}
+          onOptionSelect={React.useCallback(
+            (e: unknown, data: { optionValue: string | undefined }) => {
+              // Clear the custom duration when a preset is selected
+              data.optionValue && setMotionName(data.optionValue as keyof typeof motionOptions);
+            },
+            [setMotionName],
+          )}
+        >
+          {Object.keys(motionOptions).map(optionKey => {
+            return (
+              <Option key={optionKey} value={optionKey}>
+                {optionKey}
+              </Option>
+            );
+          })}
+        </Dropdown>
       </div>
 
       <div className={classes.card}>
@@ -208,7 +256,9 @@ export const PresenceGroupDefault = () => {
 
         <PresenceGroup>
           {users.slice(0, limit).map(item => (
-            <ItemMotion key={item.name}>
+            // HACK: use the motion name in the key to force re-render of all items,
+            // otherwise the motions don't reliably update when the selected motion name changes
+            <ItemMotion key={item.name + '_' + motionName}>
               <Persona
                 avatar={{
                   image: { src: item.image },

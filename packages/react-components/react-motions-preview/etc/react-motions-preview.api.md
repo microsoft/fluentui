@@ -17,10 +17,22 @@ export type AtomMotionFn = (params: {
 }) => AtomMotion | AtomMotion[];
 
 // @public
+export const Collapse: PresenceComponent<PresenceMotion | PresenceMotionFn>;
+
+// @public (undocumented)
+export const CollapseExaggerated: PresenceComponent<PresenceMotion | PresenceMotionFn>;
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<PresenceMotion | PresenceMotionFn>;
+
+// @public
 export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
+export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): PresenceComponent<typeof motion>;
+
+// @public (undocumented)
+export const createVariantComponent: <T extends PresenceComponent<PresenceMotion | PresenceMotionFn>>(component: T, override: PresenceOverride) => PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
 export const curves: {
@@ -46,6 +58,9 @@ export const durations: {
     readonly durationSlower: 400;
     readonly durationUltraSlow: 500;
 };
+
+// @public
+export const Fade: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // @public (undocumented)
 export type MotionComponentProps = {
@@ -108,16 +123,19 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 export type PresenceMotion = {
-    enter: AtomMotion | AtomMotion[];
-    exit: AtomMotion | AtomMotion[];
+    [transition in PresenceTransitionName]: AtomMotion | AtomMotion[];
 };
 
-// @public (undocumented)
+// @public
 export type PresenceMotionFn = (params: {
     element: HTMLElement;
+    animateOpacity?: boolean;
 }) => PresenceMotion;
+
+// @public
+export const Scale: PresenceComponent<PresenceMotion | PresenceMotionFn>;
 
 // (No @packageDocumentation comment for this package)
 

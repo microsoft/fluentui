@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "motion tokens structure",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}
