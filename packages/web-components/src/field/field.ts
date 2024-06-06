@@ -9,20 +9,6 @@ import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.
  */
 export class Field extends FASTElement {
   /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * Reference to the first slotted input.
-   *
-   * @public
-   */
-  public input!: SlottableInput;
-
-  /**
    * The position of the label relative to the input.
    *
    * @public
@@ -80,6 +66,20 @@ export class Field extends FASTElement {
       this.setStates();
     }
   }
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
+   * Reference to the first slotted input.
+   *
+   * @public
+   */
+  public input!: SlottableInput;
 
   /**
    * Calls the `setStates` method when a `change` event is emitted from the slotted input.
