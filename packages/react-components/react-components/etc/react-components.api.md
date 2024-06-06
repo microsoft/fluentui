@@ -50,6 +50,8 @@ import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
 import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
+import { AtomMotion } from '@fluentui/react-motion';
+import { AtomMotionFn } from '@fluentui/react-motion';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -194,6 +196,8 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
+import { createMotionComponent } from '@fluentui/react-motion';
+import { createPresenceComponent } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -559,6 +563,9 @@ import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
+import { MotionComponentProps } from '@fluentui/react-motion';
+import { MotionImperativeRef } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -632,8 +639,12 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
+import { PresenceGroup } from '@fluentui/react-motion';
+import { PresenceMotion } from '@fluentui/react-motion';
+import { PresenceMotionFn } from '@fluentui/react-motion';
 import { presenceOfflineRegular } from '@fluentui/react-badge';
 import { presenceOofRegular } from '@fluentui/react-badge';
 import { presenceUnknownRegular } from '@fluentui/react-badge';
@@ -1799,6 +1810,10 @@ export { arrowHeights }
 
 export { assertSlots }
 
+export { AtomMotion }
+
+export { AtomMotionFn }
+
 export { Avatar }
 
 export { avatarClassNames }
@@ -2086,6 +2101,10 @@ export { CreateFocusOutlineStyleOptions }
 export { createHighContrastTheme }
 
 export { createLightTheme }
+
+export { createMotionComponent }
+
+export { createPresenceComponent }
 
 export { createTableColumn }
 
@@ -2817,6 +2836,12 @@ export { MessageBarTitleState }
 
 export { MessageBarTransitionContextValue }
 
+export { MotionComponentProps }
+
+export { MotionImperativeRef }
+
+export { motionTokens }
+
 export { OnOpenChangeData }
 
 export { OnSelectionChangeCallback }
@@ -2963,9 +2988,17 @@ export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
 
+export { PresenceComponentProps }
+
 export { presenceDndFilled }
 
 export { presenceDndRegular }
+
+export { PresenceGroup }
+
+export { PresenceMotion }
+
+export { PresenceMotionFn }
 
 export { presenceOfflineRegular }
 

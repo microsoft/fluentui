@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use globals from Fluent context.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

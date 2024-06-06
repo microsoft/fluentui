@@ -21,6 +21,8 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { End } from '@fluentui/keyboard-keys';
 import type { Enter } from '@fluentui/keyboard-keys';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
@@ -202,9 +204,7 @@ export type TreeItemLayoutSlots = {
     iconAfter?: Slot<'div'>;
     expandIcon?: Slot<'div'>;
     aside?: Slot<'div'>;
-    actions?: Slot<ExtractSlotProps<Slot<'div'> & {
-        visible?: boolean;
-    }>>;
+    actions?: Slot<TreeItemLayoutActionSlotProps>;
     selector?: Slot<typeof Checkbox> | Slot<typeof Radio>;
 };
 

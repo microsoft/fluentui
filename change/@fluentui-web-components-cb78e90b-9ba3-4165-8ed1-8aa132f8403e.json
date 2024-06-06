@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Move dialog border styles to forcedColors mode",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 20 May 2024 12:45:09 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.10)
+
+Thu, 06 Jun 2024 15:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.9..@fluentui/react-utilities_v9.18.10)
+
+### Patches
+
+- chore: useControllableState warns if controlled and uncontrolled at the same time ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- fix: use globals from Fluent context. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
 
 ## [9.18.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.9)
 

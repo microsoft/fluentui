@@ -9,7 +9,12 @@ import {
   useControllableState,
 } from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
-import type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
+import type {
+  TreeItemLayoutActionSlotProps,
+  TreeItemLayoutActionVisibilityChangeData,
+  TreeItemLayoutProps,
+  TreeItemLayoutState,
+} from './TreeItemLayout.types';
 import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Radio, RadioProps } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
@@ -33,17 +38,18 @@ export const useTreeItemLayout_unstable = (
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
 
-  const [isActionsVisibleFromProps, actionsShorthand]: [boolean | undefined, TreeItemLayoutSlots['actions']] =
-    isResolvedShorthand(props.actions)
-      ? // .visible prop should not be propagated to the DOM
-        [props.actions.visible, { ...props.actions, visible: undefined }]
-      : [undefined, props.actions];
+  const [isActionsVisibleFromProps, onActionVisibilityChange]: [
+    TreeItemLayoutActionSlotProps['visible'],
+    TreeItemLayoutActionSlotProps['onVisibilityChange'],
+  ] = isResolvedShorthand(props.actions)
+    ? // .visible .onVisibilityChange prop should not be propagated to the DOM
+      [props.actions.visible, props.actions.onVisibilityChange]
+    : [undefined, undefined];
 
   const [isActionsVisible, setIsActionsVisible] = useControllableState({
     state: isActionsVisibleFromProps,
     initialState: false,
   });
-
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
   const actionsRef = useTreeItemContext_unstable(ctx => ctx.actionsRef);
@@ -64,10 +70,15 @@ export const useTreeItemLayout_unstable = (
         subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
       );
       if (!isTargetFromSubtree) {
+        onActionVisibilityChange?.(event, {
+          visible: true,
+          event,
+          type: event.type,
+        } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
         setIsActionsVisible(true);
       }
     },
-    [subtreeRef, setIsActionsVisible],
+    [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
 
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
@@ -76,6 +87,11 @@ export const useTreeItemLayout_unstable = (
         actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node),
       );
       if (isRelatedTargetFromActions) {
+        onActionVisibilityChange?.(event, {
+          visible: true,
+          event,
+          type: event.type,
+        } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
         setIsActionsVisible(true);
         return;
       }
@@ -83,11 +99,16 @@ export const useTreeItemLayout_unstable = (
         subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
       );
       if (!isTargetFromSubtree) {
+        onActionVisibilityChange?.(event, {
+          visible: false,
+          event,
+          type: event.type,
+        } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
         setIsActionsVisible(false);
         return;
       }
     },
-    [subtreeRef, setIsActionsVisible],
+    [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
 
   const expandIcon = slot.optional(props.expandIcon, {
@@ -104,17 +125,24 @@ export const useTreeItemLayout_unstable = (
   }
   const arrowNavigationProps = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
   const actions = isActionsVisible
-    ? slot.optional(actionsShorthand, {
+    ? slot.optional(props.actions, {
         defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
         elementType: 'div',
       })
     : undefined;
+  delete actions?.visible;
+  delete actions?.onVisibilityChange;
   const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    if (isResolvedShorthand(actionsShorthand)) {
-      actionsShorthand.onBlur?.(event);
+    if (isResolvedShorthand(props.actions)) {
+      props.actions.onBlur?.(event);
     }
     const isRelatedTargetFromActions = Boolean(elementContains(event.currentTarget, event.relatedTarget as Node));
+    onActionVisibilityChange?.(event, {
+      visible: isRelatedTargetFromActions,
+      event,
+      type: event.type,
+    } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
     setIsActionsVisible(isRelatedTargetFromActions);
   });
   if (actions) {
@@ -122,7 +150,7 @@ export const useTreeItemLayout_unstable = (
     actions.onBlur = handleActionsBlur;
   }
 
-  const hasActions = Boolean(actionsShorthand);
+  const hasActions = Boolean(props.actions);
 
   React.useEffect(() => {
     if (treeItemRef.current && hasActions && isActionsVisibleFromProps === undefined) {
