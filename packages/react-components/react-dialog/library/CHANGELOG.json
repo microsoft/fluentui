@@ -2,6 +2,79 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:32 GMT",
+      "tag": "@fluentui/react-dialog_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "fcdd01ecbfbfe3cfbcf43982dbfb6252efe80013",
+            "comment": "chore: use @fluentui/react-motion"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0c893e492436af30037beeed6e8561291d4241de",
+            "comment": "chore: exports DialogModalType type"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.61",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion to v9.0.0",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-aria to v9.12.0",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.4.27",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:42 GMT",
       "tag": "@fluentui/react-dialog_v9.10.7",
       "version": "9.10.7",

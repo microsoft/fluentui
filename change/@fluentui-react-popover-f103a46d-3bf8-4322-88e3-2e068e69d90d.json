@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: split react libraries in two (/library and /stories)",
-  "packageName": "@fluentui/react-popover",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

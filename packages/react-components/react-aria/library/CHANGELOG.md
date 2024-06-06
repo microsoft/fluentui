@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 23 May 2024 08:02:39 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.12.0)
+
+Thu, 06 Jun 2024 15:26:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.11.4..@fluentui/react-aria_v9.12.0)
+
+### Minor changes
+
+- add optional `window` argument to `scrollIntoView`. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tabster to v9.21.5 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+
+### Patches
+
+- chore: remove optional "win" argument ([PR #31470](https://github.com/microsoft/fluentui/pull/31470) by seanmonahan@microsoft.com)
 
 ## [9.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.11.4)
 

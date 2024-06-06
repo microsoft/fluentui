@@ -2,6 +2,35 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:37 GMT",
+      "tag": "@fluentui/react-portal_v9.4.27",
+      "version": "9.4.27",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:52 GMT",
       "tag": "@fluentui/react-portal_v9.4.26",
       "version": "9.4.26",

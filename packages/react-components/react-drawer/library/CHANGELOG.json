@@ -2,6 +2,59 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:33 GMT",
+      "tag": "@fluentui/react-drawer_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "3a6e95945a1193cc7fc79f37d751f7286eef8d6f",
+            "comment": "feat: allow aside as tag for Drawer components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.11.0",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.22",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:43 GMT",
       "tag": "@fluentui/react-drawer_v9.4.0",
       "version": "9.4.0",

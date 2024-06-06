@@ -2,6 +2,41 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:36 GMT",
+      "tag": "@fluentui/react-overflow_v9.1.21",
+      "version": "9.1.21",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.13",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.61",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:00 GMT",
       "tag": "@fluentui/react-overflow_v9.1.20",
       "version": "9.1.20",

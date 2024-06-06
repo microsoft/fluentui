@@ -2,6 +2,35 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:33 GMT",
+      "tag": "@fluentui/react-image_v9.1.68",
+      "version": "9.1.68",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:43 GMT",
       "tag": "@fluentui/react-image_v9.1.67",
       "version": "9.1.67",

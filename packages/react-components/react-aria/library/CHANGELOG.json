@@ -2,6 +2,55 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:29 GMT",
+      "tag": "@fluentui/react-aria_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "babf7b45951d2e27f9724f3bbdd3dd77aee2c488",
+            "comment": "chore: remove optional \"win\" argument"
+          }
+        ],
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "add optional `window` argument to `scrollIntoView`."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:39 GMT",
       "tag": "@fluentui/react-aria_v9.11.4",
       "version": "9.11.4",

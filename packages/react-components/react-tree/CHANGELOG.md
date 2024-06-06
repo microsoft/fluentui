@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 23 May 2024 08:02:52 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.6.0)
+
+Thu, 06 Jun 2024 15:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.5.1..@fluentui/react-tree_v9.6.0)
+
+### Minor changes
+
+- feature: preventScroll on navigation ([PR #31577](https://github.com/microsoft/fluentui/pull/31577) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.12.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-avatar to v9.6.29 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-button to v9.3.83 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.28 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.61 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-radio to v9.2.23 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tabster to v9.21.5 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+
+### Patches
+
+- bugfix: ensure roving tab index when children content changes ([PR #31595](https://github.com/microsoft/fluentui/pull/31595) by bernardo.sunderhus@gmail.com)
+- chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.5.1)
 

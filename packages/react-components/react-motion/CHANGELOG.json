@@ -1,6 +1,27 @@
 {
-  "name": "@fluentui/react-motions-preview",
+  "name": "@fluentui/react-motion",
   "entries": [
+    {
+      "date": "Thu, 06 Jun 2024 15:26:35 GMT",
+      "tag": "@fluentui/react-motion_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "fcdd01ecbfbfe3cfbcf43982dbfb6252efe80013",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
     {
       "date": "Mon, 20 May 2024 12:44:59 GMT",
       "tag": "@fluentui/react-motions-preview_v0.3.2",

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-timepicker-compat
 
-This log was last generated on Thu, 23 May 2024 08:02:52 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat_v0.2.17)
+
+Thu, 06 Jun 2024 15:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat_v0.2.16..@fluentui/react-timepicker-compat_v0.2.17)
+
+### Patches
+
+- fix: clear icon not working with freeform ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-combobox to v9.11.7 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-field to v9.1.67 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
 
 ## [0.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat_v0.2.16)
 

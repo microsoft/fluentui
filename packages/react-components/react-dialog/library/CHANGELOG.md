@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 23 May 2024 08:02:42 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.0)
+
+Thu, 06 Jun 2024 15:26:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.10.7..@fluentui/react-dialog_v9.11.0)
+
+### Minor changes
+
+- chore: exports DialogModalType type ([PR #31549](https://github.com/microsoft/fluentui/pull/31549) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.61 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-motion to v9.0.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-aria to v9.12.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tabster to v9.21.5 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-portal to v9.4.27 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+
+### Patches
+
+- chore: use @fluentui/react-motion ([PR #31574](https://github.com/microsoft/fluentui/pull/31574) by olfedias@microsoft.com)
 
 ## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.10.7)
 

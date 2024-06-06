@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-tag-picker
 
-This log was last generated on Thu, 23 May 2024 08:02:49 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.1.0)
+
+Thu, 06 Jun 2024 15:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.0.4..@fluentui/react-tag-picker_v9.1.0)
+
+### Minor changes
+
+- feat: adds text property to TagPickerOption ([PR #31474](https://github.com/microsoft/fluentui/pull/31474) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-portal to v9.4.27 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tabster to v9.21.5 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-aria to v9.12.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-combobox to v9.11.7 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tags to v9.3.8 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.61 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-positioning to v9.15.3 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-field to v9.1.67 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.0.4)
 

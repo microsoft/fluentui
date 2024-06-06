@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Thu, 23 May 2024 08:02:51 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.45)
+
+Thu, 06 Jun 2024 15:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.44..@fluentui/react-toast_v9.3.45)
+
+### Patches
+
+- chore: migrate Toast to new motion library ([PR #31516](https://github.com/microsoft/fluentui/pull/31516) by olfedias@microsoft.com)
+- chore: use @fluentui/react-motion ([PR #31574](https://github.com/microsoft/fluentui/pull/31574) by olfedias@microsoft.com)
+- chore: adopt changes in motion APIs ([PR #31508](https://github.com/microsoft/fluentui/pull/31508) by olfedias@microsoft.com)
+- chore: disable eslint rule. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-aria to v9.12.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-motion to v9.0.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-portal to v9.4.27 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tabster to v9.21.5 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
 
 ## [9.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.44)
 
