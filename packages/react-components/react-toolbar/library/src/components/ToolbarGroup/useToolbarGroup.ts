@@ -16,7 +16,7 @@ export const useToolbarGroup_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps<React.HTMLAttributes<HTMLDivElement>>('div', {
+      getIntrinsicElementProps('div', {
         ref,
         role: 'presentation',
         ...props,

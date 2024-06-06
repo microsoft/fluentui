@@ -14,6 +14,7 @@ describe('resolveShorthand with assertSlots', () => {
         someSlot: NonNullable<Slot<'div'>>;
       };
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
+      // eslint-disable-next-line deprecation/deprecation
       type TestComponentState = ComponentState<TestComponentSlots>;
 
       const TestComponent = (props: TestComponentProps) => {
@@ -58,6 +59,7 @@ describe('resolveShorthand with assertSlots', () => {
     it('keeps children from a render template in a render callback', () => {
       const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       type TestComponentSlots = { outer: NonNullable<Slot<'div'>>; inner: NonNullable<Slot<'div'>> };
+      // eslint-disable-next-line deprecation/deprecation
       type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
@@ -119,6 +121,7 @@ describe('resolveShorthand with assertSlots', () => {
     it("should support 'as' property to opt-out of base element type", () => {
       const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       type TestComponentSlots = { slot: NonNullable<Slot<'div', 'span'>> };
+      // eslint-disable-next-line deprecation/deprecation
       type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
