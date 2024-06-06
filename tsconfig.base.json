@@ -69,6 +69,7 @@
       "@fluentui/react-message-bar-stories": ["packages/react-components/react-message-bar/stories/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
+      "@fluentui/react-motion": ["packages/react-components/react-motion/src/index.ts"],
       "@fluentui/react-motion-components-preview": [
         "packages/react-components/react-motion-components-preview/library/src/index.ts"
       ],
@@ -77,7 +78,6 @@
       ],
       "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/library/src/index.ts"],
       "@fluentui/react-motion-preview-stories": ["packages/react-components/react-motion-preview/stories/src/index.ts"],
-      "@fluentui/react-motion": ["packages/react-components/react-motion/src/index.ts"],
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/library/src/index.ts"],
       "@fluentui/react-overflow-stories": ["packages/react-components/react-overflow/stories/src/index.ts"],
