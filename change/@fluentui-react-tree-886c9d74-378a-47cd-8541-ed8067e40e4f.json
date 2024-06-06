@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: ensure roving tab index when children content changes",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
