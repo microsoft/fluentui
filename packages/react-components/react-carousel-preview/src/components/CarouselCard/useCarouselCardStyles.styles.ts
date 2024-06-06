@@ -16,8 +16,7 @@ const useStyles = makeStyles({
   notVisible: {
     position: 'absolute',
     width: '100%',
-    top: '0px',
-    left: '-1000%', // For now, to hide out of viewport.
+    top: 0,
   },
   peekLeft: {
     position: 'absolute',

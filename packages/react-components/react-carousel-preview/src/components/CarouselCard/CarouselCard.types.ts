@@ -29,4 +29,9 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    * Informs the direction a navigation animation should take
    */
   navDirection?: 'prev' | 'next' | null;
+
+  /**
+   * Callback for finished animation
+   */
+  onAnimationEnd: () => void;
 } & Pick<CarouselCardProps, 'value'>;

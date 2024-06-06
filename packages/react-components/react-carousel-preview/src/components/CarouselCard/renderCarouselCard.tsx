@@ -57,17 +57,17 @@ const SlideRight = createPresenceComponent({
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible, navDirection } = state;
+  const { visible, navDirection, onAnimationEnd } = state;
 
   if (navDirection === 'next') {
     return (
-      <SlideRight visible={visible} appear>
+      <SlideRight visible={visible} appear onMotionFinish={onAnimationEnd}>
         <state.root />
       </SlideRight>
     );
   } else if (navDirection === 'prev') {
     return (
-      <SlideLeft visible={visible} appear>
+      <SlideLeft visible={visible} appear onMotionFinish={onAnimationEnd}>
         <state.root />
       </SlideLeft>
     );
