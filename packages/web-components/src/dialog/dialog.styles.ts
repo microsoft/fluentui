@@ -29,7 +29,6 @@ export const styles = css`
     }
 
     dialog {
-      box-sizing: border-box;
       background: ${colorNeutralBackground1};
       border-radius: ${borderRadiusXLarge};
       border: none;
