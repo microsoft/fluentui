@@ -38,6 +38,18 @@ export function animateAtoms(
       });
     },
     set onfinish(callback: () => void) {
+      // Heads up!
+      // Jest uses jsdom as the default environment, which doesn't support the Web Animations API. This no-op is
+      // necessary to avoid errors in tests.
+      //
+      // See https://github.com/microsoft/fluentui/issues/31593
+      if (process.env.NODE_ENV === 'test') {
+        if (animations.length === 0) {
+          callback();
+          return;
+        }
+      }
+
       Promise.all(animations.map(animation => animation.finished))
         .then(() => {
           callback();
