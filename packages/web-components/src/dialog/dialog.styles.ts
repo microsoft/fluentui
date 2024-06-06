@@ -12,6 +12,7 @@ import {
   shadow64,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 
 /** Dialog styles
  * @public
@@ -28,9 +29,10 @@ export const styles = css`
     }
 
     dialog {
+      box-sizing: border-box;
       background: ${colorNeutralBackground1};
       border-radius: ${borderRadiusXLarge};
-      border: ${strokeWidthThin} solid ${colorTransparentStroke};
+      border: none;
       box-shadow: ${shadow64};
       color: ${colorNeutralForeground1};
       max-height: calc(-48px + 100vh);
@@ -88,4 +90,12 @@ export const styles = css`
       }
     }
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    @layer base {
+      dialog {
+        border: ${strokeWidthThin} solid ${colorTransparentStroke};
+      }
+    }
+  `),
+);
