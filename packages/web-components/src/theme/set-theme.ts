@@ -10,7 +10,15 @@ const tokenNames = Object.keys(tokens) as (keyof Theme)[];
  */
 export const setTheme = (theme: Theme) => {
   for (const t of tokenNames) {
-    document.body.style.setProperty(`--${t}`, theme[t] as string);
+    if ('registerProperty' in CSS) {
+      CSS.registerProperty({
+        name: `--${t}`,
+        inherits: true,
+        initialValue: theme[t] as string,
+      });
+    } else {
+      document.body.style.setProperty(`--${t}`, theme[t] as string);
+    }
   }
 };
 

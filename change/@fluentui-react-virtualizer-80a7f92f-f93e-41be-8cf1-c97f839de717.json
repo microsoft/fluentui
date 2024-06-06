@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: update internal function to optionally use global Fluent context.",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

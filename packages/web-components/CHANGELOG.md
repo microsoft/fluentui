@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 05 Jun 2024 04:06:41 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 04:06:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.24)
+
+Thu, 06 Jun 2024 04:06:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.23..@fluentui/web-components_v3.0.0-beta.24)
+
+### Changes
+
+- add @floating-ui/dom as a dependency ([PR #31590](https://github.com/microsoft/fluentui/pull/31590) by zacky.ma@microsoft.com)
+- fix disabled button styles ([PR #31585](https://github.com/microsoft/fluentui/pull/31585) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.23)
 

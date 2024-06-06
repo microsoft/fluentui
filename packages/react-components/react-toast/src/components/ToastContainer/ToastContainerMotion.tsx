@@ -1,4 +1,4 @@
-import { createPresenceComponent } from '@fluentui/react-motions-preview';
+import { createPresenceComponent } from '@fluentui/react-motion';
 
 export const ToastContainerMotion = createPresenceComponent(({ element }) => ({
   enter: [

@@ -1,3 +1,4 @@
+import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -394,6 +395,35 @@ describe('Tree', () => {
     cy.get('[data-testid="item2__item1"]').focus().realPress('Tab');
     cy.get('#btn-after-tree').should('be.focused').realPress(['Shift', 'Tab']);
     cy.get('[data-testid="item2__item1"]').should('be.focused');
+  });
+  it('should ensure roving tab indexes when children change', () => {
+    const RovingTreeTest = () => {
+      const [show, setShow] = React.useState(false);
+      return (
+        <>
+          <button onClick={() => setShow(true)} id="btn-before-tree">
+            show tree
+          </button>
+          <TreeTest>
+            {show && (
+              <>
+                <TreeItem itemType="leaf" value="item1" data-testid="item1">
+                  <TreeItemLayout>level 1, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf" value="item2" data-testid="item2">
+                  <TreeItemLayout>level 1, item 2</TreeItemLayout>
+                </TreeItem>
+              </>
+            )}
+          </TreeTest>
+        </>
+      );
+    };
+
+    mount(<RovingTreeTest />);
+    cy.get('#btn-before-tree').focus().realClick();
+    cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0').focus().realPress('ArrowDown');
+    cy.get('[data-testid="item2"]').should('be.focused');
   });
 });
 
