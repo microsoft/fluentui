@@ -54,7 +54,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     defaultCheckedValues,
     mountNode = null,
   } = props;
-  const triggerId = useId('menu');
+  let triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const positioningState = {
@@ -86,6 +86,9 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     menuPopover = children[1];
   } else if (children.length === 1) {
     menuPopover = children[0];
+  }
+  if (menuTrigger?.props?.children?.props?.id) {
+    triggerId = menuTrigger.props.children.props.id;
   }
 
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
