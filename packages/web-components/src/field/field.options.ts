@@ -1,4 +1,4 @@
-import { ValuesOf } from '../utils/typings.js';
+import type { ValuesOf } from '../utils/typings.js';
 
 /**
  * Label position values
@@ -17,30 +17,31 @@ export type LabelPosition = ValuesOf<typeof LabelPosition>;
  * Synthetic type for slotted input elements
  * @public
  */
-export type SlottableInput = HTMLElement & {
-  elementInternals?: ElementInternals;
-  required: boolean;
-  disabled: boolean;
-  validity: ValidityState;
-  checkValidity(): boolean;
-  reportValidity(): boolean;
-};
+export type SlottableInput = HTMLElement &
+  ElementInternals & {
+    elementInternals?: ElementInternals;
+    required: boolean;
+    disabled: boolean;
+    readOnly: boolean;
+  };
 
 /**
  * Synthetic type for slotted message elements
  * @public
  */
-export const ValidationFlags = {
-  valueMissing: 'valueMissing',
-  typeMismatch: 'typeMismatch',
+export const ValidationFlags: { [key in keyof ValidityState]: key } = {
+  badInput: 'badInput',
+  customError: 'customError',
   patternMismatch: 'patternMismatch',
+  rangeOverflow: 'rangeOverflow',
+  rangeUnderflow: 'rangeUnderflow',
+  stepMismatch: 'stepMismatch',
   tooLong: 'tooLong',
   tooShort: 'tooShort',
-  rangeUnderflow: 'rangeUnderflow',
-  rangeOverflow: 'rangeOverflow',
-  stepMismatch: 'stepMismatch',
-  customError: 'customError',
-} as const;
+  typeMismatch: 'typeMismatch',
+  valueMissing: 'valueMissing',
+  valid: 'valid',
+};
 
 /** @public */
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;

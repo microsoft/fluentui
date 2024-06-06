@@ -1,4 +1,4 @@
-import { attr, FASTElement, observable, Observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.js';
 
@@ -9,53 +9,18 @@ import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.
  */
 export class Field extends FASTElement {
   /**
-   * The internal ElementInternals instance for the field.
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
-   * Reference to the first slotted input element.
+   * Reference to the first slotted input.
    *
    * @public
    */
-  @observable
-  protected input?: SlottableInput;
-
-  /**
-   * Removes notifiers from the previous input element and subscribes to the new input element.
-   *
-   * @param prev - the previous input element
-   * @param next - the current input element
-   * @internal
-   */
-  protected inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void {
-    if (prev && !next?.isSameNode(prev)) {
-      this.unsubscribeFromInputObservables(prev);
-    }
-
-    this.subscribeToInputObservables();
-  }
-
-  /**
-   * Contents of the input slot.
-   *
-   * @internal
-   */
-  @observable
-  public inputSlot!: Node[];
-
-  /**
-   * Sets the `input` property when the input slot content changes.
-   *
-   * @param prev - the previous collection of elements in the slot
-   * @param next - the current collection of elements in the slot
-   * @internal
-   */
-  public inputSlotChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    this.input = next?.[0] as SlottableInput;
-  }
+  public input!: SlottableInput;
 
   /**
    * The position of the label relative to the input.
@@ -68,39 +33,81 @@ export class Field extends FASTElement {
   public labelPosition: LabelPosition = LabelPosition.above;
 
   /**
-   * The slotted message elements.
+   * The slotted message elements. Filtered to only include elements with a `flag` attribute.
    *
    * @internal
    */
   @observable
-  public messageSlot!: Node[];
+  public messageSlot!: Element[];
 
   /**
-   * Redirects `click` events to the slotted input element.
+   * Adds or removes the `invalid` event listener based on the presence of slotted message elements.
+   *
+   * @param prev - the previous list of slotted message elements
+   * @param next - the current list of slotted message elements
+   * @internal
+   */
+  public messageSlotChanged(prev: Element[], next: Element[]) {
+    if (!next.length) {
+      this.removeEventListener('invalid', this.invalidHandler, { capture: true });
+      return;
+    }
+
+    this.addEventListener('invalid', this.invalidHandler, { capture: true });
+  }
+
+  /**
+   * The slotted inputs.
+   *
+   * @internal
+   * @privateRemarks
+   * This field is populated with the `children` directive in the template rather than `slotted`.
+   */
+  @observable
+  public slottedInputs!: SlottableInput[];
+
+  /**
+   * Sets the `input` property to the first slotted input.
+   *
+   * @param prev - The previous collection of inputs.
+   * @param next - The current collection of inputs.
+   * @internal
+   */
+  public slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined) {
+    this.input = next?.[0] as SlottableInput;
+
+    if (this.input) {
+      this.setStates();
+    }
+  }
+
+  /**
+   * Calls the `setStates` method when a `change` event is emitted from the slotted input.
+   *
+   * @param e - the event object
+   * @internal
+   */
+  public changeHandler(e: Event): void {
+    this.setStates();
+  }
+
+  /**
+   * Redirects `click` events to the slotted input.
    *
    * @internal
    */
   public clickHandler(e: MouseEvent): boolean | void {
-    if (e.target === this) {
-      this.input?.click();
+    if (this.isSameNode(e.target as Node | null)) {
+      this.input.focus();
+      this.input.click();
+      return;
     }
 
     return true;
   }
 
-  public connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener('invalid', this.invalidHandler, { capture: true });
-  }
-
-  public disconnectedCallback() {
-    this.removeEventListener('invalid', this.invalidHandler, { capture: true });
-    this.unsubscribeFromInputObservables();
-    super.disconnectedCallback();
-  }
-
   /**
-   * Applies the `focus-visible` state to the element when the slotted input element receives visible focus.
+   * Applies the `focus-visible` state to the element when the slotted input receives visible focus.
    *
    * @param e - the focus event
    * @internal
@@ -114,7 +121,7 @@ export class Field extends FASTElement {
   }
 
   /**
-   * Removes the `focus-visible` state from the field when a slotted input element loses focus.
+   * Removes the `focus-visible` state from the field when a slotted input loses focus.
    *
    * @param e - the focus event
    * @internal
@@ -125,20 +132,7 @@ export class Field extends FASTElement {
   }
 
   /**
-   * Sets the `disabled` state based on the `disabled` state of the slotted input element.
-   *
-   * @param source - the source element
-   * @param propertyName - the observed property name
-   * @internal
-   */
-  public handleChange(source: any, propertyName?: string) {
-    toggleState(this.elementInternals, 'disabled', !!source.disabled);
-    toggleState(this.elementInternals, 'readonly', !!(source.readOnly ?? source.readonly));
-    toggleState(this.elementInternals, 'required', !!source.required);
-  }
-
-  /**
-   * Toggles validity state flags on the element when the slotted input element emits an `invalid` event.
+   * Toggles validity state flags on the element when the slotted input emits an `invalid` event (if slotted validation messages are present).
    *
    * @param e - the event object
    * @internal
@@ -148,36 +142,27 @@ export class Field extends FASTElement {
       e.preventDefault();
     }
 
-    for (const flag of Object.keys(ValidationFlags)) {
-      toggleState(this.elementInternals, flag, (e.target as SlottableInput).validity[flag as keyof ValidityState]);
+    this.setStates();
+  }
+
+  /**
+   * Toggles the field's states based on the slotted input.
+   *
+   * @internal
+   */
+  public setStates() {
+    if (this.$fastController.isConnected) {
+      toggleState(this.elementInternals, 'disabled', !!this.input.disabled);
+      toggleState(this.elementInternals, 'readonly', !!this.input.readOnly);
+      toggleState(this.elementInternals, 'required', !!this.input.required);
+
+      if (!this.input.validity) {
+        return;
+      }
+
+      for (const [flag, value] of Object.entries(ValidationFlags)) {
+        toggleState(this.elementInternals, value, !!this.input.validity[flag as keyof ValidityState]);
+      }
     }
-  }
-
-  /**
-   * Subscribes to the `disabled`, `readonly`, and `required` states of the input elements.
-   *
-   * @param input - The input element to subscribe to
-   * @internal
-   */
-  private subscribeToInputObservables(input: SlottableInput | undefined = this.input) {
-    const notifier = Observable.getNotifier(input);
-    notifier.subscribe(this, 'disabled');
-    notifier.subscribe(this, 'readonly');
-    notifier.subscribe(this, 'required');
-
-    this.handleChange(input);
-  }
-
-  /**
-   * Unsubscribes from the `disabled`, `readonly`, and `required` states of the input elements.
-   *
-   * @param input - The input element to unsubscribe from
-   * @internal
-   */
-  private unsubscribeFromInputObservables(input: SlottableInput | undefined = this.input): void {
-    const notifier = Observable.getNotifier(input);
-    notifier.unsubscribe(this, 'disabled');
-    notifier.unsubscribe(this, 'readonly');
-    notifier.unsubscribe(this, 'required');
   }
 }
