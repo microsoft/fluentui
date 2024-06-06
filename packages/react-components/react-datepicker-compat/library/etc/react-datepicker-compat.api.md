@@ -6,7 +6,7 @@
 
 /// <reference types="react" />
 
-import type { CalendarProps } from '@fluentui/react-calendar-compat';
+import type { Calendar } from '@fluentui/react-calendar-compat';
 import { CalendarStrings } from '@fluentui/react-calendar-compat';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
