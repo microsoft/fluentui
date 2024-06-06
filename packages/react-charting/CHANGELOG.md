@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 04 Jun 2024 07:24:52 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 07:26:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.17)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.16..@fluentui/react-charting_v5.21.17)
+
+### Patches
+
+- Improve contrast ratio of y value in ChartHoverCard ([PR #31562](https://github.com/microsoft/fluentui/pull/31562) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.6 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+- Bump @fluentui/theme-samples to v8.7.156 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+- Bump @fluentui/set-version to v8.2.22 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+- Bump @fluentui/react to v8.118.7 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
 
 ## [5.21.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.16)
 

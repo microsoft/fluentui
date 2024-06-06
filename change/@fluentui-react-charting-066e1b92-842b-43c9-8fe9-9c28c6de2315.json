@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Improve contrast ratio of y value in ChartHoverCard",
-  "packageName": "@fluentui/react-charting",
-  "email": "110246001+krkshitij@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
