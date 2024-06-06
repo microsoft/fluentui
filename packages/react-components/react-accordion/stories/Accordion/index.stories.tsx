@@ -3,7 +3,6 @@ export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 export { Controlled } from './AccordionControlled.stories';
 export { Multiple } from './AccordionMultiple.stories';
-export { Navigation } from './AccordionNavigation.stories';
 export { OpenItems } from './AccordionOpenItems.stories';
 export { Sizes } from './AccordionSizes.stories';
 export { HeadingLevels } from './AccordionHeaders.stories';

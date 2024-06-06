@@ -42,6 +42,7 @@ export type AccordionProps<Value = AccordionItemValue> = ComponentProps<Accordio
   multiple?: boolean;
 
   /**
+   * @deprecated Arrow keyboard navigation is not recommended for accordions. Consider using Tree if arrow navigation is a hard requirement.
    * Indicates if keyboard navigation is available and gives two options, linear or circular navigation.
    */
   navigation?: 'linear' | 'circular';
