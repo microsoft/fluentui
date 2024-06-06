@@ -9,8 +9,13 @@ export const CustomStatesSetSupported = CSS.supports('selector(:state(g))');
  * on the `ElementInternals.states` set. If the browser does not support Custom States, the state is toggled on the host
  * element as an attribute with the format `state--{state}`.
  *
- * @param state - The state to toggle
- * @param force - true to add the state, false to remove it
+ * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet | CustomStateSet} interface
+ * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | ElementInternals} interface
+ * @see The CSS {@link https://developer.mozilla.org/en-US/docs/Web/CSS/:state | `:state()`} pseudo-class
+ *
+ * @param elementInternals - the `ElementInternals` instance for the component
+ * @param state - the state to toggle
+ * @param force - force the state to be toggled on or off
  * @internal
  */
 export function toggleState(elementInternals: ElementInternals, state: string, force?: boolean): void {
