@@ -43,6 +43,7 @@ export function animateAtoms(
       // necessary to avoid errors in tests.
       //
       // See https://github.com/microsoft/fluentui/issues/31593
+      // See https://github.com/jsdom/jsdom/issues/3429
       if (process.env.NODE_ENV === 'test') {
         if (animations.length === 0) {
           callback();
