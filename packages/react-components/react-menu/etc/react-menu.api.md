@@ -42,7 +42,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'hoverDelay' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;

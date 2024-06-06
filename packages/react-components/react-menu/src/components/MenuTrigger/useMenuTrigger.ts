@@ -30,6 +30,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const open = useMenuContext_unstable(context => context.open);
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
+  const hoverDelay = useMenuContext_unstable(context => context.hoverDelay);
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
@@ -41,6 +42,8 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     firstFocusable?.focus();
   }, [findFirstFocusable, menuPopoverRef]);
 
+  const openingWithHoverRef = React.useRef(false);
+  const openingWithHoverTimeout = React.useRef(0);
   const openedWithKeyboardRef = React.useRef(false);
   const hasMouseMoved = React.useRef(false);
 
@@ -48,6 +51,43 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
   const child = getTriggerChild(children);
+
+  // set openingWithHoverRef on a timeout to prevent closing the menu on a click while the hover open is running non-visually.
+  // the timeout is equal to the real-time menu popover animation duration
+  const onHoverOpen = () => {
+    if (!hoverDelay) {
+      return;
+    }
+
+    clearTimeout(openingWithHoverTimeout.current);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    openingWithHoverTimeout.current = setTimeout(() => {
+      // when popover starts to mount, get it's animationDuration and wait for it to be completed
+      requestAnimationFrame(() => {
+        if (!menuPopoverRef.current) {
+          return;
+        }
+
+        const { animationDuration } = getComputedStyle(menuPopoverRef.current);
+        let animationDurationMs = 0;
+        if (animationDuration.endsWith('ms')) {
+          animationDurationMs = Number(animationDuration.slice(0, -2));
+        } else if (animationDuration.endsWith('s')) {
+          animationDurationMs = Number(animationDuration.slice(0, -1)) * 1000;
+        }
+
+        if (!animationDuration) {
+          return;
+        }
+
+        openingWithHoverRef.current = true;
+        setTimeout(() => {
+          openingWithHoverRef.current = false;
+        }, animationDurationMs);
+      });
+    }, hoverDelay - 1);
+  };
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(event) || event.isDefaultPrevented()) {
@@ -65,10 +105,19 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
       return;
     }
 
-    if (!openOnContext) {
-      setOpen(event, { open: !open, keyboard: openedWithKeyboardRef.current, type: 'menuTriggerClick', event });
-      openedWithKeyboardRef.current = false;
+    if (openOnContext) {
+      return;
     }
+
+    if (!openingWithHoverRef.current) {
+      setOpen(event, {
+        open: !open,
+        keyboard: openedWithKeyboardRef.current,
+        type: 'menuTriggerClick',
+        event,
+      });
+    }
+    openedWithKeyboardRef.current = false;
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
@@ -98,6 +147,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
     if (openOnHover && hasMouseMoved.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
+      onHoverOpen();
     }
   };
 
@@ -111,6 +161,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (openOnHover && !hasMouseMoved.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
       hasMouseMoved.current = true;
+      onHoverOpen();
     }
   };
 
@@ -146,6 +197,14 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
     triggerChildProps,
   );
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(openingWithHoverTimeout.current);
+    };
+  }, []);
 
   return {
     isSubmenu,

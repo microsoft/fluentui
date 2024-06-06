@@ -16,6 +16,7 @@ export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}) => {
     mountNode: null,
     openOnContext: false,
     openOnHover: false,
+    hoverDelay: 500,
     isSubmenu: false,
     checkedValues: {},
     hasCheckmarks: false,

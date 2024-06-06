@@ -17,6 +17,7 @@ describe('useMenuContextValues_unstable', () => {
         "checkedValues": Object {},
         "hasCheckmarks": false,
         "hasIcons": false,
+        "hoverDelay": 500,
         "inline": false,
         "isSubmenu": false,
         "menuPopoverRef": Object {
