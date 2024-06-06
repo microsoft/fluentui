@@ -5,6 +5,7 @@
 ```ts
 
 import type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
@@ -73,7 +74,7 @@ export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = H
 export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = UnionToIntersection<ARIAButtonElement<AlternateAs>>;
 
 // @public
-export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & {
+export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = DistributiveOmit<React_2.PropsWithRef<JSX.IntrinsicElements[Type]>, 'children'> & {
     disabled?: boolean;
     disabledFocusable?: boolean;
 };
@@ -114,7 +115,7 @@ export const useActiveDescendantContext: () => ActiveDescendantContextValue;
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
 // @internal @deprecated (undocumented)
-export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
+export const useARIAButtonShorthand: ResolveShorthandFunction<any>;
 
 // @public (undocumented)
 export const useAriaLiveAnnouncer_unstable: (props: AriaLiveAnnouncerProps) => AriaLiveAnnouncerState;

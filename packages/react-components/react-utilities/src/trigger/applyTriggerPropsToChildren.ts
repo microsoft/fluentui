@@ -27,7 +27,7 @@ export function applyTriggerPropsToChildren<TriggerChildProps>(
  * a FluentTriggerComponent or React Fragment (the same element returned by {@link getTriggerChild}).
  */
 function cloneTriggerTree<TriggerChildProps>(
-  child: React.ReactNode,
+  child: TriggerProps['children'],
   triggerProps: TriggerChildProps,
 ): React.ReactElement {
   if (!React.isValidElement(child) || child.type === React.Fragment) {
