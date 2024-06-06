@@ -7,7 +7,7 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 import './define.js';
 import '../button/define.js';
-import '../label/define.js';
+import '../field/define.js';
 
 const storyTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-checkbox
@@ -21,6 +21,7 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
     size="${x => x.size}"
     slot="${x => x.slot}"
   ></fluent-checkbox>
+  <input type="checkbox" id="${x => x.id}" name="${x => x.name}" />
 `;
 
 const messageTemplate = html`
@@ -31,9 +32,7 @@ const messageTemplate = html`
 
 const fieldStoryTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-field label-position="${x => x.labelPosition}">
-    <label slot="label" for="${x => x.id}">
-      <fluent-label>${x => x.label}</fluent-label>
-    </label>
+    <label slot="label" for="${x => x.id}">${x => x.label}</label>
     ${x => x.storyContent} ${repeat(x => x.messages, messageTemplate)}
   </fluent-field>
 `;
@@ -192,7 +191,11 @@ Disabled.args = {
 };
 
 export const Required: Story<FluentCheckbox> = renderComponent(html<StoryArgs<FluentCheckbox>>`
-  <form>
+  <form style="display: inline-flex; gap: 1em; align-items: baseline">
+    <div>
+      <fluent-checkbox id="required-fluent-checkbox" required></fluent-checkbox>
+      <label for="required-fluent-checkbox">Required</label>
+    </div>
     ${fieldStoryTemplate}
     <fluent-button type="submit">Submit</fluent-button>
   </form>

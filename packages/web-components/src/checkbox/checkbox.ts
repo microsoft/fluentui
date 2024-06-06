@@ -1,5 +1,4 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import { keySpace } from '@microsoft/fast-web-utilities';
 import { toggleState } from '../utils/element-internals.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
@@ -48,14 +47,6 @@ export class Checkbox extends FASTElement {
   }
 
   /**
-   * The default slotted nodes.
-   *
-   * @internal
-   */
-  @observable
-  public defaultSlottedNodes: Node[] = [];
-
-  /**
    * The element's disabled state.
    * @public
    * @remarks
@@ -76,7 +67,7 @@ export class Checkbox extends FASTElement {
   public formAttribute?: string;
 
   /**
-   * The `indeterminate` state of the control.
+   * Indicates that the element is in an indeterminate or mixed state.
    *
    * @public
    */
@@ -84,7 +75,7 @@ export class Checkbox extends FASTElement {
   public indeterminate?: boolean;
 
   /**
-   * Synchronizes the element's `indeterminate` state with the internal ElementInternals state.
+   * Synchronizes the element's indeterminate state with the internal ElementInternals state.
    *
    * @internal
    */
@@ -95,6 +86,7 @@ export class Checkbox extends FASTElement {
 
   /**
    * The element's checked state.
+   *
    * @public
    * @remarks
    * HTML Attribute: `checked`
@@ -145,7 +137,7 @@ export class Checkbox extends FASTElement {
   public name!: string;
 
   /**
-   * The element's required attribute.
+   * The element's required state.
    *
    * @public
    * @remarks
@@ -155,7 +147,7 @@ export class Checkbox extends FASTElement {
   required!: boolean;
 
   /**
-   * Sets the validity of the control when the `required` state changes.
+   * Sets the validity of the control when the required state changes.
    *
    * @param prev - The previous required state
    * @param next - The current required state
@@ -169,7 +161,7 @@ export class Checkbox extends FASTElement {
   }
 
   /**
-   * Sets shape of the checkbox.
+   * Indicates the shape of the checkbox.
    *
    * @public
    * @remarks
@@ -179,7 +171,7 @@ export class Checkbox extends FASTElement {
   public shape!: CheckboxShape;
 
   /**
-   * Sets size of the checkbox.
+   * Indicates the size of the checkbox.
    *
    * @public
    * @remarks
@@ -196,14 +188,14 @@ export class Checkbox extends FASTElement {
   private _checked: boolean = this.initialChecked ?? false;
 
   /**
-   * Indicates that the `checked` state has been changed by the user.
+   * Indicates that the checked state has been changed by the user.
    *
    * @internal
    */
   private dirtyChecked: boolean = false;
 
   /**
-   * The associated form element.
+   * The associated `<form>` element.
    *
    * @public
    * @remarks
@@ -229,7 +221,7 @@ export class Checkbox extends FASTElement {
   public static formAssociated = true;
 
   /**
-   * A reference to all associated label elements.
+   * A reference to all associated `<label>` elements.
    *
    * @public
    */
@@ -238,18 +230,36 @@ export class Checkbox extends FASTElement {
   }
 
   /**
-   * The element's validation message.
+   * The fallback validation message, taken from a native checkbox `<input>` element.
    *
    * @internal
    */
-  private _validationMessage: string = '';
+  private _validationFallbackMessage: string = '';
 
   /**
-   * The internal validation error fallback control.
+   * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
+   * specified (e.g., via `setCustomValidity`).
    *
-   * @internal
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
-  private _validationMessageFallbackControl: HTMLInputElement | null = null;
+  public get validationMessage(): string {
+    if (this.elementInternals.validationMessage) {
+      return this.elementInternals.validationMessage;
+    }
+
+    if (!this._validationFallbackMessage) {
+      const validationMessageFallbackControl = document.createElement('input');
+      validationMessageFallbackControl.type = 'checkbox';
+      validationMessageFallbackControl.required = true;
+      validationMessageFallbackControl.checked = false;
+
+      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+    }
+
+    return this._validationFallbackMessage;
+  }
 
   /**
    * The element's validity state.
@@ -301,6 +311,15 @@ export class Checkbox extends FASTElement {
   }
 
   /**
+   * Sets the `elementInternals.ariaChecked` value based on the checked state.
+   *
+   * @internal
+   */
+  private setAriaChecked(): void {
+    this.elementInternals.ariaChecked = this.indeterminate ? 'mixed' : `${this.checked}`;
+  }
+
+  /**
    * Checks the validity of the element and returns the result.
    *
    * @public
@@ -309,6 +328,24 @@ export class Checkbox extends FASTElement {
    */
   public checkValidity(): boolean {
     return this.elementInternals.checkValidity();
+  }
+
+  /**
+   * Toggles the checked state when the user clicks the element.
+   *
+   * @param e - the event object
+   * @internal
+   */
+  public clickHandler(e: MouseEvent): boolean | void {
+    if (this.disabled) {
+      return;
+    }
+
+    this.dirtyChecked = true;
+    this.toggleChecked();
+    this.$emit('change');
+    this.$emit('input');
+    return true;
   }
 
   public connectedCallback() {
@@ -338,36 +375,29 @@ export class Checkbox extends FASTElement {
   }
 
   /**
-   * Toggles the checked state when the user presses the space key.
+   * Prevents scrolling when the user presses the space key.
    *
    * @param e - the event object
    * @internal
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
-    if (e.key !== keySpace) {
+    if (e.key !== ' ') {
       return true;
     }
-
-    this.click();
   }
 
   /**
-   * Toggles the checked state when the user clicks the element.
+   * Toggles the checked state when the user releases the space key.
    *
    * @param e - the event object
    * @internal
    */
-  public clickHandler(e: MouseEvent): boolean | void {
-    if (this.disabled) {
-      return;
+  public keyupHandler(e: KeyboardEvent): boolean | void {
+    if (e.key !== ' ') {
+      return true;
     }
 
-    this.dirtyChecked = true;
-    this.toggleChecked();
-    this.$emit('change');
-    this.$emit('input');
-
-    return true;
+    this.click();
   }
 
   /**
@@ -402,56 +432,39 @@ export class Checkbox extends FASTElement {
     this.elementInternals.setFormValue(value, value ?? state);
   }
 
+  /**
+   * Sets a custom validity message.
+   *
+   * @param message - The message to set
+   * @public
+   */
   public setCustomValidity(message: string): void {
-    this._validationMessage = message;
+    this.elementInternals.setValidity({ customError: true }, message);
     this.setValidity();
   }
 
   /**
    * Sets the validity of the control.
    *
-   * @param flags - Validity flags. If not provided, the control's `validity` will be used.
-   * @param message - Optional message to supply. If not provided, the control's `validationMessage` will be used. If the control does not have a `validationMessage`, the message will be empty.
-   * @param anchor - Optional anchor to use for the validation message. If not provided, the control will be used.
+   * @param flags - Validity flags to set.
+   * @param message - Optional message to supply. If not provided, the control's `validationMessage` will be used.
+   * @param anchor - Optional anchor to use for the validation message.
    *
    * @internal
    */
   public setValidity(
-    flags: Partial<ValidityState> = { valueMissing: this.required && !this.checked },
-    message?: string,
-    anchor?: HTMLElement | undefined,
+    flags: Partial<ValidityState> = { valueMissing: !!this.required && !this.checked },
+    message: string = this.validationMessage,
+    anchor?: HTMLElement,
   ): void {
-    if (this.disabled) {
-      this.elementInternals.setValidity({});
-      return;
+    if (this.$fastController.isConnected) {
+      if (this.disabled) {
+        this.elementInternals.setValidity({});
+        return;
+      }
+
+      this.elementInternals.setValidity(flags, message, anchor);
     }
-
-    if (flags.valueMissing && !message) {
-      message = this.getFallbackValidationMessage();
-    }
-
-    this.elementInternals.setValidity(flags, message, anchor);
-  }
-
-  private getFallbackValidationMessage(): string {
-    if (!this._validationMessageFallbackControl) {
-      this._validationMessageFallbackControl =
-        this._validationMessageFallbackControl ?? document.createElement('input');
-      this._validationMessageFallbackControl.type = 'checkbox';
-      this._validationMessageFallbackControl.required = true;
-      this._validationMessageFallbackControl.checked = false;
-    }
-
-    return this._validationMessageFallbackControl.validationMessage;
-  }
-
-  /**
-   * Sets the `elementInternals.ariaChecked` value based on the `checked` state.
-   *
-   * @internal
-   */
-  private setAriaChecked(): void {
-    this.elementInternals.ariaChecked = this.indeterminate ? 'mixed' : `${this.checked}`;
   }
 
   /**

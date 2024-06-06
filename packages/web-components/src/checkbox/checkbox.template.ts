@@ -18,7 +18,7 @@ const checkedIndicator = html.partial(/* html */ `
 `);
 
 const indeterminateIndicator = html.partial(/* html */ `
-    <div class="indeterminate-indicator" role="none"></div>
+    <span class="indeterminate-indicator"></span>
 `);
 
 /**
@@ -31,7 +31,8 @@ export function checkboxTemplate<T extends Checkbox>(options: CheckboxOptions = 
       tabindex="${x => (!x.disabled ? 0 : void 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @input="${(x, c) => x.inputHandler(c.event as Event)}"
-      @keypress="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
+      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
+      @keyup="${(x, c) => x.keyupHandler(c.event as KeyboardEvent)}"
     >
       <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
       <slot name="indeterminate-indicator">${staticallyCompose(options.indeterminateIndicator)}</slot>
