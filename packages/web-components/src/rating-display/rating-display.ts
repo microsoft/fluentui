@@ -1,10 +1,23 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { uniqueId } from '@microsoft/fast-web-utilities';
+import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * The base class used for constructing a fluent-rating-display custom element
  * @public
  */
 export class RatingDisplay extends FASTElement {
+  /**
+   * The color of the rating display items.
+   *
+   * @public
+   * @default `marigold`
+   * @remarks
+   * HTML Attribute: `color`
+   */
+  @attr
+  public color: RatingDisplayColor = RatingDisplayColor.marigold;
+
   /**
    * Renders a single filled icon with a label next to it.
    *
@@ -14,6 +27,11 @@ export class RatingDisplay extends FASTElement {
    */
   @attr({ attribute: 'compact', mode: 'boolean' })
   public compact: boolean = false;
+  protected compactChanged(): void {
+    if (this.compact) {
+      this.max = 1;
+    }
+  }
 
   /**
    * The number of ratings.
@@ -36,6 +54,11 @@ export class RatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public max: number = 5;
+  protected maxChanged(): void {
+    if (this.compact) {
+      this.max = 1;
+    }
+  }
 
   /**
    * The size of the component.
@@ -46,7 +69,7 @@ export class RatingDisplay extends FASTElement {
    * HTML Attribute: `size`
    */
   @attr
-  public size?: RatingDisplay;
+  public size: RatingDisplaySize = RatingDisplaySize.medium;
 
   /**
    * The value of the rating.
@@ -56,5 +79,12 @@ export class RatingDisplay extends FASTElement {
    * HTML Attribute: `value`
    */
   @attr({ converter: nullableNumberConverter })
-  public value: number = 3.5;
+  public value: number = 0;
+
+  /**
+   * The ID of the rating value and count label elements.
+   *
+   * @internal
+   */
+  public readonly uid: string = uniqueId('rating-display-');
 }
