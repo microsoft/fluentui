@@ -29,19 +29,19 @@ export type SlottableInput = HTMLElement &
  * Synthetic type for slotted message elements
  * @public
  */
-export const ValidationFlags: { [key in keyof ValidityState]: key } = {
-  badInput: 'badInput',
-  customError: 'customError',
-  patternMismatch: 'patternMismatch',
-  rangeOverflow: 'rangeOverflow',
-  rangeUnderflow: 'rangeUnderflow',
-  stepMismatch: 'stepMismatch',
-  tooLong: 'tooLong',
-  tooShort: 'tooShort',
-  typeMismatch: 'typeMismatch',
-  valueMissing: 'valueMissing',
+export const ValidationFlags = {
+  badInput: 'bad-input',
+  customError: 'custom-error',
+  patternMismatch: 'pattern-mismatch',
+  rangeOverflow: 'range-overflow',
+  rangeUnderflow: 'range-underflow',
+  stepMismatch: 'step-mismatch',
+  tooLong: 'too-long',
+  tooShort: 'too-short',
+  typeMismatch: 'type-mismatch',
+  valueMissing: 'value-missing',
   valid: 'valid',
-};
+} as const;
 
 /** @public */
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;

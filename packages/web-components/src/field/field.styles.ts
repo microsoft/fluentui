@@ -18,6 +18,7 @@ import {
   strokeWidthThick,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
+import { ValidationFlags } from './field.options.js';
 
 /**
  * Selector for the `disabled` state.
@@ -35,67 +36,67 @@ const focusVisibleState = css.partial`:is([state--focus-visible], :state(focus-v
  * Selector for the `bad-input` state.
  * @public
  */
-const badInputState = css.partial`:is([state--badInput], :state(badInput))`;
+const badInputState = css.partial`:is([state--${ValidationFlags.badInput}], :state(${ValidationFlags.badInput}))`;
 
 /**
  * Selector for the `custom-error` state.
  * @public
  */
-const customErrorState = css.partial`:is([state--customError], :state(customError))`;
+const customErrorState = css.partial`:is([state--${ValidationFlags.customError}], :state(${ValidationFlags.customError}))`;
 
 /**
  * Selector for the `pattern-mismatch` state.
  * @public
  */
-const patternMismatchState = css.partial`:is([state--patternMismatch], :state(patternMismatch))`;
+const patternMismatchState = css.partial`:is([state--${ValidationFlags.patternMismatch}], :state(${ValidationFlags.patternMismatch}))`;
 
 /**
  * Selector for the `range-overflow` state.
  * @public
  */
-const rangeOverflowState = css.partial`:is([state--rangeOverflow], :state(rangeOverflow))`;
+const rangeOverflowState = css.partial`:is([state--${ValidationFlags.rangeOverflow}], :state(${ValidationFlags.rangeOverflow}))`;
 
 /**
  * Selector for the `range-underflow` state.
  * @public
  */
-const rangeUnderflowState = css.partial`:is([state--rangeUnderflow], :state(rangeUnderflow))`;
+const rangeUnderflowState = css.partial`:is([state--${ValidationFlags.rangeUnderflow}], :state(${ValidationFlags.rangeUnderflow}))`;
 
 /**
  * Selector for the `step-mismatch` state.
  * @public
  */
-const stepMismatchState = css.partial`:is([state--stepMismatch], :state(stepMismatch))`;
+const stepMismatchState = css.partial`:is([state--${ValidationFlags.stepMismatch}], :state(${ValidationFlags.stepMismatch}))`;
 
 /**
  * Selector for the `too-long` state.
  * @public
  */
-const tooLongState = css.partial`:is([state--tooLong], :state(tooLong))`;
+const tooLongState = css.partial`:is([state--${ValidationFlags.tooLong}], :state(${ValidationFlags.tooLong}))`;
 
 /**
  * Selector for the `too-short` state.
  * @public
  */
-const tooShortState = css.partial`:is([state--tooShort], :state(tooShort))`;
+const tooShortState = css.partial`:is([state--${ValidationFlags.tooShort}], :state(${ValidationFlags.tooShort}))`;
 
 /**
  * Selector for the `type-mismatch` state.
  * @public
  */
-const typeMismatchState = css.partial`:is([state--typeMismatch], :state(typeMismatch))`;
+const typeMismatchState = css.partial`:is([state--${ValidationFlags.typeMismatch}], :state(${ValidationFlags.typeMismatch}))`;
 
 /**
  * Selector for the `valid` state.
  * @public
  */
-const validState = css.partial`:is([state-valid], :state(valid))`;
+const validState = css.partial`:is([state-${ValidationFlags.valid}], :state(${ValidationFlags.valid}))`;
 
 /**
  * Selector for the `value-missing` state.
  * @public
  */
-const valueMissingState = css.partial`:is([state--valueMissing], :state(valueMissing))`;
+const valueMissingState = css.partial`:is([state--${ValidationFlags.valueMissing}], :state(${ValidationFlags.valueMissing}))`;
 
 /**
  * The styles for the {@link Field} component.
@@ -199,17 +200,17 @@ export const styles = css`
     display: none;
   }
 
-  :host(${badInputState}) ::slotted([flag='badInput']),
-  :host(${customErrorState}) ::slotted([flag='customError']),
-  :host(${patternMismatchState}) ::slotted([flag='patternMismatch']),
-  :host(${rangeOverflowState}) ::slotted([flag='rangeOverflow']),
-  :host(${rangeUnderflowState}) ::slotted([flag='rangeUnderflow']),
-  :host(${stepMismatchState}) ::slotted([flag='stepMismatch']),
-  :host(${tooLongState}) ::slotted([flag='tooLong']),
-  :host(${tooShortState}) ::slotted([flag='tooShort']),
-  :host(${typeMismatchState}) ::slotted([flag='typeMismatch']),
-  :host(${valueMissingState}) ::slotted([flag='valueMissing']),
-  :host(${validState}) ::slotted([flag='valid']) {
+  :host(${badInputState}) ::slotted([flag='${ValidationFlags.badInput}']),
+  :host(${customErrorState}) ::slotted([flag='${ValidationFlags.customError}']),
+  :host(${patternMismatchState}) ::slotted([flag='${ValidationFlags.patternMismatch}']),
+  :host(${rangeOverflowState}) ::slotted([flag='${ValidationFlags.rangeOverflow}']),
+  :host(${rangeUnderflowState}) ::slotted([flag='${ValidationFlags.rangeUnderflow}']),
+  :host(${stepMismatchState}) ::slotted([flag='${ValidationFlags.stepMismatch}']),
+  :host(${tooLongState}) ::slotted([flag='${ValidationFlags.tooLong}']),
+  :host(${tooShortState}) ::slotted([flag='${ValidationFlags.tooShort}']),
+  :host(${typeMismatchState}) ::slotted([flag='${ValidationFlags.typeMismatch}']),
+  :host(${valueMissingState}) ::slotted([flag='${ValidationFlags.valueMissing}']),
+  :host(${validState}) ::slotted([flag='${ValidationFlags.valid}']) {
     display: block;
   }
 `;

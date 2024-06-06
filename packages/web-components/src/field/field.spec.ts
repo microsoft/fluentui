@@ -76,7 +76,7 @@ test.describe('Field', () => {
     });
   });
 
-  test('should display the `valueMissing` validation message when the slotted input has the `valueMissing` validity state', async ({
+  test('should display the `valueMissing` validation message when the slotted input has the `value-missing` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -86,7 +86,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" required />
-        <div id="message" slot="message" flag="valueMissing">This field is required.</div>
+        <div id="message" slot="message" flag="value-missing">This field is required.</div>
       </fluent-field>
     `);
 
@@ -94,7 +94,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('valueMissing'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('value-missing'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -102,12 +102,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('valueMissing'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('value-missing'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `patternMismatch` validation message when the slotted input has the `patternMismatch` validity state', async ({
+  test('should display the `patternMismatch` validation message when the slotted input has the `pattern-mismatch` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -117,7 +117,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" pattern="[0-9]+" />
-        <div id="message" slot="message" flag="patternMismatch">This field must contain only numbers.</div>
+        <div id="message" slot="message" flag="pattern-mismatch">This field must contain only numbers.</div>
       </fluent-field>
     `);
 
@@ -125,7 +125,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('patternMismatch'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('pattern-mismatch'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -133,12 +133,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('patternMismatch'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('pattern-mismatch'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `tooShort` validation message when the slotted input has the `tooShort` validity state', async ({
+  test('should display the `tooShort` validation message when the slotted input has the `too-short` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -148,7 +148,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" minlength="3" />
-        <div id="message" slot="message" flag="tooShort">This field must contain at least 3 characters.</div>
+        <div id="message" slot="message" flag="too-short">This field must contain at least 3 characters.</div>
       </fluent-field>
     `);
 
@@ -156,7 +156,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('tooShort'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-short'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -164,12 +164,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('tooShort'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-short'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `tooLong` validation message when the slotted input has the `tooLong` validity state', async ({
+  test('should display the `tooLong` validation message when the slotted input has the `too-long` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -179,7 +179,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" maxlength="3" />
-        <div id="message" slot="message" flag="tooLong">This field must contain at most 3 characters.</div>
+        <div id="message" slot="message" flag="too-long">This field must contain at most 3 characters.</div>
       </fluent-field>
     `);
 
@@ -187,7 +187,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('tooLong'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-long'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -204,12 +204,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('tooLong'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-long'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `rangeUnderflow` validation message when the slotted input has the `rangeUnderflow` validity state', async ({
+  test('should display the `rangeUnderflow` validation message when the slotted input has the `range-underflow` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -219,7 +219,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" type="number" min="3" />
-        <div id="message" slot="message" flag="rangeUnderflow">This field must contain a number greater than or equal to 3.</div>
+        <div id="message" slot="message" flag="range-underflow">This field must contain a number greater than or equal to 3.</div>
       </fluent-field>
     `);
 
@@ -227,7 +227,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('rangeUnderflow'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-underflow'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -235,12 +235,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('rangeUnderflow'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-underflow'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `rangeOverflow` validation message when the slotted input has the `rangeOverflow` validity state', async ({
+  test('should display the `rangeOverflow` validation message when the slotted input has the `range-overflow` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -250,7 +250,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" type="number" max="3" />
-        <div id="message" slot="message" flag="rangeOverflow">This field must contain a number less than or equal to 3.</div>
+        <div id="message" slot="message" flag="range-overflow">This field must contain a number less than or equal to 3.</div>
       </fluent-field>
     `);
 
@@ -258,7 +258,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('rangeOverflow'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-overflow'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -266,12 +266,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('rangeOverflow'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-overflow'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `stepMismatch` validation message when the slotted input has the `stepMismatch` validity state', async ({
+  test('should display the `stepMismatch` validation message when the slotted input has the `step-mismatch` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -281,7 +281,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" type="number" step="2" />
-        <div id="message" slot="message" flag="stepMismatch">This field must contain a number that is a multiple of 2.</div>
+        <div id="message" slot="message" flag="step-mismatch">This field must contain a number that is a multiple of 2.</div>
       </fluent-field>
     `);
 
@@ -289,7 +289,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('stepMismatch'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('step-mismatch'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -297,12 +297,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('stepMismatch'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('step-mismatch'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `typeMismatch` validation message when the slotted input has the `typeMismatch` validity state', async ({
+  test('should display the `typeMismatch` validation message when the slotted input has the `type-mismatch` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -312,7 +312,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" type="email" />
-        <div id="message" slot="message" flag="typeMismatch">This field must be a valid email address.</div>
+        <div id="message" slot="message" flag="type-mismatch">This field must be a valid email address.</div>
       </fluent-field>
     `);
 
@@ -320,7 +320,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('typeMismatch'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('type-mismatch'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -328,12 +328,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('typeMismatch'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('type-mismatch'))).toBe(true);
 
     await expect(message).toBeVisible();
   });
 
-  test('should display the `customError` validation message when the slotted input has the `customError` validity state', async ({
+  test('should display the `customError` validation message when the slotted input has the `custom-error` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -343,7 +343,7 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <input id="input" slot="input" />
-        <div id="message" slot="message" flag="customError">This field has a custom error.</div>
+        <div id="message" slot="message" flag="custom-error">This field has a custom error.</div>
       </fluent-field>
     `);
 
@@ -356,7 +356,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('customError'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('custom-error'))).toBe(true);
 
     await expect(message).toBeVisible();
 
@@ -369,12 +369,12 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('customError'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('custom-error'))).toBe(false);
 
     await expect(message).toBeHidden();
   });
 
-  test('should display the `badInput` validation message when the slotted input has the `badInput` validity state', async ({
+  test('should display the `badInput` validation message when the slotted input has the `bad-input` validity state', async ({
     page,
   }) => {
     const element = page.locator('fluent-field');
@@ -384,11 +384,11 @@ test.describe('Field', () => {
     await page.setContent(/* html */ `
       <fluent-field>
         <fluent-text-input id="input" slot="input" type="text"></fluent-text-input>
-        <div id="message" slot="message" flag="badInput">I have no idea how you managed to do this.</div>
+        <div id="message" slot="message" flag="bad-input">I have no idea how you managed to do this.</div>
       </fluent-field>
     `);
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('badInput'))).toBe(false);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('bad-input'))).toBe(false);
 
     await expect(message).toBeHidden();
 
@@ -397,7 +397,7 @@ test.describe('Field', () => {
       node.reportValidity();
     });
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('badInput'))).toBe(true);
+    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('bad-input'))).toBe(true);
 
     await expect(message).toBeVisible();
   });

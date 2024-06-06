@@ -21,7 +21,6 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
     size="${x => x.size}"
     slot="${x => x.slot}"
   ></fluent-checkbox>
-  <input type="checkbox" id="${x => x.id}" name="${x => x.name}" />
 `;
 
 const messageTemplate = html`
