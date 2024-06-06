@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add @fluentui/react-motion to suite",
+  "packageName": "@fluentui/react-components",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

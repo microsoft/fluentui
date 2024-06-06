@@ -1,4 +1,4 @@
-import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { tokens } from '@fluentui/react-theme';
 
 const keyframes = [

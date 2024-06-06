@@ -5,7 +5,7 @@ import { isConformant } from '../../testing/isConformant';
 import { ToastContainerProps } from './ToastContainer.types';
 import { toastContainerClassNames } from './useToastContainerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { type PresenceComponentProps } from '@fluentui/react-motions-preview';
+import { type PresenceComponentProps } from '@fluentui/react-motion';
 
 const defaultToastContainerProps: ToastContainerProps = {
   announce: () => null,
