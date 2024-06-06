@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -193,4 +193,39 @@ export const styles = css`
   :host([disabled]) .indeterminate-indicator {
     background-color: ${colorNeutralForegroundDisabled};
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .checked-indicator {
+      color: Highlight;
+    }
+
+    :host(
+        :is(
+            :active,
+            [aria-checked='true'],
+            [aria-checked='mixed'],
+            [aria-checked='true']:hover,
+            [aria-checked='mixed']:hover
+          )
+      )
+      .control {
+      border-color: Highlight;
+    }
+
+    :host(:is(:hover, :active)) .indeterminate-indicator,
+    .indeterminate-indicator {
+      background-color: Highlight;
+    }
+
+    :host(:is([disabled], [aria-checked='true'][disabled], [aria-checked='mixed'][disabled])) .control {
+      border-color: graytext;
+    }
+
+    :host([disabled]) .indeterminate-indicator,
+    :host(:is([disabled], [aria-checked='true'][disabled], [aria-checked='mixed'][disabled])) .label,
+    :host([disabled]) ::slotted([slot='start']),
+    :host([aria-checked='true'][disabled]) .checked-indicator {
+      color: graytext;
+    }
+  `),
+);

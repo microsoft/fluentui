@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fixes high contrast colors for checkbox component",
+  "packageName": "@fluentui/web-components",
+  "email": "ryanmerrill@microsoft.com",
+  "dependentChangeType": "patch"
+}
