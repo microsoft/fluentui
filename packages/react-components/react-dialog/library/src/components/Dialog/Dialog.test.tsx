@@ -53,6 +53,10 @@ describe('Dialog', () => {
         </DialogTrigger>
         <CustomDialogSurface>
           <div data-testid="surface-content">content in surface</div>
+
+          <DialogTrigger>
+            <button data-testid="trigger-close">Close dialog</button>
+          </DialogTrigger>
         </CustomDialogSurface>
       </Dialog>,
     );
@@ -61,5 +65,8 @@ describe('Dialog', () => {
 
     expect(result.getByTestId('surface-content')).toBeInTheDocument();
     expect(result.getByTestId('surface-content')).toBeVisible();
+
+    result.getByTestId('trigger-close').click();
+    expect(result.queryByTestId('surface-content')).toBeNull();
   });
 });
