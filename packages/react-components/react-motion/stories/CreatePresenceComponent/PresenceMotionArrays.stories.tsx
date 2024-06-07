@@ -1,13 +1,13 @@
 import {
-  Checkbox,
   createPresenceComponent,
+  Field,
   makeStyles,
-  Label,
-  Slider,
-  motionTokens,
-  useId,
-  tokens,
+  mergeClasses,
   type MotionImperativeRef,
+  motionTokens,
+  Slider,
+  Switch,
+  tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -16,27 +16,39 @@ import description from './PresenceMotionArrays.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr',
-    gap: '10px',
+    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'end',
+    gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
+    gridArea: 'controls',
 
-    marginTop: '20px',
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
+  },
+  field: {
+    flex: 1,
+  },
+  sliderField: {
+    gridTemplateColumns: 'min-content 1fr',
+  },
+  sliderLabel: {
+    textWrap: 'nowrap',
   },
 
   balloon: {
@@ -85,7 +97,6 @@ const FastFadeSlowScale = createPresenceComponent({
 
 export const PresenceMotionArrays = () => {
   const classes = useClasses();
-  const sliderId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
   const ref = React.useRef<HTMLDivElement>(null);
@@ -100,35 +111,40 @@ export const PresenceMotionArrays = () => {
   }, [playbackRate, visible]);
 
   return (
-    <>
-      <div className={classes.container}>
-        <div className={classes.card}>
-          <FastFadeSlowScale imperativeRef={motionRef} visible={visible}>
-            <div ref={ref} className={classes.balloon} />
-          </FastFadeSlowScale>
-        </div>
+    <div className={classes.container}>
+      <div className={classes.card}>
+        <FastFadeSlowScale imperativeRef={motionRef} visible={visible}>
+          <div ref={ref} className={classes.balloon} />
+        </FastFadeSlowScale>
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
-        </div>
-        <div>
-          <Label htmlFor={sliderId}>
-            <code>playbackRate</code>: {playbackRate}%
-          </Label>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
+        <Field
+          className={mergeClasses(classes.field, classes.sliderField)}
+          label={{
+            children: (
+              <>
+                <code>playbackRate</code>: {playbackRate}%
+              </>
+            ),
+            className: classes.sliderLabel,
+          }}
+          orientation="horizontal"
+        >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
-            id={sliderId}
             max={100}
-            step={10}
+            step={5}
           />
-        </div>
+        </Field>
       </div>
-    </>
+    </div>
   );
 };
 

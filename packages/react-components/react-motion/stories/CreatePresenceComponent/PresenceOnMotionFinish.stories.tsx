@@ -1,11 +1,12 @@
 import {
   createPresenceComponent,
-  Checkbox,
+  Field,
   makeStyles,
+  mergeClasses,
   type MotionImperativeRef,
   motionTokens,
-  Label,
   Slider,
+  Switch,
   Text,
   tokens,
   useId,
@@ -17,19 +18,41 @@ import description from './PresenceOnMotionFinish.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '10px',
+    gridTemplate: `"card logs" "controls ." / 1fr 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
-
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gridArea: 'controls',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+  },
+  sliderField: {
+    gridTemplateColumns: 'min-content 1fr',
+  },
+  sliderLabel: {
+    textWrap: 'nowrap',
+  },
+
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
@@ -38,20 +61,11 @@ const useClasses = makeStyles({
     width: '100px',
     height: '100px',
   },
-  description: { margin: '5px' },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-
-    marginTop: '20px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
-  },
 
   logContainer: {
     display: 'flex',
     flexDirection: 'column',
+    gridArea: 'logs',
   },
   logLabel: {
     color: tokens.colorNeutralForegroundOnBrand,
@@ -86,7 +100,6 @@ const Fade = createPresenceComponent({
 
 export const PresenceOnMotionFinish = () => {
   const classes = useClasses();
-  const sliderId = useId();
   const logLabelId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
@@ -102,56 +115,59 @@ export const PresenceOnMotionFinish = () => {
   }, [playbackRate, visible]);
 
   return (
-    <>
-      <div className={classes.container}>
-        <div className={classes.card}>
-          <Fade
-            imperativeRef={motionRef}
-            onMotionFinish={(ev, data) => {
-              setStatusLog(entries => [[Date.now(), data.direction], ...entries]);
-            }}
-            visible={visible}
-          >
-            <div className={classes.item} />
-          </Fade>
+    <div className={classes.container}>
+      <div className={classes.card}>
+        <Fade
+          imperativeRef={motionRef}
+          onMotionFinish={(ev, data) => {
+            setStatusLog(entries => [[Date.now(), data.direction], ...entries]);
+          }}
+          visible={visible}
+        >
+          <div className={classes.item} />
+        </Fade>
+      </div>
 
-          <code className={classes.description}>fade</code>
+      <div className={classes.logContainer}>
+        <div className={classes.logLabel} id={logLabelId}>
+          Status log
         </div>
-
-        <div className={classes.logContainer}>
-          <div className={classes.logLabel} id={logLabelId}>
-            Status log
-          </div>
-          <div role="log" aria-labelledby={logLabelId} className={classes.log}>
-            {statusLog.map(([time, direction], i) => (
-              <div key={i}>
-                {new Date(time).toLocaleTimeString()} <Text weight="bold">onMotionFinish</Text> (direction: {direction})
-              </div>
-            ))}
-          </div>
+        <div role="log" aria-labelledby={logLabelId} className={classes.log}>
+          {statusLog.map(([time, direction], i) => (
+            <div key={i}>
+              {new Date(time).toLocaleTimeString()} <Text weight="bold">onMotionFinish</Text> (direction: {direction})
+            </div>
+          ))}
         </div>
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
-        </div>
-        <div>
-          <Label htmlFor={sliderId}>
-            <code>playbackRate</code>: {playbackRate}%
-          </Label>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
+        <Field
+          className={mergeClasses(classes.field, classes.sliderField)}
+          label={{
+            children: (
+              <>
+                <code>playbackRate</code>: {playbackRate}%
+              </>
+            ),
+            className: classes.sliderLabel,
+          }}
+          orientation="horizontal"
+        >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
-            id={sliderId}
             max={100}
-            step={10}
+            step={5}
           />
-        </div>
+        </Field>
       </div>
-    </>
+    </div>
   );
 };
 
