@@ -4,8 +4,6 @@ import { renderComponent } from '../helpers.stories.js';
 import type { RatingDisplay as FluentRatingDisplay } from './rating-display.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
-import './define.js';
-
 const storyTemplate = html<StoryArgs<FluentRatingDisplay>>`
   <fluent-rating-display
     color=${x => x.color}
@@ -28,7 +26,7 @@ export default {
       },
       table: {
         type: {
-          summary: 'The rating item color',
+          summary: 'The rating display icons color',
         },
         defaultValue: {
           summary: RatingDisplayColor.marigold,

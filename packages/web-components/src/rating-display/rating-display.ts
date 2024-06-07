@@ -8,7 +8,7 @@ import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.
  */
 export class RatingDisplay extends FASTElement {
   /**
-   * The color of the rating display items.
+   * The color of the rating display icons.
    *
    * @public
    * @default `marigold`
