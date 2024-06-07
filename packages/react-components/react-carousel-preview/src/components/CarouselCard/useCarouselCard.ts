@@ -26,8 +26,10 @@ export const useCarouselCard_unstable = (
   const [isMotionVisible, setIsMotionVisible] = React.useState(false);
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
-  // PeekDir is useful for non-peeking animations also
   const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
+    if (!peeking) {
+      return;
+    }
     const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
 
     if (currentIndex !== null && currentIndex >= 0) {
@@ -53,7 +55,7 @@ export const useCarouselCard_unstable = (
       setIsMotionVisible(true);
     }
     isFirstMount.current = false;
-    // We ONLY want to fire this when visible becomes true
+    // We only want to fire this when visible becomes true (not on first mount)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
