@@ -69,6 +69,7 @@ export function getSlots<R extends SlotPropsRecord>(
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
+  // eslint-disable-next-line deprecation/deprecation
   const slotNames: (keyof R)[] = Object.keys(typeState.components);
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(typeState, slotName);
@@ -97,9 +98,13 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   const renderFunction = isSlot(props) ? props[SLOT_RENDER_FUNCTION_SYMBOL] : undefined;
 
   const slot = (
-    state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-      ? asProp || state.components?.[slotName] || 'div'
-      : state.components[slotName]
+    state.components?.[slotName] === undefined || // eslint-disable-line deprecation/deprecation
+    // eslint-disable-next-line deprecation/deprecation
+    typeof state.components[slotName] === 'string'
+      ? // eslint-disable-next-line deprecation/deprecation
+        asProp || state.components?.[slotName] || 'div'
+      : // eslint-disable-next-line deprecation/deprecation
+        state.components[slotName]
   ) as React.ElementType<R[K]>;
 
   if (renderFunction || typeof children === 'function') {

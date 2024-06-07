@@ -111,6 +111,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   const state: SearchBoxState = {
     ...inputState,
     components: {
+      // eslint-disable-next-line deprecation/deprecation
       ...inputState.components,
       dismiss: 'span',
     },
