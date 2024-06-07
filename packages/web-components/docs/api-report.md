@@ -588,58 +588,13 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// @public
-export class Checkbox extends FASTElement {
-    constructor();
-    autofocus: boolean;
-    get checked(): boolean;
-    set checked(state: boolean);
-    checkValidity(): boolean;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    get form(): HTMLFormElement | null;
-    static formAssociated: boolean;
-    formAttribute?: string;
-    // @internal
-    formResetCallback(): void;
-    indeterminate?: boolean;
-    // @internal
-    indeterminateChanged(prev: boolean, next: boolean): void;
-    initialChecked?: boolean;
-    // @internal
-    initialCheckedChanged(prev: boolean | undefined, next: boolean): void;
-    initialValue: string;
-    // @internal
-    initialValueChanged(prev: string, next: string): void;
-    // @internal
-    inputHandler(e: Event): boolean | void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    // @internal
-    keyupHandler(e: KeyboardEvent): boolean | void;
-    get labels(): ReadonlyArray<Node>;
-    name: string;
-    reportValidity(): boolean;
-    required: boolean;
-    // @internal
-    requiredChanged(prev: boolean, next: boolean): void;
-    setCustomValidity(message: string): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Checkbox" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class Checkbox extends BaseCheckbox {
     shape: CheckboxShape;
     size?: CheckboxSize;
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string;
-    set value(value: string);
-    get willValidate(): boolean;
 }
 
 // @public
@@ -2931,24 +2886,10 @@ const styles: ElementStyles;
 export { styles as ButtonStyles }
 export { styles as MenuButtonStyles }
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSwitch" needs to be exported by the entry point index.d.ts
 // Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export class Switch extends FormAssociatedSwitch {
-    constructor();
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @internal (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    labelPosition: SwitchLabelPosition | undefined;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+export class Switch extends BaseCheckbox {
 }
 
 // @public
@@ -3451,7 +3392,17 @@ export const typographyTitle3Styles: CSSDirective;
 
 // @public
 export const ValidationFlags: {
-    [key in keyof ValidityState]: key;
+    readonly badInput: "bad-input";
+    readonly customError: "custom-error";
+    readonly patternMismatch: "pattern-mismatch";
+    readonly rangeOverflow: "range-overflow";
+    readonly rangeUnderflow: "range-underflow";
+    readonly stepMismatch: "step-mismatch";
+    readonly tooLong: "too-long";
+    readonly tooShort: "too-short";
+    readonly typeMismatch: "type-mismatch";
+    readonly valueMissing: "value-missing";
+    readonly valid: "valid";
 };
 
 // @public (undocumented)
