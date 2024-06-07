@@ -3451,7 +3451,17 @@ export const typographyTitle3Styles: CSSDirective;
 
 // @public
 export const ValidationFlags: {
-    [key in keyof ValidityState]: key;
+    readonly badInput: "bad-input";
+    readonly customError: "custom-error";
+    readonly patternMismatch: "pattern-mismatch";
+    readonly rangeOverflow: "range-overflow";
+    readonly rangeUnderflow: "range-underflow";
+    readonly stepMismatch: "step-mismatch";
+    readonly tooLong: "too-long";
+    readonly tooShort: "too-short";
+    readonly typeMismatch: "type-mismatch";
+    readonly valueMissing: "value-missing";
+    readonly valid: "valid";
 };
 
 // @public (undocumented)
