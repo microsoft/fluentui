@@ -52,7 +52,7 @@ export default {
     content: 'Section One',
     alignContent: undefined,
     appearance: undefined,
-    role: DividerRole.separator,
+    role: undefined,
     inset: false,
     orientation: undefined,
   },

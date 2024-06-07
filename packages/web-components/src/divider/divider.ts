@@ -9,6 +9,13 @@ import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole
  */
 export class Divider extends FASTElement {
   /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
    * The role of the element.
    *
    * @public
@@ -16,7 +23,7 @@ export class Divider extends FASTElement {
    * HTML Attribute: role
    */
   @attr
-  public role: DividerRole = DividerRole.separator;
+  public role!: DividerRole;
 
   /**
    * The orientation of the divider.
@@ -26,7 +33,7 @@ export class Divider extends FASTElement {
    * HTML Attribute: orientation
    */
   @attr
-  public orientation: DividerOrientation = DividerOrientation.horizontal;
+  public orientation?: DividerOrientation;
 
   /**
    * @public
@@ -51,4 +58,44 @@ export class Divider extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public inset?: boolean;
+
+  public constructor() {
+    super();
+
+    this.elementInternals.role = DividerRole.separator;
+  }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    if (this.role !== DividerRole.presentation) {
+      this.elementInternals.ariaOrientation = this.orientation ?? DividerOrientation.horizontal;
+    }
+  }
+
+  /**
+   * Sets the element's internal role when the role attribute changes.
+   *
+   * @param previous - the previous role value
+   * @param next - the current role value
+   * @internal
+   */
+  public roleChanged(previous: string | null, next: string | null): void {
+    if (this.$fastController.isConnected) {
+      this.elementInternals.role = `${next ?? DividerRole.separator}`;
+    }
+  }
+
+  /**
+   * Sets the element's internal orientation when the orientation attribute changes.
+   *
+   * @param previous - the previous orientation value
+   * @param next - the current orientation value
+   * @internal
+   */
+  public orientationChanged(previous: string | null, next: string | null): void {
+    if (this.$fastController.isConnected) {
+      this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next : null;
+    }
+  }
 }
