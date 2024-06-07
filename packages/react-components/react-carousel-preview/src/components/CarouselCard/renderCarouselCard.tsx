@@ -13,13 +13,13 @@ const slideLeftExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 't
 const SlideLeft = createPresenceComponent({
   enter: {
     keyframes: slideLeftKeyframes,
-    easing: motionTokens.curveLinear,
-    duration: motionTokens.durationGentle,
+    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+    duration: motionTokens.durationUltraSlow,
   },
   exit: {
     keyframes: slideLeftExitKeyframes,
-    easing: motionTokens.curveLinear,
-    duration: motionTokens.durationGentle,
+    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+    duration: motionTokens.durationUltraSlow,
   },
 });
 
@@ -28,13 +28,13 @@ const slideRightExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: '
 const SlideRight = createPresenceComponent({
   enter: {
     keyframes: slideRightKeyframes,
-    easing: motionTokens.curveLinear,
-    duration: motionTokens.durationGentle,
+    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+    duration: motionTokens.durationUltraSlow,
   },
   exit: {
     keyframes: slideRightExitKeyframes,
-    easing: motionTokens.curveLinear,
-    duration: motionTokens.durationGentle,
+    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+    duration: motionTokens.durationUltraSlow,
   },
 });
 
@@ -50,23 +50,28 @@ export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   const directionChanged = lastDir.current !== navDirection;
   lastDir.current = navDirection;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const lastPeeking = React.useRef<boolean>(visible);
+  const wasVisible = lastPeeking.current;
+  lastPeeking.current = visible;
+
   if (navDirection === 'next') {
     if (directionChanged) {
       return (
-        <SlideRight visible={visible || !!peekDir} appear={true} onMotionFinish={onAnimationEnd}>
+        <SlideRight visible={visible || !!peekDir || wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
           <state.root />
         </SlideRight>
       );
     }
     return (
-      <SlideRight visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
+      <SlideRight visible={visible} appear={visible || !!peekDir || wasVisible} onMotionFinish={onAnimationEnd}>
         <state.root />
       </SlideRight>
     );
   } else if (navDirection === 'prev') {
     if (directionChanged) {
       return (
-        <SlideLeft visible={visible || !!peekDir} appear={true} onMotionFinish={onAnimationEnd}>
+        <SlideLeft visible={visible || !!peekDir || wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
           <state.root />
         </SlideLeft>
       );

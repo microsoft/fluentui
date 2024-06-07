@@ -13,7 +13,7 @@ export const createCarouselStore = (initialValue: string | null): CarouselStore 
         const oldIndex = values.indexOf(activeValue);
         const newIndex = values.indexOf(newValue);
         const indexDiff = Math.abs(newIndex - oldIndex);
-        if (!circular || indexDiff < values.length / 2) {
+        if (!circular || indexDiff <= values.length / 2) {
           // No wrap around
           navDirection = oldIndex < newIndex ? 'prev' : 'next';
         } else {
