@@ -1,7 +1,7 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 
 export type MenuItemSlots = {
-  root: Slot<'div'>;
+  root: Slot<Omit<ExtractSlotProps<Slot<'div'>>, 'content'>>;
 
   /**
    * Icon slot rendered before children content
@@ -36,29 +36,28 @@ export type MenuItemSlots = {
   subText?: Slot<'span'>;
 };
 
-export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> &
-  Pick<Partial<MenuItemSlots>, 'content'> & {
-    /**
-     * If the menu item is a trigger for a submenu
-     *
-     * @default false
-     */
-    hasSubmenu?: boolean;
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
+  /**
+   * If the menu item is a trigger for a submenu
+   *
+   * @default false
+   */
+  hasSubmenu?: boolean;
 
-    /**
-     * Clicking on the menu item will not dismiss an open menu
-     *
-     * @default false
-     */
-    persistOnClick?: boolean;
+  /**
+   * Clicking on the menu item will not dismiss an open menu
+   *
+   * @default false
+   */
+  persistOnClick?: boolean;
 
-    disabled?: boolean;
-    /**
-     * @deprecated this property does nothing.
-     * disabled focusable is by default by simply using `disabled` property
-     */
-    disabledFocusable?: boolean;
-  };
+  disabled?: boolean;
+  /**
+   * @deprecated this property does nothing.
+   * disabled focusable is by default by simply using `disabled` property
+   */
+  disabledFocusable?: boolean;
+};
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
   Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
