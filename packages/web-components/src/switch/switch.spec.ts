@@ -83,62 +83,6 @@ test.describe('Switch', () => {
     await expect(element).not.toBeFocused();
   });
 
-  test('should set the `ariaChecked` attribute to "mixed" when `indeterminate` property is true', async ({ page }) => {
-    const element = page.locator('fluent-switch');
-
-    await page.setContent(/* html */ `
-        <fluent-switch></fluent-switch>
-    `);
-
-    await element.evaluate((node: Switch) => {
-      node.indeterminate = true;
-    });
-
-    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'mixed');
-
-    await element.evaluate((node: Switch) => {
-      node.indeterminate = false;
-    });
-
-    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
-  });
-
-  test('should set off `indeterminate` on `checked` change by user click', async ({ page }) => {
-    const element = page.locator('fluent-switch');
-
-    await page.setContent(/* html */ `
-        <fluent-switch></fluent-switch>
-    `);
-
-    await element.evaluate((node: Switch) => {
-      node.indeterminate = true;
-    });
-
-    await expect(element).toHaveJSProperty('indeterminate', true);
-
-    await element.click();
-
-    await expect(element).toHaveJSProperty('indeterminate', false);
-  });
-
-  test('should clear the `indeterminate` state when the `checked` property is true', async ({ page }) => {
-    const element = page.locator('fluent-switch');
-
-    await page.setContent(/* html */ `
-        <fluent-switch></fluent-switch>
-    `);
-
-    await element.evaluate((node: Switch) => {
-      node.indeterminate = true;
-    });
-
-    await expect(element).toHaveJSProperty('indeterminate', true);
-
-    await element.press(' ');
-
-    await expect(element).toHaveJSProperty('indeterminate', false);
-  });
-
   test('should initialize to the initial value if no value property is set', async ({ page }) => {
     const element = page.locator('fluent-switch');
 

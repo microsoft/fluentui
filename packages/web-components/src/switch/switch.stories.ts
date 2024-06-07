@@ -13,7 +13,6 @@ const storyTemplate = html<StoryArgs<FluentSwitch>>`
     ?checked="${x => x.checked}"
     ?disabled="${x => x.disabled}"
     id="${x => x.id}"
-    :indeterminate="${x => x.indeterminate}"
     name="${x => x.name}"
     ?required="${x => x.required}"
     slot="${x => x.slot}"
