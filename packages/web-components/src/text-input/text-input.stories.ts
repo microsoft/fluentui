@@ -5,9 +5,6 @@ import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from 
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize, TextInputType } from './text-input.options.js';
 
-import '../text/define.js';
-import './define.js';
-
 const Person20Regular = html<StoryArgs<FluentTextInput>>`
   <svg
     fill="currentColor"
