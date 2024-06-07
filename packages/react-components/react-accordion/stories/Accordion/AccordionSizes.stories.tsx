@@ -3,7 +3,7 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@flue
 
 export const Sizes = () => (
   <>
-    <Accordion>
+    <Accordion collapsible>
       <AccordionItem value="1">
         <AccordionHeader size="small">Accordion Header 1</AccordionHeader>
         <AccordionPanel>
@@ -11,25 +11,25 @@ export const Sizes = () => (
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
-    <Accordion>
+    <Accordion collapsible>
       <AccordionItem value="1">
-        <AccordionHeader size="medium">Accordion Header 1</AccordionHeader>
+        <AccordionHeader size="medium">Medium Header</AccordionHeader>
         <AccordionPanel>
           <div>Accordion Panel 1</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
-    <Accordion>
+    <Accordion collapsible>
       <AccordionItem value="1">
-        <AccordionHeader size="large">Accordion Header 1</AccordionHeader>
+        <AccordionHeader size="large">Large Header</AccordionHeader>
         <AccordionPanel>
           <div>Accordion Panel 1</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
-    <Accordion>
+    <Accordion collapsible>
       <AccordionItem value="1">
-        <AccordionHeader size="extra-large">Accordion Header 1</AccordionHeader>
+        <AccordionHeader size="extra-large">Extra-Large Header</AccordionHeader>
         <AccordionPanel>
           <div>Accordion Panel 1</div>
         </AccordionPanel>
@@ -41,7 +41,7 @@ export const Sizes = () => (
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'An accordion supports `small`, `medium`, `large` and `extra-large` sizes.',
+      story: 'An accordion supports `small`, `medium`, `large` and `extra-large` header sizes.',
     },
   },
 };
