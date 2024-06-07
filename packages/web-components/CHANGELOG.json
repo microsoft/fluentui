@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 07 Jun 2024 04:06:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.25",
+      "version": "3.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "afa7744f820795627c5597e1482e4116c8e3bd82",
+            "comment": "Use ElementInternals for Checkbox component"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9fdc8c8ca1029207e84b6bf206da683ce59f61e9",
+            "comment": "Move dialog border styles to forcedColors mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 04:06:19 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.24",
       "version": "3.0.0-beta.24",
