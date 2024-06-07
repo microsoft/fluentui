@@ -68,6 +68,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   return {
     ...virtualizerState,
     components: {
+      // eslint-disable-next-line deprecation/deprecation
       ...virtualizerState.components,
       container: 'div',
     },

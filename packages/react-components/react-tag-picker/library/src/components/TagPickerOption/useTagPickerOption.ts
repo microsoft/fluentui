@@ -19,6 +19,7 @@ export const useTagPickerOption_unstable = (
   const optionState = useOption_unstable(props, ref);
   const state: TagPickerOptionState = {
     components: {
+      // eslint-disable-next-line deprecation/deprecation
       ...optionState.components,
       media: 'div',
       secondaryContent: 'span',

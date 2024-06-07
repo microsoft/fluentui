@@ -30,7 +30,7 @@ export type ResolveShorthandFunction<Props extends SlotPropsDataType = SlotProps
  * @param value - the base shorthand props
  * @param options - options to resolve shorthand props
  *
- * @deprecated use slot.always or slot.optional combined with assertSlots instead
+ * @deprecated use slot.always, slot.optional, slot.resolveShorthand combined with assertSlots instead
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export const resolveShorthand: ResolveShorthandFunction<SlotPropsDataType> = (value, options) =>

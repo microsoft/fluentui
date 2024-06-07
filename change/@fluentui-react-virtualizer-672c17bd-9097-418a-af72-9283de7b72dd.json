@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: deprecates ComponentState.components property",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
