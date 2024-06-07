@@ -46,7 +46,6 @@ export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible, animated } = state;
 
   if (!animated) {
-    console.log('Not animated:', animated);
     return <state.root />;
   }
 
