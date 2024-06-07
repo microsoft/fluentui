@@ -269,8 +269,23 @@ export const colorBrandForeground1 = 'var(--colorBrandForeground1)';
  * @public
  */
 export const colorBrandForeground2 = 'var(--colorBrandForeground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandForeground2Hover | `colorBrandForeground2Hover`} design token.
+ * @public
+ */
 export const colorBrandForeground2Hover = 'var(--colorBrandForeground2Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandForeground2Pressed | `colorBrandForeground2Pressed`} design token.
+ * @public
+ */
 export const colorBrandForeground2Pressed = 'var(--colorBrandForeground2Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground1Static | `colorNeutralForeground1Static`} design token.
+ * @public
+ */
 export const colorNeutralForeground1Static = 'var(--colorNeutralForeground1Static)';
 
 /**
@@ -440,10 +455,35 @@ export const colorNeutralBackground5Selected = 'var(--colorNeutralBackground5Sel
  * @public
  */
 export const colorNeutralBackground6 = 'var(--colorNeutralBackground6)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundInverted | `colorNeutralBackgroundInverted`} design token.
+ * @public
+ */
 export const colorNeutralBackgroundInverted = 'var(--colorNeutralBackgroundInverted)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundStatic | `colorNeutralBackgroundStatic`} design token.
+ * @public
+ */
 export const colorNeutralBackgroundStatic = 'var(--colorNeutralBackgroundStatic)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundAlpha | `colorNeutralBackgroundAlpha`} design token.
+ * @public
+ */
 export const colorNeutralBackgroundAlpha = 'var(--colorNeutralBackgroundAlpha)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundAlpha2 | `colorNeutralBackgroundAlpha2`} design token.
+ * @public
+ */
 export const colorNeutralBackgroundAlpha2 = 'var(--colorNeutralBackgroundAlpha2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorSubtleBackground | `colorSubtleBackground`} design token.
+ * @public
+ */
 export const colorSubtleBackground = 'var(--colorSubtleBackground)';
 
 /**
@@ -631,10 +671,35 @@ export const colorBrandBackgroundStatic = 'var(--colorBrandBackgroundStatic)';
  * @public
  */
 export const colorBrandBackground2 = 'var(--colorBrandBackground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandBackground2Hover | `colorBrandBackground2Hover`} design token.
+ * @public
+ */
 export const colorBrandBackground2Hover = 'var(--colorBrandBackground2Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandBackground2Pressed | `colorBrandBackground2Pressed`} design token.
+ * @public
+ */
 export const colorBrandBackground2Pressed = 'var(--colorBrandBackground2Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandBackground3Static | `colorBrandBackground3Static`} design token.
+ * @public
+ */
 export const colorBrandBackground3Static = 'var(--colorBrandBackground3Static)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandBackground4Static | `colorBrandBackground4Static`} design token.
+ * @public
+ */
 export const colorBrandBackground4Static = 'var(--colorBrandBackground4Static)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandBackgroundInverted | `colorBrandBackgroundInverted`} design token.
+ * @public
+ */
 export const colorBrandBackgroundInverted = 'var(--colorBrandBackgroundInverted)';
 
 /**
@@ -654,11 +719,41 @@ export const colorBrandBackgroundInvertedPressed = 'var(--colorBrandBackgroundIn
  * @public
  */
 export const colorBrandBackgroundInvertedSelected = 'var(--colorBrandBackgroundInvertedSelected)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralCardBackground | `colorNeutralCardBackground`} design token.
+ * @public
+ */
 export const colorNeutralCardBackground = 'var(--colorNeutralCardBackground)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralCardBackgroundHover | `colorNeutralCardBackgroundHover`} design token.
+ * @public
+ */
 export const colorNeutralCardBackgroundHover = 'var(--colorNeutralCardBackgroundHover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralCardBackgroundPressed | `colorNeutralCardBackgroundPressed`} design token.
+ * @public
+ */
 export const colorNeutralCardBackgroundPressed = 'var(--colorNeutralCardBackgroundPressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralCardBackgroundSelected | `colorNeutralCardBackgroundSelected`} design token.
+ * @public
+ */
 export const colorNeutralCardBackgroundSelected = 'var(--colorNeutralCardBackgroundSelected)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralCardBackgroundDisabled | `colorNeutralCardBackgroundDisabled`} design token.
+ * @public
+ */
 export const colorNeutralCardBackgroundDisabled = 'var(--colorNeutralCardBackgroundDisabled)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessible | `colorNeutralStrokeAccessible`} design token.
+ * @public
+ */
 export const colorNeutralStrokeAccessible = 'var(--colorNeutralStrokeAccessible)';
 
 /**
@@ -714,7 +809,17 @@ export const colorNeutralStroke2 = 'var(--colorNeutralStroke2)';
  * @public
  */
 export const colorNeutralStroke3 = 'var(--colorNeutralStroke3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeSubtle | `colorNeutralStrokeSubtle`} design token.
+ * @public
+ */
 export const colorNeutralStrokeSubtle = 'var(--colorNeutralStrokeSubtle)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeOnBrand | `colorNeutralStrokeOnBrand`} design token.
+ * @public
+ */
 export const colorNeutralStrokeOnBrand = 'var(--colorNeutralStrokeOnBrand)';
 
 /**
@@ -752,9 +857,29 @@ export const colorBrandStroke1 = 'var(--colorBrandStroke1)';
  * @public
  */
 export const colorBrandStroke2 = 'var(--colorBrandStroke2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Hover | `colorBrandStroke2Hover`} design token.
+ * @public
+ */
 export const colorBrandStroke2Hover = 'var(--colorBrandStroke2Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Pressed | `colorBrandStroke2Pressed`} design token.
+ * @public
+ */
 export const colorBrandStroke2Pressed = 'var(--colorBrandStroke2Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * @public
+ */
 export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandStroke | `colorCompoundBrandStroke`} design token.
+ * @public
+ */
 export const colorCompoundBrandStroke = 'var(--colorCompoundBrandStroke)';
 
 /**
@@ -798,8 +923,23 @@ export const colorTransparentStrokeInteractive = 'var(--colorTransparentStrokeIn
  * @public
  */
 export const colorTransparentStrokeDisabled = 'var(--colorTransparentStrokeDisabled)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAlpha | `colorNeutralStrokeAlpha`} design token.
+ * @public
+ */
 export const colorNeutralStrokeAlpha = 'var(--colorNeutralStrokeAlpha)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAlpha2 | `colorNeutralStrokeAlpha2`} design token.
+ * @public
+ */
 export const colorNeutralStrokeAlpha2 = 'var(--colorNeutralStrokeAlpha2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStrokeFocus1 | `colorStrokeFocus1`} design token.
+ * @public
+ */
 export const colorStrokeFocus1 = 'var(--colorStrokeFocus1)';
 
 /**
@@ -1755,38 +1895,203 @@ export const colorPaletteTealBorderActive = 'var(--colorPaletteTealBorderActive)
  * @public
  */
 export const colorPaletteTealForeground2 = 'var(--colorPaletteTealForeground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessBackground1 | `colorStatusSuccessBackground1`} design token.
+ * @public
+ */
 export const colorStatusSuccessBackground1 = 'var(--colorStatusSuccessBackground1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessBackground2 | `colorStatusSuccessBackground2`} design token.
+ * @public
+ */
 export const colorStatusSuccessBackground2 = 'var(--colorStatusSuccessBackground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessBackground3 | `colorStatusSuccessBackground3`} design token.
+ * @public
+ */
 export const colorStatusSuccessBackground3 = 'var(--colorStatusSuccessBackground3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessForeground1 | `colorStatusSuccessForeground1`} design token.
+ * @public
+ */
 export const colorStatusSuccessForeground1 = 'var(--colorStatusSuccessForeground1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessForeground2 | `colorStatusSuccessForeground2`} design token.
+ * @public
+ */
 export const colorStatusSuccessForeground2 = 'var(--colorStatusSuccessForeground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessForeground3 | `colorStatusSuccessForeground3`} design token.
+ * @public
+ */
 export const colorStatusSuccessForeground3 = 'var(--colorStatusSuccessForeground3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessForegroundInverted | `colorStatusSuccessForegroundInverted`} design token.
+ * @public
+ */
 export const colorStatusSuccessForegroundInverted = 'var(--colorStatusSuccessForegroundInverted)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessBorderActive | `colorStatusSuccessBorderActive`} design token.
+ * @public
+ */
 export const colorStatusSuccessBorderActive = 'var(--colorStatusSuccessBorderActive)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessBorder1 | `colorStatusSuccessBorder1`} design token.
+ * @public
+ */
 export const colorStatusSuccessBorder1 = 'var(--colorStatusSuccessBorder1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusSuccessBorder2 | `colorStatusSuccessBorder2`} design token.
+ * @public
+ */
 export const colorStatusSuccessBorder2 = 'var(--colorStatusSuccessBorder2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBackground1 | `colorStatusWarningBackground1`} design token.
+ * @public
+ */
 export const colorStatusWarningBackground1 = 'var(--colorStatusWarningBackground1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBackground2 | `colorStatusWarningBackground2`} design token.
+ * @public
+ */
 export const colorStatusWarningBackground2 = 'var(--colorStatusWarningBackground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBackground3 | `colorStatusWarningBackground3`} design token.
+ * @public
+ */
 export const colorStatusWarningBackground3 = 'var(--colorStatusWarningBackground3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForeground1 | `colorStatusWarningForeground1`} design token.
+ * @public
+ */
 export const colorStatusWarningForeground1 = 'var(--colorStatusWarningForeground1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForeground2 | `colorStatusWarningForeground2`} design token.
+ * @public
+ */
 export const colorStatusWarningForeground2 = 'var(--colorStatusWarningForeground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForeground3 | `colorStatusWarningForeground3`} design token.
+ * @public
+ */
 export const colorStatusWarningForeground3 = 'var(--colorStatusWarningForeground3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningForegroundInverted | `colorStatusWarningForegroundInverted`} design token.
+ * @public
+ */
 export const colorStatusWarningForegroundInverted = 'var(--colorStatusWarningForegroundInverted)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBorderActive | `colorStatusWarningBorderActive`} design token.
+ * @public
+ */
 export const colorStatusWarningBorderActive = 'var(--colorStatusWarningBorderActive)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBorder1 | `colorStatusWarningBorder1`} design token.
+ * @public
+ */
 export const colorStatusWarningBorder1 = 'var(--colorStatusWarningBorder1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusWarningBorder2 | `colorStatusWarningBorder2`} design token.
+ * @public
+ */
 export const colorStatusWarningBorder2 = 'var(--colorStatusWarningBorder2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBackground1 | `colorStatusDangerBackground1`} design token.
+ * @public
+ */
 export const colorStatusDangerBackground1 = 'var(--colorStatusDangerBackground1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBackground2 | `colorStatusDangerBackground2`} design token.
+ * @public
+ */
 export const colorStatusDangerBackground2 = 'var(--colorStatusDangerBackground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBackground3 | `colorStatusDangerBackground3`} design token.
+ * @public
+ */
 export const colorStatusDangerBackground3 = 'var(--colorStatusDangerBackground3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBackground3Hover | `colorStatusDangerBackground3Hover`} design token.
+ * @public
+ */
 export const colorStatusDangerBackground3Hover = 'var(--colorStatusDangerBackground3Hover)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBackground3Pressed | `colorStatusDangerBackground3Pressed`} design token.
+ * @public
+ */
 export const colorStatusDangerBackground3Pressed = 'var(--colorStatusDangerBackground3Pressed)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForeground1 | `colorStatusDangerForeground1`} design token.
+ * @public
+ */
 export const colorStatusDangerForeground1 = 'var(--colorStatusDangerForeground1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForeground2 | `colorStatusDangerForeground2`} design token.
+ * @public
+ */
 export const colorStatusDangerForeground2 = 'var(--colorStatusDangerForeground2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForeground3 | `colorStatusDangerForeground3`} design token.
+ * @public
+ */
 export const colorStatusDangerForeground3 = 'var(--colorStatusDangerForeground3)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerForegroundInverted | `colorStatusDangerForegroundInverted`} design token.
+ * @public
+ */
 export const colorStatusDangerForegroundInverted = 'var(--colorStatusDangerForegroundInverted)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBorderActive | `colorStatusDangerBorderActive`} design token.
+ * @public
+ */
 export const colorStatusDangerBorderActive = 'var(--colorStatusDangerBorderActive)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBorder1 | `colorStatusDangerBorder1`} design token.
+ * @public
+ */
 export const colorStatusDangerBorder1 = 'var(--colorStatusDangerBorder1)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorStatusDangerBorder2 | `colorStatusDangerBorder2`} design token.
+ * @public
+ */
 export const colorStatusDangerBorder2 = 'var(--colorStatusDangerBorder2)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusNone | `borderRadiusNone`} design token.
+ * @public
+ */
 export const borderRadiusNone = 'var(--borderRadiusNone)';
 
 /**
@@ -2232,7 +2537,17 @@ export const durationFast = 'var(--durationFast)';
  * @public
  */
 export const durationNormal = 'var(--durationNormal)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#durationGentle | `durationGentle`} design token.
+ * @public
+ */
 export const durationGentle = 'var(--durationGentle)';
+
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#durationSlow | `durationSlow`} design token.
+ * @public
+ */
 export const durationSlow = 'var(--durationSlow)';
 
 /**
