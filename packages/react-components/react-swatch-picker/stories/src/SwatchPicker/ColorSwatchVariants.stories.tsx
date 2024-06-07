@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { HeartFilled } from '@fluentui/react-icons';
-import { makeStyles } from '@fluentui/react-components';
-import { ColorSwatch } from '@fluentui/react-components';
+import { makeStyles, ColorSwatch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

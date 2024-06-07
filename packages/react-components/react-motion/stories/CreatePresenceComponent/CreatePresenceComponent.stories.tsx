@@ -1,9 +1,10 @@
 import {
   createPresenceComponent,
+  Field,
   makeStyles,
   type MotionImperativeRef,
   tokens,
-  Checkbox,
+  Switch,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -12,18 +13,36 @@ import description from './CreatePresenceComponent.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr',
-    gap: '10px',
+    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
-
-    alignItems: 'center',
+    paddingTop: '100px',
   },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gridArea: 'controls',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+  },
+
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
@@ -31,16 +50,6 @@ const useClasses = makeStyles({
 
     width: '100px',
     height: '100px',
-  },
-  description: { margin: '5px' },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-
-    marginTop: '20px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
   },
 });
 
@@ -65,23 +74,19 @@ export const CreatePresenceComponent = () => {
   const [visible, setVisible] = React.useState<boolean>(false);
 
   return (
-    <>
-      <div className={classes.container}>
-        <div className={classes.card}>
-          <DropIn imperativeRef={motionRef} visible={visible}>
-            <div className={classes.item} />
-          </DropIn>
-
-          <code className={classes.description}>Drop in</code>
-        </div>
+    <div className={classes.container}>
+      <div className={classes.card}>
+        <DropIn imperativeRef={motionRef} visible={visible}>
+          <div className={classes.item} />
+        </DropIn>
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
-        </div>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
       </div>
-    </>
+    </div>
   );
 };
 

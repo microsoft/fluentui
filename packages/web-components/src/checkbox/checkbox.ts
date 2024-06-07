@@ -13,7 +13,7 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  *
  * @public
  */
-export class Checkbox extends FASTElement {
+export class BaseCheckbox extends FASTElement {
   /**
    * Indicates that the element should get focus after the page finishes loading.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
@@ -159,26 +159,6 @@ export class Checkbox extends FASTElement {
       this.elementInternals.ariaRequired = `${!!next}`;
     }
   }
-
-  /**
-   * Indicates the shape of the checkbox.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape!: CheckboxShape;
-
-  /**
-   * Indicates the size of the checkbox.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: CheckboxSize;
 
   /**
    * The internal checked state of the control.
@@ -476,4 +456,26 @@ export class Checkbox extends FASTElement {
     this.indeterminate = false;
     this.checked = force;
   }
+}
+
+export class Checkbox extends BaseCheckbox {
+  /**
+   * Indicates the shape of the checkbox.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `shape`
+   */
+  @attr
+  public shape!: CheckboxShape;
+
+  /**
+   * Indicates the size of the checkbox.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: CheckboxSize;
 }

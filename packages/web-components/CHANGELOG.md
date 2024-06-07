@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 06 Jun 2024 04:06:19 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jun 2024 04:06:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.25)
+
+Fri, 07 Jun 2024 04:06:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.24..@fluentui/web-components_v3.0.0-beta.25)
+
+### Changes
+
+- Use ElementInternals for Checkbox component ([PR #31468](https://github.com/microsoft/fluentui/pull/31468) by 863023+radium-v@users.noreply.github.com)
+- Move dialog border styles to forcedColors mode ([PR #31609](https://github.com/microsoft/fluentui/pull/31609) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.24)
 
