@@ -59,14 +59,10 @@ export class Divider extends FASTElement {
   @attr({ mode: 'boolean' })
   public inset?: boolean;
 
-  public constructor() {
-    super();
-
-    this.elementInternals.role = DividerRole.separator;
-  }
-
   public connectedCallback(): void {
     super.connectedCallback();
+
+    this.elementInternals.role = this.role ?? DividerRole.separator;
 
     if (this.role !== DividerRole.presentation) {
       this.elementInternals.ariaOrientation = this.orientation ?? DividerOrientation.horizontal;
@@ -83,6 +79,10 @@ export class Divider extends FASTElement {
   public roleChanged(previous: string | null, next: string | null): void {
     if (this.$fastController.isConnected) {
       this.elementInternals.role = `${next ?? DividerRole.separator}`;
+    }
+
+    if (next === DividerRole.presentation) {
+      this.elementInternals.ariaOrientation = null;
     }
   }
 
