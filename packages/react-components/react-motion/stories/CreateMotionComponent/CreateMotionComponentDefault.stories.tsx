@@ -9,14 +9,23 @@ import * as React from 'react';
 
 const useClasses = makeStyles({
   container: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplate: `"card" / 1fr`,
+    gap: '20px 10px',
   },
   card: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
-    padding: '20px',
-    margin: '20px',
+    boxShadow: tokens.shadow16,
+    padding: '10px',
   },
+
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
@@ -40,7 +49,7 @@ export const CreateMotionComponentDefault = () => {
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
-    motionRef.current?.setPlaybackRate(0.3);
+    motionRef.current?.setPlaybackRate(0.2);
   }, []);
 
   return (

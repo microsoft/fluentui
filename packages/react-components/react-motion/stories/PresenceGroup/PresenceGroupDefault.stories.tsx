@@ -25,6 +25,7 @@ const useClasses = makeStyles({
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: 0,
+    boxShadow: tokens.shadow16,
     padding: '10px',
   },
   controls: {
@@ -34,6 +35,7 @@ const useClasses = makeStyles({
     borderBottom: 'none',
     borderTopLeftRadius: tokens.borderRadiusMedium,
     borderTopRightRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
     alignSelf: 'end',
   },

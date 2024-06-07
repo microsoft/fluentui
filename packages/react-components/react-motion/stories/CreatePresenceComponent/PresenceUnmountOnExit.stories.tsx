@@ -1,13 +1,13 @@
 import {
   createPresenceComponent,
-  Checkbox,
-  Label,
+  Field,
   makeStyles,
+  mergeClasses,
+  type MotionImperativeRef,
   motionTokens,
   Slider,
+  Switch,
   tokens,
-  useId,
-  type MotionImperativeRef,
 } from '@fluentui/react-components';
 import * as React from 'react';
 
@@ -16,17 +16,41 @@ import description from './PresenceUnmountOnExit.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr',
-    gap: '10px',
+    gridTemplate: `"card card" "controls ." / 1fr 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
-    alignItems: 'center',
   },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gridArea: 'controls',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+  },
+  sliderField: {
+    gridTemplateColumns: 'min-content 1fr',
+  },
+  sliderLabel: {
+    textWrap: 'nowrap',
+  },
+
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
@@ -34,16 +58,6 @@ const useClasses = makeStyles({
 
     width: '100px',
     height: '100px',
-  },
-  description: { margin: '5px' },
-  controls: {
-    display: 'flex',
-    flexDirection: 'column',
-
-    marginTop: '20px',
-    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
-    borderRadius: tokens.borderRadiusMedium,
-    padding: '10px',
   },
 });
 
@@ -60,8 +74,6 @@ const Fade = createPresenceComponent({
 
 export const PresenceUnmountOnExit = () => {
   const classes = useClasses();
-  const sliderId = useId();
-
   const motionRef = React.useRef<MotionImperativeRef>();
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
@@ -75,44 +87,48 @@ export const PresenceUnmountOnExit = () => {
   }, [playbackRate, visible]);
 
   return (
-    <>
-      <div className={classes.container}>
-        <div className={classes.card}>
-          <Fade imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
-            <div className={classes.item} />
-          </Fade>
-
-          <code className={classes.description}>fadeSlow</code>
-        </div>
+    <div className={classes.container}>
+      <div className={classes.card}>
+        <Fade imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
+          <div className={classes.item} />
+        </Fade>
       </div>
 
       <div className={classes.controls}>
-        <div>
-          <Checkbox
+        <Field className={classes.field}>
+          <Switch
             label={<code>unmountOnExit</code>}
             checked={unmountOnExit}
             onChange={() => setUnmountOnExit(v => !v)}
           />
-        </div>
-        <div>
-          <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
-        </div>
-        <div>
-          <Label htmlFor={sliderId}>
-            <code>playbackRate</code>: {playbackRate}%
-          </Label>
+        </Field>
+        <Field className={classes.field}>
+          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
+        </Field>
+        <Field
+          className={mergeClasses(classes.field, classes.sliderField)}
+          label={{
+            children: (
+              <>
+                <code>playbackRate</code>: {playbackRate}%
+              </>
+            ),
+            className: classes.sliderLabel,
+          }}
+          orientation="horizontal"
+        >
           <Slider
             aria-valuetext={`Value is ${playbackRate}%`}
+            className={mergeClasses(classes.field, classes.sliderField)}
             value={playbackRate}
             onChange={(ev, data) => setPlaybackRate(data.value)}
             min={0}
-            id={sliderId}
             max={100}
-            step={10}
+            step={5}
           />
-        </div>
+        </Field>
       </div>
-    </>
+    </div>
   );
 };
 

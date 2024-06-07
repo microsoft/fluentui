@@ -6,26 +6,36 @@ import description from './CreateMotionComponent.stories.md';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '10px',
+    gridTemplate: `"card" / 1fr`,
+    gap: '20px 10px',
   },
   card: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+    gridArea: 'card',
+
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
+    boxShadow: tokens.shadow16,
     padding: '10px',
-
-    alignItems: 'center',
-    paddingTop: '100px',
+    paddingTop: '120px',
   },
+
   item: {
     backgroundColor: tokens.colorBrandBackground,
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
     width: '100px',
     height: '100px',
   },
-  description: { margin: '5px' },
+  description: {
+    fontFamily: tokens.fontFamilyMonospace,
+    borderRadius: tokens.borderRadiusMedium,
+    marginTop: '10px',
+    padding: '5px 10px',
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+  },
 });
 
 const DropIn = createMotionComponent({
