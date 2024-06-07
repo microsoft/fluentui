@@ -40,6 +40,7 @@
     "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
+    "@fluentui/react-components": "^9.54.0",
     "@fluentui/react-focus": "^8.8.43",
     "@fluentui/theme-samples": "^8.7.142",
     "@microsoft/load-themed-styles": "^1.10.26",

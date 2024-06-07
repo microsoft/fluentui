@@ -6,9 +6,12 @@ import { DonutChartBasicExample } from './DonutChart.Basic.Example';
 import { DonutChartDynamicExample } from './DonutChart.Dynamic.Example';
 import { DonutChartCustomCalloutExample } from './DonutChart.CustomCallout.Example';
 import { DonutChartCustomAccessibilityExample } from './DonutChart.CustomAccessibility.Example';
+import { DonutChartV9BasicExample } from './DonutChartV9.Basic.Example';
 
 const DonutChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Basic.Example.tsx') as string;
+const DonutChartV9BasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChartV9.Basic.Example.tsx') as string;
 const DonutChartDynamicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Dynamic.Example.tsx') as string;
 const DonutChartCustomCalloutExampleCode =
@@ -25,6 +28,11 @@ export const DonutChartPageProps: IDocPageProps = {
       title: 'DonutChart basic',
       code: DonutChartBasicExampleCode,
       view: <DonutChartBasicExample />,
+    },
+    {
+      title: 'DonutChart V9 basic',
+      code: DonutChartV9BasicExampleCode,
+      view: <DonutChartV9BasicExample />,
     },
     {
       title: 'DonutChart dynamic',

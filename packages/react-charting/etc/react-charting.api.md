@@ -92,6 +92,9 @@ export const DataVizPalette: {
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public
+export const DonutChartV9: React_2.FunctionComponent<IDonutChartProps>;
+
+// @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)

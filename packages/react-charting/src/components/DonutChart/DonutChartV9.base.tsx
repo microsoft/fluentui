@@ -31,7 +31,7 @@ export interface IDonutChartState {
   isPopoverOpen: boolean;
   clickPosition: { x: number; y: number };
 }
-export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
+export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutChartState> {
   public static defaultProps: Partial<IDonutChartProps> = {
     innerRadius: 0,
     hideLabels: true,
