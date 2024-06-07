@@ -5,7 +5,7 @@ export const Sizes = () => (
   <>
     <Accordion collapsible>
       <AccordionItem value="1">
-        <AccordionHeader size="small">Accordion Header 1</AccordionHeader>
+        <AccordionHeader size="small">Small Header</AccordionHeader>
         <AccordionPanel>
           <div>Accordion Panel 1</div>
         </AccordionPanel>
