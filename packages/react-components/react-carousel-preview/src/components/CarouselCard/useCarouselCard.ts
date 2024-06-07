@@ -57,12 +57,23 @@ export const useCarouselCard_unstable = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
+  // Pass in some useful animation render states
+  const lastDir = React.useRef<'next' | 'prev' | null | undefined>(null);
+  const directionChanged = lastDir.current !== navDirection;
+  lastDir.current = navDirection;
+
+  const lastPeeking = React.useRef<boolean>(visible);
+  const wasVisible = lastPeeking.current;
+  lastPeeking.current = visible;
+
   const state: CarouselCardState = {
     value,
     visible,
     peekDir,
     peeking,
     navDirection,
+    directionChanged,
+    wasVisible,
     components: {
       root: 'div',
     },

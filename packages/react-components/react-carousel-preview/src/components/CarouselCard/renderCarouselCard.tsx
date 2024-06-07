@@ -44,34 +44,25 @@ const SlideRight = createPresenceComponent({
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible, navDirection, onAnimationEnd, peekDir } = state;
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const lastDir = React.useRef<'next' | 'prev' | null | undefined>(null);
-  const directionChanged = lastDir.current !== navDirection;
-  lastDir.current = navDirection;
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const lastPeeking = React.useRef<boolean>(visible);
-  const wasVisible = lastPeeking.current;
-  lastPeeking.current = visible;
+  const { visible, navDirection, onAnimationEnd, peekDir, directionChanged, wasVisible } = state;
 
   if (navDirection === 'next') {
     if (directionChanged) {
       return (
-        <SlideRight visible={visible || !!peekDir || wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
+        <SlideRight visible={visible || !!peekDir || !!wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
           <state.root />
         </SlideRight>
       );
     }
     return (
-      <SlideRight visible={visible} appear={visible || !!peekDir || wasVisible} onMotionFinish={onAnimationEnd}>
+      <SlideRight visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
         <state.root />
       </SlideRight>
     );
   } else if (navDirection === 'prev') {
     if (directionChanged) {
       return (
-        <SlideLeft visible={visible || !!peekDir || wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
+        <SlideLeft visible={visible || !!peekDir || !!wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
           <state.root />
         </SlideLeft>
       );

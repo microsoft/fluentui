@@ -39,4 +39,14 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    * Callback for finished animation
    */
   peeking?: Boolean;
+
+  /**
+   * Lets the render function know that direction has changed
+   */
+  directionChanged?: Boolean;
+
+  /**
+   * Stores whether the card was visible previously, for skipping animations
+   */
+  wasVisible?: Boolean;
 } & Pick<CarouselCardProps, 'value'>;
