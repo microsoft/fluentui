@@ -19,7 +19,7 @@ export const useCarouselCard_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
   const { value } = props;
-  const { circular, peeking } = useCarouselContext_unstable();
+  const { circular, peeking, animated } = useCarouselContext_unstable();
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
   const isFirstMount = React.useRef(true);
@@ -51,7 +51,7 @@ export const useCarouselCard_unstable = (
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (!visible && !isFirstMount.current) {
+    if (animated && !visible && !isFirstMount.current) {
       setIsMotionVisible(true);
     }
     isFirstMount.current = false;
@@ -76,6 +76,7 @@ export const useCarouselCard_unstable = (
     navDirection,
     directionChanged,
     wasVisible,
+    animated,
     components: {
       root: 'div',
     },
@@ -97,7 +98,7 @@ export const useCarouselCard_unstable = (
     },
   };
 
-  if (!visible && (!peekDir || !peeking) && !isMotionVisible) {
+  if (!visible && !peekDir && !isMotionVisible) {
     state.root.children = null;
   }
 

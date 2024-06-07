@@ -49,4 +49,9 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    * Stores whether the card was visible previously, for animations that skip over multiple
    */
   wasVisible?: Boolean;
+
+  /**
+   * Enables/disables animations
+   */
+  animated?: Boolean;
 } & Pick<CarouselCardProps, 'value'>;

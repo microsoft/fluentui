@@ -13,6 +13,7 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   },
   circular: false,
   peeking: false,
+  animated: false,
 };
 
 const CarouselContext = React.createContext<CarouselContextValue | undefined>(undefined);

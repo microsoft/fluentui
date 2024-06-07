@@ -5,7 +5,6 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselCardState, CarouselCardSlots } from './CarouselCard.types';
 
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
-import * as React from 'react';
 
 const slideLeftKeyframes = [{ transform: 'translateX(100%)' }, { transform: 'translateX(0%)' }];
 const slideLeftExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(-100%)' }];
@@ -44,7 +43,12 @@ const SlideRight = createPresenceComponent({
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible } = state;
+  const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible, animated } = state;
+
+  if (!animated) {
+    console.log('Not animated:', animated);
+    return <state.root />;
+  }
 
   if (navDirection === 'next') {
     if (directionChanged) {
