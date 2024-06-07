@@ -115,6 +115,10 @@ export const styles = css`
   }
 
   :host(:focus-visible) {
+    outline: none;
+  }
+
+  :host(:not([slot='input']):focus-visible) {
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
