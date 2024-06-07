@@ -67,6 +67,7 @@ export const styles = css`
   }
   :host(${checkedState}) {
     background: ${colorCompoundBrandBackground};
+    border-color: ${colorCompoundBrandBackground};
   }
   :host(${checkedState}:hover) {
     background: ${colorCompoundBrandBackgroundHover};
