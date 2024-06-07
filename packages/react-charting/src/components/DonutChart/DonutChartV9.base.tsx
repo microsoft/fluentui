@@ -45,6 +45,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
   private _popoverTarget: any;
+  private pieRef: any;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -87,6 +88,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
     this._popoverTarget = null;
+    this.pieRef = React.createRef(); // Creating a ref for the Pie component
   }
   public componentDidMount(): void {
     if (this._rootElem) {
@@ -130,6 +132,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
               ref={(node: SVGElement | null) => this._setViewBox(node)}
             >
               <Pie
+                ref={this.pieRef}
                 width={this.state._width!}
                 height={this.state._height!}
                 outerRadius={outerRadius}
@@ -191,11 +194,17 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
     const threshold = 1; // Set a threshold for movement
     const { x, y } = this.state.clickPosition;
 
+    const componentRect = this.pieRef;
+
+    // Adjusting mouse coordinates
+    const relativeX = newX - componentRect.left;
+    const relativeY = newY - componentRect.top;
+
     // Calculate the distance moved
-    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    const distance = Math.sqrt(Math.pow(relativeX - x, 2) + Math.pow(relativeY - y, 2));
     // Update the position only if the distance moved is greater than the threshold
     if (distance > threshold) {
-      this.setState({ clickPosition: { x: newX, y: newY }, isPopoverOpen: true });
+      this.setState({ clickPosition: { x: relativeX, y: relativeY }, isPopoverOpen: true });
     }
   }
 
@@ -246,6 +255,9 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
     if (node === null) {
       return;
     }
+
+    const rect = node?.getBoundingClientRect();
+    this.pieRef = rect;
 
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
 
