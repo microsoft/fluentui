@@ -1,6 +1,4 @@
-/// <reference types="cypress" />
-/// <reference types="cypress-real-events" />
-
+import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -237,6 +235,24 @@ describe('Tree', () => {
         cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{home}');
         cy.get('[data-testid="item1"]').should('be.focused');
       });
+      it('should prevent scrolling when `preventScroll()` is called in navigation', () => {
+        mount(
+          <TreeTest
+            onNavigation={(_event, data) => {
+              data.preventScroll();
+            }}
+            defaultOpenItems={['item1', 'item2', 'item2__item1']}
+          >
+            {Array.from({ length: 200 }, (_, index) => (
+              <TreeItem itemType="branch" value={`item${index}`} data-testid={`item${index}`}>
+                <TreeItemLayout>level 0, item {index + 1}</TreeItemLayout>
+              </TreeItem>
+            ))}
+          </TreeTest>,
+        );
+        cy.get('[data-testid="item0"]').focus().realPress('{end}');
+        cy.get('[data-testid="item199"]').should('be.focused').isOutsideViewport();
+      });
     });
   });
 
@@ -365,4 +381,68 @@ describe('Tree', () => {
       cy.get('[data-testid="tree-item-2-1-1"]').should('exist');
     });
   });
+
+  it('should ensure roving tab indexes when focusing programmatically', () => {
+    mount(
+      <>
+        <button id="btn-before-tree">before tree</button>
+        <TreeTest defaultOpenItems={['item1', 'item2', 'item2__item1']} />
+        <button id="btn-after-tree">after tree</button>
+      </>,
+    );
+    cy.get('#btn-before-tree').focus().realPress('Tab');
+    cy.get('[data-testid="item1"]').should('be.focused');
+    cy.get('[data-testid="item2__item1"]').focus().realPress('Tab');
+    cy.get('#btn-after-tree').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('[data-testid="item2__item1"]').should('be.focused');
+  });
+  it('should ensure roving tab indexes when children change', () => {
+    const RovingTreeTest = () => {
+      const [show, setShow] = React.useState(false);
+      return (
+        <>
+          <button onClick={() => setShow(true)} id="btn-before-tree">
+            show tree
+          </button>
+          <TreeTest>
+            {show && (
+              <>
+                <TreeItem itemType="leaf" value="item1" data-testid="item1">
+                  <TreeItemLayout>level 1, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem itemType="leaf" value="item2" data-testid="item2">
+                  <TreeItemLayout>level 1, item 2</TreeItemLayout>
+                </TreeItem>
+              </>
+            )}
+          </TreeTest>
+        </>
+      );
+    };
+
+    mount(<RovingTreeTest />);
+    cy.get('#btn-before-tree').focus().realClick();
+    cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0').focus().realPress('ArrowDown');
+    cy.get('[data-testid="item2"]').should('be.focused');
+  });
+});
+
+declare global {
+  namespace Cypress {
+    interface Chainable<Subject> {
+      isOutsideViewport(): Chainable<Subject>;
+    }
+  }
+}
+
+Cypress.Commands.add('isOutsideViewport', { prevSubject: true }, subject => {
+  const windowInnerHeight = Cypress.config(`viewportHeight`);
+
+  const bounding = subject[0].getBoundingClientRect();
+
+  const bottomBoundOfWindow = windowInnerHeight;
+
+  expect(bounding.top).to.be.greaterThan(bottomBoundOfWindow);
+
+  return subject;
 });

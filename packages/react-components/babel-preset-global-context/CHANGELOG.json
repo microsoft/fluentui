@@ -2,6 +2,72 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:45 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.68",
+      "version": "9.0.0-beta.68",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.68",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:44:51 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.67",
+      "version": "9.0.0-beta.67",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: improve typings of exported preset"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.67",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.66",
+      "version": "9.0.0-beta.66",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.66",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 08:17:49 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.65",
+      "version": "9.0.0-beta.65",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.65",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Apr 2024 09:48:01 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.64",
       "version": "9.0.0-beta.64",

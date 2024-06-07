@@ -21,6 +21,8 @@ import { ContextSelector } from '@fluentui/react-context-selector';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { End } from '@fluentui/keyboard-keys';
 import type { Enter } from '@fluentui/keyboard-keys';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
@@ -202,9 +204,7 @@ export type TreeItemLayoutSlots = {
     iconAfter?: Slot<'div'>;
     expandIcon?: Slot<'div'>;
     aside?: Slot<'div'>;
-    actions?: Slot<ExtractSlotProps<Slot<'div'> & {
-        visible?: boolean;
-    }>>;
+    actions?: Slot<TreeItemLayoutActionSlotProps>;
     selector?: Slot<typeof Checkbox> | Slot<typeof Radio>;
 };
 
@@ -369,7 +369,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     openItems?: Iterable<TreeItemValue>;
     defaultOpenItems?: Iterable<TreeItemValue>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
-    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationDataParam): void;
     selectionMode?: SelectionMode_2;
     checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
@@ -404,7 +404,7 @@ export const useFlatTreeContextValues_unstable: (state: FlatTreeState) => FlatTr
 export const useFlatTreeStyles_unstable: (state: FlatTreeState) => FlatTreeState;
 
 // @public
-export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTree<Props>;
+export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps>(props: Props[], options?: HeadlessFlatTreeOptions): HeadlessFlatTreeReturn<Props>;
 
 // @public (undocumented)
 export const useSubtreeContext_unstable: () => SubtreeContextValue;

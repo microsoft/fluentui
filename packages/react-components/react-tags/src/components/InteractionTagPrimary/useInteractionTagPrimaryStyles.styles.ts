@@ -39,7 +39,7 @@ const baseStyles: GriffelResetStyle = {
 
   border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   ...createCustomFocusIndicatorStyle({
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
     zIndex: 1,
   }),
 };
@@ -56,7 +56,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',
@@ -80,8 +80,8 @@ const useRootCircularBaseClassName = makeResetStyles({
     position: 'relative',
     '::before': {
       content: '""',
-      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
-      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+      borderTop: `${tokens.strokeWidthThin} solid`,
+      borderLeft: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
       top: '-1px',
       left: '-1px',
@@ -101,7 +101,7 @@ const useRootCircularContrastStyles = makeStyles({
     '@media (forced-colors: active)': {
       position: 'relative',
       '::before': {
-        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+        borderRight: `${tokens.strokeWidthThin} solid transparent`,
         borderTopRightRadius: tokens.borderRadiusCircular,
         borderBottomRightRadius: tokens.borderRadiusCircular,
       },

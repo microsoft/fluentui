@@ -266,6 +266,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
+      const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : color;
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
@@ -281,14 +282,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
-          data-is-focusable={!this.props.hideTooltip}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
+          data-is-focusable={!this.props.hideTooltip && shouldHighlight}
+          onFocus={this._onBarFocus.bind(this, pointData, hoverCardYColor, point)}
           onBlur={this._onBarLeave}
           role="img"
           aria-label={this._getAriaLabel(point)}
-          onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
-          onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, pointData, color, point)}
-          onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
+          onMouseOver={this._onBarHover.bind(this, pointData, hoverCardYColor, point)}
+          onMouseMove={this._onBarHover.bind(this, pointData, hoverCardYColor, point)}
+          onMouseLeave={this._onBarLeave}
           onClick={href ? (point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)) : point.onClick}
         >
           <rect
@@ -624,7 +625,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      (legend ? `${legend}, ` : point.placeHolder ? 'Remaining, ' : '') + `${yValue}.`
+    );
   };
 
   private _computeLongestBarTotalValue = () => {

@@ -1481,6 +1481,20 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1565,6 +1579,20 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2020,6 +2048,20 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -2104,6 +2146,20 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2643,6 +2699,20 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3723,6 +3793,20 @@ exports[`Area chart rendering Should render the Area chart with date x-axis data
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -4394,6 +4478,20 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -4478,6 +4576,20 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5151,6 +5263,20 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -5235,6 +5361,20 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5994,6 +6134,20 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -6062,7 +6216,6 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           width: 100%;
         }
     id="chart_6"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_7"
@@ -6080,9 +6233,10 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Area chart multiple example"
+        aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -6122,7 +6276,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -6130,13 +6284,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -6148,13 +6302,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(171.61111111111111,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -6166,13 +6320,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(302.72222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -6184,13 +6338,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(433.8333333333333,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -6202,13 +6356,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(564.9444444444445,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -6250,7 +6404,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -6258,13 +6412,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -6276,13 +6430,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               37
@@ -6294,13 +6448,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               74
@@ -6312,13 +6466,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               110
@@ -6330,13 +6484,13 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               150
@@ -6398,8 +6552,10 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             opacity="1"
           />
           <g
+            aria-label="legend1, series 1 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
+            role="region"
           >
             <circle
               aria-label="20. legend1, 9."
@@ -6533,8 +6689,10 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
           </g>
           <g
+            aria-label="legend2, series 2 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
+            role="region"
           >
             <circle
               aria-label="20. legend2, 21."
@@ -6668,8 +6826,10 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             />
           </g>
           <g
+            aria-label="legend3, series 3 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
+            role="region"
           >
             <circle
               aria-label="20. legend3, 30."
@@ -6916,6 +7076,20 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -7000,6 +7174,20 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -7088,6 +7276,20 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -7169,7 +7371,6 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             width: 100%;
           }
       id="chart_9"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_10"
@@ -7187,9 +7388,10 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Area chart multiple example"
+          aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -7229,7 +7431,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M40.5,6V0.5H630.5V6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -7237,13 +7439,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(40.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 20
@@ -7255,13 +7457,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(171.61111111111111,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 30
@@ -7273,13 +7475,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(302.72222222222223,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 40
@@ -7291,13 +7493,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(433.8333333333333,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 50
@@ -7309,13 +7511,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(564.9444444444445,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 60
@@ -7357,7 +7559,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M-6,257.5H0.5V20.5H-6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -7365,13 +7567,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(0,257.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 0
@@ -7383,13 +7585,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(0,198.25)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 37
@@ -7401,13 +7603,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(0,139)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 74
@@ -7419,13 +7621,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(0,79.75)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 110
@@ -7437,13 +7639,13 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               transform="translate(0,20.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 150
@@ -7505,8 +7707,10 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               opacity="1"
             />
             <g
+              aria-label="legend1, series 1 of 3 with 10 data points."
               clip-path="url(#clip)"
               d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
+              role="region"
             >
               <circle
                 aria-label="20. legend1, 9."
@@ -7640,8 +7844,10 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
             </g>
             <g
+              aria-label="legend2, series 2 of 3 with 10 data points."
               clip-path="url(#clip)"
               d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
+              role="region"
             >
               <circle
                 aria-label="20. legend2, 21."
@@ -7775,8 +7981,10 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               />
             </g>
             <g
+              aria-label="legend3, series 3 of 3 with 10 data points."
               clip-path="url(#clip)"
               d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
+              role="region"
             >
               <circle
                 aria-label="20. legend3, 30."
@@ -8023,6 +8231,20 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="0"
@@ -8107,6 +8329,20 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -8195,6 +8431,20 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="-1"
@@ -8264,7 +8514,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           width: 100%;
         }
     id="chart_6"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_7"
@@ -8282,9 +8531,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Area chart multiple example"
+        aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -8324,7 +8574,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -8332,13 +8582,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -8350,13 +8600,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(171.61111111111111,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -8368,13 +8618,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(302.72222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -8386,13 +8636,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(433.8333333333333,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -8404,13 +8654,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(564.9444444444445,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -8452,7 +8702,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -8460,13 +8710,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -8478,13 +8728,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               37
@@ -8496,13 +8746,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               74
@@ -8514,13 +8764,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               110
@@ -8532,13 +8782,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               150
@@ -8600,8 +8850,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             opacity="1"
           />
           <g
+            aria-label="legend1, series 1 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
+            role="region"
           >
             <circle
               aria-label="20. legend1, 9."
@@ -8735,8 +8987,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
           </g>
           <g
+            aria-label="legend2, series 2 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
+            role="region"
           >
             <circle
               aria-label="20. legend2, 21."
@@ -8870,8 +9124,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
           </g>
           <g
+            aria-label="legend3, series 3 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
+            role="region"
           >
             <circle
               aria-label="20. legend3, 30."
@@ -9118,6 +9374,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -9204,6 +9474,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -9288,6 +9572,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9358,7 +9656,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           width: 100%;
         }
     id="chart_6"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_7"
@@ -9376,9 +9673,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Area chart multiple example"
+        aria-label="Area chart multiple example. Area chart with 3 data series. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -9418,7 +9716,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             class="domain"
             d="M40.5,6V0.5H630.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -9426,13 +9724,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(40.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -9444,13 +9742,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(171.61111111111111,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               30
@@ -9462,13 +9760,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(302.72222222222223,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               40
@@ -9480,13 +9778,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(433.8333333333333,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               50
@@ -9498,13 +9796,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(564.9444444444445,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               60
@@ -9546,7 +9844,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -9554,13 +9852,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -9572,13 +9870,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               37
@@ -9590,13 +9888,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               74
@@ -9608,13 +9906,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               110
@@ -9626,13 +9924,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               150
@@ -9694,8 +9992,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             opacity="1"
           />
           <g
+            aria-label="legend1, series 1 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,242.588C61.852,238.584,83.704,234.581,105.556,234.581C127.407,234.581,149.259,234.581,171.111,234.581C192.963,234.581,214.815,220.169,236.667,220.169C258.519,220.169,280.37,224.973,302.222,224.973C324.074,224.973,345.926,207.358,367.778,207.358C389.63,207.358,411.481,209.493,433.333,210.561C455.185,211.628,477.037,213.764,498.889,213.764C520.741,213.764,542.593,204.155,564.444,197.75C586.296,191.345,608.148,183.338,630,175.331L630,257C608.148,257,586.296,257,564.444,257C542.593,257,520.741,257,498.889,257C477.037,257,455.185,257,433.333,257C411.481,257,389.63,257,367.778,257C345.926,257,324.074,257,302.222,257C280.37,257,258.519,257,236.667,257C214.815,257,192.963,257,171.111,257C149.259,257,127.407,257,105.556,257C83.704,257,61.852,257,40,257Z"
+            role="region"
           >
             <circle
               aria-label="20. legend1, 9."
@@ -9829,8 +10129,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
           </g>
           <g
+            aria-label="legend2, series 2 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,208.959C61.852,201.753,83.704,194.547,105.556,194.547C127.407,194.547,149.259,218.568,171.111,218.568C192.963,218.568,214.815,205.223,236.667,204.155C258.519,203.088,280.37,203.622,302.222,202.554C324.074,201.486,345.926,178.534,367.778,178.534C389.63,178.534,411.481,196.149,433.333,196.149C455.185,196.149,477.037,176.932,498.889,176.932C520.741,176.932,542.593,186.541,564.444,186.541C586.296,186.541,608.148,136.899,630,87.257L630,175.331C608.148,183.338,586.296,191.345,564.444,197.75C542.593,204.155,520.741,213.764,498.889,213.764C477.037,213.764,455.185,211.628,433.333,210.561C411.481,209.493,389.63,207.358,367.778,207.358C345.926,207.358,324.074,224.973,302.222,224.973C280.37,224.973,258.519,220.169,236.667,220.169C214.815,220.169,192.963,234.581,171.111,234.581C149.259,234.581,127.407,234.581,105.556,234.581C83.704,234.581,61.852,238.584,40,242.588Z"
+            role="region"
           >
             <circle
               aria-label="20. legend2, 21."
@@ -9964,8 +10266,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
           </g>
           <g
+            aria-label="legend3, series 3 of 3 with 10 data points."
             clip-path="url(#clip)"
             d="M40,160.919C61.852,149.709,83.704,138.5,105.556,138.5C127.407,138.5,149.259,165.723,171.111,165.723C192.963,165.723,214.815,140.101,236.667,140.101C258.519,140.101,280.37,186.541,302.222,186.541C324.074,186.541,345.926,114.48,367.778,114.48C389.63,114.48,411.481,141.703,433.333,141.703C455.185,141.703,477.037,121.419,498.889,112.878C520.741,104.338,542.593,105.405,564.444,90.459C586.296,75.514,608.148,49.358,630,23.203L630,87.257C608.148,136.899,586.296,186.541,564.444,186.541C542.593,186.541,520.741,176.932,498.889,176.932C477.037,176.932,455.185,196.149,433.333,196.149C411.481,196.149,389.63,178.534,367.778,178.534C345.926,178.534,324.074,201.486,302.222,202.554C280.37,203.622,258.519,203.088,236.667,204.155C214.815,205.223,192.963,218.568,171.111,218.568C149.259,218.568,127.407,194.547,105.556,194.547C83.704,194.547,61.852,201.753,40,208.959Z"
+            role="region"
           >
             <circle
               aria-label="20. legend3, 30."
@@ -10212,6 +10516,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -10298,6 +10616,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -10382,6 +10714,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"

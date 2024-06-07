@@ -1,26 +1,21 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { NavItemValue } from '../NavContext.types';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavItemSlots = {
-  root: Slot<'a'>;
-
-  // TODO - light this up when we get design spec
-  // /**
-  //  * Icon that renders before the content.
-  //  */
-  // icon?: Slot<'span'>;
+  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 
   /**
-   * Component children are placed in this slot
-   * Avoid using the `children` property in this slot in favour of Component children whenever possible.
+   * Icon that renders before the content.
    */
-  content: NonNullable<Slot<'span'>>;
+  icon?: Slot<'span'>;
 };
 
 /**
  * NavItem Props
  */
-export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
+export type NavItemProps = ComponentProps<NavItemSlots> & {
+  href?: string;
   /**
    * The value that identifies this navCategoryItem when selected.
    */

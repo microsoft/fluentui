@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Card actions adopt custom high contrast mode colors",
-  "packageName": "@fluentui/react-card",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

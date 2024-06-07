@@ -18,7 +18,7 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     boxSizing: 'border-box',
     display: 'inline-flex',
     minWidth: '250px',
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
       height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
       borderBottomLeftRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
+      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
@@ -80,7 +80,7 @@ const useStyles = makeStyles({
   listbox: {
     boxSizing: 'border-box',
     boxShadow: `${tokens.shadow16}`,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     maxHeight: '80vh',
   },
 
@@ -88,10 +88,16 @@ const useStyles = makeStyles({
     display: 'none',
   },
 
+  // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+  // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+  inlineListbox: {
+    zIndex: 1,
+  },
+
   button: {
     alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
+    border: 'none',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     columnGap: tokens.spacingHorizontalXXS,
@@ -115,37 +121,28 @@ const useStyles = makeStyles({
   // size variants
   small: {
     ...typographyStyles.caption1,
-    ...shorthands.padding(
-      '3px',
-      tokens.spacingHorizontalSNudge,
-      '3px',
-      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `3px ${
+      tokens.spacingHorizontalSNudge
+    } 3px ${`calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   medium: {
     ...typographyStyles.body1,
-    ...shorthands.padding(
-      '5px',
-      tokens.spacingHorizontalMNudge,
-      '5px',
-      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `5px ${
+      tokens.spacingHorizontalMNudge
+    } 5px ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
     ...typographyStyles.body2,
-    ...shorthands.padding(
-      '7px',
-      tokens.spacingHorizontalM,
-      '7px',
-      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
-    ),
+    padding: `7px ${
+      tokens.spacingHorizontalM
+    } 7px ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
   },
 
   // appearance variants
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
   outlineInteractive: {
@@ -161,16 +158,16 @@ const useStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
-    ...shorthands.borderRadius(0),
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
+    borderRadius: '0',
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+    border: `${tokens.strokeWidthThin} solid transparent`,
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+    border: `${tokens.strokeWidthThin} solid transparent`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -285,6 +282,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     state.listbox.className = mergeClasses(
       dropdownClassNames.listbox,
       styles.listbox,
+      state.inlinePopup && styles.inlineListbox,
       !open && styles.listboxCollapsed,
       state.listbox.className,
     );

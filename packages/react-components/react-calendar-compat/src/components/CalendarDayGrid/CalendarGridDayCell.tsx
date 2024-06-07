@@ -215,7 +215,8 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       className={mergeClasses(
         classNames.dayCell,
         weekCorners && cornerStyle,
-        day.isSelected && classNames.daySelected,
+        day.isSelected && !day.isSingleSelected && classNames.daySelected,
+        day.isSingleSelected && classNames.daySingleSelected,
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
@@ -247,7 +248,9 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         type="button"
         tabIndex={-1}
       >
-        <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
+        <span className={day.isToday ? mergeClasses(classNames.dayTodayMarker) : undefined} aria-hidden="true">
+          {dateTimeFormatter.formatDay(day.originalDate)}
+        </span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}
       </button>
     </td>

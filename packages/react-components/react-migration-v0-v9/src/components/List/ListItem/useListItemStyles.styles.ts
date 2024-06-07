@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
 import { tokens } from '@fluentui/react-theme';
@@ -15,14 +15,14 @@ export const listItemClassNames: SlotClassNames<ListItemSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.padding(0, '10px'),
-  ...shorthands.margin(0),
+  padding: '0 10px',
+  margin: 0,
   textIndent: 0,
   listStyleType: 'none',
   ...createCustomFocusIndicatorStyle(
     {
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
     },
     { selector: 'focus' },
   ),
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     gridColumnEnd: 4,
   },
   truncate: {
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     textWrap: 'nowrap',
     textOverflow: 'ellipsis',
   },

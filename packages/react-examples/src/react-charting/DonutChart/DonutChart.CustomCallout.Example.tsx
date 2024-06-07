@@ -16,12 +16,19 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color9), xAxisCalloutData: '2020/04/30' },
+      {
+        legend: 'first',
+        data: 20000,
+        color: getColorFromToken(DataVizPalette.color9),
+        xAxisCalloutData: '2020/04/30',
+        callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 20000h' },
+      },
       {
         legend: 'second',
         data: 39000,
         color: getColorFromToken(DataVizPalette.color10),
         xAxisCalloutData: '2020/04/20',
+        callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 39000h' },
       },
     ];
 

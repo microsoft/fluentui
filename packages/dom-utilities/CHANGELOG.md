@@ -1,8 +1,80 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Wed, 03 Apr 2024 07:29:31 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 07:26:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.6)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.5..@fluentui/dom-utilities_v2.3.6)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.22 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+
+## [2.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.5)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.4..@fluentui/dom-utilities_v2.3.5)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.21 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+
+## [2.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.4)
+
+Fri, 24 May 2024 07:28:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.3..@fluentui/dom-utilities_v2.3.4)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.20 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+
+## [2.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.3)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.2..@fluentui/dom-utilities_v2.3.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.19 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+
+## [2.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.2)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.1..@fluentui/dom-utilities_v2.3.2)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+
+## [2.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.1)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.3.0..@fluentui/dom-utilities_v2.3.1)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.17 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+
+## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.3.0)
+
+Mon, 22 Apr 2024 07:28:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.16..@fluentui/dom-utilities_v2.3.0)
+
+### Minor changes
+
+- feat: add shadow DOM support for DOM APIs ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+
+## [2.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.16)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.15..@fluentui/dom-utilities_v2.2.16)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
 
 ## [2.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.15)
 

@@ -39,7 +39,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
 
-  const { clearable, clearSelection, multiselect, open, selectedOptions, value, hasFocus } = baseState;
+  const { clearable, clearSelection, disabled, multiselect, open, selectedOptions, value, hasFocus } = baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
@@ -98,6 +98,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {
+        'aria-disabled': disabled ? 'true' : undefined,
         'aria-expanded': open,
         children: <ChevronDownIcon />,
         role: 'button',

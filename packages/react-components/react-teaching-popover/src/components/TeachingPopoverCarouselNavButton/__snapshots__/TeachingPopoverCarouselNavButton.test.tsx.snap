@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarouselNavButton renders a default state 1`] = `
+<div>
+  <button
+    class="fui-TeachingPopoverCarouselNavButton"
+    data-tabster="{\\"focusable\\":{\\"isDefault\\":false}}"
+    role="tab"
+    type="button"
+  />
+</div>
+`;

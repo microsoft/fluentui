@@ -8,6 +8,9 @@ type RenderProps<T> = {
 };
 
 describe('useControllableState', () => {
+  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
+    /** noop */
+  });
   afterEach(jest.resetAllMocks);
 
   it('respects controlled state', () => {
@@ -20,16 +23,18 @@ describe('useControllableState', () => {
     rerender({ state: false, initialState: false });
     expect(result.current[0]).toBe(false);
 
+    // this will cause console.error to be called
     rerender({ defaultState: true, state: false, initialState: false });
     expect(result.current[0]).toBe(false);
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
 
     rerender({ state: true, initialState: false });
     expect(result.current[0]).toBe(true);
   });
 
   it('uses initial state if state and default state are undefined', () => {
-    const state = undefined as boolean | undefined;
-    const defaultState = undefined as boolean | undefined;
+    const state = undefined;
+    const defaultState = undefined;
     const initialState = true;
     const { result } = renderHook(() => useControllableState({ state, defaultState, initialState }));
     expect(result.current[0]).toBe(initialState);
@@ -60,14 +65,14 @@ describe('useControllableState', () => {
     ['', true],
     ['factory', () => true],
   ])('uses the default state %s if no controlled state is provided', (_, defaultState) => {
-    const state = undefined as boolean | undefined;
+    const state = undefined;
     const { result } = renderHook(() => useControllableState({ state, defaultState, initialState: false }));
     expect(result.current[0]).toBe(true);
   });
 
   it('does not change state when the default state changes', () => {
     let defaultState = true;
-    const state = undefined as boolean | undefined;
+    const state = undefined;
     const { result, rerender } = renderHook(() => useControllableState({ state, defaultState, initialState: false }));
 
     defaultState = false;
@@ -86,6 +91,9 @@ describe('useControllableState', () => {
     rerender();
 
     expect(result.current[1]).toBe(firstResult[1]);
+    // both state and defaultState are defined.
+    // This will cause console.error to be called
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
   });
 
   it('returns the same setter callback even if param states change', () => {
@@ -100,10 +108,13 @@ describe('useControllableState', () => {
     rerender();
 
     expect(result.current[1]).toBe(firstResult[1]);
+    // both state and defaultState are defined.
+    // This will cause console.error to be called
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should update state with dispatch', () => {
-    const state = undefined as string | undefined;
+    const state = undefined;
     const defaultState = 'world';
     const initialState = '';
     const { result } = renderHook(() => useControllableState({ state, defaultState, initialState }));
@@ -116,7 +127,7 @@ describe('useControllableState', () => {
   });
 
   it('should use factory dispatch', () => {
-    const state = undefined as string | undefined;
+    const state = undefined;
     const defaultState = 'foo';
     const initialState = '';
     const { result } = renderHook(() => useControllableState({ state, defaultState, initialState }));
@@ -129,8 +140,6 @@ describe('useControllableState', () => {
   });
 
   it('should ignore dispatch when controlled', () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
     const state = 'foo';
     const defaultState = 'world';
     const initialState = '';
@@ -141,22 +150,28 @@ describe('useControllableState', () => {
     });
 
     expect(result.current[0]).toEqual('foo');
-    expect(spy).toHaveBeenCalledTimes(0);
+    // both state and defaultState are defined.
+    // This will cause console.error to be called
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('warns when providing both controlled and uncontrolled state', () => {
+    renderHook(() => useControllableState({ state: '', defaultState: '', initialState: '' }));
+
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
   });
 
   it.each([
     ['a controlled value to be uncontrolled', 'defined to an undefined', 'hello', undefined],
     ['an uncontrolled value to be controlled', 'undefined to a defined', undefined, 'hello'],
   ])('warns when switching from %s', (controlWarning, undefinedWarning, first, second) => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    let state: string | undefined = first;
-    const defaultState = undefined as string | undefined;
+    let state = first;
+    const defaultState = undefined;
     const { rerender } = renderHook(() => useControllableState({ state, defaultState, initialState: '' }));
 
     state = second;
     rerender();
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
   });
 });

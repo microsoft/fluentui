@@ -12,10 +12,14 @@ import { useMutationObserver } from './useMutationObserver';
  * @param target target element that will have its current reading direction determined
  * @returns the corrected rootMargin (if it was necessary to correct)
  */
-export const getRTLRootMargin = (ltrRootMargin: string, target?: Element | Document | null | undefined): string => {
-  if (target) {
+export const getRTLRootMargin = (
+  ltrRootMargin: string,
+  target?: Element | Document | null | undefined,
+  win?: Window | null,
+): string => {
+  if (target && win) {
     // get the computed dir for the target element
-    const newDir = getComputedStyle(target as Element).direction;
+    const newDir = win.getComputedStyle(target as Element).direction;
 
     // If we're in rtl reading direction, we might need to flip the margins on the left/right sides
     if (newDir === 'rtl') {
@@ -52,17 +56,22 @@ export const useIntersectionObserver = (
 ): {
   setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+  // eslint-disable-next-line no-restricted-globals
   observer: MutableRefObject<IntersectionObserver | undefined>;
 } => {
+  // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
+  // eslint-disable-next-line no-restricted-globals
   const observer = useRef<IntersectionObserver>();
   const [observerList, setObserverList] = useState<Element[]>();
   const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
 
   // set the initial init with corrected margins based on the observed root's calculated reading direction.
   const [observerInit, setObserverInit] = useState<IntersectionObserverInit | undefined>(
     options && {
       ...options,
-      rootMargin: getRTLRootMargin(options.rootMargin ?? '0px', options.root as Element),
+      rootMargin: getRTLRootMargin(options.rootMargin ?? '0px', options.root as Element, win),
     },
   );
 
@@ -82,12 +91,12 @@ export const useIntersectionObserver = (
         ) {
           setObserverInit({
             ...observerInit,
-            rootMargin: getRTLRootMargin(ltrRootMargin.current, observerInit?.root),
+            rootMargin: getRTLRootMargin(ltrRootMargin.current, observerInit?.root, win),
           });
         }
       }
     },
-    [ltrRootMargin, observerInit, options?.root],
+    [ltrRootMargin, observerInit, options?.root, win],
   );
 
   // Mutation observer for dir attribute changes in the document
@@ -100,12 +109,14 @@ export const useIntersectionObserver = (
   // Observer elements in passed in list and clean up previous list
   // This effect is only triggered when observerList is updated
   useIsomorphicLayoutEffect(() => {
-    observer.current = new IntersectionObserver(callback, {
-      ...observerInit,
-      rootMargin: getRTLRootMargin(ltrRootMargin.current, observerInit?.root),
-    });
+    if (!win) {
+      return;
+    }
 
-    observer.current = new IntersectionObserver(callback, observerInit);
+    observer.current = new win.IntersectionObserver(callback, {
+      ...observerInit,
+      rootMargin: getRTLRootMargin(ltrRootMargin.current, observerInit?.root, win),
+    });
 
     // If we have an instance of IO and a list with elements, observer the elements
     if (observer.current && observerList && observerList.length > 0) {
@@ -120,7 +131,7 @@ export const useIntersectionObserver = (
         observer.current.disconnect();
       }
     };
-  }, [observerList, observerInit, callback]);
+  }, [observerList, observerInit, callback, win]);
 
   // Do not use internally, we need to track external settings only here
   const setObserverInitExternal = useCallback(
@@ -131,10 +142,10 @@ export const useIntersectionObserver = (
       // Call the internal setter to update the value and ensure if our calculated direction is rtl, we flip the margin
       setObserverInit({
         ...newInit,
-        rootMargin: getRTLRootMargin(ltrRootMargin.current, newInit?.root as Element),
+        rootMargin: getRTLRootMargin(ltrRootMargin.current, newInit?.root as Element, win),
       });
     },
-    [ltrRootMargin, setObserverInit],
+    [ltrRootMargin, setObserverInit, win],
   );
 
   return { setObserverList, setObserverInit: setObserverInitExternal, observer };

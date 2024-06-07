@@ -66,11 +66,11 @@ const getLinkStyles = (
         marginRight: 8,
         textAlign: 'center',
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus`]: {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             outline: `1px solid ${semanticColors.focusBorder}`,
           },
 
-          [`.${IsFocusVisibleClassName} &:focus:after`]: {
+          [`.${IsFocusVisibleClassName} &:focus:after, :host(.${IsFocusVisibleClassName}) &:focus:after`]: {
             content: 'attr(data-content)',
             position: 'relative',
             border: 0,
@@ -113,7 +113,7 @@ const getLinkStyles = (
             ':focus': {
               outlineOffset: '-2px',
             },
-            [`.${IsFocusVisibleClassName} &:focus::before`]: {
+            [`.${IsFocusVisibleClassName} &:focus::before, :host(.${IsFocusVisibleClassName}) &:focus::before`]: {
               height: 'auto',
               background: 'transparent',
               transition: 'none',
@@ -157,9 +157,11 @@ const getLinkStyles = (
                 },
               },
             },
-            [`.${IsFocusVisibleClassName} &.${classNames.linkIsSelected}:focus`]: {
-              outlineColor: semanticColors.primaryButtonText,
-            },
+            // eslint-disable-next-line @fluentui/max-len
+            [`.${IsFocusVisibleClassName} &.${classNames.linkIsSelected}:focus, :host(.${IsFocusVisibleClassName}) &.${classNames.linkIsSelected}:focus`]:
+              {
+                outlineColor: semanticColors.primaryButtonText,
+              },
           },
         },
       ],

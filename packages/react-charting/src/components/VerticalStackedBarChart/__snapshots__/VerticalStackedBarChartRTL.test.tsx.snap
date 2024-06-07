@@ -18,7 +18,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -36,8 +35,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -77,7 +78,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M279.5,6V0.5H391.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -85,13 +86,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(287,0)rotate(-45)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               January
@@ -103,13 +104,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(335,0)rotate(-45)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               February
@@ -121,13 +122,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(383,0)rotate(-45)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               March
@@ -169,7 +170,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -177,13 +178,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -195,13 +196,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25
@@ -213,13 +214,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50
@@ -231,13 +232,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               75
@@ -249,13 +250,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               100
@@ -483,30 +484,36 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="157.46000000000004"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -612,6 +619,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -696,6 +717,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -784,6 +819,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -868,6 +917,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -938,7 +1001,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -956,8 +1018,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -997,7 +1061,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M279.5,6V0.5H391.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1005,13 +1069,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(287,0)rotate(-45)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               January
@@ -1023,13 +1087,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(335,0)rotate(-45)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               February
@@ -1041,13 +1105,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(383,0)rotate(-45)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               March
@@ -1089,7 +1153,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1097,13 +1161,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -1115,13 +1179,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25
@@ -1133,13 +1197,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50
@@ -1151,13 +1215,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               75
@@ -1169,13 +1233,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               100
@@ -1403,30 +1467,36 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="157.46000000000004"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -1532,6 +1602,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -1616,6 +1700,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1704,6 +1802,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -1788,6 +1900,20 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1858,7 +1984,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -1876,8 +2001,10 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1917,7 +2044,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           <path
             class="domain"
             d="M279.5,6V0.5H391.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -1925,13 +2052,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(287,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               January
@@ -1943,13 +2070,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(335,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               February
@@ -1961,13 +2088,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(383,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               March
@@ -2009,7 +2136,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -2017,13 +2144,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -2035,13 +2162,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               25
@@ -2053,13 +2180,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               50
@@ -2071,13 +2198,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               75
@@ -2089,13 +2216,13 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               100
@@ -2323,30 +2450,36 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           <circle
             cx="279"
             cy="157.46000000000004"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -2452,6 +2585,20 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -2536,6 +2683,20 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2624,6 +2785,20 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -2708,6 +2883,20 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2791,7 +2980,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             width: 100%;
           }
       id="chart_6"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_7"
@@ -2809,8 +2997,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -2850,7 +3040,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M56.5,6V0.5H614.5V6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -2858,13 +3048,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(56.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 0
@@ -2876,13 +3066,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(196,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 5
@@ -2894,13 +3084,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(335.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 10
@@ -2912,13 +3102,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(475,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 15
@@ -2930,13 +3120,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(614.5,0)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 y2="6"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
-                fill="#000"
+                fill="currentColor"
                 y="16"
               >
                 20
@@ -2978,7 +3168,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             <path
               class="domain"
               d="M-6,257.5H0.5V20.5H-6"
-              stroke="#000"
+              stroke="currentColor"
             />
             <g
               class="tick"
@@ -2986,13 +3176,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,257.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 0
@@ -3004,13 +3194,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,198.25)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 13
@@ -3022,13 +3212,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,139)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 26
@@ -3040,13 +3230,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,79.75)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 39
@@ -3058,13 +3248,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               transform="translate(0,20.5)"
             >
               <line
-                stroke="#000"
+                stroke="currentColor"
                 x2="590"
               />
               <text
                 aria-hidden="true"
                 dy="0.32em"
-                fill="#000"
+                fill="currentColor"
                 x="-10"
               >
                 52
@@ -3089,9 +3279,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="182.30769230769232"
                   role="img"
                   tabindex="0"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="48"
+                  x="56"
                   y="74.69230769230768"
                 />
                 <rect
@@ -3107,9 +3297,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="22.78846153846154"
                   role="img"
                   tabindex="-1"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="48"
+                  x="56"
                   y="51.90384615384614"
                 />
               </g>
@@ -3124,8 +3314,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 role="img"
                 text-anchor="middle"
-                transform="translate(0, 0)"
-                x="56"
+                transform="translate(-8, 0)"
+                x="64"
                 y="45.90384615384614"
               >
                 45
@@ -3148,9 +3338,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="136.73076923076923"
                   role="img"
                   tabindex="-1"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="606"
+                  x="614"
                   y="120.26923076923077"
                 />
                 <rect
@@ -3166,9 +3356,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   height="91.15384615384615"
                   role="img"
                   tabindex="-1"
-                  transform="translate(0, 0)"
+                  transform="translate(-8, 0)"
                   width="16"
-                  x="606"
+                  x="614"
                   y="29.115384615384627"
                 />
               </g>
@@ -3183,8 +3373,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 role="img"
                 text-anchor="middle"
-                transform="translate(0, 0)"
-                x="614"
+                transform="translate(-8, 0)"
+                x="622"
                 y="23.115384615384627"
               >
                 50
@@ -3293,6 +3483,20 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="0"
@@ -3377,6 +3581,20 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -6026,6 +6244,20 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -6110,6 +6342,20 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -9508,7 +9754,6 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -9526,8 +9771,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -9567,7 +9814,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -9575,13 +9822,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -9593,13 +9840,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(196,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5
@@ -9611,13 +9858,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10
@@ -9629,13 +9876,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(475,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15
@@ -9647,13 +9894,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(614.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -9695,7 +9942,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -9703,13 +9950,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -9721,13 +9968,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13
@@ -9739,13 +9986,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               26
@@ -9757,13 +10004,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               39
@@ -9775,13 +10022,13 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               52
@@ -9806,9 +10053,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="182.30769230769232"
                 role="img"
                 tabindex="0"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -9824,9 +10071,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="22.78846153846154"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -9841,8 +10088,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -9865,9 +10112,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="136.73076923076923"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -9883,9 +10130,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 height="91.15384615384615"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -9900,8 +10147,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -10010,6 +10257,20 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
@@ -10096,6 +10357,20 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -10164,7 +10439,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -10182,8 +10456,10 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -10223,7 +10499,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -10231,13 +10507,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -10249,13 +10525,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(196,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5
@@ -10267,13 +10543,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10
@@ -10285,13 +10561,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(475,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15
@@ -10303,13 +10579,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(614.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -10351,7 +10627,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -10359,13 +10635,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -10377,13 +10653,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13
@@ -10395,13 +10671,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               26
@@ -10413,13 +10689,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               39
@@ -10431,13 +10707,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               52
@@ -10462,9 +10738,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="182.30769230769232"
                 role="img"
                 tabindex="0"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -10480,9 +10756,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="22.78846153846154"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -10497,8 +10773,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -10521,9 +10797,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="136.73076923076923"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -10539,9 +10815,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 height="91.15384615384615"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -10556,8 +10832,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -10658,6 +10934,20 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      outline-color: #605e5c;
+                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="0"
@@ -10742,6 +11032,20 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      outline-color: #605e5c;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       outline-color: #605e5c;
                     }
                 data-is-focusable="true"
@@ -10809,7 +11113,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -10827,8 +11130,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -10868,7 +11173,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -10876,13 +11181,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -10894,13 +11199,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(196,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5
@@ -10912,13 +11217,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10
@@ -10930,13 +11235,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(475,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15
@@ -10948,13 +11253,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(614.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -10996,7 +11301,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -11004,13 +11309,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -11022,13 +11327,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13
@@ -11040,13 +11345,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               26
@@ -11058,13 +11363,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               39
@@ -11076,13 +11381,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               52
@@ -11107,9 +11412,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="182.30769230769232"
                 role="img"
                 tabindex="0"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -11125,9 +11430,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="22.78846153846154"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -11142,8 +11447,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -11166,9 +11471,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="136.73076923076923"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -11184,9 +11489,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 height="91.15384615384615"
                 role="img"
                 tabindex="-1"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -11201,8 +11506,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -11303,6 +11608,20 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      outline-color: #605e5c;
+                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="0"
@@ -11389,6 +11708,20 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      outline-color: #605e5c;
+                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="-1"
@@ -11454,7 +11787,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -11472,8 +11804,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -11513,7 +11847,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <path
             class="domain"
             d="M56.5,6V0.5H614.5V6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -11521,13 +11855,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(56.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               0
@@ -11539,13 +11873,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(196,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               5
@@ -11557,13 +11891,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(335.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               10
@@ -11575,13 +11909,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(475,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               15
@@ -11593,13 +11927,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(614.5,0)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               y2="6"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
-              fill="#000"
+              fill="currentColor"
               y="16"
             >
               20
@@ -11641,7 +11975,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <path
             class="domain"
             d="M-6,257.5H0.5V20.5H-6"
-            stroke="#000"
+            stroke="currentColor"
           />
           <g
             class="tick"
@@ -11649,13 +11983,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,257.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               0
@@ -11667,13 +12001,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,198.25)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               13
@@ -11685,13 +12019,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,139)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               26
@@ -11703,13 +12037,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,79.75)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               39
@@ -11721,13 +12055,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0,20.5)"
           >
             <line
-              stroke="#000"
+              stroke="currentColor"
               x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
-              fill="#000"
+              fill="currentColor"
               x="-10"
             >
               52
@@ -11752,9 +12086,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#0078d4"
                 height="182.30769230769232"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="74.69230769230768"
               />
               <rect
@@ -11766,9 +12100,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#00188f"
                 height="22.78846153846154"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="48"
+                x="56"
                 y="51.90384615384614"
               />
             </g>
@@ -11783,8 +12117,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
+              transform="translate(-8, 0)"
+              x="64"
               y="45.90384615384614"
             >
               45
@@ -11807,9 +12141,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#0078d4"
                 height="136.73076923076923"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="120.26923076923077"
               />
               <rect
@@ -11821,9 +12155,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#00188f"
                 height="91.15384615384615"
-                transform="translate(0, 0)"
+                transform="translate(-8, 0)"
                 width="16"
-                x="606"
+                x="614"
                 y="29.115384615384627"
               />
             </g>
@@ -11838,8 +12172,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               role="img"
               text-anchor="middle"
-              transform="translate(0, 0)"
-              x="614"
+              transform="translate(-8, 0)"
+              x="622"
               y="23.115384615384627"
             >
               50
@@ -11861,20 +12195,24 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <circle
             cx="56"
             cy="188.6346153846154"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(0, 0)"
             visibility="hidden"
           />
           <circle
             cx="614"
             cy="120.26923076923077"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(0, 0)"
             visibility="hidden"
           />
@@ -11972,6 +12310,20 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      outline-color: #605e5c;
+                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="0"
@@ -12058,6 +12410,20 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      outline-color: #605e5c;
+                    }
                 data-is-focusable="true"
                 role="option"
                 tabindex="-1"
@@ -12142,6 +12508,20 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      outline-color: #605e5c;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       outline-color: #605e5c;
                     }
                 data-is-focusable="true"

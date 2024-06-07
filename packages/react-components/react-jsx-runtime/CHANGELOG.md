@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Tue, 02 Apr 2024 09:48:01 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.39)
+
+Thu, 06 Jun 2024 15:26:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.38..@fluentui/react-jsx-runtime_v9.0.39)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+
+## [9.0.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.38)
+
+Mon, 20 May 2024 12:45:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.37..@fluentui/react-jsx-runtime_v9.0.38)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.37)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.36..@fluentui/react-jsx-runtime_v9.0.37)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+
+## [9.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.36)
+
+Tue, 23 Apr 2024 08:17:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.35..@fluentui/react-jsx-runtime_v9.0.36)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.7 ([PR #31113](https://github.com/microsoft/fluentui/pull/31113) by beachball)
 
 ## [9.0.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.35)
 

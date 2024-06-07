@@ -52,6 +52,18 @@ export type TreeOpenChangeData = {
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }
 );
 
+/**
+ * @internal
+ *
+ * To avoid breaking changes on TreeNavigationData
+ * we are creating a new type that extends the old one
+ * and adds the new methods, and this type will not be exported
+ */
+type TreeNavigationDataParam = TreeNavigationData_unstable & {
+  preventScroll(): void;
+  isScrollPrevented(): boolean;
+};
+
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 export type TreeCheckedChangeData = {
@@ -121,7 +133,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
    */
-  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationDataParam): void;
 
   /**
    * This refers to the selection mode of the tree.

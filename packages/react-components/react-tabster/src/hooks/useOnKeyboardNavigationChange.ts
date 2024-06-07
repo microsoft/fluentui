@@ -1,7 +1,8 @@
-import * as React from 'react';
 import type { KeyborgCallback } from 'keyborg';
+import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { useKeyborg } from './useKeyborg';
+
+import { useKeyborgRef } from './useKeyborgRef';
 
 /**
  * Instantiates [keyborg](https://github.com/microsoft/keyborg) and subscribes to changes
@@ -10,15 +11,23 @@ import { useKeyborg } from './useKeyborg';
  * @param callback - called every time the keyboard navigation state changes
  */
 export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void) {
-  const keyborg = useKeyborg();
+  const keyborgRef = useKeyborgRef();
   const eventCallback = useEventCallback(callback);
+
   React.useEffect(() => {
+    const keyborg = keyborgRef.current;
+
     if (keyborg) {
       const cb: KeyborgCallback = next => {
         eventCallback(next);
       };
+
       keyborg.subscribe(cb);
-      return () => keyborg.unsubscribe(cb);
+      cb(keyborg.isNavigatingWithKeyboard());
+
+      return () => {
+        keyborg.unsubscribe(cb);
+      };
     }
-  }, [keyborg, eventCallback]);
+  }, [keyborgRef, eventCallback]);
 }

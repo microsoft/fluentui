@@ -7,6 +7,7 @@ import {
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
+  scaleTime as d3ScaleTime,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -26,6 +27,7 @@ import {
   Legends,
   IChildProps,
   IYValueHover,
+  IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -40,6 +42,15 @@ import {
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
+  calculateAppropriateBarWidth,
+  findVerticalNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRageOfVerticalNumeric,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
+  formatDate,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -65,6 +76,11 @@ export interface IVerticalBarChartState extends IBasestate {
 type ColorScale = (_p?: number) => string;
 
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
+  public static defaultProps: Partial<IVerticalBarChartProps> = {
+    maxBarWidth: 24,
+    useUTC: true,
+  };
+
   private _points: IVerticalBarChartDataPoint[];
   private _barWidth: number;
   private _colors: string[];
@@ -110,6 +126,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
     this._emptyChartId = getId('_VBC_empty');
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public render(): JSX.Element {
@@ -151,19 +168,24 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
+        createYAxis={createNumericYAxis}
         calloutProps={calloutProps}
         tickParams={tickParams}
-        {...(this._isHavingLine && { isCalloutForStack: true })}
+        {...(this._isHavingLine && this._noLegendHighlighted() && { isCalloutForStack: true })}
         legendBars={legendBars}
         datasetForXAxisDomain={this._xAxisLabels}
         barwidth={this._barWidth}
         focusZoneDirection={FocusZoneDirection.horizontal}
         customizedCallout={this._getCustomizedCallout()}
+        createStringYAxis={createStringYAxis}
         getmargins={this._getMargins}
+        getMinMaxOfYAxis={findVerticalNumericMinMaxOfY}
         getGraphData={this._getGraphData}
+        getDomainNRangeValues={this._getDomainNRangeValues}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         getDomainMargins={this._getDomainMargins}
@@ -201,6 +223,36 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: IDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _createLine = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -280,20 +332,33 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         },
         index: number,
       ) => {
+        // Create an object to store line point ref so that the object can be passed by reference to the focus handler
+        const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
         return (
           <circle
             key={index}
             id={getId('_VBC_point_')}
             cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
-            onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
+            onMouseOver={
+              this._legendHighlighted(lineLegendText!)
+                ? this._lineHover.bind(this, item.point)
+                : this._onBarHover.bind(this, item.point, colorScale(item.y))
+            }
             onMouseOut={this._onBarLeave}
-            r={8}
+            r={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
             stroke={lineLegendColor}
             fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
-            visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
+            visibility={this._getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
             onClick={item.point.lineData?.onClick}
+            // When no legend is highlighted: Line points are automatically displayed along with the bars
+            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
+            // and avoid conveying duplicate info, make these line points non-focusable.
+            data-is-focusable={this._legendHighlighted(lineLegendText!)}
+            ref={e => (circleRef.refElement = e)}
+            onFocus={this._lineFocus.bind(this, item.point, circleRef)}
+            onBlur={this._handleChartMouseLeave}
           />
         );
       },
@@ -305,6 +370,29 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {dots}
       </>
     );
+  };
+
+  private _getCircleVisibilityAndRadius = (
+    xAxisPoint: string | number | Date,
+    legend: string,
+  ): { visibility: CircleVisbility; radius: number } => {
+    const { selectedLegend, activeXdataPoint } = this.state;
+    if (selectedLegend !== '') {
+      if (xAxisPoint === activeXdataPoint && selectedLegend === legend) {
+        return { visibility: CircleVisbility.show, radius: 8 };
+      } else if (selectedLegend === legend) {
+        // Don't hide the circle to keep it focusable. For more information,
+        // see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
+        return { visibility: CircleVisbility.show, radius: 0.3 };
+      } else {
+        return { visibility: CircleVisbility.hide, radius: 0 };
+      }
+    } else {
+      return {
+        visibility: activeXdataPoint === xAxisPoint ? CircleVisbility.show : CircleVisbility.hide,
+        radius: 8,
+      };
+    }
   };
 
   private _checkForLine = (): boolean => {
@@ -438,7 +526,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
-    const hoverXValue = point.x instanceof Date ? point.x.toLocaleString() : point.x.toString();
+    const hoverXValue = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString();
     return {
       YValueHover,
       hoverXValue: point.xAxisCalloutData || hoverXValue,
@@ -464,10 +552,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         color: point.color || color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue:
-          point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+          point.xAxisCalloutData ||
+          (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
-        activeXdataPoint: point.x,
+        // Hovering over a bar should highlight corresponding line points only when no legend is selected
+        activeXdataPoint: this._noLegendHighlighted() ? point.x : null,
         YValueHover,
         hoverXValue,
         callOutAccessibilityData: point.callOutAccessibilityData,
@@ -501,7 +591,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           dataForHoverCard: point.y,
           color: point.color || color,
           xCalloutValue:
-            point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+            point.xAxisCalloutData ||
+            (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
           activeXdataPoint: point.x,
@@ -510,6 +601,38 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           callOutAccessibilityData: point.callOutAccessibilityData,
         });
       }
+    });
+  };
+
+  private _lineHover = (point: IVerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) => {
+    mouseEvent.persist();
+    this._lineHoverFocus(point, mouseEvent);
+  };
+
+  private _lineFocus = (point: IVerticalBarChartDataPoint, ref: { refElement: SVGCircleElement | null }) => {
+    if (ref.refElement) {
+      this._lineHoverFocus(point, ref.refElement);
+    }
+  };
+
+  private _lineHoverFocus = (
+    point: IVerticalBarChartDataPoint,
+    refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
+  ) => {
+    const { theme } = this.props;
+    const { lineLegendText = '', lineLegendColor = theme!.palette.yellow } = this.props;
+    this.setState({
+      refSelected,
+      isCalloutVisible: true,
+      calloutLegend: lineLegendText,
+      dataForHoverCard: point.lineData!.y,
+      color: lineLegendColor,
+      xCalloutValue:
+        point.xAxisCalloutData ||
+        (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
+      yCalloutValue: point.lineData!.yAxisCalloutData,
+      dataPointCalloutProps: point,
+      activeXdataPoint: point.x,
     });
   };
 
@@ -531,25 +654,17 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
-        .range([
-          this.margins.left! + this._domainMargin,
-          containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
-        ]);
+        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
-      xBarScale = d3ScaleUtc()
+      xBarScale = this.props.useUTC ? d3ScaleUtc() : d3ScaleTime();
+      xBarScale
         .domain([sDate, lDate])
         .range(
           this._isRtl
-            ? [
-                containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-                this.margins.left! + this._domainMargin + this._barWidth / 2,
-              ]
-            : [
-                this.margins.left! + this._domainMargin + this._barWidth / 2,
-                containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
-              ],
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
         );
     } else {
       xBarScale = d3ScaleBand()
@@ -586,7 +701,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       } else {
         adjustedBarHeight = barHeight;
       }
-      const xPoint = xBarScale(point.x as number);
+      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x as string}>
@@ -596,7 +711,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -653,11 +768,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }
       const xPoint = xBarScale(point.x);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
-      if (this.props.barWidth === 'auto') {
-        // Setting the bar width here is safe because there are no dependencies earlier in the code
-        // that rely on the width of bars in vertical bar charts with string x-axis.
-        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
-      }
+      // Setting the bar width here is safe because there are no dependencies earlier in the code
+      // that rely on the width of bars in vertical bar charts with string x-axis.
+      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
       return (
         <g
           key={point.x instanceof Date ? point.x.getTime() : point.x}
@@ -742,7 +855,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -899,7 +1012,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
-      ? point.x.toLocaleString()
+      ? formatDate(point.x, this.props.useUTC)
       : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
@@ -939,25 +1052,37 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
+    /** Total width available to render the bars */
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
       } else if (this.props.barWidth !== 'auto') {
-        /** Total width available to render the bars */
-        const totalWidth =
-          containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
         /** Rate at which the space between the bars changes wrt the bar width */
         const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        // Update the bar width so that when CartesianChart rerenders,
+        // the following calculations don't use the previous bar width.
+        this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
         const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
-          this._domainMargin += (totalWidth - reqWidth) / 2;
+          this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
       }
+    } else {
+      const data = (this.props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
+      this._barWidth = getBarWidth(
+        this.props.barWidth,
+        this.props.maxBarWidth,
+        calculateAppropriateBarWidth(data, totalWidth),
+      );
+      this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
 
     return {
@@ -973,4 +1098,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
     );
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    return (
+      (chartTitle ? `${chartTitle}. ` : '') +
+      `Vertical bar chart with ${data?.length || 0} bars` +
+      (this._isHavingLine ? ' and 1 line' : '') +
+      '. '
+    );
+  };
 }

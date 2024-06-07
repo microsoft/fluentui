@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';
 import { ListboxState } from '../components/Listbox/Listbox.types';
 
 /**
@@ -16,6 +17,7 @@ export type ListboxContextValue = Pick<
   | 'setActiveOption'
 > & {
   onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
+  onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
 
 const listboxContextDefaultValue = {
@@ -27,6 +29,9 @@ const listboxContextDefaultValue = {
   },
   selectedOptions: [],
   onOptionClick() {
+    // noop
+  },
+  onActiveDescendantChange() {
     // noop
   },
   selectOption() {

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useKeyborg } from './useKeyborg';
+import { useKeyborgRef } from './useKeyborgRef';
 
 /**
  */
 export function useSetKeyboardNavigation() {
-  const keyborg = useKeyborg();
+  const keyborgRef = useKeyborgRef();
 
   return React.useCallback(
     (isNavigatingWithKeyboard: boolean) => {
-      keyborg?.setVal(isNavigatingWithKeyboard);
+      keyborgRef.current?.setVal(isNavigatingWithKeyboard);
     },
-    [keyborg],
+    [keyborgRef],
   );
 }

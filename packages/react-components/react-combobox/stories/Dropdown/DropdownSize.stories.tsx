@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
+import { Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { DropdownProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -8,13 +8,13 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
-    ...shorthands.gap('20px'),
+    gap: '20px',
     maxWidth: '400px',
     '> div': {
       display: 'grid',
       gridTemplateRows: 'repeat(1fr)',
       justifyItems: 'start',
-      ...shorthands.gap('2px'),
+      gap: '2px',
     },
   },
 });
