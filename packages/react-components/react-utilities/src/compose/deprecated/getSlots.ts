@@ -110,7 +110,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   if (renderFunction || typeof children === 'function') {
     const render = (renderFunction || children) as SlotRenderFunction<R[K]>;
     return [
-      React.Fragment,
+      React.Fragment as React.ElementType<R[K]>,
       {
         children: render(slot, rest as Omit<R[K], 'as'>),
       } as unknown as R[K],

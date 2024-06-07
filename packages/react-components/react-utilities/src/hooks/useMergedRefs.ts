@@ -6,30 +6,44 @@ import * as React from 'react';
  */
 export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
 
+/** @internal */
+type MutableRefObjectFunction<T> = React.MutableRefObject<T> & ((value: T) => void);
+
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
  * @param refs - Refs to collectively update with one ref value.
  * @returns A function with an attached "current" prop, so that it can be treated like a RefObject.
  */
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
-  const mergedCallback: RefObjectFunction<T> = React.useCallback(
+// LegacyRef is actually not supported, but in React v18 types this is leaking directly from forwardRef component declaration
+export function useMergedRefs<T>(...refs: (React.LegacyRef<T> | undefined)[]): RefObjectFunction<T> {
+  const mergedCallback = React.useCallback(
     (value: T) => {
       // Update the "current" prop hanging on the function.
-      (mergedCallback as unknown as React.MutableRefObject<T>).current = value;
+      mergedCallback.current = value;
 
       for (const ref of refs) {
+        if (typeof ref === 'string' && process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.error(/** #__DE-INDENT__ */ `
+            @fluentui/react-utilities [useMergedRefs]:
+            This hook does not support the usage of string refs. Please use React.useRef instead.
+
+            For more info on 'React.useRef', see https://react.dev/reference/react/useRef.
+            For more info on string refs, see https://react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-string-refs.
+          `);
+        }
         if (typeof ref === 'function') {
           ref(value);
         } else if (ref) {
           // work around the immutability of the React.Ref type
-          (ref as unknown as React.MutableRefObject<T>).current = value;
+          (ref as React.MutableRefObject<T>).current = value;
         }
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- already exhaustive
     [...refs],
-  ) as unknown as RefObjectFunction<T>;
+  ) as MutableRefObjectFunction<T>;
 
   return mergedCallback;
 }
