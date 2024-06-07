@@ -33,5 +33,10 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
   /**
    * Callback for finished animation
    */
-  onAnimationEnd: () => void;
+  onAnimationEnd?: () => void;
+
+  /**
+   * Callback for finished animation
+   */
+  peeking?: Boolean;
 } & Pick<CarouselCardProps, 'value'>;

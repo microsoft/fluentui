@@ -5,20 +5,7 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselCardState, CarouselCardSlots } from './CarouselCard.types';
 
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
-import { useEffect } from 'react';
-
-// export const SlideLeftMotion = createPresenceComponent({
-//   enter: {
-//     keyframes: slideLeftEnterKeyframes,
-//     easing: motionTokens.curveLinear,
-//     duration: motionTokens.durationGentle,
-//   },
-//   exit: {
-//     keyframes: slideLeftExitKeyframes,
-//     easing: motionTokens.curveLinear,
-//     duration: motionTokens.durationGentle,
-//   },
-// });
+import * as React from 'react';
 
 const slideLeftKeyframes = [{ transform: 'translateX(100%)' }, { transform: 'translateX(0%)' }];
 const slideLeftExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(-100%)' }];
@@ -57,17 +44,35 @@ const SlideRight = createPresenceComponent({
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible, navDirection, onAnimationEnd } = state;
+  const { visible, navDirection, onAnimationEnd, peekDir } = state;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const lastDir = React.useRef<'next' | 'prev' | null | undefined>(null);
+  const directionChanged = lastDir.current !== navDirection;
+  lastDir.current = navDirection;
 
   if (navDirection === 'next') {
+    if (directionChanged) {
+      return (
+        <SlideRight visible={visible || !!peekDir} appear={true} onMotionFinish={onAnimationEnd}>
+          <state.root />
+        </SlideRight>
+      );
+    }
     return (
-      <SlideRight visible={visible} appear onMotionFinish={onAnimationEnd}>
+      <SlideRight visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
         <state.root />
       </SlideRight>
     );
   } else if (navDirection === 'prev') {
+    if (directionChanged) {
+      return (
+        <SlideLeft visible={visible || !!peekDir} appear={true} onMotionFinish={onAnimationEnd}>
+          <state.root />
+        </SlideLeft>
+      );
+    }
     return (
-      <SlideLeft visible={visible} appear onMotionFinish={onAnimationEnd}>
+      <SlideLeft visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
         <state.root />
       </SlideLeft>
     );

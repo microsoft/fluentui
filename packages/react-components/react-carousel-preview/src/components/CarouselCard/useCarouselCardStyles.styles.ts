@@ -38,14 +38,14 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselCard slots based on the state
  */
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
-  const { peekDir, visible } = state;
+  const { peekDir, peeking, visible } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     carouselCardClassNames.root,
     styles.root,
     !visible && styles.notVisible,
-    peekDir === 'next' && styles.peekRight,
-    peekDir === 'prev' && styles.peekLeft,
+    peeking && peekDir === 'next' && styles.peekRight,
+    peeking && peekDir === 'prev' && styles.peekLeft,
     state.root.className,
   );
 

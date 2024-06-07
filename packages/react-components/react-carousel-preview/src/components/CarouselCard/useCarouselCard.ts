@@ -26,11 +26,8 @@ export const useCarouselCard_unstable = (
   const [isMotionVisible, setIsMotionVisible] = React.useState(false);
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
+  // PeekDir is useful for non-peeking animations also
   const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
-    if (!peeking) {
-      return;
-    }
-
     const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
 
     if (currentIndex !== null && currentIndex >= 0) {
@@ -63,7 +60,8 @@ export const useCarouselCard_unstable = (
   const state: CarouselCardState = {
     value,
     visible,
-    peekDir: peeking && peekDir,
+    peekDir,
+    peeking,
     navDirection,
     components: {
       root: 'div',
@@ -86,7 +84,7 @@ export const useCarouselCard_unstable = (
     },
   };
 
-  if (!visible && !peekDir && !isMotionVisible) {
+  if (!visible && (!peekDir || !peeking) && !isMotionVisible) {
     state.root.children = null;
   }
 
