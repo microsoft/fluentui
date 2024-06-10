@@ -16,7 +16,7 @@ To generate the API markdown file, first commit your changes, then run:
 
 `yarn nx run <package-name>:generate-api`
 
-On Windows systems, you may have to run
+On Windows systems, you may have to run:
 
 `yarn build`
 
