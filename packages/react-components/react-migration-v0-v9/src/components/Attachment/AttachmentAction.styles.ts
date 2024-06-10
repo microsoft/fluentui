@@ -1,6 +1,4 @@
 import { makeStyles } from '@fluentui/react-components';
-// import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-// import { attachmentIconClassName } from './AttachmentIcon';
 
 export const useAttachmentActionStyles = makeStyles({
   root: {

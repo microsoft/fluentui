@@ -4,7 +4,7 @@ export const useAttachmentHeaderStyles = makeStyles({
   root: {
     display: 'block',
     fontSize: tokens.fontSizeBase300,
-    fontWeight: 600,
+    fontWeight: tokens.fontWeightSemibold,
     lineHeight: 1.4286,
   },
 });

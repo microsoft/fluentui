@@ -4,7 +4,7 @@ export const useAttachmentDescriptionStyles = makeStyles({
   root: {
     display: 'block',
     fontSize: tokens.fontSizeBase200,
-    fontWeight: 400,
+    fontWeight: tokens.fontWeightRegular,
     lineHeight: 1,
   },
 });
