@@ -59,7 +59,6 @@ export type {
 export * from './NavDrawer';
 export * from './NavDrawerFooter';
 export * from './NavDrawerHeader';
-export * from './NavDrawerHeaderNav';
 export * from './NavDrawerBody';
 export * from './Hamburger';
 export * from './NavSectionHeader';
