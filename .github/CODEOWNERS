@@ -245,6 +245,7 @@ packages/react-components/react-theme-sass @microsoft/teams-prg
 packages/react-components/theme-designer @microsoft/cxe-red @ms-acalzaretto
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
+packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-table/library @microsoft/teams-prg
 packages/react-components/react-table/stories @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
@@ -288,8 +289,10 @@ packages/react-components/react-swatch-picker/library @microsoft/cxe-prg
 packages/react-components/react-swatch-picker/stories @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
+packages/react-components/react-list-preview @microsoft/teams-prg
 packages/react-components/react-list-preview/library @microsoft/teams-prg
 packages/react-components/react-list-preview/stories @microsoft/teams-prg
+packages/react-components/react-motion @microsoft/teams-prg
 packages/react-components/react-motion/library @microsoft/teams-prg
 packages/react-components/react-motion/stories @microsoft/teams-prg
 packages/react-components/react-teaching-popover @microsoft/xc-uxe @Mitch-At-Work
