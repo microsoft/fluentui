@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: Adding aria menu and menu item roles. Adding aria expanded and collapsed. Adding aria-levels.",
+  "comment": "feat: Adding roles, expanded and levels.",
   "packageName": "@fluentui/react-nav-preview",
   "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
