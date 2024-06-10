@@ -50,11 +50,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 ) {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const { appear, children, imperativeRef, onExit, onMotionFinish, visible, unmountOnExit, ..._rest } = {
-      ...itemContext,
-      ...props,
-    };
-    const params = _rest as unknown as MotionParams;
+    const merged = { ...itemContext, ...props };
+
+    const { appear, children, imperativeRef, onExit, onMotionFinish, visible, unmountOnExit, ..._rest } = merged;
+    const params = _rest as Exclude<typeof merged, PresenceComponentProps | typeof itemContext>;
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
@@ -80,6 +79,8 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     });
 
     useIsomorphicLayoutEffect(() => {
+      // Heads up!
+      // We store the params in a ref to avoid re-rendering the component when the params change.
       optionsRef.current = { appear, params };
     });
 

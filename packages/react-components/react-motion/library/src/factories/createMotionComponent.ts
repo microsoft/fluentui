@@ -24,7 +24,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 ) {
   const Atom: React.FC<MotionComponentProps & MotionParams> = props => {
     const { children, imperativeRef, ..._rest } = props;
-    const params = _rest as unknown as MotionParams;
+    const params = _rest as Exclude<typeof props, MotionComponentProps>;
     const child = getChildElement(children);
 
     const handleRef = useMotionImperativeRef(imperativeRef);
@@ -34,6 +34,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const isReducedMotion = useIsReducedMotion();
 
     useIsomorphicLayoutEffect(() => {
+      // Heads up!
+      // We store the params in a ref to avoid re-rendering the component when the params change.
       paramsRef.current = params;
     });
 
