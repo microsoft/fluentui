@@ -250,13 +250,7 @@ export { SelectionMode_2 as SelectionMode }
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
-    as?: Type;
-} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
-    [As in AlternateAs]: {
-        as: As;
-    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
-}[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = SlotProps<Type, AlternateAs> | SlotShorthandValueFromType<Type> | null;
 
 declare namespace slot {
     export {

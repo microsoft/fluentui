@@ -33,9 +33,25 @@ export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'children
 /**
  * Helper type for {@link Slot}. Adds shorthand types that are assignable to the slot's `children`.
  */
-type WithSlotShorthandValue<Props extends { children?: unknown }> =
-  | Props
-  | Extract<SlotShorthandValue, Props['children']>;
+type SlotShorthandValueFromType<Type extends keyof JSX.IntrinsicElements | React.ComponentType | UnknownSlotProps> =
+  IsSingleton<Extract<Type, string>> extends true
+    ? Extract<
+        SlotShorthandValue,
+        Type extends EmptyIntrinsicElements
+          ? never
+          : Type extends keyof JSX.IntrinsicElements
+          ? React.ReactNode
+          : Type extends React.ComponentType<infer Props>
+          ? 'children' extends keyof Props
+            ? Props['children']
+            : never
+          : Type extends UnknownSlotProps
+          ? 'children' extends keyof Type
+            ? Type['children']
+            : never
+          : never
+      >
+    : 'Error: Type of SlotShorthandValueFromType must not be an union of types. See documentation of Slot type.';
 
 /**
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
@@ -100,20 +116,25 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
 export type Slot<
   Type extends keyof JSX.IntrinsicElements | React.ComponentType | React.VoidFunctionComponent | UnknownSlotProps,
   AlternateAs extends keyof JSX.IntrinsicElements = never,
+> = SlotProps<Type, AlternateAs> | SlotShorthandValueFromType<Type> | null;
+
+/**
+ * @internal
+ */
+type SlotProps<
+  Type extends keyof JSX.IntrinsicElements | React.ComponentType | React.VoidFunctionComponent | UnknownSlotProps,
+  AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
-      | WithSlotShorthandValue<
-          Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
-            ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
-            : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
-            ? WithSlotRenderFunction<Props>
-            : Type // Props types like `ButtonProps`
-        >
-      | {
-          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
-        }[AlternateAs]
-      | null
-  : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
+      | (Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
+          ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
+          : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
+          ? WithSlotRenderFunction<Props>
+          : Type)
+      | (AlternateAs extends unknown
+          ? { as: AlternateAs } & WithSlotRenderFunction<IntrinsicElementProps<AlternateAs>>
+          : never)
+  : 'Error: First parameter to SlotProps must not be a union of types. See documentation of Slot type.';
 
 /**
  * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
