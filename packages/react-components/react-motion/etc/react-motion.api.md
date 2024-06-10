@@ -51,6 +51,8 @@ export const durations: {
 export type MotionComponentProps = {
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+    onMotionFinish?: (ev: null) => void;
+    onMotionStart?: (ev: null) => void;
 };
 
 // @public (undocumented)
@@ -86,6 +88,9 @@ export type PresenceComponentProps = {
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionFinish?: (ev: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+    onMotionStart?: (ev: null, data: {
         direction: 'enter' | 'exit';
     }) => void;
     visible?: boolean;

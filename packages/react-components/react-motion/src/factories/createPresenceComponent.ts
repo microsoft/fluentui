@@ -31,6 +31,16 @@ export type PresenceComponentProps = {
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
   onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
+  /**
+   * Callback that is called when the whole motion starts.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "start" events. The callback is
+   * triggered when the first animation is started. There is no official "start" event with the Web Animations API.
+   * so the callback is triggered with "null".
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionStart?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
+
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
 
@@ -42,13 +52,24 @@ export type PresenceComponentProps = {
 };
 
 function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
-  return !appear && isFirstMount && visible;
+  return !appear && isFirstMount && !!visible;
 }
 
 export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
+    const {
+      appear,
+      children,
+      imperativeRef,
+      onMotionFinish,
+      onMotionStart,
+      visible = false,
+      unmountOnExit,
+    } = {
+      ...itemContext,
+      ...props,
+    };
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
@@ -60,6 +81,14 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
 
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
+
+    const onEnterStart = useEventCallback(() => {
+      onMotionStart?.(null, { direction: 'enter' });
+    });
+
+    const onExitStart = useEventCallback(() => {
+      onMotionStart?.(null, { direction: 'exit' });
+    });
 
     const onEnterFinish = useEventCallback(() => {
       onMotionFinish?.(null, { direction: 'enter' });
@@ -88,6 +117,7 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
         const presenceMotion = typeof value === 'function' ? value({ element }) : value;
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
+        visible ? onEnterStart() : onExitStart();
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
         if (!visible && isFirstMount) {
@@ -106,7 +136,7 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [handleRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
+      [handleRef, isReducedMotion, onEnterFinish, onExitFinish, onEnterStart, onExitStart, visible],
     );
 
     if (mounted) {
