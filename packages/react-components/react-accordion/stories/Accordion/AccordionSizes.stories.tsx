@@ -7,7 +7,7 @@ export const Sizes = () => (
       <AccordionItem value="1">
         <AccordionHeader size="small">Small Header</AccordionHeader>
         <AccordionPanel>
-          <div>Accordion Panel 1</div>
+          <div>Accordion Panel</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -15,7 +15,7 @@ export const Sizes = () => (
       <AccordionItem value="1">
         <AccordionHeader size="medium">Medium Header</AccordionHeader>
         <AccordionPanel>
-          <div>Accordion Panel 1</div>
+          <div>Accordion Panel</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -23,7 +23,7 @@ export const Sizes = () => (
       <AccordionItem value="1">
         <AccordionHeader size="large">Large Header</AccordionHeader>
         <AccordionPanel>
-          <div>Accordion Panel 1</div>
+          <div>Accordion Panel</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -31,7 +31,7 @@ export const Sizes = () => (
       <AccordionItem value="1">
         <AccordionHeader size="extra-large">Extra-Large Header</AccordionHeader>
         <AccordionPanel>
-          <div>Accordion Panel 1</div>
+          <div>Accordion Panel</div>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -41,7 +41,7 @@ export const Sizes = () => (
 Sizes.parameters = {
   docs: {
     description: {
-      story: 'An accordion supports `small`, `medium`, `large` and `extra-large` header sizes.',
+      story: 'AccordionHeader supports `small`, `medium`, `large` and `extra-large` sizes.',
     },
   },
 };
