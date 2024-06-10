@@ -300,7 +300,7 @@ export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, 
 
 // @public @deprecated (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
+    [K in keyof S]: React_2.ElementType<any>;
 };
 
 // @public
