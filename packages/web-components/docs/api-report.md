@@ -1888,14 +1888,23 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 //
 // @public
 export class Divider extends FASTElement {
+    constructor();
     // (undocumented)
     alignContent?: DividerAlignContent;
     // (undocumented)
     appearance?: DividerAppearance;
     // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // (undocumented)
     inset?: boolean;
-    orientation: DividerOrientation;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
     role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
