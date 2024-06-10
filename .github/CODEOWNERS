@@ -129,7 +129,6 @@ apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
 apps/react-18-tests-v9 @microsoft/cxe-red @micahgodbolt
-apps/recipes-react-components @microsoft/cxe-red @microsoft/fluentui-react @sopranopillow
 
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
