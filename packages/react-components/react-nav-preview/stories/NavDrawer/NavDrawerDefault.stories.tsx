@@ -5,7 +5,6 @@ import {
   NavCategoryItem,
   NavDrawer,
   NavDrawerBody,
-  NavDrawerFooter,
   NavDrawerHeader,
   NavDrawerHeaderNav,
   NavDrawerProps,
@@ -43,8 +42,6 @@ import {
   PersonSearch20Regular,
   PreviewLink20Filled,
   PreviewLink20Regular,
-  Settings20Filled,
-  Settings20Regular,
   bundleIcon,
 } from '@fluentui/react-icons';
 
@@ -83,7 +80,6 @@ const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
 const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
-const Settings = bundleIcon(Settings20Filled, Settings20Regular);
 
 type DrawerType = Required<DrawerProps>['type'];
 
