@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 07 Jun 2024 04:06:31 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jun 2024 04:07:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.26)
+
+Mon, 10 Jun 2024 04:07:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.25..@fluentui/web-components_v3.0.0-beta.26)
+
+### Changes
+
+- feat: refactor Switch to use ElementInternals by extending BaseCheckbox ([PR #31613](https://github.com/microsoft/fluentui/pull/31613) by 13071055+chrisdholt@users.noreply.github.com)
+- fixes the border-color for switch when in the checked state on rest ([PR #31628](https://github.com/microsoft/fluentui/pull/31628) by 13071055+chrisdholt@users.noreply.github.com)
+- add try-catch block to ensure that registered properties can be updated dynamically ([PR #31629](https://github.com/microsoft/fluentui/pull/31629) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.25)
 

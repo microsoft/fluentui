@@ -13,8 +13,10 @@ export const navDrawerFooterClassNames: SlotClassNames<NavDrawerFooterSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    display: 'unset',
-    padding: `2px ${tokens.spacingVerticalMNudge}`,
+    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalXXS} ${tokens.spacingVerticalXS}  ${tokens.spacingHorizontalMNudge}`,
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingVerticalXXS,
   },
 });
 

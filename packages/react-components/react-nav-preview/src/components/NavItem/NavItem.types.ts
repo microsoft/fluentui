@@ -1,4 +1,5 @@
 import { NavItemValue } from '../NavContext.types';
+import { NavSize } from '../Nav/Nav.types';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -31,4 +32,11 @@ export type NavItemState = ComponentState<NavItemSlots> &
      * If this navCategoryItem is selected
      */
     selected: boolean;
+
+    /**
+     * The size of the NavItem
+     *
+     * @default 'medium'
+     */
+    size: NavSize;
   };

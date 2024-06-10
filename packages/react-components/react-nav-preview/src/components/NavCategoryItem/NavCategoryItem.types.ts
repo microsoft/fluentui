@@ -1,3 +1,4 @@
+import { NavSize } from '../Nav/Nav.types';
 import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -37,4 +38,10 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
      * If this navCategoryItem is selected
      */
     selected: boolean;
+    /**
+     * The size of the NavItem
+     *
+     * @default 'medium'
+     */
+    size: NavSize;
   };
