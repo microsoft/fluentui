@@ -25,3 +25,21 @@ export {
   useList_unstable,
 } from './components/List';
 export type { ListItemProps, ListItemSlots, ListItemState, ListProps, ListSlots, ListState } from './components/List';
+export {
+  Attachment,
+  AttachmentAction,
+  AttachmentBody,
+  AttachmentDescription,
+  AttachmentHeader,
+  AttachmentIcon,
+  attachmentClassName,
+  attachmentActionClassName,
+  attachmentBodyClassName,
+  attachmentDescriptionClassName,
+  attachmentHeaderClassName,
+  attachmentIconClassName,
+  attachmentProgressBarClassName,
+  attachmentProgressContainerClassName
+} from './components/Attachment';
+
+export type { AttachmentProps, AttachmentActionProps, AttachmentBodyProps, AttachmentDescriptionProps, AttachmentHeaderProps, AttachmentIconProps } from './components/Attachment';
