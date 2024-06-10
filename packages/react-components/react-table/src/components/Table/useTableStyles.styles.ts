@@ -20,6 +20,8 @@ const useTableLayoutStyles = makeStyles({
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'block',
+    // In flex layout rows/cells can overflow the table without a min width
+    minWidth: 'fit-content',
   },
 });
 

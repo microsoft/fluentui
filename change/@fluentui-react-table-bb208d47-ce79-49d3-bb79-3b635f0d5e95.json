@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: row border in flex layout should overflow",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
