@@ -17,8 +17,8 @@ const mockColumnResizeState = {
   })),
 };
 
-jest.mock('../../../react-utilities/src/index', () => {
-  const module = jest.requireActual('../../../react-utilities/src/index');
+jest.mock('../../../../react-utilities/src/index', () => {
+  const module = jest.requireActual('../../../../react-utilities/src/index');
   return { ...module, canUseDOM: () => false };
 });
 
