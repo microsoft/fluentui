@@ -42,6 +42,9 @@ export const useNavCategoryItem_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
+        role: 'menuitem',
+        'aria-level': 1,
+        'aria-expanded': open,
         ...props,
         onClick: onNavCategoryItemClick,
       }),

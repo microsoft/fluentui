@@ -38,7 +38,10 @@ export const useNavItem_unstable = (
   });
 
   const root = slot.always<ARIAButtonSlotProps<'a'>>(
-    getIntrinsicElementProps(rootElementType, useARIAButtonProps(rootElementType, props)),
+    getIntrinsicElementProps(
+      rootElementType,
+      useARIAButtonProps(rootElementType, { role: 'menuitem', 'aria-level': 1, ...props }),
+    ),
     {
       elementType: rootElementType,
       defaultProps: {
