@@ -52,7 +52,6 @@ export default {
     content: 'Section One',
     alignContent: undefined,
     appearance: undefined,
-    role: undefined,
     inset: false,
     orientation: undefined,
   },
