@@ -179,14 +179,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             Reports
           </NavItem>
         </NavDrawerBody>
-        <NavDrawerFooter>
-          <NavItem value="21" href="https://www.bing.com" icon={<Person />}>
-            Profile
-          </NavItem>
-          <NavItem icon={<Settings />} href="https://www.bing.com" value="24">
-            App Settings
-          </NavItem>
-        </NavDrawerFooter>
       </NavDrawer>
       <div className={styles.content}>
         {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
