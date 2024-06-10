@@ -12,8 +12,8 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
+  NavSize,
 } from '@fluentui/react-nav-preview';
-import { DrawerProps } from '@fluentui/react-drawer';
 import { Label, Radio, RadioGroup, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
@@ -81,22 +81,18 @@ const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
-type DrawerType = Required<DrawerProps>['type'];
-
-export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
+export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
 
-  const [isOpen, setIsOpen] = React.useState(true);
-  const [type, setType] = React.useState<DrawerType>('inline');
-
+  const [size, setNavSize] = React.useState<NavSize>('small');
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
+      <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
         <NavDrawerHeader>
           <NavDrawerHeaderNav>
-            <Hamburger onClick={() => setIsOpen(false)} />
+            <Hamburger />
           </NavDrawerHeaderNav>
         </NavDrawerHeader>
         <NavDrawerBody>
@@ -177,12 +173,11 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
-        {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
         <div className={styles.field}>
-          <Label id={labelId}>Type</Label>
-          <RadioGroup value={type} onChange={(_, data) => setType(data.value as DrawerType)} aria-labelledby={labelId}>
-            <Radio value="overlay" label="Overlay (Default)" />
-            <Radio value="inline" label="Inline" />
+          <Label id={labelId}>Size</Label>
+          <RadioGroup value={size} onChange={(_, data) => setNavSize(data.value as NavSize)} aria-labelledby={labelId}>
+            <Radio value="medium" label="Medium" />
+            <Radio value="small" label="Small" />
           </RadioGroup>
         </div>
       </div>

@@ -67,7 +67,7 @@ const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[],
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  const { onNavItemSelect, onNavCategoryItemToggle, multiple = true } = props;
+  const { onNavItemSelect, onNavCategoryItemToggle, multiple = true, size = 'medium' } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
@@ -159,5 +159,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onRequestNavCategoryItemToggle,
     openCategories,
     multiple,
+    size,
   };
 };

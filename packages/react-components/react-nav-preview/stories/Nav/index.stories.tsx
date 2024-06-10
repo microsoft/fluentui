@@ -10,6 +10,7 @@ import { Nav } from '@fluentui/react-nav-preview';
 // export { WithNestedSubItemsWithDefaultSelectionSingleCategory } from './NavWithNestedSubItemsWithDefaultSelectionSingleCategory.stories';
 
 export { NavDrawerDefault } from '../NavDrawer/NavDrawerDefault.stories';
+export { NavDrawerSize } from '../NavDrawer/NavDrawerSize.stories';
 
 export default {
   title: 'Preview Components/Nav',
