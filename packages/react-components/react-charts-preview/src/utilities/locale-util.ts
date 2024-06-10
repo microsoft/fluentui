@@ -1,4 +1,4 @@
-type LocaleStringDataProps = number | string | Date | undefined;
+type LocaleStringDataProps = number | string | Date | { [id: string]: number } | undefined;
 export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
   if (!data) {
     return data;

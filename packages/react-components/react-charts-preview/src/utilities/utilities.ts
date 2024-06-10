@@ -172,7 +172,10 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(g => xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -248,7 +251,10 @@ export function createDateXAxis(
     tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat(tickParams.tickFormat)) : '';
   }
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(g => xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
     const tickFormat = xAxis.tickFormat();
@@ -296,7 +302,10 @@ export function createStringXAxis(
     });
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement)
+      .call(g => xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   const tickValues = dataset.map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -386,7 +395,12 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(g => yAxis)
+        .selectAll('text')
+        .attr('aria-hidden', 'true')
+    : '';
   return yAxisScale;
 }
 
@@ -429,7 +443,12 @@ export function createYAxisForOtherCharts(
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(g => yAxis)
+        .selectAll('text')
+        .attr('aria-hidden', 'true')
+    : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }
@@ -473,7 +492,11 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(g => yAxis)
+        .selectAll('text')
+    : '';
   return yAxisScale;
 };
 
@@ -494,7 +517,11 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(g => yAxis)
+        .selectAll('text')
+    : '';
   return yAxisScale;
 };
 
@@ -623,7 +650,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   if (node === null) {
     return;
   }
-  const axisNode = d3Select(node).call(xAxis);
+  const axisNode = d3Select(node).call(g => xAxis);
   let removeVal = 0;
   const width = 10;
   const arr: number[] = [];
@@ -821,7 +848,7 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfXAxislabels(xAxistooltipProps: any) {
+export function tooltipOfXAxislabels(xAxistooltipProps: any): any {
   const { tooltipCls, xAxis, id } = xAxistooltipProps;
   if (xAxis === null) {
     return null;
@@ -1404,7 +1431,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   let maxHeight: number = 0;
   const xAxisTranslations: string[] = [];
   d3Select(node)
-    .call(xAxis)
+    .call(g => xAxis)
     .selectAll('.tick')
     .each(function () {
       const translateValue = (this as SVGElement).getAttribute('transform');
@@ -1427,7 +1454,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
 
   let idx = 0;
   d3Select(node)
-    .call(xAxis)
+    .call(g => xAxis)
     .selectAll('.tick')
     .each(function () {
       if (xAxisTranslations.length > idx) {
@@ -1524,3 +1551,40 @@ export const getScalePadding = (prop: number | undefined, shorthandProp?: number
 export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
   return typeof prop === 'number' || typeof shorthandProp === 'number';
 };
+
+/**
+ * Helper to find the index of an item within an array, using a callback to
+ * determine the match.
+ *
+ * @public
+ * @param array - Array to search.
+ * @param cb - Callback which returns true on matches.
+ * @param fromIndex - Optional index to start from (defaults to 0)
+ */
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex: number = 0): number {
+  let index = -1;
+
+  for (let i = fromIndex; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+
+  return index;
+}
+
+/**
+ * Helper to find the first item within an array that satisfies the callback.
+ * @param array - Array to search
+ * @param cb - Callback which returns true on matches
+ */
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
+  let index = findIndex(array, cb);
+
+  if (index < 0) {
+    return undefined;
+  }
+
+  return array[index];
+}

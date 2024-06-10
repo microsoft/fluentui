@@ -474,7 +474,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     return bars;
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _tooltipOfYAxislabels(ytooltipProps: any) {
+  private _tooltipOfYAxislabels(ytooltipProps: any): any {
     const { tooltipCls, yAxis, id } = ytooltipProps;
     if (yAxis === null) {
       return null;

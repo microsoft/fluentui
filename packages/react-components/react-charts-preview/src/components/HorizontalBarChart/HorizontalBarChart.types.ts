@@ -1,13 +1,11 @@
-import { IChartProps, IChartDataPoint } from './index';
-import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import { IChartProps } from './index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
 /**
  * Horizontal Bar Chart properties
  * {@docCategory HorizontalBarChart}
  */
-export interface IHorizontalBarChartProps {
+export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * An array of chart data points for the Horizontal bar chart
    */
@@ -28,11 +26,6 @@ export interface IHorizontalBarChartProps {
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
   className?: string;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
 
   /**
    * This property tells whether to show ratio on top of stacked bar chart or not.
@@ -56,12 +49,12 @@ export interface IHorizontalBarChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>;
+  styles?: IHorizontalBarChartStyles;
 
   /**
    * Define a custom callout renderer for a horizontal bar
    */
-  onRenderCalloutPerHorizontalBar?: IRenderFunction<IChartDataPoint>;
+  // onRenderCalloutPerHorizontalBar?: IRenderFunction<IChartDataPoint>; ToDo - Need to use slots here.
 
   /**
    * props for the callout in the chart
@@ -74,7 +67,7 @@ export interface IHorizontalBarChartProps {
    * If this method not given, default values (IHorizontalDataPoint \{x,y\})
    * will be used to display the data/text based on given chartModeData prop.
    */
-  barChartCustomData?: IRenderFunction<IChartProps>;
+  // barChartCustomData?: IRenderFunction<IChartProps>; ToDo - Need to use slots here.
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -92,27 +85,6 @@ export interface IHorizontalBarChartProps {
    * @default false
    */
   hideLabels?: boolean;
-}
-
-/**
- * Horizontal Bar Chart style properties
- * {@docCategory HorizontalBarChart}
- */
-export interface IHorizontalBarChartStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
-
-  /**
-   * Additional CSS class(es) to apply to the StackedBarChart.
-   */
-  className?: string;
-
-  /**
-   * Width of the chart.
-   */
-  width: number | undefined;
 
   /**
    * line color for callout
@@ -120,25 +92,9 @@ export interface IHorizontalBarChartStyleProps {
   color?: string;
 
   /**
-   * Height of bar chart
-   * @default 15
-   */
-  barHeight?: number;
-
-  /**
    * prop to check if benchmark data is provided
    */
   showTriangle?: boolean;
-
-  /**
-   * Prop to define the variant of HorizontalBarChart to render
-   */
-  variant?: HorizontalBarChartVariant;
-
-  /**
-   * Prop to hide the bar labels
-   */
-  hideLabels?: boolean;
 }
 
 /**
@@ -149,62 +105,62 @@ export interface IHorizontalBarChartStyles {
   /**
    * Styling for the root container
    */
-  root: IStyle;
+  root: string;
 
   /**
    * Styling for each item in the container
    */
-  items: IStyle;
+  items: string;
 
   /**
    * Style for the chart.
    */
-  chart: IStyle;
+  chart: string;
 
   /**
    * Style for the chart Title.
    */
-  chartTitle: IStyle;
+  chartTitle: string;
 
   /**
    * Style for the bars.
    */
-  barWrapper: IStyle;
+  barWrapper: string;
 
   /**
    * Style for left side text of the chart title
    */
-  chartTitleLeft: IStyle;
+  chartTitleLeft: string;
 
   /**
    * Style for right side text of the chart title
    */
-  chartTitleRight: IStyle;
+  chartTitleRight: string;
 
   /**
    * Style for the chart data text denominator.
    */
-  chartDataTextDenominator: IStyle;
+  chartDataTextDenominator: string;
 
   /**
    * Style for the benchmark container
    */
-  benchmarkContainer: IStyle;
+  benchmarkContainer: string;
 
   /**
    * Style for the benchmark triangle
    */
-  triangle: IStyle;
+  triangle: string;
 
   /**
    * Style for the bar labels
    */
-  barLabel: IStyle;
+  barLabel: string;
 
   /**
    * Style for the div containing the chart
    */
-  chartWrapper: IStyle;
+  chartWrapper: string;
 }
 
 /**

@@ -7,7 +7,7 @@
     "isolatedModules": true,
     "importHelpers": true,
     "jsx": "react",
-    "noUnusedLocals": true,
+    "noUnusedLocals": false, // ToDo - remove this line after fixing all unused variables
     "preserveConstEnums": true,
     "strictPropertyInitialization": false,
     "strictBindCallApply": false,

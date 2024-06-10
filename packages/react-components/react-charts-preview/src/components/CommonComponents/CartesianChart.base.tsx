@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { lazy } from 'react';
+//import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+// import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ICartesianChartStyles,
@@ -16,7 +16,7 @@ import {
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
-  getAccessibleDataObject,
+  //getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -39,9 +39,9 @@ import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
-const ChartHoverCard = lazy(() =>
+/* const ChartHoverCard = lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
-);
+); */
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -634,34 +634,35 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
     return (
-      <Callout
-        hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
-        /** Keep the callout updated with details of focused/hovered chart element */
-        shouldUpdateWhenHidden={true}
-        {...calloutProps}
-      >
-        {/** Given custom callout, then it will render */}
-        {this.props.customizedCallout && this.props.customizedCallout}
-        {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-        {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-        {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-        {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-          <ChartHoverCard
-            XValue={calloutProps.XValue}
-            Legend={calloutProps.legend!}
-            YValue={calloutProps.YValue!}
-            color={calloutProps.color!}
-            culture={this.props.culture}
-            {...chartHoverProps}
-          />
-        )}
-      </Callout>
+      // <Callout
+      //   hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+      //   /** Keep the callout updated with details of focused/hovered chart element */
+      //   shouldUpdateWhenHidden={true}
+      //   {...calloutProps}
+      // >
+      //   {/** Given custom callout, then it will render */}
+      //   {this.props.customizedCallout && this.props.customizedCallout}
+      //   {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+      //   {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+      //   {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+      //   {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+      //     <ChartHoverCard
+      //       XValue={calloutProps.XValue}
+      //       Legend={calloutProps.legend!}
+      //       YValue={calloutProps.YValue!}
+      //       color={calloutProps.color!}
+      //       culture={this.props.culture}
+      //       {...chartHoverProps}
+      //     />
+      //   )}
+      // </Callout>
+      <></>
     );
   }
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _multiValueCallout = (calloutProps: any) => {
+  /*   private _multiValueCallout = (calloutProps: any) => {
     const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
     return (
       <div className={this._classNames.calloutContentRoot}>
@@ -715,9 +716,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         </div>
       </div>
     );
-  };
+  }; */
 
-  private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
+  /*   private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
     if (yValueHover) {
       return yValueHover.some(
         (yValue: {
@@ -730,8 +731,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
     return false;
   }
-
-  private _getCalloutContent(
+ */
+  /*   private _getCalloutContent(
     xValue: IYValueHover,
     index: number,
     yValueHoverSubCountsExists: boolean,
@@ -801,7 +802,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         </div>
       );
     }
-  }
+  } */
 
   /**
    * When screen resizes, along with screen, chart also auto adjusted.
