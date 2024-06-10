@@ -20,6 +20,8 @@ On Windows systems, you may have to run:
 
 `yarn build`
 
+Commit and push the updated file.
+
 ### API Extractor code requirements
 
 See the [API Documentation page](API-Documentation#prop-comment-requirements).
