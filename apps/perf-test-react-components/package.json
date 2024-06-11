@@ -23,6 +23,7 @@
     "@fluentui/react-button": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-field": "*",
+    "@fluentui/react-list-preview": "*",
     "@fluentui/react-persona": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-spinbutton": "*",
