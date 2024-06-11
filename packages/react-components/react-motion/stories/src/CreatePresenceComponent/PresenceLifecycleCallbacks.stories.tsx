@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './PresenceOnMotionFinish.stories.md';
+import description from './PresenceLifecycleCallbacks.md';
 
 const useClasses = makeStyles({
   container: {
@@ -98,12 +98,12 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const PresenceOnMotionFinish = () => {
+export const PresenceLifecycleCallbacks = () => {
   const classes = useClasses();
   const logLabelId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
-  const [statusLog, setStatusLog] = React.useState<[number, string][]>([]);
+  const [statusLog, setStatusLog] = React.useState<[number, string, string][]>([]);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);
@@ -119,8 +119,11 @@ export const PresenceOnMotionFinish = () => {
       <div className={classes.card}>
         <Fade
           imperativeRef={motionRef}
+          onMotionStart={(ev, data) => {
+            setStatusLog(entries => [[Date.now(), 'onMotionStart', data.direction], ...entries]);
+          }}
           onMotionFinish={(ev, data) => {
-            setStatusLog(entries => [[Date.now(), data.direction], ...entries]);
+            setStatusLog(entries => [[Date.now(), 'onMotionFinish', data.direction], ...entries]);
           }}
           visible={visible}
         >
@@ -133,9 +136,9 @@ export const PresenceOnMotionFinish = () => {
           Status log
         </div>
         <div role="log" aria-labelledby={logLabelId} className={classes.log}>
-          {statusLog.map(([time, direction], i) => (
+          {statusLog.map(([time, callbackName, direction], i) => (
             <div key={i}>
-              {new Date(time).toLocaleTimeString()} <Text weight="bold">onMotionFinish</Text> (direction: {direction})
+              {new Date(time).toLocaleTimeString()} <Text weight="bold">{callbackName}</Text> (direction: {direction})
             </div>
           ))}
         </div>
@@ -171,7 +174,7 @@ export const PresenceOnMotionFinish = () => {
   );
 };
 
-PresenceOnMotionFinish.parameters = {
+PresenceLifecycleCallbacks.parameters = {
   docs: {
     description: {
       story: description,
