@@ -365,7 +365,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
 
 export const Inline = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
-    <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline">
+    <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline" role="region">
       <fluent-drawer-body>
         <span slot="title">Drawer Inline</span>
         <fluent-button
@@ -414,7 +414,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         >Toggle Drawer</fluent-button
       >
     </div>
-    <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline">
+    <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" role="region">
       <fluent-drawer-body>
         <span slot="title">Drawer Inline</span>
         <fluent-button

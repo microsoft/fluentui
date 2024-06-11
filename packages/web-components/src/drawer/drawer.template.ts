@@ -10,7 +10,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.type === 'modal' ? 'dialog' : void 0)}"
+      role="${x => (x.type === 'modal' ? 'dialog' : x.role)}"
       aria-modal="${x => (x.type === 'modal' ? 'true' : void 0)}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
