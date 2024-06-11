@@ -3,11 +3,12 @@ import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import type {
-  AnchorButtonAppearance,
-  AnchorButtonShape,
-  AnchorButtonSize,
-  AnchorTarget,
+import {
+  AnchorAttributes,
+  type AnchorButtonAppearance,
+  type AnchorButtonShape,
+  type AnchorButtonSize,
+  type AnchorTarget,
 } from './anchor-button.options.js';
 
 /**
@@ -201,12 +202,11 @@ export class AnchorButton extends FASTElement {
    * @param propertyName
    */
   public handleChange(source: any, propertyName: string) {
-    if (propertyName === ('appearance' || 'size' || 'shape' || 'icon-only')) {
-      return;
-    }
-    const attribute = this.$fastController.definition.attributeLookup[propertyName]?.attribute;
-    if (attribute) {
-      this.handleProxyAttributeChange(attribute, this[propertyName as keyof this] as string);
+    if (propertyName in AnchorAttributes) {
+      const attribute = this.$fastController.definition.attributeLookup[propertyName]?.attribute;
+      if (attribute) {
+        this.handleProxyAttributeChange(attribute, this[propertyName as AnchorAttributes]);
+      }
     }
   }
 
