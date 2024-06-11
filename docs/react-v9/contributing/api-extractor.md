@@ -10,11 +10,9 @@ If building locally, the API file will be updated automatically (in `7.0` and `m
 
 In PR builds, the task will fail if it detects missing API file updates.
 
-(Previously it was necessary to run a separate command `yarn update-api` to update the API files, but we decided to streamline this and do the update automatically as part of the build instead.)
+To generate the API markdown file commit your changes, then run:
 
-To generate the API markdown file, first commit your changes, then run:
-
-`yarn nx run <package-name>:generate-api`
+`yarn nx run <package-name>:build`
 
 On Windows systems, you may have to run:
 
