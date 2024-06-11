@@ -68,7 +68,7 @@ export const styles = css`
   }
 
   dialog {
-    display: none;
+    box-sizing: border-box;
     z-index: var(--drawer-elevation, 1000);
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -82,9 +82,6 @@ export const styles = css`
     margin-inline-end: auto;
     border-inline-end-color: ${colorTransparentStroke};
     border-inline-start-color: var(--drawer-separator, ${colorTransparentStroke});
-  }
-
-  dialog[open] {
     outline: none;
     top: 0;
     bottom: 0;
@@ -93,9 +90,6 @@ export const styles = css`
     padding: 0;
     max-width: var(--drawer-width, 592px);
     box-shadow: ${shadow64};
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     background: ${colorNeutralBackground1};
   }
@@ -132,11 +126,9 @@ export const styles = css`
         transition-duration: ${durationGentle};
         transition-timing-function: ${curveDecelerateMid};
         background: var(--dialog-backdrop, ${colorBackgroundOverlay});
-        /* Set opacity to 0 when closed */
         opacity: 0;
       }
 
-      /* Set opacity to 1 when open */
       dialog[open]::backdrop {
         opacity: 1;
       }

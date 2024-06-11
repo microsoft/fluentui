@@ -9,7 +9,8 @@ import { typographySubtitle1Styles } from '../styles/partials/typography.partial
 export const styles = css`
   ${display('grid')}
   :host {
-    box-sizing: boder-box;
+    box-sizing: border-box;
+    display: grid;
     grid-template-rows: min-content auto min-content;
     position: relative;
     height: 100%;

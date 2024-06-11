@@ -282,6 +282,8 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
                 is the default type of the component.
               </p>
             </fluent-text>
+            <br />
+            <br />
             <fluent-text font="monospace" size="300" weight="regular" as="p">
               <code>type="modal"</code>
             </fluent-text>
@@ -304,8 +306,6 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
           default type of the component.
         </p>
       </fluent-text>
-      <br />
-      <br />
       <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
         <code>type="modal"</code>
       </fluent-text>
@@ -337,7 +337,6 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
             </p>
           </fluent-text>
           <br />
-          <br />
           <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
             <code>type="non-modal"</code>
           </fluent-text>
@@ -364,33 +363,34 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const Inline = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify--space-between full-height">
-    <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline" role="region">
-      <fluent-drawer-body>
-        <span slot="title">Drawer Inline</span>
-        <fluent-button
-          slot="close"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-inline-start')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <fluent-text font="base" size="300" weight="regular" as="p">
-          <p>
-            An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
-            main surface, users can still interact with other UI elements. This could be useful for swapping between
-            different items in the main surface.
-          </p>
-        </fluent-text>
-        <br />
-        <br />
-        <fluent-text font="monospace" size="300" weight="regular" as="p">
-          <code>type="inline"</code>
-        </fluent-text>
-      </fluent-drawer-body>
-    </fluent-drawer>
+  <div class="flex justify--center full-height">
+    <div>
+      <fluent-drawer id="drawer-inline" type="inline" size="large">
+        <fluent-drawer-body>
+          <span slot="title">Drawer Inline</span>
+          <fluent-button
+            slot="close"
+            appearance="transparent"
+            icon-only
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-inline')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+          <fluent-text font="base" size="300" weight="regular" as="p">
+            <p>
+              An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
+              main surface, users can still interact with other UI elements. This could be useful for swapping between
+              different items in the main surface.
+            </p>
+          </fluent-text>
+          <br />
+          <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
+            <code>type="inline"</code>
+          </fluent-text>
+        </fluent-drawer-body>
+      </fluent-drawer>
+    </div>
     <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Inline</h3></fluent-text>
       <fluent-text font="base" size="300" weight="regular" as="p">
@@ -400,47 +400,11 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
           items in the main surface.
         </p>
       </fluent-text>
-      <br />
-      <br />
       <fluent-text font="monospace" size="300" weight="regular" as="p">
         <code>type="inline"</code>
       </fluent-text>
-      <fluent-label weight="semibold">Select a Drawer Position</fluent-label>
-      <fluent-radio-group id="drawer-radiogroup-inline">
-        <fluent-radio value="inline-start" checked>Start</fluent-radio>
-        <fluent-radio value="inline-end">End</fluent-radio>
-      </fluent-radio-group>
-      <fluent-button appearance="primary" @click="${() => toggleSelectedDrawer('drawer-radiogroup-inline')}"
-        >Toggle Drawer</fluent-button
-      >
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-inline')}">Toggle Drawer</fluent-button>
     </div>
-    <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" role="region">
-      <fluent-drawer-body>
-        <span slot="title">Drawer Inline</span>
-        <fluent-button
-          slot="close"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-inline-end')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <fluent-text font="base" size="300" weight="regular" as="p">
-          <p>
-            An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
-            main surface, users can still interact with other UI elements. This could be useful for swapping between
-            different items in the main surface.
-          </p>
-        </fluent-text>
-        <br />
-        <br />
-
-        <fluent-text font="monospace" size="300" weight="regular" as="p">
-          <code>type="inline"</code>
-        </fluent-text>
-      </fluent-drawer-body>
-    </fluent-drawer>
   </div>
 `);
 
@@ -501,7 +465,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
       >
     </div>
     <div>
-      <fluent-drawer position="modal" type="inline" id="drawer-position-end" size="small">
+      <fluent-drawer position="end" type="modal" id="drawer-position-end" size="small">
         <fluent-drawer-body>
           <span slot="title">Drawer position end</span>
           <fluent-button
@@ -521,7 +485,6 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
               'end'.
             </p>
           </fluent-text>
-          <br />
           <br />
           <fluent-text font="monospace" size="300" weight="regular">
             <code>position="end"</code>
@@ -574,7 +537,6 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
         <br />
-        <br />
         <fluent-text font="monospace" size="300" weight="regular">
           <code>size="small"</code>
         </fluent-text>
@@ -595,7 +557,6 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
-        <br />
         <br />
         <fluent-text font="monospace" size="300" weight="regular">
           <code>default</code>
@@ -656,8 +617,6 @@ export const CustomSize = renderComponent(html`
       <fluent-text font="base" size="300" weight="regular" as="p">
         <p>The Drawer can be sized to any custom width, by overriding the drawer-width CSS variable:</p>
       </fluent-text>
-      <br />
-      <br />
       <fluent-text font="monospace" size="300" weight="regular">
         <code>var(--drawer-width)</code>
       </fluent-text>
@@ -682,6 +641,7 @@ export const CustomSize = renderComponent(html`
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The Drawer can be sized to any custom width, by overriding the drawer-width CSS variable:</p>
         </fluent-text>
+        <br />
         <br />
         <fluent-text font="monospace" size="300" weight="regular">
           <code>var(--drawer-width)</code>
