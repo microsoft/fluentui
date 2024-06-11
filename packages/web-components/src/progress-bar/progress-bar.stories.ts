@@ -74,7 +74,7 @@ export const Max = renderComponent(html<ProgressStoryArgs>`
       <fluent-progress-bar value="3" max="10"></fluent-progress-bar>
     </p>
     <p>
-      <code>3 o 5</code>
+      <code>3 of 5</code>
       <fluent-progress-bar value="3" max="5"></fluent-progress-bar>
     </p>
   </div>
