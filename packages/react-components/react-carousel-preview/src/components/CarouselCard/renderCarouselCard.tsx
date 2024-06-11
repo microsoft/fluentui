@@ -6,35 +6,25 @@ import type { CarouselCardState, CarouselCardSlots } from './CarouselCard.types'
 
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 
-const slideLeftKeyframes = [{ transform: 'translateX(100%)' }, { transform: 'translateX(0%)' }];
-const slideLeftExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(-100%)' }];
-
-const SlideLeft = createPresenceComponent({
-  enter: {
-    keyframes: slideLeftKeyframes,
-    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
-    duration: motionTokens.durationUltraSlow,
-  },
-  exit: {
-    keyframes: slideLeftExitKeyframes,
-    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
-    duration: motionTokens.durationUltraSlow,
-  },
-});
-
-const slideRightKeyframes = [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0%)' }];
-const slideRightExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(100%)' }];
-const SlideRight = createPresenceComponent({
-  enter: {
-    keyframes: slideRightKeyframes,
-    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
-    duration: motionTokens.durationUltraSlow,
-  },
-  exit: {
-    keyframes: slideRightExitKeyframes,
-    easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
-    duration: motionTokens.durationUltraSlow,
-  },
+const Slide = createPresenceComponent<{ direction: 'prev' | 'next' }>(({ direction }) => {
+  return {
+    enter: {
+      keyframes: [
+        { transform: direction === 'next' ? 'translateX(-100%)' : 'translateX(100%)' },
+        { transform: 'translateX(0%)' },
+      ],
+      easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+      duration: motionTokens.durationUltraSlow,
+    },
+    exit: {
+      keyframes: [
+        { transform: 'translateX(0%)' },
+        { transform: direction === 'next' ? 'translateX(100%)' : 'translateX(-100%)' },
+      ],
+      easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+      duration: motionTokens.durationUltraSlow,
+    },
+  };
 });
 
 /**
@@ -45,31 +35,18 @@ export const renderCarouselCard_unstable = (state: CarouselCardState) => {
 
   const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible } = state;
 
-  if (navDirection === 'next') {
+  if (navDirection) {
     if (directionChanged) {
       return (
-        <SlideRight visible={visible || !!wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
+        <Slide direction={navDirection} visible={visible || !!wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
           <state.root />
-        </SlideRight>
+        </Slide>
       );
     }
     return (
-      <SlideRight visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
+      <Slide direction={navDirection} visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
         <state.root />
-      </SlideRight>
-    );
-  } else if (navDirection === 'prev') {
-    if (directionChanged) {
-      return (
-        <SlideLeft visible={visible || !!wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
-          <state.root />
-        </SlideLeft>
-      );
-    }
-    return (
-      <SlideLeft visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
-        <state.root />
-      </SlideLeft>
+      </Slide>
     );
   } else {
     return <state.root />;
