@@ -79,6 +79,11 @@ export type CarouselCardSlots = {
 export type CarouselCardState = ComponentState<CarouselCardSlots> & {
     visible: boolean;
     peekDir?: 'prev' | 'next' | null;
+    navDirection?: 'prev' | 'next' | null;
+    onAnimationEnd?: () => void;
+    peeking?: boolean;
+    directionChanged?: boolean;
+    wasVisible?: boolean;
 } & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
@@ -167,8 +172,8 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     defaultValue?: string;
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
-    circular?: Boolean;
-    peeking?: Boolean;
+    circular?: boolean;
+    peeking?: boolean;
 };
 
 // @public (undocumented)

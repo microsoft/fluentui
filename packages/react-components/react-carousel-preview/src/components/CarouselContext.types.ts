@@ -13,7 +13,7 @@ export type CarouselStore = {
   getSnapshot: () => {
     activeValue: string | null;
     values: string[];
-    navDirection?: 'prev' | 'next' | null;
+    navDirection: 'prev' | 'next' | null;
   };
 };
 

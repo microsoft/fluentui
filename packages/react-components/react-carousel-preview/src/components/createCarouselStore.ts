@@ -3,7 +3,7 @@ import { type CarouselStore } from './CarouselContext.types';
 export const createCarouselStore = (initialValue: string | null): CarouselStore => {
   let values: string[] = [];
   let activeValue: string | null = initialValue;
-  let navDirection: string | null = null;
+  let navDirection: 'prev' | 'next' | null = null;
 
   let listeners: Array<() => void> = [];
 
