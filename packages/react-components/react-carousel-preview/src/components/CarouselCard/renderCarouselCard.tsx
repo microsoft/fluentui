@@ -4,7 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselCardState, CarouselCardSlots } from './CarouselCard.types';
 
-import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 
 const slideLeftKeyframes = [{ transform: 'translateX(100%)' }, { transform: 'translateX(0%)' }];
 const slideLeftExitKeyframes = [{ transform: 'translateX(0%)' }, { transform: 'translateX(-100%)' }];

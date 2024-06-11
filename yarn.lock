@@ -1994,16 +1994,6 @@
     "@griffel/react" "^1.5.14"
     "@swc/helpers" "^0.5.1"
 
-"@fluentui/react-motions-preview@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-motions-preview/-/react-motions-preview-0.3.2.tgz#84d6cf81d48b252f54257e2eff9c07643ed016cb"
-  integrity sha512-xMzoDzjVWzihXB3+r0wwOWI+F8eeYaXM0Cl1y1JVw0lOu2dbitU3ypgpbltR3jAV5wf83iAXBjz1MCixnwgW6g==
-  dependencies:
-    "@fluentui/react-shared-contexts" "^9.19.0"
-    "@fluentui/react-utilities" "^9.18.9"
-    "@swc/helpers" "^0.5.1"
-    react-is "^17.0.2"
-
 "@griffel/babel-preset@1.5.8", "@griffel/babel-preset@^1.5.8":
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.5.8.tgz#2ee5e404b34350fcb40a2506d73b0467f1a66be0"
