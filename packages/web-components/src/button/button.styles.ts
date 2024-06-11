@@ -313,4 +313,15 @@ export const styles = css`
     border-color: transparent;
     background-color: ${colorTransparentBackground};
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      background: ButtonFace;
+      color: ButtonText;
+    }
+
+    :host(:is(:hover, :focus-visible)) {
+      border-color: Highlight;
+    }
+  `),
+);

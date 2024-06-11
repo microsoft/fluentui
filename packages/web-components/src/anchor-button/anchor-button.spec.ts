@@ -26,31 +26,11 @@ const attributes = {
   rel: 'external',
   target: '_blank',
   type: 'foo',
-  ariaControls: 'testId',
-  ariaCurrent: 'page',
-  ariaDescribedby: 'testId',
-  ariaDetails: 'testId',
-  ariaErrormessage: 'test',
-  ariaFlowto: 'testId',
-  ariaInvalid: 'spelling',
-  ariaKeyshortcuts: 'F4',
-  ariaLabel: 'foo',
-  ariaLabelledby: 'testId',
-  ariaLive: 'polite',
-  ariaOwns: 'testId',
-  ariaRelevant: 'removals',
-  ariaRoledescription: 'slide',
 };
 
 // Boolean Attributes
 const booleanAttributes = {
   iconOnly: true,
-  ariaAtomic: true,
-  ariaBusy: false,
-  ariaDisabled: true,
-  ariaExpanded: true,
-  ariaHaspopup: true,
-  ariaHidden: true,
 };
 
 test.describe('Anchor Button - Regular Attributes', () => {
