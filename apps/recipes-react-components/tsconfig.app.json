@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "lib": ["ES2019", "dom"],
-    "types": []
-  },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
-}
