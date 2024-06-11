@@ -630,13 +630,12 @@ describe('Line chart - Subcomponent Event', () => {
     { data: simplePoints, eventAnnotationProps: eventAnnotationProps },
     container => {
       // Arrange
-      const svg = container.querySelector('svg');
-      expect(svg).not.toBeNull();
-      const textPaths = svg!.querySelectorAll('text');
-      expect(textPaths).toHaveLength(15);
-      expect(textPaths[12]!.getAttribute('text')).toBe('3 events');
-      expect(textPaths[13]!.getAttribute('text')).toBe('event 4');
-      expect(textPaths[14]!.getAttribute('text')).toBe('event 5');
+      const textElements = container.getElementsByTagName('text');
+      expect(textElements).not.toBeNull();
+      expect(textElements).toHaveLength(15);
+      expect(textElements[12]!.getAttribute('text')).toBe('3 events');
+      expect(textElements[13]!.getAttribute('text')).toBe('event 4');
+      expect(textElements[14]!.getAttribute('text')).toBe('event 5');
     },
   );
 });
