@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 /* eslint-disable @typescript-eslint/member-ordering */
 import * as React from 'react';
@@ -30,6 +31,7 @@ export interface IDonutChartState {
   callOutAccessibilityData?: IAccessibilityProps;
   isPopoverOpen: boolean;
   clickPosition: { x: number; y: number };
+  targetElement: any;
 }
 export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutChartState> {
   public static defaultProps: Partial<IDonutChartProps> = {
@@ -45,7 +47,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
   private _popoverTarget: any;
-  private pieRef: any;
+  // private pieRef: any;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -80,6 +82,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
       focusedArcId: '',
       isPopoverOpen: false,
       clickPosition: { x: 0, y: 0 },
+      targetElement: null,
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
@@ -88,7 +91,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
     this._popoverTarget = null;
-    this.pieRef = React.createRef(); // Creating a ref for the Pie component
+    // this.pieRef = React.createRef(); // Creating a ref for the Pie component
   }
   public componentDidMount(): void {
     if (this._rootElem) {
@@ -132,7 +135,6 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
               ref={(node: SVGElement | null) => this._setViewBox(node)}
             >
               <Pie
-                ref={this.pieRef}
                 width={this.state._width!}
                 height={this.state._height!}
                 outerRadius={outerRadius}
@@ -168,6 +170,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
           positioning={{ position: 'above', align: 'start', target: this._popoverTarget }}
           open={this.state.isPopoverOpen}
           withArrow
+          openOnHover
         >
           <PopoverSurface tabIndex={-1}>
             <ChartHoverCard
@@ -194,17 +197,17 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
     const threshold = 1; // Set a threshold for movement
     const { x, y } = this.state.clickPosition;
 
-    const componentRect = this.pieRef;
+    // const componentRect = this.pieRef;
 
     // Adjusting mouse coordinates
-    const relativeX = newX - componentRect.left;
-    const relativeY = newY - componentRect.top;
+    // const relativeX = newX - componentRect.left;
+    // const relativeY = newY - componentRect.top;
 
     // Calculate the distance moved
-    const distance = Math.sqrt(Math.pow(relativeX - x, 2) + Math.pow(relativeY - y, 2));
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
     // Update the position only if the distance moved is greater than the threshold
     if (distance > threshold) {
-      this.setState({ clickPosition: { x: relativeX, y: relativeY }, isPopoverOpen: true });
+      this.setState({ clickPosition: { x: newX, y: newY }, isPopoverOpen: true });
     }
   }
 
@@ -214,20 +217,6 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
 
   handlePopoverClose = () => {
     this.setState({ isPopoverOpen: false });
-  };
-
-  customTarget = () => {
-    return (
-      <div
-        style={{
-          position: 'fixed',
-          top: this.state.clickPosition.y,
-          left: this.state.clickPosition.x,
-          visibility: 'hidden',
-        }}
-        ref={el => (this._popoverTarget = el)}
-      />
-    );
   };
 
   private _elevateToMinimums(data: IChartDataPoint[]) {
@@ -256,8 +245,8 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
       return;
     }
 
-    const rect = node?.getBoundingClientRect();
-    this.pieRef = rect;
+    // const rect = node?.getBoundingClientRect();
+    // this.pieRef = rect;
 
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
 
@@ -323,8 +312,13 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
   private _hoverCallback = (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
     if (this._calloutAnchorPoint !== data) {
       this._calloutAnchorPoint = data;
-      this.updatePosition(e.clientX, e.clientY);
-      // this.setState({ clickPosition: { x: e.clientX, y: e.clientY } });
+      const target = e.currentTarget as HTMLOrSVGElement;
+      this.setState({ targetElement: target });
+      if (!this.state.isPopoverOpen) {
+        this.setState({ isPopoverOpen: true });
+      }
+      this.updatePosition(e.pageX, e.pageY);
+      this.setState({ clickPosition: { x: e.clientX, y: e.clientY } });
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
         showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
