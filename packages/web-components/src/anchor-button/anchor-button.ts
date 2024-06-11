@@ -40,7 +40,7 @@ export class AnchorButton extends FASTElement {
    * The proxy anchor element
    * @internal
    */
-  private proxy!: HTMLAnchorElement;
+  private internalProxyAnchor!: HTMLAnchorElement;
 
   /**
    * Prompts the user to save the linked URL. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -173,7 +173,7 @@ export class AnchorButton extends FASTElement {
    * @internal
    */
   public clickHandler(): boolean {
-    this.proxy.click();
+    this.internalProxyAnchor.click();
 
     return true;
   }
@@ -187,7 +187,7 @@ export class AnchorButton extends FASTElement {
    */
   public keypressHandler(e: KeyboardEvent): boolean | void {
     if (e.key === keyEnter) {
-      this.proxy.click();
+      this.internalProxyAnchor.click();
       return;
     }
 
@@ -202,9 +202,9 @@ export class AnchorButton extends FASTElement {
    */
   private handleProxyAttributeChange(attribute: string, value: string | undefined): void {
     if (value) {
-      this.proxy.setAttribute(attribute, value);
+      this.internalProxyAnchor.setAttribute(attribute, value);
     } else {
-      this.proxy.removeAttribute(attribute);
+      this.internalProxyAnchor.removeAttribute(attribute);
     }
   }
 
@@ -327,7 +327,7 @@ export class AnchorButton extends FASTElement {
 
     this.append(proxy);
 
-    this.proxy = proxy;
+    this.internalProxyAnchor = proxy;
   }
 }
 
