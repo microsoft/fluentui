@@ -101,6 +101,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
 
     display: 'flex',
+    flexShrink: 0,
     alignItems: 'center',
     justifyContent: 'center',
 
