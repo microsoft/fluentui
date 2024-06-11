@@ -33,6 +33,8 @@ export const styles = css`
 
   :host([type='non-modal']) dialog {
     position: fixed;
+    top: 0;
+    bottom: 0;
   }
 
   :host([type='inline']) {
@@ -40,7 +42,7 @@ export const styles = css`
     width: fit-content;
   }
 
-  :host([type='inline']) dialog {
+  :host([type='inline']) dialog[open] {
     box-shadow: none;
     position: relative;
   }
