@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
+
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselStore_unstable } from '../useCarouselStore';
+import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 
 /**
  * Create the state required to render CarouselCard.
@@ -19,6 +20,7 @@ export const useCarouselCard_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
   const { value } = props;
+
   const { circular, peeking } = useCarouselContext_unstable();
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
@@ -27,6 +29,7 @@ export const useCarouselCard_unstable = (
     if (!peeking) {
       return;
     }
+
     const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
 
     if (currentIndex !== null && currentIndex >= 0) {
@@ -47,21 +50,12 @@ export const useCarouselCard_unstable = (
     }
   });
 
-  // Pass in some useful animation render states
-  const lastDir = React.useRef<'next' | 'prev' | null | undefined>(null);
-  const directionChanged = lastDir.current !== navDirection;
-  lastDir.current = navDirection;
-
-  const lastPeeking = React.useRef<boolean>(visible);
-  lastPeeking.current = visible;
-
   const state: CarouselCardState = {
     value,
     visible,
     peekDir,
     peeking,
     navDirection,
-    directionChanged,
     components: {
       root: 'div',
     },

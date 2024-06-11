@@ -20,33 +20,16 @@ export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
  */
 export type CarouselCardState = ComponentState<CarouselCardSlots> & {
   visible: boolean;
-  /**
-   * Declares if card should be peeking as previous/next card
-   */
-  peekDir?: 'prev' | 'next' | null;
 
   /**
    * Informs the direction a navigation animation should take
    */
-  navDirection?: 'prev' | 'next' | null;
+  navDirection: 'prev' | 'next';
 
-  /**
-   * Callback for finished animation
-   */
-  onAnimationEnd?: () => void;
-
-  /**
-   * Callback for finished animation
-   */
   peeking?: boolean;
 
   /**
-   * Lets the render function know that direction has changed
+   * Declares if card should be peeking as previous/next card
    */
-  directionChanged?: boolean;
-
-  /**
-   * Stores whether the card was visible previously, for animations that skip over multiple
-   */
-  wasVisible?: boolean;
+  peekDir: 'prev' | 'next' | undefined;
 } & Pick<CarouselCardProps, 'value'>;
