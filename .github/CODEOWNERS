@@ -218,12 +218,18 @@ packages/react-components/react-divider @microsoft/cxe-red
 packages/react-components/react-divider/library @microsoft/cxe-red
 packages/react-components/react-divider/stories @microsoft/cxe-red
 packages/react-components/react-field @microsoft/cxe-red @behowell
+packages/react-components/react-field/library @microsoft/cxe-red @behowell
+packages/react-components/react-field/stories @microsoft/cxe-red @behowell
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image @microsoft/cxe-prg
 packages/react-components/react-image/library @microsoft/cxe-prg
 packages/react-components/react-image/stories @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red @spmonahan
+packages/react-components/react-input/library @microsoft/cxe-red @spmonahan
+packages/react-components/react-input/stories @microsoft/cxe-red @spmonahan
 packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
+packages/react-components/react-label/library @microsoft/cxe-red @sopranopillow @micahgodbolt
+packages/react-components/react-label/stories @microsoft/cxe-red @sopranopillow @micahgodbolt
 packages/react-components/react-link @microsoft/cxe-red @khmakoto
 packages/react-components/react-link/library @microsoft/cxe-red @khmakoto
 packages/react-components/react-link/stories @microsoft/cxe-red @khmakoto
@@ -243,10 +249,16 @@ packages/react-components/react-radio @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-radio/library @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-radio/stories @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-red @smhigley
+packages/react-components/react-select/library @microsoft/cxe-red @smhigley
+packages/react-components/react-select/stories @microsoft/cxe-red @smhigley
 packages/react-components/react-slider @microsoft/cxe-red @micahgodbolt
+packages/react-components/react-slider/library @microsoft/cxe-red @micahgodbolt
+packages/react-components/react-slider/stories @microsoft/cxe-red @micahgodbolt
 packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-components/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-components/react-switch @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-switch/library @microsoft/cxe-red @behowell @khmakoto
+packages/react-components/react-switch/stories @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-red @geoffcoxmsft
 packages/react-components/react-text @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-text/library @microsoft/cxe-prg @marcosmoura
@@ -266,12 +278,18 @@ packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-table/library @microsoft/teams-prg
 packages/react-components/react-table/stories @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
+packages/react-components/react-progress/library @microsoft/cxe-red @tomi-msft
+packages/react-components/react-progress/stories @microsoft/cxe-red @tomi-msft
 packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
+packages/react-components/react-persona/library @microsoft/cxe-red @sopranopillow
+packages/react-components/react-persona/stories @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-tree/library @microsoft/teams-prg
 packages/react-components/react-tree/stories @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
+packages/react-components/react-skeleton/library @microsoft/cxe-red
+packages/react-components/react-skeleton/stories @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-tags/library @microsoft/cxe-red @microsoft/teams-prg
@@ -292,6 +310,8 @@ packages/react-components/react-toast @microsoft/teams-prg
 packages/react-components/react-toast/library @microsoft/teams-prg
 packages/react-components/react-toast/stories @microsoft/teams-prg
 packages/react-components/react-search @microsoft/cxe-red @smhigley
+packages/react-components/react-search/library @microsoft/cxe-red @smhigley
+packages/react-components/react-search/stories @microsoft/cxe-red @smhigley
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
@@ -301,11 +321,15 @@ packages/react-components/react-message-bar @microsoft/teams-prg
 packages/react-components/react-message-bar/library @microsoft/teams-prg
 packages/react-components/react-message-bar/stories @microsoft/teams-prg
 packages/react-components/react-rating @microsoft/cxe-red @tomi-msft
+packages/react-components/react-rating/library @microsoft/cxe-red @tomi-msft
+packages/react-components/react-rating/stories @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker @microsoft/cxe-prg
 packages/react-components/react-swatch-picker/library @microsoft/cxe-prg
 packages/react-components/react-swatch-picker/stories @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
+packages/react-components/react-infolabel/library @microsoft/cxe-red @sopranopillow
+packages/react-components/react-infolabel/stories @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
 packages/react-components/react-list-preview/library @microsoft/teams-prg
 packages/react-components/react-list-preview/stories @microsoft/teams-prg
