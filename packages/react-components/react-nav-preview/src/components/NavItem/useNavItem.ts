@@ -63,7 +63,7 @@ export const useNavItem_unstable = (
 
   return {
     components: { root: rootElementType, icon: 'span' },
-    root,
+    root: root,
     icon: slot.optional(icon, {
       elementType: 'span',
     }),

@@ -68,7 +68,7 @@ export const useNavSubItem_unstable = (
     components: {
       root: rootElementType,
     },
-    root,
+    root: root,
     selected,
     value: subItemValue,
     size,
