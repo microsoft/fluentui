@@ -88,7 +88,6 @@
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
       "@fluentui/priority-overflow": ["packages/react-components/priority-overflow/src/index.ts"],
       "@fluentui/react-accordion": ["packages/react-components/react-accordion/src/index.ts"],
-      "@fluentui/react-alert": ["packages/react-components/react-alert/src/index.ts"],
       "@fluentui/react-aria": ["packages/react-components/react-aria/library/src/index.ts"],
       "@fluentui/react-aria-stories": ["packages/react-components/react-aria/stories/src/index.ts"],
       "@fluentui/react-avatar": ["packages/react-components/react-avatar/src/index.ts"],
