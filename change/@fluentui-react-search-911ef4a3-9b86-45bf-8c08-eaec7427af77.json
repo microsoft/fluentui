@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: split react libraries in two (/library and /stories)",
+  "packageName": "@fluentui/react-search",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
