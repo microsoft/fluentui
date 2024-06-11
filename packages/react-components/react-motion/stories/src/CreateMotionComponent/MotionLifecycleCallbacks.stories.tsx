@@ -1,19 +1,20 @@
 import {
-  createPresenceComponent,
+  createMotionComponent,
   Field,
   makeStyles,
   mergeClasses,
   type MotionImperativeRef,
   motionTokens,
   Slider,
-  Switch,
   Text,
   tokens,
   useId,
+  Button,
 } from '@fluentui/react-components';
+import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
-import description from './PresenceOnMotionFinish.stories.md';
+import description from './MotionLifecycleCallbacks.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -25,7 +26,7 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'end',
+    justifyContent: 'center',
     gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
@@ -87,18 +88,12 @@ const useClasses = makeStyles({
   },
 });
 
-const Fade = createPresenceComponent({
-  enter: {
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
-    duration: motionTokens.durationSlow,
-  },
-  exit: {
-    keyframes: [{ opacity: 1 }, { opacity: 0 }],
-    duration: motionTokens.durationSlow,
-  },
+const FadeEnter = createMotionComponent({
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: motionTokens.durationSlow,
 });
 
-export const PresenceOnMotionFinish = () => {
+export const MotionLifecycleCallbacks = () => {
   const classes = useClasses();
   const logLabelId = useId();
 
@@ -106,26 +101,32 @@ export const PresenceOnMotionFinish = () => {
   const [statusLog, setStatusLog] = React.useState<[number, string][]>([]);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [visible, setVisible] = React.useState<boolean>(true);
+  const [count, setCount] = React.useState(0);
+  const [playing, setPlaying] = React.useState(false);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate, visible]);
+  }, [playbackRate, count]);
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <Fade
+        <FadeEnter
+          key={count}
           imperativeRef={motionRef}
-          onMotionFinish={(ev, data) => {
-            setStatusLog(entries => [[Date.now(), data.direction], ...entries]);
+          onMotionStart={() => {
+            setPlaying(true);
+            setStatusLog(entries => [[Date.now(), 'onMotionStart'], ...entries]);
           }}
-          visible={visible}
+          onMotionFinish={() => {
+            setPlaying(false);
+            setStatusLog(entries => [[Date.now(), 'onMotionFinish'], ...entries]);
+          }}
         >
           <div className={classes.item} />
-        </Fade>
+        </FadeEnter>
       </div>
 
       <div className={classes.logContainer}>
@@ -133,18 +134,20 @@ export const PresenceOnMotionFinish = () => {
           Status log
         </div>
         <div role="log" aria-labelledby={logLabelId} className={classes.log}>
-          {statusLog.map(([time, direction], i) => (
+          {statusLog.map(([time, callbackName], i) => (
             <div key={i}>
-              {new Date(time).toLocaleTimeString()} <Text weight="bold">onMotionFinish</Text> (direction: {direction})
+              {new Date(time).toLocaleTimeString()} <Text weight="bold">{callbackName}</Text>
             </div>
           ))}
         </div>
       </div>
 
       <div className={classes.controls}>
-        <Field className={classes.field}>
-          <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
-        </Field>
+        <div>
+          <Button appearance="subtle" disabled={playing} icon={<ReplayFilled />} onClick={() => setCount(s => s + 1)}>
+            Restart
+          </Button>
+        </div>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{
@@ -171,7 +174,7 @@ export const PresenceOnMotionFinish = () => {
   );
 };
 
-PresenceOnMotionFinish.parameters = {
+MotionLifecycleCallbacks.parameters = {
   docs: {
     description: {
       story: description,
