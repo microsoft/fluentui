@@ -18,9 +18,6 @@ import type { DrawerBodyState } from '@fluentui/react-drawer';
 import type { DrawerFooterProps } from '@fluentui/react-drawer';
 import type { DrawerFooterSlots } from '@fluentui/react-drawer';
 import type { DrawerFooterState } from '@fluentui/react-drawer';
-import type { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
-import type { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
-import type { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
 import type { DrawerHeaderProps } from '@fluentui/react-drawer';
 import type { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import type { DrawerHeaderState } from '@fluentui/react-drawer';
@@ -72,6 +69,7 @@ export type NavCategoryItemSlots = {
 // @public
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue & {
     selected: boolean;
+    size: NavSize;
 };
 
 // @public
@@ -87,7 +85,7 @@ export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryPro
 export const navClassNames: SlotClassNames<NavSlots>;
 
 // @public (undocumented)
-export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace'> & {
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace' | 'size'> & {
     onRegister: RegisterNavItemEventHandler;
     onUnregister: RegisterNavItemEventHandler;
     onSelect: EventHandler<OnNavItemSelectData>;
@@ -150,21 +148,6 @@ export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps>;
 export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots>;
 
 // @public
-export const NavDrawerHeaderNav: ForwardRefComponent<NavDrawerHeaderNavProps>;
-
-// @public (undocumented)
-export const navDrawerHeaderNavClassNames: SlotClassNames<NavDrawerHeaderNavSlots>;
-
-// @public
-export type NavDrawerHeaderNavProps = DrawerHeaderNavigationProps;
-
-// @public (undocumented)
-export type NavDrawerHeaderNavSlots = DrawerHeaderNavigationSlots;
-
-// @public
-export type NavDrawerHeaderNavState = DrawerHeaderNavigationState;
-
-// @public
 export type NavDrawerHeaderProps = DrawerHeaderProps;
 
 // @public (undocumented)
@@ -209,6 +192,7 @@ export type NavItemSlots = {
 // @public
 export type NavItemState = ComponentState<NavItemSlots> & Pick<NavItemProps, 'value'> & {
     selected: boolean;
+    size: NavSize;
 };
 
 // @public
@@ -224,6 +208,7 @@ export type NavProps = ComponentProps<NavSlots> & {
     selectedCategoryValue?: NavItemValue;
     multiple?: boolean;
     onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
+    size?: NavSize;
 };
 
 // @public (undocumented)
@@ -245,6 +230,9 @@ export type NavSectionHeaderSlots = {
 
 // @public
 export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
+
+// @public (undocumented)
+export type NavSize = 'small' | 'medium';
 
 // @public (undocumented)
 export type NavSlots = {
@@ -293,6 +281,7 @@ export type NavSubItemSlots = {
 // @public
 export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemProps, 'value'> & {
     selected: boolean;
+    size: NavSize;
 };
 
 // @public (undocumented)
@@ -360,12 +349,6 @@ export const useNavDrawerFooterStyles_unstable: (state: NavDrawerFooterState) =>
 
 // @public
 export const useNavDrawerHeader_unstable: (props: NavDrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderState;
-
-// @public
-export const useNavDrawerHeaderNav_unstable: (props: NavDrawerHeaderNavProps, ref: React_2.Ref<HTMLElement>) => NavDrawerHeaderNavState;
-
-// @public
-export const useNavDrawerHeaderNavStyles_unstable: (state: NavDrawerHeaderNavState) => NavDrawerHeaderNavState;
 
 // @public
 export const useNavDrawerHeaderStyles_unstable: (state: NavDrawerHeaderState) => NavDrawerHeaderState;

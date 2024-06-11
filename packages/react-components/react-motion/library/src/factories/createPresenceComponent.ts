@@ -7,7 +7,7 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
-import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
+import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
 export type PresenceComponentProps = {
   /**
@@ -55,21 +55,16 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
   return !appear && isFirstMount && !!visible;
 }
 
-export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn) {
-  const Presence: React.FC<PresenceComponentProps> = props => {
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
+  value: PresenceMotion | PresenceMotionFn<MotionParams>,
+) {
+  const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const {
-      appear,
-      children,
-      imperativeRef,
-      onMotionFinish,
-      onMotionStart,
-      visible = false,
-      unmountOnExit,
-    } = {
-      ...itemContext,
-      ...props,
-    };
+    const merged = { ...itemContext, ...props };
+
+    const { appear, children, imperativeRef, onExit, onMotionFinish, onMotionStart, visible, unmountOnExit, ..._rest } =
+      merged;
+    const params = _rest as Exclude<typeof merged, PresenceComponentProps | typeof itemContext>;
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
@@ -77,7 +72,7 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const ref = useMergedRefs(elementRef, child.ref);
-    const optionsRef = React.useRef<{ appear?: boolean }>({});
+    const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams }>({ appear, params });
 
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
@@ -98,12 +93,14 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
 
       if (unmountOnExit) {
         setMounted(false);
-        itemContext?.onExit();
+        onExit?.();
       }
     });
 
     useIsomorphicLayoutEffect(() => {
-      optionsRef.current = { appear };
+      // Heads up!
+      // We store the params in a ref to avoid re-rendering the component when the params change.
+      optionsRef.current = { appear, params };
     });
 
     useIsomorphicLayoutEffect(
@@ -114,7 +111,7 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
           return;
         }
 
-        const presenceMotion = typeof value === 'function' ? value({ element }) : value;
+        const presenceMotion = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
         visible ? onEnterStart() : onExitStart();

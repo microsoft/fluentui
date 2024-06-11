@@ -9,6 +9,8 @@ import {
   tokens,
   DrawerProps,
   mergeClasses,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -43,6 +45,7 @@ const useStyles = makeStyles({
     right: '-16px',
     left: '-16px',
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'flex-start',
     columnGap: tokens.spacingHorizontalXS,
@@ -92,8 +95,9 @@ const setButtonText = (open: boolean, position: DrawerProps['position']) => {
 };
 
 const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
   return (
-    <InlineDrawer {...props}>
+    <InlineDrawer {...restoreFocusSourceAttributes} {...props}>
       <DrawerHeader>
         <DrawerHeaderTitle
           action={
@@ -118,6 +122,8 @@ export const Inline = () => {
   const [rightOpen, setRightOpen] = React.useState(false);
   const [bottomOpen, setBottomOpen] = React.useState(false);
 
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+
   return (
     <div className={mergeClasses(styles.root, styles.flexColumn)}>
       <div className={styles.root}>
@@ -125,15 +131,15 @@ export const Inline = () => {
 
         <div className={styles.content}>
           <div className={styles.buttons}>
-            <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
+            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
               {setButtonText(leftOpen, 'start')}
             </Button>
 
-            <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
+            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
               {setButtonText(rightOpen, 'end')}
             </Button>
 
-            <Button appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
+            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
               {setButtonText(bottomOpen, 'bottom')}
             </Button>
           </div>

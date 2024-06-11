@@ -22,7 +22,7 @@ export const useNavSubItem_unstable = (
 ): NavSubItemState => {
   const { onClick, value: subItemValue, as, href } = props;
 
-  const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
+  const { selectedValue, onRegister, onUnregister, onSelect, size = 'medium' } = useNavContext_unstable();
 
   const { value: parentCategoryValue } = useNavCategoryContext_unstable();
 
@@ -68,8 +68,9 @@ export const useNavSubItem_unstable = (
     components: {
       root: rootElementType,
     },
-    root: root,
+    root,
     selected,
     value: subItemValue,
+    size,
   };
 };

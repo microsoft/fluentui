@@ -5,7 +5,7 @@ import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
-import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
+import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
 
 export type MotionComponentProps = {
   children: React.ReactElement;
@@ -38,13 +38,23 @@ export type MotionComponentProps = {
  *
  * @param value - A motion definition.
  */
-export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn) {
-  const Atom: React.FC<MotionComponentProps> = props => {
-    const { children, imperativeRef, onMotionFinish: onMotionFinishProp, onMotionStart: onMotionStartProp } = props;
+export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(
+  value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>,
+) {
+  const Atom: React.FC<MotionComponentProps & MotionParams> = props => {
+    const {
+      children,
+      imperativeRef,
+      onMotionFinish: onMotionFinishProp,
+      onMotionStart: onMotionStartProp,
+      ..._rest
+    } = props;
+    const params = _rest as Exclude<typeof props, MotionComponentProps>;
     const child = getChildElement(children);
 
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
+    const paramsRef = React.useRef<MotionParams>(params);
 
     const isReducedMotion = useIsReducedMotion();
 
@@ -57,11 +67,18 @@ export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMot
     });
 
     useIsomorphicLayoutEffect(() => {
+      // Heads up!
+      // We store the params in a ref to avoid re-rendering the component when the params change.
+      paramsRef.current = params;
+    });
+
+    useIsomorphicLayoutEffect(() => {
       const element = elementRef.current;
 
       if (element) {
-        const atoms = typeof value === 'function' ? value({ element }) : value;
+        const atoms = typeof value === 'function' ? value({ element, ...paramsRef.current }) : value;
         onMotionStart();
+
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
         handle.onfinish = onMotionFinish;
 

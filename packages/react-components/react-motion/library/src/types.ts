@@ -5,8 +5,20 @@ export type PresenceMotion = {
   exit: AtomMotion | AtomMotion[];
 };
 
-export type AtomMotionFn = (params: { element: HTMLElement }) => AtomMotion | AtomMotion[];
-export type PresenceMotionFn = (params: { element: HTMLElement }) => PresenceMotion;
+/**
+ * @internal
+ *
+ * A motion param should be a primitive value that can be serialized to JSON and could be potentially used a plain
+ * dependency for React hooks.
+ */
+export type MotionParam = boolean | number | string;
+
+export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
+  params: { element: HTMLElement } & MotionParams,
+) => AtomMotion | AtomMotion[];
+export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
+  params: { element: HTMLElement } & MotionParams,
+) => PresenceMotion;
 
 // ---
 

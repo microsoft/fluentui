@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 11 Jun 2024 04:06:29 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.27",
+      "version": "3.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "32e259d0f971ea7d1da4ec82f097dd052fbcbfb7",
+            "comment": "feat: update divider to leverage ElementInternals"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "71dc8a7023f740320651c68ca54ecf27cb8dec37",
+            "comment": "fix: show default title action in dialog-body for modal dialogs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Jun 2024 04:07:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.26",
       "version": "3.0.0-beta.26",

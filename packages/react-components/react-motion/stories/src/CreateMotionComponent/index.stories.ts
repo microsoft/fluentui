@@ -10,6 +10,7 @@ export { TokensUsage as tokens } from './TokensUsage.stories';
 export { MotionLifecycleCallbacks as LifecycleCallbacks } from './MotionLifecycleCallbacks.stories';
 export { MotionArrays as arrays } from './MotionArrays.stories';
 export { MotionFunctions as functions } from './MotionFunctions.stories';
+export { MotionFunctionParams as functionParams } from './MotionFunctionParams.stories';
 
 export default {
   title: 'Utilities/Web Motions/createMotionComponent',

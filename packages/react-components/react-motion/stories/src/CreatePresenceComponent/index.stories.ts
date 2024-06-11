@@ -10,6 +10,7 @@ export { PresenceLifecycleCallbacks as LifecycleCallbacks } from './PresenceLife
 
 export { PresenceMotionArrays as arrays } from './PresenceMotionArrays.stories';
 export { PresenceMotionFunctions as functions } from './PresenceMotionFunctions.stories';
+export { PresenceMotionFunctionParams as functionParams } from './PresenceMotionFunctionParams.stories';
 
 export default {
   title: 'Utilities/Web Motions/createPresenceComponent',
