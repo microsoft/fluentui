@@ -3,7 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup } from '../radio-group/radio-group.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
-import { DrawerType, DrawerPosition, DrawerSize } from './drawer.options.js';
+import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 import './define.js';
 import '../drawer-body/define.js';
 
@@ -62,11 +62,8 @@ const toggleSelectedDrawer = (radioGroupId: string) => {
 };
 
 const hideDrawer = (drawerID: string) => {
-  console.log('hide');
   const drawer = document.getElementById(drawerID) as FluentDrawer;
   if (drawer.dialog.open) {
-    console.log('hidden');
-
     drawer.hide();
   }
 };
@@ -134,44 +131,35 @@ const storyTemplate = html<DrawerStoryArgs>`
       }
     </style>
     <div class="flex justify--space-between full-height">
-      <div>
-        <fluent-drawer
-          id="drawer-default-start"
-          position="start"
-          size="${x => x.size}"
-          type="${x => x.type}"
-          ?inline="${x => x.inline}"
-        >
-          <fluent-drawer-body>
-            <span slot="title"> Drawer Header</span>
+      <fluent-drawer id="drawer-default-start" position="start" size="${x => x.size}" type="${x => x.type}">
+        <fluent-drawer-body>
+          <span slot="title"> Drawer Header</span>
+          <div>
+            <fluent-text>
+              The drawer gives users a quick entry point to configuration and information. It should be used when
+              retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
+              with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer
+              blocking and signifies that the users full attention is required when making configurations.
+            </fluent-text>
             <div>
-              <fluent-text>
-                The drawer gives users a quick entry point to configuration and information. It should be used when
-                retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
-                with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer
-                blocking and signifies that the users full attention is required when making configurations.
-              </fluent-text>
-              <div>
-                <fluent-radio-group>
-                  <fluent-label slot="label">Please select an option</fluent-label>
-                  <fluent-radio value="1">Option 1</fluent-radio>
-                  <fluent-radio value="2">Option 2</fluent-radio>
-                  <fluent-radio value="3">Option 3</fluent-radio>
-                </fluent-radio-group>
-              </div>
+              <fluent-radio-group>
+                <fluent-label slot="label">Please select an option</fluent-label>
+                <fluent-radio value="1">Option 1</fluent-radio>
+                <fluent-radio value="2">Option 2</fluent-radio>
+                <fluent-radio value="3">Option 3</fluent-radio>
+              </fluent-radio-group>
             </div>
-            <div slot="footer" class="flex gap--16">
-              <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-start')}"
-                >Close</fluent-button
-              >
-              <fluent-button appearance="secondary">Do Something</fluent-button>
-            </div>
-          </fluent-drawer-body>
-        </fluent-drawer>
-      </div>
+          </div>
+          <div slot="footer" class="flex gap--16">
+            <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-start')}"
+              >Close</fluent-button
+            >
+            <fluent-button appearance="secondary">Do Something</fluent-button>
+          </div>
+        </fluent-drawer-body>
+      </fluent-drawer>
       <div class="gap--16 column flex justify--center padding--16 width-400">
         <fluent-text weight="bold" size="400" as="h3"><h3>Drawer</h3></fluent-text>
-
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
             The Drawer gives users a quick entry point to configuration and information. It should be used when
@@ -186,47 +174,36 @@ const storyTemplate = html<DrawerStoryArgs>`
           <fluent-radio value="default-start" checked>Start</fluent-radio>
           <fluent-radio value="default-end">End</fluent-radio>
         </fluent-radio-group>
-
         <fluent-button appearance="primary" @click="${() => toggleSelectedDrawer('drawer-radio-default')}"
           >Toggle Drawer</fluent-button
         >
       </div>
-      <div>
-        <fluent-drawer
-          id="drawer-default-end"
-          position="end"
-          size="${x => x.size}"
-          type="${x => x.type}"
-          ?inline="${x => x.inline}"
-        >
-          <fluent-drawer-body>
-            <span slot="title"> Drawer Header</span>
+      <fluent-drawer id="drawer-default-end" position="end" size="${x => x.size}" type="${x => x.type}">
+        <fluent-drawer-body>
+          <span slot="title"> Drawer Header</span>
 
+          <div>
+            <fluent-text>
+              The drawer gives users a quick entry point to configuration and information. It should be used when
+              retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
+              with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer
+              blocking and signifies that the users full attention is required when making configurations.
+            </fluent-text>
             <div>
-              <fluent-text>
-                The drawer gives users a quick entry point to configuration and information. It should be used when
-                retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
-                with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer
-                blocking and signifies that the users full attention is required when making configurations.
-              </fluent-text>
-              <div>
-                <fluent-radio-group>
-                  <fluent-label slot="label">Please select an option</fluent-label>
-                  <fluent-radio value="1">Option 1</fluent-radio>
-                  <fluent-radio value="2">Option 2</fluent-radio>
-                  <fluent-radio value="3">Option 3</fluent-radio>
-                </fluent-radio-group>
-              </div>
+              <fluent-radio-group>
+                <fluent-label slot="label">Please select an option</fluent-label>
+                <fluent-radio value="1">Option 1</fluent-radio>
+                <fluent-radio value="2">Option 2</fluent-radio>
+                <fluent-radio value="3">Option 3</fluent-radio>
+              </fluent-radio-group>
             </div>
-            <div slot="footer" class="flex gap--16">
-              <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-end')}"
-                >Close</fluent-button
-              >
-              <fluent-button appearance="secondary">Do Something</fluent-button>
-            </div>
-          </fluent-drawer-body>
-        </fluent-drawer>
-      </div>
+          </div>
+          <div slot="footer" class="flex gap--16">
+            <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-end')}">Close</fluent-button>
+            <fluent-button appearance="secondary">Do Something</fluent-button>
+          </div>
+        </fluent-drawer-body>
+      </fluent-drawer>
     </div>
   </div>
 `;
@@ -235,7 +212,6 @@ export default {
   title: 'Components/Drawer',
   args: {
     type: DrawerType.modal,
-    inline: false,
     size: DrawerSize.medium,
   },
   argTypes: {
@@ -261,19 +237,6 @@ export default {
         },
         defaultValue: {
           summary: DrawerType.modal,
-        },
-      },
-    },
-    inline: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Determines if the drawer is an inline drawer',
-        },
-        defaultValue: {
-          summary: false,
         },
       },
     },
@@ -342,6 +305,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <br />
+      <br />
       <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
         <code>type="modal"</code>
       </fluent-text>
@@ -373,6 +337,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
             </p>
           </fluent-text>
           <br />
+          <br />
           <fluent-text font="monospace" size="300" weight="regular" as="p" block="true">
             <code>type="non-modal"</code>
           </fluent-text>
@@ -400,7 +365,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
 
 export const Inline = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
-    <fluent-drawer position="start" size="small" id="drawer-inline-start" inline type="non-modal">
+    <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline">
       <fluent-drawer-body>
         <span slot="title">Drawer Inline</span>
         <fluent-button
@@ -420,12 +385,9 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
           </p>
         </fluent-text>
         <br />
-
+        <br />
         <fluent-text font="monospace" size="300" weight="regular" as="p">
-          <code>inline</code>
-          <br />
-
-          <code>type="non-modal"</code>
+          <code>type="inline"</code>
         </fluent-text>
       </fluent-drawer-body>
     </fluent-drawer>
@@ -439,12 +401,9 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <br />
-
+      <br />
       <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>inline</code>
-        <br />
-
-        <code>type="non-modal"</code>
+        <code>type="inline"</code>
       </fluent-text>
       <fluent-label weight="semibold">Select a Drawer Position</fluent-label>
       <fluent-radio-group id="drawer-radiogroup-inline">
@@ -455,7 +414,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         >Toggle Drawer</fluent-button
       >
     </div>
-    <fluent-drawer position="end" size="small" id="drawer-inline-end" inline type="non-modal">
+    <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline">
       <fluent-drawer-body>
         <span slot="title">Drawer Inline</span>
         <fluent-button
@@ -475,12 +434,10 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
           </p>
         </fluent-text>
         <br />
+        <br />
 
         <fluent-text font="monospace" size="300" weight="regular" as="p">
-          <code>inline</code>
-          <br />
-
-          <code>type="non-modal"</code>
+          <code>type="inline"</code>
         </fluent-text>
       </fluent-drawer-body>
     </fluent-drawer>
@@ -490,7 +447,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
 export const Position = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
     <div>
-      <fluent-drawer inline type="non-modal" id="drawer-position-start" size="small">
+      <fluent-drawer type="modal" id="drawer-position-start" size="small">
         <fluent-drawer-body>
           <span slot="title">Drawer position start</span>
 
@@ -544,7 +501,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
       >
     </div>
     <div>
-      <fluent-drawer position="end" inline type="non-modal" id="drawer-position-end" size="small">
+      <fluent-drawer position="modal" type="inline" id="drawer-position-end" size="small">
         <fluent-drawer-body>
           <span slot="title">Drawer position end</span>
           <fluent-button
@@ -564,6 +521,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
               'end'.
             </p>
           </fluent-text>
+          <br />
           <br />
           <fluent-text font="monospace" size="300" weight="regular">
             <code>position="end"</code>
@@ -616,6 +574,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
         <br />
+        <br />
         <fluent-text font="monospace" size="300" weight="regular">
           <code>size="small"</code>
         </fluent-text>
@@ -637,6 +596,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
         <br />
+        <br />
         <fluent-text font="monospace" size="300" weight="regular">
           <code>default</code>
         </fluent-text>
@@ -645,9 +605,8 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
     <fluent-drawer size="large" id="drawer-size-large" type="modal">
       <fluent-drawer-body>
       <span slot="title">Drawer large</span>
-
               <fluent-button
-                slot="action"
+                slot="close"
                 appearance="transparent"
                 icon-only
                 aria-label="close"
@@ -657,19 +616,16 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
               </fluent-button>
             <p>The size attribute controls the width of the drawer. The default is medium.</p>
           </fluent-text>
-        <br />
-
+          <br />
+          <br />
           <fluent-text font="monospace" size="300" weight="regular">
             <code>size="large"</code>
           </fluent-text>
           </fluent-drawer-body>
-
     </fluent-drawer>
     <fluent-drawer size="full" id="drawer-size-full" type="modal">
            <fluent-drawer-body>
-
            <span slot="title">Drawer full</span>
-
             <fluent-button
               slot="close"
               appearance="transparent"
@@ -682,6 +638,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>The size attribute controls the width of the drawer. The default is medium.</p>
           </fluent-text>
+          <br />
           <br />
           <fluent-text font="monospace" size="300" weight="regular">
             <code>size="full"</code>
@@ -699,6 +656,8 @@ export const CustomSize = renderComponent(html`
       <fluent-text font="base" size="300" weight="regular" as="p">
         <p>The Drawer can be sized to any custom width, by overriding the drawer-width CSS variable:</p>
       </fluent-text>
+      <br />
+      <br />
       <fluent-text font="monospace" size="300" weight="regular">
         <code>var(--drawer-width)</code>
       </fluent-text>

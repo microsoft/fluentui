@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { ElementViewTemplate, html } from '@microsoft/fast-element';
 import type { DrawerBody } from './drawer-body.js';
 
 /**

@@ -36,6 +36,7 @@ export type DrawerSize = ValuesOf<typeof DrawerSize>;
 export const DrawerType = {
   nonModal: 'non-modal',
   modal: 'modal',
+  inline: 'inline',
 } as const;
 
 /**

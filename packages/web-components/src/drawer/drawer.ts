@@ -6,11 +6,10 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @extends FASTElement
  *
  * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
- * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
- * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
- * @attr {boolean} inline - Sets the drawer as an inline element.
  * @attr {DrawerPosition} position - Sets the position of the drawer (start/end).
  * @attr {DrawerSize} size - Sets the size of the drawer (small/medium/large).
+ * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
+ * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
  *
  * @csspart dialog - The dialog element of the drawer.
  *
@@ -24,26 +23,12 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @method clickHandler - Handles click events on the drawer.
  * @method emitToggle - Emits an event after the dialog's open state changes.
  * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
- * @method inlineChanged - Method called when the 'inline' attribute changes.
- * @method typeChanged - Method called when the 'type' attribute changes.
- * @method validateConfiguration - Validates the configuration of the drawer.
  *
  * @summary A component that provides a drawer for displaying content in a side panel.
  *
  * @tag fluent-drawer
  */
 export class Drawer extends FASTElement {
-  /**
-   * @public
-   * The connectedCallback method of the custom element
-   */
-  public connectedCallback(): void {
-    super.connectedCallback();
-    Updates.enqueue(() => {
-      this.validateConfiguration();
-    });
-  }
-
   /**
    * @public
    * Determines whether the drawer should be displayed as modal or non-modal
@@ -65,14 +50,6 @@ export class Drawer extends FASTElement {
    */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
-
-  /**
-   * @public
-   * @defaultValue false
-   * Sets the drawer as inline
-   */
-  @attr({ mode: 'boolean' })
-  public inline?: boolean = false;
 
   /**""
    * @public
@@ -123,36 +100,12 @@ export class Drawer extends FASTElement {
 
   /**
    * @public
-   * Method called when the 'inline' attribute changes
-   */
-  public inlineChanged(oldValue: boolean, newValue: boolean): void {
-    if (this.$fastController.isConnected) {
-      if (newValue) {
-        this.validateConfiguration();
-      }
-    }
-  }
-
-  /**
-   * @public
-   * Method called when the 'type' attribute changes
-   */
-  public typeChanged(oldValue: boolean, newValue: boolean): void {
-    if (this.$fastController.isConnected) {
-      if (newValue != oldValue) {
-        this.validateConfiguration();
-      }
-    }
-  }
-
-  /**
-   * @public
    * Method to show the drawer
    */
   public show(): void {
     Updates.enqueue(() => {
       this.emitBeforeToggle();
-      if (this.inline) {
+      if (this.type === DrawerType.inline) {
         this.dialog.show();
       } else {
         this.dialog.showModal();
@@ -183,15 +136,5 @@ export class Drawer extends FASTElement {
       this.hide();
     }
     return true;
-  }
-
-  /**
-   * Validates the configuration of the drawer.
-   * @throws {Error} Throws an error if the configuration is invalid.
-   */
-  private validateConfiguration(): void {
-    if (this.inline && this.type !== DrawerType.nonModal) {
-      throw new Error('Invalid configuration: inline requires the type to be nonModal');
-    }
   }
 }
