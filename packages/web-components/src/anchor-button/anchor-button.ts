@@ -49,7 +49,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: download
    */
   @attr
-  public download!: string;
+  public download?: string;
 
   /**
    * The URL the hyperlink references. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -58,7 +58,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: href
    */
   @attr
-  public href!: string;
+  public href?: string;
 
   /**
    * Hints at the language of the referenced resource. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -67,7 +67,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: hreflang
    */
   @attr
-  public hreflang!: string;
+  public hreflang?: string;
 
   /**
    * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -76,7 +76,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: ping
    */
   @attr
-  public ping!: string;
+  public ping?: string;
 
   /**
    * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -85,7 +85,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: referrerpolicy
    */
   @attr
-  public referrerpolicy!: string;
+  public referrerpolicy?: string;
 
   /**
    * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -103,7 +103,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: target
    */
   @attr
-  public target!: AnchorTarget;
+  public target?: AnchorTarget;
 
   /**
    * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
@@ -192,6 +192,118 @@ export class AnchorButton extends FASTElement {
     }
 
     return true;
+  }
+
+  /**
+   * Synchronizes the element's download attribute with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private downloadChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('download', `${next}`);
+    } else {
+      this.proxy.removeAttribute('download');
+    }
+  }
+
+  /**
+   * Synchronizes the element's href attribute with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private hrefChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('href', `${next}`);
+    } else {
+      this.proxy.removeAttribute('href');
+    }
+  }
+
+  /**
+   * Synchronizes the element's href attribute with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private hreflangChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('hreflang', `${next}`);
+    } else {
+      this.proxy.removeAttribute('hreflang');
+    }
+  }
+
+  /**
+   * Synchronizes the element's ping attribute with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private pingChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('ping', `${next}`);
+    } else {
+      this.proxy.removeAttribute('ping');
+    }
+  }
+
+  /**
+   * Synchronizes the element's referrerpolicy with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private referrerpolicyChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('referrerpolicy', `${next}`);
+    } else {
+      this.proxy.removeAttribute('referrerpolicy');
+    }
+  }
+
+  /**
+   * Synchronizes the element's rel with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private relChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('rel', `${next}`);
+    } else {
+      this.proxy.removeAttribute('rel');
+    }
+  }
+
+  /**
+   * Synchronizes the element's target with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private targetChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('target', `${next}`);
+    } else {
+      this.proxy.removeAttribute('target');
+    }
+  }
+
+  /**
+   * Synchronizes the element's type with the internal proxy state.
+   * @internal
+   * @param prev
+   * @param next
+   */
+  private typeChanged(prev: string | undefined, next: string | undefined): void {
+    if (next) {
+      this.proxy.setAttribute('type', `${next}`);
+    } else {
+      this.proxy.removeAttribute('type');
+    }
   }
 
   private createProxyElement(): void {
