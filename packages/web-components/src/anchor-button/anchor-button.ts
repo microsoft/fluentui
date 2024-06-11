@@ -214,7 +214,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private downloadChanged(prev: string | undefined, next: string | undefined): void {
+  protected downloadChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('download', next);
   }
 
@@ -224,7 +224,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private hrefChanged(prev: string | undefined, next: string | undefined): void {
+  protected hrefChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('href', next);
   }
 
@@ -234,7 +234,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private hreflangChanged(prev: string | undefined, next: string | undefined): void {
+  protected hreflangChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('hreflang', next);
   }
 
@@ -244,7 +244,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private pingChanged(prev: string | undefined, next: string | undefined): void {
+  protected pingChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('ping', next);
   }
 
@@ -254,7 +254,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private referrerpolicyChanged(prev: string | undefined, next: string | undefined): void {
+  protected referrerpolicyChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('referrerpolicy', next);
   }
 
@@ -264,7 +264,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private relChanged(prev: string | undefined, next: string | undefined): void {
+  protected relChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('referrerpolicy', next);
   }
 
@@ -274,7 +274,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private targetChanged(prev: string | undefined, next: string | undefined): void {
+  protected targetChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('target', next);
   }
 
@@ -284,7 +284,7 @@ export class AnchorButton extends FASTElement {
    * @param prev
    * @param next
    */
-  private typeChanged(prev: string | undefined, next: string | undefined): void {
+  protected typeChanged(prev: string | undefined, next: string | undefined): void {
     this.handleProxyAttributeChange('type', next);
   }
 
