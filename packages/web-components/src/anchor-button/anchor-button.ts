@@ -229,7 +229,7 @@ export class AnchorButton extends FASTElement {
       proxy.setAttribute('type', this.type);
     }
 
-    proxy.style.display = 'none';
+    proxy.hidden = true;
 
     this.append(proxy);
 
