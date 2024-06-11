@@ -92,23 +92,15 @@ export class ProgressBar extends FASTElement {
   @observable
   public percentComplete: number = 0;
 
-  /**
-   * @internal
-   */
   public constructor() {
     super();
 
     this.elementInternals.role = 'progressbar';
   }
 
-  /**
-   * @internal
-   */
   public connectedCallback(): void {
     super.connectedCallback();
-    this.updateAriaValueNow();
-    this.updateAriaValueMin();
-    this.updateAriaValueMax();
+
     this.updatePercentComplete();
   }
 
