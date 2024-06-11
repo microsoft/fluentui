@@ -77,21 +77,13 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
-    const onEnterStart = useEventCallback(() => {
-      onMotionStart?.(null, { direction: 'enter' });
+    const handleMotionStart = useEventCallback((direction: 'enter' | 'exit') => {
+      onMotionStart?.(null, { direction });
     });
+    const handleMotionFinish = useEventCallback((direction: 'enter' | 'exit') => {
+      onMotionFinish?.(null, { direction });
 
-    const onExitStart = useEventCallback(() => {
-      onMotionStart?.(null, { direction: 'exit' });
-    });
-
-    const onEnterFinish = useEventCallback(() => {
-      onMotionFinish?.(null, { direction: 'enter' });
-    });
-    const onExitFinish = useEventCallback(() => {
-      onMotionFinish?.(null, { direction: 'exit' });
-
-      if (unmountOnExit) {
+      if (direction === 'exit' && unmountOnExit) {
         setMounted(false);
         onExit?.();
       }
@@ -114,10 +106,16 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         const presenceMotion = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
-        visible ? onEnterStart() : onExitStart();
+        const direction = visible ? 'enter' : 'exit';
+        const forceFinishMotion = !visible && isFirstMount;
+
+        if (!forceFinishMotion) {
+          handleMotionStart(direction);
+        }
+
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
-        if (!visible && isFirstMount) {
+        if (forceFinishMotion) {
           // Heads up!
           // .finish() is used there to skip animation on first mount, but apply animation styles immediately
           handle.finish();
@@ -125,7 +123,9 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         }
 
         handleRef.current = handle;
-        handle.onfinish = visible ? onEnterFinish : onExitFinish;
+        handle.onfinish = () => {
+          handleMotionFinish(direction);
+        };
 
         return () => {
           handle.cancel();
@@ -133,7 +133,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [handleRef, isReducedMotion, onEnterFinish, onExitFinish, onEnterStart, onExitStart, visible],
+      [handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, visible],
     );
 
     if (mounted) {

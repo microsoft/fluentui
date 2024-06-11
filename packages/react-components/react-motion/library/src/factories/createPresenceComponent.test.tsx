@@ -70,7 +70,7 @@ describe('createPresenceComponent', () => {
 
   describe('onMotionStart', () => {
     describe('exit', () => {
-      it('is called on first render without appear', () => {
+      it('is not called on first render', () => {
         const onMotionStart = jest.fn();
         const TestAtom = createPresenceComponent(motion);
         const { ElementMock } = createElementMock();
@@ -81,8 +81,7 @@ describe('createPresenceComponent', () => {
           </TestAtom>,
         );
 
-        expect(onMotionStart).toHaveBeenCalledTimes(1);
-        expect(onMotionStart).toHaveBeenCalledWith(null, { direction: 'exit' });
+        expect(onMotionStart).toHaveBeenCalledTimes(0);
       });
 
       it('is called when visible becomes false', () => {
@@ -96,6 +95,11 @@ describe('createPresenceComponent', () => {
           </TestAtom>,
         );
 
+        expect(onMotionStart).toHaveBeenCalledTimes(1);
+        expect(onMotionStart).toHaveBeenNthCalledWith(1, null, { direction: 'enter' });
+
+        // ---
+
         rerender(
           <TestAtom onMotionStart={onMotionStart} appear visible={false}>
             <ElementMock />
@@ -108,7 +112,7 @@ describe('createPresenceComponent', () => {
     });
 
     describe('enter', () => {
-      it('is not called on first render without appear', async () => {
+      it('is not called on first render without appear', () => {
         const onMotionStart = jest.fn();
         const TestAtom = createPresenceComponent(motion);
         const { ElementMock } = createElementMock();
@@ -122,7 +126,7 @@ describe('createPresenceComponent', () => {
         expect(onMotionStart).toHaveBeenCalledTimes(0);
       });
 
-      it('is called on first render with appear', async () => {
+      it('is called on first render with appear', () => {
         const onMotionStart = jest.fn();
         const TestAtom = createPresenceComponent(motion);
         const { ElementMock } = createElementMock();
@@ -137,16 +141,19 @@ describe('createPresenceComponent', () => {
         expect(onMotionStart).toHaveBeenCalledWith(null, { direction: 'enter' });
       });
 
-      it('is called when visible becomes true', async () => {
+      it('is called when visible becomes true', () => {
         const onMotionStart = jest.fn();
         const TestAtom = createPresenceComponent(motion);
         const { ElementMock } = createElementMock();
 
         const { rerender } = render(
-          <TestAtom onMotionStart={onMotionStart}>
+          <TestAtom onMotionStart={onMotionStart} visible={false}>
             <ElementMock />
           </TestAtom>,
         );
+        expect(onMotionStart).toHaveBeenCalledTimes(0);
+
+        // ---
 
         rerender(
           <TestAtom onMotionStart={onMotionStart} visible>
@@ -154,13 +161,14 @@ describe('createPresenceComponent', () => {
           </TestAtom>,
         );
 
-        expect(onMotionStart).toHaveBeenCalledTimes(2);
-        expect(onMotionStart).toHaveBeenNthCalledWith(2, null, { direction: 'enter' });
+        expect(onMotionStart).toHaveBeenCalledTimes(1);
+        expect(onMotionStart).toHaveBeenNthCalledWith(1, null, { direction: 'enter' });
       });
     });
   });
+
   describe('onMotionFinish', () => {
-    it('is not called on first render', async () => {
+    it('is not called on first render', () => {
       const onMotionFinish = jest.fn();
       const TestAtom = createPresenceComponent(motion);
       const { ElementMock } = createElementMock();

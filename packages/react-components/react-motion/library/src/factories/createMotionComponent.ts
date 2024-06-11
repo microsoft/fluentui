@@ -80,8 +80,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
         onMotionStart();
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
-        handle.onfinish = onMotionFinish;
 
+        handle.onfinish = onMotionFinish;
         handleRef.current = handle;
 
         return () => {
