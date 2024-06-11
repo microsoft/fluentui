@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: Adding roles, expanded and levels.",
+  "comment": "feat: Adding roles and current where appropriate.",
   "packageName": "@fluentui/react-nav-preview",
   "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
