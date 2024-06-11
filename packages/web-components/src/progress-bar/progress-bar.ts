@@ -5,11 +5,6 @@ import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } fr
  * An Progress HTML Element.
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#progressbar | ARIA progressbar }.
  *
- * @slot indeterminate - The slot for a custom indeterminate indicator
- * @csspart progress - Represents the progress element
- * @csspart determinate - The determinate indicator
- * @csspart indeterminate - The indeterminate indicator
- *
  * @public
  */
 export class ProgressBar extends FASTElement {
@@ -24,7 +19,7 @@ export class ProgressBar extends FASTElement {
    * The thickness of the progress bar
    *
    * @public
-   * HTML Attribute: thickness
+   * HTML Attribute: `thickness`
    */
   @attr
   public thickness?: ProgressBarThickness;
@@ -32,7 +27,7 @@ export class ProgressBar extends FASTElement {
   /**
    * The shape of the progress bar
    * @public
-   * HTML Attribute: shape
+   * HTML Attribute: `shape`
    */
   @attr
   public shape?: ProgressBarShape;
@@ -40,7 +35,7 @@ export class ProgressBar extends FASTElement {
   /**
    * The validation state of the progress bar
    * @public
-   * HTML Attribute: validation-state
+   * HTML Attribute: `validation-state`
    */
   @attr({ attribute: 'validation-state' })
   public validationState: ProgressBarValidationState | null = null;
@@ -48,7 +43,7 @@ export class ProgressBar extends FASTElement {
   /**
    * The value of the progress
    * @internal
-   * HTML Attribute: value
+   * HTML Attribute: `value`
    */
   @attr({ converter: nullableNumberConverter })
   public value?: number | null;
@@ -60,7 +55,7 @@ export class ProgressBar extends FASTElement {
   /**
    * The minimum value
    * @internal
-   * HTML Attribute: min
+   * HTML Attribute: `min`
    */
   @attr({ converter: nullableNumberConverter })
   public min?: number;
@@ -74,7 +69,7 @@ export class ProgressBar extends FASTElement {
   /**
    * The maximum value
    * @internal
-   * HTML Attribute: max
+   * HTML Attribute: `max`
    */
   @attr({ converter: nullableNumberConverter })
   public max?: number;
@@ -117,9 +112,9 @@ export class ProgressBar extends FASTElement {
   }
 
   private updatePercentComplete(): void {
-    const min: number = typeof this.min === 'number' ? this.min : 0;
-    const max: number = typeof this.max === 'number' ? this.max : 100;
-    const value: number = typeof this.value === 'number' ? this.value : 0;
+    const min: number = this.min ?? 0;
+    const max: number = this.max ?? 100;
+    const value: number = this.value ?? 0;
     const range: number = max - min;
 
     this.percentComplete = range === 0 ? 0 : Math.fround(((value - min) / range) * 100);

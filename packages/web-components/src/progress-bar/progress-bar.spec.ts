@@ -44,7 +44,7 @@ test.describe('Progress Bar', () => {
         `;
     });
 
-    await expect(element).toHaveJSProperty('ariaValueMin', '50');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueMin', '50');
   });
 
   test('should set the `aria-valuemax` attribute with the `max` property when provided', async () => {
@@ -54,7 +54,7 @@ test.describe('Progress Bar', () => {
         `;
     });
 
-    await expect(element).toHaveJSProperty('ariaValueMax', '50');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueMax', '50');
   });
 
   test('should return the `percentComplete` property as a value between 0 and 100 when `min` and `max` are unset', async () => {

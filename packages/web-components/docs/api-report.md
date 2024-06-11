@@ -2438,9 +2438,8 @@ export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
 export class ProgressBar extends FASTElement {
-    // @internal
     constructor();
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
