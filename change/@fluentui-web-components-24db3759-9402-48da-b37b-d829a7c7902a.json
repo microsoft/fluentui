@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: show default title action in dialog-body for modal dialogs",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
