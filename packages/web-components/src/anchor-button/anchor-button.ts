@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable } from '@microsoft/fast-element';
 import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
@@ -30,7 +30,7 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  */
 export class AnchorButton extends FASTElement {
   /**
-   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
@@ -40,76 +40,93 @@ export class AnchorButton extends FASTElement {
    * The proxy anchor element
    * @internal
    */
-  private internalProxyAnchor!: HTMLAnchorElement;
+  private internalProxyAnchor: HTMLAnchorElement = this.createProxyElement();
 
   /**
-   * Prompts the user to save the linked URL. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * Prompts the user to save the linked URL.
+   *
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#download | `download`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: download
+   * HTML Attribute: `download`
    */
   @attr
   public download?: string;
 
   /**
-   * The URL the hyperlink references. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The URL the hyperlink references.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#href | `href`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: href
+   * HTML Attribute: `href`
    */
   @attr
   public href?: string;
 
   /**
-   * Hints at the language of the referenced resource. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * Hints at the language of the referenced resource.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#hreflang | `hreflang`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: hreflang
+   * HTML Attribute: `hreflang`
    */
   @attr
   public hreflang?: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The ping attribute.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#ping | `ping`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: ping
+   * HTML Attribute: `ping`
    */
   @attr
   public ping?: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The referrerpolicy attribute.
+   * See The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#referrerpolicy | `referrerpolicy`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: referrerpolicy
+   * HTML Attribute: `referrerpolicy`
    */
   @attr
   public referrerpolicy?: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The rel attribute.
+   * See The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#rel | `rel`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: rel
+   * HTML Attribute: `rel`
    */
   @attr
   public rel!: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The target attribute.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#target | `target`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: target
+   * HTML Attribute: `target`
    */
   @attr
   public target?: AnchorTarget;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The type attribute.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#type | `type`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: type
+   * HTML Attribute: `type`
    */
   @attr
   public type?: string;
@@ -119,7 +136,7 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: appearance
+   * HTML Attribute: `appearance`
    */
   @attr
   public appearance?: AnchorButtonAppearance | undefined;
@@ -129,7 +146,7 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: shape
+   * HTML Attribute: `shape`
    */
   @attr
   public shape?: AnchorButtonShape | undefined;
@@ -139,7 +156,7 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: size
+   * HTML Attribute: `size`
    */
   @attr
   public size?: AnchorButtonSize;
@@ -149,7 +166,7 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: icon-only
+   * HTML Attribute: `icon-only`
    */
   @attr({ attribute: 'icon-only', mode: 'boolean' })
   public iconOnly: boolean = false;
@@ -160,10 +177,37 @@ export class AnchorButton extends FASTElement {
     this.elementInternals.role = 'link';
   }
 
-  public connectedCallback(): void {
+  public connectedCallback() {
     super.connectedCallback();
+    Observable.getNotifier(this).subscribe(this);
 
-    this.createProxyElement();
+    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
+      this.handleChange(this, key);
+    });
+
+    this.append(this.internalProxyAnchor);
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this);
+  }
+
+  /**
+   * Handles changes to observable properties
+   * @internal
+   * @param source
+   * @param propertyName
+   */
+  public handleChange(source: any, propertyName: string) {
+    if (propertyName === ('appearance' || 'size' || 'shape' || 'icon-only')) {
+      return;
+    }
+    const attribute = this.$fastController.definition.attributeLookup[propertyName]?.attribute;
+    if (attribute) {
+      this.handleProxyAttributeChange(attribute, this[propertyName as keyof this] as string);
+    }
   }
 
   /**
@@ -208,126 +252,10 @@ export class AnchorButton extends FASTElement {
     }
   }
 
-  /**
-   * Synchronizes the element's download attribute with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected downloadChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('download', next);
-  }
-
-  /**
-   * Synchronizes the element's href attribute with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected hrefChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('href', next);
-  }
-
-  /**
-   * Synchronizes the element's href attribute with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected hreflangChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('hreflang', next);
-  }
-
-  /**
-   * Synchronizes the element's ping attribute with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected pingChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('ping', next);
-  }
-
-  /**
-   * Synchronizes the element's referrerpolicy with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected referrerpolicyChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('referrerpolicy', next);
-  }
-
-  /**
-   * Synchronizes the element's rel with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected relChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('referrerpolicy', next);
-  }
-
-  /**
-   * Synchronizes the element's target with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected targetChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('target', next);
-  }
-
-  /**
-   * Synchronizes the element's type with the internal proxy state.
-   * @internal
-   * @param prev
-   * @param next
-   */
-  protected typeChanged(prev: string | undefined, next: string | undefined): void {
-    this.handleProxyAttributeChange('type', next);
-  }
-
-  private createProxyElement(): void {
-    const proxy = document.createElement('a');
-
-    if (this.download) {
-      proxy.setAttribute('download', this.download);
-    }
-
-    if (this.href) {
-      proxy.setAttribute('href', this.href);
-    }
-
-    if (this.hreflang) {
-      proxy.setAttribute('hreflang', this.hreflang);
-    }
-
-    if (this.ping) {
-      proxy.setAttribute('ping', this.ping);
-    }
-
-    if (this.referrerpolicy) {
-      proxy.setAttribute('referrerpolicy', this.referrerpolicy);
-    }
-
-    if (this.rel) {
-      proxy.setAttribute('rel', this.rel);
-    }
-
-    if (this.target) {
-      proxy.setAttribute('target', this.target);
-    }
-
-    if (this.type) {
-      proxy.setAttribute('type', this.type);
-    }
-
+  private createProxyElement(): HTMLAnchorElement {
+    const proxy = this.internalProxyAnchor ?? document.createElement('a');
     proxy.hidden = true;
-
-    this.append(proxy);
-
-    this.internalProxyAnchor = proxy;
+    return proxy;
   }
 }
 
