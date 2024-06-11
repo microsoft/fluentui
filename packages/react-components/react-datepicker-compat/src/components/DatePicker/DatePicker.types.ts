@@ -1,13 +1,13 @@
 import { DayOfWeek, FirstWeekOfYear } from '@fluentui/react-calendar-compat';
 import { Input } from '@fluentui/react-input';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { CalendarProps, CalendarStrings, DateFormatting } from '@fluentui/react-calendar-compat';
+import type { Calendar, CalendarStrings, DateFormatting } from '@fluentui/react-calendar-compat';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningProps } from '@fluentui/react-positioning';
 
 export type DatePickerSlots = {
   root: NonNullable<Slot<typeof Input>>;
-  calendar: NonNullable<Slot<Partial<CalendarProps>>>;
+  calendar: NonNullable<Slot<typeof Calendar>>;
   popupSurface?: Slot<'div'>;
 };
 

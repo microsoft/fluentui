@@ -35,7 +35,7 @@ export const useTagPickerButton_unstable = (
     defaultProps: {
       type: 'button',
       tabIndex: 0,
-      children: value || props.placeholder,
+      children: value,
       'aria-controls': open ? popoverId : undefined,
       ref,
     },

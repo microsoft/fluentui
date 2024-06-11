@@ -33,7 +33,7 @@ import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
 
 // @public
-export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSX.Element;
+export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSX.Element;
