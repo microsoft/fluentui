@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 10 Jun 2024 04:07:58 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2024 04:06:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.27)
+
+Tue, 11 Jun 2024 04:06:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.26..@fluentui/web-components_v3.0.0-beta.27)
+
+### Changes
+
+- feat: update divider to leverage ElementInternals ([PR #31627](https://github.com/microsoft/fluentui/pull/31627) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: show default title action in dialog-body for modal dialogs ([PR #31648](https://github.com/microsoft/fluentui/pull/31648) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.26)
 

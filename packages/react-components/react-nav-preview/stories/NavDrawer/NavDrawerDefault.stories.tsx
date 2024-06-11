@@ -6,7 +6,6 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerHeaderNav,
   NavDrawerProps,
   NavItem,
   NavSectionHeader,
@@ -95,9 +94,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
         <NavDrawerHeader>
-          <NavDrawerHeaderNav>
-            <Hamburger onClick={() => setIsOpen(false)} />
-          </NavDrawerHeaderNav>
+          <Hamburger onClick={() => setIsOpen(false)} />
         </NavDrawerHeader>
         <NavDrawerBody>
           <NavSectionHeader>Home</NavSectionHeader>

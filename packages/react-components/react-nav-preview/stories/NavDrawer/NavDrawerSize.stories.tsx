@@ -6,7 +6,6 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerHeaderNav,
   NavDrawerProps,
   NavItem,
   NavSectionHeader,
@@ -91,9 +90,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
         <NavDrawerHeader>
-          <NavDrawerHeaderNav>
-            <Hamburger />
-          </NavDrawerHeaderNav>
+          <Hamburger />
         </NavDrawerHeader>
         <NavDrawerBody>
           <NavSectionHeader>Home</NavSectionHeader>

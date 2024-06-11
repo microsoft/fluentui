@@ -12,15 +12,15 @@ export type AtomMotion = {
 } & KeyframeEffectOptions;
 
 // @public (undocumented)
-export type AtomMotionFn = (params: {
+export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
     element: HTMLElement;
-}) => AtomMotion | AtomMotion[];
+} & MotionParams) => AtomMotion | AtomMotion[];
 
 // @public
-export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMotionFn): React_2.FC<MotionComponentProps>;
+export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): React_2.FC<MotionComponentProps & MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): React_2.FC<PresenceComponentProps & MotionParams>;
 
 // @public (undocumented)
 export const curves: {
@@ -51,6 +51,8 @@ export const durations: {
 export type MotionComponentProps = {
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
+    onMotionFinish?: (ev: null) => void;
+    onMotionStart?: (ev: null) => void;
 };
 
 // @public (undocumented)
@@ -88,6 +90,9 @@ export type PresenceComponentProps = {
     onMotionFinish?: (ev: null, data: {
         direction: 'enter' | 'exit';
     }) => void;
+    onMotionStart?: (ev: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
     visible?: boolean;
     unmountOnExit?: boolean;
 };
@@ -115,9 +120,9 @@ export type PresenceMotion = {
 };
 
 // @public (undocumented)
-export type PresenceMotionFn = (params: {
+export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
     element: HTMLElement;
-}) => PresenceMotion;
+} & MotionParams) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
 

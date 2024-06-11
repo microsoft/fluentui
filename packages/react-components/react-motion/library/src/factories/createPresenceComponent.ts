@@ -7,7 +7,7 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { animateAtoms } from '../utils/animateAtoms';
 import { getChildElement } from '../utils/getChildElement';
-import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
+import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
 export type PresenceComponentProps = {
   /**
@@ -31,6 +31,16 @@ export type PresenceComponentProps = {
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
   onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
+  /**
+   * Callback that is called when the whole motion starts.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "start" events. The callback is
+   * triggered when the first animation is started. There is no official "start" event with the Web Animations API.
+   * so the callback is triggered with "null".
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionStart?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
+
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
 
@@ -42,13 +52,19 @@ export type PresenceComponentProps = {
 };
 
 function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
-  return !appear && isFirstMount && visible;
+  return !appear && isFirstMount && !!visible;
 }
 
-export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn) {
-  const Presence: React.FC<PresenceComponentProps> = props => {
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
+  value: PresenceMotion | PresenceMotionFn<MotionParams>,
+) {
+  const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
+    const merged = { ...itemContext, ...props };
+
+    const { appear, children, imperativeRef, onExit, onMotionFinish, onMotionStart, visible, unmountOnExit, ..._rest } =
+      merged;
+    const params = _rest as Exclude<typeof merged, PresenceComponentProps | typeof itemContext>;
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
     const child = getChildElement(children);
@@ -56,25 +72,27 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const ref = useMergedRefs(elementRef, child.ref);
-    const optionsRef = React.useRef<{ appear?: boolean }>({});
+    const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams }>({ appear, params });
 
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
-    const onEnterFinish = useEventCallback(() => {
-      onMotionFinish?.(null, { direction: 'enter' });
+    const handleMotionStart = useEventCallback((direction: 'enter' | 'exit') => {
+      onMotionStart?.(null, { direction });
     });
-    const onExitFinish = useEventCallback(() => {
-      onMotionFinish?.(null, { direction: 'exit' });
+    const handleMotionFinish = useEventCallback((direction: 'enter' | 'exit') => {
+      onMotionFinish?.(null, { direction });
 
-      if (unmountOnExit) {
+      if (direction === 'exit' && unmountOnExit) {
         setMounted(false);
-        itemContext?.onExit();
+        onExit?.();
       }
     });
 
     useIsomorphicLayoutEffect(() => {
-      optionsRef.current = { appear };
+      // Heads up!
+      // We store the params in a ref to avoid re-rendering the component when the params change.
+      optionsRef.current = { appear, params };
     });
 
     useIsomorphicLayoutEffect(
@@ -85,12 +103,19 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
           return;
         }
 
-        const presenceMotion = typeof value === 'function' ? value({ element }) : value;
+        const presenceMotion = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
+
+        const direction = visible ? 'enter' : 'exit';
+        const forceFinishMotion = !visible && isFirstMount;
+
+        if (!forceFinishMotion) {
+          handleMotionStart(direction);
+        }
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
-        if (!visible && isFirstMount) {
+        if (forceFinishMotion) {
           // Heads up!
           // .finish() is used there to skip animation on first mount, but apply animation styles immediately
           handle.finish();
@@ -98,7 +123,9 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
         }
 
         handleRef.current = handle;
-        handle.onfinish = visible ? onEnterFinish : onExitFinish;
+        handle.onfinish = () => {
+          handleMotionFinish(direction);
+        };
 
         return () => {
           handle.cancel();
@@ -106,7 +133,7 @@ export function createPresenceComponent(value: PresenceMotion | PresenceMotionFn
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [handleRef, isReducedMotion, onEnterFinish, onExitFinish, visible],
+      [handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, visible],
     );
 
     if (mounted) {
