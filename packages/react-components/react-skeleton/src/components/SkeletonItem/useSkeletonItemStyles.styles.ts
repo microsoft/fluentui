@@ -9,20 +9,20 @@ export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
 };
 
 const skeletonWaveAnimation = {
-  from: {
-    backgroundPositionX: '300% /* @noflip */',
+  '0%': {
+    transform: 'translateX(300%) /* @noflip */',
   },
-  to: {
-    backgroundPositionX: '0% /* @noflip */',
+  '100%': {
+    transform: 'translateX(0%) /* @noflip */',
   },
 };
 
 const skeletonWaveAnimationRTL = {
-  from: {
-    backgroundPositionX: '0% /* @noflip */',
+  '0%': {
+    transform: 'translateX(0%) /* @noflip */',
   },
-  to: {
-    backgroundPositionX: '300% /* @noflip */',
+  '100%': {
+    transform: 'translateX(300%) /* @noflip */',
   },
 };
 

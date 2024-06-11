@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Update Skeleton to use animation offloadable to the compositor thread.",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
