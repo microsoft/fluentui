@@ -13,6 +13,7 @@ export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots> =
 const useStyles = makeStyles({
   root: {
     marginInlineStart: `10px`,
+    marginBlock: '8px',
     ...typographyStyles.caption1Strong,
   },
 });

@@ -19,7 +19,8 @@ import {
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
-  toolbar: {
+  header: {
+    display: 'flex',
     justifyContent: 'space-between',
   },
 });
@@ -33,10 +34,9 @@ export const WithNavigation = () => {
     <div>
       <OverlayDrawer position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
-          <DrawerHeaderNavigation>
-            <Toolbar className={styles.toolbar}>
-              <ToolbarButton aria-label="Back" appearance="subtle" icon={<ArrowLeft24Regular />} />
-
+          <DrawerHeaderNavigation className={styles.header}>
+            <Button aria-label="Back" appearance="subtle" icon={<ArrowLeft24Regular />} />
+            <Toolbar>
               <ToolbarGroup>
                 <ToolbarButton aria-label="Reload content" appearance="subtle" icon={<ArrowClockwise24Regular />} />
                 <ToolbarButton aria-label="Settings" appearance="subtle" icon={<Settings24Regular />} />
