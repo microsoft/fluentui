@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add bundle size tests",
+  "packageName": "@fluentui/react-list-preview",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "none"
+}
