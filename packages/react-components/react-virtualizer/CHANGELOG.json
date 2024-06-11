@@ -2,6 +2,33 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:44 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.79",
+      "version": "9.0.0-alpha.79",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "fix: update internal function to optionally use global Fluent context."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 May 2024 12:45:09 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.78",
       "version": "9.0.0-alpha.78",

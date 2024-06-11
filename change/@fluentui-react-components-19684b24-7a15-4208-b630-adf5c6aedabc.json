@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: re-export `useTimeout()` and `useAnimationFrame()`.",
-  "packageName": "@fluentui/react-components",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

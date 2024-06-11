@@ -1,10 +1,9 @@
-/* eslint-disable @fluentui/max-len */
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { ESLintUtils } = require('@typescript-eslint/utils');
 
 /**
  * @template {string} TMessageIds
  * @template {unknown[]} TOptions
- * @param {import('@typescript-eslint/experimental-utils').TSESLint.RuleContext<TMessageIds, Readonly<TOptions>>} context
+ * @param {import('@typescript-eslint/utils').TSESLint.RuleContext<TMessageIds, Readonly<TOptions>>} context
  * @returns
  */
 function getTypeServices(context) {
@@ -13,7 +12,7 @@ function getTypeServices(context) {
 
   /**
    *
-   * @param {import('@typescript-eslint/experimental-utils').TSESTree.Node} node
+   * @param {import('@typescript-eslint/utils').TSESTree.Node} node
    * @returns
    */
   function getType(node) {

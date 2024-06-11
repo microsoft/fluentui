@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Deprecated react-accordion navigation prop. Tab navigation only should be used according to W3 APG pattern.",
+  "packageName": "@fluentui/react-accordion",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
