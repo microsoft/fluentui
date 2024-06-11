@@ -21,7 +21,7 @@
         - [Pros](#pros-1)
         - [Cons](#cons-1)
       - [Issues](#issues)
-    - [Option B: z-index handling context](#option-b-z-index-handling-context)
+    - [Option B: z-index handling React Context](#option-b-z-index-handling-react-context)
 
 ## Summary
 
@@ -72,14 +72,10 @@ The layers can be defined as follows:
 ```ts
 // packages/tokens/src/global/zIndexes.ts
 
-import { ZIndexes } from '../types';
+import { ZIndexLevels, ZIndexTokens } from '../types';
 
-/**
- * Global z-index values for elements
- */
-
-// Ordered according to Fluent V2 guidelines
-const levels = [
+// According to Fluent V2 guidelines
+const levels: ZIndexLevels = [
   0, // Elevation 0
   1, // Elevation 2
   1000, // Elevation 4
@@ -90,15 +86,18 @@ const levels = [
   6000, // High priority elements
 ];
 
-export const zIndexes: ZIndexes = {
-  background: levels[0], // default
-  content: levels[1], // content - header, footer, sidebar
-  overlay: levels[2], // overlay elements - drawer, nav
-  popup: levels[3], // popup layers - popups, modals, dialogs
-  messages: levels[4], // communication elements - banners, messages, toasts, snackbar
-  floating: levels[5], // floating elements - dropdowns, teaching
-  priority: levels[6], // priority elements - tooltips
-  debug: levels[7], // debug - error overlays, debug messages
+/**
+ * Global z-index values for elements
+ */
+export const zIndexes: ZIndexTokens = {
+  zIndexBackground: levels[0], // default
+  zIndexContent: levels[1], // content - header, footer, sidebar
+  zIndexOverlay: levels[2], // overlay elements - drawer, nav
+  zIndexPopup: levels[3], // popup layers - popups, modals, dialogs
+  zIndexMessages: levels[4], // communication elements - banners, messages, toasts, snackbar
+  zIndexFloating: levels[5], // floating elements - dropdowns, teaching
+  zIndexPriority: levels[6], // priority elements - tooltips
+  zIndexDebug: levels[7], // debug - error overlays, debug messages
 };
 ```
 
@@ -154,9 +153,13 @@ export const indexes: ZIndexes = {
 
 This approach only standardize the layers and define z-index values for them. This is great for the current state of our components that define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dialogs are created. Which of them should have higher priority and therefore be displayed on top?
 
-### Option B: z-index handling context
+### Option B: z-index handling React Context
 
----
+Create a React Context to handle z-index values. This context would provide a way to set the z-index values for components and retrieve them when necessary.
+
+TODO: If this option is chosen, provide a detailed design.
+
+<!-- ---
 
 TODO: Add more options
 
@@ -177,4 +180,4 @@ const getElement1Index = React.useCallback(() => {
 
   return index;
 }, [element1]);
-```
+``` -->
