@@ -1,4 +1,4 @@
-import { ArgTypes } from '@storybook/api';
+import type { ArgTypes } from '@storybook/react';
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-components';
 import type { AvatarProps } from '@fluentui/react-components';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ArgTypes } from '@storybook/api';
+import type { ArgTypes } from '@storybook/react';
 import { Field, SearchBox } from '@fluentui/react-components';
 import type { SearchBoxProps } from '@fluentui/react-components';
 
