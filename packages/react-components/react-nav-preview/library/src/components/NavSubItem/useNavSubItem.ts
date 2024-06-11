@@ -43,7 +43,11 @@ export const useNavSubItem_unstable = (
   const root = slot.always<ARIAButtonSlotProps<'a'>>(
     getIntrinsicElementProps(
       rootElementType,
-      useARIAButtonProps(rootElementType, { role: 'menuitem', 'aria-level': 2, ...props }),
+      useARIAButtonProps(rootElementType, {
+        'aria-current': selected ? 'page' : 'false',
+        role: rootElementType,
+        ...props,
+      }),
     ),
     {
       elementType: rootElementType,

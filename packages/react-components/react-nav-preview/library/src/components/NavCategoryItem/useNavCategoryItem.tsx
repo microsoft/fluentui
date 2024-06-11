@@ -29,6 +29,8 @@ export const useNavCategoryItem_unstable = (
   );
 
   const selected = selectedCategoryValue === value;
+  // there's more than 2 possible values for aria-current, but this is the only one that's used in this component
+  const validAriaCurrent: 'page' | 'false' = selected && !open ? 'page' : 'false';
 
   return {
     open,
@@ -42,9 +44,7 @@ export const useNavCategoryItem_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
-        role: 'menuitem',
-        'aria-level': 1,
-        'aria-expanded': open,
+        'aria-current': validAriaCurrent,
         ...props,
         onClick: onNavCategoryItemClick,
       }),
