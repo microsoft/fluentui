@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
@@ -46,10 +46,15 @@ export class ProgressBar extends FASTElement {
    * HTML Attribute: `value`
    */
   @attr({ converter: nullableNumberConverter })
-  public value?: number | null;
-  protected valueChanged(): void {
-    this.updateAriaValueNow();
-    this.updatePercentComplete();
+  public value?: number;
+
+  /**
+   * Updates the percent complete when the `value` property changes.
+   *
+   * @internal
+   */
+  protected valueChanged(prev: number | undefined, next: number | undefined): void {
+    this.elementInternals.ariaValueNow = typeof next === 'number' ? `${next}` : null;
   }
 
   /**
@@ -59,11 +64,15 @@ export class ProgressBar extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public min?: number;
-  protected minChanged(): void {
-    if (this.$fastController.isConnected) {
-      this.updateAriaValueMin();
-      this.updatePercentComplete();
-    }
+
+  /**
+   * Updates the percent complete when the `min` property changes.
+   *
+   * @param prev - The previous min value
+   * @param next - The current min value
+   */
+  protected minChanged(prev: number | undefined, next: number | undefined): void {
+    this.elementInternals.ariaValueMin = typeof next === 'number' ? `${next}` : null;
   }
 
   /**
@@ -73,53 +82,35 @@ export class ProgressBar extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public max?: number;
-  protected maxChanged(): void {
-    if (this.$fastController.isConnected) {
-      this.updateAriaValueMax();
-      this.updatePercentComplete();
-    }
+
+  /**
+   * Updates the percent complete when the `max` property changes.
+   *
+   * @param prev - The previous max value
+   * @param next - The current max value
+   * @internal
+   */
+  protected maxChanged(prev: number | undefined, next: number | undefined): void {
+    this.elementInternals.ariaValueMax = typeof next === 'number' ? `${next}` : null;
   }
 
   /**
    * Indicates progress in %
    * @internal
    */
-  @observable
-  public percentComplete: number = 0;
+  @volatile
+  public get percentComplete(): number {
+    const min = this.min ?? 0;
+    const max = this.max ?? 100;
+    const value = this.value ?? 0;
+    const range = max - min;
+
+    return range === 0 ? 0 : Math.fround(((value - min) / range) * 100);
+  }
 
   public constructor() {
     super();
 
     this.elementInternals.role = 'progressbar';
-  }
-
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    this.updateAriaValueMin();
-    this.updateAriaValueMax();
-    this.updateAriaValueNow();
-    this.updatePercentComplete();
-  }
-
-  private updateAriaValueMax(): void {
-    this.elementInternals.ariaValueMax = this.max ? `${this.max}` : null;
-  }
-
-  private updateAriaValueMin(): void {
-    this.elementInternals.ariaValueMin = this.min ? `${this.min}` : null;
-  }
-
-  private updateAriaValueNow(): void {
-    this.elementInternals.ariaValueNow = this.value ? `${this.value}` : null;
-  }
-
-  private updatePercentComplete(): void {
-    const min: number = this.min ?? 0;
-    const max: number = this.max ?? 100;
-    const value: number = this.value ?? 0;
-    const range: number = max - min;
-
-    this.percentComplete = range === 0 ? 0 : Math.fround(((value - min) / range) * 100);
   }
 }
