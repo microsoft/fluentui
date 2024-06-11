@@ -195,17 +195,27 @@ export class AnchorButton extends FASTElement {
   }
 
   /**
+   * A method for updating proxy attributes when attributes have changed
+   * @internal
+   * @param attribute
+   * @param value
+   */
+  private handleProxyAttributeChange(attribute: string, value: string | undefined): void {
+    if (value) {
+      this.proxy.setAttribute(attribute, value);
+    } else {
+      this.proxy.removeAttribute(attribute);
+    }
+  }
+
+  /**
    * Synchronizes the element's download attribute with the internal proxy state.
    * @internal
    * @param prev
    * @param next
    */
   private downloadChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('download', `${next}`);
-    } else {
-      this.proxy.removeAttribute('download');
-    }
+    this.handleProxyAttributeChange('download', next);
   }
 
   /**
@@ -215,11 +225,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private hrefChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('href', `${next}`);
-    } else {
-      this.proxy.removeAttribute('href');
-    }
+    this.handleProxyAttributeChange('href', next);
   }
 
   /**
@@ -229,11 +235,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private hreflangChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('hreflang', `${next}`);
-    } else {
-      this.proxy.removeAttribute('hreflang');
-    }
+    this.handleProxyAttributeChange('hreflang', next);
   }
 
   /**
@@ -243,11 +245,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private pingChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('ping', `${next}`);
-    } else {
-      this.proxy.removeAttribute('ping');
-    }
+    this.handleProxyAttributeChange('ping', next);
   }
 
   /**
@@ -257,11 +255,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private referrerpolicyChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('referrerpolicy', `${next}`);
-    } else {
-      this.proxy.removeAttribute('referrerpolicy');
-    }
+    this.handleProxyAttributeChange('referrerpolicy', next);
   }
 
   /**
@@ -271,11 +265,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private relChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('rel', `${next}`);
-    } else {
-      this.proxy.removeAttribute('rel');
-    }
+    this.handleProxyAttributeChange('referrerpolicy', next);
   }
 
   /**
@@ -285,11 +275,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private targetChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('target', `${next}`);
-    } else {
-      this.proxy.removeAttribute('target');
-    }
+    this.handleProxyAttributeChange('target', next);
   }
 
   /**
@@ -299,11 +285,7 @@ export class AnchorButton extends FASTElement {
    * @param next
    */
   private typeChanged(prev: string | undefined, next: string | undefined): void {
-    if (next) {
-      this.proxy.setAttribute('type', `${next}`);
-    } else {
-      this.proxy.removeAttribute('type');
-    }
+    this.handleProxyAttributeChange('type', next);
   }
 
   private createProxyElement(): void {
