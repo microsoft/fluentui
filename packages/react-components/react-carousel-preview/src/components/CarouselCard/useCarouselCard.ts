@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
@@ -21,9 +21,6 @@ export const useCarouselCard_unstable = (
   const { value } = props;
   const { circular, peeking } = useCarouselContext_unstable();
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
-
-  const isFirstMount = React.useRef(true);
-  const [isMotionVisible, setIsMotionVisible] = React.useState(false);
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
   const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
@@ -50,22 +47,12 @@ export const useCarouselCard_unstable = (
     }
   });
 
-  useIsomorphicLayoutEffect(() => {
-    if (!visible && !isFirstMount.current) {
-      setIsMotionVisible(true);
-    }
-    isFirstMount.current = false;
-    // We only want to fire this when visible becomes true (not on first mount)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
-
   // Pass in some useful animation render states
   const lastDir = React.useRef<'next' | 'prev' | null | undefined>(null);
   const directionChanged = lastDir.current !== navDirection;
   lastDir.current = navDirection;
 
   const lastPeeking = React.useRef<boolean>(visible);
-  const wasVisible = lastPeeking.current;
   lastPeeking.current = visible;
 
   const state: CarouselCardState = {
@@ -75,7 +62,6 @@ export const useCarouselCard_unstable = (
     peeking,
     navDirection,
     directionChanged,
-    wasVisible,
     components: {
       root: 'div',
     },
@@ -84,7 +70,6 @@ export const useCarouselCard_unstable = (
         ref,
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
-        hidden: !visible && !peekDir && !isMotionVisible,
         'aria-hidden': !visible,
         inert: !visible,
         role: 'presentation',
@@ -92,14 +77,7 @@ export const useCarouselCard_unstable = (
       }),
       { elementType: 'div' },
     ),
-    onAnimationEnd: () => {
-      setIsMotionVisible(false);
-    },
   };
-
-  if (!visible && !peekDir && !isMotionVisible) {
-    state.root.children = null;
-  }
 
   return state;
 };

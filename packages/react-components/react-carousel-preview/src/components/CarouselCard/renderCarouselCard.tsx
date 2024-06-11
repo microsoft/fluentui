@@ -33,22 +33,15 @@ const Slide = createPresenceComponent<{ direction: 'prev' | 'next' }>(({ directi
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible } = state;
+  const { visible, navDirection, value } = state;
 
-  if (navDirection) {
-    if (directionChanged) {
-      return (
-        <Slide direction={navDirection} visible={visible || !!wasVisible} appear={true} onMotionFinish={onAnimationEnd}>
-          <state.root />
-        </Slide>
-      );
-    }
-    return (
-      <Slide direction={navDirection} visible={visible} appear={visible} onMotionFinish={onAnimationEnd}>
-        <state.root />
-      </Slide>
-    );
-  } else {
+  if (state.peeking) {
     return <state.root />;
   }
+
+  return (
+    <Slide value={value} direction={navDirection} visible={visible}>
+      <state.root />
+    </Slide>
+  );
 };
