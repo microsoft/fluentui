@@ -21,6 +21,7 @@ import type { DrawerFooterState } from '@fluentui/react-drawer';
 import type { DrawerHeaderProps } from '@fluentui/react-drawer';
 import type { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import type { DrawerHeaderState } from '@fluentui/react-drawer';
+import { DrawerProps } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
@@ -158,7 +159,7 @@ export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
-export type NavDrawerProps = ComponentProps<NavDrawerSlots> & InlineDrawerProps & OverlayDrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & InlineDrawerProps & OverlayDrawerProps & NavProps;
 
 // @public
 export type NavDrawerSlots = DrawerSlots;
