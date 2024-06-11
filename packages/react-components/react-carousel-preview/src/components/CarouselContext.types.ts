@@ -2,7 +2,7 @@ import * as React from 'react';
 import { EventData } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
-  setActiveValue: (newValue: string | null, circular?: Boolean) => void;
+  setActiveValue: (newValue: string | null, circular?: boolean) => void;
 
   clearValues: () => void;
   addValue: (value: string) => void;
@@ -36,9 +36,8 @@ export type CarouselContextValue = {
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
-  circular?: Boolean;
-  peeking?: Boolean;
-  animated?: Boolean;
+  circular?: boolean;
+  peeking?: boolean;
 };
 
 /**

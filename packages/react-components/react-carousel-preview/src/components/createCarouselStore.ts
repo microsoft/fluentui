@@ -8,7 +8,7 @@ export const createCarouselStore = (initialValue: string | null): CarouselStore 
   let listeners: Array<() => void> = [];
 
   const carouselStore = {
-    setActiveValue(newValue: string | null, circular?: Boolean) {
+    setActiveValue(newValue: string | null, circular?: boolean) {
       if (activeValue && newValue && activeValue !== newValue) {
         const oldIndex = values.indexOf(activeValue);
         const newIndex = values.indexOf(newValue);

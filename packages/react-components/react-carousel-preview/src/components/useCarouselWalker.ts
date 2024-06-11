@@ -6,8 +6,8 @@ import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from './constants';
 
 export type CarouselWalker = {
   find(value: string): { el: HTMLElement; value: string } | null;
-  nextPage(value: string, circular?: Boolean): { el: HTMLElement; value: string } | null;
-  prevPage(value: string, circular?: Boolean): { el: HTMLElement; value: string } | null;
+  nextPage(value: string, circular?: boolean): { el: HTMLElement; value: string } | null;
+  prevPage(value: string, circular?: boolean): { el: HTMLElement; value: string } | null;
   active(): { el: HTMLElement; value: string } | null;
 };
 
@@ -83,7 +83,7 @@ export const useCarouselWalker_unstable = () => {
 
           return null;
         },
-        nextPage(value: string, circular?: Boolean) {
+        nextPage(value: string, circular?: boolean) {
           const res = this.find(value);
           if (!res || !treeWalkerRef.current?.currentNode) {
             return null;
@@ -106,7 +106,7 @@ export const useCarouselWalker_unstable = () => {
 
           return null;
         },
-        prevPage(value: string, circular?: Boolean) {
+        prevPage(value: string, circular?: boolean) {
           const res = this.find(value);
           if (!res || !treeWalkerRef.current?.currentNode) {
             return null;

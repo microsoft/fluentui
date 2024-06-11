@@ -43,11 +43,7 @@ const SlideRight = createPresenceComponent({
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible, animated } = state;
-
-  if (!animated) {
-    return <state.root />;
-  }
+  const { visible, navDirection, onAnimationEnd, directionChanged, wasVisible } = state;
 
   if (navDirection === 'next') {
     if (directionChanged) {
