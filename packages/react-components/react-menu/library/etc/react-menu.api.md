@@ -413,7 +413,7 @@ export type MenuTriggerState = {
 };
 
 // @public
-export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
@@ -449,7 +449,7 @@ export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Elemen
 export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger_unstable: (state: MenuTriggerState) => React_2.JSX.Element;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;

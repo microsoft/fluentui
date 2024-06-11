@@ -9,7 +9,7 @@ export function useHTMLElementWalkerRef() {
   const walkerRef = React.useRef<HTMLElementWalker>();
 
   const rootRef: React.Ref<HTMLElement> = React.useCallback(
-    root => {
+    (root: HTMLElement | null) => {
       walkerRef.current =
         targetDocument && root ? createHTMLElementWalker(root, targetDocument, treeItemFilter) : undefined;
     },
