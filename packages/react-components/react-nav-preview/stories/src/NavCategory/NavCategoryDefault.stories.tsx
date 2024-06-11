@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Nav } from '../../src/components/Nav/Nav';
-import { NavCategory } from '../../src/components/NavCategory/NavCategory';
-import { NavCategoryItem } from '../../src/components/NavCategoryItem/NavCategoryItem';
-import { NavSubItemGroup } from '../../src/components/NavSubItemGroup/NavSubItemGroup';
+import { Nav, NavCategory, NavCategoryItem, NavSubItemGroup } from '@fluentui/react-nav-preview';
 
 export const Default = () => (
   <Nav>
