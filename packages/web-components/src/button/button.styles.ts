@@ -58,11 +58,9 @@ import {
 } from '../theme/design-tokens.js';
 
 /**
- * The styles for the Button component.
- *
- * @public
+ * @internal
  */
-export const styles = css`
+export const baseButtonStyles = css`
   ${display('inline-flex')}
 
   :host {
@@ -271,6 +269,15 @@ export const styles = css`
   :host([appearance='transparent']:hover:active) {
     border-color: transparent;
   }
+`;
+
+/**
+ * The styles for the Button component.
+ *
+ * @public
+ */
+export const styles = css`
+  ${baseButtonStyles}
 
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable])),
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable]):hover),
@@ -306,10 +313,4 @@ export const styles = css`
     border-color: transparent;
     background-color: ${colorTransparentBackground};
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
-    :host([appearance='transparent']:hover) {
-      border-color: Highlight;
-    }
-  `),
-);
+`;

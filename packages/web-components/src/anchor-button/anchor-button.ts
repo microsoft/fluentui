@@ -1,5 +1,6 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { ARIAGlobalStatesAndProperties, StartEnd } from '../patterns/index.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
+import { keyEnter } from '@microsoft/fast-web-utilities';
+import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import type {
@@ -28,6 +29,19 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  * @public
  */
 export class AnchorButton extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  protected elementInternals: ElementInternals = this.attachInternals();
+
+  /**
+   * The proxy anchor element
+   * @internal
+   */
+  private proxy!: HTMLAnchorElement;
+
   /**
    * Prompts the user to save the linked URL. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
    * @public
@@ -101,20 +115,6 @@ export class AnchorButton extends FASTElement {
   public type!: string;
 
   /**
-   *
-   * Default slotted content
-   *
-   * @internal
-   */
-  @observable
-  public defaultSlottedContent!: HTMLElement[];
-
-  /**
-   * References the root element
-   */
-  public control!: HTMLAnchorElement;
-
-  /**
    * The appearance the anchor button should have.
    *
    * @public
@@ -154,83 +154,87 @@ export class AnchorButton extends FASTElement {
   @attr({ attribute: 'icon-only', mode: 'boolean' })
   public iconOnly: boolean = false;
 
-  /**
-   * The anchor button is disabled
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: disabled-focusable
-   */
-  @attr({ mode: 'boolean' })
-  public disabled?: boolean = false;
-  protected disabledChanged(prev: boolean, next: boolean): void {
-    if (this.disabled) {
-      (this as unknown as HTMLElement).setAttribute('aria-disabled', 'true');
-      (this as unknown as HTMLElement).setAttribute('tabindex', '-1');
-    } else {
-      (this as unknown as HTMLElement).removeAttribute('aria-disabled');
-      (this as unknown as HTMLElement).removeAttribute('tabindex');
-    }
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'link';
   }
-
-  /**
-   * The anchor button is disabled but focusable
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: disabled-focusable
-   */
-  @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
-  public disabledFocusable?: boolean = false;
-  protected disabledFocusableChanged(prev: boolean, next: boolean): void {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-
-    if (this.disabledFocusable) {
-      (this as unknown as HTMLElement).setAttribute('aria-disabled', 'true');
-    } else {
-      (this as unknown as HTMLElement).removeAttribute('aria-disabled');
-    }
-  }
-
-  /**
-   * Prevents disabledFocusable click events
-   */
-  private handleDisabledFocusableClick = (e: MouseEvent): void => {
-    if ((e && this.disabled) || this.disabledFocusable) {
-      e.stopImmediatePropagation();
-      return;
-    }
-  };
 
   public connectedCallback(): void {
     super.connectedCallback();
 
-    (this as unknown as HTMLElement).addEventListener('click', this.handleDisabledFocusableClick);
+    this.createProxyElement();
   }
 
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    (this as unknown as HTMLElement).removeEventListener('click', this.handleDisabledFocusableClick);
-  }
-}
-
-/**
- * Includes ARIA states and properties relating to the ARIA link role
- *
- * @public
- */
-export class DelegatesARIALink {
   /**
-   * See {@link https://www.w3.org/WAI/PF/aria/roles#link} for more information
-   * @public
-   * @remarks
-   * HTML Attribute: aria-expanded
+   * Handles the anchor click event.
+   *
+   * @param e - The event object
+   * @internal
    */
-  @attr({ attribute: 'aria-expanded' })
-  public ariaExpanded!: 'true' | 'false' | string | null;
+  public clickHandler(): boolean {
+    this.proxy.click();
+
+    return true;
+  }
+
+  /**
+   * Handles keypress events for the anchor.
+   *
+   * @param e - the keyboard event
+   * @returns - the return value of the click handler
+   * @public
+   */
+  public keypressHandler(e: KeyboardEvent): boolean | void {
+    if (e.key === keyEnter) {
+      this.proxy.click();
+      return;
+    }
+
+    return true;
+  }
+
+  private createProxyElement(): void {
+    const proxy = document.createElement('a');
+
+    if (this.download) {
+      proxy.setAttribute('download', this.download);
+    }
+
+    if (this.href) {
+      proxy.setAttribute('href', this.href);
+    }
+
+    if (this.hreflang) {
+      proxy.setAttribute('hreflang', this.hreflang);
+    }
+
+    if (this.ping) {
+      proxy.setAttribute('ping', this.ping);
+    }
+
+    if (this.referrerpolicy) {
+      proxy.setAttribute('referrerpolicy', this.referrerpolicy);
+    }
+
+    if (this.rel) {
+      proxy.setAttribute('rel', this.rel);
+    }
+
+    if (this.target) {
+      proxy.setAttribute('target', this.target);
+    }
+
+    if (this.type) {
+      proxy.setAttribute('type', this.type);
+    }
+
+    proxy.style.display = 'none';
+
+    this.append(proxy);
+
+    this.proxy = proxy;
+  }
 }
 
 /**
@@ -240,15 +244,5 @@ export class DelegatesARIALink {
  * @internal
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface DelegatesARIALink extends ARIAGlobalStatesAndProperties {}
-applyMixins(DelegatesARIALink, ARIAGlobalStatesAndProperties);
-
-/**
- * Mark internal because exporting class and interface of the same name
- * confuses API documenter.
- * TODO: https://github.com/microsoft/fast/issues/3317
- * @internal
- */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface AnchorButton extends StartEnd, DelegatesARIALink {}
-applyMixins(AnchorButton, StartEnd, DelegatesARIALink);
+export interface AnchorButton extends StartEnd {}
+applyMixins(AnchorButton, StartEnd);
