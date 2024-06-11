@@ -27,7 +27,9 @@ import { DrawerState } from '@fluentui/react-drawer';
 import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { InlineDrawerProps } from '@fluentui/react-drawer';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { OverlayDrawerProps } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -157,13 +159,13 @@ export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
-export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & InlineDrawerProps & OverlayDrawerProps & NavProps;
 
 // @public
 export type NavDrawerSlots = DrawerSlots;
 
 // @public
-export type NavDrawerState = DrawerState & NavContextValue;
+export type NavDrawerState = DrawerState & NavContextValue & Pick<InlineDrawerProps, 'separator' | 'position'>;
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;

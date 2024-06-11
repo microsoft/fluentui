@@ -3,6 +3,7 @@ import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerState } from './NavDrawer.types';
 import { navItemTokens } from '../sharedNavStyles.styles';
+import { drawerCSSVars } from '@fluentui/react-drawer';
 
 export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
   root: 'fui-NavDrawer',
@@ -13,18 +14,48 @@ export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '260px', // per spec
+    [drawerCSSVars.drawerSizeVar]: '260px', // per spec
     backgroundColor: navItemTokens.backgroundColor,
     alignItems: 'unset',
   },
+
+  separatorStart: {
+    borderRightColor: navItemTokens.separatorColor,
+  },
+
+  separatorEnd: {
+    borderLeftColor: navItemTokens.separatorColor,
+  },
 });
+
+function getSeparatorClass(state: NavDrawerState, classNames: ReturnType<typeof useStyles>) {
+  if (!state.separator) {
+    return undefined;
+  }
+
+  if (state.position === 'start') {
+    return classNames.separatorStart;
+  }
+
+  if (state.position === 'end') {
+    return classNames.separatorEnd;
+  }
+
+  return undefined;
+}
 
 /**
  * Apply styling to the NavDrawer slots based on the state
  */
 export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(navDrawerClassNames.root, styles.root, state.root.className);
+
+  state.root.className = mergeClasses(
+    navDrawerClassNames.root,
+    styles.root,
+    getSeparatorClass(state, styles),
+    state.root.className,
+  );
 
   return state;
 };

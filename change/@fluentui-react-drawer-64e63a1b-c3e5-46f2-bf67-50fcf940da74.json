@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose CSS vars",
+  "packageName": "@fluentui/react-drawer",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

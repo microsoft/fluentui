@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add compatibility with position/separator drawer props",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

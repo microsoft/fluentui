@@ -43,6 +43,11 @@ export type DrawerContextValue = {
 };
 
 // @public
+export const drawerCSSVars: {
+    drawerSizeVar: string;
+};
+
+// @public
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 
 // @public (undocumented)
