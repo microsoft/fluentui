@@ -12,6 +12,8 @@ import {
   makeStyles,
   tokens,
   useId,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -51,9 +53,19 @@ export const Default = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [type, setType] = React.useState<DrawerType>('overlay');
 
+  // Overlay Drawer will handle focus by default, but inline Drawers need manual focus restoration attributes, if applicable
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div className={styles.root}>
-      <Drawer type={type} separator open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <Drawer
+        {...restoreFocusSourceAttributes}
+        type={type}
+        separator
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -75,7 +87,7 @@ export const Default = () => {
       </Drawer>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(!isOpen)}>
           {type === 'inline' ? 'Toggle' : 'Open'}
         </Button>
 

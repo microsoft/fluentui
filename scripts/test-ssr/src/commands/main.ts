@@ -20,8 +20,8 @@ const EXCLUDED_STORIES = [
   // https://github.com/facebook/react/issues/13097
   '**/react-portal/**',
   // https://github.com/microsoft/fluentui/issues/27338
-  '**/react-table/stories/DataGrid/Virtualization.stories.tsx',
-  '**/react-table/stories/Table/Virtualization.stories.tsx',
+  '**/react-table/stories/src/DataGrid/Virtualization.stories.tsx',
+  '**/react-table/stories/src/Table/Virtualization.stories.tsx',
 ];
 
 type MainParams = {
