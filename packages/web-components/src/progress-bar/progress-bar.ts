@@ -96,6 +96,9 @@ export class ProgressBar extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    this.updateAriaValueMin();
+    this.updateAriaValueMax();
+    this.updateAriaValueNow();
     this.updatePercentComplete();
   }
 
