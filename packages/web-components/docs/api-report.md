@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="web" />
-
 import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -590,23 +588,12 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedCheckbox" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Checkbox" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public
-export class Checkbox extends FormAssociatedCheckbox {
-    constructor();
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    indeterminate: boolean;
-    // @internal
-    initialValue: string;
-    // @internal (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    // Warning: (ae-forgotten-export) The symbol "CheckboxLabelPosition" needs to be exported by the entry point index.d.ts
-    labelPosition?: CheckboxLabelPosition;
-    shape?: CheckboxShape;
+// @public (undocumented)
+export class Checkbox extends BaseCheckbox {
+    shape: CheckboxShape;
     size?: CheckboxSize;
 }
 
@@ -619,8 +606,6 @@ export type CheckboxOptions = {
     indeterminateIndicator?: StaticallyComposableHTML<Checkbox>;
 };
 
-// Warning: (ae-missing-release-tag) "CheckboxShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
 export const CheckboxShape: {
     readonly circular: "circular";
@@ -630,8 +615,6 @@ export const CheckboxShape: {
 // @public (undocumented)
 export type CheckboxShape = ValuesOf<typeof CheckboxShape>;
 
-// Warning: (ae-missing-release-tag) "CheckboxSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
 export const CheckboxSize: {
     readonly medium: "medium";
@@ -1852,45 +1835,49 @@ export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaSt
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
-    connectedCallback(): void;
-    defaultTitleAction?: Button;
+    clickHandler(event: Event): boolean;
     dialog: HTMLDialogElement;
-    disconnectedCallback(): void;
-    dismiss(): void;
-    handleClick(event: Event): boolean;
-    handleKeydown: (e: KeyboardEvent) => boolean | void;
-    hide(dismissed?: boolean): void;
-    modalType: DialogModalType;
-    modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void;
-    noTitleAction: boolean;
-    onOpenChangeEvent: (dismissed?: boolean) => void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
-    setComponent(): void;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
     show(): void;
-    titleAction: HTMLElement[];
+    type: DialogType;
 }
 
 // @public
-export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
+export class DialogBody extends FASTElement {
+    noTitleAction: boolean;
+}
 
-// Warning: (ae-missing-release-tag) "DialogModalType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
-export const DialogModalType: {
-    readonly modal: "modal";
-    readonly nonModal: "non-modal";
-    readonly alert: "alert";
-};
+export const DialogBodyDefinition: FASTElementDefinition<typeof DialogBody>;
 
-// @public (undocumented)
-export type DialogModalType = ValuesOf<typeof DialogModalType>;
+// @public
+export const DialogBodyStyles: ElementStyles;
+
+// @public
+export const DialogBodyTemplate: ElementViewTemplate;
+
+// @public
+export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
 
 // @public
 export const DialogStyles: ElementStyles;
 
 // @public
 export const DialogTemplate: ElementViewTemplate<Dialog>;
+
+// Warning: (ae-missing-release-tag) "DialogType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DialogType: {
+    readonly modal: "modal";
+    readonly nonModal: "non-modal";
+    readonly alert: "alert";
+};
+
+// @public (undocumented)
+export type DialogType = ValuesOf<typeof DialogType>;
 
 // Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
 //
@@ -1901,14 +1888,23 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 //
 // @public
 export class Divider extends FASTElement {
+    constructor();
     // (undocumented)
     alignContent?: DividerAlignContent;
     // (undocumented)
     appearance?: DividerAppearance;
     // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // (undocumented)
     inset?: boolean;
-    orientation: DividerOrientation;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
     role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
@@ -1985,6 +1981,53 @@ export const durationUltraFast = "var(--durationUltraFast)";
 
 // @public
 export const durationUltraSlow = "var(--durationUltraSlow)";
+
+// @public
+export class Field extends FASTElement {
+    // @internal
+    changeHandler(e: Event): void;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    input: SlottableInput;
+    // @internal
+    invalidHandler(e: Event): boolean | void;
+    labelPosition: FieldLabelPosition;
+    // @internal
+    messageSlot: Element[];
+    // @internal
+    messageSlotChanged(prev: Element[], next: Element[]): void;
+    // @internal
+    setStates(): void;
+    // @internal
+    slottedInputs: SlottableInput[];
+    // @internal
+    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
+export const FieldDefinition: FASTElementDefinition<typeof Field>;
+
+// @public
+export const FieldLabelPosition: {
+    readonly above: "above";
+    readonly after: "after";
+    readonly before: "before";
+};
+
+// @public (undocumented)
+export type FieldLabelPosition = ValuesOf<typeof FieldLabelPosition>;
+
+// @public
+export const FieldStyles: ElementStyles;
+
+// @public
+export const FieldTemplate: ElementViewTemplate;
 
 // Warning: (ae-missing-release-tag) "FluentDesignSystem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -2717,6 +2760,14 @@ export const SliderStyles: ElementStyles;
 export const SliderTemplate: ElementViewTemplate<Slider>;
 
 // @public
+export type SlottableInput = HTMLElement & ElementInternals & {
+    elementInternals?: ElementInternals;
+    required: boolean;
+    disabled: boolean;
+    readOnly: boolean;
+};
+
+// @public
 export const spacingHorizontalL = "var(--spacingHorizontalL)";
 
 // @public
@@ -2844,24 +2895,10 @@ const styles: ElementStyles;
 export { styles as ButtonStyles }
 export { styles as MenuButtonStyles }
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSwitch" needs to be exported by the entry point index.d.ts
 // Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export class Switch extends FormAssociatedSwitch {
-    constructor();
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @internal (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    labelPosition: SwitchLabelPosition | undefined;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+export class Switch extends BaseCheckbox {
 }
 
 // @public
@@ -3066,7 +3103,11 @@ export class TextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
     // @internal
-    changeHandler(e: InputEvent): void;
+    beforeinputHandler(e: InputEvent): boolean | void;
+    // @internal
+    changeHandler(e: InputEvent): boolean | void;
+    checkValidity(): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
@@ -3080,10 +3121,9 @@ export class TextInput extends FASTElement {
     defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
     dirname?: string;
     disabled?: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
+    focusinHandler(e: FocusEvent): boolean | void;
     get form(): HTMLFormElement | null;
     static readonly formAssociated = true;
     formAttribute?: string;
@@ -3095,7 +3135,7 @@ export class TextInput extends FASTElement {
     // @internal
     inputHandler(e: InputEvent): boolean | void;
     // @internal
-    keypressHandler(e: KeyboardEvent): boolean | void;
+    keydownHandler(e: KeyboardEvent): boolean | void;
     list: string;
     maxlength: number;
     minlength: number;
@@ -3103,17 +3143,19 @@ export class TextInput extends FASTElement {
     name: string;
     pattern: string;
     placeholder: string;
-    readonly?: boolean;
+    readOnly?: boolean;
     // @internal
-    readonlyChanged(): void;
+    readOnlyChanged(): void;
+    reportValidity(): boolean;
     required: boolean;
     // @internal
     requiredChanged(previous: boolean, next: boolean): void;
     select(): void;
+    setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
-    setValidity(flags?: ValidityStateFlags, message?: string, anchor?: HTMLElement): void;
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size: number;
     spellcheck: boolean;
     type: TextInputType;
@@ -3356,6 +3398,24 @@ export const typographyTitle2Styles: CSSDirective;
 //
 // @public (undocumented)
 export const typographyTitle3Styles: CSSDirective;
+
+// @public
+export const ValidationFlags: {
+    readonly badInput: "bad-input";
+    readonly customError: "custom-error";
+    readonly patternMismatch: "pattern-mismatch";
+    readonly rangeOverflow: "range-overflow";
+    readonly rangeUnderflow: "range-underflow";
+    readonly stepMismatch: "step-mismatch";
+    readonly tooLong: "too-long";
+    readonly tooShort: "too-short";
+    readonly typeMismatch: "type-mismatch";
+    readonly valueMissing: "value-missing";
+    readonly valid: "valid";
+};
+
+// @public (undocumented)
+export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
 
 // Warnings were encountered during analysis:
 //
