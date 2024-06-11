@@ -182,6 +182,7 @@
       "types": "./dist/dts/utils/index.d.ts",
       "default": "./dist/esm/utils/index.js"
     },
+    "./custom-elements.json": "./dist/custom-elements.json",
     "./package.json": "./package.json"
   },
   "sideEffects": [
@@ -227,11 +228,12 @@
     "verify-packaging": "node ./scripts/verify-packaging",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
+    "cem-analyze": "cem analyze",
     "compile": "node ./scripts/compile",
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && yarn rollup -c && yarn generate-api",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api && yarn cem-analyze",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
@@ -246,6 +248,7 @@
   "devDependencies": {
     "@microsoft/fast-element": "2.0.0-beta.26",
     "@tensile-perf/web-components": "~0.2.0",
+    "@custom-elements-manifest/analyzer": "^0.10.2",
     "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
     "chromedriver": "^125.0.0"
