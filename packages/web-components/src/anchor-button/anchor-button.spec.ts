@@ -1,6 +1,5 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
 import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 
 const proxyAttributes = {
@@ -26,93 +25,56 @@ const booleanAttributes = {
   iconOnly: true,
 };
 
-test.describe('Anchor Button - Regular Attributes', () => {
-  let page: Page;
-  let element: Locator;
+test.describe('Anchor Button', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL('components-button-anchor--anchor-button'));
 
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-    await page.goto(fixtureURL('components-button-anchor--anchor-button', attributes));
-    element = page.locator('fluent-anchor-button');
-  });
-
-  test.afterAll(async () => {
-    await page.close();
+    await page.waitForFunction(() => customElements.whenDefined('fluent-anchor-button'));
   });
 
   for (const [attribute, value] of Object.entries(attributes)) {
     const attributeSpinalCase = spinalCase(attribute);
 
-    test(`should set the regular attribute: \`${attributeSpinalCase}\` to \`${value}\` on the element`, async () => {
-      await element.evaluate(
-        (node: any, { attribute, value }) => {
-          node.setAttribute(attribute, value);
-        },
-        { attribute: attributeSpinalCase, value },
-      );
+    test(`should set the regular attribute: \`${attributeSpinalCase}\` to \`${value}\` on the element`, async ({
+      page,
+    }) => {
+      const element = page.locator('fluent-anchor-button');
+
+      await page.setContent(/* html */ `
+        <fluent-anchor-button ${attributeSpinalCase}="${value}"></fluent-anchor-button>
+      `);
 
       await expect(element).toHaveJSProperty(`${attribute}`, `${value}`);
     });
   }
-});
-
-test.describe('Anchor Button - Boolean Attributes', () => {
-  let page: Page;
-  let element: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-    await page.goto(fixtureURL('components-button-anchor--anchor-button', booleanAttributes));
-    element = page.locator('fluent-anchor-button');
-  });
-
-  test.afterAll(async () => {
-    await page.close();
-  });
 
   // Boolean attributes
   for (const [attribute, value] of Object.entries(booleanAttributes)) {
     const attributeSpinalCase = spinalCase(attribute);
 
-    test(`should set the boolean attribute: \`${attributeSpinalCase}\` to \`${value}\``, async () => {
-      await element.evaluate(
-        (node: any, { attribute, value }) => {
-          node[attribute] = value;
-        },
-        { attribute, value },
-      );
+    test(`should set the boolean attribute: \`${attributeSpinalCase}\` to \`${value}\``, async ({ page }) => {
+      const element = page.locator('fluent-anchor-button');
+
+      await page.setContent(/* html */ `
+        <fluent-anchor-button ${attributeSpinalCase}></fluent-anchor-button>
+      `);
 
       await expect(element).toHaveJSProperty(attribute, value);
     });
   }
 
-  test.describe('Anchor Button - Proxy Attributes', () => {
-    let page: Page;
-    let element: Locator;
-    let proxy: Locator;
+  for (const [attribute, value] of Object.entries(proxyAttributes)) {
+    test(`should set the regular attribute: \`${attribute}\` to \`${value}\` on the internal proxy`, async ({
+      page,
+    }) => {
+      const element = page.locator('fluent-anchor-button');
+      const proxy = element.locator('a');
 
-    test.beforeAll(async ({ browser }) => {
-      page = await browser.newPage();
-      await page.goto(fixtureURL('components-button-anchor--anchor-button', attributes));
-      element = page.locator('fluent-anchor-button');
-      proxy = element.locator('a');
+      await page.setContent(/* html */ `
+        <fluent-anchor-button ${attribute}="${value}"></fluent-anchor-button>
+      `);
+
+      await expect(proxy).toHaveAttribute(`${attribute}`, `${value}`);
     });
-
-    test.afterAll(async () => {
-      await page.close();
-    });
-
-    for (const [attribute, value] of Object.entries(proxyAttributes)) {
-      test(`should set the regular attribute: \`${attribute}\` to \`${value}\` on the internal proxy`, async () => {
-        await element.evaluate(
-          (node: any, { attribute, value }) => {
-            node.setAttribute(attribute, value);
-          },
-          { attribute, value },
-        );
-
-        await expect(proxy).toHaveAttribute(`${attribute}`, `${value}`);
-      });
-    }
-  });
+  }
 });
