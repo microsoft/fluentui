@@ -17,7 +17,41 @@ import { FormAssociatedSlider } from './slider.form-associated.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
 /**
- * The base class used for constructing a fluent-slider custom element
+ * A Slider component that allows users to select a value from a range of values.
+ * @class Slider
+ * @extends FormAssociatedSlider
+ *
+ * @attr size - The size of the slider.
+ * @attr readonly - When true, the control will be immutable by user interaction.
+ * @attr min - The minimum allowed value.
+ * @attr max - The maximum allowed value.
+ * @attr step - Value to increment or decrement via arrow keys, mouse click or drag.
+ * @attr oorientation - The orientation of the slider.
+ * @attr mode - The selection mode.
+ *
+ * @csspart positioning-region - The region for positioning the track and thumb.
+ * @csspart track-container - The container for the track.
+ * @csspart track-start - The start of the track.
+ * @csspart thumb-container - The container for the thumb.
+ * @csspart thumb-cursor - The cursor for the thumb.
+ *
+ * @cssprop --thumb-size - The size of the thumb element. Default is 18px.
+ * @cssprop --thumb-padding - The padding around the thumb element. Default is 3px.
+ * @cssprop --thumb-translate - A calculation that positions the thumb element correctly within the track, taking into account the thumb size and track width. Default is `calc(var(--thumb-size) * -0.5 + var(--track-width) / 2)`.
+ * @cssprop --track-overhang - The amount by which the track extends beyond its container, creating a visual overhang effect. Default is -2px.
+ * @cssprop --track-width - The width of the track element, defining its thickness. Default is 4px.
+ * @cssprop --fast-slider-height - The height of the slider component, calculated based on the thumb size. Default is `calc(var(--thumb-size) * 10)`.
+ * @cssprop --slider-direction - The direction of the slider, typically used for gradients or other directional styles. Default is 90deg.
+ *
+ * @slot - Default slot for the slider.
+ * @slot track - Slot for custom track content.
+ * @slot track-start - Slot for custom track start content.
+ * @slot thumb - Slot for custom thumb content.
+ *
+ * @summary The Slider component allows users to select a value from a range of values.
+ *
+ * @tag fluent-slider
+ *
  * @public
  */
 export class Slider extends FormAssociatedSlider implements SliderConfiguration {

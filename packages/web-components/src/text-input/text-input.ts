@@ -6,15 +6,41 @@ import type { TextInputControlSize } from './text-input.options.js';
 import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } from './text-input.options.js';
 
 /**
- * A Text Input Custom HTML Element.
- * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input | `<input>`} element.
+ * A TextInput component for user input with various attributes and validation.
+ * @class TextInput
+ * @extends FASTElement
  *
- * @slot start - Content which can be provided before the input
- * @slot end - Content which can be provided after the input
- * @slot - The default slot for button content
- * @csspart label - The internal `<label>` element
- * @csspart root - the root container for the internal control
- * @csspart control - The internal `<input>` control
+ * @attr appearance - Indicates the styled appearance of the element.
+ * @attr autocomplete - Indicates the element's autocomplete state.
+ * @attr autofocus - Indicates that the element should get focus after the page finishes loading.
+ * @attr controlSize - Sets the size of the control.
+ * @attr dirname - Sets the directionality of the element to be submitted with form data.
+ * @attr disabled - Sets the element's disabled state.
+ * @attr formAttribute - The id of a form to associate the element to.
+ * @attr initialValue - The initial value of the input.
+ * @attr list - Allows associating a `<datalist>` to the element by ID.
+ * @attr maxlength - The maximum number of characters a user can enter.
+ * @attr minlength - The minimum number of characters a user can enter.
+ * @attr multiple - Indicates that a comma-separated list of email addresses can be entered.
+ * @attr name - The name of the element.
+ * @attr pattern - A regular expression that the value must match to pass validation.
+ * @attr placeholder - Sets the placeholder value of the element.
+ * @attr readonly - When true, the control will be immutable by user interaction.
+ * @attr required - The element's required attribute.
+ * @attr size - Sets the width of the element to a specified number of characters.
+ * @attr spellcheck - Controls whether or not to enable spell checking for the input field.
+ * @attr type - Allows setting a type or mode of text.
+ * @attr value - The current value of the input.
+ *
+ * @csspart label - The label of the text field.
+ * @csspart root - The root element of the text field.
+ *
+ * @slot - The default slot for the text field label.
+ *
+ * @summary The TextInput component allows for user input with various attributes and validation.
+ *
+ * @tag fluent-text-input
+ *
  * @public
  */
 export class TextInput extends FASTElement {

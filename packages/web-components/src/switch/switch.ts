@@ -8,6 +8,27 @@ export type SwitchOptions = {
   switch?: StaticallyComposableHTML<Switch>;
 };
 
+/**
+ * A Switch component that provides a toggleable input control.
+ * @class Switch
+ * @extends FormAssociatedSwitch
+ *
+ * @attr label-position - The label position of the switch.
+ * @attr readonly - When true, the control will be immutable by user interaction.
+ *
+ * @csspart label - The label of the switch.
+ * @csspart switch - The switch element.
+ * @csspart checked-indicator - The checked indicator of the switch.
+ *
+ * @slot - The default slot for the label content.
+ * @slot switch - Slot for custom switch content.
+ *
+ * @summary The Switch component provides a toggleable input control.
+ *
+ * @tag fluent-switch
+ *
+ * @public
+ */
 export class Switch extends FormAssociatedSwitch {
   /**
    * The label position of the switch
@@ -28,11 +49,6 @@ export class Switch extends FormAssociatedSwitch {
    */
   @attr({ attribute: 'readonly', mode: 'boolean' })
   public readOnly!: boolean; // Map to proxy element
-  protected readOnlyChanged(): void {
-    if (this.proxy instanceof HTMLInputElement) {
-      this.proxy.readOnly = this.readOnly;
-    }
-  }
 
   /**
    * The element's value to be included in form submission when checked.
@@ -48,6 +64,9 @@ export class Switch extends FormAssociatedSwitch {
   @observable
   public defaultSlottedNodes!: Node[];
 
+  /**
+   * Creates a new instance of the Switch class.
+   */
   public constructor() {
     super();
 
@@ -55,7 +74,10 @@ export class Switch extends FormAssociatedSwitch {
   }
 
   /**
+   * Handles the keypress event for the switch control.
+   *
    * @internal
+   * @param e - The keyboard event.
    */
   public keypressHandler = (e: KeyboardEvent) => {
     if (this.readOnly) {
@@ -71,7 +93,10 @@ export class Switch extends FormAssociatedSwitch {
   };
 
   /**
+   * Handles the click event for the switch control.
+   *
    * @internal
+   * @param e - The mouse event.
    */
   public clickHandler = (e: MouseEvent) => {
     if (!this.disabled && !this.readOnly) {

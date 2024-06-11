@@ -6,13 +6,41 @@ import type { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize } from
 import { ButtonType } from './button.options.js';
 
 /**
- * A Button Custom HTML Element.
+ * A Button component that functions as a customizable button element.
+ * @extends FASTElement
+ *
+ * @remarks
  * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button | `<button>`} element.
  *
- * @slot start - Content which can be provided before the button content
- * @slot end - Content which can be provided after the button content
- * @slot - The default slot for button content
- * @csspart content - The button content container
+ * @attr appearance - Indicates the styled appearance of the button.
+ * @attr autofocus - Indicates the button should be focused when the page is loaded.
+ * @attr disabled - Sets the element's disabled state.
+ * @attr disabled-focusable - Indicates that the button is focusable while disabled.
+ * @attr form - The id of a form to associate the element to.
+ * @attr formaction - The URL that processes the form submission.
+ * @attr formenctype - The encoding type for the form submission.
+ * @attr formmethod - The HTTP method that the browser uses to submit the form.
+ * @attr formnovalidate - Indicates that the form will not be validated when submitted.
+ * @attr formtarget - The target frame or window to open the form submission in.
+ * @attr icon-only - Indicates that the button should only display as an icon with no text content.
+ * @attr name - The name of the element. This element's value will be surfaced during form submission under the provided name.
+ * @attr shape - The shape of the button.
+ * @attr size - The size of the button.
+ * @attr type - The button type.
+ * @attr value - The value attribute.
+ *
+ * @csspart control - The root element of the button.
+ * @csspart content - The content of the button.
+ *
+ * @cssproperty --icon-spacing - The spacing between the icon and the button text.
+ *
+ * @slot - Default slot for the button's content.
+ * @slot start - Slot for content at the start of the button.
+ * @slot end - Slot for content at the end of the button.
+ *
+ * @summary The Button component functions as a customizable button element.
+ *
+ * @tag fluent-button
  *
  * @public
  */

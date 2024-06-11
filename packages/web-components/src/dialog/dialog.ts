@@ -5,11 +5,38 @@ import { Button as FluentButton } from '../button/button.js';
 import { DialogModalType } from './dialog.options.js';
 
 /**
- * Dialog component that extends the FASTElement class.
+ * A Dialog component that provides a customizable dialog element.
+ * @extends FASTElement
+ *
+ * @remarks
+ * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog | `<dialog>`} element.
+ *
+ * @attr aria-describedby - The ID of the element that describes the dialog.
+ * @attr aria-labelledby - The ID of the element that labels the dialog.
+ * @attr modal-type - The type of the dialog modal.
+ * @attr open - Indicates whether the dialog is open.
+ * @attr no-title-action - Indicates whether the dialog has a title action.
+ *
+ * @csspart dialog - The dialog element.
+ * @csspart root - The root element of the dialog.
+ * @csspart title - The title section of the dialog.
+ * @csspart content - The content section of the dialog.
+ * @csspart actions - The actions section of the dialog.
+ *
+ * @cssproperty --dialog-backdrop - The backdrop color of the dialog.
+ *
+ * @slot title - Slot for the title of the dialog.
+ * @slot title-action - Slot for the title action buttons.
+ * @slot - Default slot for the content of the dialog.
+ * @slot action - Slot for the action buttons.
+ *
+ * @summary The Dialog component functions as a customizable dialog element.
+ *
+ * @tag fluent-dialog
  *
  * @public
- * @extends FASTElement
  */
+
 export class Dialog extends FASTElement {
   /**
    * @private

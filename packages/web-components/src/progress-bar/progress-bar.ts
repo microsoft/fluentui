@@ -3,16 +3,27 @@ import { BaseProgress } from './base-progress.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
- * An Progress HTML Element.
- * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#progressbar | ARIA progressbar }.
+ * A ProgressBar component that provides a customizable progress bar element.
+ * @class ProgressBar
+ * @extends BaseProgress
  *
- * @slot indeterminate - The slot for a custom indeterminate indicator
- * @csspart progress - Represents the progress element
- * @csspart determinate - The determinate indicator
- * @csspart indeterminate - The indeterminate indicator
+ * @attr thickness - The thickness of the progress bar.
+ * @attr shape - The shape of the progress bar.
+ * @attr validation-state - The validation state of the progress bar.
+ *
+ * @csspart progress - Represents the progress element.
+ * @csspart determinate - The determinate indicator.
+ * @csspart indeterminate - The indeterminate indicator.
+ *
+ * @slot indeterminate - The slot for a custom indeterminate indicator.
+ *
+ * @summary The ProgressBar component functions as a customizable progress bar element.
+ *
+ * @tag fluent-progress-bar
  *
  * @public
  */
+
 export class ProgressBar extends BaseProgress {
   /**
    * The thickness of the progress bar

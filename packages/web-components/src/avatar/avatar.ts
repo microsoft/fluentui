@@ -10,7 +10,28 @@ import {
 } from './avatar.options.js';
 
 /**
- * The base class used for constructing a fluent-avatar custom element
+ * An Avatar component that represents a user or entity.
+ * @extends FASTElement
+ *
+ * @attr name - The name of the person or entity represented by this Avatar.
+ * @attr initials - Provide custom initials rather than one generated via the name.
+ * @attr size - Size of the avatar in pixels.
+ * @attr shape - The avatar can have a circular or square shape.
+ * @attr active - Optional activity indicator.
+ * @attr appearance - The appearance when `active="active"`.
+ * @attr color - The color when displaying either an icon or initials.
+ * @attr color-id - Specify a string to determine which color to use when color="colorful".
+ *
+ * @csspart icon - The default icon displayed when there is no name or initials.
+ * @csspart badge - The badge slot for additional status indicators.
+ *
+ * @slot - Default slot for the avatar's content.
+ * @slot badge - Slot for a badge or status indicator.
+ *
+ * @summary The Avatar component represents a user or entity.
+ *
+ * @tag fluent-avatar
+ *
  * @public
  */
 export class Avatar extends FASTElement {

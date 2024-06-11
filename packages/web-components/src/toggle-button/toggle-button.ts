@@ -2,7 +2,18 @@ import { attr } from '@microsoft/fast-element';
 import { Button } from '../button/button.js';
 
 /**
- * The base class used for constructing a `<fluent-toggle-button>` custom element.
+ * A ToggleButton component that extends Button and adds toggling functionality.
+ * @class ToggleButton
+ * @extends Button
+ *
+ * @attr pressed - Indicates the pressed state of the control.
+ * @attr mixed - Indicates the mixed state of the control. This property takes precedence over `pressed`.
+ *
+ * @csspart content - The content of the button.
+ *
+ * @summary The ToggleButton component allows for a button that can be toggled between pressed and unpressed states, with support for a mixed state.
+ *
+ * @tag fluent-toggle-button
  *
  * @public
  */

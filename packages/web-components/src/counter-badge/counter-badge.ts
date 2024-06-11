@@ -10,9 +10,30 @@ import {
 } from './counter-badge.options.js';
 
 /**
- * The base class used for constructing a fluent-badge custom element
+ * A CounterBadge component that provides a customizable badge element for displaying counts.
+ * @extends FASTElement
+ *
+ * @attr ppearance - The appearance the badge should have.
+ * @attr color - The color the badge should have.
+ * @attr shape - The shape the badge should have.
+ * @attr size - The size the badge should have.
+ * @attr count - The count the badge should display.
+ * @attr overflow-count - Max number to be displayed.
+ * @attr show-zero - If the badge should be shown when count is 0.
+ * @attr dot - If a dot should be displayed without the count.
+ *
+ * @csspart control - The control element of the counter badge.
+ * @csspart content - The content of the counter badge.
+ *
+ * @slot - Default slot for the counter badge content.
+ *
+ * @summary The CounterBadge component functions as a customizable badge element for displaying counts.
+ *
+ * @tag fluent-counter-badge
+ *
  * @public
  */
+
 export class CounterBadge extends FASTElement {
   /**
    * The appearance the badge should have.

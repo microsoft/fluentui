@@ -16,14 +16,36 @@ import type {
 export type AnchorOptions = StartEndOptions<AnchorButton>;
 
 /**
- * An Anchor Custom HTML Element.
- * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element }.
+ * An AnchorButton component that functions as a hyperlink with button appearance and behavior.
+ * @extends FASTElement
  *
- * @slot start - Content which can be provided before the anchor content
- * @slot end - Content which can be provided after the anchor content
- * @slot - The default slot for anchor content
- * @csspart control - The anchor element
- * @csspart content - The element wrapping anchor content
+ * @attr download - Prompts the user to save the linked URL.
+ * @attr href - The URL the hyperlink references.
+ * @attr hreflang - Hints at the language of the referenced resource.
+ * @attr ping - A space-separated list of URLs to ping.
+ * @attr referrerpolicy - Specifies which referrer information to send with the link.
+ * @attr rel - Specifies the relationship of the target object to the link object.
+ * @attr target - Specifies where to display the linked URL.
+ * @attr type - Specifies the media type of the linked URL.
+ * @attr appearance - The appearance the anchor button should have.
+ * @attr shape - The shape the anchor button should have.
+ * @attr size - The size the anchor button should have.
+ * @attr icon-only - The anchor button has an icon only, no text content.
+ * @attr disabled - The anchor button is disabled.
+ * @attr disabled-focusable - The anchor button is disabled but focusable.
+ *
+ * @csspart control - The root anchor element.
+ * @csspart content - The content of the button.
+ *
+ * @cssproperty --icon-spacing - The spacing between the icon and the text.
+ *
+ * @slot - Default slot for the anchor button's content.
+ *
+ * @fires click - Prevents disabledFocusable click events.
+ *
+ * @summary The AnchorButton component functions as a hyperlink with button appearance and behavior.
+ *
+ * @tag fluent-anchor-button
  *
  * @public
  */

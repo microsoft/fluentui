@@ -17,8 +17,24 @@ import { TabsAppearance, TabsOrientation, TabsSize } from './tabs.options.js';
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
+ * A BaseTabs component that provides the base functionality for tabs.
+ * @class BaseTabs
+ * @extends FASTElement
  *
- * @class TabList component
+ * @attr orientation - The orientation of the tabs.
+ * @attr activeid - The id of the active tab.
+ *
+ * @csspart tablist - The tab list container.
+ * @cssspart tabpanel - The tab panel container.
+ *
+ * @cssproperty --tabIndicatorOffset - The offset of the tab indicator.
+ * @cssproperty --tabIndicatorScale - The scale of the tab indicator.
+ *
+ * @slot tab - Slot for the tab elements.
+ * @slot tabpanel - Slot for the tabpanel elements.
+ *
+ * @summary The BaseTabs component provides the base functionality for tabs.
+ *
  * @public
  */
 export class BaseTabs extends FASTElement {
@@ -333,6 +349,24 @@ export class BaseTabs extends FASTElement {
   }
 }
 
+/**
+ * A Tabs component that extends the BaseTabs functionality to include animations and additional styles.
+ * @class Tabs
+ * @extends BaseTabs
+ *
+ * @attr appearance - The appearance of the tabs.
+ * @attr disabled - Disables the tabs and child elements.
+ * @attr size - The size of the tabs.
+ *
+ * @slot tab - Slot for the tab elements.
+ * @slot tabpanel - Slot for the tabpanel elements.
+ *
+ * @summary The Tabs component extends the BaseTabs functionality to include animations and additional styles.
+ *
+ * @tag fluent-tabs
+ *
+ * @public
+ */
 export class Tabs extends BaseTabs {
   /**
    * activeTabData

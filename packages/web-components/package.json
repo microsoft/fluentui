@@ -182,7 +182,8 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && yarn rollup -c && yarn generate-api",
+    "generate-cem": "cem analyze --config custom-elements-manifest.config.js",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api && yarn generate-cem",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
@@ -195,6 +196,7 @@
     "test:dev": "playwright test"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.9.8",
     "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
     "@tensile-perf/web-components": "~0.1.13"
@@ -213,5 +215,6 @@
       "patch"
     ],
     "tag": "beta"
-  }
+  },
+  "customElements": "dist/custom-elements.json"
 }

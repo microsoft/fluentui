@@ -13,9 +13,32 @@ import { getDirection } from '../utils/index.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
- * The base class used for constructing a fluent-radio-group custom element
+ * A RadioGroup component that provides a customizable radio group element.
+ * @class RadioGroup
+ * @extends FASTElement
+ *
+ * @attr stacked - Sets radio layout styles.
+ * @attr readonly - When true, the child radios will be immutable by user interaction.
+ * @attr disabled - Disables the radio group and child radios.
+ * @attr name - The name of the radio group.
+ * @attr value - The value of the checked radio.
+ * @attr orientation - The orientation of the group.
+ *
+ * @csspart positioning-region - The region used to position the radio buttons.
+ *
+ * @cssproperty --control-border-color - The border color of the control.
+ * @cssproperty ----checked-indicator-background-colo - The background color of the checked indicator.
+ *
+ * @slot label - Slot for the group label.
+ * @slot - Default slot for the radio buttons.
+ *
+ * @summary The RadioGroup component functions as a customizable radio group element.
+ *
+ * @tag fluent-radio-group
+ *
  * @public
  */
+
 export class RadioGroup extends FASTElement {
   /**
    * sets radio layout styles

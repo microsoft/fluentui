@@ -1899,10 +1899,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2448,10 +2445,7 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Radio Group orientation
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2771,21 +2765,19 @@ export { styles as MenuButtonStyles }
 
 // Warning: (ae-forgotten-export) The symbol "FormAssociatedSwitch" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public
 export class Switch extends FormAssociatedSwitch {
     constructor();
-    // @internal (undocumented)
+    // @internal
     clickHandler: (e: MouseEvent) => void;
     // @internal (undocumented)
     defaultSlottedNodes: Node[];
     // @internal
     initialValue: string;
-    // @internal (undocumented)
+    // @internal
     keypressHandler: (e: KeyboardEvent) => void;
     labelPosition: SwitchLabelPosition | undefined;
     readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
 }
 
 // @public
@@ -2829,7 +2821,7 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 // @public
 export type TabOptions = StartEndOptions<Tab>;
 
-// @public (undocumented)
+// @public
 export class TabPanel extends FASTElement {
 }
 
@@ -2844,7 +2836,7 @@ export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 
 // Warning: (ae-forgotten-export) The symbol "BaseTabs" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public
 export class Tabs extends BaseTabs {
     // (undocumented)
     activeidChanged(oldValue: string, newValue: string): void;
@@ -2948,7 +2940,6 @@ export type TextFont = ValuesOf<typeof TextFont>;
 //
 // @public
 export class TextInput extends FASTElement {
-    constructor();
     appearance?: TextInputAppearance;
     autocomplete?: string;
     autofocus: boolean;

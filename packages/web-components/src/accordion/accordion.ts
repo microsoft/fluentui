@@ -5,12 +5,27 @@ import { AccordionItem } from '../accordion-item/accordion-item.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
- * An Accordion Custom HTML Element
+ * A Accordion component for organizing content within collapsible sections.
+ * @extends FASTElement
+ *
+ * @remarks
  * Implements {@link https://www.w3.org/TR/wai-aria-practices-1.1/#accordion | ARIA Accordion}.
  *
- * @fires change - Fires a custom 'change' event when the active item changes
- * @csspart item - The slot for the accordion items
- * @public
+ * @attr expand-mode - Controls the expand mode of the Accordion, either allowing single or multiple item expansion.
+ *
+ * @csspart header - The header section of each accordion item.
+ * @csspart content - The content section of each accordion item.
+ *
+ * @slot - Default slot for accordion items.
+ *
+ * @cssprop --accordion-header-background - Background color of the accordion header.
+ * @cssprop --accordion-content-background - Background color of the accordion content.
+ *
+ * @fires change - Fired when the active accordion item changes.
+ *
+ * @summary The Accordion component allows users to organize content within expandable sections.
+ *
+ * @tag fluent-accordion
  */
 export class Accordion extends FASTElement {
   /**

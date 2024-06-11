@@ -114,7 +114,7 @@ export const styles = css`
     box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
   }
 
-  /* --- Disabled attr styles --- */
+  /* Disabled attr styles */
 
   :host([disabled]) .button {
     color: ${colorNeutralForegroundDisabled};
@@ -123,7 +123,7 @@ export const styles = css`
     filter: invert(89%) sepia(0%) saturate(569%) hue-rotate(155deg) brightness(88%) contrast(87%);
   }
 
-  /* --- Expanded attr styles --- */
+  /* Expanded attr styles- */
 
   :host([expanded]) .region {
     display: block;
@@ -146,7 +146,7 @@ export const styles = css`
     display: flex;
   }
 
-  /* --- Appearance attr styles --- */
+  /* Appearance attr styles */
 
   .heading {
     font-size: ${fontSizeBase300};
@@ -168,7 +168,7 @@ export const styles = css`
     line-height: ${lineHeightBase500};
   }
 
-  /* --- expand-icon-position attr styles --- */
+  /* expand-icon-position attr styles */
 
   :host([expand-icon-position='end']) :slotted(span[slot='start']),
   :host([expand-icon-position='end']) ::slotted(span[slot='end']) {
@@ -195,7 +195,7 @@ export const styles = css`
     grid-row: 1;
   }
 
-  /* --- Block attr styles --- */
+  /* Block attr styles */
 
   :host([block]) {
     max-width: 100%;

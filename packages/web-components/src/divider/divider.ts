@@ -2,11 +2,27 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 
 /**
- * @class Divider component
+ * A Divider component that provides a customizable divider element.
+ * @class Divider
+ * @extends FASTElement
  *
- * @remarks
- * A divider groups sections of content to create visual rhythm and hierarchy. Use dividers along with spacing and headers to organize content in your layout.
+ * @attr role - The role of the element.
+ * @attr orientation - The orientation of the divider.
+ * @attr align-content - Determines the alignment of the content within the divider.
+ * @attr appearance - A divider can have one of the preset appearances.
+ * @attr inset - Adds padding to the beginning and end of the divider.
+ *
+ * @csspart root - The root element of the divider.
+ *
+ * @slot - Default slot for the content of the divider.
+ *
+ * @summary The Divider component functions as a customizable divider element.
+ *
+ * @tag fluent-divider
+ *
+ * @public
  */
+
 export class Divider extends FASTElement {
   /**
    * The role of the element.

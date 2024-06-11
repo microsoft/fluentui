@@ -9,7 +9,28 @@ import { applyMixins } from '../utils/apply-mixins.js';
 export type TabOptions = StartEndOptions<Tab>;
 
 /**
- * Tab extends the FASTTab and is a child of the TabList
+ * A Tab component that provides a selectable tab in a tab list.
+ * @class Tab
+ * @extends FASTElement
+ *
+ * @remarks
+ * Designed to be used with {@link @fluentui/web-components#tabTemplate}.
+ *
+ * @attr disabled - When true, the control will be immutable by user interaction.
+ *
+ * @csspart start - The start slot of the tab.
+ * @csspart tab-content - The content of the tab.
+ * @csspart end - The end slot of the tab.
+ *
+ * @cssproperty --textContent - The content of the tab.
+ *
+ * @slot - The default slot for the tab content.
+ *
+ * @summary The Tab component provides a selectable tab in a tab list.
+ *
+ * @tag fluent-tab
+ *
+ * @public
  */
 export class Tab extends FASTElement {
   /**

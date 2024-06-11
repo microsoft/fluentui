@@ -2,7 +2,27 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 import type { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
- * The base class used for constructing a fluent-text custom element
+ * A Text component for displaying text with various styles and attributes.
+ * @class Text
+ * @extends FASTElement
+ *
+ * @attr nowrap - When true, the text will not wrap.
+ * @attr truncate - When true, the text truncates.
+ * @attr italic - When true, the text style is italic.
+ * @attr underline - When true, the text style is underline.
+ * @attr strikethrough - When true, the text style is strikethrough.
+ * @attr block - When true, the text takes up the width of its container.
+ * @attr size - The size of the text.
+ * @attr font - The font of the text.
+ * @attr weight - The weight of the text.
+ * @attr align - The alignment of the text.
+ *
+ * @slot - The default slot for the text content.
+ *
+ * @summary The Text component displays text with various styles and attributes.
+ *
+ * @tag fluent-text
+ *
  * @public
  */
 export class Text extends FASTElement {
