@@ -1,4 +1,4 @@
-A React component created with `createMotionComponent` has the following lifecycle callbacks
+A React component created with `createMotionComponent` has the following lifecycle callbacks:
 
 - `onMotionStart` \- This is called when any motion has started
 - `onMotionFinish` \- This is called when all motions have finished

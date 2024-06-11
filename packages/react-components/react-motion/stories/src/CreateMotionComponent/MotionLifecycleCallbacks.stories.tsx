@@ -11,6 +11,7 @@ import {
   useId,
   Button,
 } from '@fluentui/react-components';
+import { ReplayFilled } from '@fluentui/react-icons';
 import * as React from 'react';
 
 import description from './MotionLifecycleCallbacks.stories.md';
@@ -25,7 +26,7 @@ const useClasses = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'end',
+    justifyContent: 'center',
     gridArea: 'card',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
@@ -142,11 +143,11 @@ export const MotionLifecycleCallbacks = () => {
       </div>
 
       <div className={classes.controls}>
-        <Field className={classes.field}>
-          <Button disabled={playing} onClick={() => setCount(s => s + 1)}>
+        <div>
+          <Button appearance="subtle" disabled={playing} icon={<ReplayFilled />} onClick={() => setCount(s => s + 1)}>
             Restart
           </Button>
-        </Field>
+        </div>
         <Field
           className={mergeClasses(classes.field, classes.sliderField)}
           label={{

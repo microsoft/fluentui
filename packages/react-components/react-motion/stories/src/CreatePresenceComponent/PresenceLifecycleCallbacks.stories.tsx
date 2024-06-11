@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react-components';
 import * as React from 'react';
 
-import description from './PresenceLifecycleCallbacks.md';
+import description from './PresenceLifecycleCallbacks.stories.md';
 
 const useClasses = makeStyles({
   container: {
