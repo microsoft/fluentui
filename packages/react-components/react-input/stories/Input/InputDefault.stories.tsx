@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ArgTypes } from '@storybook/api';
+import type { ArgTypes } from '@storybook/react';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
 

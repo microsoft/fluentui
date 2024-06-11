@@ -190,19 +190,33 @@ common/_common.scss @microsoft/cxe-red @phkuo
 ## vNext packages
 packages/react-components/keyboard-keys @microsoft/teams-prg
 packages/react-components/react-accordion @microsoft/cxe-red
+packages/react-components/react-accordion/library @microsoft/cxe-red
+packages/react-components/react-accordion/stories @microsoft/cxe-red
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto @sopranopillow
+packages/react-components/react-avatar/library @microsoft/cxe-red @behowell @khmakoto @sopranopillow
+packages/react-components/react-avatar/stories @microsoft/cxe-red @behowell @khmakoto @sopranopillow
 packages/react-components/react-badge @microsoft/cxe-red @behowell
+packages/react-components/react-badge/library @microsoft/cxe-red @behowell
+packages/react-components/react-badge/stories @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
+packages/react-components/react-button/library @microsoft/cxe-red @khmakoto
+packages/react-components/react-button/stories @microsoft/cxe-red @khmakoto
 packages/react-components/react-card @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-card/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-card/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
+packages/react-components/react-checkbox/library @microsoft/cxe-red @khmakoto
+packages/react-components/react-checkbox/stories @microsoft/cxe-red @khmakoto
 packages/react-components/react-combobox @microsoft/cxe-red @microsoft/teams-prg @smhigley
+packages/react-components/react-combobox/library @microsoft/cxe-red @microsoft/teams-prg @smhigley
+packages/react-components/react-combobox/stories @microsoft/cxe-red @microsoft/teams-prg @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog @microsoft/teams-prg
 packages/react-components/react-dialog/library @microsoft/teams-prg
 packages/react-components/react-dialog/stories @microsoft/teams-prg
 packages/react-components/react-divider @microsoft/cxe-red
+packages/react-components/react-divider/library @microsoft/cxe-red
+packages/react-components/react-divider/stories @microsoft/cxe-red
 packages/react-components/react-field @microsoft/cxe-red @behowell
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image @microsoft/cxe-prg
@@ -211,6 +225,8 @@ packages/react-components/react-image/stories @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red @spmonahan
 packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
 packages/react-components/react-link @microsoft/cxe-red @khmakoto
+packages/react-components/react-link/library @microsoft/cxe-red @khmakoto
+packages/react-components/react-link/stories @microsoft/cxe-red @khmakoto
 packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-menu/library @microsoft/teams-prg
 packages/react-components/react-menu/stories @microsoft/teams-prg
@@ -224,6 +240,8 @@ packages/react-components/react-provider @microsoft/teams-prg
 packages/react-components/react-provider/library @microsoft/teams-prg
 packages/react-components/react-provider/stories @microsoft/teams-prg
 packages/react-components/react-radio @microsoft/cxe-red @behowell @spmonahan
+packages/react-components/react-radio/library @microsoft/cxe-red @behowell @spmonahan
+packages/react-components/react-radio/stories @microsoft/cxe-red @behowell @spmonahan
 packages/react-components/react-select @microsoft/cxe-red @smhigley
 packages/react-components/react-slider @microsoft/cxe-red @micahgodbolt
 packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
