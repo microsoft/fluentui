@@ -1,4 +1,15 @@
-import type { ValuesOf } from '../utils/index.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import type { ValuesOf } from '../utils/typings.js';
+import type { Checkbox } from './checkbox.js';
+
+/**
+ * Checkbox configuration options
+ * @public
+ */
+export type CheckboxOptions = {
+  checkedIndicator?: StaticallyComposableHTML<Checkbox>;
+  indeterminateIndicator?: StaticallyComposableHTML<Checkbox>;
+};
 
 /**
  * Checkbox shape
@@ -9,6 +20,7 @@ export const CheckboxShape = {
   square: 'square',
 } as const;
 
+/** @public */
 export type CheckboxShape = ValuesOf<typeof CheckboxShape>;
 
 /**
@@ -20,15 +32,5 @@ export const CheckboxSize = {
   large: 'large',
 } as const;
 
+/** @public */
 export type CheckboxSize = ValuesOf<typeof CheckboxSize>;
-
-/**
- * Checkbox label position
- * @public
- */
-export const CheckboxLabelPosition = {
-  before: 'before',
-  after: 'after',
-} as const;
-
-export type CheckboxLabelPosition = ValuesOf<typeof CheckboxLabelPosition>;

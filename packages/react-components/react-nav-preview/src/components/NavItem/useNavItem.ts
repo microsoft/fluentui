@@ -21,7 +21,7 @@ export const useNavItem_unstable = (
 ): NavItemState => {
   const { onClick, value, icon, as, href } = props;
 
-  const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
+  const { selectedValue, onRegister, onUnregister, onSelect, size = 'medium' } = useNavContext_unstable();
 
   const rootElementType = as || (href ? 'a' : 'button');
 
@@ -69,5 +69,6 @@ export const useNavItem_unstable = (
     }),
     selected,
     value,
+    size,
   };
 };

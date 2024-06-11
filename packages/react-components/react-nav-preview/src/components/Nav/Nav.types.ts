@@ -7,6 +7,8 @@ export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
+export type NavSize = 'small' | 'medium';
+
 /**
  * Nav Props
  */
@@ -62,6 +64,13 @@ export type NavProps = ComponentProps<NavSlots> & {
    * Callback used by NavCategoryItem to request a change on it's own opened state
    */
   onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
+
+  /**
+   * The size and density of the Nav and it's children
+   *
+   * @default 'medium'
+   */
+  size?: NavSize;
 };
 
 export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {

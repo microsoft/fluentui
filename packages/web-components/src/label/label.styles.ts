@@ -20,31 +20,38 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-flex')}
 
   :host {
+    color: ${colorNeutralForeground1};
+    cursor: pointer;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
-    color: ${colorNeutralForeground1};
+    line-height: ${lineHeightBase300};
+    user-select: none;
   }
+
   .asterisk {
     color: ${colorPaletteRedForeground1};
-    margin-left: ${spacingHorizontalXS};
+    margin-inline-start: ${spacingHorizontalXS};
   }
+
   :host([size='small']) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
+
   :host([size='large']) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
-    font-weight: ${fontWeightSemibold};
   }
+
+  :host([size='large']),
   :host([weight='semibold']) {
     font-weight: ${fontWeightSemibold};
   }
+
   :host([disabled]),
   :host([disabled]) .asterisk {
     color: ${colorNeutralForegroundDisabled};

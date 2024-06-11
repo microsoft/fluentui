@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: onVisibilityChange method to TreeItemLayout action slot",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
