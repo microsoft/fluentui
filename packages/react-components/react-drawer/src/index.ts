@@ -1,6 +1,8 @@
 export { DrawerProvider, useDrawerContextValue, useDrawerContext_unstable } from './contexts';
 export type { DrawerContextValue } from './contexts';
 
+export { drawerCSSVars } from './shared/useDrawerBaseStyles.styles';
+
 export { Drawer, renderDrawer_unstable, useDrawerStyles_unstable, useDrawer_unstable } from './Drawer';
 export type { DrawerProps, DrawerSlots, DrawerState } from './Drawer';
 

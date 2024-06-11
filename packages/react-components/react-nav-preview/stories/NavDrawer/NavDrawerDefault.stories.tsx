@@ -15,7 +15,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, makeStyles, tokens, useId, mergeClasses } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -47,26 +47,56 @@ import {
   Settings20Regular,
   bundleIcon,
 } from '@fluentui/react-icons';
+import { useMotion, useMotionClassNames } from '@fluentui/react-motion-preview';
 
-const useStyles = makeStyles({
+const drawerWidth = '260px';
+const useNavDrawerStyles = makeStyles({
   root: {
     overflow: 'hidden',
     display: 'flex',
     height: '600px',
+    position: 'relative',
   },
+
   content: {
     flex: '1',
     padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
   },
+
   field: {
     display: 'flex',
     marginTop: '4px',
     marginLeft: '8px',
     flexDirection: 'column',
     gridRowGap: tokens.spacingVerticalS,
+  },
+
+  nav: {
+    width: drawerWidth,
+  },
+});
+
+const useContentMotionStyles = makeStyles({
+  default: {
+    position: 'absolute',
+    inset: 0,
+    zIndex: 1,
+    transitionProperty: 'transform',
+    transitionDuration: tokens.durationGentle,
+    willChange: 'transform',
+  },
+
+  enter: {
+    transitionTimingFunction: tokens.curveDecelerateMid,
+    transform: `translate3D(${drawerWidth}, 0, 0)`,
+  },
+
+  exit: {
+    transitionTimingFunction: tokens.curveAccelerateMin,
+  },
+
+  idle: {
+    width: `calc(100% - ${drawerWidth})`,
   },
 });
 
@@ -88,21 +118,31 @@ const Settings = bundleIcon(Settings20Filled, Settings20Regular);
 type DrawerType = Required<DrawerProps>['type'];
 
 export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
-  const styles = useStyles();
+  const styles = useNavDrawerStyles();
 
   const labelId = useId('type-label');
-
   const [isOpen, setIsOpen] = React.useState(true);
   const [type, setType] = React.useState<DrawerType>('inline');
 
+  const motion = useMotion<HTMLDivElement>(isOpen);
+  const contentMotionClassNames = useMotionClassNames(motion, useContentMotionStyles());
+
+  const renderHamburger = () => <Hamburger onClick={() => setIsOpen(!isOpen)} />;
+
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
+      <NavDrawer
+        defaultSelectedValue="2"
+        defaultSelectedCategoryValue="1"
+        open={isOpen}
+        type={type}
+        ref={motion.ref}
+        separator
+      >
         <NavDrawerHeader>
-          <NavDrawerHeaderNav>
-            <Hamburger onClick={() => setIsOpen(false)} />
-          </NavDrawerHeaderNav>
+          <NavDrawerHeaderNav>{renderHamburger()}</NavDrawerHeaderNav>
         </NavDrawerHeader>
+
         <NavDrawerBody>
           <NavSectionHeader>Home</NavSectionHeader>
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
@@ -191,8 +231,10 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           </NavItem>
         </NavDrawerFooter>
       </NavDrawer>
-      <div className={styles.content}>
-        {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
+
+      <div className={mergeClasses(styles.content, type === 'inline' && contentMotionClassNames)}>
+        {renderHamburger()}
+
         <div className={styles.field}>
           <Label id={labelId}>Type</Label>
           <RadioGroup value={type} onChange={(_, data) => setType(data.value as DrawerType)} aria-labelledby={labelId}>

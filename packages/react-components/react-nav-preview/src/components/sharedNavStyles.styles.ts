@@ -11,6 +11,7 @@ export const navItemTokens = {
   backgroundColor: tokens.colorNeutralBackground4,
   backgroundColorHover: tokens.colorNeutralBackground4Hover,
   backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
+  separatorColor: tokens.colorNeutralStroke2,
 };
 
 /**

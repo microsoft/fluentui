@@ -45,5 +45,8 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
         elementType: Drawer,
       },
     ),
+
+    separator: props.separator,
+    position: props.position || 'start',
   };
 };
