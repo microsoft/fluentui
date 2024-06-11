@@ -105,7 +105,7 @@ export class Drawer extends FASTElement {
   public show(): void {
     Updates.enqueue(() => {
       this.emitBeforeToggle();
-      if (this.type === DrawerType.inline) {
+      if (this.type === DrawerType.inline || this.type === DrawerType.nonModal) {
         this.dialog.show();
       } else {
         this.dialog.showModal();

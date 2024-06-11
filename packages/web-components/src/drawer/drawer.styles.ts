@@ -31,6 +31,10 @@ export const styles = css`
     display: none;
   }
 
+  :host([type='non-modal']) dialog {
+    position: fixed;
+  }
+
   :host([type='inline']) {
     height: 100%;
     width: fit-content;
