@@ -71,6 +71,8 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
   state: TeachingPopoverCarouselNavButtonState,
 ): TeachingPopoverCarouselNavButtonState => {
+  'use no memo';
+
   const styles = useStyles();
   const { appearance, isSelected } = state;
 

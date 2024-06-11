@@ -34,6 +34,8 @@ const useStyles = makeStyles({
  * Apply styling to the CardPreview slots based on the state.
  */
 export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPreviewState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(cardPreviewClassNames.root, styles.root, state.root.className);
 

@@ -81,6 +81,8 @@ const useIntentIconStylesInverted = makeStyles({
  * Apply styling to the ToastTitle slots based on the state
  */
 export const useToastTitleStyles_unstable = (state: ToastTitleState): ToastTitleState => {
+  'use no memo';
+
   const rootBaseClassName = useRootBaseClassName();
   const actionBaseClassName = useActionBaseClassName();
   const mediaBaseClassName = useMediaBaseClassName();

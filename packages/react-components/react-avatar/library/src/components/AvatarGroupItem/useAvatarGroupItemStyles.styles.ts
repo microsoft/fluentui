@@ -159,6 +159,8 @@ const usePieStyles = makeStyles({
  * Apply styling to the AvatarGroupItem slots based on the state
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
+  'use no memo';
+
   const { isOverflowItem, layout, size } = state;
   const { dir } = useFluent();
 

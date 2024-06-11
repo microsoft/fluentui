@@ -19,6 +19,8 @@ const useRootClassName = makeResetStyles({
  * Apply styling to the Rating slots based on the state
  */
 export const useRatingStyles_unstable = (state: RatingState): RatingState => {
+  'use no memo';
+
   const rootClassName = useRootClassName();
   state.root.className = mergeClasses(ratingClassNames.root, rootClassName, state.root.className);
   return state;

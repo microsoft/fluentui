@@ -28,6 +28,8 @@ const useStyles = makeStyles({
  * Apply styling to the Toolbar slots based on the state
  */
 export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => {
+  'use no memo';
+
   const styles = useStyles();
   const { vertical, size } = state;
   state.root.className = mergeClasses(

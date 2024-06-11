@@ -54,6 +54,8 @@ const useStyles = makeStyles({
  * Apply styling to the Label slots based on the state
  */
 export const useLabelStyles_unstable = (state: LabelState): LabelState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(
     labelClassNames.root,
