@@ -50,11 +50,11 @@ export function createMotionComponent(value: AtomMotion | AtomMotion[] | AtomMot
 
     const onMotionStart = useEventCallback(() => {
       onMotionStartProp?.(null);
-    })
+    });
 
     const onMotionFinish = useEventCallback(() => {
       onMotionFinishProp?.(null);
-    })
+    });
 
     useIsomorphicLayoutEffect(() => {
       const element = elementRef.current;
