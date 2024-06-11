@@ -20,6 +20,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     multiple = false,
     collapsible = false,
     onToggle,
+    // eslint-disable-next-line deprecation/deprecation
     navigation,
   } = props;
   const [openItems, setOpenItems] = useControllableState({
@@ -28,6 +29,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     initialState: [],
   });
 
+  /** FIXME: deprecated will be removed after navigation prop is removed */
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: navigation === 'circular',
     tabbable: true,
@@ -51,6 +53,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
+        // eslint-disable-next-line deprecation/deprecation
         ...(navigation ? arrowNavigationProps : undefined),
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
