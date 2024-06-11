@@ -112,7 +112,7 @@ export class AnchorButton extends FASTElement {
    * HTML Attribute: type
    */
   @attr
-  public type!: string;
+  public type?: string;
 
   /**
    * The appearance the anchor button should have.

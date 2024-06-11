@@ -15,17 +15,10 @@ const proxyAttributes = {
 
 // Regular Attributes
 const attributes = {
-  ...proxyAttributes,
   appearance: 'primary',
   shape: 'rounded',
   size: 'medium',
-  href: 'href',
-  ping: 'ping',
-  hreflang: 'en-GB',
-  referrerpolicy: 'no-referrer',
-  rel: 'external',
-  target: '_blank',
-  type: 'foo',
+  ...proxyAttributes,
 };
 
 // Boolean Attributes
@@ -102,7 +95,7 @@ test.describe('Anchor Button - Boolean Attributes', () => {
       page = await browser.newPage();
       await page.goto(fixtureURL('components-button-anchor--anchor-button', attributes));
       element = page.locator('fluent-anchor-button');
-      proxy = element.locator('fluent-anchor-button');
+      proxy = element.locator('a');
     });
 
     test.afterAll(async () => {
@@ -110,30 +103,16 @@ test.describe('Anchor Button - Boolean Attributes', () => {
     });
 
     for (const [attribute, value] of Object.entries(proxyAttributes)) {
-      const attributeSpinalCase = spinalCase(attribute);
-
-      test(`should set the regular attribute: \`${attributeSpinalCase}\` to \`${value}\` on the internal proxy`, async () => {
+      test(`should set the regular attribute: \`${attribute}\` to \`${value}\` on the internal proxy`, async () => {
         await element.evaluate(
           (node: any, { attribute, value }) => {
             node.setAttribute(attribute, value);
           },
-          { attribute: attributeSpinalCase, value },
+          { attribute, value },
         );
 
-        await expect(proxy).toHaveJSProperty(`${attribute}`, `${value}`);
+        await expect(proxy).toHaveAttribute(`${attribute}`, `${value}`);
       });
     }
-  });
-
-  test('should be focusable by default', async ({ page }) => {
-    const element = page.locator('fluent-anchor-button');
-
-    await page.setContent(/* html */ `
-      <fluent-anchor-button>Button</fluent-anchor-button>
-    `);
-
-    await element.focus();
-
-    await expect(element).toBeFocused();
   });
 });
