@@ -24,7 +24,7 @@ test.describe('Progress Bar', () => {
 
   // Foundation tests
   test('should include a role of progressbar', async () => {
-    await expect(element).toHaveAttribute('role', 'progressbar');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'progressbar');
   });
 
   test('should set the `aria-valuenow` attribute with the `value` property when provided', async () => {
@@ -34,7 +34,7 @@ test.describe('Progress Bar', () => {
         `;
     });
 
-    await expect(element).toHaveAttribute('aria-valuenow', '50');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '50');
   });
 
   test('should set the `aria-valuemin` attribute with the `min` property when provided', async () => {
@@ -44,7 +44,7 @@ test.describe('Progress Bar', () => {
         `;
     });
 
-    await expect(element).toHaveAttribute('aria-valuemin', '50');
+    await expect(element).toHaveJSProperty('ariaValueMin', '50');
   });
 
   test('should set the `aria-valuemax` attribute with the `max` property when provided', async () => {
@@ -54,31 +54,7 @@ test.describe('Progress Bar', () => {
         `;
     });
 
-    await expect(element).toHaveAttribute('aria-valuemax', '50');
-  });
-
-  test('should render an element with a `determinate` slot when a value is provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-progress-bar value="50"></fluent-progress-bar>
-        `;
-    });
-
-    const progress = element.locator('.progress');
-
-    await expect(progress).toHaveAttribute('slot', 'determinate');
-  });
-
-  test('should render an element with an `indeterminate` slot when no value is provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-progress-bar></fluent-progress-bar>
-        `;
-    });
-
-    const progress = element.locator('.progress');
-
-    await expect(progress).toHaveAttribute('slot', 'indeterminate');
+    await expect(element).toHaveJSProperty('ariaValueMax', '50');
   });
 
   test('should return the `percentComplete` property as a value between 0 and 100 when `min` and `max` are unset', async () => {
