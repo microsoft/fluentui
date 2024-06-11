@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Thu, 23 May 2024 08:02:41 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.10)
+
+Thu, 06 Jun 2024 15:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.1.9..@fluentui/react-calendar-compat_v0.1.10)
+
+### Patches
+
+- feat(calendar-compat): changed design for the selected state ([PR #31509](https://github.com/microsoft/fluentui/pull/31509) by vkozlova@microsoft.com)
+- chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- chore: Renaming useCalendarMonthStyles.ts to useCalendarMonthStyles.styles.ts. ([PR #31568](https://github.com/microsoft/fluentui/pull/31568) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.39 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-tabster to v9.21.5 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
 
 ## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.1.9)
 

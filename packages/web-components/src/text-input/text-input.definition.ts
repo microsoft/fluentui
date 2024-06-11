@@ -14,4 +14,7 @@ export const definition = TextInput.compose({
   name: `${FluentDesignSystem.prefix}-text-input`,
   template,
   styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
 });

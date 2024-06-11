@@ -1,7 +1,8 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselButtonSlots, CarouselButtonState } from './CarouselButton.types';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots> = {
   root: 'fui-CarouselButton',
@@ -12,7 +13,16 @@ export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    color: tokens.colorNeutralForeground2,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    ':hover': {
+      cursor: 'pointer',
+    },
+  },
 });
 
 /**

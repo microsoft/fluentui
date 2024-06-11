@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use requestAnimationFrame from Fluent context.",
-  "packageName": "@fluentui/react-table",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

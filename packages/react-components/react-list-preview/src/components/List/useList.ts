@@ -62,7 +62,6 @@ export const useList_unstable = (
     onSelectionChange: onChange,
     selectionMode: selectionMode || 'multiselect',
     selectedItems: selectionState,
-    defaultSelectedItems,
   });
 
   const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);

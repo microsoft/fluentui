@@ -13,12 +13,14 @@ const commands = {
   lint: 'node ./scripts/lint-staged/src/eslint',
 };
 
+const nonJsExtensions = [
+  prettierSupportedFileExtensionsByContext.stylesheets,
+  prettierSupportedFileExtensionsByContext.markdown,
+  prettierSupportedFileExtensionsByContext.others,
+].flat();
+
 // https://www.npmjs.com/package/lint-staged
 module.exports = {
-  [`**/*.{${[].concat(
-    prettierSupportedFileExtensionsByContext.stylesheets,
-    prettierSupportedFileExtensionsByContext.markdown,
-    prettierSupportedFileExtensionsByContext.others,
-  )}}`]: [commands.format],
-  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [commands.format, commands.lint],
+  [`**/*.{${nonJsExtensions}}`]: [commands.format],
+  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [/* commands.format, */ commands.lint],
 };

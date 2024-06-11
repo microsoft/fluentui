@@ -1,102 +1,102 @@
 export {
+  AccordionItem,
+  accordionItemDefinition,
+  AccordionItemExpandIconPosition,
+  AccordionItemSize,
+  accordionItemStyles,
+  accordionItemTemplate,
+} from './accordion-item/index.js';
+export type { AccordionItemOptions } from './accordion-item/index.js';
+export {
   Accordion,
-  AccordionExpandMode,
-  accordionTemplate,
-  accordionStyles,
   accordionDefinition,
+  AccordionExpandMode,
+  accordionStyles,
+  accordionTemplate,
 } from './accordion/index.js';
 export {
-  AccordionItem,
-  AccordionItemOptions,
-  AccordionItemSize,
-  AccordionItemExpandIconPosition,
-  accordionItemTemplate,
-  accordionItemStyles,
-  accordionItemDefinition,
-} from './accordion-item/index.js';
-export {
   AnchorButton,
-  AnchorButtonOptions,
   AnchorButtonAppearance,
+  AnchorButtonDefinition,
   AnchorButtonShape,
   AnchorButtonSize,
-  AnchorTarget,
   AnchorButtonTemplate,
-  AnchorButtonDefinition,
+  AnchorTarget,
 } from './anchor-button/index.js';
+export type { AnchorButtonOptions } from './anchor-button/index.js';
 export {
   Avatar,
   AvatarActive,
   AvatarAppearance,
   AvatarColor,
+  AvatarDefinition,
   AvatarNamedColor,
   AvatarShape,
   AvatarSize,
-  AvatarTemplate,
   AvatarStyles,
-  AvatarDefinition,
+  AvatarTemplate,
 } from './avatar/index.js';
 export {
   Badge,
   BadgeAppearance,
   BadgeColor,
+  BadgeDefinition,
   BadgeShape,
   BadgeSize,
-  BadgeTemplate,
   BadgeStyles,
-  BadgeDefinition,
+  BadgeTemplate,
 } from './badge/index.js';
 export {
   Button,
   ButtonAppearance,
+  ButtonDefinition,
   ButtonFormTarget,
   ButtonShape,
   ButtonSize,
-  ButtonType,
-  ButtonOptions,
-  ButtonTemplate,
   ButtonStyles,
-  ButtonDefinition,
+  ButtonTemplate,
+  ButtonType,
 } from './button/index.js';
+export type { ButtonOptions } from './button/index.js';
 export {
   Checkbox,
-  CheckboxOptions,
-  CheckboxLabelPosition,
+  CheckboxDefinition,
   CheckboxShape,
   CheckboxSize,
-  CheckboxDefinition,
-  CheckboxTemplate,
   CheckboxStyles,
+  CheckboxTemplate,
 } from './checkbox/index.js';
+export type { CheckboxOptions } from './checkbox/index.js';
 export {
   CompoundButton,
   CompoundButtonAppearance,
+  CompoundButtonDefinition,
   CompoundButtonShape,
   CompoundButtonSize,
-  CompoundButtonTemplate,
   CompoundButtonStyles,
-  CompoundButtonDefinition,
+  CompoundButtonTemplate,
 } from './compound-button/index.js';
 export {
   CounterBadge,
   CounterBadgeAppearance,
   CounterBadgeColor,
+  CounterBadgeDefinition,
   CounterBadgeShape,
   CounterBadgeSize,
-  CounterBadgeTemplate,
   CounterBadgeStyles,
-  CounterBadgeDefinition,
+  CounterBadgeTemplate,
 } from './counter-badge/index.js';
-export { Dialog, DialogModalType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
+export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
+export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
   Divider,
   DividerAlignContent,
   DividerAppearance,
+  DividerDefinition,
   DividerOrientation,
   DividerRole,
-  DividerDefinition,
-  DividerTemplate,
   DividerStyles,
+  DividerTemplate,
 } from './divider/index.js';
 export {
   Drawer,
@@ -107,126 +107,83 @@ export {
   DrawerTemplate,
   DrawerStyles,
 } from './drawer/index.js';
-export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
-export { Image, ImageFit, ImageShape, ImageDefinition, ImageTemplate, ImageStyles } from './image/index.js';
-export { Label, LabelSize, LabelWeight, LabelDefinition, LabelStyles, LabelTemplate } from './label/index.js';
-export { Menu, MenuTemplate, MenuStyles, MenuDefinition } from './menu/index.js';
+export {
+  Field,
+  FieldLabelPosition,
+  ValidationFlags,
+  FieldDefinition,
+  FieldStyles,
+  FieldTemplate,
+} from './field/index.js';
+export type { SlottableInput } from './field/index.js';
+export { FluentDesignSystem } from './fluent-design-system.js';
+export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
+export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
   MenuButton,
   MenuButtonAppearance,
+  MenuButtonDefinition,
   MenuButtonShape,
   MenuButtonSize,
-  MenuButtonOptions,
-  MenuButtonTemplate,
   MenuButtonStyles,
-  MenuButtonDefinition,
+  MenuButtonTemplate,
 } from './menu-button/index.js';
+export type { MenuButtonOptions } from './menu-button/index.js';
 export {
   MenuItem,
-  MenuItemColumnCount,
-  MenuItemOptions,
-  MenuItemRole,
-  roleForMenuItem,
-  MenuItemTemplate,
-  MenuItemStyles,
   MenuItemDefinition,
+  MenuItemRole,
+  MenuItemStyles,
+  MenuItemTemplate,
+  roleForMenuItem,
 } from './menu-item/index.js';
-export { MenuList, MenuListTemplate, MenuListStyles, MenuListDefinition } from './menu-list/index.js';
+export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
+export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
+export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
 export {
   ProgressBar,
-  ProgressOptions,
-  ProgressBarShape,
-  ProgressBarThickness,
-  ProgressBarValidationState,
   ProgressBarDefinition,
+  ProgressBarShape,
   ProgressBarStyles,
   ProgressBarTemplate,
+  ProgressBarThickness,
+  ProgressBarValidationState,
 } from './progress-bar/index.js';
-export { Radio, RadioControl, RadioOptions, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
+export type { ProgressOptions } from './progress-bar/index.js';
 export {
   RadioGroup,
-  RadioGroupOrientation,
   RadioGroupDefinition,
+  RadioGroupOrientation,
   RadioGroupStyles,
   RadioGroupTemplate,
 } from './radio-group/index.js';
+export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
+export type { RadioControl, RadioOptions } from './radio/index.js';
 export {
   Slider,
-  SliderConfiguration,
+  SliderDefinition,
   SliderMode,
-  SliderOptions,
   SliderOrientation,
   SliderSize,
-  SliderDefinition,
   SliderStyles,
   SliderTemplate,
 } from './slider/index.js';
+export type { SliderConfiguration, SliderOptions } from './slider/index.js';
 export {
   Spinner,
   SpinnerAppearance,
-  SpinnerSize,
-  SpinnerTemplate,
-  SpinnerStyles,
   SpinnerDefinition,
+  SpinnerSize,
+  SpinnerStyles,
+  SpinnerTemplate,
 } from './spinner/index.js';
 export {
-  Switch,
-  SwitchOptions,
-  SwitchLabelPosition,
-  SwitchDefinition,
-  SwitchStyles,
-  SwitchTemplate,
-} from './switch/index.js';
-export { Tab, TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
-export { TabPanel, TabPanelTemplate, TabPanelStyles, TabPanelDefinition } from './tab-panel/index.js';
-export {
-  Tabs,
-  TabsAppearance,
-  TabsOptions,
-  TabsOrientation,
-  TabsSize,
-  TabsTemplate,
-  TabsStyles,
-  TabsDefinition,
-} from './tabs/index.js';
-export {
-  Text,
-  TextAlign,
-  TextFont,
-  TextSize,
-  TextWeight,
-  TextTemplate,
-  TextStyles,
-  TextDefinition,
-} from './text/index.js';
-export {
-  TextInputOptions,
-  TextInput,
-  TextInputType,
-  TextInputAppearance,
-  TextInputControlSize,
-  TextInputTemplate,
-  TextInputStyles,
-  TextInputDefinition,
-} from './text-input/index.js';
-export {
-  ToggleButton,
-  ToggleButtonAppearance,
-  ToggleButtonOptions,
-  ToggleButtonShape,
-  ToggleButtonSize,
-  ToggleButtonTemplate,
-  ToggleButtonStyles,
-  ToggleButtonDefinition,
-} from './toggle-button/index.js';
-
-export {
-  typographyBody1Styles,
-  typographyBody1StrongStyles,
   typographyBody1StrongerStyles,
+  typographyBody1StrongStyles,
+  typographyBody1Styles,
   typographyBody2Styles,
-  typographyCaption1StrongStyles,
   typographyCaption1StrongerStyles,
+  typographyCaption1StrongStyles,
   typographyCaption1Styles,
   typographyCaption2StrongStyles,
   typographyCaption2Styles,
@@ -239,19 +196,60 @@ export {
   typographyTitle2Styles,
   typographyTitle3Styles,
 } from './styles/partials/typography.partials.js';
-
-export { getDirection } from './utils/direction.js';
-export { display } from './utils/display.js';
+export { Switch, SwitchDefinition, SwitchLabelPosition, SwitchStyles, SwitchTemplate } from './switch/index.js';
+export type { SwitchOptions } from './switch/index.js';
+export { TabPanel, TabPanelDefinition, TabPanelStyles, TabPanelTemplate } from './tab-panel/index.js';
+export { Tab, TabDefinition, TabStyles, TabTemplate } from './tab/index.js';
+export type { TabOptions } from './tab/index.js';
 export {
+  Tabs,
+  TabsAppearance,
+  TabsDefinition,
+  TabsOrientation,
+  TabsSize,
+  TabsStyles,
+  TabsTemplate,
+} from './tabs/index.js';
+export type { TabsOptions } from './tabs/index.js';
+export {
+  TextInput,
+  TextInputAppearance,
+  TextInputControlSize,
+  TextInputDefinition,
+  TextInputStyles,
+  TextInputTemplate,
+  TextInputType,
+} from './text-input/index.js';
+export type { TextInputOptions } from './text-input/index.js';
+export {
+  Text,
+  TextAlign,
+  TextDefinition,
+  TextFont,
+  TextSize,
+  TextStyles,
+  TextTemplate,
+  TextWeight,
+} from './text/index.js';
+export * from './theme/design-tokens.js';
+export { setTheme, setThemeFor } from './theme/index.js';
+export {
+  ToggleButton,
+  ToggleButtonAppearance,
+  ToggleButtonDefinition,
+  ToggleButtonShape,
+  ToggleButtonSize,
+  ToggleButtonStyles,
+  ToggleButtonTemplate,
+} from './toggle-button/index.js';
+export type { ToggleButtonOptions } from './toggle-button/index.js';
+export {
+  darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
+  lightModeStylesheetBehavior,
   MatchMediaBehavior,
   MatchMediaStyleSheetBehavior,
-  MediaQueryListListener,
-  darkModeStylesheetBehavior,
-  lightModeStylesheetBehavior,
 } from './utils/behaviors/match-media-stylesheet-behavior.js';
-
-export { FluentDesignSystem } from './fluent-design-system.js';
-export { setTheme, setThemeFor } from './theme/index.js';
-
-export * from './theme/design-tokens.js';
+export type { MediaQueryListListener } from './utils/behaviors/match-media-stylesheet-behavior.js';
+export { getDirection } from './utils/direction.js';
+export { display } from './utils/display.js';

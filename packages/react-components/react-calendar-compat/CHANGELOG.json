@@ -2,6 +2,51 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:30 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.10",
+      "version": "0.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "de236343a2ea7e2e53fbb8f66a294890ea3d1bbb",
+            "comment": "feat(calendar-compat): changed design for the selected state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "7651367e8e48fa801de81c612abf93635779d163",
+            "comment": "chore: Renaming useCalendarMonthStyles.ts to useCalendarMonthStyles.styles.ts."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:41 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.1.9",
       "version": "0.1.9",

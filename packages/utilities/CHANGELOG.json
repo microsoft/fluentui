@@ -2,6 +2,39 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 07:26:46 GMT",
+      "tag": "@fluentui/utilities_v8.15.9",
+      "version": "8.15.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.3.6",
+            "commit": "e5e806f46bd00bc7baffbfe7514a617600ba2d47"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.9",
+            "commit": "e5e806f46bd00bc7baffbfe7514a617600ba2d47"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.22",
+            "commit": "e5e806f46bd00bc7baffbfe7514a617600ba2d47"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.26",
+            "commit": "e5e806f46bd00bc7baffbfe7514a617600ba2d47"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 May 2024 07:28:20 GMT",
       "tag": "@fluentui/utilities_v8.15.8",
       "version": "8.15.8",

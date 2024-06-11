@@ -23,6 +23,10 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
+    borderRadius: tokens.borderRadiusXLarge,
+    margin: `auto ${tokens.spacingHorizontalS}`,
+    padding: tokens.spacingHorizontalXS,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
   },
 });
 

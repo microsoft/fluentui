@@ -9,7 +9,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-northstar": "*",
     "lodash": "^4.17.15",
-    "minimatch": "^3.0.4"
+    "minimatch": "^3.1.2"
   },
   "devDependencies": {
     "@fluentui/scripts-babel": "*",
