@@ -34,10 +34,11 @@ function createCompilerHost(): ts.CompilerHost {
     ...originalHost,
 
     readFile: () => {
-      throw new Error('Not supported');
+      //   throw new Error('Not supported');
+      return '';
     },
     writeFile: () => {
-      throw new Error('Not supported');
+      //   throw new Error('Not supported');
     },
 
     getSourceFile,

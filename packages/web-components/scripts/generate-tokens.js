@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 import chalk from 'chalk';
 
@@ -10,18 +9,22 @@ main();
 
 function main() {
   console.log(tokensPackage);
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
 
   const fluentTokens = Object.keys(tokensPackage.tokens);
   const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
   const generatedTokens = fluentTokens.reduce((acc, t) => {
-    const token = `export const ${t} = 'var(--${t})';\n`;
+    const token = `
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
+ * @public
+ */
+export const ${t} = 'var(--${t})';
+`;
     return acc + token;
   }, '');
 
-  const dir = path.join(__dirname, '../src', 'theme');
+  const dir = path.join(import.meta.dirname, '../src', 'theme');
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });

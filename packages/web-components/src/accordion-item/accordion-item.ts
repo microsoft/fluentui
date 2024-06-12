@@ -48,7 +48,6 @@ export class AccordionItem extends FASTElement {
    * Configures the {@link https://www.w3.org/TR/wai-aria-1.1/#aria-level | level} of the
    * heading element.
    *
-   * @defaultValue 2
    * @public
    * @remarks
    * HTML attribute: heading-level
@@ -94,7 +93,6 @@ export class AccordionItem extends FASTElement {
    * Defines accordion header font size.
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -115,9 +113,8 @@ export class AccordionItem extends FASTElement {
    * Sets expand and collapsed icon position.
    *
    * @public
-   * @default 'start'
    * @remarks
-   * HTML Attribute: expandIconPosition
+   * HTML Attribute: expand-icon-position
    */
   @attr({ attribute: 'expand-icon-position' })
   public expandIconPosition?: AccordionItemExpandIconPosition;

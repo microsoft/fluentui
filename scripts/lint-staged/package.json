@@ -11,7 +11,8 @@
     "type-check": "just-scripts type-check"
   },
   "dependencies": {
-    "@fluentui/scripts-monorepo": "*"
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-utils": "*"
   },
   "devDependencies": {}
 }

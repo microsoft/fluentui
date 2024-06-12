@@ -112,13 +112,13 @@ export class Menu extends FASTElement {
 
   /**
    * The trigger element of the menu.
-   * @private
+   * @internal
    */
   private _trigger?: HTMLElement;
 
   /**
    * The menu list element of the menu.
-   * @private
+   * @internal
    */
   private _menuList?: HTMLElement;
 
@@ -230,9 +230,10 @@ export class Menu extends FASTElement {
    * Updates the 'aria-expanded' attribute and sets the positioning of the menu.
    * Sets menu list position
    * emits openChanged event
+   *
+   * @param oldValue - The previous value of 'open'.
+   * @param newValue - The new value of 'open'.
    * @public
-   * @param {boolean} oldValue - The previous value of 'open'.
-   * @param {boolean} newValue - The new value of 'open'.
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
     if (this.$fastController.isConnected && this._trigger instanceof HTMLElement) {
@@ -248,9 +249,10 @@ export class Menu extends FASTElement {
   /**
    * Called whenever the 'openOnHover' property changes.
    * Adds or removes a 'mouseover' event listener to the trigger based on the new value.
+   *
+   * @param oldValue - The previous value of 'openOnHover'.
+   * @param newValue - The new value of 'openOnHover'.
    * @public
-   * @param {boolean} oldValue - The previous value of 'openOnHover'.
-   * @param {boolean} newValue - The new value of 'openOnHover'.
    */
   public openOnHoverChanged(oldValue: boolean, newValue: boolean): void {
     if (newValue) {
@@ -264,8 +266,8 @@ export class Menu extends FASTElement {
    * Called whenever the 'persistOnItemClick' property changes.
    * Adds or removes a 'click' event listener to the menu list based on the new value.
    * @public
-   * @param {boolean} oldValue - The previous value of 'persistOnItemClick'.
-   * @param {boolean} newValue - The new value of 'persistOnItemClick'.
+   * @param oldValue - The previous value of 'persistOnItemClick'.
+   * @param newValue - The new value of 'persistOnItemClick'.
    */
   public persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void {
     if (!newValue) {
@@ -279,8 +281,8 @@ export class Menu extends FASTElement {
    * Called whenever the 'openOnContext' property changes.
    * Adds or removes a 'contextmenu' event listener to the trigger based on the new value.
    * @public
-   * @param {boolean} oldValue - The previous value of 'openOnContext'.
-   * @param {boolean} newValue - The new value of 'openOnContext'.
+   * @param oldValue - The previous value of 'openOnContext'.
+   * @param newValue - The new value of 'openOnContext'.
    */
   public openOnContextChanged(oldValue: boolean, newValue: boolean): void {
     if (newValue) {
@@ -294,8 +296,8 @@ export class Menu extends FASTElement {
    * Called whenever the 'closeOnScroll' property changes.
    * Adds or removes a 'closeOnScroll' event listener to the trigger based on the new value.
    * @public
-   * @param {boolean} oldValue - The previous value of 'closeOnScroll'.
-   * @param {boolean} newValue - The new value of 'closeOnScroll'.
+   * @param oldValue - The previous value of 'closeOnScroll'.
+   * @param newValue - The new value of 'closeOnScroll'.
    */
   public closeOnScrollChanged(oldValue: boolean, newValue: boolean): void {
     if (newValue) {
@@ -307,7 +309,7 @@ export class Menu extends FASTElement {
 
   /**
    * The task to set the positioning of the menu.
-   * @protected
+   * @internal
    */
   protected setPositioningTask = () => {
     this.setPositioning();
@@ -315,7 +317,7 @@ export class Menu extends FASTElement {
 
   /**
    * Sets the positioning of the menu.
-   * @protected
+   * @internal
    */
   protected setPositioning(): void {
     if (this.$fastController.isConnected && this._menuList && this.open && this._trigger) {
@@ -378,7 +380,7 @@ export class Menu extends FASTElement {
    * Removes event listeners.
    * Removes click and keydown event listeners from the trigger and a click event listener from the document.
    * Also removes 'mouseover' event listeners from the trigger.
-   * @private
+   * @internal
    */
   private removeListeners(): void {
     document.removeEventListener('click', this.handleDocumentClick);
@@ -397,11 +399,11 @@ export class Menu extends FASTElement {
   }
 
   /**
-   * Handles keyboard interaction for the menu.
-   * Closes the menu and focuses on the trigger when the Escape key is pressed.
-   * Closes the menu when the Tab key is pressed.
+   * Handles keyboard interaction for the menu. Closes the menu and focuses on the trigger when the Escape key is
+   * pressed. Closes the menu when the Tab key is pressed.
+   *
+   * @param e - the keyboard event
    * @public
-   * @param {KeyboardEvent} e - the keyboard event
    */
   public handleMenuKeydown(e: KeyboardEvent): boolean | void {
     if (e.defaultPrevented) {
@@ -430,11 +432,11 @@ export class Menu extends FASTElement {
   }
 
   /**
-   * Handles keyboard interaction for the trigger.
-   * Toggles the menu when the Space or Enter key is pressed.
-   * If the menu is open, focuses on the menu list.
+   * Handles keyboard interaction for the trigger. Toggles the menu when the Space or Enter key is pressed. If the menu
+   * is open, focuses on the menu list.
+   *
+   * @param e - the keyboard event
    * @public
-   * @param {KeyboardEvent} e - the keyboard event
    */
   public handleTriggerKeydown = (e: KeyboardEvent): boolean | void => {
     if (e.defaultPrevented) {
@@ -457,8 +459,8 @@ export class Menu extends FASTElement {
 
   /**
    * Handles document click events to close the menu when a click occurs outside of the menu or the trigger.
-   * @private
-   * @param {Event} e - The event triggered on document click.
+   * @internal
+   * @param e - The event triggered on document click.
    */
   private handleDocumentClick = (e: any) => {
     if (e && !e.composedPath().includes(this._menuList) && !e.composedPath().includes(this._trigger)) {

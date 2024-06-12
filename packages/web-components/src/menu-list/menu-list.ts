@@ -1,6 +1,8 @@
 import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnd, keyHome } from '@microsoft/fast-web-utilities';
-import { MenuItem, MenuItemColumnCount, MenuItemRole } from '../menu-item/index.js';
+import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
+import { MenuItem } from '../menu-item/menu-item.js';
+import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A MenuList component that provides a customizable menu list element.

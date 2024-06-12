@@ -7,6 +7,7 @@ import {
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
+  scaleTime as d3ScaleTime,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -49,6 +50,7 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  formatDate,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -76,6 +78,7 @@ type ColorScale = (_p?: number) => string;
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
+    useUTC: true,
   };
 
   private _points: IVerticalBarChartDataPoint[];
@@ -523,7 +526,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
-    const hoverXValue = point.x instanceof Date ? point.x.toLocaleString() : point.x.toString();
+    const hoverXValue = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString();
     return {
       YValueHover,
       hoverXValue: point.xAxisCalloutData || hoverXValue,
@@ -549,7 +552,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         color: point.color || color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue:
-          point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+          point.xAxisCalloutData ||
+          (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
         // Hovering over a bar should highlight corresponding line points only when no legend is selected
@@ -587,7 +591,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           dataForHoverCard: point.y,
           color: point.color || color,
           xCalloutValue:
-            point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+            point.xAxisCalloutData ||
+            (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
           activeXdataPoint: point.x,
@@ -623,7 +628,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       dataForHoverCard: point.lineData!.y,
       color: lineLegendColor,
       xCalloutValue:
-        point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
+        point.xAxisCalloutData ||
+        (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
       yCalloutValue: point.lineData!.yAxisCalloutData,
       dataPointCalloutProps: point,
       activeXdataPoint: point.x,
@@ -652,7 +658,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
-      xBarScale = d3ScaleUtc()
+      xBarScale = this.props.useUTC ? d3ScaleUtc() : d3ScaleTime();
+      xBarScale
         .domain([sDate, lDate])
         .range(
           this._isRtl
@@ -1005,7 +1012,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
-      ? point.x.toLocaleString()
+      ? formatDate(point.x, this.props.useUTC)
       : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;

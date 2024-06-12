@@ -255,6 +255,7 @@ export interface ICartesianChartProps {
     tickPadding?: number;
     tickValues?: number[] | Date[];
     timeFormatLocale?: TimeLocaleDefinition;
+    useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
     xAxisTickCount?: number;

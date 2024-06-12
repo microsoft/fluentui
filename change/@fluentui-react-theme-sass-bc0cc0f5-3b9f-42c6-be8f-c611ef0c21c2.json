@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: use new performant 'type-check' for v9 libaries",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

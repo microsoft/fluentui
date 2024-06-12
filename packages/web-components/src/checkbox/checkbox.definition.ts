@@ -1,7 +1,7 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import { Checkbox } from './checkbox.js';
-import { template } from './checkbox.template.js';
 import { styles } from './checkbox.styles.js';
+import { template } from './checkbox.template.js';
 
 /**
  * The Fluent Checkbox Element

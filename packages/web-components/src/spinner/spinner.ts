@@ -34,7 +34,6 @@ export class Spinner extends FASTElement {
    * The size of the spinner
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -44,7 +43,6 @@ export class Spinner extends FASTElement {
   /**
    * The appearance of the spinner
    * @public
-   * @default 'primary'
    * @remarks
    * HTML Attribute: appearance
    */

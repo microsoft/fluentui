@@ -38,4 +38,4 @@ export const MenuButtonSize = ButtonSize;
  */
 export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
 
-export { ButtonOptions as MenuButtonOptions };
+export type { ButtonOptions as MenuButtonOptions };

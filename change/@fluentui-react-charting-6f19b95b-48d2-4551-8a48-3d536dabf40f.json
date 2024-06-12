@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: normalize all scripts source to live under /src",
-  "packageName": "@fluentui/react-charting",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
