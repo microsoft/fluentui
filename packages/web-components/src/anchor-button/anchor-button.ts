@@ -158,8 +158,8 @@ export class BaseAnchor extends FASTElement {
   /**
    * Handles changes to observable properties
    * @internal
-   * @param source
-   * @param propertyName
+   * @param source - the source of the change
+   * @param propertyName - the property name being changed
    */
   public handleChange(source: any, propertyName: string) {
     if (propertyName in AnchorAttributes) {
@@ -201,8 +201,8 @@ export class BaseAnchor extends FASTElement {
   /**
    * A method for updating proxy attributes when attributes have changed
    * @internal
-   * @param attribute
-   * @param value
+   * @param attribute - an attribute to set/remove
+   * @param value - the value of the attribute
    */
   private handleProxyAttributeChange(attribute: string, value: string | undefined): void {
     if (value) {
