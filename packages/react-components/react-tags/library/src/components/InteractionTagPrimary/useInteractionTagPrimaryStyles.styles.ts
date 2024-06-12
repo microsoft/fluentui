@@ -46,7 +46,7 @@ const baseStyles: GriffelResetStyle = {
 
 const useRootRoundedBaseClassName = makeResetStyles({
   ...baseStyles,
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: `var(--2293, var(--2294, ${tokens.borderRadiusMedium}))`,
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -62,15 +62,15 @@ const useRootRoundedBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusMedium,
-      borderTopRightRadius: tokens.borderRadiusMedium,
+      borderTopLeftRadius: `var(--2295, var(--2296, ${tokens.borderRadiusMedium}))`,
+      borderTopRightRadius: `var(--2297, var(--2298, ${tokens.borderRadiusMedium}))`,
     },
   },
 });
 
 const useRootCircularBaseClassName = makeResetStyles({
   ...baseStyles,
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--2299, var(--2300, ${tokens.borderRadiusCircular}))`,
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -87,8 +87,8 @@ const useRootCircularBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusCircular,
-      borderBottomLeftRadius: tokens.borderRadiusCircular,
+      borderTopLeftRadius: `var(--2301, var(--2302, ${tokens.borderRadiusCircular}))`,
+      borderBottomLeftRadius: `var(--2303, var(--2304, ${tokens.borderRadiusCircular}))`,
     },
   },
 });
@@ -102,8 +102,8 @@ const useRootCircularContrastStyles = makeStyles({
       position: 'relative',
       '::before': {
         borderRight: `${tokens.strokeWidthThin} solid transparent`,
-        borderTopRightRadius: tokens.borderRadiusCircular,
-        borderBottomRightRadius: tokens.borderRadiusCircular,
+        borderTopRightRadius: `var(--2305, var(--2306, ${tokens.borderRadiusCircular}))`,
+        borderBottomRightRadius: `var(--2307, var(--2308, ${tokens.borderRadiusCircular}))`,
       },
     },
   },
@@ -111,16 +111,16 @@ const useRootCircularContrastStyles = makeStyles({
 
 const useRootStyles = makeStyles({
   filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--2309, var(--2310, ${tokens.colorNeutralBackground3}))`,
+    color: `var(--2311, var(--2312, ${tokens.colorNeutralForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorNeutralBackground3Hover,
-      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: `var(--2313, var(--2314, ${tokens.colorNeutralBackground3Hover}))`,
+      color: `var(--2315, var(--2316, ${tokens.colorNeutralForeground2Hover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorNeutralBackground3Pressed,
-      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: `var(--2317, var(--2318, ${tokens.colorNeutralBackground3Pressed}))`,
+      color: `var(--2319, var(--2320, ${tokens.colorNeutralForeground2Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -132,29 +132,29 @@ const useRootStyles = makeStyles({
     },
   },
   outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--2321, var(--2322, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2323, var(--2324, ${tokens.colorNeutralForeground2}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: `var(--2325, var(--2326, ${tokens.colorSubtleBackgroundHover}))`,
+      color: `var(--2327, var(--2328, ${tokens.colorNeutralForeground2Hover}))`,
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: `var(--2329, var(--2330, ${tokens.colorNeutralForeground2BrandHover}))`,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
       },
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: `var(--2331, var(--2332, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--2333, var(--2334, ${tokens.colorNeutralForeground2Pressed}))`,
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: `var(--2335, var(--2336, ${tokens.colorNeutralForeground2BrandPressed}))`,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
@@ -170,16 +170,16 @@ const useRootStyles = makeStyles({
     },
   },
   brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    backgroundColor: `var(--2337, var(--2338, ${tokens.colorBrandBackground2}))`,
+    color: `var(--2339, var(--2340, ${tokens.colorBrandForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorCompoundBrandForeground1Hover,
+      backgroundColor: `var(--2341, var(--2342, ${tokens.colorBrandBackground2Hover}))`,
+      color: `var(--2343, var(--2344, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      backgroundColor: `var(--2345, var(--2346, ${tokens.colorBrandBackground2Pressed}))`,
+      color: `var(--2347, var(--2348, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -204,20 +204,20 @@ const useRootStyles = makeStyles({
 const useRootDisabledAppearances = makeStyles({
   filled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2349, var(--2350, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2351, var(--2352, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
   outline: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2353, var(--2354, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2355, var(--2356, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
   },
   brand: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2357, var(--2358, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2359, var(--2360, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
 });
@@ -241,22 +241,22 @@ const useRootWithoutMediaStyles = makeStyles({
  */
 const useRootWithSecondaryActionStyles = makeStyles({
   base: {
-    borderTopRightRadius: tokens.borderRadiusNone,
-    borderBottomRightRadius: tokens.borderRadiusNone,
+    borderTopRightRadius: `var(--2361, var(--2362, ${tokens.borderRadiusNone}))`,
+    borderBottomRightRadius: `var(--2363, var(--2364, ${tokens.borderRadiusNone}))`,
     borderRightStyle: 'none',
     ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
+      borderTopRightRadius: `var(--2365, var(--2366, ${tokens.borderRadiusNone}))`,
+      borderBottomRightRadius: `var(--2367, var(--2368, ${tokens.borderRadiusNone}))`,
     }),
   },
   medium: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: `var(--2369, var(--2370, ${tokens.spacingHorizontalS}))`,
   },
   small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--2371, var(--2372, ${tokens.spacingHorizontalSNudge}))`,
   },
   'extra-small': {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--2373, var(--2374, ${tokens.spacingHorizontalSNudge}))`,
   },
 });
 

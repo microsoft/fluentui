@@ -39,28 +39,28 @@ const useRootStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   vertical: {
-    paddingTop: tokens.spacingVerticalXXS,
-    paddingBottom: tokens.spacingVerticalXXS,
-    marginBottom: tokens.spacingVerticalXXS,
+    paddingTop: `var(--1103, var(--1104, ${tokens.spacingVerticalXXS}))`,
+    paddingBottom: `var(--1105, var(--1106, ${tokens.spacingVerticalXXS}))`,
+    marginBottom: `var(--1107, var(--1108, ${tokens.spacingVerticalXXS}))`,
   },
 
   verticalLarge: {
     paddingTop: '1px',
     paddingBottom: '1px',
-    marginBottom: tokens.spacingVerticalXS,
+    marginBottom: `var(--1109, var(--1110, ${tokens.spacingVerticalXS}))`,
   },
 
   horizontal: {
-    paddingTop: tokens.spacingVerticalSNudge,
-    paddingBottom: tokens.spacingVerticalSNudge,
-    marginRight: tokens.spacingHorizontalM,
+    paddingTop: `var(--1111, var(--1112, ${tokens.spacingVerticalSNudge}))`,
+    paddingBottom: `var(--1113, var(--1114, ${tokens.spacingVerticalSNudge}))`,
+    marginRight: `var(--1115, var(--1116, ${tokens.spacingHorizontalM}))`,
     gridRowStart: '1',
     gridRowEnd: '-1',
   },
 
   horizontalSmall: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
+    paddingTop: `var(--1117, var(--1118, ${tokens.spacingVerticalXS}))`,
+    paddingBottom: `var(--1119, var(--1120, ${tokens.spacingVerticalXS}))`,
   },
 
   horizontalLarge: {
@@ -72,14 +72,14 @@ const useLabelStyles = makeStyles({
 });
 
 const useSecondaryTextBaseClassName = makeResetStyles({
-  marginTop: tokens.spacingVerticalXXS,
-  color: tokens.colorNeutralForeground3,
+  marginTop: `var(--1121, var(--1122, ${tokens.spacingVerticalXXS}))`,
+  color: `var(--1123, var(--1124, ${tokens.colorNeutralForeground3}))`,
   ...typographyStyles.caption1,
 });
 
 const useSecondaryTextStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: `var(--1125, var(--1126, ${tokens.colorPaletteRedForeground1}))`,
   },
 
   withIcon: {
@@ -93,7 +93,7 @@ const useValidationMessageIconBaseClassName = makeResetStyles({
   fontSize: iconSize,
   // Negative left margin puts the icon in the gutter of the validation message div's withIcon style.
   marginLeft: `calc(-${iconSize} - ${tokens.spacingHorizontalXS})`,
-  marginRight: tokens.spacingHorizontalXS,
+  marginRight: `var(--1127, var(--1128, ${tokens.spacingHorizontalXS}))`,
   // Line height of 0 prevents the verticalAlign from affecting the line height of the text.
   lineHeight: '0',
   // Negative verticalAlign shifts the inline icon down to align with the text (effectively top padding).
@@ -102,13 +102,13 @@ const useValidationMessageIconBaseClassName = makeResetStyles({
 
 const useValidationMessageIconStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: `var(--1129, var(--1130, ${tokens.colorPaletteRedForeground1}))`,
   },
   warning: {
-    color: tokens.colorPaletteDarkOrangeForeground1,
+    color: `var(--1131, var(--1132, ${tokens.colorPaletteDarkOrangeForeground1}))`,
   },
   success: {
-    color: tokens.colorPaletteGreenForeground1,
+    color: `var(--1133, var(--1134, ${tokens.colorPaletteGreenForeground1}))`,
   },
 });
 

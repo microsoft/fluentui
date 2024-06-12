@@ -34,15 +34,15 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
   },
   brandPrimary: {
-    color: tokens.colorBrandForeground1,
-    backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    color: `var(--2571, var(--2572, ${tokens.colorBrandForeground1}))`,
+    backgroundColor: `var(--2573, var(--2574, ${tokens.colorNeutralForegroundOnBrand}))`,
     ':hover': {
-      color: tokens.colorCompoundBrandForeground1Hover,
-      backgroundColor: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--2575, var(--2576, ${tokens.colorCompoundBrandForeground1Hover}))`,
+      backgroundColor: `var(--2577, var(--2578, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
     ':hover:active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
-      backgroundColor: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--2579, var(--2580, ${tokens.colorCompoundBrandForeground1Pressed}))`,
+      backgroundColor: `var(--2581, var(--2582, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
   },
 });

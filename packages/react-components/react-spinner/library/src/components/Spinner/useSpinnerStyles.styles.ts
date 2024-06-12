@@ -44,8 +44,8 @@ const useSpinnerBaseClassName = makeResetStyles({
     `white calc(100% - var(${vars.strokeWidth})) calc(100% - 1px), ` +
     `transparent 100%)`,
 
-  backgroundColor: tokens.colorBrandStroke2Contrast,
-  color: tokens.colorBrandStroke1,
+  backgroundColor: `var(--1829, var(--1830, ${tokens.colorBrandStroke2Contrast}))`,
+  color: `var(--1831, var(--1832, ${tokens.colorBrandStroke1}))`,
   '@media screen and (forced-colors: active)': {
     backgroundColor: 'HighlightText',
     color: 'Highlight',
@@ -88,7 +88,7 @@ const useSpinnerTailBaseClassName = makeResetStyles({
 
   animationDuration: '1.5s',
   animationIterationCount: 'infinite',
-  animationTimingFunction: tokens.curveEasyEase,
+  animationTimingFunction: `var(--1833, var(--1834, ${tokens.curveEasyEase}))`,
   animationName: {
     '0%': { transform: 'rotate(-135deg)' },
     '50%': { transform: 'rotate(0deg)' },
@@ -119,8 +119,8 @@ const useSpinnerTailBaseClassName = makeResetStyles({
 
 const useSpinnerStyles = makeStyles({
   inverted: {
-    backgroundColor: tokens.colorNeutralStrokeAlpha2,
-    color: tokens.colorNeutralStrokeOnBrand2,
+    backgroundColor: `var(--1835, var(--1836, ${tokens.colorNeutralStrokeAlpha2}))`,
+    color: `var(--1837, var(--1838, ${tokens.colorNeutralStrokeOnBrand2}))`,
   },
 
   rtlTail: {
@@ -136,55 +136,55 @@ const useSpinnerStyles = makeStyles({
   'extra-tiny': {
     height: '16px',
     width: '16px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--1839, var(--1840, ${tokens.strokeWidthThick}))`,
   },
 
   tiny: {
     height: '20px',
     width: '20px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--1841, var(--1842, ${tokens.strokeWidthThick}))`,
   },
 
   'extra-small': {
     height: '24px',
     width: '24px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--1843, var(--1844, ${tokens.strokeWidthThick}))`,
   },
 
   small: {
     height: '28px',
     width: '28px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--1845, var(--1846, ${tokens.strokeWidthThick}))`,
   },
 
   medium: {
     height: '32px',
     width: '32px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: `var(--1847, var(--1848, ${tokens.strokeWidthThicker}))`,
   },
 
   large: {
     height: '36px',
     width: '36px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: `var(--1849, var(--1850, ${tokens.strokeWidthThicker}))`,
   },
 
   'extra-large': {
     height: '40px',
     width: '40px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: `var(--1851, var(--1852, ${tokens.strokeWidthThicker}))`,
   },
 
   huge: {
     height: '44px',
     width: '44px',
-    [vars.strokeWidth]: tokens.strokeWidthThickest,
+    [vars.strokeWidth]: `var(--1853, var(--1854, ${tokens.strokeWidthThickest}))`,
   },
 });
 
 const useLabelStyles = makeStyles({
   inverted: {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: `var(--1855, var(--1856, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
 
   'extra-tiny': {

@@ -10,7 +10,7 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: tokens.colorStrokeFocus2,
+    textDecorationColor: `var(--1265, var(--1266, ${tokens.colorStrokeFocus2}))`,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
     outlineStyle: 'none',
@@ -22,29 +22,29 @@ const useStyles = makeStyles({
     },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: tokens.colorBrandForegroundLink,
+    color: `var(--1267, var(--1268, ${tokens.colorBrandForegroundLink}))`,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: `var(--1269, var(--1270, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--1271, var(--1272, ${tokens.fontSizeBase300}))`,
+    fontWeight: `var(--1273, var(--1274, ${tokens.fontWeightRegular}))`,
     margin: '0',
     padding: '0',
     overflow: 'inherit',
     textAlign: 'left',
     textDecorationLine: 'none',
-    textDecorationThickness: tokens.strokeWidthThin,
+    textDecorationThickness: `var(--1275, var(--1276, ${tokens.strokeWidthThin}))`,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkHover,
+      color: `var(--1277, var(--1278, ${tokens.colorBrandForegroundLinkHover}))`,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkPressed,
+      color: `var(--1279, var(--1280, ${tokens.colorBrandForegroundLinkPressed}))`,
     },
   },
   // Overrides when the Link renders as a button.
@@ -57,16 +57,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: `var(--1281, var(--1282, ${tokens.colorNeutralForeground2}))`,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Hover,
+      color: `var(--1283, var(--1284, ${tokens.colorNeutralForeground2Hover}))`,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Pressed,
+      color: `var(--1285, var(--1286, ${tokens.colorNeutralForeground2Pressed}))`,
     },
   },
   // Overrides when the Link is rendered inline within text.
@@ -76,27 +76,27 @@ const useStyles = makeStyles({
   // Overrides when the Link is disabled.
   disabled: {
     textDecorationLine: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--1287, var(--1288, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
 
     ':hover': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--1289, var(--1290, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':active': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--1291, var(--1292, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 
   inverted: {
-    color: tokens.colorBrandForegroundInverted,
+    color: `var(--1293, var(--1294, ${tokens.colorBrandForegroundInverted}))`,
     ':hover': {
-      color: tokens.colorBrandForegroundInvertedHover,
+      color: `var(--1295, var(--1296, ${tokens.colorBrandForegroundInvertedHover}))`,
     },
     ':active': {
-      color: tokens.colorBrandForegroundInvertedPressed,
+      color: `var(--1297, var(--1298, ${tokens.colorBrandForegroundInvertedPressed}))`,
     },
   },
 });

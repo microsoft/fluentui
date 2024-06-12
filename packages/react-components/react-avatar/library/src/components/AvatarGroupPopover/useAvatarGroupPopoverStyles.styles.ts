@@ -50,10 +50,10 @@ const useTriggerButtonStyles = makeStyles({
     flexShrink: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground1,
+    color: `var(--321, var(--322, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--323, var(--324, ${tokens.colorNeutralBackground1}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    borderRadius: tokens.borderRadiusCircular,
+    borderRadius: `var(--325, var(--326, ${tokens.borderRadiusCircular}))`,
     ...shorthands.borderStyle('solid'),
     padding: '0',
 
@@ -64,7 +64,7 @@ const useTriggerButtonStyles = makeStyles({
   },
 
   pie: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--327, var(--328, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: 'transparent',
   },
@@ -76,20 +76,20 @@ const useTriggerButtonStyles = makeStyles({
 
   states: {
     '&:hover': {
-      color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: `var(--329, var(--330, ${tokens.colorNeutralForeground1Hover}))`,
+      backgroundColor: `var(--331, var(--332, ${tokens.colorNeutralBackground1Hover}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
     },
     '&:active': {
-      color: tokens.colorNeutralForeground1Pressed,
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      color: `var(--333, var(--334, ${tokens.colorNeutralForeground1Pressed}))`,
+      backgroundColor: `var(--335, var(--336, ${tokens.colorNeutralBackground1Pressed}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
     },
   },
 
   selected: {
-    color: tokens.colorNeutralForeground1Selected,
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    color: `var(--337, var(--338, ${tokens.colorNeutralForeground1Selected}))`,
+    backgroundColor: `var(--339, var(--340, ${tokens.colorNeutralBackground1Selected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
   },
 

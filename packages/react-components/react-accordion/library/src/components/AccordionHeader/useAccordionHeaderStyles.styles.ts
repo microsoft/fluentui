@@ -27,14 +27,14 @@ const useStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle(),
   root: {
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--17, var(--18, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--19, var(--20, ${tokens.colorTransparentBackground}))`,
     margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--21, var(--22, ${tokens.borderRadiusMedium}))`,
   },
   rootDisabled: {
     backgroundImage: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--23, var(--24, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   rootInline: {
     display: 'inline-block',
@@ -53,24 +53,24 @@ const useStyles = makeStyles({
   },
   buttonSmall: {
     minHeight: '32px',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--25, var(--26, ${tokens.fontSizeBase200}))`,
   },
   buttonLarge: {
-    lineHeight: tokens.lineHeightBase400,
-    fontSize: tokens.fontSizeBase400,
+    lineHeight: `var(--27, var(--28, ${tokens.lineHeightBase400}))`,
+    fontSize: `var(--29, var(--30, ${tokens.fontSizeBase400}))`,
   },
   buttonExtraLarge: {
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    lineHeight: `var(--31, var(--32, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--33, var(--34, ${tokens.fontSizeBase500}))`,
   },
   buttonInline: {
     display: 'inline-flex',
   },
   buttonExpandIconEndNoIcon: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: `var(--35, var(--36, ${tokens.spacingHorizontalM}))`,
   },
   buttonExpandIconEnd: {
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingRight: `var(--37, var(--38, ${tokens.spacingHorizontalMNudge}))`,
   },
   buttonDisabled: {
     cursor: 'not-allowed',
@@ -79,11 +79,11 @@ const useStyles = makeStyles({
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    lineHeight: `var(--39, var(--40, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--41, var(--42, ${tokens.fontSizeBase500}))`,
   },
   expandIconStart: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: `var(--43, var(--44, ${tokens.spacingHorizontalS}))`,
   },
   expandIconEnd: {
     flexGrow: 1,
@@ -91,15 +91,15 @@ const useStyles = makeStyles({
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
-    paddingLeft: tokens.spacingHorizontalS,
+    paddingLeft: `var(--45, var(--46, ${tokens.spacingHorizontalS}))`,
   },
   icon: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    paddingRight: tokens.spacingHorizontalS,
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    paddingRight: `var(--47, var(--48, ${tokens.spacingHorizontalS}))`,
+    lineHeight: `var(--49, var(--50, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--51, var(--52, ${tokens.fontSizeBase500}))`,
   },
 });
 

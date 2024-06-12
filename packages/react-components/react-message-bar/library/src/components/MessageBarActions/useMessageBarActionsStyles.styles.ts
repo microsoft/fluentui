@@ -14,22 +14,22 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 const useRootBaseStyles = makeResetStyles({
   gridArea: 'secondaryActions',
   display: 'flex',
-  columnGap: tokens.spacingHorizontalM,
-  paddingRight: tokens.spacingHorizontalM,
+  columnGap: `var(--1435, var(--1436, ${tokens.spacingHorizontalM}))`,
+  paddingRight: `var(--1437, var(--1438, ${tokens.spacingHorizontalM}))`,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
   gridArea: 'actions',
-  paddingRight: tokens.spacingHorizontalM,
+  paddingRight: `var(--1439, var(--1440, ${tokens.spacingHorizontalM}))`,
 });
 
 const useMultilineStyles = makeStyles({
   root: {
     justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
+    marginTop: `var(--1441, var(--1442, ${tokens.spacingVerticalMNudge}))`,
+    marginBottom: `var(--1443, var(--1444, ${tokens.spacingVerticalS}))`,
     marginRight: '0px',
-    paddingRight: tokens.spacingVerticalM,
+    paddingRight: `var(--1445, var(--1446, ${tokens.spacingVerticalM}))`,
   },
 
   noActions: {

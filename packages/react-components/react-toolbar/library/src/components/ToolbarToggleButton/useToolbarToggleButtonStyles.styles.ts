@@ -5,7 +5,7 @@ import { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
 
 const useBaseStyles = makeStyles({
   selected: {
-    color: tokens.colorBrandForeground1,
+    color: `var(--2833, var(--2834, ${tokens.colorBrandForeground1}))`,
   },
 });
 

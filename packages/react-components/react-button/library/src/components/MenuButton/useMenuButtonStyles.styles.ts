@@ -25,42 +25,42 @@ const useRootExpandedStyles = makeStyles({
   outline: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--61, var(--62, ${tokens.colorNeutralForeground1Selected}))`,
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
+    backgroundColor: `var(--63, var(--64, ${tokens.colorBrandBackgroundSelected}))`,
   },
   secondary: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundColor: `var(--65, var(--66, ${tokens.colorNeutralBackground1Selected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--67, var(--68, ${tokens.colorNeutralForeground1Selected}))`,
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
-    color: tokens.colorNeutralForeground2Selected,
+    backgroundColor: `var(--69, var(--70, ${tokens.colorSubtleBackgroundSelected}))`,
+    color: `var(--71, var(--72, ${tokens.colorNeutralForeground2Selected}))`,
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: `var(--73, var(--74, ${tokens.colorTransparentBackgroundSelected}))`,
+    color: `var(--75, var(--76, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
 });
 
 const useIconExpandedStyles = makeStyles({
   // Appearance variations
   outline: {
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--77, var(--78, ${tokens.colorNeutralForeground1Selected}))`,
   },
   primary: {
     /* The primary styles are exactly the same as the base styles. */
   },
   secondary: {
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--79, var(--80, ${tokens.colorNeutralForeground1Selected}))`,
   },
   subtle: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--81, var(--82, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
   transparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--83, var(--84, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
   highContrast: {
     // High contrast styles
@@ -81,25 +81,25 @@ const useMenuIconStyles = makeStyles({
   small: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: `var(--85, var(--86, ${tokens.lineHeightBase200}))`,
     width: '12px',
   },
   medium: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: `var(--87, var(--88, ${tokens.lineHeightBase200}))`,
     width: '12px',
   },
   large: {
     fontSize: '16px',
     height: '16px',
-    lineHeight: tokens.lineHeightBase400,
+    lineHeight: `var(--89, var(--90, ${tokens.lineHeightBase400}))`,
     width: '16px',
   },
 
   // Not-icon only
   notIconOnly: {
-    marginLeft: tokens.spacingHorizontalXS,
+    marginLeft: `var(--91, var(--92, ${tokens.spacingHorizontalXS}))`,
   },
 });
 

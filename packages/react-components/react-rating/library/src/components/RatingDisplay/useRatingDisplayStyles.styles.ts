@@ -20,24 +20,24 @@ const useRootClassName = makeResetStyles({
 });
 
 const useLabelClassName = makeResetStyles({
-  color: tokens.colorNeutralForeground1,
-  marginLeft: tokens.spacingHorizontalXS,
+  color: `var(--1547, var(--1548, ${tokens.colorNeutralForeground1}))`,
+  marginLeft: `var(--1549, var(--1550, ${tokens.spacingHorizontalXS}))`,
   ...typographyStyles.caption1,
 });
 
 const useLabelStyles = makeStyles({
   large: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    fontSize: `var(--1551, var(--1552, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--1553, var(--1554, ${tokens.lineHeightBase300}))`,
+    marginLeft: `var(--1555, var(--1556, ${tokens.spacingHorizontalSNudge}))`,
   },
   extraLarge: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    marginLeft: tokens.spacingHorizontalS,
+    fontSize: `var(--1557, var(--1558, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--1559, var(--1560, ${tokens.lineHeightBase400}))`,
+    marginLeft: `var(--1561, var(--1562, ${tokens.spacingHorizontalS}))`,
   },
   strong: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--1563, var(--1564, ${tokens.fontWeightSemibold}))`,
   },
   divider: {
     '::before': {
