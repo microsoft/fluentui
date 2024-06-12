@@ -3,7 +3,7 @@ export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeams
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
-export { typographyStyles } from './global/index';
+export { typographyStyles, zIndexes } from './global/index';
 
 export type {
   Brands,

@@ -72,6 +72,7 @@ import { typographyStyles } from '@fluentui/tokens';
 import { VerticalSpacingTokens } from '@fluentui/tokens';
 import { webDarkTheme } from '@fluentui/tokens';
 import { webLightTheme } from '@fluentui/tokens';
+import { zIndexes } from '@fluentui/tokens';
 
 export { BorderRadiusTokens }
 
@@ -208,6 +209,8 @@ export { VerticalSpacingTokens }
 export { webDarkTheme }
 
 export { webLightTheme }
+
+export { zIndexes }
 
 // (No @packageDocumentation comment for this package)
 

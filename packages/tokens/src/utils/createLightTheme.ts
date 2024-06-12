@@ -1,7 +1,15 @@
 import { colorPaletteTokens, colorStatusTokens } from '../alias/lightColorPalette';
 import { generateColorTokens } from '../alias/lightColor';
 
-import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
+import {
+  borderRadius,
+  fontSizes,
+  lineHeights,
+  fontFamilies,
+  strokeWidths,
+  fontWeights,
+  zIndexes,
+} from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
 import { durations } from '../global/durations';
@@ -22,6 +30,7 @@ export const createLightTheme: (brand: BrandVariants) => Theme = brand => {
     ...verticalSpacings,
     ...durations,
     ...curves,
+    ...zIndexes,
 
     ...colorTokens,
     ...colorPaletteTokens,
