@@ -28,7 +28,8 @@ export class Link extends BaseAnchor {
   /**
    * The link is inline with text
    * In chromium browsers, if the link is contained within a semantic
-   * text element (h1, h2, h3, h4, h5, h6, p), `:host-context()` ensures inline links are styled appropriately
+   * text element (`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`) or `fluent-text`,
+   * `:host-context()` ensures inline links are styled appropriately.
    *
    * @public
    * @remarks
@@ -36,10 +37,4 @@ export class Link extends BaseAnchor {
    */
   @attr({ mode: 'boolean' })
   public inline?: boolean = false;
-
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'link';
-  }
 }
