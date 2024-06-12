@@ -2,6 +2,55 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:20 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3dc10b8d5c4b5d3f793054832c3ea6e86a967732",
+            "comment": "style(react-nav-preview): fix formatting in barell file"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3f43fc3a20f6c16ae658c3ff2a22858d08c50647",
+            "comment": "feat: Adding small size variant."
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3babcab6081857c253090b684f41a0da8a41a83b",
+            "comment": "(chore): Remove NavDrawerHeaderNav component."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.5.1",
+            "commit": "339bbcd161148f3af2d8871f698250404cb994e7"
+          }
+        ],
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "95e9fb0aa30ee3fe058d1e652ccd654c895475c4",
+            "comment": "feat: Adding roles and current where appropriate."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:36 GMT",
       "tag": "@fluentui/react-nav-preview_v0.3.0",
       "version": "0.3.0",

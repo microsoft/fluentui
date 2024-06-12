@@ -2,6 +2,21 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:16 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.10",
+      "version": "0.1.10",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:30 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.1.10",
       "version": "0.1.10",
