@@ -1,7 +1,5 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseAnchor } from '../anchor-button/anchor-button.js';
-import { StartEnd } from '../patterns/index.js';
-import { applyMixins } from '../utils/apply-mixins.js';
 import { type LinkAppearance } from './link.options.js';
 
 /**
