@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best Practices
 
 ### Layout
 
@@ -11,5 +8,3 @@
 
 - Only replace the On/Off labels if there are more specific labels for the setting. For example, you might use Show/Hide if the setting is "Show images".
 - Keep descriptive text short and concise—two to four words; preferably nouns. For example, "Focused inbox" or "WiFi".
-
-</details>

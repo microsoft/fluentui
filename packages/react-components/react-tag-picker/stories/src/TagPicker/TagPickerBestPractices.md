@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -12,5 +9,3 @@
 ### Don't
 
 - **Don't use `InteractionTag` with `TagPicker`** as it is not supported at the moment. This combination may lead to unexpected behavior.
-
-</details>

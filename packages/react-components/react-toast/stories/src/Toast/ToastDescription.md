@@ -15,7 +15,7 @@ is simply a layout component.
 > available on a permanent surface too. One of the ways to do this in an application is to implement a notification
 > centre.
 
-## Best practices
+## Best Practices
 
 ### Do
 

@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -18,5 +15,3 @@
 - Don't use more than 2 levels of nested menus.
 - Don't use verbose secondary content for menuitems.
 - Don't mix checkboxes and radio items without `MenuGroup`.
-
-</details>

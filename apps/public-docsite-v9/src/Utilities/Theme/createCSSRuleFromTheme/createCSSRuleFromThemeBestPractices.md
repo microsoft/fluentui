@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -11,5 +8,3 @@
 - **Prefer using `FluentProvider`.**
   `FluentProvider` generates CSS rules using `createCSSRuleFromTheme()` and should cover most cases. Only reach for `createCSSRuleFromTheme()` when
   `FluentProvider` cannot address your needs.
-
-</details>

@@ -1,7 +1,4 @@
-<details>
-<summary>
-Best Practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -13,5 +10,3 @@ Best Practices
 ### Don't
 
 - Don't try to change its behavior or appearance.
-
-</details>

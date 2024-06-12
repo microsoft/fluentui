@@ -1,7 +1,4 @@
-<details>
-<summary>
-InfoButton/InfoLabel Pattern decision
-</summary>
+## InfoButton/InfoLabel Pattern
 
 ### What is an InfoLabel?
 
@@ -34,5 +31,3 @@ in the label or a secondary label. If the content is longer and/or has interacti
 
 > If the tooltip + icon pattern is still needed, refer to the Icon example in tooltip on how to correctly achieve this pattern. Note that when using a
 > tooltip, the content must be short and not have interaction.
-
-</details>

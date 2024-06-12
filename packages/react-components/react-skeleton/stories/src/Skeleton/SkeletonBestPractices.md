@@ -1,7 +1,4 @@
-<details>
-<summary>
-## Best practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -14,4 +11,3 @@
 
 - Build Skeleton UI with a lot of details. Circles and rectangles are really as detailed as you want to get. Adding more detail will result in confusion once the UI loads.
 - Use `Skeleton` if you are confident that the UI will take less than a second to load.
-</details>

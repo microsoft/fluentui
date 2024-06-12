@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -16,5 +13,3 @@
 - Use manual layout if possible - this is a built-in feature
 - Use long messages for content - keep content to under 100 characters
 - Customize announcement politeness - check with your a11y champ
-
-</details>

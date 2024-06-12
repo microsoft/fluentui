@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best Practices
 
 ### Do
 
@@ -16,5 +13,3 @@
 - Don't use more than three buttons between `DialogActions`.
 - Don't open a `Dialog` from a `Dialog`
 - Don't use a `Dialog` with no focusable elements
-
-</details>
