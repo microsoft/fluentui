@@ -54,11 +54,6 @@ export class RatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public max: number = 5;
-  protected maxChanged(): void {
-    if (this.compact) {
-      this.max = 1;
-    }
-  }
 
   /**
    * The size of the component.
@@ -80,6 +75,26 @@ export class RatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public value: number = 0;
+
+  /**
+   * Returns an array of icon values based on the `max` attribute.
+   *
+   * @internal
+   */
+  public get icons(): number[] {
+    // Create an array of values from 0.5 to the max value, incrementing by 0.5.
+    return Array.from({ length: Math.round(Math.abs(this.compact ? 1 : this.max)) * 2 }, (_, i) => (i + 1) / 2);
+  }
+
+  /**
+   * Returns a boolean that determines if the icon passed as an argument is selected.
+   *
+   * @internal
+   */
+  public isIconSelected(iconValue: number): boolean {
+    // Compare the argument to the value attribute, rounded to the nearest half.
+    return iconValue === Math.round((this.compact ? 1 : this.value) * 2) / 2;
+  }
 
   /**
    * The ID of the rating value and count label elements.

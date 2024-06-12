@@ -68,20 +68,17 @@ export const styles = css`
     fill: ${colorBrandBackground};
   }
 
-  :host([value^='-']) svg,
-  :host([value='0']) svg,
+  :host(:is([value^='-'], [value='0'])) svg,
   svg[selected] ~ svg {
     fill: ${colorPaletteMarigoldBackground2};
   }
 
-  :host([color=${RatingDisplayColor.neutral}][value^='-']) svg,
-  :host([color=${RatingDisplayColor.neutral}][value='0']) svg,
+  :host([color=${RatingDisplayColor.neutral}]:is([value^='-'], [value='0'])) svg,
   :host([color=${RatingDisplayColor.neutral}]) svg[selected] ~ svg {
     fill: ${colorNeutralBackground1Pressed};
   }
 
-  :host([color=${RatingDisplayColor.brand}][value^='-']) svg,
-  :host([color=${RatingDisplayColor.brand}][value='0']) svg,
+  :host([color=${RatingDisplayColor.brand}]:is([value^='-'], [value='0'])) svg,
   :host([color=${RatingDisplayColor.brand}]) svg[selected] ~ svg {
     fill: ${colorBrandStroke2};
   }
@@ -90,18 +87,24 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
   }
 
+  .count {
+    display: none;
+  }
+
+  :host([count]) .count {
+    display: block;
+  }
+
   .value,
   .count {
     margin-inline-start: ${spacingHorizontalXS};
   }
 
-  :host([size=${RatingDisplaySize.small}]) .value,
-  :host([size=${RatingDisplaySize.small}]) .count {
+  :host([size=${RatingDisplaySize.small}]) :is(.value, .count) {
     margin-inline-start: ${spacingHorizontalXXS};
   }
 
-  :host([size=${RatingDisplaySize.large}]) .value,
-  :host([size=${RatingDisplaySize.large}]) .count {
+  :host([size=${RatingDisplaySize.large}]) :is(.value, .count) {
     margin-inline-start: ${spacingHorizontalSNudge};
   }
 
@@ -123,8 +126,7 @@ export const styles = css`
       fill: CanvasText;
     }
 
-    :host([color][value^='-']) svg,
-    :host([color][value='0']) svg,
+    :host([color]:is([value^='-'], [value='0'])) svg,
     :host([color]) svg[selected] ~ svg {
       fill: Canvas;
       stroke: CanvasText;

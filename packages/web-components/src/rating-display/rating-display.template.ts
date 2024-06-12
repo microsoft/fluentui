@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, repeat, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, repeat } from '@microsoft/fast-element';
 import type { RatingDisplay } from './rating-display.js';
 
 /**
@@ -24,21 +24,15 @@ export function ratingDisplayTemplate<T extends RatingDisplay>(): ElementViewTem
     <template role="img" aria-labelledby=${x => `${x.uid}-value${x.count ? ` ${x.uid}-count` : ''}`}>
       ${star}
       ${repeat(
-        x => Array.from({ length: Math.round(Math.abs(x.max)) * 2 }, (_, i) => (i + 1) / 2),
-        html<number>`<svg
-          aria-hidden="true"
-          ?selected=${(x, c) => x === Math.round((c.parent.compact ? 1 : c.parent.value) * 2) / 2}
-        >
+        x => x.icons,
+        html`<svg aria-hidden="true" ?selected=${(x, c) => c.parent.isIconSelected(x)}>
           <use xlink:href="#star"></use>
         </svg>`,
       )}
       <span class="value" part="value" id=${x => `${x.uid}-value`} aria-hidden="true">${x => x.value}</span>
-      ${when(
-        x => x.count,
-        html`<span class="count" part="count" id=${x => `${x.uid}-count`} aria-hidden="true"
-          >${x => x.count?.toLocaleString()}</span
-        >`,
-      )}
+      <span class="count" part="count" id=${x => `${x.uid}-count`} aria-hidden="true"
+        >${x => x.count?.toLocaleString()}</span
+      >
     </template>
   `;
 }
