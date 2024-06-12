@@ -10,6 +10,8 @@ const tokenNames = Object.keys(tokens) as (keyof Theme)[];
  */
 export const setTheme = (theme: Theme) => {
   for (const t of tokenNames) {
+    let registered = false;
+
     if ('registerProperty' in CSS) {
       try {
         CSS.registerProperty({
@@ -17,11 +19,17 @@ export const setTheme = (theme: Theme) => {
           inherits: true,
           initialValue: theme[t] as string,
         });
+        registered = true;
       } catch {
-        document.body.style.setProperty(`--${t}`, theme[t] as string);
+        // Do nothing.
       }
-    } else {
-      document.body.style.setProperty(`--${t}`, theme[t] as string);
+    }
+
+    if (!registered) {
+      // TODO: Find a better way to update the values. Current approach adds
+      // lots of code to the `style` attribute on `<body>`. Maybe look into
+      // `document.adoptedStyleSheets`.
+      setThemeFor(document.body, theme);
     }
   }
 };
