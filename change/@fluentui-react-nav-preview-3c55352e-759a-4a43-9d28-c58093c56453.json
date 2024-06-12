@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style(react-nav-preview): fix formatting in barell file",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
