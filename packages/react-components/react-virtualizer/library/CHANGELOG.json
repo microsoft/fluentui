@@ -2,6 +2,21 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:28 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.79",
+      "version": "9.0.0-alpha.79",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:44 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.79",
       "version": "9.0.0-alpha.79",

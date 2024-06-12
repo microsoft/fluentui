@@ -2,6 +2,27 @@
   "name": "@fluentui/react-list-preview",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:19 GMT",
+      "tag": "@fluentui/react-list-preview_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "e79634185f87ee50dd137bb861e5f56e12a9225e",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "414d5e135bb355af2b0898ac5467b2407db0ef8a",
+            "comment": "Add bundle size tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:34 GMT",
       "tag": "@fluentui/react-list-preview_v0.2.8",
       "version": "0.2.8",

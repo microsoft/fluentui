@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Thu, 06 Jun 2024 15:26:36 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.4.0)
+
+Wed, 12 Jun 2024 13:17:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.3.0..@fluentui/react-nav-preview_v0.4.0)
+
+### Minor changes
+
+- feat: Adding small size variant. ([PR #31589](https://github.com/microsoft/fluentui/pull/31589) by matejera@microsoft.com)
+- (chore): Remove NavDrawerHeaderNav component. ([PR #31646](https://github.com/microsoft/fluentui/pull/31646) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.5.1 ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by beachball)
+
+### Patches
+
+- feat: Adding roles and current where appropriate. ([PR #31649](https://github.com/microsoft/fluentui/pull/31649) by matejera@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.3.0)
 

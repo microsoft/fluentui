@@ -2,6 +2,21 @@
   "name": "@fluentui/react-teaching-popover",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:26 GMT",
+      "tag": "@fluentui/react-teaching-popover_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:40 GMT",
       "tag": "@fluentui/react-teaching-popover_v9.1.7",
       "version": "9.1.7",

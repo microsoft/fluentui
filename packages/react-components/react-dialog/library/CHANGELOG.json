@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:28 GMT",
+      "tag": "@fluentui/react-dialog_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion to v9.1.0",
+            "commit": "339bbcd161148f3af2d8871f698250404cb994e7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:32 GMT",
       "tag": "@fluentui/react-dialog_v9.11.0",
       "version": "9.11.0",

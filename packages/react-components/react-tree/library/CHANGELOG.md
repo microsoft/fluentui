@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 06 Jun 2024 15:26:42 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.0)
+
+Wed, 12 Jun 2024 13:17:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.6.0..@fluentui/react-tree_v9.7.0)
+
+### Minor changes
+
+- feature: onVisibilityChange method to TreeItemLayout action slot ([PR #31598](https://github.com/microsoft/fluentui/pull/31598) by bernardo.sunderhus@gmail.com)
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.6.0)
 

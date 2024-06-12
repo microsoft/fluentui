@@ -13,7 +13,7 @@ export { MotionFunctions as functions } from './MotionFunctions.stories';
 export { MotionFunctionParams as functionParams } from './MotionFunctionParams.stories';
 
 export default {
-  title: 'Utilities/Web Motions/createMotionComponent',
+  title: 'Utilities/Motion/createMotionComponent',
   component: null,
   parameters: {
     docs: {

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 06 Jun 2024 15:26:31 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.83)
+
+Wed, 12 Jun 2024 13:17:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.82..@fluentui/react-card_v9.0.83)
+
+### Patches
+
+- fix: improve header alignment when no description is passed ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by marcosvmmoura@gmail.com)
 
 ## [9.0.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.82)
 
