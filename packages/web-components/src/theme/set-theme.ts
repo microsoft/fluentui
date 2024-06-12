@@ -24,8 +24,9 @@ export const setTheme = (theme: Theme) => {
     }
 
     if (!registered) {
-      // TODO: Maybe find a better way to update the values. Current approach
-      // adds lots of code to the `style` attribute on `<body>`.
+      // TODO: Find a better way to update the values. Current approach adds
+      // lots of code to the `style` attribute on `<body>`. Maybe look into
+      // `document.adoptedStyleSheets`.
       setThemeFor(document.body, theme);
     }
   }
