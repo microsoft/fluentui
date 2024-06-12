@@ -34,5 +34,5 @@ export class Link extends BaseAnchor {
    * HTML Attribute: `inline`
    */
   @attr({ mode: 'boolean' })
-  public inline?: boolean = false;
+  public inline: boolean = false;
 }

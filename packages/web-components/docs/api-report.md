@@ -2191,7 +2191,7 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
-    inline?: boolean;
+    inline: boolean;
 }
 
 // @public

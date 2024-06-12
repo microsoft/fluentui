@@ -10,7 +10,7 @@ export const LinkAppearance = {
 } as const;
 
 /**
- * An Link can be secondary, primary, outline, subtle, transparent
+ * An Link can be subtle or the default appearance
  * @public
  */
 export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
