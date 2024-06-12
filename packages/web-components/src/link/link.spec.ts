@@ -14,15 +14,8 @@ const proxyAttributes = {
 
 // Regular Attributes
 const attributes = {
-  appearance: 'primary',
-  shape: 'rounded',
-  size: 'medium',
+  appearance: 'subtle',
   ...proxyAttributes,
-};
-
-// Boolean Attributes
-const booleanAttributes = {
-  iconOnly: true,
 };
 
 test.describe('Link', () => {
@@ -45,21 +38,6 @@ test.describe('Link', () => {
       `);
 
       await expect(element).toHaveJSProperty(`${attribute}`, `${value}`);
-    });
-  }
-
-  // Boolean attributes
-  for (const [attribute, value] of Object.entries(booleanAttributes)) {
-    const attributeSpinalCase = spinalCase(attribute);
-
-    test(`should set the boolean attribute: \`${attributeSpinalCase}\` to \`${value}\``, async ({ page }) => {
-      const element = page.locator('fluent-link');
-
-      await page.setContent(/* html */ `
-        <fluent-link ${attributeSpinalCase}></fluent-link>
-      `);
-
-      await expect(element).toHaveJSProperty(attribute, value);
     });
   }
 
