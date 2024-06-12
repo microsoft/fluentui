@@ -12,6 +12,7 @@ import { convertToLocaleString } from '../../utilities/locale-util';
 import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { useFocusableGroup } from '@fluentui/react-components';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -89,10 +90,10 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   };
 
   const _getChartDataText = (data: IChartProps) => {
-    return; /* props.barChartCustomData ? (
+    /* return props.barChartCustomData ? (
         <div role="text">{props.barChartCustomData(data)}</div>
       ) : ( */
-    _getDefaultTextData(data);
+    return _getDefaultTextData(data);
     //)
   };
 
@@ -259,6 +260,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
+          tabIndex={point.legend !== '' ? 0 : undefined}
         />
       );
     });
@@ -293,6 +295,8 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   const { data } = props;
   _adjustProps();
   const classes = useHorizontalBarChartStyles_unstable(props);
+  const focusAttributes = useFocusableGroup();
+
   let datapoint: number | undefined = 0;
   return !_isChartEmpty() ? (
     <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
@@ -308,7 +312,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
             x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
             y: points.chartData![0].horizontalBarChartdata!.y,
           },
-          color: tokens.colorNeutralForeground1,
+          color: tokens.colorBackgroundOverlay,
         };
 
         // Hide right side text of chart title for absolute-scale variant
@@ -325,9 +329,16 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
 
         return (
           <div key={index}>
-            <div className={classes.items}>
+            <div className={classes.items} {...focusAttributes}>
               <div className={classes.chartTitle}>
-                {points!.chartTitle && <></>}
+                {points!.chartTitle && ( // ToDo - Update Focusable tooltip text to use v9 controls.
+                  <div
+                    className={classes.chartTitleLeft}
+                    {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}
+                  >
+                    {points!.chartTitle}
+                  </div>
+                )}
                 {chartDataText}
               </div>
               {points!.chartData![0].data && _createBenchmark(points!)}
