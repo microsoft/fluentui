@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-teaching-popover-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-teaching-popover/stories/src",
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "implicitDependencies": []
+}

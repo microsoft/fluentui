@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import * as React from 'react';
 
 import type { AtomMotion } from '../types';
@@ -10,15 +10,19 @@ const motion: AtomMotion = {
 };
 
 function createElementMock() {
+  const finishMock = jest.fn();
   const animateMock = jest.fn().mockImplementation(() => ({
-    play: jest.fn(),
     cancel: jest.fn(),
     persist: jest.fn(),
+    finish: finishMock,
+    finished: Promise.resolve(),
   }));
-  const ElementMock = React.forwardRef((props, ref) => {
+  const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
       animate: animateMock,
     }));
+
+    props.onRender?.();
 
     return <div>ElementMock</div>;
   });
@@ -26,6 +30,7 @@ function createElementMock() {
   return {
     animateMock,
     ElementMock,
+    finishMock,
   };
 }
 
@@ -62,5 +67,27 @@ describe('createMotionComponent', () => {
     expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
 
     expect(animateMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onMotionStart and onMotionFinish', async () => {
+    const fnMotion = jest.fn().mockImplementation(() => motion);
+    const TestAtom = createMotionComponent(fnMotion);
+    const onMotionStart = jest.fn();
+    const onMotionFinish = jest.fn();
+
+    const { ElementMock } = createElementMock();
+
+    render(
+      <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
   });
 });
