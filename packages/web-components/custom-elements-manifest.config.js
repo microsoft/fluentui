@@ -1,8 +1,16 @@
 export default {
-  globs: ['src/**/*.ts', './src/fluent-design-system.ts'],
+  globs: [
+    './src/**/*.ts',
+    './src/**/*.template.ts',
+    './src/**/*.styles.ts',
+    './src/**/define.ts',
+    './src/**/*.definition.ts',
+    './src/fluent-design-system.ts',
+  ],
   exclude: [
     './src/**/*.md',
     './src/index-rollup.ts',
+    './src/index.ts',
     './src/**/*.spec.ts',
     './src/**/*.stories.ts',
     './src/theme/',
