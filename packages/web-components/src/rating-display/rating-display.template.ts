@@ -21,7 +21,7 @@ const star = html`
  */
 export function ratingDisplayTemplate<T extends RatingDisplay>(): ElementViewTemplate<T> {
   return html<T>`
-    <template role="img" aria-labelledby=${x => `${x.uid}-value${x.count ? ` ${x.uid}-count` : ''}`}>
+    <template>
       ${star}
       ${repeat(
         x => x.icons,
@@ -29,10 +29,8 @@ export function ratingDisplayTemplate<T extends RatingDisplay>(): ElementViewTem
           <use xlink:href="#star"></use>
         </svg>`,
       )}
-      <span class="value" part="value" id=${x => `${x.uid}-value`} aria-hidden="true">${x => x.value}</span>
-      <span class="count" part="count" id=${x => `${x.uid}-count`} aria-hidden="true"
-        >${x => x.count?.toLocaleString()}</span
-      >
+      <slot name="value" aria-hidden="true">${x => x.value}</slot>
+      <slot name="count" aria-hidden="true">${x => x.formattedCount}</slot>
     </template>
   `;
 }

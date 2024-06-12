@@ -1,5 +1,4 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
@@ -7,6 +6,13 @@ import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.
  * @public
  */
 export class RatingDisplay extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * The color of the rating display icons.
    *
@@ -76,8 +82,25 @@ export class RatingDisplay extends FASTElement {
   @attr({ converter: nullableNumberConverter })
   public value: number = 0;
 
+  private intlNumberFormatter = new Intl.NumberFormat();
+
+  public constructor() {
+    super();
+
+    this.elementInternals.role = 'img';
+  }
+
   /**
-   * Returns an array of icon values based on the `max` attribute.
+   * Returns "count" as string, formatted according to the locale.
+   *
+   * @internal
+   */
+  public get formattedCount(): string {
+    return this.count ? this.intlNumberFormatter.format(this.count) : '';
+  }
+
+  /**
+   * Returns an array of icon values based on the "max" attribute.
    *
    * @internal
    */
@@ -95,11 +118,4 @@ export class RatingDisplay extends FASTElement {
     // Compare the argument to the value attribute, rounded to the nearest half.
     return iconValue === Math.round((this.compact ? 1 : this.value) * 2) / 2;
   }
-
-  /**
-   * The ID of the rating value and count label elements.
-   *
-   * @internal
-   */
-  public readonly uid: string = uniqueId('rating-display-');
 }

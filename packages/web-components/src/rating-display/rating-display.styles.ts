@@ -83,41 +83,42 @@ export const styles = css`
     fill: ${colorBrandStroke2};
   }
 
-  .value {
+  slot[name='value'] {
+    display: block;
     font-weight: ${fontWeightSemibold};
   }
 
-  .count {
+  slot[name='count'] {
     display: none;
   }
 
-  :host([count]) .count {
+  :host([count]) slot[name='count'] {
     display: block;
   }
 
-  .value,
-  .count {
+  slot[name='value'],
+  slot[name='count'] {
     margin-inline-start: ${spacingHorizontalXS};
   }
 
-  :host([size=${RatingDisplaySize.small}]) :is(.value, .count) {
+  :host([size=${RatingDisplaySize.small}]) :is(slot[name='value'], slot[name='count']) {
     margin-inline-start: ${spacingHorizontalXXS};
   }
 
-  :host([size=${RatingDisplaySize.large}]) :is(.value, .count) {
+  :host([size=${RatingDisplaySize.large}]) :is(slot[name='value'], slot[name='count']) {
     margin-inline-start: ${spacingHorizontalSNudge};
   }
 
-  .count:before {
+  slot[name='count']:before {
     content: '·';
     margin-inline-end: ${spacingHorizontalXS};
   }
 
-  :host([size=${RatingDisplaySize.small}]) .count:before {
+  :host([size=${RatingDisplaySize.small}]) slot[name='count']:before {
     margin-inline-end: ${spacingHorizontalXXS};
   }
 
-  :host([size=${RatingDisplaySize.large}]) .count:before {
+  :host([size=${RatingDisplaySize.large}]) slot[name='count']:before {
     margin-inline-end: ${spacingHorizontalSNudge};
   }
 `.withBehaviors(
