@@ -24,19 +24,19 @@ const useRootBaseStyles = makeResetStyles({
   boxSizing: 'border-box',
   gridArea: 'layout',
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: `var(--ctrl-token-TreeItemLayout-2869, var(--semantic-token-TreeItemLayout-2870, ${tokens.colorNeutralForeground2Pressed}))`,
+    backgroundColor: `var(--ctrl-token-TreeItemLayout-2871, var(--semantic-token-TreeItemLayout-2872, ${tokens.colorSubtleBackgroundPressed}))`,
     // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: `var(--ctrl-token-TreeItemLayout-2873, var(--semantic-token-TreeItemLayout-2874, ${tokens.colorNeutralForeground3Pressed}))`,
     },
   },
   ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
+    color: `var(--ctrl-token-TreeItemLayout-2875, var(--semantic-token-TreeItemLayout-2876, ${tokens.colorNeutralForeground2Hover}))`,
+    backgroundColor: `var(--ctrl-token-TreeItemLayout-2877, var(--semantic-token-TreeItemLayout-2878, ${tokens.colorSubtleBackgroundHover}))`,
     // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: `var(--ctrl-token-TreeItemLayout-2879, var(--semantic-token-TreeItemLayout-2880, ${tokens.colorNeutralForeground3Hover}))`,
     },
   },
 });
@@ -62,19 +62,19 @@ const useRootStyles = makeStyles({
   subtle: {},
   'subtle-alpha': {
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover,
+      backgroundColor: `var(--ctrl-token-TreeItemLayout-2881, var(--semantic-token-TreeItemLayout-2882, ${tokens.colorSubtleBackgroundLightAlphaHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
+      backgroundColor: `var(--ctrl-token-TreeItemLayout-2883, var(--semantic-token-TreeItemLayout-2884, ${tokens.colorSubtleBackgroundLightAlphaPressed}))`,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-TreeItemLayout-2885, var(--semantic-token-TreeItemLayout-2886, ${tokens.colorTransparentBackground}))`,
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--ctrl-token-TreeItemLayout-2887, var(--semantic-token-TreeItemLayout-2888, ${tokens.colorTransparentBackgroundHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-TreeItemLayout-2889, var(--semantic-token-TreeItemLayout-2890, ${tokens.colorTransparentBackgroundPressed}))`,
     },
   },
 });
@@ -100,7 +100,7 @@ const useAsideBaseStyles = makeResetStyles({
   zIndex: 0,
   gridArea: 'aside',
   padding: `0 ${tokens.spacingHorizontalM}`,
-  gap: tokens.spacingHorizontalXS,
+  gap: `var(--ctrl-token-TreeItemLayout-2891, var(--semantic-token-TreeItemLayout-2892, ${tokens.spacingHorizontalXS}))`,
 });
 
 /**
@@ -112,7 +112,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: `var(--ctrl-token-TreeItemLayout-2893, var(--semantic-token-TreeItemLayout-2894, ${tokens.colorNeutralForeground3}))`,
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,
 });
@@ -130,26 +130,26 @@ const useMainBaseStyles = makeResetStyles({
 const useIconBaseStyles = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
-  color: tokens.colorNeutralForeground2,
-  lineHeight: tokens.lineHeightBase500,
-  fontSize: tokens.fontSizeBase500,
+  color: `var(--ctrl-token-TreeItemLayout-2895, var(--semantic-token-TreeItemLayout-2896, ${tokens.colorNeutralForeground2}))`,
+  lineHeight: `var(--ctrl-token-TreeItemLayout-2897, var(--semantic-token-TreeItemLayout-2898, ${tokens.lineHeightBase500}))`,
+  fontSize: `var(--ctrl-token-TreeItemLayout-2899, var(--semantic-token-TreeItemLayout-2900, ${tokens.fontSizeBase500}))`,
 });
 
 const useIconBeforeStyles = makeStyles({
   medium: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--ctrl-token-TreeItemLayout-2901, var(--semantic-token-TreeItemLayout-2902, ${tokens.spacingHorizontalXS}))`,
   },
   small: {
-    paddingRight: tokens.spacingHorizontalXXS,
+    paddingRight: `var(--ctrl-token-TreeItemLayout-2903, var(--semantic-token-TreeItemLayout-2904, ${tokens.spacingHorizontalXXS}))`,
   },
 });
 
 const useIconAfterStyles = makeStyles({
   medium: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--ctrl-token-TreeItemLayout-2905, var(--semantic-token-TreeItemLayout-2906, ${tokens.spacingHorizontalXS}))`,
   },
   small: {
-    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingLeft: `var(--ctrl-token-TreeItemLayout-2907, var(--semantic-token-TreeItemLayout-2908, ${tokens.spacingHorizontalXXS}))`,
   },
 });
 

@@ -22,7 +22,7 @@ const useRootBaseStyles = makeResetStyles({
   ...createCustomFocusIndicatorStyle(
     {
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-ListItem-2925, var(--semantic-token-ListItem-2926, ${tokens.borderRadiusMedium}))`,
     },
     { selector: 'focus' },
   ),
@@ -33,7 +33,7 @@ const useRootBaseStyles = makeResetStyles({
  */
 const useStyles = makeStyles({
   contentWrapper: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-ListItem-2927, var(--semantic-token-ListItem-2928, ${tokens.fontSizeBase200}))`,
   },
 
   // The content should go all the way to the end if the content media is not present
@@ -46,13 +46,13 @@ const useStyles = makeStyles({
     textOverflow: 'ellipsis',
   },
   rootSelected: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundColor: `var(--ctrl-token-ListItem-2929, var(--semantic-token-ListItem-2930, ${tokens.colorNeutralBackground1Selected}))`,
   },
   rootClickable: {
     cursor: 'pointer',
 
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: `var(--ctrl-token-ListItem-2931, var(--semantic-token-ListItem-2932, ${tokens.colorNeutralBackground1Hover}))`,
     },
   },
 });

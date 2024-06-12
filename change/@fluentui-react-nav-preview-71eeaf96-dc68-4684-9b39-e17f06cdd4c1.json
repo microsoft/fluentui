@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Addresses icon and indicator Windows and Teams Theme high contrast issues.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}

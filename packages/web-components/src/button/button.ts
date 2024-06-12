@@ -19,6 +19,20 @@ import { ButtonType } from './button.options.js';
  */
 export class BaseButton extends FASTElement {
   /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * Indicates the button should be focused when the page is loaded.
    * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#autofocus | `autofocus`} attribute
    *

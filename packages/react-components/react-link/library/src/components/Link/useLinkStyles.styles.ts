@@ -10,7 +10,7 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: tokens.colorStrokeFocus2,
+    textDecorationColor: `var(--ctrl-token-Link-1265, var(--semantic-token-Link-1266, ${tokens.colorStrokeFocus2}))`,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
     outlineStyle: 'none',
@@ -22,29 +22,29 @@ const useStyles = makeStyles({
     },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: tokens.colorBrandForegroundLink,
+    color: `var(--ctrl-token-Link-1267, var(--semantic-token-Link-1268, ${tokens.colorBrandForegroundLink}))`,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: `var(--ctrl-token-Link-1269, var(--semantic-token-Link-1270, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--ctrl-token-Link-1271, var(--semantic-token-Link-1272, ${tokens.fontSizeBase300}))`,
+    fontWeight: `var(--ctrl-token-Link-1273, var(--semantic-token-Link-1274, ${tokens.fontWeightRegular}))`,
     margin: '0',
     padding: '0',
     overflow: 'inherit',
     textAlign: 'left',
     textDecorationLine: 'none',
-    textDecorationThickness: tokens.strokeWidthThin,
+    textDecorationThickness: `var(--ctrl-token-Link-1275, var(--semantic-token-Link-1276, ${tokens.strokeWidthThin}))`,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkHover,
+      color: `var(--ctrl-token-Link-1277, var(--semantic-token-Link-1278, ${tokens.colorBrandForegroundLinkHover}))`,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkPressed,
+      color: `var(--ctrl-token-Link-1279, var(--semantic-token-Link-1280, ${tokens.colorBrandForegroundLinkPressed}))`,
     },
   },
   // Overrides when the Link renders as a button.
@@ -57,16 +57,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: `var(--ctrl-token-Link-1281, var(--semantic-token-Link-1282, ${tokens.colorNeutralForeground2}))`,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Hover,
+      color: `var(--ctrl-token-Link-1283, var(--semantic-token-Link-1284, ${tokens.colorNeutralForeground2Hover}))`,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Pressed,
+      color: `var(--ctrl-token-Link-1285, var(--semantic-token-Link-1286, ${tokens.colorNeutralForeground2Pressed}))`,
     },
   },
   // Overrides when the Link is rendered inline within text.
@@ -76,27 +76,27 @@ const useStyles = makeStyles({
   // Overrides when the Link is disabled.
   disabled: {
     textDecorationLine: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Link-1287, var(--semantic-token-Link-1288, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
 
     ':hover': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Link-1289, var(--semantic-token-Link-1290, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':active': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Link-1291, var(--semantic-token-Link-1292, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 
   inverted: {
-    color: tokens.colorBrandForegroundInverted,
+    color: `var(--ctrl-token-Link-1293, var(--semantic-token-Link-1294, ${tokens.colorBrandForegroundInverted}))`,
     ':hover': {
-      color: tokens.colorBrandForegroundInvertedHover,
+      color: `var(--ctrl-token-Link-1295, var(--semantic-token-Link-1296, ${tokens.colorBrandForegroundInvertedHover}))`,
     },
     ':active': {
-      color: tokens.colorBrandForegroundInvertedPressed,
+      color: `var(--ctrl-token-Link-1297, var(--semantic-token-Link-1298, ${tokens.colorBrandForegroundInvertedPressed}))`,
     },
   },
 });

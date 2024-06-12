@@ -9,16 +9,16 @@ export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots> = {
 };
 
 const useBaseStyle = makeResetStyles({
-  backgroundColor: tokens.colorTransparentBackground,
-  color: tokens.colorNeutralForeground1,
-  fontFamily: tokens.fontFamilyBase,
+  backgroundColor: `var(--ctrl-token-TagPickerInput-2273, var(--semantic-token-TagPickerInput-2274, ${tokens.colorTransparentBackground}))`,
+  color: `var(--ctrl-token-TagPickerInput-2275, var(--semantic-token-TagPickerInput-2276, ${tokens.colorNeutralForeground1}))`,
+  fontFamily: `var(--ctrl-token-TagPickerInput-2277, var(--semantic-token-TagPickerInput-2278, ${tokens.fontFamilyBase}))`,
   boxSizing: 'border-box',
 
   '&:focus': {
     outlineStyle: 'none',
   },
   '&::placeholder': {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--ctrl-token-TagPickerInput-2279, var(--semantic-token-TagPickerInput-2280, ${tokens.colorNeutralForeground4}))`,
     opacity: 1,
   },
   '&::after': {
@@ -53,11 +53,11 @@ const useStyles = makeStyles({
     padding: `${tokens.spacingVerticalM} 0 ${tokens.spacingVerticalM} 0`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--ctrl-token-TagPickerInput-2281, var(--semantic-token-TagPickerInput-2282, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--ctrl-token-TagPickerInput-2283, var(--semantic-token-TagPickerInput-2284, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-TagPickerInput-2285, var(--semantic-token-TagPickerInput-2286, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });

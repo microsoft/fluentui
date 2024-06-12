@@ -46,15 +46,15 @@ const useHeaderStyles = makeStyles({
 const useMonthAndYearStyles = makeStyles({
   base: {
     alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-CalendarDay-513, var(--semantic-token-CalendarDay-514, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
+    borderRadius: `var(--ctrl-token-CalendarDay-515, var(--semantic-token-CalendarDay-516, ${tokens.borderRadiusMedium}))`,
+    color: `var(--ctrl-token-CalendarDay-517, var(--semantic-token-CalendarDay-518, ${tokens.colorNeutralForeground1}))`,
     display: 'inline-block',
     flexGrow: 1,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
+    fontSize: `var(--ctrl-token-CalendarDay-519, var(--semantic-token-CalendarDay-520, ${tokens.fontSizeBase300}))`,
+    fontWeight: `var(--ctrl-token-CalendarDay-521, var(--semantic-token-CalendarDay-522, ${tokens.fontWeightSemibold}))`,
     lineHeight: '28px',
     overflow: 'hidden',
     padding: '0 4px 0 10px',
@@ -70,14 +70,14 @@ const useMonthAndYearStyles = makeStyles({
   },
   headerIsClickable: {
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--ctrl-token-CalendarDay-523, var(--semantic-token-CalendarDay-524, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--ctrl-token-CalendarDay-525, var(--semantic-token-CalendarDay-526, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--ctrl-token-CalendarDay-527, var(--semantic-token-CalendarDay-528, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--ctrl-token-CalendarDay-529, var(--semantic-token-CalendarDay-530, ${tokens.colorBrandForegroundOnLightPressed}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
@@ -93,13 +93,13 @@ const useMonthComponentsStyles = makeStyles({
 
 const useHeaderIconButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-CalendarDay-531, var(--semantic-token-CalendarDay-532, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground3,
+    borderRadius: `var(--ctrl-token-CalendarDay-533, var(--semantic-token-CalendarDay-534, ${tokens.borderRadiusMedium}))`,
+    color: `var(--ctrl-token-CalendarDay-535, var(--semantic-token-CalendarDay-536, ${tokens.colorNeutralForeground3}))`,
     display: 'block',
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-CalendarDay-537, var(--semantic-token-CalendarDay-538, ${tokens.fontSizeBase200}))`,
     height: '28px',
     lineHeight: '28px',
     overflow: 'visible',
@@ -109,14 +109,14 @@ const useHeaderIconButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--ctrl-token-CalendarDay-539, var(--semantic-token-CalendarDay-540, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--ctrl-token-CalendarDay-541, var(--semantic-token-CalendarDay-542, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--ctrl-token-CalendarDay-543, var(--semantic-token-CalendarDay-544, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--ctrl-token-CalendarDay-545, var(--semantic-token-CalendarDay-546, ${tokens.colorBrandForegroundOnLightPressed}))`,
     },
   },
 });
@@ -124,7 +124,7 @@ const useHeaderIconButtonStyles = makeStyles({
 const useDisabledStyleStyles = makeStyles({
   base: {
     '&, &:disabled, & button': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-CalendarDay-547, var(--semantic-token-CalendarDay-548, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
   },

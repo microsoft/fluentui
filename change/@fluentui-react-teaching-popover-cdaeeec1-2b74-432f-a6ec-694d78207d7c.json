@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: carousel tabs are visible in windows high contrast",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
