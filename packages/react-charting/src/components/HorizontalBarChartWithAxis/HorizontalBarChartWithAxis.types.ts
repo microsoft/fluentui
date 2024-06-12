@@ -80,6 +80,16 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    * Callback to handle empty state while chart is rendering.
    */
   handleEmptyState?: () => JSX.Element;
+
+  /**
+   * Custom error state message.
+   */
+  customErrorMsg?: string;
+
+  /**
+   * Custom empty data message.
+   */
+  customEmptyMsg?: string;
 }
 
 /**

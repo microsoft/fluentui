@@ -1287,7 +1287,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
           justify-content: center;
           margin-top: 10px;
         }
-    id="_Chart_empty_1"
+    id="_Chart_empty_0"
   >
     <div
       class=

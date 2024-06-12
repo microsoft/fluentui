@@ -47,6 +47,11 @@ function sharedAfterEach() {
   window.requestAnimationFrame = originalRAF;
 }
 
+interface IAdjustProps {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  _adjustProps(): void;
+}
+
 describe('Horizontal bar chart with axis rendering', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
@@ -468,5 +473,19 @@ describe('Horizontal Bar Chart with Axis - Error Boundary', () => {
     expect(screen.queryByText('Custom Error Message')).toBeInTheDocument();
     expect(screen.queryByText("Couldn't load data")).not.toBeInTheDocument();
     expect(screen.queryByText("Something went wrong and we couldn't get the page to display")).not.toBeInTheDocument();
+  });
+  test('Should render the error boundary when the component throws an error', () => {
+    jest
+      .spyOn(HorizontalBarChartWithAxisBase.prototype as unknown as IAdjustProps, '_adjustProps')
+      .mockImplementation(() => {
+        throw new Error('Test error');
+      });
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    render(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
+    // Assert
+    expect(screen.queryByText("Couldn't load data")).toBeInTheDocument();
+    expect(screen.queryByText("Something went wrong and we couldn't get the page to display")).toBeInTheDocument();
+    expect(screen.queryByText('Error code: General error')).toBeInTheDocument();
   });
 });

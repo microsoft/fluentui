@@ -44,6 +44,9 @@ describe('ErrorBoundary', () => {
     };
     const CustomErrorComponent = () => <div>Custom error component</div>;
     const props = { hasEmptyState: false, handleError: CustomErrorComponent };
+    // Suppress console.error from jest output
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    jest.spyOn(console, 'error').mockImplementation(() => {});
     render(
       <ErrorBoundary {...props}>
         <ThrowError />

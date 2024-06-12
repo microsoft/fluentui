@@ -5,7 +5,7 @@ export interface IErrorBoundaryProps {
   /**
    * If true, the error boundary will show the empty state.
    */
-  hasEmptyState: boolean;
+  hasEmptyState?: boolean;
 
   /**
    * Custom error state message.

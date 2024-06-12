@@ -2,7 +2,7 @@ import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider, resetIds } from '@fluentui/react';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { DefaultPalette, IPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
@@ -68,6 +68,11 @@ const chartPointsWithBenchMark: IChartProps[] = [
     chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: DefaultPalette.redDark }],
   },
 ];
+
+interface ICreateBars {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  _createBars(data: IChartProps, palette: IPalette): JSX.Element[];
+}
 
 describe('Horizontal bar chart rendering', () => {
   beforeEach(() => {
@@ -394,5 +399,18 @@ describe('Horizontal Bar Chart - Error Boundary', () => {
     expect(screen.queryByText('Custom Error Message')).toBeInTheDocument();
     expect(screen.queryByText("Couldn't load data")).not.toBeInTheDocument();
     expect(screen.queryByText("Something went wrong and we couldn't get the page to display")).not.toBeInTheDocument();
+  });
+
+  test('Should render the error boundary when the component throws an error', () => {
+    jest.spyOn(HorizontalBarChartBase.prototype as unknown as ICreateBars, '_createBars').mockImplementation(() => {
+      throw new Error('Test error');
+    });
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    render(<HorizontalBarChart data={chartPoints} />);
+    // Assert
+    expect(screen.queryByText("Couldn't load data")).toBeInTheDocument();
+    expect(screen.queryByText("Something went wrong and we couldn't get the page to display")).toBeInTheDocument();
+    expect(screen.queryByText('Error code: General error')).toBeInTheDocument();
   });
 });

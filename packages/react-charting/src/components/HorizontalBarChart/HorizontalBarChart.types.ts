@@ -107,6 +107,11 @@ export interface IHorizontalBarChartProps {
    * Custom error message to show in the chart.
    */
   customErrorMsg?: string;
+
+  /**
+   * Custom empty data message.
+   */
+  customEmptyMsg?: string;
 }
 
 /**

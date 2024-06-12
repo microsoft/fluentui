@@ -39,7 +39,6 @@ import {
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
 } from '../../utilities/index';
-import { ErrorBoundary } from '../CommonComponents/ErrorBoundary';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -141,45 +140,38 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       tickFormat: this.props.tickFormat,
     };
     return (
-      <ErrorBoundary
-        handleError={this.props.handleError}
-        handleEmptyState={this.props.handleEmptyState}
-        theme={this.props.theme}
-        hasEmptyState={this._isChartEmpty()}
-      >
-        <CartesianChart
-          {...this.props}
-          chartTitle={this._getChartTitle()}
-          points={this._points}
-          chartType={ChartTypes.HorizontalBarChartWithAxis}
-          xAxisType={this._xAxisType}
-          yAxisType={this._yAxisType}
-          stringDatasetForYAxisDomain={this._yAxisLabels}
-          calloutProps={calloutProps}
-          tickParams={tickParams}
-          legendBars={legendBars}
-          createYAxis={createYAxisForHorizontalBarChartWithAxis}
-          getDomainNRangeValues={this._getDomainNRangeValues}
-          createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
-          getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
-          barwidth={this._barHeight}
-          focusZoneDirection={FocusZoneDirection.vertical}
-          customizedCallout={this._getCustomizedCallout()}
-          getmargins={this._getMargins}
-          getGraphData={this._getGraphData}
-          getAxisData={this._getAxisData}
-          onChartMouseLeave={this._handleChartMouseLeave}
-          /* eslint-disable react/jsx-no-bind */
-          // eslint-disable-next-line react/no-children-prop
-          children={(props: IChildProps) => {
-            return (
-              <>
-                <g>{this._bars}</g>
-              </>
-            );
-          }}
-        />
-      </ErrorBoundary>
+      <CartesianChart
+        {...this.props}
+        chartTitle={this._getChartTitle()}
+        points={this._points}
+        chartType={ChartTypes.HorizontalBarChartWithAxis}
+        xAxisType={this._xAxisType}
+        yAxisType={this._yAxisType}
+        stringDatasetForYAxisDomain={this._yAxisLabels}
+        calloutProps={calloutProps}
+        tickParams={tickParams}
+        legendBars={legendBars}
+        createYAxis={createYAxisForHorizontalBarChartWithAxis}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
+        getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
+        barwidth={this._barHeight}
+        focusZoneDirection={FocusZoneDirection.vertical}
+        customizedCallout={this._getCustomizedCallout()}
+        getmargins={this._getMargins}
+        getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
+        onChartMouseLeave={this._handleChartMouseLeave}
+        /* eslint-disable react/jsx-no-bind */
+        // eslint-disable-next-line react/no-children-prop
+        children={(props: IChildProps) => {
+          return (
+            <>
+              <g>{this._bars}</g>
+            </>
+          );
+        }}
+      />
     );
   }
 
@@ -723,10 +715,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
   };
-
-  private _isChartEmpty(): boolean {
-    return !(this.props.data && this.props.data.length > 0);
-  }
 
   private _getChartTitle = (): string => {
     const { chartTitle, data } = this.props;
