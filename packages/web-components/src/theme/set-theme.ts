@@ -20,7 +20,9 @@ export const setTheme = (theme: Theme) => {
           initialValue: theme[t] as string,
         });
         registered = true;
-      } catch {}
+      } catch {
+        // Do nothing.
+      }
     }
 
     if (!registered) {
