@@ -1,12 +1,14 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { ARIAGlobalStatesAndProperties, StartEnd } from '../patterns/index.js';
+import { attr, FASTElement, Observable } from '@microsoft/fast-element';
+import { keyEnter } from '@microsoft/fast-web-utilities';
+import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import type {
-  AnchorButtonAppearance,
-  AnchorButtonShape,
-  AnchorButtonSize,
-  AnchorTarget,
+import {
+  AnchorAttributes,
+  type AnchorButtonAppearance,
+  type AnchorButtonShape,
+  type AnchorButtonSize,
+  type AnchorTarget,
 } from './anchor-button.options.js';
 
 /**
@@ -29,97 +31,113 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  */
 export class AnchorButton extends FASTElement {
   /**
-   * Prompts the user to save the linked URL. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
-   * @public
-   * @remarks
-   * HTML Attribute: download
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
    */
-  @attr
-  public download!: string;
+  protected elementInternals: ElementInternals = this.attachInternals();
 
   /**
-   * The URL the hyperlink references. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
-   * @public
-   * @remarks
-   * HTML Attribute: href
+   * The proxy anchor element
+   * @internal
    */
-  @attr
-  public href!: string;
+  private internalProxyAnchor: HTMLAnchorElement = this.createProxyElement();
 
   /**
-   * Hints at the language of the referenced resource. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * Prompts the user to save the linked URL.
+   *
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#download | `download`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: hreflang
+   * HTML Attribute: `download`
    */
   @attr
-  public hreflang!: string;
+  public download?: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The URL the hyperlink references.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#href | `href`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: ping
+   * HTML Attribute: `href`
    */
   @attr
-  public ping!: string;
+  public href?: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * Hints at the language of the referenced resource.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#hreflang | `hreflang`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: referrerpolicy
+   * HTML Attribute: `hreflang`
    */
   @attr
-  public referrerpolicy!: string;
+  public hreflang?: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The ping attribute.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#ping | `ping`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: rel
+   * HTML Attribute: `ping`
+   */
+  @attr
+  public ping?: string;
+
+  /**
+   * The referrerpolicy attribute.
+   * See The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#referrerpolicy | `referrerpolicy`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `referrerpolicy`
+   */
+  @attr
+  public referrerpolicy?: string;
+
+  /**
+   * The rel attribute.
+   * See The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#rel | `rel`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `rel`
    */
   @attr
   public rel!: string;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The target attribute.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#target | `target`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: target
+   * HTML Attribute: `target`
    */
   @attr
-  public target!: AnchorTarget;
+  public target?: AnchorTarget;
 
   /**
-   * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element } for more information.
+   * The type attribute.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/a#type | `type`} attribute
+   *
    * @public
    * @remarks
-   * HTML Attribute: type
+   * HTML Attribute: `type`
    */
   @attr
-  public type!: string;
-
-  /**
-   *
-   * Default slotted content
-   *
-   * @internal
-   */
-  @observable
-  public defaultSlottedContent!: HTMLElement[];
-
-  /**
-   * References the root element
-   */
-  public control!: HTMLAnchorElement;
+  public type?: string;
 
   /**
    * The appearance the anchor button should have.
    *
    * @public
    * @remarks
-   * HTML Attribute: appearance
+   * HTML Attribute: `appearance`
    */
   @attr
   public appearance?: AnchorButtonAppearance | undefined;
@@ -129,7 +147,7 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: shape
+   * HTML Attribute: `shape`
    */
   @attr
   public shape?: AnchorButtonShape | undefined;
@@ -139,7 +157,7 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: size
+   * HTML Attribute: `size`
    */
   @attr
   public size?: AnchorButtonSize;
@@ -149,106 +167,104 @@ export class AnchorButton extends FASTElement {
    *
    * @public
    * @remarks
-   * HTML Attribute: icon-only
+   * HTML Attribute: `icon-only`
    */
   @attr({ attribute: 'icon-only', mode: 'boolean' })
   public iconOnly: boolean = false;
 
-  /**
-   * The anchor button is disabled
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: disabled-focusable
-   */
-  @attr({ mode: 'boolean' })
-  public disabled?: boolean = false;
-  protected disabledChanged(prev: boolean, next: boolean): void {
-    if (this.disabled) {
-      (this as unknown as HTMLElement).setAttribute('aria-disabled', 'true');
-      (this as unknown as HTMLElement).setAttribute('tabindex', '-1');
-    } else {
-      (this as unknown as HTMLElement).removeAttribute('aria-disabled');
-      (this as unknown as HTMLElement).removeAttribute('tabindex');
-    }
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'link';
   }
 
-  /**
-   * The anchor button is disabled but focusable
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: disabled-focusable
-   */
-  @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
-  public disabledFocusable?: boolean = false;
-  protected disabledFocusableChanged(prev: boolean, next: boolean): void {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-
-    if (this.disabledFocusable) {
-      (this as unknown as HTMLElement).setAttribute('aria-disabled', 'true');
-    } else {
-      (this as unknown as HTMLElement).removeAttribute('aria-disabled');
-    }
-  }
-
-  /**
-   * Prevents disabledFocusable click events
-   */
-  private handleDisabledFocusableClick = (e: MouseEvent): void => {
-    if ((e && this.disabled) || this.disabledFocusable) {
-      e.stopImmediatePropagation();
-      return;
-    }
-  };
-
-  public connectedCallback(): void {
+  public connectedCallback() {
     super.connectedCallback();
+    Observable.getNotifier(this).subscribe(this);
 
-    (this as unknown as HTMLElement).addEventListener('click', this.handleDisabledFocusableClick);
+    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
+      this.handleChange(this, key);
+    });
+
+    this.append(this.internalProxyAnchor);
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    (this as unknown as HTMLElement).removeEventListener('click', this.handleDisabledFocusableClick);
+    Observable.getNotifier(this).unsubscribe(this);
+  }
+
+  /**
+   * Handles changes to observable properties
+   * @internal
+   * @param source
+   * @param propertyName
+   */
+  public handleChange(source: any, propertyName: string) {
+    if (propertyName in AnchorAttributes) {
+      const attribute = this.$fastController.definition.attributeLookup[propertyName]?.attribute;
+      if (attribute) {
+        this.handleProxyAttributeChange(attribute, this[propertyName as AnchorAttributes]);
+      }
+    }
+  }
+
+  /**
+   * Handles the anchor click event.
+   *
+   * @param e - The event object
+   * @internal
+   */
+  public clickHandler(): boolean {
+    this.internalProxyAnchor.click();
+
+    return true;
+  }
+
+  /**
+   * Handles keypress events for the anchor.
+   *
+   * @param e - the keyboard event
+   * @returns - the return value of the click handler
+   * @public
+   */
+  public keypressHandler(e: KeyboardEvent): boolean | void {
+    if (e.key === keyEnter) {
+      this.internalProxyAnchor.click();
+      return;
+    }
+
+    return true;
+  }
+
+  /**
+   * A method for updating proxy attributes when attributes have changed
+   * @internal
+   * @param attribute
+   * @param value
+   */
+  private handleProxyAttributeChange(attribute: string, value: string | undefined): void {
+    if (value) {
+      this.internalProxyAnchor.setAttribute(attribute, value);
+    } else {
+      this.internalProxyAnchor.removeAttribute(attribute);
+    }
+  }
+
+  private createProxyElement(): HTMLAnchorElement {
+    const proxy = this.internalProxyAnchor ?? document.createElement('a');
+    proxy.hidden = true;
+    return proxy;
   }
 }
 
 /**
- * Includes ARIA states and properties relating to the ARIA link role
- *
- * @public
- */
-export class DelegatesARIALink {
-  /**
-   * See {@link https://www.w3.org/WAI/PF/aria/roles#link} for more information
-   * @public
-   * @remarks
-   * HTML Attribute: aria-expanded
-   */
-  @attr({ attribute: 'aria-expanded' })
-  public ariaExpanded!: 'true' | 'false' | string | null;
-}
-
-/**
  * Mark internal because exporting class and interface of the same name
  * confuses API documenter.
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface DelegatesARIALink extends ARIAGlobalStatesAndProperties {}
-applyMixins(DelegatesARIALink, ARIAGlobalStatesAndProperties);
-
-/**
- * Mark internal because exporting class and interface of the same name
- * confuses API documenter.
- * TODO: https://github.com/microsoft/fast/issues/3317
- * @internal
- */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface AnchorButton extends StartEnd, DelegatesARIALink {}
-applyMixins(AnchorButton, StartEnd, DelegatesARIALink);
+export interface AnchorButton extends StartEnd {}
+applyMixins(AnchorButton, StartEnd);

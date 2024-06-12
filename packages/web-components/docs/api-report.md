@@ -1893,9 +1893,17 @@ export class Divider extends FASTElement {
     // (undocumented)
     appearance?: DividerAppearance;
     // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // (undocumented)
     inset?: boolean;
-    orientation: DividerOrientation;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
     role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
@@ -2428,13 +2436,30 @@ export const MenuStyles: ElementStyles;
 // @public (undocumented)
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseProgress" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class ProgressBar extends BaseProgress {
+export class ProgressBar extends FASTElement {
+    constructor();
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // (undocumented)
+    protected maxChanged(): void;
+    // @internal
+    min?: number;
+    // (undocumented)
+    protected minChanged(): void;
+    // @internal
+    percentComplete: number;
     shape?: ProgressBarShape;
     thickness?: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
+    // @internal
+    value?: number | null;
+    // (undocumented)
+    protected valueChanged(): void;
 }
 
 // @public
@@ -2475,12 +2500,6 @@ export const ProgressBarValidationState: {
 
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
-
-// @public
-export type ProgressOptions = {
-    indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
-    indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
-};
 
 // Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
 //

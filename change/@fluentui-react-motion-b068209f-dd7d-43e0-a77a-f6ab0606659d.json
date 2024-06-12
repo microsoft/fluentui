@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(motions): improve compat for jsdom & jest",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

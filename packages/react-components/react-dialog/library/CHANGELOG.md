@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Thu, 06 Jun 2024 15:26:32 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.1)
+
+Wed, 12 Jun 2024 13:17:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.11.0..@fluentui/react-dialog_v9.11.1)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.1.0 ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by beachball)
 
 ## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.0)
 

@@ -149,7 +149,6 @@ export {
   ProgressBarThickness,
   ProgressBarValidationState,
 } from './progress-bar/index.js';
-export type { ProgressOptions } from './progress-bar/index.js';
 export {
   RadioGroup,
   RadioGroupDefinition,

@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-icons-compat",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-icons-compat/library/src",
+  "tags": ["platform:web", "vNext", "compat"],
+  "implicitDependencies": []
+}
