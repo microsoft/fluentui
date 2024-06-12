@@ -1,106 +1,139 @@
-import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { html, repeat } from '@microsoft/fast-element';
+import { uniqueId } from '@microsoft/fast-web-utilities';
+import { LabelPosition, ValidationFlags } from '../field/field.options.js';
+import { Meta, renderComponent, Story, StoryArgs } from '../helpers.stories.js';
 import type { Switch as FluentSwitch } from './switch.js';
+
 import './define.js';
-import { SwitchLabelPosition } from './switch.options.js';
+import '../button/define.js';
+import '../field/define.js';
 
-type SwitchStoryArgs = Args & FluentSwitch;
-type SwitchStoryMeta = Meta<SwitchStoryArgs>;
+const storyTemplate = html<StoryArgs<FluentSwitch>>`
+  <fluent-switch
+    ?checked="${x => x.checked}"
+    ?disabled="${x => x.disabled}"
+    id="${x => x.id}"
+    name="${x => x.name}"
+    ?required="${x => x.required}"
+    slot="${x => x.slot}"
+  ></fluent-switch>
+`;
 
-const storyTemplate = html<SwitchStoryArgs>`
-  <div>
-    <fluent-switch
-      ?checked=${x => x.checked}
-      ?disabled=${x => x.disabled}
-      ?required=${x => x.required}
-      label-position=${x => x.labelPosition}
-      value="${x => x.value}"
-    >
-      ${x => x.value}
-    </fluent-switch>
-  </div>
+const messageTemplate = html`
+  <fluent-text slot="message" size="200" flag="${x => x.flag}">
+    <span>${x => x.message}</span>
+  </fluent-text>
+`;
+
+const fieldStoryTemplate = html<StoryArgs<FluentSwitch>>`
+  <fluent-field label-position="${x => x.labelPosition}">
+    <label slot="label" for="${x => x.id}">${x => x.label}</label>
+    ${x => x.storyContent} ${repeat(x => x.messages, messageTemplate)}
+  </fluent-field>
 `;
 
 export default {
   title: 'Components/Switch',
   args: {
-    checked: false,
-    disabled: false,
-    required: false,
-    labelPosition: 'after',
+    name: 'switch',
   },
   argTypes: {
-    labelPosition: {
-      options: Object.values(SwitchLabelPosition),
-      control: {
-        type: 'select',
-      },
-      table: {
-        type: {
-          summary: 'Sets the position of label',
-        },
-        defaultValue: {
-          summary: 'after',
-        },
-      },
-    },
     checked: {
+      description: 'Sets the checked state of the switch',
       control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets checked state',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
     },
     disabled: {
+      description: 'Sets the disabled state of the switch',
       control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets disabled state',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
     },
     required: {
+      description: 'Sets the switch as required',
       control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets required state',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
-    value: {
-      control: 'text',
-      defaultValue: 'This is a label',
     },
   },
-} as SwitchStoryMeta;
+} as Meta<FluentSwitch>;
 
-export const Switch = renderComponent(storyTemplate).bind({});
+export const Switch: Story<FluentSwitch> = renderComponent(storyTemplate).bind({});
+Switch.args = {
+  id: uniqueId('switch-'),
+};
 
-//
-// Attribute stories
-//
+export const Checked: Story<FluentSwitch> = renderComponent(storyTemplate).bind({});
+Checked.args = {
+  storyContent: storyTemplate,
+  slot: 'input',
+  labelPosition: LabelPosition.after,
+  id: uniqueId('switch-'),
+  checked: true,
+  label: 'Checked (default)',
+};
 
-export const Checked = renderComponent(html<SwitchStoryArgs>`<fluent-switch checked>Checked</fluent-switch>`);
+export const Disabled: Story<FluentSwitch> = renderComponent(html<StoryArgs<FluentSwitch>>`
+  ${repeat(x => x.storyContent, html<StoryArgs<FluentSwitch>>`${fieldStoryTemplate}<br />`)}
+`).bind({});
+Disabled.args = {
+  storyContent: [
+    {
+      storyContent: storyTemplate,
+      id: uniqueId('switch-'),
+      disabled: true,
+      label: 'Disabled unchecked',
+      labelPosition: LabelPosition.after,
+      slot: 'input',
+    },
+    {
+      storyContent: storyTemplate,
+      checked: true,
+      disabled: true,
+      id: uniqueId('switch-'),
+      label: 'Disabled checked',
+      labelPosition: LabelPosition.after,
+      slot: 'input',
+    },
+  ],
+};
 
-export const Disabled = renderComponent(html<SwitchStoryArgs>`<fluent-switch disabled>Disabled</fluent-switch>`);
+export const Required: Story<FluentSwitch> = renderComponent(html<StoryArgs<FluentSwitch>>`
+  <form style="display: inline-flex; gap: 1em; align-items: baseline">
+    <div>
+      <fluent-switch id="required-fluent-switch" required></fluent-switch>
+      <label for="required-fluent-switch">Required</label>
+    </div>
+    ${fieldStoryTemplate}
+    <fluent-button type="submit">Submit</fluent-button>
+  </form>
+`).bind({});
+Required.args = {
+  storyContent: storyTemplate,
+  slot: 'input',
+  labelPosition: LabelPosition.after,
+  id: uniqueId('switch-'),
+  required: true,
+  label: 'Required',
+  messages: [{ message: 'This field is required', flag: ValidationFlags.valueMissing }],
+};
 
-export const Required = renderComponent(html<SwitchStoryArgs>`<fluent-switch required>Required</fluent-switch>`);
+export const LabelBefore: Story<FluentSwitch> = renderComponent(fieldStoryTemplate).bind({});
+LabelBefore.args = {
+  storyContent: storyTemplate,
+  id: uniqueId('switch-'),
+  labelPosition: LabelPosition.before,
+  label: 'Label before',
+  slot: 'input',
+};
 
-export const LabelPosition = renderComponent(html<SwitchStoryArgs>`
-  <div style="display: flex; align-items: end;">
-    <fluent-switch label-position="before">before</fluent-switch>
-    <fluent-switch label-position="above">above</fluent-switch>
-    <fluent-switch label-position="after">after</fluent-switch>
-  </div>
-`);
+export const LabelWrapping: Story<FluentSwitch> = renderComponent(fieldStoryTemplate).bind({});
+LabelWrapping.args = {
+  storyContent: storyTemplate,
+  id: uniqueId('switch-'),
+  labelPosition: LabelPosition.after,
+  label: 'Here is an example of a switch with a long label and it starts to wrap to a second line',
+  slot: 'input',
+};
+LabelWrapping.decorators = [
+  story => {
+    const storyElement = story() as HTMLElement;
+    storyElement.style.width = '400px';
+    return storyElement;
+  },
+];

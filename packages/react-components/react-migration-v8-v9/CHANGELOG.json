@@ -2,6 +2,48 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:28 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.17",
+      "version": "9.6.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.54.1",
+            "commit": "339bbcd161148f3af2d8871f698250404cb994e7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 15:26:35 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.16",
+      "version": "9.6.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "a13cb66f314d5e287c3fa788b6300f36135df19e",
+            "comment": "chore: Fixing typo in CheckboxShim migration."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.54.0",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:52 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.6.15",
       "version": "9.6.15",

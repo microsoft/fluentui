@@ -58,11 +58,9 @@ import {
 } from '../theme/design-tokens.js';
 
 /**
- * The styles for the Button component.
- *
- * @public
+ * @internal
  */
-export const styles = css`
+export const baseButtonStyles = css`
   ${display('inline-flex')}
 
   :host {
@@ -113,7 +111,7 @@ export const styles = css`
 
   :host(:focus-visible) {
     border-color: ${colorTransparentStroke};
-    outline: ${strokeWidthThick}) solid ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
 
@@ -213,12 +211,6 @@ export const styles = css`
     box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
   }
 
-  :host(:is([disabled][appearance='primary'], [disabled-focusabale][appearance='primary'])),
-  :host(:is([disabled][appearance='primary'], [disabled-focusabale][appearance='primary']):hover),
-  :host(:is([disabled][appearance='primary'], [disabled-focusabale][appearance='primary']):hover:active) {
-    border-color: transparent;
-  }
-
   :host([appearance='outline']) {
     background-color: ${colorTransparentBackground};
   }
@@ -229,12 +221,6 @@ export const styles = css`
 
   :host([appearance='outline']:hover:active) {
     background-color: ${colorTransparentBackgroundPressed};
-  }
-
-  :host(:is([disabled][appearance='outline'], [disabled-focusabale][appearance='outline'])),
-  :host(:is([disabled][appearance='outline'], [disabled-focusabale][appearance='outline']):hover),
-  :host(:is([disabled][appearance='outline'], [disabled-focusabale][appearance='outline']):hover:active) {
-    background-color: ${colorTransparentBackground};
   }
 
   :host([appearance='subtle']) {
@@ -252,13 +238,6 @@ export const styles = css`
   :host([appearance='subtle']:hover:active) {
     background-color: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground2Pressed};
-    border-color: transparent;
-  }
-
-  :host(:is([disabled][appearance='subtle'], [disabled-focusabale][appearance='subtle'])),
-  :host(:is([disabled][appearance='subtle'], [disabled-focusabale][appearance='subtle']):hover),
-  :host(:is([disabled][appearance='subtle'], [disabled-focusabale][appearance='subtle']):hover:active) {
-    background-color: ${colorTransparentBackground};
     border-color: transparent;
   }
 
@@ -290,13 +269,15 @@ export const styles = css`
   :host([appearance='transparent']:hover:active) {
     border-color: transparent;
   }
+`;
 
-  :host(:is([disabled][appearance='transparent'], [disabled-focusabale][appearance='transparent'])),
-  :host(:is([disabled][appearance='transparent'], [disabled-focusabale][appearance='transparent']):hover),
-  :host(:is([disabled][appearance='transparent'], [disabled-focusabale][appearance='transparent']):hover:active) {
-    border-color: transparent;
-    background-color: ${colorTransparentBackground};
-  }
+/**
+ * The styles for the Button component.
+ *
+ * @public
+ */
+export const styles = css`
+  ${baseButtonStyles}
 
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable])),
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable]):hover),
@@ -306,9 +287,40 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
     cursor: not-allowed;
   }
+
+  :host(:is([disabled][appearance='primary'], [disabled-focusable][appearance='primary'])),
+  :host(:is([disabled][appearance='primary'], [disabled-focusable][appearance='primary']):hover),
+  :host(:is([disabled][appearance='primary'], [disabled-focusable][appearance='primary']):hover:active) {
+    border-color: transparent;
+  }
+
+  :host(:is([disabled][appearance='outline'], [disabled-focusable][appearance='outline'])),
+  :host(:is([disabled][appearance='outline'], [disabled-focusable][appearance='outline']):hover),
+  :host(:is([disabled][appearance='outline'], [disabled-focusable][appearance='outline']):hover:active) {
+    background-color: ${colorTransparentBackground};
+  }
+
+  :host(:is([disabled][appearance='subtle'], [disabled-focusable][appearance='subtle'])),
+  :host(:is([disabled][appearance='subtle'], [disabled-focusable][appearance='subtle']):hover),
+  :host(:is([disabled][appearance='subtle'], [disabled-focusable][appearance='subtle']):hover:active) {
+    background-color: ${colorTransparentBackground};
+    border-color: transparent;
+  }
+
+  :host(:is([disabled][appearance='transparent'], [disabled-focusable][appearance='transparent'])),
+  :host(:is([disabled][appearance='transparent'], [disabled-focusable][appearance='transparent']):hover),
+  :host(:is([disabled][appearance='transparent'], [disabled-focusable][appearance='transparent']):hover:active) {
+    border-color: transparent;
+    background-color: ${colorTransparentBackground};
+  }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    :host([appearance='transparent']:hover) {
+    :host {
+      background: ButtonFace;
+      color: ButtonText;
+    }
+
+    :host(:is(:hover, :focus-visible)) {
       border-color: Highlight;
     }
   `),

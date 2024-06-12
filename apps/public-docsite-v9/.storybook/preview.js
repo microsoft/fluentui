@@ -45,6 +45,7 @@ export const parameters = {
             ['Component Mapping', 'Color Mapping', 'Troubleshooting'],
             'from v0',
           ],
+          'Recipes',
         ],
         'Theme',
         [

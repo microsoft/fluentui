@@ -4,10 +4,10 @@ import type { ValuesOf } from '../utils/index.js';
  * Dialog modal type
  * @public
  */
-export const DialogModalType = {
+export const DialogType = {
   modal: 'modal',
   nonModal: 'non-modal',
   alert: 'alert',
 } as const;
 
-export type DialogModalType = ValuesOf<typeof DialogModalType>;
+export type DialogType = ValuesOf<typeof DialogType>;

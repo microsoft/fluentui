@@ -38,7 +38,6 @@ completed as part of creating a v9 component. More info can be found here: https
   - [ ] Unit and conformance tests
   - [ ] VR tests
   - [ ] Bundle size fixtures
-  - [ ] Performance test scenario
   - [ ] Accessibility behavior tests
   - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
 - [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)

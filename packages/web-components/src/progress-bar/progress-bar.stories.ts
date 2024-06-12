@@ -13,8 +13,7 @@ const storyTemplate = html<ProgressStoryArgs>`
     thickness=${x => x.thickness}
     shape=${x => x.shape}
     max=${x => x.max}
-    aria-valuemax=${x => x.max}
-    aria-valuenow=${x => x.value}
+    min=${x => x.min}
     value=${x => x.value}
     validation-state=${x => x.validationState}
   ></fluent-progress-bar>
@@ -72,26 +71,26 @@ export const Max = renderComponent(html<ProgressStoryArgs>`
   <div>
     <p>
       <code>3 of 10</code>
-      <fluent-progress-bar value="3" aria-valuenow="3" max="10" aria-valuemax="10"></fluent-progress-bar>
+      <fluent-progress-bar value="3" max="10"></fluent-progress-bar>
     </p>
     <p>
-      <code>3 o 5</code>
-      <fluent-progress-bar value="3" aria-valuenow="3" max="5" aria-valuemax="5"></fluent-progress-bar>
+      <code>3 of 5</code>
+      <fluent-progress-bar value="3" max="5"></fluent-progress-bar>
     </p>
   </div>
 `);
 
 export const Value = renderComponent(html<ProgressStoryArgs>`
   <div>
-    <code>0</code><fluent-progress-bar value="0" aria-valuenow="0"></fluent-progress-bar>
+    <code>0</code><fluent-progress-bar value="0"></fluent-progress-bar>
     <code>25</code>
-    <fluent-progress-bar value="25" aria-valuenow="25"></fluent-progress-bar>
+    <fluent-progress-bar value="25"></fluent-progress-bar>
     <code>50</code>
-    <fluent-progress-bar value="50" aria-valuenow="50"></fluent-progress-bar>
+    <fluent-progress-bar value="50"></fluent-progress-bar>
     <code>75</code>
-    <fluent-progress-bar value="75" aria-valuenow="75"></fluent-progress-bar>
+    <fluent-progress-bar value="75"></fluent-progress-bar>
     <code>100</code>
-    <fluent-progress-bar value="100" aria-valuenow="100"></fluent-progress-bar>
+    <fluent-progress-bar value="100"></fluent-progress-bar>
   </div>
 `);
 

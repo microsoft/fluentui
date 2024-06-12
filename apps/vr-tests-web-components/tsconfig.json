@@ -10,5 +10,6 @@
     "jsx": "react",
     "types": ["jest", "node", "web"]
   },
-  "include": ["./src", "./.storybook/*"]
+  "include": ["./src", "./.storybook/*"],
+  "files": ["./typings/html-react-parser/index.d.ts"]
 }

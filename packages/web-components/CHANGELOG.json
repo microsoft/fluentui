@@ -2,6 +2,167 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 04:06:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.28",
+      "version": "3.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46c33692940dce4906974ad90c5c79aae7e52d0f",
+            "comment": "refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cf5e76e30a13dbd0b19669bcc7c8e0696851bff",
+            "comment": "refactor progress bar to use ElementInternals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jun 2024 04:06:29 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.27",
+      "version": "3.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "32e259d0f971ea7d1da4ec82f097dd052fbcbfb7",
+            "comment": "feat: update divider to leverage ElementInternals"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "71dc8a7023f740320651c68ca54ecf27cb8dec37",
+            "comment": "fix: show default title action in dialog-body for modal dialogs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jun 2024 04:07:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.26",
+      "version": "3.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "0ee053f9c4dae7dea578d80221bbf0fa9d630bc0",
+            "comment": "feat: refactor Switch to use ElementInternals by extending BaseCheckbox"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "eb13aea7d259f3b72e4b65bc32232e4315ff5c05",
+            "comment": "fixes the border-color for switch when in the checked state on rest"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "d5fe2edf2a5d598c3e84fa14cf42f9c81f3e24d6",
+            "comment": "add try-catch block to ensure that registered properties can be updated dynamically"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jun 2024 04:06:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.25",
+      "version": "3.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "afa7744f820795627c5597e1482e4116c8e3bd82",
+            "comment": "Use ElementInternals for Checkbox component"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9fdc8c8ca1029207e84b6bf206da683ce59f61e9",
+            "comment": "Move dialog border styles to forcedColors mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 04:06:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.24",
+      "version": "3.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "zacky.ma@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8f6259c613fd6436360448c7c377dcb22d559370",
+            "comment": "add @floating-ui/dom as a dependency"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5987b6812482d36dc0e0d5f4e86c0a8198728d2a",
+            "comment": "fix disabled button styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Jun 2024 04:06:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.23",
+      "version": "3.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "acfa5b43890d6192c03e68e1069d2724d1842176",
+            "comment": "chore: migrate to package.json#files for npm publish scope\""
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1084cb6b9ace8712f01c14ebd1cdd0807df87949",
+            "comment": "Refactor fluent-dialog and add fluent-dialog-body"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4f32e12d56e7ba06432ca913213fd59a8a93efb4",
+            "comment": "fix(web-components): remove tabindex from slider thumb causing duplicate focus regions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jun 2024 04:06:55 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.22",
+      "version": "3.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8820c131f5b6d0509c2781f741b07932f37a4ff5",
+            "comment": "chore: Export component definitions from rollup bundle"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9b681402fa473147564aeb5f661c871c41f2355a",
+            "comment": "chore: Resolve output warnings for Storybook and api-extractor"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 May 2024 04:06:21 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.21",
       "version": "3.0.0-beta.21",

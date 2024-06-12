@@ -319,10 +319,11 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
         if (!xPoints.has(x)) {
           xPoints.add(x);
           const newDate = new Date(date);
-          newDate.setDate(date.getDate() + x);
+          newDate.setUTCDate(date.getUTCDate() + x);
           data.push({ x: xAxisType === 'date' ? newDate : x, y: this._randomY() });
         }
       }
+      data.sort((a, b) => (a.x as number) - (b.x as number));
     }
     return data;
   };

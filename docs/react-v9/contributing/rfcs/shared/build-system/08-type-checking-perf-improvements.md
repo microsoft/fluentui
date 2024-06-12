@@ -107,7 +107,7 @@ This dts generation can be done in 2 ways:
 > EXAMPLE PR: https://github.com/microsoft/fluentui/pull/28002
 
 ```yml
-- script: node ./scripts/executors/type-check-ci-hack.js --base $(targetBranch)
+- script: node ./scripts/executors/src/type-check-ci-hack.js --base $(targetBranch)
     displayName: type-check perf preparation
 - script: yarn buildci $(sinceArg)
 ```

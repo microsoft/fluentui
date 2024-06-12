@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Thu, 23 May 2024 08:02:52 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.17)
+
+Wed, 12 Jun 2024 13:17:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.16..@fluentui/react-migration-v8-v9_v9.6.17)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.1 ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by beachball)
+
+## [9.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.16)
+
+Thu, 06 Jun 2024 15:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.15..@fluentui/react-migration-v8-v9_v9.6.16)
+
+### Patches
+
+- chore: Fixing typo in CheckboxShim migration. ([PR #31569](https://github.com/microsoft/fluentui/pull/31569) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-components to v9.54.0 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
 
 ## [9.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.15)
 

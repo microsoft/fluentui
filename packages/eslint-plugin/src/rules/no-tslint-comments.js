@@ -7,7 +7,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid tslint:disable/tslint:enable comments after ESLint migration.',
-      category: 'Best Practices',
       recommended: 'error',
     },
     messages: {

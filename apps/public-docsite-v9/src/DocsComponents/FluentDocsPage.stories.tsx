@@ -10,8 +10,7 @@ import {
   PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
-import { makeStyles, shorthands } from '@griffel/react';
-import { tokens, Link, Text } from '@fluentui/react-components';
+import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';

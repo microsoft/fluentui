@@ -1,8 +1,116 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 23 May 2024 08:02:39 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.1)
+
+Wed, 12 Jun 2024 13:17:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.0..@fluentui/react-components_v9.54.1)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - Deprecated react-accordion navigation prop. Tab navigation only should be used according to W3 APG pattern. ([PR #31587](https://github.com/microsoft/fluentui/pull/31587) by vgenaev@gmail.com)
+- `@fluentui/react-motion`
+  - feat: add support for params ([PR #31566](https://github.com/microsoft/fluentui/pull/31566) by olfedias@microsoft.com)
+  - feat: Add consistent start and finish lifecycle callbacks ([PR #31644](https://github.com/microsoft/fluentui/pull/31644) by lingfangao@hotmail.com)
+- `@fluentui/react-nav-preview`
+  - feat: Adding small size variant. ([PR #31589](https://github.com/microsoft/fluentui/pull/31589) by matejera@microsoft.com)
+  - (chore): Remove NavDrawerHeaderNav component. ([PR #31646](https://github.com/microsoft/fluentui/pull/31646) by matejera@microsoft.com)
+- `@fluentui/react-tree`
+  - feature: onVisibilityChange method to TreeItemLayout action slot ([PR #31598](https://github.com/microsoft/fluentui/pull/31598) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: improve header alignment when no description is passed ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by marcosvmmoura@gmail.com)
+- `@fluentui/react-motion`
+  - fix(motions): improve compat for jsdom & jest ([PR #31602](https://github.com/microsoft/fluentui/pull/31602) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - feat: Adding roles and current where appropriate. ([PR #31649](https://github.com/microsoft/fluentui/pull/31649) by matejera@microsoft.com)
+
+## [9.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.0)
+
+Thu, 06 Jun 2024 15:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.53.0..@fluentui/react-components_v9.54.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - add optional `window` argument to `scrollIntoView`. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-components`
+  - chore: exports DialogModalType type ([PR #31549](https://github.com/microsoft/fluentui/pull/31549) by bernardo.sunderhus@gmail.com)
+  - feat: re-export `useTimeout()` and `useAnimationFrame()`. ([PR #31527](https://github.com/microsoft/fluentui/pull/31527) by seanmonahan@microsoft.com)
+  - feat: add @fluentui/react-motion to suite ([PR #31574](https://github.com/microsoft/fluentui/pull/31574) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: exports DialogModalType type ([PR #31549](https://github.com/microsoft/fluentui/pull/31549) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-drawer`
+  - feat: allow aside as tag for Drawer components ([PR #31434](https://github.com/microsoft/fluentui/pull/31434) by marcosvmmoura@gmail.com)
+- `@fluentui/react-motion`
+  - feat: release stable ([PR #31574](https://github.com/microsoft/fluentui/pull/31574) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: Recomposing NavSectionHeader and Hamburger. Removing HamburgerInNav. Some other pixel pushing. ([PR #31387](https://github.com/microsoft/fluentui/pull/31387) by matejera@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: adds text property to TagPickerOption ([PR #31474](https://github.com/microsoft/fluentui/pull/31474) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - feature: preventScroll on navigation ([PR #31577](https://github.com/microsoft/fluentui/pull/31577) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - chore: disable eslint rule ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-aria`
+  - chore: remove optional "win" argument ([PR #31470](https://github.com/microsoft/fluentui/pull/31470) by seanmonahan@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - feat(calendar-compat): changed design for the selected state ([PR #31509](https://github.com/microsoft/fluentui/pull/31509) by vkozlova@microsoft.com)
+  - chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+  - chore: Renaming useCalendarMonthStyles.ts to useCalendarMonthStyles.styles.ts. ([PR #31568](https://github.com/microsoft/fluentui/pull/31568) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: use @fluentui/react-motion ([PR #31574](https://github.com/microsoft/fluentui/pull/31574) by olfedias@microsoft.com)
+- `@fluentui/react-list-preview`
+  - chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - chore: disable eslint rule. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: disable eslint rule ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: Fixing typo in CheckboxShim migration. ([PR #31569](https://github.com/microsoft/fluentui/pull/31569) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - fix: compatibility with Drawer slots ([PR #31434](https://github.com/microsoft/fluentui/pull/31434) by marcosvmmoura@gmail.com)
+- `@fluentui/react-popover`
+  - chore: disable eslint rule. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-search`
+  - chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-skeleton`
+  - chore: rename useSkeletonStyles.ts to useSkeletonStyles.styles.ts ([PR #31503](https://github.com/microsoft/fluentui/pull/31503) by seanmonahan@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-table`
+  - fix: use requestAnimationFrame from Fluent context. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - Use `MutationObserver` from global context. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: clear icon not working with freeform ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by yuanboxue@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: migrate Toast to new motion library ([PR #31516](https://github.com/microsoft/fluentui/pull/31516) by olfedias@microsoft.com)
+  - chore: use @fluentui/react-motion ([PR #31574](https://github.com/microsoft/fluentui/pull/31574) by olfedias@microsoft.com)
+  - chore: adopt changes in motion APIs ([PR #31508](https://github.com/microsoft/fluentui/pull/31508) by olfedias@microsoft.com)
+  - chore: disable eslint rule. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure roving tab index when children content changes ([PR #31595](https://github.com/microsoft/fluentui/pull/31595) by bernardo.sunderhus@gmail.com)
+  - chore: ensure only state or defaultState is provided on useControllableState hook invocation ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - chore: useControllableState warns if controlled and uncontrolled at the same time ([PR #31461](https://github.com/microsoft/fluentui/pull/31461) by bernardo.sunderhus@gmail.com)
+  - fix: use globals from Fluent context. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: update internal function to optionally use global Fluent context. ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
 
 ## [9.53.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.53.0)
 

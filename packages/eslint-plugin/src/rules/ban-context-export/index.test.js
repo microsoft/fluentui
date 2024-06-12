@@ -1,5 +1,5 @@
 // @ts-check
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { ESLintUtils } = require('@typescript-eslint/utils');
 const path = require('path');
 const rule = require('./index');
 

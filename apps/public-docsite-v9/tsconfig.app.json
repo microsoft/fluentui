@@ -9,5 +9,6 @@
     "sourceMap": true,
     "types": ["static-assets", "webpack-env"]
   },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
   "include": ["src"]
 }

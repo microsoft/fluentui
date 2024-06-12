@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-search",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/react-search/library/src",
+  "tags": ["vNext", "platform:web"]
+}

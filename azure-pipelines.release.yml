@@ -120,7 +120,7 @@ extends:
                 displayName: yarn bundle
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-v8.config.js
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
@@ -155,7 +155,7 @@ extends:
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
               - script: |
-                  node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
+                  node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
                 displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self
