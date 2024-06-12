@@ -318,8 +318,8 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
         this.setState({ isPopoverOpen: true });
       }
       // const position = e.target.getBoundingClientRect();
-      this.updatePosition(e.pageX, e.pageY);
-      this.setState({ clickPosition: { x: e.pageX, y: e.pageY } });
+      this.updatePosition(e.clientX, e.clientY);
+      this.setState({ clickPosition: { x: e.clientX, y: e.clientY } });
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
         showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
