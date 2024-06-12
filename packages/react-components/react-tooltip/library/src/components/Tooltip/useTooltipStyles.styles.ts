@@ -18,15 +18,15 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     maxWidth: '240px',
     cursor: 'default',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontFamily: `var(--2835, var(--2836, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--2837, var(--2838, ${tokens.fontSizeBase200}))`,
+    lineHeight: `var(--2839, var(--2840, ${tokens.lineHeightBase200}))`,
     overflowWrap: 'break-word',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--2841, var(--2842, ${tokens.borderRadiusMedium}))`,
     border: `1px solid ${tokens.colorTransparentStroke}`,
     padding: '4px 11px 6px 11px', // '5px 12px 7px 12px' minus the border width '1px'
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
+    backgroundColor: `var(--2843, var(--2844, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--2845, var(--2846, ${tokens.colorNeutralForeground1}))`,
 
     // TODO need to add versions of tokens.alias.shadow.shadow8, etc. that work with filter
     filter:
@@ -39,8 +39,8 @@ const useStyles = makeStyles({
   },
 
   inverted: {
-    backgroundColor: tokens.colorNeutralBackgroundStatic,
-    color: tokens.colorNeutralForegroundStaticInverted,
+    backgroundColor: `var(--2847, var(--2848, ${tokens.colorNeutralBackgroundStatic}))`,
+    color: `var(--2849, var(--2850, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
 
   arrow: createArrowStyles({ arrowHeight }),

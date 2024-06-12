@@ -19,12 +19,12 @@ const useRootStyles = makeStyles({
     // Padding needed so the focus indicator does not overlap the resize handle, this should match focus indicator size.
     padding: `0 0 ${tokens.strokeWidthThick} 0`,
     margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--2709, var(--2710, ${tokens.borderRadiusMedium}))`,
     verticalAlign: 'top',
   },
 
   disabled: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--2711, var(--2712, ${tokens.colorTransparentBackground}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeDisabled}`,
 
     '@media (forced-colors: active)': {
@@ -48,8 +48,8 @@ const useRootStyles = makeStyles({
       // (Otherwise the radius would be automatically reduced to fit available space.)
       // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
       height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      borderBottomLeftRadius: `var(--2713, var(--2714, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--2715, var(--2716, ${tokens.borderRadiusMedium}))`,
 
       // Flat 2px border:
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
@@ -61,8 +61,8 @@ const useRootStyles = makeStyles({
       // Animation for focus OUT
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--2717, var(--2718, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--2719, var(--2720, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -73,8 +73,8 @@ const useRootStyles = makeStyles({
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--2721, var(--2722, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--2723, var(--2724, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -83,10 +83,10 @@ const useRootStyles = makeStyles({
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: `var(--2725, var(--2726, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
     ':focus-within': {
-      outlineWidth: tokens.strokeWidthThick,
+      outlineWidth: `var(--2727, var(--2728, ${tokens.strokeWidthThick}))`,
       outlineStyle: 'solid',
       outlineColor: 'transparent',
     },
@@ -99,41 +99,41 @@ const useRootStyles = makeStyles({
     },
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--2729, var(--2730, ${tokens.colorNeutralBackground3}))`,
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--2731, var(--2732, ${tokens.colorNeutralBackground1}))`,
   },
   'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--2733, var(--2734, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
-    boxShadow: tokens.shadow2,
+    boxShadow: `var(--2735, var(--2736, ${tokens.shadow2}))`,
   },
   'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--2737, var(--2738, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
-    boxShadow: tokens.shadow2,
+    boxShadow: `var(--2739, var(--2740, ${tokens.shadow2}))`,
   },
 
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--2741, var(--2742, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--2743, var(--2744, ${tokens.colorNeutralStrokeAccessible}))`,
   },
   outlineInteractive: {
     ':hover': {
       border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Hover}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: `var(--2745, var(--2746, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
 
     ':active': {
       border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: `var(--2747, var(--2748, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
 
     ':focus-within': {
       border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-      borderBottomColor: tokens.colorCompoundBrandStroke,
+      borderBottomColor: `var(--2749, var(--2750, ${tokens.colorCompoundBrandStroke}))`,
     },
   },
 
@@ -153,29 +153,29 @@ const useTextareaStyles = makeStyles({
     margin: '0',
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
+    color: `var(--2751, var(--2752, ${tokens.colorNeutralForeground1}))`,
     flexGrow: 1,
-    fontFamily: tokens.fontFamilyBase,
+    fontFamily: `var(--2753, var(--2754, ${tokens.fontFamilyBase}))`,
     height: '100%',
 
     '::placeholder': {
-      color: tokens.colorNeutralForeground4,
+      color: `var(--2755, var(--2756, ${tokens.colorNeutralForeground4}))`,
       opacity: 1,
     },
 
     '::selection': {
-      color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorNeutralBackgroundInverted,
+      color: `var(--2757, var(--2758, ${tokens.colorNeutralForegroundInverted}))`,
+      backgroundColor: `var(--2759, var(--2760, ${tokens.colorNeutralBackgroundInverted}))`,
     },
 
     outlineStyle: 'none', // disable default browser outline
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--2761, var(--2762, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--2763, var(--2764, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 

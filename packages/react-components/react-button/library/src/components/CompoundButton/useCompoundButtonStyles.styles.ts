@@ -17,18 +17,18 @@ const useRootStyles = makeStyles({
     height: 'auto',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: `var(--1, var(--2, ${tokens.colorNeutralForeground2}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+        color: `var(--3, var(--4, ${tokens.colorNeutralForeground2Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Pressed,
+        color: `var(--5, var(--6, ${tokens.colorNeutralForeground2Pressed}))`,
       },
     },
   },
@@ -56,18 +56,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--7, var(--8, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: `var(--9, var(--10, ${tokens.colorNeutralForegroundOnBrand}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: `var(--11, var(--12, ${tokens.colorNeutralForegroundOnBrand}))`,
       },
     },
 
@@ -82,18 +82,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: `var(--13, var(--14, ${tokens.colorNeutralForeground2}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+        color: `var(--15, var(--16, ${tokens.colorNeutralForeground2Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Pressed,
+        color: `var(--17, var(--18, ${tokens.colorNeutralForeground2Pressed}))`,
       },
     },
 
@@ -112,18 +112,18 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: `var(--19, var(--20, ${tokens.colorNeutralForeground2}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: `var(--21, var(--22, ${tokens.colorNeutralForeground2BrandHover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: `var(--23, var(--24, ${tokens.colorNeutralForeground2BrandPressed}))`,
       },
     },
   },
@@ -132,37 +132,37 @@ const useRootStyles = makeStyles({
   small: {
     padding: `${tokens.spacingHorizontalS} ${tokens.spacingHorizontalS} ${tokens.spacingHorizontalMNudge} ${tokens.spacingHorizontalS}`,
 
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: `var(--25, var(--26, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--27, var(--28, ${tokens.lineHeightBase300}))`,
   },
   medium: {
     padding: `14px ${tokens.spacingHorizontalM} ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalM}`,
 
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: `var(--29, var(--30, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--31, var(--32, ${tokens.lineHeightBase300}))`,
   },
   large: {
     padding: `18px ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalXL} ${tokens.spacingHorizontalL}`,
 
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: `var(--33, var(--34, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--35, var(--36, ${tokens.lineHeightBase400}))`,
   },
 
   // Disabled styles
   disabled: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--37, var(--38, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--39, var(--40, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--41, var(--42, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
   },
@@ -192,19 +192,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: tokens.spacingHorizontalXS,
+    padding: `var(--43, var(--44, ${tokens.spacingHorizontalXS}))`,
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    padding: tokens.spacingHorizontalSNudge,
+    padding: `var(--45, var(--46, ${tokens.spacingHorizontalSNudge}))`,
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    padding: tokens.spacingHorizontalS,
+    padding: `var(--47, var(--48, ${tokens.spacingHorizontalS}))`,
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -221,10 +221,10 @@ const useIconStyles = makeStyles({
 
   // Icon position variations
   before: {
-    marginRight: tokens.spacingHorizontalM,
+    marginRight: `var(--49, var(--50, ${tokens.spacingHorizontalM}))`,
   },
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    marginLeft: `var(--51, var(--52, ${tokens.spacingHorizontalM}))`,
   },
 });
 
@@ -241,18 +241,18 @@ const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
     lineHeight: '100%',
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: `var(--53, var(--54, ${tokens.fontWeightRegular}))`,
   },
 
   // Size variations
   small: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--55, var(--56, ${tokens.fontSizeBase200}))`,
   },
   medium: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--57, var(--58, ${tokens.fontSizeBase200}))`,
   },
   large: {
-    fontSize: tokens.fontSizeBase300,
+    fontSize: `var(--59, var(--60, ${tokens.fontSizeBase300}))`,
   },
 });
 

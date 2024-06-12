@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-    gap: tokens.spacingHorizontalS,
+    gap: `var(--1957, var(--1958, ${tokens.spacingHorizontalS}))`,
     flex: '1 1 0px',
   },
 
@@ -54,7 +54,7 @@ const useStyles = makeStyles({
   },
 
   mainPrimary: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--1959, var(--1960, ${tokens.fontWeightSemibold}))`,
   },
 
   mainTruncate: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles({
   },
 
   description: {
-    color: tokens.colorNeutralForeground2,
+    color: `var(--1961, var(--1962, ${tokens.colorNeutralForeground2}))`,
     ...typographyStyles.caption1,
   },
 });

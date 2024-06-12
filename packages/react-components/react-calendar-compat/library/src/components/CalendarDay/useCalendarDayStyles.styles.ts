@@ -46,15 +46,15 @@ const useHeaderStyles = makeStyles({
 const useMonthAndYearStyles = makeStyles({
   base: {
     alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--513, var(--514, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
+    borderRadius: `var(--515, var(--516, ${tokens.borderRadiusMedium}))`,
+    color: `var(--517, var(--518, ${tokens.colorNeutralForeground1}))`,
     display: 'inline-block',
     flexGrow: 1,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
+    fontSize: `var(--519, var(--520, ${tokens.fontSizeBase300}))`,
+    fontWeight: `var(--521, var(--522, ${tokens.fontWeightSemibold}))`,
     lineHeight: '28px',
     overflow: 'hidden',
     padding: '0 4px 0 10px',
@@ -70,14 +70,14 @@ const useMonthAndYearStyles = makeStyles({
   },
   headerIsClickable: {
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--523, var(--524, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--525, var(--526, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--527, var(--528, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--529, var(--530, ${tokens.colorBrandForegroundOnLightPressed}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
@@ -93,13 +93,13 @@ const useMonthComponentsStyles = makeStyles({
 
 const useHeaderIconButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--531, var(--532, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground3,
+    borderRadius: `var(--533, var(--534, ${tokens.borderRadiusMedium}))`,
+    color: `var(--535, var(--536, ${tokens.colorNeutralForeground3}))`,
     display: 'block',
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--537, var(--538, ${tokens.fontSizeBase200}))`,
     height: '28px',
     lineHeight: '28px',
     overflow: 'visible',
@@ -109,14 +109,14 @@ const useHeaderIconButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--539, var(--540, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--541, var(--542, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--543, var(--544, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--545, var(--546, ${tokens.colorBrandForegroundOnLightPressed}))`,
     },
   },
 });
@@ -124,7 +124,7 @@ const useHeaderIconButtonStyles = makeStyles({
 const useDisabledStyleStyles = makeStyles({
   base: {
     '&, &:disabled, & button': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--547, var(--548, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
   },

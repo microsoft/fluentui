@@ -21,18 +21,18 @@ const fieldHeights = {
 // If there is contentBefore or contentAfter, then the root and input slots use their individual padding.
 const horizontalPadding = {
   root: {
-    small: tokens.spacingHorizontalSNudge,
-    medium: tokens.spacingHorizontalMNudge,
-    large: tokens.spacingHorizontalM,
+    small: `var(--1161, var(--1162, ${tokens.spacingHorizontalSNudge}))`,
+    medium: `var(--1163, var(--1164, ${tokens.spacingHorizontalMNudge}))`,
+    large: `var(--1165, var(--1166, ${tokens.spacingHorizontalM}))`,
   },
   input: {
-    small: tokens.spacingHorizontalXXS,
-    medium: tokens.spacingHorizontalXXS,
-    large: tokens.spacingHorizontalSNudge,
+    small: `var(--1167, var(--1168, ${tokens.spacingHorizontalXXS}))`,
+    medium: `var(--1169, var(--1170, ${tokens.spacingHorizontalXXS}))`,
+    large: `var(--1171, var(--1172, ${tokens.spacingHorizontalSNudge}))`,
   },
   combined: {
-    small: tokens.spacingHorizontalS, // SNudge + XXS
-    medium: tokens.spacingHorizontalM, // MNudge + XXS
+    small: `var(--1173, var(--1174, ${tokens.spacingHorizontalS}))`, // SNudge + XXS
+    medium: `var(--1175, var(--1176, ${tokens.spacingHorizontalM}))`, // MNudge + XXS
     large: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
   },
 };
@@ -41,8 +41,8 @@ const useRootClassName = makeResetStyles({
   display: 'inline-flex',
   alignItems: 'center',
   flexWrap: 'nowrap',
-  gap: tokens.spacingHorizontalXXS,
-  borderRadius: tokens.borderRadiusMedium, // used for all but underline
+  gap: `var(--1177, var(--1178, ${tokens.spacingHorizontalXXS}))`,
+  borderRadius: `var(--1179, var(--1180, ${tokens.borderRadiusMedium}))`, // used for all but underline
   position: 'relative',
   boxSizing: 'border-box',
   verticalAlign: 'middle',
@@ -52,9 +52,9 @@ const useRootClassName = makeResetStyles({
   ...typographyStyles.body1,
 
   // appearance: outline (default)
-  backgroundColor: tokens.colorNeutralBackground1,
+  backgroundColor: `var(--1181, var(--1182, ${tokens.colorNeutralBackground1}))`,
   border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  borderBottomColor: `var(--1183, var(--1184, ${tokens.colorNeutralStrokeAccessible}))`,
 
   // This is all for the bottom focus border.
   // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
@@ -71,8 +71,8 @@ const useRootClassName = makeResetStyles({
     // (Otherwise the radius would be automatically reduced to fit available space.)
     // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
     height: `max(2px, ${tokens.borderRadiusMedium})`,
-    borderBottomLeftRadius: tokens.borderRadiusMedium,
-    borderBottomRightRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: `var(--1185, var(--1186, ${tokens.borderRadiusMedium}))`,
+    borderBottomRightRadius: `var(--1187, var(--1188, ${tokens.borderRadiusMedium}))`,
 
     // Flat 2px border:
     // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
@@ -84,8 +84,8 @@ const useRootClassName = makeResetStyles({
     // Animation for focus OUT
     transform: 'scaleX(0)',
     transitionProperty: 'transform',
-    transitionDuration: tokens.durationUltraFast,
-    transitionDelay: tokens.curveAccelerateMid,
+    transitionDuration: `var(--1189, var(--1190, ${tokens.durationUltraFast}))`,
+    transitionDelay: `var(--1191, var(--1192, ${tokens.curveAccelerateMid}))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -96,8 +96,8 @@ const useRootClassName = makeResetStyles({
     // Animation for focus IN
     transform: 'scaleX(1)',
     transitionProperty: 'transform',
-    transitionDuration: tokens.durationNormal,
-    transitionDelay: tokens.curveDecelerateMid,
+    transitionDuration: `var(--1193, var(--1194, ${tokens.durationNormal}))`,
+    transitionDelay: `var(--1195, var(--1196, ${tokens.curveDecelerateMid}))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -106,7 +106,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+    borderBottomColor: `var(--1197, var(--1198, ${tokens.colorCompoundBrandStrokePressed}))`,
   },
   ':focus-within': {
     outline: '2px solid transparent',
@@ -124,7 +124,7 @@ const useRootStyles = makeStyles({
   large: {
     minHeight: fieldHeights.large,
     ...typographyStyles.body2,
-    gap: tokens.spacingHorizontalSNudge,
+    gap: `var(--1199, var(--1200, ${tokens.spacingHorizontalSNudge}))`,
   },
   outline: {
     // included in rootBaseStyles
@@ -132,16 +132,16 @@ const useRootStyles = makeStyles({
   outlineInteractive: {
     ':hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: `var(--1201, var(--1202, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: `var(--1203, var(--1204, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--1205, var(--1206, ${tokens.colorTransparentBackground}))`,
     borderRadius: '0', // corners look strange if rounded
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
@@ -155,11 +155,11 @@ const useRootStyles = makeStyles({
   },
   underlineInteractive: {
     ':hover': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: `var(--1207, var(--1208, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: `var(--1209, var(--1210, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
     '::after': {
       // remove rounded corners from focus underline
@@ -182,24 +182,24 @@ const useRootStyles = makeStyles({
     },
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--1211, var(--1212, ${tokens.colorNeutralBackground3}))`,
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--1213, var(--1214, ${tokens.colorNeutralBackground1}))`,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
-    boxShadow: tokens.shadow2,
+    backgroundColor: `var(--1215, var(--1216, ${tokens.colorNeutralBackground3}))`,
+    boxShadow: `var(--1217, var(--1218, ${tokens.shadow2}))`,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow2,
+    backgroundColor: `var(--1219, var(--1220, ${tokens.colorNeutralBackground1}))`,
+    boxShadow: `var(--1221, var(--1222, ${tokens.shadow2}))`,
   },
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--1223, var(--1224, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -240,12 +240,12 @@ const useInputClassName = makeResetStyles({
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
   padding: `0 ${horizontalPadding.combined.medium}`,
-  color: tokens.colorNeutralForeground1,
+  color: `var(--1225, var(--1226, ${tokens.colorNeutralForeground1}))`,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
 
   '::placeholder': {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--1227, var(--1228, ${tokens.colorNeutralForeground4}))`,
     opacity: 1, // browser style override
   },
 
@@ -289,18 +289,18 @@ const useInputElementStyles = makeStyles({
     paddingRight: horizontalPadding.input.large,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--1229, var(--1230, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--1231, var(--1232, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--1233, var(--1234, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
 
 const useContentClassName = makeResetStyles({
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  color: `var(--1235, var(--1236, ${tokens.colorNeutralForeground3}))`, // "icon color" in design spec
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
@@ -309,7 +309,7 @@ const useContentClassName = makeResetStyles({
 
 const useContentStyles = makeStyles({
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--1237, var(--1238, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   // Ensure resizable icons show up with the proper font size
   small: {

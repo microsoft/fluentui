@@ -10,12 +10,12 @@ export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>> =
 const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
-  rowGap: tokens.spacingVerticalXXS,
+  rowGap: `var(--2853, var(--2854, ${tokens.spacingVerticalXXS}))`,
 });
 
 const useStyles = makeStyles({
   subtree: {
-    paddingTop: tokens.spacingVerticalXXS,
+    paddingTop: `var(--2855, var(--2856, ${tokens.spacingVerticalXXS}))`,
   },
 });
 

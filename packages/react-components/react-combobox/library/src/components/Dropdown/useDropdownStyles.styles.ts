@@ -18,7 +18,7 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--919, var(--920, ${tokens.borderRadiusMedium}))`,
     boxSizing: 'border-box',
     display: 'inline-flex',
     minWidth: '250px',
@@ -41,14 +41,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      borderBottomLeftRadius: `var(--921, var(--922, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--923, var(--924, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--925, var(--926, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--927, var(--928, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -58,8 +58,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--929, var(--930, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--931, var(--932, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -67,7 +67,7 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: `var(--933, var(--934, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
 
     '@supports selector(:has(*))': {
@@ -81,7 +81,7 @@ const useStyles = makeStyles({
   listbox: {
     boxSizing: 'border-box',
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--935, var(--936, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
   },
 
@@ -97,14 +97,14 @@ const useStyles = makeStyles({
 
   button: {
     alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--937, var(--938, ${tokens.colorTransparentBackground}))`,
     border: 'none',
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
-    columnGap: tokens.spacingHorizontalXXS,
+    color: `var(--939, var(--940, ${tokens.colorNeutralForeground1}))`,
+    columnGap: `var(--941, var(--942, ${tokens.spacingHorizontalXXS}))`,
     cursor: 'pointer',
     display: 'grid',
-    fontFamily: tokens.fontFamilyBase,
+    fontFamily: `var(--943, var(--944, ${tokens.fontFamilyBase}))`,
     gridTemplateColumns: '[content] 1fr [icon] auto [end]',
     justifyContent: 'space-between',
     textAlign: 'left',
@@ -116,7 +116,7 @@ const useStyles = makeStyles({
   },
 
   placeholder: {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--945, var(--946, ${tokens.colorNeutralForeground4}))`,
   },
 
   // size variants
@@ -133,7 +133,7 @@ const useStyles = makeStyles({
     } 5px ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   large: {
-    columnGap: tokens.spacingHorizontalSNudge,
+    columnGap: `var(--947, var(--948, ${tokens.spacingHorizontalSNudge}))`,
     ...typographyStyles.body2,
     padding: `7px ${
       tokens.spacingHorizontalM
@@ -142,32 +142,32 @@ const useStyles = makeStyles({
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--949, var(--950, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--951, var(--952, ${tokens.colorNeutralStrokeAccessible}))`,
   },
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--953, var(--954, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--955, var(--956, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--957, var(--958, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--959, var(--960, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--961, var(--962, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   invalid: {
@@ -177,12 +177,12 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--963, var(--964, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--965, var(--966, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -190,7 +190,7 @@ const useStyles = makeStyles({
   },
 
   disabledText: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--967, var(--968, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 
@@ -202,9 +202,9 @@ const useStyles = makeStyles({
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
+    color: `var(--969, var(--970, ${tokens.colorNeutralStrokeAccessible}))`,
     display: 'block',
-    fontSize: tokens.fontSizeBase500,
+    fontSize: `var(--971, var(--972, ${tokens.fontSizeBase500}))`,
     gridColumnStart: 'icon',
     gridColumnEnd: 'end',
 
@@ -218,30 +218,30 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--973, var(--974, ${tokens.spacingHorizontalXXS}))`,
   },
   medium: {
     fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--975, var(--976, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    marginLeft: `var(--977, var(--978, ${tokens.spacingHorizontalSNudge}))`,
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--979, var(--980, ${tokens.colorNeutralForegroundDisabled}))`,
   },
 });
 
 const useBaseClearButtonStyle = makeResetStyles({
   alignSelf: 'center',
-  backgroundColor: tokens.colorTransparentBackground,
+  backgroundColor: `var(--981, var(--982, ${tokens.colorTransparentBackground}))`,
   border: 'none',
   cursor: 'pointer',
   height: 'fit-content',
   margin: 0,
-  marginRight: tokens.spacingHorizontalMNudge,
+  marginRight: `var(--983, var(--984, ${tokens.spacingHorizontalMNudge}))`,
   padding: 0,
   position: 'relative',
 

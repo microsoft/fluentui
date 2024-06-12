@@ -17,7 +17,7 @@ const useRootBaseStyles = makeResetStyles({
   ...createCustomFocusIndicatorStyle(
     {
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--1299, var(--1300, ${tokens.borderRadiusMedium}))`,
     },
     { selector: 'focus' },
   ),

@@ -38,7 +38,7 @@ const useRootStyles = makeStyles({
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--1897, var(--1898, ${tokens.borderRadiusCircular}))`,
   border: '1px solid',
   lineHeight: 0,
   boxSizing: 'border-box',
@@ -48,8 +48,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   height: `${trackHeight}px`,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   pointerEvents: 'none',
-  transitionDuration: tokens.durationNormal,
-  transitionTimingFunction: tokens.curveEasyEase,
+  transitionDuration: `var(--1899, var(--1900, ${tokens.durationNormal}))`,
+  transitionTimingFunction: `var(--1901, var(--1902, ${tokens.curveEasyEase}))`,
   transitionProperty: 'background, border, color',
   width: `${trackWidth}px`,
 
@@ -65,8 +65,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   },
 
   '> *': {
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
+    transitionDuration: `var(--1903, var(--1904, ${tokens.durationNormal}))`,
+    transitionTimingFunction: `var(--1905, var(--1906, ${tokens.curveEasyEase}))`,
     transitionProperty: 'transform',
 
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -107,37 +107,37 @@ const useInputBaseClassName = makeResetStyles({
     cursor: 'default',
 
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--1907, var(--1908, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
       cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--1909, var(--1910, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 
   // Enabled and unchecked
   ':enabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralStrokeAccessible,
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      color: `var(--1911, var(--1912, ${tokens.colorNeutralStrokeAccessible}))`,
+      borderColor: `var(--1913, var(--1914, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      color: `var(--1915, var(--1916, ${tokens.colorNeutralForeground1}))`,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessibleHover,
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        color: `var(--1917, var(--1918, ${tokens.colorNeutralStrokeAccessibleHover}))`,
+        borderColor: `var(--1919, var(--1920, ${tokens.colorNeutralStrokeAccessibleHover}))`,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessiblePressed,
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        color: `var(--1921, var(--1922, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
+        borderColor: `var(--1923, var(--1924, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
       },
     },
   },
@@ -145,22 +145,22 @@ const useInputBaseClassName = makeResetStyles({
   // Enabled and checked
   ':enabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorTransparentStroke,
+      backgroundColor: `var(--1925, var(--1926, ${tokens.colorCompoundBrandBackground}))`,
+      color: `var(--1927, var(--1928, ${tokens.colorNeutralForegroundInverted}))`,
+      borderColor: `var(--1929, var(--1930, ${tokens.colorTransparentStroke}))`,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: `var(--1931, var(--1932, ${tokens.colorCompoundBrandBackgroundHover}))`,
+        borderColor: `var(--1933, var(--1934, ${tokens.colorTransparentStrokeInteractive}))`,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: `var(--1935, var(--1936, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+        borderColor: `var(--1937, var(--1938, ${tokens.colorTransparentStrokeInteractive}))`,
       },
     },
   },
@@ -168,15 +168,15 @@ const useInputBaseClassName = makeResetStyles({
   // Disabled and unchecked
   ':disabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
+      borderColor: `var(--1939, var(--1940, ${tokens.colorNeutralStrokeDisabled}))`,
     },
   },
 
   // Disabled and checked
   ':disabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      borderColor: tokens.colorTransparentStrokeDisabled,
+      backgroundColor: `var(--1941, var(--1942, ${tokens.colorNeutralBackgroundDisabled}))`,
+      borderColor: `var(--1943, var(--1944, ${tokens.colorTransparentStrokeDisabled}))`,
     },
   },
 
@@ -246,15 +246,15 @@ const useLabelStyles = makeStyles({
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   },
   above: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
+    paddingTop: `var(--1945, var(--1946, ${tokens.spacingVerticalXS}))`,
+    paddingBottom: `var(--1947, var(--1948, ${tokens.spacingVerticalXS}))`,
     width: '100%',
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--1949, var(--1950, ${tokens.spacingHorizontalXS}))`,
   },
   before: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--1951, var(--1952, ${tokens.spacingHorizontalXS}))`,
   },
 });
 

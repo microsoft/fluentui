@@ -92,16 +92,22 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    borderRadius: tokens.borderRadiusMedium,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusMedium }),
+    borderRadius: `var(--1885, var(--1886, ${tokens.borderRadiusMedium}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1887, var(--1888, ${tokens.borderRadiusMedium}))`,
+    }),
   },
   circular: {
-    borderRadius: tokens.borderRadiusCircular,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
+    borderRadius: `var(--1889, var(--1890, ${tokens.borderRadiusCircular}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1891, var(--1892, ${tokens.borderRadiusCircular}))`,
+    }),
   },
   square: {
-    borderRadius: tokens.borderRadiusNone,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
+    borderRadius: `var(--1893, var(--1894, ${tokens.borderRadiusNone}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1895, var(--1896, ${tokens.borderRadiusNone}))`,
+    }),
   },
 });
 

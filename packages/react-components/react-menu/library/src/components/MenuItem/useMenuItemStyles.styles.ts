@@ -17,27 +17,27 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: `var(--1307, var(--1308, ${tokens.borderRadiusMedium}))`,
   position: 'relative',
-  color: tokens.colorNeutralForeground2,
-  backgroundColor: tokens.colorNeutralBackground1,
-  paddingRight: tokens.spacingVerticalSNudge, // 6px
-  paddingLeft: tokens.spacingVerticalSNudge,
-  paddingTop: tokens.spacingVerticalSNudge,
-  paddingBottom: tokens.spacingVerticalSNudge,
+  color: `var(--1309, var(--1310, ${tokens.colorNeutralForeground2}))`,
+  backgroundColor: `var(--1311, var(--1312, ${tokens.colorNeutralBackground1}))`,
+  paddingRight: `var(--1313, var(--1314, ${tokens.spacingVerticalSNudge}))`, // 6px
+  paddingLeft: `var(--1315, var(--1316, ${tokens.spacingVerticalSNudge}))`,
+  paddingTop: `var(--1317, var(--1318, ${tokens.spacingVerticalSNudge}))`,
+  paddingBottom: `var(--1319, var(--1320, ${tokens.spacingVerticalSNudge}))`,
   boxSizing: 'border-box',
   maxWidth: '290px',
   minHeight: '32px',
   flexShrink: 0,
   display: 'flex',
   alignItems: 'start',
-  fontSize: tokens.fontSizeBase300,
+  fontSize: `var(--1321, var(--1322, ${tokens.fontSizeBase300}))`,
   cursor: 'pointer',
   gap: '4px',
 
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    color: tokens.colorNeutralForeground2Hover,
+    backgroundColor: `var(--1323, var(--1324, ${tokens.colorNeutralBackground1Hover}))`,
+    color: `var(--1325, var(--1326, ${tokens.colorNeutralForeground2Hover}))`,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
@@ -46,13 +46,13 @@ const useRootBaseStyles = makeResetStyles({
       display: 'none',
     },
     [`& .${menuItemClassNames.icon}`]: {
-      color: tokens.colorNeutralForeground2BrandSelected,
+      color: `var(--1327, var(--1328, ${tokens.colorNeutralForeground2BrandSelected}))`,
     },
   },
 
   ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    color: tokens.colorNeutralForeground2Pressed,
+    backgroundColor: `var(--1329, var(--1330, ${tokens.colorNeutralBackground1Pressed}))`,
+    color: `var(--1331, var(--1332, ${tokens.colorNeutralForeground2Pressed}))`,
   },
 
   // High contrast styles
@@ -80,13 +80,13 @@ const useSecondaryContentBaseStyles = makeResetStyles({
   paddingLeft: '2px',
   paddingRight: '2px',
   ...typographyStyles.caption1,
-  lineHeight: tokens.lineHeightBase300,
-  color: tokens.colorNeutralForeground3,
+  lineHeight: `var(--1333, var(--1334, ${tokens.lineHeightBase300}))`,
+  color: `var(--1335, var(--1336, ${tokens.colorNeutralForeground3}))`,
   ':hover': {
-    color: tokens.colorNeutralForeground3Hover,
+    color: `var(--1337, var(--1338, ${tokens.colorNeutralForeground3Hover}))`,
   },
   ':focus': {
-    color: tokens.colorNeutralForeground3Hover,
+    color: `var(--1339, var(--1340, ${tokens.colorNeutralForeground3Hover}))`,
   },
 });
 
@@ -125,16 +125,16 @@ const useStyles = makeStyles({
     paddingLeft: 0,
     '::before': {
       content: '""',
-      width: tokens.strokeWidthThin,
+      width: `var(--1341, var(--1342, ${tokens.strokeWidthThin}))`,
       height: '24px',
-      backgroundColor: tokens.colorNeutralStroke1,
+      backgroundColor: `var(--1343, var(--1344, ${tokens.colorNeutralStroke1}))`,
     },
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--1345, var(--1346, ${tokens.colorNeutralForegroundDisabled}))`,
     ':hover': {
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
+      color: `var(--1347, var(--1348, ${tokens.colorNeutralForegroundDisabled}))`,
+      backgroundColor: `var(--1349, var(--1350, ${tokens.colorNeutralBackground1}))`,
       cursor: 'not-allowed',
       [`& .${iconFilledClassName}`]: {
         display: 'none',
@@ -143,17 +143,17 @@ const useStyles = makeStyles({
         display: 'inline',
       },
       [`& .${menuItemClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--1351, var(--1352, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
 
     ':hover:active': {
-      color: tokens.colorNeutralForegroundDisabled,
-      backgroundColor: tokens.colorNeutralBackground1,
+      color: `var(--1353, var(--1354, ${tokens.colorNeutralForegroundDisabled}))`,
+      backgroundColor: `var(--1355, var(--1356, ${tokens.colorNeutralBackground1}))`,
     },
 
     ':focus': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--1357, var(--1358, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     '@media (forced-colors: active)': {

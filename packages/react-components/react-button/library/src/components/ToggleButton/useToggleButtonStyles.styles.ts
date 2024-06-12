@@ -15,9 +15,9 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
 const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundColor: `var(--117, var(--118, ${tokens.colorNeutralBackground1Selected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--119, var(--120, ${tokens.colorNeutralForeground1Selected}))`,
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
 
@@ -29,15 +29,15 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: `var(--121, var(--122, ${tokens.colorNeutralBackground1Hover}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
+      color: `var(--123, var(--124, ${tokens.colorNeutralForeground1Hover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      backgroundColor: `var(--125, var(--126, ${tokens.colorNeutralBackground1Pressed}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1Pressed,
+      color: `var(--127, var(--128, ${tokens.colorNeutralForeground1Pressed}))`,
     },
   },
 
@@ -70,16 +70,16 @@ const useRootCheckedStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    backgroundColor: `var(--129, var(--130, ${tokens.colorTransparentBackgroundSelected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--131, var(--132, ${tokens.colorTransparentBackgroundHover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--133, var(--134, ${tokens.colorTransparentBackgroundPressed}))`,
     },
 
     ...createCustomFocusIndicatorStyle({
@@ -87,57 +87,57 @@ const useRootCheckedStyles = makeStyles({
     }),
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
+    backgroundColor: `var(--135, var(--136, ${tokens.colorBrandBackgroundSelected}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: `var(--137, var(--138, ${tokens.colorNeutralForegroundOnBrand}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: `var(--139, var(--140, ${tokens.colorBrandBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--141, var(--142, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: `var(--143, var(--144, ${tokens.colorBrandBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--145, var(--146, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    backgroundColor: `var(--147, var(--148, ${tokens.colorSubtleBackgroundSelected}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2Selected,
+    color: `var(--149, var(--150, ${tokens.colorNeutralForeground2Selected}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--151, var(--152, ${tokens.colorSubtleBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+      color: `var(--153, var(--154, ${tokens.colorNeutralForeground2Hover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--155, var(--156, ${tokens.colorSubtleBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
+      color: `var(--157, var(--158, ${tokens.colorNeutralForeground2Pressed}))`,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    backgroundColor: `var(--159, var(--160, ${tokens.colorTransparentBackgroundSelected}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--161, var(--162, ${tokens.colorNeutralForeground2BrandSelected}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--163, var(--164, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: `var(--165, var(--166, ${tokens.colorNeutralForeground2BrandHover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--167, var(--168, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: `var(--169, var(--170, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
   },
 });
@@ -145,20 +145,20 @@ const useRootCheckedStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    backgroundColor: `var(--171, var(--172, ${tokens.colorNeutralBackgroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--173, var(--174, ${tokens.colorNeutralForegroundDisabled}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--175, var(--176, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--177, var(--178, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--179, var(--180, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--181, var(--182, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 
@@ -181,30 +181,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--183, var(--184, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--185, var(--186, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--187, var(--188, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--189, var(--190, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--191, var(--192, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--193, var(--194, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -213,7 +213,7 @@ const useRootDisabledStyles = makeStyles({
 const useIconCheckedStyles = makeStyles({
   // Appearance variations
   subtleOrTransparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--195, var(--196, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
   // High contrast styles
   highContrast: {
