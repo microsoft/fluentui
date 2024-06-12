@@ -78,6 +78,12 @@ export interface ISankeyChartProps {
    * Format node and link values.
    */
   formatNumberOptions?: Intl.NumberFormatOptions;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default false
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -127,6 +133,11 @@ export interface ISankeyChartStyles {
    */
 
   calloutContentRoot?: IStyle;
+
+  /**
+   * Styles for the chart wrapper div
+   */
+  chartWrapper?: IStyle;
 }
 
 /**
