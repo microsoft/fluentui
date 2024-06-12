@@ -29,7 +29,7 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  *
  * @public
  */
-export class AnchorButton extends FASTElement {
+export class BaseAnchor extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -132,46 +132,6 @@ export class AnchorButton extends FASTElement {
   @attr
   public type?: string;
 
-  /**
-   * The appearance the anchor button should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr
-  public appearance?: AnchorButtonAppearance | undefined;
-
-  /**
-   * The shape the anchor button should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape?: AnchorButtonShape | undefined;
-
-  /**
-   * The size the anchor button should have.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: AnchorButtonSize;
-
-  /**
-   * The anchor button has an icon only, no text content
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `icon-only`
-   */
-  @attr({ attribute: 'icon-only', mode: 'boolean' })
-  public iconOnly: boolean = false;
-
   constructor() {
     super();
 
@@ -257,6 +217,48 @@ export class AnchorButton extends FASTElement {
     proxy.hidden = true;
     return proxy;
   }
+}
+
+export class AnchorButton extends BaseAnchor {
+  /**
+   * The appearance the anchor button should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `appearance`
+   */
+  @attr
+  public appearance?: AnchorButtonAppearance | undefined;
+
+  /**
+   * The shape the anchor button should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `shape`
+   */
+  @attr
+  public shape?: AnchorButtonShape | undefined;
+
+  /**
+   * The size the anchor button should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: AnchorButtonSize;
+
+  /**
+   * The anchor button has an icon only, no text content
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `icon-only`
+   */
+  @attr({ attribute: 'icon-only', mode: 'boolean' })
+  public iconOnly: boolean = false;
 }
 
 /**
