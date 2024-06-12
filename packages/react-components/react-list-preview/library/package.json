@@ -19,6 +19,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "generate-api": "just-scripts generate-api",
     "lint": "just-scripts lint",

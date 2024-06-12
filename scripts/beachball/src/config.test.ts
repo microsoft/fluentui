@@ -4,6 +4,8 @@ import webComponentsConfig from './release-web-components.config';
 import { config as sharedConfig } from './shared.config';
 
 describe(`beachball configs`, () => {
+  const excludedPackagesFromReleaseProcess = ['!packages/fluentui/*'];
+
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
       changehint: "Run 'yarn change' to generate a change file",
@@ -45,9 +47,10 @@ describe(`beachball configs`, () => {
   it(`should generate v8 release config`, () => {
     expect(v8Config.scope).toEqual(
       expect.arrayContaining([
-        '!packages/fluentui/*',
+        ...excludedPackagesFromReleaseProcess,
         '!apps/perf-test-react-components',
         '!apps/vr-tests-react-components',
+        '!packages/web-components',
       ]),
     );
     expect(v8Config.scope.some(scope => scope.startsWith('!packages/react-'))).toBe(true);
@@ -55,11 +58,9 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    const excludedPackages = ['!packages/fluentui/*'];
-
     expect(vNextConfig.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackages,
+        ...excludedPackagesFromReleaseProcess,
         'apps/perf-test-react-components',
         'apps/vr-tests-react-components',
       ]),
@@ -67,7 +68,7 @@ describe(`beachball configs`, () => {
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
-    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackages.includes(scope));
+    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackagesFromReleaseProcess.includes(scope));
 
     expect(vNextConfig.changelog.customRenderers).toEqual(sharedConfig.changelog.customRenderers);
     expect(vNextConfig.changelog.groups).toEqual([
@@ -82,15 +83,12 @@ describe(`beachball configs`, () => {
   it(`should generate web-components release config`, () => {
     expect(webComponentsConfig.scope).toEqual(
       expect.arrayContaining([
+        ...excludedPackagesFromReleaseProcess,
+        'apps/vr-tests-web-components',
         'packages/web-components',
-        '!packages/fluentui/*',
-        '!apps/*',
-        '!apps/perf-test-react-components',
-        '!apps/vr-tests-react-components',
-        '!packages/react-components/react-components',
       ]),
     );
-    expect(webComponentsConfig.scope.some(scope => scope.startsWith('!packages/react-'))).toBe(true);
+
     expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);
   });
 });

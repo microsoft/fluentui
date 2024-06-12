@@ -18,37 +18,52 @@ export function getConfig({ version }: { version: 'vNext' }): {
   };
 };
 export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' }) {
-  const vNextPackagePaths = getVNextPackagePaths();
+  const { vNextPaths, webComponentsPaths } = getPackagePaths();
 
   if (version === 'vNext') {
     return {
-      scope: [...vNextPackagePaths],
+      scope: [...vNextPaths],
       groupConfig: {
         masterPackageName: '@fluentui/react-components',
         changelogPath: 'packages/react-components/react-components',
-        include: vNextPackagePaths,
+        include: vNextPaths,
       },
     };
   }
 
-  const ignoreVNextScope = vNextPackagePaths.map(path => `!${path}`);
-
   if (version === 'web-components') {
     return {
-      scope: ['packages/web-components', '!apps/*', ...ignoreVNextScope],
+      scope: [...webComponentsPaths],
     };
   }
 
+  const ignoreV8Scope = vNextPaths.concat(webComponentsPaths).map(path => `!${path}`);
+
   if (version === 'v8') {
-    return { scope: [...ignoreVNextScope] };
+    return { scope: [...ignoreV8Scope] };
   }
 
   throw new Error('Unsupported version scopes acquisition');
 }
 
-function getVNextPackagePaths() {
-  const allProjects = getAllPackageInfo(isConvergedPackage);
-  const values = Object.values(allProjects);
+const isWebComponentPackage: typeof isConvergedPackage = metadata => {
+  return Boolean(metadata.project.tags?.includes('web-components'));
+};
 
-  return values.map(project => project.packagePath);
+function getPackagePaths() {
+  const allProjects = getAllPackageInfo();
+  const vNextPaths: string[] = [];
+  const webComponentsPaths: string[] = [];
+
+  for (const project of Object.values(allProjects)) {
+    const metadata = { project: project.projectConfig, packageJson: project.packageJson };
+    if (isConvergedPackage(metadata)) {
+      vNextPaths.push(project.packagePath);
+    }
+    if (isWebComponentPackage(metadata)) {
+      webComponentsPaths.push(project.packagePath);
+    }
+  }
+
+  return { vNextPaths, webComponentsPaths };
 }

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add consistent start and finish lifecycle callbacks",
+  "packageName": "@fluentui/react-motion",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

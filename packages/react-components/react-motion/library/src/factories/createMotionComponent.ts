@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
@@ -12,6 +12,25 @@ export type MotionComponentProps = {
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
+
+  /**
+   * Callback that is called when the whole motion finishes.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "finish" events. The callback is
+   * triggered once all animations have finished with "null" instead of an event object to avoid ambiguity.
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionFinish?: (ev: null) => void;
+
+  /**
+   * Callback that is called when the whole motion starts.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "start" events. The callback is
+   * triggered when the first animation is started. There is no official "start" event with the Web Animations API.
+   * so the callback is triggered with "null".
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionStart?: (ev: null) => void;
 };
 
 /**
@@ -23,7 +42,13 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
   value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>,
 ) {
   const Atom: React.FC<MotionComponentProps & MotionParams> = props => {
-    const { children, imperativeRef, ..._rest } = props;
+    const {
+      children,
+      imperativeRef,
+      onMotionFinish: onMotionFinishProp,
+      onMotionStart: onMotionStartProp,
+      ..._rest
+    } = props;
     const params = _rest as Exclude<typeof props, MotionComponentProps>;
     const child = getChildElement(children);
 
@@ -32,6 +57,14 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const paramsRef = React.useRef<MotionParams>(params);
 
     const isReducedMotion = useIsReducedMotion();
+
+    const onMotionStart = useEventCallback(() => {
+      onMotionStartProp?.(null);
+    });
+
+    const onMotionFinish = useEventCallback(() => {
+      onMotionFinishProp?.(null);
+    });
 
     useIsomorphicLayoutEffect(() => {
       // Heads up!
@@ -44,15 +77,18 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
       if (element) {
         const atoms = typeof value === 'function' ? value({ element, ...paramsRef.current }) : value;
+        onMotionStart();
+
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
+        handle.onfinish = onMotionFinish;
         handleRef.current = handle;
 
         return () => {
           handle.cancel();
         };
       }
-    }, [handleRef, isReducedMotion]);
+    }, [handleRef, isReducedMotion, onMotionFinish, onMotionStart]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };

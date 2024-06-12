@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "breaking: AtomMotionFn & PresenceMotionFn have an object as param",
-  "packageName": "@fluentui/react-motions-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
