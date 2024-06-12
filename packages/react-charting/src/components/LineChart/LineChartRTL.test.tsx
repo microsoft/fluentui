@@ -630,12 +630,19 @@ describe('Line chart - Subcomponent Event', () => {
     { data: simplePoints, eventAnnotationProps: eventAnnotationProps },
     container => {
       // Arrange
-      const textElements = container.getElementsByTagName('text');
-      expect(textElements).not.toBeNull();
-      expect(textElements).toHaveLength(15);
-      expect(textElements[12]!.getAttribute('text')).toBe('3 events');
-      expect(textElements[13]!.getAttribute('text')).toBe('event 4');
-      expect(textElements[14]!.getAttribute('text')).toBe('event 5');
+      const events = screen.queryByText('events');
+      // Assert
+      expect(events).not.toBeNull();
+      expect(screen.queryByText('3')).not.toBeNull();
+
+      const clubbedEvents = events!.closest('g');
+      expect(clubbedEvents).not.toBeNull();
+      fireEvent.click(clubbedEvents!);
+
+      expect(screen.queryByText('event 1 message')).not.toBeNull();
+      expect(screen.queryByText('event 2 message')).not.toBeNull();
+      expect(screen.queryByText('event 3 message')).not.toBeNull();
+      expect(screen.queryByText('event 4 message')).toBeNull();
     },
   );
 });
