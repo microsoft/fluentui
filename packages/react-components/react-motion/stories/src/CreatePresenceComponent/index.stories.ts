@@ -13,7 +13,7 @@ export { PresenceMotionFunctions as functions } from './PresenceMotionFunctions.
 export { PresenceMotionFunctionParams as functionParams } from './PresenceMotionFunctionParams.stories';
 
 export default {
-  title: 'Utilities/Web Motions/createPresenceComponent',
+  title: 'Utilities/Motion/createPresenceComponent',
   component: null,
   parameters: {
     docs: {
