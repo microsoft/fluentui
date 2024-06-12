@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: improve header alignment when no description is passed",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
