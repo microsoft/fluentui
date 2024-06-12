@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 04:06:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.28",
+      "version": "3.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46c33692940dce4906974ad90c5c79aae7e52d0f",
+            "comment": "refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cf5e76e30a13dbd0b19669bcc7c8e0696851bff",
+            "comment": "refactor progress bar to use ElementInternals"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jun 2024 04:06:29 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.27",
       "version": "3.0.0-beta.27",
