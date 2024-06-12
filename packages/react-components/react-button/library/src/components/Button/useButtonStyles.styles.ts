@@ -35,7 +35,7 @@ const useRootBaseClassName = makeResetStyles({
   margin: 0,
   overflow: 'hidden',
 
-  backgroundColor: tokens.colorNeutralBackground1,
+  backgroundColor: `var(--component-token-Button-1, var(--semantic-token-Button-2, ${tokens.colorNeutralBackground1}))`,
   color: tokens.colorNeutralForeground1,
   border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
 
@@ -43,7 +43,7 @@ const useRootBaseClassName = makeResetStyles({
   outlineStyle: 'none',
 
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
+    backgroundColor: `var(--component-token-Button-3, var(--semantic-token-Button-4, ${tokens.colorNeutralBackground1Hover}))`,
     borderColor: tokens.colorNeutralStroke1Hover,
     color: tokens.colorNeutralForeground1Hover,
 
@@ -51,7 +51,7 @@ const useRootBaseClassName = makeResetStyles({
   },
 
   ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    backgroundColor: `var(--component-token-Button-5, var(--semantic-token-Button-6, ${tokens.colorNeutralBackground1Pressed}))`,
     borderColor: tokens.colorNeutralStroke1Pressed,
     color: tokens.colorNeutralForeground1Pressed,
 
@@ -136,29 +136,29 @@ const useIconBaseClassName = makeResetStyles({
 const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--component-token-Button-7, var(--semantic-token-Button-8, ${tokens.colorTransparentBackground}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--component-token-Button-9, var(--semantic-token-Button-10, ${tokens.colorTransparentBackgroundHover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--component-token-Button-11, var(--semantic-token-Button-12, ${tokens.colorTransparentBackgroundPressed}))`,
     },
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: `var(--component-token-Button-13, var(--semantic-token-Button-14, ${tokens.colorBrandBackground}))`,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: `var(--component-token-Button-15, var(--semantic-token-Button-16, ${tokens.colorBrandBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: `var(--component-token-Button-17, var(--semantic-token-Button-18, ${tokens.colorBrandBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
@@ -186,12 +186,12 @@ const useRootStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: `var(--component-token-Button-19, var(--semantic-token-Button-20, ${tokens.colorSubtleBackground}))`,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--component-token-Button-21, var(--semantic-token-Button-22, ${tokens.colorSubtleBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
       [`& .${iconFilledClassName}`]: {
@@ -206,7 +206,7 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--component-token-Button-23, var(--semantic-token-Button-24, ${tokens.colorSubtleBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
       [`& .${iconFilledClassName}`]: {
@@ -238,12 +238,12 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--component-token-Button-25, var(--semantic-token-Button-26, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--component-token-Button-27, var(--semantic-token-Button-28, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandHover,
       [`& .${iconFilledClassName}`]: {
@@ -255,7 +255,7 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--component-token-Button-29, var(--semantic-token-Button-30, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
       [`& .${iconFilledClassName}`]: {
@@ -268,11 +268,11 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
-        backgroundColor: tokens.colorTransparentBackground,
+        backgroundColor: `var(--component-token-Button-31, var(--semantic-token-Button-32, ${tokens.colorTransparentBackground}))`,
         color: 'Highlight',
       },
       ':hover:active': {
-        backgroundColor: tokens.colorTransparentBackground,
+        backgroundColor: `var(--component-token-Button-33, var(--semantic-token-Button-34, ${tokens.colorTransparentBackground}))`,
         color: 'Highlight',
       },
     },
@@ -320,7 +320,7 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    backgroundColor: `var(--component-token-Button-35, var(--semantic-token-Button-36, ${tokens.colorNeutralBackgroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
 
@@ -330,7 +330,7 @@ const useRootDisabledStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--component-token-Button-37, var(--semantic-token-Button-38, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
       color: tokens.colorNeutralForegroundDisabled,
 
@@ -348,7 +348,7 @@ const useRootDisabledStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--component-token-Button-39, var(--semantic-token-Button-40, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
       color: tokens.colorNeutralForegroundDisabled,
 
@@ -393,14 +393,14 @@ const useRootDisabledStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--component-token-Button-41, var(--semantic-token-Button-42, ${tokens.colorTransparentBackground}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--component-token-Button-43, var(--semantic-token-Button-44, ${tokens.colorTransparentBackground}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--component-token-Button-45, var(--semantic-token-Button-46, ${tokens.colorTransparentBackground}))`,
     },
   },
   primary: {
@@ -418,30 +418,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--component-token-Button-47, var(--semantic-token-Button-48, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--component-token-Button-49, var(--semantic-token-Button-50, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--component-token-Button-51, var(--semantic-token-Button-52, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--component-token-Button-53, var(--semantic-token-Button-54, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--component-token-Button-55, var(--semantic-token-Button-56, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--component-token-Button-57, var(--semantic-token-Button-58, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
