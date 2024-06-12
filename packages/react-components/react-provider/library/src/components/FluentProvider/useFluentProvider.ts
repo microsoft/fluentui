@@ -33,6 +33,8 @@ export const useFluentProvider_unstable = (
   props: FluentProviderProps,
   ref: React.Ref<HTMLElement>,
 ): FluentProviderState => {
+  'use no memo';
+
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();

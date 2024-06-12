@@ -22,6 +22,8 @@ export function useButtonTriggerSlot(
   ref: React.Ref<HTMLButtonElement>,
   options: UseButtonTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
+  'use no memo';
+
   const {
     state: { open, setOpen, getOptionById },
     defaultProps,
