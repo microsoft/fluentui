@@ -8,7 +8,7 @@ import type {
   IStyleSheetConfig,
   WindowWithMergeStyles,
 } from './Stylesheet';
-import type { ShadowConfig } from './shadowConfig';
+import type { PartialShadowConfig } from './shadowConfig';
 
 export const SUPPORTS_CONSTRUCTABLE_STYLESHEETS =
   typeof document !== 'undefined' && Array.isArray(document.adoptedStyleSheets) && 'replace' in CSSStyleSheet.prototype;
@@ -79,8 +79,11 @@ export class ShadowDomStylesheet extends Stylesheet {
   private _adoptableSheets: Map<string, ExtendedCSSStyleSheet>;
   private _sheetCounter = 0;
 
-  public static getInstance(shadowConfig?: ShadowConfig): ShadowDomStylesheet {
+  public static getInstance(shadowConfig?: PartialShadowConfig): ShadowDomStylesheet {
     const sConfig = shadowConfig || DEFAULT_SHADOW_CONFIG;
+    sConfig.stylesheetKey = sConfig.stylesheetKey || GLOBAL_STYLESHEET_KEY;
+    sConfig.inShadow = sConfig.inShadow || false;
+    sConfig.__isShadowConfig__ = true;
     const stylesheetKey = sConfig.stylesheetKey || GLOBAL_STYLESHEET_KEY;
     const inShadow = sConfig.inShadow;
     const win = sConfig.window || (typeof window !== 'undefined' ? window : undefined);

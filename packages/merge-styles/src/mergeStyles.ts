@@ -1,14 +1,15 @@
 import { extractStyleParts } from './extractStyleParts';
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
-import { isShadowConfig, ShadowConfig } from './shadowConfig';
+import { isShadowConfig } from './shadowConfig';
+import type { PartialShadowConfig } from './shadowConfig';
 import { getStyleOptions } from './StyleOptionsState';
 import { Stylesheet } from './Stylesheet';
 import { styleToClassName } from './styleToClassName';
 
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
 export function mergeStyles(
-  shadowConfig: ShadowConfig,
+  shadowConfig: PartialShadowConfig,
   ...args: (IStyle | IStyleBaseArray | false | null | undefined)[]
 ): string;
 
@@ -29,15 +30,15 @@ export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | 
  */
 export function mergeCss(
   args:
-    | (IStyle | IStyleBaseArray | false | null | undefined | ShadowConfig)
-    | (IStyle | IStyleBaseArray | false | null | undefined | ShadowConfig)[],
+    | (IStyle | IStyleBaseArray | false | null | undefined | PartialShadowConfig)
+    | (IStyle | IStyleBaseArray | false | null | undefined | PartialShadowConfig)[],
   options?: IStyleOptions,
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
   const opts = options || {};
   const hasShadowConfig = isShadowConfig(styleArgs[0]);
   if (hasShadowConfig) {
-    opts.shadowConfig = styleArgs[0] as ShadowConfig;
+    opts.shadowConfig = styleArgs[0] as PartialShadowConfig;
   }
   opts.stylesheet = Stylesheet.getInstance(opts.shadowConfig);
   const { classes, objects } = extractStyleParts(opts.stylesheet, styleArgs);

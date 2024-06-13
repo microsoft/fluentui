@@ -303,6 +303,7 @@ import { omit } from '@fluentui/utilities';
 import { Omit as Omit_2 } from '@fluentui/utilities';
 import { on } from '@fluentui/utilities';
 import { optionProperties } from '@fluentui/utilities';
+import type { PartialShadowConfig } from '@fluentui/style-utilities';
 import { PartialTheme } from '@fluentui/theme';
 import { Point } from '@fluentui/utilities';
 import { portalContainsElement } from '@fluentui/utilities';
@@ -356,7 +357,6 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
-import type { ShadowConfig } from '@fluentui/style-utilities';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -8423,7 +8423,7 @@ export { IsFocusVisibleClassName }
 
 // @public (undocumented)
 export interface IShadowDomStyle {
-    __shadowConfig__?: ShadowConfig;
+    __shadowConfig__?: PartialShadowConfig;
 }
 
 // @public (undocumented)

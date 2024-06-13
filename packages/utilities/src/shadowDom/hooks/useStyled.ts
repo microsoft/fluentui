@@ -1,4 +1,4 @@
-import { ShadowConfig } from '@fluentui/merge-styles';
+import type { ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../../dom';
 import { useMergeStylesHooks } from './useMergeStylesHooks';
 

@@ -21,11 +21,12 @@ import type { IStyleSetBase } from '@fluentui/merge-styles';
 import { isVirtualElement } from '@fluentui/dom-utilities';
 import { IVirtualElement } from '@fluentui/dom-utilities';
 import { Omit as Omit_2 } from '@fluentui/merge-styles';
+import type { PartialShadowConfig } from '@fluentui/merge-styles';
 import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
-import { ShadowConfig } from '@fluentui/merge-styles';
+import type { ShadowConfig } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -1313,7 +1314,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
     __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
     __noStyleOverride__: boolean;
-    __shadowConfig__?: ShadowConfig;
+    __shadowConfig__?: PartialShadowConfig;
 };
 
 // @public

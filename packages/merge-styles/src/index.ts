@@ -54,7 +54,7 @@ export { setRTL } from './StyleOptionsState';
 export type { ObjectOnly } from './ObjectOnly';
 
 export { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, makeShadowConfig } from './shadowConfig';
-export type { ShadowConfig } from './shadowConfig';
+export type { ShadowConfig, PartialShadowConfig } from './shadowConfig';
 
 export { cloneCSSStyleSheet } from './cloneCSSStyleSheet';
 

@@ -6,7 +6,8 @@ import { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSe
 import { getStyleOptions } from './StyleOptionsState';
 import { applyRegistration, styleToRegistration } from './styleToClassName';
 import { ObjectOnly } from './ObjectOnly';
-import { isShadowConfig, ShadowConfig } from './shadowConfig';
+import { isShadowConfig } from './shadowConfig';
+import type { PartialShadowConfig } from './shadowConfig';
 import { Stylesheet } from './Stylesheet';
 
 /**
@@ -80,11 +81,11 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
+  ...styleSets: Array<IStyleSet | undefined | false | null | PartialShadowConfig>
 ): IProcessedStyleSet<any>;
 
 export function mergeStyleSets(
-  shadowConfig: ShadowConfig,
+  shadowConfig: PartialShadowConfig,
   ...styleSets: Array<IStyleSet | undefined | false | null>
 ): IProcessedStyleSet<any>;
 
@@ -97,7 +98,7 @@ export function mergeStyleSets(
  * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
+  ...styleSets: Array<IStyleSet | undefined | false | null | PartialShadowConfig>
 ): IProcessedStyleSet<any> {
   return mergeCssSets(styleSets as any, getStyleOptions());
 }
@@ -126,7 +127,7 @@ export function mergeCssSets<TStyleSet>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2>(
-  styleSets: [TStyleSet1 | false | null | undefined | ShadowConfig, TStyleSet2 | false | null | undefined],
+  styleSets: [TStyleSet1 | false | null | undefined | PartialShadowConfig, TStyleSet2 | false | null | undefined],
   options?: IStyleOptions,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
@@ -141,7 +142,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2>(
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
   styleSets: [
-    TStyleSet1 | false | null | undefined | ShadowConfig,
+    TStyleSet1 | false | null | undefined | PartialShadowConfig,
     TStyleSet2 | false | null | undefined,
     TStyleSet3 | false | null | undefined,
   ],
@@ -159,7 +160,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
   styleSets: [
-    TStyleSet1 | false | null | undefined | ShadowConfig,
+    TStyleSet1 | false | null | undefined | PartialShadowConfig,
     TStyleSet2 | false | null | undefined,
     TStyleSet3 | false | null | undefined,
     TStyleSet4 | false | null | undefined,
@@ -193,15 +194,15 @@ export function mergeCssSets<TStyleSet>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets(
-  styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>,
+  styleSets: Array<IStyleSet | undefined | false | null | PartialShadowConfig>,
   options?: IStyleOptions,
 ): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
-  let shadowConfig: ShadowConfig | undefined = undefined;
+  let shadowConfig: PartialShadowConfig | undefined = undefined;
   let styleSet;
   if (isShadowConfig(styleSets[0])) {
-    shadowConfig = styleSets[0] as ShadowConfig;
+    shadowConfig = styleSets[0] as PartialShadowConfig;
     styleSet = styleSets[1];
   } else {
     styleSet = styleSets[0];

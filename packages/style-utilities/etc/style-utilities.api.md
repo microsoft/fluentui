@@ -43,6 +43,7 @@ import { ITheme } from '@fluentui/theme';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
+import { PartialShadowConfig } from '@fluentui/merge-styles';
 import { registerDefaultFontFaces } from '@fluentui/theme';
 import { ShadowConfig } from '@fluentui/merge-styles';
 import { Stylesheet } from '@fluentui/merge-styles';
@@ -270,6 +271,8 @@ export const normalize: IRawStyle;
 
 // @public (undocumented)
 export const noWrap: IRawStyle;
+
+export { PartialShadowConfig }
 
 // @public (undocumented)
 export const PulsingBeaconAnimationStyles: {

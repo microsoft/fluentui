@@ -8,7 +8,7 @@ import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { IStyleOptions } from './IStyleOptions';
 import { tokenizeWithParentheses } from './tokenizeWithParentheses';
-import { ShadowConfig } from './shadowConfig';
+import type { PartialShadowConfig } from './shadowConfig';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -293,7 +293,7 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
 export function applyRegistration(
   registration: IRegistration,
   specificityMultiplier: number = 1,
-  shadowConfig?: ShadowConfig,
+  shadowConfig?: PartialShadowConfig,
   sheet?: Stylesheet,
 ): void {
   const stylesheet = sheet ?? Stylesheet.getInstance(shadowConfig);

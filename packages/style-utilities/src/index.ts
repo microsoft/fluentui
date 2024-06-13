@@ -103,6 +103,7 @@ export type {
   IStyleSheetConfig,
   ICSPSettings,
   ShadowConfig,
+  PartialShadowConfig,
 } from './MergeStyles';
 
 export { FLUENT_CDN_BASE_URL } from './cdn';

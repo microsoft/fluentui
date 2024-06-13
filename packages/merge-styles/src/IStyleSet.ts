@@ -1,6 +1,6 @@
 import { IStyle } from './IStyle';
 import { IStyleFunctionOrObject, IStyleFunction } from './IStyleFunction';
-import { ShadowConfig } from './shadowConfig';
+import { PartialShadowConfig } from './shadowConfig';
 
 /**
  * @deprecated Use `Exclude` provided by TypeScript instead.
@@ -70,5 +70,5 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
 } & IShadowConfig;
 
 type IShadowConfig = {
-  __shadowConfig__?: ShadowConfig;
+  __shadowConfig__?: PartialShadowConfig;
 };

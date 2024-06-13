@@ -3,7 +3,7 @@
 // See: https://github.com/microsoft/fluentui/issues/28058
 import { IStyle } from './IStyle';
 import { GLOBAL_STYLESHEET_KEY, SHADOW_DOM_STYLESHEET_SETTING } from './shadowConfig';
-import type { ShadowConfig } from './shadowConfig';
+import type { PartialShadowConfig } from './shadowConfig';
 
 export const InjectionMode = {
   /**
@@ -173,7 +173,7 @@ export class Stylesheet {
   /**
    * Gets the singleton instance.
    */
-  public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
+  public static getInstance(shadowConfig?: PartialShadowConfig): Stylesheet {
     _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (_global[SHADOW_DOM_STYLESHEET_SETTING]) {
