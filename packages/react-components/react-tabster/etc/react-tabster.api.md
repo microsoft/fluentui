@@ -21,6 +21,8 @@ import { MoverMoveFocusEvent } from 'tabster';
 import { MoverMoveFocusEventName } from 'tabster';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
+import { TabsterMoveFocusEvent } from 'tabster';
+import { TabsterMoveFocusEventName } from 'tabster';
 import { Types } from 'tabster';
 
 // @internal (undocumented)
@@ -574,9 +576,6 @@ const GroupperMoveFocusActions_2: GroupperMoveFocusActions_2;
 export { GroupperMoveFocusEvent }
 
 // @public (undocumented)
-export type GroupperMoveFocusEvent = Events.GroupperMoveFocusEvent;
-
-// @public (undocumented)
 type GroupperMoveFocusEvent_2 = CustomEvent<{
     action: GroupperMoveFocusAction;
 } | undefined>;
@@ -819,9 +818,6 @@ export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElement
 export { MoverMemorizedElementEventName }
 
 export { MoverMoveFocusEvent }
-
-// @public (undocumented)
-export type MoverMoveFocusEvent = Events.MoverMoveFocusEvent;
 
 // @public (undocumented)
 type MoverMoveFocusEvent_2 = CustomEvent<{
@@ -1226,14 +1222,13 @@ interface TabsterElementStorageEntry {
 // @public (undocumented)
 type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
 
-// @public (undocumented)
-export const TabsterMoveFocusEvent: typeof Events.TabsterMoveFocusEvent;
-
-// @public (undocumented)
-export type TabsterMoveFocusEvent = Events.TabsterMoveFocusEvent;
+export { TabsterMoveFocusEvent }
 
 // @public (undocumented)
 type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
+
+// @public (undocumented)
+export type TabsterMoveFocusEventDetail = EventsTypes.TabsterMoveFocusEventDetail;
 
 // @public (undocumented)
 interface TabsterMoveFocusEventDetails {
@@ -1247,8 +1242,7 @@ interface TabsterMoveFocusEventDetails {
     relatedEvent?: KeyboardEvent;
 }
 
-// @public (undocumented)
-export const TabsterMoveFocusEventName: "tabster:movefocus";
+export { TabsterMoveFocusEventName }
 
 // @public (undocumented)
 type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement & SysOnElement & RestorerOnElement>;

@@ -46,6 +46,8 @@ import {
   GroupperMoveFocusActions,
   MoverMemorizedElementEventName,
   MoverMemorizedElementEvent,
+  TabsterMoveFocusEventName,
+  TabsterMoveFocusEvent,
 } from 'tabster';
 
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
@@ -80,3 +82,6 @@ export type GroupperMoveFocusEventDetail = EventsTypes.GroupperMoveFocusEventDet
 
 export { MoverMemorizedElementEventName, MoverMemorizedElementEvent };
 export type MoverMemorizedElementEventDetail = EventsTypes.MoverMemorizedElementEventDetail;
+
+export { TabsterMoveFocusEventName, TabsterMoveFocusEvent };
+export type TabsterMoveFocusEventDetail = EventsTypes.TabsterMoveFocusEventDetail;
