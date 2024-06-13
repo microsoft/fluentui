@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 23 Apr 2024 08:17:49 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.3)
+
+Thu, 06 Jun 2024 15:26:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.2..@fluentui/react-positioning_v9.15.3)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.2)
+
+Thu, 23 May 2024 08:02:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.1..@fluentui/react-positioning_v9.15.2)
+
+### Patches
+
+- chore: replace usage of .shorthands() in styles ([PR #31432](https://github.com/microsoft/fluentui/pull/31432) by olfedias@microsoft.com)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.1)
+
+Mon, 20 May 2024 12:45:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.0..@fluentui/react-positioning_v9.15.1)
+
+### Patches
+
+- chore: bump @griffel/react ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.0 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+- Bump @fluentui/react-utilities to v9.18.9 ([PR #26682](https://github.com/microsoft/fluentui/pull/26682) by beachball)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.0)
+
+Thu, 09 May 2024 19:35:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.14.5..@fluentui/react-positioning_v9.15.0)
+
+### Minor changes
+
+- fix overflowBoundaryPadding being ingored when autoSize was on ([PR #31277](https://github.com/microsoft/fluentui/pull/31277) by jirivyhnalek@microsoft.com)
+
+## [9.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.14.5)
+
+Mon, 06 May 2024 12:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.14.4..@fluentui/react-positioning_v9.14.5)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.18.0 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
+- Bump @fluentui/react-utilities to v9.18.8 ([PR #31271](https://github.com/microsoft/fluentui/pull/31271) by beachball)
 
 ## [9.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.14.4)
 

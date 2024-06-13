@@ -29,7 +29,6 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -47,8 +46,10 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -762,7 +763,6 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -780,8 +780,10 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1495,7 +1497,6 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -1513,8 +1514,10 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2228,7 +2231,6 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -2246,8 +2248,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2961,7 +2965,6 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -2979,8 +2982,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -3694,7 +3699,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -3715,7 +3719,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -4420,7 +4426,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
               >
                  
@@ -4510,7 +4516,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -4531,7 +4536,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -5874,7 +5881,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -5895,7 +5901,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -6493,7 +6501,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       }
   id="chart_3"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_4"
@@ -6514,7 +6521,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
     onMouseDownCapture={[Function]}
   >
     <svg
+      aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
       height={350}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -9307,7 +9316,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             width: 100%;
           }
       id="chart_6"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_7"
@@ -9325,8 +9333,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >

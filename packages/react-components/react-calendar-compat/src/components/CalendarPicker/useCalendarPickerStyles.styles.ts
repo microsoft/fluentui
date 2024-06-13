@@ -35,15 +35,15 @@ export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles> = {
 const useRootStyles = makeStyles({
   base: {
     boxSizing: 'content-box',
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('12px'),
+    overflow: 'hidden',
+    padding: '12px',
     width: '196px',
   },
   normalize: {
     boxShadow: 'none',
     boxSizing: 'border-box',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    margin: '0',
+    padding: '0',
   },
 });
 
@@ -57,13 +57,14 @@ const useCurrentItemButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
+    borderRadius: tokens.borderRadiusMedium,
     color: 'inherit',
     flexGrow: 1,
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightSemibold,
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0, '4px', 0, '10px'),
+    overflow: 'visible',
+    padding: '0 4px 0 10px',
     textAlign: 'left',
   },
   animation: {
@@ -73,17 +74,18 @@ const useCurrentItemButtonStyles = makeStyles({
     animationTimingFunction: EASING_FUNCTION_2,
   },
   hasHeaderClickCallback: {
+    // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
     '&:hover': {
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorBrandForegroundOnLightHover,
       cursor: 'pointer',
-      ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
+      outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
       backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
       color: tokens.colorBrandForegroundOnLightPressed,
       cursor: 'pointer',
-      ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
+      outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
   },
 });
@@ -98,8 +100,8 @@ const useNavigationButtonsContainerStyles = makeStyles({
 const useNavigationButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderStyle('none'),
-    ...shorthands.borderRadius('2px'),
+    border: 'none',
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground1,
     display: 'block',
     fontFamily: 'inherit',
@@ -108,8 +110,8 @@ const useNavigationButtonStyles = makeStyles({
     lineHeight: '28px',
     minHeight: '28px',
     minWidth: '28px',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
+    overflow: 'visible',
+    padding: '0',
     position: 'relative',
     textAlign: 'center',
     width: '28px',
@@ -118,7 +120,7 @@ const useNavigationButtonStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorBrandForegroundOnLightHover,
       cursor: 'pointer',
-      ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
+      outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
 
     '&:hover:active': {
@@ -163,8 +165,8 @@ const useButtonRowStyles = makeStyles({
 const useItemButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderStyle('none'),
-    ...shorthands.borderRadius('2px'),
+    border: 'none',
+    borderRadius: tokens.borderRadiusMedium,
     color: tokens.colorNeutralForeground3,
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,
@@ -172,9 +174,9 @@ const useItemButtonStyles = makeStyles({
     lineHeight: '40px',
     minHeight: '40px',
     minWidth: '40px',
-    ...shorthands.margin(0, '12px', 0, 0),
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
+    margin: '0 12px 0 0',
+    overflow: 'visible',
+    padding: '0',
     width: '40px',
 
     '&:nth-child(4n + 4)': {
@@ -190,13 +192,13 @@ const useItemButtonStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorNeutralForeground1Static,
       cursor: 'pointer',
-      ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
+      outline: `1px solid ${tokens.colorTransparentStroke}`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         color: 'WindowText',
         forcedColorAdjust: 'none',
-        ...shorthands.outline('1px', 'solid', 'Highlight'),
+        outline: '1px solid Highlight',
       },
     },
     '&:hover:active': {

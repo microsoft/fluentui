@@ -1,10 +1,11 @@
 import * as Babel from '@babel/core';
-import { transformStarImportPlugin } from '@fluentui/scripts-babel/plugins';
 import { CLIEngine } from 'eslint';
 import gutil from 'gulp-util';
 import prettier from 'prettier';
 import through from 'through2';
 import Vinyl from 'vinyl';
+
+import { transformStarImportPlugin } from '../babel-plugins';
 
 import { getRelativePathToSourceFile } from './util';
 import { ExampleSource } from './util/docs-types';

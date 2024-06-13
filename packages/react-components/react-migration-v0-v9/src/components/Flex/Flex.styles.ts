@@ -1,4 +1,4 @@
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const gapValues = {
   smaller: '8px',
@@ -86,6 +86,6 @@ export const useFlexStyles = makeStyles({
     columnGap: gapValues.large,
   },
   paddingMedium: {
-    ...shorthands.padding(paddingValues.medium),
+    padding: paddingValues.medium,
   },
 });

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: removes aria-checked from TagPickerOption",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

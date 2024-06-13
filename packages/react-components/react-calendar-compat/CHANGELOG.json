@@ -2,6 +2,201 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:30 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.10",
+      "version": "0.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "de236343a2ea7e2e53fbb8f66a294890ea3d1bbb",
+            "comment": "feat(calendar-compat): changed design for the selected state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "7651367e8e48fa801de81c612abf93635779d163",
+            "comment": "chore: Renaming useCalendarMonthStyles.ts to useCalendarMonthStyles.styles.ts."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 May 2024 08:02:41 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.9",
+      "version": "0.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "78e136d293335db94c4790794a4628befcb2271b",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:44:53 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.3",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 May 2024 09:25:13 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.7",
+      "version": "0.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c35e78e5853894033a69f6135ad003894a8b6a95",
+            "comment": " chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "d193992d97d8551c5cf26a9d2eab191fd22cdd28",
+            "comment": "fix: Make header button in overlaid month picker match the other header button's styles."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.6",
+      "version": "0.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.2",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:31 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.1.3",
       "version": "0.1.3",

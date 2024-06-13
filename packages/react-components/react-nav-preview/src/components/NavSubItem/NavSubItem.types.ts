@@ -1,15 +1,18 @@
 import { NavItemValue } from '../NavContext.types';
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { NavSize } from '../Nav/Nav.types';
 
 export type NavSubItemSlots = {
-  root: Slot<'a'>;
+  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 };
 
 /**
  * NavSubItem Props
  */
-export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
+export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {
+  href?: string;
   /**
    * The value that identifies this NavSubItem when selected.
    */
@@ -25,4 +28,10 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> &
      * If this NavSubItem is selected
      */
     selected: boolean;
+    /**
+     * The size of the NavItem
+     *
+     * @default 'medium'
+     */
+    size: NavSize;
   };

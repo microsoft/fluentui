@@ -1,11 +1,11 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselNavButtonSlots, CarouselNavButtonState } from './CarouselNavButton.types';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselNavButtonClassNames: SlotClassNames<CarouselNavButtonSlots> = {
   root: 'fui-CarouselNavButton',
-  // TODO: add class names for all slots on CarouselNavButtonSlots.
-  // Should be of the form `<slotName>: 'fui-CarouselNavButton__<slotName>`
 };
 
 /**
@@ -13,10 +13,45 @@ export const carouselNavButtonClassNames: SlotClassNames<CarouselNavButtonSlots>
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    cursor: 'pointer',
+    boxSizing: 'border-box',
+    height: '8px',
+    width: '8px',
+    backgroundColor: tokens.colorNeutralForeground1,
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
-
-  // TODO add additional classes for different states and/or slots
+  rootUnselected: {
+    border: 'none',
+    borderRadius: '50%',
+    padding: '0px',
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
+    ...createCustomFocusIndicatorStyle({
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
+      ...shorthands.borderColor('transparent'),
+    }),
+    backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForeground1} 30%, transparent)`,
+    '@supports not (color: color-mix(in lch, white, black))': {
+      // This will also affect the focus border, but only in older unsupported browsers
+      opacity: 0.3,
+      backgroundColor: tokens.colorNeutralForeground1,
+    },
+  },
+  rootSelected: {
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
+    width: '16px',
+    border: 'none',
+    borderRadius: '4px',
+    padding: '0px',
+    ...createCustomFocusIndicatorStyle({
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
+      ...shorthands.borderColor('transparent'),
+    }),
+  },
 });
 
 /**
@@ -24,10 +59,15 @@ const useStyles = makeStyles({
  */
 export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonState): CarouselNavButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(carouselNavButtonClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const { selected } = state;
+
+  state.root.className = mergeClasses(
+    carouselNavButtonClassNames.root,
+    styles.root,
+    selected ? styles.rootSelected : styles.rootUnselected,
+    state.root.className,
+  );
 
   return state;
 };

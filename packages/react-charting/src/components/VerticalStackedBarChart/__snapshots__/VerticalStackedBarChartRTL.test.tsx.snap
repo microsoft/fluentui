@@ -18,7 +18,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -36,8 +35,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -483,30 +484,36 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="157.46000000000004"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -994,7 +1001,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -1012,8 +1018,10 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1459,30 +1467,36 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="157.46000000000004"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -1970,7 +1984,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -1988,8 +2001,10 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2435,30 +2450,36 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           <circle
             cx="279"
             cy="157.46000000000004"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(8, 0)"
             visibility="hidden"
           />
@@ -2959,7 +2980,6 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             width: 100%;
           }
       id="chart_6"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_7"
@@ -2977,8 +2997,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -9732,7 +9754,6 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -9750,8 +9771,10 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -10416,7 +10439,6 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -10434,8 +10456,10 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -11089,7 +11113,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -11107,8 +11130,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -11762,7 +11787,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           width: 100%;
         }
     id="chart_3"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_4"
@@ -11780,8 +11804,10 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -12169,20 +12195,24 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <circle
             cx="56"
             cy="188.6346153846154"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(0, 0)"
             visibility="hidden"
           />
           <circle
             cx="614"
             cy="120.26923076923077"
+            data-is-focusable="false"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
+            tabindex="-1"
             transform="translate(0, 0)"
             visibility="hidden"
           />

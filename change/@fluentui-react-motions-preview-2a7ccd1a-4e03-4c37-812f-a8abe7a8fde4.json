@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-motions): add grouped motions",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

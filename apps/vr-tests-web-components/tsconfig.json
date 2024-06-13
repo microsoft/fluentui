@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.wc.json",
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "jsx": "react",
+    "types": ["jest", "node", "web"]
+  },
+  "include": ["./src", "./.storybook/*"],
+  "files": ["./typings/html-react-parser/index.d.ts"]
+}

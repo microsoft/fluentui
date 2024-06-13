@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { ChevronRightRegular } from '@fluentui/react-icons';
+import { ChevronRight20Regular } from '@fluentui/react-icons';
 import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
@@ -22,7 +22,7 @@ export const useNavCategoryItem_unstable = (
 
   const { open, value } = useNavCategoryContext_unstable();
 
-  const { onRequestNavCategoryItemToggle, selectedCategoryValue } = useNavContext_unstable();
+  const { onRequestNavCategoryItemToggle, selectedCategoryValue, size = 'medium' } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event => onRequestNavCategoryItemToggle(event, { type: 'click', event, value })),
@@ -42,8 +42,6 @@ export const useNavCategoryItem_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
-        role: 'nav',
-        type: 'navigation',
         ...props,
         onClick: onNavCategoryItemClick,
       }),
@@ -51,7 +49,7 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronRightRegular />,
+        children: <ChevronRight20Regular />,
         'aria-hidden': true,
       },
       elementType: 'span',
@@ -59,5 +57,6 @@ export const useNavCategoryItem_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
+    size,
   };
 };

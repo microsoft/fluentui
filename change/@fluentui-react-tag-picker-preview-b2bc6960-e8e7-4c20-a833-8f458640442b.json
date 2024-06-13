@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: ensures cursor looks like a text on whole control",
-  "packageName": "@fluentui/react-tag-picker-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

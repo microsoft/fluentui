@@ -28,6 +28,8 @@ cd fluentui
 yarn
 ```
 
+Windows users not working in WSL should run `yarn clean` and then `yarn build` on first use to ensure correct linking in non-\*nix systems.
+
 Run `yarn start` and select your start up project.
 
 ```
@@ -57,6 +59,7 @@ It is strongly recommended that you rebase your branch onto (rather than merging
 ```
 git checkout master // Switches to master
 git pull upstream master // Syncs your local master with the latest version of master at the origin
+git push // syncs your forks definition of master with the upstream repo
 git checkout your-fancy-branch // Switches back to your branch
 git rebase -i master // Tacks your commits onto the end of master. Force is necessary since rebase changes history.
 ```
@@ -75,11 +78,12 @@ In other cases, such as before checking in or running tests, you may need to run
 
 ### Making a pull request
 
-Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update the right docs accordingly. Commit this change.
+Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update our API docs accordingly. Commit this file change.
+Note: If you encounter build errors here (especially on non-\*nix systems) a 'yarn build' to ensure packages are correctly updated and linked may be nessecary.
 
-If your changes make any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. Check these updates in.
+Some of our tests make use of DOM snapshot tests. If your branch makes any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. This will update any necessary files used by our snapshot tests.
 
-Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
+Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. You will need to run this at least once for every PR made to a published package. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
 
 - Major - Don't do these without expressed agreement from the team. This is a very stable repo. This option is usually disabled.
 - Minor - Adding new API surface area that is backwards compatible and does not dramatically change the intent of an API.
@@ -91,7 +95,7 @@ When your change is ready, [create a pull request](https://github.com/microsoft/
 
 Common checklist for PR's
 
-- Descriptive title: "feat: Adding 'multiple' prop to Nav"
+- Descriptive title: "feat(package-name): Adding 'multiple' prop to Nav"
 - Brief description of the improvement you're making. You should summarize the issue you are addressing. Assume the PR is the reviewer's starting point and they should only have to dive into the issue for very specific details.
 - Link to the relevant issue.
 - Visual aid for changes to give more context. Before and After clips help a lot.

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Mon, 19 Jun 2023 07:36:38 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jun 2024 07:23:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.22)
+
+Wed, 05 Jun 2024 07:23:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.11..@fluentui/api-docs_v8.2.22)
+
+### Patches
+
+- chore: bump api-extractor-model in order to migrate to TS 4.9 ([PR #31496](https://github.com/microsoft/fluentui/pull/31496) by martinhochel@microsoft.com)
 
 ## [8.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.11)
 

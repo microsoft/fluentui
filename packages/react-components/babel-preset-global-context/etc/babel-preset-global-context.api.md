@@ -4,14 +4,10 @@
 
 ```ts
 
-import { CallExpression } from '@babel/types';
-import { ImportDeclaration } from '@babel/types';
-import { NodePath } from '@babel/traverse';
-import { PluginObj } from '@babel/core';
-import { PluginPass } from '@babel/core';
+import type { PluginItem } from '@babel/core';
 
 // @public (undocumented)
-function preset(): BabelPreset;
+function preset(): PluginItem;
 export default preset;
 
 // (No @packageDocumentation comment for this package)

@@ -6,6 +6,7 @@ import {
   useIconStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
+  useSmallStyles,
 } from '../sharedNavStyles.styles';
 
 import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
@@ -19,6 +20,7 @@ export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
 const useExpandIconStyles = makeStyles({
   base: {
     marginInlineStart: 'auto',
+    height: '20px',
   },
   open: {
     transform: 'rotate(90deg)',
@@ -40,18 +42,20 @@ export const useRootStyles = makeStyles({
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
   const rootStyles = useRootStyles();
+  const smallStyles = useSmallStyles();
   const defaultRootClassName = useRootDefaultClassName();
   const contentStyles = useContentStyles();
   const indicatorStyles = useIndicatorStyles();
   const iconStyles = useIconStyles();
   const expandIconStyles = useExpandIconStyles();
 
-  const { selected, open } = state;
+  const { selected, open, size } = state;
 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
     defaultRootClassName,
     rootStyles.base,
+    size === 'small' && smallStyles.root,
     selected && open === false && indicatorStyles.base,
     selected && open === false && contentStyles.selected,
     state.root.className,

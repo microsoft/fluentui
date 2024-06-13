@@ -2,6 +2,108 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 06 Jun 2024 15:26:44 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.79",
+      "version": "9.0.0-alpha.79",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "fix: update internal function to optionally use global Fluent context."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:45:09 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.78",
+      "version": "9.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:44 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2939b63a57f70c5b3c77a4a9e9200bf0e8777596",
+            "comment": "Fix: Use Fluent hooks for IO and timeout functionality"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Apr 2024 08:17:49 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.75",
       "version": "9.0.0-alpha.75",

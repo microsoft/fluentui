@@ -22,7 +22,7 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       theme.fonts.small,
       {
         lineHeight: '16px',
-        opacity: '0.8',
+        opacity: '0.85',
         color: theme.semanticColors.bodySubtext,
       },
     ],
