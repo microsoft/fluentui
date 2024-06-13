@@ -52,7 +52,7 @@ export function animateAtoms(
       }
 
       Promise.allSettled(animations.map(animation => animation.finished)).then(res => {
-        const DOMException = element.ownerDocument.defaultView?.DOMException;
+        const DOMException = element.ownerDocument?.defaultView?.DOMException;
         const rejected = res.filter(result => result.status === 'rejected');
         if (!rejected.length) {
           return;
