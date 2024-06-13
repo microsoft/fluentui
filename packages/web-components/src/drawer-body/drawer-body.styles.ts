@@ -10,7 +10,6 @@ export const styles = css`
   ${display('grid')}
   :host {
     box-sizing: border-box;
-    display: grid;
     grid-template-rows: min-content auto min-content;
     position: relative;
     height: 100%;
