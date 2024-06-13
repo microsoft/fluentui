@@ -679,6 +679,7 @@ export interface IHorizontalBarChartProps {
     chartDataMode?: ChartDataMode;
     className?: string;
     culture?: string;
+    customEmptyMsg?: string;
     customErrorMsg?: string;
     data?: IChartProps[];
     handleEmptyState?: () => JSX.Element;
@@ -739,6 +740,8 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     chartTitle?: string;
     colors?: string[];
     culture?: string;
+    customEmptyMsg?: string;
+    customErrorMsg?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
     handleEmptyState?: () => JSX.Element;
     handleError?: () => JSX.Element;
