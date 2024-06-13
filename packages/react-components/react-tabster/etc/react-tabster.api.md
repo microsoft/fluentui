@@ -21,6 +21,8 @@ import { MoverMoveFocusEvent } from 'tabster';
 import { MoverMoveFocusEventName } from 'tabster';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
+import { TabsterMoveFocusEvent } from 'tabster';
+import { TabsterMoveFocusEventName } from 'tabster';
 import { Types } from 'tabster';
 
 // @internal (undocumented)
@@ -1220,8 +1222,13 @@ interface TabsterElementStorageEntry {
 // @public (undocumented)
 type TabsterEventWithDetails<D> = CustomEvent<D | undefined>;
 
+export { TabsterMoveFocusEvent }
+
 // @public (undocumented)
-type TabsterMoveFocusEvent = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
+type TabsterMoveFocusEvent_2 = TabsterEventWithDetails<TabsterMoveFocusEventDetails>;
+
+// @public (undocumented)
+export type TabsterMoveFocusEventDetail = EventsTypes.TabsterMoveFocusEventDetail;
 
 // @public (undocumented)
 interface TabsterMoveFocusEventDetails {
@@ -1234,6 +1241,8 @@ interface TabsterMoveFocusEventDetails {
     // (undocumented)
     relatedEvent?: KeyboardEvent;
 }
+
+export { TabsterMoveFocusEventName }
 
 // @public (undocumented)
 type TabsterOnElement = Partial<RootOnElement & DeloserOnElement & ModalizerOnElement & FocusableOnElement & MoverOnElement & GroupperOnElement & ObservedOnElement & OutlineOnElement & UncontrolledOnElement & SysOnElement & RestorerOnElement>;
@@ -1285,7 +1294,7 @@ declare namespace TabsterTypes {
         GroupperMoveFocusEvent_2 as GroupperMoveFocusEvent,
         TabsterEventWithDetails,
         TabsterMoveFocusEventDetails,
-        TabsterMoveFocusEvent,
+        TabsterMoveFocusEvent_2 as TabsterMoveFocusEvent,
         TabsterDOMAttribute_2 as TabsterDOMAttribute,
         TabsterCoreProps,
         DOMAPI,
