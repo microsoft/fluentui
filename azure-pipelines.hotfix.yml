@@ -51,6 +51,8 @@ extends:
                 displayName: 'Checking for targetNpmVersion variable'
 
               - script: |
+                  mkdir /tmp/checktargetversion
+                  cd /tmp/checktargetversion
                   npm install semver
                   node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
                 displayName: 'Check targetNpmVersion is valid semver'
