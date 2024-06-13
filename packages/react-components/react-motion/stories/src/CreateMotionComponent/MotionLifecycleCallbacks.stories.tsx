@@ -124,6 +124,9 @@ export const MotionLifecycleCallbacks = () => {
             setPlaying(false);
             setStatusLog(entries => [[Date.now(), 'onMotionFinish'], ...entries]);
           }}
+          onMotionCancel={() => {
+            setStatusLog(entries => [[Date.now(), 'onMotionCancel'], ...entries]);
+          }}
         >
           <div className={classes.item} />
         </FadeEnter>
@@ -144,7 +147,7 @@ export const MotionLifecycleCallbacks = () => {
 
       <div className={classes.controls}>
         <div>
-          <Button appearance="subtle" disabled={playing} icon={<ReplayFilled />} onClick={() => setCount(s => s + 1)}>
+          <Button appearance="subtle" icon={<ReplayFilled />} onClick={() => setCount(s => s + 1)}>
             Restart
           </Button>
         </div>

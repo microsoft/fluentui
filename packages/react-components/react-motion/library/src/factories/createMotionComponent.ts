@@ -23,6 +23,15 @@ export type MotionComponentProps = {
   onMotionFinish?: (ev: null) => void;
 
   /**
+   * Callback that is called when the whole motion is cancelled.
+   *
+   * A motion definition can contain multiple animations and therefore multiple "cancel" events. The callback is
+   * triggered once all animations have been cancelled with "null" instead of an event object to avoid ambiguity.
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionCancel?: (ev: null) => void;
+
+  /**
    * Callback that is called when the whole motion starts.
    *
    * A motion definition can contain multiple animations and therefore multiple "start" events. The callback is
@@ -47,6 +56,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       imperativeRef,
       onMotionFinish: onMotionFinishProp,
       onMotionStart: onMotionStartProp,
+      onMotionCancel: onMotionCancelProp,
       ..._rest
     } = props;
     const params = _rest as Exclude<typeof props, MotionComponentProps>;
@@ -66,6 +76,10 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       onMotionFinishProp?.(null);
     });
 
+    const onMotionCancel = useEventCallback(() => {
+      onMotionCancelProp?.(null);
+    });
+
     useIsomorphicLayoutEffect(() => {
       // Heads up!
       // We store the params in a ref to avoid re-rendering the component when the params change.
@@ -82,13 +96,14 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
         handle.onfinish = onMotionFinish;
+        handle.oncancel = onMotionCancel;
         handleRef.current = handle;
 
         return () => {
           handle.cancel();
         };
       }
-    }, [handleRef, isReducedMotion, onMotionFinish, onMotionStart]);
+    }, [handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };
