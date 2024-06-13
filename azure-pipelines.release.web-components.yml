@@ -75,7 +75,7 @@ extends:
                 displayName: Build, [test], Lint
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-web-components.config.js
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-web-components.config.js 'release: applying package updates - web-components'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
