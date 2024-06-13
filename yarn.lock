@@ -2422,11 +2422,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@lage-run/logger@*":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@lage-run/logger/-/logger-1.1.1.tgz#250b3e237b100d48f95ead2fb95fb07f9297b947"
-  integrity sha512-8ZWHKCnnOYdLlLS2sSrMRZ4PM3oY5uqc2JN1RptSaKg8tR8g6ITMRmJ04/J4OqqiXiWVv2vozGt9pgxJLI2i7A==
-
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
@@ -11805,6 +11800,21 @@ execa@4.1.0, execa@^4.0.0, execa@^4.0.1:
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
+execa@5.1.1, execa@^5.0.0, execa@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-5.1.1.tgz#f80ad9cbf4298f7bd1d4c9555c21e93741c411dd"
+  integrity sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==
+  dependencies:
+    cross-spawn "^7.0.3"
+    get-stream "^6.0.0"
+    human-signals "^2.1.0"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^4.0.1"
+    onetime "^5.1.2"
+    signal-exit "^3.0.3"
+    strip-final-newline "^2.0.0"
+
 execa@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
@@ -11830,21 +11840,6 @@ execa@^1.0.0:
     p-finally "^1.0.0"
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
-
-execa@^5.0.0, execa@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-5.1.1.tgz#f80ad9cbf4298f7bd1d4c9555c21e93741c411dd"
-  integrity sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==
-  dependencies:
-    cross-spawn "^7.0.3"
-    get-stream "^6.0.0"
-    human-signals "^2.1.0"
-    is-stream "^2.0.0"
-    merge-stream "^2.0.0"
-    npm-run-path "^4.0.1"
-    onetime "^5.1.2"
-    signal-exit "^3.0.3"
-    strip-final-newline "^2.0.0"
 
 executable@^4.1.0, executable@^4.1.1:
   version "4.1.1"
@@ -12119,7 +12114,7 @@ fast-glob@^2.2.6:
     merge2 "^1.2.3"
     micromatch "^3.1.10"
 
-fast-glob@^3.0.3, fast-glob@^3.2.2, fast-glob@^3.2.5, fast-glob@^3.2.9, fast-glob@^3.3.2:
+fast-glob@^3.0.3, fast-glob@^3.2.11, fast-glob@^3.2.5, fast-glob@^3.2.9, fast-glob@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.2.tgz#a904501e57cfdd2ffcded45e99a54fef55e46129"
   integrity sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==
@@ -16429,12 +16424,11 @@ ky@^0.12.0:
   resolved "https://registry.yarnpkg.com/ky/-/ky-0.12.0.tgz#c05be95e6745ba422a6d2cc8ae964164962279f9"
   integrity sha512-t9b7v3V2fGwAcQnnDDQwKQGF55eWrf4pwi1RN08Fy8b/9GEwV7Ea0xQiaSW6ZbeghBHIwl8kgnla4vVo9seepQ==
 
-lage@1.8.8:
-  version "1.8.8"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-1.8.8.tgz#0bc9e36b49b6144b78d6613e47b25bd74230b1c5"
-  integrity sha512-rMXedlK1lvC69P+bVir6r9EaGqy/NZm1Rg4vE7LD1vlDzNLYkCnvD1JkMxxQHkbMjhKXBLwcB6JnAti79GdLgA==
+lage@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-1.10.0.tgz#536fdf729ad263f50527813ab7ddccb83c0b36fa"
+  integrity sha512-1nk+2tKg41JWMFNCXi4HcchExIeLpk7z4K5TtcAt1VxngQwvvqPzIYzxByM4cbg8UEHxQWTpOnHdu5RyPdgPng==
   dependencies:
-    "@lage-run/logger" "*"
     "@xmldom/xmldom" "^0.8.0"
     abort-controller "^3.0.0"
     backfill "^6.1.21"
@@ -16443,13 +16437,12 @@ lage@1.8.8:
     backfill-logger "^5.1.3"
     chalk "^4.0.0"
     cosmiconfig "^7.0.0"
-    execa "^5.0.0"
-    fast-glob "^3.2.2"
+    execa "5.1.1"
+    fast-glob "^3.2.11"
     npmlog "^4.1.2"
     p-graph "^1.1.1"
-    p-limit "^3.1.0"
     p-profiler "^0.2.1"
-    workspace-tools "^0.27.0"
+    workspace-tools "^0.29.0"
     yargs-parser "^18.1.3"
 
 language-subtag-registry@~0.3.2:
@@ -24705,6 +24698,18 @@ workspace-tools@0.27.0, workspace-tools@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.27.0.tgz#11e8f1ec2cb4c80d1cefcf92da2d0154dc001aa8"
   integrity sha512-5mtE5Vy0Se4brAUJXKfXNtaS9jcUcH+IGF4LNU1xJr4bW1o5bK2gV0pykodB+n6V84nRtaD/4I/9w98aujm7LA==
+  dependencies:
+    "@yarnpkg/lockfile" "^1.1.0"
+    git-url-parse "^13.0.0"
+    globby "^11.0.0"
+    jju "^1.4.0"
+    js-yaml "^4.1.0"
+    micromatch "^4.0.0"
+
+workspace-tools@^0.29.0:
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.29.1.tgz#ff38f7484961cd87a342a8fd14eacd31d1645f56"
+  integrity sha512-BVPROxNszGmyaUD2ErLWP4BpCiIkG1P//CnziOvHd27o1TeBm+7T1HKlYu89T4XGAjgPL/NP+tZ4j6aBvG/p/A==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     git-url-parse "^13.0.0"
