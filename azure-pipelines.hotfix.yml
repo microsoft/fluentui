@@ -32,7 +32,6 @@ extends:
       - stage: main
         jobs:
           - job: Release
-            dependsOn: Compliance
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
