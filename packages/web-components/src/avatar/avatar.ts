@@ -1,5 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
+import { toggleState } from '../utils/element-internals.js';
 import {
   AvatarActive,
   AvatarAppearance,
@@ -14,6 +15,13 @@ import {
  * @public
  */
 export class Avatar extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
    *
@@ -99,6 +107,14 @@ export class Avatar extends FASTElement {
   public color?: AvatarColor = 'neutral';
 
   /**
+   * Synchronizes the color with the element internals state
+   * @internal
+   */
+  public colorChanged(): void {
+    this.generateColor();
+  }
+
+  /**
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
    * Use this when a name is not available, but there is another unique identifier that can be used instead.
    */
@@ -106,17 +122,34 @@ export class Avatar extends FASTElement {
   public colorId?: AvatarNamedColor | undefined;
 
   /**
+   * Synchronizes the color with the element internals state when the colorId is changed
+   * @internal
+   */
+  public colorIdChanged(): void {
+    this.generateColor();
+  }
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'img';
+  }
+
+  /**
    * Sets the data-color attribute used for the visual presentation
    * @internal
    */
-  public generateColor(): AvatarColor | void {
+  public generateColor(): void {
     if (!this.color) {
       return;
     }
 
-    return this.color === AvatarColor.colorful
-      ? (Avatar.colors[getHashCode(this.colorId ?? this.name ?? '') % Avatar.colors.length] as AvatarColor)
-      : this.color;
+    const color =
+      this.color === AvatarColor.colorful
+        ? (Avatar.colors[getHashCode(this.colorId ?? this.name ?? '') % Avatar.colors.length] as AvatarColor)
+        : this.color;
+
+    toggleState(this.elementInternals, color);
   }
 
   /**
