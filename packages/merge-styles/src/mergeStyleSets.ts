@@ -9,6 +9,7 @@ import { ObjectOnly } from './ObjectOnly';
 import { isShadowConfig, ShadowConfig } from './shadowConfig';
 import { Stylesheet } from './Stylesheet';
 
+type Missing = false | null | undefined;
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
  * each which will produce a class name. Using this is analogous to calling
@@ -17,9 +18,7 @@ import { Stylesheet } from './Stylesheet';
  *
  * @param styleSet - The first style set to be merged and reigstered.
  */
-export function mergeStyleSets<TStyleSet>(
-  styleSet: TStyleSet | false | null | undefined,
-): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
+export function mergeStyleSets<TStyleSet>(styleSet: TStyleSet | Missing): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -31,8 +30,8 @@ export function mergeStyleSets<TStyleSet>(
  * @param styleSet2 - The second style set to be merged.
  */
 export function mergeStyleSets<TStyleSet1, TStyleSet2>(
-  styleSet1: TStyleSet1 | false | null | undefined,
-  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing,
+  styleSet2: TStyleSet2 | Missing,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 /**
@@ -46,9 +45,9 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2>(
  * @param styleSet3 - The third style set to be merged.
  */
 export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
-  styleSet1: TStyleSet1 | false | null | undefined,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing,
+  styleSet2: TStyleSet2 | Missing,
+  styleSet3: TStyleSet3 | Missing,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 /**
@@ -63,10 +62,10 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
  * @param styleSet4 - The fourth style set to be merged.
  */
 export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
-  styleSet1: TStyleSet1 | false | null | undefined,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet4 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing,
+  styleSet2: TStyleSet2 | Missing,
+  styleSet3: TStyleSet3 | Missing,
+  styleSet4: TStyleSet4 | Missing,
 ): IProcessedStyleSet<
   ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>
 >;
@@ -79,13 +78,11 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
-): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet | Missing | ShadowConfig>): IProcessedStyleSet<any>;
 
 export function mergeStyleSets(
   shadowConfig: ShadowConfig,
-  ...styleSets: Array<IStyleSet | undefined | false | null>
+  ...styleSets: Array<IStyleSet | Missing>
 ): IProcessedStyleSet<any>;
 
 /**
@@ -96,9 +93,7 @@ export function mergeStyleSets(
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
-): IProcessedStyleSet<any> {
+export function mergeStyleSets(...styleSets: any[]): IProcessedStyleSet<any> {
   return mergeCssSets(styleSets as any, getStyleOptions());
 }
 
@@ -112,7 +107,7 @@ export function mergeStyleSets(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet>(
-  styleSets: [TStyleSet | false | null | undefined],
+  styleSets: [TStyleSet | Missing],
   options?: IStyleOptions,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
@@ -126,7 +121,7 @@ export function mergeCssSets<TStyleSet>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2>(
-  styleSets: [TStyleSet1 | false | null | undefined | ShadowConfig, TStyleSet2 | false | null | undefined],
+  styleSets: [TStyleSet1 | Missing | ShadowConfig, TStyleSet2 | Missing],
   options?: IStyleOptions,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
@@ -140,11 +135,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
-  styleSets: [
-    TStyleSet1 | false | null | undefined | ShadowConfig,
-    TStyleSet2 | false | null | undefined,
-    TStyleSet3 | false | null | undefined,
-  ],
+  styleSets: [TStyleSet1 | Missing | ShadowConfig, TStyleSet2 | Missing, TStyleSet3 | Missing],
   options?: IStyleOptions,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
@@ -158,12 +149,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
-  styleSets: [
-    TStyleSet1 | false | null | undefined | ShadowConfig,
-    TStyleSet2 | false | null | undefined,
-    TStyleSet3 | false | null | undefined,
-    TStyleSet4 | false | null | undefined,
-  ],
+  styleSets: [TStyleSet1 | Missing | ShadowConfig, TStyleSet2 | Missing, TStyleSet3 | Missing, TStyleSet4 | Missing],
   options?: IStyleOptions,
 ): IProcessedStyleSet<
   ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>
@@ -179,7 +165,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets<TStyleSet>(
-  styleSet: [TStyleSet | false | null | undefined],
+  styleSet: [TStyleSet | Missing],
   options?: IStyleOptions,
 ): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
@@ -192,10 +178,7 @@ export function mergeCssSets<TStyleSet>(
  * @param styleSets - One or more style sets to be merged.
  * @param options - (optional) Options to use when creating rules.
  */
-export function mergeCssSets(
-  styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>,
-  options?: IStyleOptions,
-): IProcessedStyleSet<any> {
+export function mergeCssSets(styleSets: any[], options?: IStyleOptions): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
   let shadowConfig: ShadowConfig | undefined = undefined;
@@ -255,5 +238,5 @@ export function mergeCssSets(
     }
   }
 
-  return classNameSet as any;
+  return classNameSet;
 }

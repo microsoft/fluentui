@@ -4,13 +4,12 @@ import { IStyleFunctionOrObject } from './IStyleFunction';
 import { ObjectOnly } from './ObjectOnly';
 import { ShadowConfig, isShadowConfig } from './shadowConfig';
 
+type Missing = false | null | undefined;
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSet - The first style set to be concatenated.
  */
-export function concatStyleSets<TStyleSet>(
-  styleSet: TStyleSet | false | null | undefined,
-): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
+export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | Missing): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
@@ -18,8 +17,8 @@ export function concatStyleSets<TStyleSet>(
  * @param styleSet2 - The second style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2>(
-  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
-  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing | ShadowConfig,
+  styleSet2: TStyleSet2 | Missing,
 ): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 /**
@@ -29,9 +28,9 @@ export function concatStyleSets<TStyleSet1, TStyleSet2>(
  * @param styleSet3 - The third style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
-  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing | ShadowConfig,
+  styleSet2: TStyleSet2 | Missing,
+  styleSet3: TStyleSet3 | Missing,
 ): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 /**
@@ -42,10 +41,10 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
  * @param styleSet4 - The fourth style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
-  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet4 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing | ShadowConfig,
+  styleSet2: TStyleSet2 | Missing,
+  styleSet3: TStyleSet3 | Missing,
+  styleSet4: TStyleSet4 | Missing,
 ): IConcatenatedStyleSet<
   ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>
 >;
@@ -59,11 +58,11 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  * @param styleSet5 - The fifth set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(
-  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet4 | false | null | undefined,
-  styleSet5: TStyleSet5 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing | ShadowConfig,
+  styleSet2: TStyleSet2 | Missing,
+  styleSet3: TStyleSet3 | Missing,
+  styleSet4: TStyleSet4 | Missing,
+  styleSet5: TStyleSet5 | Missing,
 ): IConcatenatedStyleSet<
   ObjectOnly<TStyleSet1> &
     ObjectOnly<TStyleSet2> &
@@ -82,12 +81,12 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, 
  * @param styleSet6 - The sixth set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(
-  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
-  styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet4 | false | null | undefined,
-  styleSet5: TStyleSet5 | false | null | undefined,
-  styleSet6: TStyleSet6 | false | null | undefined,
+  styleSet1: TStyleSet1 | Missing | ShadowConfig,
+  styleSet2: TStyleSet2 | Missing,
+  styleSet3: TStyleSet3 | Missing,
+  styleSet4: TStyleSet4 | Missing,
+  styleSet5: TStyleSet5 | Missing,
+  styleSet6: TStyleSet6 | Missing,
 ): IConcatenatedStyleSet<
   ObjectOnly<TStyleSet1> &
     ObjectOnly<TStyleSet2> &
@@ -101,17 +100,13 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, 
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet | false | null | undefined | ShadowConfig)[]
-): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet | Missing | ShadowConfig)[]): IConcatenatedStyleSet<any>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet | false | null | undefined | ShadowConfig)[]
-): IConcatenatedStyleSet<any> {
+export function concatStyleSets(...styleSets: any[]): IConcatenatedStyleSet<any> {
   if (
     styleSets &&
     styleSets.length === 1 &&
