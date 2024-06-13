@@ -21,7 +21,6 @@ describe('createPresenceComponent', () => {
           <TestMotion
             visible={visible}
             onMotionCancel={(ev, data) => {
-              console.log('onMotionCancel', data.direction);
               setCancel(s => s + 1);
             }}
           >
