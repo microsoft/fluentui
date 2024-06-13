@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add data support for option",
+  "packageName": "@fluentui/react-combobox",
+  "email": "mingyuanyu@microsoft.com",
+  "dependentChangeType": "patch"
+}
