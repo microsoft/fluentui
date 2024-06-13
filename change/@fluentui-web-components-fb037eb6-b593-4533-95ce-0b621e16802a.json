@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adds spec doc for MessageBar for conversation",
+  "packageName": "@fluentui/web-components",
+  "email": "ryan@ryanmerrill.net",
+  "dependentChangeType": "none"
+}
