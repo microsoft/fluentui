@@ -63,7 +63,7 @@ extends:
                 displayName: yarn
 
               - script: |
-                  npm version $(targetNpmVersion)
+                  npm pkg set version=$(targetNpmVersion)
                 workingDirectory: 'packages/react'
                 displayName: 'Manually set package version'
 
