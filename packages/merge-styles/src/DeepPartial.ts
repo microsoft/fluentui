@@ -1,6 +1,6 @@
 /**
  * TypeScript type to return a deep partial object (each property can be undefined, recursively.)
- * @deprecated - This type will hit infinite type instantiation recursion. Please use @link{DeepPartialV2}
+ * @deprecated - This type will hit infinite type instantiation recursion. Please use {@link DeepPartialV2}
  */
 export type DeepPartial<T> = {
   // eslint-disable-next-line deprecation/deprecation
