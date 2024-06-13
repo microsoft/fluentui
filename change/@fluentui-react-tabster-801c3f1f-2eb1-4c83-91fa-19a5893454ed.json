@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Exposing TabsterMoveFocusEvent.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
