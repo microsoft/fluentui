@@ -1,8 +1,28 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 11 Jun 2024 04:06:29 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2024 04:06:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.29)
+
+Thu, 13 Jun 2024 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.28..@fluentui/web-components_v3.0.0-beta.29)
+
+### Changes
+
+- refactor setTheme() to reduce code duplication ([PR #31679](https://github.com/microsoft/fluentui/pull/31679) by machi@microsoft.com)
+- add link as a new web component ([PR #31676](https://github.com/microsoft/fluentui/pull/31676) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.28)
+
+Wed, 12 Jun 2024 04:06:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.27..@fluentui/web-components_v3.0.0-beta.28)
+
+### Changes
+
+- refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable ([PR #31653](https://github.com/microsoft/fluentui/pull/31653) by 13071055+chrisdholt@users.noreply.github.com)
+- refactor progress bar to use ElementInternals ([PR #31652](https://github.com/microsoft/fluentui/pull/31652) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.27)
 

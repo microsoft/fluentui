@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.27",
+  "version": "3.0.0-beta.29",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -85,6 +85,10 @@
     "./label.js": {
       "types": "./dist/dts/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
+    },
+    "./link.js": {
+      "types": "./dist/dts/link/define.d.ts",
+      "default": "./dist/esm/link/define.js"
     },
     "./menu.js": {
       "types": "./dist/dts/menu/define.d.ts",
@@ -171,6 +175,7 @@
     "./dist/esm/divider/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
+    "./dist/esm/link/define.js",
     "./dist/esm/menu/define.js",
     "./dist/esm/menu-list/define.js",
     "./dist/esm/menu-button/define.js",

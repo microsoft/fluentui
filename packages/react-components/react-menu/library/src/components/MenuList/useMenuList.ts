@@ -6,7 +6,13 @@ import {
   getIntrinsicElementProps,
   slot,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import {
+  useArrowNavigationGroup,
+  useFocusFinders,
+  TabsterMoveFocusEventName,
+  type TabsterMoveFocusEvent,
+} from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
@@ -17,9 +23,10 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
  */
 export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const { findAllFocusable } = useFocusFinders();
+  const { targetDocument } = useFluent();
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
-  const focusAttributes = useArrowNavigationGroup({ circular: true, ignoreDefaultKeydown: { Tab: hasMenuContext } });
+  const focusAttributes = useArrowNavigationGroup({ circular: true });
 
   if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
@@ -28,6 +35,27 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   }
 
   const innerRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const element = innerRef.current;
+
+    if (hasMenuContext && targetDocument && element) {
+      const onTabsterMoveFocus = (e: TabsterMoveFocusEvent) => {
+        const nextElement = e.detail.next;
+
+        if (nextElement && element.contains(targetDocument.activeElement) && !element.contains(nextElement)) {
+          // Preventing Tabster from handling Tab press, useMenuPopover will handle it.
+          e.preventDefault();
+        }
+      };
+
+      targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+
+      return () => {
+        targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus);
+      };
+    }
+  }, [innerRef, targetDocument, hasMenuContext]);
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {

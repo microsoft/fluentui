@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 06 Jun 2024 15:26:29 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.4.0)
+
+Wed, 12 Jun 2024 13:17:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.57..@fluentui/react-accordion_v9.4.0)
+
+### Minor changes
+
+- Deprecated react-accordion navigation prop. Tab navigation only should be used according to W3 APG pattern. ([PR #31587](https://github.com/microsoft/fluentui/pull/31587) by vgenaev@gmail.com)
 
 ## [9.3.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.57)
 

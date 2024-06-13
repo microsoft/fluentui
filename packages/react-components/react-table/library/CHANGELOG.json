@@ -2,6 +2,21 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Wed, 12 Jun 2024 13:17:25 GMT",
+      "tag": "@fluentui/react-table_v9.15.7",
+      "version": "9.15.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e79634185f87ee50dd137bb861e5f56e12a9225e",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:39 GMT",
       "tag": "@fluentui/react-table_v9.15.7",
       "version": "9.15.7",

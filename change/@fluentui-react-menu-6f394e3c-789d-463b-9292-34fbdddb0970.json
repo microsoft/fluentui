@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Removing ignoreKeydown on MenuList as it has side effect on submenus.",
+  "packageName": "@fluentui/react-menu",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}

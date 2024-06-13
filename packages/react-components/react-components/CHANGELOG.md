@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 06 Jun 2024 15:26:27 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2024 13:17:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.1)
+
+Wed, 12 Jun 2024 13:17:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.0..@fluentui/react-components_v9.54.1)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - Deprecated react-accordion navigation prop. Tab navigation only should be used according to W3 APG pattern. ([PR #31587](https://github.com/microsoft/fluentui/pull/31587) by vgenaev@gmail.com)
+- `@fluentui/react-motion`
+  - feat: add support for params ([PR #31566](https://github.com/microsoft/fluentui/pull/31566) by olfedias@microsoft.com)
+  - feat: Add consistent start and finish lifecycle callbacks ([PR #31644](https://github.com/microsoft/fluentui/pull/31644) by lingfangao@hotmail.com)
+- `@fluentui/react-nav-preview`
+  - feat: Adding small size variant. ([PR #31589](https://github.com/microsoft/fluentui/pull/31589) by matejera@microsoft.com)
+  - (chore): Remove NavDrawerHeaderNav component. ([PR #31646](https://github.com/microsoft/fluentui/pull/31646) by matejera@microsoft.com)
+- `@fluentui/react-tree`
+  - feature: onVisibilityChange method to TreeItemLayout action slot ([PR #31598](https://github.com/microsoft/fluentui/pull/31598) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: improve header alignment when no description is passed ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by marcosvmmoura@gmail.com)
+- `@fluentui/react-motion`
+  - fix(motions): improve compat for jsdom & jest ([PR #31602](https://github.com/microsoft/fluentui/pull/31602) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - feat: Adding roles and current where appropriate. ([PR #31649](https://github.com/microsoft/fluentui/pull/31649) by matejera@microsoft.com)
 
 ## [9.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.0)
 

@@ -2,6 +2,56 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 13 Jun 2024 04:06:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.29",
+      "version": "3.0.0-beta.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef5d226c751d6c1fbc1d2881ee3e36e8d8758253",
+            "comment": "refactor setTheme() to reduce code duplication"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a9588506fae59fd4f35a2cf3ca1cf83cfdf22fcd",
+            "comment": "add link as a new web component"
+          }
+        ],
+        "none": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f5a31536fdcac94782812bbaa03d835ac19aff9f",
+            "comment": "fix tsdoc for link template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jun 2024 04:06:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.28",
+      "version": "3.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46c33692940dce4906974ad90c5c79aae7e52d0f",
+            "comment": "refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cf5e76e30a13dbd0b19669bcc7c8e0696851bff",
+            "comment": "refactor progress bar to use ElementInternals"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Jun 2024 04:06:29 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.27",
       "version": "3.0.0-beta.27",
