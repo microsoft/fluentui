@@ -1,4 +1,4 @@
-import { getRestorer, getTabsterAttribute, Types as TabsterTypes } from 'tabster';
+import { getRestorer, getTabsterAttribute, Types as TabsterTypes, RestorerTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 /**
@@ -12,7 +12,7 @@ export function useRestoreFocusTarget(): TabsterTypes.TabsterDOMAttribute {
     getRestorer(tabster);
   }
 
-  return getTabsterAttribute({ restorer: { type: TabsterTypes.RestorerTypes.Target } });
+  return getTabsterAttribute({ restorer: { type: RestorerTypes.Target } });
 }
 
 /**
@@ -26,5 +26,5 @@ export function useRestoreFocusSource(): TabsterTypes.TabsterDOMAttribute {
     getRestorer(tabster);
   }
 
-  return getTabsterAttribute({ restorer: { type: TabsterTypes.RestorerTypes.Source } });
+  return getTabsterAttribute({ restorer: { type: RestorerTypes.Source } });
 }
