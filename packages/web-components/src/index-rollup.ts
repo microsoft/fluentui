@@ -18,6 +18,7 @@ import './menu-button/define.js';
 import './menu-item/define.js';
 import './menu-list/define.js';
 import './menu/define.js';
+import './message-bar/define.js';
 import './progress-bar/define.js';
 import './radio-group/define.js';
 import './radio/define.js';
