@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Types, TabsterAttributeName } from 'tabster';
+import { Types, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 
 /**
  * Merges a collection of tabster attributes.
@@ -12,7 +12,7 @@ import { Types, TabsterAttributeName } from 'tabster';
 export const useMergedTabsterAttributes_unstable: (
   ...attributes: Types.TabsterDOMAttribute[]
 ) => Types.TabsterDOMAttribute = (...attributes) => {
-  const stringAttributes = attributes.map(attribute => attribute[TabsterAttributeName]).filter(Boolean) as string[];
+  const stringAttributes = attributes.map(attribute => attribute[TABSTER_ATTRIBUTE_NAME]).filter(Boolean) as string[];
 
   return React.useMemo(() => {
     let attribute = stringAttributes[0];
@@ -22,7 +22,7 @@ export const useMergedTabsterAttributes_unstable: (
       attribute = mergeAttributes(attribute, attr);
     }
 
-    return { [TabsterAttributeName]: attribute };
+    return { [TABSTER_ATTRIBUTE_NAME]: attribute };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, stringAttributes);
 };

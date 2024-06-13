@@ -1,4 +1,4 @@
-import { getTabsterAttribute, Types as TabsterTypes, TabsterAttributeName } from 'tabster';
+import { getTabsterAttribute, Types as TabsterTypes, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 import { useTabster } from './useTabster';
 import * as React from 'react';
 
@@ -15,7 +15,7 @@ export const useTabsterAttributes = (props: TabsterTypes.TabsterAttributeProps):
 
   return React.useMemo(
     () => ({
-      [TabsterAttributeName]: strAttr,
+      [TABSTER_ATTRIBUTE_NAME]: strAttr,
     }),
     [strAttr],
   );
