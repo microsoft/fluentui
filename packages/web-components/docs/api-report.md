@@ -193,13 +193,20 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends FASTElement {
+    constructor();
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor;
+    // @internal
+    colorChanged(): void;
     colorId?: AvatarNamedColor | undefined;
+    // @internal
+    colorIdChanged(): void;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
     // @internal
-    generateColor(): AvatarColor | void;
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
     // @internal
     generateInitials(): string | void;
     initials?: string | undefined;

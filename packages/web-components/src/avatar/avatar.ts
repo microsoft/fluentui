@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
 import { toggleState } from '../utils/element-internals.js';
 import {
@@ -107,32 +107,42 @@ export class Avatar extends FASTElement {
   public color?: AvatarColor = 'neutral';
 
   /**
-   * Synchronizes the color with the element internals state
-   * @internal
-   */
-  public colorChanged(): void {
-    this.generateColor();
-  }
-
-  /**
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
    * Use this when a name is not available, but there is another unique identifier that can be used instead.
    */
   @attr({ attribute: 'color-id' })
   public colorId?: AvatarNamedColor | undefined;
 
-  /**
-   * Synchronizes the color with the element internals state when the colorId is changed
-   * @internal
-   */
-  public colorIdChanged(): void {
-    this.generateColor();
-  }
-
   constructor() {
     super();
 
     this.elementInternals.role = 'img';
+  }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    Observable.getNotifier(this).subscribe(this);
+
+    this.generateColor();
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this);
+  }
+
+  /**
+   * Handles changes to observable properties
+   * @internal
+   * @param source - the source of the change
+   * @param propertyName - the property name being changed
+   */
+  public handleChange(source: any, propertyName: string) {
+    if (propertyName === ('color' || 'color-id')) {
+      this.generateColor();
+    }
   }
 
   /**
