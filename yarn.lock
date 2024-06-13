@@ -21501,19 +21501,18 @@ react-native-macos@^0.73.21:
     ws "^6.2.2"
     yargs "^17.6.2"
 
-react-native-test-app@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.4.2.tgz#8fa3f1c5d14dd5abe0bcb58074ff7342c6644029"
-  integrity sha512-UTawUCnqRINwfa4G1m8roJnJokyDtNx2cgVe5FV8Iq8fuZWOXDknlbg+JbgmYRoY09Fps6tddlIQhPn7w10kQg==
+react-native-test-app@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.7.2.tgz#c0d452cdada028bf9871fd6f571d19c2c3746143"
+  integrity sha512-h6maTpyIlUQtsXk2uC92aDAeAvTmgclB52ygik+MhZ2NYG695yN6kj2lK7doLLLqnLRBVc4B0nDJ9GTycu1svw==
   dependencies:
-    "@rnx-kit/react-native-host" "^0.4.5"
+    "@rnx-kit/react-native-host" "^0.4.9"
     ajv "^8.0.0"
     cliui "^8.0.0"
     fast-xml-parser "^4.0.0"
     prompts "^2.4.0"
     semver "^7.3.5"
     uuid "^9.0.0"
-    yoctocolors "^2.0.0"
 
 react-native-windows@^0.73.11:
   version "0.73.11"
@@ -26770,11 +26769,6 @@ yocto-queue@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.0.0.tgz#7f816433fb2cbc511ec8bf7d263c3b58a1a3c251"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
-
-yoctocolors@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/yoctocolors/-/yoctocolors-2.0.0.tgz#f6cd83f1fd0b211594810a6de413202d6d177075"
-  integrity sha512-esbDnt0Z1zI1KgvOZU90hJbL6BkoUbrP9yy7ArNZ6TmxBxydMJTYMf9FZjmwwcA8ZgEQzriQ3hwZ0NYXhlFo8Q==
 
 z-schema@~5.0.2:
   version "5.0.2"
