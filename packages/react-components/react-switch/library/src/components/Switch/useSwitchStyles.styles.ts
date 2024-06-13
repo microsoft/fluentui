@@ -38,7 +38,7 @@ const useRootStyles = makeStyles({
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--ctrl-token-Switch-1897, var(--semantic-token-Switch-1898, ${tokens.borderRadiusCircular}))`,
   border: '1px solid',
   lineHeight: 0,
   boxSizing: 'border-box',
@@ -48,8 +48,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   height: `${trackHeight}px`,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   pointerEvents: 'none',
-  transitionDuration: tokens.durationNormal,
-  transitionTimingFunction: tokens.curveEasyEase,
+  transitionDuration: `var(--ctrl-token-Switch-1899, var(--semantic-token-Switch-1900, ${tokens.durationNormal}))`,
+  transitionTimingFunction: `var(--ctrl-token-Switch-1901, var(--semantic-token-Switch-1902, ${tokens.curveEasyEase}))`,
   transitionProperty: 'background, border, color',
   width: `${trackWidth}px`,
 
@@ -65,8 +65,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   },
 
   '> *': {
-    transitionDuration: tokens.durationNormal,
-    transitionTimingFunction: tokens.curveEasyEase,
+    transitionDuration: `var(--ctrl-token-Switch-1903, var(--semantic-token-Switch-1904, ${tokens.durationNormal}))`,
+    transitionTimingFunction: `var(--ctrl-token-Switch-1905, var(--semantic-token-Switch-1906, ${tokens.curveEasyEase}))`,
     transitionProperty: 'transform',
 
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -107,37 +107,37 @@ const useInputBaseClassName = makeResetStyles({
     cursor: 'default',
 
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Switch-1907, var(--semantic-token-Switch-1908, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
       cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Switch-1909, var(--semantic-token-Switch-1910, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 
   // Enabled and unchecked
   ':enabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralStrokeAccessible,
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      color: `var(--ctrl-token-Switch-1911, var(--semantic-token-Switch-1912, ${tokens.colorNeutralStrokeAccessible}))`,
+      borderColor: `var(--ctrl-token-Switch-1913, var(--semantic-token-Switch-1914, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      color: `var(--ctrl-token-Switch-1915, var(--semantic-token-Switch-1916, ${tokens.colorNeutralForeground1}))`,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessibleHover,
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        color: `var(--ctrl-token-Switch-1917, var(--semantic-token-Switch-1918, ${tokens.colorNeutralStrokeAccessibleHover}))`,
+        borderColor: `var(--ctrl-token-Switch-1919, var(--semantic-token-Switch-1920, ${tokens.colorNeutralStrokeAccessibleHover}))`,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessiblePressed,
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        color: `var(--ctrl-token-Switch-1921, var(--semantic-token-Switch-1922, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
+        borderColor: `var(--ctrl-token-Switch-1923, var(--semantic-token-Switch-1924, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
       },
     },
   },
@@ -145,22 +145,22 @@ const useInputBaseClassName = makeResetStyles({
   // Enabled and checked
   ':enabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorTransparentStroke,
+      backgroundColor: `var(--ctrl-token-Switch-1925, var(--semantic-token-Switch-1926, ${tokens.colorCompoundBrandBackground}))`,
+      color: `var(--ctrl-token-Switch-1927, var(--semantic-token-Switch-1928, ${tokens.colorNeutralForegroundInverted}))`,
+      borderColor: `var(--ctrl-token-Switch-1929, var(--semantic-token-Switch-1930, ${tokens.colorTransparentStroke}))`,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: `var(--ctrl-token-Switch-1931, var(--semantic-token-Switch-1932, ${tokens.colorCompoundBrandBackgroundHover}))`,
+        borderColor: `var(--ctrl-token-Switch-1933, var(--semantic-token-Switch-1934, ${tokens.colorTransparentStrokeInteractive}))`,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: `var(--ctrl-token-Switch-1935, var(--semantic-token-Switch-1936, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+        borderColor: `var(--ctrl-token-Switch-1937, var(--semantic-token-Switch-1938, ${tokens.colorTransparentStrokeInteractive}))`,
       },
     },
   },
@@ -168,15 +168,15 @@ const useInputBaseClassName = makeResetStyles({
   // Disabled and unchecked
   ':disabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
+      borderColor: `var(--ctrl-token-Switch-1939, var(--semantic-token-Switch-1940, ${tokens.colorNeutralStrokeDisabled}))`,
     },
   },
 
   // Disabled and checked
   ':disabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      borderColor: tokens.colorTransparentStrokeDisabled,
+      backgroundColor: `var(--ctrl-token-Switch-1941, var(--semantic-token-Switch-1942, ${tokens.colorNeutralBackgroundDisabled}))`,
+      borderColor: `var(--ctrl-token-Switch-1943, var(--semantic-token-Switch-1944, ${tokens.colorTransparentStrokeDisabled}))`,
     },
   },
 
@@ -246,15 +246,15 @@ const useLabelStyles = makeStyles({
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   },
   above: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
+    paddingTop: `var(--ctrl-token-Switch-1945, var(--semantic-token-Switch-1946, ${tokens.spacingVerticalXS}))`,
+    paddingBottom: `var(--ctrl-token-Switch-1947, var(--semantic-token-Switch-1948, ${tokens.spacingVerticalXS}))`,
     width: '100%',
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--ctrl-token-Switch-1949, var(--semantic-token-Switch-1950, ${tokens.spacingHorizontalXS}))`,
   },
   before: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--ctrl-token-Switch-1951, var(--semantic-token-Switch-1952, ${tokens.spacingHorizontalXS}))`,
   },
 });
 

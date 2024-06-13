@@ -15,9 +15,9 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
 const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundColor: `var(--ctrl-token-ToggleButton-117, var(--semantic-token-ToggleButton-118, ${tokens.colorNeutralBackground1Selected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--ctrl-token-ToggleButton-119, var(--semantic-token-ToggleButton-120, ${tokens.colorNeutralForeground1Selected}))`,
 
     ...shorthands.borderWidth(tokens.strokeWidthThin),
 
@@ -29,15 +29,15 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-121, var(--semantic-token-ToggleButton-122, ${tokens.colorNeutralBackground1Hover}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
+      color: `var(--ctrl-token-ToggleButton-123, var(--semantic-token-ToggleButton-124, ${tokens.colorNeutralForeground1Hover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-125, var(--semantic-token-ToggleButton-126, ${tokens.colorNeutralBackground1Pressed}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1Pressed,
+      color: `var(--ctrl-token-ToggleButton-127, var(--semantic-token-ToggleButton-128, ${tokens.colorNeutralForeground1Pressed}))`,
     },
   },
 
@@ -70,16 +70,16 @@ const useRootCheckedStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-ToggleButton-129, var(--semantic-token-ToggleButton-130, ${tokens.colorTransparentBackgroundSelected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-131, var(--semantic-token-ToggleButton-132, ${tokens.colorTransparentBackgroundHover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-133, var(--semantic-token-ToggleButton-134, ${tokens.colorTransparentBackgroundPressed}))`,
     },
 
     ...createCustomFocusIndicatorStyle({
@@ -87,57 +87,57 @@ const useRootCheckedStyles = makeStyles({
     }),
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-ToggleButton-135, var(--semantic-token-ToggleButton-136, ${tokens.colorBrandBackgroundSelected}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: `var(--ctrl-token-ToggleButton-137, var(--semantic-token-ToggleButton-138, ${tokens.colorNeutralForegroundOnBrand}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-139, var(--semantic-token-ToggleButton-140, ${tokens.colorBrandBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--ctrl-token-ToggleButton-141, var(--semantic-token-ToggleButton-142, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-143, var(--semantic-token-ToggleButton-144, ${tokens.colorBrandBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--ctrl-token-ToggleButton-145, var(--semantic-token-ToggleButton-146, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-ToggleButton-147, var(--semantic-token-ToggleButton-148, ${tokens.colorSubtleBackgroundSelected}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2Selected,
+    color: `var(--ctrl-token-ToggleButton-149, var(--semantic-token-ToggleButton-150, ${tokens.colorNeutralForeground2Selected}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-151, var(--semantic-token-ToggleButton-152, ${tokens.colorSubtleBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+      color: `var(--ctrl-token-ToggleButton-153, var(--semantic-token-ToggleButton-154, ${tokens.colorNeutralForeground2Hover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-155, var(--semantic-token-ToggleButton-156, ${tokens.colorSubtleBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
+      color: `var(--ctrl-token-ToggleButton-157, var(--semantic-token-ToggleButton-158, ${tokens.colorNeutralForeground2Pressed}))`,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-ToggleButton-159, var(--semantic-token-ToggleButton-160, ${tokens.colorTransparentBackgroundSelected}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--ctrl-token-ToggleButton-161, var(--semantic-token-ToggleButton-162, ${tokens.colorNeutralForeground2BrandSelected}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-163, var(--semantic-token-ToggleButton-164, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: `var(--ctrl-token-ToggleButton-165, var(--semantic-token-ToggleButton-166, ${tokens.colorNeutralForeground2BrandHover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-167, var(--semantic-token-ToggleButton-168, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: `var(--ctrl-token-ToggleButton-169, var(--semantic-token-ToggleButton-170, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
   },
 });
@@ -145,20 +145,20 @@ const useRootCheckedStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    backgroundColor: `var(--ctrl-token-ToggleButton-171, var(--semantic-token-ToggleButton-172, ${tokens.colorNeutralBackgroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-ToggleButton-173, var(--semantic-token-ToggleButton-174, ${tokens.colorNeutralForegroundDisabled}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--ctrl-token-ToggleButton-175, var(--semantic-token-ToggleButton-176, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-ToggleButton-177, var(--semantic-token-ToggleButton-178, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--ctrl-token-ToggleButton-179, var(--semantic-token-ToggleButton-180, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-ToggleButton-181, var(--semantic-token-ToggleButton-182, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 
@@ -181,30 +181,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-ToggleButton-183, var(--semantic-token-ToggleButton-184, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-185, var(--semantic-token-ToggleButton-186, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-187, var(--semantic-token-ToggleButton-188, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-ToggleButton-189, var(--semantic-token-ToggleButton-190, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--ctrl-token-ToggleButton-191, var(--semantic-token-ToggleButton-192, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-ToggleButton-193, var(--semantic-token-ToggleButton-194, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -213,7 +213,7 @@ const useRootDisabledStyles = makeStyles({
 const useIconCheckedStyles = makeStyles({
   // Appearance variations
   subtleOrTransparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--ctrl-token-ToggleButton-195, var(--semantic-token-ToggleButton-196, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
   // High contrast styles
   highContrast: {

@@ -47,10 +47,10 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the unchecked state
   ':enabled:not(:checked)': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground3,
+      color: `var(--ctrl-token-Radio-1507, var(--semantic-token-Radio-1508, ${tokens.colorNeutralForeground3}))`,
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      borderColor: `var(--ctrl-token-Radio-1509, var(--semantic-token-Radio-1510, ${tokens.colorNeutralStrokeAccessible}))`,
       '@media (forced-colors: active)': {
         borderColor: 'ButtonBorder',
       },
@@ -58,19 +58,19 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground2,
+        color: `var(--ctrl-token-Radio-1511, var(--semantic-token-Radio-1512, ${tokens.colorNeutralForeground2}))`,
       },
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        borderColor: `var(--ctrl-token-Radio-1513, var(--semantic-token-Radio-1514, ${tokens.colorNeutralStrokeAccessibleHover}))`,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
+        color: `var(--ctrl-token-Radio-1515, var(--semantic-token-Radio-1516, ${tokens.colorNeutralForeground1}))`,
       },
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        borderColor: `var(--ctrl-token-Radio-1517, var(--semantic-token-Radio-1518, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
       },
     },
   },
@@ -78,11 +78,11 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the checked state
   ':enabled:checked': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      color: `var(--ctrl-token-Radio-1519, var(--semantic-token-Radio-1520, ${tokens.colorNeutralForeground1}))`,
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
-      color: tokens.colorCompoundBrandForeground1,
+      borderColor: `var(--ctrl-token-Radio-1521, var(--semantic-token-Radio-1522, ${tokens.colorCompoundBrandStroke}))`,
+      color: `var(--ctrl-token-Radio-1523, var(--semantic-token-Radio-1524, ${tokens.colorCompoundBrandForeground1}))`,
       '@media (forced-colors: active)': {
         borderColor: 'Highlight',
         color: 'Highlight',
@@ -94,15 +94,15 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
-        color: tokens.colorCompoundBrandForeground1Hover,
+        borderColor: `var(--ctrl-token-Radio-1525, var(--semantic-token-Radio-1526, ${tokens.colorCompoundBrandStrokeHover}))`,
+        color: `var(--ctrl-token-Radio-1527, var(--semantic-token-Radio-1528, ${tokens.colorCompoundBrandForeground1Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
-        color: tokens.colorCompoundBrandForeground1Pressed,
+        borderColor: `var(--ctrl-token-Radio-1529, var(--semantic-token-Radio-1530, ${tokens.colorCompoundBrandStrokePressed}))`,
+        color: `var(--ctrl-token-Radio-1531, var(--semantic-token-Radio-1532, ${tokens.colorCompoundBrandForeground1Pressed}))`,
       },
     },
   },
@@ -110,15 +110,15 @@ const useInputBaseClassName = makeResetStyles({
   // Colors for the disabled state
   ':disabled': {
     [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Radio-1533, var(--semantic-token-Radio-1534, ${tokens.colorNeutralForegroundDisabled}))`,
       cursor: 'default',
       '@media (forced-colors: active)': {
         color: 'GrayText',
       },
     },
     [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
+      borderColor: `var(--ctrl-token-Radio-1535, var(--semantic-token-Radio-1536, ${tokens.colorNeutralStrokeDisabled}))`,
+      color: `var(--ctrl-token-Radio-1537, var(--semantic-token-Radio-1538, ${tokens.colorNeutralForegroundDisabled}))`,
       '@media (forced-colors: active)': {
         borderColor: 'GrayText',
         color: 'GrayText',
@@ -165,7 +165,7 @@ const useIndicatorBaseClassName = makeResetStyles({
   overflow: 'hidden',
 
   border: tokens.strokeWidthThin + ' solid',
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--ctrl-token-Radio-1539, var(--semantic-token-Radio-1540, ${tokens.borderRadiusCircular}))`,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
@@ -174,7 +174,7 @@ const useIndicatorBaseClassName = makeResetStyles({
     position: 'absolute',
     width: indicatorSize,
     height: indicatorSize,
-    borderRadius: tokens.borderRadiusCircular,
+    borderRadius: `var(--ctrl-token-Radio-1541, var(--semantic-token-Radio-1542, ${tokens.borderRadiusCircular}))`,
     // Use a transform to avoid pixel rounding errors at 125% DPI
     // https://github.com/microsoft/fluentui/issues/30025
     transform: 'scale(0.625)',
@@ -190,7 +190,7 @@ const useLabelStyles = makeStyles({
   },
 
   after: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--ctrl-token-Radio-1543, var(--semantic-token-Radio-1544, ${tokens.spacingHorizontalXS}))`,
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
@@ -199,7 +199,7 @@ const useLabelStyles = makeStyles({
   },
 
   below: {
-    paddingTop: tokens.spacingVerticalXS,
+    paddingTop: `var(--ctrl-token-Radio-1545, var(--semantic-token-Radio-1546, ${tokens.spacingVerticalXS}))`,
     textAlign: 'center',
   },
 });

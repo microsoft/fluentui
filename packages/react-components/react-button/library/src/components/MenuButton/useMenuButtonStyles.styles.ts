@@ -25,42 +25,42 @@ const useRootExpandedStyles = makeStyles({
   outline: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--ctrl-token-MenuButton-61, var(--semantic-token-MenuButton-62, ${tokens.colorNeutralForeground1Selected}))`,
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-MenuButton-63, var(--semantic-token-MenuButton-64, ${tokens.colorBrandBackgroundSelected}))`,
   },
   secondary: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundColor: `var(--ctrl-token-MenuButton-65, var(--semantic-token-MenuButton-66, ${tokens.colorNeutralBackground1Selected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--ctrl-token-MenuButton-67, var(--semantic-token-MenuButton-68, ${tokens.colorNeutralForeground1Selected}))`,
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
-    color: tokens.colorNeutralForeground2Selected,
+    backgroundColor: `var(--ctrl-token-MenuButton-69, var(--semantic-token-MenuButton-70, ${tokens.colorSubtleBackgroundSelected}))`,
+    color: `var(--ctrl-token-MenuButton-71, var(--semantic-token-MenuButton-72, ${tokens.colorNeutralForeground2Selected}))`,
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: `var(--ctrl-token-MenuButton-73, var(--semantic-token-MenuButton-74, ${tokens.colorTransparentBackgroundSelected}))`,
+    color: `var(--ctrl-token-MenuButton-75, var(--semantic-token-MenuButton-76, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
 });
 
 const useIconExpandedStyles = makeStyles({
   // Appearance variations
   outline: {
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--ctrl-token-MenuButton-77, var(--semantic-token-MenuButton-78, ${tokens.colorNeutralForeground1Selected}))`,
   },
   primary: {
     /* The primary styles are exactly the same as the base styles. */
   },
   secondary: {
-    color: tokens.colorNeutralForeground1Selected,
+    color: `var(--ctrl-token-MenuButton-79, var(--semantic-token-MenuButton-80, ${tokens.colorNeutralForeground1Selected}))`,
   },
   subtle: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--ctrl-token-MenuButton-81, var(--semantic-token-MenuButton-82, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
   transparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: `var(--ctrl-token-MenuButton-83, var(--semantic-token-MenuButton-84, ${tokens.colorNeutralForeground2BrandSelected}))`,
   },
   highContrast: {
     // High contrast styles
@@ -81,25 +81,25 @@ const useMenuIconStyles = makeStyles({
   small: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: `var(--ctrl-token-MenuButton-85, var(--semantic-token-MenuButton-86, ${tokens.lineHeightBase200}))`,
     width: '12px',
   },
   medium: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: `var(--ctrl-token-MenuButton-87, var(--semantic-token-MenuButton-88, ${tokens.lineHeightBase200}))`,
     width: '12px',
   },
   large: {
     fontSize: '16px',
     height: '16px',
-    lineHeight: tokens.lineHeightBase400,
+    lineHeight: `var(--ctrl-token-MenuButton-89, var(--semantic-token-MenuButton-90, ${tokens.lineHeightBase400}))`,
     width: '16px',
   },
 
   // Not-icon only
   notIconOnly: {
-    marginLeft: tokens.spacingHorizontalXS,
+    marginLeft: `var(--ctrl-token-MenuButton-91, var(--semantic-token-MenuButton-92, ${tokens.spacingHorizontalXS}))`,
   },
 });
 

@@ -9,11 +9,11 @@ export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    fontSize: tokens.fontSizeBase200,
-    color: tokens.colorNeutralForeground3,
+    fontSize: `var(--ctrl-token-MenuGroupHeader-1301, var(--semantic-token-MenuGroupHeader-1302, ${tokens.fontSizeBase200}))`,
+    color: `var(--ctrl-token-MenuGroupHeader-1303, var(--semantic-token-MenuGroupHeader-1304, ${tokens.colorNeutralForeground3}))`,
     paddingLeft: '8px',
     paddingRight: '8px',
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--ctrl-token-MenuGroupHeader-1305, var(--semantic-token-MenuGroupHeader-1306, ${tokens.fontWeightSemibold}))`,
     height: '32px',
     display: 'flex',
     alignItems: 'center',

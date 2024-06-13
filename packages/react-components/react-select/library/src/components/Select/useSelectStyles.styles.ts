@@ -60,7 +60,7 @@ const useRootStyles = makeStyles({
     boxSizing: 'border-box',
     display: 'flex',
     flexWrap: 'nowrap',
-    fontFamily: tokens.fontFamilyBase,
+    fontFamily: `var(--ctrl-token-Select-1601, var(--semantic-token-Select-1602, ${tokens.fontFamilyBase}))`,
     position: 'relative',
 
     '&::after': {
@@ -74,15 +74,15 @@ const useRootStyles = makeStyles({
       borderRadius: `0 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
       boxSizing: 'border-box',
       content: '""',
-      height: tokens.borderRadiusMedium,
+      height: `var(--ctrl-token-Select-1603, var(--semantic-token-Select-1604, ${tokens.borderRadiusMedium}))`,
       position: 'absolute',
       bottom: '0',
       left: '0',
       right: '0',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--ctrl-token-Select-1605, var(--semantic-token-Select-1606, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--ctrl-token-Select-1607, var(--semantic-token-Select-1608, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -93,8 +93,8 @@ const useRootStyles = makeStyles({
     '&:focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--ctrl-token-Select-1609, var(--semantic-token-Select-1610, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--ctrl-token-Select-1611, var(--semantic-token-Select-1612, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -108,10 +108,10 @@ const useSelectStyles = makeStyles({
   base: {
     appearance: 'none',
     border: '1px solid transparent',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-Select-1613, var(--semantic-token-Select-1614, ${tokens.borderRadiusMedium}))`,
     boxShadow: 'none',
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
+    color: `var(--ctrl-token-Select-1615, var(--semantic-token-Select-1616, ${tokens.colorNeutralForeground1}))`,
     cursor: 'pointer',
     flexGrow: 1,
     maxWidth: '100%',
@@ -125,9 +125,9 @@ const useSelectStyles = makeStyles({
     },
   },
   disabled: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Select-1617, var(--semantic-token-Select-1618, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Select-1619, var(--semantic-token-Select-1620, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -160,31 +160,31 @@ const useSelectStyles = makeStyles({
     ...typographyStyles.body2,
   },
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Select-1621, var(--semantic-token-Select-1622, ${tokens.colorNeutralBackground1}))`,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--ctrl-token-Select-1623, var(--semantic-token-Select-1624, ${tokens.colorNeutralStrokeAccessible}))`,
   },
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-Select-1625, var(--semantic-token-Select-1626, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-Select-1627, var(--semantic-token-Select-1628, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Select-1629, var(--semantic-token-Select-1630, ${tokens.colorTransparentBackground}))`,
     borderBottom: `1px solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Select-1631, var(--semantic-token-Select-1632, ${tokens.colorNeutralBackground1}))`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--ctrl-token-Select-1633, var(--semantic-token-Select-1634, ${tokens.colorNeutralBackground3}))`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -193,7 +193,7 @@ const useSelectStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--ctrl-token-Select-1635, var(--semantic-token-Select-1636, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
 });
@@ -201,7 +201,7 @@ const useSelectStyles = makeStyles({
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
+    color: `var(--ctrl-token-Select-1637, var(--semantic-token-Select-1638, ${tokens.colorNeutralStrokeAccessible}))`,
     display: 'block',
     position: 'absolute',
     pointerEvents: 'none',
@@ -213,7 +213,7 @@ const useIconStyles = makeStyles({
     },
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Select-1639, var(--semantic-token-Select-1640, ${tokens.colorNeutralForegroundDisabled}))`,
     '@media (forced-colors: active)': {
       color: 'GrayText',
     },
@@ -221,19 +221,19 @@ const useIconStyles = makeStyles({
   small: {
     fontSize: iconSizes.small,
     height: iconSizes.small,
-    right: tokens.spacingHorizontalSNudge,
+    right: `var(--ctrl-token-Select-1641, var(--semantic-token-Select-1642, ${tokens.spacingHorizontalSNudge}))`,
     width: iconSizes.small,
   },
   medium: {
     fontSize: iconSizes.medium,
     height: iconSizes.medium,
-    right: tokens.spacingHorizontalMNudge,
+    right: `var(--ctrl-token-Select-1643, var(--semantic-token-Select-1644, ${tokens.spacingHorizontalMNudge}))`,
     width: iconSizes.medium,
   },
   large: {
     fontSize: iconSizes.large,
     height: iconSizes.large,
-    right: tokens.spacingHorizontalM,
+    right: `var(--ctrl-token-Select-1645, var(--semantic-token-Select-1646, ${tokens.spacingHorizontalM}))`,
     width: iconSizes.large,
   },
 });

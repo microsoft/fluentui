@@ -15,26 +15,26 @@ export const optionClassNames: SlotClassNames<OptionSlots> = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
-    columnGap: tokens.spacingHorizontalXS,
+    borderRadius: `var(--ctrl-token-Option-991, var(--semantic-token-Option-992, ${tokens.borderRadiusMedium}))`,
+    color: `var(--ctrl-token-Option-993, var(--semantic-token-Option-994, ${tokens.colorNeutralForeground1}))`,
+    columnGap: `var(--ctrl-token-Option-995, var(--semantic-token-Option-996, ${tokens.spacingHorizontalXS}))`,
     cursor: 'pointer',
     display: 'flex',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontFamily: `var(--ctrl-token-Option-997, var(--semantic-token-Option-998, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--ctrl-token-Option-999, var(--semantic-token-Option-1000, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--ctrl-token-Option-1001, var(--semantic-token-Option-1002, ${tokens.lineHeightBase300}))`,
     padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalS}`,
     position: 'relative',
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: `var(--ctrl-token-Option-1003, var(--semantic-token-Option-1004, ${tokens.colorNeutralBackground1Hover}))`,
+      color: `var(--ctrl-token-Option-1005, var(--semantic-token-Option-1006, ${tokens.colorNeutralForeground1Hover}))`,
       [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
 
     ':active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      color: tokens.colorNeutralForeground1Pressed,
+      backgroundColor: `var(--ctrl-token-Option-1007, var(--semantic-token-Option-1008, ${tokens.colorNeutralBackground1Pressed}))`,
+      color: `var(--ctrl-token-Option-1009, var(--semantic-token-Option-1010, ${tokens.colorNeutralForeground1Pressed}))`,
       [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
   },
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
       zIndex: 1,
 
       border: `2px solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-Option-1011, var(--semantic-token-Option-1012, ${tokens.borderRadiusMedium}))`,
 
       top: '-2px',
       bottom: '-2px',
@@ -57,17 +57,17 @@ const useStyles = makeStyles({
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Option-1013, var(--semantic-token-Option-1014, ${tokens.colorNeutralForegroundDisabled}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: `var(--ctrl-token-Option-1015, var(--semantic-token-Option-1016, ${tokens.colorTransparentBackground}))`,
+      color: `var(--ctrl-token-Option-1017, var(--semantic-token-Option-1018, ${tokens.colorNeutralForegroundDisabled}))`,
       [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
 
     ':active': {
-      backgroundColor: tokens.colorTransparentBackground,
-      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: `var(--ctrl-token-Option-1019, var(--semantic-token-Option-1020, ${tokens.colorTransparentBackground}))`,
+      color: `var(--ctrl-token-Option-1021, var(--semantic-token-Option-1022, ${tokens.colorNeutralForegroundDisabled}))`,
       [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
 
@@ -79,11 +79,11 @@ const useStyles = makeStyles({
   selected: {},
 
   checkIcon: {
-    fontSize: tokens.fontSizeBase400,
+    fontSize: `var(--ctrl-token-Option-1023, var(--semantic-token-Option-1024, ${tokens.fontSizeBase400}))`,
     // Shift icon(s) to the left to give text content extra spacing without needing an extra node
     // This is done instead of gap since the extra space only exists between icon > content, not icon > icon
     marginLeft: `calc(${tokens.spacingHorizontalXXS} * -1)`,
-    marginRight: tokens.spacingHorizontalXXS,
+    marginRight: `var(--ctrl-token-Option-1025, var(--semantic-token-Option-1026, ${tokens.spacingHorizontalXXS}))`,
     visibility: 'hidden',
 
     '& svg': {
@@ -97,7 +97,7 @@ const useStyles = makeStyles({
 
   multiselectCheck: {
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
-    borderRadius: tokens.borderRadiusSmall,
+    borderRadius: `var(--ctrl-token-Option-1027, var(--semantic-token-Option-1028, ${tokens.borderRadiusSmall}))`,
     boxSizing: 'border-box',
 
     display: 'flex',
@@ -112,13 +112,13 @@ const useStyles = makeStyles({
   },
 
   selectedMultiselectCheck: {
-    backgroundColor: tokens.colorCompoundBrandBackground,
-    color: tokens.colorNeutralForegroundInverted,
+    backgroundColor: `var(--ctrl-token-Option-1029, var(--semantic-token-Option-1030, ${tokens.colorCompoundBrandBackground}))`,
+    color: `var(--ctrl-token-Option-1031, var(--semantic-token-Option-1032, ${tokens.colorNeutralForegroundInverted}))`,
     ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
   },
 
   checkDisabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Option-1033, var(--semantic-token-Option-1034, ${tokens.colorNeutralForegroundDisabled}))`,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',

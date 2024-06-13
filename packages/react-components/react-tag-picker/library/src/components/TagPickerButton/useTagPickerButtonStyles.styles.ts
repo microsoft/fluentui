@@ -14,13 +14,13 @@ const useStyles = makeStyles({
   button: {
     alignItems: 'center',
     minHeight: '32px',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-TagPickerButton-2181, var(--semantic-token-TagPickerButton-2182, ${tokens.colorTransparentBackground}))`,
     border: 'none',
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
-    columnGap: tokens.spacingHorizontalXXS,
+    color: `var(--ctrl-token-TagPickerButton-2183, var(--semantic-token-TagPickerButton-2184, ${tokens.colorNeutralForeground1}))`,
+    columnGap: `var(--ctrl-token-TagPickerButton-2185, var(--semantic-token-TagPickerButton-2186, ${tokens.spacingHorizontalXXS}))`,
     cursor: 'pointer',
-    fontFamily: tokens.fontFamilyBase,
+    fontFamily: `var(--ctrl-token-TagPickerButton-2187, var(--semantic-token-TagPickerButton-2188, ${tokens.fontFamilyBase}))`,
     textAlign: 'left',
     flexGrow: 1,
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 
   placeholder: {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--ctrl-token-TagPickerButton-2189, var(--semantic-token-TagPickerButton-2190, ${tokens.colorNeutralForeground4}))`,
   },
 
   // size variants
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     } 5px ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   'extra-large': {
-    columnGap: tokens.spacingHorizontalSNudge,
+    columnGap: `var(--ctrl-token-TagPickerButton-2191, var(--semantic-token-TagPickerButton-2192, ${tokens.spacingHorizontalSNudge}))`,
     ...typographyStyles.body2,
     padding: `7px ${
       tokens.spacingHorizontalM
@@ -56,32 +56,32 @@ const useStyles = makeStyles({
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-TagPickerButton-2193, var(--semantic-token-TagPickerButton-2194, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--ctrl-token-TagPickerButton-2195, var(--semantic-token-TagPickerButton-2196, ${tokens.colorNeutralStrokeAccessible}))`,
   },
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-TagPickerButton-2197, var(--semantic-token-TagPickerButton-2198, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-TagPickerButton-2199, var(--semantic-token-TagPickerButton-2200, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-TagPickerButton-2201, var(--semantic-token-TagPickerButton-2202, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-TagPickerButton-2203, var(--semantic-token-TagPickerButton-2204, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--ctrl-token-TagPickerButton-2205, var(--semantic-token-TagPickerButton-2206, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   invalid: {
@@ -91,12 +91,12 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--ctrl-token-TagPickerButton-2207, var(--semantic-token-TagPickerButton-2208, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-TagPickerButton-2209, var(--semantic-token-TagPickerButton-2210, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -104,7 +104,7 @@ const useStyles = makeStyles({
   },
 
   disabledText: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-TagPickerButton-2211, var(--semantic-token-TagPickerButton-2212, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 

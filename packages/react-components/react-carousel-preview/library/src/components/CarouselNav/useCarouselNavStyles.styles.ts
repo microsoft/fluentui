@@ -15,18 +15,18 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    columnGap: tokens.spacingHorizontalXS,
+    columnGap: `var(--ctrl-token-CarouselNav-771, var(--semantic-token-CarouselNav-772, ${tokens.spacingHorizontalXS}))`,
     alignItems: 'center',
     justifyContent: 'center',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-CarouselNav-773, var(--semantic-token-CarouselNav-774, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: `var(--ctrl-token-CarouselNav-775, var(--semantic-token-CarouselNav-776, ${tokens.borderRadiusXLarge}))`,
     margin: `auto ${tokens.spacingHorizontalS}`,
-    padding: tokens.spacingHorizontalXS,
-    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    padding: `var(--ctrl-token-CarouselNav-777, var(--semantic-token-CarouselNav-778, ${tokens.spacingHorizontalXS}))`,
+    backgroundColor: `var(--ctrl-token-CarouselNav-779, var(--semantic-token-CarouselNav-780, ${tokens.colorNeutralBackgroundAlpha}))`,
   },
 });
 
