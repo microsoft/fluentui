@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add link as a new web component",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
