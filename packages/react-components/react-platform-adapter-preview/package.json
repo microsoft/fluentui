@@ -34,10 +34,10 @@
     "@stylexjs/stylex": "^0.6.0"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.17.0",
+    "@fluentui/react-shared-contexts": "^9.19.0",
     "@fluentui/react-theme": "^9.1.19",
     "@griffel/core": "^1.14.1",
-    "@griffel/react": "^1.5.14",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "react-strict-dom": "0.0.8"
   },
