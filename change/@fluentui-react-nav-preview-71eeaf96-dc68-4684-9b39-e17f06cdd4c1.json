@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "(fix): Addresses icon and indicator Windows and Teams Theme high constrast issues.",
   "packageName": "@fluentui/react-nav-preview",
-  "email": "17346018+mltejera@users.noreply.github.com",
+  "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
 }
