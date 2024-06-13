@@ -25,11 +25,11 @@ const useButtonStyles = makeStyles({
     verticalAlign: 'middle',
     position: 'relative',
 
-    backgroundColor: tokens.colorTransparentBackground,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--ctrl-token-InfoButton-1143, var(--semantic-token-InfoButton-1144, ${tokens.colorTransparentBackground}))`,
+    color: `var(--ctrl-token-InfoButton-1145, var(--semantic-token-InfoButton-1146, ${tokens.colorNeutralForeground2}))`,
 
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-InfoButton-1147, var(--semantic-token-InfoButton-1148, ${tokens.borderRadiusMedium}))`,
     margin: '0',
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
 
@@ -41,8 +41,8 @@ const useButtonStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      color: tokens.colorNeutralForeground2BrandHover,
+      backgroundColor: `var(--ctrl-token-InfoButton-1149, var(--semantic-token-InfoButton-1150, ${tokens.colorTransparentBackgroundHover}))`,
+      color: `var(--ctrl-token-InfoButton-1151, var(--semantic-token-InfoButton-1152, ${tokens.colorNeutralForeground2BrandHover}))`,
       cursor: 'pointer',
 
       [`& .${iconFilledClassName}`]: {
@@ -53,14 +53,14 @@ const useButtonStyles = makeStyles({
       },
     },
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      color: tokens.colorNeutralForeground2BrandPressed,
+      backgroundColor: `var(--ctrl-token-InfoButton-1153, var(--semantic-token-InfoButton-1154, ${tokens.colorTransparentBackgroundPressed}))`,
+      color: `var(--ctrl-token-InfoButton-1155, var(--semantic-token-InfoButton-1156, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
   },
 
   selected: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: `var(--ctrl-token-InfoButton-1157, var(--semantic-token-InfoButton-1158, ${tokens.colorTransparentBackgroundSelected}))`,
+    color: `var(--ctrl-token-InfoButton-1159, var(--semantic-token-InfoButton-1160, ${tokens.colorNeutralForeground2BrandSelected}))`,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline-flex',

@@ -20,24 +20,24 @@ const useRootClassName = makeResetStyles({
 });
 
 const useLabelClassName = makeResetStyles({
-  color: tokens.colorNeutralForeground1,
-  marginLeft: tokens.spacingHorizontalXS,
+  color: `var(--ctrl-token-RatingDisplay-1547, var(--semantic-token-RatingDisplay-1548, ${tokens.colorNeutralForeground1}))`,
+  marginLeft: `var(--ctrl-token-RatingDisplay-1549, var(--semantic-token-RatingDisplay-1550, ${tokens.spacingHorizontalXS}))`,
   ...typographyStyles.caption1,
 });
 
 const useLabelStyles = makeStyles({
   large: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    fontSize: `var(--ctrl-token-RatingDisplay-1551, var(--semantic-token-RatingDisplay-1552, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--ctrl-token-RatingDisplay-1553, var(--semantic-token-RatingDisplay-1554, ${tokens.lineHeightBase300}))`,
+    marginLeft: `var(--ctrl-token-RatingDisplay-1555, var(--semantic-token-RatingDisplay-1556, ${tokens.spacingHorizontalSNudge}))`,
   },
   extraLarge: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    marginLeft: tokens.spacingHorizontalS,
+    fontSize: `var(--ctrl-token-RatingDisplay-1557, var(--semantic-token-RatingDisplay-1558, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--ctrl-token-RatingDisplay-1559, var(--semantic-token-RatingDisplay-1560, ${tokens.lineHeightBase400}))`,
+    marginLeft: `var(--ctrl-token-RatingDisplay-1561, var(--semantic-token-RatingDisplay-1562, ${tokens.spacingHorizontalS}))`,
   },
   strong: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--ctrl-token-RatingDisplay-1563, var(--semantic-token-RatingDisplay-1564, ${tokens.fontWeightSemibold}))`,
   },
   divider: {
     '::before': {

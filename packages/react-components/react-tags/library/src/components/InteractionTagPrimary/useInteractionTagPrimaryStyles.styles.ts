@@ -46,7 +46,7 @@ const baseStyles: GriffelResetStyle = {
 
 const useRootRoundedBaseClassName = makeResetStyles({
   ...baseStyles,
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: `var(--ctrl-token-InteractionTagPrimary-2293, var(--semantic-token-InteractionTagPrimary-2294, ${tokens.borderRadiusMedium}))`,
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -62,15 +62,15 @@ const useRootRoundedBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusMedium,
-      borderTopRightRadius: tokens.borderRadiusMedium,
+      borderTopLeftRadius: `var(--ctrl-token-InteractionTagPrimary-2295, var(--semantic-token-InteractionTagPrimary-2296, ${tokens.borderRadiusMedium}))`,
+      borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2297, var(--semantic-token-InteractionTagPrimary-2298, ${tokens.borderRadiusMedium}))`,
     },
   },
 });
 
 const useRootCircularBaseClassName = makeResetStyles({
   ...baseStyles,
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--ctrl-token-InteractionTagPrimary-2299, var(--semantic-token-InteractionTagPrimary-2300, ${tokens.borderRadiusCircular}))`,
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -87,8 +87,8 @@ const useRootCircularBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusCircular,
-      borderBottomLeftRadius: tokens.borderRadiusCircular,
+      borderTopLeftRadius: `var(--ctrl-token-InteractionTagPrimary-2301, var(--semantic-token-InteractionTagPrimary-2302, ${tokens.borderRadiusCircular}))`,
+      borderBottomLeftRadius: `var(--ctrl-token-InteractionTagPrimary-2303, var(--semantic-token-InteractionTagPrimary-2304, ${tokens.borderRadiusCircular}))`,
     },
   },
 });
@@ -102,8 +102,8 @@ const useRootCircularContrastStyles = makeStyles({
       position: 'relative',
       '::before': {
         borderRight: `${tokens.strokeWidthThin} solid transparent`,
-        borderTopRightRadius: tokens.borderRadiusCircular,
-        borderBottomRightRadius: tokens.borderRadiusCircular,
+        borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2305, var(--semantic-token-InteractionTagPrimary-2306, ${tokens.borderRadiusCircular}))`,
+        borderBottomRightRadius: `var(--ctrl-token-InteractionTagPrimary-2307, var(--semantic-token-InteractionTagPrimary-2308, ${tokens.borderRadiusCircular}))`,
       },
     },
   },
@@ -111,16 +111,16 @@ const useRootCircularContrastStyles = makeStyles({
 
 const useRootStyles = makeStyles({
   filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2309, var(--semantic-token-InteractionTagPrimary-2310, ${tokens.colorNeutralBackground3}))`,
+    color: `var(--ctrl-token-InteractionTagPrimary-2311, var(--semantic-token-InteractionTagPrimary-2312, ${tokens.colorNeutralForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorNeutralBackground3Hover,
-      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2313, var(--semantic-token-InteractionTagPrimary-2314, ${tokens.colorNeutralBackground3Hover}))`,
+      color: `var(--ctrl-token-InteractionTagPrimary-2315, var(--semantic-token-InteractionTagPrimary-2316, ${tokens.colorNeutralForeground2Hover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorNeutralBackground3Pressed,
-      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2317, var(--semantic-token-InteractionTagPrimary-2318, ${tokens.colorNeutralBackground3Pressed}))`,
+      color: `var(--ctrl-token-InteractionTagPrimary-2319, var(--semantic-token-InteractionTagPrimary-2320, ${tokens.colorNeutralForeground2Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -132,29 +132,29 @@ const useRootStyles = makeStyles({
     },
   },
   outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2321, var(--semantic-token-InteractionTagPrimary-2322, ${tokens.colorSubtleBackground}))`,
+    color: `var(--ctrl-token-InteractionTagPrimary-2323, var(--semantic-token-InteractionTagPrimary-2324, ${tokens.colorNeutralForeground2}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2325, var(--semantic-token-InteractionTagPrimary-2326, ${tokens.colorSubtleBackgroundHover}))`,
+      color: `var(--ctrl-token-InteractionTagPrimary-2327, var(--semantic-token-InteractionTagPrimary-2328, ${tokens.colorNeutralForeground2Hover}))`,
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: `var(--ctrl-token-InteractionTagPrimary-2329, var(--semantic-token-InteractionTagPrimary-2330, ${tokens.colorNeutralForeground2BrandHover}))`,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
       },
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2331, var(--semantic-token-InteractionTagPrimary-2332, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--ctrl-token-InteractionTagPrimary-2333, var(--semantic-token-InteractionTagPrimary-2334, ${tokens.colorNeutralForeground2Pressed}))`,
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: `var(--ctrl-token-InteractionTagPrimary-2335, var(--semantic-token-InteractionTagPrimary-2336, ${tokens.colorNeutralForeground2BrandPressed}))`,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
@@ -170,16 +170,16 @@ const useRootStyles = makeStyles({
     },
   },
   brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2337, var(--semantic-token-InteractionTagPrimary-2338, ${tokens.colorBrandBackground2}))`,
+    color: `var(--ctrl-token-InteractionTagPrimary-2339, var(--semantic-token-InteractionTagPrimary-2340, ${tokens.colorBrandForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorCompoundBrandForeground1Hover,
+      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2341, var(--semantic-token-InteractionTagPrimary-2342, ${tokens.colorBrandBackground2Hover}))`,
+      color: `var(--ctrl-token-InteractionTagPrimary-2343, var(--semantic-token-InteractionTagPrimary-2344, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2345, var(--semantic-token-InteractionTagPrimary-2346, ${tokens.colorBrandBackground2Pressed}))`,
+      color: `var(--ctrl-token-InteractionTagPrimary-2347, var(--semantic-token-InteractionTagPrimary-2348, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -204,20 +204,20 @@ const useRootStyles = makeStyles({
 const useRootDisabledAppearances = makeStyles({
   filled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2349, var(--semantic-token-InteractionTagPrimary-2350, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--ctrl-token-InteractionTagPrimary-2351, var(--semantic-token-InteractionTagPrimary-2352, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
   outline: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2353, var(--semantic-token-InteractionTagPrimary-2354, ${tokens.colorSubtleBackground}))`,
+    color: `var(--ctrl-token-InteractionTagPrimary-2355, var(--semantic-token-InteractionTagPrimary-2356, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
   },
   brand: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2357, var(--semantic-token-InteractionTagPrimary-2358, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--ctrl-token-InteractionTagPrimary-2359, var(--semantic-token-InteractionTagPrimary-2360, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
 });
@@ -241,22 +241,22 @@ const useRootWithoutMediaStyles = makeStyles({
  */
 const useRootWithSecondaryActionStyles = makeStyles({
   base: {
-    borderTopRightRadius: tokens.borderRadiusNone,
-    borderBottomRightRadius: tokens.borderRadiusNone,
+    borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2361, var(--semantic-token-InteractionTagPrimary-2362, ${tokens.borderRadiusNone}))`,
+    borderBottomRightRadius: `var(--ctrl-token-InteractionTagPrimary-2363, var(--semantic-token-InteractionTagPrimary-2364, ${tokens.borderRadiusNone}))`,
     borderRightStyle: 'none',
     ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: tokens.borderRadiusNone,
-      borderBottomRightRadius: tokens.borderRadiusNone,
+      borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2365, var(--semantic-token-InteractionTagPrimary-2366, ${tokens.borderRadiusNone}))`,
+      borderBottomRightRadius: `var(--ctrl-token-InteractionTagPrimary-2367, var(--semantic-token-InteractionTagPrimary-2368, ${tokens.borderRadiusNone}))`,
     }),
   },
   medium: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: `var(--ctrl-token-InteractionTagPrimary-2369, var(--semantic-token-InteractionTagPrimary-2370, ${tokens.spacingHorizontalS}))`,
   },
   small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--ctrl-token-InteractionTagPrimary-2371, var(--semantic-token-InteractionTagPrimary-2372, ${tokens.spacingHorizontalSNudge}))`,
   },
   'extra-small': {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--ctrl-token-InteractionTagPrimary-2373, var(--semantic-token-InteractionTagPrimary-2374, ${tokens.spacingHorizontalSNudge}))`,
   },
 });
 

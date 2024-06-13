@@ -17,9 +17,9 @@ const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
   boxSizing: 'border-box',
-  backgroundColor: tokens.colorSubtleBackground,
-  color: tokens.colorNeutralForeground2,
-  paddingRight: tokens.spacingHorizontalNone,
+  backgroundColor: `var(--ctrl-token-TreeItem-2857, var(--semantic-token-TreeItem-2858, ${tokens.colorSubtleBackground}))`,
+  color: `var(--ctrl-token-TreeItem-2859, var(--semantic-token-TreeItem-2860, ${tokens.colorNeutralForeground2}))`,
+  paddingRight: `var(--ctrl-token-TreeItem-2861, var(--semantic-token-TreeItem-2862, ${tokens.spacingHorizontalNone}))`,
   // if using createCustomFocusIndicatorStyle then we need to remove default outline styles provided by the browser
   ':focus': {
     outlineStyle: 'none',
@@ -30,9 +30,9 @@ const useBaseStyles = makeResetStyles({
   // This adds the focus outline for the TreeItemLayout element
   ...createCustomFocusIndicatorStyle(
     {
-      borderRadius: tokens.borderRadiusMedium,
-      outlineColor: tokens.colorStrokeFocus2,
-      outlineRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-TreeItem-2863, var(--semantic-token-TreeItem-2864, ${tokens.borderRadiusMedium}))`,
+      outlineColor: `var(--ctrl-token-TreeItem-2865, var(--semantic-token-TreeItem-2866, ${tokens.colorStrokeFocus2}))`,
+      outlineRadius: `var(--ctrl-token-TreeItem-2867, var(--semantic-token-TreeItem-2868, ${tokens.borderRadiusMedium}))`,
       // FIXME: tokens.strokeWidthThick causes some weird bugs
       outlineWidth: '2px',
       outlineStyle: 'solid',

@@ -17,18 +17,18 @@ const useRootStyles = makeStyles({
     height: 'auto',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: `var(--ctrl-token-CompoundButton-1, var(--semantic-token-CompoundButton-2, ${tokens.colorNeutralForeground2}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+        color: `var(--ctrl-token-CompoundButton-3, var(--semantic-token-CompoundButton-4, ${tokens.colorNeutralForeground2Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Pressed,
+        color: `var(--ctrl-token-CompoundButton-5, var(--semantic-token-CompoundButton-6, ${tokens.colorNeutralForeground2Pressed}))`,
       },
     },
   },
@@ -56,18 +56,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--ctrl-token-CompoundButton-7, var(--semantic-token-CompoundButton-8, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: `var(--ctrl-token-CompoundButton-9, var(--semantic-token-CompoundButton-10, ${tokens.colorNeutralForegroundOnBrand}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: `var(--ctrl-token-CompoundButton-11, var(--semantic-token-CompoundButton-12, ${tokens.colorNeutralForegroundOnBrand}))`,
       },
     },
 
@@ -82,18 +82,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: `var(--ctrl-token-CompoundButton-13, var(--semantic-token-CompoundButton-14, ${tokens.colorNeutralForeground2}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+        color: `var(--ctrl-token-CompoundButton-15, var(--semantic-token-CompoundButton-16, ${tokens.colorNeutralForeground2Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Pressed,
+        color: `var(--ctrl-token-CompoundButton-17, var(--semantic-token-CompoundButton-18, ${tokens.colorNeutralForeground2Pressed}))`,
       },
     },
 
@@ -112,18 +112,18 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: `var(--ctrl-token-CompoundButton-19, var(--semantic-token-CompoundButton-20, ${tokens.colorNeutralForeground2}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: `var(--ctrl-token-CompoundButton-21, var(--semantic-token-CompoundButton-22, ${tokens.colorNeutralForeground2BrandHover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: `var(--ctrl-token-CompoundButton-23, var(--semantic-token-CompoundButton-24, ${tokens.colorNeutralForeground2BrandPressed}))`,
       },
     },
   },
@@ -132,37 +132,37 @@ const useRootStyles = makeStyles({
   small: {
     padding: `${tokens.spacingHorizontalS} ${tokens.spacingHorizontalS} ${tokens.spacingHorizontalMNudge} ${tokens.spacingHorizontalS}`,
 
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: `var(--ctrl-token-CompoundButton-25, var(--semantic-token-CompoundButton-26, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--ctrl-token-CompoundButton-27, var(--semantic-token-CompoundButton-28, ${tokens.lineHeightBase300}))`,
   },
   medium: {
     padding: `14px ${tokens.spacingHorizontalM} ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalM}`,
 
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: `var(--ctrl-token-CompoundButton-29, var(--semantic-token-CompoundButton-30, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--ctrl-token-CompoundButton-31, var(--semantic-token-CompoundButton-32, ${tokens.lineHeightBase300}))`,
   },
   large: {
     padding: `18px ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalXL} ${tokens.spacingHorizontalL}`,
 
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: `var(--ctrl-token-CompoundButton-33, var(--semantic-token-CompoundButton-34, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--ctrl-token-CompoundButton-35, var(--semantic-token-CompoundButton-36, ${tokens.lineHeightBase400}))`,
   },
 
   // Disabled styles
   disabled: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-CompoundButton-37, var(--semantic-token-CompoundButton-38, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--ctrl-token-CompoundButton-39, var(--semantic-token-CompoundButton-40, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--ctrl-token-CompoundButton-41, var(--semantic-token-CompoundButton-42, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
   },
@@ -192,19 +192,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: tokens.spacingHorizontalXS,
+    padding: `var(--ctrl-token-CompoundButton-43, var(--semantic-token-CompoundButton-44, ${tokens.spacingHorizontalXS}))`,
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    padding: tokens.spacingHorizontalSNudge,
+    padding: `var(--ctrl-token-CompoundButton-45, var(--semantic-token-CompoundButton-46, ${tokens.spacingHorizontalSNudge}))`,
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    padding: tokens.spacingHorizontalS,
+    padding: `var(--ctrl-token-CompoundButton-47, var(--semantic-token-CompoundButton-48, ${tokens.spacingHorizontalS}))`,
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -221,10 +221,10 @@ const useIconStyles = makeStyles({
 
   // Icon position variations
   before: {
-    marginRight: tokens.spacingHorizontalM,
+    marginRight: `var(--ctrl-token-CompoundButton-49, var(--semantic-token-CompoundButton-50, ${tokens.spacingHorizontalM}))`,
   },
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    marginLeft: `var(--ctrl-token-CompoundButton-51, var(--semantic-token-CompoundButton-52, ${tokens.spacingHorizontalM}))`,
   },
 });
 
@@ -241,18 +241,18 @@ const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
     lineHeight: '100%',
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: `var(--ctrl-token-CompoundButton-53, var(--semantic-token-CompoundButton-54, ${tokens.fontWeightRegular}))`,
   },
 
   // Size variations
   small: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-CompoundButton-55, var(--semantic-token-CompoundButton-56, ${tokens.fontSizeBase200}))`,
   },
   medium: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-CompoundButton-57, var(--semantic-token-CompoundButton-58, ${tokens.fontSizeBase200}))`,
   },
   large: {
-    fontSize: tokens.fontSizeBase300,
+    fontSize: `var(--ctrl-token-CompoundButton-59, var(--semantic-token-CompoundButton-60, ${tokens.fontSizeBase300}))`,
   },
 });
 

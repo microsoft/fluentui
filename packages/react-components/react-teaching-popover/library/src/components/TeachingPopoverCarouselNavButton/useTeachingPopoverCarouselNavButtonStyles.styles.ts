@@ -21,34 +21,34 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     height: '8px',
     width: '8px',
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2555, var(--semantic-token-TeachingPopoverCarouselNavButton-2556, ${tokens.colorBrandBackground}))`,
   },
   rootUnselected: {
     border: 'none',
     borderRadius: '50%',
     padding: '0px',
-    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
+    outline: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2557, var(--semantic-token-TeachingPopoverCarouselNavButton-2558, '${tokens.strokeWidthThin} solid transparent'))`, // For high contrast
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2559, var(--semantic-token-TeachingPopoverCarouselNavButton-2560, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
     backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 30%, transparent)`,
     '@supports not (color: color-mix(in lch, white, black))': {
       // This will also affect the focus border, but only in older unsupported browsers
       opacity: 0.3,
-      backgroundColor: tokens.colorBrandBackground,
+      backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2561, var(--semantic-token-TeachingPopoverCarouselNavButton-2562, ${tokens.colorBrandBackground}))`,
     },
   },
   rootSelected: {
-    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
+    outline: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2563, var(--semantic-token-TeachingPopoverCarouselNavButton-2564, '${tokens.strokeWidthThin} solid transparent'))`, // For high contrast
     width: '16px',
     border: 'none',
     borderRadius: '4px',
     padding: '0px',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2565, var(--semantic-token-TeachingPopoverCarouselNavButton-2566, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
     '@media (forced-colors: active)': {
@@ -56,14 +56,14 @@ const useStyles = makeStyles({
     },
   },
   rootBrand: {
-    backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2567, var(--semantic-token-TeachingPopoverCarouselNavButton-2568, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   rootBrandUnselected: {
     backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForegroundOnBrand} 30%, transparent)`,
     '@supports not (color: color-mix(in lch, white, black))': {
       // This will also affect the focus border, but only in older unsupported browsers
       opacity: 0.3,
-      backgroundColor: tokens.colorBrandBackground,
+      backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2569, var(--semantic-token-TeachingPopoverCarouselNavButton-2570, ${tokens.colorBrandBackground}))`,
     },
   },
 });

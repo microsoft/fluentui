@@ -12,7 +12,7 @@ export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  backgroundColor: tokens.colorTransparentBackground,
+  backgroundColor: `var(--ctrl-token-EmptySwatch-1871, var(--semantic-token-EmptySwatch-1872, ${tokens.colorTransparentBackground}))`,
   border: `1px dashed ${tokens.colorNeutralForeground4}`,
 });
 
@@ -37,16 +37,16 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    borderRadius: tokens.borderRadiusMedium,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusMedium }),
+    borderRadius: `var(--ctrl-token-EmptySwatch-1873, var(--semantic-token-EmptySwatch-1874, ${tokens.borderRadiusMedium}))`,
+    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-EmptySwatch-1875, var(--semantic-token-EmptySwatch-1876, ${tokens.borderRadiusMedium}))` }),
   },
   circular: {
-    borderRadius: tokens.borderRadiusCircular,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
+    borderRadius: `var(--ctrl-token-EmptySwatch-1877, var(--semantic-token-EmptySwatch-1878, ${tokens.borderRadiusCircular}))`,
+    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-EmptySwatch-1879, var(--semantic-token-EmptySwatch-1880, ${tokens.borderRadiusCircular}))` }),
   },
   square: {
-    borderRadius: tokens.borderRadiusNone,
-    ...createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
+    borderRadius: `var(--ctrl-token-EmptySwatch-1881, var(--semantic-token-EmptySwatch-1882, ${tokens.borderRadiusNone}))`,
+    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-EmptySwatch-1883, var(--semantic-token-EmptySwatch-1884, ${tokens.borderRadiusNone}))` }),
   },
 });
 

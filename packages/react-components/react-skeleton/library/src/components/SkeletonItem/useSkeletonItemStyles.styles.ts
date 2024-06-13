@@ -82,7 +82,7 @@ const useStyles = makeStyles({
   pulse: {
     animationName: skeletonPulseAnimation,
     animationDuration: '1s',
-    backgroundColor: tokens.colorNeutralStencil1,
+    backgroundColor: `var(--ctrl-token-SkeletonItem-1647, var(--semantic-token-SkeletonItem-1648, ${tokens.colorNeutralStencil1}))`,
   },
   translucent: {
     backgroundImage: `linear-gradient(
@@ -92,7 +92,7 @@ const useStyles = makeStyles({
       ${tokens.colorNeutralStencil1Alpha} 100%)`,
   },
   translucentPulse: {
-    backgroundColor: tokens.colorNeutralStencil1Alpha,
+    backgroundColor: `var(--ctrl-token-SkeletonItem-1649, var(--semantic-token-SkeletonItem-1650, ${tokens.colorNeutralStencil1Alpha}))`,
   },
 });
 

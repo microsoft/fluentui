@@ -14,22 +14,22 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 const useRootBaseStyles = makeResetStyles({
   gridArea: 'secondaryActions',
   display: 'flex',
-  columnGap: tokens.spacingHorizontalM,
-  paddingRight: tokens.spacingHorizontalM,
+  columnGap: `var(--ctrl-token-MessageBarActions-1435, var(--semantic-token-MessageBarActions-1436, ${tokens.spacingHorizontalM}))`,
+  paddingRight: `var(--ctrl-token-MessageBarActions-1437, var(--semantic-token-MessageBarActions-1438, ${tokens.spacingHorizontalM}))`,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
   gridArea: 'actions',
-  paddingRight: tokens.spacingHorizontalM,
+  paddingRight: `var(--ctrl-token-MessageBarActions-1439, var(--semantic-token-MessageBarActions-1440, ${tokens.spacingHorizontalM}))`,
 });
 
 const useMultilineStyles = makeStyles({
   root: {
     justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
+    marginTop: `var(--ctrl-token-MessageBarActions-1441, var(--semantic-token-MessageBarActions-1442, ${tokens.spacingVerticalMNudge}))`,
+    marginBottom: `var(--ctrl-token-MessageBarActions-1443, var(--semantic-token-MessageBarActions-1444, ${tokens.spacingVerticalS}))`,
     marginRight: '0px',
-    paddingRight: tokens.spacingVerticalM,
+    paddingRight: `var(--ctrl-token-MessageBarActions-1445, var(--semantic-token-MessageBarActions-1446, ${tokens.spacingVerticalM}))`,
   },
 
   noActions: {
