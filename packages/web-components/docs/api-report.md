@@ -193,15 +193,24 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends FASTElement {
+    constructor();
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor;
+    color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
-    generateColor(): AvatarColor | void;
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
     // @internal
     generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     initials?: string | undefined;
     name?: string | undefined;
     shape?: AvatarShape | undefined;
@@ -2191,7 +2200,7 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
-    inline?: boolean;
+    inline: boolean;
 }
 
 // @public
