@@ -124,7 +124,9 @@ export class Avatar extends FASTElement {
 
     Observable.getNotifier(this).subscribe(this);
 
-    this.generateColor();
+    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
+      this.handleChange(this, key);
+    });
   }
 
   public disconnectedCallback(): void {
@@ -140,7 +142,7 @@ export class Avatar extends FASTElement {
    * @param propertyName - the property name being changed
    */
   public handleChange(source: any, propertyName: string) {
-    if (propertyName === ('color' || 'color-id')) {
+    if (propertyName === ('color' || 'colorId')) {
       this.generateColor();
     }
   }
@@ -159,7 +161,7 @@ export class Avatar extends FASTElement {
         ? (Avatar.colors[getHashCode(this.colorId ?? this.name ?? '') % Avatar.colors.length] as AvatarColor)
         : this.color;
 
-    toggleState(this.elementInternals, color);
+    toggleState(this.elementInternals, color, !!this.color);
   }
 
   /**
