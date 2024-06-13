@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(merge-styles): improve DeepPartial type infinite recursion triggerpoint",
+  "packageName": "@fluentui/merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
