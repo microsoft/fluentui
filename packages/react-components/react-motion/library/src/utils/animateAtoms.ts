@@ -37,7 +37,7 @@ export function animateAtoms(
         animation.playbackRate = rate;
       });
     },
-    set oncancel(callback: () => void) {
+    setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
       // Heads up!
       // Jest uses jsdom as the default environment, which doesn't support the Web Animations API. This no-op is
       // necessary to avoid errors in tests.
@@ -46,59 +46,21 @@ export function animateAtoms(
       // See https://github.com/jsdom/jsdom/issues/3429
       if (process.env.NODE_ENV === 'test') {
         if (animations.length === 0) {
-          callback();
-          return;
-        }
-      }
-
-      Promise.allSettled(animations.map(animation => animation.finished)).then(res => {
-        const DOMException = element.ownerDocument?.defaultView?.DOMException;
-        const rejected = res.filter(result => result.status === 'rejected');
-        if (!rejected.length) {
-          return;
-        }
-
-        const unexpectedError = rejected.find(result => {
-          if (result.status === 'fulfilled') {
-            return false;
-          }
-
-          return DOMException && result.reason instanceof DOMException && result.reason.name !== 'AbortError';
-        });
-
-        if (!unexpectedError) {
-          callback();
-          return;
-        }
-
-        // This error is not a result of an animation being cancelled - rethrow
-        throw unexpectedError;
-      });
-    },
-
-    set onfinish(callback: () => void) {
-      // Heads up!
-      // Jest uses jsdom as the default environment, which doesn't support the Web Animations API. This no-op is
-      // necessary to avoid errors in tests.
-      //
-      // See https://github.com/microsoft/fluentui/issues/31593
-      // See https://github.com/jsdom/jsdom/issues/3429
-      if (process.env.NODE_ENV === 'test') {
-        if (animations.length === 0) {
-          callback();
+          onfinish();
           return;
         }
       }
 
       Promise.all(animations.map(animation => animation.finished))
         .then(() => {
-          callback();
+          onfinish();
         })
         .catch((err: unknown) => {
           const DOMException = element.ownerDocument.defaultView?.DOMException;
 
           // Ignores "DOMException: The user aborted a request" that appears if animations are cancelled
           if (DOMException && err instanceof DOMException && err.name === 'AbortError') {
+            oncancel();
             return;
           }
 

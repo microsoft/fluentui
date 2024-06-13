@@ -147,12 +147,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         }
 
         handleRef.current = handle;
-        handle.onfinish = () => {
-          handleMotionFinish(direction);
-        };
-        handle.oncancel = () => {
-          handleMotionCancel(direction);
-        };
+        handle.setMotionEndCallbacks(
+          () => handleMotionFinish(direction),
+          () => handleMotionCancel(direction),
+        );
 
         return () => {
           handle.cancel();

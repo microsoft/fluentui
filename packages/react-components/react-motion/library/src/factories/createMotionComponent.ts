@@ -95,8 +95,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
-        handle.onfinish = onMotionFinish;
-        handle.oncancel = onMotionCancel;
+        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
         handleRef.current = handle;
 
         return () => {

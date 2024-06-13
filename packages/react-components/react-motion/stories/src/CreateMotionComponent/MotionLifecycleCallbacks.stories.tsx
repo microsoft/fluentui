@@ -102,7 +102,6 @@ export const MotionLifecycleCallbacks = () => {
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [count, setCount] = React.useState(0);
-  const [playing, setPlaying] = React.useState(false);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
@@ -117,11 +116,9 @@ export const MotionLifecycleCallbacks = () => {
           key={count}
           imperativeRef={motionRef}
           onMotionStart={() => {
-            setPlaying(true);
             setStatusLog(entries => [[Date.now(), 'onMotionStart'], ...entries]);
           }}
           onMotionFinish={() => {
-            setPlaying(false);
             setStatusLog(entries => [[Date.now(), 'onMotionFinish'], ...entries]);
           }}
           onMotionCancel={() => {
