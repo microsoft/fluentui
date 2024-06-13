@@ -12,7 +12,8 @@ export type OptionSlots = {
 /**
  * Option Props
  */
-export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type OptionProps<T = any> = ComponentProps<Partial<OptionSlots>> & {
   /**
    * Sets an option to the `disabled` state.
    * Disabled options cannot be selected, but are still keyboard navigable
@@ -25,6 +26,11 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
    * Defaults to `text` if not provided.
    */
   value?: string;
+
+  /**
+   * Data available to custom onRender functions.
+   */
+  data?: T;
 } & (
     | {
         /**

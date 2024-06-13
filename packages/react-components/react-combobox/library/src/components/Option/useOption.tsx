@@ -40,7 +40,7 @@ function getTextString(text: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { children, disabled, text, value } = props;
+  const { children, disabled, text, value, data } = props;
   const optionRef = React.useRef<HTMLElement>(null);
   const optionText = getTextString(text, children);
   const optionValue = value ?? optionText;
@@ -50,8 +50,8 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
   // data used for context registration & events
   const optionData = React.useMemo<OptionValue>(
-    () => ({ id, disabled, text: optionText, value: optionValue }),
-    [id, disabled, optionText, optionValue],
+    () => ({ id, disabled, text: optionText, value: optionValue, data }),
+    [id, disabled, optionText, optionValue, data],
   );
 
   // context values

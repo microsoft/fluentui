@@ -1,4 +1,5 @@
-export type OptionValue = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type OptionValue<T = any> = {
   /** The disabled state of the option. */
   disabled?: boolean;
 
@@ -10,6 +11,9 @@ export type OptionValue = {
 
   /** The value string of the option. */
   value: string;
+
+  /** The additional data of the option */
+  data?: T;
 };
 
 export type OptionCollectionState = {

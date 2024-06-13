@@ -39,10 +39,12 @@ export type SelectionState = {
  * Data for the onOptionSelect callback.
  * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
  */
-export type OptionOnSelectData = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type OptionOnSelectData<T = any> = {
   optionValue: string | undefined;
   optionText: string | undefined;
   selectedOptions: string[];
+  data?: T;
 };
 
 /** Possible event types for onOptionSelect */

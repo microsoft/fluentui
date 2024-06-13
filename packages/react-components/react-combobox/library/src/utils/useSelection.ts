@@ -35,7 +35,12 @@ export const useSelection = (props: SelectionProps): SelectionState => {
       }
 
       setSelectedOptions(newSelection);
-      onOptionSelect?.(event, { optionValue: option.value, optionText: option.text, selectedOptions: newSelection });
+      onOptionSelect?.(event, {
+        optionValue: option.value,
+        optionText: option.text,
+        selectedOptions: newSelection,
+        data: option.data,
+      });
     },
     [onOptionSelect, multiselect, selectedOptions, setSelectedOptions],
   );

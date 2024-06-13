@@ -184,6 +184,7 @@ describe('Option', () => {
 
     expect(typeof registerProps?.id).toEqual('string');
     expect(registerProps?.disabled).toBeFalsy();
+    expect(registerProps?.data).toBeFalsy();
     expect(registerProps?.value).toEqual('Option 1');
     expect(registerProps?.text).toEqual('Option 1');
     expect(registerRef).toEqual(getByRole('option'));
@@ -193,7 +194,7 @@ describe('Option', () => {
     const registerOption = jest.fn();
     render(
       <ListboxContext.Provider value={{ ...defaultContextValues, registerOption }}>
-        <Option id="op1" disabled value="foo" text="Option 1">
+        <Option id="op1" disabled value="foo" text="Option 1" data={{ property: 'This is option 1' }}>
           text content
         </Option>
       </ListboxContext.Provider>,
@@ -204,6 +205,7 @@ describe('Option', () => {
     expect(registerProps?.id).toEqual('op1');
     expect(registerProps?.disabled).toBeTruthy();
     expect(registerProps?.value).toEqual('foo');
+    expect(registerProps?.data).toEqual({ property: 'This is option 1' });
     expect(registerProps?.text).toEqual('Option 1');
   });
 
@@ -229,7 +231,7 @@ describe('Option', () => {
     const { getByRole } = render(
       <ActiveDescendantContextProvider value={{ controller: { focus } as unknown as ActiveDescendantImperativeRef }}>
         <ListboxContext.Provider value={{ ...defaultContextValues, selectOption }}>
-          <Option id="optionId" value="foo">
+          <Option id="optionId" value="foo" data={{ property: 'This is option 1' }}>
             Option 1
           </Option>
         </ListboxContext.Provider>
@@ -237,7 +239,13 @@ describe('Option', () => {
     );
 
     fireEvent.click(getByRole('option'));
-    const optionData = { id: 'optionId', disabled: undefined, text: 'Option 1', value: 'foo' };
+    const optionData = {
+      id: 'optionId',
+      disabled: undefined,
+      text: 'Option 1',
+      value: 'foo',
+      data: { property: 'This is option 1' },
+    };
 
     expect(selectOption).toHaveBeenCalledTimes(1);
     expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);
