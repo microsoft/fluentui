@@ -68,7 +68,7 @@ const useStyles = makeStyles({
     '::after': {
       animationName: skeletonPulseAnimation,
       animationDuration: '1s',
-      backgroundColor: tokens.colorNeutralStencil1,
+      backgroundColor: `var(--ctrl-token-SkeletonItem-1647, var(--semantic-token-SkeletonItem-1648, ${tokens.colorNeutralStencil1}))`,
     },
   },
   translucent: {
@@ -86,7 +86,7 @@ const useStyles = makeStyles({
     backgroundColor: 'none',
 
     '::after': {
-      backgroundColor: tokens.colorNeutralStencil1Alpha,
+      backgroundColor: `var(--ctrl-token-SkeletonItem-1649, var(--semantic-token-SkeletonItem-1650, ${tokens.colorNeutralStencil1Alpha}))`,
     },
   },
 });

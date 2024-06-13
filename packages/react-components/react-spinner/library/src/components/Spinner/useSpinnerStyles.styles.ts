@@ -44,8 +44,8 @@ const useSpinnerBaseClassName = makeResetStyles({
     `white calc(100% - var(${vars.strokeWidth})) calc(100% - 1px), ` +
     `transparent 100%)`,
 
-  backgroundColor: tokens.colorBrandStroke2Contrast,
-  color: tokens.colorBrandStroke1,
+  backgroundColor: `var(--ctrl-token-Spinner-1829, var(--semantic-token-Spinner-1830, ${tokens.colorBrandStroke2Contrast}))`,
+  color: `var(--ctrl-token-Spinner-1831, var(--semantic-token-Spinner-1832, ${tokens.colorBrandStroke1}))`,
   '@media screen and (forced-colors: active)': {
     backgroundColor: 'HighlightText',
     color: 'Highlight',
@@ -88,7 +88,7 @@ const useSpinnerTailBaseClassName = makeResetStyles({
 
   animationDuration: '1.5s',
   animationIterationCount: 'infinite',
-  animationTimingFunction: tokens.curveEasyEase,
+  animationTimingFunction: `var(--ctrl-token-Spinner-1833, var(--semantic-token-Spinner-1834, ${tokens.curveEasyEase}))`,
   animationName: {
     '0%': { transform: 'rotate(-135deg)' },
     '50%': { transform: 'rotate(0deg)' },
@@ -119,8 +119,8 @@ const useSpinnerTailBaseClassName = makeResetStyles({
 
 const useSpinnerStyles = makeStyles({
   inverted: {
-    backgroundColor: tokens.colorNeutralStrokeAlpha2,
-    color: tokens.colorNeutralStrokeOnBrand2,
+    backgroundColor: `var(--ctrl-token-Spinner-1835, var(--semantic-token-Spinner-1836, ${tokens.colorNeutralStrokeAlpha2}))`,
+    color: `var(--ctrl-token-Spinner-1837, var(--semantic-token-Spinner-1838, ${tokens.colorNeutralStrokeOnBrand2}))`,
   },
 
   rtlTail: {
@@ -136,55 +136,55 @@ const useSpinnerStyles = makeStyles({
   'extra-tiny': {
     height: '16px',
     width: '16px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1839, var(--semantic-token-Spinner-1840, ${tokens.strokeWidthThick}))`,
   },
 
   tiny: {
     height: '20px',
     width: '20px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1841, var(--semantic-token-Spinner-1842, ${tokens.strokeWidthThick}))`,
   },
 
   'extra-small': {
     height: '24px',
     width: '24px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1843, var(--semantic-token-Spinner-1844, ${tokens.strokeWidthThick}))`,
   },
 
   small: {
     height: '28px',
     width: '28px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1845, var(--semantic-token-Spinner-1846, ${tokens.strokeWidthThick}))`,
   },
 
   medium: {
     height: '32px',
     width: '32px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1847, var(--semantic-token-Spinner-1848, ${tokens.strokeWidthThicker}))`,
   },
 
   large: {
     height: '36px',
     width: '36px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1849, var(--semantic-token-Spinner-1850, ${tokens.strokeWidthThicker}))`,
   },
 
   'extra-large': {
     height: '40px',
     width: '40px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1851, var(--semantic-token-Spinner-1852, ${tokens.strokeWidthThicker}))`,
   },
 
   huge: {
     height: '44px',
     width: '44px',
-    [vars.strokeWidth]: tokens.strokeWidthThickest,
+    [vars.strokeWidth]: `var(--ctrl-token-Spinner-1853, var(--semantic-token-Spinner-1854, ${tokens.strokeWidthThickest}))`,
   },
 });
 
 const useLabelStyles = makeStyles({
   inverted: {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: `var(--ctrl-token-Spinner-1855, var(--semantic-token-Spinner-1856, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
 
   'extra-tiny': {

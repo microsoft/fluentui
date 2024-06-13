@@ -29,7 +29,7 @@ export const cardCSSVars = {
 
 const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
   outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-  outlineWidth: tokens.strokeWidthThick,
+  outlineWidth: `var(--ctrl-token-Card-697, var(--semantic-token-Card-698, ${tokens.strokeWidthThick}))`,
   outlineOffset: '-2px', // FIXME: tokens.strokeWidthThick causes some weird bugs
 };
 
@@ -134,15 +134,15 @@ const useCardStyles = makeStyles({
 
   sizeSmall: {
     [cardCSSVars.cardSizeVar]: '8px',
-    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusSmall,
+    [cardCSSVars.cardBorderRadiusVar]: `var(--ctrl-token-Card-701, var(--semantic-token-Card-702, ${tokens.borderRadiusSmall}))`,
   },
   sizeMedium: {
     [cardCSSVars.cardSizeVar]: '12px',
-    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusMedium,
+    [cardCSSVars.cardBorderRadiusVar]: `var(--ctrl-token-Card-703, var(--semantic-token-Card-704, ${tokens.borderRadiusMedium}))`,
   },
   sizeLarge: {
     [cardCSSVars.cardSizeVar]: '16px',
-    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
+    [cardCSSVars.cardBorderRadiusVar]: `var(--ctrl-token-Card-705, var(--semantic-token-Card-706, ${tokens.borderRadiusLarge}))`,
   },
 
   interactive: {
@@ -152,8 +152,8 @@ const useCardStyles = makeStyles({
   },
 
   filled: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow4,
+    backgroundColor: `var(--ctrl-token-Card-707, var(--semantic-token-Card-708, ${tokens.colorNeutralBackground1}))`,
+    boxShadow: `var(--ctrl-token-Card-709, var(--semantic-token-Card-710, ${tokens.shadow4}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
@@ -161,8 +161,8 @@ const useCardStyles = makeStyles({
   },
   filledInteractive: {
     cursor: 'pointer',
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow4,
+    backgroundColor: `var(--ctrl-token-Card-711, var(--semantic-token-Card-712, ${tokens.colorNeutralBackground1}))`,
+    boxShadow: `var(--ctrl-token-Card-713, var(--semantic-token-Card-714, ${tokens.shadow4}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
@@ -170,15 +170,15 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      boxShadow: tokens.shadow8,
+      backgroundColor: `var(--ctrl-token-Card-715, var(--semantic-token-Card-716, ${tokens.colorNeutralBackground1Hover}))`,
+      boxShadow: `var(--ctrl-token-Card-717, var(--semantic-token-Card-718, ${tokens.shadow8}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      backgroundColor: `var(--ctrl-token-Card-719, var(--semantic-token-Card-720, ${tokens.colorNeutralBackground1Pressed}))`,
     },
   },
   filledInteractiveSelected: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundColor: `var(--ctrl-token-Card-721, var(--semantic-token-Card-722, ${tokens.colorNeutralBackground1Selected}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
@@ -186,13 +186,13 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorNeutralBackground1Selected,
+      backgroundColor: `var(--ctrl-token-Card-723, var(--semantic-token-Card-724, ${tokens.colorNeutralBackground1Selected}))`,
     },
   },
 
   filledAlternative: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
+    backgroundColor: `var(--ctrl-token-Card-725, var(--semantic-token-Card-726, ${tokens.colorNeutralBackground2}))`,
+    boxShadow: `var(--ctrl-token-Card-727, var(--semantic-token-Card-728, ${tokens.shadow4}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
@@ -200,8 +200,8 @@ const useCardStyles = makeStyles({
   },
   filledAlternativeInteractive: {
     cursor: 'pointer',
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
+    backgroundColor: `var(--ctrl-token-Card-729, var(--semantic-token-Card-730, ${tokens.colorNeutralBackground2}))`,
+    boxShadow: `var(--ctrl-token-Card-731, var(--semantic-token-Card-732, ${tokens.shadow4}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
@@ -209,15 +209,15 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground2Hover,
-      backgroundColor: tokens.colorNeutralBackground2Hover,
-      boxShadow: tokens.shadow8,
+      backgroundColor: `var(--ctrl-token-Card-733, var(--semantic-token-Card-734, ${tokens.colorNeutralBackground2Hover}))`,
+      boxShadow: `var(--ctrl-token-Card-735, var(--semantic-token-Card-736, ${tokens.shadow8}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      backgroundColor: `var(--ctrl-token-Card-737, var(--semantic-token-Card-738, ${tokens.colorNeutralBackground2Pressed}))`,
     },
   },
   filledAlternativeInteractiveSelected: {
-    backgroundColor: tokens.colorNeutralBackground2Selected,
+    backgroundColor: `var(--ctrl-token-Card-739, var(--semantic-token-Card-740, ${tokens.colorNeutralBackground2Selected}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
@@ -225,12 +225,12 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground2Selected,
-      backgroundColor: tokens.colorNeutralBackground2Selected,
+      backgroundColor: `var(--ctrl-token-Card-741, var(--semantic-token-Card-742, ${tokens.colorNeutralBackground2Selected}))`,
     },
   },
 
   outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Card-743, var(--semantic-token-Card-744, ${tokens.colorTransparentBackground}))`,
     boxShadow: 'none',
 
     '::after': {
@@ -239,7 +239,7 @@ const useCardStyles = makeStyles({
   },
   outlineInteractive: {
     cursor: 'pointer',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Card-745, var(--semantic-token-Card-746, ${tokens.colorTransparentBackground}))`,
     boxShadow: 'none',
 
     '::after': {
@@ -248,14 +248,14 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--ctrl-token-Card-747, var(--semantic-token-Card-748, ${tokens.colorTransparentBackgroundHover}))`,
 
       '::after': {
         ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       },
     },
     ':active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-Card-749, var(--semantic-token-Card-750, ${tokens.colorTransparentBackgroundPressed}))`,
 
       '::after': {
         ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
@@ -263,7 +263,7 @@ const useCardStyles = makeStyles({
     },
   },
   outlineInteractiveSelected: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-Card-751, var(--semantic-token-Card-752, ${tokens.colorTransparentBackgroundSelected}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
@@ -271,12 +271,12 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorTransparentBackgroundSelected,
+      backgroundColor: `var(--ctrl-token-Card-753, var(--semantic-token-Card-754, ${tokens.colorTransparentBackgroundSelected}))`,
     },
   },
 
   subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: `var(--ctrl-token-Card-755, var(--semantic-token-Card-756, ${tokens.colorSubtleBackground}))`,
     boxShadow: 'none',
 
     '::after': {
@@ -285,7 +285,7 @@ const useCardStyles = makeStyles({
   },
   subtleInteractive: {
     cursor: 'pointer',
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: `var(--ctrl-token-Card-757, var(--semantic-token-Card-758, ${tokens.colorSubtleBackground}))`,
     boxShadow: 'none',
 
     '::after': {
@@ -294,14 +294,14 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground1Hover,
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--ctrl-token-Card-759, var(--semantic-token-Card-760, ${tokens.colorSubtleBackgroundHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-Card-761, var(--semantic-token-Card-762, ${tokens.colorSubtleBackgroundPressed}))`,
     },
   },
   subtleInteractiveSelected: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    backgroundColor: `var(--ctrl-token-Card-763, var(--semantic-token-Card-764, ${tokens.colorSubtleBackgroundSelected}))`,
 
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
@@ -309,7 +309,7 @@ const useCardStyles = makeStyles({
 
     ':hover': {
       color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorSubtleBackgroundSelected,
+      backgroundColor: `var(--ctrl-token-Card-765, var(--semantic-token-Card-766, ${tokens.colorSubtleBackgroundSelected}))`,
     },
   },
 

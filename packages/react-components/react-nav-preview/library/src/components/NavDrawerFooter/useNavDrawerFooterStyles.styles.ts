@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalXXS} ${tokens.spacingVerticalXS}  ${tokens.spacingHorizontalMNudge}`,
     display: 'flex',
     flexDirection: 'column',
-    rowGap: tokens.spacingVerticalXXS,
+    rowGap: `var(--ctrl-token-NavDrawerFooter-1453, var(--semantic-token-NavDrawerFooter-1454, ${tokens.spacingVerticalXXS}))`,
   },
 });
 

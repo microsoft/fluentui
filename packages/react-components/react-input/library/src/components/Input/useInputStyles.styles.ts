@@ -21,18 +21,18 @@ const fieldHeights = {
 // If there is contentBefore or contentAfter, then the root and input slots use their individual padding.
 const horizontalPadding = {
   root: {
-    small: tokens.spacingHorizontalSNudge,
-    medium: tokens.spacingHorizontalMNudge,
-    large: tokens.spacingHorizontalM,
+    small: `var(--ctrl-token-Input-1161, var(--semantic-token-Input-1162, ${tokens.spacingHorizontalSNudge}))`,
+    medium: `var(--ctrl-token-Input-1163, var(--semantic-token-Input-1164, ${tokens.spacingHorizontalMNudge}))`,
+    large: `var(--ctrl-token-Input-1165, var(--semantic-token-Input-1166, ${tokens.spacingHorizontalM}))`,
   },
   input: {
-    small: tokens.spacingHorizontalXXS,
-    medium: tokens.spacingHorizontalXXS,
-    large: tokens.spacingHorizontalSNudge,
+    small: `var(--ctrl-token-Input-1167, var(--semantic-token-Input-1168, ${tokens.spacingHorizontalXXS}))`,
+    medium: `var(--ctrl-token-Input-1169, var(--semantic-token-Input-1170, ${tokens.spacingHorizontalXXS}))`,
+    large: `var(--ctrl-token-Input-1171, var(--semantic-token-Input-1172, ${tokens.spacingHorizontalSNudge}))`,
   },
   combined: {
-    small: tokens.spacingHorizontalS, // SNudge + XXS
-    medium: tokens.spacingHorizontalM, // MNudge + XXS
+    small: `var(--ctrl-token-Input-1173, var(--semantic-token-Input-1174, ${tokens.spacingHorizontalS}))`, // SNudge + XXS
+    medium: `var(--ctrl-token-Input-1175, var(--semantic-token-Input-1176, ${tokens.spacingHorizontalM}))`, // MNudge + XXS
     large: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
   },
 };
@@ -41,8 +41,8 @@ const useRootClassName = makeResetStyles({
   display: 'inline-flex',
   alignItems: 'center',
   flexWrap: 'nowrap',
-  gap: tokens.spacingHorizontalXXS,
-  borderRadius: tokens.borderRadiusMedium, // used for all but underline
+  gap: `var(--ctrl-token-Input-1177, var(--semantic-token-Input-1178, ${tokens.spacingHorizontalXXS}))`,
+  borderRadius: `var(--ctrl-token-Input-1179, var(--semantic-token-Input-1180, ${tokens.borderRadiusMedium}))`, // used for all but underline
   position: 'relative',
   boxSizing: 'border-box',
   verticalAlign: 'middle',
@@ -52,9 +52,9 @@ const useRootClassName = makeResetStyles({
   ...typographyStyles.body1,
 
   // appearance: outline (default)
-  backgroundColor: tokens.colorNeutralBackground1,
+  backgroundColor: `var(--ctrl-token-Input-1181, var(--semantic-token-Input-1182, ${tokens.colorNeutralBackground1}))`,
   border: `1px solid ${tokens.colorNeutralStroke1}`,
-  borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  borderBottomColor: `var(--ctrl-token-Input-1183, var(--semantic-token-Input-1184, ${tokens.colorNeutralStrokeAccessible}))`,
 
   // This is all for the bottom focus border.
   // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
@@ -71,8 +71,8 @@ const useRootClassName = makeResetStyles({
     // (Otherwise the radius would be automatically reduced to fit available space.)
     // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
     height: `max(2px, ${tokens.borderRadiusMedium})`,
-    borderBottomLeftRadius: tokens.borderRadiusMedium,
-    borderBottomRightRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: `var(--ctrl-token-Input-1185, var(--semantic-token-Input-1186, ${tokens.borderRadiusMedium}))`,
+    borderBottomRightRadius: `var(--ctrl-token-Input-1187, var(--semantic-token-Input-1188, ${tokens.borderRadiusMedium}))`,
 
     // Flat 2px border:
     // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
@@ -84,8 +84,8 @@ const useRootClassName = makeResetStyles({
     // Animation for focus OUT
     transform: 'scaleX(0)',
     transitionProperty: 'transform',
-    transitionDuration: tokens.durationUltraFast,
-    transitionDelay: tokens.curveAccelerateMid,
+    transitionDuration: `var(--ctrl-token-Input-1189, var(--semantic-token-Input-1190, ${tokens.durationUltraFast}))`,
+    transitionDelay: `var(--ctrl-token-Input-1191, var(--semantic-token-Input-1192, ${tokens.curveAccelerateMid}))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -96,8 +96,8 @@ const useRootClassName = makeResetStyles({
     // Animation for focus IN
     transform: 'scaleX(1)',
     transitionProperty: 'transform',
-    transitionDuration: tokens.durationNormal,
-    transitionDelay: tokens.curveDecelerateMid,
+    transitionDuration: `var(--ctrl-token-Input-1193, var(--semantic-token-Input-1194, ${tokens.durationNormal}))`,
+    transitionDelay: `var(--ctrl-token-Input-1195, var(--semantic-token-Input-1196, ${tokens.curveDecelerateMid}))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -106,7 +106,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+    borderBottomColor: `var(--ctrl-token-Input-1197, var(--semantic-token-Input-1198, ${tokens.colorCompoundBrandStrokePressed}))`,
   },
   ':focus-within': {
     outline: '2px solid transparent',
@@ -124,7 +124,7 @@ const useRootStyles = makeStyles({
   large: {
     minHeight: fieldHeights.large,
     ...typographyStyles.body2,
-    gap: tokens.spacingHorizontalSNudge,
+    gap: `var(--ctrl-token-Input-1199, var(--semantic-token-Input-1200, ${tokens.spacingHorizontalSNudge}))`,
   },
   outline: {
     // included in rootBaseStyles
@@ -132,16 +132,16 @@ const useRootStyles = makeStyles({
   outlineInteractive: {
     ':hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: `var(--ctrl-token-Input-1201, var(--semantic-token-Input-1202, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: `var(--ctrl-token-Input-1203, var(--semantic-token-Input-1204, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Input-1205, var(--semantic-token-Input-1206, ${tokens.colorTransparentBackground}))`,
     borderRadius: '0', // corners look strange if rounded
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
@@ -155,11 +155,11 @@ const useRootStyles = makeStyles({
   },
   underlineInteractive: {
     ':hover': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      borderBottomColor: `var(--ctrl-token-Input-1207, var(--semantic-token-Input-1208, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      borderBottomColor: `var(--ctrl-token-Input-1209, var(--semantic-token-Input-1210, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
     '::after': {
       // remove rounded corners from focus underline
@@ -182,24 +182,24 @@ const useRootStyles = makeStyles({
     },
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--ctrl-token-Input-1211, var(--semantic-token-Input-1212, ${tokens.colorNeutralBackground3}))`,
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Input-1213, var(--semantic-token-Input-1214, ${tokens.colorNeutralBackground1}))`,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
-    boxShadow: tokens.shadow2,
+    backgroundColor: `var(--ctrl-token-Input-1215, var(--semantic-token-Input-1216, ${tokens.colorNeutralBackground3}))`,
+    boxShadow: `var(--ctrl-token-Input-1217, var(--semantic-token-Input-1218, ${tokens.shadow2}))`,
   },
   // This shadow appearance is deprecated and will be removed in a future release.
   'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow2,
+    backgroundColor: `var(--ctrl-token-Input-1219, var(--semantic-token-Input-1220, ${tokens.colorNeutralBackground1}))`,
+    boxShadow: `var(--ctrl-token-Input-1221, var(--semantic-token-Input-1222, ${tokens.shadow2}))`,
   },
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Input-1223, var(--semantic-token-Input-1224, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -240,12 +240,12 @@ const useInputClassName = makeResetStyles({
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
   padding: `0 ${horizontalPadding.combined.medium}`,
-  color: tokens.colorNeutralForeground1,
+  color: `var(--ctrl-token-Input-1225, var(--semantic-token-Input-1226, ${tokens.colorNeutralForeground1}))`,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
 
   '::placeholder': {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--ctrl-token-Input-1227, var(--semantic-token-Input-1228, ${tokens.colorNeutralForeground4}))`,
     opacity: 1, // browser style override
   },
 
@@ -289,18 +289,18 @@ const useInputElementStyles = makeStyles({
     paddingRight: horizontalPadding.input.large,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--ctrl-token-Input-1229, var(--semantic-token-Input-1230, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--ctrl-token-Input-1231, var(--semantic-token-Input-1232, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Input-1233, var(--semantic-token-Input-1234, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
 
 const useContentClassName = makeResetStyles({
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  color: `var(--ctrl-token-Input-1235, var(--semantic-token-Input-1236, ${tokens.colorNeutralForeground3}))`, // "icon color" in design spec
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
@@ -309,7 +309,7 @@ const useContentClassName = makeResetStyles({
 
 const useContentStyles = makeStyles({
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Input-1237, var(--semantic-token-Input-1238, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   // Ensure resizable icons show up with the proper font size
   small: {

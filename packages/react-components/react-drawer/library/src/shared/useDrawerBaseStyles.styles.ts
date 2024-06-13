@@ -25,8 +25,8 @@ export const drawerDefaultStyles: GriffelResetStyle = {
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
+  backgroundColor: `var(--ctrl-token-DrawerBase-1, var(--semantic-token-DrawerBase-2, ${tokens.colorNeutralBackground1}))`,
+  color: `var(--ctrl-token-DrawerBase-3, var(--semantic-token-DrawerBase-4, ${tokens.colorNeutralForeground1}))`,
 };
 
 /**

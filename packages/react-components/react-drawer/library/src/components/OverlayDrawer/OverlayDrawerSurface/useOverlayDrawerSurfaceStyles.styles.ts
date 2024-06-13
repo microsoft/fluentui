@@ -13,7 +13,7 @@ const useBackdropResetStyles = makeResetStyles({
 
 const useBackdropStyles = makeStyles({
   nested: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-OverlayDrawerSurface-2933, var(--semantic-token-OverlayDrawerSurface-2934, ${tokens.colorTransparentBackground}))`,
   },
 });
 

@@ -32,10 +32,10 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: `var(--ctrl-token-TableHeaderCell-1963, var(--semantic-token-TableHeaderCell-1964, ${tokens.fontWeightRegular}))`,
     padding: `0px ${tokens.spacingHorizontalS}`,
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
+      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `var(--ctrl-token-TableHeaderCell-1965, var(--semantic-token-TableHeaderCell-1966, ${tokens.borderRadiusMedium}))` },
       { selector: 'focus-within' },
     ),
     position: 'relative',
@@ -43,10 +43,10 @@ const useStyles = makeStyles({
 
   rootInteractive: {
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--ctrl-token-TableHeaderCell-1967, var(--semantic-token-TableHeaderCell-1968, ${tokens.colorSubtleBackgroundHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--ctrl-token-TableHeaderCell-1969, var(--semantic-token-TableHeaderCell-1970, ${tokens.colorSubtleBackgroundPressed}))`,
     },
   },
 
@@ -71,7 +71,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
-    gap: tokens.spacingHorizontalXS,
+    gap: `var(--ctrl-token-TableHeaderCell-1971, var(--semantic-token-TableHeaderCell-1972, ${tokens.spacingHorizontalXS}))`,
     minHeight: '32px',
     flex: '1 1 0px',
     outlineStyle: 'none',
@@ -84,7 +84,7 @@ const useStyles = makeStyles({
   sortIcon: {
     display: 'flex',
     alignItems: 'center',
-    paddingTop: tokens.spacingVerticalXXS,
+    paddingTop: `var(--ctrl-token-TableHeaderCell-1973, var(--semantic-token-TableHeaderCell-1974, ${tokens.spacingVerticalXXS}))`,
   },
 
   resizeHandle: {},

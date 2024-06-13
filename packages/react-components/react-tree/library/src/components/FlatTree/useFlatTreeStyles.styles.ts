@@ -10,7 +10,7 @@ export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMot
 const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
-  rowGap: tokens.spacingVerticalXXS,
+  rowGap: `var(--ctrl-token-FlatTree-2851, var(--semantic-token-FlatTree-2852, ${tokens.spacingVerticalXXS}))`,
 });
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {

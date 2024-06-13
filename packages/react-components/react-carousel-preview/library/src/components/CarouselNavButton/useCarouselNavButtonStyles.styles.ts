@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     height: tokens.spacingVerticalS,
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalXS}`,
     boxSizing: 'content-box',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-CarouselNavButton-781, var(--semantic-token-CarouselNavButton-782, ${tokens.colorNeutralForeground1}))`,
     ...shorthands.borderWidth(0),
     '::after': {
       content: '""',
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     ...createCustomFocusIndicatorStyle({
       border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
       margin: `calc(-1 * ${tokens.strokeWidthThick})`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-CarouselNavButton-787, var(--semantic-token-CarouselNavButton-788, ${tokens.borderRadiusMedium}))`,
     }),
     '::after': {
       width: '16px',

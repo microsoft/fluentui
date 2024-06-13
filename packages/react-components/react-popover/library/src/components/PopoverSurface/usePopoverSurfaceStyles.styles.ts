@@ -20,9 +20,10 @@ export const arrowHeights: Record<PopoverSize, number> = {
  */
 const useStyles = makeStyles({
   root: {
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusMedium,
+    color: `var(--ctrl-token-PopoverSurface-1473, var(--semantic-token-PopoverSurface-1474, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--ctrl-token-PopoverSurface-1475, var(--semantic-token-PopoverSurface-1476, ${tokens.colorNeutralBackground1}))`,
+    borderRadius: `var(--ctrl-token-PopoverSurface-1479, var(--semantic-token-PopoverSurface-1480, ${tokens.borderRadiusMedium}))`,
+
     border: `1px solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
     ...createSlideStyles(10),
@@ -40,13 +41,13 @@ const useStyles = makeStyles({
   },
 
   inverted: {
-    backgroundColor: tokens.colorNeutralBackgroundStatic,
-    color: tokens.colorNeutralForegroundStaticInverted,
+    backgroundColor: `var(--ctrl-token-PopoverSurface-1481, var(--semantic-token-PopoverSurface-1482, ${tokens.colorNeutralBackgroundStatic}))`,
+    color: `var(--ctrl-token-PopoverSurface-1483, var(--semantic-token-PopoverSurface-1484, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
 
   brand: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--ctrl-token-PopoverSurface-1485, var(--semantic-token-PopoverSurface-1486, ${tokens.colorBrandBackground}))`,
+    color: `var(--ctrl-token-PopoverSurface-1487, var(--semantic-token-PopoverSurface-1488, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
 
   smallPadding: { padding: '12px' },

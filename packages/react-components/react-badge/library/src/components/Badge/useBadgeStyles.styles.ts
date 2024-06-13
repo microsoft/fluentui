@@ -23,9 +23,9 @@ const useRootClassName = makeResetStyles({
   width: '20px',
   minWidth: 'max-content',
   padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--ctrl-token-Badge-341, var(--semantic-token-Badge-342, ${tokens.borderRadiusCircular}))`,
   // Use a transparent stroke (rather than no border) so the border is visible in high contrast
-  borderColor: tokens.colorTransparentStroke,
+  borderColor: `var(--ctrl-token-Badge-343, var(--semantic-token-Badge-344, ${tokens.colorTransparentStroke}))`,
 
   '::after': {
     content: '""',
@@ -36,7 +36,7 @@ const useRootClassName = makeResetStyles({
     right: 0,
     borderStyle: 'solid',
     borderColor: 'inherit',
-    borderWidth: tokens.strokeWidthThin,
+    borderWidth: `var(--ctrl-token-Badge-345, var(--semantic-token-Badge-346, ${tokens.strokeWidthThin}))`,
     borderRadius: 'inherit',
   },
 });
@@ -85,9 +85,9 @@ const useRootStyles = makeStyles({
 
   // shape
 
-  square: { borderRadius: tokens.borderRadiusNone },
-  rounded: { borderRadius: tokens.borderRadiusMedium },
-  roundedSmallToTiny: { borderRadius: tokens.borderRadiusSmall },
+  square: { borderRadius: `var(--ctrl-token-Badge-347, var(--semantic-token-Badge-348, ${tokens.borderRadiusNone}))` },
+  rounded: { borderRadius: `var(--ctrl-token-Badge-349, var(--semantic-token-Badge-350, ${tokens.borderRadiusMedium}))` },
+  roundedSmallToTiny: { borderRadius: `var(--ctrl-token-Badge-351, var(--semantic-token-Badge-352, ${tokens.borderRadiusSmall}))` },
   circular: {
     // Set by useRootClassName
   },
@@ -107,36 +107,36 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
   'filled-brand': {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--ctrl-token-Badge-353, var(--semantic-token-Badge-354, ${tokens.colorBrandBackground}))`,
+    color: `var(--ctrl-token-Badge-355, var(--semantic-token-Badge-356, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--ctrl-token-Badge-357, var(--semantic-token-Badge-358, ${tokens.colorPaletteRedBackground3}))`,
+    color: `var(--ctrl-token-Badge-359, var(--semantic-token-Badge-360, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-important': {
-    backgroundColor: tokens.colorNeutralForeground1,
-    color: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Badge-361, var(--semantic-token-Badge-362, ${tokens.colorNeutralForeground1}))`,
+    color: `var(--ctrl-token-Badge-363, var(--semantic-token-Badge-364, ${tokens.colorNeutralBackground1}))`,
   },
   'filled-informative': {
-    backgroundColor: tokens.colorNeutralBackground5,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: `var(--ctrl-token-Badge-365, var(--semantic-token-Badge-366, ${tokens.colorNeutralBackground5}))`,
+    color: `var(--ctrl-token-Badge-367, var(--semantic-token-Badge-368, ${tokens.colorNeutralForeground3}))`,
   },
   'filled-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--ctrl-token-Badge-369, var(--semantic-token-Badge-370, ${tokens.colorPaletteDarkOrangeBackground3}))`,
+    color: `var(--ctrl-token-Badge-371, var(--semantic-token-Badge-372, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
+    backgroundColor: `var(--ctrl-token-Badge-373, var(--semantic-token-Badge-374, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--ctrl-token-Badge-375, var(--semantic-token-Badge-376, ${tokens.colorNeutralForeground1}))`,
   },
   'filled-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--ctrl-token-Badge-377, var(--semantic-token-Badge-378, ${tokens.colorPaletteGreenBackground3}))`,
+    color: `var(--ctrl-token-Badge-379, var(--semantic-token-Badge-380, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground3,
-    color: tokens.colorNeutralForeground1Static,
+    backgroundColor: `var(--ctrl-token-Badge-381, var(--semantic-token-Badge-382, ${tokens.colorPaletteYellowBackground3}))`,
+    color: `var(--ctrl-token-Badge-383, var(--semantic-token-Badge-384, ${tokens.colorNeutralForeground1Static}))`,
   },
 
   // appearance: ghost
@@ -145,28 +145,28 @@ const useRootStyles = makeStyles({
     // No shared colors between ghost appearances
   },
   'ghost-brand': {
-    color: tokens.colorBrandForeground1,
+    color: `var(--ctrl-token-Badge-385, var(--semantic-token-Badge-386, ${tokens.colorBrandForeground1}))`,
   },
   'ghost-danger': {
-    color: tokens.colorPaletteRedForeground3,
+    color: `var(--ctrl-token-Badge-387, var(--semantic-token-Badge-388, ${tokens.colorPaletteRedForeground3}))`,
   },
   'ghost-important': {
-    color: tokens.colorNeutralForeground1,
+    color: `var(--ctrl-token-Badge-389, var(--semantic-token-Badge-390, ${tokens.colorNeutralForeground1}))`,
   },
   'ghost-informative': {
-    color: tokens.colorNeutralForeground3,
+    color: `var(--ctrl-token-Badge-391, var(--semantic-token-Badge-392, ${tokens.colorNeutralForeground3}))`,
   },
   'ghost-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+    color: `var(--ctrl-token-Badge-393, var(--semantic-token-Badge-394, ${tokens.colorPaletteDarkOrangeForeground3}))`,
   },
   'ghost-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: `var(--ctrl-token-Badge-395, var(--semantic-token-Badge-396, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
   'ghost-success': {
-    color: tokens.colorPaletteGreenForeground3,
+    color: `var(--ctrl-token-Badge-397, var(--semantic-token-Badge-398, ${tokens.colorPaletteGreenForeground3}))`,
   },
   'ghost-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+    color: `var(--ctrl-token-Badge-399, var(--semantic-token-Badge-400, ${tokens.colorPaletteYellowForeground2}))`,
   },
 
   // appearance: outline
@@ -175,32 +175,32 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('currentColor'),
   },
   'outline-brand': {
-    color: tokens.colorBrandForeground1,
+    color: `var(--ctrl-token-Badge-401, var(--semantic-token-Badge-402, ${tokens.colorBrandForeground1}))`,
   },
   'outline-danger': {
-    color: tokens.colorPaletteRedForeground3,
+    color: `var(--ctrl-token-Badge-403, var(--semantic-token-Badge-404, ${tokens.colorPaletteRedForeground3}))`,
     ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
   },
   'outline-important': {
-    color: tokens.colorNeutralForeground3,
+    color: `var(--ctrl-token-Badge-405, var(--semantic-token-Badge-406, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
   },
   'outline-informative': {
-    color: tokens.colorNeutralForeground3,
+    color: `var(--ctrl-token-Badge-407, var(--semantic-token-Badge-408, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'outline-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+    color: `var(--ctrl-token-Badge-409, var(--semantic-token-Badge-410, ${tokens.colorPaletteDarkOrangeForeground3}))`,
   },
   'outline-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: `var(--ctrl-token-Badge-411, var(--semantic-token-Badge-412, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
   'outline-success': {
-    color: tokens.colorPaletteGreenForeground3,
+    color: `var(--ctrl-token-Badge-413, var(--semantic-token-Badge-414, ${tokens.colorPaletteGreenForeground3}))`,
     ...shorthands.borderColor(tokens.colorPaletteGreenBorder2),
   },
   'outline-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+    color: `var(--ctrl-token-Badge-415, var(--semantic-token-Badge-416, ${tokens.colorPaletteYellowForeground2}))`,
   },
 
   // appearance: tint
@@ -209,43 +209,43 @@ const useRootStyles = makeStyles({
     // No shared colors between tint appearances
   },
   'tint-brand': {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    backgroundColor: `var(--ctrl-token-Badge-417, var(--semantic-token-Badge-418, ${tokens.colorBrandBackground2}))`,
+    color: `var(--ctrl-token-Badge-419, var(--semantic-token-Badge-420, ${tokens.colorBrandForeground2}))`,
     ...shorthands.borderColor(tokens.colorBrandStroke2),
   },
   'tint-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground1,
-    color: tokens.colorPaletteRedForeground1,
+    backgroundColor: `var(--ctrl-token-Badge-421, var(--semantic-token-Badge-422, ${tokens.colorPaletteRedBackground1}))`,
+    color: `var(--ctrl-token-Badge-423, var(--semantic-token-Badge-424, ${tokens.colorPaletteRedForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
   },
   'tint-important': {
-    backgroundColor: tokens.colorNeutralForeground3,
-    color: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Badge-425, var(--semantic-token-Badge-426, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--ctrl-token-Badge-427, var(--semantic-token-Badge-428, ${tokens.colorNeutralBackground1}))`,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   'tint-informative': {
-    backgroundColor: tokens.colorNeutralBackground4,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: `var(--ctrl-token-Badge-429, var(--semantic-token-Badge-430, ${tokens.colorNeutralBackground4}))`,
+    color: `var(--ctrl-token-Badge-431, var(--semantic-token-Badge-432, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'tint-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
-    color: tokens.colorPaletteDarkOrangeForeground1,
+    backgroundColor: `var(--ctrl-token-Badge-433, var(--semantic-token-Badge-434, ${tokens.colorPaletteDarkOrangeBackground1}))`,
+    color: `var(--ctrl-token-Badge-435, var(--semantic-token-Badge-436, ${tokens.colorPaletteDarkOrangeForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder1),
   },
   'tint-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: `var(--ctrl-token-Badge-437, var(--semantic-token-Badge-438, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--ctrl-token-Badge-439, var(--semantic-token-Badge-440, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'tint-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground1,
-    color: tokens.colorPaletteGreenForeground1,
+    backgroundColor: `var(--ctrl-token-Badge-441, var(--semantic-token-Badge-442, ${tokens.colorPaletteGreenBackground1}))`,
+    color: `var(--ctrl-token-Badge-443, var(--semantic-token-Badge-444, ${tokens.colorPaletteGreenForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteGreenBorder1),
   },
   'tint-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground1,
-    color: tokens.colorPaletteYellowForeground1,
+    backgroundColor: `var(--ctrl-token-Badge-445, var(--semantic-token-Badge-446, ${tokens.colorPaletteYellowBackground1}))`,
+    color: `var(--ctrl-token-Badge-447, var(--semantic-token-Badge-448, ${tokens.colorPaletteYellowForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteYellowBorder1),
   },
 });
