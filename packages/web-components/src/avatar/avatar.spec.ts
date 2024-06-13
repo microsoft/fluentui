@@ -155,7 +155,7 @@ test.describe('Avatar Component', () => {
   test('should prioritize color derivation from colorId over name when set to "colorful"', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar color-id="pumpkin" name="John Doe" color="colorful"></fluent-avatar>
+        <fluent-avatar color-id="pumpkin" name="Steve Smith" color="colorful"></fluent-avatar>
       `;
     });
 

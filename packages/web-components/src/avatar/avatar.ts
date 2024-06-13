@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable, Observable, Updates } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
 import { toggleState } from '../utils/element-internals.js';
 import {
@@ -104,7 +104,7 @@ export class Avatar extends FASTElement {
    * HTML Attribute: color
    */
   @attr
-  public color?: AvatarColor = 'neutral';
+  public color?: AvatarColor | undefined;
 
   /**
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
@@ -112,6 +112,11 @@ export class Avatar extends FASTElement {
    */
   @attr({ attribute: 'color-id' })
   public colorId?: AvatarNamedColor | undefined;
+
+  /**
+   * Holds the current color state
+   */
+  private currentColor: string | undefined;
 
   constructor() {
     super();
@@ -124,9 +129,7 @@ export class Avatar extends FASTElement {
 
     Observable.getNotifier(this).subscribe(this);
 
-    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
-      this.handleChange(this, key);
-    });
+    this.generateColor();
   }
 
   public disconnectedCallback(): void {
@@ -142,8 +145,13 @@ export class Avatar extends FASTElement {
    * @param propertyName - the property name being changed
    */
   public handleChange(source: any, propertyName: string) {
-    if (propertyName === ('color' || 'colorId')) {
-      this.generateColor();
+    switch (propertyName) {
+      case 'color':
+      case 'colorId':
+        this.generateColor();
+        break;
+      default:
+        break;
     }
   }
 
@@ -152,16 +160,19 @@ export class Avatar extends FASTElement {
    * @internal
    */
   public generateColor(): void {
-    if (!this.color) {
-      return;
-    }
+    const colorful: boolean = this.color === AvatarColor.colorful;
+    const prev = this.currentColor;
 
-    const color =
-      this.color === AvatarColor.colorful
-        ? (Avatar.colors[getHashCode(this.colorId ?? this.name ?? '') % Avatar.colors.length] as AvatarColor)
-        : this.color;
+    toggleState(this.elementInternals, `${prev}`, false);
 
-    toggleState(this.elementInternals, color, !!this.color);
+    this.currentColor =
+      colorful && this.colorId
+        ? this.colorId
+        : colorful
+        ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
+        : this.color ?? AvatarColor.neutral;
+
+    toggleState(this.elementInternals, `${this.currentColor}`, true);
   }
 
   /**
