@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: add PartialShadowConfig type.",
+  "packageName": "@fluentui/style-utilities",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
