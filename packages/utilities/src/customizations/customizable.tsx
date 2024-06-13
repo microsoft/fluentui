@@ -7,14 +7,14 @@ import { MergeStylesShadowRootConsumer } from '../shadowDom/contexts/MergeStyles
 import { getWindow } from '../dom/getWindow';
 import { WindowContext } from '@fluentui/react-window-provider';
 import type { ICustomizerContext } from './CustomizerContext';
-import type { PartialShadowConfig } from '@fluentui/merge-styles';
+import type { ShadowConfig } from '@fluentui/merge-styles';
 
 import { memoizeFunction } from '../memoize';
 
 const memoizedMakeShadowConfig = memoizeFunction(makeShadowConfig);
 const mergeComponentStyles = memoizeFunction(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (defaultStyles: any, componentStyles: any, shadowConfig: PartialShadowConfig): any => {
+  (defaultStyles: any, componentStyles: any, shadowConfig: ShadowConfig): any => {
     return {
       ...defaultStyles,
       ...componentStyles,

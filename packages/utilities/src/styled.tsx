@@ -2,7 +2,7 @@ import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
 import { useMergeStylesHooks } from './shadowDom/index';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
-import type { IStyleSetBase, IStyleFunctionOrObject, PartialShadowConfig } from '@fluentui/merge-styles';
+import type { IStyleSetBase, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSetBase> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -34,7 +34,7 @@ export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyle
   __noStyleOverride__: boolean;
 
   /** Shadow DOM configuration object */
-  __shadowConfig__?: PartialShadowConfig;
+  __shadowConfig__?: ShadowConfig;
 };
 
 /**
