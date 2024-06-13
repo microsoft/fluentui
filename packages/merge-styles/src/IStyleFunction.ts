@@ -1,5 +1,5 @@
 import { IStyleSetBase } from './IStyleSet';
-import { DeepPartial } from './DeepPartial';
+import type { DeepPartialV2 } from './DeepPartial';
 
 /**
  * A style function takes in styleprops and returns a partial styleset.
@@ -7,7 +7,7 @@ import { DeepPartial } from './DeepPartial';
  */
 export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSetBase> = (
   props: TStylesProps,
-) => DeepPartial<TStyleSet>;
+) => DeepPartialV2<TStyleSet>;
 
 /**
  * Represents either a style function that takes in style props and returns a partial styleset,
@@ -16,4 +16,4 @@ export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSetBase> = (
  */
 export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSetBase> =
   | IStyleFunction<TStylesProps, TStyleSet>
-  | DeepPartial<TStyleSet>;
+  | DeepPartialV2<TStyleSet>;
