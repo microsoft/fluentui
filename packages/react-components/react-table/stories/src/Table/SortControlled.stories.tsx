@@ -146,7 +146,7 @@ export const SortControlled = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable aria-label="Table with controlled sort">
+    <Table sortable aria-label="Table with controlled sort" style={{ minWidth: '500px' }}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>

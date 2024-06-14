@@ -77,7 +77,7 @@ const columns = [
 
 export const CellActions = () => {
   return (
-    <Table aria-label="Table with cell actions">
+    <Table aria-label="Table with cell actions" style={{ minWidth: '500px' }}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (

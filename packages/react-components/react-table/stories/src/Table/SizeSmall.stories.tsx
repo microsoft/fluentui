@@ -67,7 +67,7 @@ const columns = [
 
 export const SizeSmall = () => {
   return (
-    <Table size="small" aria-label="Table with small size">
+    <Table size="small" aria-label="Table with small size" style={{ minWidth: '475px' }}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (
