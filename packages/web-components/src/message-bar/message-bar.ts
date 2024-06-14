@@ -1,5 +1,20 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
+import type { StaticallyComposableHTML } from '../utils/index.js';
+import { StartEnd } from '../patterns/index.js';
+import type { StartEndOptions } from '../patterns/index.js';
+import { applyMixins } from '../utils/apply-mixins.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarPoliteness, MessageBarShape } from './message-bar.options.js';
+
+/**
+ * MessageBar configuration options
+ * @public
+ */
+export type MessageBarOptions = StartEndOptions<MessageBar> & {
+  infoIcon?: StaticallyComposableHTML<MessageBar>;
+  errorIcon?: StaticallyComposableHTML<MessageBar>;
+  warningIcon?: StaticallyComposableHTML<MessageBar>;
+  successIcon?: StaticallyComposableHTML<MessageBar>;
+};
 
 /**
  * A Message Bar Custom HTML Element.
@@ -68,3 +83,13 @@ export class MessageBar extends FASTElement {
     this.$emit('dismiss', {});
   };
 }
+
+/**
+ * Mark internal because exporting class and interface of the same name
+ * confuses API documenter.
+ * TODO: https://github.com/microsoft/fast/issues/3317
+ * @internal
+ */
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface MessageBar extends StartEnd {}
+applyMixins(MessageBar, StartEnd);

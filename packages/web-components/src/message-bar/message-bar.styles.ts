@@ -72,24 +72,34 @@ export const styles: ElementStyles = css`
     padding: ${spacingVerticalMNudge} ${spacingHorizontalM};
   }
 
-  .icon {
+  .info,
+  .warning,
+  .error,
+  .success {
+    display: none;
     grid-area: icon;
-    display: flex;
     flex-direction: column;
     align-items: center;
     color: ${colorNeutralForeground3};
     margin-right: ${spacingHorizontalS};
   }
 
-  :host([intent='success']) .icon {
+  :host([intent='info']) .info,
+  :host([intent='warning']) .warning,
+  :host([intent='error']) .error,
+  :host([intent='success']) .success {
+    display: flex;
+  }
+
+  :host([intent='success']) .success {
     color: ${colorPaletteGreenForeground1};
   }
 
-  :host([intent='warning']) .icon {
+  :host([intent='warning']) .warning {
     color: ${colorPaletteDarkOrangeForeground1};
   }
 
-  :host([intent='error']) .icon {
+  :host([intent='error']) .error {
     color: ${colorPaletteRedForeground1};
   }
 
