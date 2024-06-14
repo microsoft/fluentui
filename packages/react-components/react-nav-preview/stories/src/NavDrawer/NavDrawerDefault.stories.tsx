@@ -101,10 +101,10 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
-          <NavItem href="https://www.bing.com" icon={<Announcements />} value="2">
+          <NavItem icon={<Announcements />} value="2">
             Announcements
           </NavItem>
-          <NavItem href="https://www.bing.com" icon={<EmployeeSpotlight />} value="3">
+          <NavItem icon={<EmployeeSpotlight />} value="3">
             Employee Spotlight
           </NavItem>
           <NavItem icon={<Search />} href="https://www.bing.com" value="4">

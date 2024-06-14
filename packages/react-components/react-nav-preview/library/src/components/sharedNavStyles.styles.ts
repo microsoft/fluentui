@@ -32,6 +32,11 @@ export const useRootDefaultClassName = makeResetStyles({
   // this element can change between a button and an anchor
   // so we need to reset box sizing to prevent horizontal overflow
   boxSizing: 'border-box',
+
+  transitionDuration: tokens.durationFast,
+  transitionTimingFunction: tokens.curveAccelerateMid,
+  transitionProperty: 'background',
+
   width: '100%',
   ...typographyStyles.body1,
   ':hover': {
@@ -64,6 +69,13 @@ export const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
       position: 'absolute',
+      animationDuration: tokens.durationFast,
+      animationFillMode: 'both',
+      animationTimingFunction: tokens.curveAccelerateMid,
+      animationName: {
+        '0%': { background: 'transparent' },
+        '100%': { background: tokens.colorCompoundBrandForeground1 },
+      },
       marginInlineStart: `-${navItemTokens.indicatorOffset}px`,
       backgroundColor: tokens.colorCompoundBrandForeground1,
       height: `${navItemTokens.indicatorHeight}px`,
