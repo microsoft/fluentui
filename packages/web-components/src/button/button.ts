@@ -35,7 +35,7 @@ export class Button extends FASTElement {
    */
   public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, prev, false);
+      toggleState(this.elementInternals, `${prev}`, false);
     }
     toggleState(this.elementInternals, `${next}`, true);
   }
@@ -253,7 +253,7 @@ export class Button extends FASTElement {
    */
   public shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, prev, false);
+      toggleState(this.elementInternals, `${prev}`, false);
     }
     toggleState(this.elementInternals, `${next}`, true);
   }
@@ -275,7 +275,7 @@ export class Button extends FASTElement {
    */
   public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, prev, false);
+      toggleState(this.elementInternals, `${prev}`, false);
     }
 
     toggleState(this.elementInternals, `${next}`, true);

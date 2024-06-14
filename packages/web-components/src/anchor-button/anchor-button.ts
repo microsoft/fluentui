@@ -238,7 +238,7 @@ export class AnchorButton extends BaseAnchor {
    */
   public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, prev, false);
+      toggleState(this.elementInternals, `${prev}`, false);
     }
     toggleState(this.elementInternals, `${next}`, true);
   }
@@ -260,7 +260,7 @@ export class AnchorButton extends BaseAnchor {
    */
   public shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, prev, false);
+      toggleState(this.elementInternals, `${prev}`, false);
     }
     toggleState(this.elementInternals, `${next}`, true);
   }
@@ -282,7 +282,7 @@ export class AnchorButton extends BaseAnchor {
    */
   public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, prev, false);
+      toggleState(this.elementInternals, `${prev}`, false);
     }
 
     toggleState(this.elementInternals, `${next}`, true);
