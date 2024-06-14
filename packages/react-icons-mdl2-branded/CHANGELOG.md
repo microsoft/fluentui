@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2-branded
 
-This log was last generated on Thu, 06 Jun 2024 07:26:46 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2024 15:25:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.71)
+
+Fri, 14 Jun 2024 15:25:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2-branded_v1.2.70..@fluentui/react-icons-mdl2-branded_v1.2.71)
+
+### Patches
+
+- Bump @fluentui/react-icons-mdl2 to v1.3.69 ([PR #31716](https://github.com/microsoft/fluentui/pull/31716) by beachball)
 
 ## [1.2.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.70)
 

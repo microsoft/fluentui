@@ -125,6 +125,9 @@ export const PresenceLifecycleCallbacks = () => {
           onMotionFinish={(ev, data) => {
             setStatusLog(entries => [[Date.now(), 'onMotionFinish', data.direction], ...entries]);
           }}
+          onMotionCancel={(ev, data) => {
+            setStatusLog(entries => [[Date.now(), 'onMotionCancel', data.direction], ...entries]);
+          }}
           visible={visible}
         >
           <div className={classes.item} />
