@@ -1,11 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import {
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  webDarkTheme,
-  webLightTheme,
-} from '@fluentui/tokens';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
 import { renderComponent } from '../helpers.stories.js';
 import { setTheme } from './set-theme.js';
