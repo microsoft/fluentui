@@ -98,7 +98,7 @@ export class Button extends FASTElement {
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The associated form element.
