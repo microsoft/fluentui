@@ -56,60 +56,17 @@ import {
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-
-/**
- * Selector for the `primary` state.
- * @public
- */
-const primaryState = css.partial`:is([state--primary], :state(primary))`;
-
-/**
- * Selector for the `outline` state.
- * @public
- */
-const outlineState = css.partial`:is([state--outline], :state(outline))`;
-
-/**
- * Selector for the `subtle` state.
- * @public
- */
-const subtleState = css.partial`:is([state--subtle], :state(subtle))`;
-
-/**
- * Selector for the `transparent` state.
- * @public
- */
-const transparentState = css.partial`:is([state--transparent], :state(transparent))`;
-
-/**
- * Selector for the `circular` state.
- * @public
- */
-const circularState = css.partial`:is([state--circular], :state(circular))`;
-
-/**
- * Selector for the `square` state.
- * @public
- */
-const squareState = css.partial`:is([state--square], :state(square))`;
-
-/**
- * Selector for the `small` state.
- * @public
- */
-const smallState = css.partial`:is([state--small], :state(small))`;
-
-/**
- * Selector for the `large` state.
- * @public
- */
-const largeState = css.partial`:is([state--large], :state(large))`;
-
-/**
- * Selector for the `iconOnly` state.
- * @public
- */
-const iconOnlyState = css.partial`:is([state--iconOnly], :state(iconOnly))`;
+import {
+  circularState,
+  iconOnlyState,
+  largeState,
+  outlineState,
+  primaryState,
+  smallState,
+  squareState,
+  subtleState,
+  transparentState,
+} from '../styles/states/index.js';
 
 /**
  * @internal

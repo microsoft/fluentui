@@ -18,6 +18,14 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
+import {
+  iconOnlyState,
+  largeState,
+  primaryState,
+  smallState,
+  subtleState,
+  transparentState,
+} from '../styles/states/index.js';
 
 // Need to support icon hover styles
 export const styles = css`
@@ -48,7 +56,7 @@ export const styles = css`
   }
 
   ::slotted(svg),
-  :host([size='large']) ::slotted(svg) {
+  :host(${largeState}) ::slotted(svg) {
     font-size: 40px;
     height: 40px;
     width: 40px;
@@ -62,61 +70,59 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(:is([appearance='primary'], [appearance='primary']:hover, [appearance='primary']:active))
-    ::slotted([slot='description']) {
+  :host(:is(${primaryState}, ${primaryState}:hover, ${primaryState}:active)) ::slotted([slot='description']) {
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(:is([appearance='subtle'], [appearance='subtle']:hover, [appearance='subtle']:active))
-    ::slotted([slot='description']),
-  :host([appearance='transparent']) ::slotted([slot='description']) {
+  :host(:is(${subtleState}, ${subtleState}:hover, ${subtleState}:active)) ::slotted([slot='description']),
+  :host(${transparentState}) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2};
   }
 
-  :host([appearance='transparent']:hover) ::slotted([slot='description']) {
+  :host(${transparentState}:hover) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandHover};
   }
 
-  :host([appearance='transparent']:active) ::slotted([slot='description']) {
+  :host(${transparentState}:active) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandPressed};
   }
 
-  :host(:is([disabled], [disabled][appearance], [disabled-focusable], [disabled-focusable][appearance]))
+  :host(:is(:disabled, :disabled[appearance], [disabled-focusable], [disabled-focusable][appearance]))
     ::slotted([slot='description']) {
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([size='small']) {
+  :host(${smallState}) {
     padding: 8px;
     padding-bottom: 10px;
   }
 
-  :host([icon-only]) {
+  :host(${iconOnlyState}) {
     min-width: 52px;
     max-width: 52px;
     padding: ${spacingHorizontalSNudge};
   }
 
-  :host([icon-only][size='small']) {
+  :host(${iconOnlyState}${smallState}) {
     min-width: 48px;
     max-width: 48px;
     padding: ${spacingHorizontalXS};
   }
 
-  :host([icon-only][size='large']) {
+  :host(${iconOnlyState}${largeState}) {
     min-width: 56px;
     max-width: 56px;
     padding: ${spacingHorizontalS};
   }
 
-  :host([size='large']) {
+  :host(${largeState}) {
     padding-top: 18px;
     padding-inline: 16px;
     padding-bottom: 20px;
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host([size='large']) ::slotted([slot='description']) {
+  :host(${largeState}) ::slotted([slot='description']) {
     font-size: ${fontSizeBase300};
   }
 `;
