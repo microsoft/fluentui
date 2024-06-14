@@ -1,5 +1,5 @@
 import { IStyleSetBase } from './IStyleSet';
-import { DeepPartial } from './DeepPartial';
+import type { DeepPartialV2 as DeepPartial } from './DeepPartial';
 
 /**
  * A style function takes in styleprops and returns a partial styleset.
