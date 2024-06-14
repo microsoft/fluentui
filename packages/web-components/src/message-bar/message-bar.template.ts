@@ -44,8 +44,6 @@ export function messageBarTemplate<T extends MessageBar>(options: MessageBarOpti
   return html<T>`
     <template
       role="status"
-      aria-live="${(x: T) => x.politeness}"
-      aria-labelledby="${(x: T) => x.ariaLabelledBy}"
     >
       <span class="info">
         <slot name="info-icon">

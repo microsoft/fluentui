@@ -26,16 +26,6 @@ export type MessageBarOptions = StartEndOptions<MessageBar> & {
  */
 export class MessageBar extends FASTElement {
   /**
-   * Sets the aria-labelledby attribute of the control.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `aria-labelledby`
-   */
-  @attr({ attribute: 'aria-labelledby' })
-  ariaLabelledBy: string | null = null;
-
-  /**
    * Sets the shape of the control.
    *
    * @public
@@ -74,6 +64,18 @@ export class MessageBar extends FASTElement {
    */
   @attr
   politeness: MessageBarPoliteness = 'polite';
+
+  /**
+   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  protected elementInternals: ElementInternals = this.attachInternals();
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'status';
+  }
 
   /**
    * @public
