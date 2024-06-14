@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 14 Jun 2024 07:22:49 GMT",
+      "tag": "@fluentui/react_v8.118.7",
+      "version": "8.118.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e0ee62f419aac133f980bc007589e6bc98d70a86",
+            "comment": "fix: configure e2e target properly in order to make fix affected e2e target execution on ci"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 07:26:46 GMT",
       "tag": "@fluentui/react_v8.118.7",
       "version": "8.118.7",
