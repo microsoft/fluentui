@@ -8,7 +8,7 @@ export type IStyleBase = IRawStyle | string | false | null | undefined;
 /**
  * {@docCategory IStyleBaseArray}
  */
-export interface IStyleBaseArray extends Array<IStyleBase | IStyleBaseArray> {}
+export interface IStyleBaseArray extends Array<IStyle> {}
 
 /**
  * IStyleObject extends a raw style objects, but allows selectors to be defined

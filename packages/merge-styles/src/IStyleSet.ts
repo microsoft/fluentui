@@ -40,7 +40,8 @@ export interface IStyleSetBase {
  * property.
  */
 export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> = {
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+  // eslint-disable-next-line deprecation/deprecation
+  [P in keyof _Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
 } & IShadowConfig;
@@ -49,7 +50,8 @@ export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> 
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
  */
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+  // eslint-disable-next-line deprecation/deprecation
+  [P in keyof _Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
 } & IShadowConfig;
@@ -59,7 +61,8 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
+  // eslint-disable-next-line deprecation/deprecation
+  [P in keyof _Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
   subComponentStyles: {
     [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<
@@ -68,6 +71,6 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
   };
 } & IShadowConfig;
 
-interface IShadowConfig {
+type IShadowConfig = {
   __shadowConfig__?: ShadowConfig;
-}
+};

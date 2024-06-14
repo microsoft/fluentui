@@ -1,4 +1,5 @@
 import type { IRawStyleBase } from './IRawStyleBase';
+import type { IStyle } from './IStyle';
 
 /**
  * IRawStyle extends a raw style object, but allows selectors to be defined
@@ -28,7 +29,3 @@ export interface IRawStyle extends IRawStyleBase {
     [key: string]: IStyle;
   };
 }
-
-type IStyleBase = IRawStyle | string | false | null | undefined;
-interface IStyleBaseArray extends Array<IStyleBase | IStyleBaseArray> {}
-type IStyle = IStyleBase | IStyleBaseArray;

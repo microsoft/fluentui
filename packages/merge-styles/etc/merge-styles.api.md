@@ -13,28 +13,30 @@ export type AddSheetCallback = ({ key, sheet }: {
 // @public (undocumented)
 export const cloneCSSStyleSheet: (srcSheet: CSSStyleSheet, targetSheet: CSSStyleSheet) => CSSStyleSheet;
 
-// Warning: (ae-forgotten-export) The symbol "Missing_2" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "Missing_3" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | Missing_2): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
+export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | Missing_3): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
+
+// Warning: (ae-forgotten-export) The symbol "MissingOrShadowConfig_2" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function concatStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | MissingOrShadowConfig_2, styleSet2: TStyleSet2 | Missing_3): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | Missing_2 | ShadowConfig, styleSet2: TStyleSet2 | Missing_2): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | MissingOrShadowConfig_2, styleSet2: TStyleSet2 | Missing_3, styleSet3: TStyleSet3 | Missing_3): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | Missing_2 | ShadowConfig, styleSet2: TStyleSet2 | Missing_2, styleSet3: TStyleSet3 | Missing_2): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | MissingOrShadowConfig_2, styleSet2: TStyleSet2 | Missing_3, styleSet3: TStyleSet3 | Missing_3, styleSet4: TStyleSet4 | Missing_3): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | Missing_2 | ShadowConfig, styleSet2: TStyleSet2 | Missing_2, styleSet3: TStyleSet3 | Missing_2, styleSet4: TStyleSet4 | Missing_2): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(styleSet1: TStyleSet1 | MissingOrShadowConfig_2, styleSet2: TStyleSet2 | Missing_3, styleSet3: TStyleSet3 | Missing_3, styleSet4: TStyleSet4 | Missing_3, styleSet5: TStyleSet5 | Missing_3): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(styleSet1: TStyleSet1 | Missing_2 | ShadowConfig, styleSet2: TStyleSet2 | Missing_2, styleSet3: TStyleSet3 | Missing_2, styleSet4: TStyleSet4 | Missing_2, styleSet5: TStyleSet5 | Missing_2): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(styleSet1: TStyleSet1 | MissingOrShadowConfig_2, styleSet2: TStyleSet2 | Missing_3, styleSet3: TStyleSet3 | Missing_3, styleSet4: TStyleSet4 | Missing_3, styleSet5: TStyleSet5 | Missing_3, styleSet6: TStyleSet6 | Missing_3): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5> & ObjectOnly<TStyleSet6>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(styleSet1: TStyleSet1 | Missing_2 | ShadowConfig, styleSet2: TStyleSet2 | Missing_2, styleSet3: TStyleSet3 | Missing_2, styleSet4: TStyleSet4 | Missing_2, styleSet5: TStyleSet5 | Missing_2, styleSet6: TStyleSet6 | Missing_2): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5> & ObjectOnly<TStyleSet6>>;
-
-// @public
-export function concatStyleSets(...styleSets: (IStyleSet | Missing_2 | ShadowConfig)[]): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet | MissingOrShadowConfig_2)[]): IConcatenatedStyleSet<any>;
 
 // Warning: (ae-forgotten-export) The symbol "DeepPartialV2" needs to be exported by the entry point index.d.ts
 //
@@ -65,7 +67,7 @@ export const GLOBAL_STYLESHEET_KEY = "__global__";
 //
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
-    [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
@@ -114,7 +116,7 @@ export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
-    [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: string;
 } & {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
@@ -143,7 +145,7 @@ export interface IRawStyle extends IRawStyleBase {
     displayName?: string;
     // @deprecated (undocumented)
     selectors?: {
-        [key: string]: IStyle_2;
+        [key: string]: IStyle;
     };
 }
 
@@ -453,7 +455,7 @@ export type IStyle = IStyleBase | IStyleBaseArray;
 export type IStyleBase = IRawStyle | string | false | null | undefined;
 
 // @public (undocumented)
-export interface IStyleBaseArray extends Array<IStyleBase | IStyleBaseArray> {
+export interface IStyleBaseArray extends Array<IStyle> {
 }
 
 // @public
@@ -466,7 +468,7 @@ export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSetBase
 export type IStyleSet<TStyleSet extends IStyleSetBase = {
     [key: string]: any;
 }> = {
-    [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
@@ -513,22 +515,24 @@ export const makeShadowConfig: (stylesheetKey: string, inShadow: boolean, window
 // @public
 export function mergeCss(args: StyleArgWithShadow | StyleArgWithShadow[], options?: IStyleOptions): string;
 
-// Warning: (ae-forgotten-export) The symbol "Missing" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "Missing_2" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | Missing], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
+export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | Missing_2], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
+
+// Warning: (ae-forgotten-export) The symbol "MissingOrShadowConfig" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | MissingOrShadowConfig, TStyleSet2 | Missing_2], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | Missing | ShadowConfig, TStyleSet2 | Missing], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
+export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [TStyleSet1 | MissingOrShadowConfig, TStyleSet2 | Missing_2, TStyleSet3 | Missing_2], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [TStyleSet1 | Missing | ShadowConfig, TStyleSet2 | Missing, TStyleSet3 | Missing], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
+export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [TStyleSet1 | MissingOrShadowConfig, TStyleSet2 | Missing_2, TStyleSet3 | Missing_2, TStyleSet4 | Missing_2], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [TStyleSet1 | Missing | ShadowConfig, TStyleSet2 | Missing, TStyleSet3 | Missing, TStyleSet4 | Missing], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
-
-// @public
-export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | Missing], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
+export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | Missing_2], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 // Warning: (ae-forgotten-export) The symbol "StyleArg" needs to be exported by the entry point index.d.ts
 //
@@ -539,22 +543,22 @@ export function mergeStyles(...args: StyleArg[]): string;
 export function mergeStyles(shadowConfig: ShadowConfig, ...args: StyleArg[]): string;
 
 // @public
-export function mergeStyleSets<TStyleSet>(styleSet: TStyleSet | Missing): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
+export function mergeStyleSets<TStyleSet>(styleSet: TStyleSet | Missing_2): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 // @public
-export function mergeStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | Missing, styleSet2: TStyleSet2 | Missing): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
+export function mergeStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | Missing_2, styleSet2: TStyleSet2 | Missing_2): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
-export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | Missing, styleSet2: TStyleSet2 | Missing, styleSet3: TStyleSet3 | Missing): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
+export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | Missing_2, styleSet2: TStyleSet2 | Missing_2, styleSet3: TStyleSet3 | Missing_2): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
-export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | Missing, styleSet2: TStyleSet2 | Missing, styleSet3: TStyleSet3 | Missing, styleSet4: TStyleSet4 | Missing): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | Missing_2, styleSet2: TStyleSet2 | Missing_2, styleSet3: TStyleSet3 | Missing_2, styleSet4: TStyleSet4 | Missing_2): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeStyleSets(...styleSets: Array<IStyleSet | Missing | ShadowConfig>): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet | MissingOrShadowConfig>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
-export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | Missing>): IProcessedStyleSet<any>;
+export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | Missing_2>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
 export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
@@ -638,7 +642,6 @@ export const SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS: boolean;
 
 // Warnings were encountered during analysis:
 //
-// lib/IRawStyle.d.ts:24:9 - (ae-forgotten-export) The symbol "IStyle_2" needs to be exported by the entry point index.d.ts
 // lib/IStyleSet.d.ts:62:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)

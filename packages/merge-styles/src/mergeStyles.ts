@@ -6,7 +6,8 @@ import { getStyleOptions } from './StyleOptionsState';
 import { Stylesheet } from './Stylesheet';
 import { styleToClassName } from './styleToClassName';
 
-type StyleArg = IStyle | IStyleBaseArray | false | null | undefined;
+type Missing = false | null | undefined;
+type StyleArg = IStyle | IStyleBaseArray | Missing;
 type StyleArgWithShadow = StyleArg | ShadowConfig;
 
 export function mergeStyles(...args: StyleArg[]): string;
