@@ -44,9 +44,6 @@ export function messageBarTemplate<T extends MessageBar>(options: MessageBarOpti
   return html<T>`
     <template
       role="status"
-      layout="${(x: T) => x.layout}"
-      shape="${(x: T) => x.shape}"
-      intent="${(x: T) => x.intent}"
       aria-live="${(x: T) => x.politeness}"
       aria-labelledby="${(x: T) => x.ariaLabelledBy}"
     >
