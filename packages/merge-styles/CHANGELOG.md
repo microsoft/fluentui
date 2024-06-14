@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Thu, 06 Jun 2024 07:26:46 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2024 15:25:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.10)
+
+Fri, 14 Jun 2024 15:25:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.9..@fluentui/merge-styles_v8.6.10)
+
+### Patches
+
+- fix(merge-styles): improve DeepPartial type infinite recursion triggerpoint ([PR #31703](https://github.com/microsoft/fluentui/pull/31703) by martinhochel@microsoft.com)
 
 ## [8.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.9)
 
