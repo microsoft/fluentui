@@ -179,12 +179,12 @@ export function mergeCssSets<TStyleSet>(
  * @param options - (optional) Options to use when creating rules.
  */
 export function mergeCssSets(styleSets: any[], options?: IStyleOptions): IProcessedStyleSet<any> {
-  const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
+  const classNameSet = { subComponentStyles: {} } as IProcessedStyleSet<any>;
 
   let shadowConfig: ShadowConfig | undefined = undefined;
   let styleSet;
   if (isShadowConfig(styleSets[0])) {
-    shadowConfig = styleSets[0] as ShadowConfig;
+    shadowConfig = styleSets[0];
     styleSet = styleSets[1];
   } else {
     styleSet = styleSets[0];
@@ -207,7 +207,7 @@ export function mergeCssSets(styleSets: any[], options?: IStyleOptions): IProces
   for (const styleSetArea in concatenatedStyleSet) {
     if (concatenatedStyleSet.hasOwnProperty(styleSetArea)) {
       if (styleSetArea === 'subComponentStyles') {
-        classNameSet.subComponentStyles = (concatenatedStyleSet as IConcatenatedStyleSet<any>).subComponentStyles || {};
+        classNameSet.subComponentStyles = concatenatedStyleSet.subComponentStyles || {};
         continue;
       } else if (styleSetArea === '__shadowConfig__') {
         continue;
@@ -222,12 +222,10 @@ export function mergeCssSets(styleSets: any[], options?: IStyleOptions): IProces
 
         if (registration) {
           registrations.push(registration);
-          // FIXME: classNameSet invalid types - exposed in TS 4.5 - cast needed
-          (classNameSet as Record<string, any>)[styleSetArea] = classes.concat([registration.className]).join(' ');
+          classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
         }
       } else {
-        // FIXME: classNameSet invalid types - exposed in TS 4.5 - cast needed
-        (classNameSet as Record<string, any>)[styleSetArea] = classes.join(' ');
+        classNameSet[styleSetArea] = classes.join(' ');
       }
     }
   }

@@ -65,7 +65,7 @@ export const GLOBAL_STYLESHEET_KEY = "__global__";
 //
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
@@ -114,7 +114,7 @@ export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: string;
+    [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
@@ -466,7 +466,7 @@ export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSetBase
 export type IStyleSet<TStyleSet extends IStyleSetBase = {
     [key: string]: any;
 }> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
@@ -569,12 +569,16 @@ export { Omit_2 as Omit }
 export function setRTL(isRTL: boolean): void;
 
 // @public (undocumented)
-export type ShadowConfig = {
-    stylesheetKey: string;
-    inShadow: boolean;
-    window?: Window;
+export interface ShadowConfig {
+    // (undocumented)
     __isShadowConfig__: true;
-};
+    // (undocumented)
+    inShadow: boolean;
+    // (undocumented)
+    stylesheetKey: string;
+    // (undocumented)
+    window?: Window;
+}
 
 // @public (undocumented)
 export class ShadowDomStylesheet extends Stylesheet {
@@ -635,7 +639,7 @@ export const SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS: boolean;
 // Warnings were encountered during analysis:
 //
 // lib/IRawStyle.d.ts:24:9 - (ae-forgotten-export) The symbol "IStyle_2" needs to be exported by the entry point index.d.ts
-// lib/IStyleSet.d.ts:61:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:62:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
