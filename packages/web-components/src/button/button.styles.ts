@@ -76,6 +76,7 @@ export const baseButtonStyles = css`
 
   :host {
     --icon-spacing: ${spacingHorizontalSNudge};
+    position: relative;
     contain: layout style;
     vertical-align: middle;
     align-items: center;
