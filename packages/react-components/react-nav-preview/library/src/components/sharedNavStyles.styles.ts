@@ -65,7 +65,7 @@ export const useIndicatorStyles = makeStyles({
     '::after': {
       position: 'absolute',
       marginInlineStart: `-${navItemTokens.indicatorOffset}px`,
-      backgroundColor: tokens.colorCompoundBrandStroke,
+      backgroundColor: tokens.colorCompoundBrandForeground1,
       height: `${navItemTokens.indicatorHeight}px`,
       width: `${navItemTokens.indicatorWidth}px`,
       borderRadius: tokens.borderRadiusCircular,
@@ -101,7 +101,7 @@ export const useIconStyles = makeStyles({
   selected: {
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
-      color: tokens.colorCompoundBrandStroke,
+      color: tokens.colorCompoundBrandForeground1,
     },
     [`& .${iconRegularClassName}`]: {
       display: 'none',
