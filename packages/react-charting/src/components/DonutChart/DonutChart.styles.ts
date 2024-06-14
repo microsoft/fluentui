@@ -16,8 +16,9 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       className,
     ],
     chart: {
-      width: width,
-      height: height,
+      position: 'relative',
+      width,
+      height,
       boxSizing: 'content-box',
       overflow: 'visible',
       alignmentAdjust: 'center',

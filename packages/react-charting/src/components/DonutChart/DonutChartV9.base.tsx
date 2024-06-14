@@ -159,7 +159,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
         </FocusZone>
         <div
           style={{
-            position: 'fixed',
+            position: 'absolute',
             top: this.state.clickPosition.y,
             left: this.state.clickPosition.x,
             right: this.state.clickPosition.x,
