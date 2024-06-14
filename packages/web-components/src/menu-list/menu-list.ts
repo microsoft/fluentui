@@ -89,10 +89,8 @@ export class MenuList extends FASTElement {
    * @public
    */
   public collapseExpandedItem(): void {
-    if (this.expandedItem !== null) {
-      this.expandedItem.expanded = false;
-      this.expandedItem = null;
-    }
+    this.expandedItem?.submenu?.hidePopover();
+    this.expandedItem = null;
   }
 
   /**
@@ -165,23 +163,14 @@ export class MenuList extends FASTElement {
     }
 
     e.preventDefault();
+
     const changedItem: MenuItem = e.target as any as MenuItem;
 
     // closing an expanded item without opening another
-    if (this.expandedItem !== null && changedItem === this.expandedItem && changedItem.expanded === false) {
-      this.expandedItem = null;
-      return;
-    }
-
-    if (changedItem.expanded) {
-      if (this.expandedItem !== null && this.expandedItem !== changedItem) {
-        this.expandedItem.expanded = false;
-      }
-      this.menuItems[this.focusIndex].setAttribute('tabindex', '-1');
-      this.expandedItem = changedItem;
-      this.focusIndex = this.menuItems.indexOf(changedItem);
-      changedItem.setAttribute('tabindex', '0');
-    }
+    changedItem.submenu?.showPopover();
+    this.expandedItem = changedItem;
+    this.focusIndex = this.menuItems.indexOf(changedItem);
+    changedItem.setAttribute('tabindex', '0');
   };
 
   private removeItemListeners(items: HTMLElement[] = this.items): void {

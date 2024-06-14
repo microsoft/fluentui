@@ -1,5 +1,5 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { elements, html, ref, slotted, when } from '@microsoft/fast-element';
+import { elements, html, slotted, when } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import { MenuItemRole } from './menu-item.js';
@@ -14,64 +14,56 @@ const chevronRight16Filled = html.partial(
 
 export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-  <template
-      aria-haspopup="${x => (x.hasSubmenu ? 'menu' : void 0)}"
+    <template
+      aria-haspopup="${x => (!!x.submenu ? 'menu' : void 0)}"
       aria-checked="${x => (x.role !== MenuItemRole.menuitem ? x.checked : void 0)}"
       aria-disabled="${x => x.disabled}"
-      aria-expanded="${x => x.expanded}"
+      aria-expanded="${x => (!!x.submenu ? 'false' : void 0)}"
       @keydown="${(x, c) => x.handleMenuItemKeyDown(c.event as KeyboardEvent)}"
       @click="${(x, c) => x.handleMenuItemClick(c.event as MouseEvent)}"
       @mouseover="${(x, c) => x.handleMouseOver(c.event as MouseEvent)}"
       @mouseout="${(x, c) => x.handleMouseOut(c.event as MouseEvent)}"
-  >
-          ${when(
-            x => x.role === MenuItemRole.menuitemcheckbox,
-            html<MenuItem>`
-              <div part="input-container" class="input-container">
-                <span part="checkbox" class="checkbox">
-                  <slot name="checkbox-indicator"> ${staticallyCompose(options.checkboxIndicator)} </slot>
-                </span>
-              </div>
-            `,
-          )}
-          ${when(
-            x => x.role === MenuItemRole.menuitemradio,
-            html<MenuItem>`
-              <div part="input-container" class="input-container">
-                <span part="radio" class="radio">
-                  <slot name="radio-indicator"> ${staticallyCompose(options.radioIndicator)} </slot>
-                </span>
-              </div>
-            `,
-          )}
-      </div>
+      @toggle="${(x, c) => x.toggleHandler(c.event as ToggleEvent)}"
+    >
+      ${when(
+        x => x.role === MenuItemRole.menuitemcheckbox,
+        html<MenuItem>`
+          <span part="checkbox" class="checkbox">
+            <slot name="checkbox-indicator"> ${staticallyCompose(options.checkboxIndicator)} </slot>
+          </span>
+        `,
+      )}
+      ${when(
+        x => x.role === MenuItemRole.menuitemradio,
+        html<MenuItem>`
+          <span part="radio" class="radio">
+            <slot name="radio-indicator"> ${staticallyCompose(options.radioIndicator)} </slot>
+          </span>
+        `,
+      )}
       ${startSlotTemplate(options)}
-      <span class="content" part="content">
-          <slot></slot>
-      </span>
+      <div part="content" class="content">
+        <slot></slot>
+      </div
       ${endSlotTemplate(options)}
       ${when(
-        x => x.hasSubmenu,
+        x => !!x.submenu,
         html<T>`
           <div part="expand-collapse-glyph-container" class="expand-collapse-glyph-container">
-            <span part="expand-collapse" class="expand-collapse">
-              <slot name="expand-collapse-indicator"> ${staticallyCompose(options.expandCollapseGlyph)} </slot>
-            </span>
+            <slot name="expand-collapse-indicator"> ${staticallyCompose(options.expandCollapseGlyph)} </slot>
           </div>
         `,
       )}
-      <span
-          ?hidden="${x => !x.expanded}"
-          class="submenu-container"
-          part="submenu-container"
-          ${ref('submenuContainer')}
-      >
-          <slot name="submenu" ${slotted({
+
+        <slot
+          name="submenu"
+          ${slotted({
             property: 'slottedSubmenu',
             filter: elements("[role='menu']"),
-          })}></slot>
-      </span>
-  </template>
+          })}
+        ></slot>
+
+    </template>
   `;
 }
 

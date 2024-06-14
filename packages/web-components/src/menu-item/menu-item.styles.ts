@@ -200,4 +200,37 @@ export const styles = css`
     grid-column: 4 / span 1;
     justify-self: flex-end;
   }
+
+  @layer popover {
+    :host {
+      position: relative;
+      anchor-name: --menu-trigger;
+      container-name: menuitem
+      container-type: inline-size;
+    }
+
+    ::slotted([popover]) {
+      inset-area: inline-end span-block-end;
+      margin: 0;
+      max-height: var(--menu-max-height, auto);
+      position-anchor: --menu-trigger;
+      position-try-options: flip-inline;
+      position: absolute;
+      z-index: 1;
+    }
+
+    ::slotted([popover]:not(:popover-open)) {
+      display: none;
+    }
+
+    ::slotted([popover]:popover-open) {
+      inset: unset;
+    }
+
+    @supports not (anchor-name: --anchor) {
+      ::slotted([popover]:popover-open) {
+        translate: var(--menu-item-width, 0) 0;
+      }
+    }
+  }
 `;
