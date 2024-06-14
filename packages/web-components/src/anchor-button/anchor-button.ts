@@ -240,7 +240,9 @@ export class AnchorButton extends BaseAnchor {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-    toggleState(this.elementInternals, `${next}`, true);
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**
@@ -262,7 +264,9 @@ export class AnchorButton extends BaseAnchor {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-    toggleState(this.elementInternals, `${next}`, true);
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**
@@ -284,8 +288,9 @@ export class AnchorButton extends BaseAnchor {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-
-    toggleState(this.elementInternals, `${next}`, true);
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**
@@ -304,7 +309,7 @@ export class AnchorButton extends BaseAnchor {
    * @param next - the next state
    */
   public iconOnlyChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'icon', next);
+    toggleState(this.elementInternals, 'icon', !!next);
   }
 }
 

@@ -37,7 +37,9 @@ export class Button extends FASTElement {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-    toggleState(this.elementInternals, `${next}`, true);
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**
@@ -255,7 +257,9 @@ export class Button extends FASTElement {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-    toggleState(this.elementInternals, `${next}`, true);
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**
@@ -277,8 +281,9 @@ export class Button extends FASTElement {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-
-    toggleState(this.elementInternals, `${next}`, true);
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**
