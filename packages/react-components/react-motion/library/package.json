@@ -25,14 +25,17 @@
     "start": "yarn storybook",
     "storybook": "yarn --cwd ../stories storybook",
     "test": "jest --passWithNoTests",
-    "type-check": "just-scripts type-check"
+    "type-check": "just-scripts type-check",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.19.0",

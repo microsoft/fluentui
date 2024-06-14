@@ -32,6 +32,16 @@ export type PresenceComponentProps = {
   onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
   /**
+   * Callback that is called when the whole motion is cancelled. When a motion is cancelled it does not
+   * emit a finish event but a specific cancel event
+   *
+   * A motion definition can contain multiple animations and therefore multiple "finish" events. The callback is
+   * triggered once all animations have finished with "null" instead of an event object to avoid ambiguity.
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionCancel?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
+
+  /**
    * Callback that is called when the whole motion starts.
    *
    * A motion definition can contain multiple animations and therefore multiple "start" events. The callback is
@@ -62,8 +72,18 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     const itemContext = React.useContext(PresenceGroupChildContext);
     const merged = { ...itemContext, ...props };
 
-    const { appear, children, imperativeRef, onExit, onMotionFinish, onMotionStart, visible, unmountOnExit, ..._rest } =
-      merged;
+    const {
+      appear,
+      children,
+      imperativeRef,
+      onExit,
+      onMotionFinish,
+      onMotionStart,
+      onMotionCancel,
+      visible,
+      unmountOnExit,
+      ..._rest
+    } = merged;
     const params = _rest as Exclude<typeof merged, PresenceComponentProps | typeof itemContext>;
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
@@ -87,6 +107,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         setMounted(false);
         onExit?.();
       }
+    });
+
+    const handleMotionCancel = useEventCallback((direction: 'enter' | 'exit') => {
+      onMotionCancel?.(null, { direction });
     });
 
     useIsomorphicLayoutEffect(() => {
@@ -123,9 +147,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         }
 
         handleRef.current = handle;
-        handle.onfinish = () => {
-          handleMotionFinish(direction);
-        };
+        handle.setMotionEndCallbacks(
+          () => handleMotionFinish(direction),
+          () => handleMotionCancel(direction),
+        );
 
         return () => {
           handle.cancel();
@@ -133,7 +158,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, visible],
+      [handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
     );
 
     if (mounted) {

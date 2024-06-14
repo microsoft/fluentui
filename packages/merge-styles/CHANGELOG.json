@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Fri, 14 Jun 2024 15:25:27 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.10",
+      "version": "8.6.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "53c54d4cb672436803f06daeaa7f65e7d1514cbd",
+            "comment": "fix(merge-styles): improve DeepPartial type infinite recursion triggerpoint"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 07:26:46 GMT",
       "tag": "@fluentui/merge-styles_v8.6.9",
       "version": "8.6.9",

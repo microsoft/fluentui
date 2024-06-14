@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 14 Jun 2024 04:06:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.30",
+      "version": "3.0.0-beta.30",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e0ee62f419aac133f980bc007589e6bc98d70a86",
+            "comment": "fix: configure e2e target properly in order to make fix affected e2e target execution on ci"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "974e0416f342d9af5bd91333c8f2e1f716a3123a",
+            "comment": "Adds spec doc for MessageBar for conversation"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "17b73b4b4cd445cea74f2a16ef9ea34a91999302",
+            "comment": "update avatar to use ElementInternals for role and states for color"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 13 Jun 2024 04:06:41 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.29",
       "version": "3.0.0-beta.29",

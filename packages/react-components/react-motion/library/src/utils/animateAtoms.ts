@@ -37,7 +37,7 @@ export function animateAtoms(
         animation.playbackRate = rate;
       });
     },
-    set onfinish(callback: () => void) {
+    setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
       // Heads up!
       // Jest uses jsdom as the default environment, which doesn't support the Web Animations API. This no-op is
       // necessary to avoid errors in tests.
@@ -46,20 +46,21 @@ export function animateAtoms(
       // See https://github.com/jsdom/jsdom/issues/3429
       if (process.env.NODE_ENV === 'test') {
         if (animations.length === 0) {
-          callback();
+          onfinish();
           return;
         }
       }
 
       Promise.all(animations.map(animation => animation.finished))
         .then(() => {
-          callback();
+          onfinish();
         })
         .catch((err: unknown) => {
           const DOMException = element.ownerDocument.defaultView?.DOMException;
 
           // Ignores "DOMException: The user aborted a request" that appears if animations are cancelled
-          if (DOMException && err instanceof DOMException) {
+          if (DOMException && err instanceof DOMException && err.name === 'AbortError') {
+            oncancel();
             return;
           }
 

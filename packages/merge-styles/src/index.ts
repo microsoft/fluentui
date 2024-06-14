@@ -6,6 +6,7 @@ export type { IKeyframes } from './IKeyframes';
 
 export type { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
+// eslint-disable-next-line deprecation/deprecation
 export type { DeepPartial } from './DeepPartial';
 
 // eslint-disable-next-line deprecation/deprecation
