@@ -61,7 +61,7 @@ It is strongly recommended that you rebase your branch onto (rather than merging
 ```
 git checkout master // Switches to master
 git pull upstream master // Syncs your local master with the latest version of master at the origin
-yarn // refreshes the code incase things have changed.
+yarn // Installs and updates dependencies in case there have been changes in the project's dependencies.
 git push // syncs your forks definition of master with the upstream repo
 git checkout your-fancy-branch // Switches back to your branch
 git rebase -i master // Tacks your commits onto the end of master. Force is necessary since rebase changes history.
