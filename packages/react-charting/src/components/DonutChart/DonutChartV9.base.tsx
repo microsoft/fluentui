@@ -173,6 +173,7 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
           open={this.state.isPopoverOpen}
           withArrow
           openOnHover
+          inline
         >
           <PopoverSurface tabIndex={-1}>
             <ChartHoverCard
