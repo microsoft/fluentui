@@ -66,12 +66,8 @@ export function messageBarTemplate<T extends MessageBar>(options: MessageBarOpti
       <div class="content">
         <slot></slot>
       </div>
-      <div class="actions">
-        <slot name="actions"></slot>
-      </div>
-      <div class="close">
-        <slot name="close"></slot>
-      </div>
+      <slot name="actions"></slot>
+      <slot name="close"></slot>
     </template>
   `;
 }

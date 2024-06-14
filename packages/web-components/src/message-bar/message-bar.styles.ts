@@ -104,8 +104,8 @@ export const styles: ElementStyles = css`
   }
 
   .content {
-    max-width: 520px;
     grid-area: body;
+    max-width: 520px;
     padding: ${spacingVerticalMNudge} 0;
   }
 
@@ -113,26 +113,26 @@ export const styles: ElementStyles = css`
     padding: 0;
   }
 
-  .close {
+  ::slotted([slot='close']) {
     grid-area: close;
     display: flex;
     justify-content: end;
   }
 
-  :host([layout='multiline']) .close {
+  :host([layout='multiline']) ::slotted([slot='close']) {
     flex-direction: column;
     justify-content: start;
     align-items: start;
   }
 
-  .actions {
+  ::slotted([slot='actions']) {
     grid-area: actions;
     display: flex;
     justify-content: end;
     margin-right: ${spacingHorizontalS};
   }
 
-  :host([layout='multiline']) .actions {
+  :host([layout='multiline']) ::slotted([slot='actions']) {
     margin-top: ${spacingVerticalMNudge};
   }
 

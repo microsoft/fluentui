@@ -29,7 +29,6 @@ const storyTemplate = html<MessageBarStoryArgs>`
     ${x => x.content}
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
-      <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
@@ -73,7 +72,6 @@ export const Shape = renderComponent(html<MessageBarStoryArgs>`
     rounded
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
-      <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
@@ -81,7 +79,6 @@ export const Shape = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar shape="square">
     square
     <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
       <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
@@ -93,7 +90,6 @@ export const Layout = renderComponent(html<MessageBarStoryArgs>`
     singleline
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
-      <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
@@ -101,7 +97,6 @@ export const Layout = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar layout="multiline">
     multiline
     <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
       <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
@@ -113,7 +108,6 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
     info
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
-      <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
@@ -121,7 +115,6 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar intent="warning">
     warning
     <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
       <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
@@ -131,7 +124,6 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
     success
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
-      <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
@@ -139,7 +131,6 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar intent="error">
     error
     <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
       <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
@@ -150,7 +141,6 @@ export const Assertive = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar aria-live="assertive" intent="info">
     info
     <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
       <fluent-button size="small">Action</fluent-button>
     </div>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
