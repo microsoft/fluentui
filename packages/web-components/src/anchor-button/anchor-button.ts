@@ -3,6 +3,7 @@ import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { toggleState } from '../utils/element-internals.js';
 import {
   AnchorAttributes,
   type AnchorButtonAppearance,
@@ -231,6 +232,18 @@ export class AnchorButton extends BaseAnchor {
   public appearance?: AnchorButtonAppearance | undefined;
 
   /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    toggleState(this.elementInternals, `${next}`, true);
+  }
+
+  /**
    * The shape the anchor button should have.
    *
    * @public
@@ -239,6 +252,18 @@ export class AnchorButton extends BaseAnchor {
    */
   @attr
   public shape?: AnchorButtonShape | undefined;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    toggleState(this.elementInternals, `${next}`, true);
+  }
 
   /**
    * The size the anchor button should have.
@@ -251,6 +276,19 @@ export class AnchorButton extends BaseAnchor {
   public size?: AnchorButtonSize;
 
   /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+
+    toggleState(this.elementInternals, `${next}`, true);
+  }
+
+  /**
    * The anchor button has an icon only, no text content
    *
    * @public
@@ -259,6 +297,15 @@ export class AnchorButton extends BaseAnchor {
    */
   @attr({ attribute: 'icon-only', mode: 'boolean' })
   public iconOnly: boolean = false;
+
+  /**
+   * Handles changes to icon only custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public iconOnlyChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'iconOnly', next);
+  }
 }
 
 /**

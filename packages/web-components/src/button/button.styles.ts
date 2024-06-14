@@ -58,6 +58,60 @@ import {
 } from '../theme/design-tokens.js';
 
 /**
+ * Selector for the `primary` state.
+ * @public
+ */
+const primaryState = css.partial`:is([state--primary], :state(primary))`;
+
+/**
+ * Selector for the `outline` state.
+ * @public
+ */
+const outlineState = css.partial`:is([state--outline], :state(outline))`;
+
+/**
+ * Selector for the `subtle` state.
+ * @public
+ */
+const subtleState = css.partial`:is([state--subtle], :state(subtle))`;
+
+/**
+ * Selector for the `transparent` state.
+ * @public
+ */
+const transparentState = css.partial`:is([state--transparent], :state(transparent))`;
+
+/**
+ * Selector for the `circular` state.
+ * @public
+ */
+const circularState = css.partial`:is([state--circular], :state(circular))`;
+
+/**
+ * Selector for the `square` state.
+ * @public
+ */
+const squareState = css.partial`:is([state--square], :state(square))`;
+
+/**
+ * Selector for the `small` state.
+ * @public
+ */
+const smallState = css.partial`:is([state--small], :state(small))`;
+
+/**
+ * Selector for the `large` state.
+ * @public
+ */
+const largeState = css.partial`:is([state--large], :state(large))`;
+
+/**
+ * Selector for the `iconOnly` state.
+ * @public
+ */
+const iconOnlyState = css.partial`:is([state--iconOnly], :state(iconOnly))`;
+
+/**
  * @internal
  */
 export const baseButtonStyles = css`
@@ -126,22 +180,20 @@ export const baseButtonStyles = css`
     fill: currentColor;
   }
 
-  [slot='start'],
-  ::slotted([slot='start']) {
+  :is([slot='start'], ::slotted([slot='start'])) {
     margin-inline-end: var(--icon-spacing);
   }
 
-  [slot='end'],
-  ::slotted([slot='end']) {
+  :is([slot='end'], ::slotted([slot='end'])) {
     margin-inline-start: var(--icon-spacing);
   }
 
-  :host([icon-only]) {
+  :host(${iconOnlyState}) {
     min-width: 32px;
     max-width: 32px;
   }
 
-  :host([size='small']) {
+  :host(${smallState}) {
     --icon-spacing: ${spacingHorizontalXS};
     min-height: 24px;
     min-width: 64px;
@@ -152,12 +204,12 @@ export const baseButtonStyles = css`
     font-weight: ${fontWeightRegular};
   }
 
-  :host([size='small'][icon-only]) {
+  :host(${smallState}${iconOnlyState}) {
     min-width: 24px;
     max-width: 24px;
   }
 
-  :host([size='large']) {
+  :host(${largeState}) {
     min-height: 40px;
     border-radius: ${borderRadiusLarge};
     padding: 0 ${spacingHorizontalL};
@@ -165,108 +217,103 @@ export const baseButtonStyles = css`
     line-height: ${lineHeightBase400};
   }
 
-  :host([size='large'][icon-only]) {
+  :host(${largeState}${iconOnlyState}) {
     min-width: 40px;
     max-width: 40px;
   }
 
-  :host([size='large']) ::slotted(svg) {
+  :host(${largeState}) ::slotted(svg) {
     font-size: 24px;
     height: 24px;
     width: 24px;
   }
 
-  :host([shape='circular']),
-  :host([shape='circular']:focus-visible) {
+  :host(:is(${circularState}, ${circularState}:focus-visible)) {
     border-radius: ${borderRadiusCircular};
   }
 
-  :host([shape='square']),
-  :host([shape='square']:focus-visible) {
+  :host(:is(${squareState}, ${squareState}:focus-visible)) {
     border-radius: ${borderRadiusNone};
   }
 
-  :host([appearance='primary']) {
+  :host(${primaryState}) {
     background-color: ${colorBrandBackground};
     color: ${colorNeutralForegroundOnBrand};
     border-color: transparent;
   }
 
-  :host([appearance='primary']:hover) {
+  :host(${primaryState}:hover) {
     background-color: ${colorBrandBackgroundHover};
   }
 
-  :host([appearance='primary']:hover),
-  :host([appearance='primary']:hover:active) {
+  :host(${primaryState}:is(:hover, :hover:active)) {
     border-color: transparent;
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host([appearance='primary']:hover:active) {
+  :host(${primaryState}:hover:active) {
     background-color: ${colorBrandBackgroundPressed};
   }
 
-  :host([appearance='primary']:focus-visible) {
+  :host(${primaryState}:focus-visible) {
     border-color: ${colorNeutralForegroundOnBrand};
     box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
   }
 
-  :host([appearance='outline']) {
+  :host(${outlineState}) {
     background-color: ${colorTransparentBackground};
   }
 
-  :host([appearance='outline']:hover) {
+  :host(${outlineState}:hover) {
     background-color: ${colorTransparentBackgroundHover};
   }
 
-  :host([appearance='outline']:hover:active) {
+  :host(${outlineState}:hover:active) {
     background-color: ${colorTransparentBackgroundPressed};
   }
 
-  :host([appearance='subtle']) {
+  :host(${subtleState}) {
     background-color: ${colorSubtleBackground};
     color: ${colorNeutralForeground2};
     border-color: transparent;
   }
 
-  :host([appearance='subtle']:hover) {
+  :host(${subtleState}:hover) {
     background-color: ${colorSubtleBackgroundHover};
     color: ${colorNeutralForeground2Hover};
     border-color: transparent;
   }
 
-  :host([appearance='subtle']:hover:active) {
+  :host(${subtleState}:hover:active) {
     background-color: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground2Pressed};
     border-color: transparent;
   }
 
-  :host([appearance='subtle']:hover) ::slotted(svg) {
+  :host(${subtleState}:hover) ::slotted(svg) {
     fill: ${colorNeutralForeground2BrandHover};
   }
 
-  :host([appearance='subtle']:hover:active) ::slotted(svg) {
+  :host(${subtleState}:hover:active) ::slotted(svg) {
     fill: ${colorNeutralForeground2BrandPressed};
   }
 
-  :host([appearance='transparent']) {
+  :host(${transparentState}) {
     background-color: ${colorTransparentBackground};
     color: ${colorNeutralForeground2};
   }
 
-  :host([appearance='transparent']:hover) {
+  :host(${transparentState}:hover) {
     background-color: ${colorTransparentBackgroundHover};
     color: ${colorNeutralForeground2BrandHover};
   }
 
-  :host([appearance='transparent']:hover:active) {
+  :host(${transparentState}:hover:active) {
     background-color: ${colorTransparentBackgroundPressed};
     color: ${colorNeutralForeground2BrandPressed};
   }
 
-  :host([appearance='transparent']),
-  :host([appearance='transparent']:hover),
-  :host([appearance='transparent']:hover:active) {
+  :host(:is(${transparentState}, ${transparentState}:is(:hover, :active))) {
     border-color: transparent;
   }
 `;
@@ -279,37 +326,33 @@ export const baseButtonStyles = css`
 export const styles = css`
   ${baseButtonStyles}
 
-  :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable])),
-  :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable]):hover),
-  :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable]):hover:active) {
+  :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable])),
+  :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable]):hover),
+  :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable]):hover:active) {
     background-color: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
     color: ${colorNeutralForegroundDisabled};
     cursor: not-allowed;
   }
 
-  :host(:is([disabled][appearance='primary'], [disabled-focusable][appearance='primary'])),
-  :host(:is([disabled][appearance='primary'], [disabled-focusable][appearance='primary']):hover),
-  :host(:is([disabled][appearance='primary'], [disabled-focusable][appearance='primary']):hover:active) {
+  :host(${primaryState}:is(:disabled, [disabled-focusable])),
+  :host(${primaryState}:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
     border-color: transparent;
   }
 
-  :host(:is([disabled][appearance='outline'], [disabled-focusable][appearance='outline'])),
-  :host(:is([disabled][appearance='outline'], [disabled-focusable][appearance='outline']):hover),
-  :host(:is([disabled][appearance='outline'], [disabled-focusable][appearance='outline']):hover:active) {
+  :host(${outlineState}:is(:disabled, [disabled-focusable])),
+  :host(${outlineState}:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
     background-color: ${colorTransparentBackground};
   }
 
-  :host(:is([disabled][appearance='subtle'], [disabled-focusable][appearance='subtle'])),
-  :host(:is([disabled][appearance='subtle'], [disabled-focusable][appearance='subtle']):hover),
-  :host(:is([disabled][appearance='subtle'], [disabled-focusable][appearance='subtle']):hover:active) {
+  :host(${subtleState}:is(:disabled, [disabled-focusable])),
+  :host(${subtleState}:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
     background-color: ${colorTransparentBackground};
     border-color: transparent;
   }
 
-  :host(:is([disabled][appearance='transparent'], [disabled-focusable][appearance='transparent'])),
-  :host(:is([disabled][appearance='transparent'], [disabled-focusable][appearance='transparent']):hover),
-  :host(:is([disabled][appearance='transparent'], [disabled-focusable][appearance='transparent']):hover:active) {
+  :host(${transparentState}:is(:disabled, [disabled-focusable])),
+  :host(${transparentState}:is(:disabled, [disabled-focusable]):is(:hover, :hover:active)) {
     border-color: transparent;
     background-color: ${colorTransparentBackground};
   }
