@@ -304,7 +304,7 @@ export class AnchorButton extends BaseAnchor {
    * @param next - the next state
    */
   public iconOnlyChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'iconOnly', next);
+    toggleState(this.elementInternals, 'icon', next);
   }
 }
 

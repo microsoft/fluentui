@@ -52,7 +52,7 @@ export const largeState = css.partial`:is([state--large], :state(large))`;
  * Selector for the `iconOnly` state.
  * @public
  */
-export const iconOnlyState = css.partial`:is([state--iconOnly], :state(iconOnly))`;
+export const iconOnlyState = css.partial`:is([state--icon], :state(icon))`;
 
 /**
  * Selector for the `pressed` state.
