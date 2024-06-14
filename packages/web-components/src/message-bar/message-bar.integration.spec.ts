@@ -23,13 +23,11 @@ test.describe('MessageBar component', () => {
     const shape = await element.getAttribute('shape');
     const layout = await element.getAttribute('layout');
     const intent = await element.getAttribute('intent');
-    const politeness = await element.getAttribute('aria-live');
 
     expect(role).toEqual('status');
     expect(shape).toEqual('rounded');
     expect(layout).toEqual('singleline');
     expect(intent).toEqual('info');
-    expect(politeness).toEqual('polite');
   });
 
   test('should have correct `aria-labelledby` attribute', async () => {
@@ -67,17 +65,5 @@ test.describe('MessageBar component', () => {
     await element.evaluate(el => el.setAttribute('shape', 'rectangular'));
     const shape = await element.getAttribute('shape');
     expect(shape).toEqual('rectangular');
-  });
-
-  test('when the `politeness` attribute is changed, it should reflect the new value', async () => {
-    await element.evaluate(el => el.setAttribute('politeness', 'polite'));
-    const politeness = await element.getAttribute('politeness');
-    expect(politeness).toEqual('polite');
-  });
-
-  test('when the `politeness` attribute is set, it should reflect the value in the aria-live attribute', async () => {
-    await element.evaluate(el => el.setAttribute('politeness', 'assertive'));
-    const ariaLive = await element.getAttribute('aria-live');
-    expect(ariaLive).toEqual('assertive');
   });
 });

@@ -56,16 +56,6 @@ export class MessageBar extends FASTElement {
   intent: MessageBarIntent = 'info';
 
   /**
-   * Sets the politeness of the control.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `politeness`
-   */
-  @attr
-  politeness: MessageBarPoliteness = 'polite';
-
-  /**
    * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal

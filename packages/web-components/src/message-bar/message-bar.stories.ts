@@ -25,12 +25,7 @@ const dismissed20Regular = html`
 `;
 
 const storyTemplate = html<MessageBarStoryArgs>`
-  <fluent-message-bar
-    shape="${x => x.shape}"
-    layout="${x => x.layout}"
-    intent="${x => x.intent}"
-    politeness="${x => x.politeness}"
-  >
+  <fluent-message-bar shape="${x => x.shape}" layout="${x => x.layout}" intent="${x => x.intent}">
     ${x => x.content}
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
@@ -47,7 +42,6 @@ export default {
     shape: MessageBarShape.rounded,
     layout: MessageBarLayout.singleline,
     intent: MessageBarIntent.info,
-    politeness: MessageBarPoliteness.polite,
   },
   argTypes: {
     content: {
@@ -68,11 +62,6 @@ export default {
       description: 'MessageBar intent',
       control: { type: 'select' },
       options: Object.values(MessageBarIntent),
-    },
-    politeness: {
-      description: 'MessageBar politeness',
-      control: { type: 'select' },
-      options: Object.values(MessageBarPoliteness),
     },
   },
 } as MessageBarStoryMeta;
@@ -149,6 +138,17 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
   <br />
   <fluent-message-bar intent="error">
     error
+    <div class="actions" slot="actions">
+      <fluent-button size="small">Action</fluent-button>
+      <fluent-button size="small">Action</fluent-button>
+    </div>
+    <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
+  </fluent-message-bar>
+`);
+
+export const Assertive = renderComponent(html<MessageBarStoryArgs>`
+  <fluent-message-bar aria-live="assertive" intent="info">
+    info
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
       <fluent-button size="small">Action</fluent-button>

@@ -15,37 +15,54 @@ The Fabric WC3 MessageBar extends `FASTElement`
 ### Template
 
 ```html
-<template
-  role="status"
-  layout="${x => x.layout}"
-  shape="${x => x.shape}"
-  intent="${x => x.intent}"
-  aria-live="${x => x.politeness}"
-  aria-labelledby="${x => x.ariaLabelledby}"
->
-  <slot></slot>
-  <slot name="actions"></slot>
-  <slot name="close"></slot>
+<template>
+  <span class="info">
+    <slot name="info-icon">
+      ${staticallyCompose(options.infoIcon)}
+    </slot>
+  </span>
+  <span class="warning">
+    <slot name="warning-icon">
+      ${staticallyCompose(options.warningIcon)}
+    </slot>
+  </span>
+  <span class="error">
+    <slot name="error-icon">
+      ${staticallyCompose(options.errorIcon)}
+    </span>
+  </span>
+  <span class="success">
+    <slot name="success-icon">
+      ${staticallyCompose(options.successIcon)}</span>
+    </slot>
+  </span>
+  <div class="content">
+    <slot></slot>
+  </div>
+  <div class="actions">
+    <slot name="actions"></slot>
+  </div>
+  <div class="close">
+    <slot name="close"></slot>
+  </div>
 </template>
 ```
 
 ### **Variables**
 
-| Name                  | Type                               | Description                               |
-| --------------------- | ---------------------------------- | ----------------------------------------- |
-| `MessageBarLayout`    | `multiline` `singleline`           | How text flows within the MessageBar      |
-| `MessageBarShape`     | `rounded` `square`                 | Shapes for the MessageBar                 |
-| `MessageBarIntent`    | `success` `warning` `error` `info` | Intents for the MessageBar                |
-| `MessageBarPolitness` | `assertive` `polite`               | Sets the alert style for aria-live region |
+| Name               | Type                               | Description                          |
+| ------------------ | ---------------------------------- | ------------------------------------ |
+| `MessageBarLayout` | `multiline` `singleline`           | How text flows within the MessageBar |
+| `MessageBarShape`  | `rounded` `square`                 | Shapes for the MessageBar            |
+| `MessageBarIntent` | `success` `warning` `error` `info` | Intents for the MessageBar           |
 
 ### **Attributes**
 
-| Name         | Type                               | Default      | Description                                                                                                                        |
-| ------------ | ---------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `layout`     | `multiline` `singleline`           | `singleline` | Determines if the MessageBar should opt out of automatic reflow for applications that have an existing responsive design mechanism |
-| `shape`      | `square` `rounded`                 | `rounded`    | Determines the shape of the corners on the MessageBar                                                                              |
-| `intent`     | `success` `warning` `error` `info` | `info`       | Sets the intent type for the MessageBar                                                                                            |
-| `politeness` | `assertive` `polite`               | `polite`     | Sets the alert style for aria-live region                                                                                          |
+| Name     | Type                               | Default      | Description                                                                                                                        |
+| -------- | ---------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `layout` | `multiline` `singleline`           | `singleline` | Determines if the MessageBar should opt out of automatic reflow for applications that have an existing responsive design mechanism |
+| `shape`  | `square` `rounded`                 | `rounded`    | Determines the shape of the corners on the MessageBar                                                                              |
+| `intent` | `success` `warning` `error` `info` | `info`       | Sets the intent type for the MessageBar                                                                                            |
 
 ### **Events**
 
@@ -77,7 +94,7 @@ The Fabric WC3 MessageBar extends `FASTElement`
 
 - `aria-live`
 
-  - The `aria-live` attribute should be used to associate the MessageBar with the appropriate `aria-live` value to announce content changes to assistive technology devices. Corresponds to `politeness` attribute.
+  - The `aria-live` attribute should be used to associate the MessageBar with the appropriate `aria-live` value to announce content changes to assistive technology devices.
 
 - `aria-labelledby`
 

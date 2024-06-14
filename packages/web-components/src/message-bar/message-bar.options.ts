@@ -34,14 +34,3 @@ export const MessageBarIntent = {
 } as const;
 
 export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
-
-/**
- * @public
- * The `politeness` variations for the MessageBar component.
- */
-export const MessageBarPoliteness = {
-  polite: 'polite',
-  assertive: 'assertive',
-} as const;
-
-export type MessageBarPoliteness = ValuesOf<typeof MessageBarPoliteness>;
