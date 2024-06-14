@@ -162,6 +162,8 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
             position: 'fixed',
             top: this.state.clickPosition.y,
             left: this.state.clickPosition.x,
+            right: this.state.clickPosition.x,
+            bottom: this.state.clickPosition.y,
             visibility: 'hidden',
           }}
           ref={el => (this._popoverTarget = el)}
