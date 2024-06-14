@@ -42,9 +42,7 @@ const errorIcon =
  */
 export function messageBarTemplate<T extends MessageBar>(options: MessageBarOptions): ElementViewTemplate<T> {
   return html<T>`
-    <template
-      role="status"
-    >
+    <template>
       <span class="info">
         <slot name="info-icon">
           ${staticallyCompose(options.infoIcon)}
