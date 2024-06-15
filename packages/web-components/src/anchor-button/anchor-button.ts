@@ -32,6 +32,12 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  */
 export class BaseAnchor extends FASTElement {
   /**
+   * Holds a reference to the platform to manage ctrl+click on Windows and cmd+click on Mac
+   * @internal
+   */
+  private readonly isMac = navigator.userAgent.includes('Mac');
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -177,26 +183,41 @@ export class BaseAnchor extends FASTElement {
    * @param e - The event object
    * @internal
    */
-  public clickHandler(): boolean {
-    this.internalProxyAnchor.click();
+  public clickHandler(e: PointerEvent): boolean {
+    if (this.href) {
+      const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
+      this.handleNavigation(newTab);
+    }
 
     return true;
   }
 
   /**
-   * Handles keypress events for the anchor.
+   * Handles keydown events for the anchor.
    *
    * @param e - the keyboard event
    * @returns - the return value of the click handler
    * @public
    */
-  public keypressHandler(e: KeyboardEvent): boolean | void {
-    if (e.key === keyEnter) {
-      this.internalProxyAnchor.click();
-      return;
+  public keydownHandler(e: KeyboardEvent): boolean | void {
+    if (this.href) {
+      if (e.key === keyEnter) {
+        const newTab = !this.isMac ? e.ctrlKey : e.metaKey || e.ctrlKey;
+        this.handleNavigation(newTab);
+        return;
+      }
     }
 
     return true;
+  }
+
+  /**
+   * Handles navigation based on input
+   * If the metaKey is pressed, opens the href in a new window, if false, uses the click on the proxy
+   * @internal
+   */
+  private handleNavigation(newTab: boolean): void {
+    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
   }
 
   /**

@@ -77,4 +77,69 @@ test.describe('Anchor Button', () => {
       await expect(proxy).toHaveAttribute(`${attribute}`, `${value}`);
     });
   }
+
+  test('should navigate to the provided url when clicked', async ({ page }) => {
+    const element = page.locator('fluent-anchor-button');
+    const expectedUrl = '#foo';
+
+    await page.setContent(/* html */ `
+          <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
+        `);
+
+    await element.click();
+
+    expect(page.url()).toContain(expectedUrl);
+  });
+
+  test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or Meta on Mac', async ({
+    page,
+    context,
+  }) => {
+    const element = page.locator('fluent-anchor-button');
+    const expectedUrl = '#foo';
+
+    await page.setContent(/* html */ `
+      <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
+    `);
+
+    const [newPage] = await Promise.all([
+      context.waitForEvent('page'),
+      element.click({ modifiers: ['ControlOrMeta'] }),
+    ]);
+
+    expect(newPage.url()).toContain(expectedUrl);
+  });
+
+  test('should navigate to the provided url when `Enter` is pressed via keyboard', async ({ page }) => {
+    const element = page.locator('fluent-anchor-button');
+    const expectedUrl = '#foo';
+
+    await page.setContent(/* html */ `
+        <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
+      `);
+
+    await element.focus();
+
+    await element.press('Enter');
+
+    expect(page.url()).toContain(expectedUrl);
+  });
+
+  test('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
+    page,
+    context,
+  }) => {
+    const element = page.locator('fluent-anchor-button');
+    const expectedUrl = '#foo';
+
+    await page.setContent(/* html */ `
+      <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
+    `);
+
+    await element.focus();
+
+    const [newPage] = await Promise.all([context.waitForEvent('page'), element.press('ControlOrMeta+Enter')]);
+
+    expect(newPage.url()).toContain(expectedUrl);
+  });
 });
