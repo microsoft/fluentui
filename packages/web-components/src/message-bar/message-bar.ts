@@ -3,7 +3,7 @@ import type { StaticallyComposableHTML } from '../utils/index.js';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { MessageBarIntent, MessageBarLayout, MessageBarPoliteness, MessageBarShape } from './message-bar.options.js';
+import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 /**
  * MessageBar configuration options
