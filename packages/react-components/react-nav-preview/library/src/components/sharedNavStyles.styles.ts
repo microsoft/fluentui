@@ -11,6 +11,11 @@ export const navItemTokens = {
   backgroundColor: tokens.colorNeutralBackground4,
   backgroundColorHover: tokens.colorNeutralBackground4Hover,
   backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
+  animationTokens: {
+    animationDuration: tokens.durationFast,
+    animationFillMode: 'both',
+    animationTimingFunction: tokens.curveAccelerateMid,
+  },
 };
 
 /**
@@ -69,13 +74,12 @@ export const useIndicatorStyles = makeStyles({
   base: {
     '::after': {
       position: 'absolute',
-      animationDuration: tokens.durationFast,
-      animationFillMode: 'both',
-      animationTimingFunction: tokens.curveAccelerateMid,
+      ...navItemTokens.animationTokens,
       animationName: {
         '0%': { background: 'transparent' },
         '100%': { background: tokens.colorCompoundBrandForeground1 },
       },
+
       marginInlineStart: `-${navItemTokens.indicatorOffset}px`,
       backgroundColor: tokens.colorCompoundBrandForeground1,
       height: `${navItemTokens.indicatorHeight}px`,
@@ -97,26 +101,52 @@ export const useIndicatorStyles = makeStyles({
  */
 export const useIconStyles = makeStyles({
   base: {
+    display: 'grid',
+    gridTemplateAreas: 'overlay-area',
     minHeight: '20px',
     minWidth: '20px',
     alignItems: 'top',
-    display: 'inline-flex',
     justifyContent: 'center',
     overflow: 'hidden',
     [`& .${iconFilledClassName}`]: {
+      gridArea: 'overlay-area',
+      color: 'transparent',
       display: 'none',
     },
     [`& .${iconRegularClassName}`]: {
+      gridArea: 'overlay-area',
       display: 'inline',
     },
   },
   selected: {
     [`& .${iconFilledClassName}`]: {
+      ...navItemTokens.animationTokens,
       display: 'inline',
       color: tokens.colorCompoundBrandForeground1,
+      animationName: {
+        '0%': {
+          display: 'none',
+          color: 'transparent',
+        },
+        '100%': {
+          display: 'inline',
+          color: tokens.colorNeutralForeground2BrandSelected,
+        },
+      },
     },
     [`& .${iconRegularClassName}`]: {
-      display: 'none',
+      color: tokens.colorNeutralForeground2BrandSelected,
+      ...navItemTokens.animationTokens,
+      animationName: {
+        '0%': {
+          display: 'inline',
+          color: tokens.colorNeutralForeground2,
+        },
+        '100%': {
+          display: 'none',
+          color: 'transparent',
+        },
+      },
     },
   },
 });

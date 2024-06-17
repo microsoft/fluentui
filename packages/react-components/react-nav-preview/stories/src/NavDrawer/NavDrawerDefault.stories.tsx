@@ -13,7 +13,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -85,10 +85,14 @@ type DrawerType = Required<DrawerProps>['type'];
 export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
-  const labelId = useId('type-label');
+  const typeLableId = useId('type-label');
+  const linkLabelId = useId('link-label');
 
   const [isOpen, setIsOpen] = React.useState(true);
+  const [enabledLinks, setEnabledLinks] = React.useState(false); // todo change this back to true before checkin
   const [type, setType] = React.useState<DrawerType>('inline');
+
+  const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
   return (
     <div className={styles.root}>
@@ -98,19 +102,19 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           <NavSectionHeader>Home</NavSectionHeader>
-          <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
+          <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
-          <NavItem icon={<Announcements />} value="2">
+          <NavItem href={linkDestination} icon={<Announcements />} value="2">
             Announcements
           </NavItem>
-          <NavItem icon={<EmployeeSpotlight />} value="3">
+          <NavItem href={linkDestination} icon={<EmployeeSpotlight />} value="3">
             Employee Spotlight
           </NavItem>
-          <NavItem icon={<Search />} href="https://www.bing.com" value="4">
+          <NavItem icon={<Search />} href={linkDestination} value="4">
             Profile Search
           </NavItem>
-          <NavItem icon={<PerformanceReviews />} href="https://www.bing.com" value="5">
+          <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
             Performance Reviews
           </NavItem>
 
@@ -118,10 +122,10 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem href="https://www.bing.com" value="7">
+              <NavSubItem href={linkDestination} value="7">
                 Openings
               </NavSubItem>
-              <NavSubItem href="https://www.bing.com" value="8">
+              <NavSubItem href={linkDestination} value="8">
                 Submissions
               </NavSubItem>
             </NavSubItemGroup>
@@ -139,10 +143,10 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               Retirement
             </NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem href="https://www.bing.com" value="13">
+              <NavSubItem href={linkDestination} value="13">
                 Plan Information
               </NavSubItem>
-              <NavSubItem href="https://www.bing.com" value="14">
+              <NavSubItem href={linkDestination} value="14">
                 Fund Performance
               </NavSubItem>
             </NavSubItemGroup>
@@ -155,10 +159,10 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavCategory value="16">
             <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem href="https://www.bing.com" value="17">
+              <NavSubItem href={linkDestination} value="17">
                 Career Paths
               </NavSubItem>
-              <NavSubItem href="https://www.bing.com" value="18">
+              <NavSubItem href={linkDestination} value="18">
                 Planning
               </NavSubItem>
             </NavSubItemGroup>
@@ -168,7 +172,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
-          <NavItem href="https://www.bing.com" icon={<Reports />} value="20">
+          <NavItem href={linkDestination} icon={<Reports />} value="20">
             Reports
           </NavItem>
         </NavDrawerBody>
@@ -176,11 +180,22 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
       <div className={styles.content}>
         {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
         <div className={styles.field}>
-          <Label id={labelId}>Type</Label>
-          <RadioGroup value={type} onChange={(_, data) => setType(data.value as DrawerType)} aria-labelledby={labelId}>
+          <Label id={typeLableId}>Type</Label>
+          <RadioGroup
+            value={type}
+            onChange={(_, data) => setType(data.value as DrawerType)}
+            aria-labelledby={typeLableId}
+          >
             <Radio value="overlay" label="Overlay (Default)" />
             <Radio value="inline" label="Inline" />
           </RadioGroup>
+          <Label id={linkLabelId}>Links</Label>
+          <Switch
+            checked={enabledLinks}
+            onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
+            label={enabledLinks ? 'Enabled' : 'Disabled'}
+            aria-labelledby={linkLabelId}
+          />
         </div>
       </div>
     </div>
