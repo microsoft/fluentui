@@ -12,7 +12,7 @@ export class Spinner extends FASTElement {
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The size of the spinner
