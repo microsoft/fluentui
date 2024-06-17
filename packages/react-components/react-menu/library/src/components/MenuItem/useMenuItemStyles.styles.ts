@@ -17,27 +17,27 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  borderRadius: `var(--ctrl-token-MenuItem-1307, var(--semantic-token-MenuItem-1308, ${tokens.borderRadiusMedium}))`,
+  borderRadius: `var(--1307, var(--1308, ${tokens.borderRadiusMedium}))`,
   position: 'relative',
-  color: `var(--ctrl-token-MenuItem-1309, var(--semantic-token-MenuItem-1310, ${tokens.colorNeutralForeground2}))`,
-  backgroundColor: `var(--ctrl-token-MenuItem-1311, var(--semantic-token-MenuItem-1312, ${tokens.colorNeutralBackground1}))`,
-  paddingRight: `var(--ctrl-token-MenuItem-1313, var(--semantic-token-MenuItem-1314, ${tokens.spacingVerticalSNudge}))`, // 6px
-  paddingLeft: `var(--ctrl-token-MenuItem-1315, var(--semantic-token-MenuItem-1316, ${tokens.spacingVerticalSNudge}))`,
-  paddingTop: `var(--ctrl-token-MenuItem-1317, var(--semantic-token-MenuItem-1318, ${tokens.spacingVerticalSNudge}))`,
-  paddingBottom: `var(--ctrl-token-MenuItem-1319, var(--semantic-token-MenuItem-1320, ${tokens.spacingVerticalSNudge}))`,
+  color: `var(--1309, var(--1310, ${tokens.colorNeutralForeground2}))`,
+  backgroundColor: `var(--1311, var(--1312, ${tokens.colorNeutralBackground1}))`,
+  paddingRight: `var(--1313, var(--1314, ${tokens.spacingVerticalSNudge}))`, // 6px
+  paddingLeft: `var(--1315, var(--1316, ${tokens.spacingVerticalSNudge}))`,
+  paddingTop: `var(--1317, var(--1318, ${tokens.spacingVerticalSNudge}))`,
+  paddingBottom: `var(--1319, var(--1320, ${tokens.spacingVerticalSNudge}))`,
   boxSizing: 'border-box',
   maxWidth: '290px',
   minHeight: '32px',
   flexShrink: 0,
   display: 'flex',
   alignItems: 'start',
-  fontSize: `var(--ctrl-token-MenuItem-1321, var(--semantic-token-MenuItem-1322, ${tokens.fontSizeBase300}))`,
+  fontSize: `var(--1321, var(--1322, ${tokens.fontSizeBase300}))`,
   cursor: 'pointer',
   gap: '4px',
 
   ':hover': {
-    backgroundColor: `var(--ctrl-token-MenuItem-1323, var(--semantic-token-MenuItem-1324, ${tokens.colorNeutralBackground1Hover}))`,
-    color: `var(--ctrl-token-MenuItem-1325, var(--semantic-token-MenuItem-1326, ${tokens.colorNeutralForeground2Hover}))`,
+    backgroundColor: `var(--1323, var(--1324, ${tokens.colorNeutralBackground1Hover}))`,
+    color: `var(--1325, var(--1326, ${tokens.colorNeutralForeground2Hover}))`,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
@@ -46,13 +46,13 @@ const useRootBaseStyles = makeResetStyles({
       display: 'none',
     },
     [`& .${menuItemClassNames.icon}`]: {
-      color: `var(--ctrl-token-MenuItem-1327, var(--semantic-token-MenuItem-1328, ${tokens.colorNeutralForeground2BrandSelected}))`,
+      color: `var(--1327, var(--1328, ${tokens.colorNeutralForeground2BrandSelected}))`,
     },
   },
 
   ':hover:active': {
-    backgroundColor: `var(--ctrl-token-MenuItem-1329, var(--semantic-token-MenuItem-1330, ${tokens.colorNeutralBackground1Pressed}))`,
-    color: `var(--ctrl-token-MenuItem-1331, var(--semantic-token-MenuItem-1332, ${tokens.colorNeutralForeground2Pressed}))`,
+    backgroundColor: `var(--1329, var(--1330, ${tokens.colorNeutralBackground1Pressed}))`,
+    color: `var(--1331, var(--1332, ${tokens.colorNeutralForeground2Pressed}))`,
   },
 
   // High contrast styles
@@ -80,13 +80,13 @@ const useSecondaryContentBaseStyles = makeResetStyles({
   paddingLeft: '2px',
   paddingRight: '2px',
   ...typographyStyles.caption1,
-  lineHeight: `var(--ctrl-token-MenuItem-1333, var(--semantic-token-MenuItem-1334, ${tokens.lineHeightBase300}))`,
-  color: `var(--ctrl-token-MenuItem-1335, var(--semantic-token-MenuItem-1336, ${tokens.colorNeutralForeground3}))`,
+  lineHeight: `var(--1333, var(--1334, ${tokens.lineHeightBase300}))`,
+  color: `var(--1335, var(--1336, ${tokens.colorNeutralForeground3}))`,
   ':hover': {
-    color: `var(--ctrl-token-MenuItem-1337, var(--semantic-token-MenuItem-1338, ${tokens.colorNeutralForeground3Hover}))`,
+    color: `var(--1337, var(--1338, ${tokens.colorNeutralForeground3Hover}))`,
   },
   ':focus': {
-    color: `var(--ctrl-token-MenuItem-1339, var(--semantic-token-MenuItem-1340, ${tokens.colorNeutralForeground3Hover}))`,
+    color: `var(--1339, var(--1340, ${tokens.colorNeutralForeground3Hover}))`,
   },
 });
 
@@ -125,16 +125,16 @@ const useStyles = makeStyles({
     paddingLeft: 0,
     '::before': {
       content: '""',
-      width: `var(--ctrl-token-MenuItem-1341, var(--semantic-token-MenuItem-1342, ${tokens.strokeWidthThin}))`,
+      width: `var(--1341, var(--1342, ${tokens.strokeWidthThin}))`,
       height: '24px',
-      backgroundColor: `var(--ctrl-token-MenuItem-1343, var(--semantic-token-MenuItem-1344, ${tokens.colorNeutralStroke1}))`,
+      backgroundColor: `var(--1343, var(--1344, ${tokens.colorNeutralStroke1}))`,
     },
   },
   disabled: {
-    color: `var(--ctrl-token-MenuItem-1345, var(--semantic-token-MenuItem-1346, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1345, var(--1346, ${tokens.colorNeutralForegroundDisabled}))`,
     ':hover': {
-      color: `var(--ctrl-token-MenuItem-1347, var(--semantic-token-MenuItem-1348, ${tokens.colorNeutralForegroundDisabled}))`,
-      backgroundColor: `var(--ctrl-token-MenuItem-1349, var(--semantic-token-MenuItem-1350, ${tokens.colorNeutralBackground1}))`,
+      color: `var(--1347, var(--1348, ${tokens.colorNeutralForegroundDisabled}))`,
+      backgroundColor: `var(--1349, var(--1350, ${tokens.colorNeutralBackground1}))`,
       cursor: 'not-allowed',
       [`& .${iconFilledClassName}`]: {
         display: 'none',
@@ -143,17 +143,17 @@ const useStyles = makeStyles({
         display: 'inline',
       },
       [`& .${menuItemClassNames.icon}`]: {
-        color: `var(--ctrl-token-MenuItem-1351, var(--semantic-token-MenuItem-1352, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1351, var(--1352, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
 
     ':hover:active': {
-      color: `var(--ctrl-token-MenuItem-1353, var(--semantic-token-MenuItem-1354, ${tokens.colorNeutralForegroundDisabled}))`,
-      backgroundColor: `var(--ctrl-token-MenuItem-1355, var(--semantic-token-MenuItem-1356, ${tokens.colorNeutralBackground1}))`,
+      color: `var(--1353, var(--1354, ${tokens.colorNeutralForegroundDisabled}))`,
+      backgroundColor: `var(--1355, var(--1356, ${tokens.colorNeutralBackground1}))`,
     },
 
     ':focus': {
-      color: `var(--ctrl-token-MenuItem-1357, var(--semantic-token-MenuItem-1358, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--1357, var(--1358, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     '@media (forced-colors: active)': {

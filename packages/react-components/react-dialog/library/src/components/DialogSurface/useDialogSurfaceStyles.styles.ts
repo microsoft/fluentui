@@ -27,7 +27,7 @@ const useRootBaseStyle = makeResetStyles({
   borderStyle: 'none',
   overflow: 'unset',
   border: `${SURFACE_BORDER_WIDTH} solid ${tokens.colorTransparentStroke}`,
-  borderRadius: `var(--ctrl-token-DialogSurface-1061, var(--semantic-token-DialogSurface-1062, ${tokens.borderRadiusXLarge}))`,
+  borderRadius: `var(--1061, var(--1062, ${tokens.borderRadiusXLarge}))`,
 
   display: 'block',
   userSelect: 'unset',
@@ -37,8 +37,8 @@ const useRootBaseStyle = makeResetStyles({
   maxWidth: '600px',
   maxHeight: '100vh',
   boxSizing: 'border-box',
-  backgroundColor: `var(--ctrl-token-DialogSurface-1063, var(--semantic-token-DialogSurface-1064, ${tokens.colorNeutralBackground1}))`,
-  color: `var(--ctrl-token-DialogSurface-1065, var(--semantic-token-DialogSurface-1066, ${tokens.colorNeutralForeground1}))`,
+  backgroundColor: `var(--1063, var(--1064, ${tokens.colorNeutralBackground1}))`,
+  color: `var(--1065, var(--1066, ${tokens.colorNeutralForeground1}))`,
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
@@ -63,7 +63,7 @@ const useBackdropBaseStyle = makeResetStyles({
 
 const useBackdropStyles = makeStyles({
   nestedDialogBackdrop: {
-    backgroundColor: `var(--ctrl-token-DialogSurface-1067, var(--semantic-token-DialogSurface-1068, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--1067, var(--1068, ${tokens.colorTransparentBackground}))`,
   },
 });
 

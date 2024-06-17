@@ -15,13 +15,13 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
   },
   medium: {
-    columnGap: `var(--ctrl-token-TagGroup-2521, var(--semantic-token-TagGroup-2522, ${tokens.spacingHorizontalS}))`,
+    columnGap: `var(--2521, var(--2522, ${tokens.spacingHorizontalS}))`,
   },
   small: {
-    columnGap: `var(--ctrl-token-TagGroup-2523, var(--semantic-token-TagGroup-2524, ${tokens.spacingHorizontalSNudge}))`,
+    columnGap: `var(--2523, var(--2524, ${tokens.spacingHorizontalSNudge}))`,
   },
   'extra-small': {
-    columnGap: `var(--ctrl-token-TagGroup-2525, var(--semantic-token-TagGroup-2526, ${tokens.spacingHorizontalXS}))`,
+    columnGap: `var(--2525, var(--2526, ${tokens.spacingHorizontalXS}))`,
   },
 });
 

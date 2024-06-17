@@ -27,14 +27,14 @@ const useStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle(),
   root: {
-    color: `var(--ctrl-token-AccordionHeader-17, var(--semantic-token-AccordionHeader-18, ${tokens.colorNeutralForeground1}))`,
-    backgroundColor: `var(--ctrl-token-AccordionHeader-19, var(--semantic-token-AccordionHeader-20, ${tokens.colorTransparentBackground}))`,
+    color: `var(--17, var(--18, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--19, var(--20, ${tokens.colorTransparentBackground}))`,
     margin: '0',
-    borderRadius: `var(--ctrl-token-AccordionHeader-21, var(--semantic-token-AccordionHeader-22, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--21, var(--22, ${tokens.borderRadiusMedium}))`,
   },
   rootDisabled: {
     backgroundImage: 'none',
-    color: `var(--ctrl-token-AccordionHeader-23, var(--semantic-token-AccordionHeader-24, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--23, var(--24, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   rootInline: {
     display: 'inline-block',
@@ -53,24 +53,24 @@ const useStyles = makeStyles({
   },
   buttonSmall: {
     minHeight: '32px',
-    fontSize: `var(--ctrl-token-AccordionHeader-25, var(--semantic-token-AccordionHeader-26, ${tokens.fontSizeBase200}))`,
+    fontSize: `var(--25, var(--26, ${tokens.fontSizeBase200}))`,
   },
   buttonLarge: {
-    lineHeight: `var(--ctrl-token-AccordionHeader-27, var(--semantic-token-AccordionHeader-28, ${tokens.lineHeightBase400}))`,
-    fontSize: `var(--ctrl-token-AccordionHeader-29, var(--semantic-token-AccordionHeader-30, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--27, var(--28, ${tokens.lineHeightBase400}))`,
+    fontSize: `var(--29, var(--30, ${tokens.fontSizeBase400}))`,
   },
   buttonExtraLarge: {
-    lineHeight: `var(--ctrl-token-AccordionHeader-31, var(--semantic-token-AccordionHeader-32, ${tokens.lineHeightBase500}))`,
-    fontSize: `var(--ctrl-token-AccordionHeader-33, var(--semantic-token-AccordionHeader-34, ${tokens.fontSizeBase500}))`,
+    lineHeight: `var(--31, var(--32, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--33, var(--34, ${tokens.fontSizeBase500}))`,
   },
   buttonInline: {
     display: 'inline-flex',
   },
   buttonExpandIconEndNoIcon: {
-    paddingLeft: `var(--ctrl-token-AccordionHeader-35, var(--semantic-token-AccordionHeader-36, ${tokens.spacingHorizontalM}))`,
+    paddingLeft: `var(--35, var(--36, ${tokens.spacingHorizontalM}))`,
   },
   buttonExpandIconEnd: {
-    paddingRight: `var(--ctrl-token-AccordionHeader-37, var(--semantic-token-AccordionHeader-38, ${tokens.spacingHorizontalMNudge}))`,
+    paddingRight: `var(--37, var(--38, ${tokens.spacingHorizontalMNudge}))`,
   },
   buttonDisabled: {
     cursor: 'not-allowed',
@@ -79,11 +79,11 @@ const useStyles = makeStyles({
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    lineHeight: `var(--ctrl-token-AccordionHeader-39, var(--semantic-token-AccordionHeader-40, ${tokens.lineHeightBase500}))`,
-    fontSize: `var(--ctrl-token-AccordionHeader-41, var(--semantic-token-AccordionHeader-42, ${tokens.fontSizeBase500}))`,
+    lineHeight: `var(--39, var(--40, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--41, var(--42, ${tokens.fontSizeBase500}))`,
   },
   expandIconStart: {
-    paddingRight: `var(--ctrl-token-AccordionHeader-43, var(--semantic-token-AccordionHeader-44, ${tokens.spacingHorizontalS}))`,
+    paddingRight: `var(--43, var(--44, ${tokens.spacingHorizontalS}))`,
   },
   expandIconEnd: {
     flexGrow: 1,
@@ -91,15 +91,15 @@ const useStyles = makeStyles({
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
-    paddingLeft: `var(--ctrl-token-AccordionHeader-45, var(--semantic-token-AccordionHeader-46, ${tokens.spacingHorizontalS}))`,
+    paddingLeft: `var(--45, var(--46, ${tokens.spacingHorizontalS}))`,
   },
   icon: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    paddingRight: `var(--ctrl-token-AccordionHeader-47, var(--semantic-token-AccordionHeader-48, ${tokens.spacingHorizontalS}))`,
-    lineHeight: `var(--ctrl-token-AccordionHeader-49, var(--semantic-token-AccordionHeader-50, ${tokens.lineHeightBase500}))`,
-    fontSize: `var(--ctrl-token-AccordionHeader-51, var(--semantic-token-AccordionHeader-52, ${tokens.fontSizeBase500}))`,
+    paddingRight: `var(--47, var(--48, ${tokens.spacingHorizontalS}))`,
+    lineHeight: `var(--49, var(--50, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--51, var(--52, ${tokens.fontSizeBase500}))`,
   },
 });
 

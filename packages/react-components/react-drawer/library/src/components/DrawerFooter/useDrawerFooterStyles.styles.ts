@@ -20,7 +20,7 @@ const useStyles = makeResetStyles({
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'center',
-  columnGap: `var(--ctrl-token-DrawerFooter-1093, var(--semantic-token-DrawerFooter-1094, ${tokens.spacingHorizontalS}))`,
+  columnGap: `var(--1093, var(--1094, ${tokens.spacingHorizontalS}))`,
   boxSizing: 'border-box',
   position: 'relative',
   zIndex: 2,

@@ -11,20 +11,20 @@ const useRootBaseClassName = makeResetStyles({
   display: 'grid',
   gridTemplateColumns: 'auto 1fr auto',
   padding: '12px',
-  borderRadius: `var(--ctrl-token-Toast-2765, var(--semantic-token-Toast-2766, ${tokens.borderRadiusMedium}))`,
+  borderRadius: `var(--2765, var(--2766, ${tokens.borderRadiusMedium}))`,
   border: `1px solid ${tokens.colorTransparentStroke}`,
-  boxShadow: `var(--ctrl-token-Toast-2767, var(--semantic-token-Toast-2768, ${tokens.shadow8}))`,
-  fontSize: `var(--ctrl-token-Toast-2769, var(--semantic-token-Toast-2770, ${tokens.fontSizeBase300}))`,
+  boxShadow: `var(--2767, var(--2768, ${tokens.shadow8}))`,
+  fontSize: `var(--2769, var(--2770, ${tokens.fontSizeBase300}))`,
   lineHeight: '20px',
-  fontWeight: `var(--ctrl-token-Toast-2771, var(--semantic-token-Toast-2772, ${tokens.fontWeightSemibold}))`,
-  color: `var(--ctrl-token-Toast-2773, var(--semantic-token-Toast-2774, ${tokens.colorNeutralForeground1}))`,
-  backgroundColor: `var(--ctrl-token-Toast-2775, var(--semantic-token-Toast-2776, ${tokens.colorNeutralBackground1}))`,
+  fontWeight: `var(--2771, var(--2772, ${tokens.fontWeightSemibold}))`,
+  color: `var(--2773, var(--2774, ${tokens.colorNeutralForeground1}))`,
+  backgroundColor: `var(--2775, var(--2776, ${tokens.colorNeutralBackground1}))`,
 });
 
 const useStyles = makeStyles({
   inverted: {
-    color: `var(--ctrl-token-Toast-2777, var(--semantic-token-Toast-2778, ${tokens.colorNeutralForegroundInverted2}))`,
-    backgroundColor: `var(--ctrl-token-Toast-2779, var(--semantic-token-Toast-2780, ${tokens.colorNeutralBackgroundInverted}))`,
+    color: `var(--2777, var(--2778, ${tokens.colorNeutralForegroundInverted2}))`,
+    backgroundColor: `var(--2779, var(--2780, ${tokens.colorNeutralBackgroundInverted}))`,
   },
 });
 

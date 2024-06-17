@@ -13,7 +13,7 @@ export const tagPickerListClassNames: SlotClassNames<TagPickerListSlots> = {
 const useStyles = makeStyles({
   root: {
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: `var(--ctrl-token-TagPickerList-2287, var(--semantic-token-TagPickerList-2288, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--2287, var(--2288, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },

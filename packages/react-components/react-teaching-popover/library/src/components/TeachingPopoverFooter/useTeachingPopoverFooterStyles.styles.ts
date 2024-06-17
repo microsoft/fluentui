@@ -34,15 +34,15 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
   },
   brandPrimary: {
-    color: `var(--ctrl-token-TeachingPopoverFooter-2571, var(--semantic-token-TeachingPopoverFooter-2572, ${tokens.colorBrandForeground1}))`,
-    backgroundColor: `var(--ctrl-token-TeachingPopoverFooter-2573, var(--semantic-token-TeachingPopoverFooter-2574, ${tokens.colorNeutralForegroundOnBrand}))`,
+    color: `var(--2571, var(--2572, ${tokens.colorBrandForeground1}))`,
+    backgroundColor: `var(--2573, var(--2574, ${tokens.colorNeutralForegroundOnBrand}))`,
     ':hover': {
-      color: `var(--ctrl-token-TeachingPopoverFooter-2575, var(--semantic-token-TeachingPopoverFooter-2576, ${tokens.colorCompoundBrandForeground1Hover}))`,
-      backgroundColor: `var(--ctrl-token-TeachingPopoverFooter-2577, var(--semantic-token-TeachingPopoverFooter-2578, ${tokens.colorNeutralForegroundOnBrand}))`,
+      color: `var(--2575, var(--2576, ${tokens.colorCompoundBrandForeground1Hover}))`,
+      backgroundColor: `var(--2577, var(--2578, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
     ':hover:active': {
-      color: `var(--ctrl-token-TeachingPopoverFooter-2579, var(--semantic-token-TeachingPopoverFooter-2580, ${tokens.colorCompoundBrandForeground1Pressed}))`,
-      backgroundColor: `var(--ctrl-token-TeachingPopoverFooter-2581, var(--semantic-token-TeachingPopoverFooter-2582, ${tokens.colorNeutralForegroundOnBrand}))`,
+      color: `var(--2579, var(--2580, ${tokens.colorCompoundBrandForeground1Pressed}))`,
+      backgroundColor: `var(--2581, var(--2582, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
   },
 });

@@ -13,7 +13,7 @@ const useRootBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   marginTop: '16px',
   pointerEvents: 'all',
-  borderRadius: `var(--ctrl-token-ToastContainer-2801, var(--semantic-token-ToastContainer-2802, ${tokens.borderRadiusMedium}))`,
+  borderRadius: `var(--2801, var(--2802, ${tokens.borderRadiusMedium}))`,
   ...createCustomFocusIndicatorStyle({
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
   }),

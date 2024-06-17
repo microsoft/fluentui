@@ -29,7 +29,7 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
-    color: `var(--ctrl-token-TableRow-1977, var(--semantic-token-TableRow-1978, ${tokens.colorNeutralForeground1}))`,
+    color: `var(--1977, var(--1978, ${tokens.colorNeutralForeground1}))`,
     boxSizing: 'border-box',
     ...createCustomFocusIndicatorStyle(
       {
@@ -43,15 +43,18 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `var(--ctrl-token-TableRow-1979, var(--semantic-token-TableRow-1980, ${tokens.borderRadiusMedium}))` },
+      {
+        outline: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: `var(--1979, var(--1980, ${tokens.borderRadiusMedium}))`,
+      },
       { selector: 'focus' },
     ),
   },
 
   rootInteractive: {
     ':active': {
-      backgroundColor: `var(--ctrl-token-TableRow-1981, var(--semantic-token-TableRow-1982, ${tokens.colorSubtleBackgroundPressed}))`,
-      color: `var(--ctrl-token-TableRow-1983, var(--semantic-token-TableRow-1984, ${tokens.colorNeutralForeground1Pressed}))`,
+      backgroundColor: `var(--1981, var(--1982, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--1983, var(--1984, ${tokens.colorNeutralForeground1Pressed}))`,
       [`& .${tableCellActionsClassNames.root}`]: {
         opacity: 1,
       },
@@ -60,8 +63,8 @@ const useStyles = makeStyles({
       },
     },
     ':hover': {
-      backgroundColor: `var(--ctrl-token-TableRow-1985, var(--semantic-token-TableRow-1986, ${tokens.colorSubtleBackgroundHover}))`,
-      color: `var(--ctrl-token-TableRow-1987, var(--semantic-token-TableRow-1988, ${tokens.colorNeutralForeground1Hover}))`,
+      backgroundColor: `var(--1985, var(--1986, ${tokens.colorSubtleBackgroundHover}))`,
+      color: `var(--1987, var(--1988, ${tokens.colorNeutralForeground1Hover}))`,
       [`& .${tableCellActionsClassNames.root}`]: {
         opacity: 1,
       },
@@ -83,20 +86,20 @@ const useStyles = makeStyles({
   small: { borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}` },
 
   'extra-small': {
-    fontSize: `var(--ctrl-token-TableRow-1989, var(--semantic-token-TableRow-1990, ${tokens.fontSizeBase200}))`,
+    fontSize: `var(--1989, var(--1990, ${tokens.fontSizeBase200}))`,
   },
 
   brand: {
-    backgroundColor: `var(--ctrl-token-TableRow-1991, var(--semantic-token-TableRow-1992, ${tokens.colorBrandBackground2}))`,
+    backgroundColor: `var(--1991, var(--1992, ${tokens.colorBrandBackground2}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     ':active': {
-      backgroundColor: `var(--ctrl-token-TableRow-1993, var(--semantic-token-TableRow-1994, ${tokens.colorBrandBackground2}))`,
-      color: `var(--ctrl-token-TableRow-1995, var(--semantic-token-TableRow-1996, ${tokens.colorNeutralForeground1}))`,
+      backgroundColor: `var(--1993, var(--1994, ${tokens.colorBrandBackground2}))`,
+      color: `var(--1995, var(--1996, ${tokens.colorNeutralForeground1}))`,
     },
 
     '@media(forced-colors: active)': {
       border: '2px solid transparent',
-      borderRadius: `var(--ctrl-token-TableRow-1997, var(--semantic-token-TableRow-1998, ${tokens.borderRadiusMedium}))`,
+      borderRadius: `var(--1997, var(--1998, ${tokens.borderRadiusMedium}))`,
       boxSizing: 'border-box',
       ':focus-visible': {
         outlineOffset: '-4px',
@@ -107,19 +110,19 @@ const useStyles = makeStyles({
   neutral: {
     '@media(forced-colors: active)': {
       border: '2px solid transparent',
-      borderRadius: `var(--ctrl-token-TableRow-1999, var(--semantic-token-TableRow-2000, ${tokens.borderRadiusMedium}))`,
+      borderRadius: `var(--1999, var(--2000, ${tokens.borderRadiusMedium}))`,
       boxSizing: 'border-box',
       ':focus-visible': {
         outlineOffset: '-4px',
       },
     },
-    backgroundColor: `var(--ctrl-token-TableRow-2001, var(--semantic-token-TableRow-2002, ${tokens.colorSubtleBackgroundSelected}))`,
-    color: `var(--ctrl-token-TableRow-2003, var(--semantic-token-TableRow-2004, ${tokens.colorNeutralForeground1Hover}))`,
+    backgroundColor: `var(--2001, var(--2002, ${tokens.colorSubtleBackgroundSelected}))`,
+    color: `var(--2003, var(--2004, ${tokens.colorNeutralForeground1Hover}))`,
     ':hover': {
-      backgroundColor: `var(--ctrl-token-TableRow-2005, var(--semantic-token-TableRow-2006, ${tokens.colorSubtleBackgroundSelected}))`,
+      backgroundColor: `var(--2005, var(--2006, ${tokens.colorSubtleBackgroundSelected}))`,
     },
     ':active': {
-      backgroundColor: `var(--ctrl-token-TableRow-2007, var(--semantic-token-TableRow-2008, ${tokens.colorSubtleBackgroundSelected}))`,
+      backgroundColor: `var(--2007, var(--2008, ${tokens.colorSubtleBackgroundSelected}))`,
     },
 
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),

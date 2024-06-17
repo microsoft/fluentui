@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     height: tokens.spacingVerticalS,
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalXS}`,
     boxSizing: 'content-box',
-    backgroundColor: `var(--ctrl-token-CarouselNavButton-781, var(--semantic-token-CarouselNavButton-782, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--781, var(--782, ${tokens.colorNeutralForeground1}))`,
     ...shorthands.borderWidth(0),
     '::after': {
       content: '""',
@@ -35,9 +35,8 @@ const useStyles = makeStyles({
   rootUnselected: {
     outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
-      border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: `var(--783, var(--784, ${tokens.borderRadiusMedium}))`,
       margin: `calc(-1 * ${tokens.strokeWidthThick})`,
-      borderRadius: tokens.borderRadiusMedium,
     }),
     '::after': {
       opacity: 0.3,
@@ -49,7 +48,7 @@ const useStyles = makeStyles({
     ...createCustomFocusIndicatorStyle({
       border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
       margin: `calc(-1 * ${tokens.strokeWidthThick})`,
-      borderRadius: `var(--ctrl-token-CarouselNavButton-787, var(--semantic-token-CarouselNavButton-788, ${tokens.borderRadiusMedium}))`,
+      borderRadius: `var(--787, var(--788, ${tokens.borderRadiusMedium}))`,
     }),
     '::after': {
       width: '16px',

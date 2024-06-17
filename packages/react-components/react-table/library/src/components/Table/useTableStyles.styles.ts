@@ -29,7 +29,7 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     borderCollapse: 'collapse',
-    backgroundColor: `var(--ctrl-token-Table-1953, var(--semantic-token-Table-1954, ${tokens.colorSubtleBackground}))`,
+    backgroundColor: `var(--1953, var(--1954, ${tokens.colorSubtleBackground}))`,
   },
 });
 

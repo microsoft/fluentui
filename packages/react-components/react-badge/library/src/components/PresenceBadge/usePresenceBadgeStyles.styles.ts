@@ -23,8 +23,8 @@ const useRootClassName = makeResetStyles({
   alignItems: 'center',
   justifyContent: 'center',
 
-  borderRadius: `var(--ctrl-token-PresenceBadge-449, var(--semantic-token-PresenceBadge-450, ${tokens.borderRadiusCircular}))`,
-  backgroundColor: `var(--ctrl-token-PresenceBadge-451, var(--semantic-token-PresenceBadge-452, ${tokens.colorNeutralBackground1}))`,
+  borderRadius: `var(--449, var(--450, ${tokens.borderRadiusCircular}))`,
+  backgroundColor: `var(--451, var(--452, ${tokens.colorNeutralBackground1}))`,
 
   // The background color bleeds around the edge of the icon due to antialiasing on the svg and element background.
   // Since all presence icons have a border around the edge that is at least 1px wide*, we can inset the background
@@ -41,34 +41,34 @@ const useIconClassName = makeResetStyles({
 
 const useStyles = makeStyles({
   statusBusy: {
-    color: `var(--ctrl-token-PresenceBadge-453, var(--semantic-token-PresenceBadge-454, ${tokens.colorPaletteRedBackground3}))`,
+    color: `var(--453, var(--454, ${tokens.colorPaletteRedBackground3}))`,
   },
   statusAway: {
-    color: `var(--ctrl-token-PresenceBadge-455, var(--semantic-token-PresenceBadge-456, ${tokens.colorPaletteMarigoldBackground3}))`,
+    color: `var(--455, var(--456, ${tokens.colorPaletteMarigoldBackground3}))`,
   },
   statusAvailable: {
-    color: `var(--ctrl-token-PresenceBadge-457, var(--semantic-token-PresenceBadge-458, ${tokens.colorPaletteLightGreenForeground3}))`,
+    color: `var(--457, var(--458, ${tokens.colorPaletteLightGreenForeground3}))`,
   },
   statusOffline: {
-    color: `var(--ctrl-token-PresenceBadge-459, var(--semantic-token-PresenceBadge-460, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--459, var(--460, ${tokens.colorNeutralForeground3}))`,
   },
   statusOutOfOffice: {
-    color: `var(--ctrl-token-PresenceBadge-461, var(--semantic-token-PresenceBadge-462, ${tokens.colorPaletteBerryForeground3}))`,
+    color: `var(--461, var(--462, ${tokens.colorPaletteBerryForeground3}))`,
   },
   statusUnknown: {
-    color: `var(--ctrl-token-PresenceBadge-463, var(--semantic-token-PresenceBadge-464, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--463, var(--464, ${tokens.colorNeutralForeground3}))`,
   },
   outOfOffice: {
-    color: `var(--ctrl-token-PresenceBadge-465, var(--semantic-token-PresenceBadge-466, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--465, var(--466, ${tokens.colorNeutralBackground1}))`,
   },
   outOfOfficeAvailable: {
-    color: `var(--ctrl-token-PresenceBadge-467, var(--semantic-token-PresenceBadge-468, ${tokens.colorPaletteLightGreenForeground3}))`,
+    color: `var(--467, var(--468, ${tokens.colorPaletteLightGreenForeground3}))`,
   },
   outOfOfficeBusy: {
-    color: `var(--ctrl-token-PresenceBadge-469, var(--semantic-token-PresenceBadge-470, ${tokens.colorPaletteRedBackground3}))`,
+    color: `var(--469, var(--470, ${tokens.colorPaletteRedBackground3}))`,
   },
   outOfOfficeUnknown: {
-    color: `var(--ctrl-token-PresenceBadge-471, var(--semantic-token-PresenceBadge-472, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--471, var(--472, ${tokens.colorNeutralForeground3}))`,
   },
 
   // Icons are not resizeable, and these sizes are currently missing

@@ -32,7 +32,7 @@ const indeterminateProgressBar = {
 const useRootStyles = makeStyles({
   root: {
     display: 'block',
-    backgroundColor: `var(--ctrl-token-ProgressBar-1489, var(--semantic-token-ProgressBar-1490, ${tokens.colorNeutralBackground6}))`,
+    backgroundColor: `var(--1489, var(--1490, ${tokens.colorNeutralBackground6}))`,
     width: '100%',
     overflow: 'hidden',
 
@@ -41,10 +41,10 @@ const useRootStyles = makeStyles({
     },
   },
   rounded: {
-    borderRadius: `var(--ctrl-token-ProgressBar-1491, var(--semantic-token-ProgressBar-1492, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--1491, var(--1492, ${tokens.borderRadiusMedium}))`,
   },
   square: {
-    borderRadius: `var(--ctrl-token-ProgressBar-1493, var(--semantic-token-ProgressBar-1494, ${tokens.borderRadiusNone}))`,
+    borderRadius: `var(--1493, var(--1494, ${tokens.borderRadiusNone}))`,
   },
   medium: {
     height: barThicknessValues.medium,
@@ -90,17 +90,17 @@ const useBarStyles = makeStyles({
   },
 
   brand: {
-    backgroundColor: `var(--ctrl-token-ProgressBar-1495, var(--semantic-token-ProgressBar-1496, ${tokens.colorCompoundBrandBackground}))`,
+    backgroundColor: `var(--1495, var(--1496, ${tokens.colorCompoundBrandBackground}))`,
   },
 
   error: {
-    backgroundColor: `var(--ctrl-token-ProgressBar-1497, var(--semantic-token-ProgressBar-1498, ${tokens.colorPaletteRedBackground3}))`,
+    backgroundColor: `var(--1497, var(--1498, ${tokens.colorPaletteRedBackground3}))`,
   },
   warning: {
-    backgroundColor: `var(--ctrl-token-ProgressBar-1499, var(--semantic-token-ProgressBar-1500, ${tokens.colorPaletteDarkOrangeBackground3}))`,
+    backgroundColor: `var(--1499, var(--1500, ${tokens.colorPaletteDarkOrangeBackground3}))`,
   },
   success: {
-    backgroundColor: `var(--ctrl-token-ProgressBar-1501, var(--semantic-token-ProgressBar-1502, ${tokens.colorPaletteGreenBackground3}))`,
+    backgroundColor: `var(--1501, var(--1502, ${tokens.colorPaletteGreenBackground3}))`,
   },
 });
 

@@ -25,9 +25,9 @@ const fieldHeights = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    borderRadius: `var(--ctrl-token-Combobox-847, var(--semantic-token-Combobox-848, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--847, var(--848, ${tokens.borderRadiusMedium}))`,
     boxSizing: 'border-box',
-    columnGap: `var(--ctrl-token-Combobox-849, var(--semantic-token-Combobox-850, ${tokens.spacingHorizontalXXS}))`,
+    columnGap: `var(--849, var(--850, ${tokens.spacingHorizontalXXS}))`,
     display: 'inline-grid',
     gridTemplateColumns: '1fr auto',
     justifyContent: 'space-between',
@@ -51,14 +51,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: `var(--ctrl-token-Combobox-851, var(--semantic-token-Combobox-852, ${tokens.borderRadiusMedium}))`,
-      borderBottomRightRadius: `var(--ctrl-token-Combobox-853, var(--semantic-token-Combobox-854, ${tokens.borderRadiusMedium}))`,
+      borderBottomLeftRadius: `var(--851, var(--852, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--853, var(--854, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: `var(--ctrl-token-Combobox-855, var(--semantic-token-Combobox-856, ${tokens.durationUltraFast}))`,
-      transitionDelay: `var(--ctrl-token-Combobox-857, var(--semantic-token-Combobox-858, ${tokens.curveAccelerateMid}))`,
+      transitionDuration: `var(--855, var(--856, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--857, var(--858, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -68,8 +68,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: `var(--ctrl-token-Combobox-859, var(--semantic-token-Combobox-860, ${tokens.durationNormal}))`,
-      transitionDelay: `var(--ctrl-token-Combobox-861, var(--semantic-token-Combobox-862, ${tokens.curveDecelerateMid}))`,
+      transitionDuration: `var(--859, var(--860, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--861, var(--862, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -77,13 +77,13 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: `var(--ctrl-token-Combobox-863, var(--semantic-token-Combobox-864, ${tokens.colorCompoundBrandStrokePressed}))`,
+      borderBottomColor: `var(--863, var(--864, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
   },
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: `var(--ctrl-token-Combobox-865, var(--semantic-token-Combobox-866, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--865, var(--866, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -101,47 +101,47 @@ const useStyles = makeStyles({
   // size variants
   small: {
     height: fieldHeights.small,
-    paddingRight: `var(--ctrl-token-Combobox-867, var(--semantic-token-Combobox-868, ${tokens.spacingHorizontalSNudge}))`,
+    paddingRight: `var(--867, var(--868, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     height: fieldHeights.medium,
-    paddingRight: `var(--ctrl-token-Combobox-869, var(--semantic-token-Combobox-870, ${tokens.spacingHorizontalMNudge}))`,
+    paddingRight: `var(--869, var(--870, ${tokens.spacingHorizontalMNudge}))`,
   },
   large: {
-    columnGap: `var(--ctrl-token-Combobox-871, var(--semantic-token-Combobox-872, ${tokens.spacingHorizontalSNudge}))`,
+    columnGap: `var(--871, var(--872, ${tokens.spacingHorizontalSNudge}))`,
     height: fieldHeights.large,
-    paddingRight: `var(--ctrl-token-Combobox-873, var(--semantic-token-Combobox-874, ${tokens.spacingHorizontalM}))`,
+    paddingRight: `var(--873, var(--874, ${tokens.spacingHorizontalM}))`,
   },
 
   // appearance variants
   outline: {
-    backgroundColor: `var(--ctrl-token-Combobox-875, var(--semantic-token-Combobox-876, ${tokens.colorNeutralBackground1}))`,
+    backgroundColor: `var(--875, var(--876, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: `var(--ctrl-token-Combobox-877, var(--semantic-token-Combobox-878, ${tokens.colorNeutralStrokeAccessible}))`,
+    borderBottomColor: `var(--877, var(--878, ${tokens.colorNeutralStrokeAccessible}))`,
   },
 
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: `var(--ctrl-token-Combobox-879, var(--semantic-token-Combobox-880, ${tokens.colorNeutralStrokeAccessible}))`,
+      borderBottomColor: `var(--879, var(--880, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: `var(--ctrl-token-Combobox-881, var(--semantic-token-Combobox-882, ${tokens.colorNeutralStrokeAccessible}))`,
+      borderBottomColor: `var(--881, var(--882, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: `var(--ctrl-token-Combobox-883, var(--semantic-token-Combobox-884, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--883, var(--884, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: `var(--ctrl-token-Combobox-885, var(--semantic-token-Combobox-886, ${tokens.colorNeutralBackground1}))`,
+    backgroundColor: `var(--885, var(--886, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
-    backgroundColor: `var(--ctrl-token-Combobox-887, var(--semantic-token-Combobox-888, ${tokens.colorNeutralBackground3}))`,
+    backgroundColor: `var(--887, var(--888, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
@@ -151,13 +151,13 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: `var(--ctrl-token-Combobox-889, var(--semantic-token-Combobox-890, ${tokens.colorPaletteRedBorder2}))`,
+      borderBottomColor: `var(--889, var(--890, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
 
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-Combobox-891, var(--semantic-token-Combobox-892, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--891, var(--892, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -168,17 +168,17 @@ const useStyles = makeStyles({
 const useInputStyles = makeStyles({
   input: {
     alignSelf: 'stretch',
-    backgroundColor: `var(--ctrl-token-Combobox-893, var(--semantic-token-Combobox-894, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--893, var(--894, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    color: `var(--ctrl-token-Combobox-895, var(--semantic-token-Combobox-896, ${tokens.colorNeutralForeground1}))`,
-    fontFamily: `var(--ctrl-token-Combobox-897, var(--semantic-token-Combobox-898, ${tokens.fontFamilyBase}))`,
+    color: `var(--895, var(--896, ${tokens.colorNeutralForeground1}))`,
+    fontFamily: `var(--897, var(--898, ${tokens.fontFamilyBase}))`,
 
     '&:focus': {
       outlineStyle: 'none',
     },
 
     '&::placeholder': {
-      color: `var(--ctrl-token-Combobox-899, var(--semantic-token-Combobox-900, ${tokens.colorNeutralForeground4}))`,
+      color: `var(--899, var(--900, ${tokens.colorNeutralForeground4}))`,
       opacity: 1,
     },
   },
@@ -197,11 +197,11 @@ const useInputStyles = makeStyles({
     padding: `0 0 0 ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
   },
   disabled: {
-    color: `var(--ctrl-token-Combobox-901, var(--semantic-token-Combobox-902, ${tokens.colorNeutralForegroundDisabled}))`,
-    backgroundColor: `var(--ctrl-token-Combobox-903, var(--semantic-token-Combobox-904, ${tokens.colorTransparentBackground}))`,
+    color: `var(--901, var(--902, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--903, var(--904, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: `var(--ctrl-token-Combobox-905, var(--semantic-token-Combobox-906, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--905, var(--906, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
@@ -209,10 +209,10 @@ const useInputStyles = makeStyles({
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: `var(--ctrl-token-Combobox-907, var(--semantic-token-Combobox-908, ${tokens.colorNeutralStrokeAccessible}))`,
+    color: `var(--907, var(--908, ${tokens.colorNeutralStrokeAccessible}))`,
     cursor: 'pointer',
     display: 'block',
-    fontSize: `var(--ctrl-token-Combobox-909, var(--semantic-token-Combobox-910, ${tokens.fontSizeBase500}))`,
+    fontSize: `var(--909, var(--910, ${tokens.fontSizeBase500}))`,
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
@@ -236,18 +236,18 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
-    marginLeft: `var(--ctrl-token-Combobox-911, var(--semantic-token-Combobox-912, ${tokens.spacingHorizontalXXS}))`,
+    marginLeft: `var(--911, var(--912, ${tokens.spacingHorizontalXXS}))`,
   },
   medium: {
     fontSize: iconSizes.medium,
-    marginLeft: `var(--ctrl-token-Combobox-913, var(--semantic-token-Combobox-914, ${tokens.spacingHorizontalXXS}))`,
+    marginLeft: `var(--913, var(--914, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.large,
-    marginLeft: `var(--ctrl-token-Combobox-915, var(--semantic-token-Combobox-916, ${tokens.spacingHorizontalSNudge}))`,
+    marginLeft: `var(--915, var(--916, ${tokens.spacingHorizontalSNudge}))`,
   },
   disabled: {
-    color: `var(--ctrl-token-Combobox-917, var(--semantic-token-Combobox-918, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--917, var(--918, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 });

@@ -16,8 +16,8 @@ const useStyles = makeStyles({
   root: {
     marginTop: 'auto',
     marginBottom: 'auto',
-    color: `var(--ctrl-token-CarouselButton-767, var(--semantic-token-CarouselButton-768, ${tokens.colorNeutralForeground2}))`,
-    backgroundColor: `var(--ctrl-token-CarouselButton-769, var(--semantic-token-CarouselButton-770, ${tokens.colorNeutralBackgroundAlpha}))`,
+    color: `var(--767, var(--768, ${tokens.colorNeutralForeground2}))`,
+    backgroundColor: `var(--769, var(--770, ${tokens.colorNeutralBackgroundAlpha}))`,=
     ':hover': {
       cursor: 'pointer',
     },

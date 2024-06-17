@@ -65,16 +65,16 @@ const useRootStyles = makeStyles({
   },
 
   enabled: {
-    [railColorVar]: `var(--ctrl-token-Slider-1651, var(--semantic-token-Slider-1652, ${tokens.colorNeutralStrokeAccessible}))`,
-    [progressColorVar]: `var(--ctrl-token-Slider-1653, var(--semantic-token-Slider-1654, ${tokens.colorCompoundBrandBackground}))`,
-    [thumbColorVar]: `var(--ctrl-token-Slider-1655, var(--semantic-token-Slider-1656, ${tokens.colorCompoundBrandBackground}))`,
+    [railColorVar]: `var(--1651, var(--1652, ${tokens.colorNeutralStrokeAccessible}))`,
+    [progressColorVar]: `var(--1653, var(--1654, ${tokens.colorCompoundBrandBackground}))`,
+    [thumbColorVar]: `var(--1655, var(--1656, ${tokens.colorCompoundBrandBackground}))`,
     ':hover': {
-      [thumbColorVar]: `var(--ctrl-token-Slider-1657, var(--semantic-token-Slider-1658, ${tokens.colorCompoundBrandBackgroundHover}))`,
-      [progressColorVar]: `var(--ctrl-token-Slider-1659, var(--semantic-token-Slider-1660, ${tokens.colorCompoundBrandBackgroundHover}))`,
+      [thumbColorVar]: `var(--1657, var(--1658, ${tokens.colorCompoundBrandBackgroundHover}))`,
+      [progressColorVar]: `var(--1659, var(--1660, ${tokens.colorCompoundBrandBackgroundHover}))`,
     },
     ':active': {
-      [thumbColorVar]: `var(--ctrl-token-Slider-1661, var(--semantic-token-Slider-1662, ${tokens.colorCompoundBrandBackgroundPressed}))`,
-      [progressColorVar]: `var(--ctrl-token-Slider-1663, var(--semantic-token-Slider-1664, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+      [thumbColorVar]: `var(--1661, var(--1662, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+      [progressColorVar]: `var(--1663, var(--1664, ${tokens.colorCompoundBrandBackgroundPressed}))`,
     },
     '@media (forced-colors: active)': {
       [railColorVar]: 'CanvasText',
@@ -88,9 +88,9 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
-    [thumbColorVar]: `var(--ctrl-token-Slider-1665, var(--semantic-token-Slider-1666, ${tokens.colorNeutralForegroundDisabled}))`,
-    [railColorVar]: `var(--ctrl-token-Slider-1667, var(--semantic-token-Slider-1668, ${tokens.colorNeutralBackgroundDisabled}))`,
-    [progressColorVar]: `var(--ctrl-token-Slider-1669, var(--semantic-token-Slider-1670, ${tokens.colorNeutralForegroundDisabled}))`,
+    [thumbColorVar]: `var(--1665, var(--1666, ${tokens.colorNeutralForegroundDisabled}))`,
+    [railColorVar]: `var(--1667, var(--1668, ${tokens.colorNeutralBackgroundDisabled}))`,
+    [progressColorVar]: `var(--1669, var(--1670, ${tokens.colorNeutralForegroundDisabled}))`,
     '@media (forced-colors: active)': {
       [railColorVar]: 'GrayText',
       [thumbColorVar]: 'GrayText',
@@ -114,7 +114,7 @@ const useRootStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: `var(--ctrl-token-Slider-1671, var(--semantic-token-Slider-1672, ${tokens.borderRadiusXLarge}))`,
+    borderRadius: `var(--1671, var(--1672, ${tokens.borderRadiusXLarge}))`,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -131,7 +131,7 @@ const useRailStyles = makeStyles({
     )`,
     outlineWidth: '1px',
     outlineStyle: 'solid',
-    outlineColor: `var(--ctrl-token-Slider-1673, var(--semantic-token-Slider-1674, ${tokens.colorTransparentStroke}))`,
+    outlineColor: `var(--1673, var(--1674, ${tokens.colorTransparentStroke}))`,
     '::before': {
       content: "''",
       position: 'absolute',
@@ -192,7 +192,7 @@ const useThumbStyles = makeStyles({
     pointerEvents: 'none',
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
-    borderRadius: `var(--ctrl-token-Slider-1675, var(--semantic-token-Slider-1676, ${tokens.borderRadiusCircular}))`,
+    borderRadius: `var(--1675, var(--1676, ${tokens.borderRadiusCircular}))`,
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
     '::before': {
@@ -201,7 +201,7 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      borderRadius: `var(--ctrl-token-Slider-1677, var(--semantic-token-Slider-1678, ${tokens.borderRadiusCircular}))`,
+      borderRadius: `var(--1677, var(--1678, ${tokens.borderRadiusCircular}))`,
       boxSizing: 'border-box',
       content: "''",
       border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,

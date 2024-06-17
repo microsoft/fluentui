@@ -10,8 +10,8 @@ export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    color: `var(--ctrl-token-FluentProvider-1503, var(--semantic-token-FluentProvider-1504, ${tokens.colorNeutralForeground1}))`,
-    backgroundColor: `var(--ctrl-token-FluentProvider-1505, var(--semantic-token-FluentProvider-1506, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--1503, var(--1504, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--1505, var(--1506, ${tokens.colorNeutralBackground1}))`,
     textAlign: 'left',
     ...typographyStyles.body1,
   },

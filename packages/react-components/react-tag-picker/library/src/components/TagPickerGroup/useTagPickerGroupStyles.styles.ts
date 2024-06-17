@@ -21,15 +21,15 @@ const useStyles = makeStyles({
   // size variants
   medium: {
     padding: `${tokens.spacingVerticalSNudge} 0 ${tokens.spacingVerticalSNudge} 0`,
-    gap: `var(--ctrl-token-TagPickerGroup-2267, var(--semantic-token-TagPickerGroup-2268, ${tokens.spacingHorizontalXS}))`,
+    gap: `var(--2267, var(--2268, ${tokens.spacingHorizontalXS}))`,
   },
   large: {
     padding: `${tokens.spacingVerticalS} 0 ${tokens.spacingVerticalS} 0`,
-    gap: `var(--ctrl-token-TagPickerGroup-2269, var(--semantic-token-TagPickerGroup-2270, ${tokens.spacingHorizontalSNudge}))`,
+    gap: `var(--2269, var(--2270, ${tokens.spacingHorizontalSNudge}))`,
   },
   'extra-large': {
     padding: `${tokens.spacingVerticalS} 0 ${tokens.spacingVerticalS} 0`,
-    gap: `var(--ctrl-token-TagPickerGroup-2271, var(--semantic-token-TagPickerGroup-2272, ${tokens.spacingHorizontalSNudge}))`,
+    gap: `var(--2271, var(--2272, ${tokens.spacingHorizontalSNudge}))`,
   },
 });
 

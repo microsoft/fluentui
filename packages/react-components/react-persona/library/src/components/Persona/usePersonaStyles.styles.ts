@@ -84,22 +84,22 @@ const useStyles = makeStyles({
 
 const useAvatarSpacingStyles = makeStyles({
   'extra-small': {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1455, var(--semantic-token-Persona-1456, ${tokens.spacingHorizontalSNudge}))`,
+    [avatarSpacing]: `var(--1455, var(--1456, ${tokens.spacingHorizontalSNudge}))`,
   },
   small: {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1457, var(--semantic-token-Persona-1458, ${tokens.spacingHorizontalS}))`,
+    [avatarSpacing]: `var(--1457, var(--1458, ${tokens.spacingHorizontalS}))`,
   },
   medium: {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1459, var(--semantic-token-Persona-1460, ${tokens.spacingHorizontalS}))`,
+    [avatarSpacing]: `var(--1459, var(--1460, ${tokens.spacingHorizontalS}))`,
   },
   large: {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1461, var(--semantic-token-Persona-1462, ${tokens.spacingHorizontalMNudge}))`,
+    [avatarSpacing]: `var(--1461, var(--1462, ${tokens.spacingHorizontalMNudge}))`,
   },
   'extra-large': {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1463, var(--semantic-token-Persona-1464, ${tokens.spacingHorizontalMNudge}))`,
+    [avatarSpacing]: `var(--1463, var(--1464, ${tokens.spacingHorizontalMNudge}))`,
   },
   huge: {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1465, var(--semantic-token-Persona-1466, ${tokens.spacingHorizontalM}))`,
+    [avatarSpacing]: `var(--1465, var(--1466, ${tokens.spacingHorizontalM}))`,
   },
   after: {
     marginRight: `var(${avatarSpacing})`,
@@ -114,7 +114,7 @@ const useAvatarSpacingStyles = makeStyles({
 
 const usePresenceSpacingStyles = makeStyles({
   small: {
-    [avatarSpacing]: `var(--ctrl-token-Persona-1467, var(--semantic-token-Persona-1468, ${tokens.spacingHorizontalSNudge}))`,
+    [avatarSpacing]: `var(--1467, var(--1468, ${tokens.spacingHorizontalSNudge}))`,
   },
 });
 
@@ -211,13 +211,13 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
 
 const usePrimaryTextBaseClassName = makeResetStyles({
   display: 'block',
-  color: `var(--ctrl-token-Persona-1469, var(--semantic-token-Persona-1470, ${tokens.colorNeutralForeground1}))`,
+  color: `var(--1469, var(--1470, ${tokens.colorNeutralForeground1}))`,
   ...typographyStyles.body1,
 });
 
 const useOptionalTextBaseClassName = makeResetStyles({
   display: 'block',
-  color: `var(--ctrl-token-Persona-1471, var(--semantic-token-Persona-1472, ${tokens.colorNeutralForeground2}))`,
+  color: `var(--1471, var(--1472, ${tokens.colorNeutralForeground2}))`,
   ...typographyStyles.caption1,
 });
 

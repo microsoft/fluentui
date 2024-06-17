@@ -70,7 +70,7 @@ const useInputStyles = makeStyles({
 const useIndicatorBaseClassName = makeResetStyles({
   display: 'flex',
   overflow: 'hidden',
-  color: `var(--ctrl-token-RatingItem-1565, var(--semantic-token-RatingItem-1566, ${tokens.colorNeutralForeground1}))`,
+  color: `var(--1565, var(--1566, ${tokens.colorNeutralForeground1}))`,
   fill: 'currentColor',
   pointerEvents: 'none',
   position: 'absolute',
@@ -92,24 +92,24 @@ const useIndicatorStyles = makeStyles({
     marginLeft: '-50%',
   },
   brand: {
-    color: `var(--ctrl-token-RatingItem-1567, var(--semantic-token-RatingItem-1568, ${tokens.colorBrandForeground1}))`,
+    color: `var(--1567, var(--1568, ${tokens.colorBrandForeground1}))`,
   },
   marigold: {
-    color: `var(--ctrl-token-RatingItem-1569, var(--semantic-token-RatingItem-1570, ${tokens.colorPaletteMarigoldBorderActive}))`,
+    color: `var(--1569, var(--1570, ${tokens.colorPaletteMarigoldBorderActive}))`,
   },
   filled: {
-    color: `var(--ctrl-token-RatingItem-1571, var(--semantic-token-RatingItem-1572, ${tokens.colorNeutralBackground6}))`,
-    stroke: `var(--ctrl-token-RatingItem-1573, var(--semantic-token-RatingItem-1574, ${tokens.colorTransparentStroke}))`,
+    color: `var(--1571, var(--1572, ${tokens.colorNeutralBackground6}))`,
+    stroke: `var(--1573, var(--1574, ${tokens.colorTransparentStroke}))`,
     '@media (forced-colors: active)': {
       color: 'Canvas',
       stroke: 'CanvasText',
     },
   },
   brandFilled: {
-    color: `var(--ctrl-token-RatingItem-1575, var(--semantic-token-RatingItem-1576, ${tokens.colorBrandBackground2}))`,
+    color: `var(--1575, var(--1576, ${tokens.colorBrandBackground2}))`,
   },
   marigoldFilled: {
-    color: `var(--ctrl-token-RatingItem-1577, var(--semantic-token-RatingItem-1578, ${tokens.colorPaletteMarigoldBackground2}))`,
+    color: `var(--1577, var(--1578, ${tokens.colorPaletteMarigoldBackground2}))`,
   },
 });
 

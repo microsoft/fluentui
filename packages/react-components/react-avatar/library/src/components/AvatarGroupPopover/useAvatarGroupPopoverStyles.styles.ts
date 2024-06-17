@@ -50,10 +50,10 @@ const useTriggerButtonStyles = makeStyles({
     flexShrink: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    color: `var(--ctrl-token-AvatarGroupPopover-321, var(--semantic-token-AvatarGroupPopover-322, ${tokens.colorNeutralForeground1}))`,
-    backgroundColor: `var(--ctrl-token-AvatarGroupPopover-323, var(--semantic-token-AvatarGroupPopover-324, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--321, var(--322, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--323, var(--324, ${tokens.colorNeutralBackground1}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    borderRadius: `var(--ctrl-token-AvatarGroupPopover-325, var(--semantic-token-AvatarGroupPopover-326, ${tokens.borderRadiusCircular}))`,
+    borderRadius: `var(--325, var(--326, ${tokens.borderRadiusCircular}))`,
     ...shorthands.borderStyle('solid'),
     padding: '0',
 
@@ -64,7 +64,7 @@ const useTriggerButtonStyles = makeStyles({
   },
 
   pie: {
-    backgroundColor: `var(--ctrl-token-AvatarGroupPopover-327, var(--semantic-token-AvatarGroupPopover-328, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--327, var(--328, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: 'transparent',
   },
@@ -76,20 +76,20 @@ const useTriggerButtonStyles = makeStyles({
 
   states: {
     '&:hover': {
-      color: `var(--ctrl-token-AvatarGroupPopover-329, var(--semantic-token-AvatarGroupPopover-330, ${tokens.colorNeutralForeground1Hover}))`,
-      backgroundColor: `var(--ctrl-token-AvatarGroupPopover-331, var(--semantic-token-AvatarGroupPopover-332, ${tokens.colorNeutralBackground1Hover}))`,
+      color: `var(--329, var(--330, ${tokens.colorNeutralForeground1Hover}))`,
+      backgroundColor: `var(--331, var(--332, ${tokens.colorNeutralBackground1Hover}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
     },
     '&:active': {
-      color: `var(--ctrl-token-AvatarGroupPopover-333, var(--semantic-token-AvatarGroupPopover-334, ${tokens.colorNeutralForeground1Pressed}))`,
-      backgroundColor: `var(--ctrl-token-AvatarGroupPopover-335, var(--semantic-token-AvatarGroupPopover-336, ${tokens.colorNeutralBackground1Pressed}))`,
+      color: `var(--333, var(--334, ${tokens.colorNeutralForeground1Pressed}))`,
+      backgroundColor: `var(--335, var(--336, ${tokens.colorNeutralBackground1Pressed}))`,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
     },
   },
 
   selected: {
-    color: `var(--ctrl-token-AvatarGroupPopover-337, var(--semantic-token-AvatarGroupPopover-338, ${tokens.colorNeutralForeground1Selected}))`,
-    backgroundColor: `var(--ctrl-token-AvatarGroupPopover-339, var(--semantic-token-AvatarGroupPopover-340, ${tokens.colorNeutralBackground1Selected}))`,
+    color: `var(--337, var(--338, ${tokens.colorNeutralForeground1Selected}))`,
+    backgroundColor: `var(--339, var(--340, ${tokens.colorNeutralBackground1Selected}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
   },
 

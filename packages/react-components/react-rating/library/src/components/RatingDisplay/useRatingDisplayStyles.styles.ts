@@ -20,24 +20,24 @@ const useRootClassName = makeResetStyles({
 });
 
 const useLabelClassName = makeResetStyles({
-  color: `var(--ctrl-token-RatingDisplay-1547, var(--semantic-token-RatingDisplay-1548, ${tokens.colorNeutralForeground1}))`,
-  marginLeft: `var(--ctrl-token-RatingDisplay-1549, var(--semantic-token-RatingDisplay-1550, ${tokens.spacingHorizontalXS}))`,
+  color: `var(--1547, var(--1548, ${tokens.colorNeutralForeground1}))`,
+  marginLeft: `var(--1549, var(--1550, ${tokens.spacingHorizontalXS}))`,
   ...typographyStyles.caption1,
 });
 
 const useLabelStyles = makeStyles({
   large: {
-    fontSize: `var(--ctrl-token-RatingDisplay-1551, var(--semantic-token-RatingDisplay-1552, ${tokens.fontSizeBase300}))`,
-    lineHeight: `var(--ctrl-token-RatingDisplay-1553, var(--semantic-token-RatingDisplay-1554, ${tokens.lineHeightBase300}))`,
-    marginLeft: `var(--ctrl-token-RatingDisplay-1555, var(--semantic-token-RatingDisplay-1556, ${tokens.spacingHorizontalSNudge}))`,
+    fontSize: `var(--1551, var(--1552, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--1553, var(--1554, ${tokens.lineHeightBase300}))`,
+    marginLeft: `var(--1555, var(--1556, ${tokens.spacingHorizontalSNudge}))`,
   },
   extraLarge: {
-    fontSize: `var(--ctrl-token-RatingDisplay-1557, var(--semantic-token-RatingDisplay-1558, ${tokens.fontSizeBase400}))`,
-    lineHeight: `var(--ctrl-token-RatingDisplay-1559, var(--semantic-token-RatingDisplay-1560, ${tokens.lineHeightBase400}))`,
-    marginLeft: `var(--ctrl-token-RatingDisplay-1561, var(--semantic-token-RatingDisplay-1562, ${tokens.spacingHorizontalS}))`,
+    fontSize: `var(--1557, var(--1558, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--1559, var(--1560, ${tokens.lineHeightBase400}))`,
+    marginLeft: `var(--1561, var(--1562, ${tokens.spacingHorizontalS}))`,
   },
   strong: {
-    fontWeight: `var(--ctrl-token-RatingDisplay-1563, var(--semantic-token-RatingDisplay-1564, ${tokens.fontWeightSemibold}))`,
+    fontWeight: `var(--1563, var(--1564, ${tokens.fontWeightSemibold}))`,
   },
   divider: {
     '::before': {

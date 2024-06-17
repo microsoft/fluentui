@@ -12,7 +12,7 @@ export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  backgroundColor: `var(--ctrl-token-EmptySwatch-1871, var(--semantic-token-EmptySwatch-1872, ${tokens.colorTransparentBackground}))`,
+  backgroundColor: `var(--1871, var(--1872, ${tokens.colorTransparentBackground}))`,
   border: `1px dashed ${tokens.colorNeutralForeground4}`,
 });
 
@@ -37,16 +37,22 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    borderRadius: `var(--ctrl-token-EmptySwatch-1873, var(--semantic-token-EmptySwatch-1874, ${tokens.borderRadiusMedium}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-EmptySwatch-1875, var(--semantic-token-EmptySwatch-1876, ${tokens.borderRadiusMedium}))` }),
+    borderRadius: `var(--1873, var(--1874, ${tokens.borderRadiusMedium}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1875, var(--1876, ${tokens.borderRadiusMedium}))`,
+    }),
   },
   circular: {
-    borderRadius: `var(--ctrl-token-EmptySwatch-1877, var(--semantic-token-EmptySwatch-1878, ${tokens.borderRadiusCircular}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-EmptySwatch-1879, var(--semantic-token-EmptySwatch-1880, ${tokens.borderRadiusCircular}))` }),
+    borderRadius: `var(--1877, var(--1878, ${tokens.borderRadiusCircular}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1879, var(--1880, ${tokens.borderRadiusCircular}))`,
+    }),
   },
   square: {
-    borderRadius: `var(--ctrl-token-EmptySwatch-1881, var(--semantic-token-EmptySwatch-1882, ${tokens.borderRadiusNone}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-EmptySwatch-1883, var(--semantic-token-EmptySwatch-1884, ${tokens.borderRadiusNone}))` }),
+    borderRadius: `var(--1881, var(--1882, ${tokens.borderRadiusNone}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1883, var(--1884, ${tokens.borderRadiusNone}))`,
+    }),
   },
 });
 

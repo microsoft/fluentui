@@ -25,11 +25,11 @@ const useButtonStyles = makeStyles({
     verticalAlign: 'middle',
     position: 'relative',
 
-    backgroundColor: `var(--ctrl-token-InfoButton-1143, var(--semantic-token-InfoButton-1144, ${tokens.colorTransparentBackground}))`,
-    color: `var(--ctrl-token-InfoButton-1145, var(--semantic-token-InfoButton-1146, ${tokens.colorNeutralForeground2}))`,
+    backgroundColor: `var(--1143, var(--1144, ${tokens.colorTransparentBackground}))`,
+    color: `var(--1145, var(--1146, ${tokens.colorNeutralForeground2}))`,
 
     ...shorthands.borderStyle('none'),
-    borderRadius: `var(--ctrl-token-InfoButton-1147, var(--semantic-token-InfoButton-1148, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--1147, var(--1148, ${tokens.borderRadiusMedium}))`,
     margin: '0',
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
 
@@ -41,8 +41,8 @@ const useButtonStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: `var(--ctrl-token-InfoButton-1149, var(--semantic-token-InfoButton-1150, ${tokens.colorTransparentBackgroundHover}))`,
-      color: `var(--ctrl-token-InfoButton-1151, var(--semantic-token-InfoButton-1152, ${tokens.colorNeutralForeground2BrandHover}))`,
+      backgroundColor: `var(--1149, var(--1150, ${tokens.colorTransparentBackgroundHover}))`,
+      color: `var(--1151, var(--1152, ${tokens.colorNeutralForeground2BrandHover}))`,
       cursor: 'pointer',
 
       [`& .${iconFilledClassName}`]: {
@@ -53,14 +53,14 @@ const useButtonStyles = makeStyles({
       },
     },
     ':hover:active': {
-      backgroundColor: `var(--ctrl-token-InfoButton-1153, var(--semantic-token-InfoButton-1154, ${tokens.colorTransparentBackgroundPressed}))`,
-      color: `var(--ctrl-token-InfoButton-1155, var(--semantic-token-InfoButton-1156, ${tokens.colorNeutralForeground2BrandPressed}))`,
+      backgroundColor: `var(--1153, var(--1154, ${tokens.colorTransparentBackgroundPressed}))`,
+      color: `var(--1155, var(--1156, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
   },
 
   selected: {
-    backgroundColor: `var(--ctrl-token-InfoButton-1157, var(--semantic-token-InfoButton-1158, ${tokens.colorTransparentBackgroundSelected}))`,
-    color: `var(--ctrl-token-InfoButton-1159, var(--semantic-token-InfoButton-1160, ${tokens.colorNeutralForeground2BrandSelected}))`,
+    backgroundColor: `var(--1157, var(--1158, ${tokens.colorTransparentBackgroundSelected}))`,
+    color: `var(--1159, var(--1160, ${tokens.colorNeutralForeground2BrandSelected}))`,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline-flex',

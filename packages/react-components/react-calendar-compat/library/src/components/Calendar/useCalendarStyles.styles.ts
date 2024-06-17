@@ -56,13 +56,13 @@ const useMonthPickerWrapperStyles = makeStyles({
 const useGoTodayButtonStyles = makeStyles({
   base: {
     alignSelf: 'flex-end',
-    backgroundColor: `var(--ctrl-token-Calendar-493, var(--semantic-token-Calendar-494, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--493, var(--494, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
     bottom: 0,
     boxSizing: 'content-box',
-    color: `var(--ctrl-token-Calendar-495, var(--semantic-token-Calendar-496, ${tokens.colorNeutralForeground1}))`,
+    color: `var(--495, var(--496, ${tokens.colorNeutralForeground1}))`,
     fontFamily: 'inherit',
-    fontSize: `var(--ctrl-token-Calendar-497, var(--semantic-token-Calendar-498, ${tokens.fontSizeBase200}))`,
+    fontSize: `var(--497, var(--498, ${tokens.fontSizeBase200}))`,
     height: '30px',
     lineHeight: '30px',
     marginRight: '16px',
@@ -71,23 +71,23 @@ const useGoTodayButtonStyles = makeStyles({
     padding: '0 4px',
 
     '& div': {
-      fontSize: `var(--ctrl-token-Calendar-499, var(--semantic-token-Calendar-500, ${tokens.fontSizeBase200}))`,
+      fontSize: `var(--499, var(--500, ${tokens.fontSizeBase200}))`,
     },
     '&:hover': {
-      backgroundColor: `var(--ctrl-token-Calendar-501, var(--semantic-token-Calendar-502, ${tokens.colorTransparentBackground}))`,
-      color: `var(--ctrl-token-Calendar-503, var(--semantic-token-Calendar-504, ${tokens.colorBrandForeground1}))`,
+      backgroundColor: `var(--501, var(--502, ${tokens.colorTransparentBackground}))`,
+      color: `var(--503, var(--504, ${tokens.colorBrandForeground1}))`,
       cursor: 'pointer',
 
       '@media (forced-colors: active)': {
-        outline: `var(--ctrl-token-Calendar-505, var(--semantic-token-Calendar-506, ${tokens.strokeWidthThin}))`,
-        borderRadius: `var(--ctrl-token-Calendar-507, var(--semantic-token-Calendar-508, ${tokens.borderRadiusSmall}))`,
+        outline: `var(--505, var(--506, ${tokens.strokeWidthThin}))`,
+        borderRadius: `var(--507, var(--508, ${tokens.borderRadiusSmall}))`,
       },
     },
     '&:hover:active': {
-      color: `var(--ctrl-token-Calendar-509, var(--semantic-token-Calendar-510, ${tokens.colorBrandForeground2}))`,
+      color: `var(--509, var(--510, ${tokens.colorBrandForeground2}))`,
     },
     '&:disabled': {
-      color: `var(--ctrl-token-Calendar-511, var(--semantic-token-Calendar-512, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--511, var(--512, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
   },

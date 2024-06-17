@@ -115,22 +115,28 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    borderRadius: `var(--ctrl-token-ColorSwatch-1857, var(--semantic-token-ColorSwatch-1858, ${tokens.borderRadiusMedium}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-ColorSwatch-1859, var(--semantic-token-ColorSwatch-1860, ${tokens.borderRadiusMedium}))` }),
+    borderRadius: `var(--1857, var(--1858, ${tokens.borderRadiusMedium}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1859, var(--1860, ${tokens.borderRadiusMedium}))`,
+    }),
   },
   circular: {
-    borderRadius: `var(--ctrl-token-ColorSwatch-1861, var(--semantic-token-ColorSwatch-1862, ${tokens.borderRadiusCircular}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-ColorSwatch-1863, var(--semantic-token-ColorSwatch-1864, ${tokens.borderRadiusCircular}))` }),
+    borderRadius: `var(--1861, var(--1862, ${tokens.borderRadiusCircular}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1863, var(--1864, ${tokens.borderRadiusCircular}))`,
+    }),
   },
   square: {
-    borderRadius: `var(--ctrl-token-ColorSwatch-1865, var(--semantic-token-ColorSwatch-1866, ${tokens.borderRadiusNone}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-ColorSwatch-1867, var(--semantic-token-ColorSwatch-1868, ${tokens.borderRadiusNone}))` }),
+    borderRadius: `var(--1865, var(--1866, ${tokens.borderRadiusNone}))`,
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--1867, var(--1868, ${tokens.borderRadiusNone}))`,
+    }),
   },
 });
 
 const useIconStyles = makeStyles({
   disabledIcon: {
-    color: `var(--ctrl-token-ColorSwatch-1869, var(--semantic-token-ColorSwatch-1870, ${tokens.colorNeutralForegroundInverted}))`,
+    color: `var(--1869, var(--1870, ${tokens.colorNeutralForegroundInverted}))`,
     filter: 'drop-shadow(0 1px 1px rgb(0 0 0 / 1))',
   },
   icon: {

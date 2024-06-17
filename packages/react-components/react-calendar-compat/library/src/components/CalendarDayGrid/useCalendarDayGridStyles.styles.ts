@@ -76,10 +76,10 @@ const useTableStyles = makeStyles({
 
 const useDayCellStyles = makeStyles({
   base: {
-    color: `var(--ctrl-token-CalendarDayGrid-549, var(--semantic-token-CalendarDayGrid-550, ${tokens.colorNeutralForeground1}))`,
+    color: `var(--549, var(--550, ${tokens.colorNeutralForeground1}))`,
     cursor: 'pointer',
-    fontSize: `var(--ctrl-token-CalendarDayGrid-551, var(--semantic-token-CalendarDayGrid-552, ${tokens.fontSizeBase200}))`,
-    fontWeight: `var(--ctrl-token-CalendarDayGrid-553, var(--semantic-token-CalendarDayGrid-554, ${tokens.fontWeightRegular}))`,
+    fontSize: `var(--551, var(--552, ${tokens.fontSizeBase200}))`,
+    fontWeight: `var(--553, var(--554, ${tokens.fontWeightRegular}))`,
     margin: '0',
     padding: '2px',
     position: 'relative',
@@ -89,8 +89,8 @@ const useDayCellStyles = makeStyles({
     },
 
     [`&.${extraCalendarDayGridClassNames.hoverStyle}`]: {
-      color: `var(--ctrl-token-CalendarDayGrid-555, var(--semantic-token-CalendarDayGrid-556, ${tokens.colorNeutralForeground1Static}))`,
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-557, var(--semantic-token-CalendarDayGrid-558, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--555, var(--556, ${tokens.colorNeutralForeground1Static}))`,
+      backgroundColor: `var(--557, var(--558, ${tokens.colorBrandBackgroundInvertedHover}))`,
       '@media (forced-colors: active)': {
         outline: '1px solid Highlight',
         zIndex: 3,
@@ -101,8 +101,8 @@ const useDayCellStyles = makeStyles({
     },
 
     [`&.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      color: `var(--ctrl-token-CalendarDayGrid-559, var(--semantic-token-CalendarDayGrid-560, ${tokens.colorNeutralForeground1Static}))`,
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-561, var(--semantic-token-CalendarDayGrid-562, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--559, var(--560, ${tokens.colorNeutralForeground1Static}))`,
+      backgroundColor: `var(--561, var(--562, ${tokens.colorBrandBackgroundInvertedPressed}))`,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         ...shorthands.borderColor('Highlight'),
@@ -112,7 +112,7 @@ const useDayCellStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle({
     style: {
-      outlineWidth: `var(--ctrl-token-CalendarDayGrid-563, var(--semantic-token-CalendarDayGrid-564, ${tokens.strokeWidthThick}))`,
+      outlineWidth: `var(--563, var(--564, ${tokens.strokeWidthThick}))`,
       ...shorthands.borderWidth(tokens.strokeWidthThick),
     },
   }),
@@ -120,8 +120,8 @@ const useDayCellStyles = makeStyles({
 
 const useDaySelectedStyles = makeStyles({
   base: {
-    backgroundColor: `var(--ctrl-token-CalendarDayGrid-565, var(--semantic-token-CalendarDayGrid-566, ${tokens.colorBrandBackgroundInvertedSelected}))`,
-    color: `var(--ctrl-token-CalendarDayGrid-567, var(--semantic-token-CalendarDayGrid-568, ${tokens.colorNeutralForeground1Static}))`,
+    backgroundColor: `var(--565, var(--566, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+    color: `var(--567, var(--568, ${tokens.colorNeutralForeground1Static}))`,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'Highlight',
@@ -131,8 +131,8 @@ const useDaySelectedStyles = makeStyles({
     },
 
     [`&:hover, &.${extraCalendarDayGridClassNames.hoverStyle}, &.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      color: `var(--ctrl-token-CalendarDayGrid-569, var(--semantic-token-CalendarDayGrid-570, ${tokens.colorNeutralForeground1Static}))`,
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-571, var(--semantic-token-CalendarDayGrid-572, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+      color: `var(--569, var(--570, ${tokens.colorNeutralForeground1Static}))`,
+      backgroundColor: `var(--571, var(--572, ${tokens.colorBrandBackgroundInvertedSelected}))`,
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
         color: 'HighlightText',
@@ -149,7 +149,7 @@ const useDaySelectedStyles = makeStyles({
 
 const useDaySingleSelectedStyles = makeStyles({
   base: {
-    color: `var(--ctrl-token-CalendarDayGrid-573, var(--semantic-token-CalendarDayGrid-574, ${tokens.colorNeutralForeground1Static}))`,
+    color: `var(--573, var(--574, ${tokens.colorNeutralForeground1Static}))`,
 
     [`& > .${calendarDayGridClassNames.dayMarker}`]: {
       '@media (forced-colors: active)': {
@@ -158,8 +158,8 @@ const useDaySingleSelectedStyles = makeStyles({
     },
 
     [`& > .${calendarDayGridClassNames.dayButton}`]: {
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-575, var(--semantic-token-CalendarDayGrid-576, ${tokens.colorBrandBackgroundInvertedSelected}))`,
-      borderRadius: `var(--ctrl-token-CalendarDayGrid-577, var(--semantic-token-CalendarDayGrid-578, ${tokens.borderRadiusMedium}))`,
+      backgroundColor: `var(--575, var(--576, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+      borderRadius: `var(--577, var(--578, ${tokens.borderRadiusMedium}))`,
       ...shorthands.border('1px', 'solid', tokens.colorBrandStroke1),
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
@@ -209,12 +209,12 @@ const useWeekDayLabelCellStyles = makeStyles({
 
 const useWeekNumberCellStyles = makeStyles({
   base: {
-    backgroundColor: `var(--ctrl-token-CalendarDayGrid-579, var(--semantic-token-CalendarDayGrid-580, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--579, var(--580, ${tokens.colorTransparentBackground}))`,
     borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
     boxSizing: 'border-box',
-    color: `var(--ctrl-token-CalendarDayGrid-581, var(--semantic-token-CalendarDayGrid-582, ${tokens.colorNeutralForeground4}))`,
-    fontSize: `var(--ctrl-token-CalendarDayGrid-583, var(--semantic-token-CalendarDayGrid-584, ${tokens.fontSizeBase200}))`,
-    fontWeight: `var(--ctrl-token-CalendarDayGrid-585, var(--semantic-token-CalendarDayGrid-586, ${tokens.fontWeightRegular}))`,
+    color: `var(--581, var(--582, ${tokens.colorNeutralForeground4}))`,
+    fontSize: `var(--583, var(--584, ${tokens.fontSizeBase200}))`,
+    fontWeight: `var(--585, var(--586, ${tokens.fontWeightRegular}))`,
     height: '28px',
     margin: '0',
     padding: '0',
@@ -226,8 +226,8 @@ const useDayOutsideBoundsStyles = makeStyles({
   base: {
     [`&, &:disabled, & button, &.${extraCalendarDayGridClassNames.hoverStyle}` +
     `, &.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-587, var(--semantic-token-CalendarDayGrid-588, ${tokens.colorTransparentBackground}))`,
-      color: `var(--ctrl-token-CalendarDayGrid-589, var(--semantic-token-CalendarDayGrid-590, ${tokens.colorNeutralForegroundDisabled}))`,
+      backgroundColor: `var(--587, var(--588, ${tokens.colorTransparentBackground}))`,
+      color: `var(--589, var(--590, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
     '@media (forced-colors: active)': {
@@ -238,8 +238,8 @@ const useDayOutsideBoundsStyles = makeStyles({
 
 const useDayOutsideNavigatedMonthStyles = makeStyles({
   lightenDaysOutsideNavigatedMonth: {
-    color: `var(--ctrl-token-CalendarDayGrid-591, var(--semantic-token-CalendarDayGrid-592, ${tokens.colorNeutralForeground4}))`,
-    fontWeight: `var(--ctrl-token-CalendarDayGrid-593, var(--semantic-token-CalendarDayGrid-594, ${tokens.fontWeightRegular}))`,
+    color: `var(--591, var(--592, ${tokens.colorNeutralForeground4}))`,
+    fontWeight: `var(--593, var(--594, ${tokens.fontWeightRegular}))`,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
@@ -249,11 +249,11 @@ const useDayOutsideNavigatedMonthStyles = makeStyles({
 
 const useDayButtonStyles = makeStyles({
   base: {
-    backgroundColor: `var(--ctrl-token-CalendarDayGrid-595, var(--semantic-token-CalendarDayGrid-596, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--595, var(--596, ${tokens.colorTransparentBackground}))`,
     border: 'none',
     color: 'inherit',
     cursor: 'pointer',
-    fontSize: `var(--ctrl-token-CalendarDayGrid-597, var(--semantic-token-CalendarDayGrid-598, ${tokens.fontSizeBase200}))`,
+    fontSize: `var(--597, var(--598, ${tokens.fontSizeBase200}))`,
     fontWeight: 'inherit',
     height: '24px',
     lineHeight: '24px',
@@ -266,11 +266,11 @@ const useDayButtonStyles = makeStyles({
       lineHeight: 'inherit',
     },
     ':hover': {
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-599, var(--semantic-token-CalendarDayGrid-600, ${tokens.colorBrandBackgroundInvertedHover}))`,
-      borderRadius: `var(--ctrl-token-CalendarDayGrid-601, var(--semantic-token-CalendarDayGrid-602, ${tokens.borderRadiusMedium}))`,
+      backgroundColor: `var(--599, var(--600, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      borderRadius: `var(--601, var(--602, ${tokens.borderRadiusMedium}))`,
     },
     ':active': {
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-603, var(--semantic-token-CalendarDayGrid-604, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      backgroundColor: `var(--603, var(--604, ${tokens.colorBrandBackgroundInvertedPressed}))`,
     },
   },
 });
@@ -280,11 +280,11 @@ const useDayIsTodayStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    color: `var(--ctrl-token-CalendarDayGrid-605, var(--semantic-token-CalendarDayGrid-606, ${tokens.colorNeutralForegroundOnBrand}))`,
-    fontWeight: `var(--ctrl-token-CalendarDayGrid-607, var(--semantic-token-CalendarDayGrid-608, ${tokens.fontWeightSemibold}))`,
+    color: `var(--605, var(--606, ${tokens.colorNeutralForegroundOnBrand}))`,
+    fontWeight: `var(--607, var(--608, ${tokens.fontWeightSemibold}))`,
 
     [`& > .${calendarDayGridClassNames.dayMarker}`]: {
-      backgroundColor: `var(--ctrl-token-CalendarDayGrid-609, var(--semantic-token-CalendarDayGrid-610, ${tokens.colorNeutralForegroundOnBrand}))`,
+      backgroundColor: `var(--609, var(--610, ${tokens.colorNeutralForegroundOnBrand}))`,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
       },
@@ -297,7 +297,7 @@ const useDayTodayMarkerStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: `var(--ctrl-token-CalendarDayGrid-611, var(--semantic-token-CalendarDayGrid-612, ${tokens.colorBrandBackground}))`,
+    backgroundColor: `var(--611, var(--612, ${tokens.colorBrandBackground}))`,
     borderRadius: '100%',
     width: '20px',
     height: '20px',
@@ -347,7 +347,7 @@ const useLastTransitionWeekStyles = makeStyles({
 
 const useDayMarkerStyles = makeStyles({
   base: {
-    backgroundColor: `var(--ctrl-token-CalendarDayGrid-613, var(--semantic-token-CalendarDayGrid-614, ${tokens.colorBrandForeground2}))`,
+    backgroundColor: `var(--613, var(--614, ${tokens.colorBrandForeground2}))`,
     borderRadius: '100%',
     bottom: '1px',
     height: '4px',
@@ -368,16 +368,16 @@ const useDayMarkerStyles = makeStyles({
 const useCornerBorderAndRadiusStyles = makeStyles({
   corners: {
     [`&.${weekCornersClassNames.topRightCornerDate}`]: {
-      borderTopRightRadius: `var(--ctrl-token-CalendarDayGrid-615, var(--semantic-token-CalendarDayGrid-616, ${tokens.borderRadiusMedium}))`,
+      borderTopRightRadius: `var(--615, var(--616, ${tokens.borderRadiusMedium}))`,
     },
     [`&.${weekCornersClassNames.topLeftCornerDate}`]: {
-      borderTopLeftRadius: `var(--ctrl-token-CalendarDayGrid-617, var(--semantic-token-CalendarDayGrid-618, ${tokens.borderRadiusMedium}))`,
+      borderTopLeftRadius: `var(--617, var(--618, ${tokens.borderRadiusMedium}))`,
     },
     [`&.${weekCornersClassNames.bottomRightCornerDate}`]: {
-      borderBottomRightRadius: `var(--ctrl-token-CalendarDayGrid-619, var(--semantic-token-CalendarDayGrid-620, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--619, var(--620, ${tokens.borderRadiusMedium}))`,
     },
     [`&.${weekCornersClassNames.bottomLeftCornerDate}`]: {
-      borderBottomLeftRadius: `var(--ctrl-token-CalendarDayGrid-621, var(--semantic-token-CalendarDayGrid-622, ${tokens.borderRadiusMedium}))`,
+      borderBottomLeftRadius: `var(--621, var(--622, ${tokens.borderRadiusMedium}))`,
     },
   },
 });

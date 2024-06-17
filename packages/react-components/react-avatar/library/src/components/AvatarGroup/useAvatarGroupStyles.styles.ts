@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
-    backgroundColor: `var(--ctrl-token-AvatarGroup-297, var(--semantic-token-AvatarGroup-298, ${tokens.colorTransparentStroke}))`,
+    backgroundColor: `var(--297, var(--298, ${tokens.colorTransparentStroke}))`,
     '@media (forced-colors: active)': {
       backgroundColor: 'CanvasText',
     },

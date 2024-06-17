@@ -16,32 +16,32 @@ const useStyles = makeStyles({
     minWidth: '96px',
   },
   brandNext: {
-    color: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2527, var(--semantic-token-TeachingPopoverCarouselFooterButton-2528, ${tokens.colorBrandForeground1}))`,
-    backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2529, var(--semantic-token-TeachingPopoverCarouselFooterButton-2530, ${tokens.colorNeutralForegroundOnBrand}))`,
+    color: `var(--2527, var(--2528, ${tokens.colorBrandForeground1}))`,
+    backgroundColor: `var(--2529, var(--2530, ${tokens.colorNeutralForegroundOnBrand}))`,
     ...shorthands.borderColor(tokens.colorTransparentBackground),
     ':hover': {
-      color: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2531, var(--semantic-token-TeachingPopoverCarouselFooterButton-2532, ${tokens.colorCompoundBrandForeground1Hover}))`,
-      backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2533, var(--semantic-token-TeachingPopoverCarouselFooterButton-2534, ${tokens.colorNeutralForegroundOnBrand}))`,
+      color: `var(--2531, var(--2532, ${tokens.colorCompoundBrandForeground1Hover}))`,
+      backgroundColor: `var(--2533, var(--2534, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
     ':hover:active': {
-      color: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2535, var(--semantic-token-TeachingPopoverCarouselFooterButton-2536, ${tokens.colorCompoundBrandForeground1Pressed}))`,
-      backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2537, var(--semantic-token-TeachingPopoverCarouselFooterButton-2538, ${tokens.colorNeutralForegroundOnBrand}))`,
+      color: `var(--2535, var(--2536, ${tokens.colorCompoundBrandForeground1Pressed}))`,
+      backgroundColor: `var(--2537, var(--2538, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
   },
   brandPrevious: {
     // In brand, this is always 'NeutralForegroundOnBrand'
-    color: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2539, var(--semantic-token-TeachingPopoverCarouselFooterButton-2540, ${tokens.colorNeutralForegroundOnBrand}))`,
-    backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2541, var(--semantic-token-TeachingPopoverCarouselFooterButton-2542, ${tokens.colorBrandBackground}))`,
+    color: `var(--2539, var(--2540, ${tokens.colorNeutralForegroundOnBrand}))`,
+    backgroundColor: `var(--2541, var(--2542, ${tokens.colorBrandBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
     ':hover': {
-      color: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2543, var(--semantic-token-TeachingPopoverCarouselFooterButton-2544, ${tokens.colorNeutralForegroundOnBrand}))`,
+      color: `var(--2543, var(--2544, ${tokens.colorNeutralForegroundOnBrand}))`,
       ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
-      backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2545, var(--semantic-token-TeachingPopoverCarouselFooterButton-2546, ${tokens.colorBrandBackgroundHover}))`,
+      backgroundColor: `var(--2545, var(--2546, ${tokens.colorBrandBackgroundHover}))`,
     },
     ':hover:active': {
-      color: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2547, var(--semantic-token-TeachingPopoverCarouselFooterButton-2548, ${tokens.colorNeutralForegroundOnBrand}))`,
+      color: `var(--2547, var(--2548, ${tokens.colorNeutralForegroundOnBrand}))`,
       ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
-      backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselFooterButton-2549, var(--semantic-token-TeachingPopoverCarouselFooterButton-2550, ${tokens.colorBrandBackgroundPressed}))`,
+      backgroundColor: `var(--2549, var(--2550, ${tokens.colorBrandBackgroundPressed}))`,
     },
   },
 });

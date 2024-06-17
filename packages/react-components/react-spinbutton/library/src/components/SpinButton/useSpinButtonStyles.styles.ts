@@ -23,16 +23,16 @@ const useRootClassName = makeResetStyles({
   display: 'inline-grid',
   gridTemplateColumns: `1fr 24px`,
   gridTemplateRows: '1fr 1fr',
-  columnGap: `var(--ctrl-token-SpinButton-1679, var(--semantic-token-SpinButton-1680, ${tokens.spacingHorizontalXS}))`,
+  columnGap: `var(--1679, var(--1680, ${tokens.spacingHorizontalXS}))`,
   rowGap: 0,
   position: 'relative',
   isolation: 'isolate',
   verticalAlign: 'middle',
 
-  backgroundColor: `var(--ctrl-token-SpinButton-1681, var(--semantic-token-SpinButton-1682, ${tokens.colorNeutralBackground1}))`,
+  backgroundColor: `var(--1681, var(--1682, ${tokens.colorNeutralBackground1}))`,
   minHeight: fieldHeights.medium,
   padding: `0 0 0 ${tokens.spacingHorizontalMNudge}`,
-  borderRadius: `var(--ctrl-token-SpinButton-1683, var(--semantic-token-SpinButton-1684, ${tokens.borderRadiusMedium}))`,
+  borderRadius: `var(--1683, var(--1684, ${tokens.borderRadiusMedium}))`,
 
   // Apply border styles on the ::before pseudo element.
   // We cannot use ::after since that is used for selection.
@@ -55,8 +55,8 @@ const useRootClassName = makeResetStyles({
     pointerEvents: 'none',
     zIndex: 10,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: `var(--ctrl-token-SpinButton-1685, var(--semantic-token-SpinButton-1686, ${tokens.colorNeutralStrokeAccessible}))`,
-    borderRadius: `var(--ctrl-token-SpinButton-1687, var(--semantic-token-SpinButton-1688, ${tokens.borderRadiusMedium}))`,
+    borderBottomColor: `var(--1685, var(--1686, ${tokens.colorNeutralStrokeAccessible}))`,
+    borderRadius: `var(--1687, var(--1688, ${tokens.borderRadiusMedium}))`,
   },
 
   '::after': {
@@ -73,8 +73,8 @@ const useRootClassName = makeResetStyles({
     // (Otherwise the radius would be automatically reduced to fit available space.)
     // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
     height: `max(2px, ${tokens.borderRadiusMedium})`,
-    borderBottomLeftRadius: `var(--ctrl-token-SpinButton-1689, var(--semantic-token-SpinButton-1690, ${tokens.borderRadiusMedium}))`,
-    borderBottomRightRadius: `var(--ctrl-token-SpinButton-1691, var(--semantic-token-SpinButton-1692, ${tokens.borderRadiusMedium}))`,
+    borderBottomLeftRadius: `var(--1689, var(--1690, ${tokens.borderRadiusMedium}))`,
+    borderBottomRightRadius: `var(--1691, var(--1692, ${tokens.borderRadiusMedium}))`,
 
     // Flat 2px border:
     // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
@@ -86,8 +86,8 @@ const useRootClassName = makeResetStyles({
     // Animation for focus OUT
     transform: 'scaleX(0)',
     transitionProperty: 'transform',
-    transitionDuration: `var(--ctrl-token-SpinButton-1693, var(--semantic-token-SpinButton-1694, ${tokens.durationUltraFast}))`,
-    transitionDelay: `var(--ctrl-token-SpinButton-1695, var(--semantic-token-SpinButton-1696, ${tokens.curveAccelerateMid}))`,
+    transitionDuration: `var(--1693, var(--1694, ${tokens.durationUltraFast}))`,
+    transitionDelay: `var(--1695, var(--1696, ${tokens.curveAccelerateMid}))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -99,8 +99,8 @@ const useRootClassName = makeResetStyles({
     // Animation for focus IN
     transform: 'scaleX(1)',
     transitionProperty: 'transform',
-    transitionDuration: `var(--ctrl-token-SpinButton-1697, var(--semantic-token-SpinButton-1698, ${tokens.durationNormal}))`,
-    transitionDelay: `var(--ctrl-token-SpinButton-1699, var(--semantic-token-SpinButton-1700, ${tokens.curveDecelerateMid}))`,
+    transitionDuration: `var(--1697, var(--1698, ${tokens.durationNormal}))`,
+    transitionDelay: `var(--1699, var(--1700, ${tokens.curveDecelerateMid}))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -109,7 +109,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: `var(--ctrl-token-SpinButton-1701, var(--semantic-token-SpinButton-1702, ${tokens.colorCompoundBrandStrokePressed}))`,
+    borderBottomColor: `var(--1701, var(--1702, ${tokens.colorCompoundBrandStrokePressed}))`,
   },
   ':focus-within': {
     outline: '2px solid transparent',
@@ -120,7 +120,7 @@ const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
     ...typographyStyles.caption1,
-    paddingLeft: `var(--ctrl-token-SpinButton-1703, var(--semantic-token-SpinButton-1704, ${tokens.spacingHorizontalS}))`,
+    paddingLeft: `var(--1703, var(--1704, ${tokens.spacingHorizontalS}))`,
   },
 
   medium: {
@@ -134,13 +134,13 @@ const useRootStyles = makeStyles({
   outlineInteractive: {
     ':hover::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: `var(--ctrl-token-SpinButton-1705, var(--semantic-token-SpinButton-1706, ${tokens.colorNeutralStrokeAccessibleHover}))`,
+      borderBottomColor: `var(--1705, var(--1706, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
       '::before': {
         ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-        borderBottomColor: `var(--ctrl-token-SpinButton-1707, var(--semantic-token-SpinButton-1708, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
+        borderBottomColor: `var(--1707, var(--1708, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
       },
     },
   },
@@ -148,22 +148,22 @@ const useRootStyles = makeStyles({
   underline: {
     '::before': {
       ...shorthands.borderWidth(0, 0, '1px', 0),
-      borderRadius: `var(--ctrl-token-SpinButton-1709, var(--semantic-token-SpinButton-1710, ${tokens.borderRadiusNone}))`, // corners look strange if rounded
+      borderRadius: `var(--1709, var(--1710, ${tokens.borderRadiusNone}))`, // corners look strange if rounded
     },
   },
 
   underlineInteractive: {
     ':hover::before': {
-      borderBottomColor: `var(--ctrl-token-SpinButton-1711, var(--semantic-token-SpinButton-1712, ${tokens.colorNeutralStrokeAccessibleHover}))`,
+      borderBottomColor: `var(--1711, var(--1712, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
       '::before': {
-        borderBottomColor: `var(--ctrl-token-SpinButton-1713, var(--semantic-token-SpinButton-1714, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
+        borderBottomColor: `var(--1713, var(--1714, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
       },
     },
     '::after': {
-      borderRadius: `var(--ctrl-token-SpinButton-1715, var(--semantic-token-SpinButton-1716, ${tokens.borderRadiusNone}))`, // remove rounded corners from focus underline
+      borderRadius: `var(--1715, var(--1716, ${tokens.borderRadiusNone}))`, // remove rounded corners from focus underline
     },
   },
 
@@ -174,10 +174,10 @@ const useRootStyles = makeStyles({
   },
 
   'filled-darker': {
-    backgroundColor: `var(--ctrl-token-SpinButton-1717, var(--semantic-token-SpinButton-1718, ${tokens.colorNeutralBackground3}))`,
+    backgroundColor: `var(--1717, var(--1718, ${tokens.colorNeutralBackground3}))`,
   },
   'filled-lighter': {
-    backgroundColor: `var(--ctrl-token-SpinButton-1719, var(--semantic-token-SpinButton-1720, ${tokens.colorNeutralBackground1}))`,
+    backgroundColor: `var(--1719, var(--1720, ${tokens.colorNeutralBackground1}))`,
   },
 
   filledInteractive: {
@@ -200,7 +200,7 @@ const useRootStyles = makeStyles({
 
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-SpinButton-1721, var(--semantic-token-SpinButton-1722, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--1721, var(--1722, ${tokens.colorTransparentBackground}))`,
     '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
@@ -219,7 +219,7 @@ const useInputClassName = makeResetStyles({
   outlineStyle: 'none',
   border: '0',
   padding: '0',
-  color: `var(--ctrl-token-SpinButton-1723, var(--semantic-token-SpinButton-1724, ${tokens.colorNeutralForeground1}))`,
+  color: `var(--1723, var(--1724, ${tokens.colorNeutralForeground1}))`,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
   fontFamily: 'inherit',
@@ -229,18 +229,18 @@ const useInputClassName = makeResetStyles({
   width: '100%',
 
   '::placeholder': {
-    color: `var(--ctrl-token-SpinButton-1725, var(--semantic-token-SpinButton-1726, ${tokens.colorNeutralForeground4}))`,
+    color: `var(--1725, var(--1726, ${tokens.colorNeutralForeground4}))`,
     opacity: 1, // browser style override
   },
 });
 
 const useInputStyles = makeStyles({
   disabled: {
-    color: `var(--ctrl-token-SpinButton-1727, var(--semantic-token-SpinButton-1728, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1727, var(--1728, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-SpinButton-1729, var(--semantic-token-SpinButton-1730, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--1729, var(--1730, ${tokens.colorTransparentBackground}))`,
     '::placeholder': {
-      color: `var(--ctrl-token-SpinButton-1731, var(--semantic-token-SpinButton-1732, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--1731, var(--1732, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
@@ -258,7 +258,7 @@ const useBaseButtonClassName = makeResetStyles({
 
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
-  color: `var(--ctrl-token-SpinButton-1733, var(--semantic-token-SpinButton-1734, ${tokens.colorNeutralForeground3}))`,
+  color: `var(--1733, var(--1734, ${tokens.colorNeutralForeground3}))`,
 
   // common button layout
   gridColumnStart: '2',
@@ -272,35 +272,35 @@ const useBaseButtonClassName = makeResetStyles({
   ':enabled': {
     ':hover': {
       cursor: 'pointer',
-      color: `var(--ctrl-token-SpinButton-1735, var(--semantic-token-SpinButton-1736, ${tokens.colorNeutralForeground3Hover}))`,
-      backgroundColor: `var(--ctrl-token-SpinButton-1737, var(--semantic-token-SpinButton-1738, ${tokens.colorSubtleBackgroundHover}))`,
+      color: `var(--1735, var(--1736, ${tokens.colorNeutralForeground3Hover}))`,
+      backgroundColor: `var(--1737, var(--1738, ${tokens.colorSubtleBackgroundHover}))`,
     },
     ':active': {
-      color: `var(--ctrl-token-SpinButton-1739, var(--semantic-token-SpinButton-1740, ${tokens.colorNeutralForeground3Pressed}))`,
-      backgroundColor: `var(--ctrl-token-SpinButton-1741, var(--semantic-token-SpinButton-1742, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--1739, var(--1740, ${tokens.colorNeutralForeground3Pressed}))`,
+      backgroundColor: `var(--1741, var(--1742, ${tokens.colorSubtleBackgroundPressed}))`,
     },
     [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-      color: `var(--ctrl-token-SpinButton-1743, var(--semantic-token-SpinButton-1744, ${tokens.colorNeutralForeground3Pressed}))`,
-      backgroundColor: `var(--ctrl-token-SpinButton-1745, var(--semantic-token-SpinButton-1746, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--1743, var(--1744, ${tokens.colorNeutralForeground3Pressed}))`,
+      backgroundColor: `var(--1745, var(--1746, ${tokens.colorSubtleBackgroundPressed}))`,
     },
   },
 
   ':disabled': {
     cursor: 'not-allowed',
-    color: `var(--ctrl-token-SpinButton-1747, var(--semantic-token-SpinButton-1748, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1747, var(--1748, ${tokens.colorNeutralForegroundDisabled}))`,
   },
 });
 
 const useButtonStyles = makeStyles({
   increment: {
     gridRowStart: '1',
-    borderTopRightRadius: `var(--ctrl-token-SpinButton-1749, var(--semantic-token-SpinButton-1750, ${tokens.borderRadiusMedium}))`,
+    borderTopRightRadius: `var(--1749, var(--1750, ${tokens.borderRadiusMedium}))`,
     paddingTop: '4px',
     paddingBottom: '1px',
   },
   decrement: {
     gridRowStart: '2',
-    borderBottomRightRadius: `var(--ctrl-token-SpinButton-1751, var(--semantic-token-SpinButton-1752, ${tokens.borderRadiusMedium}))`,
+    borderBottomRightRadius: `var(--1751, var(--1752, ${tokens.borderRadiusMedium}))`,
     paddingTop: '1px',
     paddingBottom: '4px',
   },
@@ -326,63 +326,63 @@ const useButtonStyles = makeStyles({
 
   underline: {
     backgroundColor: 'transparent',
-    color: `var(--ctrl-token-SpinButton-1753, var(--semantic-token-SpinButton-1754, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--1753, var(--1754, ${tokens.colorNeutralForeground3}))`,
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1755, var(--semantic-token-SpinButton-1756, ${tokens.colorNeutralForeground3Hover}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1757, var(--semantic-token-SpinButton-1758, ${tokens.colorSubtleBackgroundHover}))`,
+        color: `var(--1755, var(--1756, ${tokens.colorNeutralForeground3Hover}))`,
+        backgroundColor: `var(--1757, var(--1758, ${tokens.colorSubtleBackgroundHover}))`,
       },
       ':active': {
-        color: `var(--ctrl-token-SpinButton-1759, var(--semantic-token-SpinButton-1760, ${tokens.colorNeutralForeground3Pressed}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1761, var(--semantic-token-SpinButton-1762, ${tokens.colorSubtleBackgroundPressed}))`,
+        color: `var(--1759, var(--1760, ${tokens.colorNeutralForeground3Pressed}))`,
+        backgroundColor: `var(--1761, var(--1762, ${tokens.colorSubtleBackgroundPressed}))`,
       },
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1763, var(--semantic-token-SpinButton-1764, ${tokens.colorNeutralForeground3Pressed}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1765, var(--semantic-token-SpinButton-1766, ${tokens.colorSubtleBackgroundPressed}))`,
+        color: `var(--1763, var(--1764, ${tokens.colorNeutralForeground3Pressed}))`,
+        backgroundColor: `var(--1765, var(--1766, ${tokens.colorSubtleBackgroundPressed}))`,
       },
     },
     ':disabled': {
-      color: `var(--ctrl-token-SpinButton-1767, var(--semantic-token-SpinButton-1768, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--1767, var(--1768, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
   'filled-darker': {
     backgroundColor: 'transparent',
-    color: `var(--ctrl-token-SpinButton-1769, var(--semantic-token-SpinButton-1770, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--1769, var(--1770, ${tokens.colorNeutralForeground3}))`,
 
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1771, var(--semantic-token-SpinButton-1772, ${tokens.colorNeutralForeground3Hover}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1773, var(--semantic-token-SpinButton-1774, ${tokens.colorNeutralBackground3Hover}))`,
+        color: `var(--1771, var(--1772, ${tokens.colorNeutralForeground3Hover}))`,
+        backgroundColor: `var(--1773, var(--1774, ${tokens.colorNeutralBackground3Hover}))`,
       },
       ':active': {
-        color: `var(--ctrl-token-SpinButton-1775, var(--semantic-token-SpinButton-1776, ${tokens.colorNeutralForeground3Pressed}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1777, var(--semantic-token-SpinButton-1778, ${tokens.colorNeutralBackground3Pressed}))`,
+        color: `var(--1775, var(--1776, ${tokens.colorNeutralForeground3Pressed}))`,
+        backgroundColor: `var(--1777, var(--1778, ${tokens.colorNeutralBackground3Pressed}))`,
       },
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1779, var(--semantic-token-SpinButton-1780, ${tokens.colorNeutralForeground3Pressed}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1781, var(--semantic-token-SpinButton-1782, ${tokens.colorNeutralBackground3Pressed}))`,
+        color: `var(--1779, var(--1780, ${tokens.colorNeutralForeground3Pressed}))`,
+        backgroundColor: `var(--1781, var(--1782, ${tokens.colorNeutralBackground3Pressed}))`,
       },
     },
     ':disabled': {
-      color: `var(--ctrl-token-SpinButton-1783, var(--semantic-token-SpinButton-1784, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--1783, var(--1784, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
   'filled-lighter': {
     backgroundColor: 'transparent',
-    color: `var(--ctrl-token-SpinButton-1785, var(--semantic-token-SpinButton-1786, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--1785, var(--1786, ${tokens.colorNeutralForeground3}))`,
 
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1787, var(--semantic-token-SpinButton-1788, ${tokens.colorNeutralForeground3Hover}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1789, var(--semantic-token-SpinButton-1790, ${tokens.colorNeutralBackground1Hover}))`,
+        color: `var(--1787, var(--1788, ${tokens.colorNeutralForeground3Hover}))`,
+        backgroundColor: `var(--1789, var(--1790, ${tokens.colorNeutralBackground1Hover}))`,
       },
       [`:active,&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1791, var(--semantic-token-SpinButton-1792, ${tokens.colorNeutralForeground3Pressed}))`,
-        backgroundColor: `var(--ctrl-token-SpinButton-1793, var(--semantic-token-SpinButton-1794, ${tokens.colorNeutralBackground1Pressed}))`,
+        color: `var(--1791, var(--1792, ${tokens.colorNeutralForeground3Pressed}))`,
+        backgroundColor: `var(--1793, var(--1794, ${tokens.colorNeutralBackground1Pressed}))`,
       },
     },
     ':disabled': {
-      color: `var(--ctrl-token-SpinButton-1795, var(--semantic-token-SpinButton-1796, ${tokens.colorNeutralForegroundDisabled}))`,
+      color: `var(--1795, var(--1796, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
@@ -399,72 +399,72 @@ const useButtonDisabledStyles = makeStyles({
   },
 
   outline: {
-    color: `var(--ctrl-token-SpinButton-1797, var(--semantic-token-SpinButton-1798, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1797, var(--1798, ${tokens.colorNeutralForegroundDisabled}))`,
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1799, var(--semantic-token-SpinButton-1800, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1799, var(--1800, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       ':active': {
-        color: `var(--ctrl-token-SpinButton-1801, var(--semantic-token-SpinButton-1802, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1801, var(--1802, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1803, var(--semantic-token-SpinButton-1804, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1803, var(--1804, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
     },
   },
 
   underline: {
-    color: `var(--ctrl-token-SpinButton-1805, var(--semantic-token-SpinButton-1806, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1805, var(--1806, ${tokens.colorNeutralForegroundDisabled}))`,
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1807, var(--semantic-token-SpinButton-1808, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1807, var(--1808, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       ':active': {
-        color: `var(--ctrl-token-SpinButton-1809, var(--semantic-token-SpinButton-1810, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1809, var(--1810, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1811, var(--semantic-token-SpinButton-1812, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1811, var(--1812, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
     },
   },
 
   'filled-darker': {
-    color: `var(--ctrl-token-SpinButton-1813, var(--semantic-token-SpinButton-1814, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1813, var(--1814, ${tokens.colorNeutralForegroundDisabled}))`,
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1815, var(--semantic-token-SpinButton-1816, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1815, var(--1816, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       ':active': {
-        color: `var(--ctrl-token-SpinButton-1817, var(--semantic-token-SpinButton-1818, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1817, var(--1818, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1819, var(--semantic-token-SpinButton-1820, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1819, var(--1820, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
     },
   },
 
   'filled-lighter': {
-    color: `var(--ctrl-token-SpinButton-1821, var(--semantic-token-SpinButton-1822, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--1821, var(--1822, ${tokens.colorNeutralForegroundDisabled}))`,
     ':enabled': {
       ':hover': {
-        color: `var(--ctrl-token-SpinButton-1823, var(--semantic-token-SpinButton-1824, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1823, var(--1824, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       ':active': {
-        color: `var(--ctrl-token-SpinButton-1825, var(--semantic-token-SpinButton-1826, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1825, var(--1826, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
       [`&.${spinButtonExtraClassNames.buttonActive}`]: {
-        color: `var(--ctrl-token-SpinButton-1827, var(--semantic-token-SpinButton-1828, ${tokens.colorNeutralForegroundDisabled}))`,
+        color: `var(--1827, var(--1828, ${tokens.colorNeutralForegroundDisabled}))`,
         backgroundColor: 'transparent',
       },
     },

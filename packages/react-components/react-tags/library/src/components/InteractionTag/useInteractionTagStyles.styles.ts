@@ -15,8 +15,12 @@ const useRootBaseClassName = makeResetStyles({
 });
 
 const useRootStyles = makeStyles({
-  rounded: { borderRadius: `var(--ctrl-token-InteractionTag-2289, var(--semantic-token-InteractionTag-2290, ${tokens.borderRadiusMedium}))` },
-  circular: { borderRadius: `var(--ctrl-token-InteractionTag-2291, var(--semantic-token-InteractionTag-2292, ${tokens.borderRadiusCircular}))` },
+  rounded: {
+    borderRadius: `var(--2289, var(--2290, ${tokens.borderRadiusMedium}))`,
+  },
+  circular: {
+    borderRadius: `var(--2291, var(--2292, ${tokens.borderRadiusCircular}))`,
+  },
 
   medium: {
     height: '32px',

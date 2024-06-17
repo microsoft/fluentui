@@ -46,7 +46,7 @@ const baseStyles: GriffelResetStyle = {
 
 const useRootRoundedBaseClassName = makeResetStyles({
   ...baseStyles,
-  borderRadius: `var(--ctrl-token-InteractionTagPrimary-2293, var(--semantic-token-InteractionTagPrimary-2294, ${tokens.borderRadiusMedium}))`,
+  borderRadius: `var(--2293, var(--2294, ${tokens.borderRadiusMedium}))`,
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -62,15 +62,15 @@ const useRootRoundedBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: `var(--ctrl-token-InteractionTagPrimary-2295, var(--semantic-token-InteractionTagPrimary-2296, ${tokens.borderRadiusMedium}))`,
-      borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2297, var(--semantic-token-InteractionTagPrimary-2298, ${tokens.borderRadiusMedium}))`,
+      borderTopLeftRadius: `var(--2295, var(--2296, ${tokens.borderRadiusMedium}))`,
+      borderTopRightRadius: `var(--2297, var(--2298, ${tokens.borderRadiusMedium}))`,
     },
   },
 });
 
 const useRootCircularBaseClassName = makeResetStyles({
   ...baseStyles,
-  borderRadius: `var(--ctrl-token-InteractionTagPrimary-2299, var(--semantic-token-InteractionTagPrimary-2300, ${tokens.borderRadiusCircular}))`,
+  borderRadius: `var(--2299, var(--2300, ${tokens.borderRadiusCircular}))`,
 
   /**
    * Pseudo element to draw the border for windows high contrast mode -
@@ -87,8 +87,8 @@ const useRootCircularBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: `var(--ctrl-token-InteractionTagPrimary-2301, var(--semantic-token-InteractionTagPrimary-2302, ${tokens.borderRadiusCircular}))`,
-      borderBottomLeftRadius: `var(--ctrl-token-InteractionTagPrimary-2303, var(--semantic-token-InteractionTagPrimary-2304, ${tokens.borderRadiusCircular}))`,
+      borderTopLeftRadius: `var(--2301, var(--2302, ${tokens.borderRadiusCircular}))`,
+      borderBottomLeftRadius: `var(--2303, var(--2304, ${tokens.borderRadiusCircular}))`,
     },
   },
 });
@@ -102,8 +102,8 @@ const useRootCircularContrastStyles = makeStyles({
       position: 'relative',
       '::before': {
         borderRight: `${tokens.strokeWidthThin} solid transparent`,
-        borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2305, var(--semantic-token-InteractionTagPrimary-2306, ${tokens.borderRadiusCircular}))`,
-        borderBottomRightRadius: `var(--ctrl-token-InteractionTagPrimary-2307, var(--semantic-token-InteractionTagPrimary-2308, ${tokens.borderRadiusCircular}))`,
+        borderTopRightRadius: `var(--2305, var(--2306, ${tokens.borderRadiusCircular}))`,
+        borderBottomRightRadius: `var(--2307, var(--2308, ${tokens.borderRadiusCircular}))`,
       },
     },
   },
@@ -111,16 +111,16 @@ const useRootCircularContrastStyles = makeStyles({
 
 const useRootStyles = makeStyles({
   filled: {
-    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2309, var(--semantic-token-InteractionTagPrimary-2310, ${tokens.colorNeutralBackground3}))`,
-    color: `var(--ctrl-token-InteractionTagPrimary-2311, var(--semantic-token-InteractionTagPrimary-2312, ${tokens.colorNeutralForeground2}))`,
+    backgroundColor: `var(--2309, var(--2310, ${tokens.colorNeutralBackground3}))`,
+    color: `var(--2311, var(--2312, ${tokens.colorNeutralForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2313, var(--semantic-token-InteractionTagPrimary-2314, ${tokens.colorNeutralBackground3Hover}))`,
-      color: `var(--ctrl-token-InteractionTagPrimary-2315, var(--semantic-token-InteractionTagPrimary-2316, ${tokens.colorNeutralForeground2Hover}))`,
+      backgroundColor: `var(--2313, var(--2314, ${tokens.colorNeutralBackground3Hover}))`,
+      color: `var(--2315, var(--2316, ${tokens.colorNeutralForeground2Hover}))`,
     },
     ':active': {
-      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2317, var(--semantic-token-InteractionTagPrimary-2318, ${tokens.colorNeutralBackground3Pressed}))`,
-      color: `var(--ctrl-token-InteractionTagPrimary-2319, var(--semantic-token-InteractionTagPrimary-2320, ${tokens.colorNeutralForeground2Pressed}))`,
+      backgroundColor: `var(--2317, var(--2318, ${tokens.colorNeutralBackground3Pressed}))`,
+      color: `var(--2319, var(--2320, ${tokens.colorNeutralForeground2Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -132,29 +132,29 @@ const useRootStyles = makeStyles({
     },
   },
   outline: {
-    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2321, var(--semantic-token-InteractionTagPrimary-2322, ${tokens.colorSubtleBackground}))`,
-    color: `var(--ctrl-token-InteractionTagPrimary-2323, var(--semantic-token-InteractionTagPrimary-2324, ${tokens.colorNeutralForeground2}))`,
+    backgroundColor: `var(--2321, var(--2322, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2323, var(--2324, ${tokens.colorNeutralForeground2}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2325, var(--semantic-token-InteractionTagPrimary-2326, ${tokens.colorSubtleBackgroundHover}))`,
-      color: `var(--ctrl-token-InteractionTagPrimary-2327, var(--semantic-token-InteractionTagPrimary-2328, ${tokens.colorNeutralForeground2Hover}))`,
+      backgroundColor: `var(--2325, var(--2326, ${tokens.colorSubtleBackgroundHover}))`,
+      color: `var(--2327, var(--2328, ${tokens.colorNeutralForeground2Hover}))`,
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: `var(--ctrl-token-InteractionTagPrimary-2329, var(--semantic-token-InteractionTagPrimary-2330, ${tokens.colorNeutralForeground2BrandHover}))`,
+        color: `var(--2329, var(--2330, ${tokens.colorNeutralForeground2BrandHover}))`,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
       },
     },
     ':active': {
-      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2331, var(--semantic-token-InteractionTagPrimary-2332, ${tokens.colorSubtleBackgroundPressed}))`,
-      color: `var(--ctrl-token-InteractionTagPrimary-2333, var(--semantic-token-InteractionTagPrimary-2334, ${tokens.colorNeutralForeground2Pressed}))`,
+      backgroundColor: `var(--2331, var(--2332, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--2333, var(--2334, ${tokens.colorNeutralForeground2Pressed}))`,
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: `var(--ctrl-token-InteractionTagPrimary-2335, var(--semantic-token-InteractionTagPrimary-2336, ${tokens.colorNeutralForeground2BrandPressed}))`,
+        color: `var(--2335, var(--2336, ${tokens.colorNeutralForeground2BrandPressed}))`,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
@@ -170,16 +170,16 @@ const useRootStyles = makeStyles({
     },
   },
   brand: {
-    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2337, var(--semantic-token-InteractionTagPrimary-2338, ${tokens.colorBrandBackground2}))`,
-    color: `var(--ctrl-token-InteractionTagPrimary-2339, var(--semantic-token-InteractionTagPrimary-2340, ${tokens.colorBrandForeground2}))`,
+    backgroundColor: `var(--2337, var(--2338, ${tokens.colorBrandBackground2}))`,
+    color: `var(--2339, var(--2340, ${tokens.colorBrandForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2341, var(--semantic-token-InteractionTagPrimary-2342, ${tokens.colorBrandBackground2Hover}))`,
-      color: `var(--ctrl-token-InteractionTagPrimary-2343, var(--semantic-token-InteractionTagPrimary-2344, ${tokens.colorCompoundBrandForeground1Hover}))`,
+      backgroundColor: `var(--2341, var(--2342, ${tokens.colorBrandBackground2Hover}))`,
+      color: `var(--2343, var(--2344, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2345, var(--semantic-token-InteractionTagPrimary-2346, ${tokens.colorBrandBackground2Pressed}))`,
-      color: `var(--ctrl-token-InteractionTagPrimary-2347, var(--semantic-token-InteractionTagPrimary-2348, ${tokens.colorCompoundBrandForeground1Pressed}))`,
+      backgroundColor: `var(--2345, var(--2346, ${tokens.colorBrandBackground2Pressed}))`,
+      color: `var(--2347, var(--2348, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -204,20 +204,20 @@ const useRootStyles = makeStyles({
 const useRootDisabledAppearances = makeStyles({
   filled: {
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2349, var(--semantic-token-InteractionTagPrimary-2350, ${tokens.colorNeutralBackgroundDisabled}))`,
-    color: `var(--ctrl-token-InteractionTagPrimary-2351, var(--semantic-token-InteractionTagPrimary-2352, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--2349, var(--2350, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2351, var(--2352, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
   outline: {
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2353, var(--semantic-token-InteractionTagPrimary-2354, ${tokens.colorSubtleBackground}))`,
-    color: `var(--ctrl-token-InteractionTagPrimary-2355, var(--semantic-token-InteractionTagPrimary-2356, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--2353, var(--2354, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2355, var(--2356, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
   },
   brand: {
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-InteractionTagPrimary-2357, var(--semantic-token-InteractionTagPrimary-2358, ${tokens.colorNeutralBackgroundDisabled}))`,
-    color: `var(--ctrl-token-InteractionTagPrimary-2359, var(--semantic-token-InteractionTagPrimary-2360, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--2357, var(--2358, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2359, var(--2360, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
 });
@@ -241,22 +241,22 @@ const useRootWithoutMediaStyles = makeStyles({
  */
 const useRootWithSecondaryActionStyles = makeStyles({
   base: {
-    borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2361, var(--semantic-token-InteractionTagPrimary-2362, ${tokens.borderRadiusNone}))`,
-    borderBottomRightRadius: `var(--ctrl-token-InteractionTagPrimary-2363, var(--semantic-token-InteractionTagPrimary-2364, ${tokens.borderRadiusNone}))`,
+    borderTopRightRadius: `var(--2361, var(--2362, ${tokens.borderRadiusNone}))`,
+    borderBottomRightRadius: `var(--2363, var(--2364, ${tokens.borderRadiusNone}))`,
     borderRightStyle: 'none',
     ...createCustomFocusIndicatorStyle({
-      borderTopRightRadius: `var(--ctrl-token-InteractionTagPrimary-2365, var(--semantic-token-InteractionTagPrimary-2366, ${tokens.borderRadiusNone}))`,
-      borderBottomRightRadius: `var(--ctrl-token-InteractionTagPrimary-2367, var(--semantic-token-InteractionTagPrimary-2368, ${tokens.borderRadiusNone}))`,
+      borderTopRightRadius: `var(--2365, var(--2366, ${tokens.borderRadiusNone}))`,
+      borderBottomRightRadius: `var(--2367, var(--2368, ${tokens.borderRadiusNone}))`,
     }),
   },
   medium: {
-    paddingRight: `var(--ctrl-token-InteractionTagPrimary-2369, var(--semantic-token-InteractionTagPrimary-2370, ${tokens.spacingHorizontalS}))`,
+    paddingRight: `var(--2369, var(--2370, ${tokens.spacingHorizontalS}))`,
   },
   small: {
-    paddingRight: `var(--ctrl-token-InteractionTagPrimary-2371, var(--semantic-token-InteractionTagPrimary-2372, ${tokens.spacingHorizontalSNudge}))`,
+    paddingRight: `var(--2371, var(--2372, ${tokens.spacingHorizontalSNudge}))`,
   },
   'extra-small': {
-    paddingRight: `var(--ctrl-token-InteractionTagPrimary-2373, var(--semantic-token-InteractionTagPrimary-2374, ${tokens.spacingHorizontalSNudge}))`,
+    paddingRight: `var(--2373, var(--2374, ${tokens.spacingHorizontalSNudge}))`,
   },
 });
 

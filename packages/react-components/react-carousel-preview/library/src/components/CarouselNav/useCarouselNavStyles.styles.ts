@@ -19,12 +19,12 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: `var(--ctrl-token-CarouselNav-773, var(--semantic-token-CarouselNav-774, ${tokens.borderRadiusMedium}))`,
+      borderRadius: `var(--773, var(--774, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
-    borderRadius: `var(--ctrl-token-CarouselNav-775, var(--semantic-token-CarouselNav-776, ${tokens.borderRadiusXLarge}))`,
+    borderRadius: `var(--775, var(--776, ${tokens.borderRadiusXLarge}))`,
     margin: `auto ${tokens.spacingHorizontalS}`,
-    backgroundColor: `var(--ctrl-token-CarouselNav-779, var(--semantic-token-CarouselNav-780, ${tokens.colorNeutralBackgroundAlpha}))`,
+    backgroundColor: `var(--779, var(--780, ${tokens.colorNeutralBackgroundAlpha}))`,
   },
 });
 

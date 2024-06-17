@@ -21,11 +21,11 @@ export const tagPickerControlAsideWidthToken = '--fui-TagPickerControl-aside-wid
  */
 const useStyles = makeStyles({
   root: {
-    borderRadius: `var(--ctrl-token-TagPickerControl-2213, var(--semantic-token-TagPickerControl-2214, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--2213, var(--2214, ${tokens.borderRadiusMedium}))`,
     paddingRight: `calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`,
-    paddingLeft: `var(--ctrl-token-TagPickerControl-2215, var(--semantic-token-TagPickerControl-2216, ${tokens.spacingHorizontalM}))`,
+    paddingLeft: `var(--2215, var(--2216, ${tokens.spacingHorizontalM}))`,
     alignItems: 'center',
-    columnGap: `var(--ctrl-token-TagPickerControl-2217, var(--semantic-token-TagPickerControl-2218, ${tokens.spacingHorizontalXXS}))`,
+    columnGap: `var(--2217, var(--2218, ${tokens.spacingHorizontalXXS}))`,
     boxSizing: 'border-box',
     display: 'flex',
     minWidth: '250px',
@@ -48,14 +48,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: `var(--ctrl-token-TagPickerControl-2219, var(--semantic-token-TagPickerControl-2220, ${tokens.borderRadiusMedium}))`,
-      borderBottomRightRadius: `var(--ctrl-token-TagPickerControl-2221, var(--semantic-token-TagPickerControl-2222, ${tokens.borderRadiusMedium}))`,
+      borderBottomLeftRadius: `var(--2219, var(--2220, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--2221, var(--2222, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: `var(--ctrl-token-TagPickerControl-2223, var(--semantic-token-TagPickerControl-2224, ${tokens.durationUltraFast}))`,
-      transitionDelay: `var(--ctrl-token-TagPickerControl-2225, var(--semantic-token-TagPickerControl-2226, ${tokens.curveAccelerateMid}))`,
+      transitionDuration: `var(--2223, var(--2224, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--2225, var(--2226, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -65,8 +65,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: `var(--ctrl-token-TagPickerControl-2227, var(--semantic-token-TagPickerControl-2228, ${tokens.durationNormal}))`,
-      transitionDelay: `var(--ctrl-token-TagPickerControl-2229, var(--semantic-token-TagPickerControl-2230, ${tokens.curveDecelerateMid}))`,
+      transitionDuration: `var(--2227, var(--2228, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--2229, var(--2230, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -74,13 +74,13 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: `var(--ctrl-token-TagPickerControl-2231, var(--semantic-token-TagPickerControl-2232, ${tokens.colorCompoundBrandStrokePressed}))`,
+      borderBottomColor: `var(--2231, var(--2232, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
   },
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: `var(--ctrl-token-TagPickerControl-2233, var(--semantic-token-TagPickerControl-2234, ${tokens.borderRadiusMedium}))`,
+    borderRadius: `var(--2233, var(--2234, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -102,33 +102,33 @@ const useStyles = makeStyles({
 
   // appearance variants
   outline: {
-    backgroundColor: `var(--ctrl-token-TagPickerControl-2235, var(--semantic-token-TagPickerControl-2236, ${tokens.colorNeutralBackground1}))`,
+    backgroundColor: `var(--2235, var(--2236, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: `var(--ctrl-token-TagPickerControl-2237, var(--semantic-token-TagPickerControl-2238, ${tokens.colorNeutralStrokeAccessible}))`,
+    borderBottomColor: `var(--2237, var(--2238, ${tokens.colorNeutralStrokeAccessible}))`,
   },
 
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: `var(--ctrl-token-TagPickerControl-2239, var(--semantic-token-TagPickerControl-2240, ${tokens.colorNeutralStrokeAccessible}))`,
+      borderBottomColor: `var(--2239, var(--2240, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: `var(--ctrl-token-TagPickerControl-2241, var(--semantic-token-TagPickerControl-2242, ${tokens.colorNeutralStrokeAccessible}))`,
+      borderBottomColor: `var(--2241, var(--2242, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: `var(--ctrl-token-TagPickerControl-2243, var(--semantic-token-TagPickerControl-2244, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--2243, var(--2244, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: `var(--ctrl-token-TagPickerControl-2245, var(--semantic-token-TagPickerControl-2246, ${tokens.colorNeutralBackground1}))`,
+    backgroundColor: `var(--2245, var(--2246, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
-    backgroundColor: `var(--ctrl-token-TagPickerControl-2247, var(--semantic-token-TagPickerControl-2248, ${tokens.colorNeutralBackground3}))`,
+    backgroundColor: `var(--2247, var(--2248, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
@@ -138,13 +138,13 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: `var(--ctrl-token-TagPickerControl-2249, var(--semantic-token-TagPickerControl-2250, ${tokens.colorPaletteRedBorder2}))`,
+      borderBottomColor: `var(--2249, var(--2250, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
 
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: `var(--ctrl-token-TagPickerControl-2251, var(--semantic-token-TagPickerControl-2252, ${tokens.colorTransparentBackground}))`,
+    backgroundColor: `var(--2251, var(--2252, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -158,7 +158,7 @@ const useAsideStyles = makeStyles({
     alignItems: 'center',
     position: 'absolute',
     top: '0',
-    right: `var(--ctrl-token-TagPickerControl-2253, var(--semantic-token-TagPickerControl-2254, ${tokens.spacingHorizontalM}))`,
+    right: `var(--2253, var(--2254, ${tokens.spacingHorizontalM}))`,
     gridTemplateColumns: 'repeat(2, auto)',
     gridTemplateRows: 'minmax(32px, auto) 1fr',
     height: '100%',
@@ -185,10 +185,10 @@ export const iconSizes = {
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: `var(--ctrl-token-TagPickerControl-2255, var(--semantic-token-TagPickerControl-2256, ${tokens.colorNeutralStrokeAccessible}))`,
+    color: `var(--2255, var(--2256, ${tokens.colorNeutralStrokeAccessible}))`,
     cursor: 'pointer',
     display: 'block',
-    fontSize: `var(--ctrl-token-TagPickerControl-2257, var(--semantic-token-TagPickerControl-2258, ${tokens.fontSizeBase500}))`,
+    fontSize: `var(--2257, var(--2258, ${tokens.fontSizeBase500}))`,
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
     '& svg': {
@@ -198,18 +198,18 @@ const useIconStyles = makeStyles({
   // icon size variants
   medium: {
     fontSize: iconSizes.small,
-    marginLeft: `var(--ctrl-token-TagPickerControl-2259, var(--semantic-token-TagPickerControl-2260, ${tokens.spacingHorizontalXXS}))`,
+    marginLeft: `var(--2259, var(--2260, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.medium,
-    marginLeft: `var(--ctrl-token-TagPickerControl-2261, var(--semantic-token-TagPickerControl-2262, ${tokens.spacingHorizontalXXS}))`,
+    marginLeft: `var(--2261, var(--2262, ${tokens.spacingHorizontalXXS}))`,
   },
   'extra-large': {
     fontSize: iconSizes.large,
-    marginLeft: `var(--ctrl-token-TagPickerControl-2263, var(--semantic-token-TagPickerControl-2264, ${tokens.spacingHorizontalSNudge}))`,
+    marginLeft: `var(--2263, var(--2264, ${tokens.spacingHorizontalSNudge}))`,
   },
   disabled: {
-    color: `var(--ctrl-token-TagPickerControl-2265, var(--semantic-token-TagPickerControl-2266, ${tokens.colorNeutralForegroundDisabled}))`,
+    color: `var(--2265, var(--2266, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 });

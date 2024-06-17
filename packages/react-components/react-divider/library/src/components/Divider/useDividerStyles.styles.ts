@@ -23,10 +23,10 @@ const useBaseStyles = makeStyles({
     flexGrow: 1,
     position: 'relative',
 
-    fontFamily: `var(--ctrl-token-Divider-1069, var(--semantic-token-Divider-1070, ${tokens.fontFamilyBase}))`,
-    fontSize: `var(--ctrl-token-Divider-1071, var(--semantic-token-Divider-1072, ${tokens.fontSizeBase200}))`,
-    fontWeight: `var(--ctrl-token-Divider-1073, var(--semantic-token-Divider-1074, ${tokens.fontWeightRegular}))`,
-    lineHeight: `var(--ctrl-token-Divider-1075, var(--semantic-token-Divider-1076, ${tokens.lineHeightBase200}))`,
+    fontFamily: `var(--1069, var(--1070, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--1071, var(--1072, ${tokens.fontSizeBase200}))`,
+    fontWeight: `var(--1073, var(--1074, ${tokens.fontWeightRegular}))`,
+    lineHeight: `var(--1075, var(--1076, ${tokens.lineHeightBase200}))`,
     textAlign: 'center',
 
     '::before': {
@@ -77,7 +77,7 @@ const useBaseStyles = makeStyles({
 
   // Appearance variations
   brand: {
-    color: `var(--ctrl-token-Divider-1077, var(--semantic-token-Divider-1078, ${tokens.colorBrandForeground1}))`,
+    color: `var(--1077, var(--1078, ${tokens.colorBrandForeground1}))`,
 
     '::before': {
       ...shorthands.borderColor(tokens.colorBrandStroke1),
@@ -88,7 +88,7 @@ const useBaseStyles = makeStyles({
     },
   },
   default: {
-    color: `var(--ctrl-token-Divider-1079, var(--semantic-token-Divider-1080, ${tokens.colorNeutralForeground2}))`,
+    color: `var(--1079, var(--1080, ${tokens.colorNeutralForeground2}))`,
 
     '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
@@ -99,7 +99,7 @@ const useBaseStyles = makeStyles({
     },
   },
   subtle: {
-    color: `var(--ctrl-token-Divider-1081, var(--semantic-token-Divider-1082, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--1081, var(--1082, ${tokens.colorNeutralForeground3}))`,
 
     '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke3),
@@ -110,7 +110,7 @@ const useBaseStyles = makeStyles({
     },
   },
   strong: {
-    color: `var(--ctrl-token-Divider-1083, var(--semantic-token-Divider-1084, ${tokens.colorNeutralForeground1}))`,
+    color: `var(--1083, var(--1084, ${tokens.colorNeutralForeground1}))`,
 
     '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
@@ -129,13 +129,13 @@ const useHorizontalStyles = makeStyles({
 
     '::before': {
       borderTopStyle: 'solid',
-      borderTopWidth: `var(--ctrl-token-Divider-1085, var(--semantic-token-Divider-1086, ${tokens.strokeWidthThin}))`,
+      borderTopWidth: `var(--1085, var(--1086, ${tokens.strokeWidthThin}))`,
       minWidth: minStartEndLength,
     },
 
     '::after': {
       borderTopStyle: 'solid',
-      borderTopWidth: `var(--ctrl-token-Divider-1087, var(--semantic-token-Divider-1088, ${tokens.strokeWidthThin}))`,
+      borderTopWidth: `var(--1087, var(--1088, ${tokens.strokeWidthThin}))`,
       minWidth: minStartEndLength,
     },
   },
@@ -186,13 +186,13 @@ const useVerticalStyles = makeStyles({
 
     '::before': {
       borderRightStyle: 'solid',
-      borderRightWidth: `var(--ctrl-token-Divider-1089, var(--semantic-token-Divider-1090, ${tokens.strokeWidthThin}))`,
+      borderRightWidth: `var(--1089, var(--1090, ${tokens.strokeWidthThin}))`,
       minHeight: minStartEndLength,
     },
 
     '::after': {
       borderRightStyle: 'solid',
-      borderRightWidth: `var(--ctrl-token-Divider-1091, var(--semantic-token-Divider-1092, ${tokens.strokeWidthThin}))`,
+      borderRightWidth: `var(--1091, var(--1092, ${tokens.strokeWidthThin}))`,
       minHeight: minStartEndLength,
     },
   },

@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    columnGap: `var(--ctrl-token-DrawerHeaderTitle-1097, var(--semantic-token-DrawerHeaderTitle-1098, ${tokens.spacingHorizontalS}))`,
+    columnGap: `var(--1097, var(--1098, ${tokens.spacingHorizontalS}))`,
   },
 
   action: {

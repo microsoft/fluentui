@@ -15,12 +15,12 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    columnGap: `var(--ctrl-token-TeachingPopoverCarouselNav-2551, var(--semantic-token-TeachingPopoverCarouselNav-2552, ${tokens.spacingHorizontalXS}))`,
+    columnGap: `var(--2551, var(--2552, ${tokens.spacingHorizontalXS}))`,
     alignItems: 'center',
     justifyContent: 'center',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: `var(--ctrl-token-TeachingPopoverCarouselNav-2553, var(--semantic-token-TeachingPopoverCarouselNav-2554, ${tokens.borderRadiusMedium}))`,
+      borderRadius: `var(--2553, var(--2554, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
   },

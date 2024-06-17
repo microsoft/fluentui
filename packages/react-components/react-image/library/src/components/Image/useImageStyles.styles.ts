@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   // Base styles
   base: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    borderRadius: `var(--ctrl-token-Image-1135, var(--semantic-token-Image-1136, ${tokens.borderRadiusNone}))`,
+    borderRadius: `var(--1135, var(--1136, ${tokens.borderRadiusNone}))`,
 
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -24,15 +24,19 @@ const useStyles = makeStyles({
   },
 
   // Shape variations
-  circular: { borderRadius: `var(--ctrl-token-Image-1137, var(--semantic-token-Image-1138, ${tokens.borderRadiusCircular}))` },
-  rounded: { borderRadius: `var(--ctrl-token-Image-1139, var(--semantic-token-Image-1140, ${tokens.borderRadiusMedium}))` },
+  circular: {
+    borderRadius: `var(--1137, var(--1138, ${tokens.borderRadiusCircular}))`,
+  },
+  rounded: {
+    borderRadius: `var(--1139, var(--1140, ${tokens.borderRadiusMedium}))`,
+  },
   square: {
     /* The square styles are exactly the same as the base styles. */
   },
 
   // Shadow styles
   shadow: {
-    boxShadow: `var(--ctrl-token-Image-1141, var(--semantic-token-Image-1142, ${tokens.shadow4}))`,
+    boxShadow: `var(--1141, var(--1142, ${tokens.shadow4}))`,
   },
 
   // Fit variations

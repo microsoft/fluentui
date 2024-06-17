@@ -31,14 +31,14 @@ const useStyles = makeStyles({
 });
 
 const usePopupSurfaceClassName = makeResetStyles({
-  backgroundColor: `var(--ctrl-token-DatePicker-1049, var(--semantic-token-DatePicker-1050, ${tokens.colorNeutralBackground1}))`,
-  boxShadow: `var(--ctrl-token-DatePicker-1051, var(--semantic-token-DatePicker-1052, ${tokens.shadow16}))`,
-  borderRadius: `var(--ctrl-token-DatePicker-1053, var(--semantic-token-DatePicker-1054, ${tokens.borderRadiusMedium}))`,
+  backgroundColor: `var(--1049, var(--1050, ${tokens.colorNeutralBackground1}))`,
+  boxShadow: `var(--1051, var(--1052, ${tokens.shadow16}))`,
+  borderRadius: `var(--1053, var(--1054, ${tokens.borderRadiusMedium}))`,
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderColor: `var(--ctrl-token-DatePicker-1055, var(--semantic-token-DatePicker-1056, ${tokens.colorTransparentStroke}))`,
+  borderColor: `var(--1055, var(--1056, ${tokens.colorTransparentStroke}))`,
   display: 'inline-flex',
-  color: `var(--ctrl-token-DatePicker-1057, var(--semantic-token-DatePicker-1058, ${tokens.colorNeutralForeground1}))`,
+  color: `var(--1057, var(--1058, ${tokens.colorNeutralForeground1}))`,
   ...typographyStyles.body1,
 });
 

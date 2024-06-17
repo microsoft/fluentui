@@ -12,10 +12,10 @@ const useRootBaseClassName = makeResetStyles({
   gridColumnStart: 2,
   gridColumnEnd: 3,
   paddingTop: '6px',
-  fontSize: `var(--ctrl-token-ToastBody-2781, var(--semantic-token-ToastBody-2782, ${tokens.fontSizeBase300}))`,
-  lineHeight: `var(--ctrl-token-ToastBody-2783, var(--semantic-token-ToastBody-2784, ${tokens.fontSizeBase300}))`,
-  fontWeight: `var(--ctrl-token-ToastBody-2785, var(--semantic-token-ToastBody-2786, ${tokens.fontWeightRegular}))`,
-  color: `var(--ctrl-token-ToastBody-2787, var(--semantic-token-ToastBody-2788, ${tokens.colorNeutralForeground1}))`,
+  fontSize: `var(--2781, var(--2782, ${tokens.fontSizeBase300}))`,
+  lineHeight: `var(--2783, var(--2784, ${tokens.fontSizeBase300}))`,
+  fontWeight: `var(--2785, var(--2786, ${tokens.fontWeightRegular}))`,
+  color: `var(--2787, var(--2788, ${tokens.colorNeutralForeground1}))`,
   wordBreak: 'break-word',
 });
 
@@ -23,18 +23,18 @@ const useSubtitleBaseClassName = makeResetStyles({
   paddingTop: '4px',
   gridColumnStart: 2,
   gridColumnEnd: 3,
-  fontSize: `var(--ctrl-token-ToastBody-2789, var(--semantic-token-ToastBody-2790, ${tokens.fontSizeBase200}))`,
-  lineHeight: `var(--ctrl-token-ToastBody-2791, var(--semantic-token-ToastBody-2792, ${tokens.fontSizeBase200}))`,
-  fontWeight: `var(--ctrl-token-ToastBody-2793, var(--semantic-token-ToastBody-2794, ${tokens.fontWeightRegular}))`,
-  color: `var(--ctrl-token-ToastBody-2795, var(--semantic-token-ToastBody-2796, ${tokens.colorNeutralForeground2}))`,
+  fontSize: `var(--2789, var(--2790, ${tokens.fontSizeBase200}))`,
+  lineHeight: `var(--2791, var(--2792, ${tokens.fontSizeBase200}))`,
+  fontWeight: `var(--2793, var(--2794, ${tokens.fontWeightRegular}))`,
+  color: `var(--2795, var(--2796, ${tokens.colorNeutralForeground2}))`,
 });
 
 const useInvertedStyles = makeStyles({
   root: {
-    color: `var(--ctrl-token-ToastBody-2797, var(--semantic-token-ToastBody-2798, ${tokens.colorNeutralForegroundInverted2}))`,
+    color: `var(--2797, var(--2798, ${tokens.colorNeutralForegroundInverted2}))`,
   },
   subtitle: {
-    color: `var(--ctrl-token-ToastBody-2799, var(--semantic-token-ToastBody-2800, ${tokens.colorNeutralForegroundInverted2}))`,
+    color: `var(--2799, var(--2800, ${tokens.colorNeutralForegroundInverted2}))`,
   },
 });
 

@@ -21,7 +21,7 @@ const trackWidth = 40;
 const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useSwitchIndicatorBaseClassName = makeResetStyles({
-  borderRadius: `var(--ctrl-token-MenuItemSwitch-1359, var(--semantic-token-MenuItemSwitch-1360, ${tokens.borderRadiusCircular}))`,
+  borderRadius: `var(--1359, var(--1360, ${tokens.borderRadiusCircular}))`,
   border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
   lineHeight: 0,
   boxSizing: 'border-box',
@@ -29,29 +29,29 @@ const useSwitchIndicatorBaseClassName = makeResetStyles({
   flexShrink: 0,
   fontSize: `${thumbSize}px`,
   height: `${trackHeight}px`,
-  transitionDuration: `var(--ctrl-token-MenuItemSwitch-1361, var(--semantic-token-MenuItemSwitch-1362, ${tokens.durationNormal}))`,
-  transitionTimingFunction: `var(--ctrl-token-MenuItemSwitch-1363, var(--semantic-token-MenuItemSwitch-1364, ${tokens.curveEasyEase}))`,
+  transitionDuration: `var(--1361, var(--1362, ${tokens.durationNormal}))`,
+  transitionTimingFunction: `var(--1363, var(--1364, ${tokens.curveEasyEase}))`,
   transitionProperty: 'background, border, color',
   width: `${trackWidth}px`,
-  marginRight: `var(--ctrl-token-MenuItemSwitch-1365, var(--semantic-token-MenuItemSwitch-1366, ${tokens.spacingHorizontalXS}))`,
+  marginRight: `var(--1365, var(--1366, ${tokens.spacingHorizontalXS}))`,
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
   },
 
-  color: `var(--ctrl-token-MenuItemSwitch-1367, var(--semantic-token-MenuItemSwitch-1368, ${tokens.colorNeutralStrokeAccessible}))`,
+  color: `var(--1367, var(--1368, ${tokens.colorNeutralStrokeAccessible}))`,
   ':hover': {
-    color: `var(--ctrl-token-MenuItemSwitch-1369, var(--semantic-token-MenuItemSwitch-1370, ${tokens.colorNeutralStrokeAccessibleHover}))`,
-    borderColor: `var(--ctrl-token-MenuItemSwitch-1371, var(--semantic-token-MenuItemSwitch-1372, ${tokens.colorNeutralStrokeAccessibleHover}))`,
+    color: `var(--1369, var(--1370, ${tokens.colorNeutralStrokeAccessibleHover}))`,
+    borderColor: `var(--1371, var(--1372, ${tokens.colorNeutralStrokeAccessibleHover}))`,
   },
 
   ':hover:active': {
-    color: `var(--ctrl-token-MenuItemSwitch-1373, var(--semantic-token-MenuItemSwitch-1374, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
-    borderColor: `var(--ctrl-token-MenuItemSwitch-1375, var(--semantic-token-MenuItemSwitch-1376, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
+    color: `var(--1373, var(--1374, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
+    borderColor: `var(--1375, var(--1376, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
   },
   [`& .${circleFilledClassName}`]: {
-    transitionDuration: `var(--ctrl-token-MenuItemSwitch-1377, var(--semantic-token-MenuItemSwitch-1378, ${tokens.durationNormal}))`,
-    transitionTimingFunction: `var(--ctrl-token-MenuItemSwitch-1379, var(--semantic-token-MenuItemSwitch-1380, ${tokens.curveEasyEase}))`,
+    transitionDuration: `var(--1377, var(--1378, ${tokens.durationNormal}))`,
+    transitionTimingFunction: `var(--1379, var(--1380, ${tokens.curveEasyEase}))`,
     transitionProperty: 'transform',
 
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -66,19 +66,19 @@ const useSwitchIndicatorStyles = makeStyles({
       transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
     },
 
-    backgroundColor: `var(--ctrl-token-MenuItemSwitch-1381, var(--semantic-token-MenuItemSwitch-1382, ${tokens.colorCompoundBrandBackground}))`,
-    color: `var(--ctrl-token-MenuItemSwitch-1383, var(--semantic-token-MenuItemSwitch-1384, ${tokens.colorNeutralForegroundInverted}))`,
+    backgroundColor: `var(--1381, var(--1382, ${tokens.colorCompoundBrandBackground}))`,
+    color: `var(--1383, var(--1384, ${tokens.colorNeutralForegroundInverted}))`,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
 
     ':hover': {
-      color: `var(--ctrl-token-MenuItemSwitch-1385, var(--semantic-token-MenuItemSwitch-1386, ${tokens.colorNeutralForegroundInverted}))`,
-      backgroundColor: `var(--ctrl-token-MenuItemSwitch-1387, var(--semantic-token-MenuItemSwitch-1388, ${tokens.colorCompoundBrandBackgroundHover}))`,
+      color: `var(--1385, var(--1386, ${tokens.colorNeutralForegroundInverted}))`,
+      backgroundColor: `var(--1387, var(--1388, ${tokens.colorCompoundBrandBackgroundHover}))`,
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
 
     ':hover:active': {
-      color: `var(--ctrl-token-MenuItemSwitch-1389, var(--semantic-token-MenuItemSwitch-1390, ${tokens.colorNeutralForegroundInverted}))`,
-      backgroundColor: `var(--ctrl-token-MenuItemSwitch-1391, var(--semantic-token-MenuItemSwitch-1392, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+      color: `var(--1389, var(--1390, ${tokens.colorNeutralForegroundInverted}))`,
+      backgroundColor: `var(--1391, var(--1392, ${tokens.colorCompoundBrandBackgroundPressed}))`,
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
