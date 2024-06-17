@@ -2487,8 +2487,11 @@ export class ProgressBar extends FASTElement {
     // @internal
     get percentComplete(): number;
     shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
     validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
     value?: number;
     // @internal
