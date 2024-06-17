@@ -139,7 +139,6 @@ export class Divider extends FASTElement {
     }
 
     if (next) {
-      console.log(next, 'next');
       toggleState(this.elementInternals, `${next}`, true);
     }
   }
