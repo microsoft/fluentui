@@ -6,7 +6,7 @@ First, file an issue [here](https://github.com/microsoft/fluentui/issues/new/cho
 
 Make sure all your desired changes are stashed or otherwise saved somewhere you can pull them back in.
 
-First try running:
+Then try running:
 
 `yarn`
 
@@ -14,3 +14,7 @@ If the issues still persist, clean your repo:
 
 `yarn cache clean`
 `yarn`
+
+If unrelated errors are still persistent, a clean build may resolve:
+
+`yarn build`

@@ -26,10 +26,10 @@ export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React
     if (!checkboxProps) {
       return null;
     }
-    const { label: defualtLabel, title } = checkboxProps;
-    return defualtLabel ? (
+    const { label: defaultLabel, title } = checkboxProps;
+    return defaultLabel ? (
       <span title={title} className={styles.text}>
-        {defualtLabel}
+        {defaultLabel}
       </span>
     ) : null;
   };

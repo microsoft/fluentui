@@ -1,0 +1,82 @@
+{
+  "name": "@fluentui/react-tag-picker",
+  "version": "9.1.1",
+  "description": "FluentUI TagPicker component",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "generate-api": "just-scripts generate-api",
+    "lint": "just-scripts lint",
+    "start": "yarn storybook",
+    "storybook": "yarn --cwd ../stories storybook",
+    "test": "jest --passWithNoTests",
+    "type-check": "just-scripts type-check",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "bundle-size": "monosize measure"
+  },
+  "devDependencies": {
+    "@fluentui/react-provider": "*",
+    "@fluentui/react-avatar": "*",
+    "@fluentui/react-button": "*",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-jsx-runtime": "^9.0.39",
+    "@fluentui/react-shared-contexts": "^9.19.0",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-portal": "^9.4.28",
+    "@fluentui/react-tabster": "^9.22.0",
+    "@fluentui/react-aria": "^9.12.1",
+    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-combobox": "^9.11.8",
+    "@fluentui/react-tags": "^9.3.9",
+    "@fluentui/react-context-selector": "^9.1.62",
+    "@fluentui/react-positioning": "^9.15.3",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-field": "^9.1.68",
+    "@griffel/react": "^1.5.22",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  }
+}

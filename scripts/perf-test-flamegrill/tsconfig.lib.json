@@ -8,5 +8,5 @@
     "types": ["webpack-env"]
   },
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
-  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.js"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js"]
 }

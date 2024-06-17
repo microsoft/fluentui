@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselCard renders a default state 1`] = `
+<div>
+  <div
+    aria-hidden="true"
+    class="fui-CarouselCard"
+    data-carousel-active-item="false"
+    data-carousel-item="test-0"
+    hidden=""
+    role="presentation"
+  />
+</div>
+`;

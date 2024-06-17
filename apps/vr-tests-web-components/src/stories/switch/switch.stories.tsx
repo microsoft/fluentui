@@ -59,24 +59,3 @@ export const DisabledChecked = () =>
   `);
 
 export const DisabledCheckedDark = getStoryVariant(DisabledChecked, DARK_MODE);
-
-export const LabelBefore = () =>
-  parse(`
-  <fluent-switch id="${controlId}" label-position="before">Label before</fluent-switch>
-  `);
-
-export const LabelBeforeRTL = getStoryVariant(LabelBefore, RTL);
-
-export const LabelAbove = () =>
-  parse(`
-  <fluent-switch id="${controlId}" label-position="above">Label above</fluent-switch>
-  `);
-
-export const LabelAboveRTL = getStoryVariant(LabelAbove, RTL);
-
-export const LabelAfter = () =>
-  parse(`
-  <fluent-switch id="${controlId}" label-position="after">Label after</fluent-switch>
-  `);
-
-export const LabelAfterRTL = getStoryVariant(LabelAfter, RTL);

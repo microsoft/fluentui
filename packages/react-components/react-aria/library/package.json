@@ -1,0 +1,69 @@
+{
+  "name": "@fluentui/react-aria",
+  "version": "9.12.1",
+  "description": "React helper to ensure ARIA",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "yarn storybook",
+    "test": "jest --passWithNoTests",
+    "storybook": "yarn --cwd ../stories storybook",
+    "type-check": "just-scripts type-check",
+    "generate-api": "just-scripts generate-api"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-shared-contexts": "^9.19.0",
+    "@fluentui/react-jsx-runtime": "^9.0.39",
+    "@fluentui/react-tabster": "^9.22.0",
+    "@fluentui/react-utilities": "^9.18.10",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
+}

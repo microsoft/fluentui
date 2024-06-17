@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 05 Jun 2024 07:23:51 GMT",
+      "tag": "@fluentui/api-docs_v8.2.22",
+      "version": "8.2.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "commit": "7d6815a883a99dca77fdd366b85004c149adc380",
+            "comment": "chore: bump api-extractor-model in order to migrate to TS 4.9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:31 GMT",
       "tag": "@fluentui/api-docs_v8.2.11",
       "version": "8.2.11",

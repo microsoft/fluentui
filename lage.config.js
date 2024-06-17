@@ -5,6 +5,7 @@ module.exports = {
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
+    'build-storybook': [],
     // adding temporary back until import plugin rule is resolved https://github.com/microsoft/fluentui/issues/27727
     lint: ['build'],
     clean: [],
@@ -16,6 +17,8 @@ module.exports = {
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
     'verify-packaging': ['build'],
+    e2e: [],
+    '@fluentui/web-components#e2e': ['build-storybook'],
   },
 
   // Adds some ADO-specific logging commands for reporting failures

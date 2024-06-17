@@ -23,29 +23,31 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 ### **Basic Implemenation**
 
 ```html
-<fluent-dialog open>
-  <!-- Header -->
-  <fluent-text slot="title">Dialog</fluent-text>
-  <fluent-button slot="title-action"><svg></svg></fluent-button>
-  <!-- Default Content -->
-  <fluent-text>Default Content</fluent-text>
+<fluent-dialog>
+  <fluent-dialog-body>
+    <!-- Header -->
+    <fluent-text slot="title">Dialog</fluent-text>
+    <fluent-button slot="title-action"><svg></svg></fluent-button>
 
-  <!-- Footer/Actions -->
-  <fluent-button slot="action">Do Something</fluent-button>
-  <fluent-button slot="action">Close</fluent-button>
+    <!-- Default Content -->
+    <fluent-text>Default Content</fluent-text>
+
+    <!-- Footer/Actions -->
+    <fluent-button slot="action">Do Something</fluent-button>
+    <fluent-button slot="action">Close</fluent-button>
+  </fluent-dialog-body>
 </fluent-dialog>
 ```
 
 ### **Attributes**
 
-| Name               | Privacy | Type              | Default                 | Description                                               |
-| ------------------ | ------- | ----------------- | ----------------------- | --------------------------------------------------------- |
-| `modal-type`       | public  | `DialogModalType` | `DialogModalType.modal` | Indicates that the type of modal to render.               |
-| `open`             | public  | `boolean`         | `false`                 | Controls the open state of the dialog                     |
-| `no-title-action`  | public  | `boolean`         | `false`                 | Used to set whether the default title action is rendered. |
-| `aria-labelledby`  | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
-| `aria-describedby` | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
-| `aria-label `      | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
+| Name               | Privacy | Type         | Default            | Description                                               |
+| ------------------ | ------- | ------------ | ------------------ | --------------------------------------------------------- |
+| `type`             | public  | `DialogType` | `DialogType.modal` | Indicates that the type of modal to render.               |
+| `no-title-action`  | public  | `boolean`    | `false`            | Used to set whether the default title action is rendered. |
+| `aria-labelledby`  | public  | `string`     | `undefined`        | optional based on implementation\*\*                      |
+| `aria-describedby` | public  | `string`     | `undefined`        | optional based on implementation\*\*                      |
+| `aria-label `      | public  | `string`     | `undefined`        | optional based on implementation\*\*                      |
 
 \*\* See the [W3C Specification](https://w3c.github.io/aria-practices/#dialog_roles_states_props) for requirements and details.
 
@@ -62,12 +64,9 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 ### **Slots**
 
-| Name           | Description                                                |
-| -------------- | ---------------------------------------------------------- |
-| `title`        | slot for title content                                     |
-| `title-action` | slot for close button                                      |
-|                | default slot for content rendered between title and footer |
-| `action`       | slot for actions content                                   |
+| Name | Description                                                 |
+| ---- | ----------------------------------------------------------- |
+|      | default slot for content rendered inside the dialog element |
 
 ### **Events**
 

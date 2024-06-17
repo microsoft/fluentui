@@ -29,7 +29,7 @@ test.describe('Divider', () => {
             `;
     });
 
-    await expect(element).toHaveAttribute('role', 'separator');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'separator');
   });
 
   test('should set the `role` attribute equal to the role provided', async () => {
@@ -39,13 +39,13 @@ test.describe('Divider', () => {
             `;
     });
 
-    await expect(element).toHaveAttribute('role', 'presentation');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'presentation');
 
     await element.evaluate((node: Divider) => {
       node.role = 'separator';
     });
 
-    await expect(element).toHaveAttribute('role', 'separator');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'separator');
   });
 
   test('should set the `aria-orientation` attribute equal to the `orientation` value', async () => {
@@ -55,13 +55,13 @@ test.describe('Divider', () => {
             `;
     });
 
-    await expect(element).toHaveAttribute('aria-orientation', 'vertical');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
 
     await element.evaluate((node: Divider) => {
       node.orientation = 'horizontal';
     });
 
-    await expect(element).toHaveAttribute('aria-orientation', 'horizontal');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
   test('should NOT set the `aria-orientation` property equal to `orientation` value if the `role` is presentational', async () => {
@@ -71,14 +71,14 @@ test.describe('Divider', () => {
             `;
     });
 
-    await expect(element).toHaveAttribute('aria-orientation', 'vertical');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
 
     await element.evaluate((node: Divider) => {
       node.role = 'presentation';
     });
 
-    await expect(element).not.toHaveJSProperty('aria-orientation', 'vertical');
-    await expect(element).not.toHaveJSProperty('aria-orientation', 'horizontal');
+    await expect(element).not.toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
+    await expect(element).not.toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
   test('should initialize to the provided value attribute if set post-connection', async () => {
