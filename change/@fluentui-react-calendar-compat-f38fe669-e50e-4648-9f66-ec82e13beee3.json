@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-calendar-compat): fixed focus indicator cut off",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
