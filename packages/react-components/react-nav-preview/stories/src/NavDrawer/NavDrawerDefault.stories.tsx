@@ -89,7 +89,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
   const linkLabelId = useId('link-label');
 
   const [isOpen, setIsOpen] = React.useState(true);
-  const [enabledLinks, setEnabledLinks] = React.useState(false); // todo change this back to true before checkin
+  const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [type, setType] = React.useState<DrawerType>('inline');
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
