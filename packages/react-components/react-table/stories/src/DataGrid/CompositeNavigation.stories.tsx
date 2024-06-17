@@ -138,7 +138,13 @@ const columns: TableColumnDefinition<Item>[] = [
 
 export const CompositeNavigation = () => {
   return (
-    <DataGrid selectionMode="multiselect" items={items} columns={columns} focusMode="composite">
+    <DataGrid
+      selectionMode="multiselect"
+      items={items}
+      columns={columns}
+      focusMode="composite"
+      style={{ minWidth: '550px' }}
+    >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}

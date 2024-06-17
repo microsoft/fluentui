@@ -173,6 +173,12 @@ const useDaySingleSelectedStyles = makeStyles({
 
 const useWeekRowStyles = makeStyles({
   base: {
+    position: 'relative',
+    ':focus-within': {
+      zIndex: 1,
+    },
+  },
+  animation: {
     animationDuration: DURATION_3,
     animationFillMode: 'both',
     animationTimingFunction: EASING_FUNCTION_1,
@@ -419,7 +425,8 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
     daySingleSelected: mergeClasses(calendarDayGridClassNames.daySingleSelected, daySingleSelectedStyles.base),
     weekRow: mergeClasses(
       calendarDayGridClassNames.weekRow,
-      animateBackwards !== undefined && weekRowStyles.base,
+      weekRowStyles.base,
+      animateBackwards !== undefined && weekRowStyles.animation,
       animateBackwards !== undefined &&
         (animationDirection === AnimationDirection.Horizontal
           ? animateBackwards

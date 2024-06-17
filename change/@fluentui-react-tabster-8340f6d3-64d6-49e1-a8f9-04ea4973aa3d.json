@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Pulling Tabster 8.0.0 for the tree-shakeability improvements to reduce the bundle size.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

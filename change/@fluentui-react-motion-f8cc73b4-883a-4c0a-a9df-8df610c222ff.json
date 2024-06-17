@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement `onMotionCancel` callback handler",
-  "packageName": "@fluentui/react-motion",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

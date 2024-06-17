@@ -150,7 +150,7 @@ export const MultipleSelect = () => {
   );
 
   return (
-    <Table aria-label="Table with multiselect">
+    <Table aria-label="Table with multiselect" style={{ minWidth: '550px' }}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
