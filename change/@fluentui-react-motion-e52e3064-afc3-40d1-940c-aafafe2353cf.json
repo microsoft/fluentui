@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add bundle size fixtures",
+  "packageName": "@fluentui/react-motion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
