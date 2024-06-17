@@ -64,6 +64,7 @@ import {
   subtleState,
   successState,
   tintState,
+  tinyState,
   warningState,
 } from '../states/index.js';
 
@@ -112,7 +113,7 @@ export const badgeBaseStyles = css.partial`
  * The badge's size styles
  */
 export const badgeSizeStyles = css.partial`
-  :host(${tintState}) {
+  :host(${tinyState}) {
     width: 6px;
     height: 6px;
     font-size: 4px;
@@ -120,7 +121,7 @@ export const badgeSizeStyles = css.partial`
     padding-inline: 0;
     min-width: unset;
   }
-  :host(${tintState}) ::slotted(svg) {
+  :host(${tinyState}) ::slotted(svg) {
     font-size: 6px;
   }
   :host(${extraSmallState}) {
@@ -219,31 +220,31 @@ export const badgeGhostStyles = css.partial`
     background-color: initial;
   }
 
-  :host(${ghostState}, ${dangerState}) {
+  :host(${ghostState}${dangerState}) {
     color: ${colorPaletteRedForeground3};
   }
 
-  :host(${ghostState}, ${importantState}) {
+  :host(${ghostState}${importantState}) {
     color: ${colorNeutralForeground1};
   }
 
-  :host(${ghostState}, ${informativeState}) {
+  :host(${ghostState}${informativeState}) {
     color: ${colorNeutralForeground3};
   }
 
-  :host(${ghostState}, ${severeState}) {
+  :host(${ghostState}${severeState}) {
     color: ${colorPaletteDarkOrangeForeground3};
   }
 
-  :host(${ghostState}, ${subtleState}) {
+  :host(${ghostState}${subtleState}) {
     color: ${colorNeutralForegroundInverted};
   }
 
-  :host(${ghostState}, ${successState}) {
+  :host(${ghostState}${successState}) {
     color: ${colorPaletteGreenForeground3};
   }
 
-  :host(${ghostState}, ${warningState}) {
+  :host(${ghostState}${warningState}) {
     color: ${colorPaletteYellowForeground2};
   }
 `;
@@ -259,33 +260,33 @@ export const badgeOutlineStyles = css.partial`
     background-color: initial;
   }
 
-  :host(${outlineState}, ${dangerState}) {
+  :host(${outlineState}${dangerState}) {
     color: ${colorPaletteRedForeground3};
   }
 
-  :host(${outlineState}, ${importantState}) {
+  :host(${outlineState}${importantState}) {
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStrokeAccessible};
   }
 
-  :host(${outlineState}, ${informativeState}) {
+  :host(${outlineState}${informativeState}) {
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStroke2};
   }
 
-  :host(${outlineState}, ${severeState}) {
+  :host(${outlineState}${severeState}) {
     color: ${colorPaletteDarkOrangeForeground3};
   }
 
-  :host(${outlineState}, ${subtleState}) {
+  :host(${outlineState}${subtleState}) {
     color: ${colorNeutralForegroundStaticInverted};
   }
 
-  :host(${outlineState}, ${successState}) {
+  :host(${outlineState}${successState}) {
     color: ${colorPaletteGreenForeground2};
   }
 
-  :host(${outlineState}, ${warningState}) {
+  :host(${outlineState}${warningState}) {
     color: ${colorPaletteYellowForeground2};
   }
 `;
@@ -301,43 +302,43 @@ export const badgeTintStyles = css.partial`
     border-color: ${colorBrandStroke2};
   }
 
-  :host(${tintState}, ${dangerState}) {
+  :host(${tintState}${dangerState}) {
     background-color: ${colorPaletteRedBackground1};
     color: ${colorPaletteRedForeground1};
     border-color: ${colorPaletteRedBorder1};
   }
 
-  :host(${tintState}, ${importantState}) {
+  :host(${tintState}${importantState}) {
     background-color: ${colorNeutralForeground3};
     color: ${colorNeutralBackground1};
     border-color: ${colorTransparentStroke};
   }
 
-  :host(${tintState}, ${informativeState}) {
+  :host(${tintState}${informativeState}) {
     background-color: ${colorNeutralBackground4};
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStroke2};
   }
 
-  :host(${tintState}, ${severeState}) {
+  :host(${tintState}${severeState}) {
     background-color: ${colorPaletteDarkOrangeBackground1};
     color: ${colorPaletteDarkOrangeForeground1};
     border-color: ${colorPaletteDarkOrangeBorder1};
   }
 
-  :host(${tintState}, ${subtleState}) {
+  :host(${tintState}${subtleState}) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground3};
     border-color: ${colorNeutralStroke2};
   }
 
-  :host(${tintState}, ${successState}) {
+  :host(${tintState}${successState}) {
     background-color: ${colorPaletteGreenBackground1};
     color: ${colorPaletteGreenForeground1};
     border-color: ${colorPaletteGreenBorder2};
   }
 
-  :host(${tintState}, ${warningState}) {
+  :host(${tintState}${warningState}) {
     background-color: ${colorPaletteYellowBackground1};
     color: ${colorPaletteYellowForeground2};
     border-color: ${colorPaletteYellowBorder1};
