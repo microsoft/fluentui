@@ -75,6 +75,10 @@ export default {
 
 export const TreeItem = renderComponent(storyTemplate).bind({});
 
+//
+// Attribute stories
+//
+
 export const Selected = renderComponent(html<TreeItemStoryArgs>`
   <fluent-tree-item selected>Item 1</fluent-tree-item>
   <fluent-tree-item>Item 2</fluent-tree-item>
