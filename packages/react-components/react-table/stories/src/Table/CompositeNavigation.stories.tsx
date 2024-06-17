@@ -76,6 +76,7 @@ export const CompositeNavigation = () => {
       aria-label="Table with grid keyboard navigation"
       noNativeElements
       onKeyDown={onTableKeyDown}
+      style={{ minWidth: '500px' }}
       {...tableTabsterAttribute}
     >
       <TableHeader>

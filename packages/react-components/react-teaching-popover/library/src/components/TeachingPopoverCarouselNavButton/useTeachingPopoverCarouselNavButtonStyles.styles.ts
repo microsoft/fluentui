@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     border: 'none',
     borderRadius: '50%',
     padding: '0px',
-    outline: tokens.strokeWidthThin, // For high contrast
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
       borderRadius: tokens.borderRadiusMedium,
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     },
   },
   rootSelected: {
-    outline: tokens.strokeWidthThin, // For high contrast
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     width: '16px',
     border: 'none',
     borderRadius: '4px',
@@ -51,6 +51,9 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
   },
   rootBrand: {
     backgroundColor: tokens.colorNeutralForegroundOnBrand,

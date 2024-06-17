@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-motion",
-  "version": "9.1.0",
+  "version": "9.2.0",
   "description": "A package with utilities & motion definitions using Web Animations API",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,8 @@
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check",
     "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
+    "e2e:local": "cypress open --component",
+    "bundle-size": "monosize measure"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

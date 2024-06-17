@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: useContextSelector with React 18",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

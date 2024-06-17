@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 12 Jun 2024 13:17:15 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2024 07:34:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.2)
+
+Mon, 17 Jun 2024 07:34:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.1..@fluentui/react-components_v9.54.2)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: Implement `onMotionCancel` callback handler ([PR #31698](https://github.com/microsoft/fluentui/pull/31698) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - Exposing TabsterMoveFocusEvent. ([PR #31393](https://github.com/microsoft/fluentui/pull/31393) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-context-selector`
+  - fix: useContextSelector with React 18 ([PR #30951](https://github.com/microsoft/fluentui/pull/30951) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - Removing ignoreKeydown on MenuList as it has side effect on submenus. ([PR #31393](https://github.com/microsoft/fluentui/pull/31393) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Pulling Tabster 8.0.0 for the tree-shakeability improvements to reduce the bundle size. ([PR #31441](https://github.com/microsoft/fluentui/pull/31441) by marata@microsoft.com)
 
 ## [9.54.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.1)
 

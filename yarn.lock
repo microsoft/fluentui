@@ -4589,13 +4589,12 @@
   dependencies:
     defer-to-connect "^2.0.1"
 
-"@tensile-perf/runner@0.3.11":
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/@tensile-perf/runner/-/runner-0.3.11.tgz#5e48d0059bbaf87f3c48159fd36dabc96400ce17"
-  integrity sha512-C3nYwcwJjRFo9GPTVDdBsv0ryWGcsJvvmIimwIJRLzfPzbP7V9Vcrqe4h8Kc26xNehVlBJxURxja3ps5SfSR1Q==
+"@tensile-perf/runner@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@tensile-perf/runner/-/runner-0.4.0.tgz#26493fdf569df4a5e539d958f09791f43f12a849"
+  integrity sha512-ifwe0bRGRPh5JYALnmkcluD/MOpK7ws0wGVvwGyN8joA+uPbbGk/5B0VtekYrqLg7kTM0duUEKTdtQDoU5B4gw==
   dependencies:
     "@tensile-perf/tree" "0.1.7"
-    chromedriver "123.0.1"
     cli-table "0.3.11"
     edgedriver "5.2.1"
     ejs "3.1.9"
@@ -4623,12 +4622,12 @@
   dependencies:
     "@tensile-perf/tools" "0.1.7"
 
-"@tensile-perf/web-components@~0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@tensile-perf/web-components/-/web-components-0.1.13.tgz#f76b1f592a3f57d6078401b372029f9d3b339ffb"
-  integrity sha512-WHcDKHFljldkbQp3IvYEw6sF8VXol+l4dWzs80xuYJM3F2w9YjCEpf6337tL+GAbR10EILn9FTYfaNFMri91+A==
+"@tensile-perf/web-components@~0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@tensile-perf/web-components/-/web-components-0.1.15.tgz#95587b220d0b09b79b339da4e4f8694772fab91a"
+  integrity sha512-gawc20t7uvZyWUZOqBCA6/2Z7wEGECy2ytxe2/FMplDOuUj/CLXKoDY9mtS1dlo+6HjERuL8iP4IjdqURXo2UA==
   dependencies:
-    "@tensile-perf/runner" "0.3.11"
+    "@tensile-perf/runner" "0.4.0"
     "@tensile-perf/tools" "0.1.7"
     "@tensile-perf/tree" "0.1.7"
     tslib "^2.5.0"
@@ -7358,9 +7357,9 @@ axios@^0.21.1:
     follow-redirects "^1.14.0"
 
 axios@^1.6.0, axios@^1.6.7:
-  version "1.6.8"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.8.tgz#66d294951f5d988a00e87a0ffb955316a619ea66"
-  integrity sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.2.tgz#b625db8a7051fbea61c35a3cbb3a1daa7b9c7621"
+  integrity sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==
   dependencies:
     follow-redirects "^1.15.6"
     form-data "^4.0.0"
@@ -8736,10 +8735,10 @@ chrome-trace-event@^1.0.2:
   dependencies:
     tslib "^1.9.0"
 
-chromedriver@123.0.1:
-  version "123.0.1"
-  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-123.0.1.tgz#331672e08c0e7d8647ea40525946b4f0b045be7e"
-  integrity sha512-YQUIP/zdlzDIRCZNCv6rEVDSY4RAxo/tDL0OiGPPuai+z8unRNqJr/9V6XTBypVFyDheXNalKt9QxEqdMPuLAQ==
+chromedriver@^125.0.0:
+  version "125.0.3"
+  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-125.0.3.tgz#4c7cf13e54cd3575b88d4376a53d659cabb0ae05"
+  integrity sha512-Qzuk5Wian2o3EVGjtbz6V/jv+pT/AV9246HbG6kUljZXXjsKZLZxqJC+kHR3qEh/wdv4EJD0YwAOWV72v9hogw==
   dependencies:
     "@testim/chrome-version" "^1.1.4"
     axios "^1.6.7"

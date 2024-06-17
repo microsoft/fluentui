@@ -158,6 +158,7 @@ export const SelectionAppearance = () => {
       selectionMode="multiselect"
       selectionAppearance="neutral"
       defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: '550px' }}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>

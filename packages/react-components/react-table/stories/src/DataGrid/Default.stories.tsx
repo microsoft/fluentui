@@ -157,6 +157,7 @@ export const Default = () => {
       selectionMode="multiselect"
       getRowId={item => item.file.label}
       focusMode="composite"
+      style={{ minWidth: '550px' }}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
