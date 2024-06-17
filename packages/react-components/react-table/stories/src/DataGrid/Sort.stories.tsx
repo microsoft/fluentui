@@ -153,7 +153,7 @@ export const Sort = () => {
   );
 
   return (
-    <DataGrid items={items} columns={columns} defaultSortState={defaultSortState}>
+    <DataGrid items={items} columns={columns} defaultSortState={defaultSortState} style={{ minWidth: '500px' }}>
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
