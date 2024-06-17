@@ -1,4 +1,4 @@
-## Best Practices
+## Best practices
 
 ### Layout
 

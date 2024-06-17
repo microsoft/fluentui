@@ -1,4 +1,4 @@
-## InfoButton/InfoLabel Pattern
+## InfoButton/InfoLabel pattern
 
 ### What is an InfoLabel?
 

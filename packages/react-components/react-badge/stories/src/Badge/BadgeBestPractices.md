@@ -1,4 +1,4 @@
-## Best Practices
+## Best practices
 
 ### Badges should not receive focus
 

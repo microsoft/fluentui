@@ -1,4 +1,4 @@
-## Best Practices
+## Best practices
 
 ### OverlayDrawer vs InlineDrawer vs Drawer
 
