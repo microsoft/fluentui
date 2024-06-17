@@ -1,6 +1,6 @@
 import { Theme as ThemeV8 } from '@fluentui/react';
 import type { IEffects, IPalette } from '@fluentui/react';
-import { Theme as ThemeV9, webLightTheme } from '@fluentui/react-components';
+import { Theme as ThemeV9, webLightTheme, webDarkTheme } from '@fluentui/react-components';
 import type { BorderRadiusTokens, ColorTokens, ShadowTokens } from '@fluentui/react-components';
 import { blackAlpha, whiteAlpha, grey, grey10Alpha, grey12Alpha } from './themeDuplicates';
 
@@ -206,8 +206,7 @@ const mapBorderRadiusTokens = (effects: IEffects): Partial<BorderRadiusTokens> =
  * You can optional pass a base v9 theme; otherwise webLightTheme is used.
  */
 export const createV9Theme = (themeV8: ThemeV8, baseThemeV9?: ThemeV9): ThemeV9 => {
-  const baseTheme = baseThemeV9 ?? webLightTheme;
-
+  const baseTheme = baseThemeV9 ?? (themeV8.isInverted ? webDarkTheme : webLightTheme);
   return {
     ...baseTheme,
     ...mapAliasColors(themeV8.palette, themeV8.isInverted),
