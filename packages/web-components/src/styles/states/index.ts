@@ -7,6 +7,12 @@ import { css } from '@microsoft/fast-element';
 export const ghostState = css.partial`:is([state--ghost], :state(ghost))`;
 
 /**
+ * Selector for the `inverted` state.
+ * @public
+ */
+export const invertedState = css.partial`:is([state--inverted], :state(inverted))`;
+
+/**
  * Selector for the `primary` state.
  * @public
  */
@@ -89,6 +95,12 @@ export const largeState = css.partial`:is([state--large], :state(large))`;
  * @public
  */
 export const extraLargeState = css.partial`:is([state--extra-large], :state(extra-large))`;
+
+/**
+ * Selector for the `huge` state.
+ * @public
+ */
+export const hugeState = css.partial`:is([state--huge], :state(huge))`;
 
 /**
  * Selector for the `alignment` start state.
