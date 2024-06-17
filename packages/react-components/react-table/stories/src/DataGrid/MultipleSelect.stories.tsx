@@ -152,7 +152,13 @@ export const MultipleSelect = () => {
   const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
 
   return (
-    <DataGrid items={items} columns={columns} selectionMode="multiselect" defaultSelectedItems={defaultSelectedItems}>
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="multiselect"
+      defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: '550px' }}
+    >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
