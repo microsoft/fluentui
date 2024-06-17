@@ -41,10 +41,15 @@ export const styles = css`
     cursor: pointer;
     overflow: visible;
     contain: layout;
+    --indent: 0;
   }
 
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
+  }
+
+  .indicator {
+    width: 20px;
   }
 
   .content {
@@ -54,24 +59,17 @@ export const styles = css`
     padding: 0 2px;
   }
 
-  .checkbox,
-  .radio {
-    display: none;
-  }
-
-  .input-container,
-  .expand-collapse-glyph-container,
+  .indicator,
+  .submenu-glyph,
   ::slotted([slot='start']),
-  ::slotted([slot='end']),
-  :host([checked]) .checkbox,
-  :host([checked]) .radio {
+  ::slotted([slot='end']) {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     color: ${colorNeutralForeground2};
   }
 
-  .expand-collapse-glyph-container,
+  .submenu-glyph,
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
     height: 32px;
@@ -79,8 +77,8 @@ export const styles = css`
     width: fit-content;
   }
 
-  .input-container {
-    width: 20px;
+  :host(:not([aria-haspopup='menu'])) .submenu-glyph {
+    display: none;
   }
 
   ::slotted([slot='end']) {
@@ -91,13 +89,12 @@ export const styles = css`
     justify-self: flex-end;
   }
 
-  .expand-collapse-glyph-container {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
+  :host(:not([checked])) .indicator {
+    display: none;
   }
 
-  :host(:hover) .input-container,
-  :host(:hover) .expand-collapse-glyph-container,
+  :host(:hover) .indicator,
+  :host(:hover) .submenu-glyph,
   :host(:hover) .content {
     color: ${colorNeutralForeground2Hover};
   }
@@ -110,8 +107,8 @@ export const styles = css`
     background-color: ${colorNeutralBackground1Selected};
   }
 
-  :host(:active) .input-container,
-  :host(:active) .expand-collapse-glyph-container,
+  :host(:active) .indicator,
+  :host(:active) .submenu-glyph,
   :host(:active) .content {
     color: ${colorNeutralForeground2Pressed};
   }
@@ -125,7 +122,7 @@ export const styles = css`
   }
 
   :host([disabled]) .content,
-  :host([disabled]) .expand-collapse-glyph-container,
+  :host([disabled]) .submenu-glyph,
   :host([disabled]) ::slotted([slot='end']),
   :host([disabled]) ::slotted([slot='start']) {
     color: ${colorNeutralForegroundDisabled};
@@ -135,52 +132,14 @@ export const styles = css`
     display: grid;
   }
 
-  :host([data-indent='1']) .content {
-    grid-column: 2 / span 1;
-  }
-
-  :host([data-indent='1'][role='menuitemcheckbox']) {
-    display: grid;
-  }
-
-  :host([data-indent='2'][aria-haspopup='menu']) ::slotted([slot='end']) {
-    grid-column: 4 / span 1;
-  }
-
-  :host([data-indent='2'][aria-haspopup='menu']) .expand-collapse-glyph-container {
-    grid-column: 5 / span 1;
-  }
-
-  :host([data-indent='1']) .content {
-    grid-column: 2 / span 1;
-  }
-
-  :host([data-indent='1'][role='menuitemcheckbox']) .content,
-  :host([data-indent='1'][role='menuitemradio']) .content {
-    grid-column: auto / span 1;
-  }
-
-  :host([icon]) ::slotted([slot='end']),
-  :host([data-indent='1']) ::slotted([slot='end']) {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
+  :host([data-indent='1']) {
+    --indent: 1;
   }
 
   :host([data-indent='2']) {
+    --indent: 2;
     display: grid;
     grid-template-columns: 20px 20px auto auto;
-  }
-
-  :host([data-indent='2']) .content {
-    grid-column: 3 / span 1;
-  }
-
-  :host([data-indent='2']) .input-container {
-    grid-column: 1 / span 1;
-  }
-
-  :host([data-indent='2']) ::slotted([slot='start']) {
-    grid-column: 2 / span 1;
   }
 
   :host([aria-haspopup='menu']) {
@@ -191,14 +150,26 @@ export const styles = css`
     grid-template-columns: 20px 20px auto auto 20px;
   }
 
-  :host([aria-haspopup='menu']) ::slotted([slot='end']) {
-    grid-column: 3 / span 1;
-    justify-self: flex-end;
+  .indicator {
+    grid-column: 1 / span 1;
   }
 
-  :host([data-indent='2'][aria-haspopup='menu']) ::slotted([slot='end']) {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
+  ::slotted([slot='start']) {
+    grid-column: calc(var(--indent)) / span 1;
+  }
+
+  .content {
+    grid-column: calc(var(--indent) + 1) / span 1;
+  }
+
+  ::slotted([slot='end']) {
+    grid-column: calc(var(--indent) + 3) / span 1;
+    justify-self: end;
+  }
+
+  .submenu-glyph {
+    grid-column: calc(var(--indent) + 4) / span 1;
+    justify-self: end;
   }
 
   @layer popover {

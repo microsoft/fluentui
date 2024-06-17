@@ -25,50 +25,23 @@ export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = 
       @mouseout="${(x, c) => x.handleMouseOut(c.event as MouseEvent)}"
       @toggle="${(x, c) => x.toggleHandler(c.event as ToggleEvent)}"
     >
-      ${when(
-        x => x.role === MenuItemRole.menuitemcheckbox,
-        html<MenuItem>`
-          <span part="checkbox" class="checkbox">
-            <slot name="checkbox-indicator"> ${staticallyCompose(options.checkboxIndicator)} </slot>
-          </span>
-        `,
-      )}
-      ${when(
-        x => x.role === MenuItemRole.menuitemradio,
-        html<MenuItem>`
-          <span part="radio" class="radio">
-            <slot name="radio-indicator"> ${staticallyCompose(options.radioIndicator)} </slot>
-          </span>
-        `,
-      )}
+      <div part="indicator" class="indicator">
+        <slot name="indicator"> ${staticallyCompose(options.indicator)} </slot>
+      </div>
       ${startSlotTemplate(options)}
       <div part="content" class="content">
         <slot></slot>
-      </div
+      </div>
       ${endSlotTemplate(options)}
-      ${when(
-        x => !!x.submenu,
-        html<T>`
-          <div part="expand-collapse-glyph-container" class="expand-collapse-glyph-container">
-            <slot name="expand-collapse-indicator"> ${staticallyCompose(options.expandCollapseGlyph)} </slot>
-          </div>
-        `,
-      )}
-
-        <slot
-          name="submenu"
-          ${slotted({
-            property: 'slottedSubmenu',
-            filter: elements("[role='menu']"),
-          })}
-        ></slot>
-
+      <div part="submenu-glyph" class="submenu-glyph">
+        <slot name="submenu-glyph"> ${staticallyCompose(options.submenuGlyph)} </slot>
+      </div>
+      <slot name="submenu" ${slotted({ property: 'slottedSubmenu', filter: elements("[role='menu']") })}></slot>
     </template>
   `;
 }
 
 export const template: ElementViewTemplate<MenuItem> = menuItemTemplate({
-  checkboxIndicator: Checkmark16Filled,
-  expandCollapseGlyph: chevronRight16Filled,
-  radioIndicator: Checkmark16Filled,
+  indicator: Checkmark16Filled,
+  submenuGlyph: chevronRight16Filled,
 });

@@ -15,26 +15,23 @@ export { MenuItemRole, roleForMenuItem };
  * @public
  */
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-  checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-  expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-  radioIndicator?: StaticallyComposableHTML<MenuItem>;
+  indicator?: StaticallyComposableHTML<MenuItem>;
+  submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 /**
  * A Switch Custom HTML Element.
  * Implements {@link https://www.w3.org/TR/wai-aria-1.1/#menuitem | ARIA menuitem }, {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox | ARIA menuitemcheckbox}, or {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemradio | ARIA menuitemradio }.
  *
- * @slot checked-indicator - The checked indicator
- * @slot radio-indicator - The radio indicator
+ * @slot indicator - The checkbox or radio indicator
  * @slot start - Content which can be provided before the menu item content
- * @slot end - Content which can be provided after the menu item content
  * @slot - The default slot for menu item content
- * @slot expand-collapse-indicator - The expand/collapse indicator
+ * @slot end - Content which can be provided after the menu item content
+ * @slot submenu-glyph - The submenu expand/collapse indicator
  * @slot submenu - Used to nest menu's within menu items
- * @csspart checkbox - The element wrapping the `menuitemcheckbox` indicator
- * @csspart radio - The element wrapping the `menuitemradio` indicator
+ * @csspart indicator - The element wrapping the `menuitemcheckbox` or  `menuitemradio` indicator
  * @csspart content - The element wrapping the menu item content
- * @csspart expand-collapse-glyph-container - The element wrapping the expand collapse element
+ * @csspart submenu-glyph-container - The element wrapping the expand collapse element
  * @fires change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
  *
  * @public
@@ -121,7 +118,7 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   public handleMenuItemKeyDown = (e: KeyboardEvent): boolean => {
-    if (e.defaultPrevented || this.disabled) {
+    if (e.defaultPrevented) {
       return false;
     }
 
@@ -133,6 +130,7 @@ export class MenuItem extends FASTElement {
 
       case keyArrowRight:
         //open/focus on submenu
+        if (this.disabled) return false;
         this.submenu?.showPopover();
         this.submenu?.focus();
         return false;
