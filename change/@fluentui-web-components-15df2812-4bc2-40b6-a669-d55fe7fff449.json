@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update tensile-perf and add chromedriver as devDependency",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "none"
-}
