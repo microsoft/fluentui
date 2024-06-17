@@ -17,6 +17,7 @@ export const styles = css`
   ${display('inline')}
 
   :host {
+    position: relative;
     box-sizing: border-box;
     background-color: transparent;
     color: ${colorBrandForegroundLink};
@@ -70,6 +71,11 @@ export const styles = css`
   :host(:not([href])) {
     color: inherit;
     text-decoration: none;
+  }
+
+  ::slotted(a) {
+    position: absolute;
+    inset: 0;
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
