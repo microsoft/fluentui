@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     border: 'none',
     borderRadius: '50%',
     padding: '0px',
-    outline: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2557, var(--semantic-token-TeachingPopoverCarouselNavButton-2558, ${tokens.strokeWidthThin}))`, // For high contrast
+    outline: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2557, var(--semantic-token-TeachingPopoverCarouselNavButton-2558, '${tokens.strokeWidthThin} solid transparent'))`, // For high contrast
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
       borderRadius: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2559, var(--semantic-token-TeachingPopoverCarouselNavButton-2560, ${tokens.borderRadiusMedium}))`,
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     },
   },
   rootSelected: {
-    outline: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2563, var(--semantic-token-TeachingPopoverCarouselNavButton-2564, ${tokens.strokeWidthThin}))`, // For high contrast
+    outline: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2563, var(--semantic-token-TeachingPopoverCarouselNavButton-2564, '${tokens.strokeWidthThin} solid transparent'))`, // For high contrast
     width: '16px',
     border: 'none',
     borderRadius: '4px',
@@ -51,6 +51,9 @@ const useStyles = makeStyles({
       borderRadius: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2565, var(--semantic-token-TeachingPopoverCarouselNavButton-2566, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
   },
   rootBrand: {
     backgroundColor: `var(--ctrl-token-TeachingPopoverCarouselNavButton-2567, var(--semantic-token-TeachingPopoverCarouselNavButton-2568, ${tokens.colorNeutralForegroundOnBrand}))`,
