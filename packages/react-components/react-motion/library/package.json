@@ -27,7 +27,8 @@
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check",
     "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
+    "e2e:local": "cypress open --component",
+    "bundle-size": "monosize measure"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
