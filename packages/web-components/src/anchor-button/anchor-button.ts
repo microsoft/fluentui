@@ -178,21 +178,6 @@ export class BaseAnchor extends FASTElement {
   }
 
   /**
-   * Handles the anchor click event.
-   *
-   * @param e - The event object
-   * @internal
-   */
-  public clickHandler(e: PointerEvent): boolean {
-    if (this.href) {
-      const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
-      this.handleNavigation(newTab);
-    }
-
-    return true;
-  }
-
-  /**
    * Handles keydown events for the anchor.
    *
    * @param e - the keyboard event

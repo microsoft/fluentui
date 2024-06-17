@@ -8,11 +8,7 @@ import type { AnchorButton, AnchorOptions } from './anchor-button.js';
  */
 export function anchorTemplate<T extends AnchorButton>(options: AnchorOptions = {}): ViewTemplate<T> {
   return html<T>`
-    <template
-      tabindex="0"
-      @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
-      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
-    >
+    <template tabindex="0" @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}">
       ${startSlotTemplate(options)}
       <span class="content" part="content">
         <slot></slot>
