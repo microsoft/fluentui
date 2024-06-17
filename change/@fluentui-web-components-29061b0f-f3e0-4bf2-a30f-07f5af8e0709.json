@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: use internal anchor for all keydown-driven navigation actions in AnchorButton",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
