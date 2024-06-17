@@ -154,7 +154,7 @@ export const MultipleSelectControlled = () => {
   );
 
   return (
-    <Table aria-label="Table with controlled multiselect">
+    <Table aria-label="Table with controlled multiselect" style={{ minWidth: '550px' }}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell

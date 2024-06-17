@@ -140,7 +140,7 @@ export const SingleSelect = () => {
   });
 
   return (
-    <Table aria-label="Table with single selection">
+    <Table aria-label="Table with single selection" style={{ minWidth: '550px' }}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" invisible />

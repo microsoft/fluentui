@@ -9,8 +9,8 @@ export function anchorTemplate<T extends Link>(): ViewTemplate<T> {
   return html<T>`
     <template
       tabindex="0"
-      @click="${x => x.clickHandler()}"
-      @keypress="${(x, c) => x.keypressHandler(c.event as KeyboardEvent)}"
+      @click="${(x, c) => x.clickHandler(c.event as PointerEvent)}"
+      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
       <slot></slot>
     </template>

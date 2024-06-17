@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
+import { ToggleButton } from './toggle-button.js';
 
 test.describe('Toggle Button', () => {
   test.beforeEach(async ({ page }) => {
@@ -15,7 +16,7 @@ test.describe('Toggle Button', () => {
       <fluent-toggle-button>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
   });
 
   test('should set the `aria-pressed` attribute to `true` when the `pressed` attribute is present', async ({
@@ -27,38 +28,31 @@ test.describe('Toggle Button', () => {
         <fluent-toggle-button pressed>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'true');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'true');
   });
 
   test('should toggle the `pressed` attribute when clicked', async ({ page }) => {
     const element = page.locator('fluent-toggle-button');
 
-    const pressed = page.locator('fluent-toggle-button[pressed]');
-
     await page.setContent(/* html */ `
       <fluent-toggle-button>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
-    expect(await element.evaluate(node => node.getAttribute('pressed'))).toBe(null);
-
-    // await expect(element).not.toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(0);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
 
     await element.click();
 
-    await expect(element).toHaveAttribute('aria-pressed', 'true');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'true');
 
-    // await expect(element).toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(1);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(true);
 
     await element.click();
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
-    // await expect(element).not.toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(0);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
   });
 
   test('should NOT toggle the `pressed` attribute when clicked when the `disabled` attribute is present', async ({
@@ -66,46 +60,51 @@ test.describe('Toggle Button', () => {
   }) => {
     const element = page.locator('fluent-toggle-button');
 
-    const pressed = page.locator('fluent-toggle-button[pressed]');
-
     await page.setContent(/* html */ `
       <fluent-toggle-button disabled>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
-    // await expect(element).not.toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(0);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
 
     await element.click();
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
-    // await expect(element).not.toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(0);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
+
+    await element.click();
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
+
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
   });
 
   test('should NOT toggle the `pressed` attribute when clicked when the `disabled-focusable` attribute is present', async ({
     page,
   }) => {
     const element = page.locator('fluent-toggle-button');
-    const pressed = page.locator('fluent-toggle-button[pressed]');
 
     await page.setContent(/* html */ `
       <fluent-toggle-button disabled-focusable>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
-    // await expect(element).not.toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(0);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
 
     await element.click();
 
-    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
 
-    // await expect(element).not.toHaveAttribute('pressed');
-    await expect(pressed).toHaveCount(0);
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
+
+    await element.click();
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'false');
+
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(false);
   });
 
   test('should set the `aria-pressed` attribute to `mixed` when the `mixed` attribute is present', async ({ page }) => {
@@ -115,7 +114,17 @@ test.describe('Toggle Button', () => {
       <fluent-toggle-button mixed>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'mixed');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'mixed');
+  });
+
+  test('should set the `pressed` state when the `mixed` attribute is present', async ({ page }) => {
+    const element = page.locator('fluent-toggle-button');
+
+    await page.setContent(/* html */ `
+      <fluent-toggle-button mixed>Toggle</fluent-toggle-button>
+    `);
+
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(true);
   });
 
   test('should set the `aria-pressed` attribute to match the `pressed` attribute when the `mixed` attribute is removed', async ({
@@ -127,12 +136,28 @@ test.describe('Toggle Button', () => {
       <fluent-toggle-button mixed pressed>Toggle</fluent-toggle-button>
     `);
 
-    await expect(element).toHaveAttribute('aria-pressed', 'mixed');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'mixed');
 
     await element.evaluate(node => {
       node.removeAttribute('mixed');
     });
 
-    await expect(element).toHaveAttribute('aria-pressed', 'true');
+    await expect(element).toHaveJSProperty('elementInternals.ariaPressed', 'true');
+  });
+
+  test('should persist the `pressed` state when the `mixed` attribute is removed', async ({ page }) => {
+    const element = page.locator('fluent-toggle-button');
+
+    await page.setContent(/* html */ `
+      <fluent-toggle-button mixed pressed>Toggle</fluent-toggle-button>
+    `);
+
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(true);
+
+    await element.evaluate(node => {
+      node.removeAttribute('mixed');
+    });
+
+    expect(await element.evaluate((node: ToggleButton) => node.elementInternals.states.has('pressed'))).toBe(true);
   });
 });

@@ -159,7 +159,14 @@ export const SortControlled = () => {
   };
 
   return (
-    <DataGrid items={items} columns={columns} sortable sortState={sortState} onSortChange={onSortChange}>
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      sortState={sortState}
+      onSortChange={onSortChange}
+      style={{ minWidth: '500px' }}
+    >
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
