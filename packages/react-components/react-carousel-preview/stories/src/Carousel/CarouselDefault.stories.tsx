@@ -29,10 +29,22 @@ const TestDiv = (text: string, bgColor: string) => {
 export const Default = (props: Partial<CarouselProps>) => (
   <div style={{ overflow: 'hidden' }}>
     <Carousel circular={true} peeking={true} defaultValue={'test-1'} {...props}>
-      <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
-      <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>
-      <CarouselCard value="test-3">{TestDiv('test-3', 'BlanchedAlmond')}</CarouselCard>
-      <CarouselCard value="test-4">{TestDiv('test-4', 'DarkKhaki')}</CarouselCard>
+      <div
+        style={{
+          // position: 'absolute',
+          transform: 'translateX(-650px)',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 80%)',
+          gridTemplateRows: '1fr',
+        }}
+      >
+        <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
+        <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>
+        <CarouselCard value="test-3">{TestDiv('test-3', 'BlanchedAlmond')}</CarouselCard>
+        <CarouselCard value="test-4">{TestDiv('test-4', 'DarkKhaki')}</CarouselCard>
+        <CarouselCard value="test-5">{TestDiv('test-5', 'red')}</CarouselCard>
+        <CarouselCard value="test-6">{TestDiv('test-6', 'magenta')}</CarouselCard>
+      </div>
       <div
         style={{
           display: 'flex',
