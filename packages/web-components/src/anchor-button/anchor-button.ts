@@ -1,4 +1,4 @@
-import { attr, FASTElement, Observable } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable, Updates } from '@microsoft/fast-element';
 import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
@@ -185,24 +185,39 @@ export class BaseAnchor extends FASTElement {
    * @public
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
-    if (this.href) {
-      if (e.key === keyEnter) {
-        const newTab = !this.isMac ? e.ctrlKey : e.metaKey || e.ctrlKey;
-        this.handleNavigation(newTab);
-        return;
+    if (this.href && this === e.target && e.key === keyEnter) {
+      // metaKey/ctrlKey opens the link in a new unfocused tab
+      const shouldOpenNewTab = (!this.isMac && e.ctrlKey) || (this.isMac && e.metaKey);
+
+      // metaKey/ctrlKey + shiftKey opens the link in a new focused tab
+      const shouldOpenNewTabFocused = shouldOpenNewTab && e.shiftKey;
+
+      // shiftKey opens the link in a new window
+      const shouldOpenNewWindow = !shouldOpenNewTab && e.shiftKey;
+
+      // Any other key combination will open the link based on the anchor's target attribute
+      if (shouldOpenNewTab || shouldOpenNewWindow || shouldOpenNewTabFocused) {
+        this.internalProxyAnchor.target = '_blank';
       }
+
+      const evt = new MouseEvent('click', {
+        ctrlKey: !this.isMac && e.ctrlKey,
+        metaKey: this.isMac && e.metaKey,
+        shiftKey: e.shiftKey,
+      });
+
+      this.internalProxyAnchor.dispatchEvent(evt);
+
+      // Reset the target attribute to its original value
+      Updates.enqueue(() => {
+        this.internalProxyAnchor.removeAttribute('target');
+        if (this.target) {
+          this.internalProxyAnchor.target = this.target;
+        }
+      });
     }
 
     return true;
-  }
-
-  /**
-   * Handles navigation based on input
-   * If the metaKey is pressed, opens the href in a new window, if false, uses the click on the proxy
-   * @internal
-   */
-  private handleNavigation(newTab: boolean): void {
-    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
   }
 
   /**
