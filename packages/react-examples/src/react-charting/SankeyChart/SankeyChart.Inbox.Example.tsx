@@ -193,7 +193,6 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
               nodeAriaLabel: 'Category {0} with email count {1}',
               linkAriaLabel: '{2} items moved from category {0} to {1}',
             }}
-            enableReflow={true}
           />
         </div>
       </>

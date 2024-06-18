@@ -81,7 +81,7 @@ export interface ISankeyChartProps {
 
   /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default false
+   * @default true
    */
   enableReflow?: boolean;
 }

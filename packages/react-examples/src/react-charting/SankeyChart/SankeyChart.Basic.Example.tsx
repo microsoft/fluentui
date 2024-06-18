@@ -143,7 +143,6 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
             height={this.state.height}
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
-            enableReflow={true}
           />
         </div>
       </>

@@ -384,7 +384,6 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
               nodeAriaLabel: '{0} with {1} sign-ins',
               linkAriaLabel: '{2} sign-ins from {0} and {1}',
             }}
-            enableReflow={true}
           />
         </div>
       </>
