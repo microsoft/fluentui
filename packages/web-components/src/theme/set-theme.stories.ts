@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
 import { renderComponent } from '../helpers.stories.js';
 import { setTheme } from './set-theme.js';
@@ -13,5 +13,4 @@ export const SetTheme = renderComponent(html`
   <fluent-button @click="${() => setTheme(webDarkTheme)}">webDarkTheme</fluent-button>
   <fluent-button @click="${() => setTheme(teamsLightTheme)}">teamsLightTheme</fluent-button>
   <fluent-button @click="${() => setTheme(teamsDarkTheme)}">teamsDarkTheme</fluent-button>
-  <fluent-button @click="${() => setTheme(teamsHighContrastTheme)}">teamsHighContrastTheme</fluent-button>
 `);
