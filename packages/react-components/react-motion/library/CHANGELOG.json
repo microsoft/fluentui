@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Mon, 17 Jun 2024 07:34:16 GMT",
+      "tag": "@fluentui/react-motion_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "57cd63405508ee26266cf105008f5da9683812b9",
+            "comment": "feat: Implement `onMotionCancel` callback handler"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Jun 2024 13:17:19 GMT",
       "tag": "@fluentui/react-motion_v9.1.0",
       "version": "9.1.0",

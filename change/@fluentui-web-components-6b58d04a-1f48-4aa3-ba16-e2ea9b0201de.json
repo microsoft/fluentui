@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: configure e2e target properly in order to make fix affected e2e target execution on ci",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

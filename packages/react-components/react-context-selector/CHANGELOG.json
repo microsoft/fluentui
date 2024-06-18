@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Mon, 17 Jun 2024 07:34:16 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.62",
+      "version": "9.1.62",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "9494a77f09ea6e59c400f79c637e7ec6bab035b1",
+            "comment": "fix: useContextSelector with React 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:32 GMT",
       "tag": "@fluentui/react-context-selector_v9.1.61",
       "version": "9.1.61",

@@ -65,11 +65,16 @@ export const useIndicatorStyles = makeStyles({
     '::after': {
       position: 'absolute',
       marginInlineStart: `-${navItemTokens.indicatorOffset}px`,
-      backgroundColor: tokens.colorNeutralForeground2BrandSelected,
+      backgroundColor: tokens.colorCompoundBrandForeground1,
       height: `${navItemTokens.indicatorHeight}px`,
       width: `${navItemTokens.indicatorWidth}px`,
       borderRadius: tokens.borderRadiusCircular,
       content: '""',
+    },
+    '@media (forced-colors: active)': {
+      '::after': {
+        backgroundColor: 'ButtonText',
+      },
     },
   },
 });
@@ -96,7 +101,7 @@ export const useIconStyles = makeStyles({
   selected: {
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
-      color: tokens.colorNeutralForeground2BrandSelected,
+      color: tokens.colorCompoundBrandForeground1,
     },
     [`& .${iconRegularClassName}`]: {
       display: 'none',

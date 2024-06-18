@@ -81,6 +81,21 @@ test.describe('Divider', () => {
     await expect(element).not.toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
+  test('should add a custom state matching the `orientation` attribute when provided', async () => {
+    await element.evaluate((node: Divider) => {
+      node.orientation = 'vertical';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('vertical'))).toBe(true);
+
+    await element.evaluate((node: Divider) => {
+      node.orientation = 'horizontal';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('vertical'))).toBe(false);
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('horizontal'))).toBe(true);
+  });
+
   test('should initialize to the provided value attribute if set post-connection', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -134,5 +149,63 @@ test.describe('Divider', () => {
     });
 
     await expect(element).toHaveJSProperty('inset', true);
+  });
+
+  test('should add a custom state matching the `appearance` attribute when provided', async () => {
+    await element.evaluate((node: Divider) => {
+      node.appearance = 'strong';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('strong'))).toBe(true);
+
+    await element.evaluate((node: Divider) => {
+      node.appearance = 'brand';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('strong'))).toBe(false);
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('brand'))).toBe(true);
+
+    await element.evaluate((node: Divider) => {
+      node.appearance = 'subtle';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('brand'))).toBe(false);
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('subtle'))).toBe(true);
+  });
+
+  test('should add a custom state of `inset` when the value is true', async () => {
+    await element.evaluate((node: Divider) => {
+      node.inset = true;
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('inset'))).toBe(true);
+
+    await element.evaluate((node: Divider) => {
+      node.inset = false;
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('inset'))).toBe(false);
+  });
+
+  test('should add a custom state matching the `align-content` attribute value when provided', async () => {
+    await element.evaluate((node: Divider) => {
+      node.alignContent = 'start';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-start'))).toBe(true);
+
+    await element.evaluate((node: Divider) => {
+      node.alignContent = 'end';
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-start'))).toBe(false);
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-end'))).toBe(true);
+
+    await element.evaluate((node: Divider) => {
+      node.alignContent = undefined;
+    });
+
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-start'))).toBe(false);
+    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-end'))).toBe(false);
   });
 });

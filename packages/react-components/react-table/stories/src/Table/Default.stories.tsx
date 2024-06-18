@@ -68,7 +68,7 @@ const columns = [
 
 export const Default = () => {
   return (
-    <Table arial-label="Default table">
+    <Table arial-label="Default table" style={{ minWidth: '510px' }}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (

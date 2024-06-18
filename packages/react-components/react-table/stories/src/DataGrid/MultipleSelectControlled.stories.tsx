@@ -163,6 +163,7 @@ export const MultipleSelectControlled = () => {
       selectionMode="multiselect"
       selectedItems={selectedRows}
       onSelectionChange={onSelectionChange}
+      style={{ minWidth: '550px' }}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>

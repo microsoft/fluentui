@@ -2,6 +2,21 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Mon, 17 Jun 2024 07:34:17 GMT",
+      "tag": "@fluentui/react-overflow_v9.1.22",
+      "version": "9.1.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.62",
+            "commit": "9ae683c22f2e65d94422a571ad5d3f97d0a77234"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:36 GMT",
       "tag": "@fluentui/react-overflow_v9.1.21",
       "version": "9.1.21",

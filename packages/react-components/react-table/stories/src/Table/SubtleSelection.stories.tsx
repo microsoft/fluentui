@@ -150,7 +150,7 @@ export const SubtleSelection = () => {
   );
 
   return (
-    <Table aria-label="Table with subtle selection">
+    <Table aria-label="Table with subtle selection" style={{ minWidth: '550px' }}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell

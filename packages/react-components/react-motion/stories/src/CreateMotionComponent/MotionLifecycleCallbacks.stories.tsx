@@ -102,7 +102,6 @@ export const MotionLifecycleCallbacks = () => {
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [count, setCount] = React.useState(0);
-  const [playing, setPlaying] = React.useState(false);
 
   // Heads up!
   // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
@@ -117,12 +116,13 @@ export const MotionLifecycleCallbacks = () => {
           key={count}
           imperativeRef={motionRef}
           onMotionStart={() => {
-            setPlaying(true);
             setStatusLog(entries => [[Date.now(), 'onMotionStart'], ...entries]);
           }}
           onMotionFinish={() => {
-            setPlaying(false);
             setStatusLog(entries => [[Date.now(), 'onMotionFinish'], ...entries]);
+          }}
+          onMotionCancel={() => {
+            setStatusLog(entries => [[Date.now(), 'onMotionCancel'], ...entries]);
           }}
         >
           <div className={classes.item} />
@@ -144,7 +144,7 @@ export const MotionLifecycleCallbacks = () => {
 
       <div className={classes.controls}>
         <div>
-          <Button appearance="subtle" disabled={playing} icon={<ReplayFilled />} onClick={() => setCount(s => s + 1)}>
+          <Button appearance="subtle" icon={<ReplayFilled />} onClick={() => setCount(s => s + 1)}>
             Restart
           </Button>
         </div>

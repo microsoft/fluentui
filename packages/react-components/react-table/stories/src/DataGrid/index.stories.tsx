@@ -8,6 +8,7 @@ import {
   DataGridSelectionCell,
 } from '@fluentui/react-components';
 import descriptionMd from './DataGridDescription.md';
+import bestPracticesMd from './DataGridBestPractices.md';
 
 export { Default } from './Default.stories';
 export { CompositeNavigation } from './CompositeNavigation.stories';
@@ -39,7 +40,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

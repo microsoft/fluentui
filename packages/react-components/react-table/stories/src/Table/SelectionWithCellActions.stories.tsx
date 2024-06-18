@@ -162,7 +162,7 @@ export const SelectionWithCellActions = () => {
   const onKeyDownCellActions = (e: React.KeyboardEvent<HTMLDivElement>) => e.key === ' ' && e.preventDefault();
 
   return (
-    <Table aria-label="Table with multiselect">
+    <Table aria-label="Table with multiselect" style={{ minWidth: '550px' }}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell

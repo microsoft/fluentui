@@ -2,6 +2,7 @@ import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { toggleState } from '../utils/element-internals.js';
 import type { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize } from './button.options.js';
 import { ButtonType } from './button.options.js';
 
@@ -26,6 +27,20 @@ export class Button extends FASTElement {
    */
   @attr
   public appearance?: ButtonAppearance;
+
+  /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * Indicates the button should be focused when the page is loaded.
@@ -85,7 +100,7 @@ export class Button extends FASTElement {
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The associated form element.
@@ -195,6 +210,15 @@ export class Button extends FASTElement {
   public iconOnly: boolean = false;
 
   /**
+   * Handles changes to icon only custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public iconOnlyChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'icon', next);
+  }
+
+  /**
    * A reference to all associated label elements.
    *
    * @public
@@ -225,6 +249,20 @@ export class Button extends FASTElement {
   public shape?: ButtonShape;
 
   /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * The size of the button.
    *
    * @public
@@ -233,6 +271,20 @@ export class Button extends FASTElement {
    */
   @attr
   public size?: ButtonSize;
+
+  /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * The button type.
