@@ -139,6 +139,12 @@ export const pressedState = css.partial`:is([state--pressed], :state(pressed))`;
 export const brandState = css.partial`:is([state--brand], :state(brand))`;
 
 /**
+ * Selector for the `error` state.
+ * @public
+ */
+export const errorState = css.partial`:is([state--error], :state(error))`;
+
+/**
  * Selector for the `danger` state.
  * @public
  */
