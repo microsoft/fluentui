@@ -38,8 +38,8 @@ export const useRootDefaultClassName = makeResetStyles({
   // so we need to reset box sizing to prevent horizontal overflow
   boxSizing: 'border-box',
 
-  transitionDuration: tokens.durationFast,
-  transitionTimingFunction: tokens.curveAccelerateMid,
+  transitionDuration: navItemTokens.animationTokens.animationDuration,
+  transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
   transitionProperty: 'background',
 
   width: '100%',
