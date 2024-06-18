@@ -13,7 +13,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, Switch, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, makeStyles, tokens, useId, mergeClasses } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -44,25 +44,28 @@ import {
   bundleIcon,
 } from '@fluentui/react-icons';
 
+import { useMotion, useMotionClassNames } from '@fluentui/react-motion-preview';
+
+import { useNavContentMotionStyles } from '../../../library/src/components/sharedNavStyles.styles';
+
 const useStyles = makeStyles({
   root: {
     overflow: 'hidden',
     display: 'flex',
+    flexDirection: 'row',
+    position: 'relative',
     height: '600px',
   },
   content: {
-    flex: '1',
     padding: '16px',
-    display: 'grid',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    display: 'flex',
+    flexDirection: 'column',
   },
   field: {
     display: 'flex',
     marginTop: '4px',
     marginLeft: '8px',
     flexDirection: 'column',
-    gridRowGap: tokens.spacingVerticalS,
   },
 });
 
@@ -93,10 +96,12 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
   const [type, setType] = React.useState<DrawerType>('inline');
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
+  const motion = useMotion<HTMLDivElement>(isOpen);
+  const contentMotionClassNames = useMotionClassNames(motion, useNavContentMotionStyles());
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
+      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" ref={motion.ref} open={isOpen} type={type}>
         <NavDrawerHeader>
           <Hamburger onClick={() => setIsOpen(false)} />
         </NavDrawerHeader>
@@ -177,7 +182,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           </NavItem>
         </NavDrawerBody>
       </NavDrawer>
-      <div className={styles.content}>
+      <div className={mergeClasses(styles.content, type === 'inline' && contentMotionClassNames)}>
         {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>

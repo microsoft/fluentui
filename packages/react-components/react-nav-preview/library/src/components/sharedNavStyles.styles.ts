@@ -5,6 +5,7 @@ import { makeResetStyles, makeStyles } from '@griffel/react';
 // Styles shared by several nav components.
 
 export const navItemTokens = {
+  navDrawerWidth: '260px', // per spec
   indicatorOffset: 16,
   indicatorWidth: 4,
   indicatorHeight: 20,
@@ -146,5 +147,29 @@ export const useIconStyles = makeStyles({
         },
       },
     },
+  },
+});
+
+export const useNavContentMotionStyles = makeStyles({
+  default: {
+    position: 'absolute',
+    inset: 0,
+    zIndex: 1,
+    transitionProperty: 'transform',
+    transitionDuration: tokens.durationGentle,
+    willChange: 'transform',
+  },
+
+  enter: {
+    transitionTimingFunction: tokens.curveDecelerateMid,
+    transform: `translate3D(${navItemTokens.navDrawerWidth}, 0, 0)`,
+  },
+
+  exit: {
+    transitionTimingFunction: tokens.curveAccelerateMin,
+  },
+
+  idle: {
+    width: `calc(100% - ${navItemTokens.navDrawerWidth})`,
   },
 });

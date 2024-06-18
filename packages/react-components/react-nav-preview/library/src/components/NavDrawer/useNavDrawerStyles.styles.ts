@@ -13,7 +13,7 @@ export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '260px', // per spec
+    width: navItemTokens.navDrawerWidth,
     backgroundColor: navItemTokens.backgroundColor,
     alignItems: 'unset',
   },
