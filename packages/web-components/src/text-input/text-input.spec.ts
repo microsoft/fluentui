@@ -226,7 +226,7 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('appearance', 'filled-lighter');
   });
 
-  test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
+  test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-text-input');
 
     await page.setContent(/* html */ `
