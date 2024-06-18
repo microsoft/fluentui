@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartPoints, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { timeFormat as d3TimeFormat, utcFormat as d3UtcFormat } from 'd3-time-format';
 
 interface ILineChartMultipleExampleState {
   width: number;
@@ -63,16 +64,51 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
     }
   };
 
+  private _formatDate = (date: Date, useUTC?: boolean) => {
+    const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
+    return timeFormat('%-e %B %Y, %H:%M:%S')(date) + (useUTC ? ' GMT' : '');
+  };
+
   private _styledExample(): JSX.Element {
     const points: ILineChartPoints[] = [
       {
         data: [
-          { x: new Date('2018/01/01'), y: 10, xAxisCalloutData: '', yAxisCalloutData: '' },
-          { x: new Date('2018/02/01'), y: 30, xAxisCalloutData: '', yAxisCalloutData: '' },
-          { x: new Date('2018/03/01'), y: 10, xAxisCalloutData: '', yAxisCalloutData: '' },
-          { x: new Date('2018/04/01'), y: 30, xAxisCalloutData: '', yAxisCalloutData: '' },
-          { x: new Date('2018/05/01'), y: 10, xAxisCalloutData: '', yAxisCalloutData: '' },
-          { x: new Date('2018/06/01'), y: 30, xAxisCalloutData: '', yAxisCalloutData: '' },
+          {
+            x: new Date('2018/01/01'),
+            y: 10,
+            xAxisCalloutData: this._formatDate(new Date('2018/01/01')),
+            yAxisCalloutData: '',
+          },
+          {
+            x: new Date('2018/02/01'),
+            y: 30,
+            xAxisCalloutData: this._formatDate(new Date('2018/02/01')),
+            yAxisCalloutData: '',
+          },
+          {
+            x: new Date('2018/03/01'),
+            y: 10,
+            xAxisCalloutData: this._formatDate(new Date('2018/03/01')),
+            yAxisCalloutData: '',
+          },
+          {
+            x: new Date('2018/04/01'),
+            y: 30,
+            xAxisCalloutData: this._formatDate(new Date('2018/04/01')),
+            yAxisCalloutData: '',
+          },
+          {
+            x: new Date('2018/05/01'),
+            y: 10,
+            xAxisCalloutData: this._formatDate(new Date('2018/05/01')),
+            yAxisCalloutData: '',
+          },
+          {
+            x: new Date('2018/06/01'),
+            y: 30,
+            xAxisCalloutData: this._formatDate(new Date('2018/06/01')),
+            yAxisCalloutData: '',
+          },
         ],
         legend: 'First',
         lineOptions: {
@@ -82,12 +118,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 30 },
-          { x: new Date('2018/02/01'), y: 50 },
-          { x: new Date('2018/03/01'), y: 30 },
-          { x: new Date('2018/04/01'), y: 50 },
-          { x: new Date('2018/05/01'), y: 30 },
-          { x: new Date('2018/06/01'), y: 50 },
+          { x: new Date('2018/01/01'), y: 30, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 50, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 30, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 50, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 30, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 50, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Second',
         lineOptions: {
@@ -97,12 +133,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 50 },
-          { x: new Date('2018/02/01'), y: 70 },
-          { x: new Date('2018/03/01'), y: 50 },
-          { x: new Date('2018/04/01'), y: 70 },
-          { x: new Date('2018/05/01'), y: 50 },
-          { x: new Date('2018/06/01'), y: 70 },
+          { x: new Date('2018/01/01'), y: 50, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 70, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 50, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 70, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 50, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 70, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Third',
         lineOptions: {
@@ -112,12 +148,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 70 },
-          { x: new Date('2018/02/01'), y: 90 },
-          { x: new Date('2018/03/01'), y: 70 },
-          { x: new Date('2018/04/01'), y: 90 },
-          { x: new Date('2018/05/01'), y: 70 },
-          { x: new Date('2018/06/01'), y: 90 },
+          { x: new Date('2018/01/01'), y: 70, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 90, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 70, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 90, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 70, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 90, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Fourth',
         lineOptions: {
@@ -127,12 +163,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 90 },
-          { x: new Date('2018/02/01'), y: 110 },
-          { x: new Date('2018/03/01'), y: 90 },
-          { x: new Date('2018/04/01'), y: 110 },
-          { x: new Date('2018/05/01'), y: 90 },
-          { x: new Date('2018/06/01'), y: 110 },
+          { x: new Date('2018/01/01'), y: 90, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 110, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 90, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 110, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 90, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 110, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Fifth',
         lineOptions: {
@@ -142,12 +178,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 110 },
-          { x: new Date('2018/02/01'), y: 130 },
-          { x: new Date('2018/03/01'), y: 110 },
-          { x: new Date('2018/04/01'), y: 130 },
-          { x: new Date('2018/05/01'), y: 110 },
-          { x: new Date('2018/06/01'), y: 130 },
+          { x: new Date('2018/01/01'), y: 110, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 130, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 110, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 130, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 110, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 130, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Sixth',
         lineOptions: {
@@ -157,12 +193,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 130 },
-          { x: new Date('2018/02/01'), y: 150 },
-          { x: new Date('2018/03/01'), y: 130 },
-          { x: new Date('2018/04/01'), y: 150 },
-          { x: new Date('2018/05/01'), y: 130 },
-          { x: new Date('2018/06/01'), y: 150 },
+          { x: new Date('2018/01/01'), y: 130, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 150, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 130, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 150, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 130, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 150, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Seventh',
         lineOptions: {
@@ -172,12 +208,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 150 },
-          { x: new Date('2018/02/01'), y: 170 },
-          { x: new Date('2018/03/01'), y: 150 },
-          { x: new Date('2018/04/01'), y: 170 },
-          { x: new Date('2018/05/01'), y: 150 },
-          { x: new Date('2018/06/01'), y: 170 },
+          { x: new Date('2018/01/01'), y: 150, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 170, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 150, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 170, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 150, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 170, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Eight',
         lineOptions: {
@@ -187,12 +223,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 170 },
-          { x: new Date('2018/02/01'), y: 190 },
-          { x: new Date('2018/03/01'), y: 170 },
-          { x: new Date('2018/04/01'), y: 190 },
-          { x: new Date('2018/05/01'), y: 170 },
-          { x: new Date('2018/06/01'), y: 190 },
+          { x: new Date('2018/01/01'), y: 170, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 190, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 170, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 190, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 170, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 190, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Ninth',
         lineOptions: {
@@ -202,12 +238,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 190 },
-          { x: new Date('2018/02/01'), y: 210 },
-          { x: new Date('2018/03/01'), y: 190 },
-          { x: new Date('2018/04/01'), y: 210 },
-          { x: new Date('2018/05/01'), y: 190 },
-          { x: new Date('2018/06/01'), y: 210 },
+          { x: new Date('2018/01/01'), y: 190, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 210, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 190, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 210, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 190, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 210, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Tenth',
         lineOptions: {
@@ -217,12 +253,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 210 },
-          { x: new Date('2018/02/01'), y: 230 },
-          { x: new Date('2018/03/01'), y: 210 },
-          { x: new Date('2018/04/01'), y: 230 },
-          { x: new Date('2018/05/01'), y: 210 },
-          { x: new Date('2018/06/01'), y: 230 },
+          { x: new Date('2018/01/01'), y: 210, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 230, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 210, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 230, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 210, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 230, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Eleventh',
         lineOptions: {
@@ -232,12 +268,12 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         data: [
-          { x: new Date('2018/01/01'), y: 230 },
-          { x: new Date('2018/02/01'), y: 250 },
-          { x: new Date('2018/03/01'), y: 230 },
-          { x: new Date('2018/04/01'), y: 250 },
-          { x: new Date('2018/05/01'), y: 230 },
-          { x: new Date('2018/06/01'), y: 250 },
+          { x: new Date('2018/01/01'), y: 230, xAxisCalloutData: this._formatDate(new Date('2018/01/01')) },
+          { x: new Date('2018/02/01'), y: 250, xAxisCalloutData: this._formatDate(new Date('2018/02/01')) },
+          { x: new Date('2018/03/01'), y: 230, xAxisCalloutData: this._formatDate(new Date('2018/03/01')) },
+          { x: new Date('2018/04/01'), y: 250, xAxisCalloutData: this._formatDate(new Date('2018/04/01')) },
+          { x: new Date('2018/05/01'), y: 230, xAxisCalloutData: this._formatDate(new Date('2018/05/01')) },
+          { x: new Date('2018/06/01'), y: 250, xAxisCalloutData: this._formatDate(new Date('2018/06/01')) },
         ],
         legend: 'Tweleth',
         lineOptions: {
