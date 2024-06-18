@@ -109,18 +109,29 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
 
   private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = props => {
     if (props) {
+      console.log(props);
+      const { ariaColSpan = 1, ariaRowIndex } = props;
+      // the custom group header row doesn't include the selection cell or expand/collapse column, so we need to add 2
+      const finalColSpan = ariaColSpan + 2;
       return (
-        <div className={classNames.headerAndFooter}>
-          <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
-          <div className={classNames.headerLinkSet}>
-            {props.selectionMode !== SelectionMode.none ? (
-              <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
-                {props.selected ? 'Remove selection' : 'Select group'}
+        <div
+          className={classNames.headerAndFooter}
+          role="row"
+          aria-rowindex={ariaRowIndex}
+          aria-expanded={!props.group!.isCollapsed}
+        >
+          <div role="gridcell" aria-colspan={finalColSpan}>
+            <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
+            <div className={classNames.headerLinkSet}>
+              {props.selectionMode !== SelectionMode.none ? (
+                <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
+                  {props.selected ? 'Remove selection' : 'Select group'}
+                </Link>
+              ) : null}
+              <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
+                {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
               </Link>
-            ) : null}
-            <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
-              {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
-            </Link>
+            </div>
           </div>
         </div>
       );
@@ -131,9 +142,10 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
 
   private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = props => {
     if (props) {
+      const { ariaColSpan = 1, ariaRowIndex } = props;
       return (
-        <div className={classNames.headerAndFooter}>
-          <em>{`Custom footer for ${props.group!.name}`}</em>
+        <div className={classNames.headerAndFooter} role="row" aria-rowindex={ariaRowIndex}>
+          <em role="gridcell" aria-colspan={ariaColSpan + 2}>{`Custom footer for ${props.group!.name}`}</em>
         </div>
       );
     }
