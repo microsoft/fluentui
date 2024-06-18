@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Option } from '../Option';
 
-type UseComboboxFilterConfig<T extends { children: React.ReactNode; value: string } | string> = {
+type ComboboxOption = { children: React.ReactNode; value: string }
+
+type UseComboboxFilterConfig<T extends ComboboxOption | string> = {
   /** Provides a custom filter for the option. */
   filter?: (optionText: string, query: string) => boolean;
 
@@ -26,14 +28,18 @@ function defaultFilter(optionText: string, query: string) {
   return optionText.toLowerCase().includes(query.toLowerCase());
 }
 
-function defaultToString(option: string | { value: string }) {
-  return typeof option === 'string' ? option : option.value;
+function defaultToString(option: string | ComboboxOption) {
+  if (typeof option === 'string') {
+    return option;
+  }
+
+  return option.children && typeof option.children === 'string' ? option.children : option.value;
 }
 
 /**
  * @internal
  */
-export function useComboboxFilter<T extends { children: React.ReactNode; value: string } | string>(
+export function useComboboxFilter<T extends ComboboxOption | string>(
   query: string,
   options: T[],
   config: UseComboboxFilterConfig<T>,
