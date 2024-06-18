@@ -36,13 +36,10 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     },
 
     root: slot.always<DrawerProps>(
-      {
-        ref,
-        ...props,
-        ...focusAttributes,
-      },
+      { ...props, ...focusAttributes },
       {
         elementType: Drawer,
+        defaultProps: { ref },
       },
     ),
   };

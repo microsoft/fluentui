@@ -18,7 +18,6 @@ export const SplitButton: ForwardRefComponent<SplitButtonProps> = React.forwardR
   useCustomStyleHook_unstable('useSplitButtonStyles_unstable')(state);
 
   return renderSplitButton_unstable(state);
-  // Casting is required due to lack of distributive union to support unions on @types/react
-}) as ForwardRefComponent<SplitButtonProps>;
+});
 
 SplitButton.displayName = 'SplitButton';

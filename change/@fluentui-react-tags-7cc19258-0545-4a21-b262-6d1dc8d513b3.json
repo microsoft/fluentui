@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: support for data-* attributes",
+  "packageName": "@fluentui/react-tags",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

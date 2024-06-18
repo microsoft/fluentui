@@ -11,6 +11,7 @@ import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utiliti
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@fluentui/react-components';
+import { HTMLDataAttributes } from '@fluentui/react-utilities';
 import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
@@ -85,10 +86,10 @@ export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots,
     as?: "div" | undefined;
 } & Omit<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-}, "children"> & {
+} & HTMLDataAttributes, "children"> & {
     children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }>;
+    } & HTMLDataAttributes>;
 }, "children"> & {
     children?: React_2.ReactNode;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;

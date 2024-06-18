@@ -18,6 +18,7 @@ export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((pr
   useCustomStyleHook_unstable('useDataGridStyles_unstable')(state);
 
   return renderDataGrid_unstable(state, useDataGridContextValues_unstable(state));
-});
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<DataGridProps>;
 
 DataGrid.displayName = 'DataGrid';

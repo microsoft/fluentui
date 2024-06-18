@@ -1,6 +1,38 @@
 import * as React from 'react';
 
 /**
+ * Evaluates to true if the given type contains exactly one string, or false if it is a union of strings.
+ *
+ * ```
+ * IsSingleton<'a'> // true
+ * IsSingleton<'a' | 'b' | 'c'> // false
+ * ```
+ */
+export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends never ? true : false }[T];
+
+/**
+ * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
+ * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
+ *
+ * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
+ * types, to prevent unions from being expanded.
+ */
+export type PropsWithoutRef<P> = P extends unknown ? ('ref' extends keyof P ? Omit<P, 'ref'> : P) : never;
+
+/**
+ * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
+ * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
+ *
+ * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
+ * types, to prevent unions from being expanded.
+ */
+export type PropsWithoutChildren<P> = P extends unknown
+  ? 'children' extends keyof P
+    ? Omit<P, 'children'>
+    : P
+  : never;
+
+/**
  * Helper type that works similar to Omit,
  * but when modifying an union type it will distribute the omission to all the union members.
  *
@@ -22,6 +54,8 @@ import * as React from 'react';
 // so the result is {} | { b: string }, as expected.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type DistributiveOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
+
+export type DistributivePick<T, K> = T extends unknown ? Pick<T, K & keyof T> : never;
 
 /**
  * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)

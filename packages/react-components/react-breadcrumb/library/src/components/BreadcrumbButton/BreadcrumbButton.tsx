@@ -16,6 +16,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = Reac
   useCustomStyleHook_unstable('useBreadcrumbButtonStyles_unstable')(state);
 
   return renderBreadcrumbButton_unstable(state);
-});
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<BreadcrumbButtonProps>;
 
 BreadcrumbButton.displayName = 'BreadcrumbButton';

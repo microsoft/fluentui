@@ -16,7 +16,6 @@ export const useButton_unstable = (
   const { size: contextSize } = useButtonContext();
   const {
     appearance = 'secondary',
-    as = 'button',
     disabled = false,
     disabledFocusable = false,
     icon,
@@ -35,13 +34,16 @@ export const useButton_unstable = (
     size, // State calculated from a set of props
     iconOnly: Boolean(iconShorthand?.children && !props.children), // Slots definition
     components: { root: 'button', icon: 'span' },
-    root: slot.always<ARIAButtonSlotProps<'a'>>(getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)), {
-      elementType: 'button',
-      defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-        type: 'button',
+    root: slot.always<ARIAButtonSlotProps<'a'>>(
+      getIntrinsicElementProps('button', useARIAButtonProps(props.as, props)),
+      {
+        elementType: 'button',
+        defaultProps: {
+          ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+          type: 'button',
+        },
       },
-    }),
+    ),
     icon: iconShorthand,
   };
 };

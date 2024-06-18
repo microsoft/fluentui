@@ -24,6 +24,7 @@ export type FluentTriggerComponent = {
  * 2. A render function that will receive properties and must return a valid element or null
  * 3. null or undefined
  */
-export type TriggerProps<TriggerChildProps = unknown> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TriggerProps<TriggerChildProps = any> = {
   children?: React.ReactElement | ((props: TriggerChildProps) => React.ReactElement | null) | null;
 };

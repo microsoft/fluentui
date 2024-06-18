@@ -7,7 +7,6 @@
 /// <reference types="react" />
 
 import { ARIAButtonElement } from '@fluentui/react-aria';
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -387,16 +386,18 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
-export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = {
     'aria-haspopup'?: 'menu';
     'aria-expanded'?: boolean;
     id: string;
     ref: React_2.Ref<never>;
-    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseMove: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-}>;
+    onMouseEnter: React_2.MouseEventHandler<HTMLElement>;
+    onMouseLeave: React_2.MouseEventHandler<HTMLElement>;
+    onMouseMove: React_2.MouseEventHandler<HTMLElement>;
+    onContextMenu: React_2.MouseEventHandler<HTMLElement>;
+    onClick?: React_2.MouseEventHandler<HTMLElement>;
+    onKeyDown?: React_2.KeyboardEventHandler<HTMLElement>;
+};
 
 // @public (undocumented)
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;

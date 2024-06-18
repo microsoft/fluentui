@@ -6,7 +6,9 @@
 
 import type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
+import type { DistributivePick } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
+import type { HTMLDataAttributes } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
@@ -74,10 +76,10 @@ export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = Dist
 };
 
 // @public
-export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props & UnionToIntersection<ARIAButtonAlteredProps<Type>>;
+export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props & UnionToIntersection<ARIAButtonAlteredProps<Type>> & HTMLDataAttributes;
 
 // @public (undocumented)
-export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
+export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & DistributivePick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
 
 // @public (undocumented)
 export type ARIAButtonType = 'button' | 'a' | 'div';

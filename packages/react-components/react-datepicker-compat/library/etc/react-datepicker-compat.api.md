@@ -6,7 +6,7 @@
 
 /// <reference types="react" />
 
-import type { Calendar } from '@fluentui/react-calendar-compat';
+import type { CalendarProps } from '@fluentui/react-calendar-compat';
 import { CalendarStrings } from '@fluentui/react-calendar-compat';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -27,13 +27,16 @@ export { CalendarStrings }
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
 // @public (undocumented)
-export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> & {
+    calendar: string;
+};
 
 // @public
 export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public (undocumented)
 export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & Pick<PortalProps, 'mountNode'> & {
+    calendar?: CalendarProps;
     onSelectDate?: (date: Date | null | undefined) => void;
     required?: boolean;
     disabled?: boolean;

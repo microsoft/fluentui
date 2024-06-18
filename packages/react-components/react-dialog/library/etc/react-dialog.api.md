@@ -6,7 +6,6 @@
 
 /// <reference types="react" />
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -205,9 +204,10 @@ export const DialogTrigger: React_2.FC<DialogTriggerProps>;
 export type DialogTriggerAction = 'open' | 'close';
 
 // @public
-export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = {
     'aria-haspopup'?: 'dialog';
-}>;
+    onClick?: React_2.MouseEventHandler<HTMLElement>;
+};
 
 // @public (undocumented)
 export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {

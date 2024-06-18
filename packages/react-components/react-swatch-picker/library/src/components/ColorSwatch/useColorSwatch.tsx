@@ -76,7 +76,7 @@ export const useColorSwatch_unstable = (
           ...rootVariables,
           ...style,
         },
-      }),
+      } as const),
       { elementType: 'button' },
     ),
     icon: iconShorthand,

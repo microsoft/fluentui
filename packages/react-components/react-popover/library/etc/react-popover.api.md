@@ -4,7 +4,6 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -106,13 +105,15 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<Pop
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
 
 // @public
-export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = {
     'aria-expanded'?: 'true' | 'false';
-    ref: React_2.Ref<unknown>;
-    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-}>;
+    ref: React_2.Ref<HTMLElement>;
+    onMouseEnter: React_2.MouseEventHandler<HTMLElement>;
+    onMouseLeave: React_2.MouseEventHandler<HTMLElement>;
+    onContextMenu: React_2.MouseEventHandler<HTMLElement>;
+    onClick?: React_2.MouseEventHandler<HTMLElement>;
+    onKeyDown?: React_2.KeyboardEventHandler<HTMLElement>;
+};
 
 // @public
 export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps> & {

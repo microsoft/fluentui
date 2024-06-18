@@ -1100,7 +1100,7 @@ describe('Combobox', () => {
 
     it('opens the popup on expand icon click', () => {
       const { getByRole, getByTestId } = render(
-        <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Combobox expandIcon={{ 'data-testid': 'icon' }}>
           <Option>Red</Option>
           <Option>Green</Option>
           <Option>Blue</Option>
@@ -1113,7 +1113,7 @@ describe('Combobox', () => {
 
     it('closes the popup on expand icon click', () => {
       const { getByTestId, queryByRole } = render(
-        <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' }}>
           <Option>Red</Option>
           <Option>Green</Option>
           <Option>Blue</Option>
@@ -1129,7 +1129,7 @@ describe('Combobox', () => {
     it('closes the popup on blur/outside click after clicking on the expand icon', () => {
       const { getByTestId, queryByRole } = render(
         <>
-          <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+          <Combobox expandIcon={{ 'data-testid': 'icon' }}>
             <Option>Red</Option>
             <Option>Green</Option>
             <Option>Blue</Option>

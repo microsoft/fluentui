@@ -143,7 +143,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   } as const;
 
   const ariaButtonTriggerChildProps = useARIAButtonProps(
-    child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
+    child?.type === 'button' || child?.type === 'a' ? child?.type : 'div',
     triggerChildProps,
   );
 

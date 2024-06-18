@@ -56,7 +56,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         'aria-label': 'information',
         ...props,
         ref: rootRef,
-      }),
+      } as const),
       { elementType: 'button' },
     ),
     popover: slot.always(props.popover, {

@@ -57,7 +57,7 @@ export const useInteractionTagSecondary_unstable = (
         id,
         onClick,
         onKeyDown,
-      }),
+      } as const),
       { elementType: 'button' },
     ),
   };

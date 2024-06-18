@@ -75,7 +75,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         disabled,
         onClick: onTabClick,
         onFocus: selectTabOnFocus ? onTabFocus : onFocus,
-      }),
+      } as const),
       { elementType: 'button' },
     ),
     icon: iconSlot,

@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributivePick, Slot } from '@fluentui/react-utilities';
 import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 
 export type LinkSlots = {
@@ -37,6 +37,6 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 };
 
 export type LinkState = ComponentState<LinkSlots> &
-  Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
+  Required<DistributivePick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
     backgroundAppearance?: BackgroundAppearanceContextValue;
   };

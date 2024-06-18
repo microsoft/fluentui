@@ -1,4 +1,4 @@
-import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
+import { ARIAButtonType } from '@fluentui/react-aria';
 import type { TriggerProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -24,12 +24,12 @@ export type DialogTriggerProps = TriggerProps<DialogTriggerChildProps> & {
 /**
  * Props that are passed to the child of the DialogTrigger when cloned to ensure correct behaviour for the Dialog
  */
-export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
-  Type,
-  Props & {
-    'aria-haspopup'?: 'dialog';
-  }
->;
+export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = {
+  'aria-haspopup'?: 'dialog';
+  /* eslint-disable @nx/workspace-consistent-callback-type -- can't change type of existing callback */
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  /* eslint-enable @nx/workspace-consistent-callback-type */
+};
 
 export type DialogTriggerState = {
   children: React.ReactElement | null;
