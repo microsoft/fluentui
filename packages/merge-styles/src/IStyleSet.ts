@@ -1,6 +1,6 @@
 import { IStyle } from './IStyle';
 import { IStyleFunctionOrObject, IStyleFunction } from './IStyleFunction';
-import { ShadowConfig } from './shadowConfig';
+import type { ShadowConfig } from './shadowConfig';
 
 /**
  * @deprecated Use `Exclude` provided by TypeScript instead.
@@ -12,8 +12,10 @@ export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } & 
 /**
  * @deprecated Use the version provided by TypeScript instead.
  */
+// eslint-disable-next-line deprecation/deprecation, @typescript-eslint/naming-convention
+type _Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 // eslint-disable-next-line deprecation/deprecation
-export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
+export type { _Omit as Omit };
 
 /**
  * Helper function whose role is supposed to express that regardless if T is a style object or style function,
@@ -39,7 +41,7 @@ export interface IStyleSetBase {
  */
 export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+  [P in keyof _Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
 } & IShadowConfig;
@@ -49,7 +51,7 @@ export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> 
  */
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+  [P in keyof _Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
 } & IShadowConfig;
@@ -60,7 +62,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
+  [P in keyof _Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
   subComponentStyles: {
     [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<

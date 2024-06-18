@@ -14,16 +14,7 @@ export {
   accordionStyles,
   accordionTemplate,
 } from './accordion/index.js';
-export {
-  AnchorButton,
-  AnchorButtonAppearance,
-  AnchorButtonDefinition,
-  AnchorButtonShape,
-  AnchorButtonSize,
-  AnchorButtonTemplate,
-  AnchorTarget,
-} from './anchor-button/index.js';
-export type { AnchorButtonOptions } from './anchor-button/index.js';
+export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
 export {
   Avatar,
   AvatarActive,
@@ -111,6 +102,15 @@ export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
+  AnchorButton,
+  AnchorButtonAppearance,
+  AnchorButtonDefinition,
+  AnchorButtonShape,
+  AnchorButtonSize,
+  AnchorButtonTemplate,
+  AnchorTarget,
+} from './anchor-button/index.js';
+export {
   MenuButton,
   MenuButtonAppearance,
   MenuButtonDefinition,
@@ -140,7 +140,6 @@ export {
   ProgressBarThickness,
   ProgressBarValidationState,
 } from './progress-bar/index.js';
-export type { ProgressOptions } from './progress-bar/index.js';
 export {
   RadioGroup,
   RadioGroupDefinition,

@@ -10,7 +10,6 @@ export const ButtonAppearance = {
   primary: 'primary',
   outline: 'outline',
   subtle: 'subtle',
-  secondary: 'secondary',
   transparent: 'transparent',
 } as const;
 

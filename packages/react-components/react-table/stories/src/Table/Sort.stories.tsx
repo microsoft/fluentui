@@ -140,7 +140,7 @@ export const Sort = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable aria-label="Table with sort">
+    <Table sortable aria-label="Table with sort" style={{ minWidth: '500px' }}>
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>

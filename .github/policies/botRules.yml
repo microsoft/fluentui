@@ -171,7 +171,7 @@ configuration:
           - isOpen
           - isIssue
           - noActivitySince:
-              days: 150
+              days: 180
           - isNotLabeledWith:
               label: Needs Dev Input
           - isNotLabeledWith:
@@ -219,13 +219,11 @@ configuration:
         actions:
           - addReply:
               reply: >-
-                Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.
+                This issue has not had activity for over 180 days! We're adding Soft close label and will close it soon for house-keeping purposes.
 
-
-                *Still require assistance? Please, create a new issue with up-to date details.*
+                *Still require assistance? Please add comment - "keep open".*
           - addLabel:
               label: 'Resolution: Soft Close'
-          - closeIssue
       - description:
         frequencies:
           - hourly:
@@ -240,11 +238,9 @@ configuration:
               label: 'Resolution: Soft Close'
           - addReply:
               reply: >-
-                Because this issue has not had activity for over 180 days, we're automatically closing it for house-keeping purposes.
+                This issue has not had activity for over 180 days! We're adding Soft close label and will close it soon for house-keeping purposes.
 
-
-                *Still require assistance? Please, create a new issue with up-to date details.*
-          - closeIssue
+                *Still require assistance? Please add comment - "keep open".*
       - description:
         frequencies:
           - hourly:

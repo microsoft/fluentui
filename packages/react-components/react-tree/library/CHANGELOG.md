@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 06 Jun 2024 15:26:42 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.1)
+
+Mon, 17 Jun 2024 07:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.7.0..@fluentui/react-tree_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.12.1 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-avatar to v9.6.30 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-button to v9.3.84 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.29 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.62 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-radio to v9.2.24 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-tabster to v9.22.0 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.0)
+
+Wed, 12 Jun 2024 13:17:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.6.0..@fluentui/react-tree_v9.7.0)
+
+### Minor changes
+
+- feature: onVisibilityChange method to TreeItemLayout action slot ([PR #31598](https://github.com/microsoft/fluentui/pull/31598) by bernardo.sunderhus@gmail.com)
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.6.0)
 

@@ -32,8 +32,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.54.0",
-    "@fluentui/react-context-selector": "^9.1.61",
+    "@fluentui/react-components": "^9.54.2",
+    "@fluentui/react-context-selector": "^9.1.62",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.19",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-field",
-  "version": "9.1.67",
+  "version": "9.1.68",
   "description": "Fluent UI Field components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.61",
+    "@fluentui/react-context-selector": "^9.1.62",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-jsx-runtime": "^9.0.39",
     "@fluentui/react-label": "^9.1.71",

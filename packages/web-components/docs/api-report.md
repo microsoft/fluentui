@@ -126,41 +126,20 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
+// Warning: (ae-missing-release-tag) "AnchorButton" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public
-export class AnchorButton extends FASTElement {
+// @public (undocumented)
+export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
-    // (undocumented)
-    connectedCallback(): void;
-    control: HTMLAnchorElement;
-    // @internal
-    defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
-    // (undocumented)
-    protected disabledChanged(prev: boolean, next: boolean): void;
-    disabledFocusable?: boolean;
-    // (undocumented)
-    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    download: string;
-    href: string;
-    hreflang: string;
     iconOnly: boolean;
-    ping: string;
-    referrerpolicy: string;
-    rel: string;
     shape?: AnchorButtonShape | undefined;
     size?: AnchorButtonSize;
-    target: AnchorTarget;
-    type: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DelegatesARIALink" needs to be exported by the entry point index.d.ts
-//
 // @internal
-export interface AnchorButton extends StartEnd, DelegatesARIALink {
+export interface AnchorButton extends StartEnd {
 }
 
 // @public
@@ -177,9 +156,6 @@ export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
 // @public (undocumented)
 export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
-
-// @public
-export type AnchorButtonOptions = StartEndOptions<AnchorButton>;
 
 // @public
 export const AnchorButtonShape: {
@@ -217,15 +193,24 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends FASTElement {
+    constructor();
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor;
+    color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
-    generateColor(): AvatarColor | void;
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
     // @internal
     generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     initials?: string | undefined;
     name?: string | undefined;
     shape?: AvatarShape | undefined;
@@ -1888,7 +1873,6 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 //
 // @public
 export class Divider extends FASTElement {
-    constructor();
     // (undocumented)
     alignContent?: DividerAlignContent;
     // (undocumented)
@@ -2211,6 +2195,37 @@ export const lineHeightHero800 = "var(--lineHeightHero800)";
 export const lineHeightHero900 = "var(--lineHeightHero900)";
 
 // @public
+export class Link extends BaseAnchor {
+    appearance?: LinkAppearance | undefined;
+    inline: boolean;
+}
+
+// @public
+export const LinkAppearance: {
+    readonly subtle: "subtle";
+};
+
+// @public
+export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
+
+// @public (undocumented)
+export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// @public
+export const LinkTarget: {
+    readonly _self: "_self";
+    readonly _blank: "_blank";
+    readonly _parent: "_parent";
+    readonly _top: "_top";
+};
+
+// @public
+export type LinkTarget = ValuesOf<typeof AnchorTarget>;
+
+// @public
+export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
 export abstract class MatchMediaBehavior implements HostBehavior {
     constructor(query: MediaQueryList);
     connectedCallback(controller: HostController): void;
@@ -2434,13 +2449,27 @@ export const MenuStyles: ElementStyles;
 // @public (undocumented)
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseProgress" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class ProgressBar extends BaseProgress {
+export class ProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
     shape?: ProgressBarShape;
     thickness?: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
 }
 
 // @public
@@ -2481,12 +2510,6 @@ export const ProgressBarValidationState: {
 
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
-
-// @public
-export type ProgressOptions = {
-    indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
-    indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
-};
 
 // Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
 //
