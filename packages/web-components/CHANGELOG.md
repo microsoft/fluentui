@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 14 Jun 2024 04:06:06 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2024 04:05:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.31)
+
+Tue, 18 Jun 2024 04:05:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.30..@fluentui/web-components_v3.0.0-beta.31)
+
+### Changes
+
+- feat: update button and anchor button to leverage custom states for variants ([PR #31718](https://github.com/microsoft/fluentui/pull/31718) by 13071055+chrisdholt@users.noreply.github.com)
+- update badge to use element internals custom states ([PR #31733](https://github.com/microsoft/fluentui/pull/31733) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.30)
 

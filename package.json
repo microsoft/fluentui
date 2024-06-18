@@ -267,7 +267,7 @@
     "json-stable-stringify-without-jsonify": "1.0.1",
     "jsonc-eslint-parser": "2.3.0",
     "just-scripts": "1.8.2",
-    "lage": "1.8.8",
+    "lage": "1.10.0",
     "license-webpack-plugin": "4.0.2",
     "lint-staged": "10.2.10",
     "loader-utils": "2.0.4",
@@ -347,7 +347,7 @@
     "webpack-dev-server": "4.15.1",
     "webpack-hot-middleware": "2.26.1",
     "webpack-merge": "5.10.0",
-    "workspace-tools": "0.27.0",
+    "workspace-tools": "0.29.1",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
     "yargs-unparser": "2.0.0"

@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: update button and anchor button to leverage custom states for variants",
+  "comment": "feat: update progress bar to use element internals custom states for visual states",
   "packageName": "@fluentui/web-components",
   "email": "13071055+chrisdholt@users.noreply.github.com",
   "dependentChangeType": "patch"
