@@ -2146,9 +2146,14 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2883,9 +2888,11 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 export class Spinner extends FASTElement {
     constructor();
     appearance?: SpinnerAppearance;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
