@@ -18,14 +18,30 @@ export type RadioOptions = {
 };
 
 /**
- * A Radio Custom HTML Element.
+ * A Radio component that provides a customizable radio element.
+ * @class Radio
+ * @extends FormAssociatedRadio
+ *
+ * @remarks
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#radio | ARIA radio }.
  *
- * @slot checked-indicator - The checked indicator
- * @slot - The default slot for the label
- * @csspart control - The element representing the visual radio control
- * @csspart label - The label
- * @fires change - Emits a custom change event when the checked state changes
+ * @attr name - The name of the radio.
+ *
+ * @csspart control - The control element of the radio.
+ * @csspart checked-indicator - The indicator for the checked state.
+ * @csspart label - The label element of the radio.
+ *
+ * @cssproperty --control-border-color - The border color of the control.
+ * @cssproperty ----checked-indicator-background-colo - The background color of the checked indicator.
+ *
+ * @slot - Default slot for the label content.
+ * @slot checked-indicator - Slot for a custom checked indicator.
+ *
+ * @method keypressHandler - Handles key presses on the radio.
+ *
+ * @summary The Radio component functions as a customizable radio element.
+ *
+ * @tag fluent-radio
  *
  * @public
  */

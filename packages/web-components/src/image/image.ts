@@ -3,9 +3,27 @@ import { toggleState } from '../utils/element-internals.js';
 import { ImageFit, ImageShape } from './image.options.js';
 
 /**
- * The base class used for constucting a fluent image custom element
+ * An Image component that provides a customizable image element.
+ * @class Image
+ * @extends FASTElement
+ *
+ * @attr block - Image layout.
+ * @attr bordered - Image border.
+ * @attr shadow - Image shadow.
+ * @attr fit - Image fit.
+ * @attr shape - Image shape.
+ *
+ * @csspart root - The root element of the image.
+ *
+ * @slot - Default slot for the content of the image.
+ *
+ * @summary The Image component functions as a customizable image element.
+ *
+ * @tag fluent-image
+ *
  * @public
  */
+
 export class Image extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.

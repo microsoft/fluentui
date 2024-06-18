@@ -1938,10 +1938,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2610,10 +2607,7 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Radio Group orientation
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3038,7 +3032,7 @@ export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 // Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Tabs extends BaseTabs {
     // (undocumented)
     activeidChanged(oldValue: string, newValue: string): void;

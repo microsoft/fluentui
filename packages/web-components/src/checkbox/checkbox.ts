@@ -3,13 +3,28 @@ import { toggleState } from '../utils/element-internals.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
- * A Checkbox Custom HTML Element.
- * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#checkbox | ARIA checkbox }.
+ * A Checkbox component that provides a customizable checkbox element.
+ * @extends FormAssociatedCheckbox
  *
- * @slot checked-indicator - The checked indicator
- * @slot indeterminate-indicator - The indeterminate indicator
+ * @attr shape - Sets shape of the checkbox.
+ * @attr size - Sets size of the checkbox.
+ * @attr label-position - Sets position of the label relative to the input.
+ *
+ * @csspart control - The control element of the checkbox.
+ * @csspart label - The label of the checkbox.
+ * @csspart checked-indicator - The indicator displayed when the checkbox is checked.
+ * @csspart indeterminate-indicator - The indicator displayed when the checkbox is in an indeterminate state.
+ *
+ * @slot - Default slot for the checkbox label.
+ * @slot checked-indicator - Slot for the checked state indicator.
+ * @slot indeterminate-indicator - Slot for the indeterminate state indicator.
+ *
  * @fires change - Emits a custom change event when the checked state changes
  * @fires input - Emits a custom input event when the checked state changes
+ *
+ * @summary The Checkbox component functions as a customizable checkbox element.
+ *
+ * @tag fluent-checkbox
  *
  * @public
  */

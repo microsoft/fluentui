@@ -3,8 +3,9 @@ import { toggleState } from '../utils/element-internals.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
- * An Progress HTML Element.
- * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#progressbar | ARIA progressbar }.
+ * A ProgressBar component that provides a customizable progress bar element.
+ * @class ProgressBar
+ * @extends BaseProgress
  *
  * @public
  */

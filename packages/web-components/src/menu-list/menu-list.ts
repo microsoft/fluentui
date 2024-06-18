@@ -5,10 +5,17 @@ import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
- * A Menu Custom HTML Element.
- * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#menu | ARIA menu }.
+ * A MenuList component that provides a customizable menu list element.
+ * @class MenuList
+ * @extends FASTElement
  *
- * @slot - The default slot for the menu items
+ * @csspart root - The root element of the menu list.
+ *
+ * @slot - Default slot for the menu items.
+ *
+ * @summary The MenuList component functions as a customizable menu list element.
+ *
+ * @tag fluent-menu-list
  *
  * @public
  */

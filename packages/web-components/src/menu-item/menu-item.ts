@@ -23,25 +23,35 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
 };
 
 /**
- * A Switch Custom HTML Element.
+ * A MenuItem component that provides a customizable menu item element.
+ * @class MenuItem
+ * @extends FASTElement
+ *
+ * @remarks
  * Implements {@link https://www.w3.org/TR/wai-aria-1.1/#menuitem | ARIA menuitem }, {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox | ARIA menuitemcheckbox}, or {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemradio | ARIA menuitemradio }.
  *
- * @slot checked-indicator - The checked indicator
- * @slot radio-indicator - The radio indicator
- * @slot start - Content which can be provided before the menu item content
- * @slot end - Content which can be provided after the menu item content
- * @slot - The default slot for menu item content
- * @slot expand-collapse-indicator - The expand/collapse indicator
- * @slot submenu - Used to nest menu's within menu items
- * @csspart input-container - The element representing the visual checked or radio indicator
- * @csspart checkbox - The element wrapping the `menuitemcheckbox` indicator
- * @csspart radio - The element wrapping the `menuitemradio` indicator
- * @csspart content - The element wrapping the menu item content
- * @csspart expand-collapse-glyph-container - The element wrapping the expand collapse element
- * @csspart expand-collapse - The expand/collapse element
- * @csspart submenu-region - The container for the submenu, used for positioning
- * @fires expanded-change - Fires a custom 'expanded-change' event when the expanded state changes
- * @fires change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
+ * @attr disabled - The disabled state of the element.
+ * @attr expanded - The expanded state of the element.
+ * @attr role - The role of the element.
+ * @attr checked - The checked value of the element.
+ * @attr hidden - The hidden attribute.
+ *
+ * @csspart input-container - The container for the input elements like checkbox or radio.
+ * @csspart checkbox - The checkbox part of the menu item.
+ * @csspart radio - The radio part of the menu item.
+ * @csspart expand-collapse-glyph-container - The container for the expand/collapse glyph.
+ * @csspart expand-collapse - The expand/collapse glyph part of the menu item.
+ * @csspart submenu-container - The container for the submenu.
+ *
+ * @slot checkbox-indicator - Slot for the checkbox indicator.
+ * @slot radio-indicator - Slot for the radio indicator.
+ * @slot expand-collapse-indicator - Slot for the expand/collapse indicator.
+ * @slot - Default slot for the content of the menu item.
+ * @slot submenu - Slot for the submenu content.
+ *
+ * @summary The MenuItem component functions as a customizable menu item element.
+ *
+ * @tag fluent-menu-item
  *
  * @public
  */

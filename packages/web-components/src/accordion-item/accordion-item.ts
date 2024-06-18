@@ -16,19 +16,30 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
 };
 
 /**
+ * A AccordionItem component for individual sections within an accordion.
+ * @extends FASTElement
  *
- * @slot start - Content which can be provided between the heading and the icon
- * @slot end - Content which can be provided between the start slot and icon
- * @slot heading - Content which serves as the accordion item heading and text of the expand button
- * @slot - The default slot for accordion item content
- * @slot expanded-icon - The expanded icon
- * @slot collapsed-icon - The collapsed icon
- * @fires change - Fires a custom 'change' event when the button is invoked
- * @csspart heading - Wraps the button
- * @csspart button - The button which serves to invoke the item
- * @csspart heading-content - Wraps the slot for the heading content within the button
- * @csspart icon - The icon container
- * @csspart region - The wrapper for the accordion item content
+ * @attr heading-level - Configures the heading level of the item.
+ * @attr expanded - Expands or collapses the item.
+ * @attr disabled - Disables the accordion item.
+ * @attr id - The item ID.
+ * @attr size - Defines accordion header font size.
+ * @attr block - Sets the width of the focus state.
+ * @attr expand-icon-position - Sets expand and collapsed icon position.
+ *
+ * @csspart heading - The heading section of the accordion item.
+ * @csspart button - The button controlling expansion.
+ * @csspart heading-content - The content of the heading.
+ * @csspart icon - The icon indicating expanded or collapsed state.
+ * @csspart region - The region containing the item's content.
+ *
+ * @slot heading - Slot for the heading content.
+ * @slot expanded-icon - Slot for the icon when expanded.
+ * @slot collapsed-icon - Slot for the icon when collapsed.
+ *
+ * @summary The AccordionItem component represents a single expandable section within an accordion.
+ *
+ * @tag fluent-accordion-item
  *
  * @public
  */
