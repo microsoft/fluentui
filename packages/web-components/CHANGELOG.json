@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 18 Jun 2024 04:05:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.31",
+      "version": "3.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1fb910e682936e205920674cd7baa37d73680d90",
+            "comment": "feat: update button and anchor button to leverage custom states for variants"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "5f1feb5721933fb703d789fb00ce385d7e3f950e",
+            "comment": "update badge to use element internals custom states"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 04:07:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.30",
       "version": "3.0.0-beta.30",

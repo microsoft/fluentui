@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update badge to use element internals custom states",
+  "comment": "feat: update divider to use custom states",
   "packageName": "@fluentui/web-components",
   "email": "13071055+chrisdholt@users.noreply.github.com",
   "dependentChangeType": "patch"
