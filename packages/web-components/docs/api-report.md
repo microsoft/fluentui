@@ -590,8 +590,10 @@ export type ButtonType = ValuesOf<typeof ButtonType>;
 //
 // @public (undocumented)
 export class Checkbox extends BaseCheckbox {
-    shape: CheckboxShape;
+    shape?: CheckboxShape;
+    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
 }
 
 // @public
