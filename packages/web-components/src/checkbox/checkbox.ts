@@ -476,10 +476,10 @@ export class Checkbox extends BaseCheckbox {
    */
   public shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
+      toggleState(this.elementInternals, prev, false);
     }
     if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
+      toggleState(this.elementInternals, next, true);
     }
   }
 
@@ -500,10 +500,10 @@ export class Checkbox extends BaseCheckbox {
    */
   public sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
+      toggleState(this.elementInternals, prev, false);
     }
     if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
+      toggleState(this.elementInternals, next, true);
     }
   }
 }
