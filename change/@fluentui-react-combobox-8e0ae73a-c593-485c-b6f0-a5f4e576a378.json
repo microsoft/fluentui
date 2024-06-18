@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix useComboboxFilter filters the value not the text",
+  "packageName": "@fluentui/react-combobox",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}
