@@ -9,7 +9,7 @@ import {
   packProjectPackages,
 } from '@fluentui/scripts-projects-test';
 
-const tsVersion = '3.9';
+const tsVersion = '4.5';
 const testName = 'ts-minbar-react-components';
 
 async function performTest() {
