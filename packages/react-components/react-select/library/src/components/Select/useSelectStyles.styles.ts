@@ -179,6 +179,10 @@ const useSelectStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     borderBottom: `1px solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
+    '& option': {
+      // The transparent select bg means the option background must be set so the text is visible in dark themes
+      backgroundColor: tokens.colorNeutralBackground1,
+    },
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,

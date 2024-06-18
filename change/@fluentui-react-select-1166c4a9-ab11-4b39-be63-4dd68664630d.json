@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: underline appearance is readable in dark themes",
+  "packageName": "@fluentui/react-select",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

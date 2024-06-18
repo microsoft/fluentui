@@ -1,10 +1,28 @@
 import { css } from '@microsoft/fast-element';
 
 /**
+ * Selector for the `filled-lighter` state.
+ * @public
+ */
+export const filledLighterState = css.partial`:is([state--filled-lighter], :state(filled-lighter))`;
+
+/**
+ * Selector for the `filled-darker` state.
+ * @public
+ */
+export const filledDarkerState = css.partial`:is([state--filled-darker], :state(filled-darker))`;
+
+/**
  * Selector for the `ghost` state.
  * @public
  */
 export const ghostState = css.partial`:is([state--ghost], :state(ghost))`;
+
+/**
+ * Selector for the `inverted` state.
+ * @public
+ */
+export const invertedState = css.partial`:is([state--inverted], :state(inverted))`;
 
 /**
  * Selector for the `primary` state.
@@ -35,6 +53,12 @@ export const subtleState = css.partial`:is([state--subtle], :state(subtle))`;
  * @public
  */
 export const tintState = css.partial`:is([state--tint], :state(tint))`;
+
+/**
+ * Selector for the `underline` state.
+ * @public
+ */
+export const underlineState = css.partial`:is([state--underline], :state(underline))`;
 
 /**
  * Selector for the `transparent` state.
@@ -91,6 +115,12 @@ export const largeState = css.partial`:is([state--large], :state(large))`;
 export const extraLargeState = css.partial`:is([state--extra-large], :state(extra-large))`;
 
 /**
+ * Selector for the `huge` state.
+ * @public
+ */
+export const hugeState = css.partial`:is([state--huge], :state(huge))`;
+
+/**
  * Selector for the `alignment` start state.
  * @public
  */
@@ -125,6 +155,12 @@ export const pressedState = css.partial`:is([state--pressed], :state(pressed))`;
  * @public
  */
 export const brandState = css.partial`:is([state--brand], :state(brand))`;
+
+/**
+ * Selector for the `error` state.
+ * @public
+ */
+export const errorState = css.partial`:is([state--error], :state(error))`;
 
 /**
  * Selector for the `danger` state.
