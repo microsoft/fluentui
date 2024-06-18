@@ -15,8 +15,9 @@ const themeStyleTextMap = new Map<Theme, string>();
  */
 export const setTheme = (theme: Theme) => {
   // Fallback to setting token custom properties on `<body>` element’s `style`
-  // attribute, with the assumption that if a user agent supports
-  // `document.adoptedStyleSheets`, it’d also support `CSS.registerProperty()`.
+  // attribute, only checking the support of  `document.adoptedStyleSheets`
+  // here because it has broader support than `CSS.registerProperty()`, which
+  // is checked later.
   if (!SUPPORTS_ADOPTED_STYLE_SHEETS) {
     setThemeFor(document.body, theme);
     return;
