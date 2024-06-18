@@ -222,14 +222,13 @@ export class MenuList extends FASTElement {
      * used to set the indent of the element's start slot content.
      */
     const filteredMenuListItems = this.menuItems?.filter(this.isMenuItemElement);
+    const indent: MenuItemColumnCount = filteredMenuListItems?.reduce<MenuItemColumnCount>((accum, current) => {
+      const elementValue = MenuList.elementIndent(current as HTMLElement);
 
-    filteredMenuListItems?.forEach((item: HTMLElement, index: number) => {
-      const indent: MenuItemColumnCount = filteredMenuListItems?.reduce<MenuItemColumnCount>((accum, current) => {
-        const elementValue = MenuList.elementIndent(current as HTMLElement);
+      return Math.max(accum, elementValue as number) as MenuItemColumnCount;
+    }, 0);
 
-        return Math.max(accum, elementValue as number) as MenuItemColumnCount;
-      }, 0);
-
+    filteredMenuListItems?.forEach((item: HTMLElement) => {
       if (item instanceof MenuItem) {
         item.setAttribute('data-indent', `${indent}`);
       }
