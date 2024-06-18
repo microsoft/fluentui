@@ -109,7 +109,6 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
 
   private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = props => {
     if (props) {
-      console.log(props);
       const { ariaColSpan = 1, ariaRowIndex } = props;
       // the custom group header row doesn't include the selection cell or expand/collapse column, so we need to add 2
       const finalColSpan = ariaColSpan + 2;
