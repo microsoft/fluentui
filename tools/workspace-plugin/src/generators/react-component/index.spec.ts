@@ -130,6 +130,8 @@ describe('react-component generator', () => {
        * Apply styling to the MyOne slots based on the state
        */
       export const useMyOneStyles_unstable = (state: MyOneState): MyOneState => {
+        'use no memo';
+
         const styles = useStyles();
         state.root.className = mergeClasses(
           myOneClassNames.root,
