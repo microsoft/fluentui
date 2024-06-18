@@ -160,6 +160,42 @@ test.describe('TextInput', () => {
     await expect(element).toHaveJSProperty('controlSize', 'small');
   });
 
+  test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input control-size="small"></fluent-text-input>
+    `);
+
+    await element.evaluate((node: TextInput) => {
+      node.controlSize = 'small';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('small'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.controlSize = 'medium';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('small'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('medium'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.controlSize = 'large';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('medium'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('large'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.controlSize = undefined;
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('small'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('medium'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('large'))).toBe(false);
+  });
+
   test('should reflect `appearance` attribute values', async ({ page }) => {
     const element = page.locator('fluent-text-input');
 
@@ -188,6 +224,49 @@ test.describe('TextInput', () => {
     });
     await expect(element).toHaveAttribute('appearance', 'filled-lighter');
     await expect(element).toHaveJSProperty('appearance', 'filled-lighter');
+  });
+
+  test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input></fluent-text-input>
+    `);
+
+    await element.evaluate((node: TextInput) => {
+      node.appearance = 'outline';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('outline'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.appearance = 'underline';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('outline'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('underline'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.appearance = 'filled-lighter';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('underline'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-lighter'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.appearance = 'filled-darker';
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-lighter'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-darker'))).toBe(true);
+
+    await element.evaluate((node: TextInput) => {
+      node.appearance = undefined;
+    });
+
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('outline'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('underline'))).toBe(false);
+    expect(await element.evaluate((node: TextInput) => node.elementInternals.states.has('filled-lighter'))).toBe(false);
   });
 
   test('should have an undefined `value` property when no `value` attribute is set', async ({ page }) => {
