@@ -5,6 +5,13 @@ import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 
+jest.mock('./createPresenceComponent', () => {
+  // Add a mock for the `animate` method on the HTMLElement prototype as jsdom does not support it
+  Element.prototype.animate = jest.fn();
+
+  return jest.requireActual('./createPresenceComponent');
+});
+
 const enterKeyframes = [{ opacity: 0 }, { opacity: 1 }];
 const exitKeyframes = [{ opacity: 1 }, { opacity: 0 }];
 const options = { duration: 500 as const, fill: 'forwards' as const };
@@ -40,6 +47,10 @@ function createElementMock() {
 }
 
 describe('createPresenceComponent', () => {
+  it('has mock for .animate()', () => {
+    expect(Element.prototype.animate).toBeDefined();
+  });
+
   describe('appear', () => {
     it('does not animate by default', () => {
       const TestAtom = createPresenceComponent(motion);
