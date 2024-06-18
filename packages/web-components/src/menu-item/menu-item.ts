@@ -131,14 +131,14 @@ export class MenuItem extends FASTElement {
       case keyArrowRight:
         //open/focus on submenu
         if (this.disabled) return false;
-        this.submenu?.showPopover();
+        this.submenu?.togglePopover(true);
         this.submenu?.focus();
         return false;
 
       case keyArrowLeft:
         //close submenu
         try {
-          this.parentElement?.hidePopover();
+          this.parentElement?.togglePopover(false);
         } catch (e) {
           // Catch DOMException if parentElement is not a menu
         }
@@ -182,7 +182,7 @@ export class MenuItem extends FASTElement {
   public handleMouseOver = (e: MouseEvent): boolean => {
     if (this.disabled) return false;
 
-    this.submenu?.showPopover();
+    this.submenu?.togglePopover(true);
     return false;
   };
 
@@ -194,7 +194,7 @@ export class MenuItem extends FASTElement {
       return false;
     }
 
-    this.submenu?.hidePopover();
+    this.submenu?.togglePopover(false);
 
     return false;
   };

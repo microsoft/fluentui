@@ -89,7 +89,7 @@ export class MenuList extends FASTElement {
    * @public
    */
   public collapseExpandedItem(): void {
-    this.expandedItem?.submenu?.hidePopover();
+    this.expandedItem?.submenu?.togglePopover(false);
     this.expandedItem = null;
   }
 
@@ -167,7 +167,7 @@ export class MenuList extends FASTElement {
     const changedItem: MenuItem = e.target as any as MenuItem;
 
     // closing an expanded item without opening another
-    changedItem.submenu?.showPopover();
+    changedItem.submenu?.togglePopover(true);
     this.expandedItem = changedItem;
     this.focusIndex = this.menuItems.indexOf(changedItem);
     changedItem.setAttribute('tabindex', '0');

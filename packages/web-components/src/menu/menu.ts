@@ -114,7 +114,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public closeMenu = () => {
-    this._menuList?.hidePopover();
+    this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
       document.removeEventListener('scroll', this.closeMenu);
@@ -129,7 +129,7 @@ export class Menu extends FASTElement {
     if (e && this.openOnContext) {
       e.preventDefault();
     }
-    this._menuList?.showPopover();
+    this._menuList?.togglePopover(true);
 
     if (this.closeOnScroll) {
       document.addEventListener('scroll', this.closeMenu);
