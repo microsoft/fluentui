@@ -1,6 +1,18 @@
 import { css } from '@microsoft/fast-element';
 
 /**
+ * Selector for the `filled-lighter` state.
+ * @public
+ */
+export const filledLighterState = css.partial`:is([state--filled-lighter], :state(filled-lighter))`;
+
+/**
+ * Selector for the `filled-darker` state.
+ * @public
+ */
+export const filledDarkerState = css.partial`:is([state--filled-darker], :state(filled-darker))`;
+
+/**
  * Selector for the `ghost` state.
  * @public
  */
@@ -41,6 +53,12 @@ export const subtleState = css.partial`:is([state--subtle], :state(subtle))`;
  * @public
  */
 export const tintState = css.partial`:is([state--tint], :state(tint))`;
+
+/**
+ * Selector for the `underline` state.
+ * @public
+ */
+export const underlineState = css.partial`:is([state--underline], :state(underline))`;
 
 /**
  * Selector for the `transparent` state.

@@ -3160,6 +3160,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends FASTElement {
     appearance?: TextInputAppearance;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     autocomplete?: string;
     autofocus: boolean;
     // @internal
@@ -3175,6 +3176,7 @@ export class TextInput extends FASTElement {
     // @internal
     controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal
