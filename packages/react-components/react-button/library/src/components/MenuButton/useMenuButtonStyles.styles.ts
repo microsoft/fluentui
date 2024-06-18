@@ -65,8 +65,11 @@ const useIconExpandedStyles = makeStyles({
   highContrast: {
     // High contrast styles
     '@media (forced-colors: active)': {
-      ':hover': {
-        color: 'Canvas',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          color: 'Canvas',
+        },
       },
     },
   },

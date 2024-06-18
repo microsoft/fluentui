@@ -42,12 +42,15 @@ const useRootBaseClassName = makeResetStyles({
   fontFamily: tokens.fontFamilyBase,
   outlineStyle: 'none',
 
-  ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
-    color: tokens.colorNeutralForeground1Hover,
+  // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+  '@media (any-hover: hover)': {
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      borderColor: tokens.colorNeutralStroke1Hover,
+      color: tokens.colorNeutralForeground1Hover,
 
-    cursor: 'pointer',
+      cursor: 'pointer',
+    },
   },
 
   ':hover:active': {
@@ -83,11 +86,14 @@ const useRootBaseClassName = makeResetStyles({
       borderColor: 'ButtonText',
     },
 
-    ':hover': {
-      backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
-      color: 'Highlight',
-      forcedColorAdjust: 'none',
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+        borderColor: 'Highlight',
+        color: 'Highlight',
+        forcedColorAdjust: 'none',
+      },
     },
 
     ':hover:active': {
@@ -138,8 +144,11 @@ const useRootStyles = makeStyles({
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
 
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+      },
     },
 
     ':hover:active': {
@@ -151,10 +160,13 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForegroundOnBrand,
 
-    ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorBrandBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
     },
 
     ':hover:active': {
@@ -168,11 +180,13 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor('HighlightText'),
       color: 'HighlightText',
       forcedColorAdjust: 'none',
-
-      ':hover': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          backgroundColor: 'HighlightText',
+          ...shorthands.borderColor('Highlight'),
+          color: 'Highlight',
+        },
       },
 
       ':hover:active': {
@@ -189,19 +203,21 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorSubtleBackground,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorSubtleBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: tokens.colorNeutralForeground2Hover,
+        [`& .${iconFilledClassName}`]: {
+          display: 'inline',
+        },
+        [`& .${iconRegularClassName}`]: {
+          display: 'none',
+        },
+        [`& .${buttonClassNames.icon}`]: {
+          color: tokens.colorNeutralForeground2BrandHover,
+        },
       },
     },
 
@@ -221,11 +237,14 @@ const useRootStyles = makeStyles({
     },
 
     '@media (forced-colors: active)': {
-      ':hover': {
-        color: 'Highlight',
-
-        [`& .${buttonClassNames.icon}`]: {
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
           color: 'Highlight',
+
+          [`& .${buttonClassNames.icon}`]: {
+            color: 'Highlight',
+          },
         },
       },
       ':hover:active': {
@@ -241,16 +260,18 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: tokens.colorNeutralForeground2BrandHover,
+        [`& .${iconFilledClassName}`]: {
+          display: 'inline',
+        },
+        [`& .${iconRegularClassName}`]: {
+          display: 'none',
+        },
       },
     },
 
@@ -267,9 +288,12 @@ const useRootStyles = makeStyles({
     },
 
     '@media (forced-colors: active)': {
-      ':hover': {
-        backgroundColor: tokens.colorTransparentBackground,
-        color: 'Highlight',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          backgroundColor: tokens.colorTransparentBackground,
+          color: 'Highlight',
+        },
       },
       ':hover:active': {
         backgroundColor: tokens.colorTransparentBackground,
@@ -328,22 +352,24 @@ const useRootDisabledStyles = makeStyles({
     [`& .${buttonClassNames.icon}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
-
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
-
-      cursor: 'not-allowed',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'none',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${buttonClassNames.icon}`]: {
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorNeutralBackgroundDisabled,
+        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
         color: tokens.colorNeutralForegroundDisabled,
+
+        cursor: 'not-allowed',
+
+        [`& .${iconFilledClassName}`]: {
+          display: 'none',
+        },
+        [`& .${iconRegularClassName}`]: {
+          display: 'inline',
+        },
+        [`& .${buttonClassNames.icon}`]: {
+          color: tokens.colorNeutralForegroundDisabled,
+        },
       },
     },
 
@@ -376,11 +402,13 @@ const useRootDisabledStyles = makeStyles({
       ':focus': {
         ...shorthands.borderColor('GrayText'),
       },
-
-      ':hover': {
-        backgroundColor: 'ButtonFace',
-        ...shorthands.borderColor('GrayText'),
-        color: 'GrayText',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          backgroundColor: 'ButtonFace',
+          ...shorthands.borderColor('GrayText'),
+          color: 'GrayText',
+        },
       },
 
       ':hover:active': {
@@ -394,9 +422,11 @@ const useRootDisabledStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackground,
+      },
     },
 
     ':hover:active': {
@@ -405,9 +435,11 @@ const useRootDisabledStyles = makeStyles({
   },
   primary: {
     ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      ...shorthands.borderColor('transparent'),
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        ...shorthands.borderColor('transparent'),
+      },
     },
 
     ':hover:active': {
@@ -420,10 +452,12 @@ const useRootDisabledStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackground,
+        ...shorthands.borderColor('transparent'),
+      },
     },
 
     ':hover:active': {
@@ -434,10 +468,12 @@ const useRootDisabledStyles = makeStyles({
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      ...shorthands.borderColor('transparent'),
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackground,
+        ...shorthands.borderColor('transparent'),
+      },
     },
 
     ':hover:active': {
@@ -460,9 +496,12 @@ const useRootFocusStyles = makeStyles({
     ...createCustomFocusIndicatorStyle({
       ...shorthands.borderColor(tokens.colorStrokeFocus2),
       boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
-      ':hover': {
-        boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
-        ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+          ...shorthands.borderColor(tokens.colorStrokeFocus2),
+        },
       },
     }),
 
@@ -470,8 +509,11 @@ const useRootFocusStyles = makeStyles({
     '@supports (-moz-appearance:button)': {
       ...createCustomFocusIndicatorStyle({
         boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
-        ':hover': {
-          boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset`,
+        // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+        '@media (any-hover: hover)': {
+          ':hover': {
+            boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset`,
+          },
         },
       }),
     },

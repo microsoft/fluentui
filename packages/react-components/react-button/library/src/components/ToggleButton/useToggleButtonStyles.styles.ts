@@ -27,11 +27,13 @@ const useRootCheckedStyles = makeStyles({
     [`& .${iconRegularClassName}`]: {
       display: 'none',
     },
-
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorNeutralBackground1Hover,
+        ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+        color: tokens.colorNeutralForeground1Hover,
+      },
     },
 
     ':hover:active': {
@@ -48,11 +50,13 @@ const useRootCheckedStyles = makeStyles({
       ...shorthands.borderColor('Highlight'),
       color: 'HighlightText',
       forcedColorAdjust: 'none',
-
-      ':hover': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          backgroundColor: 'HighlightText',
+          ...shorthands.borderColor('Highlight'),
+          color: 'Highlight',
+        },
       },
 
       ':hover:active': {
@@ -73,9 +77,11 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackgroundSelected,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+      },
     },
 
     ':hover:active': {
@@ -90,11 +96,13 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackgroundSelected,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForegroundOnBrand,
-
-    ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorBrandBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: tokens.colorNeutralForegroundOnBrand,
+      },
     },
 
     ':hover:active': {
@@ -110,11 +118,13 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2Selected,
-
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorSubtleBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: tokens.colorNeutralForeground2Hover,
+      },
     },
 
     ':hover:active': {
@@ -127,11 +137,13 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackgroundSelected,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2BrandSelected,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
     },
 
     ':hover:active': {
@@ -148,11 +160,13 @@ const useRootDisabledStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
-
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorNeutralBackgroundDisabled,
+        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
 
     ':hover:active': {
@@ -168,9 +182,11 @@ const useRootDisabledStyles = makeStyles({
   },
   primary: {
     ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      ...shorthands.borderColor('transparent'),
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        ...shorthands.borderColor('transparent'),
+      },
     },
 
     ':hover:active': {
@@ -183,10 +199,12 @@ const useRootDisabledStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+      },
     },
 
     ':hover:active': {
@@ -197,10 +215,12 @@ const useRootDisabledStyles = makeStyles({
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+      },
     },
 
     ':hover:active': {

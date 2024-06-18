@@ -52,10 +52,12 @@ const useRootStyles = makeStyles({
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStrokeOnBrand,
     },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        },
       },
     },
 
@@ -69,10 +71,12 @@ const useRootStyles = makeStyles({
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: 'HighlightText',
       },
-
-      ':hover': {
-        [`& .${splitButtonClassNames.primaryActionButton}`]: {
-          borderRightColor: 'Highlight',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          [`& .${splitButtonClassNames.primaryActionButton}`]: {
+            borderRightColor: 'Highlight',
+          },
         },
       },
 
@@ -90,10 +94,12 @@ const useRootStyles = makeStyles({
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStroke1,
     },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: tokens.colorNeutralStroke1Hover,
+        },
       },
     },
 
@@ -107,10 +113,12 @@ const useRootStyles = makeStyles({
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStroke1,
     },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: tokens.colorNeutralStroke1Hover,
+        },
       },
     },
 
@@ -131,10 +139,12 @@ const useRootStyles = makeStyles({
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorNeutralStrokeDisabled,
     },
-
-    ':hover': {
-      [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: tokens.colorNeutralStrokeDisabled,
+        },
       },
     },
 
@@ -151,10 +161,12 @@ const useRootStyles = makeStyles({
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
         borderRightColor: 'GrayText',
       },
-
-      ':hover': {
-        [`& .${splitButtonClassNames.primaryActionButton}`]: {
-          borderRightColor: 'GrayText',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          [`& .${splitButtonClassNames.primaryActionButton}`]: {
+            borderRightColor: 'GrayText',
+          },
         },
       },
 

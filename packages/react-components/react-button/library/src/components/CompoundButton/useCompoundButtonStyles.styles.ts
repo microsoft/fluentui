@@ -19,10 +19,12 @@ const useRootStyles = makeStyles({
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
-
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: tokens.colorNeutralForeground2Hover,
+        },
       },
     },
 
@@ -36,9 +38,12 @@ const useRootStyles = makeStyles({
   // High contrast styles
   highContrast: {
     '@media (forced-colors: active)': {
-      ':hover': {
-        [`& .${compoundButtonClassNames.secondaryContent}`]: {
-          color: 'Highlight',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          [`& .${compoundButtonClassNames.secondaryContent}`]: {
+            color: 'Highlight',
+          },
         },
       },
 
@@ -58,10 +63,12 @@ const useRootStyles = makeStyles({
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForegroundOnBrand,
     },
-
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: tokens.colorNeutralForegroundOnBrand,
+        },
       },
     },
 
@@ -84,10 +91,12 @@ const useRootStyles = makeStyles({
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
     },
-
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: tokens.colorNeutralForeground2Hover,
+        },
       },
     },
 
@@ -98,9 +107,12 @@ const useRootStyles = makeStyles({
     },
 
     '@media (forced-colors: active)': {
-      ':hover': {
-        [`& .${compoundButtonClassNames.secondaryContent}`]: {
-          color: 'Canvas',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          [`& .${compoundButtonClassNames.secondaryContent}`]: {
+            color: 'Canvas',
+          },
         },
       },
       ':hover:active': {
@@ -115,9 +127,12 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground2,
     },
 
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: tokens.colorNeutralForeground2BrandHover,
+        },
       },
     },
 
@@ -153,10 +168,12 @@ const useRootStyles = makeStyles({
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForegroundDisabled,
     },
-
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+    // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+    '@media (any-hover: hover)': {
+      ':hover': {
+        [`& .${compoundButtonClassNames.secondaryContent}`]: {
+          color: tokens.colorNeutralForegroundDisabled,
+        },
       },
     },
 
@@ -173,10 +190,12 @@ const useRootStyles = makeStyles({
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
         color: 'GrayText',
       },
-
-      ':hover': {
-        [`& .${compoundButtonClassNames.secondaryContent}`]: {
-          color: 'GrayText',
+      // Query devices that support hover: https://www.w3.org/TR/mediaqueries-4/#any-input
+      '@media (any-hover: hover)': {
+        ':hover': {
+          [`& .${compoundButtonClassNames.secondaryContent}`]: {
+            color: 'GrayText',
+          },
         },
       },
 
