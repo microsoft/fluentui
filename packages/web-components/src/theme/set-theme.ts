@@ -34,9 +34,7 @@ export const setTheme = (theme: Theme) => {
             inherits: true,
             initialValue: theme[t] as string,
           });
-        } catch {
-          // Do nothing (need this comment to pass eslint’s `no-empty` rule)
-        }
+        } catch {}
       }
       tokenDeclarations.push(`--${t}: ${theme[t] as string};`);
     }
