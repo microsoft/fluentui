@@ -17,7 +17,6 @@ import {
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
-  fontSizeBase500,
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
@@ -30,6 +29,7 @@ export const styles = css`
   ${display('grid')}
 
   :host {
+    --indent: 0;
     grid-template-columns: 20px 20px auto 20px;
     align-items: center;
     grid-gap: 4px;
@@ -42,7 +42,6 @@ export const styles = css`
     cursor: pointer;
     overflow: visible;
     contain: layout;
-    --indent: 0;
   }
 
   :host(:hover) {
@@ -58,6 +57,11 @@ export const styles = css`
     width: 20px;
   }
 
+  :host(:not([checked])) .indicator,
+  :host(:not([checked])) ::slotted([slot='indicator']) {
+    display: none;
+  }
+
   .content {
     white-space: nowrap;
     flex-grow: 1;
@@ -65,25 +69,8 @@ export const styles = css`
     padding: 0 2px;
   }
 
-  .indicator,
-  .submenu-glyph,
-  ::slotted([slot='start']),
-  ::slotted([slot='end']) {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    color: ${colorNeutralForeground2};
-  }
-
-  .submenu-glyph,
-  ::slotted([slot='start']),
-  ::slotted([slot='end']) {
-    height: 32px;
-    font-size: ${fontSizeBase500};
-    width: fit-content;
-  }
-
-  :host(:not([aria-haspopup='menu'])) .submenu-glyph {
+  :host(:not([aria-haspopup='menu'])) .submenu-glyph,
+  :host(:not([aria-haspopup='menu'])) ::slotted([slot='submenu-glyph']){
     display: none;
   }
 
@@ -91,17 +78,11 @@ export const styles = css`
     color: ${colorNeutralForeground3};
     font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     white-space: nowrap;
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
   }
 
-  :host(:not([checked])) .indicator {
-    display: none;
-  }
 
-  :host(:hover) .indicator,
-  :host(:hover) .submenu-glyph,
-  :host(:hover) .content {
+  :host(:hover) :is(.indicator,.submenu-glyph,.content),
+  :host(:hover) ::slotted(:is([slot='indicator'], [slot='submenu-glyph'])) {
     color: ${colorNeutralForeground2Hover};
   }
 
@@ -113,9 +94,8 @@ export const styles = css`
     background-color: ${colorNeutralBackground1Selected};
   }
 
-  :host(:active) .indicator,
-  :host(:active) .submenu-glyph,
-  :host(:active) .content {
+  :host(:active) :is(.indicator,.submenu-glyph,.content),
+  :host(:active) ::slotted(:is([slot='indicator'], [slot='submenu-glyph'])) {
     color: ${colorNeutralForeground2Pressed};
   }
 
@@ -127,15 +107,9 @@ export const styles = css`
     background-color: ${colorNeutralBackgroundDisabled};
   }
 
-  :host([disabled]) .content,
-  :host([disabled]) .submenu-glyph,
-  :host([disabled]) ::slotted([slot='end']),
-  :host([disabled]) ::slotted([slot='start']) {
+  :host([disabled]) :is(.indicator,.submenu-glyph),
+  :host([disabled]) ::slotted(:is([slot='start'], [slot='end'])) {
     color: ${colorNeutralForegroundDisabled};
-  }
-
-  :host([data-indent]) {
-    display: grid;
   }
 
   :host([data-indent='1']) {
@@ -144,7 +118,6 @@ export const styles = css`
 
   :host([data-indent='2']) {
     --indent: 2;
-    display: grid;
     grid-template-columns: 20px 20px auto auto;
   }
 
@@ -156,7 +129,8 @@ export const styles = css`
     grid-template-columns: 20px 20px auto auto 20px;
   }
 
-  .indicator {
+  .indicator,
+  ::slotted([slot='indicator']) {
     grid-column: 1 / span 1;
   }
 
@@ -169,12 +143,13 @@ export const styles = css`
   }
 
   ::slotted([slot='end']) {
-    grid-column: calc(var(--indent) + 3) / span 1;
+    grid-column: calc(var(--indent) + 2) / span 1;
     justify-self: end;
   }
 
-  .submenu-glyph {
-    grid-column: calc(var(--indent) + 4) / span 1;
+  .submenu-glyph,
+  ::slotted([slot='submenu-glyph']) {
+    grid-column: -2 / span 1;
     justify-self: end;
   }
 

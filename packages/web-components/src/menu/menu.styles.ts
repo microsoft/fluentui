@@ -7,10 +7,6 @@ import { display } from '../utils/index.js';
 export const styles = css`
   ${display('inline-block')}
 
-  :host {
-    display: inline-block;
-  }
-
   ::slotted([slot='trigger']) {
     anchor-name: --menu-trigger;
   }
