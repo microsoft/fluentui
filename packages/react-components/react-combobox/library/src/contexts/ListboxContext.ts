@@ -10,6 +10,8 @@ export type ListboxContextValue = Pick<
   ListboxState,
   | 'activeOption'
   | 'focusVisible'
+  | 'getOptionById'
+  | 'getOptionsMatchingValue'
   | 'multiselect'
   | 'registerOption'
   | 'selectedOptions'
@@ -24,6 +26,12 @@ const listboxContextDefaultValue = {
   activeOption: undefined,
   focusVisible: false,
   multiselect: false,
+  getOptionById() {
+    return undefined;
+  },
+  getOptionsMatchingValue() {
+    return [];
+  },
   registerOption() {
     return () => undefined;
   },

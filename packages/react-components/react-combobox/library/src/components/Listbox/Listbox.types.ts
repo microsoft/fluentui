@@ -42,6 +42,9 @@ export type ListboxState = ComponentState<ListboxSlots> &
      */
     setActiveOption(option?: OptionValue): void;
 
+    // Whether the Listbox renders within a Combobox, Dropdown, or picker, or as a standalone widget
+    standalone: boolean;
+
     selectOption(event: SelectionEvents, option: OptionValue): void;
 
     activeDescendantController: ActiveDescendantImperativeRef;

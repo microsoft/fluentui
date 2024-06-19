@@ -94,6 +94,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     appearance: comboboxState.appearance,
     clearSelection: comboboxState.clearSelection,
     getOptionById: comboboxState.getOptionById,
+    getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
     registerOption: comboboxState.registerOption,
     selectedOptions: comboboxState.selectedOptions,
     selectOption: comboboxState.selectOption,

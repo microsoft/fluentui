@@ -104,9 +104,12 @@ export function useButtonTriggerSlot(
         searchString.current = '';
       }, 500);
 
+      if (open) {
+        moveToNextMatchingOptionWithSameCharacterHandling();
+      }
+
       // update state
       !open && setOpen(ev, true);
-      moveToNextMatchingOptionWithSameCharacterHandling();
     }
   };
 
