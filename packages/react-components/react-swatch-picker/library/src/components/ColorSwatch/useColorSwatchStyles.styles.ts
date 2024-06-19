@@ -111,15 +111,21 @@ const useSizeStyles = makeStyles({
 const useShapeStyles = makeStyles({
   rounded: {
     borderRadius: `var(--ctrl-token-ColorSwatch-1857, var(--semantic-token-ColorSwatch-1858, ${tokens.borderRadiusMedium}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-ColorSwatch-1859, var(--semantic-token-ColorSwatch-1860, ${tokens.borderRadiusMedium}))` }),
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--ctrl-token-ColorSwatch-1859, var(--semantic-token-ColorSwatch-1860, ${tokens.borderRadiusMedium}))`,
+    }),
   },
   circular: {
     borderRadius: `var(--ctrl-token-ColorSwatch-1861, var(--semantic-token-ColorSwatch-1862, ${tokens.borderRadiusCircular}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-ColorSwatch-1863, var(--semantic-token-ColorSwatch-1864, ${tokens.borderRadiusCircular}))` }),
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--ctrl-token-ColorSwatch-1863, var(--semantic-token-ColorSwatch-1864, ${tokens.borderRadiusCircular}))`,
+    }),
   },
   square: {
     borderRadius: `var(--ctrl-token-ColorSwatch-1865, var(--semantic-token-ColorSwatch-1866, ${tokens.borderRadiusNone}))`,
-    ...createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-ColorSwatch-1867, var(--semantic-token-ColorSwatch-1868, ${tokens.borderRadiusNone}))` }),
+    ...createCustomFocusIndicatorStyle({
+      borderRadius: `var(--ctrl-token-ColorSwatch-1867, var(--semantic-token-ColorSwatch-1868, ${tokens.borderRadiusNone}))`,
+    }),
   },
 });
 

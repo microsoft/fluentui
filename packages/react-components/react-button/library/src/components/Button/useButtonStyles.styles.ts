@@ -279,7 +279,9 @@ const useRootStyles = makeStyles({
   },
 
   // Shape variations
-  circular: { borderRadius: `var(--ctrl-token-Button-87, var(--semantic-token-Button-88, ${tokens.borderRadiusCircular}))` },
+  circular: {
+    borderRadius: `var(--ctrl-token-Button-87, var(--semantic-token-Button-88, ${tokens.borderRadiusCircular}))`,
+  },
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
@@ -449,11 +451,15 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   // Shape variations
-  circular: createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-Button-143, var(--semantic-token-Button-144, ${tokens.borderRadiusCircular}))` }),
+  circular: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--ctrl-token-Button-143, var(--semantic-token-Button-144, ${tokens.borderRadiusCircular}))`,
+  }),
   rounded: {
     /* The rounded styles are exactly the same as the base styles. */
   },
-  square: createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-Button-145, var(--semantic-token-Button-146, ${tokens.borderRadiusNone}))` }),
+  square: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--ctrl-token-Button-145, var(--semantic-token-Button-146, ${tokens.borderRadiusNone}))`,
+  }),
 
   // Primary styles
   primary: {
@@ -478,11 +484,15 @@ const useRootFocusStyles = makeStyles({
   },
 
   // Size variations
-  small: createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-Button-147, var(--semantic-token-Button-148, ${tokens.borderRadiusSmall}))` }),
+  small: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--ctrl-token-Button-147, var(--semantic-token-Button-148, ${tokens.borderRadiusSmall}))`,
+  }),
   medium: {
     /* defined in base styles */
   },
-  large: createCustomFocusIndicatorStyle({ borderRadius: `var(--ctrl-token-Button-149, var(--semantic-token-Button-150, ${tokens.borderRadiusLarge}))` }),
+  large: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--ctrl-token-Button-149, var(--semantic-token-Button-150, ${tokens.borderRadiusLarge}))`,
+  }),
 });
 
 const useRootIconOnlyStyles = makeStyles({

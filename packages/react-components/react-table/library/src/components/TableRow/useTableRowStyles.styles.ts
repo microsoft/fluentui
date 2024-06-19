@@ -43,7 +43,10 @@ const useStyles = makeStyles({
       { selector: 'focus-within' },
     ),
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `var(--ctrl-token-TableRow-1979, var(--semantic-token-TableRow-1980, ${tokens.borderRadiusMedium}))` },
+      {
+        outline: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: `var(--ctrl-token-TableRow-1979, var(--semantic-token-TableRow-1980, ${tokens.borderRadiusMedium}))`,
+      },
       { selector: 'focus' },
     ),
   },

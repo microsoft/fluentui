@@ -86,8 +86,12 @@ const useRootStyles = makeStyles({
   // shape
 
   square: { borderRadius: `var(--ctrl-token-Badge-347, var(--semantic-token-Badge-348, ${tokens.borderRadiusNone}))` },
-  rounded: { borderRadius: `var(--ctrl-token-Badge-349, var(--semantic-token-Badge-350, ${tokens.borderRadiusMedium}))` },
-  roundedSmallToTiny: { borderRadius: `var(--ctrl-token-Badge-351, var(--semantic-token-Badge-352, ${tokens.borderRadiusSmall}))` },
+  rounded: {
+    borderRadius: `var(--ctrl-token-Badge-349, var(--semantic-token-Badge-350, ${tokens.borderRadiusMedium}))`,
+  },
+  roundedSmallToTiny: {
+    borderRadius: `var(--ctrl-token-Badge-351, var(--semantic-token-Badge-352, ${tokens.borderRadiusSmall}))`,
+  },
   circular: {
     // Set by useRootClassName
   },
