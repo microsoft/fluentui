@@ -73,12 +73,6 @@ export const styles: ElementStyles = css`
   }
 
   .icon {
-    display: flex;
-    grid-area: icon;
-    flex-direction: column;
-    align-items: center;
-    color: ${colorNeutralForeground3};
-    margin-right: ${spacingHorizontalS};
   }
 
   :host([intent='info']) .info,
@@ -108,6 +102,15 @@ export const styles: ElementStyles = css`
 
   :host([layout='multiline']) .content {
     padding: 0;
+  }
+
+  ::slotted([slot='icon']) {
+    display: flex;
+    grid-area: icon;
+    flex-direction: column;
+    align-items: center;
+    color: ${colorNeutralForeground3};
+    margin-right: ${spacingHorizontalS};
   }
 
   ::slotted([slot='close']) {
