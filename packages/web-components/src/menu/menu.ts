@@ -111,7 +111,7 @@ export class Menu extends FASTElement {
    * Toggles the open state of the menu.
    * @public
    */
-  public toggleMenu = (e?: Event) => {
+  public toggleMenu = () => {
     this._menuList?.togglePopover(!this._open);
   };
 
@@ -119,7 +119,7 @@ export class Menu extends FASTElement {
    * Closes the menu.
    * @public
    */
-  public closeMenu = (e?: Event) => {
+  public closeMenu = () => {
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -136,7 +136,6 @@ export class Menu extends FASTElement {
 
     if (e && this.openOnContext) {
       e.preventDefault();
-      // TODO: context menu is preventing default but the popover:backdrop is still picking up the context menu pointer event click.
     }
 
     if (this.closeOnScroll) {
@@ -239,12 +238,14 @@ export class Menu extends FASTElement {
     }
   }
 
-  // /**
-  //  * Adds event listeners.
-  //  * Adds click and keydown event listeners to the trigger and a click event listener to the document.
-  //  * If 'openOnHover' is true, adds a 'mouseover' event listener to the trigger.
-  //  * @public
-  //  */
+  /**
+   * Adds event listeners.
+   * Adds click and keydown event listeners to the trigger.
+   * Adds a 'toggle' event listener to the menu list.
+   * If 'openOnHover' is true, adds a 'mouseover' event listener to the trigger.
+   * If 'openOnContext' is true, adds a 'contextmenu' event listener to the trigger and a document 'click' event listener.
+   * @internal
+   */
   private addListeners(): void {
     this._menuList?.addEventListener('toggle', this.toggleHandler);
 
@@ -265,8 +266,10 @@ export class Menu extends FASTElement {
 
   /**
    * Removes event listeners.
-   * Removes click and keydown event listeners from the trigger and a click event listener from the document.
+   * Removes click and keydown event listeners from the trigger.
+   * Also removes toggle event listener from the menu list.
    * Also removes 'mouseover' event listeners from the trigger.
+   * Also removes 'contextmenu' event listeners from the trigger and document 'click' event listeners.
    * @internal
    */
   private removeListeners(): void {
