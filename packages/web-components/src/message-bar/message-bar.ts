@@ -1,20 +1,8 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import type { StaticallyComposableHTML } from '../utils/index.js';
 import { StartEnd } from '../patterns/index.js';
-import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { toggleState } from '../utils/element-internals.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
-
-/**
- * MessageBar configuration options
- * @public
- */
-export type MessageBarOptions = StartEndOptions<MessageBar> & {
-  infoIcon?: StaticallyComposableHTML<MessageBar>;
-  errorIcon?: StaticallyComposableHTML<MessageBar>;
-  warningIcon?: StaticallyComposableHTML<MessageBar>;
-  successIcon?: StaticallyComposableHTML<MessageBar>;
-};
 
 /**
  * A Message Bar Custom HTML Element.
@@ -26,6 +14,18 @@ export type MessageBarOptions = StartEndOptions<MessageBar> & {
  */
 export class MessageBar extends FASTElement {
   /**
+   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'status';
+  }
+
+  /**
    * Sets the shape of the control.
    *
    * @public
@@ -33,7 +33,21 @@ export class MessageBar extends FASTElement {
    * HTML Attribute: `shape`
    */
   @attr
-  shape: MessageBarShape = 'rounded';
+  public shape?: MessageBarShape;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * Sets the layout of the control.
@@ -46,6 +60,20 @@ export class MessageBar extends FASTElement {
   layout: MessageBarLayout = 'singleline';
 
   /**
+   * Handles changes to the layout attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * Sets the intent of the control.
    *
    * @public
@@ -56,15 +84,17 @@ export class MessageBar extends FASTElement {
   intent: MessageBarIntent = 'info';
 
   /**
-   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
+   * Handles changes to the intent attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
-
-  constructor() {
-    super();
-    this.elementInternals.role = 'status';
+  public intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 
   /**

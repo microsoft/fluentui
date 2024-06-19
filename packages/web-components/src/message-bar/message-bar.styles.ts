@@ -22,6 +22,8 @@ import {
   spacingVerticalMNudge,
 } from '../theme/design-tokens.js';
 
+import { errorState, multiLineState, squareState, successState, warningState } from '../styles/states/index.js';
+
 /**
  * Styles for the MessageBar component.
  *
@@ -44,26 +46,26 @@ export const styles: ElementStyles = css`
     grid-template: 'icon body actions close' / auto 1fr auto auto;
   }
 
-  :host([shape='square']) {
+  :host(${squareState}) {
     border-radius: 0;
   }
 
-  :host([intent='success']) {
+  :host(${successState}) {
     background-color: ${colorPaletteGreenBackground1};
     border-color: ${colorPaletteGreenBorder1};
   }
 
-  :host([intent='warning']) {
+  :host(${warningState}) {
     background-color: ${colorPaletteDarkOrangeBackground1};
     border-color: ${colorPaletteDarkOrangeBorder1};
   }
 
-  :host([intent='error']) {
+  :host(${errorState}) {
     background-color: ${colorPaletteRedBackground1};
     border-color: ${colorPaletteRedBorder1};
   }
 
-  :host([layout='multiline']) {
+  :host(${multiLineState}) {
     grid-template-areas:
       'icon body close'
       'actions actions actions';
@@ -72,25 +74,15 @@ export const styles: ElementStyles = css`
     padding: ${spacingVerticalMNudge} ${spacingHorizontalM};
   }
 
-  .icon {
-  }
-
-  :host([intent='info']) .info,
-  :host([intent='warning']) .warning,
-  :host([intent='error']) .error,
-  :host([intent='success']) .success {
-    display: flex;
-  }
-
-  :host([intent='success']) .success {
+  :host(${successState}) .success {
     color: ${colorPaletteGreenForeground1};
   }
 
-  :host([intent='warning']) .warning {
+  :host(${warningState}) .warning {
     color: ${colorPaletteDarkOrangeForeground1};
   }
 
-  :host([intent='error']) .error {
+  :host(${errorState}) .error {
     color: ${colorPaletteRedForeground1};
   }
 
@@ -100,7 +92,7 @@ export const styles: ElementStyles = css`
     padding: ${spacingVerticalMNudge} 0;
   }
 
-  :host([layout='multiline']) .content {
+  :host(${multiLineState}) .content {
     padding: 0;
   }
 
@@ -119,7 +111,7 @@ export const styles: ElementStyles = css`
     justify-content: end;
   }
 
-  :host([layout='multiline']) ::slotted([slot='close']) {
+  :host(:is(${multiLineState})) ::slotted([slot='close']) {
     flex-direction: column;
     justify-content: start;
     align-items: start;
@@ -132,7 +124,7 @@ export const styles: ElementStyles = css`
     margin-right: ${spacingHorizontalS};
   }
 
-  :host([layout='multiline']) ::slotted([slot='actions']) {
+  :host(:is(${multiLineState}) ::slotted([slot='actions']) {
     margin-top: ${spacingVerticalMNudge};
   }
 
