@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adds animation to selection indicator and icon.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "minor"
+}

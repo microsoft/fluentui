@@ -42,7 +42,7 @@ export class BaseAnchor extends FASTElement {
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The proxy anchor element

@@ -1,6 +1,7 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { toggleState } from '../utils/element-internals.js';
 import type { TextInputControlSize } from './text-input.options.js';
 import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } from './text-input.options.js';
 
@@ -26,6 +27,20 @@ export class TextInput extends FASTElement {
    */
   @attr
   public appearance?: TextInputAppearance;
+
+  /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * Indicates the element's autocomplete state.
@@ -58,6 +73,20 @@ export class TextInput extends FASTElement {
    */
   @attr({ attribute: 'control-size' })
   public controlSize?: TextInputControlSize;
+
+  /**
+   * Handles changes to `control-size` attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * The default slotted content. This is the content that appears in the text field label.
