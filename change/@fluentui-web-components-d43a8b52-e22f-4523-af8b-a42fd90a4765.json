@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: update spinner to use Element Internals for presentational styling",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

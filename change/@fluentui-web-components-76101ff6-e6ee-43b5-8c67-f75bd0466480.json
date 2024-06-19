@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: update checkbox to use Element Internals custom states for presentational attributes",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
