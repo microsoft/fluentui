@@ -72,11 +72,8 @@ export const styles: ElementStyles = css`
     padding: ${spacingVerticalMNudge} ${spacingHorizontalM};
   }
 
-  .info,
-  .warning,
-  .error,
-  .success {
-    display: none;
+  .icon {
+    display: flex;
     grid-area: icon;
     flex-direction: column;
     align-items: center;
