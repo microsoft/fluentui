@@ -65,5 +65,8 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     calloutContentRoot: {
       boxShadow: effects.elevation4,
     },
+    chartWrapper: {
+      overflow: 'auto',
+    },
   };
 };

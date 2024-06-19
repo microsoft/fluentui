@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update internal state to match Combobox and Listbox changes",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

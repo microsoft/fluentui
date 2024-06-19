@@ -22,6 +22,12 @@ describe('Option', () => {
   const defaultContextValues = {
     activeOption: undefined,
     focusVisible: false,
+    getOptionById() {
+      return undefined;
+    },
+    getOptionsMatchingValue() {
+      return [];
+    },
     multiselect: false,
     registerOption() {
       return () => undefined;

@@ -244,12 +244,16 @@
       "@fluentui/react-tree": ["packages/react-components/react-tree/library/src/index.ts"],
       "@fluentui/react-tree-stories": ["packages/react-components/react-tree/stories/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
+      "@fluentui/react-utilities-compat": ["packages/react-components/react-utilities-compat/library/src/index.ts"],
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/library/src/index.ts"],
       "@fluentui/react-virtualizer-stories": ["packages/react-components/react-virtualizer/stories/src/index.ts"],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-utilities-compat-stories": [
+        "packages/react-components/react-utilities-compat/stories/src/index.ts"
+      ]
     }
   }
 }

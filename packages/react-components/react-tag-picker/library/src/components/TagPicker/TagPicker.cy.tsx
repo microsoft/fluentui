@@ -214,9 +214,10 @@ describe('TagPicker', () => {
       mount(<TagPickerControlled defaultOpen />);
       cy.get('[data-testid="tag-picker-list"]').should('be.visible');
       cy.get(`[data-testid="tag-picker-input"]`).should('have.attr', 'aria-activedescendant', `tag-picker-option--0`);
+      cy.get(`[data-testid="tag-picker-input"]`).should('have.attr', 'aria-expanded', 'true');
       cy.get('[data-testid="tag-picker-input"]').focus().realPress('Escape');
       cy.get('[data-testid="tag-picker-list"]').should('exist').should('not.be.visible');
-      cy.get(`[data-testid="tag-picker-input"]`).should('not.have.attr', 'aria-activedescendant');
+      cy.get(`[data-testid="tag-picker-input"]`).should('have.attr', 'aria-expanded', 'false');
     });
     (['ArrowDown', 'ArrowUp'] as const).forEach(keypress =>
       it(`should move aria-activedescendant on ${keypress}`, () => {
@@ -240,9 +241,12 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[0]}]"`).should('not.exist');
         cy.get('[data-testid="tag-picker-input"]').focus().realPress('Enter');
         cy.get('[data-testid="tag-picker-list"]').should('exist').should('be.visible');
+        cy.get(`[data-testid="tag-picker-input"]`).should('have.attr', 'aria-expanded', 'true');
         cy.get(`[data-testid="tag-picker-input"]`).should('have.attr', 'aria-activedescendant', `tag-picker-option--0`);
         cy.get('[data-testid="tag-picker-input"]').focus().realPress(keypress);
         cy.get('[data-testid="tag-picker-list"]').should('exist').should('not.be.visible');
+        cy.get(`[data-testid="tag-picker-input"]`).should('have.attr', 'aria-expanded', 'false');
+        cy.get('[data-testid="tag-picker-input"]').focus().realPress(['Tab']);
         cy.get(`[data-testid="tag-picker-input"]`).should('not.have.attr', 'aria-activedescendant');
         cy.get(`[data-testid="tag-picker-option--0"]`).should('not.exist');
         cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');

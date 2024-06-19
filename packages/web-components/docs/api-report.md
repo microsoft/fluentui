@@ -590,8 +590,10 @@ export type ButtonType = ValuesOf<typeof ButtonType>;
 //
 // @public (undocumented)
 export class Checkbox extends BaseCheckbox {
-    shape: CheckboxShape;
+    shape?: CheckboxShape;
+    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
 }
 
 // @public
@@ -2103,10 +2105,17 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
+    borderedChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     fit?: ImageFit;
+    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
+    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
+    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2146,9 +2155,14 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2221,7 +2235,9 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
+    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
     inline: boolean;
+    inlineChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2487,8 +2503,11 @@ export class ProgressBar extends FASTElement {
     // @internal
     get percentComplete(): number;
     shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
     validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
     value?: number;
     // @internal
@@ -2880,9 +2899,11 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 export class Spinner extends FASTElement {
     constructor();
     appearance?: SpinnerAppearance;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -3143,6 +3164,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends FASTElement {
     appearance?: TextInputAppearance;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     autocomplete?: string;
     autofocus: boolean;
     // @internal
@@ -3158,6 +3180,7 @@ export class TextInput extends FASTElement {
     // @internal
     controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal

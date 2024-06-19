@@ -1,6 +1,7 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
 import { expect, test } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
+import { Link } from './link.js';
 
 const proxyAttributes = {
   href: 'href',
@@ -55,4 +56,36 @@ test.describe('Link', () => {
       await expect(proxy).toHaveAttribute(`${attribute}`, `${value}`);
     });
   }
+
+  test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
+    const element = page.locator('fluent-link');
+
+    await element.evaluate((node: Link) => {
+      node.appearance = 'subtle';
+    });
+
+    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('subtle'))).toBe(true);
+
+    await element.evaluate((node: Link) => {
+      node.appearance = undefined;
+    });
+
+    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('subtle'))).toBe(false);
+  });
+
+  test('should add a custom state of `inline` when true', async ({ page }) => {
+    const element = page.locator('fluent-link');
+
+    await element.evaluate((node: Link) => {
+      node.inline = true;
+    });
+
+    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('inline'))).toBe(true);
+
+    await element.evaluate((node: Link) => {
+      node.inline = false;
+    });
+
+    expect(await element.evaluate((node: Link) => node.elementInternals.states.has('inline'))).toBe(false);
+  });
 });

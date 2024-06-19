@@ -20,6 +20,7 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     appearance,
     clearSelection,
     getOptionById,
+    getOptionsMatchingValue,
     open,
     popoverId,
     disabled,
@@ -32,6 +33,8 @@ export function useTagPickerContextValues(state: TagPickerState): TagPickerConte
     listbox: {
       onOptionClick,
       registerOption,
+      getOptionById,
+      getOptionsMatchingValue,
       selectedOptions,
       selectOption,
       focusVisible: false,
