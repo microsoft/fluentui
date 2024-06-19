@@ -1,11 +1,11 @@
 // import { webLightTheme } from './themes/web/lightTheme';
 // import { themeToTokensObject } from './themeToTokensObject';
-// import { tokens } from './tokens';
+import { tokens } from './tokens';
 
 describe('themeToTokensObject', () => {
   it('passing any of our default themes to the function generates the default tokens object', () => {
     // const generatedTokens = themeToTokensObject(webLightTheme);
-    expect(1).toEqual(1);
+    expect(tokens).toEqual(tokens);
   });
 
   // it('passing a custom theme with custom tokens on top of a default theme generates the correct tokens object', () => {
