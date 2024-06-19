@@ -16,35 +16,12 @@ The Fabric WC3 MessageBar extends `FASTElement`
 
 ```html
 <template>
-  <span class="info">
-    <slot name="info-icon">
-      ${staticallyCompose(options.infoIcon)}
-    </slot>
-  </span>
-  <span class="warning">
-    <slot name="warning-icon">
-      ${staticallyCompose(options.warningIcon)}
-    </slot>
-  </span>
-  <span class="error">
-    <slot name="error-icon">
-      ${staticallyCompose(options.errorIcon)}
-    </span>
-  </span>
-  <span class="success">
-    <slot name="success-icon">
-      ${staticallyCompose(options.successIcon)}</span>
-    </slot>
-  </span>
+  <slot name="icon"></slot>
   <div class="content">
     <slot></slot>
   </div>
-  <div class="actions">
-    <slot name="actions"></slot>
-  </div>
-  <div class="close">
-    <slot name="close"></slot>
-  </div>
+  <slot name="actions"></slot>
+  <slot name="close"></slot>
 </template>
 ```
 
