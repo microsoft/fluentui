@@ -13,7 +13,16 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, Switch, makeStyles, tokens, useId, mergeClasses } from '@fluentui/react-components';
+import {
+  Label,
+  Radio,
+  RadioGroup,
+  Switch,
+  makeStyles,
+  useId,
+  mergeClasses,
+  FluentProvider,
+} from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -46,7 +55,10 @@ import {
 
 import { useMotion, useMotionClassNames } from '@fluentui/react-motion-preview';
 
-import { useNavContentMotionStyles } from '../../../library/src/components/sharedNavStyles.styles';
+import {
+  useNavContentMotionLTRStyles,
+  useNavContentMotionRTLStyles,
+} from '../../../library/src/components/sharedNavStyles.styles';
 
 const useStyles = makeStyles({
   root: {
@@ -91,118 +103,135 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
   const typeLableId = useId('type-label');
   const linkLabelId = useId('link-label');
 
+  const textDirectionId = useId('text-dir-label');
+
   const [isOpen, setIsOpen] = React.useState(true);
-  const [enabledLinks, setEnabledLinks] = React.useState(true);
+  const [enabledLinks, setEnabledLinks] = React.useState(false);
+  const [textDirection, setTextDirection] = React.useState<'ltr' | 'rtl'>('ltr');
   const [type, setType] = React.useState<DrawerType>('inline');
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
   const motion = useMotion<HTMLDivElement>(isOpen);
-  const contentMotionClassNames = useMotionClassNames(motion, useNavContentMotionStyles());
+
+  const LTRcontentMotionClassNames = useMotionClassNames(motion, useNavContentMotionLTRStyles());
+
+  const RTLcontentMotionClassNames = useMotionClassNames(motion, useNavContentMotionRTLStyles());
+
+  const openAnimation = textDirection === 'ltr' ? LTRcontentMotionClassNames : RTLcontentMotionClassNames;
 
   return (
-    <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" ref={motion.ref} open={isOpen} type={type}>
-        <NavDrawerHeader>
-          <Hamburger onClick={() => setIsOpen(false)} />
-        </NavDrawerHeader>
-        <NavDrawerBody>
-          <NavSectionHeader>Home</NavSectionHeader>
-          <NavItem href={linkDestination} icon={<Dashboard />} value="1">
-            Dashboard
-          </NavItem>
-          <NavItem href={linkDestination} icon={<Announcements />} value="2">
-            Announcements
-          </NavItem>
-          <NavItem href={linkDestination} icon={<EmployeeSpotlight />} value="3">
-            Employee Spotlight
-          </NavItem>
-          <NavItem icon={<Search />} href={linkDestination} value="4">
-            Profile Search
-          </NavItem>
-          <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
-            Performance Reviews
-          </NavItem>
+    <FluentProvider dir={textDirection}>
+      <div className={styles.root}>
+        <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" ref={motion.ref} open={isOpen} type={type}>
+          <NavDrawerHeader>
+            <Hamburger onClick={() => setIsOpen(false)} />
+          </NavDrawerHeader>
+          <NavDrawerBody>
+            <NavSectionHeader>Home</NavSectionHeader>
+            <NavItem href={linkDestination} icon={<Dashboard />} value="1">
+              Dashboard
+            </NavItem>
+            <NavItem href={linkDestination} icon={<Announcements />} value="2">
+              Announcements
+            </NavItem>
+            <NavItem href={linkDestination} icon={<EmployeeSpotlight />} value="3">
+              Employee Spotlight
+            </NavItem>
+            <NavItem icon={<Search />} href={linkDestination} value="4">
+              Profile Search
+            </NavItem>
+            <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
+              Performance Reviews
+            </NavItem>
 
-          <NavSectionHeader>Employee Management</NavSectionHeader>
-          <NavCategory value="6">
-            <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="7">
-                Openings
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="8">
-                Submissions
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-          <NavItem icon={<Interviews />} value="9">
-            Interviews
-          </NavItem>
+            <NavSectionHeader>Employee Management</NavSectionHeader>
+            <NavCategory value="6">
+              <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
+              <NavSubItemGroup>
+                <NavSubItem href={linkDestination} value="7">
+                  Openings
+                </NavSubItem>
+                <NavSubItem href={linkDestination} value="8">
+                  Submissions
+                </NavSubItem>
+              </NavSubItemGroup>
+            </NavCategory>
+            <NavItem icon={<Interviews />} value="9">
+              Interviews
+            </NavItem>
 
-          <NavSectionHeader>Benefits</NavSectionHeader>
-          <NavItem icon={<HealthPlans />} value="10">
-            Health Plans
-          </NavItem>
-          <NavCategory value="11">
-            <NavCategoryItem icon={<Person />} value="12">
-              Retirement
-            </NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="13">
-                Plan Information
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="14">
-                Fund Performance
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
+            <NavSectionHeader>Benefits</NavSectionHeader>
+            <NavItem icon={<HealthPlans />} value="10">
+              Health Plans
+            </NavItem>
+            <NavCategory value="11">
+              <NavCategoryItem icon={<Person />} value="12">
+                Retirement
+              </NavCategoryItem>
+              <NavSubItemGroup>
+                <NavSubItem href={linkDestination} value="13">
+                  Plan Information
+                </NavSubItem>
+                <NavSubItem href={linkDestination} value="14">
+                  Fund Performance
+                </NavSubItem>
+              </NavSubItemGroup>
+            </NavCategory>
 
-          <NavSectionHeader>Learning</NavSectionHeader>
-          <NavItem icon={<TrainingPrograms />} value="15">
-            Training Programs
-          </NavItem>
-          <NavCategory value="16">
-            <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="17">
-                Career Paths
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="18">
-                Planning
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
+            <NavSectionHeader>Learning</NavSectionHeader>
+            <NavItem icon={<TrainingPrograms />} value="15">
+              Training Programs
+            </NavItem>
+            <NavCategory value="16">
+              <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
+              <NavSubItemGroup>
+                <NavSubItem href={linkDestination} value="17">
+                  Career Paths
+                </NavSubItem>
+                <NavSubItem href={linkDestination} value="18">
+                  Planning
+                </NavSubItem>
+              </NavSubItemGroup>
+            </NavCategory>
 
-          <NavSectionHeader>Analytics</NavSectionHeader>
-          <NavItem target="_blank" icon={<Analytics />} value="19">
-            Workforce Data
-          </NavItem>
-          <NavItem href={linkDestination} icon={<Reports />} value="20">
-            Reports
-          </NavItem>
-        </NavDrawerBody>
-      </NavDrawer>
-      <div className={mergeClasses(styles.content, type === 'inline' && contentMotionClassNames)}>
-        {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
-        <div className={styles.field}>
-          <Label id={typeLableId}>Type</Label>
-          <RadioGroup
-            value={type}
-            onChange={(_, data) => setType(data.value as DrawerType)}
-            aria-labelledby={typeLableId}
-          >
-            <Radio value="overlay" label="Overlay (Default)" />
-            <Radio value="inline" label="Inline" />
-          </RadioGroup>
-          <Label id={linkLabelId}>Links</Label>
-          <Switch
-            checked={enabledLinks}
-            onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
-            label={enabledLinks ? 'Enabled' : 'Disabled'}
-            aria-labelledby={linkLabelId}
-          />
+            <NavSectionHeader>Analytics</NavSectionHeader>
+            <NavItem target="_blank" icon={<Analytics />} value="19">
+              Workforce Data
+            </NavItem>
+            <NavItem href={linkDestination} icon={<Reports />} value="20">
+              Reports
+            </NavItem>
+          </NavDrawerBody>
+        </NavDrawer>
+        <div className={mergeClasses(styles.content, type === 'inline' && openAnimation)}>
+          {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
+          <div className={styles.field}>
+            <Label id={typeLableId}>Type</Label>
+            <RadioGroup
+              value={type}
+              onChange={(_, data) => setType(data.value as DrawerType)}
+              aria-labelledby={typeLableId}
+            >
+              <Radio value="overlay" label="Overlay (Default)" />
+              <Radio value="inline" label="Inline" />
+            </RadioGroup>
+            <Label id={linkLabelId}>Links</Label>
+            <Switch
+              checked={enabledLinks}
+              onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
+              label={enabledLinks ? 'Enabled' : 'Disabled'}
+              aria-labelledby={linkLabelId}
+            />
+            <Label id={textDirectionId}>Text Direction</Label>
+            <Switch
+              checked={textDirection !== 'ltr'}
+              onChange={(_, data) => setTextDirection((data.checked as boolean) ? 'rtl' : 'ltr')}
+              label={enabledLinks ? 'LTR ' : 'RTL'}
+              aria-labelledby={linkLabelId}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </FluentProvider>
   );
 };

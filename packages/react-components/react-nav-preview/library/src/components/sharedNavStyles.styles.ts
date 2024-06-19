@@ -150,7 +150,7 @@ export const useIconStyles = makeStyles({
   },
 });
 
-export const useNavContentMotionStyles = makeStyles({
+export const useNavContentMotionLTRStyles = makeStyles({
   default: {
     position: 'absolute',
     inset: 0,
@@ -163,6 +163,30 @@ export const useNavContentMotionStyles = makeStyles({
   enter: {
     transitionTimingFunction: tokens.curveDecelerateMid,
     transform: `translate3D(${navItemTokens.navDrawerWidth}, 0, 0)`,
+  },
+
+  exit: {
+    transitionTimingFunction: tokens.curveAccelerateMin,
+  },
+
+  idle: {
+    width: `calc(100% - ${navItemTokens.navDrawerWidth})`,
+  },
+});
+
+export const useNavContentMotionRTLStyles = makeStyles({
+  default: {
+    position: 'absolute',
+    inset: 0,
+    zIndex: 1,
+    transitionProperty: 'transform',
+    transitionDuration: tokens.durationGentle,
+    willChange: 'transform',
+  },
+
+  enter: {
+    transitionTimingFunction: tokens.curveDecelerateMid,
+    transform: `translate3D(-${navItemTokens.navDrawerWidth}, 0, 0)`,
   },
 
   exit: {
