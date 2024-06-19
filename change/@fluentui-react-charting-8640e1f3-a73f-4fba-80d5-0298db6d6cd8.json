@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "reverted back the required changes",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
