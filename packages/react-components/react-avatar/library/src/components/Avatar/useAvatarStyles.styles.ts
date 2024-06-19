@@ -108,16 +108,32 @@ const badgeMask = (margin?: string) => {
 };
 
 const useStyles = makeStyles({
-  textCaption2Strong: { fontSize: `var(--ctrl-token-Avatar-61, var(--semantic-token-Avatar-62, ${tokens.fontSizeBase100}))` },
-  textCaption1Strong: { fontSize: `var(--ctrl-token-Avatar-63, var(--semantic-token-Avatar-64, ${tokens.fontSizeBase200}))` },
-  textSubtitle2: { fontSize: `var(--ctrl-token-Avatar-65, var(--semantic-token-Avatar-66, ${tokens.fontSizeBase400}))` },
-  textSubtitle1: { fontSize: `var(--ctrl-token-Avatar-67, var(--semantic-token-Avatar-68, ${tokens.fontSizeBase500}))` },
+  textCaption2Strong: {
+    fontSize: `var(--ctrl-token-Avatar-61, var(--semantic-token-Avatar-62, ${tokens.fontSizeBase100}))`,
+  },
+  textCaption1Strong: {
+    fontSize: `var(--ctrl-token-Avatar-63, var(--semantic-token-Avatar-64, ${tokens.fontSizeBase200}))`,
+  },
+  textSubtitle2: {
+    fontSize: `var(--ctrl-token-Avatar-65, var(--semantic-token-Avatar-66, ${tokens.fontSizeBase400}))`,
+  },
+  textSubtitle1: {
+    fontSize: `var(--ctrl-token-Avatar-67, var(--semantic-token-Avatar-68, ${tokens.fontSizeBase500}))`,
+  },
   textTitle3: { fontSize: `var(--ctrl-token-Avatar-69, var(--semantic-token-Avatar-70, ${tokens.fontSizeBase600}))` },
 
-  squareSmall: { borderRadius: `var(--ctrl-token-Avatar-71, var(--semantic-token-Avatar-72, ${tokens.borderRadiusSmall}))` },
-  squareMedium: { borderRadius: `var(--ctrl-token-Avatar-73, var(--semantic-token-Avatar-74, ${tokens.borderRadiusMedium}))` },
-  squareLarge: { borderRadius: `var(--ctrl-token-Avatar-75, var(--semantic-token-Avatar-76, ${tokens.borderRadiusLarge}))` },
-  squareXLarge: { borderRadius: `var(--ctrl-token-Avatar-77, var(--semantic-token-Avatar-78, ${tokens.borderRadiusXLarge}))` },
+  squareSmall: {
+    borderRadius: `var(--ctrl-token-Avatar-71, var(--semantic-token-Avatar-72, ${tokens.borderRadiusSmall}))`,
+  },
+  squareMedium: {
+    borderRadius: `var(--ctrl-token-Avatar-73, var(--semantic-token-Avatar-74, ${tokens.borderRadiusMedium}))`,
+  },
+  squareLarge: {
+    borderRadius: `var(--ctrl-token-Avatar-75, var(--semantic-token-Avatar-76, ${tokens.borderRadiusLarge}))`,
+  },
+  squareXLarge: {
+    borderRadius: `var(--ctrl-token-Avatar-77, var(--semantic-token-Avatar-78, ${tokens.borderRadiusXLarge}))`,
+  },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
@@ -380,100 +396,164 @@ const useColorStyles = makeStyles({
 
 const useRingColorStyles = makeStyles({
   neutral: {
-    '::before': { color: `var(--ctrl-token-Avatar-233, var(--semantic-token-Avatar-234, ${tokens.colorBrandStroke1}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-233, var(--semantic-token-Avatar-234, ${tokens.colorBrandStroke1}))`,
+    },
   },
   brand: {
-    '::before': { color: `var(--ctrl-token-Avatar-235, var(--semantic-token-Avatar-236, ${tokens.colorBrandStroke1}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-235, var(--semantic-token-Avatar-236, ${tokens.colorBrandStroke1}))`,
+    },
   },
   'dark-red': {
-    '::before': { color: `var(--ctrl-token-Avatar-237, var(--semantic-token-Avatar-238, ${tokens.colorPaletteDarkRedBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-237, var(--semantic-token-Avatar-238, ${tokens.colorPaletteDarkRedBorderActive}))`,
+    },
   },
   cranberry: {
-    '::before': { color: `var(--ctrl-token-Avatar-239, var(--semantic-token-Avatar-240, ${tokens.colorPaletteCranberryBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-239, var(--semantic-token-Avatar-240, ${tokens.colorPaletteCranberryBorderActive}))`,
+    },
   },
   red: {
-    '::before': { color: `var(--ctrl-token-Avatar-241, var(--semantic-token-Avatar-242, ${tokens.colorPaletteRedBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-241, var(--semantic-token-Avatar-242, ${tokens.colorPaletteRedBorderActive}))`,
+    },
   },
   pumpkin: {
-    '::before': { color: `var(--ctrl-token-Avatar-243, var(--semantic-token-Avatar-244, ${tokens.colorPalettePumpkinBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-243, var(--semantic-token-Avatar-244, ${tokens.colorPalettePumpkinBorderActive}))`,
+    },
   },
   peach: {
-    '::before': { color: `var(--ctrl-token-Avatar-245, var(--semantic-token-Avatar-246, ${tokens.colorPalettePeachBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-245, var(--semantic-token-Avatar-246, ${tokens.colorPalettePeachBorderActive}))`,
+    },
   },
   marigold: {
-    '::before': { color: `var(--ctrl-token-Avatar-247, var(--semantic-token-Avatar-248, ${tokens.colorPaletteMarigoldBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-247, var(--semantic-token-Avatar-248, ${tokens.colorPaletteMarigoldBorderActive}))`,
+    },
   },
   gold: {
-    '::before': { color: `var(--ctrl-token-Avatar-249, var(--semantic-token-Avatar-250, ${tokens.colorPaletteGoldBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-249, var(--semantic-token-Avatar-250, ${tokens.colorPaletteGoldBorderActive}))`,
+    },
   },
   brass: {
-    '::before': { color: `var(--ctrl-token-Avatar-251, var(--semantic-token-Avatar-252, ${tokens.colorPaletteBrassBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-251, var(--semantic-token-Avatar-252, ${tokens.colorPaletteBrassBorderActive}))`,
+    },
   },
   brown: {
-    '::before': { color: `var(--ctrl-token-Avatar-253, var(--semantic-token-Avatar-254, ${tokens.colorPaletteBrownBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-253, var(--semantic-token-Avatar-254, ${tokens.colorPaletteBrownBorderActive}))`,
+    },
   },
   forest: {
-    '::before': { color: `var(--ctrl-token-Avatar-255, var(--semantic-token-Avatar-256, ${tokens.colorPaletteForestBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-255, var(--semantic-token-Avatar-256, ${tokens.colorPaletteForestBorderActive}))`,
+    },
   },
   seafoam: {
-    '::before': { color: `var(--ctrl-token-Avatar-257, var(--semantic-token-Avatar-258, ${tokens.colorPaletteSeafoamBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-257, var(--semantic-token-Avatar-258, ${tokens.colorPaletteSeafoamBorderActive}))`,
+    },
   },
   'dark-green': {
-    '::before': { color: `var(--ctrl-token-Avatar-259, var(--semantic-token-Avatar-260, ${tokens.colorPaletteDarkGreenBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-259, var(--semantic-token-Avatar-260, ${tokens.colorPaletteDarkGreenBorderActive}))`,
+    },
   },
   'light-teal': {
-    '::before': { color: `var(--ctrl-token-Avatar-261, var(--semantic-token-Avatar-262, ${tokens.colorPaletteLightTealBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-261, var(--semantic-token-Avatar-262, ${tokens.colorPaletteLightTealBorderActive}))`,
+    },
   },
   teal: {
-    '::before': { color: `var(--ctrl-token-Avatar-263, var(--semantic-token-Avatar-264, ${tokens.colorPaletteTealBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-263, var(--semantic-token-Avatar-264, ${tokens.colorPaletteTealBorderActive}))`,
+    },
   },
   steel: {
-    '::before': { color: `var(--ctrl-token-Avatar-265, var(--semantic-token-Avatar-266, ${tokens.colorPaletteSteelBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-265, var(--semantic-token-Avatar-266, ${tokens.colorPaletteSteelBorderActive}))`,
+    },
   },
   blue: {
-    '::before': { color: `var(--ctrl-token-Avatar-267, var(--semantic-token-Avatar-268, ${tokens.colorPaletteBlueBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-267, var(--semantic-token-Avatar-268, ${tokens.colorPaletteBlueBorderActive}))`,
+    },
   },
   'royal-blue': {
-    '::before': { color: `var(--ctrl-token-Avatar-269, var(--semantic-token-Avatar-270, ${tokens.colorPaletteRoyalBlueBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-269, var(--semantic-token-Avatar-270, ${tokens.colorPaletteRoyalBlueBorderActive}))`,
+    },
   },
   cornflower: {
-    '::before': { color: `var(--ctrl-token-Avatar-271, var(--semantic-token-Avatar-272, ${tokens.colorPaletteCornflowerBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-271, var(--semantic-token-Avatar-272, ${tokens.colorPaletteCornflowerBorderActive}))`,
+    },
   },
   navy: {
-    '::before': { color: `var(--ctrl-token-Avatar-273, var(--semantic-token-Avatar-274, ${tokens.colorPaletteNavyBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-273, var(--semantic-token-Avatar-274, ${tokens.colorPaletteNavyBorderActive}))`,
+    },
   },
   lavender: {
-    '::before': { color: `var(--ctrl-token-Avatar-275, var(--semantic-token-Avatar-276, ${tokens.colorPaletteLavenderBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-275, var(--semantic-token-Avatar-276, ${tokens.colorPaletteLavenderBorderActive}))`,
+    },
   },
   purple: {
-    '::before': { color: `var(--ctrl-token-Avatar-277, var(--semantic-token-Avatar-278, ${tokens.colorPalettePurpleBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-277, var(--semantic-token-Avatar-278, ${tokens.colorPalettePurpleBorderActive}))`,
+    },
   },
   grape: {
-    '::before': { color: `var(--ctrl-token-Avatar-279, var(--semantic-token-Avatar-280, ${tokens.colorPaletteGrapeBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-279, var(--semantic-token-Avatar-280, ${tokens.colorPaletteGrapeBorderActive}))`,
+    },
   },
   lilac: {
-    '::before': { color: `var(--ctrl-token-Avatar-281, var(--semantic-token-Avatar-282, ${tokens.colorPaletteLilacBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-281, var(--semantic-token-Avatar-282, ${tokens.colorPaletteLilacBorderActive}))`,
+    },
   },
   pink: {
-    '::before': { color: `var(--ctrl-token-Avatar-283, var(--semantic-token-Avatar-284, ${tokens.colorPalettePinkBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-283, var(--semantic-token-Avatar-284, ${tokens.colorPalettePinkBorderActive}))`,
+    },
   },
   magenta: {
-    '::before': { color: `var(--ctrl-token-Avatar-285, var(--semantic-token-Avatar-286, ${tokens.colorPaletteMagentaBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-285, var(--semantic-token-Avatar-286, ${tokens.colorPaletteMagentaBorderActive}))`,
+    },
   },
   plum: {
-    '::before': { color: `var(--ctrl-token-Avatar-287, var(--semantic-token-Avatar-288, ${tokens.colorPalettePlumBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-287, var(--semantic-token-Avatar-288, ${tokens.colorPalettePlumBorderActive}))`,
+    },
   },
   beige: {
-    '::before': { color: `var(--ctrl-token-Avatar-289, var(--semantic-token-Avatar-290, ${tokens.colorPaletteBeigeBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-289, var(--semantic-token-Avatar-290, ${tokens.colorPaletteBeigeBorderActive}))`,
+    },
   },
   mink: {
-    '::before': { color: `var(--ctrl-token-Avatar-291, var(--semantic-token-Avatar-292, ${tokens.colorPaletteMinkBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-291, var(--semantic-token-Avatar-292, ${tokens.colorPaletteMinkBorderActive}))`,
+    },
   },
   platinum: {
-    '::before': { color: `var(--ctrl-token-Avatar-293, var(--semantic-token-Avatar-294, ${tokens.colorPalettePlatinumBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-293, var(--semantic-token-Avatar-294, ${tokens.colorPalettePlatinumBorderActive}))`,
+    },
   },
   anchor: {
-    '::before': { color: `var(--ctrl-token-Avatar-295, var(--semantic-token-Avatar-296, ${tokens.colorPaletteAnchorBorderActive}))` },
+    '::before': {
+      color: `var(--ctrl-token-Avatar-295, var(--semantic-token-Avatar-296, ${tokens.colorPaletteAnchorBorderActive}))`,
+    },
   },
 });
 

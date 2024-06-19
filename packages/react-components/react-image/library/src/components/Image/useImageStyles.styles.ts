@@ -24,8 +24,12 @@ const useStyles = makeStyles({
   },
 
   // Shape variations
-  circular: { borderRadius: `var(--ctrl-token-Image-1137, var(--semantic-token-Image-1138, ${tokens.borderRadiusCircular}))` },
-  rounded: { borderRadius: `var(--ctrl-token-Image-1139, var(--semantic-token-Image-1140, ${tokens.borderRadiusMedium}))` },
+  circular: {
+    borderRadius: `var(--ctrl-token-Image-1137, var(--semantic-token-Image-1138, ${tokens.borderRadiusCircular}))`,
+  },
+  rounded: {
+    borderRadius: `var(--ctrl-token-Image-1139, var(--semantic-token-Image-1140, ${tokens.borderRadiusMedium}))`,
+  },
   square: {
     /* The square styles are exactly the same as the base styles. */
   },

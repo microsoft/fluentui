@@ -38,7 +38,10 @@ const useStyles = makeStyles({
     whiteSpace: 'nowrap',
     padding: '0',
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `var(--ctrl-token-TableSelectionCell-2009, var(--semantic-token-TableSelectionCell-2010, ${tokens.borderRadiusMedium}))` },
+      {
+        outline: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: `var(--ctrl-token-TableSelectionCell-2009, var(--semantic-token-TableSelectionCell-2010, ${tokens.borderRadiusMedium}))`,
+      },
       { selector: 'focus' },
     ),
   },

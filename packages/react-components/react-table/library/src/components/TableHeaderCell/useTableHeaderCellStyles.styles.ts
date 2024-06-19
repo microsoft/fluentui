@@ -35,7 +35,10 @@ const useStyles = makeStyles({
     fontWeight: `var(--ctrl-token-TableHeaderCell-1963, var(--semantic-token-TableHeaderCell-1964, ${tokens.fontWeightRegular}))`,
     padding: `0px ${tokens.spacingHorizontalS}`,
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `var(--ctrl-token-TableHeaderCell-1965, var(--semantic-token-TableHeaderCell-1966, ${tokens.borderRadiusMedium}))` },
+      {
+        outline: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: `var(--ctrl-token-TableHeaderCell-1965, var(--semantic-token-TableHeaderCell-1966, ${tokens.borderRadiusMedium}))`,
+      },
       { selector: 'focus-within' },
     ),
     position: 'relative',

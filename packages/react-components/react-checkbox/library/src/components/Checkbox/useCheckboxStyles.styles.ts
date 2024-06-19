@@ -149,7 +149,9 @@ const useIndicatorStyles = makeStyles({
     width: indicatorSizeLarge,
   },
 
-  circular: { borderRadius: `var(--ctrl-token-Checkbox-841, var(--semantic-token-Checkbox-842, ${tokens.borderRadiusCircular}))` },
+  circular: {
+    borderRadius: `var(--ctrl-token-Checkbox-841, var(--semantic-token-Checkbox-842, ${tokens.borderRadiusCircular}))`,
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
