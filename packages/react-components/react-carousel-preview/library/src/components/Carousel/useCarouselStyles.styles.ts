@@ -7,17 +7,22 @@ export const carouselClassNames: SlotClassNames<CarouselSlots> = {
 };
 
 // TODO: Enable varying sizes w/ tokens
-const PeekSize = '100px';
+// const PeekSize = '100px';
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    // position: 'relative',
+    // display: 'grid',
+    // gridTemplateColumns: 'repeat(3, 80%)',
+    // gridTemplateRows: '1fr',
+  },
   rootPeek: {
-    position: 'relative',
-    marginRight: PeekSize,
-    marginLeft: PeekSize,
+    // position: 'absolute',
+    // marginRight: PeekSize,
+    // marginLeft: PeekSize,
   },
 
   // TODO add additional classes for different states and/or slots

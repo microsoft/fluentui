@@ -2,10 +2,10 @@ import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRe
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
-import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
+import { useAnimateAtoms } from '../hooks/useAnimateAtoms';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
-import { animateAtoms } from '../utils/animateAtoms';
+import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
@@ -94,6 +94,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams }>({ appear, params });
 
+    const animateAtoms = useAnimateAtoms();
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
@@ -158,7 +159,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
+      [animateAtoms, handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
     );
 
     if (mounted) {
