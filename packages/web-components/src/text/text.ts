@@ -1,4 +1,5 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import type { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
@@ -6,6 +7,13 @@ import type { TextAlign, TextFont, TextSize, TextWeight } from './text.options.j
  * @public
  */
 export class Text extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * The text will not wrap
    * NOTE: In Fluent UI React v9 this is "wrap"
@@ -80,6 +88,20 @@ export class Text extends FASTElement {
   size?: TextSize;
 
   /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: TextSize | undefined, next: TextSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `size-${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `size-${next}`, true);
+    }
+  }
+
+  /**
    * THe Text font
    *
    * @public
@@ -88,6 +110,20 @@ export class Text extends FASTElement {
    */
   @attr
   font?: TextFont;
+
+  /**
+   * Handles changes to font attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public fontChanged(prev: TextFont | undefined, next: TextFont | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, next, true);
+    }
+  }
 
   /**
    * THe Text weight
@@ -100,6 +136,20 @@ export class Text extends FASTElement {
   weight?: TextWeight;
 
   /**
+   * Handles changes to weight attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, next, true);
+    }
+  }
+
+  /**
    * THe Text align
    *
    * @public
@@ -108,4 +158,55 @@ export class Text extends FASTElement {
    */
   @attr
   align?: TextAlign;
+
+  /**
+   * Handles changes to align attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, next, true);
+    }
+  }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    Observable.getNotifier(this).subscribe(this);
+
+    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
+      this.handleChange(this, key);
+    });
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this);
+  }
+
+  /**
+   * Handles changes to observable properties
+   * @internal
+   * @param source - the source of the change
+   * @param propertyName - the property name being changed
+   */
+  public handleChange(source: any, propertyName: string) {
+    switch (propertyName) {
+      case 'nowrap':
+      case 'truncate':
+      case 'italic':
+      case 'underline':
+      case 'strikethrough':
+      case 'block':
+        toggleState(this.elementInternals, propertyName, !!this[propertyName]);
+        break;
+      default:
+        break;
+    }
+  }
 }
