@@ -185,6 +185,7 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
 
 export const Assertive = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar aria-live="assertive" intent="info">
+    <span slot="icon">${infoIcon}</span>
     info
     <div class="actions" slot="actions">
       <fluent-button size="small">Action</fluent-button>
