@@ -54,6 +54,12 @@ export class Menu extends FASTElement {
   public slottedTriggers: HTMLElement[] = [];
 
   /**
+   * Defines whether the menu is open or not.
+   * @internal
+   */
+  private _open: boolean = false;
+
+  /**
    * The trigger element of the menu.
    * @internal
    */
@@ -94,8 +100,8 @@ export class Menu extends FASTElement {
       this._trigger = this.slottedTriggers![0];
       this._menuList = this.slottedMenuList![0];
       this._trigger.setAttribute('aria-haspopup', 'true');
-      this._trigger.setAttribute('aria-expanded', 'false');
-      this._menuList.setAttribute('popover', '');
+      this._trigger.setAttribute('aria-expanded', `${this._open}`);
+      this._menuList.setAttribute('popover', this.openOnContext ? 'manual' : '');
 
       this.addListeners();
     }
@@ -105,15 +111,15 @@ export class Menu extends FASTElement {
    * Toggles the open state of the menu.
    * @public
    */
-  public toggleMenu = () => {
-    this._menuList?.togglePopover();
+  public toggleMenu = (e?: Event) => {
+    this._menuList?.togglePopover(!this._open);
   };
 
   /**
    * Closes the menu.
    * @public
    */
-  public closeMenu = () => {
+  public closeMenu = (e?: Event) => {
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -126,10 +132,12 @@ export class Menu extends FASTElement {
    * @public
    */
   public openMenu = (e?: Event) => {
+    this._menuList?.togglePopover(true);
+
     if (e && this.openOnContext) {
       e.preventDefault();
+      // TODO: context menu is preventing default but the popover:backdrop is still picking up the context menu pointer event click.
     }
-    this._menuList?.togglePopover(true);
 
     if (this.closeOnScroll) {
       document.addEventListener('scroll', this.closeMenu);
@@ -164,12 +172,9 @@ export class Menu extends FASTElement {
    */
   public toggleHandler = (e: Event | ToggleEvent): void => {
     if (e instanceof ToggleEvent) {
-      if (e.newState === 'open') {
-        this._trigger?.setAttribute('aria-expanded', 'true');
-        this.focusMenuList();
-      } else {
-        this._trigger?.setAttribute('aria-expanded', 'false');
-      }
+      const newState = e.newState === 'open' ? true : false;
+      this._trigger?.setAttribute('aria-expanded', `${newState}`);
+      this._open = newState;
     }
   };
 
@@ -244,6 +249,7 @@ export class Menu extends FASTElement {
     this._menuList?.addEventListener('toggle', this.toggleHandler);
 
     this._trigger?.addEventListener('keydown', this.triggerKeydownHandler);
+
     if (!this.persistOnItemClick) {
       this._menuList?.addEventListener('click', this.closeMenu);
     }
@@ -251,6 +257,7 @@ export class Menu extends FASTElement {
       this._trigger?.addEventListener('mouseover', this.openMenu);
     } else if (this.openOnContext) {
       this._trigger?.addEventListener('contextmenu', this.openMenu);
+      document.addEventListener('click', this.documentClickHandler);
     } else {
       this._trigger?.addEventListener('click', this.toggleMenu);
     }
@@ -274,6 +281,7 @@ export class Menu extends FASTElement {
     }
     if (this.openOnContext) {
       this._trigger?.removeEventListener('contextmenu', this.openMenu);
+      document.removeEventListener('click', this.documentClickHandler);
     } else {
       this._trigger?.removeEventListener('click', this.toggleMenu);
     }
@@ -295,11 +303,14 @@ export class Menu extends FASTElement {
     switch (key) {
       case keyEscape:
         e.preventDefault();
-        this.closeMenu();
-        this.focusTrigger();
+        if (this._open) {
+          this.closeMenu();
+          this.focusTrigger();
+        }
         break;
       case keyTab:
-        this.closeMenu();
+        if (this._open) this.closeMenu();
+        if (e.shiftKey) this.focusTrigger();
       default:
         return true;
     }
@@ -322,9 +333,21 @@ export class Menu extends FASTElement {
       case keyEnter:
         e.preventDefault();
         this.toggleMenu();
+        this.focusMenuList();
         break;
       default:
         return true;
+    }
+  };
+
+  /**
+   * Handles document click events to close a menu opened with contextmenu in popover="manual" mode.
+   * @internal
+   * @param e - The event triggered on document click.
+   */
+  private documentClickHandler = (e: any) => {
+    if (!e.composedPath().some((el: any) => el === this._trigger || el === this._menuList)) {
+      this.closeMenu();
     }
   };
 }
