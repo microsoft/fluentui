@@ -13,6 +13,7 @@ import {
   colorNeutralForeground2Pressed,
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
+  colorStrokeFocus2,
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
@@ -46,6 +47,11 @@ export const styles = css`
 
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
+  }
+
+  :host(:focus-visible) {
+    border-radius: ${borderRadiusMedium};
+    outline: 2px solid ${colorStrokeFocus2};
   }
 
   .indicator {
