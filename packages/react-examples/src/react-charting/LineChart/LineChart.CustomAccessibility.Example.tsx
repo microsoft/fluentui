@@ -83,7 +83,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
             xAxisCalloutData: '2018/01/01',
             yAxisCalloutData: '10%',
             xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 2018/01/01' },
-            callOutAccessibilityData: { ariaLabel: 'Point 1 First 10' },
+            callOutAccessibilityData: { ariaLabel: 'Line series 1 of 5 Point 1 First 10%' },
           },
           {
             x: new Date('2018/02/01'),
@@ -91,7 +91,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
             xAxisCalloutData: '2018/01/15',
             yAxisCalloutData: '18%',
             xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 2018/01/15' },
-            callOutAccessibilityData: { ariaLabel: 'Point 1 First 30' },
+            callOutAccessibilityData: { ariaLabel: 'Line series 2 of 5 Point 1 First 18%' },
           },
           {
             x: new Date('2018/03/01'),
@@ -99,7 +99,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
             xAxisCalloutData: '2018/01/28',
             yAxisCalloutData: '24%',
             xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 2018/01/28' },
-            callOutAccessibilityData: { ariaLabel: 'Point 1 First 10' },
+            callOutAccessibilityData: { ariaLabel: 'Line series 3 of 5 Point 1 First 24%' },
           },
           {
             x: new Date('2018/04/01'),
@@ -107,7 +107,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
             xAxisCalloutData: '2018/02/01',
             yAxisCalloutData: '25%',
             xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 2018/02/01' },
-            callOutAccessibilityData: { ariaLabel: 'Point 1 First 30' },
+            callOutAccessibilityData: { ariaLabel: 'Line series 4 of 5 Point 1 First 25%' },
           },
           {
             x: new Date('2018/05/01'),
@@ -115,7 +115,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
             xAxisCalloutData: '2018/03/01',
             yAxisCalloutData: '15%',
             xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 2018/03/01' },
-            callOutAccessibilityData: { ariaLabel: 'Point 1 First 10' },
+            callOutAccessibilityData: { ariaLabel: 'Line series 5 of 5 Point 1 First 15%' },
           },
         ],
         legend: 'First',
