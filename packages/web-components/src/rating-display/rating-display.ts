@@ -100,22 +100,23 @@ export class RatingDisplay extends FASTElement {
   }
 
   /**
-   * Returns an array of icon values based on the "max" attribute.
+   * Generates the icon SVG elements based on the "max" attribute.
    *
    * @internal
    */
-  public get icons(): number[] {
-    // Create an array of values from 0.5 to the max value, incrementing by 0.5.
-    return Array.from({ length: Math.round(Math.abs(this.compact ? 1 : this.max)) * 2 }, (_, i) => (i + 1) / 2);
-  }
+  public generateIcons(): string {
+    let htmlString: string = '';
 
-  /**
-   * Returns a boolean that determines if the icon passed as an argument is selected.
-   *
-   * @internal
-   */
-  public isIconSelected(iconValue: number): boolean {
-    // Compare the argument to the value attribute, rounded to the nearest half.
-    return iconValue === Math.round((this.compact ? 1 : this.value) * 2) / 2;
+    // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
+    const selectedValue: number = Math.round((this.compact ? 1 : this.value) * 2) / 2;
+
+    for (let i: number = 0; i < this.max * 2; i++) {
+      const iconValue: number = (i + 1) / 2;
+      htmlString += `<svg aria-hidden="true" ${
+        iconValue === selectedValue ? 'selected' : ''
+      }><use xlink:href="#star"></use></svg>`;
+    }
+
+    return htmlString;
   }
 }

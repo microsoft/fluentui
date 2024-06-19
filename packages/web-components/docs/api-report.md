@@ -133,9 +133,13 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 // @public (undocumented)
 export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
+    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
+    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
+    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -147,7 +151,6 @@ export const AnchorButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -374,9 +377,15 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
+    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
+    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     shape?: BadgeShape;
+    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
+    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -468,6 +477,7 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 export class Button extends FASTElement {
     constructor();
     appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
@@ -479,7 +489,7 @@ export class Button extends FASTElement {
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
     formAction?: string;
     static readonly formAssociated = true;
@@ -491,13 +501,16 @@ export class Button extends FASTElement {
     formNoValidate?: boolean;
     formTarget?: ButtonFormTarget;
     iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     keypressHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name?: string;
     protected press(): void;
     resetForm(): void;
     shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -513,7 +526,6 @@ export const ButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -1668,7 +1680,6 @@ export const CompoundButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -1712,19 +1723,26 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
+    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
+    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
+    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     overflowCount: number;
     // (undocumented)
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
+    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
+    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -1917,7 +1935,10 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * Divider roles
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
@@ -2290,7 +2311,6 @@ export const MenuButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -2572,7 +2592,10 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * Radio Group orientation
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
@@ -2602,17 +2625,22 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
 export class RatingDisplay extends FASTElement {
+    constructor();
     color: RatingDisplayColor;
     compact: boolean;
     // (undocumented)
     protected compactChanged(): void;
     count?: number;
-    max: number;
-    // (undocumented)
-    protected maxChanged(): void;
-    size: RatingDisplaySize;
     // @internal
-    readonly uid: string;
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    get icons(): number[];
+    // @internal
+    isIconSelected(iconValue: number): boolean;
+    max: number;
+    size: RatingDisplaySize;
     value: number;
 }
 
@@ -3340,7 +3368,6 @@ export const ToggleButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
