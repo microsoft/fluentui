@@ -1,6 +1,6 @@
-import { webLightTheme } from './themes/web/lightTheme';
-import { themeToTokensObject } from './themeToTokensObject';
-import { tokens } from './tokens';
+// import { webLightTheme } from './themes/web/lightTheme';
+// import { themeToTokensObject } from './themeToTokensObject';
+// import { tokens } from './tokens';
 
 describe('themeToTokensObject', () => {
   it('passing any of our default themes to the function generates the default tokens object', () => {
