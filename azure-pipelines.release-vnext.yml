@@ -84,7 +84,7 @@ extends:
                 displayName: yarn build
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)

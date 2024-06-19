@@ -1,4 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
@@ -25,6 +26,20 @@ export class ProgressBar extends FASTElement {
   public thickness?: ProgressBarThickness;
 
   /**
+   * Handles changes to thickness attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * The shape of the progress bar
    * @public
    * HTML Attribute: `shape`
@@ -33,12 +48,43 @@ export class ProgressBar extends FASTElement {
   public shape?: ProgressBarShape;
 
   /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * The validation state of the progress bar
    * @public
    * HTML Attribute: `validation-state`
    */
   @attr({ attribute: 'validation-state' })
   public validationState: ProgressBarValidationState | null = null;
+
+  /**
+   * Handles changes to validation-state attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public validationStateChanged(
+    prev: ProgressBarValidationState | undefined,
+    next: ProgressBarValidationState | undefined,
+  ) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * The value of the progress
