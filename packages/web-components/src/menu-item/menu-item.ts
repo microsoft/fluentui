@@ -130,17 +130,17 @@ export class MenuItem extends FASTElement {
 
       case keyArrowRight:
         //open/focus on submenu
-        if (this.disabled) return false;
-        this.submenu?.togglePopover(true);
-        this.submenu?.focus();
+        if (!this.disabled) {
+          this.submenu?.togglePopover(true);
+          this.submenu?.focus();
+        }
+
         return false;
 
       case keyArrowLeft:
         //close submenu
-        try {
-          this.parentElement?.togglePopover(false);
-        } catch (e) {
-          // Catch DOMException if parentElement is not a menu
+        if (this.parentElement?.hasAttribute('popover')) {
+          this.parentElement.togglePopover(false);
         }
 
         return false;

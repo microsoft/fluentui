@@ -66,7 +66,7 @@ export class Menu extends FASTElement {
   private _trigger?: HTMLElement;
   /**
    * The menu list element of the menu which has the popover behavior.
-   *  @internal
+   * @internal
    */
   private _menuList?: HTMLElement;
 
