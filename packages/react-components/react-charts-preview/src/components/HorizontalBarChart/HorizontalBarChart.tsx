@@ -400,7 +400,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           </div>
         );
       })}
-      <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} withArrow openOnHover>
+      <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} openOnHover>
         <PopoverSurface tabIndex={-1}>
           <ChartHoverCard
             Legend={xCalloutValue ? xCalloutValue : legend!}
