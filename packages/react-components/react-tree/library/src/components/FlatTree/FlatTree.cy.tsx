@@ -350,6 +350,22 @@ describe('FlatTree', () => {
       cy.get('[data-testid="item1__item1"]').should('exist');
       cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'true');
     });
+    it('should warn if checkedItems and defaultCheckedItems are provided at the same time', () => {
+      cy.window().then(win => {
+        cy.spy(win.console, 'error');
+      });
+      mount(
+        <TreeTest
+          selectionMode="multiselect"
+          defaultOpenItems={['item1']}
+          checkedItems={['item1__item1']}
+          defaultCheckedItems={['item1__item1']}
+        />,
+      );
+      cy.window().then(win => {
+        expect(win.console.error).to.be.callCount(1);
+      });
+    });
     it('should change selection when selecting a closed branch', () => {
       mount(<TreeTest selectionMode="multiselect" />);
       cy.get('[data-testid="item1"]').should('have.attr', 'aria-checked', 'false');
