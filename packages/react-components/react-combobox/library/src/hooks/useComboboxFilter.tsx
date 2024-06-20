@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { childrenToString } from '@fluentui/react-utilities';
 import { Option } from '../Option';
 
 type UseComboboxFilterConfig<T extends { children: React.ReactNode; value: string } | string> = {
@@ -31,7 +32,7 @@ function defaultToString(option: string | { children: React.ReactNode; value: st
     return option;
   }
 
-  return option.children && typeof option.children === 'string' ? option.children : option.value;
+  return childrenToString(option.children) ?? option.value;
 }
 
 /**

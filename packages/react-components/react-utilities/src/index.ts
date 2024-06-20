@@ -59,6 +59,7 @@ export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScroll
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
+  childrenToString,
   clamp,
   // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,

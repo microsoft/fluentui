@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useComboboxFilter } from './useComboboxFilter';
 
@@ -39,6 +40,15 @@ describe('useComboboxFilter', () => {
 
     expect(result.current).toHaveLength(1);
     expect(result.current[0].props.children).toEqual('Alligator');
+  });
+
+  it('filters options in according to the query (HTML elements)', () => {
+    const query = 'al';
+    const comboboxOptions = [{ children: <em>Alligator</em>, value: '1' }, ...options.slice(1)];
+    const { result } = renderHook(() => useComboboxFilter(query, comboboxOptions, {}));
+
+    expect(result.current).toHaveLength(1);
+    expect(result.current[0].props.children).toEqual(<em>Alligator</em>);
   });
 
   it('filters with a custom filter function', () => {

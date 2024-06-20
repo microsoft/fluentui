@@ -13,18 +13,18 @@ const useStyles = makeStyles({
 });
 
 const options = [
-  { children: 'Alligator', value: 'Alligator' },
-  { children: 'Bee', value: 'Bee' },
-  { children: 'Bird', value: 'Bird' },
-  { children: 'Cheetah', disabled: true, value: 'Cheetah' },
-  { children: 'Dog', value: 'Dog' },
-  { children: 'Dolphin', value: 'Dolphin' },
-  { children: 'Ferret', value: 'Ferret' },
-  { children: 'Firefly', value: 'Firefly' },
-  { children: 'Fish', value: 'Fish' },
-  { children: 'Goat', value: 'Goat' },
-  { children: 'Horse', value: 'Horse' },
-  { children: 'Lion', value: 'Lion' },
+  { children: <em>Alligator</em>, value: '1' },
+  { children: 'Bee', value: '2' },
+  { children: 'Bird', value: '3' },
+  { children: 'Cheetah', disabled: true, value: '4' },
+  { children: 'Dog', value: '5' },
+  { children: 'Dolphin', value: '6' },
+  { children: 'Ferret', value: '7' },
+  { children: 'Firefly', value: '8' },
+  { children: 'Fish', value: '9' },
+  { children: 'Goat', value: '10' },
+  { children: 'Horse', value: '11' },
+  { children: 'Lion', value: '12' },
 ];
 
 export const Filtering = () => {
