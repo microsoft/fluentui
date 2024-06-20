@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add childrenToString utility function",
+  "packageName": "@fluentui/react-utilities",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}
