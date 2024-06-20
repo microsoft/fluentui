@@ -9,10 +9,11 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find } from '../../utilities/index';
+import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find, ChartHoverCard } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { useFocusableGroup } from '@fluentui/react-components';
+import { Popover, PopoverSurface, useFocusableGroup } from '@fluentui/react-components';
+import { PositioningVirtualElement } from '../../../../react-positioning/src/types';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -45,20 +46,27 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   const [barCalloutProps, setBarCalloutProps] = React.useState<IChartDataPoint>();
   const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<IAccessibilityProps | undefined>();
   const [barSpacingInPercent, setBarSpacingInPercent] = React.useState<number>(0);
+  const [isPopoverOpen, setPopoverOpen] = React.useState<boolean>(false);
+  const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
 
   function _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
     _refArray.push({ index: legendTitle, refElement: element });
   }
 
-  function _hoverOn(hoverValue: string | number | Date | null, point: IChartDataPoint): void {
+  function _hoverOn(
+    event: React.MouseEvent<SVGRectElement, MouseEvent>,
+    hoverVal: string | number | Date | null,
+    point: IChartDataPoint,
+  ): void {
     if ((!isCalloutVisible || legend !== point.legend!) && _calloutAnchorPoint !== point) {
       const currentHoveredElement = find(
         _refArray,
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
       _calloutAnchorPoint = point;
+      updatePosition(event.clientX, event.clientY);
       setIsCalloutVisible(true);
-      setHoverValue(hoverValue);
+      setHoverValue(hoverVal!);
       setLineColor(point.color!);
       setLegend(point.legend!);
       setRefSelected(currentHoveredElement!.refElement);
@@ -82,6 +90,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       setRefSelected(null);
       setLineColor('');
       setLegend('');
+      setPopoverOpen(false);
     }
   };
 
@@ -253,8 +262,8 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           width={value + '%'}
           height={_barHeight}
           fill={color}
-          onMouseOver={point.legend !== '' ? _hoverOn.bind(xValue, point) : undefined}
-          onFocus={point.legend !== '' ? _hoverOn.bind(xValue, point) : undefined}
+          onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
+          onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
           role="img"
           aria-label={_getAriaLabel(point)}
           onBlur={_hoverOff}
@@ -282,6 +291,33 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   function _isChartEmpty(): boolean {
     return !(props.data && props.data.length > 0);
   }
+
+  function updatePosition(newX: number, newY: number): void {
+    const threshold = 1; // Set a threshold for movement
+    const { x, y } = clickPosition;
+
+    // Calculate the distance moved
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    // Update the position only if the distance moved is greater than the threshold
+    if (distance > threshold) {
+      setClickPosition({ x: newX, y: newY });
+      setPopoverOpen(true);
+    }
+  }
+
+  const virtualElement: PositioningVirtualElement = {
+    getBoundingClientRect: () => ({
+      top: clickPosition.y,
+      left: clickPosition.x,
+      right: clickPosition.x,
+      bottom: clickPosition.y,
+      x: clickPosition.x,
+      y: clickPosition.y,
+      width: 0,
+      height: 0,
+    }),
+    contextElement: refSelected,
+  };
 
   React.useEffect(() => {
     const svgWidth = barChartSvgRef?.current?.getBoundingClientRect().width || 0;
@@ -364,6 +400,16 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           </div>
         );
       })}
+      <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} withArrow openOnHover>
+        <PopoverSurface tabIndex={-1}>
+          <ChartHoverCard
+            Legend={xCalloutValue ? xCalloutValue : legend!}
+            YValue={yCalloutValue ? yCalloutValue : hoverValue!}
+            color={lineColor}
+            culture={props.culture}
+          />
+        </PopoverSurface>
+      </Popover>
     </div>
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
