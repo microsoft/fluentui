@@ -1,7 +1,4 @@
-<details>
-<summary>
-Best Practices
-</summary>
+## Best practices
 
 ### Do
 
@@ -13,5 +10,3 @@ Best Practices
 - Avoid including both a validationMessage and hint text.
 - Don't add multiple controls as a child of a single Field. The label is only associated with one control.
 - Don't use the Field's label with Checkbox. Use the Checkbox's label instead (the Field can still be used to add a validationMessage or hint).
-
-</details>
