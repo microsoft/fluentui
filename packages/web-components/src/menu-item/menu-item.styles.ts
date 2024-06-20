@@ -46,43 +46,6 @@ export const styles = css`
 
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
-  }
-
-  :host(:focus-visible) {
-    border-radius: ${borderRadiusMedium};
-    outline: 2px solid ${colorStrokeFocus2};
-  }
-
-  .indicator {
-    width: 20px;
-  }
-
-  :host(:not([checked])) .indicator,
-  :host(:not([checked])) ::slotted([slot='indicator']) {
-    display: none;
-  }
-
-  .content {
-    white-space: nowrap;
-    flex-grow: 1;
-    grid-column: auto / span 2;
-    padding: 0 2px;
-  }
-
-  :host(:not([aria-haspopup='menu'])) .submenu-glyph,
-  :host(:not([aria-haspopup='menu'])) ::slotted([slot='submenu-glyph']){
-    display: none;
-  }
-
-  ::slotted([slot='end']) {
-    color: ${colorNeutralForeground3};
-    font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
-    white-space: nowrap;
-  }
-
-
-  :host(:hover) :is(.indicator,.submenu-glyph,.content),
-  :host(:hover) ::slotted(:is([slot='indicator'], [slot='submenu-glyph'])) {
     color: ${colorNeutralForeground2Hover};
   }
 
@@ -92,24 +55,45 @@ export const styles = css`
 
   :host(:active) {
     background-color: ${colorNeutralBackground1Selected};
-  }
-
-  :host(:active) :is(.indicator,.submenu-glyph,.content),
-  :host(:active) ::slotted(:is([slot='indicator'], [slot='submenu-glyph'])) {
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(:active) ::slotted([slot='start']) {
+  :host([icon]:active) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Pressed};
   }
 
   :host([disabled]) {
     background-color: ${colorNeutralBackgroundDisabled};
+    color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) :is(.indicator,.submenu-glyph),
-  :host([disabled]) ::slotted(:is([slot='start'], [slot='end'])) {
+  :host([disabled]) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
+  }
+
+  :host(:focus-visible) {
+    border-radius: ${borderRadiusMedium};
+    outline: 2px solid ${colorStrokeFocus2};
+  }
+
+  .content {
+    white-space: nowrap;
+    flex-grow: 1;
+    grid-column: auto / span 2;
+    padding: 0 2px;
+  }
+
+  :host(:not([checked])) .indicator,
+  :host(:not([checked])) ::slotted([slot='indicator']),
+  :host(:not([aria-haspopup='menu'])) .submenu-glyph,
+  :host(:not([aria-haspopup='menu'])) ::slotted([slot='submenu-glyph']){
+    display: none;
+  }
+
+  ::slotted([slot='end']) {
+    color: ${colorNeutralForeground3};
+    font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
+    white-space: nowrap;
   }
 
   :host([data-indent='1']) {
@@ -132,9 +116,11 @@ export const styles = css`
   .indicator,
   ::slotted([slot='indicator']) {
     grid-column: 1 / span 1;
+    width: 20px;
   }
 
   ::slotted([slot='start']) {
+    display: inline-flex;
     grid-column: calc(var(--indent)) / span 1;
   }
 
