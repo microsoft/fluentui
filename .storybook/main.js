@@ -94,7 +94,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
-   * @see https://storybook.js.org/docs/react/addons/writing-presets#previewmanager-templates
+   * @see https://storybook.js.org/docs/addons/writing-presets#ui-configuration
    */
   previewHead: head => head + previewHeadTemplate,
 });

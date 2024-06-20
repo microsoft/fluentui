@@ -1,9 +1,9 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
+import { useAnimateAtoms } from '../hooks/useAnimateAtoms';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
-import { animateAtoms } from '../utils/animateAtoms';
+import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
 
@@ -66,6 +66,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const elementRef = React.useRef<HTMLElement>();
     const paramsRef = React.useRef<MotionParams>(params);
 
+    const animateAtoms = useAnimateAtoms();
     const isReducedMotion = useIsReducedMotion();
 
     const onMotionStart = useEventCallback(() => {
@@ -102,7 +103,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
           handle.cancel();
         };
       }
-    }, [handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
+    }, [animateAtoms, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };
