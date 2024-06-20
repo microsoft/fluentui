@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add options to manually show/hide focus visibility on active descendants, and scroll the active item into view",
+  "packageName": "@fluentui/react-aria",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

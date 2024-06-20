@@ -3,6 +3,7 @@
 exports[`Listbox renders a default state 1`] = `
 <div>
   <div
+    aria-activedescendant="fluent-option1"
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
@@ -10,6 +11,7 @@ exports[`Listbox renders a default state 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
+      data-activedescendant=""
       id="fluent-option1"
       role="option"
     >
@@ -95,6 +97,7 @@ exports[`Listbox renders a default state 1`] = `
 exports[`Listbox renders with a selected option 1`] = `
 <div>
   <div
+    aria-activedescendant="fluent-option4"
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
@@ -102,6 +105,7 @@ exports[`Listbox renders with a selected option 1`] = `
     <div
       aria-selected="true"
       class="fui-Option"
+      data-activedescendant=""
       id="fluent-option4"
       role="option"
     >

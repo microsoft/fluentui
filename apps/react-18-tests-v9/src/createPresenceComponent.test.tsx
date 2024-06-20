@@ -1,9 +1,7 @@
-import { useEventCallback } from '@fluentui/react-utilities';
+import { createPresenceComponent, useEventCallback } from '@fluentui/react-components';
 import { act, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-
-import { createPresenceComponent } from './createPresenceComponent';
 
 const keyframes = [{ opacity: 0 }, { opacity: 1 }];
 const options = { duration: 500, fill: 'forwards' as const };
@@ -42,16 +40,16 @@ describe('createPresenceComponent', () => {
     expect(Element.prototype.animate).toBeUndefined();
   });
 
-  it('unmounts when state changes', () => {
+  it('unmounts when state changes', async () => {
     const finish = jest.fn();
-    const { getByText, queryByText } = render(<TestComponent finish={finish} />);
 
+    const { getByText, queryByText } = render(<TestComponent finish={finish} />);
     expect(queryByText('Hello')).toBeInTheDocument();
 
     // ---
 
-    act(() => {
-      userEvent.click(getByText('Click me'));
+    await act(async () => {
+      await userEvent.click(getByText('Click me'));
     });
 
     expect(finish).toHaveBeenCalledTimes(1);
@@ -59,15 +57,15 @@ describe('createPresenceComponent', () => {
 
     // ---
 
-    act(() => {
-      userEvent.click(getByText('Click me'));
+    await act(async () => {
+      await userEvent.click(getByText('Click me'));
     });
 
     expect(finish).toHaveBeenCalledTimes(2);
     expect(queryByText('Hello')).toBeInTheDocument();
   });
 
-  it('handles "appear"', () => {
+  it('handles "appear"', async () => {
     const finish = jest.fn();
     const { getByText, queryByText } = render(<TestComponent appear finish={finish} />);
 
@@ -76,8 +74,8 @@ describe('createPresenceComponent', () => {
 
     // ---
 
-    act(() => {
-      userEvent.click(getByText('Click me'));
+    await act(async () => {
+      await userEvent.click(getByText('Click me'));
     });
 
     expect(finish).toHaveBeenCalledTimes(2);
