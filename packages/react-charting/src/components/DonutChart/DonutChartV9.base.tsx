@@ -11,7 +11,7 @@ import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { Popover, PopoverSurface } from '@fluentui/react-components';
+import { Popover, PopoverSurface, PositioningVirtualElement } from '@fluentui/react-components';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -46,7 +46,6 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
-  private _popoverTarget: any;
   // private pieRef: any;
 
   public static getDerivedStateFromProps(
@@ -90,7 +89,6 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
     this._calloutId = getId('callout');
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
-    this._popoverTarget = null;
     // this.pieRef = React.createRef(); // Creating a ref for the Pie component
   }
   public componentDidMount(): void {
@@ -157,19 +155,8 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
             </svg>
           </div>
         </FocusZone>
-        <div
-          style={{
-            position: 'absolute',
-            top: this.state.clickPosition.y,
-            left: this.state.clickPosition.x,
-            right: this.state.clickPosition.x,
-            bottom: this.state.clickPosition.y,
-            visibility: 'hidden',
-          }}
-          ref={el => (this._popoverTarget = el)}
-        />
         <Popover
-          positioning={{ position: 'above', align: 'start', target: this._popoverTarget }}
+          positioning={{ position: 'above', align: 'start', target: this.virtualElement }}
           open={this.state.isPopoverOpen}
           withArrow
           openOnHover
@@ -195,6 +182,19 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
       />
     );
   }
+
+  virtualElement: PositioningVirtualElement = {
+    getBoundingClientRect: () => ({
+      top: this.state.clickPosition.y,
+      left: this.state.clickPosition.x,
+      right: this.state.clickPosition.x,
+      bottom: this.state.clickPosition.y,
+      x: this.state.clickPosition.x,
+      y: this.state.clickPosition.y,
+      width: 0,
+      height: 0,
+    }),
+  };
 
   updatePosition(newX: number, newY: number) {
     const threshold = 1; // Set a threshold for movement
@@ -315,8 +315,8 @@ export class DonutChartV9Base extends React.Component<IDonutChartProps, IDonutCh
   private _hoverCallback = (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
     if (this._calloutAnchorPoint !== data) {
       this._calloutAnchorPoint = data;
-      const target = e.currentTarget as HTMLOrSVGElement;
-      this.setState({ targetElement: target });
+      // const target = e.currentTarget as HTMLOrSVGElement;
+      this.setState({ targetElement: e });
       if (!this.state.isPopoverOpen) {
         this.setState({ isPopoverOpen: true });
       }
