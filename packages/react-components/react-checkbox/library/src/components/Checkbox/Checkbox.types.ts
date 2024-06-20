@@ -27,7 +27,10 @@ export type CheckboxSlots = {
   /**
    * The checkbox, with the checkmark icon as its child when checked.
    */
-  indicator: Slot<'div'>;
+  // FIXME: this should be 'span' by default, because you cannot have a 'div' inside of a 'span'
+  // but changing the signature would be a breaking change
+  // TODO: change the default value to 'span' in the next major
+  indicator: Slot<'div', 'span'>;
 };
 
 /**
