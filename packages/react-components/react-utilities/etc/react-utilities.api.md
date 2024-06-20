@@ -19,6 +19,9 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
 // @public
 export function canUseDOM(): boolean;
 
+// @public
+export function childrenToString(children: React_2.ReactNode | React_2.ReactNode[]): string;
+
 // @internal
 export const clamp: (value: number, min: number, max: number) => number;
 
