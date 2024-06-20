@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 const options = [
-  { children: <em>Alligator</em>, value: '1' },
+  { children: 'Alligator', value: '1' },
   { children: 'Bee', value: '2' },
   { children: 'Bird', value: '3' },
   { children: 'Cheetah', disabled: true, value: '4' },
