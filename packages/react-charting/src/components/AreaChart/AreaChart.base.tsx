@@ -659,6 +659,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   };
 
+  private _getCircleOpacity = (legend: string): number => {
+    if (!this._isMultiStackChart) {
+      return 1;
+    } else {
+      let opacity = 0.3;
+      if (this.state.isCalloutVisible) {
+        opacity = 1;
+      }
+      if (!this._noLegendHighlighted()) {
+        opacity = this._legendHighlighted(legend) ? 1 : 0.1;
+      }
+      return opacity;
+    }
+  };
+
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
@@ -725,7 +740,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               stroke={this._colors[index]}
               strokeWidth={3}
               fill={this._colors[index]}
-              opacity={this._opacity[index]}
+              opacity={this._getCircleOpacity(points[index]!.legend)}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
@@ -786,6 +801,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
                   strokeWidth={3}
+                  opacity={this._getCircleOpacity(points[index]!.legend)}
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
@@ -816,6 +832,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 cy={yScale(singlePoint.values[1])}
                 stroke={lineColor}
                 strokeWidth={3}
+                opacity={this._getCircleOpacity(points[index]!.legend)}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
