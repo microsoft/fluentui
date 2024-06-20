@@ -3,7 +3,42 @@ import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utili
 import { MenuList } from '../menu-list/menu-list.js';
 
 /**
- * The Menu class represents a menu component.
+ * A Menu component that provides a customizable menu element.
+ * @class Menu
+ * @extends FASTElement
+ *
+ * @attr open-on-hover - Determines if the menu should open on hover.
+ * @attr open-on-context - Determines if the menu should open on right click.
+ * @attr close-on-scroll - Determines if the menu should close on scroll.
+ * @attr persist-on-item-click - Determines if the menu open state should persist on click of menu item.
+ *
+ * @cssproperty --menu-max-height - The max-height of the menu.
+ *
+ * @slot trigger - Slot for the trigger elements.
+ * @slot - Default slot for the menu list.
+ *
+ * @method connectedCallback - Called when the element is connected to the DOM. Sets up the component.
+ * @method disconnectedCallback - Called when the element is disconnected from the DOM. Removes event listeners.
+ * @method setComponent - Sets the component state.
+ * @method toggleMenu - Toggles the open state of the menu.
+ * @method closeMenu - Closes the menu.
+ * @method openMenu - Opens the menu.
+ * @method focusMenuList - Focuses on the menu list.
+ * @method focusTrigger - Focuses on the menu trigger.
+ * @method openOnHoverChanged - Called whenever the 'openOnHover' property changes.
+ * @method persistOnItemClickChanged - Called whenever the 'persistOnItemClick' property changes.
+ * @method openOnContextChanged - Called whenever the 'openOnContext' property changes.
+ * @method closeOnScrollChanged - Called whenever the 'closeOnScroll' property changes.
+ * @method addListeners - Adds event listeners.
+ * @method removeListeners - Removes event listeners.
+ * @method menuKeydownHandler - Handles keyboard interaction for the menu.
+ * @method triggerKeydownHandler - Handles keyboard interaction for the trigger.
+ * @method documentClickHandler - Handles document click events to close the menu when a click occurs outside of the menu or the trigger.
+ *
+ * @summary The Menu component functions as a customizable menu element.
+ *
+ * @tag fluent-menu
+ *
  * @public
  */
 export class Menu extends FASTElement {

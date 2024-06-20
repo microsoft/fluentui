@@ -26,4 +26,9 @@ export const styles = css`
     padding: 4px;
     row-gap: 2px;
   }
+
+  /* Prevent shrinking of MenuItems when max-height is applied to MenuList */
+  ::slotted(fluent-menu-item) {
+    flex-shrink: 0;
+  }
 `;
