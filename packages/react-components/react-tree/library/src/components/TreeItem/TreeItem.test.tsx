@@ -10,6 +10,7 @@ describe('TreeItem', () => {
   isConformant<TreeItemProps>({
     Component: TreeItem,
     displayName: 'TreeItem',
+    renderOptions: { wrapper: ({ children }) => <Tree>{children}</Tree> },
     getTargetElement(renderResult, attr) {
       return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
     },
@@ -29,8 +30,14 @@ describe('TreeItem', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TreeItem itemType="leaf">Default TreeItem</TreeItem>);
-    expect(result.container).toMatchSnapshot();
+    const result = render(
+      <Tree>
+        <TreeItem value="1" itemType="leaf">
+          Default TreeItem
+        </TreeItem>
+      </Tree>,
+    );
+    expect(result.container.firstChild).toMatchSnapshot();
   });
   it('should not update open state when the TreeItem is a leaf', () => {
     const handleOpenChange = jest.fn();
@@ -42,7 +49,6 @@ describe('TreeItem', () => {
       </Tree>,
     );
     fireEvent.click(result.getByText('Default TreeItem'));
-    expect(handleOpenChange).toHaveBeenNthCalledWith(1, expect.anything(), expect.objectContaining({ open: false }));
-    expect(handleOpenChange).toHaveBeenNthCalledWith(2, expect.anything(), expect.objectContaining({ open: false }));
+    expect(handleOpenChange).not.toHaveBeenCalled();
   });
 });
