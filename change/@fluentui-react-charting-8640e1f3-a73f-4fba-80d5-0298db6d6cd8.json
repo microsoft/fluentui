@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "reverted back the required changes",
+  "comment": "Modify LinearChartMultiple example. Fix AreaChart to show selected legend data only and grey out others",
   "packageName": "@fluentui/react-charting",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
