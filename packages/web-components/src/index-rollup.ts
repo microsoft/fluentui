@@ -13,6 +13,7 @@ import './divider/define.js';
 import './field/define.js';
 import './image/define.js';
 import './label/define.js';
+import './link/define.js';
 import './menu-button/define.js';
 import './menu-item/define.js';
 import './menu-list/define.js';

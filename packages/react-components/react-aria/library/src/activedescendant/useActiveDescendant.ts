@@ -28,6 +28,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 ): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
   const focusVisibleRef = React.useRef(false);
+  const shouldShowFocusVisibleAttrRef = React.useRef(true);
   const activeIdRef = React.useRef<string | null>(null);
   const lastActiveIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
@@ -36,6 +37,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const removeAttribute = React.useCallback(() => {
     activeParentRef.current?.removeAttribute('aria-activedescendant');
   }, []);
+
   const setAttribute = React.useCallback((id?: string) => {
     if (id) {
       activeIdRef.current = id;
@@ -47,12 +49,13 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
   useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
     focusVisibleRef.current = isNavigatingWithKeyboard;
+
     const active = getActiveDescendant();
     if (!active) {
       return;
     }
 
-    if (isNavigatingWithKeyboard) {
+    if (isNavigatingWithKeyboard && shouldShowFocusVisibleAttrRef.current) {
       active.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
     } else {
       active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
@@ -62,9 +65,28 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const matchOption = useEventCallback(matchOptionUnstable);
   const listboxRef = React.useRef<TListboxElement>(null);
   const { optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
+
   const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
   }, [listboxRef]);
+
+  const setShouldShowFocusVisibleAttribute = React.useCallback(
+    (shouldShow: boolean) => {
+      shouldShowFocusVisibleAttrRef.current = shouldShow;
+
+      const active = getActiveDescendant();
+      if (!active) {
+        return;
+      }
+
+      if (shouldShow && focusVisibleRef.current) {
+        active.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
+      } else {
+        active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
+      }
+    },
+    [getActiveDescendant],
+  );
 
   const blurActiveDescendant = React.useCallback(() => {
     const active = getActiveDescendant();
@@ -91,7 +113,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       setAttribute(nextActive.id);
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
 
-      if (focusVisibleRef.current) {
+      if (focusVisibleRef.current && shouldShowFocusVisibleAttrRef.current) {
         nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
       }
 
@@ -183,6 +205,18 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
         return target?.id;
       },
+      scrollActiveIntoView: () => {
+        if (!listboxRef.current) {
+          return;
+        }
+
+        const active = getActiveDescendant();
+        if (!active) {
+          return;
+        }
+
+        scrollIntoView(active);
+      },
       showAttributes() {
         attributeVisibilityRef.current = true;
         setAttribute();
@@ -190,6 +224,12 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       hideAttributes() {
         attributeVisibilityRef.current = false;
         removeAttribute();
+      },
+      showFocusVisibleAttributes() {
+        setShouldShowFocusVisibleAttribute(true);
+      },
+      hideFocusVisibleAttributes() {
+        setShouldShowFocusVisibleAttribute(false);
       },
     }),
     [
@@ -200,6 +240,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       focusActiveDescendant,
       blurActiveDescendant,
       getActiveDescendant,
+      setShouldShowFocusVisibleAttribute,
     ],
   );
 

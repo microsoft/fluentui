@@ -88,6 +88,7 @@ const SELECTED_STREAM_OPACITY: number = 0.3;
 const NON_SELECTED_STREAM_BORDER_OPACITY: number = 0.5;
 const DEFAULT_TEXT_COLOR: string = '#323130';
 const NON_SELECTED_TEXT_COLOR: string = '#FFFFFF';
+const NODE_WIDTH = 124;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
@@ -364,7 +365,7 @@ export function preRenderLayout(
   const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
-    .nodeWidth(124)
+    .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
       [width - 1, height - 6],
@@ -574,6 +575,10 @@ type AccessibilityRenderer = {
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
 // I am concerned that doing so would break this contract, making it difficult for consuming code.
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
+  public static defaultProps: Partial<ISankeyChartProps> = {
+    enableReflow: true,
+  };
+
   private chartContainer: HTMLDivElement;
   private _reqID: number;
   private readonly _calloutId: string;
@@ -583,6 +588,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private readonly _labelTooltipId: string;
   private readonly _margins: IMargins;
   private readonly _isRtl: boolean = getRTL();
+  private _numColumns: number = 0;
 
   private readonly _computeClassNamesProps: (
     theme: ITheme,
@@ -772,7 +778,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         return a.y0! - b.y0!;
       });
       nodes.forEach((item: SNode, index) => {
-        nodeLinkDomOrderArray.push({ layer: item.layer!, type: 'node', index: index });
+        nodeLinkDomOrderArray.push({ layer: item.layer!, type: 'node', index });
       });
       links.sort((a: SLink, b: SLink) => {
         const asx0 = (a.source as SNode).x0;
@@ -783,7 +789,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         return a.y0! - b.y0!;
       });
       links.forEach((item: SLink, index) => {
-        nodeLinkDomOrderArray.push({ layer: (item.source as SNode).layer!, type: 'link', index: index });
+        nodeLinkDomOrderArray.push({ layer: (item.source as SNode).layer!, type: 'link', index });
       });
       nodeLinkDomOrderArray.sort((a, b) => {
         if (a.layer !== b.layer) {
@@ -838,7 +844,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           - Bidirectional navigation has been disabled because it causes the up/down arrow keys to move the focus
           in a non-sequential and erratic manner within a 2D grid.
           */}
-          <FocusZone direction={FocusZoneDirection.vertical}>
+          <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
             <svg width={width} height={height} id={this._chartId}>
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
@@ -918,7 +924,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       }
       // Since the total width of the node is 124 and we are giving margin of 8px from the left .
       // So the actual value on which it will be truncated is 124-8=116.
-      const truncatedname: string = truncateText(nameSpan, singleNode.name, 116, padding);
+      const truncatedname: string = truncateText(nameSpan, singleNode.name, NODE_WIDTH - 8, padding);
       const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
       result[singleNode.nodeId] = {
         reactId: getId('nodeBar'),
@@ -975,6 +981,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     // bearing on the data before `sankey(transformed)` (which is basically nodes with ids and names along with links
     // with source index, target index, and value).
     const nodesInColumn = groupNodesByColumn(transformed);
+    this._numColumns = Object.keys(nodesInColumn).length;
     // Keep track of the original values of the links and their acccumulated values in the nodes
     // Setting these in external objects so they cannot be mutated by other code.
     // The IDs of nodes can be numbers or strings. But, the IDs of links are always the index into the "nodes" array.
@@ -1312,7 +1319,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._reqID = requestAnimationFrame(() => {
       // NOTE: Calls to this method trigger a re-render.
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container && container.getBoundingClientRect().width;
+      const currentContainerWidth =
+        container &&
+        (this.props.enableReflow
+          ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
+          : container.getBoundingClientRect().width);
       const currentContainerHeight = container && container.getBoundingClientRect().height;
       const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
       if (shouldResize) {
@@ -1345,4 +1356,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const sankeyChartData = this.props.data?.SankeyChartData;
     return !(sankeyChartData && sankeyChartData.nodes.length > 0 && sankeyChartData.links.length > 0);
   }
+
+  private _calculateChartMinWidth = (): number => {
+    return (
+      this._margins.left! +
+      this._margins.right! +
+      // total width of all node columns
+      this._numColumns * NODE_WIDTH +
+      // minimum total width of all column gaps
+      (this._numColumns - 1) * (NODE_WIDTH / 2)
+    );
+  };
 }

@@ -1,4 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import { ImageFit, ImageShape } from './image.options.js';
 
 /**
@@ -7,6 +8,13 @@ import { ImageFit, ImageShape } from './image.options.js';
  */
 export class Image extends FASTElement {
   /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
    * Image layout
    *
    * @public
@@ -14,7 +22,17 @@ export class Image extends FASTElement {
    * HTML attribute: block.
    */
   @attr({ mode: 'boolean' })
-  public block?: boolean;
+  public block?: boolean = false;
+
+  /**
+   * Handles changes to block custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public blockChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'block', next);
+  }
+
   /**
    * Image border
    *
@@ -24,6 +42,16 @@ export class Image extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public bordered?: boolean;
+
+  /**
+   * Handles changes to bordered custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public borderedChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'bordered', next);
+  }
+
   /**
    * Image shadow
    *
@@ -33,6 +61,16 @@ export class Image extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public shadow?: boolean;
+
+  /**
+   * Handles changes to shadow custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shadowChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'shadow', next);
+  }
+
   /**
    * Image fit
    *
@@ -42,6 +80,21 @@ export class Image extends FASTElement {
    */
   @attr
   public fit?: ImageFit;
+
+  /**
+   * Handles changes to fit attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `fit-${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `fit-${next}`, true);
+    }
+  }
+
   /**
    * Image shape
    *
@@ -51,4 +104,18 @@ export class Image extends FASTElement {
    */
   @attr
   public shape?: ImageShape;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 }

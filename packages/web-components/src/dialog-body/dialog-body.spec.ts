@@ -27,7 +27,7 @@ test.describe('Dialog Body', () => {
     `);
 
     await expect(element).toBeVisible();
-    await expect(closeButton).toBeHidden();
+    await expect(closeButton).toBeVisible();
   });
 
   test('should add default close button for non-modal dialogs', async ({ page }) => {

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING: remove `iterations` prop from createMotionComponent()",
-  "packageName": "@fluentui/react-motions-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

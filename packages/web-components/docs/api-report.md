@@ -126,41 +126,24 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
+// Warning: (ae-missing-release-tag) "AnchorButton" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public
-export class AnchorButton extends FASTElement {
+// @public (undocumented)
+export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
-    // (undocumented)
-    connectedCallback(): void;
-    control: HTMLAnchorElement;
-    // @internal
-    defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
-    // (undocumented)
-    protected disabledChanged(prev: boolean, next: boolean): void;
-    disabledFocusable?: boolean;
-    // (undocumented)
-    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    download: string;
-    href: string;
-    hreflang: string;
+    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
-    ping: string;
-    referrerpolicy: string;
-    rel: string;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
+    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
-    target: AnchorTarget;
-    type: string;
+    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DelegatesARIALink" needs to be exported by the entry point index.d.ts
-//
 // @internal
-export interface AnchorButton extends StartEnd, DelegatesARIALink {
+export interface AnchorButton extends StartEnd {
 }
 
 // @public
@@ -168,7 +151,6 @@ export const AnchorButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -177,9 +159,6 @@ export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
 // @public (undocumented)
 export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
-
-// @public
-export type AnchorButtonOptions = StartEndOptions<AnchorButton>;
 
 // @public
 export const AnchorButtonShape: {
@@ -217,15 +196,24 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends FASTElement {
+    constructor();
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor;
+    color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
-    generateColor(): AvatarColor | void;
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
     // @internal
     generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     initials?: string | undefined;
     name?: string | undefined;
     shape?: AvatarShape | undefined;
@@ -389,9 +377,15 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
+    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
+    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     shape?: BadgeShape;
+    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
+    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -483,6 +477,7 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 export class Button extends FASTElement {
     constructor();
     appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
@@ -494,7 +489,7 @@ export class Button extends FASTElement {
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
     formAction?: string;
     static readonly formAssociated = true;
@@ -506,13 +501,16 @@ export class Button extends FASTElement {
     formNoValidate?: boolean;
     formTarget?: ButtonFormTarget;
     iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     keypressHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name?: string;
     protected press(): void;
     resetForm(): void;
     shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -528,7 +526,6 @@ export const ButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -588,58 +585,15 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// @public
-export class Checkbox extends FASTElement {
-    constructor();
-    autofocus: boolean;
-    get checked(): boolean;
-    set checked(state: boolean);
-    checkValidity(): boolean;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    get form(): HTMLFormElement | null;
-    static formAssociated: boolean;
-    formAttribute?: string;
-    // @internal
-    formResetCallback(): void;
-    indeterminate?: boolean;
-    // @internal
-    indeterminateChanged(prev: boolean, next: boolean): void;
-    initialChecked?: boolean;
-    // @internal
-    initialCheckedChanged(prev: boolean | undefined, next: boolean): void;
-    initialValue: string;
-    // @internal
-    initialValueChanged(prev: string, next: string): void;
-    // @internal
-    inputHandler(e: Event): boolean | void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    // @internal
-    keyupHandler(e: KeyboardEvent): boolean | void;
-    get labels(): ReadonlyArray<Node>;
-    name: string;
-    reportValidity(): boolean;
-    required: boolean;
-    // @internal
-    requiredChanged(prev: boolean, next: boolean): void;
-    setCustomValidity(message: string): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    shape: CheckboxShape;
+// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Checkbox" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class Checkbox extends BaseCheckbox {
+    shape?: CheckboxShape;
+    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string;
-    set value(value: string);
-    get willValidate(): boolean;
+    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
 }
 
 // @public
@@ -1728,7 +1682,6 @@ export const CompoundButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -1772,19 +1725,26 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
+    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
+    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
+    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     overflowCount: number;
     // (undocumented)
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
+    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
+    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -1935,12 +1895,23 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 export class Divider extends FASTElement {
     // (undocumented)
     alignContent?: DividerAlignContent;
+    alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
     // (undocumented)
     appearance?: DividerAppearance;
+    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     // (undocumented)
     inset?: boolean;
-    orientation: DividerOrientation;
+    insetChanged(prev: boolean, next: boolean): void;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
     role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
@@ -2134,10 +2105,17 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
+    borderedChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     fit?: ImageFit;
+    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
+    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
+    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2177,9 +2155,14 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2250,6 +2233,39 @@ export const lineHeightHero800 = "var(--lineHeightHero800)";
 export const lineHeightHero900 = "var(--lineHeightHero900)";
 
 // @public
+export class Link extends BaseAnchor {
+    appearance?: LinkAppearance | undefined;
+    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
+    inline: boolean;
+    inlineChanged(prev: boolean, next: boolean): void;
+}
+
+// @public
+export const LinkAppearance: {
+    readonly subtle: "subtle";
+};
+
+// @public
+export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
+
+// @public (undocumented)
+export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// @public
+export const LinkTarget: {
+    readonly _self: "_self";
+    readonly _blank: "_blank";
+    readonly _parent: "_parent";
+    readonly _top: "_top";
+};
+
+// @public
+export type LinkTarget = ValuesOf<typeof AnchorTarget>;
+
+// @public
+export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
 export abstract class MatchMediaBehavior implements HostBehavior {
     constructor(query: MediaQueryList);
     connectedCallback(controller: HostController): void;
@@ -2314,7 +2330,6 @@ export const MenuButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -2473,13 +2488,30 @@ export const MenuStyles: ElementStyles;
 // @public (undocumented)
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseProgress" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class ProgressBar extends BaseProgress {
+export class ProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
     shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
     validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
 }
 
 // @public
@@ -2520,12 +2552,6 @@ export const ProgressBarValidationState: {
 
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
-
-// @public
-export type ProgressOptions = {
-    indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
-    indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
-};
 
 // Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
 //
@@ -2873,9 +2899,11 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 export class Spinner extends FASTElement {
     constructor();
     appearance?: SpinnerAppearance;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -2931,24 +2959,10 @@ const styles: ElementStyles;
 export { styles as ButtonStyles }
 export { styles as MenuButtonStyles }
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSwitch" needs to be exported by the entry point index.d.ts
 // Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export class Switch extends FormAssociatedSwitch {
-    constructor();
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @internal (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    labelPosition: SwitchLabelPosition | undefined;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+export class Switch extends BaseCheckbox {
 }
 
 // @public
@@ -3150,6 +3164,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends FASTElement {
     appearance?: TextInputAppearance;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     autocomplete?: string;
     autofocus: boolean;
     // @internal
@@ -3165,6 +3180,7 @@ export class TextInput extends FASTElement {
     // @internal
     controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal
@@ -3328,7 +3344,6 @@ export const ToggleButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 

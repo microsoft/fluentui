@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "adjust indicator type to include span",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

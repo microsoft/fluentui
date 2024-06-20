@@ -1137,6 +1137,7 @@ export interface ISankeyChartProps {
     className?: string;
     colorsForNodes?: string[];
     data: IChartProps;
+    enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
     height?: number;
     parentRef?: HTMLElement | null;
@@ -1170,6 +1171,7 @@ export interface ISankeyChartStyleProps {
 // @public
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
+    chartWrapper?: IStyle;
     links?: IStyle;
     nodes?: IStyle;
     nodeTextContainer?: IStyle;

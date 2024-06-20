@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/fluent2-theme",
-  "version": "8.107.84",
+  "version": "8.107.85",
   "description": "A Fluent2 theme for Fluent UI React 8.x",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.118.7",
+    "@fluentui/react": "^8.118.8",
     "@fluentui/set-version": "^8.2.22",
     "tslib": "^2.1.0"
   }
