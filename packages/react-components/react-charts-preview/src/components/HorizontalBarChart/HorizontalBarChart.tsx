@@ -55,7 +55,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
 
   function _hoverOn(
     event: React.MouseEvent<SVGRectElement, MouseEvent>,
-    hoverVal: string | number | Date | null,
+    hoverVal: string | number | Date,
     point: IChartDataPoint,
   ): void {
     if ((!isCalloutVisible || legend !== point.legend!) && _calloutAnchorPoint !== point) {
@@ -66,7 +66,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
       setIsCalloutVisible(true);
-      setHoverValue(hoverVal!);
+      setHoverValue(hoverVal);
       setLineColor(point.color!);
       setLegend(point.legend!);
       setRefSelected(currentHoveredElement!.refElement);
@@ -414,5 +414,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
   );
+  //TODO validate and fix focus border for issue for popover
 });
 HorizontalBarChart.displayName = 'HorizontalBarChart';
