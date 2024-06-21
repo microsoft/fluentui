@@ -16,6 +16,7 @@ export {
   useOnKeyboardNavigationChange,
   useSetKeyboardNavigation,
   useFocusedElementChange,
+  useTabster,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,
