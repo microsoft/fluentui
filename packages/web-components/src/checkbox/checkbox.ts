@@ -467,7 +467,21 @@ export class Checkbox extends BaseCheckbox {
    * HTML Attribute: `shape`
    */
   @attr
-  public shape!: CheckboxShape;
+  public shape?: CheckboxShape;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, next, true);
+    }
+  }
 
   /**
    * Indicates the size of the checkbox.
@@ -478,4 +492,18 @@ export class Checkbox extends BaseCheckbox {
    */
   @attr
   public size?: CheckboxSize;
+
+  /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, prev, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, next, true);
+    }
+  }
 }

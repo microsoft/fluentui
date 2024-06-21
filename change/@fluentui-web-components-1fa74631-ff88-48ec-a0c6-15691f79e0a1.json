@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fixes the border-color for switch when in the checked state on rest",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

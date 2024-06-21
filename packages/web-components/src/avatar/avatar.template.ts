@@ -21,10 +21,8 @@ const defaultIconTemplate = html`<svg
  */
 export function avatarTemplate<T extends Avatar>(): ElementViewTemplate<T> {
   return html<T>`
-    <template role="img" data-color=${x => x.generateColor()}>
-      <slot>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
-      <slot name="badge"></slot>
-    </template>
+    <slot>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
+    <slot name="badge"></slot>
   `;
 }
 

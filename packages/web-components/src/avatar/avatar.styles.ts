@@ -322,157 +322,157 @@ export const styles = css`
     border-radius: ${borderRadiusXLarge};
   }
 
-  :host([data-color='brand']) {
+  :host(:is([state--brand], :state(brand))) {
     color: ${colorNeutralForegroundStaticInverted};
     background-color: ${colorBrandBackgroundStatic};
   }
 
-  :host([data-color='dark-red']) {
+  :host(:is([state--dark-red], :state(dark-red))) {
     color: ${colorPaletteDarkRedForeground2};
     background-color: ${colorPaletteDarkRedBackground2};
   }
 
-  :host([data-color='cranberry']) {
+  :host(:is([state--cranberry], :state(cranberry))) {
     color: ${colorPaletteCranberryForeground2};
     background-color: ${colorPaletteCranberryBackground2};
   }
 
-  :host([data-color='red']) {
+  :host(:is([state--red], :state(red))) {
     color: ${colorPaletteRedForeground2};
     background-color: ${colorPaletteRedBackground2};
   }
 
-  :host([data-color='pumpkin']) {
+  :host(:is([state--pumpkin], :state(pumpkin))) {
     color: ${colorPalettePumpkinForeground2};
     background-color: ${colorPalettePumpkinBackground2};
   }
 
-  :host([data-color='peach']) {
+  :host(:is([state--peach], :state(peach))) {
     color: ${colorPalettePeachForeground2};
     background-color: ${colorPalettePeachBackground2};
   }
 
-  :host([data-color='marigold']) {
+  :host(:is([state--marigold], :state(marigold))) {
     color: ${colorPaletteMarigoldForeground2};
     background-color: ${colorPaletteMarigoldBackground2};
   }
 
-  :host([data-color='gold']) {
+  :host(:is([state--gold], :state(gold))) {
     color: ${colorPaletteGoldForeground2};
     background-color: ${colorPaletteGoldBackground2};
   }
 
-  :host([data-color='brass']) {
+  :host(:is([state--brass], :state(brass))) {
     color: ${colorPaletteBrassForeground2};
     background-color: ${colorPaletteBrassBackground2};
   }
 
-  :host([data-color='brown']) {
+  :host(:is([state--brown], :state(brown))) {
     color: ${colorPaletteBrownForeground2};
     background-color: ${colorPaletteBrownBackground2};
   }
 
-  :host([data-color='forest']) {
+  :host(:is([state--forest], :state(forest))) {
     color: ${colorPaletteForestForeground2};
     background-color: ${colorPaletteForestBackground2};
   }
 
-  :host([data-color='seafoam']) {
+  :host(:is([state--seafoam], :state(seafoam))) {
     color: ${colorPaletteSeafoamForeground2};
     background-color: ${colorPaletteSeafoamBackground2};
   }
 
-  :host([data-color='dark-green']) {
+  :host(:is([state--dark-green], :state(dark-green))) {
     color: ${colorPaletteDarkGreenForeground2};
     background-color: ${colorPaletteDarkGreenBackground2};
   }
 
-  :host([data-color='light-teal']) {
+  :host(:is([state--light-teal], :state(light-teal))) {
     color: ${colorPaletteLightTealForeground2};
     background-color: ${colorPaletteLightTealBackground2};
   }
 
-  :host([data-color='teal']) {
+  :host(:is([state--teal], :state(teal))) {
     color: ${colorPaletteTealForeground2};
     background-color: ${colorPaletteTealBackground2};
   }
 
-  :host([data-color='steel']) {
+  :host(:is([state--steel], :state(steel))) {
     color: ${colorPaletteSteelForeground2};
     background-color: ${colorPaletteSteelBackground2};
   }
 
-  :host([data-color='blue']) {
+  :host(:is([state--blue], :state(blue))) {
     color: ${colorPaletteBlueForeground2};
     background-color: ${colorPaletteBlueBackground2};
   }
 
-  :host([data-color='royal-blue']) {
+  :host(:is([state--royal-blue], :state(royal-blue))) {
     color: ${colorPaletteRoyalBlueForeground2};
     background-color: ${colorPaletteRoyalBlueBackground2};
   }
 
-  :host([data-color='cornflower']) {
+  :host(:is([state--cornflower], :state(cornflower))) {
     color: ${colorPaletteCornflowerForeground2};
     background-color: ${colorPaletteCornflowerBackground2};
   }
 
-  :host([data-color='navy']) {
+  :host(:is([state--navy], :state(navy))) {
     color: ${colorPaletteNavyForeground2};
     background-color: ${colorPaletteNavyBackground2};
   }
 
-  :host([data-color='lavender']) {
+  :host(:is([state--lavender], :state(lavender))) {
     color: ${colorPaletteLavenderForeground2};
     background-color: ${colorPaletteLavenderBackground2};
   }
 
-  :host([data-color='purple']) {
+  :host(:is([state--purple], :state(purple))) {
     color: ${colorPalettePurpleForeground2};
     background-color: ${colorPalettePurpleBackground2};
   }
 
-  :host([data-color='grape']) {
+  :host(:is([state--grape], :state(grape))) {
     color: ${colorPaletteGrapeForeground2};
     background-color: ${colorPaletteGrapeBackground2};
   }
 
-  :host([data-color='lilac']) {
+  :host(:is([state--lilac], :state(lilac))) {
     color: ${colorPaletteLilacForeground2};
     background-color: ${colorPaletteLilacBackground2};
   }
 
-  :host([data-color='pink']) {
+  :host(:is([state--pink], :state(pink))) {
     color: ${colorPalettePinkForeground2};
     background-color: ${colorPalettePinkBackground2};
   }
 
-  :host([data-color='magenta']) {
+  :host(:is([state--magenta], :state(magenta))) {
     color: ${colorPaletteMagentaForeground2};
     background-color: ${colorPaletteMagentaBackground2};
   }
 
-  :host([data-color='plum']) {
+  :host(:is([state--plum], :state(plum))) {
     color: ${colorPalettePlumForeground2};
     background-color: ${colorPalettePlumBackground2};
   }
 
-  :host([data-color='beige']) {
+  :host(:is([state--beige], :state(beige))) {
     color: ${colorPaletteBeigeForeground2};
     background-color: ${colorPaletteBeigeBackground2};
   }
 
-  :host([data-color='mink']) {
+  :host(:is([state--mink], :state(mink))) {
     color: ${colorPaletteMinkForeground2};
     background-color: ${colorPaletteMinkBackground2};
   }
 
-  :host([data-color='platinum']) {
+  :host(:is([state--platinum], :state(platinum))) {
     color: ${colorPalettePlatinumForeground2};
     background-color: ${colorPalettePlatinumBackground2};
   }
 
-  :host([data-color='anchor']) {
+  :host(:is([state--anchor], :state(anchor))) {
     color: ${colorPaletteAnchorForeground2};
     background-color: ${colorPaletteAnchorBackground2};
   }

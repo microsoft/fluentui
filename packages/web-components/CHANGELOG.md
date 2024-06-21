@@ -1,8 +1,93 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 07 Jun 2024 04:06:31 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 04:06:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.33)
+
+Fri, 21 Jun 2024 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.32..@fluentui/web-components_v3.0.0-beta.33)
+
+### Changes
+
+- feat: make fast-element a peer dependencies of the web-components package ([PR #31772](https://github.com/microsoft/fluentui/pull/31772) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.32)
+
+Wed, 19 Jun 2024 04:07:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.31..@fluentui/web-components_v3.0.0-beta.32)
+
+### Changes
+
+- feat: update progress bar to use element internals custom states for visual states ([PR #31739](https://github.com/microsoft/fluentui/pull/31739) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update divider to use custom states ([PR #31735](https://github.com/microsoft/fluentui/pull/31735) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update link to use Element Internals custom states for presentational attributes ([PR #31752](https://github.com/microsoft/fluentui/pull/31752) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update checkbox to use Element Internals custom states for presentational attributes ([PR #31756](https://github.com/microsoft/fluentui/pull/31756) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update text input to use Element Internals custom states for presentational attributes ([PR #31753](https://github.com/microsoft/fluentui/pull/31753) by 13071055+chrisdholt@users.noreply.github.com)
+- update image to use element internals custom states for visual states ([PR #31737](https://github.com/microsoft/fluentui/pull/31737) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update spinner to use Element Internals for presentational styling ([PR #31741](https://github.com/microsoft/fluentui/pull/31741) by 13071055+chrisdholt@users.noreply.github.com)
+- update label to use element internals custom states for styling ([PR #31738](https://github.com/microsoft/fluentui/pull/31738) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.31)
+
+Tue, 18 Jun 2024 04:05:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.30..@fluentui/web-components_v3.0.0-beta.31)
+
+### Changes
+
+- feat: update button and anchor button to leverage custom states for variants ([PR #31718](https://github.com/microsoft/fluentui/pull/31718) by 13071055+chrisdholt@users.noreply.github.com)
+- update badge to use element internals custom states ([PR #31733](https://github.com/microsoft/fluentui/pull/31733) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.30)
+
+Fri, 14 Jun 2024 04:06:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.29..@fluentui/web-components_v3.0.0-beta.30)
+
+### Changes
+
+- update avatar to use ElementInternals for role and states for color ([PR #31693](https://github.com/microsoft/fluentui/pull/31693) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.29)
+
+Thu, 13 Jun 2024 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.28..@fluentui/web-components_v3.0.0-beta.29)
+
+### Changes
+
+- refactor setTheme() to reduce code duplication ([PR #31679](https://github.com/microsoft/fluentui/pull/31679) by machi@microsoft.com)
+- add link as a new web component ([PR #31676](https://github.com/microsoft/fluentui/pull/31676) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.28)
+
+Wed, 12 Jun 2024 04:06:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.27..@fluentui/web-components_v3.0.0-beta.28)
+
+### Changes
+
+- refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable ([PR #31653](https://github.com/microsoft/fluentui/pull/31653) by 13071055+chrisdholt@users.noreply.github.com)
+- refactor progress bar to use ElementInternals ([PR #31652](https://github.com/microsoft/fluentui/pull/31652) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.27)
+
+Tue, 11 Jun 2024 04:06:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.26..@fluentui/web-components_v3.0.0-beta.27)
+
+### Changes
+
+- feat: update divider to leverage ElementInternals ([PR #31627](https://github.com/microsoft/fluentui/pull/31627) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: show default title action in dialog-body for modal dialogs ([PR #31648](https://github.com/microsoft/fluentui/pull/31648) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.26)
+
+Mon, 10 Jun 2024 04:07:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.25..@fluentui/web-components_v3.0.0-beta.26)
+
+### Changes
+
+- feat: refactor Switch to use ElementInternals by extending BaseCheckbox ([PR #31613](https://github.com/microsoft/fluentui/pull/31613) by 13071055+chrisdholt@users.noreply.github.com)
+- fixes the border-color for switch when in the checked state on rest ([PR #31628](https://github.com/microsoft/fluentui/pull/31628) by 13071055+chrisdholt@users.noreply.github.com)
+- add try-catch block to ensure that registered properties can be updated dynamically ([PR #31629](https://github.com/microsoft/fluentui/pull/31629) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.25)
 

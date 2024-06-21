@@ -1,0 +1,72 @@
+{
+  "name": "@fluentui/react-infolabel",
+  "version": "9.0.37",
+  "description": "InfoLabel component for Fluent UI v9",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "generate-api": "just-scripts generate-api",
+    "lint": "just-scripts lint",
+    "start": "yarn storybook",
+    "storybook": "yarn --cwd ../stories storybook",
+    "test": "jest --passWithNoTests",
+    "type-check": "just-scripts type-check"
+  },
+  "devDependencies": {
+    "@fluentui/react-provider": "*",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-label": "^9.1.71",
+    "@fluentui/react-popover": "^9.9.12",
+    "@fluentui/react-tabster": "^9.22.0",
+    "@fluentui/react-jsx-runtime": "^9.0.39",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.10",
+    "@griffel/react": "^1.5.22",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
+}
