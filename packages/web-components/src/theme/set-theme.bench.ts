@@ -10,7 +10,7 @@ const measurePerformance = () => {
 
   const startMeasure = () => {
     startTime = performance.now();
-  }
+  };
 
   const endMeasure = () => {
     measureJavascript(startTime, performance.now());
@@ -21,8 +21,8 @@ const measurePerformance = () => {
 };
 
 const tests = {
-  'mount': ({ onComplete }) => {
-    const { startMeasure, endMeasure} = measurePerformance();
+  mount: ({ onComplete }) => {
+    const { startMeasure, endMeasure } = measurePerformance();
 
     startMeasure();
 
