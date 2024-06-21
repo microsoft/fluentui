@@ -318,3 +318,7 @@ export const MenuListWithCustomIcons = renderComponent(html<MenuListStoryArgs>`
     </fluent-menu-list>
   </div>
 `);
+
+export const HugEnd = renderComponent(
+  html<MenuListStoryArgs>` <div style="display: flex;justify-content: end;">${storyTemplate}</div> `,
+);

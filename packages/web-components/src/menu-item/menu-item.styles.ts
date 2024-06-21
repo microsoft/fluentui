@@ -88,7 +88,7 @@ export const styles = css`
   :host(:not([checked])) .indicator,
   :host(:not([checked])) ::slotted([slot='indicator']),
   :host(:not([aria-haspopup='menu'])) .submenu-glyph,
-  :host(:not([aria-haspopup='menu'])) ::slotted([slot='submenu-glyph']){
+  :host(:not([aria-haspopup='menu'])) ::slotted([slot='submenu-glyph']) {
     display: none;
   }
 
@@ -143,19 +143,17 @@ export const styles = css`
 
   @layer popover {
     :host {
-      position: relative;
       anchor-name: --menu-trigger;
-      container-name: menuitem
-      container-type: inline-size;
+      position: relative;
     }
 
     ::slotted([popover]) {
       inset-area: inline-end span-block-end;
       margin: 0;
       max-height: var(--menu-max-height, auto);
-      position-anchor: --menu-trigger;
-      position-try-options: flip-inline;
       position: absolute;
+      position-anchor: --menu-trigger;
+      position-try-options: flip-inline, inset-area(block-start);
       z-index: 1;
     }
 
@@ -165,12 +163,6 @@ export const styles = css`
 
     ::slotted([popover]:popover-open) {
       inset: unset;
-    }
-
-    @supports not (anchor-name: --anchor) {
-      ::slotted([popover]:popover-open) {
-        translate: var(--menu-item-width, 0) 0;
-      }
     }
   }
 `;

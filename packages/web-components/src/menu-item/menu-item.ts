@@ -100,10 +100,6 @@ export class MenuItem extends FASTElement {
       this.submenu = next[0];
       this.submenu.setAttribute('popover', '');
       this.submenu.addEventListener('toggle', this.toggleHandler);
-
-      if (!CSS.supports('anchor-name', '--menu-trigger')) {
-        this.style.setProperty('--menu-item-width', this.getBoundingClientRect().width - 8 + 'px');
-      }
     }
   }
 
@@ -191,6 +187,7 @@ export class MenuItem extends FASTElement {
     if (e instanceof ToggleEvent && e.newState === 'open') {
       this.setAttribute('tabindex', '-1');
       this.setAttribute('aria-expanded', 'true');
+      this.setSubmenuPosition();
     }
     if (e instanceof ToggleEvent && e.newState === 'closed') {
       this.setAttribute('aria-expanded', 'false');
@@ -226,6 +223,32 @@ export class MenuItem extends FASTElement {
           this.checked = true;
         }
         break;
+    }
+  };
+
+  /**
+   * Set fallback position of menu on open when CSS anchor not supported
+   * @internal
+   */
+  public setSubmenuPosition = (): void => {
+    if (!CSS.supports('anchor-name', '--anchor') && !!this.submenu) {
+      const thisRect = this.getBoundingClientRect();
+      const thisSubmenuRect = this.submenu.getBoundingClientRect();
+      const inlineEnd = getComputedStyle(this).direction === 'ltr' ? 'right' : 'left';
+
+      if (thisRect.width + thisSubmenuRect.width > window.innerWidth * 0.75) {
+        // If an open submenu is too wide for the viewport, move it above.
+        this.submenu.style.translate = '0 -100%';
+        return;
+      } else if (thisRect[inlineEnd] + thisSubmenuRect.width > window.innerWidth) {
+        // If the open submenu is overflows the inline-end of the window (e.g. justify-content: end),
+        // move to inline-start of menu item
+        this.submenu.style.translate = '-100% 0';
+        return;
+      } else {
+        // Default to inline-end of menu item
+        this.submenu.style.translate = `${thisRect.width - 8}px 0`;
+      }
     }
   };
 }
