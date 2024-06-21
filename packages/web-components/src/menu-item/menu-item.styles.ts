@@ -30,18 +30,20 @@ export const styles = css`
 
   :host {
     --indent: 0;
-    grid-template-columns: 20px 20px auto 20px;
     align-items: center;
-    grid-gap: 4px;
-    height: 32px;
     background: ${colorNeutralBackground1};
-    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
     color: ${colorNeutralForeground2};
-    padding: 0 10px;
-    cursor: pointer;
-    overflow: visible;
     contain: layout;
+    cursor: pointer;
+    /* Prevent shrinking of MenuItems when max-height is applied to MenuList */
+    flex-shrink: 0;
+    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
+    grid-gap: 4px;
+    grid-template-columns: 20px 20px auto 20px;
+    height: 32px;
+    overflow: visible;
+    padding: 0 10px;
   }
 
   :host(:hover) {
@@ -58,7 +60,7 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host([icon]:active) ::slotted([slot='start']) {
+  :host(:active) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Pressed};
   }
 

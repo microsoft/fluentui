@@ -29,9 +29,7 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
  * @slot end - Content which can be provided after the menu item content
  * @slot submenu-glyph - The submenu expand/collapse indicator
  * @slot submenu - Used to nest menu's within menu items
- * @csspart indicator - The element wrapping the `menuitemcheckbox` or  `menuitemradio` indicator
  * @csspart content - The element wrapping the menu item content
- * @csspart submenu-glyph-container - The element wrapping the expand collapse element
  * @fires change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
  *
  * @public
@@ -96,9 +94,12 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
+    this.submenu?.removeEventListener('toggle', this.toggleHandler);
+
     if (next.length) {
       this.submenu = next[0];
       this.submenu.setAttribute('popover', '');
+      this.submenu.addEventListener('toggle', this.toggleHandler);
 
       if (!CSS.supports('anchor-name', '--menu-trigger')) {
         this.style.setProperty('--menu-item-width', this.getBoundingClientRect().width - 8 + 'px');
@@ -111,8 +112,6 @@ export class MenuItem extends FASTElement {
    */
   @observable
   public submenu: HTMLElement | undefined;
-
-  private focusSubmenuOnLoad: boolean = false;
 
   /**
    * @internal
@@ -164,21 +163,6 @@ export class MenuItem extends FASTElement {
   /**
    * @internal
    */
-  public submenuLoaded = (): void => {
-    if (!this.focusSubmenuOnLoad) {
-      return;
-    }
-    // TODO: React version now supports focusing on load
-    this.focusSubmenuOnLoad = false;
-    if (this.submenu) {
-      this.submenu.focus();
-      this.setAttribute('tabindex', '-1');
-    }
-  };
-
-  /**
-   * @internal
-   */
   public handleMouseOver = (e: MouseEvent): boolean => {
     if (this.disabled) return false;
 
@@ -200,16 +184,17 @@ export class MenuItem extends FASTElement {
   };
 
   /**
+   * Setup required ARIA on open/close
    * @internal
    */
   public toggleHandler = (e: ToggleEvent | Event): void => {
     if (e instanceof ToggleEvent && e.newState === 'open') {
-      this.submenu?.focus();
       this.setAttribute('tabindex', '-1');
       this.setAttribute('aria-expanded', 'true');
     }
     if (e instanceof ToggleEvent && e.newState === 'closed') {
       this.setAttribute('aria-expanded', 'false');
+      this.setAttribute('tabindex', '0');
     }
   };
 
@@ -228,7 +213,8 @@ export class MenuItem extends FASTElement {
 
       case MenuItemRole.menuitem:
         if (!!this.submenu) {
-          this.submenu.togglePopover();
+          this.submenu.togglePopover(true);
+          this.submenu.focus();
           break;
         }
 
