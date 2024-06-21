@@ -30,6 +30,8 @@ const useStyles = makeStyles({
  * Apply styling to the Virtualizer states
  */
 export const useVirtualizerStyles_unstable = (state: VirtualizerState): VirtualizerState => {
+  'use no memo';
+
   const styles = useStyles();
   const { reversed, axis, beforeBufferHeight, afterBufferHeight, bufferSize } = state;
   const horizontal = axis === 'horizontal';

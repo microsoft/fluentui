@@ -34,6 +34,8 @@ const useNavSubItemSpecificStyles = makeStyles({
  * Apply styling to the NavSubItem slots based on the state
  */
 export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItemState => {
+  'use no memo';
+
   const rootDefaultClassName = useRootDefaultClassName();
   const smallStyles = useSmallStyles();
   const contentStyles = useContentStyles();

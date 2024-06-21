@@ -1,7 +1,4 @@
-<details>
-<summary>
-Accessibility edge cases scenarios
-</summary>
+## Accessibility
 
 Here are some accessibility edge cases scenarios we identified and users should keep in mind while using the `Tree` components.
 
@@ -34,5 +31,3 @@ Narrator
 1. [Bug 45975192](https://microsoft.visualstudio.com/OS/_workitems/edit/45975192): Single select tree - narration aria-selected makes verbosity with redundant "selected"
 2. [Bug 46020629](https://microsoft.visualstudio.com/OS/_workitems/edit/46020629): Select tree with checkboxes - no narration of checked state
 3. [Bug 46020726](https://microsoft.visualstudio.com/OS/_workitems/edit/46020726): Select tree with checkboxes - no able to toggle check state with space in scan mode
-
-</details>

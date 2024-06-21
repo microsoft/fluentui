@@ -30,6 +30,8 @@ const useStyles = makeStyles({
  * Apply styling to the Hamburger slots based on the state
  */
 export const useHamburgerStyles_unstable = (state: HamburgerState): HamburgerState => {
+  'use no memo';
+
   useButtonStyles_unstable(state);
   const styles = useStyles();
 

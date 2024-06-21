@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add eslint react-compiler",
+  "packageName": "@fluentui/react-accordion",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

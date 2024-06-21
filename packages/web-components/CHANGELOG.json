@@ -2,6 +2,78 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 21 Jun 2024 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.33",
+      "version": "3.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "98fd517aecb51c4dc351e00eda89e22cbe1a7967",
+            "comment": "feat: make fast-element a peer dependencies of the web-components package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jun 2024 04:07:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.32",
+      "version": "3.0.0-beta.32",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "14ff3fa387f49ed5d7d81da0566c31e849a1fb0c",
+            "comment": "feat: update progress bar to use element internals custom states for visual states"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "81f2ac59a60f7baf91a50ed0acf7aa78933b5cf2",
+            "comment": "feat: update divider to use custom states"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7428b7a329af2ebb0f92c3425adf36e42a26f03b",
+            "comment": "feat: update link to use Element Internals custom states for presentational attributes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1189e569b5e9b6ab3729e6fd08cdaca562a98cc3",
+            "comment": "feat: update checkbox to use Element Internals custom states for presentational attributes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b101c343e786803b141dfafe77f90524e30d18c6",
+            "comment": "feat: update text input to use Element Internals custom states for presentational attributes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c1f035451a65cf922a8dec8d210e179a3c43f592",
+            "comment": "update image to use element internals custom states for visual states"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "5e700b814af89327834f63f63294ac020c8f1f1f",
+            "comment": "feat: update spinner to use Element Internals for presentational styling"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a3b7e64a720bf64e67b0b6e700b0ea3bdf69e572",
+            "comment": "update label to use element internals custom states for styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Jun 2024 04:05:31 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.31",
       "version": "3.0.0-beta.31",

@@ -27,6 +27,8 @@ import { optionClassNames } from '../Option/useOptionStyles.styles';
  * @param ref - reference to root HTMLElement of Dropdown
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
+  'use no memo';
+
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
   const {

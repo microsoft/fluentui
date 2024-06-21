@@ -15,7 +15,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd, patternDecision].join('\n'),
+        component: [descriptionMd, patternDecision, bestPracticesMd].join('\n'),
       },
     },
   },

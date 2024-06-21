@@ -10,7 +10,7 @@ addons.setConfig({
 
 addons.register('application-insights', api => {
   if (process.env.NODE_ENV === 'production') {
-    const { STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY } = process.env;
+    const STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY = process.env.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY;
 
     if (STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY) {
       const appInsights = new ApplicationInsights({

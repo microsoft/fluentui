@@ -1,8 +1,33 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 18 Jun 2024 04:05:31 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2024 04:06:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.33)
+
+Fri, 21 Jun 2024 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.32..@fluentui/web-components_v3.0.0-beta.33)
+
+### Changes
+
+- feat: make fast-element a peer dependencies of the web-components package ([PR #31772](https://github.com/microsoft/fluentui/pull/31772) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.32)
+
+Wed, 19 Jun 2024 04:07:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.31..@fluentui/web-components_v3.0.0-beta.32)
+
+### Changes
+
+- feat: update progress bar to use element internals custom states for visual states ([PR #31739](https://github.com/microsoft/fluentui/pull/31739) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update divider to use custom states ([PR #31735](https://github.com/microsoft/fluentui/pull/31735) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update link to use Element Internals custom states for presentational attributes ([PR #31752](https://github.com/microsoft/fluentui/pull/31752) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update checkbox to use Element Internals custom states for presentational attributes ([PR #31756](https://github.com/microsoft/fluentui/pull/31756) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update text input to use Element Internals custom states for presentational attributes ([PR #31753](https://github.com/microsoft/fluentui/pull/31753) by 13071055+chrisdholt@users.noreply.github.com)
+- update image to use element internals custom states for visual states ([PR #31737](https://github.com/microsoft/fluentui/pull/31737) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update spinner to use Element Internals for presentational styling ([PR #31741](https://github.com/microsoft/fluentui/pull/31741) by 13071055+chrisdholt@users.noreply.github.com)
+- update label to use element internals custom states for styling ([PR #31738](https://github.com/microsoft/fluentui/pull/31738) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.31)
 

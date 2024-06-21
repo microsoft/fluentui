@@ -42,7 +42,7 @@ export type CheckboxSlots = {
     root: NonNullable<Slot<'span'>>;
     label?: Slot<typeof Label>;
     input: NonNullable<Slot<'input'>>;
-    indicator: Slot<'div'>;
+    indicator: Slot<'div', 'span'>;
 };
 
 // @public
