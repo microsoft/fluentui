@@ -120,7 +120,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   useOnClickOutside({
     element: targetDocument,
     callback: ev => setOpen(ev as unknown as ComboboxOpenEvents, false),
-    refs: [triggerRef, comboboxPopupRef],
+    refs: [triggerRef, comboboxPopupRef, comboboxTargetRef],
     disabled: !open,
   });
 
