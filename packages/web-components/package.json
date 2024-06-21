@@ -225,7 +225,6 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@floating-ui/dom": "^1.2.0",
     "@fluentui/tokens": "1.0.0-alpha.16",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
