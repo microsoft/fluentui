@@ -137,14 +137,21 @@ describe('Tree', () => {
       cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{enter}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
-    it('should expand item on Right key', () => {
+    it('should expand item on right key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
       cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
-    it('should collapse item on Left key', () => {
+    it('should not expand item on alt + right key', () => {
+      mount(<TreeTest />);
+      cy.get('[data-testid="item1"]').focus();
+      cy.get('[data-testid="item1__item1"]').should('not.exist');
+      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', 'ArrowRight']);
+      cy.get('[data-testid="item1__item1"]').should('not.exist');
+    });
+    it('should collapse item on left key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
@@ -152,6 +159,15 @@ describe('Tree', () => {
       cy.get('[data-testid="item1__item1"]').should('exist');
       cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{leftarrow}');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
+    });
+    it('should not collapse item on alt + left key', () => {
+      mount(<TreeTest />);
+      cy.get('[data-testid="item1"]').focus();
+      cy.get('[data-testid="item1__item1"]').should('not.exist');
+      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('ArrowRight');
+      cy.get('[data-testid="item1__item1"]').should('exist');
+      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', 'ArrowLeft']);
+      cy.get('[data-testid="item1__item1"]').should('exist');
     });
     it('should focus on actions when pressing tab key', () => {
       mount(
@@ -220,6 +236,17 @@ describe('Tree', () => {
         cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
         cy.get('[data-testid="item2"]').should('be.focused').realPress('{rightarrow}');
         cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{rightarrow}');
+        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
+        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
+        cy.get('[data-testid="item2"]').should('be.focused');
+      });
+      it('should not move with Alt + Left/Right keys', () => {
+        mount(<TreeTest defaultOpenItems={['item2', 'item2__item1']} />);
+        cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
+        cy.get('[data-testid="item2"]').should('be.focused').realPress(['Alt', '{rightarrow}']);
+        cy.get('[data-testid="item2"]').should('be.focused').realPress('{rightarrow}');
+        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{rightarrow}');
+        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress(['Alt', '{leftarrow}']);
         cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
         cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
         cy.get('[data-testid="item2"]').should('be.focused');

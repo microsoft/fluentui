@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best practices
 
 ### Do
 
@@ -17,5 +14,3 @@
 - Don’t use a Spinner when performing immediate tasks.
 - Don't show multiple Spinners at the same time.
 - Don't include more than a few words when paired with a Spinner.
-
-</details>

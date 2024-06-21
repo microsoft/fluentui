@@ -152,6 +152,10 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           target: event.currentTarget,
         });
       case treeDataTypes.ArrowLeft: {
+        // arrow left with alt key is reserved for history navigation
+        if (event.altKey) {
+          return;
+        }
         // do not navigate to parent if the item is on the top level
         if (level === 1 && !open) {
           return;
@@ -174,7 +178,11 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         });
         return;
       }
-      case treeDataTypes.ArrowRight:
+      case treeDataTypes.ArrowRight: {
+        // arrow right with alt key is reserved for history navigation
+        if (event.altKey) {
+          return;
+        }
         // do not navigate or open if the item is a leaf
         if (itemType === 'leaf') {
           return;
@@ -196,6 +204,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           requestType: open ? 'navigate' : 'open',
         });
         return;
+      }
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;

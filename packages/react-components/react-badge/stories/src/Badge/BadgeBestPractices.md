@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best practices
 
 ### Badges should not receive focus
 
@@ -45,4 +42,3 @@ There are two actions authors should consider taking when using Badge to improve
 ### Text on Badge
 
 - Badges are intented to have short text, small numerical values or status information. Long text is not supported and should not be used within a Badge.
-</details>
