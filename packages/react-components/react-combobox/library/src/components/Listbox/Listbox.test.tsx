@@ -77,7 +77,7 @@ describe('Listbox', () => {
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(option.id);
   });
 
-  it('should set active option to first option on focus if nothing is selected', () => {
+  it('should set active option to first option if nothing is selected', () => {
     const { getByTestId } = render(
       <Listbox data-testid="listbox">
         <Option data-testid="firstOption">Red</Option>
@@ -87,16 +87,12 @@ describe('Listbox', () => {
     );
 
     const firstOption = getByTestId('firstOption');
-    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
-
-    fireEvent.focus(getByTestId('listbox'));
-
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(firstOption.id);
   });
 
-  it('should set active option to first selected option on focus', () => {
+  it('should set active option to first selected option if one is selected', () => {
     const { getByTestId } = render(
-      <Listbox data-testid="listbox" selectedOptions={['Blue', 'Green']}>
+      <Listbox data-testid="listbox" selectedOptions={['Green']}>
         <Option>Red</Option>
         <Option data-testid="firstSelectedOption">Green</Option>
         <Option>Blue</Option>
@@ -104,14 +100,23 @@ describe('Listbox', () => {
     );
 
     const selectedOption = getByTestId('firstSelectedOption');
-    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
-
-    fireEvent.focus(getByTestId('listbox'));
-
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(selectedOption.id);
   });
 
-  it('should set active option to last active option on focus', () => {
+  it('should set active option to first option, not selected options if multiselect', () => {
+    const { getByTestId } = render(
+      <Listbox data-testid="listbox" multiselect={true} selectedOptions={['Green', 'Blue']}>
+        <Option data-testid="firstOption">Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+
+    const firstOption = getByTestId('firstOption');
+    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(firstOption.id);
+  });
+
+  it('should preserve active option on last active option on blur and focus', () => {
     const { getByTestId } = render(
       <Listbox data-testid="listbox" selectedOptions={[]}>
         <Option data-testid="redOption">Red</Option>
@@ -120,10 +125,6 @@ describe('Listbox', () => {
       </Listbox>,
     );
 
-    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
-
-    fireEvent.focus(getByTestId('listbox'));
-
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(getByTestId('redOption').id);
 
     fireEvent.keyDown(getByTestId('listbox'), { key: 'ArrowDown' });
@@ -131,9 +132,6 @@ describe('Listbox', () => {
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(getByTestId('greenOption').id);
 
     fireEvent.blur(getByTestId('listbox'));
-
-    expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toBeNull();
-
     fireEvent.focus(getByTestId('listbox'));
 
     expect(getByTestId('listbox').getAttribute('aria-activedescendant')).toEqual(getByTestId('greenOption').id);
@@ -150,11 +148,13 @@ describe('Listbox', () => {
 
     const listbox = getByTestId('listbox');
 
-    fireEvent.keyDown(listbox, { key: 'ArrowDown' });
     expect(listbox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
 
     fireEvent.keyDown(listbox, { key: 'ArrowDown' });
     expect(listbox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+
+    fireEvent.keyDown(listbox, { key: 'ArrowDown' });
+    expect(listbox.getAttribute('aria-activedescendant')).toEqual(getByText('Blue').id);
   });
 
   it('should move active option with arrow up', () => {
@@ -353,7 +353,6 @@ describe('Listbox', () => {
     );
 
     const listbox = getByTestId('listbox');
-    fireEvent.keyDown(listbox, { key: 'ArrowDown' });
     fireEvent.keyDown(listbox, { key: 'Enter' });
 
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
@@ -372,7 +371,6 @@ describe('Listbox', () => {
     );
 
     const listbox = getByTestId('listbox');
-    fireEvent.keyDown(listbox, { key: 'ArrowDown' });
     fireEvent.keyDown(listbox, { key: ' ' });
 
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');

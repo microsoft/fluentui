@@ -27,14 +27,36 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveAttribute('shape', 'square');
   });
 
-  test('should set and retrieve the `size` property correctly', async ({ page }) => {
+  test('should add a custom state matching the `shape` attribute when provided', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
 
     await page.setContent(/* html */ `
-        <fluent-checkbox size="small"></fluent-checkbox>
-    `);
+      <fluent-checkbox></fluent-checkbox>
+  `);
 
-    await expect(element).toHaveJSProperty('size', 'small');
+    await element.evaluate((node: Checkbox) => {
+      node.shape = 'circular';
+    });
+
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('circular'))).toBe(true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.shape = 'square';
+    });
+
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('circular'))).toBe(false);
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('square'))).toBe(true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.shape = undefined;
+    });
+
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('circular'))).toBe(false);
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('square'))).toBe(false);
+  });
+
+  test('should set and retrieve the `size` property correctly', async ({ page }) => {
+    const element = page.locator('fluent-checkbox');
 
     await element.evaluate((node: Checkbox) => {
       node.size = 'medium';
@@ -47,6 +69,34 @@ test.describe('Checkbox', () => {
     });
 
     await expect(element).toHaveJSProperty('size', 'large');
+  });
+
+  test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
+    const element = page.locator('fluent-checkbox');
+
+    await page.setContent(/* html */ `
+      <fluent-checkbox></fluent-checkbox>
+  `);
+
+    await element.evaluate((node: Checkbox) => {
+      node.size = 'medium';
+    });
+
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('medium'))).toBe(true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.size = 'large';
+    });
+
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('medium'))).toBe(false);
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('large'))).toBe(true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.size = undefined;
+    });
+
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('medium'))).toBe(false);
+    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('large'))).toBe(false);
   });
 
   test('should have a role of `checkbox`', async ({ page }) => {

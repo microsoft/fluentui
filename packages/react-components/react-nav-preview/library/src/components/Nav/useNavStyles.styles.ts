@@ -24,6 +24,8 @@ const useStyles = makeStyles({
  * Apply styling to the Nav slots based on the state
  */
 export const useNavStyles_unstable = (state: NavState): NavState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(navClassNames.root, styles.root, state.root.className);
 

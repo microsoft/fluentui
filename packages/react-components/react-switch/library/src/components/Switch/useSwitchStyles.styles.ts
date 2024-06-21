@@ -262,6 +262,8 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Switch slots based on the state
  */
 export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
+  'use no memo';
+
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const indicatorBaseClassName = useIndicatorBaseClassName();

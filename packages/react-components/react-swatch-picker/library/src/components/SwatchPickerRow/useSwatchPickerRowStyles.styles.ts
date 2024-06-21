@@ -27,6 +27,8 @@ const useStyles = makeStyles({
  * Apply styling to the SwatchPickerRow slots based on the state
  */
 export const useSwatchPickerRowStyles_unstable = (state: SwatchPickerRowState): SwatchPickerRowState => {
+  'use no memo';
+
   const resetStyles = useResetStyles();
   const styles = useStyles();
   const spacingStyle = state.spacing === 'small' ? styles.spacingSmall : styles.spacingMedium;

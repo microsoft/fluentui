@@ -8,6 +8,8 @@ export function useComboboxContextValues(
   const {
     appearance,
     open,
+    getOptionById,
+    getOptionsMatchingValue,
     registerOption,
     selectedOptions,
     selectOption,
@@ -34,6 +36,8 @@ export function useComboboxContextValues(
   const listbox = {
     activeOption: undefined,
     focusVisible: false,
+    getOptionById,
+    getOptionsMatchingValue,
     registerOption,
     selectedOptions,
     selectOption,

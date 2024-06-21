@@ -76,6 +76,8 @@ function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<type
  * Apply styling to the InlineDrawer slots based on the state
  */
 export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): InlineDrawerState => {
+  'use no memo';
+
   const resetStyles = useDrawerResetStyles();
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();

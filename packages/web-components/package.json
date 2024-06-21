@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.31",
+  "version": "3.0.0-beta.33",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -221,18 +221,21 @@
     "test:dev": "playwright test"
   },
   "devDependencies": {
+    "@microsoft/fast-element": "2.0.0-beta.26",
     "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
     "@tensile-perf/web-components": "~0.1.15",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {
-    "@microsoft/fast-element": "2.0.0-beta.26",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@floating-ui/dom": "^1.2.0",
     "@fluentui/tokens": "1.0.0-alpha.16",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@microsoft/fast-element": "2.0.0-beta.26"
   },
   "beachball": {
     "disallowedChangeTypes": [

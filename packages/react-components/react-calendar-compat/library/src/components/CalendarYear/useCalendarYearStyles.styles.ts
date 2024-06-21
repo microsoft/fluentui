@@ -7,5 +7,7 @@ import type { CalendarYearStyleProps, CalendarYearStyles } from './CalendarYear.
  * Apply styling to the CalendarYear slots based on the state
  */
 export const useCalendarYearStyles_unstable = (props: CalendarYearStyleProps): CalendarYearStyles => {
+  'use no memo';
+
   return useCalendarPickerStyles_unstable(props);
 };

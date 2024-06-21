@@ -22,6 +22,8 @@ const useStyles = makeStyles({
  * Apply styling to the NavSectionHeader slots based on the state
  */
 export const useNavSectionHeaderStyles_unstable = (state: NavSectionHeaderState): NavSectionHeaderState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(navSectionHeaderClassNames.root, styles.root, state.root.className);
 

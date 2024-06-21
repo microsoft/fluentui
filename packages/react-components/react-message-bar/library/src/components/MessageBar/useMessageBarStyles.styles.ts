@@ -99,6 +99,8 @@ const useRootIntentStyles = makeStyles({
  * Apply styling to the MessageBar slots based on the state
  */
 export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBarState => {
+  'use no memo';
+
   const rootBaseStyles = useRootBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
   const iconIntentStyles = useIconIntentStyles();

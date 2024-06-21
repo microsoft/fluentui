@@ -474,6 +474,8 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
+  'use no memo';
+
   const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';

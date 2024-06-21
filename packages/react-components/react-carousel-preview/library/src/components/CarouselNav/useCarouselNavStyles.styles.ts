@@ -34,6 +34,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselNav slots based on the state
  */
 export const useCarouselNavStyles_unstable = (state: CarouselNavState): CarouselNavState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(carouselNavClassNames.root, styles.root, state.root.className);
 

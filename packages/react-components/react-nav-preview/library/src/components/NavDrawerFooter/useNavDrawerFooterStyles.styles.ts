@@ -24,6 +24,8 @@ const useStyles = makeStyles({
  * Apply styling to the NavDrawerFooter slots based on the state
  */
 export const useNavDrawerFooterStyles_unstable = (state: NavDrawerFooterState): NavDrawerFooterState => {
+  'use no memo';
+
   useDrawerFooterStyles_unstable(state);
   const styles = useStyles();
   state.root.className = mergeClasses(navDrawerFooterClassNames.root, styles.root, state.root.className);
