@@ -98,7 +98,7 @@ export class MenuItem extends FASTElement {
 
     if (next.length) {
       this.submenu = next[0];
-      this.submenu.setAttribute('popover', '');
+      this.submenu.toggleAttribute('popover', true);
       this.submenu.addEventListener('toggle', this.toggleHandler);
     }
   }
