@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 21 Jun 2024 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.33",
+      "version": "3.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "98fd517aecb51c4dc351e00eda89e22cbe1a7967",
+            "comment": "feat: make fast-element a peer dependencies of the web-components package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Jun 2024 04:07:31 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.32",
       "version": "3.0.0-beta.32",

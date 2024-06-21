@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: make fast-element a peer dependencies of the web-components package",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
