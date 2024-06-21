@@ -20,7 +20,7 @@ export const useCarouselNavButton_unstable = (
   props: CarouselNavButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselNavButtonState => {
-  const { onClick, as = 'button' } = props;
+  const { onClick } = props;
 
   const value = useCarouselNavContext();
 
@@ -40,7 +40,7 @@ export const useCarouselNavButton_unstable = (
   });
 
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
-    getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
+    getIntrinsicElementProps('button', useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
       defaultProps: {

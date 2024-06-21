@@ -18,6 +18,7 @@ export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPo
     useTeachingPopoverCarouselFooterButtonStyles_unstable(state);
 
     return renderTeachingPopoverCarouselFooterButton_unstable(state);
-  });
+    // Casting is required due to lack of distributive union to support unions on @types/react
+  }) as ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps>;
 
 TeachingPopoverCarouselFooterButton.displayName = 'TeachingPopoverCarouselFooterButton';

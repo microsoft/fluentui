@@ -29,12 +29,14 @@ export type {
   SlotPropsRecord,
   SlotRenderFunction,
   SlotShorthandValue,
+  // eslint-disable-next-line deprecation/deprecation
   UnknownSlotProps,
   SlotComponentType,
   SlotOptions,
   InferredElementRefType,
   EventData,
   EventHandler,
+  HTMLDataAttributes,
 } from './compose/index';
 
 export {
@@ -71,7 +73,7 @@ export {
   createPriorityQueue,
 } from './utils/index';
 
-export type { DistributiveOmit, UnionToIntersection } from './utils/types';
+export type { DistributiveOmit, DistributivePick, UnionToIntersection } from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 

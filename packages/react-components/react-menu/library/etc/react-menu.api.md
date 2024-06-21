@@ -7,11 +7,11 @@
 /// <reference types="react" />
 
 import { ARIAButtonElement } from '@fluentui/react-aria';
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
@@ -157,7 +157,7 @@ export type MenuItemLinkSlots = {
 export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
 
 // @public (undocumented)
-export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> & Pick<Partial<MenuItemSlots>, 'content'> & {
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
     disabled?: boolean;
@@ -189,7 +189,7 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<'div'>;
+    root: Slot<Omit<ExtractSlotProps<Slot<'div'>>, 'content'>>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
@@ -386,16 +386,18 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
 
 // @public
-export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = {
     'aria-haspopup'?: 'menu';
     'aria-expanded'?: boolean;
     id: string;
     ref: React_2.Ref<never>;
-    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onMouseMove: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-}>;
+    onMouseEnter: React_2.MouseEventHandler<HTMLElement>;
+    onMouseLeave: React_2.MouseEventHandler<HTMLElement>;
+    onMouseMove: React_2.MouseEventHandler<HTMLElement>;
+    onContextMenu: React_2.MouseEventHandler<HTMLElement>;
+    onClick?: React_2.MouseEventHandler<HTMLElement>;
+    onKeyDown?: React_2.KeyboardEventHandler<HTMLElement>;
+};
 
 // @public (undocumented)
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;

@@ -3,7 +3,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
-export const datePickerClassNames: SlotClassNames<DatePickerSlots> = {
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> & { calendar: string } = {
   root: 'fui-DatePicker',
   calendar: 'fui-DatePicker__calendar',
   popupSurface: 'fui-DatePicker__popupSurface',

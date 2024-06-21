@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { getSlotsNext } from './getSlotsNext';
-import type { ExtractSlotProps, Slot, SlotComponentType, UnknownSlotProps } from '../types';
+import type { ExtractSlotProps, Slot, SlotComponentType, SlotPropsDataType } from '../types';
 import { resolveShorthand } from './resolveShorthand';
 import { SLOT_RENDER_FUNCTION_SYMBOL } from '../constants';
 
-const resolveShorthandMock = <Props extends UnknownSlotProps>(props: Props): SlotComponentType<Props> => {
+const resolveShorthandMock = <Props extends SlotPropsDataType>(props: Props): SlotComponentType<Props> => {
   // casting is required here as SlotComponent is a callable
   return { ...props } as SlotComponentType<Props>;
 };

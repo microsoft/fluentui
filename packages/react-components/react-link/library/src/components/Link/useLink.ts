@@ -39,7 +39,7 @@ export const useLink_unstable = (
     },
 
     root: slot.always(
-      getIntrinsicElementProps<LinkProps>(elementType, {
+      getIntrinsicElementProps(elementType, {
         ref,
         ...propsWithAssignedAs,
       } as const),

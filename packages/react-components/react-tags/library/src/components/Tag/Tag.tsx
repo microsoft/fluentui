@@ -19,6 +19,7 @@ export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) 
   useCustomStyleHook_unstable('useTagStyles_unstable')(state);
 
   return renderTag_unstable(state, useTagAvatarContextValues_unstable(state));
-});
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<TagProps>;
 
 Tag.displayName = 'Tag';

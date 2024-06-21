@@ -11,6 +11,8 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
+import type { DistributivePick } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -26,7 +28,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
 
 // @public
-export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'size'> & Pick<ButtonProps, 'disabled' | 'disabledFocusable'> & {
+export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'size'> & DistributivePick<ButtonProps, 'disabled' | 'disabledFocusable'> & {
     current?: boolean;
 };
 
@@ -34,7 +36,7 @@ export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick
 export type BreadcrumbButtonSlots = ButtonSlots;
 
 // @public
-export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'> & Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>>;
+export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & DistributiveOmit<ButtonState, keyof ButtonSlots | 'components'> & Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>>;
 
 // @public (undocumented)
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;

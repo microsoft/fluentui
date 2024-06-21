@@ -1,4 +1,11 @@
-import type { ExtractSlotProps, Slot, UnionToIntersection } from '@fluentui/react-utilities';
+import type {
+  DistributiveOmit,
+  DistributivePick,
+  ExtractSlotProps,
+  HTMLDataAttributes,
+  Slot,
+  UnionToIntersection,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 export type ARIAButtonType = 'button' | 'a' | 'div';
@@ -18,8 +25,9 @@ export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' 
 /**
  * Props expected by `useARIAButtonProps` hooks
  */
-export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React.PropsWithRef<
-  JSX.IntrinsicElements[Type]
+export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = DistributiveOmit<
+  React.PropsWithRef<JSX.IntrinsicElements[Type]>,
+  'children'
 > & {
   disabled?: boolean;
   /**
@@ -36,7 +44,7 @@ export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = Reac
 export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<
   Slot<'button', AlternateAs>
 > &
-  Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
+  DistributivePick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
 
 /**
  * Props that will be modified internally by `useARIAButtonProps` by each case.
@@ -63,4 +71,5 @@ export type ARIAButtonAlteredProps<Type extends ARIAButtonType> =
  * Merge of props provided by the user and props provided internally.
  */
 export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props &
-  UnionToIntersection<ARIAButtonAlteredProps<Type>>;
+  UnionToIntersection<ARIAButtonAlteredProps<Type>> &
+  HTMLDataAttributes;

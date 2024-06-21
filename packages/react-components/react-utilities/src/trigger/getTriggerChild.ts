@@ -27,7 +27,7 @@ import type { TriggerProps } from './types';
 export function getTriggerChild<TriggerChildProps>(
   children: TriggerProps<TriggerChildProps>['children'],
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): (React.ReactElement<Partial<TriggerChildProps>> & { ref?: React.Ref<any> }) | null {
+): (React.ReactElement<TriggerChildProps> & { ref?: React.Ref<any> }) | null {
   if (!React.isValidElement<TriggerChildProps>(children)) {
     return null;
   }

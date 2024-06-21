@@ -20,7 +20,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, disabled: tabDisabled = false, icon, onClick, onFocus, value } = props;
+  const { content, disabled: tabDisabled = false, icon, onClick, onFocus, value, ...rest } = props;
 
   const appearance = useTabListContext_unstable(ctx => ctx.appearance);
   const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
@@ -69,11 +69,13 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         // aria-selected undefined indicates it is not selectable
         // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
         'aria-selected': disabled ? undefined : (`${selected}` as 'true' | 'false'),
-        ...props,
+        // FIXME: value is not a valid prop for button
+        value,
+        ...rest,
         disabled,
         onClick: onTabClick,
         onFocus: selectTabOnFocus ? onTabFocus : onFocus,
-      }),
+      } as const),
       { elementType: 'button' },
     ),
     icon: iconSlot,

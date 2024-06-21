@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
-import { Calendar, compareDatePart, DayOfWeek, FirstWeekOfYear } from '@fluentui/react-calendar-compat';
+import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '@fluentui/react-calendar-compat';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { defaultDatePickerStrings } from './defaults';
 import { Input } from '@fluentui/react-input';
@@ -18,7 +18,7 @@ import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-fie
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopupPositioning } from '../../utils/usePopupPositioning';
-import type { CalendarProps, ICalendar } from '@fluentui/react-calendar-compat';
+import type { ICalendar } from '@fluentui/react-calendar-compat';
 import type { DatePickerProps, DatePickerState, DatePickerValidationResultData } from './DatePicker.types';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 
@@ -450,34 +450,32 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar.current.focus();
     }
   }, [disableAutoFocus, open, props.disabled]);
-  const calendarShorthand = slot.always(props.calendar, {
-    defaultProps: {
-      allFocusable,
-      componentRef: calendar,
-      dateTimeFormatter,
-      firstDayOfWeek,
-      firstWeekOfYear,
-      highlightCurrentMonth,
-      highlightSelectedMonth,
-      isMonthPickerVisible,
-      maxDate,
-      minDate,
-      showCloseButton,
-      showGoToToday,
-      showMonthPickerAsOverlay,
-      showWeekNumbers,
-      strings,
-      today,
-      value: selectedDate || initialPickerDate,
-    },
-    elementType: Calendar,
-  });
+  const calendarShorthand = {
+    allFocusable,
+    componentRef: calendar,
+    dateTimeFormatter,
+    firstDayOfWeek,
+    firstWeekOfYear,
+    highlightCurrentMonth,
+    highlightSelectedMonth,
+    isMonthPickerVisible,
+    maxDate,
+    minDate,
+    showCloseButton,
+    showGoToToday,
+    showMonthPickerAsOverlay,
+    showWeekNumbers,
+    strings,
+    today,
+    value: selectedDate || initialPickerDate,
+    ...props.calendar,
+  };
   calendarShorthand.onDismiss = useEventCallback(mergeCallbacks(calendarShorthand.onDismiss, calendarDismissed));
   calendarShorthand.onSelectDate = useEventCallback(mergeCallbacks(calendarShorthand.onSelectDate, calendarDismissed));
   const state: DatePickerState = {
     disabled: !!props.disabled,
     inlinePopup,
-    components: { root: Input, calendar: Calendar as React.FC<Partial<CalendarProps>>, popupSurface: 'div' },
+    components: { root: Input, popupSurface: 'div' },
     calendar: calendarShorthand,
     mountNode,
     root,

@@ -7,12 +7,12 @@ import type { PositioningProps } from '@fluentui/react-positioning';
 
 export type DatePickerSlots = {
   root: NonNullable<Slot<typeof Input>>;
-  calendar: NonNullable<Slot<Partial<CalendarProps>>>;
   popupSurface?: Slot<'div'>;
 };
 
 export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> &
   Pick<PortalProps, 'mountNode'> & {
+    calendar?: CalendarProps;
     /**
      * Callback issued when a date is selected
      */
@@ -222,6 +222,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
  */
 export type DatePickerState = ComponentState<DatePickerSlots> &
   Pick<DatePickerProps, 'mountNode'> & {
+    calendar: CalendarProps;
     disabled: boolean;
     inlinePopup: boolean;
   };
