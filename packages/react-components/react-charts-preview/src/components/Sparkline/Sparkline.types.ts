@@ -1,5 +1,3 @@
-import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChartProps } from '../../types/IDataPoint';
 import { ICartesianChartStyleProps } from '../CommonComponents/index';
 
@@ -39,11 +37,6 @@ export interface ISparklineProps {
   className?: string;
 
   /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
@@ -56,7 +49,7 @@ export interface ISparklineProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ISparklineStyleProps, ISparklineStyles>;
+  styles?: ISparklineStyles;
 }
 
 /**
@@ -64,6 +57,6 @@ export interface ISparklineProps {
  * {@docCategory SparklineChart}
  */
 export interface ISparklineStyles {
-  inlineBlock?: IStyle;
-  valueText?: IStyle;
+  inlineBlock?: string;
+  valueText?: string;
 }
