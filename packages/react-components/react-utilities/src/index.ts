@@ -29,6 +29,7 @@ export type {
   SlotPropsRecord,
   SlotRenderFunction,
   SlotShorthandValue,
+  // eslint-disable-next-line deprecation/deprecation
   UnknownSlotProps,
   SlotComponentType,
   SlotOptions,

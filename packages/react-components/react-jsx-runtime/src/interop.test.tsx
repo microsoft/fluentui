@@ -171,6 +171,7 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const higherOrderState = useHigherOrderStateHook(props);
         const state: TestComponentState = {
+          // eslint-disable-next-line deprecation/deprecation
           components: { ...higherOrderState.components, slot: 'span' },
           slot: {
             ...higherOrderState.slot,
