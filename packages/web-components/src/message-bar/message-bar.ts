@@ -42,10 +42,10 @@ export class MessageBar extends FASTElement {
    */
   public shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
+      toggleState(this.elementInternals, prev, false);
     }
     if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
+      toggleState(this.elementInternals, next, true);
     }
   }
 
@@ -57,7 +57,7 @@ export class MessageBar extends FASTElement {
    * HTML Attribute: `layout`
    */
   @attr
-  layout: MessageBarLayout = 'singleline';
+  public layout?: MessageBarLayout = 'singleline';
 
   /**
    * Handles changes to the layout attribute custom states
@@ -66,10 +66,10 @@ export class MessageBar extends FASTElement {
    */
   public layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
+      toggleState(this.elementInternals, prev, false);
     }
     if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
+      toggleState(this.elementInternals, next, true);
     }
   }
 
@@ -81,7 +81,7 @@ export class MessageBar extends FASTElement {
    * HTML Attribute: `intent`
    */
   @attr
-  intent: MessageBarIntent = 'info';
+  public intent?: MessageBarIntent = 'info';
 
   /**
    * Handles changes to the intent attribute custom states
@@ -90,10 +90,10 @@ export class MessageBar extends FASTElement {
    */
   public intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined) {
     if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
+      toggleState(this.elementInternals, prev, false);
     }
     if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
+      toggleState(this.elementInternals, next, true);
     }
   }
 
@@ -106,12 +106,3 @@ export class MessageBar extends FASTElement {
   };
 }
 
-/**
- * Mark internal because exporting class and interface of the same name
- * confuses API documenter.
- * TODO: https://github.com/microsoft/fast/issues/3317
- * @internal
- */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface MessageBar extends StartEnd {}
-applyMixins(MessageBar, StartEnd);
