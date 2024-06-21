@@ -70,20 +70,8 @@ export const styles: ElementStyles = css`
       'icon body close'
       'actions actions actions';
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto 1fr;
     padding: ${spacingVerticalMNudge} ${spacingHorizontalM};
-  }
-
-  :host(${successState}) .success {
-    color: ${colorPaletteGreenForeground1};
-  }
-
-  :host(${warningState}) .warning {
-    color: ${colorPaletteDarkOrangeForeground1};
-  }
-
-  :host(${errorState}) .error {
-    color: ${colorPaletteRedForeground1};
   }
 
   .content {
@@ -111,7 +99,7 @@ export const styles: ElementStyles = css`
     justify-content: end;
   }
 
-  :host(:is(${multiLineState})) ::slotted([slot='close']) {
+  :host(${multiLineState}) ::slotted([slot='close']) {
     flex-direction: column;
     justify-content: start;
     align-items: start;
@@ -120,8 +108,8 @@ export const styles: ElementStyles = css`
   ::slotted([slot='actions']) {
     grid-area: actions;
     display: flex;
-    justify-content: end;
     margin-right: ${spacingHorizontalS};
+    justify-self: end;
   }
 
   :host(:is(${multiLineState}) ::slotted([slot='actions']) {
@@ -129,6 +117,6 @@ export const styles: ElementStyles = css`
   }
 
   ::slotted(*) {
-    font-size: unset;
+    font-size: inherit;
   }
 `;

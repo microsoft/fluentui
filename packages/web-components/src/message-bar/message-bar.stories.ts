@@ -64,9 +64,7 @@ const storyTemplate = html<MessageBarStoryArgs>`
   <fluent-message-bar shape="${x => x.shape}" layout="${x => x.layout}" intent="${x => x.intent}">
     <span slot="icon">${infoIcon}</span>
     ${x => x.content}
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
 `;
@@ -108,29 +106,23 @@ export const Shape = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar shape="rounded">
     <span slot="icon">${infoIcon}</span>
     rounded
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small"  slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
   <br />
   <fluent-message-bar shape="square">
     <span slot="icon">${infoIcon}</span>
     square
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
 `);
 
 export const Layout = renderComponent(html<MessageBarStoryArgs>`
-  <fluent-message-bar layout="singleline">
+  <fluent-message-bar>
     <span slot="icon">${infoIcon}</span>
     singleline
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>    
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
   <br />
@@ -138,9 +130,7 @@ export const Layout = renderComponent(html<MessageBarStoryArgs>`
     <span slot="icon">${infoIcon}</span>
     This is a message bar that provides information to the user. This is a message bar that provides information to the
     user.
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
 `);
@@ -149,36 +139,28 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar intent="info">
     <span slot="icon">${infoIcon}</span>
     info
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
   <br />
   <fluent-message-bar intent="warning">
     <span slot="icon">${warningIcon}</span>
     warning
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
   <br />
   <fluent-message-bar intent="success">
     <span slot="icon">${successIcon}</span>
     success
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
   <br />
   <fluent-message-bar intent="error">
     <span slot="icon">${errorIcon}</span>
     error
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
 `);
@@ -187,9 +169,7 @@ export const Assertive = renderComponent(html<MessageBarStoryArgs>`
   <fluent-message-bar aria-live="assertive" intent="info">
     <span slot="icon">${infoIcon}</span>
     info
-    <div class="actions" slot="actions">
-      <fluent-button size="small">Action</fluent-button>
-    </div>
+    <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
 `);

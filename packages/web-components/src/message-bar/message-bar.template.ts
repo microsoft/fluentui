@@ -9,14 +9,12 @@ import type { MessageBar } from './message-bar.js';
  */
 export function messageBarTemplate<T extends MessageBar>(): ElementViewTemplate<T> {
   return html<T>`
-    <template>
-      <slot name="icon"></slot>
-      <div class="content">
-        <slot></slot>
-      </div>
-      <slot name="actions"></slot>
-      <slot name="close"></slot>
-    </template>
+    <slot name="icon"></slot>
+    <div class="content">
+      <slot></slot>
+    </div>
+    <slot name="actions"></slot>
+    <slot name="close"></slot>
   `;
 }
 
