@@ -209,6 +209,7 @@ export class Menu extends FASTElement {
       const newState = e.newState === 'open' ? true : false;
       this._trigger?.setAttribute('aria-expanded', `${newState}`);
       this._open = newState;
+      this.focusMenuList();
     }
   };
 
@@ -371,7 +372,6 @@ export class Menu extends FASTElement {
       case keyEnter:
         e.preventDefault();
         this.toggleMenu();
-        this.focusMenuList();
         break;
       default:
         return true;

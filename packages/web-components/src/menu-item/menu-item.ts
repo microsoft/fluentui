@@ -161,7 +161,7 @@ export class MenuItem extends FASTElement {
    */
   public handleMouseOver = (e: MouseEvent): boolean => {
     if (this.disabled) {
-        return false;
+      return false;
     }
 
     this.submenu?.togglePopover(true);
@@ -238,19 +238,21 @@ export class MenuItem extends FASTElement {
       const thisSubmenuRect = this.submenu.getBoundingClientRect();
       const inlineEnd = getComputedStyle(this).direction === 'ltr' ? 'right' : 'left';
 
+      // If an open submenu is too wide for the viewport, move it above.
       if (thisRect.width + thisSubmenuRect.width > window.innerWidth * 0.75) {
-        // If an open submenu is too wide for the viewport, move it above.
         this.submenu.style.translate = '0 -100%';
         return;
-      } else if (thisRect[inlineEnd] + thisSubmenuRect.width > window.innerWidth) {
-        // If the open submenu is overflows the inline-end of the window (e.g. justify-content: end),
-        // move to inline-start of menu item
+      }
+
+      // If the open submenu is overflows the inline-end of the window (e.g. justify-content: end),
+      // move to inline-start of menu item
+      if (thisRect[inlineEnd] + thisSubmenuRect.width > window.innerWidth) {
         this.submenu.style.translate = '-100% 0';
         return;
-      } else {
-        // Default to inline-end of menu item
-        this.submenu.style.translate = `${thisRect.width - 8}px 0`;
       }
+
+      // Default to inline-end of menu item
+      this.submenu.style.translate = `${thisRect.width - 8}px 0`;
     }
   };
 }

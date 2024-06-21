@@ -83,6 +83,13 @@ const storyTemplate = html<MenuListStoryArgs>`
 
       <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
 
+      <fluent-menu-item disabled="true">
+        <span slot="start" class="start">${Code20Filled}</span>
+        <span slot="end">Win</span>
+
+        Disabled Item
+      </fluent-menu-item>
+
       <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
 
       <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>

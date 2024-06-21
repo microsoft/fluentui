@@ -69,6 +69,7 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
+  :host([disabled]) ::slotted([slot='start']),
   :host([disabled]) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
   }
