@@ -160,7 +160,9 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   public handleMouseOver = (e: MouseEvent): boolean => {
-    if (this.disabled) return false;
+    if (this.disabled) {
+        return false;
+    }
 
     this.submenu?.togglePopover(true);
     return false;
