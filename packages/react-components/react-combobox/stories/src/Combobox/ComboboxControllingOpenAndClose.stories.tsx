@@ -39,3 +39,15 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
     </div>
   );
 };
+
+ControllingOpenAndClose.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The opening and close of the `Combobox` can be controlled with your own state.',
+        'The `onOpenChange` callback will provide the hints for the state and triggers based on the appropriate',
+        'event.',
+      ].join('\n'),
+    },
+  },
+};
