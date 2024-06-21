@@ -14,12 +14,12 @@ const themeStyleTextMap = new Map<Theme, string>();
  * @internal
  */
 export const setTheme = (theme: Theme) => {
-  // Fallback to setting token custom properties on `<body>` element’s `style`
+  // Fallback to setting token custom properties on `<html>` element’s `style`
   // attribute, only checking the support of  `document.adoptedStyleSheets`
   // here because it has broader support than `CSS.registerProperty()`, which
   // is checked later.
   if (!SUPPORTS_ADOPTED_STYLE_SHEETS) {
-    setThemeFor(document.body, theme);
+    setThemeFor(document.documentElement, theme);
     return;
   }
 
@@ -39,7 +39,7 @@ export const setTheme = (theme: Theme) => {
       tokenDeclarations.push(`--${t}: ${theme[t] as string};`);
     }
 
-    themeStyleTextMap.set(theme, `body{${tokenDeclarations.join('')}}`);
+    themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
   }
 
   if (!document.adoptedStyleSheets.includes(themeStyleSheet)) {

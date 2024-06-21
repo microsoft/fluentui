@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="web" />
+
 import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
