@@ -11,6 +11,8 @@ export function useWeeks(
   onSelectDate: (date: Date) => void,
   getSetRefCallback: (dayKey: string) => (element: HTMLElement | null) => void,
 ): DayInfo[][] {
+  'use no memo';
+
   /**
    * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
    * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.

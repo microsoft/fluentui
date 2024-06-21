@@ -18,6 +18,8 @@ export const navItemClassNames: SlotClassNames<NavItemSlots> = {
  * Apply styling to the NavItem slots based on the state
  */
 export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => {
+  'use no memo';
+
   const rootDefaultClassName = useRootDefaultClassName();
   const smallStyles = useSmallStyles();
   const contentStyles = useContentStyles();

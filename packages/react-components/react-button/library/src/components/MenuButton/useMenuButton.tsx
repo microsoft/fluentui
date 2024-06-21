@@ -11,6 +11,8 @@ export const useMenuButton_unstable = (
   { menuIcon, ...props }: MenuButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
+  'use no memo';
+
   const buttonState = useButton_unstable(props, ref);
   buttonState.root['aria-expanded'] = props['aria-expanded'] ?? false;
 

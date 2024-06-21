@@ -21,6 +21,8 @@ const useStyles = makeStyles({
  * Apply styling to the Menu slots based on the state
  */
 export const useMenuListStyles_unstable = (state: MenuListState): MenuListState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(
     menuListClassNames.root,
