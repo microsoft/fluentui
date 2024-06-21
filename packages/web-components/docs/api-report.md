@@ -2377,14 +2377,14 @@ export class MenuItem extends FASTElement {
     hidden: boolean;
     role: MenuItemRole;
     // @internal
+    setSubmenuPosition: () => void;
+    // @internal
     slottedSubmenu: HTMLElement[];
     // @internal
     protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]): void;
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
-    // @internal (undocumented)
-    submenuLoaded: () => void;
-    // @internal (undocumented)
+    // @internal
     toggleHandler: (e: ToggleEvent | Event) => void;
 }
 
@@ -2426,13 +2426,11 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
-    collapseExpandedItem(): void;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
     focus(): void;
-    // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // @internal
     handleFocusOut: (e: FocusEvent) => void;
