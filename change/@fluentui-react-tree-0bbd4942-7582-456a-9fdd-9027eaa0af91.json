@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: ensures history navigation keys are respected",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
