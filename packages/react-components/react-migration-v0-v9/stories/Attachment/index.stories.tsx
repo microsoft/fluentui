@@ -1,6 +1,20 @@
 import * as React from 'react';
-import { Attachment, AttachmentIcon, AttachmentHeader, AttachmentDescription, AttachmentAction, AttachmentBody } from '@fluentui/react-migration-v0-v9';
-import { DismissRegular as Dismiss, MoreHorizontalRegular as MoreHorizontal, BriefcaseRegular as Briefcase, BookRegular as Book, PresenterRegular as Presenter, TableRegular as Table } from '@fluentui/react-icons';
+import {
+  Attachment,
+  AttachmentIcon,
+  AttachmentHeader,
+  AttachmentDescription,
+  AttachmentAction,
+  AttachmentBody,
+} from '@fluentui/react-migration-v0-v9';
+import {
+  DismissRegular as Dismiss,
+  MoreHorizontalRegular as MoreHorizontal,
+  BriefcaseRegular as Briefcase,
+  BookRegular as Book,
+  PresenterRegular as Presenter,
+  TableRegular as Table,
+} from '@fluentui/react-icons';
 
 import descriptionMd from './AttachmentDescription.md';
 
@@ -33,19 +47,25 @@ export const Icon = () => {
   return (
     <div>
       <Attachment>
-        <AttachmentIcon><Book /></AttachmentIcon>
+        <AttachmentIcon>
+          <Book />
+        </AttachmentIcon>
         <AttachmentBody>
           <AttachmentHeader>MeetingNotes.docx</AttachmentHeader>
         </AttachmentBody>
       </Attachment>
       <Attachment>
-        <AttachmentIcon><Briefcase /></AttachmentIcon>
+        <AttachmentIcon>
+          <Briefcase />
+        </AttachmentIcon>
         <AttachmentBody>
           <AttachmentHeader>Budget.xlsx</AttachmentHeader>
         </AttachmentBody>
       </Attachment>
       <Attachment>
-        <AttachmentIcon><Presenter /></AttachmentIcon>
+        <AttachmentIcon>
+          <Presenter />
+        </AttachmentIcon>
         <AttachmentBody>
           <AttachmentHeader>Presentation.pptx</AttachmentHeader>
         </AttachmentBody>
@@ -111,12 +131,10 @@ export const Actionable = () => {
   };
 
   return (
-    <Attachment
-      actionable
-      onClick={handleClick('Attachment')}
-      progress={33}
-    >
-      <AttachmentIcon><Table /></AttachmentIcon>
+    <Attachment actionable onClick={handleClick('Attachment')} progress={33}>
+      <AttachmentIcon>
+        <Table />
+      </AttachmentIcon>
       <AttachmentBody>
         <AttachmentHeader>Document.docx</AttachmentHeader>
         <AttachmentDescription>800 Kb</AttachmentDescription>

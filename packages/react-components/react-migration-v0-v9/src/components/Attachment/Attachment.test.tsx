@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { isConformant } from '@fluentui/react-conformance';
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import userEvent from "@testing-library/user-event";
+import userEvent from '@testing-library/user-event';
 
 import { Attachment } from './Attachment';
 
@@ -22,15 +22,23 @@ describe('Attachment', () => {
 
   it('handles onClick', () => {
     const handleClick = jest.fn();
-    const { getByText } = render(<Attachment actionable onClick={handleClick}>Click me</Attachment>);
+    const { getByText } = render(
+      <Attachment actionable onClick={handleClick}>
+        Click me
+      </Attachment>,
+    );
     fireEvent.click(getByText('Click me'));
     expect(handleClick).toHaveBeenCalled();
   });
 
   it('handles Enter', () => {
     const handleClick = jest.fn();
-    const { getByText } = render(<Attachment actionable onClick={handleClick}>Click me</Attachment>);
-    userEvent.type(getByText('Click me'), "{enter}");
+    const { getByText } = render(
+      <Attachment actionable onClick={handleClick}>
+        Click me
+      </Attachment>,
+    );
+    userEvent.type(getByText('Click me'), '{enter}');
     expect(handleClick).toHaveBeenCalled();
   });
 

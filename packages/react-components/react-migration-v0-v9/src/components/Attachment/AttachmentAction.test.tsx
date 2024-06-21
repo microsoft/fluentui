@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import userEvent from "@testing-library/user-event";
+import userEvent from '@testing-library/user-event';
 
 import { AttachmentAction } from './AttachmentAction';
 import { Attachment } from './Attachment';
@@ -23,15 +23,19 @@ describe('AttachmentAction', () => {
   it('handles Enter', () => {
     const handleClick = jest.fn();
     const { getByText } = render(<AttachmentAction onClick={handleClick}>Click me</AttachmentAction>);
-    userEvent.type(getByText('Click me'), "{enter}");
+    userEvent.type(getByText('Click me'), '{enter}');
     expect(handleClick).toHaveBeenCalled();
   });
 
   it('handles Enter when in Attachment', () => {
     const handleClick = jest.fn();
     const handleAttachmentClick = jest.fn();
-    const { getByText } = render(<Attachment actionable onClick={handleAttachmentClick}><AttachmentAction onClick={handleClick}>Click me</AttachmentAction></Attachment>);
-    userEvent.type(getByText('Click me'), "{enter}");
+    const { getByText } = render(
+      <Attachment actionable onClick={handleAttachmentClick}>
+        <AttachmentAction onClick={handleClick}>Click me</AttachmentAction>
+      </Attachment>,
+    );
+    userEvent.type(getByText('Click me'), '{enter}');
     expect(handleClick).toHaveBeenCalled();
     expect(handleAttachmentClick).not.toHaveBeenCalled();
   });

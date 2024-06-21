@@ -30,27 +30,20 @@ export const Attachment = React.forwardRef<HTMLDivElement, AttachmentProps>((pro
   return (
     <div
       ref={ref}
-      className={mergeClasses(attachmentClassName,
-        attachmentBaseClass,
-        actionable && classes.actionable,
-        className
-      )}
-      {...actionable && {
-        "data-is-focusable": true,
-        ...buttonProps
-      }}
+      className={mergeClasses(attachmentClassName, attachmentBaseClass, actionable && classes.actionable, className)}
+      {...(actionable && {
+        'data-is-focusable': true,
+        ...buttonProps,
+      })}
       {...rest}
     >
       {children}
       {!isNaN(Number(progress)) && (
-        <div className={mergeClasses(
-          attachmentProgressContainerClassName,
-          classes.progressContainer,
-      )}>
-          <div className={mergeClasses(
-            classes.progressBar,
-            attachmentProgressBarClassName,
-      )} style={{ width: `${progress}%` }} />
+        <div className={mergeClasses(attachmentProgressContainerClassName, classes.progressContainer)}>
+          <div
+            className={mergeClasses(classes.progressBar, attachmentProgressBarClassName)}
+            style={{ width: `${progress}%` }}
+          />
         </div>
       )}
     </div>

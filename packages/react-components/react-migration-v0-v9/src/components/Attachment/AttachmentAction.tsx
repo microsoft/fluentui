@@ -10,25 +10,34 @@ export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentAc
   const { className, disabled, disabledFocusable, children, onClick, onKeyUp, onKeyDown, ...rest } = props;
   const classes = useAttachmentActionStyles();
 
-  const handleClick = React.useCallback(e => {
-    e.stopPropagation();
-    e.preventDefault();
-    onClick?.(e);
-  }, [onClick]);
-
-  const handleKeyUp = React.useCallback(e => {
-    if (e.key === 'Enter' || e.key === ' ') {
+  const handleClick = React.useCallback(
+    e => {
       e.stopPropagation();
-    }
-    onKeyUp?.(e);
-  }, [onKeyUp]);
+      e.preventDefault();
+      onClick?.(e);
+    },
+    [onClick],
+  );
 
-  const handleKeyDown = React.useCallback(e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.stopPropagation();
-    }
-    onKeyDown?.(e);
-  }, [onKeyDown]);
+  const handleKeyUp = React.useCallback(
+    e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.stopPropagation();
+      }
+      onKeyUp?.(e);
+    },
+    [onKeyUp],
+  );
+
+  const handleKeyDown = React.useCallback(
+    e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.stopPropagation();
+      }
+      onKeyDown?.(e);
+    },
+    [onKeyDown],
+  );
 
   return (
     <Button
@@ -37,9 +46,9 @@ export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentAc
         attachmentActionClassName,
         classes.root,
         (disabled || disabledFocusable) && classes.disabled,
-        className
+        className,
       )}
-      appearance='transparent'
+      appearance="transparent"
       disabled={disabled}
       disabledFocusable={disabledFocusable}
       onClick={handleClick}

@@ -39,7 +39,14 @@ export {
   attachmentHeaderClassName,
   attachmentIconClassName,
   attachmentProgressBarClassName,
-  attachmentProgressContainerClassName
+  attachmentProgressContainerClassName,
 } from './components/Attachment';
 
-export type { AttachmentProps, AttachmentActionProps, AttachmentBodyProps, AttachmentDescriptionProps, AttachmentHeaderProps, AttachmentIconProps } from './components/Attachment';
+export type {
+  AttachmentProps,
+  AttachmentActionProps,
+  AttachmentBodyProps,
+  AttachmentDescriptionProps,
+  AttachmentHeaderProps,
+  AttachmentIconProps,
+} from './components/Attachment';
