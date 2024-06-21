@@ -7,13 +7,10 @@ import {
   colorNeutralStroke1,
   colorPaletteDarkOrangeBackground1,
   colorPaletteDarkOrangeBorder1,
-  colorPaletteDarkOrangeForeground1,
   colorPaletteGreenBackground1,
   colorPaletteGreenBorder1,
-  colorPaletteGreenForeground1,
   colorPaletteRedBackground1,
   colorPaletteRedBorder1,
-  colorPaletteRedForeground1,
   fontFamilyBase,
   fontSizeBase200,
   lineHeightBase200,
@@ -91,6 +88,11 @@ export const styles: ElementStyles = css`
     align-items: center;
     color: ${colorNeutralForeground3};
     margin-right: ${spacingHorizontalS};
+  }
+
+  :host(${multiLineState}) ::slotted([slot='icon']) {
+    align-items: start;
+    height: 100%;
   }
 
   ::slotted([slot='close']) {

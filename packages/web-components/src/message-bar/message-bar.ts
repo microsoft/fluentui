@@ -1,6 +1,4 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { StartEnd } from '../patterns/index.js';
-import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
@@ -26,7 +24,7 @@ export class MessageBar extends FASTElement {
   }
 
   /**
-   * Sets the shape of the control.
+   * Sets the shape of the Message Bar.
    *
    * @public
    * @remarks
@@ -57,7 +55,7 @@ export class MessageBar extends FASTElement {
    * HTML Attribute: `layout`
    */
   @attr
-  public layout?: MessageBarLayout = 'singleline';
+  public layout?: MessageBarLayout;
 
   /**
    * Handles changes to the layout attribute custom states
@@ -81,7 +79,7 @@ export class MessageBar extends FASTElement {
    * HTML Attribute: `intent`
    */
   @attr
-  public intent?: MessageBarIntent = 'info';
+  public intent?: MessageBarIntent;
 
   /**
    * Handles changes to the intent attribute custom states

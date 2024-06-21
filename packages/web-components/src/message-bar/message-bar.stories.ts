@@ -8,6 +8,8 @@ import './define';
 type MessageBarStoryArgs = Args & FluentMessageBar;
 type MessageBarStoryMeta = Meta<MessageBarStoryArgs>;
 
+
+
 const dismissed20Regular = html`
   <svg
     fill="currentColor"
@@ -136,7 +138,7 @@ export const Layout = renderComponent(html<MessageBarStoryArgs>`
 `);
 
 export const Intent = renderComponent(html<MessageBarStoryArgs>`
-  <fluent-message-bar intent="info">
+  <fluent-message-bar >
     <span slot="icon">${infoIcon}</span>
     info
     <fluent-button size="small" slot="actions">Action</fluent-button>
@@ -166,10 +168,22 @@ export const Intent = renderComponent(html<MessageBarStoryArgs>`
 `);
 
 export const Assertive = renderComponent(html<MessageBarStoryArgs>`
-  <fluent-message-bar aria-live="assertive" intent="info">
+  <fluent-message-bar aria-live="assertive" >
     <span slot="icon">${infoIcon}</span>
     info
     <fluent-button size="small" slot="actions">Action</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
 `);
+
+
+export const LabelledBy = renderComponent(html<MessageBarStoryArgs>`
+  <fluent-label id="message-bar-label">Message Bar</fluent-label>
+  <fluent-message-bar aria-labelledby="message-bar-label">
+    <span slot="icon">${infoIcon}</span>
+    info
+    <fluent-button size="small" slot="actions">Action</fluent-button>
+    <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
+  </fluent-message-bar>
+`);
+
