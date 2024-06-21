@@ -20,18 +20,9 @@ export const Attachment = React.forwardRef<HTMLDivElement, AttachmentProps>((pro
   const attachmentBaseClass = useAttachmentBaseStyles();
   const classes = useAttachmentStyles();
 
-  const handleClick = React.useCallback(e => {
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
-    if (onClick) {
-      onClick(e);
-    }
-  }, [onClick, disabled]);
-
   const buttonProps = useARIAButtonProps('div', {
-    onClick: handleClick,
+    disabled,
+    onClick,
     onKeyDown: onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
     onKeyUp: onKeyUp as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
   });
@@ -44,7 +35,6 @@ export const Attachment = React.forwardRef<HTMLDivElement, AttachmentProps>((pro
         actionable && classes.actionable,
         className
       )}
-      onClick={handleClick}
       {...actionable && {
         "data-is-focusable": true,
         ...buttonProps
