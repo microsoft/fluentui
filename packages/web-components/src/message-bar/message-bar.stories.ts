@@ -178,8 +178,8 @@ export const Assertive = renderComponent(html<MessageBarStoryArgs>`
 
 
 export const LabelledBy = renderComponent(html<MessageBarStoryArgs>`
-  <fluent-label id="message-bar-label">Message Bar</fluent-label>
-  <fluent-message-bar aria-labelledby="message-bar-label">
+  <fluent-label id="message-bar-label">This is a message bar that provides information to the user.</fluent-label>
+  <fluent-message-bar id="message-bar-with-label" aria-labelledby="message-bar-label">
     <span slot="icon">${infoIcon}</span>
     info
     <fluent-button size="small" slot="actions">Action</fluent-button>

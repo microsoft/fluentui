@@ -5,11 +5,11 @@ import type { MessageBar } from './message-bar.js';
 test.describe('Message Bar', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-messagebar--message'));
-
     await page.waitForFunction(() => customElements.whenDefined('fluent-message-bar'));
   });
 
   test('should include a role of status', async ({ page }) => {
+
     const element = page.locator('fluent-message-bar');
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'status');
