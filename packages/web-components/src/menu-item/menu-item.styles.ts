@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusMedium,
   colorCompoundBrandForeground1Hover,
@@ -166,4 +166,12 @@ export const styles = css`
       inset: unset;
     }
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host([disabled]),
+    :host([disabled]) ::slotted([slot='start']),
+    :host([disabled]) ::slotted([slot='end']) {
+      color: GrayText;
+    }
+  `),
+);
