@@ -15,11 +15,19 @@ const useStyles = makeStyles({
 
 export const ControllingOpenAndClose = () => {
   const styles = useStyles();
+  const ref = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: DropdownProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
 
   const onChange: CheckboxProps['onChange'] = (e, { checked }) => {
-    setOpen(checked as boolean);
+    const isOpen = Boolean(checked) || false;
+    setOpen(isOpen);
+
+    if (isOpen) {
+      ref.current?.focus();
+    } else {
+      ref.current?.blur();
+    }
   };
 
   const dropdownId = useId('dropdown');
@@ -28,7 +36,13 @@ export const ControllingOpenAndClose = () => {
   return (
     <div className={styles.root}>
       <label id={dropdownId}>Best pet</label>
-      <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal" open={open} onOpenChange={handleOpenChange}>
+      <Dropdown
+        aria-labelledby={dropdownId}
+        placeholder="Select an animal"
+        ref={ref}
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

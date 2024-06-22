@@ -18,17 +18,31 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
 
+  const ref = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
 
   const onChange: CheckboxProps['onChange'] = (e, { checked }) => {
-    setOpen(checked as boolean);
+    const isOpen = Boolean(checked) || false;
+    setOpen(isOpen);
+
+    if (isOpen) {
+      ref.current?.focus();
+    } else {
+      ref.current?.blur();
+    }
   };
 
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} placeholder="Select an animal" open={open} onOpenChange={handleOpenChange}>
+      <Combobox
+        aria-labelledby={comboId}
+        placeholder="Select an animal"
+        ref={ref}
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}
