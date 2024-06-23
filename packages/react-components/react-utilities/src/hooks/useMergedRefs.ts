@@ -13,6 +13,8 @@ export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
  * @returns A function with an attached "current" prop, so that it can be treated like a RefObject.
  */
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
+  'use no memo';
+
   const mergedCallback: RefObjectFunction<T> = React.useCallback(
     (value: T) => {
       // Update the "current" prop hanging on the function.

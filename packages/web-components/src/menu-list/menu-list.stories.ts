@@ -83,6 +83,13 @@ const storyTemplate = html<MenuListStoryArgs>`
 
       <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
 
+      <fluent-menu-item disabled="true">
+        <span slot="start" class="start">${Code20Filled}</span>
+        <span slot="end">Win</span>
+
+        Disabled Item
+      </fluent-menu-item>
+
       <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
 
       <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
@@ -287,3 +294,38 @@ export const MenuListAligningWithDivider = renderComponent(html<MenuListStoryArg
     </fluent-menu-list>
   </div>
 `);
+
+export const MenuListWithCustomIcons = renderComponent(html<MenuListStoryArgs>`
+  <div style="width: 260px">
+    <fluent-menu-list>
+      <fluent-menu-item>
+        Submenu 1
+        <span slot="start">${Cut20Filled}</span>
+        <span slot="submenu-glyph">→</span>
+        <span slot="end">Ctrl+S</span>
+        <fluent-menu-list slot="submenu">
+          <fluent-menu-item> Subitem 1 </fluent-menu-item>
+          <fluent-menu-item> Subitem 2 </fluent-menu-item>
+        </fluent-menu-list>
+      </fluent-menu-item>
+
+      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
+      <fluent-menu-item role="menuitemcheckbox">
+        Checkbox 1
+        <span slot="indicator">😀</span>
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+
+      <fluent-menu-item role="menuitemcheckbox">
+        Checkbox 2
+        <span slot="indicator">😢</span>
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+    </fluent-menu-list>
+  </div>
+`);
+
+export const HugEnd = renderComponent(
+  html<MenuListStoryArgs>` <div style="display: flex;justify-content: end;">${storyTemplate}</div> `,
+);

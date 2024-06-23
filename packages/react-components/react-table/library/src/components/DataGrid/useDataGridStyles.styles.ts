@@ -11,6 +11,8 @@ export const dataGridClassNames: SlotClassNames<DataGridSlots> = {
  * Apply styling to the DataGrid slots based on the state
  */
 export const useDataGridStyles_unstable = (state: DataGridState): DataGridState => {
+  'use no memo';
+
   useTableStyles_unstable(state);
   state.root.className = mergeClasses(dataGridClassNames.root, state.root.className);
 

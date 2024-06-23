@@ -28,6 +28,8 @@ import { optionClassNames } from '../Option/useOptionStyles.styles';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+  'use no memo';
+
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
   const {

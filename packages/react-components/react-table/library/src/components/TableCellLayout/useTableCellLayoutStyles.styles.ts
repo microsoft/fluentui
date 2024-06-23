@@ -73,6 +73,8 @@ const useStyles = makeStyles({
  * Apply styling to the TableCellLayout slots based on the state
  */
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
+  'use no memo';
+
   const styles = useStyles();
   const { truncate } = state;
 

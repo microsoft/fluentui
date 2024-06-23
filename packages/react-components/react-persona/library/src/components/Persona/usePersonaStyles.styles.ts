@@ -122,6 +122,8 @@ const usePresenceSpacingStyles = makeStyles({
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
+  'use no memo';
+
   const { presenceOnly, size, textAlignment, textPosition } = state;
 
   const alignToPrimary = presenceOnly && textAlignment === 'start' && size !== 'extra-large' && size !== 'huge';

@@ -248,6 +248,8 @@ const usePrimaryHighContrastStyles = makeStyles({
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
+  'use no memo';
+
   const rootCheckedStyles = useRootCheckedStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const iconCheckedStyles = useIconCheckedStyles();
@@ -278,7 +280,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
+      checked && (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       iconCheckedStyles.highContrast,
       state.icon.className,
     );

@@ -21,6 +21,8 @@ export const useComboboxBaseState = (
     activeDescendantController: ActiveDescendantImperativeRef;
   },
 ): ComboboxBaseState => {
+  'use no memo';
+
   const {
     appearance = 'outline',
     children,
