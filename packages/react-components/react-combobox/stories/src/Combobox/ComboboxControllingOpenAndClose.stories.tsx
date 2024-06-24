@@ -21,8 +21,8 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
-  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
+  const handleOpenChange: ComboboxProps['onOpenChange'] = (e, { open }) => setOpen(open);
+  const onChange: CheckboxProps['onChange'] = (e, { checked }) => setOpen(!!checked);
 
   const debouncedOpen = useDebounce(open, 100);
 

@@ -19,8 +19,8 @@ export const ControllingOpenAndClose = () => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const handleOpenChange: DropdownProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
-  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
+  const handleOpenChange: DropdownProps['onOpenChange'] = (e, { open }) => setOpen(open);
+  const onChange: CheckboxProps['onChange'] = (e, { checked }) => setOpen(!!checked);
 
   const debouncedOpen = useDebounce(open, 100);
 
