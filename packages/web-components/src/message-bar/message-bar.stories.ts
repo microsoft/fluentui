@@ -109,6 +109,7 @@ export const Shape = renderComponent(html<MessageBarStoryArgs>`
     <span slot="icon">${infoIcon}</span>
     rounded
     <fluent-button size="small"  slot="actions">Action</fluent-button>
+    <fluent-button size="small" slot="actions">Action 2</fluent-button>
     <fluent-button size="small" appearance="transparent" icon-only slot="close"> ${dismissed20Regular} </fluent-button>
   </fluent-message-bar>
   <br />

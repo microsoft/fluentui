@@ -107,15 +107,17 @@ export const styles: ElementStyles = css`
     align-items: start;
   }
 
-  ::slotted([slot='actions']) {
+
+  .actions {
     grid-area: actions;
-    display: flex;
-    margin-right: ${spacingHorizontalS};
+    display: flex; /* Ensures items are laid out in a row */
     justify-self: end;
+    margin-right: ${spacingHorizontalS};
   }
 
-  :host(:is(${multiLineState}) ::slotted([slot='actions']) {
+  :host(:is(${multiLineState}) .actions) {
     margin-top: ${spacingVerticalMNudge};
+    margin-right: 0;
   }
 
   ::slotted(*) {
