@@ -10,9 +10,9 @@ import {
 } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find } from '../../utilities/index';
-import { useId } from '@fluentui/react-utilities';
+//import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { useFocusableGroup } from '@fluentui/react-components';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -32,7 +32,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   let _calloutAnchorPoint: IChartDataPoint | null;
   const _isRTL: boolean = isRtl();
   let barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
-  const _emptyChartId: string = useId('_HBC_empty');
+  const _emptyChartId: string = '_HBC_empty';
 
   const [isCalloutVisible, setIsCalloutVisible] = React.useState<boolean>(false);
   const [refSelected, setRefSelected] = React.useState<SVGGElement | null | undefined>(null);

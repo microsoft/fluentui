@@ -1,4 +1,4 @@
-import { IChartProps } from '../../types/IDataPoint';
+import { IChartProps } from './index';
 import { ICartesianChartStyleProps } from '../CommonComponents/index';
 
 export interface ISparklineStyleProps extends ICartesianChartStyleProps {}
@@ -7,7 +7,7 @@ export interface ISparklineStyleProps extends ICartesianChartStyleProps {}
  * Sparkline properties
  * {@docCategory SparklineChart}
  */
-export interface ISparklineProps {
+export interface ISparklineProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * An array of chart data points for the Sparkline chart
    */

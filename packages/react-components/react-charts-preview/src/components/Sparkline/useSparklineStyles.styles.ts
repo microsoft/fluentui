@@ -7,8 +7,8 @@ import { tokens } from '@fluentui/react-theme';
  * @internal
  */
 export const hbcClassNames: SlotClassNames<ISparklineStyles> = {
-  inlineBlock: '',
-  valueText: '',
+  inlineBlock: 'fui-hbc__inlineBlock',
+  valueText: 'fui-hbc__valueText',
 };
 
 /**
@@ -28,11 +28,10 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useSparklineStyles_unstable = (props: ISparklineProps): ISparklineStyles => {
-  const { className } = props;
   const baseStyles = useStyles();
 
   return {
-    inlineBlock: mergeClasses(hbcClassNames.inlineBlock, baseStyles.inlineBlock, className, props.styles?.inlineBlock),
+    inlineBlock: mergeClasses(hbcClassNames.inlineBlock, baseStyles.inlineBlock, props.styles?.inlineBlock),
     valueText: mergeClasses(hbcClassNames.valueText, baseStyles.valueText, props.styles?.valueText),
   };
 };

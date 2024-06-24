@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { HorizontalBarChart, IHorizontalBarChartProps } from '../src/HorizontalBarChart';
-import { getColorFromToken, DataVizPalette } from '../src/utilities/colors';
+import { HorizontalBarChart, IHorizontalBarChartProps } from '../../src/HorizontalBarChart';
+import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
 
 export const HBCBasic = () => {
   const data = [
