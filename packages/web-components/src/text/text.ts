@@ -126,7 +126,7 @@ export class Text extends FASTElement {
   }
 
   /**
-   * THe Text weight
+   * The Text weight
    *
    * @public
    * @remarks
