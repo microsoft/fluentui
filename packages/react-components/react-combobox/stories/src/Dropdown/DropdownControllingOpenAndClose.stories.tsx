@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { CheckboxProps, DropdownProps } from '@fluentui/react-components';
 import { Checkbox, Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
+
 import { useDebounce } from '../utils/useDebounce';
 
 const useStyles = makeStyles({
@@ -16,17 +17,12 @@ const useStyles = makeStyles({
 
 export const ControllingOpenAndClose = () => {
   const styles = useStyles();
-  const ref = React.useRef<HTMLButtonElement>(null);
+
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: DropdownProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
-  const debouncedOpen = useDebounce(open);
+  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
 
-  const onChange: CheckboxProps['onChange'] = (e, data) => {
-    const isOpen = !!data.checked;
-    setOpen(isOpen);
-    // Focus the input when opening to ensure keyboard navigation is available
-    isOpen && ref.current?.focus();
-  };
+  const debouncedOpen = useDebounce(open, 100);
 
   const dropdownId = useId('dropdown');
   const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
@@ -38,7 +34,6 @@ export const ControllingOpenAndClose = () => {
       <Dropdown
         aria-labelledby={dropdownId}
         placeholder="Select an animal"
-        ref={ref}
         open={debouncedOpen}
         onOpenChange={handleOpenChange}
       >

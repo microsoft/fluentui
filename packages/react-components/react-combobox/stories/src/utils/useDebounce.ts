@@ -1,15 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+import * as React from 'react';
+import { useTimeout } from '@fluentui/react-utilities';
 
-export function useDebounce(value: any, delay = 100) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-  useEffect(() => {
-    const handler = document.defaultView?.setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
+export function useDebounce<T = unknown>(value: T, delay: number) {
+  const [setTimeout, cancelTimeout] = useTimeout();
+  const [debouncedValue, setDebouncedValue] = React.useState(value);
+
+  React.useEffect(() => {
+    setTimeout(() => setDebouncedValue(value), delay);
+
+    return () => cancelTimeout();
+  }, [value, delay, setTimeout, cancelTimeout]);
+
   return debouncedValue;
 }

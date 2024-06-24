@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Checkbox, Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { CheckboxProps, ComboboxProps } from '@fluentui/react-components';
+
 import { useDebounce } from '../utils/useDebounce';
 
 const useStyles = makeStyles({
@@ -19,17 +20,11 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
 
-  const ref = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
-  const debouncedOpen = useDebounce(open);
+  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
 
-  const onChange: CheckboxProps['onChange'] = (e, data) => {
-    const isOpen = !!data.checked;
-    setOpen(isOpen);
-    // Focus the input when opening to ensure keyboard navigation is available
-    isOpen && ref.current?.focus();
-  };
+  const debouncedOpen = useDebounce(open, 100);
 
   return (
     <div className={styles.root}>
@@ -38,7 +33,6 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
       <Combobox
         aria-labelledby={comboId}
         placeholder="Select an animal"
-        ref={ref}
         open={debouncedOpen}
         onOpenChange={handleOpenChange}
         {...props}
