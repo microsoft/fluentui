@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: console error if TreeItem has no parent Tree",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -11,8 +11,14 @@ import {
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
-import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
+import {
+  useTreeContext_unstable,
+  useSubtreeContext_unstable,
+  useTreeItemContext_unstable,
+  TreeContext,
+} from '../../contexts';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 
 /**
  * Create the state required to render TreeItem.
@@ -24,6 +30,14 @@ import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromEleme
  * @param ref - reference to root HTMLElement of TreeItem
  */
 export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
+  const hasTreeContext = useHasParentContext(TreeContext);
+  if (!hasTreeContext && process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.error(/** #__DE-INDENT__ */ `
+      @fluentui/react-tree [useTreeItem]:
+      <TreeItem> should be declared inside a <Tree> component.
+    `);
+  }
   const treeType = useTreeContext_unstable(ctx => ctx.treeType);
   if (treeType === 'flat') {
     warnIfNoProperPropsFlatTreeItem(props);
@@ -64,6 +78,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
     if (event.isDefaultPrevented()) {
+      return;
+    }
+    if (itemType === 'leaf') {
       return;
     }
     const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
@@ -135,6 +152,10 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           target: event.currentTarget,
         });
       case treeDataTypes.ArrowLeft: {
+        // arrow left with alt key is reserved for history navigation
+        if (event.altKey) {
+          return;
+        }
         // do not navigate to parent if the item is on the top level
         if (level === 1 && !open) {
           return;
@@ -149,14 +170,19 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         if (open) {
           props.onOpenChange?.(event, data);
         }
-        return requestTreeResponse({
+        requestTreeResponse({
           ...data,
           itemType,
           parentValue,
           requestType: open ? 'open' : 'navigate',
         });
+        return;
       }
-      case treeDataTypes.ArrowRight:
+      case treeDataTypes.ArrowRight: {
+        // arrow right with alt key is reserved for history navigation
+        if (event.altKey) {
+          return;
+        }
         // do not navigate or open if the item is a leaf
         if (itemType === 'leaf') {
           return;
@@ -171,12 +197,14 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         if (!open) {
           props.onOpenChange?.(event, data);
         }
-        return requestTreeResponse({
+        requestTreeResponse({
           ...data,
           itemType,
           parentValue,
           requestType: open ? 'navigate' : 'open',
         });
+        return;
+      }
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;

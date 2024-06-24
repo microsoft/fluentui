@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Listbox updates activedescendant correctly",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

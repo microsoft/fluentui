@@ -50,6 +50,8 @@ const useLabelStyles = makeStyles({
  * Apply styling to the RatingDisplay slots based on the state
  */
 export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
+  'use no memo';
+
   const { size } = state;
   const rootClassName = useRootClassName();
   state.root.className = mergeClasses(ratingDisplayClassNames.root, rootClassName, state.root.className);

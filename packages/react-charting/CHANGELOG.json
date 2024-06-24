@@ -2,6 +2,54 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 24 Jun 2024 07:33:22 GMT",
+      "tag": "@fluentui/react-charting_v5.21.20",
+      "version": "5.21.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.8",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.158",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.23",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.118.9",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jun 2024 07:30:19 GMT",
+      "tag": "@fluentui/react-charting_v5.21.19",
+      "version": "5.21.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6e029f7bc2fc849f0441bca048074c83b6e5b914",
+            "comment": "Fix overlapping nodes in sankey chart on smaller viewports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jun 2024 15:25:28 GMT",
       "tag": "@fluentui/react-charting_v5.21.18",
       "version": "5.21.18",

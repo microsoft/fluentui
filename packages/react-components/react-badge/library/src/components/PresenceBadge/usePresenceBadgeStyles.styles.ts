@@ -105,6 +105,8 @@ const useStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
+  'use no memo';
+
   const rootClassName = useRootClassName();
   const iconClassName = useIconClassName();
   const styles = useStyles();

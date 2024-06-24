@@ -176,6 +176,8 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
+  'use no memo';
+
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();

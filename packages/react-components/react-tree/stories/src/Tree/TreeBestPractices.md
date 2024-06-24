@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best practices
 
 ### Do
 
@@ -21,5 +18,3 @@
   - the `actions` slot will have `role="toolbar"` and are accessible with horizontal keyboard navigation using [\`useArrowNavigationGroup\`](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--default) by default.
 
 - **Use `aria-selected=true` once a treeitem is selected in custom behaviors** Some tree utilization might use the selection feature for navigation purposes, in this case, the `aria-selected` attribute should be set to `true` once the treeitem is the current active item to indicate that it is selected for the navigation.
-
-</details>

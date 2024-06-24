@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing incorrect error state icon",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

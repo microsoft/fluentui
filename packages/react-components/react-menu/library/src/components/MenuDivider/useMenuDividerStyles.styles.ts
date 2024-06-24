@@ -16,6 +16,8 @@ const useStyles = makeStyles({
 });
 
 export const useMenuDividerStyles_unstable = (state: MenuDividerState) => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(menuDividerClassNames.root, styles.root, state.root.className);
 

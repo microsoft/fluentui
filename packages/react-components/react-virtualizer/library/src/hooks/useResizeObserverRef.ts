@@ -8,6 +8,8 @@ import { ResizeCallbackWithRef } from './hooks.types';
  * useResizeObserverRef_unstable simplifies resize observer connection and ensures debounce/cleanup
  */
 export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWithRef) => {
+  'use no memo';
+
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
   // the handler for resize observer

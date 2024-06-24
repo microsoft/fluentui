@@ -14,6 +14,8 @@ export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submen
 };
 
 export const useMenuItemRadioStyles_unstable = (state: MenuItemRadioState) => {
+  'use no memo';
+
   state.root.className = mergeClasses(menuItemRadioClassNames.root, state.root.className);
 
   if (state.content) {
