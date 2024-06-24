@@ -59,7 +59,6 @@ export const useCarouselCard_unstable = (
         ref,
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
-        hidden: !visible && !peekDir,
         'aria-hidden': !visible,
         inert: !visible,
         role: 'presentation',
@@ -68,10 +67,6 @@ export const useCarouselCard_unstable = (
       { elementType: 'div' },
     ),
   };
-
-  if (!visible && !peekDir) {
-    state.root.children = null;
-  }
 
   return state;
 };
