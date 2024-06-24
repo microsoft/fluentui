@@ -335,6 +335,22 @@ describe('List', () => {
         firstItem.click();
         expect(onAction).toHaveBeenCalledTimes(1);
       });
+      it('onAction should be called with the value', () => {
+        const onAction = jest.fn();
+
+        const result = render(
+          <List>
+            <ListItem onAction={onAction} value="first-item">
+              First ListItem
+            </ListItem>
+            <ListItem>Second ListItem</ListItem>
+          </List>,
+        );
+
+        const firstItem = result.getByText('First ListItem');
+        firstItem.click();
+        expect(onAction).toHaveBeenCalledWith(expect.any(Object), 'first-item');
+      });
     });
 
     describe('with selection', () => {
@@ -454,7 +470,9 @@ describe('List', () => {
 
         const result = render(
           <List>
-            <ListItem onAction={onAction}>First ListItem</ListItem>
+            <ListItem onAction={onAction} value="first-item">
+              First ListItem
+            </ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
@@ -472,6 +490,9 @@ describe('List', () => {
       });
       it('Enter should trigger onClick', () => {
         expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledTimes(1);
+      });
+      it('onAction should be called with list item value', () => {
+        expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledWith(expect.any(Object), 'first-item');
       });
     });
 
