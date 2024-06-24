@@ -6,17 +6,15 @@ import { useTabster } from './useTabster';
 export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied.
-   * Prefer this to `legacyTrapFocus`
    * it forbids users to tab out of the focus trap into the actual browser.
    */
   trapFocus?: boolean;
 
   /**
    * Traps focus inside the elements the attributes are applied.
-   * This prop enables legacy behavior to match previous versions of Fluent and is not
-   * recommended for general use.
-   * Enabling `legacyTrapFocus` prevents users from tabbing out of the focus trap and into
-   * the actual browser. Prefer using `trapFocus` instead of this prop.
+   * This prop enables traditional force-focus behavior to match previous versions of Fluent
+   * Setting `legacyTrapFocus` to false allows users to tab out of the focus trap and into
+   * the actual browser. This matches the behavior of the native <dialog> element and inert.
    */
   legacyTrapFocus?: boolean;
 
@@ -41,7 +39,7 @@ export interface UseModalAttributesOptions {
 export const useModalAttributes = (
   options: UseModalAttributesOptions = {},
 ): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
-  const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
+  const { trapFocus, alwaysFocusable, legacyTrapFocus = true } = options;
   const tabster = useTabster();
   // Initializes the modalizer and restorer APIs
   if (tabster) {
