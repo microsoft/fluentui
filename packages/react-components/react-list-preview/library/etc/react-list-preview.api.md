@@ -33,7 +33,7 @@ export const listItemClassNames: SlotClassNames<ListItemSlots>;
 // @public
 export type ListItemProps = ComponentProps<ListItemSlots> & {
     value?: ListItemValue;
-    onAction?: (e: ListItemActionEvent, value: ListItemValue) => void;
+    onAction?: (e: ListItemActionEvent, data: ListItemOnActionData) => void;
 };
 
 // @public (undocumented)
