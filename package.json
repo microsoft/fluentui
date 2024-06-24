@@ -78,7 +78,7 @@
     "@dnd-kit/core": "^6.0.8",
     "@dnd-kit/sortable": "^7.0.2",
     "@dnd-kit/utilities": "^3.2.1",
-    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-icons": "^2.0.245",
     "@griffel/babel-preset": "1.5.8",
     "@griffel/eslint-plugin": "^1.6.3",
     "@griffel/jest-serializer": "1.1.24",
