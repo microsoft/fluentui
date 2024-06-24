@@ -73,6 +73,10 @@ function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
     }, selectorWithGlobals);
 }
 
+function isSelector(potentialSelector: string): boolean {
+  return potentialSelector.indexOf(':global(') >= 0 || potentialSelector.indexOf(':') === 0;
+}
+
 function expandSelector(newSelector: string, currentSelector: string): string {
   if (newSelector.indexOf(':global(') >= 0) {
     return newSelector.replace(globalSelectorRegExp, '$1');
@@ -138,7 +142,6 @@ function extractRules(
       for (const prop in arg as any) {
         if ((arg as any).hasOwnProperty(prop)) {
           const propValue = (arg as any)[prop];
-
           if (prop === 'selectors') {
             // every child is a selector.
             const selectors: { [key: string]: IStyle } = (arg as any).selectors;
@@ -148,9 +151,9 @@ function extractRules(
                 extractSelector(currentSelector, rules, newSelector, selectors[newSelector], stylesheet);
               }
             }
-          } else if (typeof propValue === 'object') {
+          } else if (typeof propValue === 'object' || isSelector(prop)) {
             // prop is a selector.
-            if (propValue !== null) {
+            if (propValue !== null && propValue !== undefined) {
               extractSelector(currentSelector, rules, prop, propValue, stylesheet);
             }
           } else {
