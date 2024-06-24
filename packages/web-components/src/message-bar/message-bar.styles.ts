@@ -40,7 +40,7 @@ export const styles: ElementStyles = css`
     border-radius: ${borderRadiusMedium};
     min-height: 36px;
     align-items: center;
-    grid-template: 'icon body actions close' / auto 1fr auto auto;
+    grid-template: 'icon body actions dismiss' / auto 1fr auto auto;
     contain: layout style paint;
   }
 
@@ -65,7 +65,7 @@ export const styles: ElementStyles = css`
 
   :host(${multiLineState}) {
     grid-template-areas:
-      'icon body close'
+      'icon body dismiss'
       'actions actions actions';
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto 1fr;
@@ -96,13 +96,13 @@ export const styles: ElementStyles = css`
     height: 100%;
   }
 
-  ::slotted([slot='close']) {
-    grid-area: close;
+  ::slotted([slot='dismiss']) {
+    grid-area: dismiss;
     display: flex;
     justify-content: end;
   }
 
-  :host(${multiLineState}) ::slotted([slot='close']) {
+  :host(${multiLineState}) ::slotted([slot='dismiss']) {
     flex-direction: column;
     justify-content: start;
     align-items: start;

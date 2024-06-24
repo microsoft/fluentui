@@ -16,7 +16,7 @@ export function messageBarTemplate<T extends MessageBar>(): ElementViewTemplate<
     <div class="actions">
       <slot name="actions"></slot>
     </div>
-    <slot name="close"></slot>
+    <slot name="dismiss"></slot>
   `;
 }
 

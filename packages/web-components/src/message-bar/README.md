@@ -20,8 +20,10 @@ The Fabric WC3 MessageBar extends `FASTElement`
   <div class="content">
     <slot></slot>
   </div>
-  <slot name="actions"></slot>
-  <slot name="close"></slot>
+  <div class="actions">
+    <slot name="actions"></slot>
+  </div>
+  <slot name="dismiss"></slot>
 </template>
 ```
 
@@ -55,11 +57,12 @@ The Fabric WC3 MessageBar extends `FASTElement`
 
 ### **Slots**
 
-| Name      | Description                           |
-| --------- | ------------------------------------- |
-|           | The default slot for the main content |
-| `actions` | The slot for optional action buttons  |
-| `close`   | The slot for a custom close icon      |
+| Name      | Description                               |
+| --------- | ----------------------------------------- |
+|           | The default slot for the main content     |
+| `icon`    | The slot for the icon to represent intent |
+| `actions` | The slot for optional action buttons      |
+| `dismiss` | The slot for a custom close icon          |
 
 ## **Accessiblity**
 
