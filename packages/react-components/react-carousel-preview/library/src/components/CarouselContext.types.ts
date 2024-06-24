@@ -2,7 +2,7 @@ import * as React from 'react';
 import { EventData } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
-  setActiveValue: (newValue: string | null) => void;
+  setActiveValue: (newValue: string | null, circular: boolean) => void;
 
   clearValues: () => void;
   addValue: (value: string) => void;
@@ -13,6 +13,8 @@ export type CarouselStore = {
   getSnapshot: () => {
     activeValue: string | null;
     values: string[];
+    navDirection: string;
+    loopCount: number;
   };
 };
 
@@ -35,8 +37,8 @@ export type CarouselContextValue = {
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
-  circular?: Boolean;
-  peeking?: Boolean;
+  circular?: boolean;
+  peeking?: boolean;
 };
 
 /**

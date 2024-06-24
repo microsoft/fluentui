@@ -34,4 +34,8 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
      * The current card index
      */
     currentIndex: number;
+    /**
+     * The number of times we have done a full loop of carousel, can go negative.
+     */
+    loopCount: number;
   };
