@@ -1,11 +1,15 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 import type { CarouselSliderSlots, CarouselSliderState } from './CarouselSlider.types';
 
 export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots> = {
   root: 'fui-CarouselSlider',
   container: 'fui-CarouselSlider__container',
 };
+
+// For now, until motion tokens are updated.
+const easingCurve = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
 /**
  * Styles for the root slot
@@ -17,6 +21,9 @@ const useStyles = makeStyles({
     // flexWrap: 'nowrap',
     overflow: 'visible',
     display: 'inline-grid',
+    transitionProperty: 'transform',
+    transitionTimingFunction: easingCurve,
+    transitionDuration: tokens.durationUltraSlow,
   },
   container: {
     overflow: 'hidden',
