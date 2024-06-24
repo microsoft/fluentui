@@ -180,7 +180,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     };
 
     // this should only be run once in the lifecycle of the Listbox
-    // eslint-disable-next-line react-compiler/react-compiler
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

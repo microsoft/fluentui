@@ -66,7 +66,10 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   useOnClickOutside({
     element: targetDocument,
-    callback: ev => setOpen(ev as unknown as ComboboxOpenEvents, false),
+    callback: event => {
+      event.preventDefault();
+      setOpen(event as unknown as ComboboxOpenEvents, false);
+    },
     refs: [triggerRef, comboboxPopupRef, comboboxTargetRef],
     disabled: !open,
   });
