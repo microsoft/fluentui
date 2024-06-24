@@ -4,9 +4,7 @@
 
 ### Build Tasks
 
-As part of a package's build process, the api-extractor task checks the package's public API with the package's auto-generated .api.md file.
-
-If building locally, the API file will be updated automatically (in `7.0` and `master`). Be sure to commit the updates with your other changes!
+As part of a package's build process, the api-extractor task checks the package's public API with the package's auto-generated .api.md file. Be sure to commit the updates with your other changes
 
 In PR builds, the task will fail if it detects missing API file updates.
 
@@ -14,12 +12,4 @@ To generate the API markdown file commit your changes, then run:
 
 `yarn nx run <package-name>:build`
 
-On Windows systems, you may have to run:
-
-`yarn build`
-
 Commit and push the updated file.
-
-### API Extractor code requirements
-
-See the [API Documentation page](API-Documentation#prop-comment-requirements).
