@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Sparkline, ISparklineProps } from '../../src/Sparkline';
 import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
 
-export const HBCBasic = () => {
+export const SparklineBasic = () => {
   const sl1 = {
     chartTitle: '10.21',
     lineChartData: [
@@ -333,49 +333,49 @@ export const HBCBasic = () => {
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
             <td>
-              <Sparkline data={sl1} showLegend={true} className={'hbcbasic'} />
+              <Sparkline data={sl1} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
             <td>
-              <Sparkline data={sl2} showLegend={true} className={'hbcbasic'} />
+              <Sparkline data={sl2} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
             <td>
-              <Sparkline data={sl3} showLegend={false} className={'hbcbasic'} />
+              <Sparkline data={sl3} showLegend={false} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
             <td>
-              <Sparkline data={sl4} showLegend={false} className={'hbcbasic'} />
+              <Sparkline data={sl4} showLegend={false} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
             <td>
-              <Sparkline data={sl5} showLegend={false} className={'hbcbasic'} />
+              <Sparkline data={sl5} showLegend={false} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
             <td>
-              <Sparkline data={sl6} showLegend={true} className={'hbcbasic'} />
+              <Sparkline data={sl6} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
             <td>
-              <Sparkline data={sl7} showLegend={true} className={'hbcbasic'} />
+              <Sparkline data={sl7} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
             <td>
-              <Sparkline data={sl8} showLegend={true} className={'hbcbasic'} />
+              <Sparkline data={sl8} showLegend={true} />
             </td>
           </tr>
         </tbody>
@@ -384,7 +384,7 @@ export const HBCBasic = () => {
   );
 };
 
-HBCBasic.parameters = {
+SparklineBasic.parameters = {
   docs: {
     description: {
       story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',

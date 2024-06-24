@@ -1,14 +1,14 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { ISparklineProps, ISparklineStyles } from './Sparkline.types';
-import type { SlotClassNames } from '../../../../react-utilities/src/index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
 /**
  * @internal
  */
-export const hbcClassNames: SlotClassNames<ISparklineStyles> = {
-  inlineBlock: 'fui-hbc__inlineBlock',
-  valueText: 'fui-hbc__valueText',
+export const sparklineClassNames: SlotClassNames<ISparklineStyles> = {
+  inlineBlock: 'fui-sprk__inlineBlock',
+  valueText: 'fui-sprk__valueText',
 };
 
 /**
@@ -31,7 +31,7 @@ export const useSparklineStyles_unstable = (props: ISparklineProps): ISparklineS
   const baseStyles = useStyles();
 
   return {
-    inlineBlock: mergeClasses(hbcClassNames.inlineBlock, baseStyles.inlineBlock, props.styles?.inlineBlock),
-    valueText: mergeClasses(hbcClassNames.valueText, baseStyles.valueText, props.styles?.valueText),
+    inlineBlock: mergeClasses(sparklineClassNames.inlineBlock, baseStyles.inlineBlock, props.styles?.inlineBlock),
+    valueText: mergeClasses(sparklineClassNames.valueText, baseStyles.valueText, props.styles?.valueText),
   };
 };
