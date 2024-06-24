@@ -24,6 +24,8 @@ const useStyles = makeStyles({
  * Apply styling to the <%= componentName %> slots based on the state
  */
 export const use<%= componentName %>Styles_unstable = (state: <%= componentName %>State): <%= componentName %>State => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(<%= propertyName %>ClassNames.root, styles.root, state.root.className);
 

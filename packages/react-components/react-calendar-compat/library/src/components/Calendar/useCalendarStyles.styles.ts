@@ -111,6 +111,8 @@ const useLiveRegionStyles = makeStyles({
  * Apply styling to the Calendar slots based on the state
  */
 export const useCalendarStyles_unstable = (props: CalendarStyleProps): CalendarStyles => {
+  'use no memo';
+
   const rootStyles = useRootStyles();
   const dividerStyles = useDividerStyles();
   const monthPickerWrapperStyles = useMonthPickerWrapperStyles();
