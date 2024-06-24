@@ -1,11 +1,10 @@
-import { PresenceMotion, PresenceMotionFn } from '@fluentui/react-motion';
-import { PresenceOverride, MotionParam } from '../types';
+import { PresenceOverride, MotionParam, PresenceMotion, PresenceMotionFn } from '../types';
 
 export const overridePresenceMotion = <MotionParams extends Record<string, MotionParam> = {}>(
   motion: PresenceMotion | PresenceMotionFn<MotionParams>,
   override: PresenceOverride,
 ): PresenceMotionFn<MotionParams> => {
-  return (...args) => {
+  return (...args: Parameters<PresenceMotionFn<MotionParams>>) => {
     const presenceMotion = typeof motion === 'function' ? motion(...args) : motion;
     const { enter, exit } = presenceMotion;
 

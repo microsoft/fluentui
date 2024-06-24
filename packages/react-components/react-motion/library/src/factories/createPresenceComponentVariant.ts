@@ -1,4 +1,4 @@
-import { PresenceComponent, createPresenceComponent } from '@fluentui/react-motion';
+import { PresenceComponent, createPresenceComponent } from './createPresenceComponent';
 import { PresenceOverride } from '../types';
 import { overridePresenceMotion } from './overridePresenceMotion';
 
