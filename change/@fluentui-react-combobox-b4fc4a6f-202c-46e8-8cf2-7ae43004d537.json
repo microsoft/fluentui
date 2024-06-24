@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: Update react-icons package to 2.0.245",
+  "comment": "chore: Update react-icons package to ^2.0.245",
   "packageName": "@fluentui/react-combobox",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
