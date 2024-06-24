@@ -19,11 +19,21 @@ export const useCarouselSlider_unstable = (
   const { cardWidth = '100%' } = props;
 
   const numCards: number = useCarouselStore_unstable(snapshot => {
+    console.log('Values:', snapshot.values);
     return snapshot.values.length;
   });
 
+  const currentIndex: number = useCarouselStore_unstable(snapshot => {
+    if (!snapshot.activeValue) {
+      return 0;
+    }
+    return snapshot.values.indexOf(snapshot.activeValue);
+  });
+  console.log('Num cards:', numCards);
+
   return {
     cardWidth,
+    currentIndex,
     numCards,
     // TODO add appropriate props/defaults
     components: {

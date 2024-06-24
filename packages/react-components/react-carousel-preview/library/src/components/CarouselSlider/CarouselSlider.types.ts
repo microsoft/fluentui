@@ -30,4 +30,8 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
      * Used to track the number of cards and controls grid size
      */
     numCards: number;
+    /**
+     * The current card index
+     */
+    currentIndex: number;
   };
