@@ -6,7 +6,7 @@ export {
   type PresenceComponentProps,
   type PresenceComponent,
 } from './factories/createPresenceComponent';
-export { createPresenceComponentVariant  } from './factories/createPresenceComponentVariant';
+export { createPresenceComponentVariant } from './factories/createPresenceComponentVariant';
 
 export { PresenceGroup } from './components/PresenceGroup';
 
