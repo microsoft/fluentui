@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 24 Jun 2024 04:06:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.34",
+      "version": "3.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8cfadd0245da036b77c921a7e6a128969cb72462",
+            "comment": "Refactor Menu, MenuList, and MenuItem components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Jun 2024 04:06:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.33",
       "version": "3.0.0-beta.33",
