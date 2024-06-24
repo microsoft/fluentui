@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: update useModalAttributes to use legacyTrapFocus by default",
+  "packageName": "@fluentui/react-tabster",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
