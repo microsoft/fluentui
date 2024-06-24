@@ -44,11 +44,11 @@ const itemRenderer = () => {
   content.appendChild(document.createTextNode('Accordion item'));
   messageBar.appendChild(content);
 
-  // Create and append close slot
-  const close = document.createElement('span');
-  close.setAttribute('slot', 'close');
-  close.innerHTML = dismissed20Regular; // replace with your SVG content
-  messageBar.appendChild(close);
+  // Create and append dismiss slot
+  const dismiss = document.createElement('span');
+  dismiss.setAttribute('slot', 'dismiss');
+  dismiss.innerHTML = dismissed20Regular; // replace with your SVG content
+  messageBar.appendChild(dismiss);
 
   // Create and append actions slot
   const actions = document.createElement('button');
