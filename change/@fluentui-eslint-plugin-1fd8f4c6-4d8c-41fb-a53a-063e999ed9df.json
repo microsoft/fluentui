@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add eslint react-compiler",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
