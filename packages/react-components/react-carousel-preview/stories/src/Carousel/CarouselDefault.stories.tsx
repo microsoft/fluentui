@@ -28,25 +28,27 @@ const TestDiv = (text: string, bgColor: string) => {
 };
 
 export const Default = (props: Partial<CarouselProps>) => (
-  <div style={{ overflow: 'hidden' }}>
-    <Carousel circular={true} peeking={true} defaultValue={'test-1'} {...props}>
-      <CarouselSlider cardWidth={'95%'}>
-        <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
-        <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>
-        <CarouselCard value="test-3">{TestDiv('test-3', 'BlanchedAlmond')}</CarouselCard>
-        <CarouselCard value="test-4">{TestDiv('test-4', 'DarkKhaki')}</CarouselCard>
-      </CarouselSlider>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-        }}
-      >
-        <CarouselButton navType="prev" />
-        <CarouselNav>{() => <CarouselNavImageButton image={{ src: swapImage }} />}</CarouselNav>
-        <CarouselButton navType="next" />
-      </div>
-    </Carousel>
-  </div>
+  <Carousel circular={true} peeking={true} defaultValue={'test-1'} {...props}>
+    <CarouselSlider cardWidth={'35%'}>
+      <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
+      <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>
+      <CarouselCard value="test-3">{TestDiv('test-3', 'BlanchedAlmond')}</CarouselCard>
+      <CarouselCard value="test-4">{TestDiv('test-4', 'DarkKhaki')}</CarouselCard>
+      <CarouselCard value="test-5">{TestDiv('test-5', 'blue')}</CarouselCard>
+      <CarouselCard value="test-6">{TestDiv('test-6', 'green')}</CarouselCard>
+      <CarouselCard value="test-7">{TestDiv('test-7', 'red')}</CarouselCard>
+      <CarouselCard value="test-8">{TestDiv('test-8', 'yellow')}</CarouselCard>
+    </CarouselSlider>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      }}
+    >
+      <CarouselButton navType="prev" />
+      <CarouselNav>{() => <CarouselNavImageButton image={{ src: swapImage }} />}</CarouselNav>
+      <CarouselButton navType="next" />
+    </div>
+  </Carousel>
 );
