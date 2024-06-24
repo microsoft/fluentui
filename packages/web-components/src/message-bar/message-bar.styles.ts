@@ -41,6 +41,7 @@ export const styles: ElementStyles = css`
     min-height: 36px;
     align-items: center;
     grid-template: 'icon body actions close' / auto 1fr auto auto;
+    contain: layout style paint;
   }
 
   :host(${squareState}) {
@@ -107,15 +108,14 @@ export const styles: ElementStyles = css`
     align-items: start;
   }
 
-
   .actions {
     grid-area: actions;
-    display: flex; /* Ensures items are laid out in a row */
+    display: flex;
     justify-self: end;
     margin-right: ${spacingHorizontalS};
   }
 
-  :host(:is(${multiLineState}) .actions) {
+  :host(${multiLineState}) .actions {
     margin-top: ${spacingVerticalMNudge};
     margin-right: 0;
   }
