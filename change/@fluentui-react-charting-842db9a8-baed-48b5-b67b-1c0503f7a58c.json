@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Replacing callout with popover for v9",
+  "packageName": "@fluentui/react-charting",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

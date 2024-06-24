@@ -9,12 +9,15 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { DonutChartBasicExample } from './DonutChart.Basic.Example';
+import { DonutChartV9BasicExample } from './DonutChartV9.Basic.Example';
 import { DonutChartDynamicExample } from './DonutChart.Dynamic.Example';
 import { DonutChartCustomCalloutExample } from './DonutChart.CustomCallout.Example';
 import { DonutChartCustomAccessibilityExample } from './DonutChart.CustomAccessibility.Example';
 
 const DonutChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Basic.Example.tsx') as string;
+const DonutChartV9BasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChartV9.Basic.Example.tsx') as string;
 const DonutChartDynamicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Dynamic.Example.tsx') as string;
 const DonutChartCustomCalloutExampleCode =
@@ -32,6 +35,9 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
           <div>
             <ExampleCard title="DonutChart basic" code={DonutChartBasicExampleCode}>
               <DonutChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="DonutChart V9 basic" code={DonutChartV9BasicExampleCode}>
+              <DonutChartV9BasicExample />
             </ExampleCard>
             <ExampleCard title="DonutChart dynamic" code={DonutChartDynamicExampleCode}>
               <DonutChartDynamicExample />
