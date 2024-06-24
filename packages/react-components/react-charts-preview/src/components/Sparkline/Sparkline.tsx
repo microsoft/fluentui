@@ -24,8 +24,6 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
     };
     let x: any;
     let y: any;
-    // let area: any = null;
-    //let line: any = null;
     let _emptyChartId: string;
     let _isRTL: boolean = isRtl();
     const [points, setPoints] = React.useState<ILineChartDataPoint[] | null>(null);
