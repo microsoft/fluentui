@@ -7,13 +7,15 @@ export type ListItemSlots = {
   checkmark?: Slot<typeof Checkbox>;
 };
 
+export type ListItemValue = string | number;
+
 /**
  * ListItem Props
  */
 export type ListItemProps = ComponentProps<ListItemSlots> & {
-  value?: string | number;
+  value?: ListItemValue;
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- using custom event here with no data
-  onAction?: (e: ListItemActionEvent) => void;
+  onAction?: (e: ListItemActionEvent, value: ListItemValue) => void;
 };
 
 /**
