@@ -57,7 +57,7 @@ export const useListItem_unstable = (
   const checkmarkRef = React.useRef<HTMLInputElement | null>(null);
 
   const handleAction: (e: ListItemActionEvent) => void = useEventCallback(e => {
-    onAction?.(e, value);
+    onAction?.(e, { value });
 
     if (e.defaultPrevented) {
       return;

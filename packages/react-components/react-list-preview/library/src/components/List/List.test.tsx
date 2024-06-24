@@ -349,7 +349,7 @@ describe('List', () => {
 
         const firstItem = result.getByText('First ListItem');
         firstItem.click();
-        expect(onAction).toHaveBeenCalledWith(expect.any(Object), 'first-item');
+        expect(onAction).toHaveBeenCalledWith(expect.any(Object), { value: 'first-item' });
       });
     });
 
@@ -492,7 +492,7 @@ describe('List', () => {
         expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledTimes(1);
       });
       it('onAction should be called with list item value', () => {
-        expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledWith(expect.any(Object), 'first-item');
+        expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledWith(expect.any(Object), { value: 'first-item' });
       });
     });
 

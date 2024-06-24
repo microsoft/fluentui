@@ -9,13 +9,15 @@ export type ListItemSlots = {
 
 export type ListItemValue = string | number;
 
+export type ListItemOnActionData = { value: ListItemValue };
+
 /**
  * ListItem Props
  */
 export type ListItemProps = ComponentProps<ListItemSlots> & {
   value?: ListItemValue;
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- using custom event here with no data
-  onAction?: (e: ListItemActionEvent, value: ListItemValue) => void;
+  onAction?: (e: ListItemActionEvent, data: ListItemOnActionData) => void;
 };
 
 /**
