@@ -19,38 +19,46 @@ export const useCarouselCard_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
   const { value } = props;
-  const { circular, peeking } = useCarouselContext_unstable();
+  const { circular } = useCarouselContext_unstable();
 
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
-  const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
-    if (!peeking) {
-      return;
+
+  const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
+
+  const currentActiveIndex: number = useCarouselStore_unstable(snapshot => {
+    if (!snapshot.activeValue) {
+      return 0;
     }
 
-    const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
-
-    if (currentIndex !== null && currentIndex >= 0) {
-      let nextValue = currentIndex + 1 < snapshot.values.length ? snapshot.values[currentIndex + 1] : null;
-      let prevValue = currentIndex - 1 >= 0 ? snapshot.values[currentIndex - 1] : null;
-
-      if (!nextValue && circular) {
-        nextValue = snapshot.values[0];
-      }
-
-      if (!prevValue && circular) {
-        prevValue = snapshot.values[snapshot.values.length - 1];
-      }
-
-      if (nextValue === value || prevValue === value) {
-        return nextValue === value ? 'next' : 'prev';
-      }
-    }
+    return snapshot.values.indexOf(snapshot.activeValue);
   });
+
+  const currentSelfIndex: number = useCarouselStore_unstable(snapshot => {
+    if (!snapshot.activeValue) {
+      return 0;
+    }
+
+    return snapshot.values.indexOf(value);
+  });
+
+  const totalCards: number = useCarouselStore_unstable(snapshot => snapshot.values.length);
+
+  const loopCount: number = useCarouselStore_unstable(snapshot => snapshot.loopCount);
+
+  let offsetIndex = circular ? loopCount * totalCards : 0;
+
+  // Track if we need to modify position due to circular loop
+  const cardDirection = currentActiveIndex < currentSelfIndex ? 'next' : 'prev';
+  const directionMod = navDirection === cardDirection ? 0.5 : -0.5;
+
+  if (circular && Math.abs(currentActiveIndex - currentSelfIndex) + directionMod >= totalCards / 2.0) {
+    offsetIndex = currentActiveIndex < currentSelfIndex ? offsetIndex - totalCards : offsetIndex + totalCards;
+  }
 
   const state: CarouselCardState = {
     value,
     visible,
-    peekDir,
+    offsetIndex,
     components: {
       root: 'div',
     },
