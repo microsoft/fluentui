@@ -167,8 +167,8 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     defaultValue?: string;
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
-    circular?: Boolean;
-    peeking?: Boolean;
+    circular?: boolean;
+    peeking?: boolean;
 };
 
 // @public (undocumented)

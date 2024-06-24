@@ -21,7 +21,7 @@ export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
 export type CarouselCardState = ComponentState<CarouselCardSlots> & {
   visible: boolean;
   /**
-   * Declares if card should be peeking as previous/next card
+   * Tracks the translate offset index for circular motion
    */
-  peekDir?: 'prev' | 'next' | null;
+  offsetIndex: number;
 } & Pick<CarouselCardProps, 'value'>;
