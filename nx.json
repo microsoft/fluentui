@@ -4,9 +4,6 @@
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
   "pluginsConfig": {
     "@nx/js": {
       "analyzeSourceFiles": false
@@ -105,5 +102,7 @@
       }
     }
   },
-  "parallel": 3
+  "parallel": 3,
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

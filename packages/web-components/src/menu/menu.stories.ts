@@ -2,7 +2,6 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Menu as FluentMenu } from './menu.js';
-import './define.js';
 
 type MenuStoryArgs = Args & FluentMenu;
 type MenuStoryMeta = Meta<MenuStoryArgs>;
