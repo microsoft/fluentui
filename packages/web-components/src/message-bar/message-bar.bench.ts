@@ -1,5 +1,5 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { definition as buttonDefinition } from '../Button/button.definition.js';
+import { definition as buttonDefinition } from '../button/button.definition.js';
 import { definition } from './message-bar.definition.js';
 
 definition.define(FluentDesignSystem.registry);
