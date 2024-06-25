@@ -14,7 +14,10 @@ export const useMenuButton_unstable = (
   'use no memo';
 
   const buttonState = useButton_unstable(props, ref);
-  buttonState.root['aria-expanded'] = props['aria-expanded'] ?? false;
+  // force aria-expanded to be a boolean, not a string
+  buttonState.root['aria-expanded'] = props['aria-expanded']
+    ? props['aria-expanded'] === 'true' || props['aria-expanded'] === true
+    : false;
 
   return {
     // Button state
