@@ -15,16 +15,14 @@ The Fabric WC3 MessageBar extends `FASTElement`
 ### Template
 
 ```html
-<template>
-  <slot name="icon"></slot>
-  <div class="content">
-    <slot></slot>
-  </div>
-  <div class="actions">
-    <slot name="actions"></slot>
-  </div>
-  <slot name="dismiss"></slot>
-</template>
+<slot name="icon"></slot>
+<div class="content">
+  <slot></slot>
+</div>
+<div class="actions">
+  <slot name="actions"></slot>
+</div>
+<slot name="dismiss"></slot>
 ```
 
 ### **Variables**
