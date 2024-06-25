@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useArrowNavigationGroup, useTabster } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType, DayOfWeek } from '../../utils';
 import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles.styles';
@@ -72,24 +72,6 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   const animateBackwards = useAnimateBackwards(weeks);
   const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
   const tableRef = React.useRef<HTMLTableElement>(null);
-  const tabster = useTabster();
-
-  // Hack around tabster setting focus on memoized date missing in DOM after month change
-  tabster?.focusedElement.subscribe((element, details) => {
-    let table = tableRef.current;
-    let placeHolder = details.relatedTarget;
-    let defaultCell: HTMLElement | null | undefined;
-
-    if (element || !table || !placeHolder) {
-      return;
-    } else if (placeHolder.nextElementSibling == table) {
-      defaultCell = tabster.focusable.findNext({ container: table });
-    } else if (placeHolder.previousElementSibling == table) {
-      defaultCell = tabster.focusable.findLast({ container: table });
-    }
-
-    defaultCell && tabster.focusedElement.focus(defaultCell);
-  });
 
   React.useImperativeHandle(
     props.componentRef,

@@ -9,6 +9,7 @@ import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles.style
 import type { AvailableDateOptions } from '../../utils';
 import type { DayInfo } from './CalendarDayGrid';
 import type { CalendarGridRowProps } from './CalendarGridRow';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 /**
  * @internal
@@ -209,6 +210,8 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
   }
 
   const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
+  const tabsterAttributes = useTabsterAttributes({ focusable: { isDefault: true } });
+  const focusAttributes = dayIndex === 0 ? tabsterAttributes : {};
 
   return (
     <td
@@ -237,6 +240,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       tabIndex={isNavigatedDate || isFocusable ? 0 : undefined}
       aria-current={day.isToday ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
+      {...focusAttributes}
     >
       <button
         key={day.key + 'button'}
