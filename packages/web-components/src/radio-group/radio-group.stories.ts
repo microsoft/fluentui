@@ -2,8 +2,6 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup as FluentRadioGroup } from './radio-group.js';
-import './define.js';
-import '../radio/define.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 type RadioGroupStoryArgs = Args & FluentRadioGroup;
