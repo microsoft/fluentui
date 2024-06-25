@@ -1,5 +1,8 @@
 import { NxJsonConfiguration, ProjectGraph, ProjectGraphProjectNode, Tree, output } from '@nx/devkit';
-import { getLatestGitTagForPattern, gitAdd, gitPush, gitTag } from 'nx/src/command-line/release/utils/git';
+import { /* getLatestGitTagForPattern, */ gitAdd, gitPush, gitTag } from 'nx/src/command-line/release/utils/git';
+
+// TODO: Use API from nx (import above) once https://github.com/nrwl/nx/issues/26589 is fixed
+import { getLatestGitTagForPattern } from './overrides/get-latest-git-tag';
 
 // ==========  Expose internal nx APIs  =========
 export { getGeneratorInformation } from 'nx/src/command-line/generate/generator-utils';
