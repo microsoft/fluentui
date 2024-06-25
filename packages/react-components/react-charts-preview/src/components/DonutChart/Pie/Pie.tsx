@@ -1,110 +1,96 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { pie as d3Pie } from 'd3-shape';
-import { IPieProps, IPieStyleProps, IPieStyles } from './index';
+import { IPieProps } from './index';
 import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
-import { classNamesFunction } from '@fluentui/react/lib/Utilities';
-import { getStyles } from './Pie.styles';
+import { usePieStyles_unstable } from './Pie.styles';
 import { wrapTextInsideDonut } from '../../../utilities/index';
 
-const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
 
-export class Pie extends React.Component<IPieProps, {}> {
-  public static defaultProps: Partial<IPieProps> = {
-    pie: d3Pie()
-      .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .value((d: any) => d.data)
-      .padAngle(0.02),
-  };
+// Create a Pie within Donut Chart variant which uses these default styles and this styled subcomponent.
+/**
+ * Pie component within Donut Chart.
+ * {@docCategory PieDonutChart}
+ */
+export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivElement, IPieProps>(
+  (props, forwardedRef) => {
+    // const pie = d3Pie()
+    //   .sort(null)
+    //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    //   .value((d: any) => d.data)
+    //   .padAngle(0.02);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let _pieForFocusRing: any;
+    let _totalValue: number;
+    const classes = usePieStyles_unstable(props);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _pieForFocusRing: any;
-  private _totalValue: number;
+    React.useEffect(() => {
+      wrapTextInsideDonut(classes.insideDonutString, props.innerRadius! * 2 - TEXT_PADDING);
+    }, []);
 
-  constructor(props: IPieProps) {
-    super(props);
-    this._hoverCallback = this._hoverCallback.bind(this);
-    this._pieForFocusRing = d3Pie()
-      .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .value((d: any) => d.data)
-      .padAngle(0);
-  }
+    function _focusCallback(data: IChartDataPoint, id: string, e: SVGPathElement): void {
+      props.onFocusCallback!(data, id, e);
+    }
 
-  public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
-    const color = d && d.data && d.data.color;
-    return (
-      <Arc
-        key={i}
-        data={d}
-        focusData={focusData}
-        innerRadius={this.props.innerRadius}
-        outerRadius={this.props.outerRadius}
-        color={color!}
-        onFocusCallback={this._focusCallback}
-        hoverOnCallback={this._hoverCallback}
-        onBlurCallback={this.props.onBlurCallback}
-        hoverLeaveCallback={this.props.hoverLeaveCallback}
-        uniqText={this.props.uniqText}
-        activeArc={this.props.activeArc}
-        href={href}
-        calloutId={this.props.calloutId}
-        valueInsideDonut={this.props.valueInsideDonut}
-        theme={this.props.theme!}
-        focusedArcId={this.props.focusedArcId}
-        showLabelsInPercent={this.props.showLabelsInPercent}
-        totalValue={this._totalValue}
-        hideLabels={this.props.hideLabels}
-      />
-    );
-  };
+    function _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+      props.hoverOnCallback!(data, e);
+    }
 
-  public render(): JSX.Element {
-    const { pie, data } = this.props;
-    const focusData = this._pieForFocusRing(data);
+    function _computeTotalValue() {
+      let totalValue = 0;
+      props.data.forEach((arc: IChartDataPoint) => {
+        totalValue += arc.data!;
+      });
+      return totalValue;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function arcGenerator(d: any, i: number, focusData: IArcData, href?: string): JSX.Element {
+      const color = d && d.data && d.data.color;
+      return (
+        <Arc
+          key={i}
+          data={d}
+          focusData={focusData}
+          innerRadius={props.innerRadius}
+          outerRadius={props.outerRadius}
+          color={color!}
+          onFocusCallback={_focusCallback}
+          hoverOnCallback={_hoverCallback}
+          onBlurCallback={props.onBlurCallback}
+          hoverLeaveCallback={props.hoverLeaveCallback}
+          uniqText={props.uniqText}
+          activeArc={props.activeArc}
+          href={href}
+          calloutId={props.calloutId}
+          valueInsideDonut={props.valueInsideDonut}
+          focusedArcId={props.focusedArcId}
+          showLabelsInPercent={props.showLabelsInPercent}
+          totalValue={_totalValue}
+          hideLabels={props.hideLabels}
+        />
+      );
+    }
+
+    const { pie, data } = props;
+    const focusData = _pieForFocusRing(data);
     const piechart = pie(data);
-    const translate = `translate(${this.props.width / 2}, ${this.props.height / 2})`;
-    const classNames = getClassNames(getStyles, {
-      theme: this.props.theme!,
-    });
+    const translate = `translate(${props.width / 2}, ${props.height / 2})`;
 
-    this._totalValue = this._computeTotalValue();
+    _totalValue = _computeTotalValue();
 
     return (
       <g transform={translate}>
-        {piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, focusData[i], this.props.href))}
-        {this.props.valueInsideDonut && (
-          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classNames.insideDonutString}>
-            {this.props.valueInsideDonut}
+        {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
+        {props.valueInsideDonut && (
+          <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
+            {props.valueInsideDonut}
           </text>
         )}
       </g>
     );
-  }
-
-  public componentDidUpdate(): void {
-    const classNames = getClassNames(getStyles, {
-      theme: this.props.theme!,
-    });
-
-    wrapTextInsideDonut(classNames.insideDonutString, this.props.innerRadius! * 2 - TEXT_PADDING);
-  }
-
-  private _focusCallback = (data: IChartDataPoint, id: string, e: SVGPathElement): void => {
-    this.props.onFocusCallback!(data, id, e);
-  };
-
-  private _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
-    this.props.hoverOnCallback!(data, e);
-  }
-
-  private _computeTotalValue = () => {
-    let totalValue = 0;
-    this.props.data.forEach((arc: IChartDataPoint) => {
-      totalValue += arc.data!;
-    });
-    return totalValue;
-  };
-}
+  },
+);
+Arc.displayName = 'Arc';

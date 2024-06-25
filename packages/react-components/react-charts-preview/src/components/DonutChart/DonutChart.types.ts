@@ -1,8 +1,8 @@
-import { IStyle } from '@fluentui/react/lib/Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IChartProps, IChartDataPoint } from './index';
+import { StringAxis } from '../../utilities/utilities';
 
 export interface IDonutChart {}
 
@@ -24,7 +24,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
+  styles?: IDonutChartStyles;
 
   /**
    * props for inside donut value
@@ -73,14 +73,14 @@ export interface IDonutChartStyles {
   /**
    *  Style for the root element.
    */
-  root?: IStyle;
+  root?: string;
 
   /**
    * Style for the chart.
    */
-  chart?: IStyle;
+  chart?: string;
   /**
    * Style for the legend container.
    */
-  legendContainer: IStyle;
+  legendContainer: string;
 }

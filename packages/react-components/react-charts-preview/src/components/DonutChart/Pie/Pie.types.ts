@@ -1,11 +1,6 @@
-import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IChartDataPoint } from '../index';
 
 export interface IPieProps {
-  /**
-   * Theme
-   */
-  theme: ITheme;
   /**
    * Width of the Pie.
    */
@@ -85,23 +80,26 @@ export interface IPieProps {
    * Prop to hide the arc labels
    */
   hideLabels?: boolean;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IPieStyles;
+
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
+  className?: string;
 }
 
 export interface IPieStyles {
   /**
    * Style set for the card header component root
    */
-  root: IStyle;
+  root: string;
 
   /**
    * Style set for the inside donut string
    */
-  insideDonutString: IStyle;
-}
-
-export interface IPieStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
+  insideDonutString: string;
 }
