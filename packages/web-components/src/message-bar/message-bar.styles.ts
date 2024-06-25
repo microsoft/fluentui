@@ -36,7 +36,7 @@ export const styles: ElementStyles = css`
     width: 100%;
     background: ${colorNeutralBackground3};
     border: 1px solid ${colorNeutralStroke1};
-    padding: 0 ${spacingHorizontalM};
+    padding-inline: ${spacingHorizontalM};
     border-radius: ${borderRadiusMedium};
     min-height: 36px;
     align-items: center;
@@ -69,13 +69,15 @@ export const styles: ElementStyles = css`
       'actions actions actions';
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto 1fr;
-    padding: ${spacingVerticalMNudge} ${spacingHorizontalM};
+    padding-block: ${spacingVerticalMNudge};
+    padding-inline: ${spacingHorizontalM};
   }
 
   .content {
     grid-area: body;
     max-width: 520px;
-    padding: ${spacingVerticalMNudge} 0;
+    padding-block: ${spacingVerticalMNudge};
+    padding-inline: 0;
   }
 
   :host(${multiLineState}) .content {
@@ -88,7 +90,7 @@ export const styles: ElementStyles = css`
     flex-direction: column;
     align-items: center;
     color: ${colorNeutralForeground3};
-    margin-right: ${spacingHorizontalS};
+    margin-inline-end: ${spacingHorizontalS};
   }
 
   :host(${multiLineState}) ::slotted([slot='icon']) {
@@ -112,12 +114,12 @@ export const styles: ElementStyles = css`
     grid-area: actions;
     display: flex;
     justify-self: end;
-    margin-right: ${spacingHorizontalS};
+    margin-inline-end: ${spacingHorizontalS};
   }
 
   :host(${multiLineState}) .actions {
-    margin-top: ${spacingVerticalMNudge};
-    margin-right: 0;
+    margin-block-start: ${spacingVerticalMNudge};
+    margin-inline-end: 0;
   }
 
   ::slotted(*) {
