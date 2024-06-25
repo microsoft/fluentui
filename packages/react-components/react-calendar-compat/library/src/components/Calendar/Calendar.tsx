@@ -346,7 +346,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
         </div>
         {isDayPickerVisible && (
           <CalendarDay
-            ariaLabel={selectionAndTodayString}
+            gridLabel={selectionAndTodayString}
             selectedDate={selectedDate!}
             navigatedDate={navigatedDay!}
             today={today}

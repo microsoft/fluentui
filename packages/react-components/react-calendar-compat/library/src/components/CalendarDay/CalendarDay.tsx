@@ -26,7 +26,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
 
   const {
     strings,
-    ariaLabel,
+    gridLabel,
     navigatedDate,
     dateTimeFormatter,
     className,
@@ -76,7 +76,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
       </div>
       <CalendarDayGrid
         {...propsWithoutStyles}
-        gridLabel={`${monthAndYear}, ${ariaLabel}`}
+        gridLabel={`${monthAndYear}, ${gridLabel}`}
         componentRef={dayGrid}
         strings={strings}
         navigatedDate={navigatedDate!}
