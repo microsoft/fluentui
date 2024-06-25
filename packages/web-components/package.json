@@ -219,8 +219,6 @@
     "@microsoft/fast-element": "2.0.0-beta.26",
     "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
-    "@tensile-perf/tools": "0.1.7",
-    "@tensile-perf/web-components": "~0.1.15",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {
