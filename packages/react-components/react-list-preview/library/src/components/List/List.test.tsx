@@ -4,7 +4,8 @@ import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
 import { ListItem } from '../ListItem/ListItem';
-import { ListItemActionEvent } from '../../events/ListItemActionEvent';
+import { ListItemActionEventData } from '../ListItem/ListItem.types';
+import { EventHandler } from '@fluentui/react-utilities';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
@@ -360,7 +361,7 @@ describe('List', () => {
     describe('with selection', () => {
       function interactWithFirstElement(
         interaction: (firstItem: HTMLElement) => void,
-        customAction?: (e: ListItemActionEvent) => void,
+        customAction?: EventHandler<ListItemActionEventData>,
       ) {
         const onAction = jest.fn(customAction);
 
@@ -505,8 +506,8 @@ describe('List', () => {
     });
 
     describe('with selection', () => {
-      function pressOnListItem(key: string, customOnaction?: (e: ListItemActionEvent) => void) {
-        const onAction = jest.fn(customOnaction);
+      function pressOnListItem(key: string, customOnAction?: EventHandler<ListItemActionEventData>) {
+        const onAction = jest.fn(customOnAction);
 
         const result = render(
           <List selectionMode="multiselect">
