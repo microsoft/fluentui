@@ -331,7 +331,6 @@ import { dropdownClassNames } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
 import { DropdownOpenChangeData } from '@fluentui/react-combobox';
 import { DropdownOpenEvents } from '@fluentui/react-combobox';
-import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
@@ -370,6 +369,7 @@ import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getDropdownActionFromKey } from '@fluentui/react-combobox';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
@@ -382,6 +382,7 @@ import { HeadlessFlatTreeItem } from '@fluentui/react-tree';
 import { HeadlessFlatTreeItemProps } from '@fluentui/react-tree';
 import { HeadlessFlatTreeOptions } from '@fluentui/react-tree';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
+import { iconSizes } from '@fluentui/react-combobox';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
@@ -1355,8 +1356,10 @@ import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxBaseState } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxFilter } from '@fluentui/react-combobox';
+import { useComboboxPositioning } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -1465,6 +1468,7 @@ import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
+import { useListboxSlot } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
@@ -1517,6 +1521,7 @@ import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
+import { useOptionCollection } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
@@ -1713,6 +1718,7 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useTriggerSlot } from '@fluentui/react-combobox';
 import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
@@ -2372,8 +2378,6 @@ export { DropdownOpenChangeData }
 
 export { DropdownOpenEvents }
 
-export { DropdownProps }
-
 export { DropdownSlots }
 
 export { DropdownState }
@@ -2450,6 +2454,8 @@ export { FontWeightTokens }
 
 export { ForwardRefComponent }
 
+export { getDropdownActionFromKey }
+
 export { getIntrinsicElementProps }
 
 export { getNativeElementProps }
@@ -2473,6 +2479,8 @@ export { HeadlessFlatTreeItemProps }
 export { HeadlessFlatTreeOptions }
 
 export { HorizontalSpacingTokens }
+
+export { iconSizes }
 
 export { IdPrefixProvider }
 
@@ -4420,9 +4428,13 @@ export { useColumnIdContext }
 
 export { useCombobox_unstable }
 
+export { useComboboxBaseState }
+
 export { useComboboxContextValues }
 
 export { useComboboxFilter }
+
+export { useComboboxPositioning }
 
 export { useComboboxStyles_unstable }
 
@@ -4640,6 +4652,8 @@ export { useListbox_unstable }
 
 export { useListboxContextValues }
 
+export { useListboxSlot }
+
 export { useListboxStyles_unstable }
 
 export { useMenu_unstable }
@@ -4743,6 +4757,8 @@ export { UseModalAttributesOptions }
 export { useObservedElement }
 
 export { useOption_unstable }
+
+export { useOptionCollection }
 
 export { useOptionGroup_unstable }
 
@@ -5135,6 +5151,8 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
+
+export { useTriggerSlot }
 
 export { useUncontrolledFocus }
 

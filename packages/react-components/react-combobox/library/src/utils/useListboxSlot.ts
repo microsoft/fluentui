@@ -19,7 +19,8 @@ type UseListboxSlotOptions = {
   triggerRef:
     | React.RefObject<HTMLInputElement>
     | React.RefObject<HTMLButtonElement>
-    | React.RefObject<HTMLButtonElement | HTMLInputElement>;
+    | React.RefObject<HTMLSpanElement>
+    | React.RefObject<HTMLButtonElement | HTMLInputElement | HTMLSpanElement>;
   defaultProps?: Partial<ListboxProps>;
 };
 

@@ -30,15 +30,24 @@ export function useTriggerSlot(
   options: UseTriggerSlotOptions & { elementType: 'input' },
 ): SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
 
+export function useTriggerSlot(
+  triggerSlotFromProp: NonNullable<Slot<'span'>>,
+  ref: React.Ref<HTMLSpanElement>,
+  options: UseTriggerSlotOptions & { elementType: 'span' },
+): SlotComponentType<ExtractSlotProps<Slot<'span'>>>;
+
 /**
  * Shared trigger behaviour for combobox and dropdown
  * @returns trigger slot with desired behaviour and props
  */
 export function useTriggerSlot(
-  triggerSlotFromProp: NonNullable<Slot<'input'>> | NonNullable<Slot<'button'>>,
-  ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement>,
-  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
-): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
+  triggerSlotFromProp: NonNullable<Slot<'input'>> | NonNullable<Slot<'button'>> | NonNullable<Slot<'span'>>,
+  ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement> | React.Ref<HTMLSpanElement>,
+  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' | 'span' },
+):
+  | SlotComponentType<ExtractSlotProps<Slot<'button'>>>
+  | SlotComponentType<ExtractSlotProps<Slot<'input'>>>
+  | SlotComponentType<ExtractSlotProps<Slot<'span'>>> {
   const {
     state: { open, setOpen, setHasFocus },
     defaultProps,
@@ -57,17 +66,30 @@ export function useTriggerSlot(
   });
 
   // handle trigger focus/blur
-  const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement>(null);
-  trigger.ref = useMergedRefs(triggerRef, trigger.ref, ref) as React.Ref<HTMLButtonElement & HTMLInputElement>;
+  const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement | HTMLSpanElement>(null);
+  trigger.ref = useMergedRefs(triggerRef, trigger.ref, ref) as React.Ref<
+    HTMLButtonElement & HTMLInputElement & HTMLSpanElement
+  >;
 
   // the trigger should open/close the popup on click or blur
-  trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
-    setOpen(event, false);
-    setHasFocus(false);
-  }, trigger.onBlur);
+  trigger.onBlur = mergeCallbacks(
+    (
+      event: React.FocusEvent<HTMLButtonElement> &
+        React.FocusEvent<HTMLInputElement> &
+        React.FocusEvent<HTMLSpanElement>,
+    ) => {
+      setOpen(event, false);
+      setHasFocus(false);
+    },
+    trigger.onBlur,
+  );
 
   trigger.onFocus = mergeCallbacks(
-    (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
+    (
+      event: React.FocusEvent<HTMLButtonElement> &
+        React.FocusEvent<HTMLInputElement> &
+        React.FocusEvent<HTMLSpanElement>,
+    ) => {
       if (event.target === event.currentTarget) {
         setHasFocus(true);
       }
@@ -75,7 +97,11 @@ export function useTriggerSlot(
     trigger.onFocus,
   );
   trigger.onClick = mergeCallbacks(
-    (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
+    (
+      event: React.MouseEvent<HTMLButtonElement> &
+        React.MouseEvent<HTMLInputElement> &
+        React.MouseEvent<HTMLSpanElement>,
+    ) => {
       setOpen(event, !open);
     },
     trigger.onClick,
@@ -139,63 +165,69 @@ function useTriggerKeydown(
   };
 
   const setKeyboardNavigation = useSetKeyboardNavigation();
-  return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
-    const action = getDropdownActionFromKey(e, { open, multiselect });
-    const activeOption = getActiveOption();
+  return useEventCallback(
+    (
+      e: React.KeyboardEvent<HTMLInputElement> &
+        React.KeyboardEvent<HTMLButtonElement> &
+        React.KeyboardEvent<HTMLSpanElement>,
+    ) => {
+      const action = getDropdownActionFromKey(e, { open, multiselect });
+      const activeOption = getActiveOption();
 
-    switch (action) {
-      case 'First':
-      case 'Last':
-      case 'Next':
-      case 'Previous':
-      case 'PageDown':
-      case 'PageUp':
-      case 'Open':
-      case 'Close':
-      case 'CloseSelect':
-      case 'Select':
-        e.preventDefault();
-        break;
-    }
+      switch (action) {
+        case 'First':
+        case 'Last':
+        case 'Next':
+        case 'Previous':
+        case 'PageDown':
+        case 'PageUp':
+        case 'Open':
+        case 'Close':
+        case 'CloseSelect':
+        case 'Select':
+          e.preventDefault();
+          break;
+      }
 
-    setKeyboardNavigation(true);
+      setKeyboardNavigation(true);
 
-    switch (action) {
-      case 'First':
-        first();
-        break;
-      case 'Last':
-        last();
-        break;
-      case 'Next':
-        next(activeOption);
-        break;
-      case 'Previous':
-        previous(activeOption);
-        break;
-      case 'PageDown':
-        pageDown();
-        break;
-      case 'PageUp':
-        pageUp();
-        break;
-      case 'Open':
-        setOpen(e, true);
-        break;
-      case 'Close':
-        // stop propagation for escape key to avoid dismissing any parent popups
-        e.stopPropagation();
-        setOpen(e, false);
-        break;
-      case 'CloseSelect':
-        !multiselect && !activeOption?.disabled && setOpen(e, false);
-      // fallthrough
-      case 'Select':
-        activeOption && selectOption(e, activeOption);
-        break;
-      case 'Tab':
-        !multiselect && activeOption && selectOption(e, activeOption);
-        break;
-    }
-  });
+      switch (action) {
+        case 'First':
+          first();
+          break;
+        case 'Last':
+          last();
+          break;
+        case 'Next':
+          next(activeOption);
+          break;
+        case 'Previous':
+          previous(activeOption);
+          break;
+        case 'PageDown':
+          pageDown();
+          break;
+        case 'PageUp':
+          pageUp();
+          break;
+        case 'Open':
+          setOpen(e, true);
+          break;
+        case 'Close':
+          // stop propagation for escape key to avoid dismissing any parent popups
+          e.stopPropagation();
+          setOpen(e, false);
+          break;
+        case 'CloseSelect':
+          !multiselect && !activeOption?.disabled && setOpen(e, false);
+        // fallthrough
+        case 'Select':
+          activeOption && selectOption(e, activeOption);
+          break;
+        case 'Tab':
+          !multiselect && activeOption && selectOption(e, activeOption);
+          break;
+      }
+    },
+  );
 }

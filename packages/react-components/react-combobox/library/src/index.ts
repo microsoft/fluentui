@@ -59,13 +59,40 @@ export {
   useOptionGroup_unstable,
 } from './OptionGroup';
 export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './OptionGroup';
-export type { OptionOnSelectData, SelectionEvents } from './Selection';
 
 export { useComboboxFilter } from './hooks/useComboboxFilter';
 
 // internals splitting the combobox logic into state hook and slot hooks
-export { useComboboxBaseState } from './utils/useComboboxBaseState';
 export { useButtonTriggerSlot } from './components/Dropdown/useButtonTriggerSlot';
 export { useInputTriggerSlot } from './components/Combobox/useInputTriggerSlot';
-export { useListboxSlot } from './utils/useListboxSlot';
-export type { ComboboxBaseState, ComboboxBaseProps } from './utils/ComboboxBase.types';
+export type {
+  ActiveOptionChangeData,
+  ComboboxBaseContextValues,
+  ComboboxBaseOpenChangeData,
+  ComboboxBaseOpenEvents,
+  ComboboxBaseProps,
+  ComboboxBaseState,
+  DropdownActionOptions,
+  DropdownActions,
+  HighlightedOptionProps,
+  OptionCollectionState,
+  OptionOnSelectData,
+  OptionValue,
+  SelectionEvents,
+  SelectionProps,
+  SelectionState,
+  UseListboxSlotState,
+  UseTriggerSlotState,
+} from './utils/index';
+export {
+  getDropdownActionFromKey,
+  iconSizes,
+  useComboboxBaseState,
+  useComboboxPositioning,
+  useListboxSlot,
+  useOptionCollection,
+  useSelection,
+  useTriggerSlot,
+} from './utils/index';
+export type { PromptInputProps, PromptInputSlots, PromptInputState } from './PromptInput';
+export { PromptInput, promptInputClassNames, renderPromptInput_unstable, usePromptInputStyles_unstable, usePromptInput_unstable } from './PromptInput';

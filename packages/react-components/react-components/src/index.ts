@@ -380,6 +380,13 @@ export {
   ListboxProvider,
   useListboxContextValues,
   useComboboxFilter,
+  getDropdownActionFromKey,
+  iconSizes,
+  useComboboxBaseState,
+  useComboboxPositioning,
+  useListboxSlot,
+  useOptionCollection,
+  useTriggerSlot,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
@@ -389,7 +396,6 @@ export type {
   ComboboxOpenEvents,
   ComboboxSlots,
   ComboboxState,
-  DropdownProps,
   DropdownContextValues,
   DropdownOpenChangeData,
   DropdownOpenEvents,

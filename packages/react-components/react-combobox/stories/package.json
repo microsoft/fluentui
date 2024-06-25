@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@fluentui/react-components": "*",
+    "@fluentui-copilot/react-copilot": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/scripts-storybook": "*",

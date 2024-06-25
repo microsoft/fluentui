@@ -38,7 +38,7 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  const { multiselect } = props;
+  const { multiselect, disableAutoFocus = false } = props;
   const optionCollection = useOptionCollection();
 
   const {
@@ -169,7 +169,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     }
 
     // otherwise start at the first option
-    else {
+    else if (!disableAutoFocus) {
       activeDescendantController.first();
     }
 
