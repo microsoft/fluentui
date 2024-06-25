@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(drawer): add drawer web component",
+  "packageName": "@fluentui/web-components",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
