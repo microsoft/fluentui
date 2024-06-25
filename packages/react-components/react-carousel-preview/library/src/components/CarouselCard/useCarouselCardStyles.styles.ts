@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     height: '100%',
     gridRow: 1,
     transitionProperty: 'transform',
-    transitionDelay: '200ms',
+    transitionDelay: tokens.durationFaster,
     transitionDuration: '0s',
   },
 });

@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     display: 'inline-grid',
     transitionProperty: 'transform',
     transitionTimingFunction: easingCurve,
-    transitionDuration: tokens.durationUltraSlow,
+    transitionDuration: tokens.durationNormal,
   },
   container: {
     overflow: 'hidden',
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): CarouselSliderState => {
   'use no memo';
 
-  const { cardWidth, currentIndex, numCards, loopCount } = state;
+  const { cardWidth, currentIndex, numCards, loopCount, interruptedAnimation } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselSliderClassNames.root, styles.root, state.root.className);
@@ -57,6 +57,7 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   state.root.style = {
     width: `calc(${cardWidth} * ${numCards})`,
     transform: slideTransform,
+    transitionDelay: interruptedAnimation.current ? `-${tokens.durationFast}` : '0',
     ...state.root.style,
   };
 
