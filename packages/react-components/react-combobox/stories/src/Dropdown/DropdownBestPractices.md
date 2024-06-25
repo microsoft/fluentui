@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best practices
 
 ### Do
 
@@ -12,5 +9,3 @@
 ### Don't
 
 - **Use `placeholder` for label text.** Placeholder text has lower contrast than label text, and disappears once an option is selected. If used, it should only contain temporary filler text.
-
-</details>

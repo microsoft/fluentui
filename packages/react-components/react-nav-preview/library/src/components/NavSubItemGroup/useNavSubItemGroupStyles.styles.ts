@@ -23,6 +23,8 @@ const useStyles = makeStyles({
  * Apply styling to the NavSubItemGroup slots based on the state
  */
 export const useNavSubItemGroupStyles_unstable = (state: NavSubItemGroupState): NavSubItemGroupState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(navSubItemGroupClassNames.root, styles.root, state.root.className);
 

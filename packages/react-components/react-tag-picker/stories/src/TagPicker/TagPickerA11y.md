@@ -1,7 +1,4 @@
-<details>
-<summary>
-Accessibility edge cases scenarios
-</summary>
+## Accessibility
 
 Here are some accessibility edge cases scenarios we identified and users should keep in mind while using the `TagPicker` components.
 
@@ -17,5 +14,3 @@ Here are some accessibility edge cases scenarios we identified and users should 
 ### VoiceOver/Safari on iOS
 
 1. `TagPicker` dropdown items are not navigable at all using VoiceOver/Safari on iOS. This problem is present also in our `Combobox` component, but the example combobox by W3C enables item navigation and selection. The difference there is probably that in W3C example, the dropdown popup gets inserted after the combobox edit field, while in our components it is inserted at the end of the DOM.
-
-</details>

@@ -286,6 +286,8 @@ const useDisabledStyles = makeStyles({
  * Apply styling to the CalendarPicker slots based on the state
  */
 export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps): CalendarPickerStyles => {
+  'use no memo';
+
   const rootStyles = useRootStyles();
   const headerContainerStyles = useHeaderContainerStyles();
   const currentItemButtonStyles = useCurrentItemButtonStyles();

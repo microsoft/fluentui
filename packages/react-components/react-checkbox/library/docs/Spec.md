@@ -136,7 +136,7 @@ See [Checkbox.types.ts](../src/components/Checkbox/Checkbox.types.ts)
 - `root`: Outermost `<span>` that contains the rest of the slots
 - `input`: The HTML `<input type="checkbox">`. This is the **primary** slot: it receives all of the native props passed to the
   Checkbox component. It has opacity 0 and overlaps the entire `root` slot, for hit testing.
-- `indicator`: A `<div>` that is the visual representation of the check "box". Its child is the checkmark icon.
+- `indicator`: A `<span>` that is the visual representation of the check "box". Its child is the checkmark icon.
 - `label`: (optional) The `<label>` describing this checkbox.
 
 ### **Public**
@@ -161,9 +161,9 @@ See [Checkbox.types.ts](../src/components/Checkbox/Checkbox.types.ts)
 ```html
 <span class="fui-Checkbox">
   <input type="checkbox" id="checkbox-1" class="fui-Checkbox__input" />
-  <div aria-hidden="true" class="fui-Checkbox__indicator">
+  <span aria-hidden="true" class="fui-Checkbox__indicator">
     <CheckmarkRegular />
-  </div>
+  </span>
   <label for="checkbox-1" className="fui-Checkbox__label">Example Checkbox</label>
 </span>
 ```

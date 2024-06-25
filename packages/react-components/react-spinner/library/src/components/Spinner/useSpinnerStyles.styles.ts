@@ -224,6 +224,8 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
+  'use no memo';
+
   const { labelPosition, size, appearance } = state;
   const { dir } = useFluent();
 

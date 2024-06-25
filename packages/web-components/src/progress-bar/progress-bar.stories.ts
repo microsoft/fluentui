@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { ProgressBar as FluentProgressBar } from './progress-bar.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
-import './define.js';
 
 type ProgressStoryArgs = Args & FluentProgressBar;
 type ProgressStoryMeta = Meta<ProgressStoryArgs>;

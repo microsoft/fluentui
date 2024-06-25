@@ -1,8 +1,35 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 19 Jun 2024 04:07:31 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 04:06:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.35)
+
+Tue, 25 Jun 2024 04:06:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.34..@fluentui/web-components_v3.0.0-beta.35)
+
+### Changes
+
+- updates the Text component to use Element Internals custom states for presentational attributes ([PR #31770](https://github.com/microsoft/fluentui/pull/31770) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.34)
+
+Mon, 24 Jun 2024 04:06:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.33..@fluentui/web-components_v3.0.0-beta.34)
+
+### Changes
+
+- Refactor Menu, MenuList, and MenuItem components ([PR #31674](https://github.com/microsoft/fluentui/pull/31674) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.33)
+
+Fri, 21 Jun 2024 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.32..@fluentui/web-components_v3.0.0-beta.33)
+
+### Changes
+
+- feat: make fast-element a peer dependencies of the web-components package ([PR #31772](https://github.com/microsoft/fluentui/pull/31772) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.32)
 

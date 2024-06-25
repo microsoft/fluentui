@@ -354,6 +354,8 @@ const useStyles = makeStyles({
  * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
+  'use no memo';
+
   const styles = useStyles();
 
   const orientationMap = {

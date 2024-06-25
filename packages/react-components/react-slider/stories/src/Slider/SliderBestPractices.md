@@ -1,7 +1,4 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best practices
 
 ### Layout
 
@@ -13,5 +10,3 @@
 ### Content
 
 - Use step points if you don't want the slider to allow arbitrary values between minimum and maximum.
-
-</details>
