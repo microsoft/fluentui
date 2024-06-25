@@ -77,3 +77,10 @@ export const SliderDisabled = renderComponent(html<SliderStoryArgs>`
   <fluent-slider disabled value="10" min="0" max="100"></fluent-slider>
   <fluent-slider step="25" disabled value="50" min="0" max="100"></fluent-slider>
 `);
+
+export const RTL = renderComponent(html<SliderStoryArgs>`
+  <div dir="rtl">
+    <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>
+    <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
+  </div>
+`);
