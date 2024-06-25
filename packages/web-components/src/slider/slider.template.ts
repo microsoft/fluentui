@@ -1,8 +1,8 @@
 import { html, ref } from '@microsoft/fast-element';
 import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
-import { SliderOptions } from './slider.options.js';
-import { Slider } from './slider.js';
+import type { SliderOptions } from './slider.options.js';
+import type { Slider } from './slider.js';
 
 export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): ElementViewTemplate<T> {
   return html<T>`
