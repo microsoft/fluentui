@@ -29,35 +29,31 @@ const infoIcon = `
 `;
 
 const itemRenderer = () => {
-  const parser = new DOMParser();
   const messageBar = document.createElement('fluent-message-bar');
   messageBar.appendChild(document.createTextNode('message-bar'));
 
   // Create and append icon slot
-  const iconSvgDoc = parser.parseFromString(infoIcon, 'image/svg+xml');
-  const iconSvg = iconSvgDoc.querySelector('svg');
-  if (iconSvg) {
-    iconSvg.setAttribute('slot', 'icon');
-    messageBar.appendChild(iconSvg);
-  }
+  const icon = document.createElement('span');
+  icon.setAttribute('slot', 'icon');
+  icon.innerHTML = infoIcon;
+  messageBar.appendChild(icon);
 
-  const contentText = document.createTextNode('Sample message bar content.');
-  messageBar.appendChild(contentText);
+  // Create and append content slot
+  const content = document.createElement('span');
+  content.setAttribute('slot', 'content');
+  content.appendChild(document.createTextNode('Accordion item'));
+  messageBar.appendChild(content);
 
   // Create and append dismiss slot
-  const dismissSvgDoc = parser.parseFromString(dismissed20Regular, 'image/svg+xml');
-
-  const dismissSvg = dismissSvgDoc.querySelector('svg');
-  if (dismissSvg) {
-    dismissSvg.setAttribute('slot', 'dismiss');
-    dismissSvg.appendChild(dismissSvg);
-  }
+  const dismiss = document.createElement('span');
+  dismiss.setAttribute('slot', 'dismiss');
+  dismiss.innerHTML = dismissed20Regular; // replace with your SVG content
+  messageBar.appendChild(dismiss);
 
   // Create and append actions slot
-  const actions = document.createElement('fluent-button');
+  const actions = document.createElement('button');
   actions.setAttribute('slot', 'actions');
-  actions.setAttribute('size', 'small');
-  actions.textContent = 'Action';
+  actions.textContent = '<fluent-button size="small">Action</fluent-button>';
   messageBar.appendChild(actions);
 
   return messageBar;
