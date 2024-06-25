@@ -21,11 +21,9 @@ const star = html`
  */
 export function ratingDisplayTemplate<T extends RatingDisplay>(): ElementViewTemplate<T> {
   return html<T>`
-    <template>
-      ${star} ${x => html`${html.partial(x.generateIcons())}`}
-      <slot name="value" aria-hidden="true">${x => x.value}</slot>
-      <slot name="count" aria-hidden="true">${x => x.formattedCount}</slot>
-    </template>
+    ${star} ${x => html`${html.partial(x.generateIcons())}`}
+    <slot name="value"><span class="value-label" aria-hidden="true">${x => x.value}</span></slot>
+    <slot name="count"><span class="count-label" aria-hidden="true">${x => x.formattedCount}</span></slot>
   `;
 }
 

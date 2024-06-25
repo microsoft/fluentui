@@ -2648,22 +2648,18 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 // @public
 export class RatingDisplay extends FASTElement {
     constructor();
-    color: RatingDisplayColor;
+    color?: RatingDisplayColor;
     compact: boolean;
-    // (undocumented)
-    protected compactChanged(): void;
     count?: number;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     get formattedCount(): string;
     // @internal
-    get icons(): number[];
-    // @internal
-    isIconSelected(iconValue: number): boolean;
-    max: number;
-    size: RatingDisplaySize;
-    value: number;
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    value?: number;
 }
 
 // @public

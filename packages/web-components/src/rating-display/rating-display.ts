@@ -1,4 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
@@ -22,7 +23,18 @@ export class RatingDisplay extends FASTElement {
    * HTML Attribute: `color`
    */
   @attr
-  public color: RatingDisplayColor = RatingDisplayColor.marigold;
+  public color?: RatingDisplayColor;
+
+  /**
+   * Handles changes to the color attribute.
+   *
+   * @param prev - The previous state
+   * @param next - The next state
+   */
+  public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
+    if (prev) toggleState(this.elementInternals, prev, false);
+    if (next) toggleState(this.elementInternals, next, true);
+  }
 
   /**
    * Renders a single filled icon with a label next to it.
@@ -31,13 +43,8 @@ export class RatingDisplay extends FASTElement {
    * @remarks
    * HTML Attribute: `compact`
    */
-  @attr({ attribute: 'compact', mode: 'boolean' })
+  @attr({ mode: 'boolean' })
   public compact: boolean = false;
-  protected compactChanged(): void {
-    if (this.compact) {
-      this.max = 1;
-    }
-  }
 
   /**
    * The number of ratings.
@@ -59,7 +66,7 @@ export class RatingDisplay extends FASTElement {
    * HTML Attribute: `max`
    */
   @attr({ converter: nullableNumberConverter })
-  public max: number = 5;
+  public max?: number;
 
   /**
    * The size of the component.
@@ -70,7 +77,18 @@ export class RatingDisplay extends FASTElement {
    * HTML Attribute: `size`
    */
   @attr
-  public size: RatingDisplaySize = RatingDisplaySize.medium;
+  public size?: RatingDisplaySize;
+
+  /**
+   * Handles changes to the size attribute.
+   *
+   * @param prev - The previous state
+   * @param next - The next state
+   */
+  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
+    if (prev) toggleState(this.elementInternals, prev, false);
+    if (next) toggleState(this.elementInternals, next, true);
+  }
 
   /**
    * The value of the rating.
@@ -80,11 +98,11 @@ export class RatingDisplay extends FASTElement {
    * HTML Attribute: `value`
    */
   @attr({ converter: nullableNumberConverter })
-  public value: number = 0;
+  public value?: number;
 
   private intlNumberFormatter = new Intl.NumberFormat();
 
-  public constructor() {
+  constructor() {
     super();
 
     this.elementInternals.role = 'img';
@@ -108,13 +126,16 @@ export class RatingDisplay extends FASTElement {
     let htmlString: string = '';
 
     // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
-    const selectedValue: number = Math.round((this.compact ? 1 : this.value) * 2) / 2;
+    const selectedValue: number = Math.round((this.compact ? 1 : this.value ?? 0) * 2) / 2;
 
-    for (let i: number = 0; i < this.max * 2; i++) {
+    // Render the icons based on the "max" attribute. If "max" is not set, render 5 icons.
+    // If "compact" is true, only render one filled icon.
+    for (let i: number = 0; i < (this.compact ? 1 : this.max ?? 5) * 2; i++) {
       const iconValue: number = (i + 1) / 2;
+
       htmlString += `<svg aria-hidden="true" ${
         iconValue === selectedValue ? 'selected' : ''
-      }><use xlink:href="#star"></use></svg>`;
+      }><use href="#star"></use></svg>`;
     }
 
     return htmlString;

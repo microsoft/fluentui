@@ -17,7 +17,7 @@ import {
   spacingHorizontalXS,
   spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
-import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
+import { brandState, largeState, neutralState, smallState } from '../styles/states/index.js';
 
 /**
  * The styles for the Rating Display component.
@@ -38,11 +38,11 @@ export const styles = css`
     user-select: none;
   }
 
-  :host([size=${RatingDisplaySize.small}]) {
+  :host(${smallState}) {
     --icon-size: 12px;
   }
 
-  :host([size=${RatingDisplaySize.large}]) {
+  :host(${largeState}) {
     --icon-size: 20px;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -60,66 +60,67 @@ export const styles = css`
     margin-inline-end: calc(0px - var(--icon-size));
   }
 
-  :host([color=${RatingDisplayColor.neutral}]) svg {
+  :host(${neutralState}) svg {
     fill: ${colorNeutralForeground1};
   }
 
-  :host([color=${RatingDisplayColor.brand}]) svg {
+  :host(${brandState}) svg {
     fill: ${colorBrandBackground};
   }
 
   :host(:is([value^='-'], [value='0'])) svg,
+  :host(:not([value])) svg,
   svg[selected] ~ svg {
     fill: ${colorPaletteMarigoldBackground2};
   }
 
-  :host([color=${RatingDisplayColor.neutral}]:is([value^='-'], [value='0'])) svg,
-  :host([color=${RatingDisplayColor.neutral}]) svg[selected] ~ svg {
+  :host(${neutralState}:is([value^='-'], [value='0'])) svg,
+  :host(${neutralState}:not([value])) svg,
+  :host(${neutralState}) svg[selected] ~ svg {
     fill: ${colorNeutralBackground1Pressed};
   }
 
-  :host([color=${RatingDisplayColor.brand}]:is([value^='-'], [value='0'])) svg,
-  :host([color=${RatingDisplayColor.brand}]) svg[selected] ~ svg {
+  :host(${brandState}:is([value^='-'], [value='0'])) svg,
+  :host(${brandState}:not([value])) svg,
+  :host(${brandState}) svg[selected] ~ svg {
     fill: ${colorBrandStroke2};
   }
 
-  slot[name='value'] {
+  .value-label,
+  ::slotted([slot='value']) {
     display: block;
+    margin-inline-start: ${spacingHorizontalXS};
     font-weight: ${fontWeightSemibold};
   }
 
-  slot[name='count'] {
-    display: none;
-  }
-
-  :host([count]) slot[name='count'] {
-    display: block;
-  }
-
-  slot[name='value'],
-  slot[name='count'] {
-    margin-inline-start: ${spacingHorizontalXS};
-  }
-
-  :host([size=${RatingDisplaySize.small}]) :is(slot[name='value'], slot[name='count']) {
+  :host(${smallState}) .value-label,
+  :host(${smallState}) ::slotted([slot='value']) {
     margin-inline-start: ${spacingHorizontalXXS};
   }
 
-  :host([size=${RatingDisplaySize.large}]) :is(slot[name='value'], slot[name='count']) {
+  :host(${largeState}) .value-label,
+  :host(${largeState}) ::slotted([slot='value']) {
     margin-inline-start: ${spacingHorizontalSNudge};
   }
 
-  slot[name='count']:before {
+  :host(:not([count])) .count-label {
+    display: none;
+  }
+
+  .count-label::before,
+  ::slotted([slot='count'])::before {
     content: '·';
-    margin-inline-end: ${spacingHorizontalXS};
+    margin-inline: ${spacingHorizontalXS};
   }
 
-  :host([size=${RatingDisplaySize.small}]) slot[name='count']:before {
-    margin-inline-end: ${spacingHorizontalXXS};
+  :host(${smallState}) .count-label::before,
+  :host(${smallState}) ::slotted([slot='count'])::before {
+    margin-inline: ${spacingHorizontalXXS};
   }
 
-  :host([size=${RatingDisplaySize.large}]) slot[name='count']:before {
-    margin-inline-end: ${spacingHorizontalSNudge};
+  :host(${largeState}) .count-label::before,
+  :host(${largeState}) ::slotted([slot='count'])::before {
+    margin-inline: ${spacingHorizontalSNudge};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
@@ -128,6 +129,7 @@ export const styles = css`
     }
 
     :host([color]:is([value^='-'], [value='0'])) svg,
+    :host(:not([value])) svg,
     :host([color]) svg[selected] ~ svg {
       fill: Canvas;
       stroke: CanvasText;
