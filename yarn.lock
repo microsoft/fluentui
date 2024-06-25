@@ -4602,7 +4602,7 @@
     tachometer "0.7.0"
     yargs "17.7.1"
 
-"@tensile-perf/tools@0.1.7", "@tensile-perf/tools@^0.1.7":
+"@tensile-perf/tools@0.1.7":
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@tensile-perf/tools/-/tools-0.1.7.tgz#27ba71213b160df4b2c35d9496dec37d1bfd704d"
   integrity sha512-b2jOC1JHQ5ecNM95IlQw/6s3ET743yaQ2zMIOnPCtXdJJaSIO6wwCbgK82ESkA84O6qJv8IHgyVhsBsXXPR4vQ==
