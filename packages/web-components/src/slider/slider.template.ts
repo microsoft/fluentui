@@ -8,9 +8,6 @@ export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): E
   return html<T>`
     <template
       tabindex="${x => (x.disabled ? null : 0)}"
-      aria-valuetext="${x => x.valueTextFormatter(x.value)}"
-      aria-valuenow="${x => x.value}"
-      aria-disabled="${x => (x.disabled ? true : void 0)}"
     >
       <div
         ${ref('track')}

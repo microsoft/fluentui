@@ -151,6 +151,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
       }
 
       this._value = value;
+      this.elementInternals.ariaValueNow = this._value;
+      this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
       this.setSliderPosition(this.direction);
       this.$emit('change');
       this.setFormValue(value);
@@ -276,7 +278,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    */
   @observable
-  public valueTextFormatter: (value: string) => string | null = () => null;
+  public valueTextFormatter: (value: string) => string = () => '';
+  protected valueTextFormatterChanged() {
+    if (typeof this.valueTextFormatter === 'function') {
+      this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
+    } else {
+      this.elementInternals.ariaValueText = '';
+    }
+  }
 
   /**
    * The element's disabled state.
@@ -286,6 +295,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
+  protected disabledChanged(): void {
+    this.elementInternals.ariaDisabled = `${this.disabled}`;
+  }
 
   /**
    * The minimum allowed value.
