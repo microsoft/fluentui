@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Mon, 24 Jun 2024 07:33:22 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.12)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.11..@fluentui/merge-styles_v8.6.12)
+
+### Patches
+
+- fix: Correctly processing selectors when value is a class name and they are not wrapped in 'selectors' wrapper. ([PR #31798](https://github.com/microsoft/fluentui/pull/31798) by Humberto.Morimoto@microsoft.com)
 
 ## [8.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.11)
 
