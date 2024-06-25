@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { ToggleButton as FluentToggleButton } from './toggle-button.js';
 import { ToggleButtonAppearance, ToggleButtonShape, ToggleButtonSize } from './toggle-button.options.js';
-import './define.js';
 
 type ToggleButtonStoryArgs = Args & FluentToggleButton;
 type ToggleButtonStoryMeta = Meta<ToggleButtonStoryArgs>;

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "style: turn off react-compiler lints for non compliant code",
+  "packageName": "@fluentui/react-combobox",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
