@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Correctly processing selectors when value is a class name and they are not wrapped in 'selectors' wrapper.",
+  "packageName": "@fluentui/merge-styles",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
