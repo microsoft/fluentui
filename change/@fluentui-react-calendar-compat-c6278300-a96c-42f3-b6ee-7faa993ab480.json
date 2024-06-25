@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-calendar-compat): focus disappears after switching months",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
