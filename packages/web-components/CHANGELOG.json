@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 25 Jun 2024 04:06:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.35",
+      "version": "3.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a651436efd861f6d50ac6af3c7ed9ba7bc6271f6",
+            "comment": "updates the Text component to use Element Internals custom states for presentational attributes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Jun 2024 04:06:02 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.34",
       "version": "3.0.0-beta.34",
