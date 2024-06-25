@@ -1,8 +1,17 @@
 # Change Log - @fluentui/jest-serializer-merge-styles
 
-This log was last generated on Mon, 24 Jun 2024 07:33:22 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.45](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.45)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.44..@fluentui/jest-serializer-merge-styles_v8.0.45)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.12 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
 
 ## [8.0.44](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.44)
 

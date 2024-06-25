@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Tue, 25 Jun 2024 07:32:52 GMT",
+      "tag": "@fluentui/react-hooks_v8.8.9",
+      "version": "8.8.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-hooks",
+            "comment": "Bump @fluentui/utilities to v8.15.12",
+            "commit": "182a7b22c763910938a717db5f64456ede1bc504"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Jun 2024 07:33:22 GMT",
       "tag": "@fluentui/react-hooks_v8.8.8",
       "version": "8.8.8",
