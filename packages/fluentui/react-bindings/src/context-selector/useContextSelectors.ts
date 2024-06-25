@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Context, ContextSelector, ContextVersion, ContextValues } from './types';
 import { useIsomorphicLayoutEffect } from './utils';
+import { useEventCallback } from '../hooks/useEventCallback';
 
 /**
  * This hook returns context selected value by selectors.
@@ -29,16 +30,13 @@ export const useContextSelectors = <
     selected[key] = selectors[key](value);
   });
 
-  const [state, dispatch] = React.useReducer(
-    (
-      prevState: readonly [
-        Value /* contextValue */,
-        Record<Properties, SelectedValue> /* { [key]: selector(value) } */,
-      ],
-      payload:
-        | undefined // undefined from render below
-        | readonly [ContextVersion, Value], // from provider effect
-    ) => {
+  const [state, setState] = React.useState<readonly [Value, Record<Properties, SelectedValue>]>([value, selected]);
+  const dispatch = (
+    payload:
+      | undefined // undefined from render below
+      | readonly [ContextVersion, Value], // from provider effect
+  ) => {
+    setState(prevState => {
       if (!payload) {
         // early bail out when is dispatched during render
         return [value, selected] as const;
@@ -83,9 +81,8 @@ export const useContextSelectors = <
         // ignored (stale props or some other reason)
       }
       return [...prevState] as const; // schedule update
-    },
-    [value, selected] as const,
-  );
+    });
+  };
 
   // schedule re-render when selected context is updated
   const hasSelectedValuesUpdates = Object.keys(selectors).find(
@@ -95,14 +92,16 @@ export const useContextSelectors = <
     dispatch(undefined);
   }
 
+  const stableDispatch = useEventCallback(dispatch);
+
   useIsomorphicLayoutEffect(() => {
-    listeners.push(dispatch);
+    listeners.push(stableDispatch);
 
     return () => {
-      const index = listeners.indexOf(dispatch);
+      const index = listeners.indexOf(stableDispatch);
       listeners.splice(index, 1);
     };
-  }, [listeners]);
+  }, [stableDispatch, listeners]);
 
   return state[1] as Record<Properties, SelectedValue>;
 };
