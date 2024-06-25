@@ -340,19 +340,13 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
     const selectionAndTodayString = selectedDateString + ', ' + todayDateString;
 
     return (
-      <div
-        id={id}
-        ref={forwardedRef}
-        role="group"
-        aria-label={selectionAndTodayString}
-        className={classes.root}
-        onKeyDown={onDatePickerPopupKeyDown}
-      >
+      <div id={id} ref={forwardedRef} className={classes.root} onKeyDown={onDatePickerPopupKeyDown}>
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">
           <span>{selectedDateString}</span>
         </div>
         {isDayPickerVisible && (
           <CalendarDay
+            ariaLabel={selectionAndTodayString}
             selectedDate={selectedDate!}
             navigatedDate={navigatedDay!}
             today={today}
