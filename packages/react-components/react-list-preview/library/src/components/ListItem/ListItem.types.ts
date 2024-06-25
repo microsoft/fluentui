@@ -9,9 +9,7 @@ export type ListItemSlots = {
 
 export type ListItemValue = string | number;
 
-export type ListItemActionData = { value: ListItemValue };
-
-export type ActionEventData = EventData<typeof ListItemActionEventName, ListItemActionEvent> & {
+export type ListItemActionEventData = EventData<typeof ListItemActionEventName, ListItemActionEvent> & {
   value: ListItemValue;
 };
 /**
@@ -19,7 +17,7 @@ export type ActionEventData = EventData<typeof ListItemActionEventName, ListItem
  */
 export type ListItemProps = ComponentProps<ListItemSlots> & {
   value?: ListItemValue;
-  onAction?: EventHandler<ActionEventData>;
+  onAction?: EventHandler<ListItemActionEventData>;
 };
 
 /**
