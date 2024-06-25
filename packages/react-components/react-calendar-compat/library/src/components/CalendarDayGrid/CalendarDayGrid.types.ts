@@ -154,7 +154,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
   /**
    * Label string for the grid
    */
-  ariaLabel?: string;
+  gridLabel?: string;
 
   /**
    * The ID of the control that labels this one

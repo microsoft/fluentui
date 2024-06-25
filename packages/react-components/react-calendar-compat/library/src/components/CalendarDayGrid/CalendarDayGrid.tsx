@@ -120,7 +120,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   };
 
   const {
-    ariaLabel,
+    gridLabel,
     dateRangeType,
     showWeekNumbers,
     labelledBy,
@@ -156,7 +156,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     <table
       className={mergeClasses(classNames.table, props.className)}
       aria-multiselectable="false"
-      aria-label={ariaLabel}
+      aria-label={gridLabel}
       aria-labelledby={labelledBy}
       aria-activedescendant={activeDescendantId}
       role="grid"
