@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-// @ts-nocheck
+import type { TestRenderFunction } from '@tensile-perf/web-components';
 import { measureJavascript, measureLayout } from '@tensile-perf/tools';
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
@@ -20,7 +19,7 @@ const measurePerformance = () => {
   return { startMeasure, endMeasure };
 };
 
-const tests = {
+const tests: Record<string, TestRenderFunction> = {
   mount: ({ onComplete }) => {
     const { startMeasure, endMeasure } = measurePerformance();
 

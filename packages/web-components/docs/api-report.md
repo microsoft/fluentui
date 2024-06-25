@@ -3108,6 +3108,8 @@ class Text_2 extends FASTElement {
     block: boolean;
     // (undocumented)
     connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     font?: TextFont;
