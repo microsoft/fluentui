@@ -1,7 +1,9 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
+import { definition as buttonDefinition } from '../Button/button.definition.js';
 import { definition } from './message-bar.definition.js';
 
 definition.define(FluentDesignSystem.registry);
+buttonDefinition.define(FluentDesignSystem.registry);
 
 const dismissed20Regular = `
   <svg
@@ -51,9 +53,9 @@ const itemRenderer = () => {
   messageBar.appendChild(dismiss);
 
   // Create and append actions slot
-  const actions = document.createElement('button');
+  const actions = document.createElement('fluent-button');
   actions.setAttribute('slot', 'actions');
-  actions.textContent = '<fluent-button size="small">Action</fluent-button>';
+  actions.appendChild(document.createTextNode('Button'));
   messageBar.appendChild(actions);
 
   return messageBar;
