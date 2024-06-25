@@ -210,8 +210,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
   }
 
   const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
-  const tabsterAttributes = useTabsterAttributes({ focusable: { isDefault: true } });
-  const focusAttributes = dayIndex === 0 ? tabsterAttributes : {};
+  const tabsterAttributes = useTabsterAttributes({ focusable: { isDefault: dayIndex === 0 } });
 
   return (
     <td
@@ -240,7 +239,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       tabIndex={isNavigatedDate || isFocusable ? 0 : undefined}
       aria-current={day.isToday ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
-      {...focusAttributes}
+      {...tabsterAttributes}
     >
       <button
         key={day.key + 'button'}

@@ -71,7 +71,6 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   const weeks = useWeeks(props, onSelectDate, getSetRefCallback);
   const animateBackwards = useAnimateBackwards(weeks);
   const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
-  const tableRef = React.useRef<HTMLTableElement>(null);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -148,7 +147,6 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   return (
     <table
-      ref={tableRef}
       className={mergeClasses(classNames.table, props.className)}
       aria-multiselectable="false"
       aria-labelledby={labelledBy}
