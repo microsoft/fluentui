@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     display: 'inline',
   },
   valueText: {
-    fontSize: tokens!.fontSizeBase200,
-    fill: tokens!.colorNeutralForeground1,
+    fontSize: tokens.fontSizeBase200,
+    fill: tokens.colorNeutralForeground1,
   },
 });
 
