@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { MutableRefObject } from 'react';
 
 export type CarouselSliderSlots = {
   /**
@@ -38,4 +39,9 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
      * The number of times we have done a full loop of carousel, can go negative.
      */
     loopCount: number;
+
+    /**
+     * Tracks whether a sliding animation was interrupted and needs to 'speed up' next animation.
+     */
+    interruptedAnimation: MutableRefObject<boolean>;
   };
