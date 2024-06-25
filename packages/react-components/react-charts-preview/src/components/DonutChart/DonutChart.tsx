@@ -8,8 +8,12 @@ import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { ScaleOrdinal } from 'd3-scale';
-import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
-import { Popover, PopoverSurface, PositioningVirtualElement } from '../../../../react-components/src/index';
+import {
+  Popover,
+  PopoverSurface,
+  PositioningVirtualElement,
+  useFocusableGroup,
+} from '../../../../react-components/src/index';
 
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -274,13 +278,15 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
     const chartData = _elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
+    const focusAttributes = useFocusableGroup();
+
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
         ref={(rootElem: HTMLElement | null) => (_rootElem = rootElem)}
         onMouseLeave={_handleChartMouseLeave}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
+        <div {...focusAttributes}>
           <div>
             <svg
               className={classes.chart}
@@ -308,7 +314,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
               />
             </svg>
           </div>
-        </FocusZone>
+        </div>
         <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} openOnHover>
           <PopoverSurface tabIndex={-1}>
             <ChartHoverCard

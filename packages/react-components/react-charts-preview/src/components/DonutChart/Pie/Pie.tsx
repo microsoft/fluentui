@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { pie as d3Pie } from 'd3-shape';
@@ -16,11 +17,13 @@ const TEXT_PADDING: number = 5;
  */
 export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivElement, IPieProps>(
   (props, forwardedRef) => {
-    // const pie = d3Pie()
-    //   .sort(null)
-    //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    //   .value((d: any) => d.data)
-    //   .padAngle(0.02);
+    Pie.defaultProps = {
+      pie: d3Pie()
+        .sort(null)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .value((d: any) => d.data)
+        .padAngle(0.02),
+    };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _pieForFocusRing: any;
     let _totalValue: number;
@@ -93,4 +96,4 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
     );
   },
 );
-Arc.displayName = 'Arc';
+Pie.displayName = 'Pie';

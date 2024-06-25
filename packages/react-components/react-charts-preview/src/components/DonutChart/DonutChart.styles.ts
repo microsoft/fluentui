@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     boxSizing: 'content-box',
     alignmentAdjust: 'center',
     display: 'block',
+    ...shorthands.overflow('visible'),
   },
   legendContainer: { paddingTop: '16px' },
 });
