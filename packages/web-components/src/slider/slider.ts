@@ -109,7 +109,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   public initialValueChanged(prev: string, next: string): void {
-    this._value = next;
+    this.value = next;
   }
 
   /**
@@ -128,7 +128,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *
    * @internal
    */
-  private _value: string = this.initialValue;
+  private _value!: string;
 
   /**
    * The current value of the input.
@@ -137,7 +137,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public get value(): string {
     Observable.track(this, 'value');
-    return this._value;
+    return this._value.toString();
   }
 
   public set value(value: string) {
@@ -150,7 +150,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
         return;
       }
 
-      this._value = value;
+      this._value = value.toString();
       this.elementInternals.ariaValueNow = this._value;
       this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
       this.setSliderPosition(this.direction);
@@ -539,16 +539,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   private setupDefaultValue(): void {
-    if (typeof this.value === 'string') {
-      if (this.value.length === 0) {
-        this.initialValue = this.midpoint;
-      } else {
-        const value = parseFloat(this.value);
+    this.value = this.initialValue ?? this.midpoint;
 
-        if (!Number.isNaN(value) && (value < this._minValue || value > this._maxValue)) {
-          this.value = this.midpoint;
-        }
-      }
+    if (!Number.isNaN(this.valueAsNumber) &&
+        (this.valueAsNumber < this._minValue || this.valueAsNumber > this._maxValue)) {
+      this.value = this.midpoint;
     }
   }
 
