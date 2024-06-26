@@ -1,6 +1,6 @@
 import { expect, Locator, test } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
-import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
+import { RatingDisplaySize } from './rating-display.options.js';
 import { RatingDisplay } from './rating-display.js';
 
 test.describe('Rating Display', () => {
@@ -13,13 +13,16 @@ test.describe('Rating Display', () => {
     element = page.locator('fluent-rating-display');
   });
 
-  test('should set the correct default attributes', async ({ page }) => {
+  test('should not set any default attributes and custom states', async ({ page }) => {
     await expect(element).toBeVisible();
-    await expect(element).toHaveJSProperty('color', RatingDisplayColor.marigold);
-    await expect(element).not.toHaveJSProperty('compact', true);
-    await expect(page.locator('slot[name="count"]')).toBeHidden();
-    await expect(element).toHaveJSProperty('max', 5);
-    await expect(element).toHaveJSProperty('size', RatingDisplaySize.medium);
+    await expect(element).not.toHaveAttribute('color');
+    await expect(element).not.toHaveAttribute('compact');
+    await expect(element).not.toHaveAttribute('max');
+    await expect(element).not.toHaveAttribute('size');
+    await expect(page.locator('.count-label')).toBeHidden();
+
+    expect(await element.evaluate((node: RatingDisplay) => node.color)).toBeUndefined();
+    expect(await element.evaluate((node: RatingDisplay) => node.size)).toBeUndefined();
   });
 
   test('should set the correct accessibility attributes', async ({ page }) => {
@@ -27,8 +30,8 @@ test.describe('Rating Display', () => {
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
     await expect(page.locator('svg').last()).toHaveAttribute('aria-hidden', 'true');
-    await expect(page.locator('slot[name="value"]')).toHaveAttribute('aria-hidden', 'true');
-    await expect(page.locator('slot[name="count"]')).toHaveAttribute('aria-hidden', 'true');
+    await expect(page.locator('.value-label')).toHaveAttribute('aria-hidden', 'true');
+    await expect(page.locator('.count-label')).toHaveAttribute('aria-hidden', 'true');
   });
 
   test('should display the correct number of filled icons and label text based on the `value` attribute', async ({
@@ -37,7 +40,7 @@ test.describe('Rating Display', () => {
     await page.setContent(`<fluent-rating-display value="3.5"></fluent-rating-display>`);
 
     await expect(element).toHaveJSProperty('value', 3.5);
-    await expect(page.locator('slot[name="value"]')).toHaveText('3.5');
+    await expect(page.locator('.value-label')).toHaveText('3.5');
     await expect(page.locator('svg[aria-hidden="true"]')).toHaveCount(10);
 
     // Based on the `value` attribute, the 7th icon should be set as selected
@@ -57,6 +60,8 @@ test.describe('Rating Display', () => {
   test('should use the right icon color based on the `icon` attribute', async ({ page }) => {
     await page.setContent(`<fluent-rating-display value="4"></fluent-rating-display>`);
 
+    expect(await element.evaluate((node: RatingDisplay) => node.color)).toBeUndefined();
+
     // Assert correct color for filled icons
     for (const icon of await page.locator('svg:nth-child(-n+8 of [aria-hidden="true"])').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(234, 163, 0)');
@@ -71,6 +76,9 @@ test.describe('Rating Display', () => {
       node.color = 'brand';
     });
 
+    expect(await element.evaluate((node: RatingDisplay) => node.color)).toBe('brand');
+    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('brand'))).toBe(true);
+
     for (const icon of await page.locator('svg:nth-child(-n+8 of [aria-hidden="true"])').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(15, 108, 189)');
     }
@@ -82,6 +90,9 @@ test.describe('Rating Display', () => {
     await element.evaluate((node: RatingDisplay) => {
       node.color = 'neutral';
     });
+
+    expect(await element.evaluate((node: RatingDisplay) => node.color)).toBe('neutral');
+    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('neutral'))).toBe(true);
 
     for (const icon of await page.locator('svg:nth-child(-n+8 of [aria-hidden="true"])').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(36, 36, 36)');
@@ -98,7 +109,7 @@ test.describe('Rating Display', () => {
     await expect(element).toHaveJSProperty('compact', true);
     await expect(page.locator('svg[aria-hidden="true"]')).toHaveCount(2);
     await expect(page.locator('svg').last()).toHaveAttribute('selected');
-    await expect(page.locator('slot[name="value"]')).toHaveText('4.5');
+    await expect(page.locator('.value-label')).toHaveText('4.5');
 
     for (const icon of await page.locator('svg[aria-hidden="true"]').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(234, 163, 0)');
@@ -109,8 +120,8 @@ test.describe('Rating Display', () => {
     await page.setContent(`<fluent-rating-display value="3" count="1000"></fluent-rating-display>`);
 
     await expect(element).toHaveJSProperty('count', 1000);
-    await expect(page.locator('slot[name="value"]')).toHaveText('3');
-    await expect(page.locator('slot[name="count"]')).toHaveText('1,000');
+    await expect(page.locator('.value-label')).toHaveText('3');
+    await expect(page.locator('.count-label')).toHaveText('1,000');
   });
 
   test('should display the correct number of icons based on the `max` attribute', async ({ page }) => {
@@ -125,9 +136,10 @@ test.describe('Rating Display', () => {
     await page.setContent(`<fluent-rating-display value="1.3"></fluent-rating-display>`);
 
     const icon: Locator = page.locator('svg[aria-hidden="true"]').last();
-    const value: Locator = page.locator('slot[name="value"]');
+    const value: Locator = page.locator('.value-label');
 
-    await expect(element).toHaveJSProperty('size', RatingDisplaySize.medium);
+    expect(await element.evaluate((node: RatingDisplay) => node.size)).toBeUndefined();
+
     await expect(icon).toHaveCSS('width', '16px');
     await expect(icon).toHaveCSS('height', '16px');
     await expect(value).toHaveCSS('font-size', '12px');
@@ -137,6 +149,9 @@ test.describe('Rating Display', () => {
     await element.evaluate((node: RatingDisplay) => {
       node.size = 'small';
     });
+
+    expect(await element.evaluate((node: RatingDisplay) => node.size)).toBe('small');
+    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('small'))).toBe(true);
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.small);
     await expect(icon).toHaveCSS('width', '12px');
@@ -148,6 +163,9 @@ test.describe('Rating Display', () => {
     await element.evaluate((node: RatingDisplay) => {
       node.size = 'large';
     });
+
+    expect(await element.evaluate((node: RatingDisplay) => node.size)).toBe('large');
+    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('large'))).toBe(true);
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.large);
     await expect(icon).toHaveCSS('width', '20px');
