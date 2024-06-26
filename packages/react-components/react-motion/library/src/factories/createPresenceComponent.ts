@@ -66,15 +66,16 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
 }
 
 export type PresenceComponent<
-  Motion = PresenceMotion | PresenceMotionFn,
   MotionParams extends Record<string, MotionParam> = {},
+  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> = PresenceMotion,
 > = React.FC<PresenceComponentProps & MotionParams> & {
-  motionDefinition: Motion;
+  motionDefinition: MotionDefinition;
 };
 
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
-  value: PresenceMotion | PresenceMotionFn<MotionParams>,
-) {
+export function createPresenceComponent<
+  MotionParams extends Record<string, MotionParam> = {},
+  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> = PresenceMotion,
+>(value: MotionDefinition): PresenceComponent<MotionParams, MotionDefinition> {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     'use no memo';
 
