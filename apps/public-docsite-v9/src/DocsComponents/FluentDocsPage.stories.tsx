@@ -10,6 +10,7 @@ import {
   PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
+import type { SBEnumType } from '@storybook/csf';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
@@ -44,6 +45,9 @@ const useStyles = makeStyles({
     display: 'flex',
   },
   description: {
+    display: 'flex',
+  },
+  nativeProps: {
     display: 'flex',
   },
 });
@@ -94,6 +98,21 @@ const VideoPreviews: React.FC<{
   );
 };
 
+const getNativePropsMessage = (elements: SBEnumType['value']): JSX.Element => {
+  const elementsArr = elements.map((el, idx) => [
+    <code key={idx}>{`<${el}>`}</code>,
+    idx !== elements.length - 1 ? ', ' : ' ',
+  ]);
+
+  return (
+    <Text>
+      <strong>Native props allowed</strong> - all HTML attributes native to the {elementsArr}
+      {elements.length > 1 ? 'elements' : 'element'}, including all aria and custom data attributes, can be applied as
+      native props on this component.
+    </Text>
+  );
+};
+
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
 
@@ -118,7 +137,6 @@ export const FluentDocsPage = () => {
   return (
     <div>
       <Title />
-
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.globalTogglesContainer}>
@@ -135,6 +153,9 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
+          {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
+            <div className={styles.nativeProps}>{getNativePropsMessage(primaryStory.argTypes.as.type.value)}</div>
+          )}
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </div>
