@@ -13,12 +13,3 @@ Any utility functions that exist in v8 and already exist in v9 will be exported 
 
 If a v8 utility is not exported from this package that you require, please contact the Fluent team.
 
-## Ported functions
-
-```ts
-export function memoizeFunction<T extends (...args: any[]) => RetType, RetType>(
-  cb: T,
-  maxCacheSize: number = 100,
-  ignoreNullOrUndefinedResult: boolean = false,
-): T;
-```

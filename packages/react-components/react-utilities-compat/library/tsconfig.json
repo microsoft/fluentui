@@ -8,7 +8,6 @@
     "jsx": "react",
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "experimentalDecorators": true
   },
   "include": [],
   "files": [],
