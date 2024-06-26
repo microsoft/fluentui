@@ -165,3 +165,4 @@ gulp-cache
 .rollupcache
 .swc
 .nx/cache
+.nx/workspace-data
