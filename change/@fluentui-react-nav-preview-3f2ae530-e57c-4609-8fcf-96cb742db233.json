@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "Scaffolds NavDivider and AppNode",
   "packageName": "@fluentui/react-nav-preview",
-  "email": "17346018+mltejera@users.noreply.github.com",
+  "email": "matejera@microsoft.com",
   "dependentChangeType": "patch"
 }
