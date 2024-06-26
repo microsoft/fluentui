@@ -24,8 +24,8 @@ import {
 export const styles = css`
   ${display('inline-grid')} :host {
     --thumb-size: 20px;
-    --track-overhang: -2px;
     --track-size: 4px;
+    --track-overhang: calc(var(--track-size) / -2);
     --slider-direction: 90deg;
     position: relative;
     align-items: center;
@@ -62,8 +62,8 @@ export const styles = css`
     position: relative;
     background-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusSmall};
-    grid-row: 2 / 2;
-    grid-column: 2 / 2;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
     width: 100%;
     height: var(--track-size);
     forced-color-adjust: none;
