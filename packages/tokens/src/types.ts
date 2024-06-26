@@ -575,19 +575,6 @@ export type TextAlignments = {
   justify: TextAlignment;
 };
 
-export type ZIndexLevels = number[];
-
-export type ZIndexes = {
-  zIndexBackground: number;
-  zIndexContent: number;
-  zIndexOverlay: number;
-  zIndexPopup: number;
-  zIndexMessages: number;
-  zIndexFloating: number;
-  zIndexPriority: number;
-  zIndexDebug: number;
-};
-
 export type TypographyStyle = {
   fontFamily: string;
   fontSize: string;
@@ -717,20 +704,6 @@ export type ShadowBrandTokens = {
   shadow64Brand: string;
 };
 
-/**
- * Design tokens for z-index levels
- */
-export type ZIndexTokens = {
-  zIndexBackground: number;
-  zIndexContent: number;
-  zIndexOverlay: number;
-  zIndexPopup: number;
-  zIndexMessages: number;
-  zIndexFloating: number;
-  zIndexPriority: number;
-  zIndexDebug: number;
-};
-
 export type Greys =
   | 2
   | 4
@@ -796,7 +769,6 @@ export type Theme = FontSizeTokens &
   CurveTokens &
   ShadowTokens &
   ShadowBrandTokens &
-  ZIndexTokens &
   FontFamilyTokens &
   FontWeightTokens &
   ColorPaletteTokens &
