@@ -65,17 +65,26 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
   return !appear && isFirstMount && !!visible;
 }
 
+// TODO: consider a conditional type
 export type PresenceComponent<
   MotionParams extends Record<string, MotionParam> = {},
-  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> = PresenceMotion,
+  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> =
+    | PresenceMotion
+    | PresenceMotionFn<MotionParams>,
 > = React.FC<PresenceComponentProps & MotionParams> & {
   motionDefinition: MotionDefinition;
 };
 
+export function createPresenceComponent(value: PresenceMotion): PresenceComponent<{}, typeof value>;
+
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
+  value: PresenceMotionFn<MotionParams>,
+): PresenceComponent<MotionParams, typeof value>;
+
 export function createPresenceComponent<
-  MotionParams extends Record<string, MotionParam> = {},
-  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> = PresenceMotion,
->(value: MotionDefinition): PresenceComponent<MotionParams, MotionDefinition> {
+  MotionParams extends Record<string, MotionParam>,
+  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams>,
+>(value: PresenceMotion | PresenceMotionFn<MotionParams>): unknown {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     'use no memo';
 
