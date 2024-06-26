@@ -4,63 +4,40 @@
 
 ```ts
 
-import { FC } from 'react';
-import { PresenceComponentProps } from '@fluentui/react-motion';
+import { PresenceComponent } from '@fluentui/react-motion';
 import { PresenceMotion } from '@fluentui/react-motion';
 import { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: FC<PresenceComponentProps & {
+export const Collapse: PresenceComponent<    {}, PresenceMotionFn<{
 animateOpacity?: boolean | undefined;
-}> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<{
-        animateOpacity?: boolean | undefined;
-    }>;
-};
+}>>;
 
 // @public (undocumented)
-export const CollapseExaggerated: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
-};
+export const CollapseExaggerated: PresenceComponent<    {}, PresenceMotionFn<{}>>;
 
 // @public (undocumented)
-export const CollapseSnappy: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
-};
+export const CollapseSnappy: PresenceComponent<    {}, PresenceMotionFn<{}>>;
 
 // @public
-export const Fade: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<    {}>;
-};
+export const Fade: PresenceComponent<    {}, PresenceMotion>;
 
 // @public (undocumented)
-export const FadeExaggerated: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<    {}>;
-};
+export const FadeExaggerated: PresenceComponent<    {}, PresenceMotionFn<    {}>>;
 
 // @public (undocumented)
-export const FadeSnappy: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<    {}>;
-};
+export const FadeSnappy: PresenceComponent<    {}, PresenceMotionFn<    {}>>;
 
 // @public
-export const Scale: FC<PresenceComponentProps & {
+export const Scale: PresenceComponent<    {}, PresenceMotionFn<{
 animateOpacity?: boolean | undefined;
-}> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<{
-        animateOpacity?: boolean | undefined;
-    }>;
-};
+}>>;
 
 // @public (undocumented)
-export const ScaleExaggerated: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
-};
+export const ScaleExaggerated: PresenceComponent<    {}, PresenceMotionFn<{}>>;
 
 // @public (undocumented)
-export const ScaleSnappy: FC<PresenceComponentProps> & {
-    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
-};
+export const ScaleSnappy: PresenceComponent<    {}, PresenceMotionFn<{}>>;
 
 // (No @packageDocumentation comment for this package)
 
