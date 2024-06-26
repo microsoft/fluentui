@@ -1,8 +1,7 @@
 import * as React from 'react';
 import type { CheckboxProps, DropdownProps } from '@fluentui/react-components';
 import { Checkbox, Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
-
-import { useDebounce } from '../utils/useDebounce';
+import { useDebounce } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
   root: {

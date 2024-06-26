@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Checkbox, Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { CheckboxProps, ComboboxProps } from '@fluentui/react-components';
-
-import { useDebounce } from '../utils/useDebounce';
+import { useDebounce } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
   root: {
@@ -21,8 +20,8 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(data.open);
-  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
+  const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(true);
+  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(true);
 
   const debouncedOpen = useDebounce(open, 100);
 

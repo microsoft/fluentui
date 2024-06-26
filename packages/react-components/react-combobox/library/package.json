@@ -22,14 +22,17 @@
     "test": "jest --passWithNoTests",
     "storybook": "yarn --cwd ../stories storybook",
     "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.12.1",
