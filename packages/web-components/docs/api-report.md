@@ -126,41 +126,24 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
+// Warning: (ae-missing-release-tag) "AnchorButton" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public
-export class AnchorButton extends FASTElement {
+// @public (undocumented)
+export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
-    // (undocumented)
-    connectedCallback(): void;
-    control: HTMLAnchorElement;
-    // @internal
-    defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
-    // (undocumented)
-    protected disabledChanged(prev: boolean, next: boolean): void;
-    disabledFocusable?: boolean;
-    // (undocumented)
-    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    download: string;
-    href: string;
-    hreflang: string;
+    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
-    ping: string;
-    referrerpolicy: string;
-    rel: string;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
+    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
-    target: AnchorTarget;
-    type: string;
+    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DelegatesARIALink" needs to be exported by the entry point index.d.ts
-//
 // @internal
-export interface AnchorButton extends StartEnd, DelegatesARIALink {
+export interface AnchorButton extends StartEnd {
 }
 
 // @public
@@ -168,7 +151,6 @@ export const AnchorButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -177,9 +159,6 @@ export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
 // @public (undocumented)
 export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
-
-// @public
-export type AnchorButtonOptions = StartEndOptions<AnchorButton>;
 
 // @public
 export const AnchorButtonShape: {
@@ -217,15 +196,24 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends FASTElement {
+    constructor();
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor;
+    color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
-    generateColor(): AvatarColor | void;
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
     // @internal
     generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     initials?: string | undefined;
     name?: string | undefined;
     shape?: AvatarShape | undefined;
@@ -389,9 +377,15 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
+    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
+    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     shape?: BadgeShape;
+    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
+    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -483,6 +477,7 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 export class Button extends FASTElement {
     constructor();
     appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
@@ -494,7 +489,7 @@ export class Button extends FASTElement {
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
     formAction?: string;
     static readonly formAssociated = true;
@@ -506,13 +501,16 @@ export class Button extends FASTElement {
     formNoValidate?: boolean;
     formTarget?: ButtonFormTarget;
     iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     keypressHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name?: string;
     protected press(): void;
     resetForm(): void;
     shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -528,7 +526,6 @@ export const ButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -593,8 +590,10 @@ export type ButtonType = ValuesOf<typeof ButtonType>;
 //
 // @public (undocumented)
 export class Checkbox extends BaseCheckbox {
-    shape: CheckboxShape;
+    shape?: CheckboxShape;
+    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
 }
 
 // @public
@@ -1683,7 +1682,6 @@ export const CompoundButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -1727,19 +1725,26 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
+    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
+    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
+    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     overflowCount: number;
     // (undocumented)
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
+    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
+    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -1890,14 +1895,17 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 export class Divider extends FASTElement {
     // (undocumented)
     alignContent?: DividerAlignContent;
+    alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
     // (undocumented)
     appearance?: DividerAppearance;
+    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // (undocumented)
     inset?: boolean;
+    insetChanged(prev: boolean, next: boolean): void;
     orientation?: DividerOrientation;
     // @internal
     orientationChanged(previous: string | null, next: string | null): void;
@@ -2097,10 +2105,17 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
+    borderedChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     fit?: ImageFit;
+    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
+    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
+    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2140,9 +2155,14 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2213,6 +2233,39 @@ export const lineHeightHero800 = "var(--lineHeightHero800)";
 export const lineHeightHero900 = "var(--lineHeightHero900)";
 
 // @public
+export class Link extends BaseAnchor {
+    appearance?: LinkAppearance | undefined;
+    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
+    inline: boolean;
+    inlineChanged(prev: boolean, next: boolean): void;
+}
+
+// @public
+export const LinkAppearance: {
+    readonly subtle: "subtle";
+};
+
+// @public
+export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
+
+// @public (undocumented)
+export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// @public
+export const LinkTarget: {
+    readonly _self: "_self";
+    readonly _blank: "_blank";
+    readonly _parent: "_parent";
+    readonly _top: "_top";
+};
+
+// @public
+export type LinkTarget = ValuesOf<typeof AnchorTarget>;
+
+// @public
+export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
 export abstract class MatchMediaBehavior implements HostBehavior {
     constructor(query: MediaQueryList);
     connectedCallback(controller: HostController): void;
@@ -2237,7 +2290,6 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    cleanup?: () => void;
     closeMenu: () => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
@@ -2245,10 +2297,7 @@ export class Menu extends FASTElement {
     disconnectedCallback(): void;
     focusMenuList(): void;
     focusTrigger(): void;
-    handleMenuKeydown(e: KeyboardEvent): boolean | void;
-    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
+    menuKeydownHandler(e: KeyboardEvent): boolean | void;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -2256,16 +2305,12 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
-    // @internal
-    positioningContainer?: HTMLElement;
     setComponent(): void;
-    // @internal
-    protected setPositioning(): void;
-    // @internal
-    protected setPositioningTask: () => void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    toggleHandler: (e: Event | ToggleEvent) => void;
     toggleMenu: () => void;
+    triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
 // @public
@@ -2277,7 +2322,6 @@ export const MenuButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -2321,13 +2365,7 @@ export class MenuItem extends FASTElement {
     checked: boolean;
     // (undocumented)
     protected checkedChanged(oldValue: boolean, newValue: boolean): void;
-    cleanup: () => void;
     disabled: boolean;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    expanded: boolean;
-    // (undocumented)
-    protected expandedChanged(prev: boolean | undefined, next: boolean): void;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2336,10 +2374,10 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
-    // @internal (undocumented)
-    get hasSubmenu(): boolean;
     hidden: boolean;
     role: MenuItemRole;
+    // @internal
+    setSubmenuPosition: () => void;
     // @internal
     slottedSubmenu: HTMLElement[];
     // @internal
@@ -2347,10 +2385,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    submenuContainer: HTMLDivElement;
-    // @internal (undocumented)
-    submenuLoaded: () => void;
-    updateSubmenu(): void;
+    toggleHandler: (e: ToggleEvent | Event) => void;
 }
 
 // @internal
@@ -2367,9 +2402,8 @@ export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-    checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-    expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-    radioIndicator?: StaticallyComposableHTML<MenuItem>;
+    indicator?: StaticallyComposableHTML<MenuItem>;
+    submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 // @public
@@ -2392,13 +2426,11 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
-    collapseExpandedItem(): void;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
     focus(): void;
-    // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // @internal
     handleFocusOut: (e: FocusEvent) => void;
@@ -2439,27 +2471,27 @@ export const MenuTemplate: ElementViewTemplate<Menu>;
 // @public
 export class ProgressBar extends FASTElement {
     constructor();
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
     max?: number;
-    // (undocumented)
-    protected maxChanged(): void;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
     // @internal
     min?: number;
-    // (undocumented)
-    protected minChanged(): void;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
     // @internal
-    percentComplete: number;
+    get percentComplete(): number;
     shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
     validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
-    value?: number | null;
-    // (undocumented)
-    protected valueChanged(): void;
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
 }
 
 // @public
@@ -2847,9 +2879,11 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 export class Spinner extends FASTElement {
     constructor();
     appearance?: SpinnerAppearance;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -3068,15 +3102,25 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
+    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     font?: TextFont;
+    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     italic: boolean;
     nowrap: boolean;
     size?: TextSize;
+    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
+    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 
@@ -3110,6 +3154,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends FASTElement {
     appearance?: TextInputAppearance;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     autocomplete?: string;
     autofocus: boolean;
     // @internal
@@ -3125,6 +3170,7 @@ export class TextInput extends FASTElement {
     // @internal
     controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal
@@ -3288,7 +3334,6 @@ export const ToggleButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 

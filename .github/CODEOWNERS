@@ -371,6 +371,8 @@ packages/react-components/react-carousel-preview/stories @microsoft/xc-uxe @micr
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
 packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
 packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
+packages/react-components/react-utilities-compat/library @microsoft/cxe-red
+packages/react-components/react-utilities-compat/stories @microsoft/cxe-red
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

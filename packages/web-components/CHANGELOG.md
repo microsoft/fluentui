@@ -1,8 +1,89 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 12 Jun 2024 04:06:09 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2024 04:07:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.36)
+
+Wed, 26 Jun 2024 04:07:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.35..@fluentui/web-components_v3.0.0-beta.36)
+
+### Changes
+
+- feat(drawer): add drawer web component ([PR #31521](https://github.com/microsoft/fluentui/pull/31521) by email not defined)
+
+## [3.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.35)
+
+Tue, 25 Jun 2024 04:06:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.34..@fluentui/web-components_v3.0.0-beta.35)
+
+### Changes
+
+- updates the Text component to use Element Internals custom states for presentational attributes ([PR #31770](https://github.com/microsoft/fluentui/pull/31770) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.34)
+
+Mon, 24 Jun 2024 04:06:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.33..@fluentui/web-components_v3.0.0-beta.34)
+
+### Changes
+
+- Refactor Menu, MenuList, and MenuItem components ([PR #31674](https://github.com/microsoft/fluentui/pull/31674) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.33)
+
+Fri, 21 Jun 2024 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.32..@fluentui/web-components_v3.0.0-beta.33)
+
+### Changes
+
+- feat: make fast-element a peer dependencies of the web-components package ([PR #31772](https://github.com/microsoft/fluentui/pull/31772) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.32)
+
+Wed, 19 Jun 2024 04:07:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.31..@fluentui/web-components_v3.0.0-beta.32)
+
+### Changes
+
+- feat: update progress bar to use element internals custom states for visual states ([PR #31739](https://github.com/microsoft/fluentui/pull/31739) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update divider to use custom states ([PR #31735](https://github.com/microsoft/fluentui/pull/31735) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update link to use Element Internals custom states for presentational attributes ([PR #31752](https://github.com/microsoft/fluentui/pull/31752) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update checkbox to use Element Internals custom states for presentational attributes ([PR #31756](https://github.com/microsoft/fluentui/pull/31756) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update text input to use Element Internals custom states for presentational attributes ([PR #31753](https://github.com/microsoft/fluentui/pull/31753) by 13071055+chrisdholt@users.noreply.github.com)
+- update image to use element internals custom states for visual states ([PR #31737](https://github.com/microsoft/fluentui/pull/31737) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update spinner to use Element Internals for presentational styling ([PR #31741](https://github.com/microsoft/fluentui/pull/31741) by 13071055+chrisdholt@users.noreply.github.com)
+- update label to use element internals custom states for styling ([PR #31738](https://github.com/microsoft/fluentui/pull/31738) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.31)
+
+Tue, 18 Jun 2024 04:05:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.30..@fluentui/web-components_v3.0.0-beta.31)
+
+### Changes
+
+- feat: update button and anchor button to leverage custom states for variants ([PR #31718](https://github.com/microsoft/fluentui/pull/31718) by 13071055+chrisdholt@users.noreply.github.com)
+- update badge to use element internals custom states ([PR #31733](https://github.com/microsoft/fluentui/pull/31733) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.30)
+
+Fri, 14 Jun 2024 04:06:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.29..@fluentui/web-components_v3.0.0-beta.30)
+
+### Changes
+
+- update avatar to use ElementInternals for role and states for color ([PR #31693](https://github.com/microsoft/fluentui/pull/31693) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.29)
+
+Thu, 13 Jun 2024 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.28..@fluentui/web-components_v3.0.0-beta.29)
+
+### Changes
+
+- refactor setTheme() to reduce code duplication ([PR #31679](https://github.com/microsoft/fluentui/pull/31679) by machi@microsoft.com)
+- add link as a new web component ([PR #31676](https://github.com/microsoft/fluentui/pull/31676) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.28)
 

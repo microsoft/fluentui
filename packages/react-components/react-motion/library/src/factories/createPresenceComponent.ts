@@ -2,10 +2,10 @@ import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect, useMergedRe
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
-import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
+import { useAnimateAtoms } from '../hooks/useAnimateAtoms';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
-import { animateAtoms } from '../utils/animateAtoms';
+import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
@@ -30,6 +30,16 @@ export type PresenceComponentProps = {
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
   onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
+
+  /**
+   * Callback that is called when the whole motion is cancelled. When a motion is cancelled it does not
+   * emit a finish event but a specific cancel event
+   *
+   * A motion definition can contain multiple animations and therefore multiple "finish" events. The callback is
+   * triggered once all animations have finished with "null" instead of an event object to avoid ambiguity.
+   */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
+  onMotionCancel?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
 
   /**
    * Callback that is called when the whole motion starts.
@@ -59,11 +69,23 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
 ) {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
+    'use no memo';
+
     const itemContext = React.useContext(PresenceGroupChildContext);
     const merged = { ...itemContext, ...props };
 
-    const { appear, children, imperativeRef, onExit, onMotionFinish, onMotionStart, visible, unmountOnExit, ..._rest } =
-      merged;
+    const {
+      appear,
+      children,
+      imperativeRef,
+      onExit,
+      onMotionFinish,
+      onMotionStart,
+      onMotionCancel,
+      visible,
+      unmountOnExit,
+      ..._rest
+    } = merged;
     const params = _rest as Exclude<typeof merged, PresenceComponentProps | typeof itemContext>;
 
     const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
@@ -74,6 +96,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams }>({ appear, params });
 
+    const animateAtoms = useAnimateAtoms();
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
@@ -87,6 +110,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         setMounted(false);
         onExit?.();
       }
+    });
+
+    const handleMotionCancel = useEventCallback((direction: 'enter' | 'exit') => {
+      onMotionCancel?.(null, { direction });
     });
 
     useIsomorphicLayoutEffect(() => {
@@ -123,9 +150,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         }
 
         handleRef.current = handle;
-        handle.onfinish = () => {
-          handleMotionFinish(direction);
-        };
+        handle.setMotionEndCallbacks(
+          () => handleMotionFinish(direction),
+          () => handleMotionCancel(direction),
+        );
 
         return () => {
           handle.cancel();
@@ -133,7 +161,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       },
       // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, visible],
+      [animateAtoms, handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
     );
 
     if (mounted) {

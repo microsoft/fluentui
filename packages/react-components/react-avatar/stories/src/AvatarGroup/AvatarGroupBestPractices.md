@@ -1,7 +1,4 @@
-<details>
-<summary>
-Best Practices
-</summary>
+## Best practices
 
 ### Do
 
@@ -14,5 +11,3 @@ Best Practices
 ### Don't
 
 - Use more than 3 `AvatarGroupItems` inside an `AvatarGroup` with `pie` layout.
-
-</details>

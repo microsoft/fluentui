@@ -184,6 +184,8 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
+  'use no memo';
+
   const { checked, disabled, labelPosition, shape, size } = state;
 
   const rootBaseClassName = useRootBaseClassName();

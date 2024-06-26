@@ -14,6 +14,8 @@ export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'sub
 };
 
 export const useMenuItemCheckboxStyles_unstable = (state: MenuItemCheckboxState): MenuItemCheckboxState => {
+  'use no memo';
+
   state.root.className = mergeClasses(menuItemCheckboxClassNames.root, state.root.className);
 
   if (state.content) {

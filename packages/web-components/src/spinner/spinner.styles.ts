@@ -1,6 +1,15 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/index.js';
 import { colorBrandStroke1, colorBrandStroke2, colorNeutralStrokeOnBrand2 } from '../theme/design-tokens.js';
+import {
+  extraLargeState,
+  extraSmallState,
+  hugeState,
+  invertedState,
+  largeState,
+  smallState,
+  tinyState,
+} from '../styles/states/index.js';
 
 export const styles = css`
   ${display('flex')}
@@ -12,27 +21,27 @@ export const styles = css`
     width: 32px;
     contain: content;
   }
-  :host([size='tiny']) {
+  :host(${tinyState}) {
     height: 20px;
     width: 20px;
   }
-  :host([size='extra-small']) {
+  :host(${extraSmallState}) {
     height: 24px;
     width: 24px;
   }
-  :host([size='small']) {
+  :host(${smallState}) {
     height: 28px;
     width: 28px;
   }
-  :host([size='large']) {
+  :host(${largeState}) {
     height: 36px;
     width: 36px;
   }
-  :host([size='extra-large']) {
+  :host(${extraLargeState}) {
     height: 40px;
     width: 40px;
   }
-  :host([size='huge']) {
+  :host(${hugeState}) {
     height: 44px;
     width: 44px;
   }
@@ -47,7 +56,7 @@ export const styles = css`
     stroke-width: 1.5px;
   }
 
-  :host([appearance='inverted']) .background {
+  :host(${invertedState}) .background {
     stroke: rgba(255, 255, 255, 0.2);
   }
 
@@ -62,7 +71,7 @@ export const styles = css`
     animation: spin-infinite 3s cubic-bezier(0.53, 0.21, 0.29, 0.67) infinite;
   }
 
-  :host([appearance='inverted']) .indicator {
+  :host(${invertedState}) .indicator {
     stroke: ${colorNeutralStrokeOnBrand2};
   }
 

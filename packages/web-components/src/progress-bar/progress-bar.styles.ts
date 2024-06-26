@@ -10,6 +10,7 @@ import {
   colorPaletteRedBackground3,
   colorTransparentBackground,
 } from '../theme/design-tokens.js';
+import { errorState, largeState, squareState, successState, warningState } from '../styles/states/index.js';
 
 /** ProgressBar styles
  * @public
@@ -26,11 +27,11 @@ export const styles = css`
     contain: content;
   }
 
-  :host([thickness='large']) {
+  :host(${largeState}) {
     height: 4px;
   }
 
-  :host([shape='square']) {
+  :host(${squareState}) {
     border-radius: ${borderRadiusNone};
   }
 
@@ -59,15 +60,15 @@ export const styles = css`
     animation-iteration-count: infinite;
   }
 
-  :host([validation-state='error']) .indicator {
+  :host(${errorState}) .indicator {
     background-color: ${colorPaletteRedBackground3};
   }
 
-  :host([validation-state='warning']) .indicator {
+  :host(${warningState}) .indicator {
     background-color: ${colorPaletteDarkOrangeBackground3};
   }
 
-  :host([validation-state='success']) .indicator {
+  :host(${successState}) .indicator {
     background-color: ${colorPaletteGreenBackground3};
   }
 
@@ -98,7 +99,7 @@ export const styles = css`
       background-color: CanvasText;
     }
     .indicator,
-    :host(:is([validation-state='success'], [validation-state='warning'], [validation-state='error'])) .indicator {
+    :host(:is(${successState}, ${warningState}, ${errorState})) .indicator {
       background-color: Highlight;
     }
   `),

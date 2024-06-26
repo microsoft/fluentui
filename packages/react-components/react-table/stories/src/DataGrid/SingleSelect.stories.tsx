@@ -152,7 +152,13 @@ export const SingleSelect = () => {
   const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
 
   return (
-    <DataGrid items={items} columns={columns} selectionMode="single" defaultSelectedItems={defaultSelectedItems}>
+    <DataGrid
+      items={items}
+      columns={columns}
+      selectionMode="single"
+      defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: '550px' }}
+    >
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}

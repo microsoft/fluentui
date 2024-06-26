@@ -69,6 +69,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     | 'appearance'
     | 'clearSelection'
     | 'getOptionById'
+    | 'getOptionsMatchingValue'
     | 'disabled'
   > &
   Pick<

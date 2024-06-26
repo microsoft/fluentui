@@ -1,18 +1,25 @@
 import { css } from '@microsoft/fast-element';
 import { badgeBaseStyles, badgeFilledStyles, badgeGhostStyles, badgeSizeStyles } from '../styles/index.js';
 import { borderRadiusMedium, borderRadiusSmall } from '../theme/design-tokens.js';
+import { extraSmallState, roundedState, smallState, tinyState } from '../styles/states/index.js';
+
+/**
+ * Selector for the `dot` state.
+ * @public
+ */
+const dotState = css.partial`:is([state--dot], :state(dot))`;
 
 /** Badge styles
  * @public
  */
 export const styles = css`
-  :host([shape='rounded']) {
+  :host(${roundedState}) {
     border-radius: ${borderRadiusMedium};
   }
 
-  :host([shape='rounded'][size='tiny']),
-  :host([shape='rounded'][size='extra-small']),
-  :host([shape='rounded'][size='small']) {
+  :host(${roundedState}${tinyState}),
+  :host(${roundedState}${extraSmallState}),
+  :host(${roundedState}${smallState}) {
     border-radius: ${borderRadiusSmall};
   }
 
@@ -21,8 +28,8 @@ export const styles = css`
   ${badgeGhostStyles}
   ${badgeBaseStyles}
 
-  :host([dot]),
-  :host([dot][appearance][size]) {
+  :host(${dotState}),
+  :host(${dotState}[appearance][size]) {
     min-width: auto;
     width: 6px;
     height: 6px;

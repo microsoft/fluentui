@@ -109,6 +109,8 @@ const useShapeStyles = makeStyles({
  * Apply styling to the ImageSwatch slots based on the state
  */
 export const useImageSwatchStyles_unstable = (state: ImageSwatchState): ImageSwatchState => {
+  'use no memo';
+
   const styles = useStyles();
   const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();

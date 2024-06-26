@@ -121,7 +121,7 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
         <input
           type="range"
           value={this.state.width}
-          min={912}
+          min={400}
           max={1000}
           id="changeWidth_Basic"
           onChange={this._onWidthChange}

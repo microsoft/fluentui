@@ -1,8 +1,3 @@
-<details>
-<summary>
- Best Practices
-</summary>
-
 ## Best practices
 
 ### Do
@@ -16,5 +11,3 @@
 
 - Don't use more than 2 levels of nested `Popovers`.
 - Don't use `Popovers` to display too much content, consider if that content should be on the main page.
-
-</details>

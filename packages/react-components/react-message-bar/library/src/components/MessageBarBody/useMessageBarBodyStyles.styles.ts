@@ -17,6 +17,8 @@ const useRootBaseStyles = makeResetStyles({
  * Apply styling to the MessageBarBody slots based on the state
  */
 export const useMessageBarBodyStyles_unstable = (state: MessageBarBodyState): MessageBarBodyState => {
+  'use no memo';
+
   const rootBaseStyles = useRootBaseStyles();
   state.root.className = mergeClasses(messageBarBodyClassNames.root, rootBaseStyles, state.root.className);
 

@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Image as FluentImage } from './image.js';
 import { ImageFit, ImageShape } from './image.options.js';
-import './define.js';
 
 type ImageStoryArgs = Args & FluentImage;
 type ImageStoryMeta = Meta<ImageStoryArgs>;

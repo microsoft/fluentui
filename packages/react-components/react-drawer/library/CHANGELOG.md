@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Thu, 06 Jun 2024 15:26:33 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.2)
+
+Mon, 17 Jun 2024 07:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.1..@fluentui/react-drawer_v9.5.2)
+
+### Patches
+
+- Bump @fluentui/react-dialog to v9.11.2 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-tabster to v9.22.0 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.1)
+
+Wed, 12 Jun 2024 13:17:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.0..@fluentui/react-drawer_v9.5.1)
+
+### Patches
+
+- Bump @fluentui/react-dialog to v9.11.1 ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.0)
 

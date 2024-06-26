@@ -1,7 +1,5 @@
-import type { Placement } from '@floating-ui/dom';
-import { autoUpdate, computePosition, flip, shift, size } from '@floating-ui/dom';
-import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyArrowLeft, keyArrowRight, keyEnter, keyEscape, keySpace } from '@microsoft/fast-web-utilities';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
@@ -17,30 +15,21 @@ export { MenuItemRole, roleForMenuItem };
  * @public
  */
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-  checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-  expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-  radioIndicator?: StaticallyComposableHTML<MenuItem>;
+  indicator?: StaticallyComposableHTML<MenuItem>;
+  submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 /**
  * A Switch Custom HTML Element.
  * Implements {@link https://www.w3.org/TR/wai-aria-1.1/#menuitem | ARIA menuitem }, {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemcheckbox | ARIA menuitemcheckbox}, or {@link https://www.w3.org/TR/wai-aria-1.1/#menuitemradio | ARIA menuitemradio }.
  *
- * @slot checked-indicator - The checked indicator
- * @slot radio-indicator - The radio indicator
+ * @slot indicator - The checkbox or radio indicator
  * @slot start - Content which can be provided before the menu item content
- * @slot end - Content which can be provided after the menu item content
  * @slot - The default slot for menu item content
- * @slot expand-collapse-indicator - The expand/collapse indicator
+ * @slot end - Content which can be provided after the menu item content
+ * @slot submenu-glyph - The submenu expand/collapse indicator
  * @slot submenu - Used to nest menu's within menu items
- * @csspart input-container - The element representing the visual checked or radio indicator
- * @csspart checkbox - The element wrapping the `menuitemcheckbox` indicator
- * @csspart radio - The element wrapping the `menuitemradio` indicator
  * @csspart content - The element wrapping the menu item content
- * @csspart expand-collapse-glyph-container - The element wrapping the expand collapse element
- * @csspart expand-collapse - The expand/collapse element
- * @csspart submenu-region - The container for the submenu, used for positioning
- * @fires expanded-change - Fires a custom 'expanded-change' event when the expanded state changes
  * @fires change - Fires a custom 'change' event when a non-submenu item with a role of `menuitemcheckbox`, `menuitemradio`, or `menuitem` is invoked
  *
  * @public
@@ -57,25 +46,6 @@ export class MenuItem extends FASTElement {
   public disabled!: boolean;
 
   /**
-   * The expanded state of the element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: expanded
-   */
-  @attr({ mode: 'boolean' })
-  public expanded!: boolean;
-  protected expandedChanged(prev: boolean | undefined, next: boolean): void {
-    if (this.$fastController.isConnected) {
-      if (next && this.submenu) {
-        this.updateSubmenu();
-      }
-
-      this.$emit('expanded-change', this, { bubbles: false });
-    }
-  }
-
-  /**
    * The role of the element.
    *
    * @public
@@ -84,13 +54,6 @@ export class MenuItem extends FASTElement {
    */
   @attr
   public role: MenuItemRole = MenuItemRole.menuitem;
-
-  /**
-   * Cleanup function for the submenu positioner.
-   *
-   * @public
-   */
-  public cleanup!: () => void;
 
   /**
    * The checked value of the element.
@@ -126,46 +89,25 @@ export class MenuItem extends FASTElement {
   public slottedSubmenu!: HTMLElement[];
 
   /**
-   * @internal
-   */
-  public get hasSubmenu(): boolean {
-    return !!this.submenu;
-  }
-
-  /**
    * Sets the submenu and updates its position.
    *
    * @internal
    */
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
+    this.submenu?.removeEventListener('toggle', this.toggleHandler);
+
     if (next.length) {
       this.submenu = next[0];
-      this.updateSubmenu();
+      this.submenu.toggleAttribute('popover', true);
+      this.submenu.addEventListener('toggle', this.toggleHandler);
     }
   }
-
-  /**
-   * The container for the submenu.
-   *
-   * @internal
-   */
-  public submenuContainer!: HTMLDivElement;
 
   /**
    * @internal
    */
   @observable
   public submenu: HTMLElement | undefined;
-
-  private focusSubmenuOnLoad: boolean = false;
-
-  /**
-   * @internal
-   */
-  public disconnectedCallback(): void {
-    this.cleanup?.();
-    super.disconnectedCallback();
-  }
 
   /**
    * @internal
@@ -183,23 +125,20 @@ export class MenuItem extends FASTElement {
 
       case keyArrowRight:
         //open/focus on submenu
-        this.expanded && this.submenu ? this.submenu.focus() : this.expandAndFocus();
-        return false;
-
-      case keyEscape:
-        // close submenu
-        if (this.expanded) {
-          this.closeSubMenu();
-          return false;
+        if (!this.disabled) {
+          this.submenu?.togglePopover(true);
+          this.submenu?.focus();
         }
-        break;
+
+        return false;
 
       case keyArrowLeft:
         //close submenu
-        if (this.expanded) {
-          this.closeSubMenu();
-          return false;
+        if (this.parentElement?.hasAttribute('popover')) {
+          this.parentElement.togglePopover(false);
         }
+
+        return false;
     }
 
     return true;
@@ -220,28 +159,12 @@ export class MenuItem extends FASTElement {
   /**
    * @internal
    */
-  public submenuLoaded = (): void => {
-    if (!this.focusSubmenuOnLoad) {
-      return;
-    }
-
-    this.focusSubmenuOnLoad = false;
-    if (this.submenu) {
-      this.submenu.focus();
-      this.setAttribute('tabindex', '-1');
-    }
-  };
-
-  /**
-   * @internal
-   */
   public handleMouseOver = (e: MouseEvent): boolean => {
-    if (this.disabled || !this.hasSubmenu || this.expanded) {
+    if (this.disabled) {
       return false;
     }
 
-    this.expanded = true;
-
+    this.submenu?.togglePopover(true);
     return false;
   };
 
@@ -249,34 +172,29 @@ export class MenuItem extends FASTElement {
    * @internal
    */
   public handleMouseOut = (e: MouseEvent): boolean => {
-    if (!this.expanded || this.contains(document.activeElement)) {
+    if (this.contains(document.activeElement)) {
       return false;
     }
 
-    this.expanded = false;
+    this.submenu?.togglePopover(false);
 
     return false;
   };
 
   /**
+   * Setup required ARIA on open/close
    * @internal
    */
-  private closeSubMenu = (): void => {
-    // close submenu
-    this.expanded = false;
-    this.focus();
-  };
-
-  /**
-   * @internal
-   */
-  private expandAndFocus = (): void => {
-    if (!this.hasSubmenu) {
-      return;
+  public toggleHandler = (e: ToggleEvent | Event): void => {
+    if (e instanceof ToggleEvent && e.newState === 'open') {
+      this.setAttribute('tabindex', '-1');
+      this.setAttribute('aria-expanded', 'true');
+      this.setSubmenuPosition();
     }
-
-    this.focusSubmenuOnLoad = true;
-    this.expanded = true;
+    if (e instanceof ToggleEvent && e.newState === 'closed') {
+      this.setAttribute('aria-expanded', 'false');
+      this.setAttribute('tabindex', '0');
+    }
   };
 
   /**
@@ -293,8 +211,9 @@ export class MenuItem extends FASTElement {
         break;
 
       case MenuItemRole.menuitem:
-        if (this.hasSubmenu) {
-          this.expandAndFocus();
+        if (!!this.submenu) {
+          this.submenu.togglePopover(true);
+          this.submenu.focus();
           break;
         }
 
@@ -310,46 +229,32 @@ export class MenuItem extends FASTElement {
   };
 
   /**
-   * Calculate and apply submenu positioning.
-   *
-   * @public
+   * Set fallback position of menu on open when CSS anchor not supported
+   * @internal
    */
-  public updateSubmenu() {
-    this.cleanup?.();
+  public setSubmenuPosition = (): void => {
+    if (!CSS.supports('anchor-name', '--anchor') && !!this.submenu) {
+      const thisRect = this.getBoundingClientRect();
+      const thisSubmenuRect = this.submenu.getBoundingClientRect();
+      const inlineEnd = getComputedStyle(this).direction === 'ltr' ? 'right' : 'left';
 
-    if (!this.submenu || !this.expanded) {
-      return;
+      // If an open submenu is too wide for the viewport, move it above.
+      if (thisRect.width + thisSubmenuRect.width > window.innerWidth * 0.75) {
+        this.submenu.style.translate = '0 -100%';
+        return;
+      }
+
+      // If the open submenu is overflows the inline-end of the window (e.g. justify-content: end),
+      // move to inline-start of menu item
+      if (thisRect[inlineEnd] + thisSubmenuRect.width > window.innerWidth) {
+        this.submenu.style.translate = '-100% 0';
+        return;
+      }
+
+      // Default to inline-end of menu item
+      this.submenu.style.translate = `${thisRect.width - 8}px 0`;
     }
-
-    Updates.enqueue(() => {
-      this.cleanup = autoUpdate(this, this.submenuContainer, async () => {
-        const fallbackPlacements: Placement[] = ['left-start', 'right-start'];
-        const { x, y } = await computePosition(this, this.submenuContainer, {
-          middleware: [
-            shift(),
-            size({
-              apply: ({ availableWidth, rects }) => {
-                if (availableWidth < rects.floating.width) {
-                  fallbackPlacements.push('bottom-end', 'top-end');
-                }
-              },
-            }),
-            flip({ fallbackPlacements }),
-          ],
-          placement: 'right-start',
-          strategy: 'fixed',
-        });
-
-        Object.assign(this.submenuContainer.style, {
-          left: `${x}px`,
-          position: 'fixed',
-          top: `${y}px`,
-        });
-
-        this.submenuLoaded();
-      });
-    });
-  }
+  };
 }
 
 /**

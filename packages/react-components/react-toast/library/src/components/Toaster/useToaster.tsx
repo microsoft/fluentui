@@ -23,6 +23,8 @@ import { useToastAnnounce } from './useToastAnnounce';
  * @param props - props from this instance of Toaster
  */
 export const useToaster_unstable = (props: ToasterProps): ToasterState => {
+  'use no memo';
+
   const { offset, announce: announceProp, mountNode, inline = false, ...rest } = props;
   const announceRef = React.useRef<Announce>(() => null);
   const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =

@@ -20,33 +20,23 @@ export const cardHeaderCSSVars = {
   cardHeaderGapVar: '--fui-CardHeader--gap',
 };
 
-const useStyles = makeStyles({
+const useStyles = makeStyles<keyof CardHeaderSlots>({
   root: {
     [cardHeaderCSSVars.cardHeaderGapVar]: '12px',
-    display: 'grid',
-    gridAutoColumns: 'min-content 1fr min-content',
     alignItems: 'center',
   },
   image: {
     display: 'inline-flex',
     marginRight: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
-    gridColumnStart: '1',
-    gridRowStart: 'span 2',
   },
   header: {
-    gridColumnStart: '2',
-    gridRowStart: '1',
     display: 'flex',
   },
   description: {
-    gridColumnStart: '2',
-    gridRowStart: '2',
     display: 'flex',
   },
   action: {
     marginLeft: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
-    gridColumnStart: '3',
-    gridRowStart: 'span 2',
 
     // when the card is selected or hovered, it has custom high contrast color and background styles
     // setting this ensures action buttons adopt those colors and are still visible in forced-colors mode
@@ -60,31 +50,84 @@ const useStyles = makeStyles({
   },
 });
 
+const useStylesGrid = makeStyles<keyof CardHeaderSlots>({
+  root: {
+    display: 'grid',
+    gridAutoColumns: 'min-content 1fr min-content',
+  },
+
+  image: {
+    gridColumnStart: '1',
+    gridRowStart: 'span 2',
+  },
+
+  header: {
+    gridColumnStart: '2',
+    gridRowStart: '1',
+  },
+
+  description: {
+    gridColumnStart: '2',
+    gridRowStart: '2',
+  },
+
+  action: {
+    gridColumnStart: '3',
+    gridRowStart: 'span 2',
+  },
+});
+
+const useStylesFlex = makeStyles<keyof CardHeaderSlots>({
+  root: {
+    display: 'flex',
+  },
+
+  header: {
+    flexGrow: 1,
+  },
+
+  image: {},
+  description: {},
+  action: {},
+});
+
 /**
  * Apply styling to the CardHeader slots based on the state.
  */
 export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
+  'use no memo';
+
   const styles = useStyles();
-  state.root.className = mergeClasses(cardHeaderClassNames.root, styles.root, state.root.className);
+  const stylesGrid = useStylesGrid();
+  const stylesFlex = useStylesFlex();
+
+  const boxModelStyles = state.description ? stylesGrid : stylesFlex;
+
+  const getSlotStyles = (slotName: keyof CardHeaderSlots): string => {
+    return mergeClasses(
+      cardHeaderClassNames[slotName],
+      styles[slotName],
+      boxModelStyles[slotName],
+      state[slotName]?.className,
+    );
+  };
+
+  state.root.className = getSlotStyles('root');
 
   if (state.image) {
-    state.image.className = mergeClasses(cardHeaderClassNames.image, styles.image, state.image.className);
+    state.image.className = getSlotStyles('image');
   }
 
   if (state.header) {
-    state.header.className = mergeClasses(cardHeaderClassNames.header, styles.header, state.header.className);
+    state.header.className = getSlotStyles('header');
   }
 
   if (state.description) {
-    state.description.className = mergeClasses(
-      cardHeaderClassNames.description,
-      styles.description,
-      state.description.className,
-    );
+    state.description.className = getSlotStyles('description');
   }
 
   if (state.action) {
-    state.action.className = mergeClasses(cardHeaderClassNames.action, styles.action, state.action.className);
+    state.action.className = getSlotStyles('action');
   }
 
   return state;

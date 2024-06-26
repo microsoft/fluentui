@@ -63,6 +63,8 @@ export const useDialogTitleInternalStyles = makeResetStyles({
  * Apply styling to the DialogTitle slots based on the state
  */
 export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTitleState => {
+  'use no memo';
+
   const rootResetStyles = useRootResetStyles();
   const actionResetStyles = useActionResetStyles();
   const styles = useStyles();

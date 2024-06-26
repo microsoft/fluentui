@@ -35,6 +35,8 @@ const useStyles = makeStyles({
  * Apply styling to the CardFooter slots based on the state.
  */
 export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(cardFooterClassNames.root, styles.root, state.root.className);
 
