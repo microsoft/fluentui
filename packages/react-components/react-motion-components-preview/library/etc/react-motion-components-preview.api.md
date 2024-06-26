@@ -9,35 +9,55 @@ import { PresenceMotion } from '@fluentui/react-motion';
 import { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: PresenceComponent<    {}, PresenceMotionFn<{
+export const Collapse: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}, PresenceMotionFn<{
 animateOpacity?: boolean | undefined;
 }>>;
 
 // @public (undocumented)
-export const CollapseExaggerated: PresenceComponent<    {}, PresenceMotionFn<{}>>;
+export const CollapseExaggerated: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}, PresenceMotionFn<{
+animateOpacity?: boolean | undefined;
+}>>;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<    {}, PresenceMotionFn<{}>>;
+export const CollapseSnappy: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}, PresenceMotionFn<{
+animateOpacity?: boolean | undefined;
+}>>;
 
 // @public
 export const Fade: PresenceComponent<    {}, PresenceMotion>;
 
 // @public (undocumented)
-export const FadeExaggerated: PresenceComponent<    {}, PresenceMotionFn<    {}>>;
+export const FadeExaggerated: PresenceComponent<    {}, PresenceMotion>;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<    {}, PresenceMotionFn<    {}>>;
+export const FadeSnappy: PresenceComponent<    {}, PresenceMotion>;
 
 // @public
-export const Scale: PresenceComponent<    {}, PresenceMotionFn<{
+export const Scale: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}, PresenceMotionFn<{
 animateOpacity?: boolean | undefined;
 }>>;
 
 // @public (undocumented)
-export const ScaleExaggerated: PresenceComponent<    {}, PresenceMotionFn<{}>>;
+export const ScaleExaggerated: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}, PresenceMotionFn<{
+animateOpacity?: boolean | undefined;
+}>>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<    {}, PresenceMotionFn<{}>>;
+export const ScaleSnappy: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}, PresenceMotionFn<{
+animateOpacity?: boolean | undefined;
+}>>;
 
 // (No @packageDocumentation comment for this package)
 
