@@ -71,10 +71,10 @@ const CustomListItem = (props: { title: string; value: string }) => {
   const { value } = props;
 
   // This will be triggered by user pressing Enter or clicking on the list item
-  const onAction = React.useCallback((event, { value }) => {
+  const onAction = React.useCallback((event, { value: val }) => {
     // This prevents the change in selection on click/Enter
     event.preventDefault();
-    alert(`Triggered custom action on ${value}`);
+    alert(`Triggered custom action on ${val}`);
   }, []);
 
   return (
