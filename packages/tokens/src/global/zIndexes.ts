@@ -15,7 +15,7 @@ const levels: ZIndexLevels = [
 /**
  * Global z-index values for elements
  */
-export const zIndexes: ZIndexTokens = {
+export const zIndexesTokens: ZIndexTokens = {
   zIndexBackground: levels[0], // default
   zIndexContent: levels[1], // content - header, footer, sidebar
   zIndexOverlay: levels[2], // overlay elements - drawer, nav
@@ -24,4 +24,18 @@ export const zIndexes: ZIndexTokens = {
   zIndexFloating: levels[5], // floating elements - dropdowns, teaching
   zIndexPriority: levels[6], // priority elements - tooltips
   zIndexDebug: levels[7], // debug - error overlays, debug messages
+};
+
+/**
+ * Global z-index map for elements
+ */
+export const zIndexes = {
+  background: zIndexesTokens.zIndexBackground, // default
+  content: zIndexesTokens.zIndexContent, // content - header, footer, sidebar
+  overlay: zIndexesTokens.zIndexOverlay, // overlay elements - drawer, nav
+  popup: zIndexesTokens.zIndexPopup, // popup layers - popups, modals, dialogs
+  messages: zIndexesTokens.zIndexMessages, // communication elements - banners, messages, toasts, snackbar
+  floating: zIndexesTokens.zIndexFloating, // floating elements - dropdowns, teaching
+  priority: zIndexesTokens.zIndexPriority, // priority elements - tooltips
+  debug: zIndexesTokens.zIndexDebug, // debug - error overlays, debug messages
 };

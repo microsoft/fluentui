@@ -9,19 +9,23 @@
   - [Background](#background)
   - [Problem statement](#problem-statement)
   - [Detailed Design or Proposal](#detailed-design-or-proposal)
+  - [Research](#research)
+    - [CSS Isolation and stacking context](#css-isolation-and-stacking-context)
   - [Layering/elevation concept](#layeringelevation-concept)
     - [What will be covered](#what-will-be-covered)
     - [What won't be covered](#what-wont-be-covered)
   - [Options](#options)
-    - [Option A: Update tokens to include a map from layer to z-index](#option-a-update-tokens-to-include-a-map-from-layer-to-z-index)
-      - [Option A1: Named layers](#option-a1-named-layers)
+    - [Issues](#issues)
+      - [Option A: Expose a named map of layers to z-index values (similarly to typography styles)](#option-a-expose-a-named-map-of-layers-to-z-index-values-similarly-to-typography-styles)
         - [Pros](#pros)
         - [Cons](#cons)
-      - [Option A2: Leveled layers](#option-a2-leveled-layers)
+      - [Option B: Update tokens to include a map from layer to z-index](#option-b-update-tokens-to-include-a-map-from-layer-to-z-index)
         - [Pros](#pros-1)
         - [Cons](#cons-1)
-      - [Issues](#issues)
-    - [Option B: z-index handling React Context](#option-b-z-index-handling-react-context)
+    - [Explored options, but already discarded](#explored-options-but-already-discarded)
+      - [React Context for setting z-index values](#react-context-for-setting-z-index-values)
+        - [Pros](#pros-2)
+        - [Cons](#cons-2)
 
 ## Summary
 
@@ -40,6 +44,13 @@ The current z-index handling in Fluent UI v9 is not consistent across components
 
 The creation of a global z-index system will help to standardize the values across the library, making it easier to manage and avoid conflicts between components. This system will also provide a way to easily override the z-index values for custom components and applications.
 
+## Research
+
+### CSS Isolation and stacking context
+
+[CSS Isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) is a new feature that allows developers to create a new stacking context for an element. This means that the element and its children will be rendered isolated from the rest of the page. This can be useful explicitly for components that require a z-index control.
+The problem for our case is that we render most of our components that require a z axis control in a portal, which by itself creates a new stacking context. For the elements rendered in a portal, the z-index is relative to the portal element and we need a way to define the priority of them.
+
 ## Layering/elevation concept
 
 As stated by [Fluent 2 design guidelines](https://fluent2.microsoft.design/elevation), objects/components have a defined elevation value to express its importance and create the sense of hierarchy of layers. These layers should have well defined shadow and z-axis values. Currently, the library have [shadows already defined](https://github.com/marcosmoura/fluentui/blob/943d1f166c5929ff65a683fbed3885434f16f2b9/packages/tokens/src/utils/shadows.ts#L6), but lacking the z-axis values.
@@ -49,24 +60,77 @@ As stated by [Fluent 2 design guidelines](https://fluent2.microsoft.design/eleva
 This proposal utilize this elevation system to define layers that translate into z-axis values, and those can be used by the components. The concepts are:
 
 - Each layer have a well-thought z-index number mapped to it
-- Multiple components can ocupy the same layer, if they share the same importance level in the stack (e.g. Drawer and Nav)
+- Multiple components can occupy the same layer, if they share the same importance level in the stack (e.g. Drawer and Nav)
 - A component can be defined without a z-index. Its placement fallbacks to its position within the [stack context](https://web.dev/learn/css/z-index/#stacking-context).
 
 ### What won't be covered
 
 - Negative z-indexes. Components can define negative z-index values to represent background objects. Since this is very subjective, it'll be up to the component to define its own negative z-index values.
-- Correlation between shadows and z-indexes. Even though it is related, this is out of the scope of this proposal. If necessary, it can be covered by a follow-up RFC.
+- Correlation between shadows and z-indexes. Even though it might be related, this is out of the scope of this proposal. If necessary, it can be covered by a follow-up RFC.
 
 ## Options
 
-### Option A: Update tokens to include a map from layer to z-index
+### Issues
 
-Exposes a map of layers to z-index values. This map can be used by components to define their z-index values.
-This would required the creation of a new file and export under `@fluentui/tokens`, to make the new tokens available.
+The approaches below only standardize the layers and define z-index values for them. This is great for the current state of our components that can define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dropdowns are created. Which of them should have higher priority and therefore be displayed on top?
 
-#### Option A1: Named layers
+#### Option A: Expose a named map of layers to z-index values (similarly to typography styles)
 
-The map exported would be named, creating groups of UI elements.
+Exposes a named map of layers to z-index values. This map can be used by components to define their z-index values.
+This would required the creation of a new file and export under `@fluentui/tokens`, to make the map available.
+
+The layers can be defined as follows:
+
+```ts
+// packages/tokens/src/global/zIndexes.ts
+
+import { ZIndexLayers } from '../types';
+
+/**
+ * Global z-index values for elements
+ */
+export const zIndexes: ZIndexLayers = {
+  background: 0, // default
+  content: 1, // content - header, footer, sidebar
+  overlay: 1000, // overlay elements - drawer, nav
+  popup: 2000, // popup layers - popups, modals, dialogs
+  messages: 3000, // communication elements - banners, messages, toasts, snackbar
+  floating: 4000, // floating elements - dropdowns, teaching
+  priority: 5000, // priority elements - tooltips
+  debug: 6000, // debug - error overlays, debug messages
+};
+```
+
+```ts
+// partner side
+
+import { zIndexes } from '@fluentui/theme';
+
+const styles = {
+  root: {
+    zIndex: zIndexes.overlay,
+  },
+};
+```
+
+<!-- FIXME: Update section after alignment with designers -->
+
+_NOTE: The names above are not final and only serve as an example. As of the moment this RFC was introduced, there are ongoing discussions with the Design team to define all the layers. This RFC will be updated before the final approval to include the definitive names._
+
+##### Pros
+
+- 👍 Clear separation by group of UI elements
+- 👍 Easy to override, extend and update
+
+##### Cons
+
+- 👎 Naming convention can be hard
+- 👎 The values would be fixed globally and not possible for partners to override
+
+#### Option B: Update tokens to include a map from layer to z-index
+
+Expose the z-index values as tokens. This would map the layers into token values that can be used anywhere in styles.
+
 The layers can be defined as follows:
 
 ```ts
@@ -101,6 +165,18 @@ export const zIndexes: ZIndexTokens = {
 };
 ```
 
+```ts
+// partner side
+
+import { tokens } from '@fluentui/theme';
+
+const styles = {
+  root: {
+    zIndex: tokens.zIndexOverlay,
+  },
+};
+```
+
 <!-- FIXME: Update section after alignment with designers -->
 
 _NOTE: The names above are not final and only serve as an example. As of the moment this RFC was introduced, there are ongoing discussions with the Design team to define all the layers. This RFC will be updated before the final approval to include the definitive names._
@@ -109,75 +185,135 @@ _NOTE: The names above are not final and only serve as an example. As of the mom
 
 - 👍 Clear separation by group of UI elements
 - 👍 Easy to override, extend and update
+- 👍 Partners can override the tokens through themes
 
 ##### Cons
 
 - 👎 Naming convention can be hard
+- 👎 Bloating the tokens with more variables
+- 👎 Not possible to validate for user errors. Partners can override the tokens freely.
 
-#### Option A2: Leveled layers
+### Explored options, but already discarded
 
-The map exported would be leveled, creating an order for a stack of UI elements.
-The layers can be defined as follows:
+The options below were explored but discarded due to the complexity of the implementation. It can be revisited in the future if necessary.
 
-```ts
-// packages/tokens/src/global/zIndexes.ts
+#### React Context for setting z-index values
 
-import { ZIndexes } from '../types';
+This context would provide a way to set the z-index values for components and retrieve them when necessary. That allows partners to set the z-index themselves delegating the decision of the z-index order, priority and values to the application. It would be possible to set z-index ordering for multiple elements in the same layer.
 
-/**
- * Global z-index values for elements
- * Ordered according to Fluent V2 guidelines
- */
-export const indexes: ZIndexes = {
-  level0: 0, // Elevation 0
-  level1: 1, // Elevation 2
-  level2: 1000, // Elevation 4
-  level3: 2000, // Elevation 8
-  level4: 3000, // Elevation 16
-  level5: 4000, // Elevation 28
-  level6: 5000, // Elevation 64
-  level7: 6000, // High priority elements
+```tsx
+// partner side
+import { FluentProvider } from '@fluentui/react-components';
+
+const App = () => {
+  const zIndex = {
+    background: 0,
+    content: 1,
+    overlay: 1000,
+    popup: 2000,
+    messages: 3000,
+    floating: 4000,
+    priority: 5000,
+    debug: 6000,
+  };
+
+  return (
+    <FluentProvider zIndex={zIndex}>
+      <Component1 />
+      <Component2 />
+    </FluentProvider>
+  );
+};
+```
+
+```tsx
+import { useZIndex } from '@fluentui/react-components';
+
+// component side
+export const useComponent_unstable = (props: ComponentProps, ref: React.Ref<HTMLElement>): ComponentState => {
+  const { overlay } = useZIndex();
+
+  return {
+    components: {
+      root: 'div',
+    },
+
+    root: slot.always(
+      {
+        ref,
+        ...props,
+        style: {
+          zIndex: overlay,
+        },
+      },
+      {
+        elementType: 'div',
+      },
+    ),
+  };
+};
+```
+
+Or alternatively, a hook that could be used to set the z-index style directly:
+
+```tsx
+import { useZIndexStyle } from '@fluentui/react-components';
+
+// component side
+export const useComponent_unstable = (props: ComponentProps, ref: React.Ref<HTMLElement>): ComponentState => {
+  useZIndexStyle('overlay', ref);
+
+  return {
+    components: {
+      root: 'div',
+    },
+
+    root: slot.always(
+      {
+        ref,
+        ...props,
+      },
+      {
+        elementType: 'div',
+      },
+    ),
+  };
+};
+```
+
+Another possibility would be to use a hook to set z-index priority between two elements:
+
+```tsx
+import { useZIndexPriority } from '@fluentui/react-components';
+
+// component side
+export const Component = (props: ComponentProps) => {
+  const drawerStartRef = React.useRef();
+  const drawerEndRef = React.useRef();
+  const navRef = React.useRef();
+
+  /*
+   * This would control the z-index of the elements based on the layering group,
+   * incrementing based on the priority list
+   */
+  useZIndexPriority('overlay', [drawerStartRef, drawerEndRef, navRef]);
+
+  return (
+    <>
+      <Drawer position="start" ref={drawerStartRef} /> // z-index 2003
+      <Drawer position="end" ref={drawerEndRef} /> // z-index 2002
+      <Nav ref={navRef} /> // z-index 2001
+    </>
+  );
 };
 ```
 
 ##### Pros
 
-- ❌ Honestly, none.
+- 👍 Allows partners to set the z-index values individually per context
 
 ##### Cons
 
-- 👎 Hard to understand the layering context. e.g: What level3 means in comparison with level2 or level4?
-- 👎 Doesn't allow future changes if a level needs to be introduced in between. level2.5?
-
-#### Issues
-
-This approach only standardize the layers and define z-index values for them. This is great for the current state of our components that define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dialogs are created. Which of them should have higher priority and therefore be displayed on top?
-
-### Option B: z-index handling React Context
-
-Create a React Context to handle z-index values. This context would provide a way to set the z-index values for components and retrieve them when necessary.
-
-TODO: If this option is chosen, provide a detailed design.
-
-<!-- ---
-
-TODO: Add more options
-
-```tsx
-const { setPriority, getIndex } = useZIndex();
-
-const element1 = useRef<HTMLDivElement>(null);
-const element2 = useRef<HTMLDivElement>(null);
-
-React.useEffect(() => {
-  setPriority('popup', [element1, element2]);
-}, [element1, element2]);
-
-const getElement1Index = React.useCallback(() => {
-  const index = getIndex(element1);
-
-  console.log(index);
-
-  return index;
-}, [element1]);
-``` -->
+- 👎 Inline styles
+- 👎 Merging styles
+- 👎 One more Context included in the tree

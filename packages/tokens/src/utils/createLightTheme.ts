@@ -8,7 +8,7 @@ import {
   fontFamilies,
   strokeWidths,
   fontWeights,
-  zIndexes,
+  zIndexesTokens,
 } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
@@ -30,7 +30,7 @@ export const createLightTheme: (brand: BrandVariants) => Theme = brand => {
     ...verticalSpacings,
     ...durations,
     ...curves,
-    ...zIndexes,
+    ...zIndexesTokens,
 
     ...colorTokens,
     ...colorPaletteTokens,
