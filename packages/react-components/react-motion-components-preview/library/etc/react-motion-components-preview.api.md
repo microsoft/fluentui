@@ -4,6 +4,64 @@
 
 ```ts
 
+import { FC } from 'react';
+import { PresenceComponentProps } from '@fluentui/react-motion';
+import { PresenceMotion } from '@fluentui/react-motion';
+import { PresenceMotionFn } from '@fluentui/react-motion';
+
+// @public
+export const Collapse: FC<PresenceComponentProps & {
+animateOpacity?: boolean | undefined;
+}> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<{
+        animateOpacity?: boolean | undefined;
+    }>;
+};
+
+// @public (undocumented)
+export const CollapseExaggerated: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
+};
+
+// @public (undocumented)
+export const CollapseSnappy: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
+};
+
+// @public
+export const Fade: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<    {}>;
+};
+
+// @public (undocumented)
+export const FadeExaggerated: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<    {}>;
+};
+
+// @public (undocumented)
+export const FadeSnappy: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<    {}>;
+};
+
+// @public
+export const Scale: FC<PresenceComponentProps & {
+animateOpacity?: boolean | undefined;
+}> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<{
+        animateOpacity?: boolean | undefined;
+    }>;
+};
+
+// @public (undocumented)
+export const ScaleExaggerated: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
+};
+
+// @public (undocumented)
+export const ScaleSnappy: FC<PresenceComponentProps> & {
+    motionDefinition: PresenceMotion | PresenceMotionFn<{}>;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
