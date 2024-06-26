@@ -70,6 +70,8 @@ export const styles = css`
   }
 
   :host([orientation='vertical']) .track {
+    top: var(--track-overhang);
+    bottom: var(--track-overhang);
     width: var(--track-size);
     height: 100%;
   }
