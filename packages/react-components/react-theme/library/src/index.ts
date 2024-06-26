@@ -11,7 +11,6 @@ export {
   themeToTokensObject,
   tokens,
   typographyStyles,
-  zIndexes,
 } from '@fluentui/tokens';
 
 export type {
