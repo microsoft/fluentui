@@ -1,4 +1,3 @@
-import { PresenceMotionFn } from '@fluentui/react-motion';
 import { Collapse } from './Collapse';
 import { expectPresenceMotionFunction, expectPresenceMotionObject } from '../../testing/test-utils';
 
@@ -9,7 +8,7 @@ describe('Collapse', () => {
 
   it('generates a motion definition from the static function', () => {
     // TODO: fix type flow through createPresenceComponentVariant
-    const motionDefinition = Collapse.motionDefinition({ element: {} as HTMLElement });
-    expectPresenceMotionObject(motionDefinition);
+    const motionObject = Collapse.motionDefinition({ element: {} as HTMLElement });
+    expectPresenceMotionObject(motionObject);
   });
 });

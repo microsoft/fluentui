@@ -2,7 +2,7 @@ import { PresenceOverride, MotionParam, PresenceMotion, PresenceMotionFn } from 
 
 export const overridePresenceMotion = <MotionParams extends Record<string, MotionParam> = {}>(
   motion: PresenceMotion | PresenceMotionFn<MotionParams>,
-  override: PresenceOverride,
+  override: PresenceOverride<MotionParams>,
 ): PresenceMotionFn<MotionParams> => {
   return (...args: Parameters<PresenceMotionFn<MotionParams>>) => {
     const presenceMotion = typeof motion === 'function' ? motion(...args) : motion;

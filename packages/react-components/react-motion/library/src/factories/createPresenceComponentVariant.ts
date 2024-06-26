@@ -1,6 +1,15 @@
 import { PresenceComponent, createPresenceComponent } from './createPresenceComponent';
-import { PresenceOverride } from '../types';
+import { MotionParam, PresenceOverride, PresenceMotion, PresenceMotionFn } from '../types';
 import { overridePresenceMotion } from './overridePresenceMotion';
 
-export const createPresenceComponentVariant = <T extends PresenceComponent>(component: T, override: PresenceOverride) =>
-  createPresenceComponent(overridePresenceMotion(component.motionDefinition, override));
+export const createPresenceComponentVariant = <
+  MotionParams extends Record<string, MotionParam>,
+  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams>,
+>(
+  component: PresenceComponent<MotionParams, MotionDefinition>,
+  override: PresenceOverride<MotionParams>,
+) =>
+  // overridePresenceMotion always returns a function, so type the createPresenceComponent generic to the function
+  createPresenceComponent<MotionParams, PresenceMotionFn<MotionParams>>(
+    overridePresenceMotion<MotionParams>(component.motionDefinition, override),
+  );

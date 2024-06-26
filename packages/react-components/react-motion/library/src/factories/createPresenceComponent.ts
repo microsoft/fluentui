@@ -138,7 +138,8 @@ export function createPresenceComponent<
           return;
         }
 
-        const presenceMotion = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
+        const presenceMotion =
+          typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
         const direction: PresenceDirection = visible ? 'enter' : 'exit';
