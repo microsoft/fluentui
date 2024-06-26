@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 26 Jun 2024 07:31:38 GMT",
+      "tag": "@fluentui/react_v8.119.0",
+      "version": "8.119.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9de8ede06a1f3729bb9705c7835200834985864d",
+            "comment": "Add 'allowParentArrowNavigation' to ComboBox."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jun 2024 07:32:52 GMT",
       "tag": "@fluentui/react_v8.118.10",
       "version": "8.118.10",
