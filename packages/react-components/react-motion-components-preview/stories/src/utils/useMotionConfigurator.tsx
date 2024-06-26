@@ -136,7 +136,6 @@ export const OverrideControls = ({
 
             <Input
               style={{ width: '7rem' }}
-              defaultValue=""
               value={customDuration ? String(customDuration) : ''}
               placeholder="custom (ms)"
               onChange={React.useCallback(
