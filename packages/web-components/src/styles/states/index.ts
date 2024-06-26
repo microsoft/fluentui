@@ -103,6 +103,12 @@ export const extraSmallState = css.partial`:is([state--extra-small], :state(extr
 export const smallState = css.partial`:is([state--small], :state(small))`;
 
 /**
+ * Selector for the `medium` state.
+ * @public
+ */
+export const mediumState = css.partial`:is([state--medium], :state(medium))`;
+
+/**
  * Selector for the `large` state.
  * @public
  */

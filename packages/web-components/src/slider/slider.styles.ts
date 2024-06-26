@@ -1,10 +1,10 @@
 import { css } from '@microsoft/fast-element';
+import { smallState, verticalState } from '../styles/states/index.js';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
   borderRadiusSmall,
-  colorBrandBackground,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
@@ -13,7 +13,6 @@ import {
   colorNeutralForegroundDisabled,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
-  colorNeutralStrokeDisabled,
   colorStrokeFocus1,
   colorStrokeFocus2,
 } from '../theme/design-tokens.js';
@@ -42,7 +41,14 @@ export const styles = css`
     grid-template-columns: 1fr calc(100% - var(--thumb-size)) 1fr;
   }
 
-  :host([orientation='vertical']) {
+  :host(${smallState}) {
+    /* TODO: match comp */
+    --thumb-size: 16px;
+    --track-overhang: -1px;
+    --track-size: 2px;
+  }
+
+  :host(${verticalState}) {
     --slider-direction: 0deg;
     min-height: 120px;
     grid-template-rows: 1fr calc(100% - var(--thumb-size)) 1fr;
@@ -69,7 +75,7 @@ export const styles = css`
     forced-color-adjust: none;
   }
 
-  :host([orientation='vertical']) .track {
+  :host(${verticalState}) .track {
     top: var(--track-overhang);
     bottom: var(--track-overhang);
     width: var(--track-size);
@@ -85,7 +91,7 @@ export const styles = css`
     width: var(--slider-progress);
   }
 
-  :host([orientation='vertical']) .track::before {
+  :host(${verticalState}) .track::before {
     width: 100%;
     bottom: 0;
     height: var(--slider-progress);
@@ -114,7 +120,7 @@ export const styles = css`
     left: var(--slider-thumb);
   }
 
-  :host([orientation='vertical']) .thumb-container {
+  :host(${verticalState}) .thumb-container {
     transform: translateY(50%);
     left: unset;
     bottom: var(--slider-thumb);

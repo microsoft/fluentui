@@ -12,6 +12,7 @@ import {
   Orientation,
 } from '@microsoft/fast-web-utilities';
 import { getDirection } from '../utils/index.js';
+import { toggleState } from '../utils/element-internals.js';
 import { SliderConfiguration, SliderMode, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
@@ -52,6 +53,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public size?: SliderSize;
+  protected sizeChanged(prev: string, next: string): void {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   public handleChange(source: any, propertyName: string): void {
     switch (propertyName) {
@@ -363,6 +372,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public orientation?: Orientation;
   protected orientationChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
+
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+
     if (this.$fastController.isConnected) {
       this.setSliderPosition(this.direction);
     }
