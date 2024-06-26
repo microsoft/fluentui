@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add 'allowParentArrowNavigation' to ComboBox.",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
