@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { useId } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { addMonths, compareDatePart, getMonthEnd, getMonthStart } from '../../utils';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
@@ -40,7 +39,6 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
     dateRangeType,
     animationDirection,
   } = props;
-  const monthAndYearId = useId();
 
   const classNames = useCalendarDayStyles_unstable({
     className,
@@ -68,7 +66,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
-          <span id={monthAndYearId} aria-live="polite" aria-atomic="true">
+          <span aria-live="polite" aria-atomic="true">
             {monthAndYear}
           </span>
         </HeaderButtonComponentType>
