@@ -29,6 +29,7 @@ export interface CalendarGridRowProps extends CalendarDayGridProps {
  */
 export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = props => {
   const {
+    ariaHidden,
     classNames,
     week,
     weeks,
@@ -50,7 +51,7 @@ export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = pr
     : '';
 
   return (
-    <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
+    <tr role={ariaRole} aria-hidden={ariaHidden} className={rowClassName} key={weekIndex + '_' + week[0].key}>
       {showWeekNumbers && weekNumbers && (
         <th
           className={classNames.weekNumberCell}
