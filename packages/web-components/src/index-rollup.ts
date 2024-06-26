@@ -10,6 +10,7 @@ import './counter-badge/define.js';
 import './dialog/define.js';
 import './dialog-body/define.js';
 import './divider/define.js';
+import './drawer/define.js';
 import './field/define.js';
 import './image/define.js';
 import './label/define.js';
