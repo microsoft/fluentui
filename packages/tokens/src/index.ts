@@ -21,7 +21,6 @@ export type {
   ShadowTokens,
   ShadowBrandTokens,
   FontFamilyTokens,
-  ZIndexTokens,
   ColorPaletteTokens,
   ColorPaletteDarkRed,
   ColorPaletteCranberry,
