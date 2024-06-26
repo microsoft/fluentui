@@ -77,8 +77,6 @@ export const usePromptInput_unstable = (props: PromptInputProps, ref: React.Ref<
     }),
   );
 
-  // root.editor.input.ref = useMergedRefs(root.editor.input.ref, activeParentRef);
-
   const state: PromptInputState = {
     components: {
       root: PromptInput,
