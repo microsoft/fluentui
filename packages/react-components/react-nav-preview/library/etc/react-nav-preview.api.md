@@ -33,6 +33,23 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export const AppNode: ForwardRefComponent<AppNodeProps>;
+
+// @public (undocumented)
+export const appNodeClassNames: SlotClassNames<AppNodeSlots>;
+
+// @public
+export type AppNodeProps = ComponentProps<AppNodeSlots> & {};
+
+// @public (undocumented)
+export type AppNodeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type AppNodeState = ComponentState<AppNodeSlots>;
+
+// @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
 
 // @public (undocumented)
@@ -104,6 +121,23 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
 export type NavContextValues = {
     nav: NavContextValue;
 };
+
+// @public
+export const NavDivider: ForwardRefComponent<NavDividerProps>;
+
+// @public (undocumented)
+export const navDividerClassNames: SlotClassNames<NavDividerSlots>;
+
+// @public
+export type NavDividerProps = ComponentProps<NavDividerSlots> & {};
+
+// @public (undocumented)
+export type NavDividerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavDividerState = ComponentState<NavDividerSlots>;
 
 // @public
 export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
@@ -287,6 +321,9 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
+// @public
+export const renderAppNode_unstable: (state: AppNodeState) => JSX.Element;
+
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
@@ -295,6 +332,9 @@ export const renderNavCategory_unstable: (state: NavCategoryState, contextValues
 
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
+
+// @public
+export const renderNavDivider_unstable: (state: NavDividerState) => JSX.Element;
 
 // @public (undocumented)
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
@@ -310,6 +350,12 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
+
+// @public
+export const useAppNode_unstable: (props: AppNodeProps, ref: React_2.Ref<HTMLDivElement>) => AppNodeState;
+
+// @public
+export const useAppNodeStyles_unstable: (state: AppNodeState) => AppNodeState;
 
 // @public
 export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;
@@ -331,6 +377,12 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
+
+// @public
+export const useNavDivider_unstable: (props: NavDividerProps, ref: React_2.Ref<HTMLDivElement>) => NavDividerState;
+
+// @public
+export const useNavDividerStyles_unstable: (state: NavDividerState) => NavDividerState;
 
 // @public
 export const useNavDrawer_unstable: (props: NavDrawerProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerState;
