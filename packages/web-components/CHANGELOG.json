@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 26 Jun 2024 04:07:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.36",
+      "version": "3.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/web-components",
+            "commit": "660d5fe984012d28d5063ee0a51aa104fc9ae0e2",
+            "comment": "feat(drawer): add drawer web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jun 2024 04:06:35 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.35",
       "version": "3.0.0-beta.35",
