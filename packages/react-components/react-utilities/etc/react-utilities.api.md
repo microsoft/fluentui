@@ -341,6 +341,9 @@ export type UseControllableStateOptions<State> = {
 };
 
 // @internal
+export function useDebounce<T = unknown>(value: T, delay: number): T;
+
+// @internal
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
 // @internal
