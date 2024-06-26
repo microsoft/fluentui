@@ -11,7 +11,8 @@
 
 import { withFluentProvider } from '../decorators/withFluentProvider';
 import { withReactStrictMode } from '../decorators/withReactStrictMode';
+import { withAriaLive } from '../decorators/withAriaLive';
 import { THEME_ID } from '../constants';
 
-export const decorators = [withFluentProvider, withReactStrictMode];
+export const decorators = [withFluentProvider, withAriaLive, withReactStrictMode];
 export const globals = { [THEME_ID]: undefined }; // allow theme to be set by URL query param

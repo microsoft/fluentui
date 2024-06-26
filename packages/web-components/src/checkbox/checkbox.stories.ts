@@ -5,10 +5,6 @@ import { Meta, renderComponent, Story, StoryArgs } from '../helpers.stories.js';
 import { Checkbox as FluentCheckbox } from './checkbox.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
-import './define.js';
-import '../button/define.js';
-import '../field/define.js';
-
 const storyTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-checkbox
     ?checked="${x => x.checked}"

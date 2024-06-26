@@ -2,6 +2,36 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Tue, 25 Jun 2024 07:32:52 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.12",
+      "version": "8.6.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "1c0ba2f94aadd485d7977fb1d5209a0dff8d50c8",
+            "comment": "fix: Correctly processing selectors when value is a class name and they are not wrapped in 'selectors' wrapper."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jun 2024 07:33:22 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.11",
+      "version": "8.6.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.23",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jun 2024 15:25:27 GMT",
       "tag": "@fluentui/merge-styles_v8.6.10",
       "version": "8.6.10",

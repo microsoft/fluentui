@@ -4,6 +4,7 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { STORY_CHANGED, STORY_ERRORED, STORY_MISSING } from '@storybook/core-events';
 
 addons.setConfig({
+  enableShortcuts: false,
   theme: fluentStorybookTheme,
   showPanel: false,
 });

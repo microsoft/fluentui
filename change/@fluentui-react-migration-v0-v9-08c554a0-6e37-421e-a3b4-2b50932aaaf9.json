@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(v0-migration): Attachment compat component",
+  "packageName": "@fluentui/react-migration-v0-v9",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}

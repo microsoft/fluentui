@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 26 Jun 2024 04:07:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.36",
+      "version": "3.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/web-components",
+            "commit": "660d5fe984012d28d5063ee0a51aa104fc9ae0e2",
+            "comment": "feat(drawer): add drawer web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jun 2024 04:06:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.35",
+      "version": "3.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a651436efd861f6d50ac6af3c7ed9ba7bc6271f6",
+            "comment": "updates the Text component to use Element Internals custom states for presentational attributes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jun 2024 04:06:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.34",
+      "version": "3.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8cfadd0245da036b77c921a7e6a128969cb72462",
+            "comment": "Refactor Menu, MenuList, and MenuItem components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Jun 2024 04:06:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.33",
       "version": "3.0.0-beta.33",
