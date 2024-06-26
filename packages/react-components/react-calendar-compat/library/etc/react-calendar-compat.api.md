@@ -60,6 +60,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
     firstDayOfWeek: DayOfWeek;
     firstWeekOfYear: FirstWeekOfYear;
     getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
+    gridLabel?: string;
     labelledBy?: string;
     lightenDaysOutsideNavigatedMonth?: boolean;
     maxDate?: Date;
