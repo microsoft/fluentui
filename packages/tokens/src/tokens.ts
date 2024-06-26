@@ -488,16 +488,6 @@ export const tokens: Record<keyof Theme, string> = {
   shadow28Brand: 'var(--shadow28Brand)',
   shadow64Brand: 'var(--shadow64Brand)',
 
-  // z-index tokens
-  zIndexBackground: 'var(--zIndexBackground)',
-  zIndexContent: 'var(--zIndexContent)',
-  zIndexOverlay: 'var(--zIndexOverlay)',
-  zIndexPopup: 'var(--zIndexPopup)',
-  zIndexMessages: 'var(--zIndexMessages)',
-  zIndexFloating: 'var(--zIndexFloating)',
-  zIndexPriority: 'var(--zIndexPriority)',
-  zIndexDebug: 'var(--zIndexDebug)',
-
   // Stroke width tokens
   strokeWidthThin: 'var(--strokeWidthThin)',
   strokeWidthThick: 'var(--strokeWidthThick)',
