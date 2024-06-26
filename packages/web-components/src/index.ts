@@ -90,6 +90,15 @@ export {
   DividerTemplate,
 } from './divider/index.js';
 export {
+  Drawer,
+  DrawerDefinition,
+  DrawerPosition,
+  DrawerSize,
+  DrawerType,
+  DrawerTemplate,
+  DrawerStyles,
+} from './drawer/index.js';
+export {
   Field,
   FieldLabelPosition,
   ValidationFlags,
