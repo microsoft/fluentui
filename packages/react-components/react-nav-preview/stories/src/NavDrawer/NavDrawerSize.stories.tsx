@@ -13,7 +13,7 @@ import {
   NavSubItemGroup,
   NavSize,
 } from '@fluentui/react-nav-preview';
-import { Divider, Label, Radio, RadioGroup, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
