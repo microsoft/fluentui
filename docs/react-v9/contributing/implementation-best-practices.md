@@ -1,3 +1,5 @@
+# Implementation best practices
+
 ### Prefer property names consistent with other components
 
 Consistent property names across the component library help developers understand how to use your component more quickly because the names are familiar. When there aren't good examples, check out [open-ui.org](https://open-ui.org/) to see what names are commonly used across UI component libraries and frameworks.
@@ -30,7 +32,7 @@ Part of the design specification process for a component is to identify and name
 
 ### Prefer types over interfaces
 
-v9+ components are built using React Hooks and Typescript. Hooks is a functional programming approach that replaces the the object-oriented approach of React component classes. While Typescript supports object-oriented programming through interfaces and classes, it also fully supports functional programming through type declarations, type intersections, and discriminated unions. Because Typescript transpiles to JavaScript, a prototype-based language, it provide type inference and [duck typing](https://en.wikipedia.org/wiki/Duck_typing).
+v9+ components are built using React Hooks and Typescript. Hooks is a functional programming approach that replaces the the object-oriented approach of React component classes. While Typescript supports object-oriented programming through interfaces and classes, it also fully supports functional programming through type declarations, type intersections, and discriminated unions. Because Typescript transpiles to JavaScript, a prototype-based language, it provides type inference and [duck typing](https://en.wikipedia.org/wiki/Duck_typing).
 
 Types and interfaces can often be used [interchangeably](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces) in Typescript. There are a few differences that make types the preferred choice:
 
@@ -56,7 +58,7 @@ If there are properties that are mutually exclusive, then a discriminated union 
 
 Going back to the Tooltip component, it might have different options for position relative to the target. If these were boolean values like `before?: boolean`, `after?: boolean`, or `cover?: boolean`, the caller could write `<Tooltip before after cover />`. It is much clearer to specify `<Tooltip position="before" />`.
 
-### Consider a discriminated union for future additional
+### Consider a discriminated union for future additional values
 
 If you have only a single optional value today and think there could be multiple values in the future, prefer a discriminated union with one value. For example: `border: boolean` would have to be changed to a discriminated union later to support both square, rounded, and circular borders.
 
