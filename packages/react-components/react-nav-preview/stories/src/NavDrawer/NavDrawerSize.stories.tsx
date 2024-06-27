@@ -12,6 +12,7 @@ import {
   NavSubItem,
   NavSubItemGroup,
   NavSize,
+  NavDivider,
 } from '@fluentui/react-nav-preview';
 import { Label, Radio, RadioGroup, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
@@ -147,7 +148,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavSectionHeader>Learning</NavSectionHeader>
+          <NavDivider />
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs
           </NavItem>

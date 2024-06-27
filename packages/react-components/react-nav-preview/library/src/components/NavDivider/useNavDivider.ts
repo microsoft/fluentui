@@ -11,6 +11,6 @@ import { useDivider_unstable } from '@fluentui/react-divider';
  * @param props - props from this instance of NavDivider
  * @param ref - reference to root HTMLDivElement of NavDivider
  */
-export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HTMLDivElement>): NavDividerState => {
+export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HTMLElement>): NavDividerState => {
   return useDivider_unstable({ appearance: 'strong', ...props }, ref);
 };
