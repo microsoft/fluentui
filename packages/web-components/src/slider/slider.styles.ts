@@ -23,9 +23,11 @@ import {
 export const styles = css`
   ${display('inline-grid')} :host {
     --thumb-size: 20px;
-    --track-overhang: -2px;
     --track-size: 4px;
+    --track-overhang: calc(var(--track-size) / -2);
     --slider-direction: 90deg;
+    --border-radius: ${borderRadiusMedium};
+    --step-marker-inset: var(--track-overhang) -1px;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -34,22 +36,26 @@ export const styles = css`
     cursor: pointer;
     user-select: none;
     touch-action: pan-y;
-    border-radius: ${borderRadiusSmall};
     min-width: 120px;
     min-height: 32px;
     grid-template-rows: 1fr var(--thumb-size) 1fr;
     grid-template-columns: 1fr calc(100% - var(--thumb-size)) 1fr;
   }
 
+  :host(:dir(rtl)) {
+    --slider-direction: -90deg;
+  }
+
   :host(${smallState}) {
-    /* TODO: match comp */
     --thumb-size: 16px;
     --track-overhang: -1px;
     --track-size: 2px;
+    --border-radius: ${borderRadiusSmall};
   }
 
   :host(${verticalState}) {
     --slider-direction: 0deg;
+    --step-marker-inset: -1px var(--track-overhang);
     min-height: 120px;
     grid-template-rows: 1fr calc(100% - var(--thumb-size)) 1fr;
     grid-template-columns: 1fr var(--thumb-size) 1fr;
@@ -67,7 +73,7 @@ export const styles = css`
   .track {
     position: relative;
     background-color: ${colorNeutralStrokeAccessible};
-    border-radius: ${borderRadiusSmall};
+    border-radius: var(--border-radius);
     grid-row: 2 / 2;
     grid-column: 2 / 2;
     width: 100%;
@@ -100,9 +106,8 @@ export const styles = css`
   :host([step]) .track::after {
     content: '';
     position: absolute;
-    border-radius: ${borderRadiusMedium};
-    width: 100%;
-    inset: -2px 0;
+    border-radius: inherit;
+    inset: var(--step-marker-inset);
     background-image: repeating-linear-gradient(
       var(--slider-direction),
       #0000 0%,
