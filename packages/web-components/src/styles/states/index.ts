@@ -1,6 +1,18 @@
 import { css } from '@microsoft/fast-element';
 
 /**
+ * Selector for the `checked` state.
+ * @public
+ */
+export const checkedState = css.partial`:is([state--checked], :state(checked))`;
+
+/**
+ * Selector for the `disabled` state.
+ * @public
+ */
+export const disabledState = css.partial`:is([state--disabled], :state(disabled))`;
+
+/**
  * Selector for the `filled-lighter` state.
  * @public
  */
