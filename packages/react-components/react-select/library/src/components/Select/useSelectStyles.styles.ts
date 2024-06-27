@@ -62,7 +62,6 @@ const useRootStyles = makeStyles({
     flexWrap: 'nowrap',
     fontFamily: tokens.fontFamilyBase,
     position: 'relative',
-    verticalAlign: 'middle',
 
     '&::after': {
       backgroundImage: `linear-gradient(
