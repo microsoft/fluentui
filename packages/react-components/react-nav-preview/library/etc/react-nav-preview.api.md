@@ -12,6 +12,9 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DividerProps } from '@fluentui/react-divider';
+import { DividerSlots } from '@fluentui/react-divider';
+import type { DividerState } from '@fluentui/react-divider';
 import type { DrawerBodyProps } from '@fluentui/react-drawer';
 import type { DrawerBodySlots } from '@fluentui/react-drawer';
 import type { DrawerBodyState } from '@fluentui/react-drawer';
@@ -126,18 +129,13 @@ export type NavContextValues = {
 export const NavDivider: ForwardRefComponent<NavDividerProps>;
 
 // @public (undocumented)
-export const navDividerClassNames: SlotClassNames<NavDividerSlots>;
+export const navDividerClassNames: SlotClassNames<DividerSlots>;
 
 // @public
-export type NavDividerProps = ComponentProps<NavDividerSlots> & {};
-
-// @public (undocumented)
-export type NavDividerSlots = {
-    root: Slot<'div'>;
-};
+export type NavDividerProps = DividerProps;
 
 // @public
-export type NavDividerState = ComponentState<NavDividerSlots>;
+export type NavDividerState = DividerState;
 
 // @public
 export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
@@ -333,9 +331,6 @@ export const renderNavCategory_unstable: (state: NavCategoryState, contextValues
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
 
-// @public
-export const renderNavDivider_unstable: (state: NavDividerState) => JSX.Element;
-
 // @public (undocumented)
 export const renderNavDrawer_unstable: (state: NavDrawerState, contextValues: NavContextValues) => JSX.Element;
 
@@ -379,7 +374,7 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 export const useNavContext_unstable: () => NavContextValue;
 
 // @public
-export const useNavDivider_unstable: (props: NavDividerProps, ref: React_2.Ref<HTMLDivElement>) => NavDividerState;
+export const useNavDivider_unstable: (props: NavDividerProps, ref: React_2.Ref<HTMLElement>) => NavDividerState;
 
 // @public
 export const useNavDividerStyles_unstable: (state: NavDividerState) => NavDividerState;
