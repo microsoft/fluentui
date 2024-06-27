@@ -39,6 +39,7 @@
     "@fluentui/react-drawer": "^9.5.2",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-divider": "^9.2.70",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

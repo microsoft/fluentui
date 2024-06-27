@@ -3,6 +3,7 @@ import {
   Hamburger,
   NavCategory,
   NavCategoryItem,
+  NavDivider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
@@ -174,7 +175,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavSectionHeader>Analytics</NavSectionHeader>
+          <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
