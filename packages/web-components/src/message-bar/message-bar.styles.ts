@@ -116,7 +116,7 @@ export const styles: ElementStyles = css`
     margin-inline-end: 0;
   }
 
-  ::slotted([slot='dismiss']) {
+  :host(${multiLineState}) ::slotted([slot='dismiss']) {
     align-items: start;
     height: 100%;
     padding-block-start: ${spacingVerticalS};
