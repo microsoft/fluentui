@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add rating-display component",
+  "packageName": "@fluentui/web-components",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}

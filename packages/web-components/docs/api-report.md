@@ -2627,6 +2627,52 @@ export const RadioStyles: ElementStyles;
 // @public (undocumented)
 export const RadioTemplate: ElementViewTemplate<Radio>;
 
+// @public
+export class RatingDisplay extends FASTElement {
+    constructor();
+    color?: RatingDisplayColor;
+    compact: boolean;
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    value?: number;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
+
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)

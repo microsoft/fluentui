@@ -181,6 +181,18 @@ export const importantState = css.partial`:is([state--important], :state(importa
 export const informativeState = css.partial`:is([state--informative], :state(informative))`;
 
 /**
+ * Selector for the `marigold` state.
+ * @public
+ */
+export const marigoldState = css.partial`:is([state--marigold], :state(marigold))`;
+
+/**
+ * Selector for the `neutral` state.
+ * @public
+ */
+export const neutralState = css.partial`:is([state--neutral], :state(neutral))`;
+
+/**
  * Selector for the `severe` state.
  * @public
  */
