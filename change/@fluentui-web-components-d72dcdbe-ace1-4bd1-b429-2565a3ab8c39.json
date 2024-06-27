@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: use tokens directly in css for badge partial",
+  "packageName": "@fluentui/web-components",
+  "email": "mmansour@microsoft.com",
+  "dependentChangeType": "patch"
+}
