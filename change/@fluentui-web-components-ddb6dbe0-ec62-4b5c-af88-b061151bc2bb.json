@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update web types and add es2023-shim",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
