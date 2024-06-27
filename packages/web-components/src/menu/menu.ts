@@ -349,7 +349,11 @@ export class Menu extends FASTElement {
         break;
       case keyTab:
         if (this._open) this.closeMenu();
-        if (e.shiftKey) this.focusTrigger();
+        if (e.shiftKey && e.composedPath()[0] !== this._trigger) {
+          this.focusTrigger();
+        } else if (e.shiftKey) {
+          return true;
+        }
       default:
         return true;
     }
