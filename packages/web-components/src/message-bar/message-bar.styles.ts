@@ -17,6 +17,7 @@ import {
   spacingHorizontalM,
   spacingHorizontalS,
   spacingVerticalMNudge,
+  spacingVerticalS,
 } from '../theme/design-tokens.js';
 
 import { errorState, multiLineState, squareState, successState, warningState } from '../styles/states/index.js';
@@ -113,6 +114,12 @@ export const styles: ElementStyles = css`
   :host(${multiLineState}) .actions {
     margin-block-start: ${spacingVerticalMNudge};
     margin-inline-end: 0;
+  }
+
+  ::slotted([slot='dismiss']) {
+    align-items: start;
+    height: 100%;
+    padding-block-start: ${spacingVerticalS};
   }
 
   ::slotted(*) {
