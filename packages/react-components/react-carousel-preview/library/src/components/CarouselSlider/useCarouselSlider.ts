@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselSliderProps, CarouselSliderState } from './CarouselSlider.types';
 import { useCarouselStore_unstable } from '../useCarouselStore';
+import { useResizeObserverRef } from '../../utils/useResizeObserver';
 
 /**
  * Create the state required to render CarouselSlider.
@@ -20,6 +21,11 @@ export const useCarouselSlider_unstable = (
   const animating = React.useRef<boolean>(false);
   const interruptedAnimation = React.useRef<boolean>(false);
   const cleanupRef = React.useRef<() => void>(() => undefined);
+  const containerWidthRef = React.useRef<number>(0);
+
+  const containerRef = useResizeObserverRef<HTMLDivElement>(([container]) => {
+    containerWidthRef.current = container.contentRect.width;
+  });
 
   const numCards: number = useCarouselStore_unstable(snapshot => {
     return snapshot.values.length;
@@ -66,13 +72,22 @@ export const useCarouselSlider_unstable = (
   }, []);
 
   const mergedRef = useMergedRefs(ref, animationRef);
+  const container = slot.always(props.container, {
+    defaultProps: {
+      role: 'presentation',
+    },
+    elementType: 'div',
+  });
+  const containerMergedRefs = useMergedRefs<HTMLDivElement>(containerRef, container.ref);
+  container.ref = containerMergedRefs;
 
   return {
     cardWidth,
     currentIndex,
     loopCount,
     numCards,
-    interruptedAnimation,
+    interruptedAnimation: interruptedAnimation.current,
+    containerWidth: containerWidthRef.current,
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
@@ -88,11 +103,6 @@ export const useCarouselSlider_unstable = (
       }),
       { elementType: 'div' },
     ),
-    container: slot.always(props.container, {
-      defaultProps: {
-        role: 'presentation',
-      },
-      elementType: 'div',
-    }),
+    container,
   };
 };
