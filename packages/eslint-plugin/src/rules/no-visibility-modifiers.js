@@ -1,17 +1,23 @@
 // @ts-check
-// @ts-ignore
-const util = require('@typescript-eslint/eslint-plugin/dist/util');
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const _internalApiMisc =
+  /** @type {{getNameFromMember(member: import('@typescript-eslint/utils').TSESTree.BaseNode, sourceCode:string | import('@typescript-eslint/utils').TSESLint.SourceCode): string}} */ (
+    // @ts-expect-error - accessing private APIs 🚨 ( no types provided )
+    require('@typescript-eslint/eslint-plugin/dist/util/misc')
+  );
+
+const { getNameFromMember } = _internalApiMisc;
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
+
 const createRule = require('../utils/createRule');
 
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ClassProperty} ClassProperty
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} Identifier
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.MethodDefinition} MethodDefinition
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Node} Node
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.TSParameterProperty} ParameterProperty
+ * @typedef {import("@typescript-eslint/utils").TSESTree.PropertyDefinition} ClassProperty
+ * @typedef {import("@typescript-eslint/utils").TSESTree.Identifier} Identifier
+ * @typedef {import("@typescript-eslint/utils").TSESTree.MethodDefinition} MethodDefinition
+ * @typedef {import("@typescript-eslint/utils").TSESTree.Node} Node
+ * @typedef {import("@typescript-eslint/utils").TSESTree.TSParameterProperty} ParameterProperty
  */
 
 /** */
@@ -21,7 +27,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid visibility modifiers on class properties and methods.',
-      category: 'Best Practices',
       // Only used by v0. Omitting visibility modifiers is generally not recommended.
       recommended: false,
     },
@@ -68,7 +73,7 @@ module.exports = createRule({
       }
 
       if (isTypeScriptFile(context.getFilename())) {
-        const methodName = util.getNameFromMember(methodDefinition, sourceCode);
+        const methodName = getNameFromMember(methodDefinition, sourceCode);
 
         if (methodDefinition.accessibility) {
           reportIssue(nodeType, methodDefinition, methodName);
@@ -84,7 +89,7 @@ module.exports = createRule({
       const nodeType = 'class property';
 
       if (isTypeScriptFile(context.getFilename())) {
-        const propertyName = util.getNameFromMember(classProperty, sourceCode);
+        const propertyName = getNameFromMember(classProperty, sourceCode);
 
         if (classProperty.accessibility) {
           reportIssue(nodeType, classProperty, propertyName);

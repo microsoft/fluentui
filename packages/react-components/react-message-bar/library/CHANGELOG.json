@@ -1,0 +1,1198 @@
+{
+  "name": "@fluentui/react-message-bar",
+  "entries": [
+    {
+      "date": "Mon, 17 Jun 2024 07:34:17 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.3",
+      "version": "9.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.84",
+            "commit": "9ae683c22f2e65d94422a571ad5d3f97d0a77234"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 15:26:34 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.2",
+      "version": "9.2.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "chore: disable eslint rule"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.83",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 May 2024 08:02:45 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "4833b3e243cbe0160935af0afb610976d2a64cdd",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.82",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:44:58 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "39f686eb5a885a19ef902058d9cf396697f50856",
+            "comment": "fix: MessageBar without actions should not take up space"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          }
+        ],
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "a19a317ee41707a23cad349c136043e57afe2c3c",
+            "comment": "feat: Export missing contextValues."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.81",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 May 2024 09:25:15 GMT",
+      "tag": "@fluentui/react-message-bar_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "c35e78e5853894033a69f6135ad003894a8b6a95",
+            "comment": " chore: Upgrade react-icons version to 2.0.239 to pick up provider export map fix."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.80",
+            "commit": "62553563ad80b95e37a9e628d6a860c829b58dbf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 May 2024 12:34:19 GMT",
+      "tag": "@fluentui/react-message-bar_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing context exports."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.30",
+      "version": "9.0.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.79",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.29",
+      "version": "9.0.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.78",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:35 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.28",
+      "version": "9.0.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "05aa0d7e44ec602ca2a6a3a5303603d39d6844bb",
+            "comment": " chore: upgrade @fluentui/react-icons to 2.0.237."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.77",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 08:17:49 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.27",
+      "version": "9.0.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.76",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.36",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.17.0",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 21:53:54 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.26",
+      "version": "9.0.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "b1cc57610b6e27afbeaa2382e40f6908c1f34f85",
+            "comment": "chore: refactor styles defined in makeResetStyles() to avoid shorthands.*()"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "45fb4d4982c8183d7aad2271a1e960a2ca883f2b",
+            "comment": "chore: Update react-icons to 2.0.235"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.75",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Apr 2024 09:48:01 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.25",
+      "version": "9.0.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.74",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.35",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.16.0",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.24",
+      "version": "9.0.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.73",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.34",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.2",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-theme to v9.1.19",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.5",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.23",
+      "version": "9.0.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.72",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.33",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-theme to v9.1.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.22",
+      "version": "9.0.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.71",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.32",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-theme to v9.1.17",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Feb 2024 02:34:19 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.21",
+      "version": "9.0.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.70",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.31",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.14.1",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:30 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.20",
+      "version": "9.0.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.69",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.30",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Feb 2024 17:55:18 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.19",
+      "version": "9.0.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "1b8ade8a67f75ec4007f54a52a94f61879f6b215",
+            "comment": "fix: MessageBar with no actions should have correct spacing"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.68",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.18",
+      "version": "9.0.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.67",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.29",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 15:11:00 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.17",
+      "version": "9.0.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.66",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.28",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.17.0",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jan 2024 14:25:03 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.16",
+      "version": "9.0.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.65",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.27",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.14.0",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.16.1",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jan 2024 16:18:50 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.15",
+      "version": "9.0.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.64",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.26",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.16.0",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jan 2024 13:14:24 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.14",
+      "version": "9.0.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.63",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.13",
+      "version": "9.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.62",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:23 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.12",
+      "version": "9.0.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.61",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.24",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jan 2024 09:26:44 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.11",
+      "version": "9.0.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.60",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.23",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.15.5",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:46 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.59",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.22",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.2",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.15.4",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 09:58:46 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.58",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.21",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.1",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.15.3",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 13:42:08 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.57",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.20",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.56",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.6",
+      "version": "9.0.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.55",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 17:29:37 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.54",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.19",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.12.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.53",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.1",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 23:35:59 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.52",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.0",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 09:51:57 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.51",
+            "commit": "e4ef1febe8a185dddc10f8936944d177d50bc396"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:04 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30",
+            "comment": "chore Add bundle size fixture for MessageBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.50",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.18",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Oct 2023 14:55:44 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "40e6a376db3c2f11ba131c046c4241bf52e6d3a3",
+            "comment": "feat: Release MessageBar as stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.49",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.17",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:24 GMT",
+      "tag": "@fluentui/react-message-bar-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "5a1cee209858ce4e5c1c304755ff74bba0148193",
+            "comment": "fix: Align icons with text content"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "aed130bfbf4ac88947a697b723387fd8d8382686",
+            "comment": "fix: MessageBarActions should not overflow into grid padding"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.48",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.16",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:42 GMT",
+      "tag": "@fluentui/react-message-bar-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "60a911e66db784521a35c1e1ac0362a3f2d8169f",
+            "comment": "feat: Add shape prop to MessageBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.47",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.15",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add custom style hook to MessageBar."
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "93d4ee6dd801b672ade6ce41345cfbd9010af01a",
+            "comment": "chore: fix typos"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 15:25:31 GMT",
+      "tag": "@fluentui/react-message-bar-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "f61b2b14b6daf39bb3c2da1909a4cfce94c73845",
+            "comment": "fix: screenreader narration improvements"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.46",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.14",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.14.1",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 08:45:46 GMT",
+      "tag": "@fluentui/react-message-bar-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "b93332889af6fc14d25bcfe50ed0c56d988c10f8",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.45",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.13",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.14.0",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          }
+        ]
+      }
+    }
+  ]
+}

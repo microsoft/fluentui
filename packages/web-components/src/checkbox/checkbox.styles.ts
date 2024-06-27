@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -7,32 +6,36 @@ import {
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
-  colorCompoundBrandForeground1,
-  colorCompoundBrandForeground1Hover,
-  colorCompoundBrandForeground1Pressed,
   colorCompoundBrandStroke,
   colorCompoundBrandStrokeHover,
   colorCompoundBrandStrokePressed,
-  colorNeutralForeground1,
-  colorNeutralForeground2,
-  colorNeutralForeground3,
-  colorNeutralForegroundDisabled,
+  colorNeutralBackground1,
+  colorNeutralBackgroundDisabled,
   colorNeutralForegroundInverted,
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
-  colorStrokeFocus1,
   colorStrokeFocus2,
-  colorTransparentBackgroundHover,
-  fontFamilyBase,
-  fontSizeBase300,
-  lineHeightBase300,
-  spacingHorizontalS,
-  spacingHorizontalXS,
-  spacingVerticalS,
+  colorTransparentStroke,
+  strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
+import { circularState, largeState } from '../styles/states/index.js';
+
+/**
+ * Selector for the `checked` state.
+ * @public
+ */
+const checkedState = css.partial`:is([state--checked], :state(checked))`;
+
+/**
+ * Selector for the `indeterminate` state.
+ * @public
+ */
+const indeterminateState = css.partial`:is([state--indeterminate], :state(indeterminate))`;
 
 /** Checkbox styles
  *
@@ -40,157 +43,170 @@ import {
  */
 export const styles = css`
   ${display('inline-flex')}
+
   :host {
-    align-items: center;
-    outline: none;
-    user-select: none;
-    vertical-align: middle;
-    cursor: pointer;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    color: ${colorNeutralForeground3};
-    position: relative;
-  }
-
-  :host(:focus-visible)::after {
-    content: '';
-    position: absolute;
-    inset: 0px;
-    cursor: pointer;
-    border-radius: ${borderRadiusMedium};
-    outline: none;
-    border: 2px solid ${colorStrokeFocus1};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
-  }
-
-  .control {
-    position: relative;
-    box-sizing: border-box;
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin: ${spacingVerticalS} ${spacingHorizontalS};
-    fill: currentcolor;
-    height: 16px;
-    width: 16px;
+    --size: 16px;
+    background-color: ${colorNeutralBackground1};
+    border-radius: ${borderRadiusSmall};
     border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
-    border-radius: ${borderRadiusSmall};
-    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    width: var(--size);
   }
-  .label {
-    align-self: center;
-    cursor: inherit;
-    padding-inline: ${spacingHorizontalS};
-    padding-bottom: ${spacingVerticalS};
-    padding-top: ${spacingVerticalS};
-  }
-  .label__hidden {
-    display: none;
-    visibility: hidden;
-  }
+
+  :host,
+  .indeterminate-indicator,
   .checked-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${colorNeutralForegroundInverted};
-    font-size: 12px;
-    margin: auto;
-    opacity: 0;
+    aspect-ratio: 1;
   }
-  .indeterminate-indicator {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: ${borderRadiusSmall};
-    background-color: ${colorCompoundBrandForeground1};
-    opacity: 0;
-  }
+
   :host(:hover) {
-    color: ${colorNeutralForeground2};
-  }
-  :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host(:hover) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Hover};
-  }
-  :host(:active) .control {
+
+  :host(:active) {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host(:active) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Pressed};
-  }
-  :host([aria-checked='true']),
-  :host([aria-checked='mixed']),
-  :host(:active) {
-    color: ${colorNeutralForeground1};
-  }
-  :host([aria-checked='true']) .control {
-    background-color: ${colorCompoundBrandBackground};
-  }
-  :host([aria-checked='true']:hover) .control {
-    border-color: ${colorCompoundBrandStrokeHover};
+
+  :host(${checkedState}:hover) {
     background-color: ${colorCompoundBrandBackgroundHover};
-  }
-  :host([aria-checked='true']:active) .control {
-    background-color: ${colorCompoundBrandBackgroundPressed};
-  }
-  :host([aria-checked='mixed']:hover) .control {
     border-color: ${colorCompoundBrandStrokeHover};
   }
-  :host([aria-checked='true']) .checked-indicator,
-  :host([aria-checked='mixed']) .indeterminate-indicator {
-    opacity: 1;
-  }
-  :host([aria-checked='true']) .control,
-  :host([aria-checked='mixed']) .control {
-    border-color: ${colorCompoundBrandStroke};
-  }
-  :host([aria-checked='mixed']:active) .control,
-  :host([aria-checked='true']:active) .control {
+
+  :host(${checkedState}:active) {
+    background-color: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandStrokePressed};
   }
-  :host([label-position='before']) {
-    flex-direction: row-reverse;
+
+  :host(:focus-visible) {
+    outline: none;
   }
-  :host([label-position='before']) .label {
-    padding-inline: ${spacingHorizontalS} ${spacingHorizontalXS};
-    padding-top: ${spacingVerticalS};
-    padding-bottom: ${spacingVerticalS};
+
+  :host(:not([slot='input']))::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    box-sizing: border-box;
+    outline: none;
+    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    border-radius: ${borderRadiusMedium};
   }
-  :host([size='large']) .control {
-    width: 20px;
-    height: 20px;
+
+  :host(:not([slot='input']):focus-visible)::after {
+    border-color: ${colorStrokeFocus2};
   }
-  :host([size='large']) .checked-indicator {
-    font-size: 16px;
-    height: 20px;
+
+  .indeterminate-indicator,
+  .checked-indicator {
+    color: ${colorNeutralForegroundInverted};
+    inset: 0;
+    margin: auto;
+    position: absolute;
   }
-  :host([aria-checked='mixed'][size='large']) .indeterminate-indicator {
-    height: 10px;
-    width: 10px;
+
+  ::slotted([slot='checked-indicator']),
+  .checked-indicator {
+    fill: currentColor;
+    display: inline-flex;
+    flex: 1 0 auto;
+    width: 12px;
   }
-  :host([shape='circular']) .control,
-  :host([shape='circular']) .indeterminate-indicator {
+
+  :host(:not(${checkedState})) *:is(::slotted([slot='checked-indicator']), .checked-indicator) {
+    display: none;
+  }
+
+  :host(${checkedState}),
+  :host(${indeterminateState}) {
+    border-color: ${colorCompoundBrandStroke};
+  }
+
+  :host(${checkedState}),
+  :host(${indeterminateState}) .indeterminate-indicator {
+    background-color: ${colorCompoundBrandBackground};
+  }
+
+  :host(${indeterminateState}) .indeterminate-indicator {
+    border-radius: ${borderRadiusSmall};
+    position: absolute;
+    width: calc(var(--size) / 2);
+    inset: 0;
+  }
+
+  :host(${largeState}) {
+    --size: 20px;
+  }
+
+  :host(${largeState}) ::slotted([slot='checked-indicator']),
+  :host(${largeState}) .checked-indicator {
+    width: 16px;
+  }
+
+  :host(${circularState}),
+  :host(${circularState}) .indeterminate-indicator {
     border-radius: ${borderRadiusCircular};
   }
-  :host([disabled]) .control,
-  :host([aria-checked='mixed'][disabled]) .control,
-  :host([aria-checked='true'][disabled]) .control {
-    background-color: ${colorTransparentBackgroundHover};
+
+  :host([disabled]),
+  :host([disabled]${checkedState}) {
+    background-color: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
-  :host([aria-checked='true'][disabled]) .checked-indicator,
-  :host([disabled]) ::slotted([slot='start']),
-  :host([disabled]) .label,
-  :host([aria-checked='mixed'][disabled]) .label,
-  :host([aria-checked='true'][disabled]) .label {
-    color: ${colorNeutralForegroundDisabled};
+
+  :host([disabled]) {
+    cursor: unset;
   }
-  :host([disabled]) .indeterminate-indicator {
-    background-color: ${colorNeutralForegroundDisabled};
+
+  :host([disabled]${indeterminateState}) .indeterminate-indicator {
+    background-color: ${colorNeutralStrokeDisabled};
   }
-`;
+
+  :host([disabled]${checkedState}) .checked-indicator {
+    color: ${colorNeutralStrokeDisabled};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      border-color: FieldText;
+    }
+
+    :host(:not([slot='input']:focus-visible))::after {
+      border-color: Canvas;
+    }
+
+    :host(:not([disabled]):hover),
+    :host(${checkedState}:not([disabled]):hover),
+    :host(:not([slot='input']):focus-visible)::after {
+      border-color: Highlight;
+    }
+
+    .indeterminate-indicator,
+    .checked-indicator {
+      color: HighlightText;
+    }
+
+    :host(${checkedState}),
+    :host(${indeterminateState}) .indeterminate-indicator {
+      background-color: FieldText;
+    }
+
+    :host(${checkedState}:not([disabled]):hover),
+    :host(${indeterminateState}:not([disabled]):hover) .indeterminate-indicator {
+      background-color: Highlight;
+    }
+
+    :host([disabled]) {
+      border-color: GrayText;
+    }
+
+    :host([disabled]${indeterminateState}) .indeterminate-indicator {
+      background-color: GrayText;
+    }
+
+    :host([disabled]),
+    :host([disabled]${checkedState}) .checked-indicator {
+      color: GrayText;
+    }
+  `),
+);

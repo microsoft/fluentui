@@ -42,17 +42,19 @@ describe('eslint-rule generator', () => {
        *
        * https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/src/rules
        */
-      import { ESLintUtils } from '@typescript-eslint/experimental-utils';
+
+      import { ESLintUtils } from '@typescript-eslint/utils';
+
       // NOTE: The rule will be available in ESLint configs as \\"@nx/workspace-uppercase\\"
       export const RULE_NAME = 'uppercase';
+
       export const rule = ESLintUtils.RuleCreator(() => __filename)({
         name: RULE_NAME,
         meta: {
           type: 'problem',
           docs: {
-            category: 'Best Practices',
             description: \`\`,
-            recommended: 'error',
+            recommended: 'recommended',
           },
           schema: [],
           messages: {},
@@ -66,11 +68,13 @@ describe('eslint-rule generator', () => {
     `);
 
     expect(tree.read(paths.spec, 'utf-8')).toMatchInlineSnapshot(`
-      "import { TSESLint } from '@typescript-eslint/experimental-utils';
+      "import { TSESLint } from '@typescript-eslint/utils';
       import { rule, RULE_NAME } from './uppercase';
+
       const ruleTester = new TSESLint.RuleTester({
         parser: require.resolve('@typescript-eslint/parser'),
       });
+
       ruleTester.run(RULE_NAME, rule, {
         valid: [\`const example = true;\`],
         invalid: [],

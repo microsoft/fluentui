@@ -2,6 +2,51 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Mon, 24 Jun 2024 07:33:22 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.27",
+      "version": "2.2.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-window-provider",
+            "comment": "Bump @fluentui/set-version to v8.2.23",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 07:26:46 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.26",
+      "version": "2.2.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-window-provider",
+            "comment": "Bump @fluentui/set-version to v8.2.22",
+            "commit": "e5e806f46bd00bc7baffbfe7514a617600ba2d47"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 May 2024 07:28:20 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.25",
+      "version": "2.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-window-provider",
+            "comment": "Bump @fluentui/set-version to v8.2.21",
+            "commit": "a96863b605b797397efab6fbecc6534ed8bd5e99"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 May 2024 07:28:17 GMT",
       "tag": "@fluentui/react-window-provider_v2.2.24",
       "version": "2.2.24",

@@ -6,7 +6,7 @@ This document describes how to set up your development environment and contribut
 
 - If you don't have a **GitHub account**, [create one](https://github.com/join)
   - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to your MS account
-- Install **[Node.js LTS](https://nodejs.org/en/)** (18 as of writing)
+- Install **[Node.js LTS](https://nodejs.org/en/)** (20 as of writing)
   - Optional: If you're developing across multiple repos with varying Node version requirements, you may want to use `nvm` to install and manage Node versions.
 - Install **[Yarn v1](https://classic.yarnpkg.com/) (we do not use Yarn >=v2)**
   - easiest way: run `npm install -g yarn@1`
@@ -18,13 +18,13 @@ This document describes how to set up your development environment and contribut
 - Optional: **[Accessibility insight for web](https://accessibilityinsights.io/)**
 - Optional: **[Node Version Manager](https://github.com/nvm-sh/nvm)**
 - Optional: **[CSpell VS Code Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)**
+- Optional: **[Improve build times: WSL for Windows](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)**
 
 ### Verify your environment
 
 Open a command line and run:
 
-- `node -v`: Should be `18.x.x` Newer versions may not work.
-- `npm -v`: Should be >= 6. If not, run `npm install -g npm`.
+- `node -v`: Should be `^20.x.x`.
 - `yarn -v`: Should be >= 1.15.0 but **less than 2**. If not, run `npm install -g yarn@1`.
 - `git --version` to ensure you have Git installed.
 - If using VS Code, go to a folder and run `code .` to open the folder in VS Code. If it doesn't work, open VS Code and press `F1` or `ctrl+shift+P` (`cmd+shift+P`), type `path`, and select the `Install 'code' command in PATH` option.

@@ -19,6 +19,7 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorPaletteRedBorder2,
   colorTransparentBackground,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
@@ -47,6 +48,14 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
+import {
+  filledDarkerState,
+  filledLighterState,
+  largeState,
+  outlineState,
+  smallState,
+  underlineState,
+} from '../styles/states/index.js';
 
 /**
  * Styles for the TextInput component.
@@ -77,19 +86,25 @@ export const styles: ElementStyles = css`
   }
 
   .root {
-    position: relative;
-    box-sizing: border-box;
-    height: 32px;
-    display: inline-flex;
     align-items: center;
-    flex-direction: row;
-    width: 100%;
-    padding: 0 ${spacingHorizontalMNudge};
+    background-color: ${colorNeutralBackground1};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
+    height: 32px;
+    display: inline-flex;
+    flex-direction: row;
     gap: ${spacingHorizontalXXS};
+    padding: 0 ${spacingHorizontalMNudge};
+    position: relative;
+    width: 100%;
   }
+
+  :has(.control:user-invalid) {
+    border-color: ${colorPaletteRedBorder2};
+  }
+
   .root::after {
     box-sizing: border-box;
     content: '';
@@ -117,7 +132,6 @@ export const styles: ElementStyles = css`
     font-weight: ${fontWeightRegular};
     font-size: ${fontSizeBase300};
     border: none;
-    background: transparent;
     vertical-align: center;
   }
   .control:focus-visible {
@@ -162,7 +176,7 @@ export const styles: ElementStyles = css`
   :host(:focus-within:active) .root:after {
     border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
-  :host([appearance='outline']:focus-within) .root {
+  :host(${outlineState}:focus-within) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
   :host(:focus-within) .control {
@@ -181,70 +195,70 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-  :host([control-size='small']) .control {
+  :host(${smallState}) .control {
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
   }
-  :host([control-size='small']) .root {
+  :host(${smallState}) .root {
     height: 24px;
     gap: ${spacingHorizontalXXS};
     padding: 0 ${spacingHorizontalSNudge};
   }
-  :host([control-size='small']) ::slotted([slot='start']),
-  :host([control-size='small']) ::slotted([slot='end']) {
+  :host(${smallState}) ::slotted([slot='start']),
+  :host(${smallState}) ::slotted([slot='end']) {
     font-size: ${fontSizeBase400};
   }
-  :host([control-size='large']) .control {
+  :host(${largeState}) .control {
     font-size: ${fontSizeBase400};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase400};
   }
-  :host([control-size='large']) .root {
+  :host(${largeState}) .root {
     height: 40px;
     gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalM};
   }
-  :host([control-size='large']) ::slotted([slot='start']),
-  :host([control-size='large']) ::slotted([slot='end']) {
+  :host(${largeState}) ::slotted([slot='start']),
+  :host(${largeState}) ::slotted([slot='end']) {
     font-size: ${fontSizeBase600};
   }
-  :host([appearance='underline']) .root {
+  :host(${underlineState}) .root {
     background: ${colorTransparentBackground};
     border: 0;
     border-radius: 0;
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
   }
-  :host([appearance='underline']:hover) .root {
+  :host(${underlineState}:hover) .root {
     border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host([appearance='underline']:active) .root {
+  :host(${underlineState}:active) .root {
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([appearance='underline']:focus-within) .root {
+  :host(${underlineState}:focus-within) .root {
     border: 0;
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([appearance='underline'][disabled]) .root {
+  :host(${underlineState}[disabled]) .root {
     border-bottom-color: ${colorNeutralStrokeDisabled};
   }
-  :host([appearance='filled-lighter']) .root,
-  :host([appearance='filled-darker']) .root {
+  :host(${filledLighterState}) .root,
+  :host(${filledDarkerState}) .root {
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: ${shadow2};
   }
-  :host([appearance='filled-lighter']) .root {
+  :host(${filledLighterState}) .root {
     background: ${colorNeutralBackground1};
   }
-  :host([appearance='filled-darker']) .root {
+  :host(${filledDarkerState}) .root {
     background: ${colorNeutralBackground3};
   }
-  :host([appearance='filled-lighter']:hover) .root,
-  :host([appearance='filled-darker']:hover) .root {
+  :host(${filledLighterState}:hover) .root,
+  :host(${filledDarkerState}:hover) .root {
     border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([appearance='filled-lighter']:active) .root,
-  :host([appearance='filled-darker']:active) .root {
+  :host(${filledLighterState}:active) .root,
+  :host(${filledDarkerState}:active) .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
   }

@@ -21,18 +21,22 @@ We don't have an official branch naming policy. Since every contribution happens
 
 The inner development loop usually involves these steps:
 
-First, `cd` to the root folder of the repo (usually `fluentui`) and run `yarn` to install dependencies and link packages. This can take some time.
+First, `cd` to the root folder of the repo (usually `fluentui`) and run `yarn` to install dependencies and link packages. This can take some time if it's the first time you've run it.
 
 ```
 cd fluentui
 yarn
 ```
 
+It's generally a good idea to `yarn` each time you sync with master.
+
+Windows users not working in WSL should run `yarn clean` and then `yarn build` first use to ensure correct linking in non-\*nix systems.
+
 Run `yarn start` and select your start up project.
 
 ```
 @fluentui/public-docsite // starts the public v8 documentation site.
-@fluentui/public-docsite-v9 // starts the internal v9 documentation storybook site.
+@fluentui/public-docsite-v9 // starts the v9 documentation storybook site.
 ```
 
 Pick a specific component package if you intend to work on a v9 component directly.
@@ -57,6 +61,8 @@ It is strongly recommended that you rebase your branch onto (rather than merging
 ```
 git checkout master // Switches to master
 git pull upstream master // Syncs your local master with the latest version of master at the origin
+yarn // Installs and updates dependencies in case there have been changes in the project's dependencies.
+git push // syncs your forks definition of master with the upstream repo
 git checkout your-fancy-branch // Switches back to your branch
 git rebase -i master // Tacks your commits onto the end of master. Force is necessary since rebase changes history.
 ```
@@ -76,6 +82,7 @@ In other cases, such as before checking in or running tests, you may need to run
 ### Making a pull request
 
 Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update our API docs accordingly. Commit this file change.
+Note: If you encounter build errors here (especially on non-\*nix systems) a 'yarn build' to ensure packages are correctly updated and linked may be nessecary.
 
 Some of our tests make use of DOM snapshot tests. If your branch makes any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. This will update any necessary files used by our snapshot tests.
 

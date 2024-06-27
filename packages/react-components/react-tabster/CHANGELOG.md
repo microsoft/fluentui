@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 23 May 2024 08:02:49 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.0)
+
+Mon, 17 Jun 2024 07:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.21.5..@fluentui/react-tabster_v9.22.0)
+
+### Minor changes
+
+- Exposing TabsterMoveFocusEvent. ([PR #31393](https://github.com/microsoft/fluentui/pull/31393) by marata@microsoft.com)
+
+### Patches
+
+- chore: Pulling Tabster 8.0.0 for the tree-shakeability improvements to reduce the bundle size. ([PR #31441](https://github.com/microsoft/fluentui/pull/31441) by marata@microsoft.com)
+
+## [9.21.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.21.5)
+
+Thu, 06 Jun 2024 15:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.21.4..@fluentui/react-tabster_v9.21.5)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.10 ([PR #31586](https://github.com/microsoft/fluentui/pull/31586) by beachball)
 
 ## [9.21.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.21.4)
 

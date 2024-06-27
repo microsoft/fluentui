@@ -1,0 +1,2666 @@
+{
+  "name": "@fluentui/react-drawer",
+  "entries": [
+    {
+      "date": "Mon, 17 Jun 2024 07:34:17 GMT",
+      "tag": "@fluentui/react-drawer_v9.5.2",
+      "version": "9.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.11.2",
+            "commit": "9ae683c22f2e65d94422a571ad5d3f97d0a77234"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.22.0",
+            "commit": "9ae683c22f2e65d94422a571ad5d3f97d0a77234"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jun 2024 13:17:28 GMT",
+      "tag": "@fluentui/react-drawer_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.11.1",
+            "commit": "339bbcd161148f3af2d8871f698250404cb994e7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 15:26:33 GMT",
+      "tag": "@fluentui/react-drawer_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "3a6e95945a1193cc7fc79f37d751f7286eef8d6f",
+            "comment": "feat: allow aside as tag for Drawer components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.11.0",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.39",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.22",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.5",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.10",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 May 2024 08:02:43 GMT",
+      "tag": "@fluentui/react-drawer_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "7a2367b5f16a3f4b5e79d2df57986d7754641ff7",
+            "comment": "fix(OverlayDrawer): unlock scroll when reduced motion is enabled"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "92329052b8ed1f6b1574a1b02f841e463d4bbb1c",
+            "comment": "chore: replace usage of .shorthands() in styles"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e102922f1c4eeab2c60dd8bc9754d30d11ae06bf",
+            "comment": "deprecate: defaultOpen as it is not being used"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.7",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.4",
+            "commit": "03599d609e8310b08c57d1f871cffbf717d79207"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 12:44:55 GMT",
+      "tag": "@fluentui/react-drawer_v9.3.2",
+      "version": "9.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/react"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.6",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.38",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.21",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.0",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.3",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.9",
+            "commit": "796f5d3a54f904825e5cb00b97f4366306ca5d5a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 May 2024 09:25:14 GMT",
+      "tag": "@fluentui/react-drawer_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "77c756a20b7f1f3b7df5eea43d6e53b82cad33ef",
+            "comment": "fix: restore scroll when Drawer closes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.5",
+            "commit": "62553563ad80b95e37a9e628d6a860c829b58dbf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 May 2024 12:34:19 GMT",
+      "tag": "@fluentui/react-drawer_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8b5031cb903160673ff2f63c646e45817b3976d7",
+            "comment": "feat: Add missing Drawer context exports."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 May 2024 19:35:12 GMT",
+      "tag": "@fluentui/react-drawer_v9.2.2",
+      "version": "9.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.4",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.2",
+            "commit": "b2b99644f821cb1b882314c68b493e1dd2e01f44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 May 2024 12:55:02 GMT",
+      "tag": "@fluentui/react-drawer_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.3",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.37",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.20",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.18.0",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.1",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.8",
+            "commit": "16b1c50437919a44f8143c05c2a5fb9b39e03dc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 May 2024 11:36:33 GMT",
+      "tag": "@fluentui/react-drawer_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "59b7a1f12ce09eb69e5888f74f2d88ef522f6f3b",
+            "comment": "feat: move scroll detector to a dedicated react context"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.2",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.21.0",
+            "commit": "b578776220e522122e17f9e89c0f19d92d3b4b92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Apr 2024 08:17:49 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.12",
+      "version": "9.1.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.1",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.36",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.19",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.17.0",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.20.1",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.7",
+            "commit": "120868a45d3be46d3e8213083d9ecce435e83acf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Apr 2024 21:53:52 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.11",
+      "version": "9.1.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b1cc57610b6e27afbeaa2382e40f6908c1f34f85",
+            "comment": "chore: refactor styles defined in makeResetStyles() to avoid shorthands.*()"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.10.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.20.0",
+            "commit": "b888e953937a13b1135987f81abbfa909688fbe7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "31be1ad41f981f559919d0261c9750b50d69fcda",
+            "comment": "perf: speed up tsc by not running on cypress files during .d.ts generation and type-checking"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Apr 2024 09:48:01 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.16",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.35",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.18",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.16.0",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.6",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.15",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.34",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.17",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.2",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.5",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.19",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.5",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.14",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.33",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.16",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.13",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.32",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.15",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.17",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Feb 2024 02:34:19 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.12",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.31",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.14",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.14.1",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:30 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.5",
+      "version": "9.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.11",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.30",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.13",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Feb 2024 17:55:21 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.4",
+      "version": "9.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.10",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.19.0",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.3",
+      "version": "9.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.9",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.29",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.12",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 15:11:00 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.2",
+      "version": "9.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.8",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.28",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.11",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.17.4",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.17.0",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jan 2024 14:25:03 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.7",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.27",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.10",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.14.0",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.17.3",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.16.1",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jan 2024 16:18:49 GMT",
+      "tag": "@fluentui/react-drawer_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yiliu9@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bf4596b027ad138c19fd8f443d8cde3f4886d4e1",
+            "comment": "Add bottom position"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.6",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.26",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.9",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.17.2",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.16.0",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jan 2024 13:14:18 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.9",
+      "version": "9.0.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "86455f77ea6d207d642d2a501cf7642694ce58ca",
+            "comment": "chore: remove useHeadingProps() and React.useMemo()"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.5",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.8",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.4",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:28 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.3",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.24",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.7",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.17.0",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jan 2024 09:26:44 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.6",
+      "version": "9.0.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.2",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.23",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.6",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.16.1",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.5",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:46 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.1",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.22",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.5",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.2",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.16.0",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.4",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 09:58:43 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "21548962723950b640bcd75c5befa58120f00b15",
+            "comment": "fix: OverlayDrawer accepts mountNode in types"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.9.0",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.21",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.4",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.1",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.15.1",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.3",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 13:42:08 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.7",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.20",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.3",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.15.0",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.6",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.2",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.6",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 17:29:35 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d93b1042ea0b1fff2b3c487d38f0347a66f6042c",
+            "comment": "feat: release stable 9.0.0"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8cf3599079ee7735eb83a111db76288fbe4abb43",
+            "comment": "chore: Export missing useDrawerStyles_unstable."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.4",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.19",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.1",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.12.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.4",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Nov 2023 13:16:04 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.41",
+      "version": "9.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.3",
+            "commit": "bcd30395b61cb18b5a42a8c0a4f91ccc2b88377d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Nov 2023 17:38:45 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.40",
+      "version": "9.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b4b696c7dd574454581ff697b03381650eb00f9c",
+            "comment": "breaking: open prop now only accepts a boolean instead of MotionShorthand "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.39",
+      "version": "9.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.2",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.5.0",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.1",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.3",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 23:35:56 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.38",
+      "version": "9.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "601e93272fe2b51515c9706d1d1ed03b4f9fc765",
+            "comment": "fix: regression with mountNode prop not available after refactor"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "4611e31dd38799b5e7bd2faa3ff735398e176b03",
+            "comment": "feat: use useMotionClassNames to create drawer motion styles"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "BREAKING CHANGE: rename main DrawerOverlay/DrawerInline components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b77e96763ca6d1ce4ef1ee8482977f908538fbd1",
+            "comment": "fix: improve high contrast mode"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d936b79dd82bffe98192bee64b5e0db28905e7df",
+            "comment": "docs: add example on how to implement multiple levels inside one drawer"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.1",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.4.0",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.0",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.2",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 09:51:57 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.37",
+      "version": "9.0.0-beta.37",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.8.0",
+            "commit": "e4ef1febe8a185dddc10f8936944d177d50bc396"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.1",
+            "commit": "e4ef1febe8a185dddc10f8936944d177d50bc396"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:08 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.36",
+      "version": "9.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.10",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.18",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.3.4",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.14.0",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Oct 2023 14:55:43 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.35",
+      "version": "9.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.9",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.17",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.3.3",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.34",
+      "version": "9.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.8",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.16",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.3.2",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.13.6",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:41 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.33",
+      "version": "9.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "fd51d508488549b816c5d7d0d3f89b2bac2b1065",
+            "comment": "feat: make dialog slot internal to be used for composition only"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.7",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.15",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.3.1",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-tabster to v9.13.5",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 15:25:35 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.32",
+      "version": "9.0.0-beta.32",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.6",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.14",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.3.0",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.14.1",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 08:45:47 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.31",
+      "version": "9.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.5",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.13",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.10",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.14.0",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Oct 2023 08:56:05 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.30",
+      "version": "9.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.4",
+            "commit": "da9a08817e5de95639e2dd7aa6d6709d47faa7f4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.9",
+            "commit": "da9a08817e5de95639e2dd7aa6d6709d47faa7f4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.9.2",
+            "commit": "da9a08817e5de95639e2dd7aa6d6709d47faa7f4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:05 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.29",
+      "version": "9.0.0-beta.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.3",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.12",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.8",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.9.1",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.14",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.5",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:31:59 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.28",
+      "version": "9.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "afa2b8ebd2a09cbb1af23888736c7e3a21ec4a90",
+            "comment": "fix: improve performance of CSS classes"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "2828134c6385b70d2d11de50729480993ce1fc3a",
+            "comment": "fix: resolve technical debts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "a56c408d4ed860a48e22780289e5c4a00ebec6c4",
+            "comment": "fix: use context to fetch dialog id"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "fbaba50e246b708d0fcac7d79d0f99df5228ce15",
+            "comment": "fix: remove defaultOpen prop from DrawerInline as it had no effect"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e31d18c0326a4c3f8f0966aaf2bb889cf44e4ce4",
+            "comment": "feat: add dialog slot"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.2",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.11",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.7",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.9.0",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.13",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.4",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Sep 2023 17:47:37 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.27",
+      "version": "9.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.1",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.10",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.6",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.8.1",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Sep 2023 14:59:52 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.26",
+      "version": "9.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "921694374c78c37ecf18d7bb99000bb0bb67551b",
+            "comment": "feat: add custom styling hooks for Drawer subcomponents"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "511e4f01926df45099a342fe9db949739f91dd5b",
+            "comment": "fix: use dialog id for drawer title heading element"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.7.0",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.9",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.5",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.8.0",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Sep 2023 16:44:47 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.25",
+      "version": "9.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.5",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.8",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.4",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Sep 2023 08:51:34 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.24",
+      "version": "9.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.4",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.7",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.3",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.3",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.6",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.2",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.3",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 15:39:03 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.22",
+      "version": "9.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91",
+            "comment": "refactor: organize code imports"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c6a8055e413d7efca7c968e11b70638f869b610a",
+            "comment": "test: add e2e tests for base Drawer components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.2",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.5",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.1",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.2",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:22 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "6363e77de4ed560ea8dbd53f5eb0511b65f19b77",
+            "comment": "fix: refactor DrawerHeaderTitle slot creation while keeping the same API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "eea6d93a62249ba4fba3347fb291c67ee1a3fb24",
+            "comment": "chore: migrate package to use JSX importSource"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c506263acc723358ae1d5ead3f9448b1bf1c49bd",
+            "comment": "test: add simple renderization tests for sub components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b27e08e64320103ff77f1aed3ed05a592485acb9",
+            "comment": "feat: add motion for Drawer"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.1",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.4",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.0",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.3",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.12",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.1",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Aug 2023 12:57:36 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.20",
+      "version": "9.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.0",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.3",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.0",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Aug 2023 10:26:35 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.19",
+      "version": "9.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.26",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.2",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.12.0",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.18",
+      "version": "9.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.25",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.1",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.11.2",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 11:38:00 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.17",
+      "version": "9.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "768de13c5e30222f64b2cc453bc4b134a6e90712",
+            "comment": "fix: rename values of position prop from left/right to start/end"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.16",
+      "version": "9.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.24",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 11:38:33 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.15",
+      "version": "9.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.23",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Aug 2023 12:14:26 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.14",
+      "version": "9.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.22",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.11.1",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 13:16:55 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.21",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.2",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.11",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.20",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.1",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.10",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Aug 2023 10:17:21 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.19",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.0",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:23 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.18",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 18:27:36 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.17",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jul 2023 21:25:40 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jul 2023 18:46:36 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.16",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.11",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0",
+            "commit": "f958e7e175264e289a6ecdc5b108e826f6b34e74"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 13:34:28 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.15",
+            "commit": "d2c95969c67521ea1df57e1339f8743b09b68772"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 11:57:14 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.14",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.10",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.6.0",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:26 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.13",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.9",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.10.0",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Jun 2023 11:21:23 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.12",
+            "commit": "1c7e6451a11fb9c59e344df616394a320e8031c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jun 2023 09:53:54 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "a47ce5f6b2cede1df976530eb35e86bd7e44a21a",
+            "comment": "docs: improve types descriptions and fix TS circular references"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.11",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.8",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.9.4",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:07 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.10",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.7",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.5.1",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 06:46:13 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "update yarn.lock"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "2780b2fc152fafe57d35a236f8911424b39cb48b",
+            "comment": "feat: release react-drawer to unstable"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "bumps Griffel version to 1.5.7 from 1.5.2"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4",
+            "comment": "chore: move styles to .styles.ts files [react-drawer & react-toast]"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.5.9",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.6",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ]
+      }
+    }
+  ]
+}

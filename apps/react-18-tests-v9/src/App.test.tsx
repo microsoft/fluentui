@@ -27,7 +27,7 @@ describe('App with React 18', () => {
       const elementProviderClassName = element.className.split(' ')[1];
       const matchingStyleTag = document.getElementById(elementProviderClassName);
 
-      expect(matchingStyleTag).toBeDefined;
+      expect(matchingStyleTag).toBeDefined();
     });
   });
 });

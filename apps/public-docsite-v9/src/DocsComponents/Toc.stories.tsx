@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { addons } from '@storybook/addons';
 import { NAVIGATE_URL } from '@storybook/core-events';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands } from '@fluentui/react-components';
 import { useRef } from 'react';
 
 const useTocStyles = makeStyles({

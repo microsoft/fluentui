@@ -2,6 +2,801 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 17 Jun 2024 07:34:16 GMT",
+      "tag": "@fluentui/react-components_v9.54.2",
+      "version": "9.54.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "9494a77f09ea6e59c400f79c637e7ec6bab035b1",
+            "comment": "fix: useContextSelector with React 18"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b1f03829ae5fcd874de63d24e12cdd0668563822",
+            "comment": "Removing ignoreKeydown on MenuList as it has side effect on submenus."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "104680072640fdc8e76eb65b9409867c1c078880",
+            "comment": "chore: Pulling Tabster 8.0.0 for the tree-shakeability improvements to reduce the bundle size."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "57cd63405508ee26266cf105008f5da9683812b9",
+            "comment": "feat: Implement `onMotionCancel` callback handler"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b1f03829ae5fcd874de63d24e12cdd0668563822",
+            "comment": "Exposing TabsterMoveFocusEvent."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jun 2024 13:17:15 GMT",
+      "tag": "@fluentui/react-components_v9.54.1",
+      "version": "9.54.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "73c29a71c67108bfd82dff3532a7941ea9b88ce8",
+            "comment": "Deprecated react-accordion navigation prop. Tab navigation only should be used according to W3 APG pattern."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "1b681fce5c79e8489895dd0a6d50e2844e9ae115",
+            "comment": "feat: add support for params"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ca19e3baeeca23b30443f65bd175ea9050b63b00",
+            "comment": "feat: Add consistent start and finish lifecycle callbacks"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3f43fc3a20f6c16ae658c3ff2a22858d08c50647",
+            "comment": "feat: Adding small size variant."
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3babcab6081857c253090b684f41a0da8a41a83b",
+            "comment": "(chore): Remove NavDrawerHeaderNav component."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "02ad9418f19b4d03c15c1862c2436955a7a0f356",
+            "comment": "feature: onVisibilityChange method to TreeItemLayout action slot"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "e79634185f87ee50dd137bb861e5f56e12a9225e",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "414d5e135bb355af2b0898ac5467b2407db0ef8a",
+            "comment": "Add bundle size tests"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "e79634185f87ee50dd137bb861e5f56e12a9225e",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3dc10b8d5c4b5d3f793054832c3ea6e86a967732",
+            "comment": "style(react-nav-preview): fix formatting in barell file"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "bc3f08341f3449c22b17ecbdc031da9aeadc9bbf",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "5a0f5768dc10359340eb8207a47b803d485e1b40",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e79634185f87ee50dd137bb861e5f56e12a9225e",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "bd7a7a355826079c7e64120d479e7a7854547359",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "0026465e01bea4aa029929679ea0d817435d42ab",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "339bbcd161148f3af2d8871f698250404cb994e7",
+            "comment": "fix: improve header alignment when no description is passed"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "8f8a6a8371c7bc4801b85b9bcfbcaafb1efe1694",
+            "comment": "fix(motions): improve compat for jsdom & jest"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "95e9fb0aa30ee3fe058d1e652ccd654c895475c4",
+            "comment": "feat: Adding roles and current where appropriate."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 15:26:27 GMT",
+      "tag": "@fluentui/react-components_v9.54.0",
+      "version": "9.54.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "daa441dfebc139dcf3b7af02e67b428633d7a191",
+            "comment": "chore: remove storybook setup and assets/"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "dec4cf3a5153b44659e51ffe8bb09a2734af896e",
+            "comment": "chore(react-components): use performant type-check target"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "df493e7e4d6278fa2e87b8d18d08bd7f793ba9a0",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "update eslint comments"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "e76aee17b8c8cda9c18b7e63fc29baad83705734",
+            "comment": "chore: split react libraries in two (/library and /stories)"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "287ce4504b97d6735b3734f0d0768bbc890a3a6e",
+            "comment": "chore: normalize all scripts source to live under /src"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "102dd05642082f6af41178470187b34bb8af3556",
+            "comment": "chore: use new performant 'type-check' for v9 libaries"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "chore: disable eslint rule"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "babf7b45951d2e27f9724f3bbdd3dd77aee2c488",
+            "comment": "chore: remove optional \"win\" argument"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "de236343a2ea7e2e53fbb8f66a294890ea3d1bbb",
+            "comment": "feat(calendar-compat): changed design for the selected state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "7651367e8e48fa801de81c612abf93635779d163",
+            "comment": "chore: Renaming useCalendarMonthStyles.ts to useCalendarMonthStyles.styles.ts."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "fcdd01ecbfbfe3cfbcf43982dbfb6252efe80013",
+            "comment": "chore: use @fluentui/react-motion"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "chore: disable eslint rule."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "chore: disable eslint rule"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "a13cb66f314d5e287c3fa788b6300f36135df19e",
+            "comment": "chore: Fixing typo in CheckboxShim migration."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3a6e95945a1193cc7fc79f37d751f7286eef8d6f",
+            "comment": "fix: compatibility with Drawer slots"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "chore: disable eslint rule."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-search",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "a7a222badbe43375cb43e8bbe353ab461f075e20",
+            "comment": "chore: rename useSkeletonStyles.ts to useSkeletonStyles.styles.ts"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "fix: use requestAnimationFrame from Fluent context."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "Use `MutationObserver` from global context."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "a96863b605b797397efab6fbecc6534ed8bd5e99",
+            "comment": "fix: clear icon not working with freeform"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "f8c7f1b09d864601bb78fa563f71e1c6ad8bcc50",
+            "comment": "chore: migrate Toast to new motion library"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "fcdd01ecbfbfe3cfbcf43982dbfb6252efe80013",
+            "comment": "chore: use @fluentui/react-motion"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "bfcc1cab7bf0d19ef3ab9eba2f1eb7b336db9bdc",
+            "comment": "chore: adopt changes in motion APIs"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "chore: disable eslint rule."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "becc7cd1e4b64a7308335cf797e1fa15e34b68c8",
+            "comment": "bugfix: ensure roving tab index when children content changes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: ensure only state or defaultState is provided on useControllableState hook invocation"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "95251e787db907bb2c55816ea18aeba6ce20f4e2",
+            "comment": "chore: useControllableState warns if controlled and uncontrolled at the same time"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "fix: use globals from Fluent context."
+          }
+        ],
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "add optional `window` argument to `scrollIntoView`."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0c893e492436af30037beeed6e8561291d4241de",
+            "comment": "chore: exports DialogModalType type"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "fc5f6f5a47d1992c1fe44b6b0aab8965a1dc8230",
+            "comment": "feat: re-export `useTimeout()` and `useAnimationFrame()`."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "fcdd01ecbfbfe3cfbcf43982dbfb6252efe80013",
+            "comment": "feat: add @fluentui/react-motion to suite"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "0c893e492436af30037beeed6e8561291d4241de",
+            "comment": "chore: exports DialogModalType type"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "3a6e95945a1193cc7fc79f37d751f7286eef8d6f",
+            "comment": "feat: allow aside as tag for Drawer components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "fcdd01ecbfbfe3cfbcf43982dbfb6252efe80013",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "22da8796767179fe677d99cd1895247b8268d9b7",
+            "comment": "chore: Recomposing NavSectionHeader and Hamburger. Removing HamburgerInNav. Some other pixel pushing."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "07a8045a92cdbe36fa04ce6cf2b4517f77c877af",
+            "comment": "feat: adds text property to TagPickerOption"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f49888c27ac75e90395ecfaa6a654bbbc18535fe",
+            "comment": "feature: preventScroll on navigation"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "fix: update internal function to optionally use global Fluent context."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 May 2024 08:02:39 GMT",
       "tag": "@fluentui/react-components_v9.53.0",
       "version": "9.53.0",

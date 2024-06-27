@@ -4,9 +4,6 @@
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
   "pluginsConfig": {
     "@nx/js": {
       "analyzeSourceFiles": false
@@ -24,6 +21,11 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
+      "cache": true
+    },
+    "build-storybook": {
+      "dependsOn": [],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "cache": true
     },
     "generate-api": {
@@ -45,6 +47,11 @@
     },
     "test-ssr": {
       "cache": true
+    },
+    "e2e": {
+      "dependsOn": [],
+      "cache": true,
+      "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
     "lint": {
       "dependsOn": ["build"],
@@ -95,5 +102,7 @@
       }
     }
   },
-  "parallel": 3
+  "parallel": 3,
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

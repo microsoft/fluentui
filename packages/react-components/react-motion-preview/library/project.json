@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-motion-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-motion-preview/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": []
+}
