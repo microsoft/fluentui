@@ -8,7 +8,7 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "jsx": "react",
-    "types": ["jest", "node", "web"]
+    "types": ["jest", "node", "web", "es2023-shim"]
   },
   "include": ["./src", "./.storybook/*"],
   "files": ["./typings/html-react-parser/index.d.ts"]
