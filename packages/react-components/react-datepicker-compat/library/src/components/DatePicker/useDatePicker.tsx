@@ -364,7 +364,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const inputRoot = slot.always(props.root, {
     defaultProps: {
-      'aria-owns': open ? popupSurfaceId : undefined,
       ref: triggerWrapperRef,
     },
     elementType: 'span',
