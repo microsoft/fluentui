@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2024 07:31:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.119.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.0)
+
+Wed, 26 Jun 2024 07:31:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.118.10..@fluentui/react_v8.119.0)
+
+### Minor changes
+
+- Add 'allowParentArrowNavigation' to ComboBox. ([PR #31805](https://github.com/microsoft/fluentui/pull/31805) by seanmonahan@microsoft.com)
 
 ## [8.118.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.118.10)
 

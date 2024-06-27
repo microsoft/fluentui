@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 25 Jun 2024 04:06:35 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2024 04:07:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.36)
+
+Wed, 26 Jun 2024 04:07:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.35..@fluentui/web-components_v3.0.0-beta.36)
+
+### Changes
+
+- feat(drawer): add drawer web component ([PR #31521](https://github.com/microsoft/fluentui/pull/31521) by email not defined)
 
 ## [3.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.35)
 
