@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { CheckboxProps, DropdownProps } from '@fluentui/react-components';
 import { Checkbox, Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
+// eslint-disable-next-line @fluentui/no-restricted-imports
 import { useDebounce } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
