@@ -9,14 +9,14 @@ test.describe('Switch', () => {
     await page.waitForFunction(() => customElements.whenDefined('fluent-switch'));
   });
 
-  test('should have a role of `checkbox`', async ({ page }) => {
+  test('should have a role of `switch`', async ({ page }) => {
     const element = page.locator('fluent-switch');
 
     await page.setContent(/* html */ `
         <fluent-switch></fluent-switch>
     `);
 
-    await expect(element).toHaveJSProperty('elementInternals.role', 'checkbox');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'switch');
   });
 
   test('should set the `ariaChecked` property to `false` when `checked` is not defined', async ({ page }) => {
@@ -156,7 +156,7 @@ test.describe('Switch', () => {
 
     await page.setContent(/* html */ `
         <form>
-            <fluent-switch required>checkbox</fluent-switch>
+            <fluent-switch required></fluent-switch>
         </form>
     `);
 
