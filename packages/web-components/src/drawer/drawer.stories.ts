@@ -1,16 +1,11 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { Meta, renderComponent, Story, StoryArgs } from '../helpers.stories.js';
 import { RadioGroup } from '../radio-group/radio-group.js';
+import type { TextInput as FluentTextInput } from '../text-input/text-input.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
-import './define.js';
-import '../drawer-body/define.js';
 
-type DrawerStoryArgs = Args & FluentDrawer;
-type DrawerStoryMeta = Meta<DrawerStoryArgs>;
-
-const dismissed20Regular = html`<svg
+const dismissed20Regular = html<StoryArgs<FluentDrawer>>`<svg
   fill="currentColor"
   aria-hidden="true"
   width="20"
@@ -68,15 +63,7 @@ const hideDrawer = (drawerID: string) => {
   }
 };
 
-setTimeout(() => {
-  const input = document.getElementById('custom-size-input') as FluentDrawer;
-  const drawer = document.getElementById('drawer-width-custom') as FluentDrawer;
-  input.addEventListener('input', (e: any) => {
-    drawer.style.setProperty('--drawer-width', `${e.target.value}px`);
-  });
-}, 2000);
-
-const storyTemplate = html<DrawerStoryArgs>`
+const storyTemplate = html<StoryArgs<FluentDrawer>>`
   <div class="full-height">
     <style>
       div.docs-story > div:first-child,
@@ -255,11 +242,11 @@ export default {
       },
     },
   },
-} as DrawerStoryMeta;
+} as Meta<FluentDrawer>;
 
-export const Drawer = renderComponent(storyTemplate).bind({});
+export const Drawer: Story<FluentDrawer> = renderComponent(storyTemplate).bind({});
 
-export const Modal = renderComponent(html<DrawerStoryArgs>`
+export const Modal: Story<FluentDrawer> = renderComponent(html<StoryArgs<FluentDrawer>>`
   <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-modal" type="modal">
@@ -314,7 +301,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const NonModal = renderComponent(html<DrawerStoryArgs>`
+export const NonModal: Story<FluentDrawer> = renderComponent(html<StoryArgs<FluentDrawer>>`
   <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-nonmodal" type="non-modal">
@@ -362,7 +349,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const Inline = renderComponent(html<DrawerStoryArgs>`
+export const Inline: Story<FluentDrawer> = renderComponent(html<StoryArgs<FluentDrawer>>`
   <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-inline" type="inline" size="large">
@@ -408,7 +395,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const Position = renderComponent(html<DrawerStoryArgs>`
+export const Position: Story<FluentDrawer> = renderComponent(html<StoryArgs<FluentDrawer>>`
   <div class="flex justify--space-between full-height">
     <div>
       <fluent-drawer type="modal" id="drawer-position-start" size="small">
@@ -499,7 +486,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const Size = renderComponent(html<DrawerStoryArgs>`
+export const Size: Story<FluentDrawer> = renderComponent(html<StoryArgs<FluentDrawer>>`
   <div class="flex justify--center full-height">
     <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Size</h3></fluent-text>
@@ -609,7 +596,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const CustomSize = renderComponent(html`
+export const CustomSize: Story<FluentDrawer> = renderComponent(html`
   <div class="flex justify--center full-height">
     <div class="gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Custom Size</h3></fluent-text>
@@ -620,8 +607,18 @@ export const CustomSize = renderComponent(html`
       <fluent-text font="monospace" size="300" weight="regular">
         <code>var(--drawer-width)</code>
       </fluent-text>
-      <fluent-label weight="semibold">Set a Drawer Size</fluent-label>
-      <fluent-text-input id="custom-size-input" pattern="^[0-9]*$" type="text"></fluent-text-input>
+      <fluent-label weight="semibold">Set a Drawer Size (in px)</fluent-label>
+      <fluent-text-input
+        id="custom-size-input"
+        pattern="^[0-9]*$"
+        type="text"
+        @input="${(x, c) => {
+          (document.getElementById('drawer-width-custom') as FluentDrawer).style.setProperty(
+            '--drawer-width',
+            `${(c.event.target as FluentTextInput).value}px`,
+          );
+        }}"
+      ></fluent-text-input>
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-width-custom')}"
         >Toggle Drawer</fluent-button
       >
