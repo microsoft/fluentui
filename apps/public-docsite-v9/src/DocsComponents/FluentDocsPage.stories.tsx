@@ -12,6 +12,7 @@ import {
 } from '@storybook/addon-docs';
 import type { SBEnumType } from '@storybook/csf';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
+import { InfoFilled } from '@fluentui/react-icons';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
@@ -49,6 +50,22 @@ const useStyles = makeStyles({
   },
   nativeProps: {
     display: 'flex',
+    gap: tokens.spacingHorizontalM,
+
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: tokens.spacingHorizontalM,
+    margin: `0 ${tokens.spacingHorizontalM}`,
+  },
+  nativePropsIcon: {
+    alignSelf: 'center',
+    color: tokens.colorBrandForeground1,
+    fontSize: '24px',
+  },
+  nativePropsMessage: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalXS,
   },
 });
 
@@ -98,18 +115,17 @@ const VideoPreviews: React.FC<{
   );
 };
 
-const getNativePropsMessage = (elements: SBEnumType['value']): JSX.Element => {
+const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
   const elementsArr = elements.map((el, idx) => [
     <code key={idx}>{`<${el}>`}</code>,
     idx !== elements.length - 1 ? ', ' : ' ',
   ]);
 
   return (
-    <Text>
-      <strong>Native props allowed</strong> - all HTML attributes native to the {elementsArr}
-      {elements.length > 1 ? 'elements' : 'element'}, including all aria and custom data attributes, can be applied as
-      native props on this component.
-    </Text>
+    <>
+      {elementsArr}
+      {elementsArr.length > 1 ? 'elements' : 'element'}
+    </>
   );
 };
 
@@ -153,10 +169,22 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
-          {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
-            <div className={styles.nativeProps}>{getNativePropsMessage(primaryStory.argTypes.as.type.value)}</div>
-          )}
           <ArgsTable story={PRIMARY_STORY} />
+          {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
+            <div className={styles.nativeProps}>
+              <InfoFilled className={styles.nativePropsIcon} />
+              <div className={styles.nativePropsMessage}>
+                <b>
+                  Native props are supported <span role="presentation">🙌</span>
+                </b>
+                <span>
+                  All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)},
+                  including all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props
+                  on this component.
+                </span>
+              </div>
+            </div>
+          )}
           <Stories />
         </div>
         <div className={styles.toc}>
