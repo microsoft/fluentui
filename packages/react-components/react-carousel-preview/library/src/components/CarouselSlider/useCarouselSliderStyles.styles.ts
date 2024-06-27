@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): CarouselSliderState => {
   'use no memo';
 
-  const { cardWidth, currentIndex, numCards, loopCount, interruptedAnimation } = state;
+  const { cardWidth, currentIndex, numCards, loopCount, interruptedAnimation, containerWidth } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselSliderClassNames.root, styles.root, state.root.className);
@@ -50,14 +50,14 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   );
 
   // Shift our view for each card and tracking the total loops (circular)
-  const currentPosition = (-100 / numCards) * currentIndex + loopCount * -100 + 50 / numCards;
-  // Todo: Resize observer our container so we can position based on pixels for variant states (isTrailing etc.)
-  const slideTransform = `translate3d(${currentPosition}%, 0,0)`;
+  const currentPosition = (-100 / numCards) * currentIndex + loopCount * -100 - 50 / numCards;
+  // Todo: Resize observer our container so we can position based on pixels for variant states (centered/isTrailing etc.)
+  const slideTransform = `translate3d(calc(${currentPosition}% + ${containerWidth / 2.0}px), 0,0)`;
 
   state.root.style = {
     width: `calc(${cardWidth} * ${numCards})`,
     transform: slideTransform,
-    transitionDelay: interruptedAnimation.current ? `-${tokens.durationFast}` : '0',
+    transitionDelay: interruptedAnimation ? `-${tokens.durationFast}` : '0',
     ...state.root.style,
   };
 
