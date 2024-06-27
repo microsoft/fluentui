@@ -100,14 +100,6 @@ export const styles: ElementStyles = css`
 
   ::slotted([slot='dismiss']) {
     grid-area: dismiss;
-    display: flex;
-    justify-content: end;
-  }
-
-  :host(${multiLineState}) ::slotted([slot='dismiss']) {
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
   }
 
   .actions {
@@ -115,6 +107,7 @@ export const styles: ElementStyles = css`
     display: flex;
     justify-self: end;
     margin-inline-end: ${spacingHorizontalS};
+    gap: ${spacingHorizontalS};
   }
 
   :host(${multiLineState}) .actions {
