@@ -14,14 +14,25 @@ import { useCarouselStore_unstable } from '../useCarouselStore';
  * @param props - props from this instance of CarouselCard
  * @param ref - reference to root HTMLDivElement of CarouselCard
  */
+
 export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  const { value } = props;
-  const { circular, cardWidth } = useCarouselContext_unstable();
+  'use no memo';
 
-  const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
+  const { circular } = useCarouselContext_unstable();
+
+  // We rely on render-heavy context in circular so we want to avoid if disabled
+  // As circular is static, this doesn't break rule of hooks
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return circular ? useCarouselCardCircular(props, ref) : useCarouselCardCore(props, ref);
+};
+
+const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
+  const coreState = useCarouselCardCore(props, ref);
+  const { value } = props;
+  const { circular } = useCarouselContext_unstable();
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
 
@@ -45,15 +56,30 @@ export const useCarouselCard_unstable = (
 
   const loopCount: number = useCarouselStore_unstable(snapshot => snapshot.loopCount);
 
-  let offsetIndex = circular ? loopCount * totalCards : 0;
-
   // Track if we need to modify position due to circular loop
   const cardDirection = currentActiveIndex < currentSelfIndex ? 'next' : 'prev';
   const directionMod = navDirection === cardDirection ? 0.5 : -0.5;
 
+  let offsetIndex = circular ? loopCount * totalCards : 0;
   if (circular && Math.abs(currentActiveIndex - currentSelfIndex) + directionMod >= totalCards / 2.0) {
     offsetIndex = currentActiveIndex < currentSelfIndex ? offsetIndex - totalCards : offsetIndex + totalCards;
   }
+
+  const state: CarouselCardState = {
+    ...coreState,
+    offsetIndex,
+  };
+
+  return state;
+};
+
+const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
+  const { value } = props;
+  const { cardWidth } = useCarouselContext_unstable();
+
+  const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
+
+  const offsetIndex = 0;
 
   const state: CarouselCardState = {
     value,
