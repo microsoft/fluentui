@@ -46,8 +46,8 @@ export type SliderMode = ValuesOf<typeof SliderMode>;
  * @public
  */
 export interface SliderConfiguration {
-  max: string;
-  min: string;
+  max?: string;
+  min?: string;
   orientation?: SliderOrientation;
   direction?: Direction;
   disabled?: boolean;
